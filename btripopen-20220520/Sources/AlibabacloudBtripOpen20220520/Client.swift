@@ -57,6 +57,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addEmployeesToCustomRoleWithOptions(_ tmpReq: AddEmployeesToCustomRoleRequest, _ headers: AddEmployeesToCustomRoleHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddEmployeesToCustomRoleResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: AddEmployeesToCustomRoleShrinkRequest = AddEmployeesToCustomRoleShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.userIdList)) {
+            request.userIdListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.userIdList, "user_id_list", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.roleId)) {
+            body["role_id"] = request.roleId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userIdListShrink)) {
+            body["user_id_list"] = request.userIdListShrink ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddEmployeesToCustomRole",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/role/v1/customRoleEmployees/add",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddEmployeesToCustomRoleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addEmployeesToCustomRole(_ request: AddEmployeesToCustomRoleRequest) async throws -> AddEmployeesToCustomRoleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: AddEmployeesToCustomRoleHeaders = AddEmployeesToCustomRoleHeaders([:])
+        return try await addEmployeesToCustomRoleWithOptions(request as! AddEmployeesToCustomRoleRequest, headers as! AddEmployeesToCustomRoleHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func addInvoiceEntityWithOptions(_ tmpReq: AddInvoiceEntityRequest, _ headers: AddInvoiceEntityHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddInvoiceEntityResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: AddInvoiceEntityShrinkRequest = AddInvoiceEntityShrinkRequest([:])
@@ -1899,6 +1947,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createCustomRoleWithOptions(_ request: CreateCustomRoleRequest, _ headers: CreateCustomRoleHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCustomRoleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.roleId)) {
+            body["role_id"] = request.roleId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roleName)) {
+            body["role_name"] = request.roleName ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateCustomRole",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/role/v1/customRoles/create",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateCustomRoleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createCustomRole(_ request: CreateCustomRoleRequest) async throws -> CreateCustomRoleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: CreateCustomRoleHeaders = CreateCustomRoleHeaders([:])
+        return try await createCustomRoleWithOptions(request as! CreateCustomRoleRequest, headers as! CreateCustomRoleHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createSubCorpWithOptions(_ request: CreateSubCorpRequest, _ headers: CreateSubCorpHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSubCorpResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1942,6 +2033,94 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: CreateSubCorpHeaders = CreateSubCorpHeaders([:])
         return try await createSubCorpWithOptions(request as! CreateSubCorpRequest, headers as! CreateSubCorpHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteCustomRoleWithOptions(_ request: DeleteCustomRoleRequest, _ headers: DeleteCustomRoleHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteCustomRoleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.roleId)) {
+            body["role_id"] = request.roleId ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteCustomRole",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/role/v1/customRoles/delete",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteCustomRoleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteCustomRole(_ request: DeleteCustomRoleRequest) async throws -> DeleteCustomRoleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: DeleteCustomRoleHeaders = DeleteCustomRoleHeaders([:])
+        return try await deleteCustomRoleWithOptions(request as! DeleteCustomRoleRequest, headers as! DeleteCustomRoleHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteEmployeesFromCustomRoleWithOptions(_ tmpReq: DeleteEmployeesFromCustomRoleRequest, _ headers: DeleteEmployeesFromCustomRoleHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteEmployeesFromCustomRoleResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DeleteEmployeesFromCustomRoleShrinkRequest = DeleteEmployeesFromCustomRoleShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.userIdList)) {
+            request.userIdListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.userIdList, "user_id_list", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.roleId)) {
+            body["role_id"] = request.roleId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userIdListShrink)) {
+            body["user_id_list"] = request.userIdListShrink ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteEmployeesFromCustomRole",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/role/v1/customRoleEmployees/delete",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteEmployeesFromCustomRoleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteEmployeesFromCustomRole(_ request: DeleteEmployeesFromCustomRoleRequest) async throws -> DeleteEmployeesFromCustomRoleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: DeleteEmployeesFromCustomRoleHeaders = DeleteEmployeesFromCustomRoleHeaders([:])
+        return try await deleteEmployeesFromCustomRoleWithOptions(request as! DeleteEmployeesFromCustomRoleRequest, headers as! DeleteEmployeesFromCustomRoleHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5651,7 +5830,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "InsureOrderCancel",
             "version": "2022-05-20",
             "protocol": "HTTPS",
-            "pathname": "/dtb-flight/v1/insurances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(insOrderId) + "/action/cancel",
+            "pathname": "/dtb-flight/v1/insurances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(insOrderId)) + "/action/cancel",
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -5833,7 +6012,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "InsureOrderPay",
             "version": "2022-05-20",
             "protocol": "HTTPS",
-            "pathname": "/dtb-flight/v1/insurances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(insOrderId) + "/action/pay",
+            "pathname": "/dtb-flight/v1/insurances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(insOrderId)) + "/action/pay",
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
@@ -5899,7 +6078,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "InsureOrderRefund",
             "version": "2022-05-20",
             "protocol": "HTTPS",
-            "pathname": "/dtb-flight/v1/insurances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(insOrderId) + "/action/refund",
+            "pathname": "/dtb-flight/v1/insurances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(insOrderId)) + "/action/refund",
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
@@ -5933,7 +6112,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "InsureOrderUrlDetail",
             "version": "2022-05-20",
             "protocol": "HTTPS",
-            "pathname": "/dtb-flight/v1/insurances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(insOrderId),
+            "pathname": "/dtb-flight/v1/insurances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(insOrderId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -6487,7 +6666,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "IntlFlightOtaItemDetail",
             "version": "2022-05-20",
             "protocol": "HTTPS",
-            "pathname": "/intl-flight/v1/items/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(otaItemId) + "/action/ota-get",
+            "pathname": "/intl-flight/v1/items/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(otaItemId)) + "/action/ota-get",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -6614,7 +6793,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "IntlFlightSegmentAvailableCert",
             "version": "2022-05-20",
             "protocol": "HTTPS",
-            "pathname": "/intl-flight/v1/items/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(otaItemId) + "/action/segment-available-cert",
+            "pathname": "/intl-flight/v1/items/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(otaItemId)) + "/action/segment-available-cert",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -7175,7 +7354,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "MealOrderDetailQuery",
             "version": "2022-05-20",
             "protocol": "HTTPS",
-            "pathname": "/meal/v1/orders/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(orderId),
+            "pathname": "/meal/v1/orders/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(orderId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -7461,6 +7640,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryGroupCorpListWithOptions(_ request: QueryGroupCorpListRequest, _ headers: QueryGroupCorpListHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryGroupCorpListResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            body["user_id"] = request.userId ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryGroupCorpList",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/sub_corps/v1/corps/action/corpList",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryGroupCorpListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryGroupCorpList(_ request: QueryGroupCorpListRequest) async throws -> QueryGroupCorpListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: QueryGroupCorpListHeaders = QueryGroupCorpListHeaders([:])
+        return try await queryGroupCorpListWithOptions(request as! QueryGroupCorpListRequest, headers as! QueryGroupCorpListHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func queryReimbursementOrderWithOptions(_ request: QueryReimbursementOrderRequest, _ headers: QueryReimbursementOrderHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryReimbursementOrderResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -7643,7 +7862,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "TBAccountInfoQuery",
             "version": "2022-05-20",
             "protocol": "HTTPS",
-            "pathname": "/account/v1/tb-accounts/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(userId),
+            "pathname": "/account/v1/tb-accounts/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(userId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -7677,7 +7896,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "TBAccountUnbind",
             "version": "2022-05-20",
             "protocol": "HTTPS",
-            "pathname": "/account/v1/tb-accounts/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(userId) + "/action/unbind",
+            "pathname": "/account/v1/tb-accounts/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(userId)) + "/action/unbind",
             "method": "PATCH",
             "authType": "AK",
             "style": "ROA",
@@ -9125,6 +9344,49 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: TravelStandardQueryHeaders = TravelStandardQueryHeaders([:])
         return try await travelStandardQueryWithOptions(request as! TravelStandardQueryRequest, headers as! TravelStandardQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCustomRoleWithOptions(_ request: UpdateCustomRoleRequest, _ headers: UpdateCustomRoleHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCustomRoleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.roleId)) {
+            body["role_id"] = request.roleId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roleName)) {
+            body["role_name"] = request.roleName ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateCustomRole",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/role/v1/customRoles/update",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateCustomRoleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCustomRole(_ request: UpdateCustomRoleRequest) async throws -> UpdateCustomRoleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: UpdateCustomRoleHeaders = UpdateCustomRoleHeaders([:])
+        return try await updateCustomRoleWithOptions(request as! UpdateCustomRoleRequest, headers as! UpdateCustomRoleHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
