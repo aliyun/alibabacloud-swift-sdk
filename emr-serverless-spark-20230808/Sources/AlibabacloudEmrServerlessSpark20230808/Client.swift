@@ -38,7 +38,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "CancelJobRun",
             "version": "2023-08-08",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/workspaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId) + "/jobRuns/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(jobRunId),
+            "pathname": "/api/v1/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/jobRuns/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(jobRunId)),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -71,7 +71,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetJobRun",
             "version": "2023-08-08",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/workspaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId) + "/jobRuns/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(jobRunId),
+            "pathname": "/api/v1/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/jobRuns/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(jobRunId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -148,7 +148,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListJobRuns",
             "version": "2023-08-08",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/workspaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId) + "/jobRuns",
+            "pathname": "/api/v1/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/jobRuns",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -209,6 +209,51 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listSessionClustersWithOptions(_ workspaceId: String, _ request: ListSessionClustersRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListSessionClustersResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["maxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["nextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.queueName)) {
+            query["queueName"] = request.queueName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionClusterId)) {
+            query["sessionClusterId"] = request.sessionClusterId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListSessionClusters",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/sessionClusters",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListSessionClustersResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listSessionClusters(_ workspaceId: String, _ request: ListSessionClustersRequest) async throws -> ListSessionClustersResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listSessionClustersWithOptions(workspaceId as! String, request as! ListSessionClustersRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listWorkspaceQueuesWithOptions(_ workspaceId: String, _ request: ListWorkspaceQueuesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListWorkspaceQueuesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -226,7 +271,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListWorkspaceQueues",
             "version": "2023-08-08",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/workspaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId) + "/queues",
+            "pathname": "/api/v1/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/queues",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -336,7 +381,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "StartJobRun",
             "version": "2023-08-08",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/workspaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId) + "/jobRuns",
+            "pathname": "/api/v1/workspaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/jobRuns",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
