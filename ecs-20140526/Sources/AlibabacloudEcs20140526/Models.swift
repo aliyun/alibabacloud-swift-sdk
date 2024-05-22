@@ -77884,6 +77884,8 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
 
             public var snapshotId: String?
 
+            public var snapshotLinkId: String?
+
             public var snapshotName: String?
 
             public var snapshotSN: String?
@@ -77970,6 +77972,9 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
                 }
                 if self.snapshotId != nil {
                     map["SnapshotId"] = self.snapshotId!
+                }
+                if self.snapshotLinkId != nil {
+                    map["SnapshotLinkId"] = self.snapshotLinkId!
                 }
                 if self.snapshotName != nil {
                     map["SnapshotName"] = self.snapshotName!
@@ -78058,6 +78063,9 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("SnapshotId") {
                     self.snapshotId = dict["SnapshotId"] as! String
+                }
+                if dict.keys.contains("SnapshotLinkId") {
+                    self.snapshotLinkId = dict["SnapshotLinkId"] as! String
                 }
                 if dict.keys.contains("SnapshotName") {
                     self.snapshotName = dict["SnapshotName"] as! String
