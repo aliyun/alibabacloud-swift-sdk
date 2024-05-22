@@ -607,6 +607,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.appId)) {
             query["AppId"] = request.appId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.appVersion)) {
+            query["AppVersion"] = request.appVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.order)) {
             query["Order"] = request.order ?? "";
         }
