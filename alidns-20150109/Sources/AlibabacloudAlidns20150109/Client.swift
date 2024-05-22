@@ -3564,6 +3564,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeInternetDnsLogsWithOptions(_ request: DescribeInternetDnsLogsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeInternetDnsLogsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountId)) {
+            query["AccountId"] = request.accountId!;
+        }
         if (!TeaUtils.Client.isUnset(request.domainName)) {
             query["DomainName"] = request.domainName ?? "";
         }
