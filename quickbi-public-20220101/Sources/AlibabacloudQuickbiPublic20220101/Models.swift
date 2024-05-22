@@ -2897,6 +2897,171 @@ public class CreateTicketResponse : Tea.TeaModel {
     }
 }
 
+public class CreateTicket4CopilotRequest : Tea.TeaModel {
+    public var accountName: String?
+
+    public var accountType: Int32?
+
+    public var copilotId: String?
+
+    public var expireTime: Int32?
+
+    public var ticketNum: Int32?
+
+    public var userId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accountName != nil {
+            map["AccountName"] = self.accountName!
+        }
+        if self.accountType != nil {
+            map["AccountType"] = self.accountType!
+        }
+        if self.copilotId != nil {
+            map["CopilotId"] = self.copilotId!
+        }
+        if self.expireTime != nil {
+            map["ExpireTime"] = self.expireTime!
+        }
+        if self.ticketNum != nil {
+            map["TicketNum"] = self.ticketNum!
+        }
+        if self.userId != nil {
+            map["UserId"] = self.userId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccountName") {
+            self.accountName = dict["AccountName"] as! String
+        }
+        if dict.keys.contains("AccountType") {
+            self.accountType = dict["AccountType"] as! Int32
+        }
+        if dict.keys.contains("CopilotId") {
+            self.copilotId = dict["CopilotId"] as! String
+        }
+        if dict.keys.contains("ExpireTime") {
+            self.expireTime = dict["ExpireTime"] as! Int32
+        }
+        if dict.keys.contains("TicketNum") {
+            self.ticketNum = dict["TicketNum"] as! Int32
+        }
+        if dict.keys.contains("UserId") {
+            self.userId = dict["UserId"] as! String
+        }
+    }
+}
+
+public class CreateTicket4CopilotResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var result: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            map["Result"] = self.result!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Result") {
+            self.result = dict["Result"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class CreateTicket4CopilotResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateTicket4CopilotResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateTicket4CopilotResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateUserGroupRequest : Tea.TeaModel {
     public var parentUserGroupId: String?
 
@@ -10440,6 +10605,8 @@ public class QueryDatasetInfoResponseBody : Tea.TeaModel {
 
         public var measureList: [QueryDatasetInfoResponseBody.Result.MeasureList]?
 
+        public var openOfflineAcceleration: Bool?
+
         public var ownerId: String?
 
         public var ownerName: String?
@@ -10512,6 +10679,9 @@ public class QueryDatasetInfoResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["MeasureList"] = tmp
+            }
+            if self.openOfflineAcceleration != nil {
+                map["OpenOfflineAcceleration"] = self.openOfflineAcceleration!
             }
             if self.ownerId != nil {
                 map["OwnerId"] = self.ownerId!
@@ -10593,6 +10763,9 @@ public class QueryDatasetInfoResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.measureList = tmp
+            }
+            if dict.keys.contains("OpenOfflineAcceleration") {
+                self.openOfflineAcceleration = dict["OpenOfflineAcceleration"] as! Bool
             }
             if dict.keys.contains("OwnerId") {
                 self.ownerId = dict["OwnerId"] as! String
@@ -10893,6 +11066,8 @@ public class QueryDatasetListResponseBody : Tea.TeaModel {
 
             public var modifyTime: String?
 
+            public var openOfflineAcceleration: Bool?
+
             public var ownerId: String?
 
             public var ownerName: String?
@@ -10940,6 +11115,9 @@ public class QueryDatasetListResponseBody : Tea.TeaModel {
                 if self.modifyTime != nil {
                     map["ModifyTime"] = self.modifyTime!
                 }
+                if self.openOfflineAcceleration != nil {
+                    map["OpenOfflineAcceleration"] = self.openOfflineAcceleration!
+                }
                 if self.ownerId != nil {
                     map["OwnerId"] = self.ownerId!
                 }
@@ -10983,6 +11161,9 @@ public class QueryDatasetListResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ModifyTime") {
                     self.modifyTime = dict["ModifyTime"] as! String
+                }
+                if dict.keys.contains("OpenOfflineAcceleration") {
+                    self.openOfflineAcceleration = dict["OpenOfflineAcceleration"] as! Bool
                 }
                 if dict.keys.contains("OwnerId") {
                     self.ownerId = dict["OwnerId"] as! String

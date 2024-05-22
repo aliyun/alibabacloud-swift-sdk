@@ -719,6 +719,52 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createTicket4CopilotWithOptions(_ request: CreateTicket4CopilotRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateTicket4CopilotResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountName)) {
+            query["AccountName"] = request.accountName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.accountType)) {
+            query["AccountType"] = request.accountType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.copilotId)) {
+            query["CopilotId"] = request.copilotId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.expireTime)) {
+            query["ExpireTime"] = request.expireTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ticketNum)) {
+            query["TicketNum"] = request.ticketNum!;
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            query["UserId"] = request.userId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateTicket4Copilot",
+            "version": "2022-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateTicket4CopilotResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createTicket4Copilot(_ request: CreateTicket4CopilotRequest) async throws -> CreateTicket4CopilotResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createTicket4CopilotWithOptions(request as! CreateTicket4CopilotRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createUserGroupWithOptions(_ request: CreateUserGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateUserGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
