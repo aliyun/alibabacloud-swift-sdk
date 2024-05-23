@@ -55,6 +55,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             body["regionId"] = request.regionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.scenario)) {
+            body["scenario"] = request.scenario ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.version)) {
             body["version"] = request.version ?? "";
         }
@@ -86,6 +89,50 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createEndpointWithOptions(_ request: CreateEndpointRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateEndpointResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["type"] = request.type ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endpointZones)) {
+            body["endpointZones"] = request.endpointZones ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vpcId)) {
+            body["vpcId"] = request.vpcId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateEndpoint",
+            "version": "2023-06-27",
+            "protocol": "HTTPS",
+            "pathname": "/openapi/es-serverless/endpoints",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateEndpointResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createEndpoint(_ request: CreateEndpointRequest) async throws -> CreateEndpointResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createEndpointWithOptions(request as! CreateEndpointRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteAppWithOptions(_ appName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAppResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -94,7 +141,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteApp",
             "version": "2023-06-27",
             "protocol": "HTTPS",
-            "pathname": "/openapi/es-serverless/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(appName),
+            "pathname": "/openapi/es-serverless/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(appName)),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -127,7 +174,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetApp",
             "version": "2023-06-27",
             "protocol": "HTTPS",
-            "pathname": "/openapi/es-serverless/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(appName),
+            "pathname": "/openapi/es-serverless/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(appName)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -154,7 +201,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetAppQuota",
             "version": "2023-06-27",
             "protocol": "HTTPS",
-            "pathname": "/openapi/es-serverless/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(appName) + "/quota",
+            "pathname": "/openapi/es-serverless/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(appName)) + "/quota",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -285,7 +332,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "UpdateApp",
             "version": "2023-06-27",
             "protocol": "HTTPS",
-            "pathname": "/openapi/es-serverless/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(appName),
+            "pathname": "/openapi/es-serverless/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(appName)),
             "method": "PATCH",
             "authType": "AK",
             "style": "ROA",
