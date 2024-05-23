@@ -194,6 +194,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.logSpec)) {
             query["LogSpec"] = request.logSpec ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.ltsNum)) {
+            query["LtsNum"] = request.ltsNum ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ltsSpec)) {
+            query["LtsSpec"] = request.ltsSpec ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.multiZoneCombination)) {
             query["MultiZoneCombination"] = request.multiZoneCombination ?? "";
         }
