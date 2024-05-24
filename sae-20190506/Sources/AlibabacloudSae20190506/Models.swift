@@ -29619,6 +29619,8 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
 
             public var mseEnabled: Bool?
 
+            public var mseNamespaceId: String?
+
             public var namespaceId: String?
 
             public var programmingLanguage: String?
@@ -29676,6 +29678,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
                 }
                 if self.mseEnabled != nil {
                     map["MseEnabled"] = self.mseEnabled!
+                }
+                if self.mseNamespaceId != nil {
+                    map["MseNamespaceId"] = self.mseNamespaceId!
                 }
                 if self.namespaceId != nil {
                     map["NamespaceId"] = self.namespaceId!
@@ -29737,6 +29742,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("MseEnabled") {
                     self.mseEnabled = dict["MseEnabled"] as! Bool
+                }
+                if dict.keys.contains("MseNamespaceId") {
+                    self.mseNamespaceId = dict["MseNamespaceId"] as! String
                 }
                 if dict.keys.contains("NamespaceId") {
                     self.namespaceId = dict["NamespaceId"] as! String
