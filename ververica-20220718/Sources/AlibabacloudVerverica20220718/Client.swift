@@ -41,7 +41,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "CreateDeployment",
             "version": "2022-07-18",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/deployments",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/deployments",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -77,7 +77,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "CreateMember",
             "version": "2022-07-18",
             "protocol": "HTTPS",
-            "pathname": "/gateway/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/members",
+            "pathname": "/gateway/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/members",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -123,7 +123,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "CreateSavepoint",
             "version": "2022-07-18",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/savepoints",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/savepoints",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -159,7 +159,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "CreateVariable",
             "version": "2022-07-18",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/variables",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/variables",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -193,7 +193,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteDeployment",
             "version": "2022-07-18",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/deployments/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(deploymentId),
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/deployments/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(deploymentId)),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -227,7 +227,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteJob",
             "version": "2022-07-18",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/jobs/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(jobId),
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/jobs/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(jobId)),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -261,7 +261,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteMember",
             "version": "2022-07-18",
             "protocol": "HTTPS",
-            "pathname": "/gateway/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/members/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(member),
+            "pathname": "/gateway/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/members/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(member)),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -295,7 +295,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteSavepoint",
             "version": "2022-07-18",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/savepoints/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(savepointId),
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/savepoints/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(savepointId)),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -329,7 +329,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteVariable",
             "version": "2022-07-18",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/variables/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(name),
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/variables/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(name)),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -414,7 +414,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GenerateResourcePlanWithFlinkConfAsync",
             "version": "2022-07-18",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/deployments/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(deploymentId) + "/resource-plan%3AasyncGenerate",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/deployments/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(deploymentId)) + "/resource-plan%3AasyncGenerate",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -448,7 +448,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetDeployment",
             "version": "2022-07-18",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/deployments/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(deploymentId),
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/deployments/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(deploymentId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -482,7 +482,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetGenerateResourcePlanResult",
             "version": "2022-07-18",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/deployments/tickets/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ticketId) + "/resource-plan%3AasyncGenerate",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/deployments/tickets/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ticketId)) + "/resource-plan%3AasyncGenerate",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -516,7 +516,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetJob",
             "version": "2022-07-18",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/jobs/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(jobId),
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/jobs/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(jobId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -550,7 +550,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetMember",
             "version": "2022-07-18",
             "protocol": "HTTPS",
-            "pathname": "/gateway/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/members/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(member),
+            "pathname": "/gateway/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/members/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(member)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -584,7 +584,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetSavepoint",
             "version": "2022-07-18",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/savepoints/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(savepointId),
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/savepoints/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(savepointId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -627,7 +627,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListDeploymentTargets",
             "version": "2022-07-18",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/deployment-targets",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/deployment-targets",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -649,8 +649,20 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listDeploymentsWithOptions(_ namespace: String, _ request: ListDeploymentsRequest, _ headers: ListDeploymentsHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDeploymentsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.creator)) {
+            query["creator"] = request.creator ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.executionMode)) {
             query["executionMode"] = request.executionMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.labelKey)) {
+            query["labelKey"] = request.labelKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.labelValueArray)) {
+            query["labelValueArray"] = request.labelValueArray ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modifier)) {
+            query["modifier"] = request.modifier ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["name"] = request.name ?? "";
@@ -660,6 +672,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["status"] = request.status ?? "";
         }
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
@@ -676,7 +691,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListDeployments",
             "version": "2022-07-18",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/deployments",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/deployments",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -692,6 +707,51 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: ListDeploymentsHeaders = ListDeploymentsHeaders([:])
         return try await listDeploymentsWithOptions(namespace as! String, request as! ListDeploymentsRequest, headers as! ListDeploymentsHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listEditableNamespaceWithOptions(_ request: ListEditableNamespaceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListEditableNamespaceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.namespace)) {
+            query["namespace"] = request.namespace ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageIndex)) {
+            query["pageIndex"] = request.pageIndex ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["workspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListEditableNamespace",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/gateway/v2/namespaces/editable",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListEditableNamespaceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listEditableNamespace(_ request: ListEditableNamespaceRequest) async throws -> ListEditableNamespaceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listEditableNamespaceWithOptions(request as! ListEditableNamespaceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -741,6 +801,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["pageSize"] = request.pageSize!;
         }
+        if (!TeaUtils.Client.isUnset(request.sortName)) {
+            query["sortName"] = request.sortName ?? "";
+        }
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
             realHeaders = headers.commonHeaders ?? [:]
@@ -756,7 +819,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListJobs",
             "version": "2022-07-18",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/jobs",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/jobs",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -799,7 +862,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListMembers",
             "version": "2022-07-18",
             "protocol": "HTTPS",
-            "pathname": "/gateway/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/members",
+            "pathname": "/gateway/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/members",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -848,7 +911,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListSavepoints",
             "version": "2022-07-18",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/savepoints",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/savepoints",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -891,7 +954,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListVariables",
             "version": "2022-07-18",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/variables",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/variables",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -927,7 +990,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "StartJob",
             "version": "2022-07-18",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/jobs",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/jobs",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -963,7 +1026,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "StartJobWithParams",
             "version": "2022-07-18",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/jobs%3Astart",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/jobs%3Astart",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -999,7 +1062,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "StopJob",
             "version": "2022-07-18",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/jobs/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(jobId) + "%3Astop",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/jobs/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(jobId)) + "%3Astop",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -1035,7 +1098,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "UpdateDeployment",
             "version": "2022-07-18",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/deployments/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(deploymentId),
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/deployments/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(deploymentId)),
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
@@ -1071,7 +1134,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "UpdateMember",
             "version": "2022-07-18",
             "protocol": "HTTPS",
-            "pathname": "/gateway/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/members",
+            "pathname": "/gateway/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/members",
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
