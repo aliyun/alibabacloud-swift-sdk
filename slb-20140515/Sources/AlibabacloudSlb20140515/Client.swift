@@ -650,11 +650,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.XForwardedFor)) {
             query["XForwardedFor"] = request.XForwardedFor ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.XForwardedFor_ClientSrcPort)) {
+            query["XForwardedFor_ClientSrcPort"] = request.XForwardedFor_ClientSrcPort ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.XForwardedFor_SLBID)) {
             query["XForwardedFor_SLBID"] = request.XForwardedFor_SLBID ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.XForwardedFor_SLBIP)) {
             query["XForwardedFor_SLBIP"] = request.XForwardedFor_SLBIP ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.XForwardedFor_SLBPORT)) {
+            query["XForwardedFor_SLBPORT"] = request.XForwardedFor_SLBPORT ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.XForwardedFor_proto)) {
             query["XForwardedFor_proto"] = request.XForwardedFor_proto ?? "";
@@ -801,11 +807,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.XForwardedFor)) {
             query["XForwardedFor"] = request.XForwardedFor ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.XForwardedFor_ClientSrcPort)) {
+            query["XForwardedFor_ClientSrcPort"] = request.XForwardedFor_ClientSrcPort ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.XForwardedFor_SLBID)) {
             query["XForwardedFor_SLBID"] = request.XForwardedFor_SLBID ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.XForwardedFor_SLBIP)) {
             query["XForwardedFor_SLBIP"] = request.XForwardedFor_SLBIP ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.XForwardedFor_SLBPORT)) {
+            query["XForwardedFor_SLBPORT"] = request.XForwardedFor_SLBPORT ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.XForwardedFor_proto)) {
             query["XForwardedFor_proto"] = request.XForwardedFor_proto ?? "";
@@ -4486,11 +4498,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.XForwardedFor)) {
             query["XForwardedFor"] = request.XForwardedFor ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.XForwardedFor_ClientSrcPort)) {
+            query["XForwardedFor_ClientSrcPort"] = request.XForwardedFor_ClientSrcPort ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.XForwardedFor_SLBID)) {
             query["XForwardedFor_SLBID"] = request.XForwardedFor_SLBID ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.XForwardedFor_SLBIP)) {
             query["XForwardedFor_SLBIP"] = request.XForwardedFor_SLBIP ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.XForwardedFor_SLBPORT)) {
+            query["XForwardedFor_SLBPORT"] = request.XForwardedFor_SLBPORT ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.XForwardedFor_proto)) {
             query["XForwardedFor_proto"] = request.XForwardedFor_proto ?? "";
@@ -4634,11 +4652,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.XForwardedFor)) {
             query["XForwardedFor"] = request.XForwardedFor ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.XForwardedFor_ClientSrcPort)) {
+            query["XForwardedFor_ClientSrcPort"] = request.XForwardedFor_ClientSrcPort ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.XForwardedFor_SLBID)) {
             query["XForwardedFor_SLBID"] = request.XForwardedFor_SLBID ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.XForwardedFor_SLBIP)) {
             query["XForwardedFor_SLBIP"] = request.XForwardedFor_SLBIP ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.XForwardedFor_SLBPORT)) {
+            query["XForwardedFor_SLBPORT"] = request.XForwardedFor_SLBPORT ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.XForwardedFor_proto)) {
             query["XForwardedFor_proto"] = request.XForwardedFor_proto ?? "";
