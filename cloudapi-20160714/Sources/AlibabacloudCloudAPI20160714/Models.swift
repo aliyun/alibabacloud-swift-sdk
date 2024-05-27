@@ -9639,6 +9639,8 @@ public class DescribeApiResponseBody : Tea.TeaModel {
 
         public var bodyModel: String?
 
+        public var escapePathParam: Bool?
+
         public var postBodyDescription: String?
 
         public var requestHttpMethod: String?
@@ -9669,6 +9671,9 @@ public class DescribeApiResponseBody : Tea.TeaModel {
             if self.bodyModel != nil {
                 map["BodyModel"] = self.bodyModel!
             }
+            if self.escapePathParam != nil {
+                map["EscapePathParam"] = self.escapePathParam!
+            }
             if self.postBodyDescription != nil {
                 map["PostBodyDescription"] = self.postBodyDescription!
             }
@@ -9693,6 +9698,9 @@ public class DescribeApiResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("BodyModel") {
                 self.bodyModel = dict["BodyModel"] as! String
+            }
+            if dict.keys.contains("EscapePathParam") {
+                self.escapePathParam = dict["EscapePathParam"] as! Bool
             }
             if dict.keys.contains("PostBodyDescription") {
                 self.postBodyDescription = dict["PostBodyDescription"] as! String
@@ -11328,6 +11336,8 @@ public class DescribeApiDocResponseBody : Tea.TeaModel {
     public class RequestConfig : Tea.TeaModel {
         public var bodyFormat: String?
 
+        public var escapePathParam: Bool?
+
         public var postBodyDescription: String?
 
         public var requestHttpMethod: String?
@@ -11355,6 +11365,9 @@ public class DescribeApiDocResponseBody : Tea.TeaModel {
             if self.bodyFormat != nil {
                 map["BodyFormat"] = self.bodyFormat!
             }
+            if self.escapePathParam != nil {
+                map["EscapePathParam"] = self.escapePathParam!
+            }
             if self.postBodyDescription != nil {
                 map["PostBodyDescription"] = self.postBodyDescription!
             }
@@ -11376,6 +11389,9 @@ public class DescribeApiDocResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("BodyFormat") {
                 self.bodyFormat = dict["BodyFormat"] as! String
+            }
+            if dict.keys.contains("EscapePathParam") {
+                self.escapePathParam = dict["EscapePathParam"] as! Bool
             }
             if dict.keys.contains("PostBodyDescription") {
                 self.postBodyDescription = dict["PostBodyDescription"] as! String
@@ -13954,6 +13970,8 @@ public class DescribeApiHistoryResponseBody : Tea.TeaModel {
 
         public var bodyModel: String?
 
+        public var escapePathParam: Bool?
+
         public var postBodyDescription: String?
 
         public var requestHttpMethod: String?
@@ -13984,6 +14002,9 @@ public class DescribeApiHistoryResponseBody : Tea.TeaModel {
             if self.bodyModel != nil {
                 map["BodyModel"] = self.bodyModel!
             }
+            if self.escapePathParam != nil {
+                map["EscapePathParam"] = self.escapePathParam!
+            }
             if self.postBodyDescription != nil {
                 map["PostBodyDescription"] = self.postBodyDescription!
             }
@@ -14008,6 +14029,9 @@ public class DescribeApiHistoryResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("BodyModel") {
                 self.bodyModel = dict["BodyModel"] as! String
+            }
+            if dict.keys.contains("EscapePathParam") {
+                self.escapePathParam = dict["EscapePathParam"] as! Bool
             }
             if dict.keys.contains("PostBodyDescription") {
                 self.postBodyDescription = dict["PostBodyDescription"] as! String
