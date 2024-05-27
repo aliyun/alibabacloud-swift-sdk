@@ -24399,7 +24399,7 @@ public class DescribeProcessStatsCompositionResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var data: [DescribeProcessStatsCompositionResponseBody.Data]?
+    public var data: DescribeProcessStatsCompositionResponseBody.Data?
 
     public var requestId: String?
 
@@ -24413,16 +24413,13 @@ public class DescribeProcessStatsCompositionResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.data != nil {
-            var tmp : [Any] = []
-            for k in self.data! {
-                tmp.append(k.toMap())
-            }
-            map["Data"] = tmp
+            map["Data"] = self.data?.toMap()
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -24432,15 +24429,9 @@ public class DescribeProcessStatsCompositionResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Data") {
-            var tmp : [DescribeProcessStatsCompositionResponseBody.Data] = []
-            for v in dict["Data"] as! [Any] {
-                var model = DescribeProcessStatsCompositionResponseBody.Data()
-                if v != nil {
-                    model.fromMap(v as! [String: Any])
-                }
-                tmp.append(model)
-            }
-            self.data = tmp
+            var model = DescribeProcessStatsCompositionResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
