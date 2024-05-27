@@ -5568,6 +5568,605 @@ public class DescribeBatchResultDetailResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeCloudGtmAddressPoolRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var addressPoolId: String?
+
+    public var clientToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.addressPoolId != nil {
+            map["AddressPoolId"] = self.addressPoolId!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("AddressPoolId") {
+            self.addressPoolId = dict["AddressPoolId"] as! String
+        }
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+    }
+}
+
+public class DescribeCloudGtmAddressPoolResponseBody : Tea.TeaModel {
+    public class Addresses : Tea.TeaModel {
+        public class Address : Tea.TeaModel {
+            public class HealthTasks : Tea.TeaModel {
+                public class HealthTask : Tea.TeaModel {
+                    public var port: Int32?
+
+                    public var templateId: String?
+
+                    public var templateName: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.port != nil {
+                            map["Port"] = self.port!
+                        }
+                        if self.templateId != nil {
+                            map["TemplateId"] = self.templateId!
+                        }
+                        if self.templateName != nil {
+                            map["TemplateName"] = self.templateName!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Port") {
+                            self.port = dict["Port"] as! Int32
+                        }
+                        if dict.keys.contains("TemplateId") {
+                            self.templateId = dict["TemplateId"] as! String
+                        }
+                        if dict.keys.contains("TemplateName") {
+                            self.templateName = dict["TemplateName"] as! String
+                        }
+                    }
+                }
+                public var healthTask: [DescribeCloudGtmAddressPoolResponseBody.Addresses.Address.HealthTasks.HealthTask]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.healthTask != nil {
+                        var tmp : [Any] = []
+                        for k in self.healthTask! {
+                            tmp.append(k.toMap())
+                        }
+                        map["HealthTask"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("HealthTask") {
+                        var tmp : [DescribeCloudGtmAddressPoolResponseBody.Addresses.Address.HealthTasks.HealthTask] = []
+                        for v in dict["HealthTask"] as! [Any] {
+                            var model = DescribeCloudGtmAddressPoolResponseBody.Addresses.Address.HealthTasks.HealthTask()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.healthTask = tmp
+                    }
+                }
+            }
+            public class RequestSource : Tea.TeaModel {
+                public var requestSource: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.requestSource != nil {
+                        map["RequestSource"] = self.requestSource!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("RequestSource") {
+                        self.requestSource = dict["RequestSource"] as! [String]
+                    }
+                }
+            }
+            public var address: String?
+
+            public var addressId: String?
+
+            public var attributeInfo: String?
+
+            public var availableMode: String?
+
+            public var availableStatus: String?
+
+            public var createTime: String?
+
+            public var createTimestamp: Int64?
+
+            public var enableStatus: String?
+
+            public var healthJudgement: String?
+
+            public var healthStatus: String?
+
+            public var healthTasks: DescribeCloudGtmAddressPoolResponseBody.Addresses.Address.HealthTasks?
+
+            public var manualAvailableStatus: String?
+
+            public var name: String?
+
+            public var remark: String?
+
+            public var requestSource: DescribeCloudGtmAddressPoolResponseBody.Addresses.Address.RequestSource?
+
+            public var seqNonPreemptiveSchedule: Bool?
+
+            public var serialNumber: Int32?
+
+            public var type: String?
+
+            public var updateTime: String?
+
+            public var updateTimestamp: Int64?
+
+            public var weightValue: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.healthTasks?.validate()
+                try self.requestSource?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.address != nil {
+                    map["Address"] = self.address!
+                }
+                if self.addressId != nil {
+                    map["AddressId"] = self.addressId!
+                }
+                if self.attributeInfo != nil {
+                    map["AttributeInfo"] = self.attributeInfo!
+                }
+                if self.availableMode != nil {
+                    map["AvailableMode"] = self.availableMode!
+                }
+                if self.availableStatus != nil {
+                    map["AvailableStatus"] = self.availableStatus!
+                }
+                if self.createTime != nil {
+                    map["CreateTime"] = self.createTime!
+                }
+                if self.createTimestamp != nil {
+                    map["CreateTimestamp"] = self.createTimestamp!
+                }
+                if self.enableStatus != nil {
+                    map["EnableStatus"] = self.enableStatus!
+                }
+                if self.healthJudgement != nil {
+                    map["HealthJudgement"] = self.healthJudgement!
+                }
+                if self.healthStatus != nil {
+                    map["HealthStatus"] = self.healthStatus!
+                }
+                if self.healthTasks != nil {
+                    map["HealthTasks"] = self.healthTasks?.toMap()
+                }
+                if self.manualAvailableStatus != nil {
+                    map["ManualAvailableStatus"] = self.manualAvailableStatus!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.remark != nil {
+                    map["Remark"] = self.remark!
+                }
+                if self.requestSource != nil {
+                    map["RequestSource"] = self.requestSource?.toMap()
+                }
+                if self.seqNonPreemptiveSchedule != nil {
+                    map["SeqNonPreemptiveSchedule"] = self.seqNonPreemptiveSchedule!
+                }
+                if self.serialNumber != nil {
+                    map["SerialNumber"] = self.serialNumber!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.updateTime != nil {
+                    map["UpdateTime"] = self.updateTime!
+                }
+                if self.updateTimestamp != nil {
+                    map["UpdateTimestamp"] = self.updateTimestamp!
+                }
+                if self.weightValue != nil {
+                    map["WeightValue"] = self.weightValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Address") {
+                    self.address = dict["Address"] as! String
+                }
+                if dict.keys.contains("AddressId") {
+                    self.addressId = dict["AddressId"] as! String
+                }
+                if dict.keys.contains("AttributeInfo") {
+                    self.attributeInfo = dict["AttributeInfo"] as! String
+                }
+                if dict.keys.contains("AvailableMode") {
+                    self.availableMode = dict["AvailableMode"] as! String
+                }
+                if dict.keys.contains("AvailableStatus") {
+                    self.availableStatus = dict["AvailableStatus"] as! String
+                }
+                if dict.keys.contains("CreateTime") {
+                    self.createTime = dict["CreateTime"] as! String
+                }
+                if dict.keys.contains("CreateTimestamp") {
+                    self.createTimestamp = dict["CreateTimestamp"] as! Int64
+                }
+                if dict.keys.contains("EnableStatus") {
+                    self.enableStatus = dict["EnableStatus"] as! String
+                }
+                if dict.keys.contains("HealthJudgement") {
+                    self.healthJudgement = dict["HealthJudgement"] as! String
+                }
+                if dict.keys.contains("HealthStatus") {
+                    self.healthStatus = dict["HealthStatus"] as! String
+                }
+                if dict.keys.contains("HealthTasks") {
+                    var model = DescribeCloudGtmAddressPoolResponseBody.Addresses.Address.HealthTasks()
+                    model.fromMap(dict["HealthTasks"] as! [String: Any])
+                    self.healthTasks = model
+                }
+                if dict.keys.contains("ManualAvailableStatus") {
+                    self.manualAvailableStatus = dict["ManualAvailableStatus"] as! String
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("Remark") {
+                    self.remark = dict["Remark"] as! String
+                }
+                if dict.keys.contains("RequestSource") {
+                    var model = DescribeCloudGtmAddressPoolResponseBody.Addresses.Address.RequestSource()
+                    model.fromMap(dict["RequestSource"] as! [String: Any])
+                    self.requestSource = model
+                }
+                if dict.keys.contains("SeqNonPreemptiveSchedule") {
+                    self.seqNonPreemptiveSchedule = dict["SeqNonPreemptiveSchedule"] as! Bool
+                }
+                if dict.keys.contains("SerialNumber") {
+                    self.serialNumber = dict["SerialNumber"] as! Int32
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("UpdateTime") {
+                    self.updateTime = dict["UpdateTime"] as! String
+                }
+                if dict.keys.contains("UpdateTimestamp") {
+                    self.updateTimestamp = dict["UpdateTimestamp"] as! Int64
+                }
+                if dict.keys.contains("WeightValue") {
+                    self.weightValue = dict["WeightValue"] as! Int32
+                }
+            }
+        }
+        public var address: [DescribeCloudGtmAddressPoolResponseBody.Addresses.Address]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.address != nil {
+                var tmp : [Any] = []
+                for k in self.address! {
+                    tmp.append(k.toMap())
+                }
+                map["Address"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Address") {
+                var tmp : [DescribeCloudGtmAddressPoolResponseBody.Addresses.Address] = []
+                for v in dict["Address"] as! [Any] {
+                    var model = DescribeCloudGtmAddressPoolResponseBody.Addresses.Address()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.address = tmp
+            }
+        }
+    }
+    public var addressLbStrategy: String?
+
+    public var addressPoolId: String?
+
+    public var addressPoolName: String?
+
+    public var addressPoolType: String?
+
+    public var addresses: DescribeCloudGtmAddressPoolResponseBody.Addresses?
+
+    public var availableStatus: String?
+
+    public var createTime: String?
+
+    public var createTimestamp: Int64?
+
+    public var enableStatus: String?
+
+    public var healthJudgement: String?
+
+    public var healthStatus: String?
+
+    public var remark: String?
+
+    public var requestId: String?
+
+    public var sequenceLbStrategyMode: String?
+
+    public var updateTime: String?
+
+    public var updateTimestamp: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.addresses?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.addressLbStrategy != nil {
+            map["AddressLbStrategy"] = self.addressLbStrategy!
+        }
+        if self.addressPoolId != nil {
+            map["AddressPoolId"] = self.addressPoolId!
+        }
+        if self.addressPoolName != nil {
+            map["AddressPoolName"] = self.addressPoolName!
+        }
+        if self.addressPoolType != nil {
+            map["AddressPoolType"] = self.addressPoolType!
+        }
+        if self.addresses != nil {
+            map["Addresses"] = self.addresses?.toMap()
+        }
+        if self.availableStatus != nil {
+            map["AvailableStatus"] = self.availableStatus!
+        }
+        if self.createTime != nil {
+            map["CreateTime"] = self.createTime!
+        }
+        if self.createTimestamp != nil {
+            map["CreateTimestamp"] = self.createTimestamp!
+        }
+        if self.enableStatus != nil {
+            map["EnableStatus"] = self.enableStatus!
+        }
+        if self.healthJudgement != nil {
+            map["HealthJudgement"] = self.healthJudgement!
+        }
+        if self.healthStatus != nil {
+            map["HealthStatus"] = self.healthStatus!
+        }
+        if self.remark != nil {
+            map["Remark"] = self.remark!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.sequenceLbStrategyMode != nil {
+            map["SequenceLbStrategyMode"] = self.sequenceLbStrategyMode!
+        }
+        if self.updateTime != nil {
+            map["UpdateTime"] = self.updateTime!
+        }
+        if self.updateTimestamp != nil {
+            map["UpdateTimestamp"] = self.updateTimestamp!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AddressLbStrategy") {
+            self.addressLbStrategy = dict["AddressLbStrategy"] as! String
+        }
+        if dict.keys.contains("AddressPoolId") {
+            self.addressPoolId = dict["AddressPoolId"] as! String
+        }
+        if dict.keys.contains("AddressPoolName") {
+            self.addressPoolName = dict["AddressPoolName"] as! String
+        }
+        if dict.keys.contains("AddressPoolType") {
+            self.addressPoolType = dict["AddressPoolType"] as! String
+        }
+        if dict.keys.contains("Addresses") {
+            var model = DescribeCloudGtmAddressPoolResponseBody.Addresses()
+            model.fromMap(dict["Addresses"] as! [String: Any])
+            self.addresses = model
+        }
+        if dict.keys.contains("AvailableStatus") {
+            self.availableStatus = dict["AvailableStatus"] as! String
+        }
+        if dict.keys.contains("CreateTime") {
+            self.createTime = dict["CreateTime"] as! String
+        }
+        if dict.keys.contains("CreateTimestamp") {
+            self.createTimestamp = dict["CreateTimestamp"] as! Int64
+        }
+        if dict.keys.contains("EnableStatus") {
+            self.enableStatus = dict["EnableStatus"] as! String
+        }
+        if dict.keys.contains("HealthJudgement") {
+            self.healthJudgement = dict["HealthJudgement"] as! String
+        }
+        if dict.keys.contains("HealthStatus") {
+            self.healthStatus = dict["HealthStatus"] as! String
+        }
+        if dict.keys.contains("Remark") {
+            self.remark = dict["Remark"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SequenceLbStrategyMode") {
+            self.sequenceLbStrategyMode = dict["SequenceLbStrategyMode"] as! String
+        }
+        if dict.keys.contains("UpdateTime") {
+            self.updateTime = dict["UpdateTime"] as! String
+        }
+        if dict.keys.contains("UpdateTimestamp") {
+            self.updateTimestamp = dict["UpdateTimestamp"] as! Int64
+        }
+    }
+}
+
+public class DescribeCloudGtmAddressPoolResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeCloudGtmAddressPoolResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeCloudGtmAddressPoolResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeCustomLineRequest : Tea.TeaModel {
     public var lang: String?
 
