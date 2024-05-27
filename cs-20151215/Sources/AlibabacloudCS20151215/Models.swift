@@ -24343,9 +24343,48 @@ public class RemoveWorkflowResponse : Tea.TeaModel {
 }
 
 public class RepairClusterNodePoolRequest : Tea.TeaModel {
+    public class Operations : Tea.TeaModel {
+        public var args: [String]?
+
+        public var operationId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.args != nil {
+                map["args"] = self.args!
+            }
+            if self.operationId != nil {
+                map["operation_id"] = self.operationId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("args") {
+                self.args = dict["args"] as! [String]
+            }
+            if dict.keys.contains("operation_id") {
+                self.operationId = dict["operation_id"] as! String
+            }
+        }
+    }
     public var autoRestart: Bool?
 
     public var nodes: [String]?
+
+    public var operations: [RepairClusterNodePoolRequest.Operations]?
 
     public override init() {
         super.init()
@@ -24367,6 +24406,13 @@ public class RepairClusterNodePoolRequest : Tea.TeaModel {
         if self.nodes != nil {
             map["nodes"] = self.nodes!
         }
+        if self.operations != nil {
+            var tmp : [Any] = []
+            for k in self.operations! {
+                tmp.append(k.toMap())
+            }
+            map["operations"] = tmp
+        }
         return map
     }
 
@@ -24376,6 +24422,17 @@ public class RepairClusterNodePoolRequest : Tea.TeaModel {
         }
         if dict.keys.contains("nodes") {
             self.nodes = dict["nodes"] as! [String]
+        }
+        if dict.keys.contains("operations") {
+            var tmp : [RepairClusterNodePoolRequest.Operations] = []
+            for v in dict["operations"] as! [Any] {
+                var model = RepairClusterNodePoolRequest.Operations()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.operations = tmp
         }
     }
 }

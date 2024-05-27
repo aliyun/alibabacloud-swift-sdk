@@ -3897,6 +3897,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.nodes)) {
             body["nodes"] = request.nodes ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.operations)) {
+            body["operations"] = request.operations ?? [];
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
