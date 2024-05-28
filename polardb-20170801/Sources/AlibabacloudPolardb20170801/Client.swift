@@ -7723,6 +7723,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.targetDBRevisionVersionCode)) {
             query["TargetDBRevisionVersionCode"] = request.targetDBRevisionVersionCode ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.targetProxyRevisionVersionCode)) {
+            query["TargetProxyRevisionVersionCode"] = request.targetProxyRevisionVersionCode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.upgradeLabel)) {
             query["UpgradeLabel"] = request.upgradeLabel ?? "";
         }
