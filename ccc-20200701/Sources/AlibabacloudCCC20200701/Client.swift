@@ -3191,6 +3191,52 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func importCorpNumbersWithOptions(_ request: ImportCorpNumbersRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImportCorpNumbersResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.city)) {
+            query["City"] = request.city ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.corpName)) {
+            query["CorpName"] = request.corpName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.numberList)) {
+            query["NumberList"] = request.numberList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.provider)) {
+            query["Provider"] = request.provider ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.province)) {
+            query["Province"] = request.province ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagList)) {
+            query["TagList"] = request.tagList ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ImportCorpNumbers",
+            "version": "2020-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ImportCorpNumbersResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func importCorpNumbers(_ request: ImportCorpNumbersRequest) async throws -> ImportCorpNumbersResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await importCorpNumbersWithOptions(request as! ImportCorpNumbersRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func importCustomCallTaggingWithOptions(_ request: ImportCustomCallTaggingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImportCustomCallTaggingResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
