@@ -49661,6 +49661,12 @@ public class ListSkillGroupSummaryReportsSinceMidnightResponseBody : Tea.TeaMode
 
                 public var callsOffered: Int64?
 
+                public var callsQueuingCanceled: String?
+
+                public var callsQueuingFailure: String?
+
+                public var callsQueuingRerouted: String?
+
                 public var callsQueuingTimeout: Int64?
 
                 public var callsServiceLevel10: Int64?
@@ -49749,6 +49755,15 @@ public class ListSkillGroupSummaryReportsSinceMidnightResponseBody : Tea.TeaMode
                     }
                     if self.callsOffered != nil {
                         map["CallsOffered"] = self.callsOffered!
+                    }
+                    if self.callsQueuingCanceled != nil {
+                        map["CallsQueuingCanceled"] = self.callsQueuingCanceled!
+                    }
+                    if self.callsQueuingFailure != nil {
+                        map["CallsQueuingFailure"] = self.callsQueuingFailure!
+                    }
+                    if self.callsQueuingRerouted != nil {
+                        map["CallsQueuingRerouted"] = self.callsQueuingRerouted!
                     }
                     if self.callsQueuingTimeout != nil {
                         map["CallsQueuingTimeout"] = self.callsQueuingTimeout!
@@ -49849,6 +49864,15 @@ public class ListSkillGroupSummaryReportsSinceMidnightResponseBody : Tea.TeaMode
                     }
                     if dict.keys.contains("CallsOffered") {
                         self.callsOffered = dict["CallsOffered"] as! Int64
+                    }
+                    if dict.keys.contains("CallsQueuingCanceled") {
+                        self.callsQueuingCanceled = dict["CallsQueuingCanceled"] as! String
+                    }
+                    if dict.keys.contains("CallsQueuingFailure") {
+                        self.callsQueuingFailure = dict["CallsQueuingFailure"] as! String
+                    }
+                    if dict.keys.contains("CallsQueuingRerouted") {
+                        self.callsQueuingRerouted = dict["CallsQueuingRerouted"] as! String
                     }
                     if dict.keys.contains("CallsQueuingTimeout") {
                         self.callsQueuingTimeout = dict["CallsQueuingTimeout"] as! Int64
