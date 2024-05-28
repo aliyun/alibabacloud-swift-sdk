@@ -10521,6 +10521,35 @@ public class DescribeLoadBalancerHTTPListenerAttributeRequest : Tea.TeaModel {
 }
 
 public class DescribeLoadBalancerHTTPListenerAttributeResponseBody : Tea.TeaModel {
+    public class AclIds : Tea.TeaModel {
+        public var aclId: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aclId != nil {
+                map["AclId"] = self.aclId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AclId") {
+                self.aclId = dict["AclId"] as! [String]
+            }
+        }
+    }
     public class Rules : Tea.TeaModel {
         public class Rule : Tea.TeaModel {
             public var domain: String?
@@ -10703,6 +10732,8 @@ public class DescribeLoadBalancerHTTPListenerAttributeResponseBody : Tea.TeaMode
     }
     public var aclId: String?
 
+    public var aclIds: DescribeLoadBalancerHTTPListenerAttributeResponseBody.AclIds?
+
     public var aclStatus: String?
 
     public var aclType: String?
@@ -10791,6 +10822,7 @@ public class DescribeLoadBalancerHTTPListenerAttributeResponseBody : Tea.TeaMode
     }
 
     public override func validate() throws -> Void {
+        try self.aclIds?.validate()
         try self.rules?.validate()
         try self.tags?.validate()
     }
@@ -10799,6 +10831,9 @@ public class DescribeLoadBalancerHTTPListenerAttributeResponseBody : Tea.TeaMode
         var map = super.toMap()
         if self.aclId != nil {
             map["AclId"] = self.aclId!
+        }
+        if self.aclIds != nil {
+            map["AclIds"] = self.aclIds?.toMap()
         }
         if self.aclStatus != nil {
             map["AclStatus"] = self.aclStatus!
@@ -10923,6 +10958,11 @@ public class DescribeLoadBalancerHTTPListenerAttributeResponseBody : Tea.TeaMode
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AclId") {
             self.aclId = dict["AclId"] as! String
+        }
+        if dict.keys.contains("AclIds") {
+            var model = DescribeLoadBalancerHTTPListenerAttributeResponseBody.AclIds()
+            model.fromMap(dict["AclIds"] as! [String: Any])
+            self.aclIds = model
         }
         if dict.keys.contains("AclStatus") {
             self.aclStatus = dict["AclStatus"] as! String
@@ -11176,6 +11216,35 @@ public class DescribeLoadBalancerHTTPSListenerAttributeRequest : Tea.TeaModel {
 }
 
 public class DescribeLoadBalancerHTTPSListenerAttributeResponseBody : Tea.TeaModel {
+    public class AclIds : Tea.TeaModel {
+        public var aclId: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aclId != nil {
+                map["AclId"] = self.aclId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AclId") {
+                self.aclId = dict["AclId"] as! [String]
+            }
+        }
+    }
     public class DomainExtensions : Tea.TeaModel {
         public class DomainExtension : Tea.TeaModel {
             public var domain: String?
@@ -11444,6 +11513,8 @@ public class DescribeLoadBalancerHTTPSListenerAttributeResponseBody : Tea.TeaMod
     }
     public var aclId: String?
 
+    public var aclIds: DescribeLoadBalancerHTTPSListenerAttributeResponseBody.AclIds?
+
     public var aclStatus: String?
 
     public var aclType: String?
@@ -11546,6 +11617,7 @@ public class DescribeLoadBalancerHTTPSListenerAttributeResponseBody : Tea.TeaMod
     }
 
     public override func validate() throws -> Void {
+        try self.aclIds?.validate()
         try self.domainExtensions?.validate()
         try self.rules?.validate()
         try self.tags?.validate()
@@ -11555,6 +11627,9 @@ public class DescribeLoadBalancerHTTPSListenerAttributeResponseBody : Tea.TeaMod
         var map = super.toMap()
         if self.aclId != nil {
             map["AclId"] = self.aclId!
+        }
+        if self.aclIds != nil {
+            map["AclIds"] = self.aclIds?.toMap()
         }
         if self.aclStatus != nil {
             map["AclStatus"] = self.aclStatus!
@@ -11700,6 +11775,11 @@ public class DescribeLoadBalancerHTTPSListenerAttributeResponseBody : Tea.TeaMod
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AclId") {
             self.aclId = dict["AclId"] as! String
+        }
+        if dict.keys.contains("AclIds") {
+            var model = DescribeLoadBalancerHTTPSListenerAttributeResponseBody.AclIds()
+            model.fromMap(dict["AclIds"] as! [String: Any])
+            self.aclIds = model
         }
         if dict.keys.contains("AclStatus") {
             self.aclStatus = dict["AclStatus"] as! String
@@ -12901,6 +12981,8 @@ public class DescribeLoadBalancerListenersResponseBody : Tea.TeaModel {
         }
         public var aclId: String?
 
+        public var aclIds: [String]?
+
         public var aclStatus: String?
 
         public var aclType: String?
@@ -12953,6 +13035,9 @@ public class DescribeLoadBalancerListenersResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.aclId != nil {
                 map["AclId"] = self.aclId!
+            }
+            if self.aclIds != nil {
+                map["AclIds"] = self.aclIds!
             }
             if self.aclStatus != nil {
                 map["AclStatus"] = self.aclStatus!
@@ -13012,6 +13097,9 @@ public class DescribeLoadBalancerListenersResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("AclId") {
                 self.aclId = dict["AclId"] as! String
+            }
+            if dict.keys.contains("AclIds") {
+                self.aclIds = dict["AclIds"] as! [String]
             }
             if dict.keys.contains("AclStatus") {
                 self.aclStatus = dict["AclStatus"] as! String
@@ -13280,6 +13368,35 @@ public class DescribeLoadBalancerTCPListenerAttributeRequest : Tea.TeaModel {
 }
 
 public class DescribeLoadBalancerTCPListenerAttributeResponseBody : Tea.TeaModel {
+    public class AclIds : Tea.TeaModel {
+        public var aclId: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aclId != nil {
+                map["AclId"] = self.aclId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AclId") {
+                self.aclId = dict["AclId"] as! [String]
+            }
+        }
+    }
     public class Tags : Tea.TeaModel {
         public class Tag : Tea.TeaModel {
             public var tagKey: String?
@@ -13360,6 +13477,8 @@ public class DescribeLoadBalancerTCPListenerAttributeResponseBody : Tea.TeaModel
     }
     public var aclId: String?
 
+    public var aclIds: DescribeLoadBalancerTCPListenerAttributeResponseBody.AclIds?
+
     public var aclStatus: String?
 
     public var aclType: String?
@@ -13430,6 +13549,7 @@ public class DescribeLoadBalancerTCPListenerAttributeResponseBody : Tea.TeaModel
     }
 
     public override func validate() throws -> Void {
+        try self.aclIds?.validate()
         try self.tags?.validate()
     }
 
@@ -13437,6 +13557,9 @@ public class DescribeLoadBalancerTCPListenerAttributeResponseBody : Tea.TeaModel
         var map = super.toMap()
         if self.aclId != nil {
             map["AclId"] = self.aclId!
+        }
+        if self.aclIds != nil {
+            map["AclIds"] = self.aclIds?.toMap()
         }
         if self.aclStatus != nil {
             map["AclStatus"] = self.aclStatus!
@@ -13534,6 +13657,11 @@ public class DescribeLoadBalancerTCPListenerAttributeResponseBody : Tea.TeaModel
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AclId") {
             self.aclId = dict["AclId"] as! String
+        }
+        if dict.keys.contains("AclIds") {
+            var model = DescribeLoadBalancerTCPListenerAttributeResponseBody.AclIds()
+            model.fromMap(dict["AclIds"] as! [String: Any])
+            self.aclIds = model
         }
         if dict.keys.contains("AclStatus") {
             self.aclStatus = dict["AclStatus"] as! String
@@ -13758,6 +13886,35 @@ public class DescribeLoadBalancerUDPListenerAttributeRequest : Tea.TeaModel {
 }
 
 public class DescribeLoadBalancerUDPListenerAttributeResponseBody : Tea.TeaModel {
+    public class AclIds : Tea.TeaModel {
+        public var aclId: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aclId != nil {
+                map["AclId"] = self.aclId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AclId") {
+                self.aclId = dict["AclId"] as! [String]
+            }
+        }
+    }
     public class Tags : Tea.TeaModel {
         public class Tag : Tea.TeaModel {
             public var tagKey: String?
@@ -13838,6 +13995,8 @@ public class DescribeLoadBalancerUDPListenerAttributeResponseBody : Tea.TeaModel
     }
     public var aclId: String?
 
+    public var aclIds: DescribeLoadBalancerUDPListenerAttributeResponseBody.AclIds?
+
     public var aclStatus: String?
 
     public var aclType: String?
@@ -13892,6 +14051,7 @@ public class DescribeLoadBalancerUDPListenerAttributeResponseBody : Tea.TeaModel
     }
 
     public override func validate() throws -> Void {
+        try self.aclIds?.validate()
         try self.tags?.validate()
     }
 
@@ -13899,6 +14059,9 @@ public class DescribeLoadBalancerUDPListenerAttributeResponseBody : Tea.TeaModel
         var map = super.toMap()
         if self.aclId != nil {
             map["AclId"] = self.aclId!
+        }
+        if self.aclIds != nil {
+            map["AclIds"] = self.aclIds?.toMap()
         }
         if self.aclStatus != nil {
             map["AclStatus"] = self.aclStatus!
@@ -13972,6 +14135,11 @@ public class DescribeLoadBalancerUDPListenerAttributeResponseBody : Tea.TeaModel
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AclId") {
             self.aclId = dict["AclId"] as! String
+        }
+        if dict.keys.contains("AclIds") {
+            var model = DescribeLoadBalancerUDPListenerAttributeResponseBody.AclIds()
+            model.fromMap(dict["AclIds"] as! [String: Any])
+            self.aclIds = model
         }
         if dict.keys.contains("AclStatus") {
             self.aclStatus = dict["AclStatus"] as! String
