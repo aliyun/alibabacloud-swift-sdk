@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudGpdb20160503"
-  spec.version      = "1.3.0"
+  spec.version      = "1.4.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud AnalyticDB for PostgreSQL (20160503) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/gpdb-20160503" 
@@ -18,8 +18,12 @@ Pod::Spec.new do |spec|
   spec.tvos.deployment_target    = '13.0'
 
   spec.dependency 'Tea',  '~> 1.0.0'
-  spec.dependency 'TeaUtils',  '~> 1.0.3'
-  spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.3'
+  spec.dependency 'TeaUtils',  '~> 1.0.5'
+  spec.dependency 'AlibabaCloudOssSdk',  '~> 1.0.0'
+  spec.dependency 'AlibabacloudOpenPlatform20191219',  '~> 1.0.0'
+  spec.dependency 'AlibabaCloudOSSUtil',  '~> 1.0.1'
+  spec.dependency 'TeaFileForm',  '~> 1.0.3'
+  spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.4'
   spec.dependency 'AlibabaCloudOpenApiUtil',  '~> 1.0.1'
   spec.dependency 'AlibabacloudEndpointUtil',  '~> 1.0.0'
 
