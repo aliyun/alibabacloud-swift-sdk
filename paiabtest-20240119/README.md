@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudPAIABTest20240119` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/paiabtest-20240119" "1.0.0"
+github "alibabacloud-sdk-swift/paiabtest-20240119" "1.0.1"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudPAIABTest20240119` into your Xcode project using [Swif
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/paiabtest-20240119.git", from: "1.0.0")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/paiabtest-20240119.git", from: "1.0.1")
 ]
 ```
 
