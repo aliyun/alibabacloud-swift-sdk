@@ -845,6 +845,248 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createCloudGtmAddressWithOptions(_ tmpReq: CreateCloudGtmAddressRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCloudGtmAddressResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateCloudGtmAddressShrinkRequest = CreateCloudGtmAddressShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.healthTasks)) {
+            request.healthTasksShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.healthTasks, "HealthTasks", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.address)) {
+            query["Address"] = request.address ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.attributeInfo)) {
+            query["AttributeInfo"] = request.attributeInfo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.availableMode)) {
+            query["AvailableMode"] = request.availableMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableStatus)) {
+            query["EnableStatus"] = request.enableStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.healthJudgement)) {
+            query["HealthJudgement"] = request.healthJudgement ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.healthTasksShrink)) {
+            query["HealthTasks"] = request.healthTasksShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.manualAvailableStatus)) {
+            query["ManualAvailableStatus"] = request.manualAvailableStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.remark)) {
+            query["Remark"] = request.remark ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["Type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateCloudGtmAddress",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateCloudGtmAddressResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createCloudGtmAddress(_ request: CreateCloudGtmAddressRequest) async throws -> CreateCloudGtmAddressResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createCloudGtmAddressWithOptions(request as! CreateCloudGtmAddressRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createCloudGtmAddressPoolWithOptions(_ request: CreateCloudGtmAddressPoolRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCloudGtmAddressPoolResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressPoolName)) {
+            query["AddressPoolName"] = request.addressPoolName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressPoolType)) {
+            query["AddressPoolType"] = request.addressPoolType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableStatus)) {
+            query["EnableStatus"] = request.enableStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.healthJudgement)) {
+            query["HealthJudgement"] = request.healthJudgement ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.remark)) {
+            query["Remark"] = request.remark ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateCloudGtmAddressPool",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateCloudGtmAddressPoolResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createCloudGtmAddressPool(_ request: CreateCloudGtmAddressPoolRequest) async throws -> CreateCloudGtmAddressPoolResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createCloudGtmAddressPoolWithOptions(request as! CreateCloudGtmAddressPoolRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createCloudGtmInstanceConfigWithOptions(_ request: CreateCloudGtmInstanceConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCloudGtmInstanceConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableStatus)) {
+            query["EnableStatus"] = request.enableStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.remark)) {
+            query["Remark"] = request.remark ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scheduleHostname)) {
+            query["ScheduleHostname"] = request.scheduleHostname ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scheduleRrType)) {
+            query["ScheduleRrType"] = request.scheduleRrType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scheduleZoneMode)) {
+            query["ScheduleZoneMode"] = request.scheduleZoneMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scheduleZoneName)) {
+            query["ScheduleZoneName"] = request.scheduleZoneName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ttl)) {
+            query["Ttl"] = request.ttl!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateCloudGtmInstanceConfig",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateCloudGtmInstanceConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createCloudGtmInstanceConfig(_ request: CreateCloudGtmInstanceConfigRequest) async throws -> CreateCloudGtmInstanceConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createCloudGtmInstanceConfigWithOptions(request as! CreateCloudGtmInstanceConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createCloudGtmMonitorTemplateWithOptions(_ tmpReq: CreateCloudGtmMonitorTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCloudGtmMonitorTemplateResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateCloudGtmMonitorTemplateShrinkRequest = CreateCloudGtmMonitorTemplateShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.ispCityNodes)) {
+            request.ispCityNodesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ispCityNodes, "IspCityNodes", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.evaluationCount)) {
+            query["EvaluationCount"] = request.evaluationCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.extendInfo)) {
+            query["ExtendInfo"] = request.extendInfo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.failureRate)) {
+            query["FailureRate"] = request.failureRate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.interval)) {
+            query["Interval"] = request.interval!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ipVersion)) {
+            query["IpVersion"] = request.ipVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ispCityNodesShrink)) {
+            query["IspCityNodes"] = request.ispCityNodesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.protocol_)) {
+            query["Protocol"] = request.protocol_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timeout)) {
+            query["Timeout"] = request.timeout!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateCloudGtmMonitorTemplate",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateCloudGtmMonitorTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createCloudGtmMonitorTemplate(_ request: CreateCloudGtmMonitorTemplateRequest) async throws -> CreateCloudGtmMonitorTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createCloudGtmMonitorTemplateWithOptions(request as! CreateCloudGtmMonitorTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createPdnsAppKeyWithOptions(_ request: CreatePdnsAppKeyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreatePdnsAppKeyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -910,6 +1152,157 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createPdnsUdpIpSegment(_ request: CreatePdnsUdpIpSegmentRequest) async throws -> CreatePdnsUdpIpSegmentResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await createPdnsUdpIpSegmentWithOptions(request as! CreatePdnsUdpIpSegmentRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteCloudGtmAddressWithOptions(_ request: DeleteCloudGtmAddressRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteCloudGtmAddressResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressId)) {
+            query["AddressId"] = request.addressId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteCloudGtmAddress",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteCloudGtmAddressResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteCloudGtmAddress(_ request: DeleteCloudGtmAddressRequest) async throws -> DeleteCloudGtmAddressResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteCloudGtmAddressWithOptions(request as! DeleteCloudGtmAddressRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteCloudGtmAddressPoolWithOptions(_ request: DeleteCloudGtmAddressPoolRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteCloudGtmAddressPoolResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressPoolId)) {
+            query["AddressPoolId"] = request.addressPoolId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteCloudGtmAddressPool",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteCloudGtmAddressPoolResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteCloudGtmAddressPool(_ request: DeleteCloudGtmAddressPoolRequest) async throws -> DeleteCloudGtmAddressPoolResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteCloudGtmAddressPoolWithOptions(request as! DeleteCloudGtmAddressPoolRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteCloudGtmInstanceConfigWithOptions(_ request: DeleteCloudGtmInstanceConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteCloudGtmInstanceConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.configId)) {
+            query["ConfigId"] = request.configId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteCloudGtmInstanceConfig",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteCloudGtmInstanceConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteCloudGtmInstanceConfig(_ request: DeleteCloudGtmInstanceConfigRequest) async throws -> DeleteCloudGtmInstanceConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteCloudGtmInstanceConfigWithOptions(request as! DeleteCloudGtmInstanceConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteCloudGtmMonitorTemplateWithOptions(_ request: DeleteCloudGtmMonitorTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteCloudGtmMonitorTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateId)) {
+            query["TemplateId"] = request.templateId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteCloudGtmMonitorTemplate",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteCloudGtmMonitorTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteCloudGtmMonitorTemplate(_ request: DeleteCloudGtmMonitorTemplateRequest) async throws -> DeleteCloudGtmMonitorTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteCloudGtmMonitorTemplateWithOptions(request as! DeleteCloudGtmMonitorTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1382,6 +1775,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCloudGtmAddressWithOptions(_ request: DescribeCloudGtmAddressRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCloudGtmAddressResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressId)) {
+            query["AddressId"] = request.addressId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeCloudGtmAddress",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeCloudGtmAddressResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCloudGtmAddress(_ request: DescribeCloudGtmAddressRequest) async throws -> DescribeCloudGtmAddressResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeCloudGtmAddressWithOptions(request as! DescribeCloudGtmAddressRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeCloudGtmAddressPoolWithOptions(_ request: DescribeCloudGtmAddressPoolRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCloudGtmAddressPoolResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1416,6 +1846,283 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeCloudGtmAddressPool(_ request: DescribeCloudGtmAddressPoolRequest) async throws -> DescribeCloudGtmAddressPoolResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeCloudGtmAddressPoolWithOptions(request as! DescribeCloudGtmAddressPoolRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCloudGtmAddressPoolReferenceWithOptions(_ request: DescribeCloudGtmAddressPoolReferenceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCloudGtmAddressPoolReferenceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressPoolId)) {
+            query["AddressPoolId"] = request.addressPoolId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeCloudGtmAddressPoolReference",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeCloudGtmAddressPoolReferenceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCloudGtmAddressPoolReference(_ request: DescribeCloudGtmAddressPoolReferenceRequest) async throws -> DescribeCloudGtmAddressPoolReferenceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeCloudGtmAddressPoolReferenceWithOptions(request as! DescribeCloudGtmAddressPoolReferenceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCloudGtmAddressReferenceWithOptions(_ request: DescribeCloudGtmAddressReferenceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCloudGtmAddressReferenceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressId)) {
+            query["AddressId"] = request.addressId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeCloudGtmAddressReference",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeCloudGtmAddressReferenceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCloudGtmAddressReference(_ request: DescribeCloudGtmAddressReferenceRequest) async throws -> DescribeCloudGtmAddressReferenceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeCloudGtmAddressReferenceWithOptions(request as! DescribeCloudGtmAddressReferenceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCloudGtmGlobalAlertWithOptions(_ request: DescribeCloudGtmGlobalAlertRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCloudGtmGlobalAlertResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeCloudGtmGlobalAlert",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeCloudGtmGlobalAlertResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCloudGtmGlobalAlert(_ request: DescribeCloudGtmGlobalAlertRequest) async throws -> DescribeCloudGtmGlobalAlertResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeCloudGtmGlobalAlertWithOptions(request as! DescribeCloudGtmGlobalAlertRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCloudGtmInstanceConfigAlertWithOptions(_ request: DescribeCloudGtmInstanceConfigAlertRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCloudGtmInstanceConfigAlertResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.configId)) {
+            query["ConfigId"] = request.configId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeCloudGtmInstanceConfigAlert",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeCloudGtmInstanceConfigAlertResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCloudGtmInstanceConfigAlert(_ request: DescribeCloudGtmInstanceConfigAlertRequest) async throws -> DescribeCloudGtmInstanceConfigAlertResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeCloudGtmInstanceConfigAlertWithOptions(request as! DescribeCloudGtmInstanceConfigAlertRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCloudGtmInstanceConfigFullInfoWithOptions(_ request: DescribeCloudGtmInstanceConfigFullInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCloudGtmInstanceConfigFullInfoResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.configId)) {
+            query["ConfigId"] = request.configId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeCloudGtmInstanceConfigFullInfo",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeCloudGtmInstanceConfigFullInfoResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCloudGtmInstanceConfigFullInfo(_ request: DescribeCloudGtmInstanceConfigFullInfoRequest) async throws -> DescribeCloudGtmInstanceConfigFullInfoResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeCloudGtmInstanceConfigFullInfoWithOptions(request as! DescribeCloudGtmInstanceConfigFullInfoRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCloudGtmMonitorTemplateWithOptions(_ request: DescribeCloudGtmMonitorTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCloudGtmMonitorTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateId)) {
+            query["TemplateId"] = request.templateId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeCloudGtmMonitorTemplate",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeCloudGtmMonitorTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCloudGtmMonitorTemplate(_ request: DescribeCloudGtmMonitorTemplateRequest) async throws -> DescribeCloudGtmMonitorTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeCloudGtmMonitorTemplateWithOptions(request as! DescribeCloudGtmMonitorTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCloudGtmSummaryWithOptions(_ request: DescribeCloudGtmSummaryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCloudGtmSummaryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeCloudGtmSummary",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeCloudGtmSummaryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCloudGtmSummary(_ request: DescribeCloudGtmSummaryRequest) async throws -> DescribeCloudGtmSummaryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeCloudGtmSummaryWithOptions(request as! DescribeCloudGtmSummaryRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCloudGtmSystemLinesWithOptions(_ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCloudGtmSystemLinesResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeCloudGtmSystemLines",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeCloudGtmSystemLinesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCloudGtmSystemLines() async throws -> DescribeCloudGtmSystemLinesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeCloudGtmSystemLinesWithOptions(runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4801,6 +5508,380 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCloudGtmAddressPoolsWithOptions(_ request: ListCloudGtmAddressPoolsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCloudGtmAddressPoolsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressPoolName)) {
+            query["AddressPoolName"] = request.addressPoolName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressPoolType)) {
+            query["AddressPoolType"] = request.addressPoolType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableStatus)) {
+            query["EnableStatus"] = request.enableStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.remark)) {
+            query["Remark"] = request.remark ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListCloudGtmAddressPools",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListCloudGtmAddressPoolsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCloudGtmAddressPools(_ request: ListCloudGtmAddressPoolsRequest) async throws -> ListCloudGtmAddressPoolsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listCloudGtmAddressPoolsWithOptions(request as! ListCloudGtmAddressPoolsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCloudGtmAddressesWithOptions(_ request: ListCloudGtmAddressesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCloudGtmAddressesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.address)) {
+            query["Address"] = request.address ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressId)) {
+            query["AddressId"] = request.addressId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableStatus)) {
+            query["EnableStatus"] = request.enableStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.healthStatus)) {
+            query["HealthStatus"] = request.healthStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.monitorTemplateId)) {
+            query["MonitorTemplateId"] = request.monitorTemplateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["Type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListCloudGtmAddresses",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListCloudGtmAddressesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCloudGtmAddresses(_ request: ListCloudGtmAddressesRequest) async throws -> ListCloudGtmAddressesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listCloudGtmAddressesWithOptions(request as! ListCloudGtmAddressesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCloudGtmAlertLogsWithOptions(_ request: ListCloudGtmAlertLogsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCloudGtmAlertLogsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.actionType)) {
+            query["ActionType"] = request.actionType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTimestamp)) {
+            query["EndTimestamp"] = request.endTimestamp!;
+        }
+        if (!TeaUtils.Client.isUnset(request.entityType)) {
+            query["EntityType"] = request.entityType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.keyword)) {
+            query["Keyword"] = request.keyword ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            query["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startTimestamp)) {
+            query["StartTimestamp"] = request.startTimestamp!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListCloudGtmAlertLogs",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListCloudGtmAlertLogsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCloudGtmAlertLogs(_ request: ListCloudGtmAlertLogsRequest) async throws -> ListCloudGtmAlertLogsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listCloudGtmAlertLogsWithOptions(request as! ListCloudGtmAlertLogsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCloudGtmAvailableAlertGroupsWithOptions(_ request: ListCloudGtmAvailableAlertGroupsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCloudGtmAvailableAlertGroupsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListCloudGtmAvailableAlertGroups",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListCloudGtmAvailableAlertGroupsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCloudGtmAvailableAlertGroups(_ request: ListCloudGtmAvailableAlertGroupsRequest) async throws -> ListCloudGtmAvailableAlertGroupsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listCloudGtmAvailableAlertGroupsWithOptions(request as! ListCloudGtmAvailableAlertGroupsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCloudGtmInstanceConfigsWithOptions(_ request: ListCloudGtmInstanceConfigsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCloudGtmInstanceConfigsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableStatus)) {
+            query["EnableStatus"] = request.enableStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.remark)) {
+            query["Remark"] = request.remark ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scheduleDomainName)) {
+            query["ScheduleDomainName"] = request.scheduleDomainName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scheduleZoneName)) {
+            query["ScheduleZoneName"] = request.scheduleZoneName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListCloudGtmInstanceConfigs",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListCloudGtmInstanceConfigsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCloudGtmInstanceConfigs(_ request: ListCloudGtmInstanceConfigsRequest) async throws -> ListCloudGtmInstanceConfigsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listCloudGtmInstanceConfigsWithOptions(request as! ListCloudGtmInstanceConfigsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCloudGtmInstancesWithOptions(_ request: ListCloudGtmInstancesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCloudGtmInstancesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceName)) {
+            query["InstanceName"] = request.instanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListCloudGtmInstances",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListCloudGtmInstancesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCloudGtmInstances(_ request: ListCloudGtmInstancesRequest) async throws -> ListCloudGtmInstancesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listCloudGtmInstancesWithOptions(request as! ListCloudGtmInstancesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCloudGtmMonitorNodesWithOptions(_ request: ListCloudGtmMonitorNodesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCloudGtmMonitorNodesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListCloudGtmMonitorNodes",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListCloudGtmMonitorNodesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCloudGtmMonitorNodes(_ request: ListCloudGtmMonitorNodesRequest) async throws -> ListCloudGtmMonitorNodesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listCloudGtmMonitorNodesWithOptions(request as! ListCloudGtmMonitorNodesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCloudGtmMonitorTemplatesWithOptions(_ request: ListCloudGtmMonitorTemplatesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCloudGtmMonitorTemplatesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ipVersion)) {
+            query["IpVersion"] = request.ipVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.protocol_)) {
+            query["Protocol"] = request.protocol_ ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListCloudGtmMonitorTemplates",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListCloudGtmMonitorTemplatesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCloudGtmMonitorTemplates(_ request: ListCloudGtmMonitorTemplatesRequest) async throws -> ListCloudGtmMonitorTemplatesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listCloudGtmMonitorTemplatesWithOptions(request as! ListCloudGtmMonitorTemplatesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listTagResourcesWithOptions(_ request: ListTagResourcesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTagResourcesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -5134,6 +6215,99 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func replaceCloudGtmAddressPoolAddressWithOptions(_ tmpReq: ReplaceCloudGtmAddressPoolAddressRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ReplaceCloudGtmAddressPoolAddressResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ReplaceCloudGtmAddressPoolAddressShrinkRequest = ReplaceCloudGtmAddressPoolAddressShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.addresses)) {
+            request.addressesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.addresses, "Addresses", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressPoolId)) {
+            query["AddressPoolId"] = request.addressPoolId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressesShrink)) {
+            query["Addresses"] = request.addressesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ReplaceCloudGtmAddressPoolAddress",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ReplaceCloudGtmAddressPoolAddressResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func replaceCloudGtmAddressPoolAddress(_ request: ReplaceCloudGtmAddressPoolAddressRequest) async throws -> ReplaceCloudGtmAddressPoolAddressResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await replaceCloudGtmAddressPoolAddressWithOptions(request as! ReplaceCloudGtmAddressPoolAddressRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func replaceCloudGtmInstanceConfigAddressPoolWithOptions(_ tmpReq: ReplaceCloudGtmInstanceConfigAddressPoolRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ReplaceCloudGtmInstanceConfigAddressPoolResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ReplaceCloudGtmInstanceConfigAddressPoolShrinkRequest = ReplaceCloudGtmInstanceConfigAddressPoolShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.addressPools)) {
+            request.addressPoolsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.addressPools, "AddressPools", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressPoolsShrink)) {
+            query["AddressPools"] = request.addressPoolsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.configId)) {
+            query["ConfigId"] = request.configId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ReplaceCloudGtmInstanceConfigAddressPool",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ReplaceCloudGtmInstanceConfigAddressPoolResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func replaceCloudGtmInstanceConfigAddressPool(_ request: ReplaceCloudGtmInstanceConfigAddressPoolRequest) async throws -> ReplaceCloudGtmInstanceConfigAddressPoolResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await replaceCloudGtmInstanceConfigAddressPoolWithOptions(request as! ReplaceCloudGtmInstanceConfigAddressPoolRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func resumePdnsServiceWithOptions(_ request: ResumePdnsServiceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ResumePdnsServiceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -5233,6 +6407,287 @@ open class Client : AlibabacloudOpenApi.Client {
     public func rollbackGtmRecoveryPlan(_ request: RollbackGtmRecoveryPlanRequest) async throws -> RollbackGtmRecoveryPlanResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await rollbackGtmRecoveryPlanWithOptions(request as! RollbackGtmRecoveryPlanRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchCloudGtmAddressPoolsWithOptions(_ request: SearchCloudGtmAddressPoolsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchCloudGtmAddressPoolsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressPoolName)) {
+            query["AddressPoolName"] = request.addressPoolName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressPoolType)) {
+            query["AddressPoolType"] = request.addressPoolType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.availableStatus)) {
+            query["AvailableStatus"] = request.availableStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableStatus)) {
+            query["EnableStatus"] = request.enableStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.healthStatus)) {
+            query["HealthStatus"] = request.healthStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.remark)) {
+            query["Remark"] = request.remark ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SearchCloudGtmAddressPools",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SearchCloudGtmAddressPoolsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchCloudGtmAddressPools(_ request: SearchCloudGtmAddressPoolsRequest) async throws -> SearchCloudGtmAddressPoolsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await searchCloudGtmAddressPoolsWithOptions(request as! SearchCloudGtmAddressPoolsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchCloudGtmAddressesWithOptions(_ request: SearchCloudGtmAddressesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchCloudGtmAddressesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.address)) {
+            query["Address"] = request.address ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressId)) {
+            query["AddressId"] = request.addressId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.availableStatus)) {
+            query["AvailableStatus"] = request.availableStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableStatus)) {
+            query["EnableStatus"] = request.enableStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.healthStatus)) {
+            query["HealthStatus"] = request.healthStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.monitorTemplateName)) {
+            query["MonitorTemplateName"] = request.monitorTemplateName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nameSearchCondition)) {
+            query["NameSearchCondition"] = request.nameSearchCondition ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.names)) {
+            query["Names"] = request.names ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.remarkSearchCondition)) {
+            query["RemarkSearchCondition"] = request.remarkSearchCondition ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.remarks)) {
+            query["Remarks"] = request.remarks ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["Type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SearchCloudGtmAddresses",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SearchCloudGtmAddressesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchCloudGtmAddresses(_ request: SearchCloudGtmAddressesRequest) async throws -> SearchCloudGtmAddressesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await searchCloudGtmAddressesWithOptions(request as! SearchCloudGtmAddressesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchCloudGtmInstanceConfigsWithOptions(_ request: SearchCloudGtmInstanceConfigsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchCloudGtmInstanceConfigsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.availableStatus)) {
+            query["AvailableStatus"] = request.availableStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableStatus)) {
+            query["EnableStatus"] = request.enableStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.healthStatus)) {
+            query["HealthStatus"] = request.healthStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.remark)) {
+            query["Remark"] = request.remark ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scheduleDomainName)) {
+            query["ScheduleDomainName"] = request.scheduleDomainName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scheduleZoneName)) {
+            query["ScheduleZoneName"] = request.scheduleZoneName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SearchCloudGtmInstanceConfigs",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SearchCloudGtmInstanceConfigsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchCloudGtmInstanceConfigs(_ request: SearchCloudGtmInstanceConfigsRequest) async throws -> SearchCloudGtmInstanceConfigsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await searchCloudGtmInstanceConfigsWithOptions(request as! SearchCloudGtmInstanceConfigsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchCloudGtmInstancesWithOptions(_ request: SearchCloudGtmInstancesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchCloudGtmInstancesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceName)) {
+            query["InstanceName"] = request.instanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SearchCloudGtmInstances",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SearchCloudGtmInstancesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchCloudGtmInstances(_ request: SearchCloudGtmInstancesRequest) async throws -> SearchCloudGtmInstancesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await searchCloudGtmInstancesWithOptions(request as! SearchCloudGtmInstancesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchCloudGtmMonitorTemplatesWithOptions(_ request: SearchCloudGtmMonitorTemplatesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchCloudGtmMonitorTemplatesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ipVersion)) {
+            query["IpVersion"] = request.ipVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.protocol_)) {
+            query["Protocol"] = request.protocol_ ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SearchCloudGtmMonitorTemplates",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SearchCloudGtmMonitorTemplatesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchCloudGtmMonitorTemplates(_ request: SearchCloudGtmMonitorTemplatesRequest) async throws -> SearchCloudGtmMonitorTemplatesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await searchCloudGtmMonitorTemplatesWithOptions(request as! SearchCloudGtmMonitorTemplatesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5781,6 +7236,781 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateAppKeyState(_ request: UpdateAppKeyStateRequest) async throws -> UpdateAppKeyStateResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateAppKeyStateWithOptions(request as! UpdateAppKeyStateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmAddressWithOptions(_ tmpReq: UpdateCloudGtmAddressRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCloudGtmAddressResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateCloudGtmAddressShrinkRequest = UpdateCloudGtmAddressShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.healthTasks)) {
+            request.healthTasksShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.healthTasks, "HealthTasks", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.address)) {
+            query["Address"] = request.address ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressId)) {
+            query["AddressId"] = request.addressId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.attributeInfo)) {
+            query["AttributeInfo"] = request.attributeInfo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.healthJudgement)) {
+            query["HealthJudgement"] = request.healthJudgement ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.healthTasksShrink)) {
+            query["HealthTasks"] = request.healthTasksShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateCloudGtmAddress",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateCloudGtmAddressResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmAddress(_ request: UpdateCloudGtmAddressRequest) async throws -> UpdateCloudGtmAddressResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateCloudGtmAddressWithOptions(request as! UpdateCloudGtmAddressRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmAddressEnableStatusWithOptions(_ request: UpdateCloudGtmAddressEnableStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCloudGtmAddressEnableStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressId)) {
+            query["AddressId"] = request.addressId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableStatus)) {
+            query["EnableStatus"] = request.enableStatus ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateCloudGtmAddressEnableStatus",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateCloudGtmAddressEnableStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmAddressEnableStatus(_ request: UpdateCloudGtmAddressEnableStatusRequest) async throws -> UpdateCloudGtmAddressEnableStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateCloudGtmAddressEnableStatusWithOptions(request as! UpdateCloudGtmAddressEnableStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmAddressManualAvailableStatusWithOptions(_ request: UpdateCloudGtmAddressManualAvailableStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCloudGtmAddressManualAvailableStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressId)) {
+            query["AddressId"] = request.addressId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.availableMode)) {
+            query["AvailableMode"] = request.availableMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.manualAvailableStatus)) {
+            query["ManualAvailableStatus"] = request.manualAvailableStatus ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateCloudGtmAddressManualAvailableStatus",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateCloudGtmAddressManualAvailableStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmAddressManualAvailableStatus(_ request: UpdateCloudGtmAddressManualAvailableStatusRequest) async throws -> UpdateCloudGtmAddressManualAvailableStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateCloudGtmAddressManualAvailableStatusWithOptions(request as! UpdateCloudGtmAddressManualAvailableStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmAddressPoolBasicConfigWithOptions(_ request: UpdateCloudGtmAddressPoolBasicConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCloudGtmAddressPoolBasicConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressPoolId)) {
+            query["AddressPoolId"] = request.addressPoolId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressPoolName)) {
+            query["AddressPoolName"] = request.addressPoolName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.healthJudgement)) {
+            query["HealthJudgement"] = request.healthJudgement ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateCloudGtmAddressPoolBasicConfig",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateCloudGtmAddressPoolBasicConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmAddressPoolBasicConfig(_ request: UpdateCloudGtmAddressPoolBasicConfigRequest) async throws -> UpdateCloudGtmAddressPoolBasicConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateCloudGtmAddressPoolBasicConfigWithOptions(request as! UpdateCloudGtmAddressPoolBasicConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmAddressPoolEnableStatusWithOptions(_ request: UpdateCloudGtmAddressPoolEnableStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCloudGtmAddressPoolEnableStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressPoolId)) {
+            query["AddressPoolId"] = request.addressPoolId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableStatus)) {
+            query["EnableStatus"] = request.enableStatus ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateCloudGtmAddressPoolEnableStatus",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateCloudGtmAddressPoolEnableStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmAddressPoolEnableStatus(_ request: UpdateCloudGtmAddressPoolEnableStatusRequest) async throws -> UpdateCloudGtmAddressPoolEnableStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateCloudGtmAddressPoolEnableStatusWithOptions(request as! UpdateCloudGtmAddressPoolEnableStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmAddressPoolLbStrategyWithOptions(_ request: UpdateCloudGtmAddressPoolLbStrategyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCloudGtmAddressPoolLbStrategyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressLbStrategy)) {
+            query["AddressLbStrategy"] = request.addressLbStrategy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressPoolId)) {
+            query["AddressPoolId"] = request.addressPoolId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sequenceLbStrategyMode)) {
+            query["SequenceLbStrategyMode"] = request.sequenceLbStrategyMode ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateCloudGtmAddressPoolLbStrategy",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateCloudGtmAddressPoolLbStrategyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmAddressPoolLbStrategy(_ request: UpdateCloudGtmAddressPoolLbStrategyRequest) async throws -> UpdateCloudGtmAddressPoolLbStrategyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateCloudGtmAddressPoolLbStrategyWithOptions(request as! UpdateCloudGtmAddressPoolLbStrategyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmAddressPoolRemarkWithOptions(_ request: UpdateCloudGtmAddressPoolRemarkRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCloudGtmAddressPoolRemarkResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressPoolId)) {
+            query["AddressPoolId"] = request.addressPoolId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.remark)) {
+            query["Remark"] = request.remark ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateCloudGtmAddressPoolRemark",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateCloudGtmAddressPoolRemarkResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmAddressPoolRemark(_ request: UpdateCloudGtmAddressPoolRemarkRequest) async throws -> UpdateCloudGtmAddressPoolRemarkResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateCloudGtmAddressPoolRemarkWithOptions(request as! UpdateCloudGtmAddressPoolRemarkRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmAddressRemarkWithOptions(_ request: UpdateCloudGtmAddressRemarkRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCloudGtmAddressRemarkResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressId)) {
+            query["AddressId"] = request.addressId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.remark)) {
+            query["Remark"] = request.remark ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateCloudGtmAddressRemark",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateCloudGtmAddressRemarkResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmAddressRemark(_ request: UpdateCloudGtmAddressRemarkRequest) async throws -> UpdateCloudGtmAddressRemarkResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateCloudGtmAddressRemarkWithOptions(request as! UpdateCloudGtmAddressRemarkRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmGlobalAlertWithOptions(_ tmpReq: UpdateCloudGtmGlobalAlertRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCloudGtmGlobalAlertResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateCloudGtmGlobalAlertShrinkRequest = UpdateCloudGtmGlobalAlertShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.alertConfig)) {
+            request.alertConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.alertConfig, "AlertConfig", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.alertGroup)) {
+            request.alertGroupShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.alertGroup, "AlertGroup", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.alertConfigShrink)) {
+            query["AlertConfig"] = request.alertConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.alertGroupShrink)) {
+            query["AlertGroup"] = request.alertGroupShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateCloudGtmGlobalAlert",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateCloudGtmGlobalAlertResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmGlobalAlert(_ request: UpdateCloudGtmGlobalAlertRequest) async throws -> UpdateCloudGtmGlobalAlertResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateCloudGtmGlobalAlertWithOptions(request as! UpdateCloudGtmGlobalAlertRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmInstanceConfigAlertWithOptions(_ tmpReq: UpdateCloudGtmInstanceConfigAlertRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCloudGtmInstanceConfigAlertResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateCloudGtmInstanceConfigAlertShrinkRequest = UpdateCloudGtmInstanceConfigAlertShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.alertConfig)) {
+            request.alertConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.alertConfig, "AlertConfig", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.alertGroup)) {
+            request.alertGroupShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.alertGroup, "AlertGroup", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.alertConfigShrink)) {
+            query["AlertConfig"] = request.alertConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.alertGroupShrink)) {
+            query["AlertGroup"] = request.alertGroupShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.alertMode)) {
+            query["AlertMode"] = request.alertMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.configId)) {
+            query["ConfigId"] = request.configId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateCloudGtmInstanceConfigAlert",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateCloudGtmInstanceConfigAlertResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmInstanceConfigAlert(_ request: UpdateCloudGtmInstanceConfigAlertRequest) async throws -> UpdateCloudGtmInstanceConfigAlertResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateCloudGtmInstanceConfigAlertWithOptions(request as! UpdateCloudGtmInstanceConfigAlertRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmInstanceConfigBasicWithOptions(_ request: UpdateCloudGtmInstanceConfigBasicRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCloudGtmInstanceConfigBasicResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.configId)) {
+            query["ConfigId"] = request.configId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scheduleHostname)) {
+            query["ScheduleHostname"] = request.scheduleHostname ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scheduleZoneName)) {
+            query["ScheduleZoneName"] = request.scheduleZoneName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ttl)) {
+            query["Ttl"] = request.ttl!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateCloudGtmInstanceConfigBasic",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateCloudGtmInstanceConfigBasicResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmInstanceConfigBasic(_ request: UpdateCloudGtmInstanceConfigBasicRequest) async throws -> UpdateCloudGtmInstanceConfigBasicResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateCloudGtmInstanceConfigBasicWithOptions(request as! UpdateCloudGtmInstanceConfigBasicRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmInstanceConfigEnableStatusWithOptions(_ request: UpdateCloudGtmInstanceConfigEnableStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCloudGtmInstanceConfigEnableStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.configId)) {
+            query["ConfigId"] = request.configId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableStatus)) {
+            query["EnableStatus"] = request.enableStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateCloudGtmInstanceConfigEnableStatus",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateCloudGtmInstanceConfigEnableStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmInstanceConfigEnableStatus(_ request: UpdateCloudGtmInstanceConfigEnableStatusRequest) async throws -> UpdateCloudGtmInstanceConfigEnableStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateCloudGtmInstanceConfigEnableStatusWithOptions(request as! UpdateCloudGtmInstanceConfigEnableStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmInstanceConfigLbStrategyWithOptions(_ request: UpdateCloudGtmInstanceConfigLbStrategyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCloudGtmInstanceConfigLbStrategyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressPoolLbStrategy)) {
+            query["AddressPoolLbStrategy"] = request.addressPoolLbStrategy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.configId)) {
+            query["ConfigId"] = request.configId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sequenceLbStrategyMode)) {
+            query["SequenceLbStrategyMode"] = request.sequenceLbStrategyMode ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateCloudGtmInstanceConfigLbStrategy",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateCloudGtmInstanceConfigLbStrategyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmInstanceConfigLbStrategy(_ request: UpdateCloudGtmInstanceConfigLbStrategyRequest) async throws -> UpdateCloudGtmInstanceConfigLbStrategyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateCloudGtmInstanceConfigLbStrategyWithOptions(request as! UpdateCloudGtmInstanceConfigLbStrategyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmInstanceConfigRemarkWithOptions(_ request: UpdateCloudGtmInstanceConfigRemarkRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCloudGtmInstanceConfigRemarkResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.configId)) {
+            query["ConfigId"] = request.configId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.remark)) {
+            query["Remark"] = request.remark ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateCloudGtmInstanceConfigRemark",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateCloudGtmInstanceConfigRemarkResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmInstanceConfigRemark(_ request: UpdateCloudGtmInstanceConfigRemarkRequest) async throws -> UpdateCloudGtmInstanceConfigRemarkResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateCloudGtmInstanceConfigRemarkWithOptions(request as! UpdateCloudGtmInstanceConfigRemarkRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmInstanceNameWithOptions(_ request: UpdateCloudGtmInstanceNameRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCloudGtmInstanceNameResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceName)) {
+            query["InstanceName"] = request.instanceName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateCloudGtmInstanceName",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateCloudGtmInstanceNameResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmInstanceName(_ request: UpdateCloudGtmInstanceNameRequest) async throws -> UpdateCloudGtmInstanceNameResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateCloudGtmInstanceNameWithOptions(request as! UpdateCloudGtmInstanceNameRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmMonitorTemplateWithOptions(_ tmpReq: UpdateCloudGtmMonitorTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCloudGtmMonitorTemplateResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateCloudGtmMonitorTemplateShrinkRequest = UpdateCloudGtmMonitorTemplateShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.ispCityNodes)) {
+            request.ispCityNodesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ispCityNodes, "IspCityNodes", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.evaluationCount)) {
+            query["EvaluationCount"] = request.evaluationCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.extendInfo)) {
+            query["ExtendInfo"] = request.extendInfo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.failureRate)) {
+            query["FailureRate"] = request.failureRate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.interval)) {
+            query["Interval"] = request.interval!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ispCityNodesShrink)) {
+            query["IspCityNodes"] = request.ispCityNodesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateId)) {
+            query["TemplateId"] = request.templateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timeout)) {
+            query["Timeout"] = request.timeout!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateCloudGtmMonitorTemplate",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateCloudGtmMonitorTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmMonitorTemplate(_ request: UpdateCloudGtmMonitorTemplateRequest) async throws -> UpdateCloudGtmMonitorTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateCloudGtmMonitorTemplateWithOptions(request as! UpdateCloudGtmMonitorTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmMonitorTemplateRemarkWithOptions(_ request: UpdateCloudGtmMonitorTemplateRemarkRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCloudGtmMonitorTemplateRemarkResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.remark)) {
+            query["Remark"] = request.remark ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateId)) {
+            query["TemplateId"] = request.templateId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateCloudGtmMonitorTemplateRemark",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateCloudGtmMonitorTemplateRemarkResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateCloudGtmMonitorTemplateRemark(_ request: UpdateCloudGtmMonitorTemplateRemarkRequest) async throws -> UpdateCloudGtmMonitorTemplateRemarkResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateCloudGtmMonitorTemplateRemarkWithOptions(request as! UpdateCloudGtmMonitorTemplateRemarkRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
