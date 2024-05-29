@@ -2098,6 +2098,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.namespace)) {
             query["Namespace"] = request.namespace ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.pathIndependentPercentageEnable)) {
+            query["PathIndependentPercentageEnable"] = request.pathIndependentPercentageEnable!;
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
