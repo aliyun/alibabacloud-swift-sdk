@@ -34,7 +34,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "CreateIllustrationTask",
             "version": "2024-03-13",
             "protocol": "HTTPS",
-            "pathname": "/yic/yic-console/openService/v1/texts/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(textId) + "/illustrationTasks",
+            "pathname": "/yic/yic-console/openService/v1/texts/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(textId)) + "/illustrationTasks",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -90,7 +90,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetIllustration",
             "version": "2024-03-13",
             "protocol": "HTTPS",
-            "pathname": "/yic/yic-console/openService/v1/texts/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(textId) + "/illustrations/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(illustrationId),
+            "pathname": "/yic/yic-console/openService/v1/texts/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(textId)) + "/illustrations/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(illustrationId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -117,7 +117,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetIllustrationTask",
             "version": "2024-03-13",
             "protocol": "HTTPS",
-            "pathname": "/yic/yic-console/openService/v1/texts/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(textId) + "/illustrationTasks/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(illustrationTaskId),
+            "pathname": "/yic/yic-console/openService/v1/texts/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(textId)) + "/illustrationTasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(illustrationTaskId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -180,7 +180,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetText",
             "version": "2024-03-13",
             "protocol": "HTTPS",
-            "pathname": "/yic/yic-console/openService/v1/texts/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(textId),
+            "pathname": "/yic/yic-console/openService/v1/texts/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(textId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -207,7 +207,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetTextTask",
             "version": "2024-03-13",
             "protocol": "HTTPS",
-            "pathname": "/yic/yic-console/openService/v1/textTasks/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(textTaskId),
+            "pathname": "/yic/yic-console/openService/v1/textTasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(textTaskId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -226,9 +226,15 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listTextThemesWithOptions(_ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTextThemesResponse {
+    public func listTextThemesWithOptions(_ request: ListTextThemesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTextThemesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.industry)) {
+            query["industry"] = request.industry ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "ListTextThemes",
@@ -246,9 +252,60 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listTextThemes() async throws -> ListTextThemesResponse {
+    public func listTextThemes(_ request: ListTextThemesRequest) async throws -> ListTextThemesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await listTextThemesWithOptions(headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await listTextThemesWithOptions(request as! ListTextThemesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listTextsWithOptions(_ request: ListTextsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTextsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.generationSource)) {
+            query["generationSource"] = request.generationSource ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.industry)) {
+            query["industry"] = request.industry ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["pageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.publishStatus)) {
+            query["publishStatus"] = request.publishStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.textStyleType)) {
+            query["textStyleType"] = request.textStyleType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.textTheme)) {
+            query["textTheme"] = request.textTheme ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListTexts",
+            "version": "2024-03-13",
+            "protocol": "HTTPS",
+            "pathname": "/yic/yic-console/openService/v1/texts",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListTextsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listTexts(_ request: ListTextsRequest) async throws -> ListTextsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listTextsWithOptions(request as! ListTextsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 }
