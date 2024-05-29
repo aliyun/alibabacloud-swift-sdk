@@ -3305,6 +3305,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.applicationId)) {
             query["ApplicationId"] = request.applicationId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.groupIds)) {
+            query["GroupIds"] = request.groupIds ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
