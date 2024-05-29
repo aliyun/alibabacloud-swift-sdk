@@ -101,32 +101,34 @@ open class Client : AlibabacloudOpenApi.Client {
     public func associateWebCertWithOptions(_ request: AssociateWebCertRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AssociateWebCertResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.cert)) {
-            query["Cert"] = request.cert ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.certId)) {
-            query["CertId"] = request.certId!;
-        }
-        if (!TeaUtils.Client.isUnset(request.certIdentifier)) {
-            query["CertIdentifier"] = request.certIdentifier ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.certName)) {
-            query["CertName"] = request.certName ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.certRegion)) {
-            query["CertRegion"] = request.certRegion ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.domain)) {
-            query["Domain"] = request.domain ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.key)) {
-            query["Key"] = request.key ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             query["ResourceGroupId"] = request.resourceGroupId ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cert)) {
+            body["Cert"] = request.cert ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certId)) {
+            body["CertId"] = request.certId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.certIdentifier)) {
+            body["CertIdentifier"] = request.certIdentifier ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certName)) {
+            body["CertName"] = request.certName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certRegion)) {
+            body["CertRegion"] = request.certRegion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domain)) {
+            body["Domain"] = request.domain ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.key)) {
+            body["Key"] = request.key ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "AssociateWebCert",
