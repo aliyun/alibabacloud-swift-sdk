@@ -1489,6 +1489,131 @@ public class ConfigUdpReflectResponse : Tea.TeaModel {
     }
 }
 
+public class ConfigWebCCRuleV2Request : Tea.TeaModel {
+    public var domain: String?
+
+    public var expires: Int64?
+
+    public var ruleList: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.domain != nil {
+            map["Domain"] = self.domain!
+        }
+        if self.expires != nil {
+            map["Expires"] = self.expires!
+        }
+        if self.ruleList != nil {
+            map["RuleList"] = self.ruleList!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Domain") {
+            self.domain = dict["Domain"] as! String
+        }
+        if dict.keys.contains("Expires") {
+            self.expires = dict["Expires"] as! Int64
+        }
+        if dict.keys.contains("RuleList") {
+            self.ruleList = dict["RuleList"] as! String
+        }
+    }
+}
+
+public class ConfigWebCCRuleV2ResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ConfigWebCCRuleV2Response : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ConfigWebCCRuleV2ResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ConfigWebCCRuleV2ResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ConfigWebCCTemplateRequest : Tea.TeaModel {
     public var domain: String?
 
@@ -22612,6 +22737,581 @@ public class DescribeWebCCRulesResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DescribeWebCCRulesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeWebCCRulesV2Request : Tea.TeaModel {
+    public var domain: String?
+
+    public var offset: String?
+
+    public var owner: String?
+
+    public var pageSize: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.domain != nil {
+            map["Domain"] = self.domain!
+        }
+        if self.offset != nil {
+            map["Offset"] = self.offset!
+        }
+        if self.owner != nil {
+            map["Owner"] = self.owner!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Domain") {
+            self.domain = dict["Domain"] as! String
+        }
+        if dict.keys.contains("Offset") {
+            self.offset = dict["Offset"] as! String
+        }
+        if dict.keys.contains("Owner") {
+            self.owner = dict["Owner"] as! String
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! String
+        }
+    }
+}
+
+public class DescribeWebCCRulesV2ResponseBody : Tea.TeaModel {
+    public class WebCCRules : Tea.TeaModel {
+        public class RuleDetail : Tea.TeaModel {
+            public class Condition : Tea.TeaModel {
+                public var content: String?
+
+                public var field: String?
+
+                public var headerName: String?
+
+                public var matchMethod: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.content != nil {
+                        map["Content"] = self.content!
+                    }
+                    if self.field != nil {
+                        map["Field"] = self.field!
+                    }
+                    if self.headerName != nil {
+                        map["HeaderName"] = self.headerName!
+                    }
+                    if self.matchMethod != nil {
+                        map["MatchMethod"] = self.matchMethod!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Content") {
+                        self.content = dict["Content"] as! String
+                    }
+                    if dict.keys.contains("Field") {
+                        self.field = dict["Field"] as! String
+                    }
+                    if dict.keys.contains("HeaderName") {
+                        self.headerName = dict["HeaderName"] as! String
+                    }
+                    if dict.keys.contains("MatchMethod") {
+                        self.matchMethod = dict["MatchMethod"] as! String
+                    }
+                }
+            }
+            public class RateLimit : Tea.TeaModel {
+                public var interval: Int32?
+
+                public var subKey: String?
+
+                public var target: String?
+
+                public var threshold: Int32?
+
+                public var ttl: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.interval != nil {
+                        map["Interval"] = self.interval!
+                    }
+                    if self.subKey != nil {
+                        map["SubKey"] = self.subKey!
+                    }
+                    if self.target != nil {
+                        map["Target"] = self.target!
+                    }
+                    if self.threshold != nil {
+                        map["Threshold"] = self.threshold!
+                    }
+                    if self.ttl != nil {
+                        map["Ttl"] = self.ttl!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Interval") {
+                        self.interval = dict["Interval"] as! Int32
+                    }
+                    if dict.keys.contains("SubKey") {
+                        self.subKey = dict["SubKey"] as! String
+                    }
+                    if dict.keys.contains("Target") {
+                        self.target = dict["Target"] as! String
+                    }
+                    if dict.keys.contains("Threshold") {
+                        self.threshold = dict["Threshold"] as! Int32
+                    }
+                    if dict.keys.contains("Ttl") {
+                        self.ttl = dict["Ttl"] as! Int32
+                    }
+                }
+            }
+            public class Statistics : Tea.TeaModel {
+                public var field: String?
+
+                public var headerName: String?
+
+                public var mode: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.field != nil {
+                        map["Field"] = self.field!
+                    }
+                    if self.headerName != nil {
+                        map["HeaderName"] = self.headerName!
+                    }
+                    if self.mode != nil {
+                        map["Mode"] = self.mode!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Field") {
+                        self.field = dict["Field"] as! String
+                    }
+                    if dict.keys.contains("HeaderName") {
+                        self.headerName = dict["HeaderName"] as! String
+                    }
+                    if dict.keys.contains("Mode") {
+                        self.mode = dict["Mode"] as! String
+                    }
+                }
+            }
+            public class StatusCode : Tea.TeaModel {
+                public var code: Int32?
+
+                public var countThreshold: Int32?
+
+                public var enabled: Bool?
+
+                public var ratioThreshold: Int32?
+
+                public var useRatio: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.code != nil {
+                        map["Code"] = self.code!
+                    }
+                    if self.countThreshold != nil {
+                        map["CountThreshold"] = self.countThreshold!
+                    }
+                    if self.enabled != nil {
+                        map["Enabled"] = self.enabled!
+                    }
+                    if self.ratioThreshold != nil {
+                        map["RatioThreshold"] = self.ratioThreshold!
+                    }
+                    if self.useRatio != nil {
+                        map["UseRatio"] = self.useRatio!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Code") {
+                        self.code = dict["Code"] as! Int32
+                    }
+                    if dict.keys.contains("CountThreshold") {
+                        self.countThreshold = dict["CountThreshold"] as! Int32
+                    }
+                    if dict.keys.contains("Enabled") {
+                        self.enabled = dict["Enabled"] as! Bool
+                    }
+                    if dict.keys.contains("RatioThreshold") {
+                        self.ratioThreshold = dict["RatioThreshold"] as! Int32
+                    }
+                    if dict.keys.contains("UseRatio") {
+                        self.useRatio = dict["UseRatio"] as! Bool
+                    }
+                }
+            }
+            public var action: String?
+
+            public var condition: [DescribeWebCCRulesV2ResponseBody.WebCCRules.RuleDetail.Condition]?
+
+            public var count: Int32?
+
+            public var interval: Int32?
+
+            public var mode: String?
+
+            public var name: String?
+
+            public var rateLimit: DescribeWebCCRulesV2ResponseBody.WebCCRules.RuleDetail.RateLimit?
+
+            public var statistics: DescribeWebCCRulesV2ResponseBody.WebCCRules.RuleDetail.Statistics?
+
+            public var statusCode: DescribeWebCCRulesV2ResponseBody.WebCCRules.RuleDetail.StatusCode?
+
+            public var ttl: Int32?
+
+            public var uri: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.rateLimit?.validate()
+                try self.statistics?.validate()
+                try self.statusCode?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.action != nil {
+                    map["Action"] = self.action!
+                }
+                if self.condition != nil {
+                    var tmp : [Any] = []
+                    for k in self.condition! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Condition"] = tmp
+                }
+                if self.count != nil {
+                    map["Count"] = self.count!
+                }
+                if self.interval != nil {
+                    map["Interval"] = self.interval!
+                }
+                if self.mode != nil {
+                    map["Mode"] = self.mode!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.rateLimit != nil {
+                    map["RateLimit"] = self.rateLimit?.toMap()
+                }
+                if self.statistics != nil {
+                    map["Statistics"] = self.statistics?.toMap()
+                }
+                if self.statusCode != nil {
+                    map["StatusCode"] = self.statusCode?.toMap()
+                }
+                if self.ttl != nil {
+                    map["Ttl"] = self.ttl!
+                }
+                if self.uri != nil {
+                    map["Uri"] = self.uri!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Action") {
+                    self.action = dict["Action"] as! String
+                }
+                if dict.keys.contains("Condition") {
+                    var tmp : [DescribeWebCCRulesV2ResponseBody.WebCCRules.RuleDetail.Condition] = []
+                    for v in dict["Condition"] as! [Any] {
+                        var model = DescribeWebCCRulesV2ResponseBody.WebCCRules.RuleDetail.Condition()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.condition = tmp
+                }
+                if dict.keys.contains("Count") {
+                    self.count = dict["Count"] as! Int32
+                }
+                if dict.keys.contains("Interval") {
+                    self.interval = dict["Interval"] as! Int32
+                }
+                if dict.keys.contains("Mode") {
+                    self.mode = dict["Mode"] as! String
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("RateLimit") {
+                    var model = DescribeWebCCRulesV2ResponseBody.WebCCRules.RuleDetail.RateLimit()
+                    model.fromMap(dict["RateLimit"] as! [String: Any])
+                    self.rateLimit = model
+                }
+                if dict.keys.contains("Statistics") {
+                    var model = DescribeWebCCRulesV2ResponseBody.WebCCRules.RuleDetail.Statistics()
+                    model.fromMap(dict["Statistics"] as! [String: Any])
+                    self.statistics = model
+                }
+                if dict.keys.contains("StatusCode") {
+                    var model = DescribeWebCCRulesV2ResponseBody.WebCCRules.RuleDetail.StatusCode()
+                    model.fromMap(dict["StatusCode"] as! [String: Any])
+                    self.statusCode = model
+                }
+                if dict.keys.contains("Ttl") {
+                    self.ttl = dict["Ttl"] as! Int32
+                }
+                if dict.keys.contains("Uri") {
+                    self.uri = dict["Uri"] as! String
+                }
+            }
+        }
+        public var expires: Int64?
+
+        public var name: String?
+
+        public var owner: String?
+
+        public var ruleDetail: DescribeWebCCRulesV2ResponseBody.WebCCRules.RuleDetail?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.ruleDetail?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.expires != nil {
+                map["Expires"] = self.expires!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.owner != nil {
+                map["Owner"] = self.owner!
+            }
+            if self.ruleDetail != nil {
+                map["RuleDetail"] = self.ruleDetail?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Expires") {
+                self.expires = dict["Expires"] as! Int64
+            }
+            if dict.keys.contains("Name") {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("Owner") {
+                self.owner = dict["Owner"] as! String
+            }
+            if dict.keys.contains("RuleDetail") {
+                var model = DescribeWebCCRulesV2ResponseBody.WebCCRules.RuleDetail()
+                model.fromMap(dict["RuleDetail"] as! [String: Any])
+                self.ruleDetail = model
+            }
+        }
+    }
+    public var domain: String?
+
+    public var requestId: String?
+
+    public var totalCount: String?
+
+    public var webCCRules: [DescribeWebCCRulesV2ResponseBody.WebCCRules]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.domain != nil {
+            map["Domain"] = self.domain!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        if self.webCCRules != nil {
+            var tmp : [Any] = []
+            for k in self.webCCRules! {
+                tmp.append(k.toMap())
+            }
+            map["WebCCRules"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Domain") {
+            self.domain = dict["Domain"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! String
+        }
+        if dict.keys.contains("WebCCRules") {
+            var tmp : [DescribeWebCCRulesV2ResponseBody.WebCCRules] = []
+            for v in dict["WebCCRules"] as! [Any] {
+                var model = DescribeWebCCRulesV2ResponseBody.WebCCRules()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.webCCRules = tmp
+        }
+    }
+}
+
+public class DescribeWebCCRulesV2Response : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeWebCCRulesV2ResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeWebCCRulesV2ResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
