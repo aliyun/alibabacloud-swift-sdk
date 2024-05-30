@@ -18784,6 +18784,8 @@ public class DescribeApplicationSlbsRequest : Tea.TeaModel {
 public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Internet : Tea.TeaModel {
+            public var httpsCaCertId: String?
+
             public var httpsCertId: String?
 
             public var port: Int32?
@@ -18806,6 +18808,9 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.httpsCaCertId != nil {
+                    map["HttpsCaCertId"] = self.httpsCaCertId!
+                }
                 if self.httpsCertId != nil {
                     map["HttpsCertId"] = self.httpsCertId!
                 }
@@ -18822,6 +18827,9 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("HttpsCaCertId") {
+                    self.httpsCaCertId = dict["HttpsCaCertId"] as! String
+                }
                 if dict.keys.contains("HttpsCertId") {
                     self.httpsCertId = dict["HttpsCertId"] as! String
                 }
@@ -18837,6 +18845,8 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
             }
         }
         public class Intranet : Tea.TeaModel {
+            public var httpsCaCertId: String?
+
             public var httpsCertId: String?
 
             public var port: Int32?
@@ -18859,6 +18869,9 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.httpsCaCertId != nil {
+                    map["HttpsCaCertId"] = self.httpsCaCertId!
+                }
                 if self.httpsCertId != nil {
                     map["HttpsCertId"] = self.httpsCertId!
                 }
@@ -18875,6 +18888,9 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("HttpsCaCertId") {
+                    self.httpsCaCertId = dict["HttpsCaCertId"] as! String
+                }
                 if dict.keys.contains("HttpsCertId") {
                     self.httpsCertId = dict["HttpsCertId"] as! String
                 }
