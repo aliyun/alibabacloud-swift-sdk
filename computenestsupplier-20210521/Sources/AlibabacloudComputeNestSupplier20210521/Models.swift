@@ -5,44 +5,6 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
-public class EntityAdditionalInfoValue : Tea.TeaModel {
-    public var type: String?
-
-    public var promql: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.type != nil {
-            map["Type"] = self.type!
-        }
-        if self.promql != nil {
-            map["Promql"] = self.promql!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Type") {
-            self.type = dict["Type"] as! String
-        }
-        if dict.keys.contains("Promql") {
-            self.promql = dict["Promql"] as! String
-        }
-    }
-}
-
 public class AddServiceSharedAccountsRequest : Tea.TeaModel {
     public class SharedAccounts : Tea.TeaModel {
         public var permission: String?
@@ -3071,157 +3033,6 @@ public class GetServiceRequest : Tea.TeaModel {
 }
 
 public class GetServiceResponseBody : Tea.TeaModel {
-    public class BillEntityMappings : Tea.TeaModel {
-        public class MappingConfig : Tea.TeaModel {
-            public class Mappings : Tea.TeaModel {
-                public var billCode: String?
-
-                public var entity: String?
-
-                public var meteringAssist: String?
-
-                public override init() {
-                    super.init()
-                }
-
-                public init(_ dict: [String: Any]) {
-                    super.init()
-                    self.fromMap(dict)
-                }
-
-                public override func validate() throws -> Void {
-                }
-
-                public override func toMap() -> [String : Any] {
-                    var map = super.toMap()
-                    if self.billCode != nil {
-                        map["BillCode"] = self.billCode!
-                    }
-                    if self.entity != nil {
-                        map["Entity"] = self.entity!
-                    }
-                    if self.meteringAssist != nil {
-                        map["MeteringAssist"] = self.meteringAssist!
-                    }
-                    return map
-                }
-
-                public override func fromMap(_ dict: [String: Any]) -> Void {
-                    if dict.keys.contains("BillCode") {
-                        self.billCode = dict["BillCode"] as! String
-                    }
-                    if dict.keys.contains("Entity") {
-                        self.entity = dict["Entity"] as! String
-                    }
-                    if dict.keys.contains("MeteringAssist") {
-                        self.meteringAssist = dict["MeteringAssist"] as! String
-                    }
-                }
-            }
-            public var mappings: [GetServiceResponseBody.BillEntityMappings.MappingConfig.Mappings]?
-
-            public var predefinedParameters: String?
-
-            public var templateName: String?
-
-            public override init() {
-                super.init()
-            }
-
-            public init(_ dict: [String: Any]) {
-                super.init()
-                self.fromMap(dict)
-            }
-
-            public override func validate() throws -> Void {
-            }
-
-            public override func toMap() -> [String : Any] {
-                var map = super.toMap()
-                if self.mappings != nil {
-                    var tmp : [Any] = []
-                    for k in self.mappings! {
-                        tmp.append(k.toMap())
-                    }
-                    map["Mappings"] = tmp
-                }
-                if self.predefinedParameters != nil {
-                    map["PredefinedParameters"] = self.predefinedParameters!
-                }
-                if self.templateName != nil {
-                    map["TemplateName"] = self.templateName!
-                }
-                return map
-            }
-
-            public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("Mappings") {
-                    var tmp : [GetServiceResponseBody.BillEntityMappings.MappingConfig.Mappings] = []
-                    for v in dict["Mappings"] as! [Any] {
-                        var model = GetServiceResponseBody.BillEntityMappings.MappingConfig.Mappings()
-                        if v != nil {
-                            model.fromMap(v as! [String: Any])
-                        }
-                        tmp.append(model)
-                    }
-                    self.mappings = tmp
-                }
-                if dict.keys.contains("PredefinedParameters") {
-                    self.predefinedParameters = dict["PredefinedParameters"] as! String
-                }
-                if dict.keys.contains("TemplateName") {
-                    self.templateName = dict["TemplateName"] as! String
-                }
-            }
-        }
-        public var mappingConfig: [GetServiceResponseBody.BillEntityMappings.MappingConfig]?
-
-        public var type: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.mappingConfig != nil {
-                var tmp : [Any] = []
-                for k in self.mappingConfig! {
-                    tmp.append(k.toMap())
-                }
-                map["MappingConfig"] = tmp
-            }
-            if self.type != nil {
-                map["Type"] = self.type!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("MappingConfig") {
-                var tmp : [GetServiceResponseBody.BillEntityMappings.MappingConfig] = []
-                for v in dict["MappingConfig"] as! [Any] {
-                    var model = GetServiceResponseBody.BillEntityMappings.MappingConfig()
-                    if v != nil {
-                        model.fromMap(v as! [String: Any])
-                    }
-                    tmp.append(model)
-                }
-                self.mappingConfig = tmp
-            }
-            if dict.keys.contains("Type") {
-                self.type = dict["Type"] as! String
-            }
-        }
-    }
     public class Commodity : Tea.TeaModel {
         public class CssMetadata : Tea.TeaModel {
             public class ComponentsMappings : Tea.TeaModel {
@@ -3765,8 +3576,6 @@ public class GetServiceResponseBody : Tea.TeaModel {
 
         public var meteringEntities: [GetServiceResponseBody.Commodity.MeteringEntities]?
 
-        public var orderTime: [String: [String]]?
-
         public var saasBoostMetadata: String?
 
         public var specifications: [GetServiceResponseBody.Commodity.Specifications]?
@@ -3810,9 +3619,6 @@ public class GetServiceResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["MeteringEntities"] = tmp
-            }
-            if self.orderTime != nil {
-                map["OrderTime"] = self.orderTime!
             }
             if self.saasBoostMetadata != nil {
                 map["SaasBoostMetadata"] = self.saasBoostMetadata!
@@ -3861,9 +3667,6 @@ public class GetServiceResponseBody : Tea.TeaModel {
                 }
                 self.meteringEntities = tmp
             }
-            if dict.keys.contains("OrderTime") {
-                self.orderTime = dict["OrderTime"] as! [String: [String]]
-            }
             if dict.keys.contains("SaasBoostMetadata") {
                 self.saasBoostMetadata = dict["SaasBoostMetadata"] as! String
             }
@@ -3880,133 +3683,6 @@ public class GetServiceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Type") {
                 self.type = dict["Type"] as! String
-            }
-        }
-    }
-    public class CommodityEntities : Tea.TeaModel {
-        public var entityIds: [String]?
-
-        public var predefinedParameterName: String?
-
-        public var templateName: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.entityIds != nil {
-                map["EntityIds"] = self.entityIds!
-            }
-            if self.predefinedParameterName != nil {
-                map["PredefinedParameterName"] = self.predefinedParameterName!
-            }
-            if self.templateName != nil {
-                map["TemplateName"] = self.templateName!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("EntityIds") {
-                self.entityIds = dict["EntityIds"] as! [String]
-            }
-            if dict.keys.contains("PredefinedParameterName") {
-                self.predefinedParameterName = dict["PredefinedParameterName"] as! String
-            }
-            if dict.keys.contains("TemplateName") {
-                self.templateName = dict["TemplateName"] as! String
-            }
-        }
-    }
-    public class CommoditySpecifications : Tea.TeaModel {
-        public var predefinedParameterName: String?
-
-        public var specificationCode: String?
-
-        public var templateName: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.predefinedParameterName != nil {
-                map["PredefinedParameterName"] = self.predefinedParameterName!
-            }
-            if self.specificationCode != nil {
-                map["SpecificationCode"] = self.specificationCode!
-            }
-            if self.templateName != nil {
-                map["TemplateName"] = self.templateName!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("PredefinedParameterName") {
-                self.predefinedParameterName = dict["PredefinedParameterName"] as! String
-            }
-            if dict.keys.contains("SpecificationCode") {
-                self.specificationCode = dict["SpecificationCode"] as! String
-            }
-            if dict.keys.contains("TemplateName") {
-                self.templateName = dict["TemplateName"] as! String
-            }
-        }
-    }
-    public class ComponentsConfigs : Tea.TeaModel {
-        public var componentsMappings: [String: String]?
-
-        public var templateName: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.componentsMappings != nil {
-                map["ComponentsMappings"] = self.componentsMappings!
-            }
-            if self.templateName != nil {
-                map["TemplateName"] = self.templateName!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("ComponentsMappings") {
-                self.componentsMappings = dict["ComponentsMappings"] as! [String: String]
-            }
-            if dict.keys.contains("TemplateName") {
-                self.templateName = dict["TemplateName"] as! String
             }
         }
     }
@@ -4262,8 +3938,6 @@ public class GetServiceResponseBody : Tea.TeaModel {
 
     public var approvalType: String?
 
-    public var billEntityMappings: GetServiceResponseBody.BillEntityMappings?
-
     public var buildInfo: String?
 
     public var categories: String?
@@ -4271,12 +3945,6 @@ public class GetServiceResponseBody : Tea.TeaModel {
     public var commodity: GetServiceResponseBody.Commodity?
 
     public var commodityCode: String?
-
-    public var commodityEntities: [GetServiceResponseBody.CommodityEntities]?
-
-    public var commoditySpecifications: [GetServiceResponseBody.CommoditySpecifications]?
-
-    public var componentsConfigs: [GetServiceResponseBody.ComponentsConfigs]?
 
     public var createTime: String?
 
@@ -4289,8 +3957,6 @@ public class GetServiceResponseBody : Tea.TeaModel {
     public var deployType: String?
 
     public var duration: Int64?
-
-    public var entityAdditionalInfo: [String: EntityAdditionalInfoValue]?
 
     public var entitySource: [String: String]?
 
@@ -4388,7 +4054,6 @@ public class GetServiceResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.billEntityMappings?.validate()
         try self.commodity?.validate()
         try self.statistic?.validate()
     }
@@ -4401,9 +4066,6 @@ public class GetServiceResponseBody : Tea.TeaModel {
         if self.approvalType != nil {
             map["ApprovalType"] = self.approvalType!
         }
-        if self.billEntityMappings != nil {
-            map["BillEntityMappings"] = self.billEntityMappings?.toMap()
-        }
         if self.buildInfo != nil {
             map["BuildInfo"] = self.buildInfo!
         }
@@ -4415,27 +4077,6 @@ public class GetServiceResponseBody : Tea.TeaModel {
         }
         if self.commodityCode != nil {
             map["CommodityCode"] = self.commodityCode!
-        }
-        if self.commodityEntities != nil {
-            var tmp : [Any] = []
-            for k in self.commodityEntities! {
-                tmp.append(k.toMap())
-            }
-            map["CommodityEntities"] = tmp
-        }
-        if self.commoditySpecifications != nil {
-            var tmp : [Any] = []
-            for k in self.commoditySpecifications! {
-                tmp.append(k.toMap())
-            }
-            map["CommoditySpecifications"] = tmp
-        }
-        if self.componentsConfigs != nil {
-            var tmp : [Any] = []
-            for k in self.componentsConfigs! {
-                tmp.append(k.toMap())
-            }
-            map["ComponentsConfigs"] = tmp
         }
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
@@ -4454,13 +4095,6 @@ public class GetServiceResponseBody : Tea.TeaModel {
         }
         if self.duration != nil {
             map["Duration"] = self.duration!
-        }
-        if self.entityAdditionalInfo != nil {
-            var tmp : [String: Any] = [:]
-            for (k, v) in self.entityAdditionalInfo! {
-                tmp[k] = v.toMap()
-            }
-            map["EntityAdditionalInfo"] = tmp
         }
         if self.entitySource != nil {
             map["EntitySource"] = self.entitySource!
@@ -4609,11 +4243,6 @@ public class GetServiceResponseBody : Tea.TeaModel {
         if dict.keys.contains("ApprovalType") {
             self.approvalType = dict["ApprovalType"] as! String
         }
-        if dict.keys.contains("BillEntityMappings") {
-            var model = GetServiceResponseBody.BillEntityMappings()
-            model.fromMap(dict["BillEntityMappings"] as! [String: Any])
-            self.billEntityMappings = model
-        }
         if dict.keys.contains("BuildInfo") {
             self.buildInfo = dict["BuildInfo"] as! String
         }
@@ -4627,39 +4256,6 @@ public class GetServiceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("CommodityCode") {
             self.commodityCode = dict["CommodityCode"] as! String
-        }
-        if dict.keys.contains("CommodityEntities") {
-            var tmp : [GetServiceResponseBody.CommodityEntities] = []
-            for v in dict["CommodityEntities"] as! [Any] {
-                var model = GetServiceResponseBody.CommodityEntities()
-                if v != nil {
-                    model.fromMap(v as! [String: Any])
-                }
-                tmp.append(model)
-            }
-            self.commodityEntities = tmp
-        }
-        if dict.keys.contains("CommoditySpecifications") {
-            var tmp : [GetServiceResponseBody.CommoditySpecifications] = []
-            for v in dict["CommoditySpecifications"] as! [Any] {
-                var model = GetServiceResponseBody.CommoditySpecifications()
-                if v != nil {
-                    model.fromMap(v as! [String: Any])
-                }
-                tmp.append(model)
-            }
-            self.commoditySpecifications = tmp
-        }
-        if dict.keys.contains("ComponentsConfigs") {
-            var tmp : [GetServiceResponseBody.ComponentsConfigs] = []
-            for v in dict["ComponentsConfigs"] as! [Any] {
-                var model = GetServiceResponseBody.ComponentsConfigs()
-                if v != nil {
-                    model.fromMap(v as! [String: Any])
-                }
-                tmp.append(model)
-            }
-            self.componentsConfigs = tmp
         }
         if dict.keys.contains("CreateTime") {
             self.createTime = dict["CreateTime"] as! String
@@ -4678,17 +4274,6 @@ public class GetServiceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Duration") {
             self.duration = dict["Duration"] as! Int64
-        }
-        if dict.keys.contains("EntityAdditionalInfo") {
-            var tmp : [String: EntityAdditionalInfoValue] = [:]
-            for (k, v) in dict["EntityAdditionalInfo"] as! [String: Any] {
-                if v != nil {
-                    var model = EntityAdditionalInfoValue()
-                    model.fromMap(v as! [String: Any])
-                    tmp[k] = model
-                }
-            }
-            self.entityAdditionalInfo = tmp
         }
         if dict.keys.contains("EntitySource") {
             self.entitySource = dict["EntitySource"] as! [String: String]
