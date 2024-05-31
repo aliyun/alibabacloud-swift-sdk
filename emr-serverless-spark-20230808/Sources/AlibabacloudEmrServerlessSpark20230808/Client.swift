@@ -98,6 +98,56 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createSqlStatementWithOptions(_ workspaceId: String, _ request: CreateSqlStatementRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSqlStatementResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.codeContent)) {
+            body["codeContent"] = request.codeContent ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.defaultCatalog)) {
+            body["defaultCatalog"] = request.defaultCatalog ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.defaultDatabase)) {
+            body["defaultDatabase"] = request.defaultDatabase ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.limit)) {
+            body["limit"] = request.limit!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sqlComputeId)) {
+            body["sqlComputeId"] = request.sqlComputeId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateSqlStatement",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/interactive/v1/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/statement",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateSqlStatementResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createSqlStatement(_ workspaceId: String, _ request: CreateSqlStatementRequest) async throws -> CreateSqlStatementResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createSqlStatementWithOptions(workspaceId as! String, request as! CreateSqlStatementRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getJobRunWithOptions(_ workspaceId: String, _ jobRunId: String, _ request: GetJobRunRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetJobRunResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -128,6 +178,39 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getJobRunWithOptions(workspaceId as! String, jobRunId as! String, request as! GetJobRunRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getSqlStatementWithOptions(_ workspaceId: String, _ statementId: String, _ request: GetSqlStatementRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetSqlStatementResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetSqlStatement",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/interactive/v1/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/statement/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(statementId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetSqlStatementResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getSqlStatement(_ workspaceId: String, _ statementId: String, _ request: GetSqlStatementRequest) async throws -> GetSqlStatementResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getSqlStatementWithOptions(workspaceId as! String, statementId as! String, request as! GetSqlStatementRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -194,6 +277,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.endTimeShrink)) {
             query["endTime"] = request.endTimeShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobRunDeploymentId)) {
+            query["jobRunDeploymentId"] = request.jobRunDeploymentId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.jobRunId)) {
             query["jobRunId"] = request.jobRunId ?? "";
@@ -479,5 +565,38 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await startJobRunWithOptions(workspaceId as! String, request as! StartJobRunRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func terminateSqlStatementWithOptions(_ workspaceId: String, _ statementId: String, _ request: TerminateSqlStatementRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TerminateSqlStatementResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TerminateSqlStatement",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/api/interactive/v1/workspace/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/statement/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(statementId)) + "/terminate",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TerminateSqlStatementResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func terminateSqlStatement(_ workspaceId: String, _ statementId: String, _ request: TerminateSqlStatementRequest) async throws -> TerminateSqlStatementResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await terminateSqlStatementWithOptions(workspaceId as! String, statementId as! String, request as! TerminateSqlStatementRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 }
