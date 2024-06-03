@@ -47000,6 +47000,293 @@ public class SearchMediaByFaceResponse : Tea.TeaModel {
     }
 }
 
+public class SearchMediaByHybridRequest : Tea.TeaModel {
+    public var mediaId: String?
+
+    public var mediaType: String?
+
+    public var pageNo: Int32?
+
+    public var pageSize: Int32?
+
+    public var searchLibName: String?
+
+    public var text: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.mediaId != nil {
+            map["MediaId"] = self.mediaId!
+        }
+        if self.mediaType != nil {
+            map["MediaType"] = self.mediaType!
+        }
+        if self.pageNo != nil {
+            map["PageNo"] = self.pageNo!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.searchLibName != nil {
+            map["SearchLibName"] = self.searchLibName!
+        }
+        if self.text != nil {
+            map["Text"] = self.text!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MediaId") {
+            self.mediaId = dict["MediaId"] as! String
+        }
+        if dict.keys.contains("MediaType") {
+            self.mediaType = dict["MediaType"] as! String
+        }
+        if dict.keys.contains("PageNo") {
+            self.pageNo = dict["PageNo"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SearchLibName") {
+            self.searchLibName = dict["SearchLibName"] as! String
+        }
+        if dict.keys.contains("Text") {
+            self.text = dict["Text"] as! String
+        }
+    }
+}
+
+public class SearchMediaByHybridResponseBody : Tea.TeaModel {
+    public class MediaList : Tea.TeaModel {
+        public class ClipInfo : Tea.TeaModel {
+            public var from: Double?
+
+            public var score: Double?
+
+            public var to: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.from != nil {
+                    map["From"] = self.from!
+                }
+                if self.score != nil {
+                    map["Score"] = self.score!
+                }
+                if self.to != nil {
+                    map["To"] = self.to!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("From") {
+                    self.from = dict["From"] as! Double
+                }
+                if dict.keys.contains("Score") {
+                    self.score = dict["Score"] as! Double
+                }
+                if dict.keys.contains("To") {
+                    self.to = dict["To"] as! Double
+                }
+            }
+        }
+        public var clipInfo: [SearchMediaByHybridResponseBody.MediaList.ClipInfo]?
+
+        public var mediaId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clipInfo != nil {
+                var tmp : [Any] = []
+                for k in self.clipInfo! {
+                    tmp.append(k.toMap())
+                }
+                map["ClipInfo"] = tmp
+            }
+            if self.mediaId != nil {
+                map["MediaId"] = self.mediaId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ClipInfo") {
+                var tmp : [SearchMediaByHybridResponseBody.MediaList.ClipInfo] = []
+                for v in dict["ClipInfo"] as! [Any] {
+                    var model = SearchMediaByHybridResponseBody.MediaList.ClipInfo()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.clipInfo = tmp
+            }
+            if dict.keys.contains("MediaId") {
+                self.mediaId = dict["MediaId"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var mediaList: [SearchMediaByHybridResponseBody.MediaList]?
+
+    public var requestId: String?
+
+    public var success: String?
+
+    public var total: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.mediaList != nil {
+            var tmp : [Any] = []
+            for k in self.mediaList! {
+                tmp.append(k.toMap())
+            }
+            map["MediaList"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.total != nil {
+            map["Total"] = self.total!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("MediaList") {
+            var tmp : [SearchMediaByHybridResponseBody.MediaList] = []
+            for v in dict["MediaList"] as! [Any] {
+                var model = SearchMediaByHybridResponseBody.MediaList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.mediaList = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! String
+        }
+        if dict.keys.contains("Total") {
+            self.total = dict["Total"] as! Int64
+        }
+    }
+}
+
+public class SearchMediaByHybridResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SearchMediaByHybridResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = SearchMediaByHybridResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class SearchMediaByMultimodalRequest : Tea.TeaModel {
     public var mediaType: String?
 

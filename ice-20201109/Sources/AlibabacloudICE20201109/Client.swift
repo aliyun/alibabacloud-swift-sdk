@@ -3077,7 +3077,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "protocol": "HTTPS",
             "pathname": "/",
             "method": "POST",
-            "authType": "AK",
+            "authType": "Anonymous",
             "style": "RPC",
             "reqBodyType": "formData",
             "bodyType": "json"
@@ -5482,6 +5482,52 @@ open class Client : AlibabacloudOpenApi.Client {
     public func searchMediaByFace(_ request: SearchMediaByFaceRequest) async throws -> SearchMediaByFaceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await searchMediaByFaceWithOptions(request as! SearchMediaByFaceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchMediaByHybridWithOptions(_ request: SearchMediaByHybridRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchMediaByHybridResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.mediaId)) {
+            query["MediaId"] = request.mediaId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mediaType)) {
+            query["MediaType"] = request.mediaType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNo)) {
+            query["PageNo"] = request.pageNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.searchLibName)) {
+            query["SearchLibName"] = request.searchLibName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.text)) {
+            query["Text"] = request.text ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SearchMediaByHybrid",
+            "version": "2020-11-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SearchMediaByHybridResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchMediaByHybrid(_ request: SearchMediaByHybridRequest) async throws -> SearchMediaByHybridResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await searchMediaByHybridWithOptions(request as! SearchMediaByHybridRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
