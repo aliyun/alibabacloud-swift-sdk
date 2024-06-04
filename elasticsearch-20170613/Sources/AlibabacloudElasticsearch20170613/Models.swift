@@ -25363,6 +25363,8 @@ public class ListInstanceResponseBody : Tea.TeaModel {
         }
         public var advancedDedicateMaster: Bool?
 
+        public var archType: String?
+
         public var clientNodeConfiguration: ListInstanceResponseBody.Result.ClientNodeConfiguration?
 
         public var createdAt: String?
@@ -25439,6 +25441,9 @@ public class ListInstanceResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.advancedDedicateMaster != nil {
                 map["advancedDedicateMaster"] = self.advancedDedicateMaster!
+            }
+            if self.archType != nil {
+                map["archType"] = self.archType!
             }
             if self.clientNodeConfiguration != nil {
                 map["clientNodeConfiguration"] = self.clientNodeConfiguration?.toMap()
@@ -25531,6 +25536,9 @@ public class ListInstanceResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("advancedDedicateMaster") {
                 self.advancedDedicateMaster = dict["advancedDedicateMaster"] as! Bool
+            }
+            if dict.keys.contains("archType") {
+                self.archType = dict["archType"] as! String
             }
             if dict.keys.contains("clientNodeConfiguration") {
                 var model = ListInstanceResponseBody.Result.ClientNodeConfiguration()
