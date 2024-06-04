@@ -44,7 +44,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "CreateIdleInstanceCuller",
             "version": "2022-01-01",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId) + "/idleinstanceculler",
+            "pathname": "/api/v2/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/idleinstanceculler",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -161,7 +161,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "CreateInstanceShutdownTimer",
             "version": "2022-01-01",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId) + "/shutdowntimer",
+            "pathname": "/api/v2/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/shutdowntimer",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -209,7 +209,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "CreateInstanceSnapshot",
             "version": "2022-01-01",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId) + "/snapshots",
+            "pathname": "/api/v2/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/snapshots",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -236,7 +236,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteIdleInstanceCuller",
             "version": "2022-01-01",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId) + "/idleinstanceculler",
+            "pathname": "/api/v2/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/idleinstanceculler",
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -263,7 +263,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteInstance",
             "version": "2022-01-01",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId),
+            "pathname": "/api/v2/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -290,7 +290,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteInstanceShutdownTimer",
             "version": "2022-01-01",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId) + "/shutdowntimer",
+            "pathname": "/api/v2/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/shutdowntimer",
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -317,7 +317,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteInstanceSnapshot",
             "version": "2022-01-01",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId) + "/snapshots/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(SnapshotId),
+            "pathname": "/api/v2/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/snapshots/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(SnapshotId)),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -344,7 +344,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetIdleInstanceCuller",
             "version": "2022-01-01",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId) + "/idleinstanceculler",
+            "pathname": "/api/v2/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/idleinstanceculler",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -371,7 +371,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetInstance",
             "version": "2022-01-01",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId),
+            "pathname": "/api/v2/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -410,7 +410,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetInstanceEvents",
             "version": "2022-01-01",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId) + "/events",
+            "pathname": "/api/v2/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/events",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -452,7 +452,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetInstanceMetrics",
             "version": "2022-01-01",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/instance/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId) + "/metrics",
+            "pathname": "/api/v2/instance/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/metrics",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -479,7 +479,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetInstanceShutdownTimer",
             "version": "2022-01-01",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId) + "/shutdowntimer",
+            "pathname": "/api/v2/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/shutdowntimer",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -506,7 +506,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetInstanceSnapshot",
             "version": "2022-01-01",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId) + "/snapshots/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(SnapshotId),
+            "pathname": "/api/v2/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/snapshots/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(SnapshotId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -551,7 +551,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetLifecycle",
             "version": "2022-01-01",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId) + "/lifecycle",
+            "pathname": "/api/v2/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/lifecycle",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -743,7 +743,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListInstanceSnapshot",
             "version": "2022-01-01",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId) + "/snapshots",
+            "pathname": "/api/v2/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/snapshots",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -795,8 +795,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listInstancesWithOptions(_ request: ListInstancesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListInstancesResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listInstancesWithOptions(_ tmpReq: ListInstancesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListInstancesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListInstancesShrinkRequest = ListInstancesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.labels)) {
+            request.labelsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.labels, "Labels", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.acceleratorType)) {
             query["AcceleratorType"] = request.acceleratorType ?? "";
@@ -809,6 +814,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.instanceName)) {
             query["InstanceName"] = request.instanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.labelsShrink)) {
+            query["Labels"] = request.labelsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.order)) {
             query["Order"] = request.order ?? "";
@@ -869,7 +877,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "StartInstance",
             "version": "2022-01-01",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId) + "/start",
+            "pathname": "/api/v2/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/start",
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
@@ -902,7 +910,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "StopInstance",
             "version": "2022-01-01",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId) + "/stop",
+            "pathname": "/api/v2/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/stop",
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
@@ -983,7 +991,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "UpdateInstance",
             "version": "2022-01-01",
             "protocol": "HTTPS",
-            "pathname": "/api/v2/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId),
+            "pathname": "/api/v2/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)),
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
