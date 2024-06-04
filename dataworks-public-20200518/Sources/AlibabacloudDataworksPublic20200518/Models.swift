@@ -3622,6 +3622,8 @@ public class CreateDIJobRequest : Tea.TeaModel {
 
         public var realtimeResourceSettings: CreateDIJobRequest.ResourceSettings.RealtimeResourceSettings?
 
+        public var requestedCu: Double?
+
         public override init() {
             super.init()
         }
@@ -3644,6 +3646,9 @@ public class CreateDIJobRequest : Tea.TeaModel {
             if self.realtimeResourceSettings != nil {
                 map["RealtimeResourceSettings"] = self.realtimeResourceSettings?.toMap()
             }
+            if self.requestedCu != nil {
+                map["RequestedCu"] = self.requestedCu!
+            }
             return map
         }
 
@@ -3657,6 +3662,9 @@ public class CreateDIJobRequest : Tea.TeaModel {
                 var model = CreateDIJobRequest.ResourceSettings.RealtimeResourceSettings()
                 model.fromMap(dict["RealtimeResourceSettings"] as! [String: Any])
                 self.realtimeResourceSettings = model
+            }
+            if dict.keys.contains("RequestedCu") {
+                self.requestedCu = dict["RequestedCu"] as! Double
             }
         }
     }
@@ -24919,6 +24927,8 @@ public class GetDIJobResponseBody : Tea.TeaModel {
 
             public var realtimeResourceSettings: GetDIJobResponseBody.Data.ResourceSettings.RealtimeResourceSettings?
 
+            public var requestedCu: Double?
+
             public override init() {
                 super.init()
             }
@@ -24941,6 +24951,9 @@ public class GetDIJobResponseBody : Tea.TeaModel {
                 if self.realtimeResourceSettings != nil {
                     map["RealtimeResourceSettings"] = self.realtimeResourceSettings?.toMap()
                 }
+                if self.requestedCu != nil {
+                    map["RequestedCu"] = self.requestedCu!
+                }
                 return map
             }
 
@@ -24954,6 +24967,9 @@ public class GetDIJobResponseBody : Tea.TeaModel {
                     var model = GetDIJobResponseBody.Data.ResourceSettings.RealtimeResourceSettings()
                     model.fromMap(dict["RealtimeResourceSettings"] as! [String: Any])
                     self.realtimeResourceSettings = model
+                }
+                if dict.keys.contains("RequestedCu") {
+                    self.requestedCu = dict["RequestedCu"] as! Double
                 }
             }
         }
@@ -80437,6 +80453,8 @@ public class UpdateDIJobRequest : Tea.TeaModel {
 
         public var realtimeResourceSettings: UpdateDIJobRequest.ResourceSettings.RealtimeResourceSettings?
 
+        public var requestedCu: Double?
+
         public override init() {
             super.init()
         }
@@ -80459,6 +80477,9 @@ public class UpdateDIJobRequest : Tea.TeaModel {
             if self.realtimeResourceSettings != nil {
                 map["RealtimeResourceSettings"] = self.realtimeResourceSettings?.toMap()
             }
+            if self.requestedCu != nil {
+                map["RequestedCu"] = self.requestedCu!
+            }
             return map
         }
 
@@ -80472,6 +80493,9 @@ public class UpdateDIJobRequest : Tea.TeaModel {
                 var model = UpdateDIJobRequest.ResourceSettings.RealtimeResourceSettings()
                 model.fromMap(dict["RealtimeResourceSettings"] as! [String: Any])
                 self.realtimeResourceSettings = model
+            }
+            if dict.keys.contains("RequestedCu") {
+                self.requestedCu = dict["RequestedCu"] as! Double
             }
         }
     }
