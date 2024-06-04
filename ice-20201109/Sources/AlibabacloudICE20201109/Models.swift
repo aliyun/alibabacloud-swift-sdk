@@ -17219,6 +17219,8 @@ public class GetMediaInfoResponseBody : Tea.TeaModel {
 
             public var referenceId: String?
 
+            public var snapshots: String?
+
             public var source: String?
 
             public var spriteImages: String?
@@ -17290,6 +17292,9 @@ public class GetMediaInfoResponseBody : Tea.TeaModel {
                 if self.referenceId != nil {
                     map["ReferenceId"] = self.referenceId!
                 }
+                if self.snapshots != nil {
+                    map["Snapshots"] = self.snapshots!
+                }
                 if self.source != nil {
                     map["Source"] = self.source!
                 }
@@ -17356,6 +17361,9 @@ public class GetMediaInfoResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ReferenceId") {
                     self.referenceId = dict["ReferenceId"] as! String
+                }
+                if dict.keys.contains("Snapshots") {
+                    self.snapshots = dict["Snapshots"] as! String
                 }
                 if dict.keys.contains("Source") {
                     self.source = dict["Source"] as! String
