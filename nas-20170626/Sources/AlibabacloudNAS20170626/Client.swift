@@ -940,6 +940,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.deletionProtection)) {
+            query["DeletionProtection"] = request.deletionProtection!;
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
@@ -2443,6 +2446,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeLogAnalysisWithOptions(_ request: DescribeLogAnalysisRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeLogAnalysisResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fileSystemType)) {
+            query["FileSystemType"] = request.fileSystemType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;
         }
@@ -3656,6 +3662,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.deletionProtection)) {
+            query["DeletionProtection"] = request.deletionProtection!;
         }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
