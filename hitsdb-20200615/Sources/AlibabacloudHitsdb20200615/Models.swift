@@ -2817,6 +2817,8 @@ public class GetLindormInstanceResponseBody : Tea.TeaModel {
 
     public var enableKms: Bool?
 
+    public var enableLProxy: Bool?
+
     public var enableLTS: Bool?
 
     public var enableLsqlVersionV3: Bool?
@@ -2958,6 +2960,9 @@ public class GetLindormInstanceResponseBody : Tea.TeaModel {
         }
         if self.enableKms != nil {
             map["EnableKms"] = self.enableKms!
+        }
+        if self.enableLProxy != nil {
+            map["EnableLProxy"] = self.enableLProxy!
         }
         if self.enableLTS != nil {
             map["EnableLTS"] = self.enableLTS!
@@ -3128,6 +3133,9 @@ public class GetLindormInstanceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("EnableKms") {
             self.enableKms = dict["EnableKms"] as! Bool
+        }
+        if dict.keys.contains("EnableLProxy") {
+            self.enableLProxy = dict["EnableLProxy"] as! Bool
         }
         if dict.keys.contains("EnableLTS") {
             self.enableLTS = dict["EnableLTS"] as! Bool
