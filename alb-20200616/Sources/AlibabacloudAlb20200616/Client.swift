@@ -1972,6 +1972,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listListenerCertificatesWithOptions(_ request: ListListenerCertificatesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListListenerCertificatesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.certificateIds)) {
+            query["CertificateIds"] = request.certificateIds ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.certificateType)) {
             query["CertificateType"] = request.certificateType ?? "";
         }
