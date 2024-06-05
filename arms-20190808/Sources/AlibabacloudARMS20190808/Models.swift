@@ -243,6 +243,8 @@ public class GrafanaWorkspace : Tea.TeaModel {
 
     public var grafanaWorkspaceDomain: String?
 
+    public var grafanaWorkspaceDomainStatus: String?
+
     public var grafanaWorkspaceEdition: String?
 
     public var grafanaWorkspaceId: String?
@@ -315,6 +317,9 @@ public class GrafanaWorkspace : Tea.TeaModel {
         }
         if self.grafanaWorkspaceDomain != nil {
             map["grafanaWorkspaceDomain"] = self.grafanaWorkspaceDomain!
+        }
+        if self.grafanaWorkspaceDomainStatus != nil {
+            map["grafanaWorkspaceDomainStatus"] = self.grafanaWorkspaceDomainStatus!
         }
         if self.grafanaWorkspaceEdition != nil {
             map["grafanaWorkspaceEdition"] = self.grafanaWorkspaceEdition!
@@ -401,6 +406,9 @@ public class GrafanaWorkspace : Tea.TeaModel {
         }
         if dict.keys.contains("grafanaWorkspaceDomain") {
             self.grafanaWorkspaceDomain = dict["grafanaWorkspaceDomain"] as! String
+        }
+        if dict.keys.contains("grafanaWorkspaceDomainStatus") {
+            self.grafanaWorkspaceDomainStatus = dict["grafanaWorkspaceDomainStatus"] as! String
         }
         if dict.keys.contains("grafanaWorkspaceEdition") {
             self.grafanaWorkspaceEdition = dict["grafanaWorkspaceEdition"] as! String
