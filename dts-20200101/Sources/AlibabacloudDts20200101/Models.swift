@@ -32,6 +32,12 @@ public class ConfigureDtsJobRequest : Tea.TeaModel {
 
     public var destCaCertificatePassword: String?
 
+    public var destClientCertOssUrl: String?
+
+    public var destClientKeyOssUrl: String?
+
+    public var destClientPassword: String?
+
     public var destinationEndpointDataBaseName: String?
 
     public var destinationEndpointEngineName: String?
@@ -116,6 +122,12 @@ public class ConfigureDtsJobRequest : Tea.TeaModel {
 
     public var srcCaCertificatePassword: String?
 
+    public var srcClientCertOssUrl: String?
+
+    public var srcClientKeyOssUrl: String?
+
+    public var srcClientPassword: String?
+
     public var structureInitialization: Bool?
 
     public var synchronizationDirection: String?
@@ -166,6 +178,15 @@ public class ConfigureDtsJobRequest : Tea.TeaModel {
         }
         if self.destCaCertificatePassword != nil {
             map["DestCaCertificatePassword"] = self.destCaCertificatePassword!
+        }
+        if self.destClientCertOssUrl != nil {
+            map["DestClientCertOssUrl"] = self.destClientCertOssUrl!
+        }
+        if self.destClientKeyOssUrl != nil {
+            map["DestClientKeyOssUrl"] = self.destClientKeyOssUrl!
+        }
+        if self.destClientPassword != nil {
+            map["DestClientPassword"] = self.destClientPassword!
         }
         if self.destinationEndpointDataBaseName != nil {
             map["DestinationEndpointDataBaseName"] = self.destinationEndpointDataBaseName!
@@ -293,6 +314,15 @@ public class ConfigureDtsJobRequest : Tea.TeaModel {
         if self.srcCaCertificatePassword != nil {
             map["SrcCaCertificatePassword"] = self.srcCaCertificatePassword!
         }
+        if self.srcClientCertOssUrl != nil {
+            map["SrcClientCertOssUrl"] = self.srcClientCertOssUrl!
+        }
+        if self.srcClientKeyOssUrl != nil {
+            map["SrcClientKeyOssUrl"] = self.srcClientKeyOssUrl!
+        }
+        if self.srcClientPassword != nil {
+            map["SrcClientPassword"] = self.srcClientPassword!
+        }
         if self.structureInitialization != nil {
             map["StructureInitialization"] = self.structureInitialization!
         }
@@ -335,6 +365,15 @@ public class ConfigureDtsJobRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DestCaCertificatePassword") {
             self.destCaCertificatePassword = dict["DestCaCertificatePassword"] as! String
+        }
+        if dict.keys.contains("DestClientCertOssUrl") {
+            self.destClientCertOssUrl = dict["DestClientCertOssUrl"] as! String
+        }
+        if dict.keys.contains("DestClientKeyOssUrl") {
+            self.destClientKeyOssUrl = dict["DestClientKeyOssUrl"] as! String
+        }
+        if dict.keys.contains("DestClientPassword") {
+            self.destClientPassword = dict["DestClientPassword"] as! String
         }
         if dict.keys.contains("DestinationEndpointDataBaseName") {
             self.destinationEndpointDataBaseName = dict["DestinationEndpointDataBaseName"] as! String
@@ -462,6 +501,15 @@ public class ConfigureDtsJobRequest : Tea.TeaModel {
         if dict.keys.contains("SrcCaCertificatePassword") {
             self.srcCaCertificatePassword = dict["SrcCaCertificatePassword"] as! String
         }
+        if dict.keys.contains("SrcClientCertOssUrl") {
+            self.srcClientCertOssUrl = dict["SrcClientCertOssUrl"] as! String
+        }
+        if dict.keys.contains("SrcClientKeyOssUrl") {
+            self.srcClientKeyOssUrl = dict["SrcClientKeyOssUrl"] as! String
+        }
+        if dict.keys.contains("SrcClientPassword") {
+            self.srcClientPassword = dict["SrcClientPassword"] as! String
+        }
         if dict.keys.contains("StructureInitialization") {
             self.structureInitialization = dict["StructureInitialization"] as! Bool
         }
@@ -493,6 +541,12 @@ public class ConfigureDtsJobAdvanceRequest : Tea.TeaModel {
     public var destCaCertificateOssUrl: String?
 
     public var destCaCertificatePassword: String?
+
+    public var destClientCertOssUrl: String?
+
+    public var destClientKeyOssUrl: String?
+
+    public var destClientPassword: String?
 
     public var destinationEndpointDataBaseName: String?
 
@@ -578,6 +632,12 @@ public class ConfigureDtsJobAdvanceRequest : Tea.TeaModel {
 
     public var srcCaCertificatePassword: String?
 
+    public var srcClientCertOssUrl: String?
+
+    public var srcClientKeyOssUrl: String?
+
+    public var srcClientPassword: String?
+
     public var structureInitialization: Bool?
 
     public var synchronizationDirection: String?
@@ -628,6 +688,15 @@ public class ConfigureDtsJobAdvanceRequest : Tea.TeaModel {
         }
         if self.destCaCertificatePassword != nil {
             map["DestCaCertificatePassword"] = self.destCaCertificatePassword!
+        }
+        if self.destClientCertOssUrl != nil {
+            map["DestClientCertOssUrl"] = self.destClientCertOssUrl!
+        }
+        if self.destClientKeyOssUrl != nil {
+            map["DestClientKeyOssUrl"] = self.destClientKeyOssUrl!
+        }
+        if self.destClientPassword != nil {
+            map["DestClientPassword"] = self.destClientPassword!
         }
         if self.destinationEndpointDataBaseName != nil {
             map["DestinationEndpointDataBaseName"] = self.destinationEndpointDataBaseName!
@@ -755,6 +824,15 @@ public class ConfigureDtsJobAdvanceRequest : Tea.TeaModel {
         if self.srcCaCertificatePassword != nil {
             map["SrcCaCertificatePassword"] = self.srcCaCertificatePassword!
         }
+        if self.srcClientCertOssUrl != nil {
+            map["SrcClientCertOssUrl"] = self.srcClientCertOssUrl!
+        }
+        if self.srcClientKeyOssUrl != nil {
+            map["SrcClientKeyOssUrl"] = self.srcClientKeyOssUrl!
+        }
+        if self.srcClientPassword != nil {
+            map["SrcClientPassword"] = self.srcClientPassword!
+        }
         if self.structureInitialization != nil {
             map["StructureInitialization"] = self.structureInitialization!
         }
@@ -797,6 +875,15 @@ public class ConfigureDtsJobAdvanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DestCaCertificatePassword") {
             self.destCaCertificatePassword = dict["DestCaCertificatePassword"] as! String
+        }
+        if dict.keys.contains("DestClientCertOssUrl") {
+            self.destClientCertOssUrl = dict["DestClientCertOssUrl"] as! String
+        }
+        if dict.keys.contains("DestClientKeyOssUrl") {
+            self.destClientKeyOssUrl = dict["DestClientKeyOssUrl"] as! String
+        }
+        if dict.keys.contains("DestClientPassword") {
+            self.destClientPassword = dict["DestClientPassword"] as! String
         }
         if dict.keys.contains("DestinationEndpointDataBaseName") {
             self.destinationEndpointDataBaseName = dict["DestinationEndpointDataBaseName"] as! String
@@ -923,6 +1010,15 @@ public class ConfigureDtsJobAdvanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SrcCaCertificatePassword") {
             self.srcCaCertificatePassword = dict["SrcCaCertificatePassword"] as! String
+        }
+        if dict.keys.contains("SrcClientCertOssUrl") {
+            self.srcClientCertOssUrl = dict["SrcClientCertOssUrl"] as! String
+        }
+        if dict.keys.contains("SrcClientKeyOssUrl") {
+            self.srcClientKeyOssUrl = dict["SrcClientKeyOssUrl"] as! String
+        }
+        if dict.keys.contains("SrcClientPassword") {
+            self.srcClientPassword = dict["SrcClientPassword"] as! String
         }
         if dict.keys.contains("StructureInitialization") {
             self.structureInitialization = dict["StructureInitialization"] as! Bool
