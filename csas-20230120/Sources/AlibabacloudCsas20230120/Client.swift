@@ -1787,6 +1787,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func revokeUserSessionWithOptions(_ request: RevokeUserSessionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RevokeUserSessionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.externalIds)) {
+            query["ExternalIds"] = request.externalIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.idpId)) {
+            query["IdpId"] = request.idpId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RevokeUserSession",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RevokeUserSessionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func revokeUserSession(_ request: RevokeUserSessionRequest) async throws -> RevokeUserSessionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await revokeUserSessionWithOptions(request as! RevokeUserSessionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateClientUserWithOptions(_ request: UpdateClientUserRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateClientUserResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
