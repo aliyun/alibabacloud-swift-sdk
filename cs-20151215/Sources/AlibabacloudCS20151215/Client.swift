@@ -744,6 +744,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createClusterDiagnosisWithOptions(_ clusterId: String, _ request: CreateClusterDiagnosisRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateClusterDiagnosisResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.target)) {
+            body["target"] = request.target ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateClusterDiagnosis",
+            "version": "2015-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/clusters/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(clusterId)) + "/diagnosis",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateClusterDiagnosisResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createClusterDiagnosis(_ clusterId: String, _ request: CreateClusterDiagnosisRequest) async throws -> CreateClusterDiagnosisResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createClusterDiagnosisWithOptions(clusterId as! String, request as! CreateClusterDiagnosisRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createClusterNodePoolWithOptions(_ ClusterId: String, _ request: CreateClusterNodePoolRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateClusterNodePoolResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -2987,6 +3023,60 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getClusterCheckWithOptions(clusterId as! String, checkId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getClusterDiagnosisCheckItemsWithOptions(_ clusterId: String, _ diagnosisId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetClusterDiagnosisCheckItemsResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetClusterDiagnosisCheckItems",
+            "version": "2015-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/clusters/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(clusterId)) + "/diagnosis/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(diagnosisId)) + "/check_items",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetClusterDiagnosisCheckItemsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getClusterDiagnosisCheckItems(_ clusterId: String, _ diagnosisId: String) async throws -> GetClusterDiagnosisCheckItemsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getClusterDiagnosisCheckItemsWithOptions(clusterId as! String, diagnosisId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getClusterDiagnosisResultWithOptions(_ clusterId: String, _ diagnosisId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetClusterDiagnosisResultResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetClusterDiagnosisResult",
+            "version": "2015-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/clusters/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(clusterId)) + "/diagnosis/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(diagnosisId)) + "/result",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetClusterDiagnosisResultResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getClusterDiagnosisResult(_ clusterId: String, _ diagnosisId: String) async throws -> GetClusterDiagnosisResultResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getClusterDiagnosisResultWithOptions(clusterId as! String, diagnosisId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
