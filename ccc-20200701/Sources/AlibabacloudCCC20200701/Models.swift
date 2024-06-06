@@ -14000,6 +14000,8 @@ public class GetCampaignResponseBody : Tea.TeaModel {
 
         public var completionRate: Double?
 
+        public var contactFlowId: String?
+
         public var maxAttemptCount: Int64?
 
         public var minAttemptInterval: Int64?
@@ -14066,6 +14068,9 @@ public class GetCampaignResponseBody : Tea.TeaModel {
             }
             if self.completionRate != nil {
                 map["CompletionRate"] = self.completionRate!
+            }
+            if self.contactFlowId != nil {
+                map["ContactFlowId"] = self.contactFlowId!
             }
             if self.maxAttemptCount != nil {
                 map["MaxAttemptCount"] = self.maxAttemptCount!
@@ -14136,6 +14141,9 @@ public class GetCampaignResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("CompletionRate") {
                 self.completionRate = dict["CompletionRate"] as! Double
+            }
+            if dict.keys.contains("ContactFlowId") {
+                self.contactFlowId = dict["ContactFlowId"] as! String
             }
             if dict.keys.contains("MaxAttemptCount") {
                 self.maxAttemptCount = dict["MaxAttemptCount"] as! Int64
@@ -29686,6 +29694,8 @@ public class ListCampaignsResponseBody : Tea.TeaModel {
 
             public var completionRate: Double?
 
+            public var contactFlowId: String?
+
             public var maxAttemptCount: Int64?
 
             public var minAttemptInterval: Int64?
@@ -29744,6 +29754,9 @@ public class ListCampaignsResponseBody : Tea.TeaModel {
                 }
                 if self.completionRate != nil {
                     map["CompletionRate"] = self.completionRate!
+                }
+                if self.contactFlowId != nil {
+                    map["ContactFlowId"] = self.contactFlowId!
                 }
                 if self.maxAttemptCount != nil {
                     map["MaxAttemptCount"] = self.maxAttemptCount!
@@ -29805,6 +29818,9 @@ public class ListCampaignsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("CompletionRate") {
                     self.completionRate = dict["CompletionRate"] as! Double
+                }
+                if dict.keys.contains("ContactFlowId") {
+                    self.contactFlowId = dict["ContactFlowId"] as! String
                 }
                 if dict.keys.contains("MaxAttemptCount") {
                     self.maxAttemptCount = dict["MaxAttemptCount"] as! Int64
@@ -49653,6 +49669,8 @@ public class ListSkillGroupSummaryReportsSinceMidnightResponseBody : Tea.TeaMode
 
                 public var averageWorkTime: Int64?
 
+                public var callsAbandoned: Int64?
+
                 public var callsAttendedTransferOut: Int64?
 
                 public var callsBlindTransferOut: Int64?
@@ -49660,6 +49678,8 @@ public class ListSkillGroupSummaryReportsSinceMidnightResponseBody : Tea.TeaMode
                 public var callsHandled: Int64?
 
                 public var callsOffered: Int64?
+
+                public var callsOverflow: String?
 
                 public var callsQueuingCanceled: String?
 
@@ -49744,6 +49764,9 @@ public class ListSkillGroupSummaryReportsSinceMidnightResponseBody : Tea.TeaMode
                     if self.averageWorkTime != nil {
                         map["AverageWorkTime"] = self.averageWorkTime!
                     }
+                    if self.callsAbandoned != nil {
+                        map["CallsAbandoned"] = self.callsAbandoned!
+                    }
                     if self.callsAttendedTransferOut != nil {
                         map["CallsAttendedTransferOut"] = self.callsAttendedTransferOut!
                     }
@@ -49755,6 +49778,9 @@ public class ListSkillGroupSummaryReportsSinceMidnightResponseBody : Tea.TeaMode
                     }
                     if self.callsOffered != nil {
                         map["CallsOffered"] = self.callsOffered!
+                    }
+                    if self.callsOverflow != nil {
+                        map["CallsOverflow"] = self.callsOverflow!
                     }
                     if self.callsQueuingCanceled != nil {
                         map["CallsQueuingCanceled"] = self.callsQueuingCanceled!
@@ -49853,6 +49879,9 @@ public class ListSkillGroupSummaryReportsSinceMidnightResponseBody : Tea.TeaMode
                     if dict.keys.contains("AverageWorkTime") {
                         self.averageWorkTime = dict["AverageWorkTime"] as! Int64
                     }
+                    if dict.keys.contains("CallsAbandoned") {
+                        self.callsAbandoned = dict["CallsAbandoned"] as! Int64
+                    }
                     if dict.keys.contains("CallsAttendedTransferOut") {
                         self.callsAttendedTransferOut = dict["CallsAttendedTransferOut"] as! Int64
                     }
@@ -49864,6 +49893,9 @@ public class ListSkillGroupSummaryReportsSinceMidnightResponseBody : Tea.TeaMode
                     }
                     if dict.keys.contains("CallsOffered") {
                         self.callsOffered = dict["CallsOffered"] as! Int64
+                    }
+                    if dict.keys.contains("CallsOverflow") {
+                        self.callsOverflow = dict["CallsOverflow"] as! String
                     }
                     if dict.keys.contains("CallsQueuingCanceled") {
                         self.callsQueuingCanceled = dict["CallsQueuingCanceled"] as! String
