@@ -1016,6 +1016,179 @@ public class GetBatchTranslateResponse : Tea.TeaModel {
     }
 }
 
+public class GetBatchTranslateByVPCRequest : Tea.TeaModel {
+    public var apiType: String?
+
+    public var formatType: String?
+
+    public var scene: String?
+
+    public var sourceLanguage: String?
+
+    public var sourceText: String?
+
+    public var targetLanguage: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.apiType != nil {
+            map["ApiType"] = self.apiType!
+        }
+        if self.formatType != nil {
+            map["FormatType"] = self.formatType!
+        }
+        if self.scene != nil {
+            map["Scene"] = self.scene!
+        }
+        if self.sourceLanguage != nil {
+            map["SourceLanguage"] = self.sourceLanguage!
+        }
+        if self.sourceText != nil {
+            map["SourceText"] = self.sourceText!
+        }
+        if self.targetLanguage != nil {
+            map["TargetLanguage"] = self.targetLanguage!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ApiType") {
+            self.apiType = dict["ApiType"] as! String
+        }
+        if dict.keys.contains("FormatType") {
+            self.formatType = dict["FormatType"] as! String
+        }
+        if dict.keys.contains("Scene") {
+            self.scene = dict["Scene"] as! String
+        }
+        if dict.keys.contains("SourceLanguage") {
+            self.sourceLanguage = dict["SourceLanguage"] as! String
+        }
+        if dict.keys.contains("SourceText") {
+            self.sourceText = dict["SourceText"] as! String
+        }
+        if dict.keys.contains("TargetLanguage") {
+            self.targetLanguage = dict["TargetLanguage"] as! String
+        }
+    }
+}
+
+public class GetBatchTranslateByVPCResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var translatedList: [[String: Any]]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.translatedList != nil {
+            map["TranslatedList"] = self.translatedList!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TranslatedList") {
+            self.translatedList = dict["TranslatedList"] as! [[String: Any]]
+        }
+    }
+}
+
+public class GetBatchTranslateByVPCResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetBatchTranslateByVPCResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetBatchTranslateByVPCResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class GetDetectLanguageRequest : Tea.TeaModel {
     public var sourceText: String?
 
@@ -4029,6 +4202,227 @@ public class TranslateGeneralResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = TranslateGeneralResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class TranslateGeneralVpcRequest : Tea.TeaModel {
+    public var context: String?
+
+    public var formatType: String?
+
+    public var scene: String?
+
+    public var sourceLanguage: String?
+
+    public var sourceText: String?
+
+    public var targetLanguage: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.context != nil {
+            map["Context"] = self.context!
+        }
+        if self.formatType != nil {
+            map["FormatType"] = self.formatType!
+        }
+        if self.scene != nil {
+            map["Scene"] = self.scene!
+        }
+        if self.sourceLanguage != nil {
+            map["SourceLanguage"] = self.sourceLanguage!
+        }
+        if self.sourceText != nil {
+            map["SourceText"] = self.sourceText!
+        }
+        if self.targetLanguage != nil {
+            map["TargetLanguage"] = self.targetLanguage!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Context") {
+            self.context = dict["Context"] as! String
+        }
+        if dict.keys.contains("FormatType") {
+            self.formatType = dict["FormatType"] as! String
+        }
+        if dict.keys.contains("Scene") {
+            self.scene = dict["Scene"] as! String
+        }
+        if dict.keys.contains("SourceLanguage") {
+            self.sourceLanguage = dict["SourceLanguage"] as! String
+        }
+        if dict.keys.contains("SourceText") {
+            self.sourceText = dict["SourceText"] as! String
+        }
+        if dict.keys.contains("TargetLanguage") {
+            self.targetLanguage = dict["TargetLanguage"] as! String
+        }
+    }
+}
+
+public class TranslateGeneralVpcResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var detectedLanguage: String?
+
+        public var translated: String?
+
+        public var wordCount: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.detectedLanguage != nil {
+                map["DetectedLanguage"] = self.detectedLanguage!
+            }
+            if self.translated != nil {
+                map["Translated"] = self.translated!
+            }
+            if self.wordCount != nil {
+                map["WordCount"] = self.wordCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DetectedLanguage") {
+                self.detectedLanguage = dict["DetectedLanguage"] as! String
+            }
+            if dict.keys.contains("Translated") {
+                self.translated = dict["Translated"] as! String
+            }
+            if dict.keys.contains("WordCount") {
+                self.wordCount = dict["WordCount"] as! String
+            }
+        }
+    }
+    public var code: Int32?
+
+    public var data: TranslateGeneralVpcResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Data") {
+            var model = TranslateGeneralVpcResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class TranslateGeneralVpcResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: TranslateGeneralVpcResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = TranslateGeneralVpcResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

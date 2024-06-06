@@ -369,6 +369,52 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getBatchTranslateByVPCWithOptions(_ request: GetBatchTranslateByVPCRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetBatchTranslateByVPCResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiType)) {
+            body["ApiType"] = request.apiType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formatType)) {
+            body["FormatType"] = request.formatType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scene)) {
+            body["Scene"] = request.scene ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceLanguage)) {
+            body["SourceLanguage"] = request.sourceLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceText)) {
+            body["SourceText"] = request.sourceText ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetLanguage)) {
+            body["TargetLanguage"] = request.targetLanguage ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetBatchTranslateByVPC",
+            "version": "2018-10-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetBatchTranslateByVPCResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getBatchTranslateByVPC(_ request: GetBatchTranslateByVPCRequest) async throws -> GetBatchTranslateByVPCResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getBatchTranslateByVPCWithOptions(request as! GetBatchTranslateByVPCRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getDetectLanguageWithOptions(_ request: GetDetectLanguageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDetectLanguageResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1029,6 +1075,54 @@ open class Client : AlibabacloudOpenApi.Client {
     public func translateGeneral(_ request: TranslateGeneralRequest) async throws -> TranslateGeneralResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await translateGeneralWithOptions(request as! TranslateGeneralRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func translateGeneralVpcWithOptions(_ request: TranslateGeneralVpcRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> TranslateGeneralVpcResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.context)) {
+            query["Context"] = request.context ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.formatType)) {
+            body["FormatType"] = request.formatType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scene)) {
+            body["Scene"] = request.scene ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceLanguage)) {
+            body["SourceLanguage"] = request.sourceLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceText)) {
+            body["SourceText"] = request.sourceText ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetLanguage)) {
+            body["TargetLanguage"] = request.targetLanguage ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TranslateGeneralVpc",
+            "version": "2018-10-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TranslateGeneralVpcResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func translateGeneralVpc(_ request: TranslateGeneralVpcRequest) async throws -> TranslateGeneralVpcResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await translateGeneralVpcWithOptions(request as! TranslateGeneralVpcRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
