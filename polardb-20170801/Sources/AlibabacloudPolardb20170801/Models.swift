@@ -9358,6 +9358,8 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
 
         public var memorySize: String?
 
+        public var orca: String?
+
         public var remoteMemorySize: String?
 
         public var sccMode: String?
@@ -9426,6 +9428,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
             if self.memorySize != nil {
                 map["MemorySize"] = self.memorySize!
             }
+            if self.orca != nil {
+                map["Orca"] = self.orca!
+            }
             if self.remoteMemorySize != nil {
                 map["RemoteMemorySize"] = self.remoteMemorySize!
             }
@@ -9489,6 +9494,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("MemorySize") {
                 self.memorySize = dict["MemorySize"] as! String
+            }
+            if dict.keys.contains("Orca") {
+                self.orca = dict["Orca"] as! String
             }
             if dict.keys.contains("RemoteMemorySize") {
                 self.remoteMemorySize = dict["RemoteMemorySize"] as! String
@@ -9609,6 +9617,8 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
 
     public var maintainTime: String?
 
+    public var orca: String?
+
     public var payType: String?
 
     public var provisionedIops: String?
@@ -9629,9 +9639,15 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
+    public var restoreDataPoint: String?
+
+    public var restoreType: String?
+
     public var SQLSize: Int64?
 
     public var serverlessType: String?
+
+    public var sourceDBCluster: String?
 
     public var standbyHAMode: String?
 
@@ -9770,6 +9786,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         if self.maintainTime != nil {
             map["MaintainTime"] = self.maintainTime!
         }
+        if self.orca != nil {
+            map["Orca"] = self.orca!
+        }
         if self.payType != nil {
             map["PayType"] = self.payType!
         }
@@ -9800,11 +9819,20 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
+        if self.restoreDataPoint != nil {
+            map["RestoreDataPoint"] = self.restoreDataPoint!
+        }
+        if self.restoreType != nil {
+            map["RestoreType"] = self.restoreType!
+        }
         if self.SQLSize != nil {
             map["SQLSize"] = self.SQLSize!
         }
         if self.serverlessType != nil {
             map["ServerlessType"] = self.serverlessType!
+        }
+        if self.sourceDBCluster != nil {
+            map["SourceDBCluster"] = self.sourceDBCluster!
         }
         if self.standbyHAMode != nil {
             map["StandbyHAMode"] = self.standbyHAMode!
@@ -9954,6 +9982,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         if dict.keys.contains("MaintainTime") {
             self.maintainTime = dict["MaintainTime"] as! String
         }
+        if dict.keys.contains("Orca") {
+            self.orca = dict["Orca"] as! String
+        }
         if dict.keys.contains("PayType") {
             self.payType = dict["PayType"] as! String
         }
@@ -9984,11 +10015,20 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         if dict.keys.contains("ResourceGroupId") {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
+        if dict.keys.contains("RestoreDataPoint") {
+            self.restoreDataPoint = dict["RestoreDataPoint"] as! String
+        }
+        if dict.keys.contains("RestoreType") {
+            self.restoreType = dict["RestoreType"] as! String
+        }
         if dict.keys.contains("SQLSize") {
             self.SQLSize = dict["SQLSize"] as! Int64
         }
         if dict.keys.contains("ServerlessType") {
             self.serverlessType = dict["ServerlessType"] as! String
+        }
+        if dict.keys.contains("SourceDBCluster") {
+            self.sourceDBCluster = dict["SourceDBCluster"] as! String
         }
         if dict.keys.contains("StandbyHAMode") {
             self.standbyHAMode = dict["StandbyHAMode"] as! String
@@ -26267,7 +26307,11 @@ public class ModifyDBClusterRequest : Tea.TeaModel {
 
     public var DBClusterId: String?
 
+    public var DBNodeCrashList: String?
+
     public var dataSyncMode: String?
+
+    public var faultInjectionType: String?
 
     public var faultSimulateMode: String?
 
@@ -26305,8 +26349,14 @@ public class ModifyDBClusterRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.DBNodeCrashList != nil {
+            map["DBNodeCrashList"] = self.DBNodeCrashList!
+        }
         if self.dataSyncMode != nil {
             map["DataSyncMode"] = self.dataSyncMode!
+        }
+        if self.faultInjectionType != nil {
+            map["FaultInjectionType"] = self.faultInjectionType!
         }
         if self.faultSimulateMode != nil {
             map["FaultSimulateMode"] = self.faultSimulateMode!
@@ -26342,8 +26392,14 @@ public class ModifyDBClusterRequest : Tea.TeaModel {
         if dict.keys.contains("DBClusterId") {
             self.DBClusterId = dict["DBClusterId"] as! String
         }
+        if dict.keys.contains("DBNodeCrashList") {
+            self.DBNodeCrashList = dict["DBNodeCrashList"] as! String
+        }
         if dict.keys.contains("DataSyncMode") {
             self.dataSyncMode = dict["DataSyncMode"] as! String
+        }
+        if dict.keys.contains("FaultInjectionType") {
+            self.faultInjectionType = dict["FaultInjectionType"] as! String
         }
         if dict.keys.contains("FaultSimulateMode") {
             self.faultSimulateMode = dict["FaultSimulateMode"] as! String

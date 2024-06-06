@@ -5297,8 +5297,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.DBNodeCrashList)) {
+            query["DBNodeCrashList"] = request.DBNodeCrashList ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dataSyncMode)) {
             query["DataSyncMode"] = request.dataSyncMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.faultInjectionType)) {
+            query["FaultInjectionType"] = request.faultInjectionType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.faultSimulateMode)) {
             query["FaultSimulateMode"] = request.faultSimulateMode ?? "";
