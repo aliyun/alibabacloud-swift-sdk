@@ -101,7 +101,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "CheckInstanceResources",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId) + "/action/checkresources",
+            "pathname": "/api/v1/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/action/checkresources",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -134,7 +134,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "CloneExperiment",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/experiments/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId) + "/action/clone",
+            "pathname": "/api/v1/experiments/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId)) + "/action/clone",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -173,7 +173,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "CloneExperimentGroup",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/experimentgroups/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentGroupId) + "/action/clone",
+            "pathname": "/api/v1/experimentgroups/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentGroupId)) + "/action/clone",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -206,7 +206,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "CloneFeatureConsistencyCheckJobConfig",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/featureconsistencycheck/jobconfigs/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(SourceFeatureConsistencyCheckJobConfigId) + "/action/clone",
+            "pathname": "/api/v1/featureconsistencycheck/jobconfigs/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(SourceFeatureConsistencyCheckJobConfigId)) + "/action/clone",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -245,7 +245,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "CloneLaboratory",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/laboratories/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(LaboratoryId) + "/action/clone",
+            "pathname": "/api/v1/laboratories/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(LaboratoryId)) + "/action/clone",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -261,6 +261,39 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await cloneLaboratoryWithOptions(LaboratoryId as! String, request as! CloneLaboratoryRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cloneTrafficControlTaskWithOptions(_ TrafficControlTaskId: String, _ request: CloneTrafficControlTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CloneTrafficControlTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CloneTrafficControlTask",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/trafficcontroltasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTaskId)) + "/action/clone",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CloneTrafficControlTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cloneTrafficControlTask(_ TrafficControlTaskId: String, _ request: CloneTrafficControlTaskRequest) async throws -> CloneTrafficControlTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await cloneTrafficControlTaskWithOptions(TrafficControlTaskId as! String, request as! CloneTrafficControlTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -794,7 +827,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "CreateInstanceResource",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId) + "/resources",
+            "pathname": "/api/v1/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/resources",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -1049,7 +1082,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "CreateResourceRuleItem",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/resourcerules/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceRuleId) + "/items",
+            "pathname": "/api/v1/resourcerules/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceRuleId)) + "/items",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -1130,7 +1163,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "CreateSubCrowd",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/crowds/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(CrowdId) + "/subcrowds",
+            "pathname": "/api/v1/crowds/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(CrowdId)) + "/subcrowds",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -1200,6 +1233,177 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createTrafficControlTargetWithOptions(_ request: CreateTrafficControlTargetRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateTrafficControlTargetResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            body["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.event)) {
+            body["Event"] = request.event ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.itemConditionArray)) {
+            body["ItemConditionArray"] = request.itemConditionArray ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.itemConditionExpress)) {
+            body["ItemConditionExpress"] = request.itemConditionExpress ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.itemConditionType)) {
+            body["ItemConditionType"] = request.itemConditionType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.newProductRegulation)) {
+            body["NewProductRegulation"] = request.newProductRegulation!;
+        }
+        if (!TeaUtils.Client.isUnset(request.recallName)) {
+            body["RecallName"] = request.recallName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            body["StartTime"] = request.startTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.statisPeriod)) {
+            body["StatisPeriod"] = request.statisPeriod ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            body["Status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.toleranceValue)) {
+            body["ToleranceValue"] = request.toleranceValue!;
+        }
+        if (!TeaUtils.Client.isUnset(request.trafficControlTaskId)) {
+            body["TrafficControlTaskId"] = request.trafficControlTaskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.value)) {
+            body["Value"] = request.value!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateTrafficControlTarget",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/trafficcontroltargets",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateTrafficControlTargetResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createTrafficControlTarget(_ request: CreateTrafficControlTargetRequest) async throws -> CreateTrafficControlTargetResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createTrafficControlTargetWithOptions(request as! CreateTrafficControlTargetRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createTrafficControlTaskWithOptions(_ request: CreateTrafficControlTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateTrafficControlTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.behaviorTableMetaId)) {
+            body["BehaviorTableMetaId"] = request.behaviorTableMetaId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.controlGranularity)) {
+            body["ControlGranularity"] = request.controlGranularity ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.controlLogic)) {
+            body["ControlLogic"] = request.controlLogic ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.controlType)) {
+            body["ControlType"] = request.controlType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            body["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.executionTime)) {
+            body["ExecutionTime"] = request.executionTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.itemConditionArray)) {
+            body["ItemConditionArray"] = request.itemConditionArray ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.itemConditionExpress)) {
+            body["ItemConditionExpress"] = request.itemConditionExpress ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.itemConditionType)) {
+            body["ItemConditionType"] = request.itemConditionType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.itemTableMetaId)) {
+            body["ItemTableMetaId"] = request.itemTableMetaId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sceneId)) {
+            body["SceneId"] = request.sceneId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            body["StartTime"] = request.startTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.statisBehaviorConditionArray)) {
+            body["StatisBehaviorConditionArray"] = request.statisBehaviorConditionArray ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.statisBehaviorConditionExpress)) {
+            body["StatisBehaviorConditionExpress"] = request.statisBehaviorConditionExpress ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.statisBehaviorConditionType)) {
+            body["StatisBehaviorConditionType"] = request.statisBehaviorConditionType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.trafficControlTargets)) {
+            body["TrafficControlTargets"] = request.trafficControlTargets ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.userConditionArray)) {
+            body["UserConditionArray"] = request.userConditionArray ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userConditionExpress)) {
+            body["UserConditionExpress"] = request.userConditionExpress ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userConditionType)) {
+            body["UserConditionType"] = request.userConditionType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userTableMetaId)) {
+            body["UserTableMetaId"] = request.userTableMetaId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateTrafficControlTask",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/trafficcontroltasks",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateTrafficControlTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createTrafficControlTask(_ request: CreateTrafficControlTaskRequest) async throws -> CreateTrafficControlTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createTrafficControlTaskWithOptions(request as! CreateTrafficControlTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func debugResourceRuleWithOptions(_ ResourceRuleId: String, _ tmpReq: DebugResourceRuleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DebugResourceRuleResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: DebugResourceRuleShrinkRequest = DebugResourceRuleShrinkRequest([:])
@@ -1225,7 +1429,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DebugResourceRule",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/resourcerules/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceRuleId) + "/action/debug",
+            "pathname": "/api/v1/resourcerules/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceRuleId)) + "/action/debug",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -1258,7 +1462,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteABMetric",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/abmetrics/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ABMetricId),
+            "pathname": "/api/v1/abmetrics/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ABMetricId)),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -1291,7 +1495,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteABMetricGroup",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/abmetricgroups/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ABMetricGroupId),
+            "pathname": "/api/v1/abmetricgroups/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ABMetricGroupId)),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -1324,7 +1528,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteCrowd",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/crowds/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(CrowdId),
+            "pathname": "/api/v1/crowds/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(CrowdId)),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -1357,7 +1561,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteExperiment",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/experiments/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId),
+            "pathname": "/api/v1/experiments/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId)),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -1390,7 +1594,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteExperimentGroup",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/experimentgroups/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentGroupId),
+            "pathname": "/api/v1/experimentgroups/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentGroupId)),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -1417,7 +1621,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteInstanceResource",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId) + "/resources/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceId),
+            "pathname": "/api/v1/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/resources/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceId)),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -1450,7 +1654,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteLaboratory",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/laboratories/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(LaboratoryId),
+            "pathname": "/api/v1/laboratories/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(LaboratoryId)),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -1483,7 +1687,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteLayer",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/layers/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(LayerId),
+            "pathname": "/api/v1/layers/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(LayerId)),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -1516,7 +1720,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteParam",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/params/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ParamId),
+            "pathname": "/api/v1/params/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ParamId)),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -1549,7 +1753,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteResourceRule",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/resourcerules/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceRuleId),
+            "pathname": "/api/v1/resourcerules/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceRuleId)),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -1582,7 +1786,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteResourceRuleItem",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/resourcerules/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceRuleId) + "/items/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceRuleItemId),
+            "pathname": "/api/v1/resourcerules/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceRuleId)) + "/items/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceRuleItemId)),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -1615,7 +1819,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteScene",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/scenes/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(SceneId),
+            "pathname": "/api/v1/scenes/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(SceneId)),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -1648,7 +1852,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteSubCrowd",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/crowds/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(CrowdId) + "/subcrowds/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(SubCrowdId),
+            "pathname": "/api/v1/crowds/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(CrowdId)) + "/subcrowds/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(SubCrowdId)),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -1681,7 +1885,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteTableMeta",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/tablemetas/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(TableMetaId),
+            "pathname": "/api/v1/tablemetas/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TableMetaId)),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -1700,6 +1904,138 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteTrafficControlTargetWithOptions(_ TrafficControlTargetId: String, _ request: DeleteTrafficControlTargetRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteTrafficControlTargetResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteTrafficControlTarget",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/trafficcontroltargets/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTargetId)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteTrafficControlTargetResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteTrafficControlTarget(_ TrafficControlTargetId: String, _ request: DeleteTrafficControlTargetRequest) async throws -> DeleteTrafficControlTargetResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteTrafficControlTargetWithOptions(TrafficControlTargetId as! String, request as! DeleteTrafficControlTargetRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteTrafficControlTaskWithOptions(_ TrafficControlTaskId: String, _ request: DeleteTrafficControlTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteTrafficControlTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteTrafficControlTask",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/trafficcontroltasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTaskId)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteTrafficControlTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteTrafficControlTask(_ TrafficControlTaskId: String, _ request: DeleteTrafficControlTaskRequest) async throws -> DeleteTrafficControlTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteTrafficControlTaskWithOptions(TrafficControlTaskId as! String, request as! DeleteTrafficControlTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generateTrafficControlTaskCodeWithOptions(_ TrafficControlTaskId: String, _ request: GenerateTrafficControlTaskCodeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GenerateTrafficControlTaskCodeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GenerateTrafficControlTaskCode",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/trafficcontroltasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTaskId)) + "/action/code",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GenerateTrafficControlTaskCodeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generateTrafficControlTaskCode(_ TrafficControlTaskId: String, _ request: GenerateTrafficControlTaskCodeRequest) async throws -> GenerateTrafficControlTaskCodeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await generateTrafficControlTaskCodeWithOptions(TrafficControlTaskId as! String, request as! GenerateTrafficControlTaskCodeRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generateTrafficControlTaskConfigWithOptions(_ TrafficControlTaskId: String, _ request: GenerateTrafficControlTaskConfigRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GenerateTrafficControlTaskConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GenerateTrafficControlTaskConfig",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/trafficcontroltasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTaskId)) + "/action/config",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GenerateTrafficControlTaskConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func generateTrafficControlTaskConfig(_ TrafficControlTaskId: String, _ request: GenerateTrafficControlTaskConfigRequest) async throws -> GenerateTrafficControlTaskConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await generateTrafficControlTaskConfigWithOptions(TrafficControlTaskId as! String, request as! GenerateTrafficControlTaskConfigRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getABMetricWithOptions(_ ABMetricId: String, _ request: GetABMetricRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetABMetricResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1714,7 +2050,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetABMetric",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/abmetrics/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ABMetricId),
+            "pathname": "/api/v1/abmetrics/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ABMetricId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -1747,7 +2083,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetABMetricGroup",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/abmetricgroups/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ABMetricGroupId),
+            "pathname": "/api/v1/abmetricgroups/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ABMetricGroupId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -1780,7 +2116,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetCalculationJob",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/calculationjobs/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(CalculationJobId),
+            "pathname": "/api/v1/calculationjobs/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(CalculationJobId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -1813,7 +2149,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetExperiment",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/experiments/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId),
+            "pathname": "/api/v1/experiments/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -1846,7 +2182,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetExperimentGroup",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/experimentgroups/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentGroupId),
+            "pathname": "/api/v1/experimentgroups/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentGroupId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -1879,7 +2215,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetFeatureConsistencyCheckJob",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/featureconsistencycheck/jobs/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(FeatureConsistencyCheckJobId),
+            "pathname": "/api/v1/featureconsistencycheck/jobs/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(FeatureConsistencyCheckJobId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -1912,7 +2248,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetFeatureConsistencyCheckJobConfig",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/featureconsistencycheck/jobconfigs/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(FeatureConsistencyCheckJobConfigId),
+            "pathname": "/api/v1/featureconsistencycheck/jobconfigs/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(FeatureConsistencyCheckJobConfigId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -1939,7 +2275,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetInstance",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId),
+            "pathname": "/api/v1/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -1966,7 +2302,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetInstanceResource",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId) + "/resources/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceId),
+            "pathname": "/api/v1/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/resources/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -1993,7 +2329,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetInstanceResourceTable",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId) + "/resources/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceId) + "/tables/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(TableName),
+            "pathname": "/api/v1/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/resources/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceId)) + "/tables/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TableName)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -2026,7 +2362,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetLaboratory",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/laboratories/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(LaboratoryId),
+            "pathname": "/api/v1/laboratories/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(LaboratoryId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -2059,7 +2395,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetLayer",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/layers/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(LayerId),
+            "pathname": "/api/v1/layers/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(LayerId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -2092,7 +2428,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetResourceRule",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/resourcerules/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceRuleId),
+            "pathname": "/api/v1/resourcerules/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceRuleId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -2125,7 +2461,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetScene",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/scenes/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(SceneId),
+            "pathname": "/api/v1/scenes/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(SceneId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -2158,7 +2494,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetSubCrowd",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/crowds/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(CrowdId) + "/subcrowds/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(SubCrowdId),
+            "pathname": "/api/v1/crowds/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(CrowdId)) + "/subcrowds/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(SubCrowdId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -2191,7 +2527,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetTableMeta",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/tablemetas/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(TableMetaId),
+            "pathname": "/api/v1/tablemetas/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TableMetaId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -2207,6 +2543,120 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getTableMetaWithOptions(TableMetaId as! String, request as! GetTableMetaRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getTrafficControlTargetWithOptions(_ TrafficControlTargetId: String, _ request: GetTrafficControlTargetRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetTrafficControlTargetResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetTrafficControlTarget",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/trafficcontroltargets/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTargetId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetTrafficControlTargetResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getTrafficControlTarget(_ TrafficControlTargetId: String, _ request: GetTrafficControlTargetRequest) async throws -> GetTrafficControlTargetResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getTrafficControlTargetWithOptions(TrafficControlTargetId as! String, request as! GetTrafficControlTargetRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getTrafficControlTaskWithOptions(_ TrafficControlTaskId: String, _ request: GetTrafficControlTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetTrafficControlTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.controlTargetFilter)) {
+            query["ControlTargetFilter"] = request.controlTargetFilter ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.environment)) {
+            query["Environment"] = request.environment ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetTrafficControlTask",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/trafficcontroltasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTaskId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetTrafficControlTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getTrafficControlTask(_ TrafficControlTaskId: String, _ request: GetTrafficControlTaskRequest) async throws -> GetTrafficControlTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getTrafficControlTaskWithOptions(TrafficControlTaskId as! String, request as! GetTrafficControlTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getTrafficControlTaskTrafficWithOptions(_ TrafficControlTaskId: String, _ request: GetTrafficControlTaskTrafficRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetTrafficControlTaskTrafficResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.environment)) {
+            query["Environment"] = request.environment ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetTrafficControlTaskTraffic",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/trafficcontroltasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTaskId)) + "/action/traffic",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetTrafficControlTaskTrafficResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getTrafficControlTaskTraffic(_ TrafficControlTaskId: String, _ request: GetTrafficControlTaskTrafficRequest) async throws -> GetTrafficControlTaskTrafficResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getTrafficControlTaskTrafficWithOptions(TrafficControlTaskId as! String, request as! GetTrafficControlTaskTrafficRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2374,7 +2824,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListCrowdUsers",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/crowds/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(CrowdId) + "/users",
+            "pathname": "/api/v1/crowds/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(CrowdId)) + "/users",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -2578,7 +3028,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListFeatureConsistencyCheckJobFeatureReports",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/featureconsistencycheck/jobs/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(FeatureConsistencyCheckJobId) + "/featurereports",
+            "pathname": "/api/v1/featureconsistencycheck/jobs/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(FeatureConsistencyCheckJobId)) + "/featurereports",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -2619,7 +3069,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListFeatureConsistencyCheckJobScoreReports",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/featureconsistencycheck/jobs/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(FeatureConsistencyCheckJobId) + "/scorereports",
+            "pathname": "/api/v1/featureconsistencycheck/jobs/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(FeatureConsistencyCheckJobId)) + "/scorereports",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -2706,7 +3156,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListInstanceResources",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId) + "/resources",
+            "pathname": "/api/v1/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/resources",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -3003,7 +3453,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListSubCrowds",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/crowds/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(CrowdId) + "/subcrowds",
+            "pathname": "/api/v1/crowds/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(CrowdId)) + "/subcrowds",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -3070,6 +3520,129 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listTrafficControlTargetTrafficHistoryWithOptions(_ TrafficControlTargetId: String, _ request: ListTrafficControlTargetTrafficHistoryRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTrafficControlTargetTrafficHistoryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.environment)) {
+            query["Environment"] = request.environment ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.experimentGroupId)) {
+            query["ExperimentGroupId"] = request.experimentGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.experimentId)) {
+            query["ExperimentId"] = request.experimentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.itemId)) {
+            query["ItemId"] = request.itemId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.threshold)) {
+            query["Threshold"] = request.threshold ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListTrafficControlTargetTrafficHistory",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/trafficcontroltargets/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTargetId)) + "/action/traffichistory",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListTrafficControlTargetTrafficHistoryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listTrafficControlTargetTrafficHistory(_ TrafficControlTargetId: String, _ request: ListTrafficControlTargetTrafficHistoryRequest) async throws -> ListTrafficControlTargetTrafficHistoryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listTrafficControlTargetTrafficHistoryWithOptions(TrafficControlTargetId as! String, request as! ListTrafficControlTargetTrafficHistoryRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listTrafficControlTasksWithOptions(_ request: ListTrafficControlTasksRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTrafficControlTasksResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.all)) {
+            query["All"] = request.all!;
+        }
+        if (!TeaUtils.Client.isUnset(request.controlTargetFilter)) {
+            query["ControlTargetFilter"] = request.controlTargetFilter ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.environment)) {
+            query["Environment"] = request.environment ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.order)) {
+            query["Order"] = request.order ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sceneId)) {
+            query["SceneId"] = request.sceneId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sortBy)) {
+            query["SortBy"] = request.sortBy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["Status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.trafficControlTaskId)) {
+            query["TrafficControlTaskId"] = request.trafficControlTaskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListTrafficControlTasks",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/trafficcontroltasks",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListTrafficControlTasksResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listTrafficControlTasks(_ request: ListTrafficControlTasksRequest) async throws -> ListTrafficControlTasksResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listTrafficControlTasksWithOptions(request as! ListTrafficControlTasksRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func offlineExperimentWithOptions(_ ExperimentId: String, _ request: OfflineExperimentRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> OfflineExperimentResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -3084,7 +3657,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "OfflineExperiment",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/experiments/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId) + "/action/offline",
+            "pathname": "/api/v1/experiments/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId)) + "/action/offline",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -3117,7 +3690,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "OfflineExperimentGroup",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/experimentgroups/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentGroupId) + "/action/offline",
+            "pathname": "/api/v1/experimentgroups/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentGroupId)) + "/action/offline",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -3150,7 +3723,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "OfflineLaboratory",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/laboratories/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(LaboratoryId) + "/action/offline",
+            "pathname": "/api/v1/laboratories/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(LaboratoryId)) + "/action/offline",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -3183,7 +3756,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "OnlineExperiment",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/experiments/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId) + "/action/online",
+            "pathname": "/api/v1/experiments/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId)) + "/action/online",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -3216,7 +3789,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "OnlineExperimentGroup",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/experimentgroups/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentGroupId) + "/action/online",
+            "pathname": "/api/v1/experimentgroups/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentGroupId)) + "/action/online",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -3249,7 +3822,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "OnlineLaboratory",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/laboratories/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(LaboratoryId) + "/action/online",
+            "pathname": "/api/v1/laboratories/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(LaboratoryId)) + "/action/online",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -3282,7 +3855,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "PushAllExperiment",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/experiments/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId) + "/action/pushall",
+            "pathname": "/api/v1/experiments/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId)) + "/action/pushall",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -3323,7 +3896,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "PushResourceRule",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/resourcerules/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceRuleId) + "/action/push",
+            "pathname": "/api/v1/resourcerules/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceRuleId)) + "/action/push",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -3339,6 +3912,42 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await pushResourceRuleWithOptions(ResourceRuleId as! String, request as! PushResourceRuleRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func releaseTrafficControlTaskWithOptions(_ TrafficControlTaskId: String, _ request: ReleaseTrafficControlTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ReleaseTrafficControlTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.environment)) {
+            body["Environment"] = request.environment ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ReleaseTrafficControlTask",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/trafficcontroltasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTaskId)) + "/action/release",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ReleaseTrafficControlTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func releaseTrafficControlTask(_ TrafficControlTaskId: String, _ request: ReleaseTrafficControlTaskRequest) async throws -> ReleaseTrafficControlTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await releaseTrafficControlTaskWithOptions(TrafficControlTaskId as! String, request as! ReleaseTrafficControlTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3383,7 +3992,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ReportABMetricGroup",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/abmetricgroups/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ABMetricGroupId) + "/action/report",
+            "pathname": "/api/v1/abmetricgroups/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ABMetricGroupId)) + "/action/report",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -3399,6 +4008,191 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await reportABMetricGroupWithOptions(ABMetricGroupId as! String, request as! ReportABMetricGroupRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func splitTrafficControlTargetWithOptions(_ TrafficControlTargetId: String, _ request: SplitTrafficControlTargetRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SplitTrafficControlTargetResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.environment)) {
+            body["Environment"] = request.environment ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.setValues)) {
+            body["SetValues"] = request.setValues ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.timePoints)) {
+            body["TimePoints"] = request.timePoints ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SplitTrafficControlTarget",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/trafficcontroltargets/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTargetId)) + "/action/split",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SplitTrafficControlTargetResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func splitTrafficControlTarget(_ TrafficControlTargetId: String, _ request: SplitTrafficControlTargetRequest) async throws -> SplitTrafficControlTargetResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await splitTrafficControlTargetWithOptions(TrafficControlTargetId as! String, request as! SplitTrafficControlTargetRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startTrafficControlTargetWithOptions(_ TrafficControlTargetId: String, _ request: StartTrafficControlTargetRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StartTrafficControlTargetResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StartTrafficControlTarget",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/trafficcontroltargets/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTargetId)) + "/action/start",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StartTrafficControlTargetResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startTrafficControlTarget(_ TrafficControlTargetId: String, _ request: StartTrafficControlTargetRequest) async throws -> StartTrafficControlTargetResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await startTrafficControlTargetWithOptions(TrafficControlTargetId as! String, request as! StartTrafficControlTargetRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startTrafficControlTaskWithOptions(_ TrafficControlTaskId: String, _ request: StartTrafficControlTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StartTrafficControlTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.environment)) {
+            body["Environment"] = request.environment ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StartTrafficControlTask",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/trafficcontroltasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTaskId)) + "/action/start",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StartTrafficControlTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startTrafficControlTask(_ TrafficControlTaskId: String, _ request: StartTrafficControlTaskRequest) async throws -> StartTrafficControlTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await startTrafficControlTaskWithOptions(TrafficControlTaskId as! String, request as! StartTrafficControlTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopTrafficControlTargetWithOptions(_ TrafficControlTargetId: String, _ request: StopTrafficControlTargetRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StopTrafficControlTargetResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StopTrafficControlTarget",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/trafficcontroltargets/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTargetId)) + "/action/stop",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StopTrafficControlTargetResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopTrafficControlTarget(_ TrafficControlTargetId: String, _ request: StopTrafficControlTargetRequest) async throws -> StopTrafficControlTargetResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await stopTrafficControlTargetWithOptions(TrafficControlTargetId as! String, request as! StopTrafficControlTargetRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopTrafficControlTaskWithOptions(_ TrafficControlTaskId: String, _ request: StopTrafficControlTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StopTrafficControlTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.environment)) {
+            body["Environment"] = request.environment ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StopTrafficControlTask",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/trafficcontroltasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTaskId)) + "/action/stop",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StopTrafficControlTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopTrafficControlTask(_ TrafficControlTaskId: String, _ request: StopTrafficControlTaskRequest) async throws -> StopTrafficControlTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await stopTrafficControlTaskWithOptions(TrafficControlTaskId as! String, request as! StopTrafficControlTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3476,7 +4270,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "TerminateFeatureConsistencyCheckJob",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/featureconsistencycheck/jobs/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(FeatureConsistencyCheckJobId) + "/action/terminate",
+            "pathname": "/api/v1/featureconsistencycheck/jobs/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(FeatureConsistencyCheckJobId)) + "/action/terminate",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -3545,7 +4339,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "UpdateABMetric",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/abmetrics/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ABMetricId),
+            "pathname": "/api/v1/abmetrics/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ABMetricId)),
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
@@ -3593,7 +4387,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "UpdateABMetricGroup",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/abmetricgroups/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ABMetricGroupId),
+            "pathname": "/api/v1/abmetricgroups/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ABMetricGroupId)),
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
@@ -3632,7 +4426,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "UpdateCrowd",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/crowds/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(CrowdId),
+            "pathname": "/api/v1/crowds/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(CrowdId)),
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
@@ -3686,7 +4480,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "UpdateExperiment",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/experiments/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId),
+            "pathname": "/api/v1/experiments/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId)),
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
@@ -3761,7 +4555,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "UpdateExperimentGroup",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/experimentgroups/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentGroupId),
+            "pathname": "/api/v1/experimentgroups/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentGroupId)),
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
@@ -3887,7 +4681,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "UpdateFeatureConsistencyCheckJobConfig",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/featureconsistencycheck/jobconfigs/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(FeatureConsistencyCheckJobConfigId),
+            "pathname": "/api/v1/featureconsistencycheck/jobconfigs/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(FeatureConsistencyCheckJobConfigId)),
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
@@ -3923,7 +4717,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "UpdateInstanceResource",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId) + "/resources/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceId),
+            "pathname": "/api/v1/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/resources/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceId)),
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
@@ -3986,7 +4780,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "UpdateLaboratory",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/laboratories/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(LaboratoryId),
+            "pathname": "/api/v1/laboratories/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(LaboratoryId)),
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
@@ -4025,7 +4819,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "UpdateLayer",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/layers/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(LayerId),
+            "pathname": "/api/v1/layers/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(LayerId)),
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
@@ -4061,7 +4855,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "UpdateParam",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/params/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ParamId),
+            "pathname": "/api/v1/params/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ParamId)),
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
@@ -4112,7 +4906,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "UpdateResourceRule",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/resourcerules/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceRuleId),
+            "pathname": "/api/v1/resourcerules/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceRuleId)),
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
@@ -4160,7 +4954,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "UpdateResourceRuleItem",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/resourcerules/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceRuleId) + "/items/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceRuleItemId),
+            "pathname": "/api/v1/resourcerules/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceRuleId)) + "/items/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceRuleItemId)),
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -4202,7 +4996,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "UpdateScene",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/scenes/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(SceneId),
+            "pathname": "/api/v1/scenes/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(SceneId)),
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
@@ -4253,7 +5047,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "UpdateTableMeta",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/tablemetas/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(TableMetaId),
+            "pathname": "/api/v1/tablemetas/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TableMetaId)),
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
@@ -4269,6 +5063,223 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateTableMetaWithOptions(TableMetaId as! String, request as! UpdateTableMetaRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateTrafficControlTargetWithOptions(_ TrafficControlTargetId: String, _ request: UpdateTrafficControlTargetRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateTrafficControlTargetResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.newParam3)) {
+            query["new-param-3"] = request.newParam3 ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            body["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.event)) {
+            body["Event"] = request.event ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.itemConditionArray)) {
+            body["ItemConditionArray"] = request.itemConditionArray ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.itemConditionExpress)) {
+            body["ItemConditionExpress"] = request.itemConditionExpress ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.itemConditionType)) {
+            body["ItemConditionType"] = request.itemConditionType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.newProductRegulation)) {
+            body["NewProductRegulation"] = request.newProductRegulation!;
+        }
+        if (!TeaUtils.Client.isUnset(request.recallName)) {
+            body["RecallName"] = request.recallName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            body["StartTime"] = request.startTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.statisPeriod)) {
+            body["StatisPeriod"] = request.statisPeriod ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            body["Status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.toleranceValue)) {
+            body["ToleranceValue"] = request.toleranceValue!;
+        }
+        if (!TeaUtils.Client.isUnset(request.value)) {
+            body["Value"] = request.value!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateTrafficControlTarget",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/trafficcontroltargets/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTargetId)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateTrafficControlTargetResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateTrafficControlTarget(_ TrafficControlTargetId: String, _ request: UpdateTrafficControlTargetRequest) async throws -> UpdateTrafficControlTargetResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateTrafficControlTargetWithOptions(TrafficControlTargetId as! String, request as! UpdateTrafficControlTargetRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateTrafficControlTaskWithOptions(_ TrafficControlTaskId: String, _ request: UpdateTrafficControlTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateTrafficControlTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.behaviorTableMetaId)) {
+            body["BehaviorTableMetaId"] = request.behaviorTableMetaId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.controlGranularity)) {
+            body["ControlGranularity"] = request.controlGranularity ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.controlLogic)) {
+            body["ControlLogic"] = request.controlLogic ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.controlType)) {
+            body["ControlType"] = request.controlType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            body["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.executionTime)) {
+            body["ExecutionTime"] = request.executionTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.itemConditionArray)) {
+            body["ItemConditionArray"] = request.itemConditionArray ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.itemConditionExpress)) {
+            body["ItemConditionExpress"] = request.itemConditionExpress ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.itemConditionType)) {
+            body["ItemConditionType"] = request.itemConditionType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.itemTableMetaId)) {
+            body["ItemTableMetaId"] = request.itemTableMetaId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sceneId)) {
+            body["SceneId"] = request.sceneId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            body["StartTime"] = request.startTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.statisBaeaviorConditionArray)) {
+            body["StatisBaeaviorConditionArray"] = request.statisBaeaviorConditionArray ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.statisBehaviorConditionExpress)) {
+            body["StatisBehaviorConditionExpress"] = request.statisBehaviorConditionExpress ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.statisBehaviorConditionType)) {
+            body["StatisBehaviorConditionType"] = request.statisBehaviorConditionType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.trafficControlTargets)) {
+            body["TrafficControlTargets"] = request.trafficControlTargets ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.userConditionArray)) {
+            body["UserConditionArray"] = request.userConditionArray ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userConditionExpress)) {
+            body["UserConditionExpress"] = request.userConditionExpress ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userConditionType)) {
+            body["UserConditionType"] = request.userConditionType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userTableMetaId)) {
+            body["UserTableMetaId"] = request.userTableMetaId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateTrafficControlTask",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/trafficcontroltasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTaskId)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateTrafficControlTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateTrafficControlTask(_ TrafficControlTaskId: String, _ request: UpdateTrafficControlTaskRequest) async throws -> UpdateTrafficControlTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateTrafficControlTaskWithOptions(TrafficControlTaskId as! String, request as! UpdateTrafficControlTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateTrafficControlTaskTrafficWithOptions(_ TrafficControlTaskId: String, _ request: UpdateTrafficControlTaskTrafficRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateTrafficControlTaskTrafficResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.newParam3)) {
+            query["new-param-3"] = request.newParam3 ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.environment)) {
+            body["Environment"] = request.environment ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.traffics)) {
+            body["Traffics"] = request.traffics ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateTrafficControlTaskTraffic",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/trafficcontroltasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTaskId)) + "/action/traffic",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateTrafficControlTaskTrafficResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateTrafficControlTaskTraffic(_ TrafficControlTaskId: String, _ request: UpdateTrafficControlTaskTrafficRequest) async throws -> UpdateTrafficControlTaskTrafficResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateTrafficControlTaskTrafficWithOptions(TrafficControlTaskId as! String, request as! UpdateTrafficControlTaskTrafficRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
