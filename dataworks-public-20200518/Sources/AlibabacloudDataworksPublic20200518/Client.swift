@@ -8616,6 +8616,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMeasureDataWithOptions(_ request: ListMeasureDataRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMeasureDataResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.componentCode)) {
+            query["ComponentCode"] = request.componentCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domainCode)) {
+            query["DomainCode"] = request.domainCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListMeasureData",
+            "version": "2020-05-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListMeasureDataResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMeasureData(_ request: ListMeasureDataRequest) async throws -> ListMeasureDataResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listMeasureDataWithOptions(request as! ListMeasureDataRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listMetaCollectionEntitiesWithOptions(_ request: ListMetaCollectionEntitiesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMetaCollectionEntitiesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
