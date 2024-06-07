@@ -2410,6 +2410,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteAddonReleaseWithOptions(_ request: DeleteAddonReleaseRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAddonReleaseResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.addonName)) {
+            query["AddonName"] = request.addonName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.environmentId)) {
             query["EnvironmentId"] = request.environmentId ?? "";
         }

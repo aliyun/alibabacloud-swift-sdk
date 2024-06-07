@@ -16954,6 +16954,8 @@ public class DelAuthTokenResponse : Tea.TeaModel {
 }
 
 public class DeleteAddonReleaseRequest : Tea.TeaModel {
+    public var addonName: String?
+
     public var environmentId: String?
 
     public var force: Bool?
@@ -16976,6 +16978,9 @@ public class DeleteAddonReleaseRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.addonName != nil {
+            map["AddonName"] = self.addonName!
+        }
         if self.environmentId != nil {
             map["EnvironmentId"] = self.environmentId!
         }
@@ -16992,6 +16997,9 @@ public class DeleteAddonReleaseRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AddonName") {
+            self.addonName = dict["AddonName"] as! String
+        }
         if dict.keys.contains("EnvironmentId") {
             self.environmentId = dict["EnvironmentId"] as! String
         }
@@ -42902,6 +42910,8 @@ public class ListAddonsResponseBody : Tea.TeaModel {
         }
         public class Environments : Tea.TeaModel {
             public class Dependencies : Tea.TeaModel {
+                public var clusterTypes: [String]?
+
                 public var features: [String: Bool]?
 
                 public var services: [String]?
@@ -42920,6 +42930,9 @@ public class ListAddonsResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.clusterTypes != nil {
+                        map["ClusterTypes"] = self.clusterTypes!
+                    }
                     if self.features != nil {
                         map["Features"] = self.features!
                     }
@@ -42930,6 +42943,9 @@ public class ListAddonsResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ClusterTypes") {
+                        self.clusterTypes = dict["ClusterTypes"] as! [String]
+                    }
                     if dict.keys.contains("Features") {
                         self.features = dict["Features"] as! [String: Bool]
                     }
