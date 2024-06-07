@@ -156,7 +156,7 @@ open class Client : AlibabacloudOpenApi.Client {
             query["OutputBarCode"] = request.outputBarCode!;
         }
         if (!TeaUtils.Client.isUnset(request.outputCoordinate)) {
-            query["OutputCoordinate"] = request.outputCoordinate!;
+            query["OutputCoordinate"] = request.outputCoordinate ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.outputFigure)) {
             query["OutputFigure"] = request.outputFigure!;
