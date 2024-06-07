@@ -390,6 +390,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.expiration)) {
             query["Expiration"] = request.expiration ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.extend)) {
+            query["Extend"] = request.extend ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.extension_)) {
             query["Extension"] = request.extension_ ?? "";
         }
