@@ -2829,6 +2829,115 @@ public class DeleteRegistrationPoliciesResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteUserDevicesRequest : Tea.TeaModel {
+    public var deviceTags: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.deviceTags != nil {
+            map["DeviceTags"] = self.deviceTags!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DeviceTags") {
+            self.deviceTags = dict["DeviceTags"] as! [String]
+        }
+    }
+}
+
+public class DeleteUserDevicesResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DeleteUserDevicesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteUserDevicesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteUserDevicesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DeleteUserGroupRequest : Tea.TeaModel {
     public var userGroupId: String?
 
@@ -3087,6 +3196,235 @@ public class DetachApplication2ConnectorResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DetachApplication2ConnectorResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ExportUserDevicesRequest : Tea.TeaModel {
+    public var appStatuses: [String]?
+
+    public var department: String?
+
+    public var deviceBelong: String?
+
+    public var deviceStatuses: [String]?
+
+    public var deviceTags: [String]?
+
+    public var deviceTypes: [String]?
+
+    public var dlpStatuses: [String]?
+
+    public var hostname: String?
+
+    public var iaStatuses: [String]?
+
+    public var mac: String?
+
+    public var nacStatuses: [String]?
+
+    public var paStatuses: [String]?
+
+    public var saseUserId: String?
+
+    public var sharingStatus: Bool?
+
+    public var username: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appStatuses != nil {
+            map["AppStatuses"] = self.appStatuses!
+        }
+        if self.department != nil {
+            map["Department"] = self.department!
+        }
+        if self.deviceBelong != nil {
+            map["DeviceBelong"] = self.deviceBelong!
+        }
+        if self.deviceStatuses != nil {
+            map["DeviceStatuses"] = self.deviceStatuses!
+        }
+        if self.deviceTags != nil {
+            map["DeviceTags"] = self.deviceTags!
+        }
+        if self.deviceTypes != nil {
+            map["DeviceTypes"] = self.deviceTypes!
+        }
+        if self.dlpStatuses != nil {
+            map["DlpStatuses"] = self.dlpStatuses!
+        }
+        if self.hostname != nil {
+            map["Hostname"] = self.hostname!
+        }
+        if self.iaStatuses != nil {
+            map["IaStatuses"] = self.iaStatuses!
+        }
+        if self.mac != nil {
+            map["Mac"] = self.mac!
+        }
+        if self.nacStatuses != nil {
+            map["NacStatuses"] = self.nacStatuses!
+        }
+        if self.paStatuses != nil {
+            map["PaStatuses"] = self.paStatuses!
+        }
+        if self.saseUserId != nil {
+            map["SaseUserId"] = self.saseUserId!
+        }
+        if self.sharingStatus != nil {
+            map["SharingStatus"] = self.sharingStatus!
+        }
+        if self.username != nil {
+            map["Username"] = self.username!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppStatuses") {
+            self.appStatuses = dict["AppStatuses"] as! [String]
+        }
+        if dict.keys.contains("Department") {
+            self.department = dict["Department"] as! String
+        }
+        if dict.keys.contains("DeviceBelong") {
+            self.deviceBelong = dict["DeviceBelong"] as! String
+        }
+        if dict.keys.contains("DeviceStatuses") {
+            self.deviceStatuses = dict["DeviceStatuses"] as! [String]
+        }
+        if dict.keys.contains("DeviceTags") {
+            self.deviceTags = dict["DeviceTags"] as! [String]
+        }
+        if dict.keys.contains("DeviceTypes") {
+            self.deviceTypes = dict["DeviceTypes"] as! [String]
+        }
+        if dict.keys.contains("DlpStatuses") {
+            self.dlpStatuses = dict["DlpStatuses"] as! [String]
+        }
+        if dict.keys.contains("Hostname") {
+            self.hostname = dict["Hostname"] as! String
+        }
+        if dict.keys.contains("IaStatuses") {
+            self.iaStatuses = dict["IaStatuses"] as! [String]
+        }
+        if dict.keys.contains("Mac") {
+            self.mac = dict["Mac"] as! String
+        }
+        if dict.keys.contains("NacStatuses") {
+            self.nacStatuses = dict["NacStatuses"] as! [String]
+        }
+        if dict.keys.contains("PaStatuses") {
+            self.paStatuses = dict["PaStatuses"] as! [String]
+        }
+        if dict.keys.contains("SaseUserId") {
+            self.saseUserId = dict["SaseUserId"] as! String
+        }
+        if dict.keys.contains("SharingStatus") {
+            self.sharingStatus = dict["SharingStatus"] as! Bool
+        }
+        if dict.keys.contains("Username") {
+            self.username = dict["Username"] as! String
+        }
+    }
+}
+
+public class ExportUserDevicesResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var signedUrl: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.signedUrl != nil {
+            map["SignedUrl"] = self.signedUrl!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SignedUrl") {
+            self.signedUrl = dict["SignedUrl"] as! String
+        }
+    }
+}
+
+public class ExportUserDevicesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ExportUserDevicesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ExportUserDevicesResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

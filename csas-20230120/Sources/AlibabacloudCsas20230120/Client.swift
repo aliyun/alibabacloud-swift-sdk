@@ -689,6 +689,39 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteUserDevicesWithOptions(_ request: DeleteUserDevicesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteUserDevicesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deviceTags)) {
+            bodyFlat["DeviceTags"] = request.deviceTags ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteUserDevices",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteUserDevicesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteUserDevices(_ request: DeleteUserDevicesRequest) async throws -> DeleteUserDevicesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteUserDevicesWithOptions(request as! DeleteUserDevicesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteUserGroupWithOptions(_ request: DeleteUserGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteUserGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -756,6 +789,81 @@ open class Client : AlibabacloudOpenApi.Client {
     public func detachApplication2Connector(_ request: DetachApplication2ConnectorRequest) async throws -> DetachApplication2ConnectorResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await detachApplication2ConnectorWithOptions(request as! DetachApplication2ConnectorRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func exportUserDevicesWithOptions(_ request: ExportUserDevicesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ExportUserDevicesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appStatuses)) {
+            bodyFlat["AppStatuses"] = request.appStatuses ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.department)) {
+            body["Department"] = request.department ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.deviceBelong)) {
+            body["DeviceBelong"] = request.deviceBelong ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.deviceStatuses)) {
+            bodyFlat["DeviceStatuses"] = request.deviceStatuses ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.deviceTags)) {
+            bodyFlat["DeviceTags"] = request.deviceTags ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.deviceTypes)) {
+            bodyFlat["DeviceTypes"] = request.deviceTypes ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.dlpStatuses)) {
+            bodyFlat["DlpStatuses"] = request.dlpStatuses ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.hostname)) {
+            body["Hostname"] = request.hostname ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iaStatuses)) {
+            bodyFlat["IaStatuses"] = request.iaStatuses ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.mac)) {
+            body["Mac"] = request.mac ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nacStatuses)) {
+            bodyFlat["NacStatuses"] = request.nacStatuses ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.paStatuses)) {
+            bodyFlat["PaStatuses"] = request.paStatuses ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.saseUserId)) {
+            body["SaseUserId"] = request.saseUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sharingStatus)) {
+            body["SharingStatus"] = request.sharingStatus!;
+        }
+        if (!TeaUtils.Client.isUnset(request.username)) {
+            body["Username"] = request.username ?? "";
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ExportUserDevices",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ExportUserDevicesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func exportUserDevices(_ request: ExportUserDevicesRequest) async throws -> ExportUserDevicesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await exportUserDevicesWithOptions(request as! ExportUserDevicesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
