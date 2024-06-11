@@ -12945,6 +12945,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeVulDefendCountStatisticsWithOptions(_ request: DescribeVulDefendCountStatisticsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeVulDefendCountStatisticsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.vulType)) {
+            query["VulType"] = request.vulType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeVulDefendCountStatistics",
+            "version": "2018-12-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeVulDefendCountStatisticsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeVulDefendCountStatistics(_ request: DescribeVulDefendCountStatisticsRequest) async throws -> DescribeVulDefendCountStatisticsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeVulDefendCountStatisticsWithOptions(request as! DescribeVulDefendCountStatisticsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeVulDetailsWithOptions(_ request: DescribeVulDetailsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeVulDetailsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -13137,8 +13168,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
         }
+        if (!TeaUtils.Client.isUnset(request.raspDefend)) {
+            query["RaspDefend"] = request.raspDefend!;
+        }
         if (!TeaUtils.Client.isUnset(request.vulNameLike)) {
             query["VulNameLike"] = request.vulNameLike ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vulType)) {
+            query["VulType"] = request.vulType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -13162,6 +13199,30 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeVulListPage(_ request: DescribeVulListPageRequest) async throws -> DescribeVulListPageResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeVulListPageWithOptions(request as! DescribeVulListPageRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeVulMetaCountStatisticsWithOptions(_ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeVulMetaCountStatisticsResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeVulMetaCountStatistics",
+            "version": "2018-12-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeVulMetaCountStatisticsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeVulMetaCountStatistics() async throws -> DescribeVulMetaCountStatisticsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeVulMetaCountStatisticsWithOptions(runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -17188,6 +17249,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.remark)) {
             query["Remark"] = request.remark ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceDirectoryAccountId)) {
+            query["ResourceDirectoryAccountId"] = request.resourceDirectoryAccountId!;
         }
         if (!TeaUtils.Client.isUnset(request.securityEventIds)) {
             query["SecurityEventIds"] = request.securityEventIds ?? [];
