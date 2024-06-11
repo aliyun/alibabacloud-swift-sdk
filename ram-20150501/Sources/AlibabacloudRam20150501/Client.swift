@@ -563,6 +563,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func decodeDiagnosticMessageWithOptions(_ request: DecodeDiagnosticMessageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DecodeDiagnosticMessageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.encodedDiagnosticMessage)) {
+            query["EncodedDiagnosticMessage"] = request.encodedDiagnosticMessage ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DecodeDiagnosticMessage",
+            "version": "2015-05-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DecodeDiagnosticMessageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func decodeDiagnosticMessage(_ request: DecodeDiagnosticMessageRequest) async throws -> DecodeDiagnosticMessageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await decodeDiagnosticMessageWithOptions(request as! DecodeDiagnosticMessageRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteAccessKeyWithOptions(_ request: DeleteAccessKeyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAccessKeyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

@@ -90,9 +90,6 @@ public class AddUserToGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -218,9 +215,6 @@ public class AttachPolicyToGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -346,9 +340,6 @@ public class AttachPolicyToRoleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -474,9 +465,6 @@ public class AttachPolicyToUserResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -610,9 +598,6 @@ public class BindMFADeviceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -730,9 +715,6 @@ public class ChangePasswordResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -812,9 +794,6 @@ public class ClearAccountAliasResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -988,9 +967,6 @@ public class CreateAccessKeyResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1172,9 +1148,6 @@ public class CreateGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1372,9 +1345,6 @@ public class CreateLoginProfileResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1572,9 +1542,6 @@ public class CreatePolicyResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1772,9 +1739,6 @@ public class CreatePolicyVersionResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1996,9 +1960,6 @@ public class CreateRoleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2228,9 +2189,6 @@ public class CreateUserResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2396,9 +2354,6 @@ public class CreateVirtualMFADeviceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2425,6 +2380,381 @@ public class CreateVirtualMFADeviceResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = CreateVirtualMFADeviceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DecodeDiagnosticMessageRequest : Tea.TeaModel {
+    public var encodedDiagnosticMessage: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.encodedDiagnosticMessage != nil {
+            map["EncodedDiagnosticMessage"] = self.encodedDiagnosticMessage!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EncodedDiagnosticMessage") {
+            self.encodedDiagnosticMessage = dict["EncodedDiagnosticMessage"] as! String
+        }
+    }
+}
+
+public class DecodeDiagnosticMessageResponseBody : Tea.TeaModel {
+    public class DecodedDiagnosticMessage : Tea.TeaModel {
+        public class AuthConditions : Tea.TeaModel {
+            public var conditionKey: String?
+
+            public var conditionValues: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.conditionKey != nil {
+                    map["ConditionKey"] = self.conditionKey!
+                }
+                if self.conditionValues != nil {
+                    map["ConditionValues"] = self.conditionValues!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ConditionKey") {
+                    self.conditionKey = dict["ConditionKey"] as! String
+                }
+                if dict.keys.contains("ConditionValues") {
+                    self.conditionValues = dict["ConditionValues"] as! [String]
+                }
+            }
+        }
+        public class AuthPrincipal : Tea.TeaModel {
+            public var authPrincipalDisplayName: String?
+
+            public var authPrincipalOwnerId: String?
+
+            public var authPrincipalType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.authPrincipalDisplayName != nil {
+                    map["AuthPrincipalDisplayName"] = self.authPrincipalDisplayName!
+                }
+                if self.authPrincipalOwnerId != nil {
+                    map["AuthPrincipalOwnerId"] = self.authPrincipalOwnerId!
+                }
+                if self.authPrincipalType != nil {
+                    map["AuthPrincipalType"] = self.authPrincipalType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AuthPrincipalDisplayName") {
+                    self.authPrincipalDisplayName = dict["AuthPrincipalDisplayName"] as! String
+                }
+                if dict.keys.contains("AuthPrincipalOwnerId") {
+                    self.authPrincipalOwnerId = dict["AuthPrincipalOwnerId"] as! String
+                }
+                if dict.keys.contains("AuthPrincipalType") {
+                    self.authPrincipalType = dict["AuthPrincipalType"] as! String
+                }
+            }
+        }
+        public class MatchedPolicies : Tea.TeaModel {
+            public var attachedEntityType: String?
+
+            public var attachedScope: String?
+
+            public var effect: String?
+
+            public var policyIdentifier: String?
+
+            public var policyType: String?
+
+            public var policyVersion: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.attachedEntityType != nil {
+                    map["AttachedEntityType"] = self.attachedEntityType!
+                }
+                if self.attachedScope != nil {
+                    map["AttachedScope"] = self.attachedScope!
+                }
+                if self.effect != nil {
+                    map["Effect"] = self.effect!
+                }
+                if self.policyIdentifier != nil {
+                    map["PolicyIdentifier"] = self.policyIdentifier!
+                }
+                if self.policyType != nil {
+                    map["PolicyType"] = self.policyType!
+                }
+                if self.policyVersion != nil {
+                    map["PolicyVersion"] = self.policyVersion!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AttachedEntityType") {
+                    self.attachedEntityType = dict["AttachedEntityType"] as! String
+                }
+                if dict.keys.contains("AttachedScope") {
+                    self.attachedScope = dict["AttachedScope"] as! String
+                }
+                if dict.keys.contains("Effect") {
+                    self.effect = dict["Effect"] as! String
+                }
+                if dict.keys.contains("PolicyIdentifier") {
+                    self.policyIdentifier = dict["PolicyIdentifier"] as! String
+                }
+                if dict.keys.contains("PolicyType") {
+                    self.policyType = dict["PolicyType"] as! String
+                }
+                if dict.keys.contains("PolicyVersion") {
+                    self.policyVersion = dict["PolicyVersion"] as! String
+                }
+            }
+        }
+        public var authAction: String?
+
+        public var authConditions: [DecodeDiagnosticMessageResponseBody.DecodedDiagnosticMessage.AuthConditions]?
+
+        public var authPrincipal: DecodeDiagnosticMessageResponseBody.DecodedDiagnosticMessage.AuthPrincipal?
+
+        public var authResource: String?
+
+        public var explicitDeny: Bool?
+
+        public var matchedPolicies: [DecodeDiagnosticMessageResponseBody.DecodedDiagnosticMessage.MatchedPolicies]?
+
+        public var noPermissionPolicyType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.authPrincipal?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.authAction != nil {
+                map["AuthAction"] = self.authAction!
+            }
+            if self.authConditions != nil {
+                var tmp : [Any] = []
+                for k in self.authConditions! {
+                    tmp.append(k.toMap())
+                }
+                map["AuthConditions"] = tmp
+            }
+            if self.authPrincipal != nil {
+                map["AuthPrincipal"] = self.authPrincipal?.toMap()
+            }
+            if self.authResource != nil {
+                map["AuthResource"] = self.authResource!
+            }
+            if self.explicitDeny != nil {
+                map["ExplicitDeny"] = self.explicitDeny!
+            }
+            if self.matchedPolicies != nil {
+                var tmp : [Any] = []
+                for k in self.matchedPolicies! {
+                    tmp.append(k.toMap())
+                }
+                map["MatchedPolicies"] = tmp
+            }
+            if self.noPermissionPolicyType != nil {
+                map["NoPermissionPolicyType"] = self.noPermissionPolicyType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AuthAction") {
+                self.authAction = dict["AuthAction"] as! String
+            }
+            if dict.keys.contains("AuthConditions") {
+                var tmp : [DecodeDiagnosticMessageResponseBody.DecodedDiagnosticMessage.AuthConditions] = []
+                for v in dict["AuthConditions"] as! [Any] {
+                    var model = DecodeDiagnosticMessageResponseBody.DecodedDiagnosticMessage.AuthConditions()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.authConditions = tmp
+            }
+            if dict.keys.contains("AuthPrincipal") {
+                var model = DecodeDiagnosticMessageResponseBody.DecodedDiagnosticMessage.AuthPrincipal()
+                model.fromMap(dict["AuthPrincipal"] as! [String: Any])
+                self.authPrincipal = model
+            }
+            if dict.keys.contains("AuthResource") {
+                self.authResource = dict["AuthResource"] as! String
+            }
+            if dict.keys.contains("ExplicitDeny") {
+                self.explicitDeny = dict["ExplicitDeny"] as! Bool
+            }
+            if dict.keys.contains("MatchedPolicies") {
+                var tmp : [DecodeDiagnosticMessageResponseBody.DecodedDiagnosticMessage.MatchedPolicies] = []
+                for v in dict["MatchedPolicies"] as! [Any] {
+                    var model = DecodeDiagnosticMessageResponseBody.DecodedDiagnosticMessage.MatchedPolicies()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.matchedPolicies = tmp
+            }
+            if dict.keys.contains("NoPermissionPolicyType") {
+                self.noPermissionPolicyType = dict["NoPermissionPolicyType"] as! String
+            }
+        }
+    }
+    public var decodedDiagnosticMessage: DecodeDiagnosticMessageResponseBody.DecodedDiagnosticMessage?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.decodedDiagnosticMessage?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.decodedDiagnosticMessage != nil {
+            map["DecodedDiagnosticMessage"] = self.decodedDiagnosticMessage?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DecodedDiagnosticMessage") {
+            var model = DecodeDiagnosticMessageResponseBody.DecodedDiagnosticMessage()
+            model.fromMap(dict["DecodedDiagnosticMessage"] as! [String: Any])
+            self.decodedDiagnosticMessage = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DecodeDiagnosticMessageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DecodeDiagnosticMessageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DecodeDiagnosticMessageResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -2516,9 +2846,6 @@ public class DeleteAccessKeyResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2628,9 +2955,6 @@ public class DeleteGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2740,9 +3064,6 @@ public class DeleteLoginProfileResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2852,9 +3173,6 @@ public class DeletePolicyResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2972,9 +3290,6 @@ public class DeletePolicyVersionResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3084,9 +3399,6 @@ public class DeleteRoleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3196,9 +3508,6 @@ public class DeleteUserResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3308,9 +3617,6 @@ public class DeleteVirtualMFADeviceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3436,9 +3742,6 @@ public class DetachPolicyFromGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3564,9 +3867,6 @@ public class DetachPolicyFromRoleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3692,9 +3992,6 @@ public class DetachPolicyFromUserResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3852,9 +4149,6 @@ public class GetAccessKeyLastUsedResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3942,9 +4236,6 @@ public class GetAccountAliasResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4126,9 +4417,6 @@ public class GetGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4302,9 +4590,6 @@ public class GetLoginProfileResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4488,9 +4773,6 @@ public class GetPasswordPolicyResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4768,9 +5050,6 @@ public class GetPolicyResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4960,9 +5239,6 @@ public class GetPolicyVersionResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5168,9 +5444,6 @@ public class GetRoleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5466,9 +5739,6 @@ public class GetSecurityPreferenceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5682,9 +5952,6 @@ public class GetUserResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5842,9 +6109,6 @@ public class GetUserMFAInfoResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5982,7 +6246,15 @@ public class ListAccessKeysResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("AccessKey") {
-                self.accessKey = dict["AccessKey"] as! [ListAccessKeysResponseBody.AccessKeys.AccessKey]
+                var tmp : [ListAccessKeysResponseBody.AccessKeys.AccessKey] = []
+                for v in dict["AccessKey"] as! [Any] {
+                    var model = ListAccessKeysResponseBody.AccessKeys.AccessKey()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.accessKey = tmp
             }
         }
     }
@@ -6043,9 +6315,6 @@ public class ListAccessKeysResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -6191,7 +6460,15 @@ public class ListEntitiesForPolicyResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Group") {
-                self.group = dict["Group"] as! [ListEntitiesForPolicyResponseBody.Groups.Group]
+                var tmp : [ListEntitiesForPolicyResponseBody.Groups.Group] = []
+                for v in dict["Group"] as! [Any] {
+                    var model = ListEntitiesForPolicyResponseBody.Groups.Group()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.group = tmp
             }
         }
     }
@@ -6285,7 +6562,15 @@ public class ListEntitiesForPolicyResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Role") {
-                self.role = dict["Role"] as! [ListEntitiesForPolicyResponseBody.Roles.Role]
+                var tmp : [ListEntitiesForPolicyResponseBody.Roles.Role] = []
+                for v in dict["Role"] as! [Any] {
+                    var model = ListEntitiesForPolicyResponseBody.Roles.Role()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.role = tmp
             }
         }
     }
@@ -6371,7 +6656,15 @@ public class ListEntitiesForPolicyResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("User") {
-                self.user = dict["User"] as! [ListEntitiesForPolicyResponseBody.Users.User]
+                var tmp : [ListEntitiesForPolicyResponseBody.Users.User] = []
+                for v in dict["User"] as! [Any] {
+                    var model = ListEntitiesForPolicyResponseBody.Users.User()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.user = tmp
             }
         }
     }
@@ -6454,9 +6747,6 @@ public class ListEntitiesForPolicyResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -6618,7 +6908,15 @@ public class ListGroupsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Group") {
-                self.group = dict["Group"] as! [ListGroupsResponseBody.Groups.Group]
+                var tmp : [ListGroupsResponseBody.Groups.Group] = []
+                for v in dict["Group"] as! [Any] {
+                    var model = ListGroupsResponseBody.Groups.Group()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.group = tmp
             }
         }
     }
@@ -6695,9 +6993,6 @@ public class ListGroupsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -6843,7 +7138,15 @@ public class ListGroupsForUserResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Group") {
-                self.group = dict["Group"] as! [ListGroupsForUserResponseBody.Groups.Group]
+                var tmp : [ListGroupsForUserResponseBody.Groups.Group] = []
+                for v in dict["Group"] as! [Any] {
+                    var model = ListGroupsForUserResponseBody.Groups.Group()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.group = tmp
             }
         }
     }
@@ -6904,9 +7207,6 @@ public class ListGroupsForUserResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7092,7 +7392,15 @@ public class ListPoliciesResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Policy") {
-                self.policy = dict["Policy"] as! [ListPoliciesResponseBody.Policies.Policy]
+                var tmp : [ListPoliciesResponseBody.Policies.Policy] = []
+                for v in dict["Policy"] as! [Any] {
+                    var model = ListPoliciesResponseBody.Policies.Policy()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.policy = tmp
             }
         }
     }
@@ -7169,9 +7477,6 @@ public class ListPoliciesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7325,7 +7630,15 @@ public class ListPoliciesForGroupResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Policy") {
-                self.policy = dict["Policy"] as! [ListPoliciesForGroupResponseBody.Policies.Policy]
+                var tmp : [ListPoliciesForGroupResponseBody.Policies.Policy] = []
+                for v in dict["Policy"] as! [Any] {
+                    var model = ListPoliciesForGroupResponseBody.Policies.Policy()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.policy = tmp
             }
         }
     }
@@ -7386,9 +7699,6 @@ public class ListPoliciesForGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7542,7 +7852,15 @@ public class ListPoliciesForRoleResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Policy") {
-                self.policy = dict["Policy"] as! [ListPoliciesForRoleResponseBody.Policies.Policy]
+                var tmp : [ListPoliciesForRoleResponseBody.Policies.Policy] = []
+                for v in dict["Policy"] as! [Any] {
+                    var model = ListPoliciesForRoleResponseBody.Policies.Policy()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.policy = tmp
             }
         }
     }
@@ -7603,9 +7921,6 @@ public class ListPoliciesForRoleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7759,7 +8074,15 @@ public class ListPoliciesForUserResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Policy") {
-                self.policy = dict["Policy"] as! [ListPoliciesForUserResponseBody.Policies.Policy]
+                var tmp : [ListPoliciesForUserResponseBody.Policies.Policy] = []
+                for v in dict["Policy"] as! [Any] {
+                    var model = ListPoliciesForUserResponseBody.Policies.Policy()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.policy = tmp
             }
         }
     }
@@ -7820,9 +8143,6 @@ public class ListPoliciesForUserResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7976,7 +8296,15 @@ public class ListPolicyVersionsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("PolicyVersion") {
-                self.policyVersion = dict["PolicyVersion"] as! [ListPolicyVersionsResponseBody.PolicyVersions.PolicyVersion]
+                var tmp : [ListPolicyVersionsResponseBody.PolicyVersions.PolicyVersion] = []
+                for v in dict["PolicyVersion"] as! [Any] {
+                    var model = ListPolicyVersionsResponseBody.PolicyVersions.PolicyVersion()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.policyVersion = tmp
             }
         }
     }
@@ -8037,9 +8365,6 @@ public class ListPolicyVersionsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8217,7 +8542,15 @@ public class ListRolesResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Role") {
-                self.role = dict["Role"] as! [ListRolesResponseBody.Roles.Role]
+                var tmp : [ListRolesResponseBody.Roles.Role] = []
+                for v in dict["Role"] as! [Any] {
+                    var model = ListRolesResponseBody.Roles.Role()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.role = tmp
             }
         }
     }
@@ -8294,9 +8627,6 @@ public class ListRolesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8482,7 +8812,15 @@ public class ListUsersResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("User") {
-                self.user = dict["User"] as! [ListUsersResponseBody.Users.User]
+                var tmp : [ListUsersResponseBody.Users.User] = []
+                for v in dict["User"] as! [Any] {
+                    var model = ListUsersResponseBody.Users.User()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.user = tmp
             }
         }
     }
@@ -8559,9 +8897,6 @@ public class ListUsersResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8715,7 +9050,15 @@ public class ListUsersForGroupResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("User") {
-                self.user = dict["User"] as! [ListUsersForGroupResponseBody.Users.User]
+                var tmp : [ListUsersForGroupResponseBody.Users.User] = []
+                for v in dict["User"] as! [Any] {
+                    var model = ListUsersForGroupResponseBody.Users.User()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.user = tmp
             }
         }
     }
@@ -8792,9 +9135,6 @@ public class ListUsersForGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8950,7 +9290,15 @@ public class ListVirtualMFADevicesResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("VirtualMFADevice") {
-                self.virtualMFADevice = dict["VirtualMFADevice"] as! [ListVirtualMFADevicesResponseBody.VirtualMFADevices.VirtualMFADevice]
+                var tmp : [ListVirtualMFADevicesResponseBody.VirtualMFADevices.VirtualMFADevice] = []
+                for v in dict["VirtualMFADevice"] as! [Any] {
+                    var model = ListVirtualMFADevicesResponseBody.VirtualMFADevices.VirtualMFADevice()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.virtualMFADevice = tmp
             }
         }
     }
@@ -9011,9 +9359,6 @@ public class ListVirtualMFADevicesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -9131,9 +9476,6 @@ public class RemoveUserFromGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -9243,9 +9585,6 @@ public class SetAccountAliasResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -9363,9 +9702,6 @@ public class SetDefaultPolicyVersionResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -9643,9 +9979,6 @@ public class SetPasswordPolicyResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -10019,9 +10352,6 @@ public class SetSecurityPreferenceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -10171,9 +10501,6 @@ public class UnbindMFADeviceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -10299,9 +10626,6 @@ public class UpdateAccessKeyResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -10499,9 +10823,6 @@ public class UpdateGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -10635,9 +10956,6 @@ public class UpdateLoginProfileResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -10835,9 +11153,6 @@ public class UpdatePolicyDescriptionResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -11067,9 +11382,6 @@ public class UpdateRoleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -11315,9 +11627,6 @@ public class UpdateUserResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
