@@ -1230,9 +1230,50 @@ public class CancelShiftLoadBalancerZonesResponse : Tea.TeaModel {
 
 public class CreateAScriptsRequest : Tea.TeaModel {
     public class AScripts : Tea.TeaModel {
+        public class ExtAttributes : Tea.TeaModel {
+            public var attributeKey: String?
+
+            public var attributeValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.attributeKey != nil {
+                    map["AttributeKey"] = self.attributeKey!
+                }
+                if self.attributeValue != nil {
+                    map["AttributeValue"] = self.attributeValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AttributeKey") {
+                    self.attributeKey = dict["AttributeKey"] as! String
+                }
+                if dict.keys.contains("AttributeValue") {
+                    self.attributeValue = dict["AttributeValue"] as! String
+                }
+            }
+        }
         public var AScriptName: String?
 
         public var enabled: Bool?
+
+        public var extAttributeEnabled: Bool?
+
+        public var extAttributes: [CreateAScriptsRequest.AScripts.ExtAttributes]?
 
         public var scriptContent: String?
 
@@ -1256,6 +1297,16 @@ public class CreateAScriptsRequest : Tea.TeaModel {
             if self.enabled != nil {
                 map["Enabled"] = self.enabled!
             }
+            if self.extAttributeEnabled != nil {
+                map["ExtAttributeEnabled"] = self.extAttributeEnabled!
+            }
+            if self.extAttributes != nil {
+                var tmp : [Any] = []
+                for k in self.extAttributes! {
+                    tmp.append(k.toMap())
+                }
+                map["ExtAttributes"] = tmp
+            }
             if self.scriptContent != nil {
                 map["ScriptContent"] = self.scriptContent!
             }
@@ -1268,6 +1319,20 @@ public class CreateAScriptsRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Enabled") {
                 self.enabled = dict["Enabled"] as! Bool
+            }
+            if dict.keys.contains("ExtAttributeEnabled") {
+                self.extAttributeEnabled = dict["ExtAttributeEnabled"] as! Bool
+            }
+            if dict.keys.contains("ExtAttributes") {
+                var tmp : [CreateAScriptsRequest.AScripts.ExtAttributes] = []
+                for v in dict["ExtAttributes"] as! [Any] {
+                    var model = CreateAScriptsRequest.AScripts.ExtAttributes()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.extAttributes = tmp
             }
             if dict.keys.contains("ScriptContent") {
                 self.scriptContent = dict["ScriptContent"] as! String
@@ -21575,11 +21640,52 @@ public class UnTagResourcesResponse : Tea.TeaModel {
 
 public class UpdateAScriptsRequest : Tea.TeaModel {
     public class AScripts : Tea.TeaModel {
+        public class ExtAttributes : Tea.TeaModel {
+            public var attributeKey: String?
+
+            public var attributeValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.attributeKey != nil {
+                    map["AttributeKey"] = self.attributeKey!
+                }
+                if self.attributeValue != nil {
+                    map["AttributeValue"] = self.attributeValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AttributeKey") {
+                    self.attributeKey = dict["AttributeKey"] as! String
+                }
+                if dict.keys.contains("AttributeValue") {
+                    self.attributeValue = dict["AttributeValue"] as! String
+                }
+            }
+        }
         public var AScriptId: String?
 
         public var AScriptName: String?
 
         public var enabled: Bool?
+
+        public var extAttributeEnabled: Bool?
+
+        public var extAttributes: [UpdateAScriptsRequest.AScripts.ExtAttributes]?
 
         public var scriptContent: String?
 
@@ -21606,6 +21712,16 @@ public class UpdateAScriptsRequest : Tea.TeaModel {
             if self.enabled != nil {
                 map["Enabled"] = self.enabled!
             }
+            if self.extAttributeEnabled != nil {
+                map["ExtAttributeEnabled"] = self.extAttributeEnabled!
+            }
+            if self.extAttributes != nil {
+                var tmp : [Any] = []
+                for k in self.extAttributes! {
+                    tmp.append(k.toMap())
+                }
+                map["ExtAttributes"] = tmp
+            }
             if self.scriptContent != nil {
                 map["ScriptContent"] = self.scriptContent!
             }
@@ -21621,6 +21737,20 @@ public class UpdateAScriptsRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Enabled") {
                 self.enabled = dict["Enabled"] as! Bool
+            }
+            if dict.keys.contains("ExtAttributeEnabled") {
+                self.extAttributeEnabled = dict["ExtAttributeEnabled"] as! Bool
+            }
+            if dict.keys.contains("ExtAttributes") {
+                var tmp : [UpdateAScriptsRequest.AScripts.ExtAttributes] = []
+                for v in dict["ExtAttributes"] as! [Any] {
+                    var model = UpdateAScriptsRequest.AScripts.ExtAttributes()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.extAttributes = tmp
             }
             if dict.keys.contains("ScriptContent") {
                 self.scriptContent = dict["ScriptContent"] as! String
