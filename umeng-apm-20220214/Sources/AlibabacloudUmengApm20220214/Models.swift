@@ -9,6 +9,209 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class DeleteSymRecordsRequest : Tea.TeaModel {
+    public var appVersions: [String]?
+
+    public var dataSourceId: String?
+
+    public var fileType: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appVersions != nil {
+            map["appVersions"] = self.appVersions!
+        }
+        if self.dataSourceId != nil {
+            map["dataSourceId"] = self.dataSourceId!
+        }
+        if self.fileType != nil {
+            map["fileType"] = self.fileType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("appVersions") {
+            self.appVersions = dict["appVersions"] as! [String]
+        }
+        if dict.keys.contains("dataSourceId") {
+            self.dataSourceId = dict["dataSourceId"] as! String
+        }
+        if dict.keys.contains("fileType") {
+            self.fileType = dict["fileType"] as! Int32
+        }
+    }
+}
+
+public class DeleteSymRecordsShrinkRequest : Tea.TeaModel {
+    public var appVersionsShrink: String?
+
+    public var dataSourceId: String?
+
+    public var fileType: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appVersionsShrink != nil {
+            map["appVersions"] = self.appVersionsShrink!
+        }
+        if self.dataSourceId != nil {
+            map["dataSourceId"] = self.dataSourceId!
+        }
+        if self.fileType != nil {
+            map["fileType"] = self.fileType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("appVersions") {
+            self.appVersionsShrink = dict["appVersions"] as! String
+        }
+        if dict.keys.contains("dataSourceId") {
+            self.dataSourceId = dict["dataSourceId"] as! String
+        }
+        if dict.keys.contains("fileType") {
+            self.fileType = dict["fileType"] as! Int32
+        }
+    }
+}
+
+public class DeleteSymRecordsResponseBody : Tea.TeaModel {
+    public var code: Int64?
+
+    public var msg: String?
+
+    public var num: Int32?
+
+    public var success: Bool?
+
+    public var traceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.msg != nil {
+            map["msg"] = self.msg!
+        }
+        if self.num != nil {
+            map["num"] = self.num!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.traceId != nil {
+            map["traceId"] = self.traceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") {
+            self.code = dict["code"] as! Int64
+        }
+        if dict.keys.contains("msg") {
+            self.msg = dict["msg"] as! String
+        }
+        if dict.keys.contains("num") {
+            self.num = dict["num"] as! Int32
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+        if dict.keys.contains("traceId") {
+            self.traceId = dict["traceId"] as! String
+        }
+    }
+}
+
+public class DeleteSymRecordsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteSymRecordsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteSymRecordsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class GetH5PageTrendRequest : Tea.TeaModel {
     public var appVersion: String?
 
