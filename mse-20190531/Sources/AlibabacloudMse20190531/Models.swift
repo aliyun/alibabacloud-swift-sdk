@@ -56893,6 +56893,8 @@ public class QueryConfigResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var authEnabled: Bool?
+
         public var autopurgePurgeInterval: String?
 
         public var autopurgeSnapRetainCount: String?
@@ -56910,6 +56912,8 @@ public class QueryConfigResponseBody : Tea.TeaModel {
         public var configSecretSupported: Bool?
 
         public var consoleUIEnabled: Bool?
+
+        public var enable4lw: Bool?
 
         public var eurekaSupported: Bool?
 
@@ -56970,6 +56974,9 @@ public class QueryConfigResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.authEnabled != nil {
+                map["AuthEnabled"] = self.authEnabled!
+            }
             if self.autopurgePurgeInterval != nil {
                 map["AutopurgePurgeInterval"] = self.autopurgePurgeInterval!
             }
@@ -56996,6 +57003,9 @@ public class QueryConfigResponseBody : Tea.TeaModel {
             }
             if self.consoleUIEnabled != nil {
                 map["ConsoleUIEnabled"] = self.consoleUIEnabled!
+            }
+            if self.enable4lw != nil {
+                map["Enable4lw"] = self.enable4lw!
             }
             if self.eurekaSupported != nil {
                 map["EurekaSupported"] = self.eurekaSupported!
@@ -57067,6 +57077,9 @@ public class QueryConfigResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AuthEnabled") {
+                self.authEnabled = dict["AuthEnabled"] as! Bool
+            }
             if dict.keys.contains("AutopurgePurgeInterval") {
                 self.autopurgePurgeInterval = dict["AutopurgePurgeInterval"] as! String
             }
@@ -57093,6 +57106,9 @@ public class QueryConfigResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ConsoleUIEnabled") {
                 self.consoleUIEnabled = dict["ConsoleUIEnabled"] as! Bool
+            }
+            if dict.keys.contains("Enable4lw") {
+                self.enable4lw = dict["Enable4lw"] as! Bool
             }
             if dict.keys.contains("EurekaSupported") {
                 self.eurekaSupported = dict["EurekaSupported"] as! Bool
@@ -62199,6 +62215,8 @@ public class UpdateClusterSpecResponse : Tea.TeaModel {
 public class UpdateConfigRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
+    public var authEnabled: Bool?
+
     public var autopurgePurgeInterval: String?
 
     public var autopurgeSnapRetainCount: String?
@@ -62212,6 +62230,8 @@ public class UpdateConfigRequest : Tea.TeaModel {
     public var configType: String?
 
     public var consoleUIEnabled: Bool?
+
+    public var enable4lw: Bool?
 
     public var eurekaSupported: Bool?
 
@@ -62266,6 +62286,9 @@ public class UpdateConfigRequest : Tea.TeaModel {
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
         }
+        if self.authEnabled != nil {
+            map["AuthEnabled"] = self.authEnabled!
+        }
         if self.autopurgePurgeInterval != nil {
             map["AutopurgePurgeInterval"] = self.autopurgePurgeInterval!
         }
@@ -62286,6 +62309,9 @@ public class UpdateConfigRequest : Tea.TeaModel {
         }
         if self.consoleUIEnabled != nil {
             map["ConsoleUIEnabled"] = self.consoleUIEnabled!
+        }
+        if self.enable4lw != nil {
+            map["Enable4lw"] = self.enable4lw!
         }
         if self.eurekaSupported != nil {
             map["EurekaSupported"] = self.eurekaSupported!
@@ -62348,6 +62374,9 @@ public class UpdateConfigRequest : Tea.TeaModel {
         if dict.keys.contains("AcceptLanguage") {
             self.acceptLanguage = dict["AcceptLanguage"] as! String
         }
+        if dict.keys.contains("AuthEnabled") {
+            self.authEnabled = dict["AuthEnabled"] as! Bool
+        }
         if dict.keys.contains("AutopurgePurgeInterval") {
             self.autopurgePurgeInterval = dict["AutopurgePurgeInterval"] as! String
         }
@@ -62368,6 +62397,9 @@ public class UpdateConfigRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ConsoleUIEnabled") {
             self.consoleUIEnabled = dict["ConsoleUIEnabled"] as! Bool
+        }
+        if dict.keys.contains("Enable4lw") {
+            self.enable4lw = dict["Enable4lw"] as! Bool
         }
         if dict.keys.contains("EurekaSupported") {
             self.eurekaSupported = dict["EurekaSupported"] as! Bool
