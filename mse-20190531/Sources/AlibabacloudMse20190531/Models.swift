@@ -29148,6 +29148,43 @@ public class GetPluginConfigRequest : Tea.TeaModel {
 public class GetPluginConfigResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class GatewayConfigList : Tea.TeaModel {
+            public class ResourceList : Tea.TeaModel {
+                public var id: Int64?
+
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Id") {
+                        self.id = dict["Id"] as! Int64
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                }
+            }
             public var config: String?
 
             public var configLevel: Int32?
@@ -29165,6 +29202,8 @@ public class GetPluginConfigResponseBody : Tea.TeaModel {
             public var id: Int64?
 
             public var pluginId: Int64?
+
+            public var resourceList: [GetPluginConfigResponseBody.Data.GatewayConfigList.ResourceList]?
 
             public override init() {
                 super.init()
@@ -29207,6 +29246,13 @@ public class GetPluginConfigResponseBody : Tea.TeaModel {
                 if self.pluginId != nil {
                     map["PluginId"] = self.pluginId!
                 }
+                if self.resourceList != nil {
+                    var tmp : [Any] = []
+                    for k in self.resourceList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["ResourceList"] = tmp
+                }
                 return map
             }
 
@@ -29238,13 +29284,30 @@ public class GetPluginConfigResponseBody : Tea.TeaModel {
                 if dict.keys.contains("PluginId") {
                     self.pluginId = dict["PluginId"] as! Int64
                 }
+                if dict.keys.contains("ResourceList") {
+                    var tmp : [GetPluginConfigResponseBody.Data.GatewayConfigList.ResourceList] = []
+                    for v in dict["ResourceList"] as! [Any] {
+                        var model = GetPluginConfigResponseBody.Data.GatewayConfigList.ResourceList()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.resourceList = tmp
+                }
             }
         }
         public var category: Int32?
 
         public var configCheck: String?
 
+        public var configExample: String?
+
+        public var domainConfigStartIndex: Int32?
+
         public var gatewayConfigList: [GetPluginConfigResponseBody.Data.GatewayConfigList]?
+
+        public var gatewayConfigStartIndex: Int32?
 
         public var id: Int64?
 
@@ -29265,6 +29328,8 @@ public class GetPluginConfigResponseBody : Tea.TeaModel {
         public var readme: String?
 
         public var readmeEn: String?
+
+        public var routeConfigStartIndex: Int32?
 
         public var status: String?
 
@@ -29298,12 +29363,21 @@ public class GetPluginConfigResponseBody : Tea.TeaModel {
             if self.configCheck != nil {
                 map["ConfigCheck"] = self.configCheck!
             }
+            if self.configExample != nil {
+                map["ConfigExample"] = self.configExample!
+            }
+            if self.domainConfigStartIndex != nil {
+                map["DomainConfigStartIndex"] = self.domainConfigStartIndex!
+            }
             if self.gatewayConfigList != nil {
                 var tmp : [Any] = []
                 for k in self.gatewayConfigList! {
                     tmp.append(k.toMap())
                 }
                 map["GatewayConfigList"] = tmp
+            }
+            if self.gatewayConfigStartIndex != nil {
+                map["GatewayConfigStartIndex"] = self.gatewayConfigStartIndex!
             }
             if self.id != nil {
                 map["Id"] = self.id!
@@ -29335,6 +29409,9 @@ public class GetPluginConfigResponseBody : Tea.TeaModel {
             if self.readmeEn != nil {
                 map["ReadmeEn"] = self.readmeEn!
             }
+            if self.routeConfigStartIndex != nil {
+                map["RouteConfigStartIndex"] = self.routeConfigStartIndex!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -29363,6 +29440,12 @@ public class GetPluginConfigResponseBody : Tea.TeaModel {
             if dict.keys.contains("ConfigCheck") {
                 self.configCheck = dict["ConfigCheck"] as! String
             }
+            if dict.keys.contains("ConfigExample") {
+                self.configExample = dict["ConfigExample"] as! String
+            }
+            if dict.keys.contains("DomainConfigStartIndex") {
+                self.domainConfigStartIndex = dict["DomainConfigStartIndex"] as! Int32
+            }
             if dict.keys.contains("GatewayConfigList") {
                 var tmp : [GetPluginConfigResponseBody.Data.GatewayConfigList] = []
                 for v in dict["GatewayConfigList"] as! [Any] {
@@ -29373,6 +29456,9 @@ public class GetPluginConfigResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.gatewayConfigList = tmp
+            }
+            if dict.keys.contains("GatewayConfigStartIndex") {
+                self.gatewayConfigStartIndex = dict["GatewayConfigStartIndex"] as! Int32
             }
             if dict.keys.contains("Id") {
                 self.id = dict["Id"] as! Int64
@@ -29403,6 +29489,9 @@ public class GetPluginConfigResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ReadmeEn") {
                 self.readmeEn = dict["ReadmeEn"] as! String
+            }
+            if dict.keys.contains("RouteConfigStartIndex") {
+                self.routeConfigStartIndex = dict["RouteConfigStartIndex"] as! Int32
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
@@ -47193,6 +47282,228 @@ public class ListGatewaySlbResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ListGatewaySlbResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListGatewayZoneRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+    }
+}
+
+public class ListGatewayZoneResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var localName: String?
+
+        public var zoneId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.localName != nil {
+                map["LocalName"] = self.localName!
+            }
+            if self.zoneId != nil {
+                map["ZoneId"] = self.zoneId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("LocalName") {
+                self.localName = dict["LocalName"] as! String
+            }
+            if dict.keys.contains("ZoneId") {
+                self.zoneId = dict["ZoneId"] as! String
+            }
+        }
+    }
+    public var code: Int32?
+
+    public var data: [ListGatewayZoneResponseBody.Data]?
+
+    public var dynamicCode: String?
+
+    public var dynamicMessage: String?
+
+    public var errorCode: String?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.dynamicCode != nil {
+            map["DynamicCode"] = self.dynamicCode!
+        }
+        if self.dynamicMessage != nil {
+            map["DynamicMessage"] = self.dynamicMessage!
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Data") {
+            var tmp : [ListGatewayZoneResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = ListGatewayZoneResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
+        }
+        if dict.keys.contains("DynamicCode") {
+            self.dynamicCode = dict["DynamicCode"] as! String
+        }
+        if dict.keys.contains("DynamicMessage") {
+            self.dynamicMessage = dict["DynamicMessage"] as! String
+        }
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class ListGatewayZoneResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListGatewayZoneResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListGatewayZoneResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -72346,6 +72657,8 @@ public class UpdatePluginConfigRequest : Tea.TeaModel {
 
     public var pluginId: Int64?
 
+    public var resourceIdList: [Int64]?
+
     public override init() {
         super.init()
     }
@@ -72390,6 +72703,9 @@ public class UpdatePluginConfigRequest : Tea.TeaModel {
         if self.pluginId != nil {
             map["PluginId"] = self.pluginId!
         }
+        if self.resourceIdList != nil {
+            map["ResourceIdList"] = self.resourceIdList!
+        }
         return map
     }
 
@@ -72423,6 +72739,119 @@ public class UpdatePluginConfigRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PluginId") {
             self.pluginId = dict["PluginId"] as! Int64
+        }
+        if dict.keys.contains("ResourceIdList") {
+            self.resourceIdList = dict["ResourceIdList"] as! [Int64]
+        }
+    }
+}
+
+public class UpdatePluginConfigShrinkRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var config: String?
+
+    public var configLevel: Int32?
+
+    public var enable: Bool?
+
+    public var gatewayId: Int64?
+
+    public var gatewayUniqueId: String?
+
+    public var gmtCreate: String?
+
+    public var gmtModified: String?
+
+    public var id: Int64?
+
+    public var pluginId: Int64?
+
+    public var resourceIdListShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.config != nil {
+            map["Config"] = self.config!
+        }
+        if self.configLevel != nil {
+            map["ConfigLevel"] = self.configLevel!
+        }
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.gatewayId != nil {
+            map["GatewayId"] = self.gatewayId!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.gmtCreate != nil {
+            map["GmtCreate"] = self.gmtCreate!
+        }
+        if self.gmtModified != nil {
+            map["GmtModified"] = self.gmtModified!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.pluginId != nil {
+            map["PluginId"] = self.pluginId!
+        }
+        if self.resourceIdListShrink != nil {
+            map["ResourceIdList"] = self.resourceIdListShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("Config") {
+            self.config = dict["Config"] as! String
+        }
+        if dict.keys.contains("ConfigLevel") {
+            self.configLevel = dict["ConfigLevel"] as! Int32
+        }
+        if dict.keys.contains("Enable") {
+            self.enable = dict["Enable"] as! Bool
+        }
+        if dict.keys.contains("GatewayId") {
+            self.gatewayId = dict["GatewayId"] as! Int64
+        }
+        if dict.keys.contains("GatewayUniqueId") {
+            self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+        }
+        if dict.keys.contains("GmtCreate") {
+            self.gmtCreate = dict["GmtCreate"] as! String
+        }
+        if dict.keys.contains("GmtModified") {
+            self.gmtModified = dict["GmtModified"] as! String
+        }
+        if dict.keys.contains("Id") {
+            self.id = dict["Id"] as! Int64
+        }
+        if dict.keys.contains("PluginId") {
+            self.pluginId = dict["PluginId"] as! Int64
+        }
+        if dict.keys.contains("ResourceIdList") {
+            self.resourceIdListShrink = dict["ResourceIdList"] as! String
         }
     }
 }

@@ -6250,6 +6250,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGatewayZoneWithOptions(_ request: ListGatewayZoneRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListGatewayZoneResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListGatewayZone",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListGatewayZoneResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGatewayZone(_ request: ListGatewayZoneRequest) async throws -> ListGatewayZoneResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listGatewayZoneWithOptions(request as! ListGatewayZoneRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listInstanceCountWithOptions(_ request: ListInstanceCountRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListInstanceCountResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -10259,8 +10290,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updatePluginConfigWithOptions(_ request: UpdatePluginConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdatePluginConfigResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func updatePluginConfigWithOptions(_ tmpReq: UpdatePluginConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdatePluginConfigResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdatePluginConfigShrinkRequest = UpdatePluginConfigShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.resourceIdList)) {
+            request.resourceIdListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.resourceIdList, "ResourceIdList", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
             query["AcceptLanguage"] = request.acceptLanguage ?? "";
@@ -10291,6 +10327,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pluginId)) {
             query["PluginId"] = request.pluginId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceIdListShrink)) {
+            query["ResourceIdList"] = request.resourceIdListShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
