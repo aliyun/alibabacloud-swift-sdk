@@ -1563,6 +1563,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.regions)) {
             query["Regions"] = request.regions ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.resourceDeleted)) {
+            query["ResourceDeleted"] = request.resourceDeleted!;
+        }
         if (!TeaUtils.Client.isUnset(request.resourceTypes)) {
             query["ResourceTypes"] = request.resourceTypes ?? "";
         }
@@ -1664,6 +1667,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.regions)) {
             query["Regions"] = request.regions ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceDeleted)) {
+            query["ResourceDeleted"] = request.resourceDeleted!;
         }
         if (!TeaUtils.Client.isUnset(request.resourceTypes)) {
             query["ResourceTypes"] = request.resourceTypes ?? "";
@@ -2023,7 +2029,28 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getAggregateDiscoveredResourceWithOptions(_ request: GetAggregateDiscoveredResourceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAggregateDiscoveredResourceResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aggregatorId)) {
+            query["AggregatorId"] = request.aggregatorId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.complianceOption)) {
+            query["ComplianceOption"] = request.complianceOption!;
+        }
+        if (!TeaUtils.Client.isUnset(request.region)) {
+            query["Region"] = request.region ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceAccountId)) {
+            query["ResourceAccountId"] = request.resourceAccountId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceId)) {
+            query["ResourceId"] = request.resourceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceType)) {
+            query["ResourceType"] = request.resourceType ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -2032,7 +2059,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "version": "2020-09-07",
             "protocol": "HTTPS",
             "pathname": "/",
-            "method": "GET",
+            "method": "POST",
             "authType": "AK",
             "style": "RPC",
             "reqBodyType": "formData",
@@ -2643,7 +2670,19 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getDiscoveredResourceWithOptions(_ request: GetDiscoveredResourceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDiscoveredResourceResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.complianceOption)) {
+            query["ComplianceOption"] = request.complianceOption!;
+        }
+        if (!TeaUtils.Client.isUnset(request.region)) {
+            query["Region"] = request.region ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceId)) {
+            query["ResourceId"] = request.resourceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceType)) {
+            query["ResourceType"] = request.resourceType ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -2652,7 +2691,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "version": "2020-09-07",
             "protocol": "HTTPS",
             "pathname": "/",
-            "method": "GET",
+            "method": "POST",
             "authType": "AK",
             "style": "RPC",
             "reqBodyType": "formData",
