@@ -5531,13 +5531,45 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
 
         public var cores: Int32?
 
+        public var cpuArchitectures: [String]?
+
         public var excludedInstanceTypes: [String]?
+
+        public var gpuSpecs: [String]?
+
+        public var instanceCategories: [String]?
 
         public var instanceFamilyLevel: String?
 
+        public var instanceTypeFamilies: [String]?
+
         public var maxPrice: Double?
 
+        public var maximumCpuCoreCount: Int32?
+
+        public var maximumGpuAmount: Int32?
+
+        public var maximumMemorySize: Double?
+
         public var memory: Double?
+
+        public var minimumBaselineCredit: Int32?
+
+        public var minimumCpuCoreCount: Int32?
+
+        public var minimumEniIpv6AddressQuantity: Int32?
+
+        public var minimumEniPrivateIpAddressQuantity: Int32?
+
+        public var minimumEniQuantity: Int32?
+
+        public var minimumGpuAmount: Int32?
+
+        public var minimumInitialCredit: Int32?
+
+        public var minimumMemorySize: Double?
+
+        public var physicalProcessorModels: [String]?
 
         public override init() {
             super.init()
@@ -5562,17 +5594,65 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
             if self.cores != nil {
                 map["Cores"] = self.cores!
             }
+            if self.cpuArchitectures != nil {
+                map["CpuArchitectures"] = self.cpuArchitectures!
+            }
             if self.excludedInstanceTypes != nil {
                 map["ExcludedInstanceTypes"] = self.excludedInstanceTypes!
+            }
+            if self.gpuSpecs != nil {
+                map["GpuSpecs"] = self.gpuSpecs!
+            }
+            if self.instanceCategories != nil {
+                map["InstanceCategories"] = self.instanceCategories!
             }
             if self.instanceFamilyLevel != nil {
                 map["InstanceFamilyLevel"] = self.instanceFamilyLevel!
             }
+            if self.instanceTypeFamilies != nil {
+                map["InstanceTypeFamilies"] = self.instanceTypeFamilies!
+            }
             if self.maxPrice != nil {
                 map["MaxPrice"] = self.maxPrice!
             }
+            if self.maximumCpuCoreCount != nil {
+                map["MaximumCpuCoreCount"] = self.maximumCpuCoreCount!
+            }
+            if self.maximumGpuAmount != nil {
+                map["MaximumGpuAmount"] = self.maximumGpuAmount!
+            }
+            if self.maximumMemorySize != nil {
+                map["MaximumMemorySize"] = self.maximumMemorySize!
+            }
             if self.memory != nil {
                 map["Memory"] = self.memory!
+            }
+            if self.minimumBaselineCredit != nil {
+                map["MinimumBaselineCredit"] = self.minimumBaselineCredit!
+            }
+            if self.minimumCpuCoreCount != nil {
+                map["MinimumCpuCoreCount"] = self.minimumCpuCoreCount!
+            }
+            if self.minimumEniIpv6AddressQuantity != nil {
+                map["MinimumEniIpv6AddressQuantity"] = self.minimumEniIpv6AddressQuantity!
+            }
+            if self.minimumEniPrivateIpAddressQuantity != nil {
+                map["MinimumEniPrivateIpAddressQuantity"] = self.minimumEniPrivateIpAddressQuantity!
+            }
+            if self.minimumEniQuantity != nil {
+                map["MinimumEniQuantity"] = self.minimumEniQuantity!
+            }
+            if self.minimumGpuAmount != nil {
+                map["MinimumGpuAmount"] = self.minimumGpuAmount!
+            }
+            if self.minimumInitialCredit != nil {
+                map["MinimumInitialCredit"] = self.minimumInitialCredit!
+            }
+            if self.minimumMemorySize != nil {
+                map["MinimumMemorySize"] = self.minimumMemorySize!
+            }
+            if self.physicalProcessorModels != nil {
+                map["PhysicalProcessorModels"] = self.physicalProcessorModels!
             }
             return map
         }
@@ -5587,17 +5667,65 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
             if dict.keys.contains("Cores") {
                 self.cores = dict["Cores"] as! Int32
             }
+            if dict.keys.contains("CpuArchitectures") {
+                self.cpuArchitectures = dict["CpuArchitectures"] as! [String]
+            }
             if dict.keys.contains("ExcludedInstanceTypes") {
                 self.excludedInstanceTypes = dict["ExcludedInstanceTypes"] as! [String]
+            }
+            if dict.keys.contains("GpuSpecs") {
+                self.gpuSpecs = dict["GpuSpecs"] as! [String]
+            }
+            if dict.keys.contains("InstanceCategories") {
+                self.instanceCategories = dict["InstanceCategories"] as! [String]
             }
             if dict.keys.contains("InstanceFamilyLevel") {
                 self.instanceFamilyLevel = dict["InstanceFamilyLevel"] as! String
             }
+            if dict.keys.contains("InstanceTypeFamilies") {
+                self.instanceTypeFamilies = dict["InstanceTypeFamilies"] as! [String]
+            }
             if dict.keys.contains("MaxPrice") {
                 self.maxPrice = dict["MaxPrice"] as! Double
             }
+            if dict.keys.contains("MaximumCpuCoreCount") {
+                self.maximumCpuCoreCount = dict["MaximumCpuCoreCount"] as! Int32
+            }
+            if dict.keys.contains("MaximumGpuAmount") {
+                self.maximumGpuAmount = dict["MaximumGpuAmount"] as! Int32
+            }
+            if dict.keys.contains("MaximumMemorySize") {
+                self.maximumMemorySize = dict["MaximumMemorySize"] as! Double
+            }
             if dict.keys.contains("Memory") {
                 self.memory = dict["Memory"] as! Double
+            }
+            if dict.keys.contains("MinimumBaselineCredit") {
+                self.minimumBaselineCredit = dict["MinimumBaselineCredit"] as! Int32
+            }
+            if dict.keys.contains("MinimumCpuCoreCount") {
+                self.minimumCpuCoreCount = dict["MinimumCpuCoreCount"] as! Int32
+            }
+            if dict.keys.contains("MinimumEniIpv6AddressQuantity") {
+                self.minimumEniIpv6AddressQuantity = dict["MinimumEniIpv6AddressQuantity"] as! Int32
+            }
+            if dict.keys.contains("MinimumEniPrivateIpAddressQuantity") {
+                self.minimumEniPrivateIpAddressQuantity = dict["MinimumEniPrivateIpAddressQuantity"] as! Int32
+            }
+            if dict.keys.contains("MinimumEniQuantity") {
+                self.minimumEniQuantity = dict["MinimumEniQuantity"] as! Int32
+            }
+            if dict.keys.contains("MinimumGpuAmount") {
+                self.minimumGpuAmount = dict["MinimumGpuAmount"] as! Int32
+            }
+            if dict.keys.contains("MinimumInitialCredit") {
+                self.minimumInitialCredit = dict["MinimumInitialCredit"] as! Int32
+            }
+            if dict.keys.contains("MinimumMemorySize") {
+                self.minimumMemorySize = dict["MinimumMemorySize"] as! Double
+            }
+            if dict.keys.contains("PhysicalProcessorModels") {
+                self.physicalProcessorModels = dict["PhysicalProcessorModels"] as! [String]
             }
         }
     }
@@ -6639,13 +6767,45 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
 
         public var cores: Int32?
 
+        public var cpuArchitectures: [String]?
+
         public var excludedInstanceTypes: [String]?
+
+        public var gpuSpecs: [String]?
+
+        public var instanceCategories: [String]?
 
         public var instanceFamilyLevel: String?
 
+        public var instanceTypeFamilies: [String]?
+
         public var maxPrice: Double?
 
+        public var maximumCpuCoreCount: Int32?
+
+        public var maximumGpuAmount: Int32?
+
+        public var maximumMemorySize: Double?
+
         public var memory: Double?
+
+        public var minimumBaselineCredit: Int32?
+
+        public var minimumCpuCoreCount: Int32?
+
+        public var minimumEniIpv6AddressQuantity: Int32?
+
+        public var minimumEniPrivateIpAddressQuantity: Int32?
+
+        public var minimumEniQuantity: Int32?
+
+        public var minimumGpuAmount: Int32?
+
+        public var minimumInitialCredit: Int32?
+
+        public var minimumMemorySize: Double?
+
+        public var physicalProcessorModels: [String]?
 
         public override init() {
             super.init()
@@ -6670,17 +6830,65 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
             if self.cores != nil {
                 map["Cores"] = self.cores!
             }
+            if self.cpuArchitectures != nil {
+                map["CpuArchitectures"] = self.cpuArchitectures!
+            }
             if self.excludedInstanceTypes != nil {
                 map["ExcludedInstanceTypes"] = self.excludedInstanceTypes!
+            }
+            if self.gpuSpecs != nil {
+                map["GpuSpecs"] = self.gpuSpecs!
+            }
+            if self.instanceCategories != nil {
+                map["InstanceCategories"] = self.instanceCategories!
             }
             if self.instanceFamilyLevel != nil {
                 map["InstanceFamilyLevel"] = self.instanceFamilyLevel!
             }
+            if self.instanceTypeFamilies != nil {
+                map["InstanceTypeFamilies"] = self.instanceTypeFamilies!
+            }
             if self.maxPrice != nil {
                 map["MaxPrice"] = self.maxPrice!
             }
+            if self.maximumCpuCoreCount != nil {
+                map["MaximumCpuCoreCount"] = self.maximumCpuCoreCount!
+            }
+            if self.maximumGpuAmount != nil {
+                map["MaximumGpuAmount"] = self.maximumGpuAmount!
+            }
+            if self.maximumMemorySize != nil {
+                map["MaximumMemorySize"] = self.maximumMemorySize!
+            }
             if self.memory != nil {
                 map["Memory"] = self.memory!
+            }
+            if self.minimumBaselineCredit != nil {
+                map["MinimumBaselineCredit"] = self.minimumBaselineCredit!
+            }
+            if self.minimumCpuCoreCount != nil {
+                map["MinimumCpuCoreCount"] = self.minimumCpuCoreCount!
+            }
+            if self.minimumEniIpv6AddressQuantity != nil {
+                map["MinimumEniIpv6AddressQuantity"] = self.minimumEniIpv6AddressQuantity!
+            }
+            if self.minimumEniPrivateIpAddressQuantity != nil {
+                map["MinimumEniPrivateIpAddressQuantity"] = self.minimumEniPrivateIpAddressQuantity!
+            }
+            if self.minimumEniQuantity != nil {
+                map["MinimumEniQuantity"] = self.minimumEniQuantity!
+            }
+            if self.minimumGpuAmount != nil {
+                map["MinimumGpuAmount"] = self.minimumGpuAmount!
+            }
+            if self.minimumInitialCredit != nil {
+                map["MinimumInitialCredit"] = self.minimumInitialCredit!
+            }
+            if self.minimumMemorySize != nil {
+                map["MinimumMemorySize"] = self.minimumMemorySize!
+            }
+            if self.physicalProcessorModels != nil {
+                map["PhysicalProcessorModels"] = self.physicalProcessorModels!
             }
             return map
         }
@@ -6695,17 +6903,65 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
             if dict.keys.contains("Cores") {
                 self.cores = dict["Cores"] as! Int32
             }
+            if dict.keys.contains("CpuArchitectures") {
+                self.cpuArchitectures = dict["CpuArchitectures"] as! [String]
+            }
             if dict.keys.contains("ExcludedInstanceTypes") {
                 self.excludedInstanceTypes = dict["ExcludedInstanceTypes"] as! [String]
+            }
+            if dict.keys.contains("GpuSpecs") {
+                self.gpuSpecs = dict["GpuSpecs"] as! [String]
+            }
+            if dict.keys.contains("InstanceCategories") {
+                self.instanceCategories = dict["InstanceCategories"] as! [String]
             }
             if dict.keys.contains("InstanceFamilyLevel") {
                 self.instanceFamilyLevel = dict["InstanceFamilyLevel"] as! String
             }
+            if dict.keys.contains("InstanceTypeFamilies") {
+                self.instanceTypeFamilies = dict["InstanceTypeFamilies"] as! [String]
+            }
             if dict.keys.contains("MaxPrice") {
                 self.maxPrice = dict["MaxPrice"] as! Double
             }
+            if dict.keys.contains("MaximumCpuCoreCount") {
+                self.maximumCpuCoreCount = dict["MaximumCpuCoreCount"] as! Int32
+            }
+            if dict.keys.contains("MaximumGpuAmount") {
+                self.maximumGpuAmount = dict["MaximumGpuAmount"] as! Int32
+            }
+            if dict.keys.contains("MaximumMemorySize") {
+                self.maximumMemorySize = dict["MaximumMemorySize"] as! Double
+            }
             if dict.keys.contains("Memory") {
                 self.memory = dict["Memory"] as! Double
+            }
+            if dict.keys.contains("MinimumBaselineCredit") {
+                self.minimumBaselineCredit = dict["MinimumBaselineCredit"] as! Int32
+            }
+            if dict.keys.contains("MinimumCpuCoreCount") {
+                self.minimumCpuCoreCount = dict["MinimumCpuCoreCount"] as! Int32
+            }
+            if dict.keys.contains("MinimumEniIpv6AddressQuantity") {
+                self.minimumEniIpv6AddressQuantity = dict["MinimumEniIpv6AddressQuantity"] as! Int32
+            }
+            if dict.keys.contains("MinimumEniPrivateIpAddressQuantity") {
+                self.minimumEniPrivateIpAddressQuantity = dict["MinimumEniPrivateIpAddressQuantity"] as! Int32
+            }
+            if dict.keys.contains("MinimumEniQuantity") {
+                self.minimumEniQuantity = dict["MinimumEniQuantity"] as! Int32
+            }
+            if dict.keys.contains("MinimumGpuAmount") {
+                self.minimumGpuAmount = dict["MinimumGpuAmount"] as! Int32
+            }
+            if dict.keys.contains("MinimumInitialCredit") {
+                self.minimumInitialCredit = dict["MinimumInitialCredit"] as! Int32
+            }
+            if dict.keys.contains("MinimumMemorySize") {
+                self.minimumMemorySize = dict["MinimumMemorySize"] as! Double
+            }
+            if dict.keys.contains("PhysicalProcessorModels") {
+                self.physicalProcessorModels = dict["PhysicalProcessorModels"] as! [String]
             }
         }
     }
@@ -16346,15 +16602,47 @@ public class DescribePatternTypesRequest : Tea.TeaModel {
 
     public var coresList: [Int32]?
 
+    public var cpuArchitectures: [String]?
+
     public var excludedInstanceType: [String]?
+
+    public var gpuSpecs: [String]?
+
+    public var instanceCategories: [String]?
 
     public var instanceFamilyLevel: String?
 
+    public var instanceTypeFamilies: [String]?
+
     public var maxPrice: Double?
+
+    public var maximumCpuCoreCount: Int32?
+
+    public var maximumGpuAmount: Int32?
+
+    public var maximumMemorySize: Double?
 
     public var memory: Double?
 
     public var memoryList: [Double]?
+
+    public var minimumBaselineCredit: Int32?
+
+    public var minimumCpuCoreCount: Int32?
+
+    public var minimumEniIpv6AddressQuantity: Int32?
+
+    public var minimumEniPrivateIpAddressQuantity: Int32?
+
+    public var minimumEniQuantity: Int32?
+
+    public var minimumGpuAmount: Int32?
+
+    public var minimumInitialCredit: Int32?
+
+    public var minimumMemorySize: Double?
+
+    public var physicalProcessorModels: [String]?
 
     public var regionId: String?
 
@@ -16391,20 +16679,68 @@ public class DescribePatternTypesRequest : Tea.TeaModel {
         if self.coresList != nil {
             map["CoresList"] = self.coresList!
         }
+        if self.cpuArchitectures != nil {
+            map["CpuArchitectures"] = self.cpuArchitectures!
+        }
         if self.excludedInstanceType != nil {
             map["ExcludedInstanceType"] = self.excludedInstanceType!
+        }
+        if self.gpuSpecs != nil {
+            map["GpuSpecs"] = self.gpuSpecs!
+        }
+        if self.instanceCategories != nil {
+            map["InstanceCategories"] = self.instanceCategories!
         }
         if self.instanceFamilyLevel != nil {
             map["InstanceFamilyLevel"] = self.instanceFamilyLevel!
         }
+        if self.instanceTypeFamilies != nil {
+            map["InstanceTypeFamilies"] = self.instanceTypeFamilies!
+        }
         if self.maxPrice != nil {
             map["MaxPrice"] = self.maxPrice!
+        }
+        if self.maximumCpuCoreCount != nil {
+            map["MaximumCpuCoreCount"] = self.maximumCpuCoreCount!
+        }
+        if self.maximumGpuAmount != nil {
+            map["MaximumGpuAmount"] = self.maximumGpuAmount!
+        }
+        if self.maximumMemorySize != nil {
+            map["MaximumMemorySize"] = self.maximumMemorySize!
         }
         if self.memory != nil {
             map["Memory"] = self.memory!
         }
         if self.memoryList != nil {
             map["MemoryList"] = self.memoryList!
+        }
+        if self.minimumBaselineCredit != nil {
+            map["MinimumBaselineCredit"] = self.minimumBaselineCredit!
+        }
+        if self.minimumCpuCoreCount != nil {
+            map["MinimumCpuCoreCount"] = self.minimumCpuCoreCount!
+        }
+        if self.minimumEniIpv6AddressQuantity != nil {
+            map["MinimumEniIpv6AddressQuantity"] = self.minimumEniIpv6AddressQuantity!
+        }
+        if self.minimumEniPrivateIpAddressQuantity != nil {
+            map["MinimumEniPrivateIpAddressQuantity"] = self.minimumEniPrivateIpAddressQuantity!
+        }
+        if self.minimumEniQuantity != nil {
+            map["MinimumEniQuantity"] = self.minimumEniQuantity!
+        }
+        if self.minimumGpuAmount != nil {
+            map["MinimumGpuAmount"] = self.minimumGpuAmount!
+        }
+        if self.minimumInitialCredit != nil {
+            map["MinimumInitialCredit"] = self.minimumInitialCredit!
+        }
+        if self.minimumMemorySize != nil {
+            map["MinimumMemorySize"] = self.minimumMemorySize!
+        }
+        if self.physicalProcessorModels != nil {
+            map["PhysicalProcessorModels"] = self.physicalProcessorModels!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -16434,20 +16770,68 @@ public class DescribePatternTypesRequest : Tea.TeaModel {
         if dict.keys.contains("CoresList") {
             self.coresList = dict["CoresList"] as! [Int32]
         }
+        if dict.keys.contains("CpuArchitectures") {
+            self.cpuArchitectures = dict["CpuArchitectures"] as! [String]
+        }
         if dict.keys.contains("ExcludedInstanceType") {
             self.excludedInstanceType = dict["ExcludedInstanceType"] as! [String]
+        }
+        if dict.keys.contains("GpuSpecs") {
+            self.gpuSpecs = dict["GpuSpecs"] as! [String]
+        }
+        if dict.keys.contains("InstanceCategories") {
+            self.instanceCategories = dict["InstanceCategories"] as! [String]
         }
         if dict.keys.contains("InstanceFamilyLevel") {
             self.instanceFamilyLevel = dict["InstanceFamilyLevel"] as! String
         }
+        if dict.keys.contains("InstanceTypeFamilies") {
+            self.instanceTypeFamilies = dict["InstanceTypeFamilies"] as! [String]
+        }
         if dict.keys.contains("MaxPrice") {
             self.maxPrice = dict["MaxPrice"] as! Double
+        }
+        if dict.keys.contains("MaximumCpuCoreCount") {
+            self.maximumCpuCoreCount = dict["MaximumCpuCoreCount"] as! Int32
+        }
+        if dict.keys.contains("MaximumGpuAmount") {
+            self.maximumGpuAmount = dict["MaximumGpuAmount"] as! Int32
+        }
+        if dict.keys.contains("MaximumMemorySize") {
+            self.maximumMemorySize = dict["MaximumMemorySize"] as! Double
         }
         if dict.keys.contains("Memory") {
             self.memory = dict["Memory"] as! Double
         }
         if dict.keys.contains("MemoryList") {
             self.memoryList = dict["MemoryList"] as! [Double]
+        }
+        if dict.keys.contains("MinimumBaselineCredit") {
+            self.minimumBaselineCredit = dict["MinimumBaselineCredit"] as! Int32
+        }
+        if dict.keys.contains("MinimumCpuCoreCount") {
+            self.minimumCpuCoreCount = dict["MinimumCpuCoreCount"] as! Int32
+        }
+        if dict.keys.contains("MinimumEniIpv6AddressQuantity") {
+            self.minimumEniIpv6AddressQuantity = dict["MinimumEniIpv6AddressQuantity"] as! Int32
+        }
+        if dict.keys.contains("MinimumEniPrivateIpAddressQuantity") {
+            self.minimumEniPrivateIpAddressQuantity = dict["MinimumEniPrivateIpAddressQuantity"] as! Int32
+        }
+        if dict.keys.contains("MinimumEniQuantity") {
+            self.minimumEniQuantity = dict["MinimumEniQuantity"] as! Int32
+        }
+        if dict.keys.contains("MinimumGpuAmount") {
+            self.minimumGpuAmount = dict["MinimumGpuAmount"] as! Int32
+        }
+        if dict.keys.contains("MinimumInitialCredit") {
+            self.minimumInitialCredit = dict["MinimumInitialCredit"] as! Int32
+        }
+        if dict.keys.contains("MinimumMemorySize") {
+            self.minimumMemorySize = dict["MinimumMemorySize"] as! Double
+        }
+        if dict.keys.contains("PhysicalProcessorModels") {
+            self.physicalProcessorModels = dict["PhysicalProcessorModels"] as! [String]
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
@@ -17775,13 +18159,45 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
 
             public var cores: Int32?
 
+            public var cpuArchitectures: [String]?
+
             public var excludedInstanceTypes: [String]?
+
+            public var gpuSpecs: [String]?
+
+            public var instanceCategories: [String]?
 
             public var instanceFamilyLevel: String?
 
+            public var instanceTypeFamilies: [String]?
+
             public var maxPrice: Double?
 
+            public var maximumCpuCoreCount: Int32?
+
+            public var maximumGpuAmount: Int32?
+
+            public var maximumMemorySize: Double?
+
             public var memory: Double?
+
+            public var minimumBaselineCredit: Int32?
+
+            public var minimumCpuCoreCount: Int32?
+
+            public var minimumEniIpv6AddressQuantity: Int32?
+
+            public var minimumEniPrivateIpAddressQuantity: Int32?
+
+            public var minimumEniQuantity: Int32?
+
+            public var minimumGpuAmount: Int32?
+
+            public var minimumInitialCredit: Int32?
+
+            public var minimumMemorySize: Double?
+
+            public var physicalProcessorModels: [String]?
 
             public override init() {
                 super.init()
@@ -17806,17 +18222,65 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
                 if self.cores != nil {
                     map["Cores"] = self.cores!
                 }
+                if self.cpuArchitectures != nil {
+                    map["CpuArchitectures"] = self.cpuArchitectures!
+                }
                 if self.excludedInstanceTypes != nil {
                     map["ExcludedInstanceTypes"] = self.excludedInstanceTypes!
+                }
+                if self.gpuSpecs != nil {
+                    map["GpuSpecs"] = self.gpuSpecs!
+                }
+                if self.instanceCategories != nil {
+                    map["InstanceCategories"] = self.instanceCategories!
                 }
                 if self.instanceFamilyLevel != nil {
                     map["InstanceFamilyLevel"] = self.instanceFamilyLevel!
                 }
+                if self.instanceTypeFamilies != nil {
+                    map["InstanceTypeFamilies"] = self.instanceTypeFamilies!
+                }
                 if self.maxPrice != nil {
                     map["MaxPrice"] = self.maxPrice!
                 }
+                if self.maximumCpuCoreCount != nil {
+                    map["MaximumCpuCoreCount"] = self.maximumCpuCoreCount!
+                }
+                if self.maximumGpuAmount != nil {
+                    map["MaximumGpuAmount"] = self.maximumGpuAmount!
+                }
+                if self.maximumMemorySize != nil {
+                    map["MaximumMemorySize"] = self.maximumMemorySize!
+                }
                 if self.memory != nil {
                     map["Memory"] = self.memory!
+                }
+                if self.minimumBaselineCredit != nil {
+                    map["MinimumBaselineCredit"] = self.minimumBaselineCredit!
+                }
+                if self.minimumCpuCoreCount != nil {
+                    map["MinimumCpuCoreCount"] = self.minimumCpuCoreCount!
+                }
+                if self.minimumEniIpv6AddressQuantity != nil {
+                    map["MinimumEniIpv6AddressQuantity"] = self.minimumEniIpv6AddressQuantity!
+                }
+                if self.minimumEniPrivateIpAddressQuantity != nil {
+                    map["MinimumEniPrivateIpAddressQuantity"] = self.minimumEniPrivateIpAddressQuantity!
+                }
+                if self.minimumEniQuantity != nil {
+                    map["MinimumEniQuantity"] = self.minimumEniQuantity!
+                }
+                if self.minimumGpuAmount != nil {
+                    map["MinimumGpuAmount"] = self.minimumGpuAmount!
+                }
+                if self.minimumInitialCredit != nil {
+                    map["MinimumInitialCredit"] = self.minimumInitialCredit!
+                }
+                if self.minimumMemorySize != nil {
+                    map["MinimumMemorySize"] = self.minimumMemorySize!
+                }
+                if self.physicalProcessorModels != nil {
+                    map["PhysicalProcessorModels"] = self.physicalProcessorModels!
                 }
                 return map
             }
@@ -17831,17 +18295,65 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
                 if dict.keys.contains("Cores") {
                     self.cores = dict["Cores"] as! Int32
                 }
+                if dict.keys.contains("CpuArchitectures") {
+                    self.cpuArchitectures = dict["CpuArchitectures"] as! [String]
+                }
                 if dict.keys.contains("ExcludedInstanceTypes") {
                     self.excludedInstanceTypes = dict["ExcludedInstanceTypes"] as! [String]
+                }
+                if dict.keys.contains("GpuSpecs") {
+                    self.gpuSpecs = dict["GpuSpecs"] as! [String]
+                }
+                if dict.keys.contains("InstanceCategories") {
+                    self.instanceCategories = dict["InstanceCategories"] as! [String]
                 }
                 if dict.keys.contains("InstanceFamilyLevel") {
                     self.instanceFamilyLevel = dict["InstanceFamilyLevel"] as! String
                 }
+                if dict.keys.contains("InstanceTypeFamilies") {
+                    self.instanceTypeFamilies = dict["InstanceTypeFamilies"] as! [String]
+                }
                 if dict.keys.contains("MaxPrice") {
                     self.maxPrice = dict["MaxPrice"] as! Double
                 }
+                if dict.keys.contains("MaximumCpuCoreCount") {
+                    self.maximumCpuCoreCount = dict["MaximumCpuCoreCount"] as! Int32
+                }
+                if dict.keys.contains("MaximumGpuAmount") {
+                    self.maximumGpuAmount = dict["MaximumGpuAmount"] as! Int32
+                }
+                if dict.keys.contains("MaximumMemorySize") {
+                    self.maximumMemorySize = dict["MaximumMemorySize"] as! Double
+                }
                 if dict.keys.contains("Memory") {
                     self.memory = dict["Memory"] as! Double
+                }
+                if dict.keys.contains("MinimumBaselineCredit") {
+                    self.minimumBaselineCredit = dict["MinimumBaselineCredit"] as! Int32
+                }
+                if dict.keys.contains("MinimumCpuCoreCount") {
+                    self.minimumCpuCoreCount = dict["MinimumCpuCoreCount"] as! Int32
+                }
+                if dict.keys.contains("MinimumEniIpv6AddressQuantity") {
+                    self.minimumEniIpv6AddressQuantity = dict["MinimumEniIpv6AddressQuantity"] as! Int32
+                }
+                if dict.keys.contains("MinimumEniPrivateIpAddressQuantity") {
+                    self.minimumEniPrivateIpAddressQuantity = dict["MinimumEniPrivateIpAddressQuantity"] as! Int32
+                }
+                if dict.keys.contains("MinimumEniQuantity") {
+                    self.minimumEniQuantity = dict["MinimumEniQuantity"] as! Int32
+                }
+                if dict.keys.contains("MinimumGpuAmount") {
+                    self.minimumGpuAmount = dict["MinimumGpuAmount"] as! Int32
+                }
+                if dict.keys.contains("MinimumInitialCredit") {
+                    self.minimumInitialCredit = dict["MinimumInitialCredit"] as! Int32
+                }
+                if dict.keys.contains("MinimumMemorySize") {
+                    self.minimumMemorySize = dict["MinimumMemorySize"] as! Double
+                }
+                if dict.keys.contains("PhysicalProcessorModels") {
+                    self.physicalProcessorModels = dict["PhysicalProcessorModels"] as! [String]
                 }
             }
         }
@@ -29478,13 +29990,45 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
 
         public var cores: Int32?
 
+        public var cpuArchitectures: [String]?
+
         public var excludedInstanceTypes: [String]?
+
+        public var gpuSpecs: [String]?
+
+        public var instanceCategories: [String]?
 
         public var instanceFamilyLevel: String?
 
+        public var instanceTypeFamilies: [String]?
+
         public var maxPrice: Double?
 
+        public var maximumCpuCoreCount: Int32?
+
+        public var maximumGpuAmount: Int32?
+
+        public var maximumMemorySize: Double?
+
         public var memory: Double?
+
+        public var minimumBaselineCredit: Int32?
+
+        public var minimumCpuCoreCount: Int32?
+
+        public var minimumEniIpv6AddressQuantity: Int32?
+
+        public var minimumEniPrivateIpAddressQuantity: Int32?
+
+        public var minimumEniQuantity: Int32?
+
+        public var minimumGpuAmount: Int32?
+
+        public var minimumInitialCredit: Int32?
+
+        public var minimumMemorySize: Double?
+
+        public var physicalProcessorModels: [String]?
 
         public override init() {
             super.init()
@@ -29509,17 +30053,65 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
             if self.cores != nil {
                 map["Cores"] = self.cores!
             }
+            if self.cpuArchitectures != nil {
+                map["CpuArchitectures"] = self.cpuArchitectures!
+            }
             if self.excludedInstanceTypes != nil {
                 map["ExcludedInstanceTypes"] = self.excludedInstanceTypes!
+            }
+            if self.gpuSpecs != nil {
+                map["GpuSpecs"] = self.gpuSpecs!
+            }
+            if self.instanceCategories != nil {
+                map["InstanceCategories"] = self.instanceCategories!
             }
             if self.instanceFamilyLevel != nil {
                 map["InstanceFamilyLevel"] = self.instanceFamilyLevel!
             }
+            if self.instanceTypeFamilies != nil {
+                map["InstanceTypeFamilies"] = self.instanceTypeFamilies!
+            }
             if self.maxPrice != nil {
                 map["MaxPrice"] = self.maxPrice!
             }
+            if self.maximumCpuCoreCount != nil {
+                map["MaximumCpuCoreCount"] = self.maximumCpuCoreCount!
+            }
+            if self.maximumGpuAmount != nil {
+                map["MaximumGpuAmount"] = self.maximumGpuAmount!
+            }
+            if self.maximumMemorySize != nil {
+                map["MaximumMemorySize"] = self.maximumMemorySize!
+            }
             if self.memory != nil {
                 map["Memory"] = self.memory!
+            }
+            if self.minimumBaselineCredit != nil {
+                map["MinimumBaselineCredit"] = self.minimumBaselineCredit!
+            }
+            if self.minimumCpuCoreCount != nil {
+                map["MinimumCpuCoreCount"] = self.minimumCpuCoreCount!
+            }
+            if self.minimumEniIpv6AddressQuantity != nil {
+                map["MinimumEniIpv6AddressQuantity"] = self.minimumEniIpv6AddressQuantity!
+            }
+            if self.minimumEniPrivateIpAddressQuantity != nil {
+                map["MinimumEniPrivateIpAddressQuantity"] = self.minimumEniPrivateIpAddressQuantity!
+            }
+            if self.minimumEniQuantity != nil {
+                map["MinimumEniQuantity"] = self.minimumEniQuantity!
+            }
+            if self.minimumGpuAmount != nil {
+                map["MinimumGpuAmount"] = self.minimumGpuAmount!
+            }
+            if self.minimumInitialCredit != nil {
+                map["MinimumInitialCredit"] = self.minimumInitialCredit!
+            }
+            if self.minimumMemorySize != nil {
+                map["MinimumMemorySize"] = self.minimumMemorySize!
+            }
+            if self.physicalProcessorModels != nil {
+                map["PhysicalProcessorModels"] = self.physicalProcessorModels!
             }
             return map
         }
@@ -29534,17 +30126,65 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
             if dict.keys.contains("Cores") {
                 self.cores = dict["Cores"] as! Int32
             }
+            if dict.keys.contains("CpuArchitectures") {
+                self.cpuArchitectures = dict["CpuArchitectures"] as! [String]
+            }
             if dict.keys.contains("ExcludedInstanceTypes") {
                 self.excludedInstanceTypes = dict["ExcludedInstanceTypes"] as! [String]
+            }
+            if dict.keys.contains("GpuSpecs") {
+                self.gpuSpecs = dict["GpuSpecs"] as! [String]
+            }
+            if dict.keys.contains("InstanceCategories") {
+                self.instanceCategories = dict["InstanceCategories"] as! [String]
             }
             if dict.keys.contains("InstanceFamilyLevel") {
                 self.instanceFamilyLevel = dict["InstanceFamilyLevel"] as! String
             }
+            if dict.keys.contains("InstanceTypeFamilies") {
+                self.instanceTypeFamilies = dict["InstanceTypeFamilies"] as! [String]
+            }
             if dict.keys.contains("MaxPrice") {
                 self.maxPrice = dict["MaxPrice"] as! Double
             }
+            if dict.keys.contains("MaximumCpuCoreCount") {
+                self.maximumCpuCoreCount = dict["MaximumCpuCoreCount"] as! Int32
+            }
+            if dict.keys.contains("MaximumGpuAmount") {
+                self.maximumGpuAmount = dict["MaximumGpuAmount"] as! Int32
+            }
+            if dict.keys.contains("MaximumMemorySize") {
+                self.maximumMemorySize = dict["MaximumMemorySize"] as! Double
+            }
             if dict.keys.contains("Memory") {
                 self.memory = dict["Memory"] as! Double
+            }
+            if dict.keys.contains("MinimumBaselineCredit") {
+                self.minimumBaselineCredit = dict["MinimumBaselineCredit"] as! Int32
+            }
+            if dict.keys.contains("MinimumCpuCoreCount") {
+                self.minimumCpuCoreCount = dict["MinimumCpuCoreCount"] as! Int32
+            }
+            if dict.keys.contains("MinimumEniIpv6AddressQuantity") {
+                self.minimumEniIpv6AddressQuantity = dict["MinimumEniIpv6AddressQuantity"] as! Int32
+            }
+            if dict.keys.contains("MinimumEniPrivateIpAddressQuantity") {
+                self.minimumEniPrivateIpAddressQuantity = dict["MinimumEniPrivateIpAddressQuantity"] as! Int32
+            }
+            if dict.keys.contains("MinimumEniQuantity") {
+                self.minimumEniQuantity = dict["MinimumEniQuantity"] as! Int32
+            }
+            if dict.keys.contains("MinimumGpuAmount") {
+                self.minimumGpuAmount = dict["MinimumGpuAmount"] as! Int32
+            }
+            if dict.keys.contains("MinimumInitialCredit") {
+                self.minimumInitialCredit = dict["MinimumInitialCredit"] as! Int32
+            }
+            if dict.keys.contains("MinimumMemorySize") {
+                self.minimumMemorySize = dict["MinimumMemorySize"] as! Double
+            }
+            if dict.keys.contains("PhysicalProcessorModels") {
+                self.physicalProcessorModels = dict["PhysicalProcessorModels"] as! [String]
             }
         }
     }
@@ -30554,13 +31194,45 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
 
         public var cores: Int32?
 
+        public var cpuArchitectures: [String]?
+
         public var excludedInstanceTypes: [String]?
+
+        public var gpuSpecs: [String]?
+
+        public var instanceCategories: [String]?
 
         public var instanceFamilyLevel: String?
 
+        public var instanceTypeFamilies: [String]?
+
         public var maxPrice: Double?
 
+        public var maximumCpuCoreCount: Int32?
+
+        public var maximumGpuAmount: Int32?
+
+        public var maximumMemorySize: Double?
+
         public var memory: Double?
+
+        public var minimumBaselineCredit: Int32?
+
+        public var minimumCpuCoreCount: Int32?
+
+        public var minimumEniIpv6AddressQuantity: Int32?
+
+        public var minimumEniPrivateIpAddressQuantity: Int32?
+
+        public var minimumEniQuantity: Int32?
+
+        public var minimumGpuAmount: Int32?
+
+        public var minimumInitialCredit: Int32?
+
+        public var minimumMemorySize: Double?
+
+        public var physicalProcessorModels: [String]?
 
         public override init() {
             super.init()
@@ -30585,17 +31257,65 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
             if self.cores != nil {
                 map["Cores"] = self.cores!
             }
+            if self.cpuArchitectures != nil {
+                map["CpuArchitectures"] = self.cpuArchitectures!
+            }
             if self.excludedInstanceTypes != nil {
                 map["ExcludedInstanceTypes"] = self.excludedInstanceTypes!
+            }
+            if self.gpuSpecs != nil {
+                map["GpuSpecs"] = self.gpuSpecs!
+            }
+            if self.instanceCategories != nil {
+                map["InstanceCategories"] = self.instanceCategories!
             }
             if self.instanceFamilyLevel != nil {
                 map["InstanceFamilyLevel"] = self.instanceFamilyLevel!
             }
+            if self.instanceTypeFamilies != nil {
+                map["InstanceTypeFamilies"] = self.instanceTypeFamilies!
+            }
             if self.maxPrice != nil {
                 map["MaxPrice"] = self.maxPrice!
             }
+            if self.maximumCpuCoreCount != nil {
+                map["MaximumCpuCoreCount"] = self.maximumCpuCoreCount!
+            }
+            if self.maximumGpuAmount != nil {
+                map["MaximumGpuAmount"] = self.maximumGpuAmount!
+            }
+            if self.maximumMemorySize != nil {
+                map["MaximumMemorySize"] = self.maximumMemorySize!
+            }
             if self.memory != nil {
                 map["Memory"] = self.memory!
+            }
+            if self.minimumBaselineCredit != nil {
+                map["MinimumBaselineCredit"] = self.minimumBaselineCredit!
+            }
+            if self.minimumCpuCoreCount != nil {
+                map["MinimumCpuCoreCount"] = self.minimumCpuCoreCount!
+            }
+            if self.minimumEniIpv6AddressQuantity != nil {
+                map["MinimumEniIpv6AddressQuantity"] = self.minimumEniIpv6AddressQuantity!
+            }
+            if self.minimumEniPrivateIpAddressQuantity != nil {
+                map["MinimumEniPrivateIpAddressQuantity"] = self.minimumEniPrivateIpAddressQuantity!
+            }
+            if self.minimumEniQuantity != nil {
+                map["MinimumEniQuantity"] = self.minimumEniQuantity!
+            }
+            if self.minimumGpuAmount != nil {
+                map["MinimumGpuAmount"] = self.minimumGpuAmount!
+            }
+            if self.minimumInitialCredit != nil {
+                map["MinimumInitialCredit"] = self.minimumInitialCredit!
+            }
+            if self.minimumMemorySize != nil {
+                map["MinimumMemorySize"] = self.minimumMemorySize!
+            }
+            if self.physicalProcessorModels != nil {
+                map["PhysicalProcessorModels"] = self.physicalProcessorModels!
             }
             return map
         }
@@ -30610,17 +31330,65 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
             if dict.keys.contains("Cores") {
                 self.cores = dict["Cores"] as! Int32
             }
+            if dict.keys.contains("CpuArchitectures") {
+                self.cpuArchitectures = dict["CpuArchitectures"] as! [String]
+            }
             if dict.keys.contains("ExcludedInstanceTypes") {
                 self.excludedInstanceTypes = dict["ExcludedInstanceTypes"] as! [String]
+            }
+            if dict.keys.contains("GpuSpecs") {
+                self.gpuSpecs = dict["GpuSpecs"] as! [String]
+            }
+            if dict.keys.contains("InstanceCategories") {
+                self.instanceCategories = dict["InstanceCategories"] as! [String]
             }
             if dict.keys.contains("InstanceFamilyLevel") {
                 self.instanceFamilyLevel = dict["InstanceFamilyLevel"] as! String
             }
+            if dict.keys.contains("InstanceTypeFamilies") {
+                self.instanceTypeFamilies = dict["InstanceTypeFamilies"] as! [String]
+            }
             if dict.keys.contains("MaxPrice") {
                 self.maxPrice = dict["MaxPrice"] as! Double
             }
+            if dict.keys.contains("MaximumCpuCoreCount") {
+                self.maximumCpuCoreCount = dict["MaximumCpuCoreCount"] as! Int32
+            }
+            if dict.keys.contains("MaximumGpuAmount") {
+                self.maximumGpuAmount = dict["MaximumGpuAmount"] as! Int32
+            }
+            if dict.keys.contains("MaximumMemorySize") {
+                self.maximumMemorySize = dict["MaximumMemorySize"] as! Double
+            }
             if dict.keys.contains("Memory") {
                 self.memory = dict["Memory"] as! Double
+            }
+            if dict.keys.contains("MinimumBaselineCredit") {
+                self.minimumBaselineCredit = dict["MinimumBaselineCredit"] as! Int32
+            }
+            if dict.keys.contains("MinimumCpuCoreCount") {
+                self.minimumCpuCoreCount = dict["MinimumCpuCoreCount"] as! Int32
+            }
+            if dict.keys.contains("MinimumEniIpv6AddressQuantity") {
+                self.minimumEniIpv6AddressQuantity = dict["MinimumEniIpv6AddressQuantity"] as! Int32
+            }
+            if dict.keys.contains("MinimumEniPrivateIpAddressQuantity") {
+                self.minimumEniPrivateIpAddressQuantity = dict["MinimumEniPrivateIpAddressQuantity"] as! Int32
+            }
+            if dict.keys.contains("MinimumEniQuantity") {
+                self.minimumEniQuantity = dict["MinimumEniQuantity"] as! Int32
+            }
+            if dict.keys.contains("MinimumGpuAmount") {
+                self.minimumGpuAmount = dict["MinimumGpuAmount"] as! Int32
+            }
+            if dict.keys.contains("MinimumInitialCredit") {
+                self.minimumInitialCredit = dict["MinimumInitialCredit"] as! Int32
+            }
+            if dict.keys.contains("MinimumMemorySize") {
+                self.minimumMemorySize = dict["MinimumMemorySize"] as! Double
+            }
+            if dict.keys.contains("PhysicalProcessorModels") {
+                self.physicalProcessorModels = dict["PhysicalProcessorModels"] as! [String]
             }
         }
     }
