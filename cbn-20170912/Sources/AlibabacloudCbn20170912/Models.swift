@@ -30674,6 +30674,8 @@ public class ListTransitRouterVpnAttachmentsResponseBody : Tea.TeaModel {
 
         public var creationTime: String?
 
+        public var orderType: String?
+
         public var resourceType: String?
 
         public var status: String?
@@ -30721,6 +30723,9 @@ public class ListTransitRouterVpnAttachmentsResponseBody : Tea.TeaModel {
             }
             if self.creationTime != nil {
                 map["CreationTime"] = self.creationTime!
+            }
+            if self.orderType != nil {
+                map["OrderType"] = self.orderType!
             }
             if self.resourceType != nil {
                 map["ResourceType"] = self.resourceType!
@@ -30778,6 +30783,9 @@ public class ListTransitRouterVpnAttachmentsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("CreationTime") {
                 self.creationTime = dict["CreationTime"] as! String
+            }
+            if dict.keys.contains("OrderType") {
+                self.orderType = dict["OrderType"] as! String
             }
             if dict.keys.contains("ResourceType") {
                 self.resourceType = dict["ResourceType"] as! String
