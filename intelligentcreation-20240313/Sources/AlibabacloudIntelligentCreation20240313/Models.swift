@@ -353,6 +353,10 @@ public class ReferenceTag : Tea.TeaModel {
 }
 
 public class Text : Tea.TeaModel {
+    public var agentId: String?
+
+    public var agentName: String?
+
     public var desc: String?
 
     public var gmtCreate: String?
@@ -399,6 +403,12 @@ public class Text : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.agentId != nil {
+            map["agentId"] = self.agentId!
+        }
+        if self.agentName != nil {
+            map["agentName"] = self.agentName!
+        }
         if self.desc != nil {
             map["desc"] = self.desc!
         }
@@ -451,6 +461,12 @@ public class Text : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("agentId") {
+            self.agentId = dict["agentId"] as! String
+        }
+        if dict.keys.contains("agentName") {
+            self.agentName = dict["agentName"] as! String
+        }
         if dict.keys.contains("desc") {
             self.desc = dict["desc"] as! String
         }
@@ -602,6 +618,10 @@ public class TextResult : Tea.TeaModel {
 }
 
 public class TextTask : Tea.TeaModel {
+    public var agentId: String?
+
+    public var agentName: String?
+
     public var contentRequirement: String?
 
     public var gmtCreate: String?
@@ -630,6 +650,8 @@ public class TextTask : Tea.TeaModel {
 
     public var textTaskStatus: String?
 
+    public var texts: Text?
+
     public var theme: String?
 
     public var themeDesc: String?
@@ -645,10 +667,17 @@ public class TextTask : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.referenceTag?.validate()
+        try self.texts?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.agentId != nil {
+            map["agentId"] = self.agentId!
+        }
+        if self.agentName != nil {
+            map["agentName"] = self.agentName!
+        }
         if self.contentRequirement != nil {
             map["contentRequirement"] = self.contentRequirement!
         }
@@ -691,6 +720,9 @@ public class TextTask : Tea.TeaModel {
         if self.textTaskStatus != nil {
             map["textTaskStatus"] = self.textTaskStatus!
         }
+        if self.texts != nil {
+            map["texts"] = self.texts?.toMap()
+        }
         if self.theme != nil {
             map["theme"] = self.theme!
         }
@@ -701,6 +733,12 @@ public class TextTask : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("agentId") {
+            self.agentId = dict["agentId"] as! String
+        }
+        if dict.keys.contains("agentName") {
+            self.agentName = dict["agentName"] as! String
+        }
         if dict.keys.contains("contentRequirement") {
             self.contentRequirement = dict["contentRequirement"] as! String
         }
@@ -745,6 +783,11 @@ public class TextTask : Tea.TeaModel {
         if dict.keys.contains("textTaskStatus") {
             self.textTaskStatus = dict["textTaskStatus"] as! String
         }
+        if dict.keys.contains("texts") {
+            var model = Text()
+            model.fromMap(dict["texts"] as! [String: Any])
+            self.texts = model
+        }
         if dict.keys.contains("theme") {
             self.theme = dict["theme"] as! String
         }
@@ -755,6 +798,8 @@ public class TextTask : Tea.TeaModel {
 }
 
 public class TextTaskCreateCmd : Tea.TeaModel {
+    public var agentId: String?
+
     public var contentRequirement: String?
 
     public var idempotentId: String?
@@ -796,6 +841,9 @@ public class TextTaskCreateCmd : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.agentId != nil {
+            map["agentId"] = self.agentId!
+        }
         if self.contentRequirement != nil {
             map["contentRequirement"] = self.contentRequirement!
         }
@@ -839,6 +887,9 @@ public class TextTaskCreateCmd : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("agentId") {
+            self.agentId = dict["agentId"] as! String
+        }
         if dict.keys.contains("contentRequirement") {
             self.contentRequirement = dict["contentRequirement"] as! String
         }
