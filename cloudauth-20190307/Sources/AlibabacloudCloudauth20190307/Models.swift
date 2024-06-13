@@ -4884,6 +4884,8 @@ public class InitFaceVerifyRequest : Tea.TeaModel {
 
     public var suitableType: String?
 
+    public var uiCustomUrl: String?
+
     public var userId: String?
 
     public var validityDate: String?
@@ -4994,6 +4996,9 @@ public class InitFaceVerifyRequest : Tea.TeaModel {
         if self.suitableType != nil {
             map["SuitableType"] = self.suitableType!
         }
+        if self.uiCustomUrl != nil {
+            map["UiCustomUrl"] = self.uiCustomUrl!
+        }
         if self.userId != nil {
             map["UserId"] = self.userId!
         }
@@ -5096,6 +5101,9 @@ public class InitFaceVerifyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SuitableType") {
             self.suitableType = dict["SuitableType"] as! String
+        }
+        if dict.keys.contains("UiCustomUrl") {
+            self.uiCustomUrl = dict["UiCustomUrl"] as! String
         }
         if dict.keys.contains("UserId") {
             self.userId = dict["UserId"] as! String

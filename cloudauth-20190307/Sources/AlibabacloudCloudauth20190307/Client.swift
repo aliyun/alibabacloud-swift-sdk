@@ -1035,6 +1035,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.suitableType)) {
             query["SuitableType"] = request.suitableType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.uiCustomUrl)) {
+            query["UiCustomUrl"] = request.uiCustomUrl ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.userId)) {
             query["UserId"] = request.userId ?? "";
         }
