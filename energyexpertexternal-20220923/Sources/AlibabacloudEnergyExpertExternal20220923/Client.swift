@@ -1192,14 +1192,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitDocumentAnalyzeJobWithOptions(_ request: SubmitDocumentAnalyzeJobRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitDocumentAnalyzeJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fileName)) {
+            query["fileName"] = request.fileName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.fileUrl)) {
             query["fileUrl"] = request.fileUrl ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.folderId)) {
             query["folderId"] = request.folderId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.ossUrl)) {
-            query["ossUrl"] = request.ossUrl ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.templateId)) {
             query["templateId"] = request.templateId ?? "";
@@ -1273,14 +1273,14 @@ open class Client : AlibabacloudOpenApi.Client {
         AlibabaCloudOpenApiUtil.Client.convert(runtime, ossRuntime)
         var submitDocumentAnalyzeJobReq: SubmitDocumentAnalyzeJobRequest = SubmitDocumentAnalyzeJobRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(request, submitDocumentAnalyzeJobReq)
-        if (!TeaUtils.Client.isUnset(request.ossUrlObject)) {
+        if (!TeaUtils.Client.isUnset(request.fileUrlObject)) {
             authResponse = try await authClient.authorizeFileUploadWithOptions(authRequest as! AlibabacloudOpenPlatform20191219.AuthorizeFileUploadRequest, runtime as! TeaUtils.RuntimeOptions)
             ossConfig.accessKeyId = authResponse.body!.accessKeyId
             ossConfig.endpoint = AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponse.body!.endpoint, authResponse.body!.useAccelerate, self._endpointType)
             ossClient = try AlibabaCloudOssSdk.Client(ossConfig)
             fileObj = TeaFileForm.FileField([
                 "filename": authResponse.body!.objectKey ?? "",
-                "content": request.ossUrlObject!,
+                "content": request.fileUrlObject!,
                 "contentType": ""
             ])
             ossHeader = AlibabaCloudOssSdk.PostObjectRequest.Header([
@@ -1296,7 +1296,7 @@ open class Client : AlibabacloudOpenApi.Client {
                 "header": ossHeader as! AlibabaCloudOssSdk.PostObjectRequest.Header
             ])
             try await ossClient.postObject(uploadRequest as! AlibabaCloudOssSdk.PostObjectRequest, ossRuntime as! AlibabaCloudOSSUtil.RuntimeOptions)
-            submitDocumentAnalyzeJobReq.ossUrl = "http://" + (authResponse.body!.bucket ?? "") + "." + (authResponse.body!.endpoint ?? "") + "/" + (authResponse.body!.objectKey ?? "")
+            submitDocumentAnalyzeJobReq.fileUrl = "http://" + (authResponse.body!.bucket ?? "") + "." + (authResponse.body!.endpoint ?? "") + "/" + (authResponse.body!.objectKey ?? "")
         }
         var submitDocumentAnalyzeJobResp: SubmitDocumentAnalyzeJobResponse = try await submitDocumentAnalyzeJobWithOptions(submitDocumentAnalyzeJobReq as! SubmitDocumentAnalyzeJobRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
         return submitDocumentAnalyzeJobResp as! SubmitDocumentAnalyzeJobResponse

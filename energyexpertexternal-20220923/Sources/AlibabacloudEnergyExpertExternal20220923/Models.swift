@@ -9215,11 +9215,11 @@ public class SendDocumentAskQuestionResponse : Tea.TeaModel {
 }
 
 public class SubmitDocumentAnalyzeJobRequest : Tea.TeaModel {
+    public var fileName: String?
+
     public var fileUrl: String?
 
     public var folderId: String?
-
-    public var ossUrl: String?
 
     public var templateId: String?
 
@@ -9237,14 +9237,14 @@ public class SubmitDocumentAnalyzeJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.fileName != nil {
+            map["fileName"] = self.fileName!
+        }
         if self.fileUrl != nil {
             map["fileUrl"] = self.fileUrl!
         }
         if self.folderId != nil {
             map["folderId"] = self.folderId!
-        }
-        if self.ossUrl != nil {
-            map["ossUrl"] = self.ossUrl!
         }
         if self.templateId != nil {
             map["templateId"] = self.templateId!
@@ -9253,14 +9253,14 @@ public class SubmitDocumentAnalyzeJobRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("fileName") {
+            self.fileName = dict["fileName"] as! String
+        }
         if dict.keys.contains("fileUrl") {
             self.fileUrl = dict["fileUrl"] as! String
         }
         if dict.keys.contains("folderId") {
             self.folderId = dict["folderId"] as! String
-        }
-        if dict.keys.contains("ossUrl") {
-            self.ossUrl = dict["ossUrl"] as! String
         }
         if dict.keys.contains("templateId") {
             self.templateId = dict["templateId"] as! String
@@ -9269,11 +9269,11 @@ public class SubmitDocumentAnalyzeJobRequest : Tea.TeaModel {
 }
 
 public class SubmitDocumentAnalyzeJobAdvanceRequest : Tea.TeaModel {
-    public var fileUrl: String?
+    public var fileName: String?
+
+    public var fileUrlObject: InputStream?
 
     public var folderId: String?
-
-    public var ossUrlObject: InputStream?
 
     public var templateId: String?
 
@@ -9291,14 +9291,14 @@ public class SubmitDocumentAnalyzeJobAdvanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.fileUrl != nil {
-            map["fileUrl"] = self.fileUrl!
+        if self.fileName != nil {
+            map["fileName"] = self.fileName!
+        }
+        if self.fileUrlObject != nil {
+            map["fileUrl"] = self.fileUrlObject!
         }
         if self.folderId != nil {
             map["folderId"] = self.folderId!
-        }
-        if self.ossUrlObject != nil {
-            map["ossUrl"] = self.ossUrlObject!
         }
         if self.templateId != nil {
             map["templateId"] = self.templateId!
@@ -9307,14 +9307,14 @@ public class SubmitDocumentAnalyzeJobAdvanceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("fileName") {
+            self.fileName = dict["fileName"] as! String
+        }
         if dict.keys.contains("fileUrl") {
-            self.fileUrl = dict["fileUrl"] as! String
+            self.fileUrlObject = dict["fileUrl"] as! InputStream
         }
         if dict.keys.contains("folderId") {
             self.folderId = dict["folderId"] as! String
-        }
-        if dict.keys.contains("ossUrl") {
-            self.ossUrlObject = dict["ossUrl"] as! InputStream
         }
         if dict.keys.contains("templateId") {
             self.templateId = dict["templateId"] as! String
