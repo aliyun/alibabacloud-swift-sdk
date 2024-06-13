@@ -584,6 +584,21 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.sourceEndpointUserName)) {
             query["SourceEndpointUserName"] = request.sourceEndpointUserName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.srcCaCertificateOssUrl)) {
+            query["SrcCaCertificateOssUrl"] = request.srcCaCertificateOssUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.srcCaCertificatePassword)) {
+            query["SrcCaCertificatePassword"] = request.srcCaCertificatePassword ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.srcClientCertOssUrl)) {
+            query["SrcClientCertOssUrl"] = request.srcClientCertOssUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.srcClientKeyOssUrl)) {
+            query["SrcClientKeyOssUrl"] = request.srcClientKeyOssUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.srcClientPassword)) {
+            query["SrcClientPassword"] = request.srcClientPassword ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.subscriptionDataTypeDDL)) {
             query["SubscriptionDataTypeDDL"] = request.subscriptionDataTypeDDL!;
         }

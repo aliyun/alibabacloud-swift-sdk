@@ -1913,6 +1913,16 @@ public class ConfigureSubscriptionRequest : Tea.TeaModel {
 
     public var sourceEndpointUserName: String?
 
+    public var srcCaCertificateOssUrl: String?
+
+    public var srcCaCertificatePassword: String?
+
+    public var srcClientCertOssUrl: String?
+
+    public var srcClientKeyOssUrl: String?
+
+    public var srcClientPassword: String?
+
     public var subscriptionDataTypeDDL: Bool?
 
     public var subscriptionDataTypeDML: Bool?
@@ -2024,6 +2034,21 @@ public class ConfigureSubscriptionRequest : Tea.TeaModel {
         if self.sourceEndpointUserName != nil {
             map["SourceEndpointUserName"] = self.sourceEndpointUserName!
         }
+        if self.srcCaCertificateOssUrl != nil {
+            map["SrcCaCertificateOssUrl"] = self.srcCaCertificateOssUrl!
+        }
+        if self.srcCaCertificatePassword != nil {
+            map["SrcCaCertificatePassword"] = self.srcCaCertificatePassword!
+        }
+        if self.srcClientCertOssUrl != nil {
+            map["SrcClientCertOssUrl"] = self.srcClientCertOssUrl!
+        }
+        if self.srcClientKeyOssUrl != nil {
+            map["SrcClientKeyOssUrl"] = self.srcClientKeyOssUrl!
+        }
+        if self.srcClientPassword != nil {
+            map["SrcClientPassword"] = self.srcClientPassword!
+        }
         if self.subscriptionDataTypeDDL != nil {
             map["SubscriptionDataTypeDDL"] = self.subscriptionDataTypeDDL!
         }
@@ -2129,6 +2154,21 @@ public class ConfigureSubscriptionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SourceEndpointUserName") {
             self.sourceEndpointUserName = dict["SourceEndpointUserName"] as! String
+        }
+        if dict.keys.contains("SrcCaCertificateOssUrl") {
+            self.srcCaCertificateOssUrl = dict["SrcCaCertificateOssUrl"] as! String
+        }
+        if dict.keys.contains("SrcCaCertificatePassword") {
+            self.srcCaCertificatePassword = dict["SrcCaCertificatePassword"] as! String
+        }
+        if dict.keys.contains("SrcClientCertOssUrl") {
+            self.srcClientCertOssUrl = dict["SrcClientCertOssUrl"] as! String
+        }
+        if dict.keys.contains("SrcClientKeyOssUrl") {
+            self.srcClientKeyOssUrl = dict["SrcClientKeyOssUrl"] as! String
+        }
+        if dict.keys.contains("SrcClientPassword") {
+            self.srcClientPassword = dict["SrcClientPassword"] as! String
         }
         if dict.keys.contains("SubscriptionDataTypeDDL") {
             self.subscriptionDataTypeDDL = dict["SubscriptionDataTypeDDL"] as! Bool
