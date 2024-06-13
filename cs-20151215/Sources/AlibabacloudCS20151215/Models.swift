@@ -4957,7 +4957,7 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
         public var instanceChargeType: String?
 
-        public var instancePatterns: InstancePatterns?
+        public var instancePatterns: [InstancePatterns]?
 
         public var instanceTypes: [String]?
 
@@ -5037,7 +5037,6 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
-            try self.instancePatterns?.validate()
             try self.privatePoolOptions?.validate()
         }
 
@@ -5078,7 +5077,11 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
                 map["instance_charge_type"] = self.instanceChargeType!
             }
             if self.instancePatterns != nil {
-                map["instance_patterns"] = self.instancePatterns?.toMap()
+                var tmp : [Any] = []
+                for k in self.instancePatterns! {
+                    tmp.append(k.toMap())
+                }
+                map["instance_patterns"] = tmp
             }
             if self.instanceTypes != nil {
                 map["instance_types"] = self.instanceTypes!
@@ -5233,9 +5236,15 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
                 self.instanceChargeType = dict["instance_charge_type"] as! String
             }
             if dict.keys.contains("instance_patterns") {
-                var model = InstancePatterns()
-                model.fromMap(dict["instance_patterns"] as! [String: Any])
-                self.instancePatterns = model
+                var tmp : [InstancePatterns] = []
+                for v in dict["instance_patterns"] as! [Any] {
+                    var model = InstancePatterns()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.instancePatterns = tmp
             }
             if dict.keys.contains("instance_types") {
                 self.instanceTypes = dict["instance_types"] as! [String]
@@ -10210,7 +10219,7 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
         public var instanceChargeType: String?
 
-        public var instancePatterns: InstancePatterns?
+        public var instancePatterns: [InstancePatterns]?
 
         public var instanceTypes: [String]?
 
@@ -10294,7 +10303,6 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
-            try self.instancePatterns?.validate()
             try self.privatePoolOptions?.validate()
         }
 
@@ -10335,7 +10343,11 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
                 map["instance_charge_type"] = self.instanceChargeType!
             }
             if self.instancePatterns != nil {
-                map["instance_patterns"] = self.instancePatterns?.toMap()
+                var tmp : [Any] = []
+                for k in self.instancePatterns! {
+                    tmp.append(k.toMap())
+                }
+                map["instance_patterns"] = tmp
             }
             if self.instanceTypes != nil {
                 map["instance_types"] = self.instanceTypes!
@@ -10496,9 +10508,15 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
                 self.instanceChargeType = dict["instance_charge_type"] as! String
             }
             if dict.keys.contains("instance_patterns") {
-                var model = InstancePatterns()
-                model.fromMap(dict["instance_patterns"] as! [String: Any])
-                self.instancePatterns = model
+                var tmp : [InstancePatterns] = []
+                for v in dict["instance_patterns"] as! [Any] {
+                    var model = InstancePatterns()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.instancePatterns = tmp
             }
             if dict.keys.contains("instance_types") {
                 self.instanceTypes = dict["instance_types"] as! [String]
@@ -11671,7 +11689,7 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
 
             public var instanceChargeType: String?
 
-            public var instancePatterns: InstancePatterns?
+            public var instancePatterns: [InstancePatterns]?
 
             public var instanceTypes: [String]?
 
@@ -11755,7 +11773,6 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
-                try self.instancePatterns?.validate()
                 try self.privatePoolOptions?.validate()
             }
 
@@ -11796,7 +11813,11 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                     map["instance_charge_type"] = self.instanceChargeType!
                 }
                 if self.instancePatterns != nil {
-                    map["instance_patterns"] = self.instancePatterns?.toMap()
+                    var tmp : [Any] = []
+                    for k in self.instancePatterns! {
+                        tmp.append(k.toMap())
+                    }
+                    map["instance_patterns"] = tmp
                 }
                 if self.instanceTypes != nil {
                     map["instance_types"] = self.instanceTypes!
@@ -11957,9 +11978,15 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                     self.instanceChargeType = dict["instance_charge_type"] as! String
                 }
                 if dict.keys.contains("instance_patterns") {
-                    var model = InstancePatterns()
-                    model.fromMap(dict["instance_patterns"] as! [String: Any])
-                    self.instancePatterns = model
+                    var tmp : [InstancePatterns] = []
+                    for v in dict["instance_patterns"] as! [Any] {
+                        var model = InstancePatterns()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.instancePatterns = tmp
                 }
                 if dict.keys.contains("instance_types") {
                     self.instanceTypes = dict["instance_types"] as! [String]
@@ -17617,6 +17644,155 @@ public class DescribePolicyInstancesStatusResponse : Tea.TeaModel {
             var model = DescribePolicyInstancesStatusResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
+        }
+    }
+}
+
+public class DescribeResourcesDeleteProtectionRequest : Tea.TeaModel {
+    public var namespace: String?
+
+    public var resources: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.namespace != nil {
+            map["namespace"] = self.namespace!
+        }
+        if self.resources != nil {
+            map["resources"] = self.resources!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("namespace") {
+            self.namespace = dict["namespace"] as! String
+        }
+        if dict.keys.contains("resources") {
+            self.resources = dict["resources"] as! String
+        }
+    }
+}
+
+public class DescribeResourcesDeleteProtectionResponse : Tea.TeaModel {
+    public class Body : Tea.TeaModel {
+        public var name: String?
+
+        public var namespace: String?
+
+        public var resource: String?
+
+        public var protection: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.namespace != nil {
+                map["namespace"] = self.namespace!
+            }
+            if self.resource != nil {
+                map["resource"] = self.resource!
+            }
+            if self.protection != nil {
+                map["protection"] = self.protection!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("name") {
+                self.name = dict["name"] as! String
+            }
+            if dict.keys.contains("namespace") {
+                self.namespace = dict["namespace"] as! String
+            }
+            if dict.keys.contains("resource") {
+                self.resource = dict["resource"] as! String
+            }
+            if dict.keys.contains("protection") {
+                self.protection = dict["protection"] as! Bool
+            }
+        }
+    }
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: [DescribeResourcesDeleteProtectionResponse.Body]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            var tmp : [Any] = []
+            for k in self.body! {
+                tmp.append(k.toMap())
+            }
+            map["body"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var tmp : [DescribeResourcesDeleteProtectionResponse.Body] = []
+            for v in dict["body"] as! [Any] {
+                var model = DescribeResourcesDeleteProtectionResponse.Body()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.body = tmp
         }
     }
 }
@@ -23378,7 +23554,7 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
 
         public var instanceChargeType: String?
 
-        public var instancePatterns: InstancePatterns?
+        public var instancePatterns: [InstancePatterns]?
 
         public var instanceTypes: [String]?
 
@@ -23448,7 +23624,6 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
-            try self.instancePatterns?.validate()
             try self.privatePoolOptions?.validate()
         }
 
@@ -23483,7 +23658,11 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
                 map["instance_charge_type"] = self.instanceChargeType!
             }
             if self.instancePatterns != nil {
-                map["instance_patterns"] = self.instancePatterns?.toMap()
+                var tmp : [Any] = []
+                for k in self.instancePatterns! {
+                    tmp.append(k.toMap())
+                }
+                map["instance_patterns"] = tmp
             }
             if self.instanceTypes != nil {
                 map["instance_types"] = self.instanceTypes!
@@ -23617,9 +23796,15 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
                 self.instanceChargeType = dict["instance_charge_type"] as! String
             }
             if dict.keys.contains("instance_patterns") {
-                var model = InstancePatterns()
-                model.fromMap(dict["instance_patterns"] as! [String: Any])
-                self.instancePatterns = model
+                var tmp : [InstancePatterns] = []
+                for v in dict["instance_patterns"] as! [Any] {
+                    var model = InstancePatterns()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.instancePatterns = tmp
             }
             if dict.keys.contains("instance_types") {
                 self.instanceTypes = dict["instance_types"] as! [String]
@@ -27672,6 +27857,171 @@ public class UpdateK8sClusterUserConfigExpireResponse : Tea.TeaModel {
         }
         if dict.keys.contains("statusCode") {
             self.statusCode = dict["statusCode"] as! Int32
+        }
+    }
+}
+
+public class UpdateResourcesDeleteProtectionRequest : Tea.TeaModel {
+    public var enable: Bool?
+
+    public var namespace: String?
+
+    public var resourceType: String?
+
+    public var resources: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enable != nil {
+            map["enable"] = self.enable!
+        }
+        if self.namespace != nil {
+            map["namespace"] = self.namespace!
+        }
+        if self.resourceType != nil {
+            map["resource_type"] = self.resourceType!
+        }
+        if self.resources != nil {
+            map["resources"] = self.resources!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("enable") {
+            self.enable = dict["enable"] as! Bool
+        }
+        if dict.keys.contains("namespace") {
+            self.namespace = dict["namespace"] as! String
+        }
+        if dict.keys.contains("resource_type") {
+            self.resourceType = dict["resource_type"] as! String
+        }
+        if dict.keys.contains("resources") {
+            self.resources = dict["resources"] as! [String]
+        }
+    }
+}
+
+public class UpdateResourcesDeleteProtectionResponseBody : Tea.TeaModel {
+    public var namespace: String?
+
+    public var protection: String?
+
+    public var requestId: String?
+
+    public var resourceType: String?
+
+    public var resources: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.namespace != nil {
+            map["namespace"] = self.namespace!
+        }
+        if self.protection != nil {
+            map["protection"] = self.protection!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.resourceType != nil {
+            map["resource_type"] = self.resourceType!
+        }
+        if self.resources != nil {
+            map["resources"] = self.resources!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("namespace") {
+            self.namespace = dict["namespace"] as! String
+        }
+        if dict.keys.contains("protection") {
+            self.protection = dict["protection"] as! String
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("resource_type") {
+            self.resourceType = dict["resource_type"] as! String
+        }
+        if dict.keys.contains("resources") {
+            self.resources = dict["resources"] as! [String]
+        }
+    }
+}
+
+public class UpdateResourcesDeleteProtectionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateResourcesDeleteProtectionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateResourcesDeleteProtectionResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
         }
     }
 }
