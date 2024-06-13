@@ -22966,6 +22966,84 @@ public class DescribeAuthorizedAppsRequest : Tea.TeaModel {
 public class DescribeAuthorizedAppsResponseBody : Tea.TeaModel {
     public class AuthorizedApps : Tea.TeaModel {
         public class AuthorizedApp : Tea.TeaModel {
+            public class Tag : Tea.TeaModel {
+                public class TagInfo : Tea.TeaModel {
+                    public var key: String?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.key != nil {
+                            map["Key"] = self.key!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Key") {
+                            self.key = dict["Key"] as! String
+                        }
+                        if dict.keys.contains("Value") {
+                            self.value = dict["Value"] as! String
+                        }
+                    }
+                }
+                public var tagInfo: [DescribeAuthorizedAppsResponseBody.AuthorizedApps.AuthorizedApp.Tag.TagInfo]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.tagInfo != nil {
+                        var tmp : [Any] = []
+                        for k in self.tagInfo! {
+                            tmp.append(k.toMap())
+                        }
+                        map["TagInfo"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("TagInfo") {
+                        var tmp : [DescribeAuthorizedAppsResponseBody.AuthorizedApps.AuthorizedApp.Tag.TagInfo] = []
+                        for v in dict["TagInfo"] as! [Any] {
+                            var model = DescribeAuthorizedAppsResponseBody.AuthorizedApps.AuthorizedApp.Tag.TagInfo()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.tagInfo = tmp
+                    }
+                }
+            }
             public var appDescription: String?
 
             public var appId: Int64?
@@ -22986,6 +23064,8 @@ public class DescribeAuthorizedAppsResponseBody : Tea.TeaModel {
 
             public var stageName: String?
 
+            public var tag: DescribeAuthorizedAppsResponseBody.AuthorizedApps.AuthorizedApp.Tag?
+
             public override init() {
                 super.init()
             }
@@ -22996,6 +23076,7 @@ public class DescribeAuthorizedAppsResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.tag?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -23030,6 +23111,9 @@ public class DescribeAuthorizedAppsResponseBody : Tea.TeaModel {
                 if self.stageName != nil {
                     map["StageName"] = self.stageName!
                 }
+                if self.tag != nil {
+                    map["Tag"] = self.tag?.toMap()
+                }
                 return map
             }
 
@@ -23063,6 +23147,11 @@ public class DescribeAuthorizedAppsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("StageName") {
                     self.stageName = dict["StageName"] as! String
+                }
+                if dict.keys.contains("Tag") {
+                    var model = DescribeAuthorizedAppsResponseBody.AuthorizedApps.AuthorizedApp.Tag()
+                    model.fromMap(dict["Tag"] as! [String: Any])
+                    self.tag = model
                 }
             }
         }
