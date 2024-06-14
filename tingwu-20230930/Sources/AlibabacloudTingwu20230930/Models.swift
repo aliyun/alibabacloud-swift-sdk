@@ -195,9 +195,13 @@ public class CreateTaskRequest : Tea.TeaModel {
             }
         }
         public class ExtraParams : Tea.TeaModel {
+            public var domainEducationEnabled: Bool?
+
             public var maxKeywords: Int32?
 
             public var nfixEnabled: Bool?
+
+            public var ocrAuxiliaryEnabled: Bool?
 
             public override init() {
                 super.init()
@@ -213,21 +217,33 @@ public class CreateTaskRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.domainEducationEnabled != nil {
+                    map["DomainEducationEnabled"] = self.domainEducationEnabled!
+                }
                 if self.maxKeywords != nil {
                     map["MaxKeywords"] = self.maxKeywords!
                 }
                 if self.nfixEnabled != nil {
                     map["NfixEnabled"] = self.nfixEnabled!
                 }
+                if self.ocrAuxiliaryEnabled != nil {
+                    map["OcrAuxiliaryEnabled"] = self.ocrAuxiliaryEnabled!
+                }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DomainEducationEnabled") {
+                    self.domainEducationEnabled = dict["DomainEducationEnabled"] as! Bool
+                }
                 if dict.keys.contains("MaxKeywords") {
                     self.maxKeywords = dict["MaxKeywords"] as! Int32
                 }
                 if dict.keys.contains("NfixEnabled") {
                     self.nfixEnabled = dict["NfixEnabled"] as! Bool
+                }
+                if dict.keys.contains("OcrAuxiliaryEnabled") {
+                    self.ocrAuxiliaryEnabled = dict["OcrAuxiliaryEnabled"] as! Bool
                 }
             }
         }
