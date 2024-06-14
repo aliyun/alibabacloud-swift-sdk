@@ -1771,6 +1771,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             body["InstanceId"] = request.instanceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.maxConnectionLimit)) {
+            body["MaxConnectionLimit"] = request.maxConnectionLimit ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             body["PageNumber"] = request.pageNumber!;
         }
@@ -3475,6 +3478,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeTenantReadableScnWithOptions(_ request: DescribeTenantReadableScnRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeTenantReadableScnResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantId)) {
+            body["TenantId"] = request.tenantId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeTenantReadableScn",
+            "version": "2019-09-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeTenantReadableScnResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeTenantReadableScn(_ request: DescribeTenantReadableScnRequest) async throws -> DescribeTenantReadableScnResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeTenantReadableScnWithOptions(request as! DescribeTenantReadableScnRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeTenantSecurityConfigsWithOptions(_ request: DescribeTenantSecurityConfigsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeTenantSecurityConfigsResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -4390,6 +4427,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyInstanceSSLWithOptions(_ request: ModifyInstanceSSLRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyInstanceSSLResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enableSSL)) {
+            body["EnableSSL"] = request.enableSSL ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyInstanceSSL",
+            "version": "2019-09-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyInstanceSSLResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyInstanceSSL(_ request: ModifyInstanceSSLRequest) async throws -> ModifyInstanceSSLResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyInstanceSSLWithOptions(request as! ModifyInstanceSSLRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyInstanceSpecWithOptions(_ request: ModifyInstanceSpecRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyInstanceSpecResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -4407,6 +4478,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             body["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.upgradeSpecNative)) {
+            body["UpgradeSpecNative"] = request.upgradeSpecNative!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
