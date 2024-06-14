@@ -7332,6 +7332,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
         }
+        if (!TeaUtils.Client.isUnset(request.internetMode)) {
+            query["InternetMode"] = request.internetMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ipv4GatewayId)) {
             query["Ipv4GatewayId"] = request.ipv4GatewayId ?? "";
         }

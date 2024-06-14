@@ -26695,6 +26695,8 @@ public class DeleteIpv4GatewayRequest : Tea.TeaModel {
 
     public var dryRun: Bool?
 
+    public var internetMode: String?
+
     public var ipv4GatewayId: String?
 
     public var ownerAccount: String?
@@ -26727,6 +26729,9 @@ public class DeleteIpv4GatewayRequest : Tea.TeaModel {
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
+        if self.internetMode != nil {
+            map["InternetMode"] = self.internetMode!
+        }
         if self.ipv4GatewayId != nil {
             map["Ipv4GatewayId"] = self.ipv4GatewayId!
         }
@@ -26754,6 +26759,9 @@ public class DeleteIpv4GatewayRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DryRun") {
             self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("InternetMode") {
+            self.internetMode = dict["InternetMode"] as! String
         }
         if dict.keys.contains("Ipv4GatewayId") {
             self.ipv4GatewayId = dict["Ipv4GatewayId"] as! String
