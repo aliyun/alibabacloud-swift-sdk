@@ -2297,6 +2297,57 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func postISRerankWithOptions(_ tmpReq: PostISRerankRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PostISRerankResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: PostISRerankShrinkRequest = PostISRerankShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.input)) {
+            request.inputShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.input, "Input", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.parameters)) {
+            request.parametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.parameters, "Parameters", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.algorithm)) {
+            body["Algorithm"] = request.algorithm ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.debug)) {
+            body["Debug"] = request.debug!;
+        }
+        if (!TeaUtils.Client.isUnset(request.inputShrink)) {
+            body["Input"] = request.inputShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.model)) {
+            body["Model"] = request.model ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.parametersShrink)) {
+            body["Parameters"] = request.parametersShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "PostISRerank",
+            "version": "2020-06-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PostISRerankResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func postISRerank(_ request: PostISRerankRequest) async throws -> PostISRerankResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await postISRerankWithOptions(request as! PostISRerankRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func postISRetrieveRouterWithOptions(_ tmpReq: PostISRetrieveRouterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PostISRetrieveRouterResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: PostISRetrieveRouterShrinkRequest = PostISRetrieveRouterShrinkRequest([:])
