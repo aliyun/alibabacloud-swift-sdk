@@ -17787,6 +17787,8 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
 
     public var filterDesktopGroup: Bool?
 
+    public var gpuInstanceGroupId: String?
+
     public var groupId: String?
 
     public var imageId: [String]?
@@ -17809,11 +17811,15 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
 
     public var protocolType: String?
 
+    public var qosRuleId: String?
+
     public var queryFotaUpdate: Bool?
 
     public var regionId: String?
 
     public var snapshotPolicyId: String?
+
+    public var subPayType: String?
 
     public var tag: [DescribeDesktopsRequest.Tag]?
 
@@ -17869,6 +17875,9 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
         if self.filterDesktopGroup != nil {
             map["FilterDesktopGroup"] = self.filterDesktopGroup!
         }
+        if self.gpuInstanceGroupId != nil {
+            map["GpuInstanceGroupId"] = self.gpuInstanceGroupId!
+        }
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
@@ -17902,6 +17911,9 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
         if self.protocolType != nil {
             map["ProtocolType"] = self.protocolType!
         }
+        if self.qosRuleId != nil {
+            map["QosRuleId"] = self.qosRuleId!
+        }
         if self.queryFotaUpdate != nil {
             map["QueryFotaUpdate"] = self.queryFotaUpdate!
         }
@@ -17910,6 +17922,9 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
         }
         if self.snapshotPolicyId != nil {
             map["SnapshotPolicyId"] = self.snapshotPolicyId!
+        }
+        if self.subPayType != nil {
+            map["SubPayType"] = self.subPayType!
         }
         if self.tag != nil {
             var tmp : [Any] = []
@@ -17961,6 +17976,9 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
         if dict.keys.contains("FilterDesktopGroup") {
             self.filterDesktopGroup = dict["FilterDesktopGroup"] as! Bool
         }
+        if dict.keys.contains("GpuInstanceGroupId") {
+            self.gpuInstanceGroupId = dict["GpuInstanceGroupId"] as! String
+        }
         if dict.keys.contains("GroupId") {
             self.groupId = dict["GroupId"] as! String
         }
@@ -17994,6 +18012,9 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
         if dict.keys.contains("ProtocolType") {
             self.protocolType = dict["ProtocolType"] as! String
         }
+        if dict.keys.contains("QosRuleId") {
+            self.qosRuleId = dict["QosRuleId"] as! String
+        }
         if dict.keys.contains("QueryFotaUpdate") {
             self.queryFotaUpdate = dict["QueryFotaUpdate"] as! Bool
         }
@@ -18002,6 +18023,9 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SnapshotPolicyId") {
             self.snapshotPolicyId = dict["SnapshotPolicyId"] as! String
+        }
+        if dict.keys.contains("SubPayType") {
+            self.subPayType = dict["SubPayType"] as! String
         }
         if dict.keys.contains("Tag") {
             var tmp : [DescribeDesktopsRequest.Tag] = []
@@ -38818,6 +38842,51 @@ public class ModifyDesktopOversoldUserGroupResponse : Tea.TeaModel {
 }
 
 public class ModifyDesktopSpecRequest : Tea.TeaModel {
+    public class ResourceSpecs : Tea.TeaModel {
+        public var desktopId: String?
+
+        public var rootDiskSizeGib: Int32?
+
+        public var userDiskSizeGib: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.desktopId != nil {
+                map["DesktopId"] = self.desktopId!
+            }
+            if self.rootDiskSizeGib != nil {
+                map["RootDiskSizeGib"] = self.rootDiskSizeGib!
+            }
+            if self.userDiskSizeGib != nil {
+                map["UserDiskSizeGib"] = self.userDiskSizeGib!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DesktopId") {
+                self.desktopId = dict["DesktopId"] as! String
+            }
+            if dict.keys.contains("RootDiskSizeGib") {
+                self.rootDiskSizeGib = dict["RootDiskSizeGib"] as! Int32
+            }
+            if dict.keys.contains("UserDiskSizeGib") {
+                self.userDiskSizeGib = dict["UserDiskSizeGib"] as! Int32
+            }
+        }
+    }
     public var autoPay: Bool?
 
     public var desktopId: String?
@@ -38827,6 +38896,10 @@ public class ModifyDesktopSpecRequest : Tea.TeaModel {
     public var promotionId: String?
 
     public var regionId: String?
+
+    public var resourceSpecs: [ModifyDesktopSpecRequest.ResourceSpecs]?
+
+    public var resourceType: String?
 
     public var rootDiskSizeGib: Int32?
 
@@ -38863,6 +38936,16 @@ public class ModifyDesktopSpecRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceSpecs != nil {
+            var tmp : [Any] = []
+            for k in self.resourceSpecs! {
+                tmp.append(k.toMap())
+            }
+            map["ResourceSpecs"] = tmp
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
         if self.rootDiskSizeGib != nil {
             map["RootDiskSizeGib"] = self.rootDiskSizeGib!
         }
@@ -38891,6 +38974,20 @@ public class ModifyDesktopSpecRequest : Tea.TeaModel {
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
         }
+        if dict.keys.contains("ResourceSpecs") {
+            var tmp : [ModifyDesktopSpecRequest.ResourceSpecs] = []
+            for v in dict["ResourceSpecs"] as! [Any] {
+                var model = ModifyDesktopSpecRequest.ResourceSpecs()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.resourceSpecs = tmp
+        }
+        if dict.keys.contains("ResourceType") {
+            self.resourceType = dict["ResourceType"] as! String
+        }
         if dict.keys.contains("RootDiskSizeGib") {
             self.rootDiskSizeGib = dict["RootDiskSizeGib"] as! Int32
         }
@@ -38905,6 +39002,8 @@ public class ModifyDesktopSpecRequest : Tea.TeaModel {
 
 public class ModifyDesktopSpecResponseBody : Tea.TeaModel {
     public var orderId: String?
+
+    public var orderIds: [Int64]?
 
     public var requestId: String?
 
@@ -38925,6 +39024,9 @@ public class ModifyDesktopSpecResponseBody : Tea.TeaModel {
         if self.orderId != nil {
             map["OrderId"] = self.orderId!
         }
+        if self.orderIds != nil {
+            map["OrderIds"] = self.orderIds!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -38934,6 +39036,9 @@ public class ModifyDesktopSpecResponseBody : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("OrderId") {
             self.orderId = dict["OrderId"] as! String
+        }
+        if dict.keys.contains("OrderIds") {
+            self.orderIds = dict["OrderIds"] as! [Int64]
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
@@ -42417,6 +42522,8 @@ public class RebuildDesktopsRequest : Tea.TeaModel {
 
     public var imageId: String?
 
+    public var language: String?
+
     public var operateType: String?
 
     public var regionId: String?
@@ -42441,6 +42548,9 @@ public class RebuildDesktopsRequest : Tea.TeaModel {
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
         }
+        if self.language != nil {
+            map["Language"] = self.language!
+        }
         if self.operateType != nil {
             map["OperateType"] = self.operateType!
         }
@@ -42456,6 +42566,9 @@ public class RebuildDesktopsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ImageId") {
             self.imageId = dict["ImageId"] as! String
+        }
+        if dict.keys.contains("Language") {
+            self.language = dict["Language"] as! String
         }
         if dict.keys.contains("OperateType") {
             self.operateType = dict["OperateType"] as! String
@@ -43360,6 +43473,8 @@ public class RenewDesktopOversoldGroupResponse : Tea.TeaModel {
 public class RenewDesktopsRequest : Tea.TeaModel {
     public var autoPay: Bool?
 
+    public var autoRenew: Bool?
+
     public var desktopId: [String]?
 
     public var period: Int32?
@@ -43387,6 +43502,9 @@ public class RenewDesktopsRequest : Tea.TeaModel {
         if self.autoPay != nil {
             map["AutoPay"] = self.autoPay!
         }
+        if self.autoRenew != nil {
+            map["AutoRenew"] = self.autoRenew!
+        }
         if self.desktopId != nil {
             map["DesktopId"] = self.desktopId!
         }
@@ -43408,6 +43526,9 @@ public class RenewDesktopsRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AutoPay") {
             self.autoPay = dict["AutoPay"] as! Bool
+        }
+        if dict.keys.contains("AutoRenew") {
+            self.autoRenew = dict["AutoRenew"] as! Bool
         }
         if dict.keys.contains("DesktopId") {
             self.desktopId = dict["DesktopId"] as! [String]
