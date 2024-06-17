@@ -3387,6 +3387,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enableProxyProtocolWithOptions(_ request: EnableProxyProtocolRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnableProxyProtocolResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableProxyProtocol)) {
+            query["EnableProxyProtocol"] = request.enableProxyProtocol!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayUniqueId)) {
+            query["GatewayUniqueId"] = request.gatewayUniqueId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "EnableProxyProtocol",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(EnableProxyProtocolResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enableProxyProtocol(_ request: EnableProxyProtocolRequest) async throws -> EnableProxyProtocolResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await enableProxyProtocolWithOptions(request as! EnableProxyProtocolRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func exportNacosConfigWithOptions(_ request: ExportNacosConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ExportNacosConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

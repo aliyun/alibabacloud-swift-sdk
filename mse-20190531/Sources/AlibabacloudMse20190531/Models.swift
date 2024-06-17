@@ -19702,6 +19702,195 @@ public class DeleteZnodeResponse : Tea.TeaModel {
     }
 }
 
+public class EnableProxyProtocolRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var enableProxyProtocol: Bool?
+
+    public var gatewayUniqueId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.enableProxyProtocol != nil {
+            map["EnableProxyProtocol"] = self.enableProxyProtocol!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("EnableProxyProtocol") {
+            self.enableProxyProtocol = dict["EnableProxyProtocol"] as! Bool
+        }
+        if dict.keys.contains("GatewayUniqueId") {
+            self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+        }
+    }
+}
+
+public class EnableProxyProtocolResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var data: Bool?
+
+    public var dynamicCode: String?
+
+    public var dynamicMessage: String?
+
+    public var errorCode: String?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.dynamicCode != nil {
+            map["DynamicCode"] = self.dynamicCode!
+        }
+        if self.dynamicMessage != nil {
+            map["DynamicMessage"] = self.dynamicMessage!
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Data") {
+            self.data = dict["Data"] as! Bool
+        }
+        if dict.keys.contains("DynamicCode") {
+            self.dynamicCode = dict["DynamicCode"] as! String
+        }
+        if dict.keys.contains("DynamicMessage") {
+            self.dynamicMessage = dict["DynamicMessage"] as! String
+        }
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class EnableProxyProtocolResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: EnableProxyProtocolResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = EnableProxyProtocolResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ExportNacosConfigRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
