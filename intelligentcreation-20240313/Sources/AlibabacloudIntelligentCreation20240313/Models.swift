@@ -650,7 +650,7 @@ public class TextTask : Tea.TeaModel {
 
     public var textTaskStatus: String?
 
-    public var texts: Text?
+    public var texts: [Text]?
 
     public var theme: String?
 
@@ -667,7 +667,6 @@ public class TextTask : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.referenceTag?.validate()
-        try self.texts?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -721,7 +720,11 @@ public class TextTask : Tea.TeaModel {
             map["textTaskStatus"] = self.textTaskStatus!
         }
         if self.texts != nil {
-            map["texts"] = self.texts?.toMap()
+            var tmp : [Any] = []
+            for k in self.texts! {
+                tmp.append(k.toMap())
+            }
+            map["texts"] = tmp
         }
         if self.theme != nil {
             map["theme"] = self.theme!
@@ -784,9 +787,15 @@ public class TextTask : Tea.TeaModel {
             self.textTaskStatus = dict["textTaskStatus"] as! String
         }
         if dict.keys.contains("texts") {
-            var model = Text()
-            model.fromMap(dict["texts"] as! [String: Any])
-            self.texts = model
+            var tmp : [Text] = []
+            for v in dict["texts"] as! [Any] {
+                var model = Text()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.texts = tmp
         }
         if dict.keys.contains("theme") {
             self.theme = dict["theme"] as! String
