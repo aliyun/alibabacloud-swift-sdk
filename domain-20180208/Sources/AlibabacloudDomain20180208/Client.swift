@@ -455,6 +455,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func queryAuctionsWithOptions(_ request: QueryAuctionsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryAuctionsResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.auctionEndTimeOrder)) {
+            body["AuctionEndTimeOrder"] = request.auctionEndTimeOrder ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.currentPage)) {
             body["CurrentPage"] = request.currentPage!;
         }
@@ -463,6 +466,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.status)) {
             body["Status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.statuses)) {
+            body["Statuses"] = request.statuses ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
