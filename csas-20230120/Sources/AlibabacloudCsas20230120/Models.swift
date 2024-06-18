@@ -915,6 +915,8 @@ public class CreatePrivateAccessPolicyRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var deviceAttributeAction: String?
+
     public var deviceAttributeId: String?
 
     public var name: String?
@@ -960,6 +962,9 @@ public class CreatePrivateAccessPolicyRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.deviceAttributeAction != nil {
+            map["DeviceAttributeAction"] = self.deviceAttributeAction!
         }
         if self.deviceAttributeId != nil {
             map["DeviceAttributeId"] = self.deviceAttributeId!
@@ -1008,6 +1013,9 @@ public class CreatePrivateAccessPolicyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("DeviceAttributeAction") {
+            self.deviceAttributeAction = dict["DeviceAttributeAction"] as! String
         }
         if dict.keys.contains("DeviceAttributeId") {
             self.deviceAttributeId = dict["DeviceAttributeId"] as! String
@@ -4738,6 +4746,8 @@ public class GetPrivateAccessPolicyResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var deviceAttributeAction: String?
+
         public var deviceAttributeId: String?
 
         public var name: String?
@@ -4788,6 +4798,9 @@ public class GetPrivateAccessPolicyResponseBody : Tea.TeaModel {
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
+            }
+            if self.deviceAttributeAction != nil {
+                map["DeviceAttributeAction"] = self.deviceAttributeAction!
             }
             if self.deviceAttributeId != nil {
                 map["DeviceAttributeId"] = self.deviceAttributeId!
@@ -4842,6 +4855,9 @@ public class GetPrivateAccessPolicyResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Description") {
                 self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("DeviceAttributeAction") {
+                self.deviceAttributeAction = dict["DeviceAttributeAction"] as! String
             }
             if dict.keys.contains("DeviceAttributeId") {
                 self.deviceAttributeId = dict["DeviceAttributeId"] as! String
@@ -10564,6 +10580,8 @@ public class ListPrivateAccessPolicesResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var deviceAttributeAction: String?
+
         public var deviceAttributeId: String?
 
         public var name: String?
@@ -10614,6 +10632,9 @@ public class ListPrivateAccessPolicesResponseBody : Tea.TeaModel {
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
+            }
+            if self.deviceAttributeAction != nil {
+                map["DeviceAttributeAction"] = self.deviceAttributeAction!
             }
             if self.deviceAttributeId != nil {
                 map["DeviceAttributeId"] = self.deviceAttributeId!
@@ -10668,6 +10689,9 @@ public class ListPrivateAccessPolicesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Description") {
                 self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("DeviceAttributeAction") {
+                self.deviceAttributeAction = dict["DeviceAttributeAction"] as! String
             }
             if dict.keys.contains("DeviceAttributeId") {
                 self.deviceAttributeId = dict["DeviceAttributeId"] as! String
@@ -15799,6 +15823,8 @@ public class UpdatePrivateAccessPolicyRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var deviceAttributeAction: String?
+
     public var deviceAttributeId: String?
 
     public var modifyType: String?
@@ -15846,6 +15872,9 @@ public class UpdatePrivateAccessPolicyRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.deviceAttributeAction != nil {
+            map["DeviceAttributeAction"] = self.deviceAttributeAction!
         }
         if self.deviceAttributeId != nil {
             map["DeviceAttributeId"] = self.deviceAttributeId!
@@ -15897,6 +15926,9 @@ public class UpdatePrivateAccessPolicyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("DeviceAttributeAction") {
+            self.deviceAttributeAction = dict["DeviceAttributeAction"] as! String
         }
         if dict.keys.contains("DeviceAttributeId") {
             self.deviceAttributeId = dict["DeviceAttributeId"] as! String
