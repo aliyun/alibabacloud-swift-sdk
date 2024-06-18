@@ -11973,6 +11973,8 @@ public class GetLoadBalancerAttributeResponseBody : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
+    public var securityGroupIds: [String]?
+
     public var tags: [GetLoadBalancerAttributeResponseBody.Tags]?
 
     public var vpcId: String?
@@ -12060,6 +12062,9 @@ public class GetLoadBalancerAttributeResponseBody : Tea.TeaModel {
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.securityGroupIds != nil {
+            map["SecurityGroupIds"] = self.securityGroupIds!
         }
         if self.tags != nil {
             var tmp : [Any] = []
@@ -12157,6 +12162,9 @@ public class GetLoadBalancerAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceGroupId") {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("SecurityGroupIds") {
+            self.securityGroupIds = dict["SecurityGroupIds"] as! [String]
         }
         if dict.keys.contains("Tags") {
             var tmp : [GetLoadBalancerAttributeResponseBody.Tags] = []
@@ -20053,6 +20061,288 @@ public class ListTagValuesResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ListTagValuesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class LoadBalancerJoinSecurityGroupRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
+    public var loadBalancerId: String?
+
+    public var securityGroupIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.loadBalancerId != nil {
+            map["LoadBalancerId"] = self.loadBalancerId!
+        }
+        if self.securityGroupIds != nil {
+            map["SecurityGroupIds"] = self.securityGroupIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("LoadBalancerId") {
+            self.loadBalancerId = dict["LoadBalancerId"] as! String
+        }
+        if dict.keys.contains("SecurityGroupIds") {
+            self.securityGroupIds = dict["SecurityGroupIds"] as! [String]
+        }
+    }
+}
+
+public class LoadBalancerJoinSecurityGroupResponseBody : Tea.TeaModel {
+    public var jobId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("JobId") {
+            self.jobId = dict["JobId"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class LoadBalancerJoinSecurityGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: LoadBalancerJoinSecurityGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = LoadBalancerJoinSecurityGroupResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class LoadBalancerLeaveSecurityGroupRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
+    public var loadBalancerId: String?
+
+    public var securityGroupIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.loadBalancerId != nil {
+            map["LoadBalancerId"] = self.loadBalancerId!
+        }
+        if self.securityGroupIds != nil {
+            map["SecurityGroupIds"] = self.securityGroupIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("LoadBalancerId") {
+            self.loadBalancerId = dict["LoadBalancerId"] as! String
+        }
+        if dict.keys.contains("SecurityGroupIds") {
+            self.securityGroupIds = dict["SecurityGroupIds"] as! [String]
+        }
+    }
+}
+
+public class LoadBalancerLeaveSecurityGroupResponseBody : Tea.TeaModel {
+    public var jobId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("JobId") {
+            self.jobId = dict["JobId"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class LoadBalancerLeaveSecurityGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: LoadBalancerLeaveSecurityGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = LoadBalancerLeaveSecurityGroupResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

@@ -2505,6 +2505,86 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func loadBalancerJoinSecurityGroupWithOptions(_ request: LoadBalancerJoinSecurityGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> LoadBalancerJoinSecurityGroupResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.loadBalancerId)) {
+            query["LoadBalancerId"] = request.loadBalancerId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.securityGroupIds)) {
+            query["SecurityGroupIds"] = request.securityGroupIds ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "LoadBalancerJoinSecurityGroup",
+            "version": "2020-06-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(LoadBalancerJoinSecurityGroupResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func loadBalancerJoinSecurityGroup(_ request: LoadBalancerJoinSecurityGroupRequest) async throws -> LoadBalancerJoinSecurityGroupResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await loadBalancerJoinSecurityGroupWithOptions(request as! LoadBalancerJoinSecurityGroupRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func loadBalancerLeaveSecurityGroupWithOptions(_ request: LoadBalancerLeaveSecurityGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> LoadBalancerLeaveSecurityGroupResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.loadBalancerId)) {
+            query["LoadBalancerId"] = request.loadBalancerId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.securityGroupIds)) {
+            query["SecurityGroupIds"] = request.securityGroupIds ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "LoadBalancerLeaveSecurityGroup",
+            "version": "2020-06-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(LoadBalancerLeaveSecurityGroupResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func loadBalancerLeaveSecurityGroup(_ request: LoadBalancerLeaveSecurityGroupRequest) async throws -> LoadBalancerLeaveSecurityGroupResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await loadBalancerLeaveSecurityGroupWithOptions(request as! LoadBalancerLeaveSecurityGroupRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func moveResourceGroupWithOptions(_ request: MoveResourceGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> MoveResourceGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
