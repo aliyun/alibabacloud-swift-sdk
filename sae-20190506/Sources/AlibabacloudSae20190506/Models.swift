@@ -18784,6 +18784,10 @@ public class DescribeApplicationSlbsRequest : Tea.TeaModel {
 public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Internet : Tea.TeaModel {
+            public var cookie: String?
+
+            public var cookieTimeout: Int32?
+
             public var httpsCaCertId: String?
 
             public var httpsCertId: String?
@@ -18791,6 +18795,10 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
             public var port: Int32?
 
             public var protocol_: String?
+
+            public var stickySession: Bool?
+
+            public var stickySessionType: String?
 
             public var targetPort: Int32?
 
@@ -18808,6 +18816,12 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.cookie != nil {
+                    map["Cookie"] = self.cookie!
+                }
+                if self.cookieTimeout != nil {
+                    map["CookieTimeout"] = self.cookieTimeout!
+                }
                 if self.httpsCaCertId != nil {
                     map["HttpsCaCertId"] = self.httpsCaCertId!
                 }
@@ -18820,6 +18834,12 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
                 if self.protocol_ != nil {
                     map["Protocol"] = self.protocol_!
                 }
+                if self.stickySession != nil {
+                    map["StickySession"] = self.stickySession!
+                }
+                if self.stickySessionType != nil {
+                    map["StickySessionType"] = self.stickySessionType!
+                }
                 if self.targetPort != nil {
                     map["TargetPort"] = self.targetPort!
                 }
@@ -18827,6 +18847,12 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Cookie") {
+                    self.cookie = dict["Cookie"] as! String
+                }
+                if dict.keys.contains("CookieTimeout") {
+                    self.cookieTimeout = dict["CookieTimeout"] as! Int32
+                }
                 if dict.keys.contains("HttpsCaCertId") {
                     self.httpsCaCertId = dict["HttpsCaCertId"] as! String
                 }
@@ -18838,6 +18864,12 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Protocol") {
                     self.protocol_ = dict["Protocol"] as! String
+                }
+                if dict.keys.contains("StickySession") {
+                    self.stickySession = dict["StickySession"] as! Bool
+                }
+                if dict.keys.contains("StickySessionType") {
+                    self.stickySessionType = dict["StickySessionType"] as! String
                 }
                 if dict.keys.contains("TargetPort") {
                     self.targetPort = dict["TargetPort"] as! Int32
@@ -18845,6 +18877,10 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
             }
         }
         public class Intranet : Tea.TeaModel {
+            public var cookie: String?
+
+            public var cookieTimeout: Int32?
+
             public var httpsCaCertId: String?
 
             public var httpsCertId: String?
@@ -18852,6 +18888,10 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
             public var port: Int32?
 
             public var protocol_: String?
+
+            public var stickySession: Bool?
+
+            public var stickySessionType: String?
 
             public var targetPort: Int32?
 
@@ -18869,6 +18909,12 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.cookie != nil {
+                    map["Cookie"] = self.cookie!
+                }
+                if self.cookieTimeout != nil {
+                    map["CookieTimeout"] = self.cookieTimeout!
+                }
                 if self.httpsCaCertId != nil {
                     map["HttpsCaCertId"] = self.httpsCaCertId!
                 }
@@ -18881,6 +18927,12 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
                 if self.protocol_ != nil {
                     map["Protocol"] = self.protocol_!
                 }
+                if self.stickySession != nil {
+                    map["StickySession"] = self.stickySession!
+                }
+                if self.stickySessionType != nil {
+                    map["StickySessionType"] = self.stickySessionType!
+                }
                 if self.targetPort != nil {
                     map["TargetPort"] = self.targetPort!
                 }
@@ -18888,6 +18940,12 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Cookie") {
+                    self.cookie = dict["Cookie"] as! String
+                }
+                if dict.keys.contains("CookieTimeout") {
+                    self.cookieTimeout = dict["CookieTimeout"] as! Int32
+                }
                 if dict.keys.contains("HttpsCaCertId") {
                     self.httpsCaCertId = dict["HttpsCaCertId"] as! String
                 }
@@ -18899,6 +18957,12 @@ public class DescribeApplicationSlbsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Protocol") {
                     self.protocol_ = dict["Protocol"] as! String
+                }
+                if dict.keys.contains("StickySession") {
+                    self.stickySession = dict["StickySession"] as! Bool
+                }
+                if dict.keys.contains("StickySessionType") {
+                    self.stickySessionType = dict["StickySessionType"] as! String
                 }
                 if dict.keys.contains("TargetPort") {
                     self.targetPort = dict["TargetPort"] as! Int32
