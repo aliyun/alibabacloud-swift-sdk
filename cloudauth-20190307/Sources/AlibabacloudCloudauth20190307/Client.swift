@@ -543,6 +543,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deepfakeDetectWithOptions(_ request: DeepfakeDetectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeepfakeDetectResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.faceInputType)) {
+            query["FaceInputType"] = request.faceInputType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.faceUrl)) {
+            query["FaceUrl"] = request.faceUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outerOrderNo)) {
+            query["OuterOrderNo"] = request.outerOrderNo ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.faceBase64)) {
+            body["FaceBase64"] = request.faceBase64 ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeepfakeDetect",
+            "version": "2019-03-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeepfakeDetectResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deepfakeDetect(_ request: DeepfakeDetectRequest) async throws -> DeepfakeDetectResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deepfakeDetectWithOptions(request as! DeepfakeDetectRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeDeviceInfoWithOptions(_ request: DescribeDeviceInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDeviceInfoResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
