@@ -1403,6 +1403,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.alarmMetadata)) {
             query["AlarmMetadata"] = request.alarmMetadata ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.approvalType)) {
+            query["ApprovalType"] = request.approvalType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
@@ -1447,6 +1450,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.serviceVersion)) {
             query["ServiceVersion"] = request.serviceVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.shareType)) {
+            query["ShareType"] = request.shareType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tenantType)) {
             query["TenantType"] = request.tenantType ?? "";

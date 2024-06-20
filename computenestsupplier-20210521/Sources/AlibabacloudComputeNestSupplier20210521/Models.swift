@@ -10758,6 +10758,8 @@ public class UpdateServiceRequest : Tea.TeaModel {
     }
     public var alarmMetadata: String?
 
+    public var approvalType: String?
+
     public var clientToken: String?
 
     public var deployMetadata: String?
@@ -10788,6 +10790,8 @@ public class UpdateServiceRequest : Tea.TeaModel {
 
     public var serviceVersion: String?
 
+    public var shareType: String?
+
     public var tenantType: String?
 
     public var trialDuration: Int32?
@@ -10815,6 +10819,9 @@ public class UpdateServiceRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.alarmMetadata != nil {
             map["AlarmMetadata"] = self.alarmMetadata!
+        }
+        if self.approvalType != nil {
+            map["ApprovalType"] = self.approvalType!
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
@@ -10865,6 +10872,9 @@ public class UpdateServiceRequest : Tea.TeaModel {
         if self.serviceVersion != nil {
             map["ServiceVersion"] = self.serviceVersion!
         }
+        if self.shareType != nil {
+            map["ShareType"] = self.shareType!
+        }
         if self.tenantType != nil {
             map["TenantType"] = self.tenantType!
         }
@@ -10886,6 +10896,9 @@ public class UpdateServiceRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AlarmMetadata") {
             self.alarmMetadata = dict["AlarmMetadata"] as! String
+        }
+        if dict.keys.contains("ApprovalType") {
+            self.approvalType = dict["ApprovalType"] as! String
         }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
@@ -10939,6 +10952,9 @@ public class UpdateServiceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ServiceVersion") {
             self.serviceVersion = dict["ServiceVersion"] as! String
+        }
+        if dict.keys.contains("ShareType") {
+            self.shareType = dict["ShareType"] as! String
         }
         if dict.keys.contains("TenantType") {
             self.tenantType = dict["TenantType"] as! String
@@ -11081,6 +11097,8 @@ public class UpdateServiceShrinkRequest : Tea.TeaModel {
     }
     public var alarmMetadata: String?
 
+    public var approvalType: String?
+
     public var clientToken: String?
 
     public var deployMetadata: String?
@@ -11111,6 +11129,8 @@ public class UpdateServiceShrinkRequest : Tea.TeaModel {
 
     public var serviceVersion: String?
 
+    public var shareType: String?
+
     public var tenantType: String?
 
     public var trialDuration: Int32?
@@ -11137,6 +11157,9 @@ public class UpdateServiceShrinkRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.alarmMetadata != nil {
             map["AlarmMetadata"] = self.alarmMetadata!
+        }
+        if self.approvalType != nil {
+            map["ApprovalType"] = self.approvalType!
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
@@ -11187,6 +11210,9 @@ public class UpdateServiceShrinkRequest : Tea.TeaModel {
         if self.serviceVersion != nil {
             map["ServiceVersion"] = self.serviceVersion!
         }
+        if self.shareType != nil {
+            map["ShareType"] = self.shareType!
+        }
         if self.tenantType != nil {
             map["TenantType"] = self.tenantType!
         }
@@ -11208,6 +11234,9 @@ public class UpdateServiceShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AlarmMetadata") {
             self.alarmMetadata = dict["AlarmMetadata"] as! String
+        }
+        if dict.keys.contains("ApprovalType") {
+            self.approvalType = dict["ApprovalType"] as! String
         }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
@@ -11261,6 +11290,9 @@ public class UpdateServiceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ServiceVersion") {
             self.serviceVersion = dict["ServiceVersion"] as! String
+        }
+        if dict.keys.contains("ShareType") {
+            self.shareType = dict["ShareType"] as! String
         }
         if dict.keys.contains("TenantType") {
             self.tenantType = dict["TenantType"] as! String
