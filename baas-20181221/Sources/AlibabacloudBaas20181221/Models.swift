@@ -446,9 +446,6 @@ public class AcceptFabricInvitationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -574,9 +571,6 @@ public class ApplyAntChainCertificateResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -854,9 +848,6 @@ public class ApplyAntChainCertificateWithKeyAutoCreationResponse : Tea.TeaModel 
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1025,9 +1016,6 @@ public class ApproveFabricChaincodeDefinitionResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1191,9 +1179,6 @@ public class BatchAddAntChainMiniAppQRCodeAuthorizedUsersResponse : Tea.TeaModel
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1375,9 +1360,6 @@ public class CheckFabricConsortiumDomainResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1567,9 +1549,6 @@ public class CheckFabricOrganizationDomainResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1668,7 +1647,15 @@ public class ConfirmFabricConsortiumMemberRequest : Tea.TeaModel {
             self.consortiumId = dict["ConsortiumId"] as! String
         }
         if dict.keys.contains("Organization") {
-            self.organization = dict["Organization"] as! [ConfirmFabricConsortiumMemberRequest.Organization]
+            var tmp : [ConfirmFabricConsortiumMemberRequest.Organization] = []
+            for v in dict["Organization"] as! [Any] {
+                var model = ConfirmFabricConsortiumMemberRequest.Organization()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.organization = tmp
         }
     }
 }
@@ -1744,9 +1731,6 @@ public class ConfirmFabricConsortiumMemberResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1968,9 +1952,6 @@ public class CopyAntChainContractProjectResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2152,9 +2133,6 @@ public class CreateAntChainAccountResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2368,9 +2346,6 @@ public class CreateAntChainAccountWithKeyPairAutoCreationResponse : Tea.TeaModel
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2528,9 +2503,6 @@ public class CreateAntChainConsortiumResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2768,9 +2740,6 @@ public class CreateAntChainContractContentResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2992,9 +2961,6 @@ public class CreateAntChainContractProjectResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3208,9 +3174,6 @@ public class CreateAntChainKmsAccountNewResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3544,9 +3507,6 @@ public class CreateFabricChaincodeResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3707,9 +3667,6 @@ public class CreateFabricChaincodePackageResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3837,7 +3794,15 @@ public class CreateFabricChannelRequest : Tea.TeaModel {
             self.maxMessageCount = dict["MaxMessageCount"] as! Int32
         }
         if dict.keys.contains("Organization") {
-            self.organization = dict["Organization"] as! [CreateFabricChannelRequest.Organization]
+            var tmp : [CreateFabricChannelRequest.Organization] = []
+            for v in dict["Organization"] as! [Any] {
+                var model = CreateFabricChannelRequest.Organization()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.organization = tmp
         }
         if dict.keys.contains("PreferredMaxBytes") {
             self.preferredMaxBytes = dict["PreferredMaxBytes"] as! Int32
@@ -4084,9 +4049,6 @@ public class CreateFabricChannelResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4185,7 +4147,15 @@ public class CreateFabricChannelMemberRequest : Tea.TeaModel {
             self.channelId = dict["ChannelId"] as! String
         }
         if dict.keys.contains("Organization") {
-            self.organization = dict["Organization"] as! [CreateFabricChannelMemberRequest.Organization]
+            var tmp : [CreateFabricChannelMemberRequest.Organization] = []
+            for v in dict["Organization"] as! [Any] {
+                var model = CreateFabricChannelMemberRequest.Organization()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.organization = tmp
         }
     }
 }
@@ -4261,9 +4231,6 @@ public class CreateFabricChannelMemberResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4435,7 +4402,15 @@ public class CreateFabricConsortiumRequest : Tea.TeaModel {
             self.orderersCount = dict["OrderersCount"] as! Int32
         }
         if dict.keys.contains("Organization") {
-            self.organization = dict["Organization"] as! [CreateFabricConsortiumRequest.Organization]
+            var tmp : [CreateFabricConsortiumRequest.Organization] = []
+            for v in dict["Organization"] as! [Any] {
+                var model = CreateFabricConsortiumRequest.Organization()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.organization = tmp
         }
         if dict.keys.contains("PaymentDuration") {
             self.paymentDuration = dict["PaymentDuration"] as! Int32
@@ -4694,9 +4669,6 @@ public class CreateFabricConsortiumResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4803,7 +4775,15 @@ public class CreateFabricConsortiumMemberRequest : Tea.TeaModel {
             self.consortiumId = dict["ConsortiumId"] as! String
         }
         if dict.keys.contains("Organization") {
-            self.organization = dict["Organization"] as! [CreateFabricConsortiumMemberRequest.Organization]
+            var tmp : [CreateFabricConsortiumMemberRequest.Organization] = []
+            for v in dict["Organization"] as! [Any] {
+                var model = CreateFabricConsortiumMemberRequest.Organization()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.organization = tmp
         }
     }
 }
@@ -4879,9 +4859,6 @@ public class CreateFabricConsortiumMemberResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5239,9 +5216,6 @@ public class CreateFabricOrganizationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5471,9 +5445,6 @@ public class CreateFabricOrganizationUserResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5591,9 +5562,6 @@ public class DeleteAntChainConsortiumResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5711,9 +5679,6 @@ public class DeleteAntChainContractContentResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5831,9 +5796,6 @@ public class DeleteAntChainContractProjectResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5959,9 +5921,6 @@ public class DeleteAntChainMiniAppQRCodeAuthorizedUserResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -6087,9 +6046,6 @@ public class DeleteFabricChaincodeResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -6310,7 +6266,15 @@ public class DescribeAntChainAccountsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Accounts") {
-                self.accounts = dict["Accounts"] as! [DescribeAntChainAccountsResponseBody.Result.Accounts]
+                var tmp : [DescribeAntChainAccountsResponseBody.Result.Accounts] = []
+                for v in dict["Accounts"] as! [Any] {
+                    var model = DescribeAntChainAccountsResponseBody.Result.Accounts()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.accounts = tmp
             }
             if dict.keys.contains("Pagination") {
                 var model = DescribeAntChainAccountsResponseBody.Result.Pagination()
@@ -6376,9 +6340,6 @@ public class DescribeAntChainAccountsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -6607,7 +6568,15 @@ public class DescribeAntChainAccountsV2ResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Accounts") {
-                self.accounts = dict["Accounts"] as! [DescribeAntChainAccountsV2ResponseBody.Result.Accounts]
+                var tmp : [DescribeAntChainAccountsV2ResponseBody.Result.Accounts] = []
+                for v in dict["Accounts"] as! [Any] {
+                    var model = DescribeAntChainAccountsV2ResponseBody.Result.Accounts()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.accounts = tmp
             }
             if dict.keys.contains("Pagination") {
                 var model = DescribeAntChainAccountsV2ResponseBody.Result.Pagination()
@@ -6721,9 +6690,6 @@ public class DescribeAntChainAccountsV2Response : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -6945,9 +6911,6 @@ public class DescribeAntChainBlockResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7231,7 +7194,15 @@ public class DescribeAntChainBlockV2ResponseBody : Tea.TeaModel {
                 self.rootTxHash = dict["RootTxHash"] as! String
             }
             if dict.keys.contains("TransSummaryList") {
-                self.transSummaryList = dict["TransSummaryList"] as! [DescribeAntChainBlockV2ResponseBody.Result.TransSummaryList]
+                var tmp : [DescribeAntChainBlockV2ResponseBody.Result.TransSummaryList] = []
+                for v in dict["TransSummaryList"] as! [Any] {
+                    var model = DescribeAntChainBlockV2ResponseBody.Result.TransSummaryList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.transSummaryList = tmp
             }
             if dict.keys.contains("TransactionSize") {
                 self.transactionSize = dict["TransactionSize"] as! Int32
@@ -7346,9 +7317,6 @@ public class DescribeAntChainBlockV2Response : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7585,7 +7553,15 @@ public class DescribeAntChainCertificateApplicationsResponseBody : Tea.TeaModel 
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("CertificateApplications") {
-                self.certificateApplications = dict["CertificateApplications"] as! [DescribeAntChainCertificateApplicationsResponseBody.Result.CertificateApplications]
+                var tmp : [DescribeAntChainCertificateApplicationsResponseBody.Result.CertificateApplications] = []
+                for v in dict["CertificateApplications"] as! [Any] {
+                    var model = DescribeAntChainCertificateApplicationsResponseBody.Result.CertificateApplications()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.certificateApplications = tmp
             }
             if dict.keys.contains("Pagination") {
                 var model = DescribeAntChainCertificateApplicationsResponseBody.Result.Pagination()
@@ -7651,9 +7627,6 @@ public class DescribeAntChainCertificateApplicationsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7898,7 +7871,15 @@ public class DescribeAntChainCertificateApplicationsV2ResponseBody : Tea.TeaMode
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("CertificateApplications") {
-                self.certificateApplications = dict["CertificateApplications"] as! [DescribeAntChainCertificateApplicationsV2ResponseBody.Result.CertificateApplications]
+                var tmp : [DescribeAntChainCertificateApplicationsV2ResponseBody.Result.CertificateApplications] = []
+                for v in dict["CertificateApplications"] as! [Any] {
+                    var model = DescribeAntChainCertificateApplicationsV2ResponseBody.Result.CertificateApplications()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.certificateApplications = tmp
             }
             if dict.keys.contains("Pagination") {
                 var model = DescribeAntChainCertificateApplicationsV2ResponseBody.Result.Pagination()
@@ -8012,9 +7993,6 @@ public class DescribeAntChainCertificateApplicationsV2Response : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8251,7 +8229,15 @@ public class DescribeAntChainConsortiumsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("AntConsortiums") {
-                self.antConsortiums = dict["AntConsortiums"] as! [DescribeAntChainConsortiumsResponseBody.Result.AntConsortiums]
+                var tmp : [DescribeAntChainConsortiumsResponseBody.Result.AntConsortiums] = []
+                for v in dict["AntConsortiums"] as! [Any] {
+                    var model = DescribeAntChainConsortiumsResponseBody.Result.AntConsortiums()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.antConsortiums = tmp
             }
             if dict.keys.contains("Pagination") {
                 var model = DescribeAntChainConsortiumsResponseBody.Result.Pagination()
@@ -8317,9 +8303,6 @@ public class DescribeAntChainConsortiumsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8564,7 +8547,15 @@ public class DescribeAntChainConsortiumsV2ResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("AntConsortiums") {
-                self.antConsortiums = dict["AntConsortiums"] as! [DescribeAntChainConsortiumsV2ResponseBody.Result.AntConsortiums]
+                var tmp : [DescribeAntChainConsortiumsV2ResponseBody.Result.AntConsortiums] = []
+                for v in dict["AntConsortiums"] as! [Any] {
+                    var model = DescribeAntChainConsortiumsV2ResponseBody.Result.AntConsortiums()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.antConsortiums = tmp
             }
             if dict.keys.contains("Pagination") {
                 var model = DescribeAntChainConsortiumsV2ResponseBody.Result.Pagination()
@@ -8678,9 +8669,6 @@ public class DescribeAntChainConsortiumsV2Response : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8862,9 +8850,6 @@ public class DescribeAntChainContractProjectContentTreeResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -9038,9 +9023,6 @@ public class DescribeAntChainContractProjectContentTreeV2Response : Tea.TeaModel
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -9277,7 +9259,15 @@ public class DescribeAntChainContractProjectsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("ContractProjects") {
-                self.contractProjects = dict["ContractProjects"] as! [DescribeAntChainContractProjectsResponseBody.Result.ContractProjects]
+                var tmp : [DescribeAntChainContractProjectsResponseBody.Result.ContractProjects] = []
+                for v in dict["ContractProjects"] as! [Any] {
+                    var model = DescribeAntChainContractProjectsResponseBody.Result.ContractProjects()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.contractProjects = tmp
             }
             if dict.keys.contains("Pagination") {
                 var model = DescribeAntChainContractProjectsResponseBody.Result.Pagination()
@@ -9343,9 +9333,6 @@ public class DescribeAntChainContractProjectsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -9582,7 +9569,15 @@ public class DescribeAntChainContractProjectsV2ResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("ContractProjects") {
-                self.contractProjects = dict["ContractProjects"] as! [DescribeAntChainContractProjectsV2ResponseBody.Result.ContractProjects]
+                var tmp : [DescribeAntChainContractProjectsV2ResponseBody.Result.ContractProjects] = []
+                for v in dict["ContractProjects"] as! [Any] {
+                    var model = DescribeAntChainContractProjectsV2ResponseBody.Result.ContractProjects()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.contractProjects = tmp
             }
             if dict.keys.contains("Pagination") {
                 var model = DescribeAntChainContractProjectsV2ResponseBody.Result.Pagination()
@@ -9696,9 +9691,6 @@ public class DescribeAntChainContractProjectsV2Response : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -9872,9 +9864,6 @@ public class DescribeAntChainDownloadPathsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -10104,9 +10093,6 @@ public class DescribeAntChainDownloadPathsV2Response : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -10304,7 +10290,15 @@ public class DescribeAntChainInformationResponseBody : Tea.TeaModel {
                 self.createTime = dict["CreateTime"] as! Int64
             }
             if dict.keys.contains("NodeInfos") {
-                self.nodeInfos = dict["NodeInfos"] as! [DescribeAntChainInformationResponseBody.Result.NodeInfos]
+                var tmp : [DescribeAntChainInformationResponseBody.Result.NodeInfos] = []
+                for v in dict["NodeInfos"] as! [Any] {
+                    var model = DescribeAntChainInformationResponseBody.Result.NodeInfos()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.nodeInfos = tmp
             }
             if dict.keys.contains("NodeNumber") {
                 self.nodeNumber = dict["NodeNumber"] as! Int32
@@ -10377,9 +10371,6 @@ public class DescribeAntChainInformationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -10593,7 +10584,15 @@ public class DescribeAntChainInformationV2ResponseBody : Tea.TeaModel {
                 self.isRole = dict["IsRole"] as! Bool
             }
             if dict.keys.contains("NodeInfos") {
-                self.nodeInfos = dict["NodeInfos"] as! [DescribeAntChainInformationV2ResponseBody.Result.NodeInfos]
+                var tmp : [DescribeAntChainInformationV2ResponseBody.Result.NodeInfos] = []
+                for v in dict["NodeInfos"] as! [Any] {
+                    var model = DescribeAntChainInformationV2ResponseBody.Result.NodeInfos()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.nodeInfos = tmp
             }
             if dict.keys.contains("NodeNumber") {
                 self.nodeNumber = dict["NodeNumber"] as! Int32
@@ -10714,9 +10713,6 @@ public class DescribeAntChainInformationV2Response : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -10834,9 +10830,6 @@ public class DescribeAntChainLatestBlocksResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -11084,7 +11077,15 @@ public class DescribeAntChainLatestBlocksV2ResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Result") {
-            self.result = dict["Result"] as! [DescribeAntChainLatestBlocksV2ResponseBody.Result]
+            var tmp : [DescribeAntChainLatestBlocksV2ResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = DescribeAntChainLatestBlocksV2ResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
         }
         if dict.keys.contains("ResultCode") {
             self.resultCode = dict["ResultCode"] as! String
@@ -11115,9 +11116,6 @@ public class DescribeAntChainLatestBlocksV2Response : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -11235,9 +11233,6 @@ public class DescribeAntChainLatestTransactionDigestsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -11411,9 +11406,6 @@ public class DescribeAntChainLatestTransactionDigestsV2Response : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -11634,7 +11626,15 @@ public class DescribeAntChainMembersResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Members") {
-                self.members = dict["Members"] as! [DescribeAntChainMembersResponseBody.Result.Members]
+                var tmp : [DescribeAntChainMembersResponseBody.Result.Members] = []
+                for v in dict["Members"] as! [Any] {
+                    var model = DescribeAntChainMembersResponseBody.Result.Members()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.members = tmp
             }
             if dict.keys.contains("Pagination") {
                 var model = DescribeAntChainMembersResponseBody.Result.Pagination()
@@ -11700,9 +11700,6 @@ public class DescribeAntChainMembersResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -11923,7 +11920,15 @@ public class DescribeAntChainMembersV2ResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Members") {
-                self.members = dict["Members"] as! [DescribeAntChainMembersV2ResponseBody.Result.Members]
+                var tmp : [DescribeAntChainMembersV2ResponseBody.Result.Members] = []
+                for v in dict["Members"] as! [Any] {
+                    var model = DescribeAntChainMembersV2ResponseBody.Result.Members()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.members = tmp
             }
             if dict.keys.contains("Pagination") {
                 var model = DescribeAntChainMembersV2ResponseBody.Result.Pagination()
@@ -12037,9 +12042,6 @@ public class DescribeAntChainMembersV2Response : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -12205,9 +12207,6 @@ public class DescribeAntChainMiniAppBrowserQRCodeAccessLogResponse : Tea.TeaMode
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -12421,9 +12420,6 @@ public class DescribeAntChainMiniAppBrowserQRCodeAccessLogV2Response : Tea.TeaMo
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -12649,7 +12645,15 @@ public class DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponseBody : T
                 self.authorizationType = dict["AuthorizationType"] as! String
             }
             if dict.keys.contains("AuthorizedUserList") {
-                self.authorizedUserList = dict["AuthorizedUserList"] as! [DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponseBody.Result.AuthorizedUserList]
+                var tmp : [DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponseBody.Result.AuthorizedUserList] = []
+                for v in dict["AuthorizedUserList"] as! [Any] {
+                    var model = DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponseBody.Result.AuthorizedUserList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.authorizedUserList = tmp
             }
             if dict.keys.contains("Pagination") {
                 var model = DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponseBody.Result.Pagination()
@@ -12718,9 +12722,6 @@ public class DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersResponse : Tea.T
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -12946,7 +12947,15 @@ public class DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2ResponseBody :
                 self.authorizationType = dict["AuthorizationType"] as! String
             }
             if dict.keys.contains("AuthorizedUserList") {
-                self.authorizedUserList = dict["AuthorizedUserList"] as! [DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2ResponseBody.Result.AuthorizedUserList]
+                var tmp : [DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2ResponseBody.Result.AuthorizedUserList] = []
+                for v in dict["AuthorizedUserList"] as! [Any] {
+                    var model = DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2ResponseBody.Result.AuthorizedUserList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.authorizedUserList = tmp
             }
             if dict.keys.contains("Pagination") {
                 var model = DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2ResponseBody.Result.Pagination()
@@ -13063,9 +13072,6 @@ public class DescribeAntChainMiniAppBrowserQRCodeAuthorizedUsersV2Response : Tea
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -13247,9 +13253,6 @@ public class DescribeAntChainMiniAppBrowserTransactionQRCodeResponse : Tea.TeaMo
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -13487,9 +13490,6 @@ public class DescribeAntChainMiniAppBrowserTransactionQRCodeNewResponse : Tea.Te
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -13607,9 +13607,6 @@ public class DescribeAntChainNodesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -13783,9 +13780,6 @@ public class DescribeAntChainNodesV2Response : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -13959,9 +13953,6 @@ public class DescribeAntChainQRCodeAuthorizationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -14183,9 +14174,6 @@ public class DescribeAntChainQRCodeAuthorizationV2Response : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -14503,9 +14491,6 @@ public class DescribeAntChainTransactionResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -14687,9 +14672,6 @@ public class DescribeAntChainTransactionReceiptResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -14927,9 +14909,6 @@ public class DescribeAntChainTransactionReceiptV2Response : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -15106,7 +15085,15 @@ public class DescribeAntChainTransactionStatisticsResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Result") {
-            self.result = dict["Result"] as! [DescribeAntChainTransactionStatisticsResponseBody.Result]
+            var tmp : [DescribeAntChainTransactionStatisticsResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = DescribeAntChainTransactionStatisticsResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
         }
     }
 }
@@ -15128,9 +15115,6 @@ public class DescribeAntChainTransactionStatisticsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -15354,7 +15338,15 @@ public class DescribeAntChainTransactionStatisticsV2ResponseBody : Tea.TeaModel 
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Result") {
-            self.result = dict["Result"] as! [DescribeAntChainTransactionStatisticsV2ResponseBody.Result]
+            var tmp : [DescribeAntChainTransactionStatisticsV2ResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = DescribeAntChainTransactionStatisticsV2ResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
         }
         if dict.keys.contains("ResultCode") {
             self.resultCode = dict["ResultCode"] as! String
@@ -15385,9 +15377,6 @@ public class DescribeAntChainTransactionStatisticsV2Response : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -15761,9 +15750,6 @@ public class DescribeAntChainTransactionV2Response : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -16069,7 +16055,15 @@ public class DescribeAntChainsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("AntChains") {
-                self.antChains = dict["AntChains"] as! [DescribeAntChainsResponseBody.Result.AntChains]
+                var tmp : [DescribeAntChainsResponseBody.Result.AntChains] = []
+                for v in dict["AntChains"] as! [Any] {
+                    var model = DescribeAntChainsResponseBody.Result.AntChains()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.antChains = tmp
             }
             if dict.keys.contains("IsExist") {
                 self.isExist = dict["IsExist"] as! Bool
@@ -16138,9 +16132,6 @@ public class DescribeAntChainsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -16470,7 +16461,15 @@ public class DescribeAntChainsV2ResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("AntChains") {
-                self.antChains = dict["AntChains"] as! [DescribeAntChainsV2ResponseBody.Result.AntChains]
+                var tmp : [DescribeAntChainsV2ResponseBody.Result.AntChains] = []
+                for v in dict["AntChains"] as! [Any] {
+                    var model = DescribeAntChainsV2ResponseBody.Result.AntChains()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.antChains = tmp
             }
             if dict.keys.contains("IsExist") {
                 self.isExist = dict["IsExist"] as! Bool
@@ -16587,9 +16586,6 @@ public class DescribeAntChainsV2Response : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -16763,9 +16759,6 @@ public class DescribeEthereumDeletableResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -16931,7 +16924,15 @@ public class DescribeFabricCandidateOrganizationsResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Result") {
-            self.result = dict["Result"] as! [DescribeFabricCandidateOrganizationsResponseBody.Result]
+            var tmp : [DescribeFabricCandidateOrganizationsResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = DescribeFabricCandidateOrganizationsResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
         }
         if dict.keys.contains("Success") {
             self.success = dict["Success"] as! Bool
@@ -16956,9 +16957,6 @@ public class DescribeFabricCandidateOrganizationsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -17316,9 +17314,6 @@ public class DescribeFabricChaincodeDefinitionTaskResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -17524,9 +17519,6 @@ public class DescribeFabricChaincodeUploadPolicyResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -17732,7 +17724,15 @@ public class DescribeFabricChannelMembersResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Result") {
-            self.result = dict["Result"] as! [DescribeFabricChannelMembersResponseBody.Result]
+            var tmp : [DescribeFabricChannelMembersResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = DescribeFabricChannelMembersResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
         }
         if dict.keys.contains("Success") {
             self.success = dict["Success"] as! Bool
@@ -17757,9 +17757,6 @@ public class DescribeFabricChannelMembersResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -17909,7 +17906,15 @@ public class DescribeFabricConsortiumAdminStatusResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Result") {
-            self.result = dict["Result"] as! [DescribeFabricConsortiumAdminStatusResponseBody.Result]
+            var tmp : [DescribeFabricConsortiumAdminStatusResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = DescribeFabricConsortiumAdminStatusResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
         }
         if dict.keys.contains("Success") {
             self.success = dict["Success"] as! Bool
@@ -17934,9 +17939,6 @@ public class DescribeFabricConsortiumAdminStatusResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -18214,7 +18216,15 @@ public class DescribeFabricConsortiumChaincodesResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Result") {
-            self.result = dict["Result"] as! [DescribeFabricConsortiumChaincodesResponseBody.Result]
+            var tmp : [DescribeFabricConsortiumChaincodesResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = DescribeFabricConsortiumChaincodesResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
         }
         if dict.keys.contains("Success") {
             self.success = dict["Success"] as! Bool
@@ -18239,9 +18249,6 @@ public class DescribeFabricConsortiumChaincodesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -18567,7 +18574,15 @@ public class DescribeFabricConsortiumChannelsResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Result") {
-            self.result = dict["Result"] as! [DescribeFabricConsortiumChannelsResponseBody.Result]
+            var tmp : [DescribeFabricConsortiumChannelsResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = DescribeFabricConsortiumChannelsResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
         }
         if dict.keys.contains("Success") {
             self.success = dict["Success"] as! Bool
@@ -18592,9 +18607,6 @@ public class DescribeFabricConsortiumChannelsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -18738,9 +18750,6 @@ public class DescribeFabricConsortiumConfigResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -18978,9 +18987,6 @@ public class DescribeFabricConsortiumDeletableResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -19186,7 +19192,15 @@ public class DescribeFabricConsortiumMemberApprovalResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Result") {
-            self.result = dict["Result"] as! [DescribeFabricConsortiumMemberApprovalResponseBody.Result]
+            var tmp : [DescribeFabricConsortiumMemberApprovalResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = DescribeFabricConsortiumMemberApprovalResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
         }
         if dict.keys.contains("Success") {
             self.success = dict["Success"] as! Bool
@@ -19211,9 +19225,6 @@ public class DescribeFabricConsortiumMemberApprovalResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -19403,7 +19414,15 @@ public class DescribeFabricConsortiumMembersResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Result") {
-            self.result = dict["Result"] as! [DescribeFabricConsortiumMembersResponseBody.Result]
+            var tmp : [DescribeFabricConsortiumMembersResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = DescribeFabricConsortiumMembersResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
         }
         if dict.keys.contains("Success") {
             self.success = dict["Success"] as! Bool
@@ -19428,9 +19447,6 @@ public class DescribeFabricConsortiumMembersResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -19620,7 +19636,15 @@ public class DescribeFabricConsortiumOrderersResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Result") {
-            self.result = dict["Result"] as! [DescribeFabricConsortiumOrderersResponseBody.Result]
+            var tmp : [DescribeFabricConsortiumOrderersResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = DescribeFabricConsortiumOrderersResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
         }
         if dict.keys.contains("Success") {
             self.success = dict["Success"] as! Bool
@@ -19645,9 +19669,6 @@ public class DescribeFabricConsortiumOrderersResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -19775,7 +19796,15 @@ public class DescribeFabricConsortiumSpecsResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Result") {
-            self.result = dict["Result"] as! [DescribeFabricConsortiumSpecsResponseBody.Result]
+            var tmp : [DescribeFabricConsortiumSpecsResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = DescribeFabricConsortiumSpecsResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
         }
         if dict.keys.contains("Success") {
             self.success = dict["Success"] as! Bool
@@ -19800,9 +19829,6 @@ public class DescribeFabricConsortiumSpecsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -19917,7 +19943,15 @@ public class DescribeFabricConsortiumsRequest : Tea.TeaModel {
             self.location = dict["Location"] as! String
         }
         if dict.keys.contains("Tag") {
-            self.tag = dict["Tag"] as! [DescribeFabricConsortiumsRequest.Tag]
+            var tmp : [DescribeFabricConsortiumsRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = DescribeFabricConsortiumsRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
     }
 }
@@ -19977,6 +20011,8 @@ public class DescribeFabricConsortiumsResponseBody : Tea.TeaModel {
 
         public var expiredTime: String?
 
+        public var majorVersion: String?
+
         public var organizationCount: Int32?
 
         public var ownerBid: String?
@@ -20034,6 +20070,9 @@ public class DescribeFabricConsortiumsResponseBody : Tea.TeaModel {
             }
             if self.expiredTime != nil {
                 map["ExpiredTime"] = self.expiredTime!
+            }
+            if self.majorVersion != nil {
+                map["MajorVersion"] = self.majorVersion!
             }
             if self.organizationCount != nil {
                 map["OrganizationCount"] = self.organizationCount!
@@ -20097,6 +20136,9 @@ public class DescribeFabricConsortiumsResponseBody : Tea.TeaModel {
             if dict.keys.contains("ExpiredTime") {
                 self.expiredTime = dict["ExpiredTime"] as! String
             }
+            if dict.keys.contains("MajorVersion") {
+                self.majorVersion = dict["MajorVersion"] as! String
+            }
             if dict.keys.contains("OrganizationCount") {
                 self.organizationCount = dict["OrganizationCount"] as! Int32
             }
@@ -20125,7 +20167,15 @@ public class DescribeFabricConsortiumsResponseBody : Tea.TeaModel {
                 self.supportChannelConfig = dict["SupportChannelConfig"] as! Bool
             }
             if dict.keys.contains("Tags") {
-                self.tags = dict["Tags"] as! [DescribeFabricConsortiumsResponseBody.Result.Tags]
+                var tmp : [DescribeFabricConsortiumsResponseBody.Result.Tags] = []
+                for v in dict["Tags"] as! [Any] {
+                    var model = DescribeFabricConsortiumsResponseBody.Result.Tags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tags = tmp
             }
         }
     }
@@ -20178,7 +20228,15 @@ public class DescribeFabricConsortiumsResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Result") {
-            self.result = dict["Result"] as! [DescribeFabricConsortiumsResponseBody.Result]
+            var tmp : [DescribeFabricConsortiumsResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = DescribeFabricConsortiumsResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
         }
         if dict.keys.contains("Success") {
             self.success = dict["Success"] as! Bool
@@ -20203,9 +20261,6 @@ public class DescribeFabricConsortiumsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -20379,9 +20434,6 @@ public class DescribeFabricExplorerResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -20643,9 +20695,6 @@ public class DescribeFabricInvitationCodeResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -20843,9 +20892,6 @@ public class DescribeFabricInviterResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -20995,9 +21041,6 @@ public class DescribeFabricOrdererLogsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -21112,7 +21155,15 @@ public class DescribeFabricOrganizationRequest : Tea.TeaModel {
             self.organizationId = dict["OrganizationId"] as! String
         }
         if dict.keys.contains("Tag") {
-            self.tag = dict["Tag"] as! [DescribeFabricOrganizationRequest.Tag]
+            var tmp : [DescribeFabricOrganizationRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = DescribeFabricOrganizationRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
     }
 }
@@ -21338,7 +21389,15 @@ public class DescribeFabricOrganizationResponseBody : Tea.TeaModel {
                 self.state = dict["State"] as! String
             }
             if dict.keys.contains("Tags") {
-                self.tags = dict["Tags"] as! [DescribeFabricOrganizationResponseBody.Result.Tags]
+                var tmp : [DescribeFabricOrganizationResponseBody.Result.Tags] = []
+                for v in dict["Tags"] as! [Any] {
+                    var model = DescribeFabricOrganizationResponseBody.Result.Tags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tags = tmp
             }
             if dict.keys.contains("UserCount") {
                 self.userCount = dict["UserCount"] as! Int32
@@ -21421,9 +21480,6 @@ public class DescribeFabricOrganizationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -21544,7 +21600,15 @@ public class DescribeFabricOrganizationChaincodePackageResponseBody : Tea.TeaMod
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Result") {
-            self.result = dict["Result"] as! [ChaincodePackage]
+            var tmp : [ChaincodePackage] = []
+            for v in dict["Result"] as! [Any] {
+                var model = ChaincodePackage()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
         }
         if dict.keys.contains("Success") {
             self.success = dict["Success"] as! Bool
@@ -21569,9 +21633,6 @@ public class DescribeFabricOrganizationChaincodePackageResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -21817,7 +21878,15 @@ public class DescribeFabricOrganizationChaincodesResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Result") {
-            self.result = dict["Result"] as! [DescribeFabricOrganizationChaincodesResponseBody.Result]
+            var tmp : [DescribeFabricOrganizationChaincodesResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = DescribeFabricOrganizationChaincodesResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
         }
         if dict.keys.contains("Success") {
             self.success = dict["Success"] as! Bool
@@ -21842,9 +21911,6 @@ public class DescribeFabricOrganizationChaincodesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -22146,7 +22212,15 @@ public class DescribeFabricOrganizationChannelsResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Result") {
-            self.result = dict["Result"] as! [DescribeFabricOrganizationChannelsResponseBody.Result]
+            var tmp : [DescribeFabricOrganizationChannelsResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = DescribeFabricOrganizationChannelsResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
         }
         if dict.keys.contains("Success") {
             self.success = dict["Success"] as! Bool
@@ -22171,9 +22245,6 @@ public class DescribeFabricOrganizationChannelsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -22411,9 +22482,6 @@ public class DescribeFabricOrganizationDeletableResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -22619,7 +22687,15 @@ public class DescribeFabricOrganizationMembersResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Result") {
-            self.result = dict["Result"] as! [DescribeFabricOrganizationMembersResponseBody.Result]
+            var tmp : [DescribeFabricOrganizationMembersResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = DescribeFabricOrganizationMembersResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
         }
         if dict.keys.contains("Success") {
             self.success = dict["Success"] as! Bool
@@ -22644,9 +22720,6 @@ public class DescribeFabricOrganizationMembersResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -22860,7 +22933,15 @@ public class DescribeFabricOrganizationPeersResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Result") {
-            self.result = dict["Result"] as! [DescribeFabricOrganizationPeersResponseBody.Result]
+            var tmp : [DescribeFabricOrganizationPeersResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = DescribeFabricOrganizationPeersResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
         }
         if dict.keys.contains("Success") {
             self.success = dict["Success"] as! Bool
@@ -22885,9 +22966,6 @@ public class DescribeFabricOrganizationPeersResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -23015,7 +23093,15 @@ public class DescribeFabricOrganizationSpecsResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Result") {
-            self.result = dict["Result"] as! [DescribeFabricOrganizationSpecsResponseBody.Result]
+            var tmp : [DescribeFabricOrganizationSpecsResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = DescribeFabricOrganizationSpecsResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
         }
         if dict.keys.contains("Success") {
             self.success = dict["Success"] as! Bool
@@ -23040,9 +23126,6 @@ public class DescribeFabricOrganizationSpecsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -23256,7 +23339,15 @@ public class DescribeFabricOrganizationUsersResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Result") {
-            self.result = dict["Result"] as! [DescribeFabricOrganizationUsersResponseBody.Result]
+            var tmp : [DescribeFabricOrganizationUsersResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = DescribeFabricOrganizationUsersResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
         }
         if dict.keys.contains("Success") {
             self.success = dict["Success"] as! Bool
@@ -23281,9 +23372,6 @@ public class DescribeFabricOrganizationUsersResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -23390,7 +23478,15 @@ public class DescribeFabricOrganizationsRequest : Tea.TeaModel {
             self.location = dict["Location"] as! String
         }
         if dict.keys.contains("Tag") {
-            self.tag = dict["Tag"] as! [DescribeFabricOrganizationsRequest.Tag]
+            var tmp : [DescribeFabricOrganizationsRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = DescribeFabricOrganizationsRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
     }
 }
@@ -23441,6 +23537,8 @@ public class DescribeFabricOrganizationsResponseBody : Tea.TeaModel {
         public var createTime: String?
 
         public var domain: String?
+
+        public var majorVersion: String?
 
         public var organizationDescription: String?
 
@@ -23495,6 +23593,9 @@ public class DescribeFabricOrganizationsResponseBody : Tea.TeaModel {
             }
             if self.domain != nil {
                 map["Domain"] = self.domain!
+            }
+            if self.majorVersion != nil {
+                map["MajorVersion"] = self.majorVersion!
             }
             if self.organizationDescription != nil {
                 map["OrganizationDescription"] = self.organizationDescription!
@@ -23558,6 +23659,9 @@ public class DescribeFabricOrganizationsResponseBody : Tea.TeaModel {
             if dict.keys.contains("Domain") {
                 self.domain = dict["Domain"] as! String
             }
+            if dict.keys.contains("MajorVersion") {
+                self.majorVersion = dict["MajorVersion"] as! String
+            }
             if dict.keys.contains("OrganizationDescription") {
                 self.organizationDescription = dict["OrganizationDescription"] as! String
             }
@@ -23592,7 +23696,15 @@ public class DescribeFabricOrganizationsResponseBody : Tea.TeaModel {
                 self.state = dict["State"] as! String
             }
             if dict.keys.contains("Tags") {
-                self.tags = dict["Tags"] as! [DescribeFabricOrganizationsResponseBody.Result.Tags]
+                var tmp : [DescribeFabricOrganizationsResponseBody.Result.Tags] = []
+                for v in dict["Tags"] as! [Any] {
+                    var model = DescribeFabricOrganizationsResponseBody.Result.Tags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tags = tmp
             }
             if dict.keys.contains("UserCount") {
                 self.userCount = dict["UserCount"] as! Int32
@@ -23651,7 +23763,15 @@ public class DescribeFabricOrganizationsResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Result") {
-            self.result = dict["Result"] as! [DescribeFabricOrganizationsResponseBody.Result]
+            var tmp : [DescribeFabricOrganizationsResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = DescribeFabricOrganizationsResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
         }
         if dict.keys.contains("Success") {
             self.success = dict["Success"] as! Bool
@@ -23676,9 +23796,6 @@ public class DescribeFabricOrganizationsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -23828,9 +23945,6 @@ public class DescribeFabricPeerLogsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -23993,7 +24107,15 @@ public class DescribeRegionsResponseBody : Tea.TeaModel {
             self.errorCode = dict["ErrorCode"] as! Int32
         }
         if dict.keys.contains("Regions") {
-            self.regions = dict["Regions"] as! [DescribeRegionsResponseBody.Regions]
+            var tmp : [DescribeRegionsResponseBody.Regions] = []
+            for v in dict["Regions"] as! [Any] {
+                var model = DescribeRegionsResponseBody.Regions()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.regions = tmp
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
@@ -24021,9 +24143,6 @@ public class DescribeRegionsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -24127,9 +24246,6 @@ public class DescribeRootDomainResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -24321,7 +24437,15 @@ public class DescribeTasksResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Result") {
-            self.result = dict["Result"] as! [DescribeTasksResponseBody.Result]
+            var tmp : [DescribeTasksResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = DescribeTasksResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
         }
         if dict.keys.contains("Success") {
             self.success = dict["Success"] as! Bool
@@ -24346,9 +24470,6 @@ public class DescribeTasksResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -24514,7 +24635,15 @@ public class DownloadFabricOrganizationSDKResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Result") {
-            self.result = dict["Result"] as! [DownloadFabricOrganizationSDKResponseBody.Result]
+            var tmp : [DownloadFabricOrganizationSDKResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = DownloadFabricOrganizationSDKResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
         }
         if dict.keys.contains("Success") {
             self.success = dict["Success"] as! Bool
@@ -24539,9 +24668,6 @@ public class DownloadFabricOrganizationSDKResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -24667,9 +24793,6 @@ public class FreezeAntChainAccountResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -24971,9 +25094,6 @@ public class InstallFabricChaincodeResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -25134,9 +25254,6 @@ public class InstallFabricChaincodePackageResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -25454,9 +25571,6 @@ public class InstantiateFabricChaincodeResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -25678,7 +25792,15 @@ public class JoinFabricChannelResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Result") {
-            self.result = dict["Result"] as! [JoinFabricChannelResponseBody.Result]
+            var tmp : [JoinFabricChannelResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = JoinFabricChannelResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
         }
         if dict.keys.contains("Success") {
             self.success = dict["Success"] as! Bool
@@ -25703,9 +25825,6 @@ public class JoinFabricChannelResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -25828,7 +25947,15 @@ public class ListTagResourcesRequest : Tea.TeaModel {
             self.resourceType = dict["ResourceType"] as! String
         }
         if dict.keys.contains("Tag") {
-            self.tag = dict["Tag"] as! [ListTagResourcesRequest.Tag]
+            var tmp : [ListTagResourcesRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = ListTagResourcesRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
     }
 }
@@ -25931,7 +26058,15 @@ public class ListTagResourcesResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("TagResources") {
-            self.tagResources = dict["TagResources"] as! [ListTagResourcesResponseBody.TagResources]
+            var tmp : [ListTagResourcesResponseBody.TagResources] = []
+            for v in dict["TagResources"] as! [Any] {
+                var model = ListTagResourcesResponseBody.TagResources()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tagResources = tmp
         }
     }
 }
@@ -25953,9 +26088,6 @@ public class ListTagResourcesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -26073,9 +26205,6 @@ public class ResetAntChainCertificateResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -26201,9 +26330,6 @@ public class ResetAntChainUserCertificateResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -26433,9 +26559,6 @@ public class ResetFabricOrganizationUserPasswordResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -26644,9 +26767,6 @@ public class SubmitFabricChaincodeDefinitionResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -26940,9 +27060,6 @@ public class SynchronizeFabricChaincodeResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -27057,7 +27174,15 @@ public class TagResourcesRequest : Tea.TeaModel {
             self.resourceType = dict["ResourceType"] as! String
         }
         if dict.keys.contains("Tag") {
-            self.tag = dict["Tag"] as! [TagResourcesRequest.Tag]
+            var tmp : [TagResourcesRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = TagResourcesRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
     }
 }
@@ -27133,9 +27258,6 @@ public class TagResourcesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -27261,9 +27383,6 @@ public class UnfreezeAntChainAccountResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -27421,9 +27540,6 @@ public class UntagResourcesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -27549,9 +27665,6 @@ public class UpdateAntChainResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -27685,9 +27798,6 @@ public class UpdateAntChainConsortiumResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -27829,9 +27939,6 @@ public class UpdateAntChainContractContentResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -27973,9 +28080,6 @@ public class UpdateAntChainContractProjectResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -28109,9 +28213,6 @@ public class UpdateAntChainMemberResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -28245,9 +28346,6 @@ public class UpdateAntChainQRCodeAuthorizationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -28565,9 +28663,6 @@ public class UpgradeFabricChaincodeResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -28768,9 +28863,6 @@ public class UpgradeFabricChaincodeDefinitionResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
