@@ -2066,6 +2066,1168 @@ public class CreateUserGroupResponse : Tea.TeaModel {
     }
 }
 
+public class CreateWmBaseImageRequest : Tea.TeaModel {
+    public var height: Int32?
+
+    public var opacity: Int32?
+
+    public var scale: Int32?
+
+    public var width: Int32?
+
+    public var wmInfoBytesB64: String?
+
+    public var wmInfoSize: Int64?
+
+    public var wmInfoUint: String?
+
+    public var wmType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.height != nil {
+            map["Height"] = self.height!
+        }
+        if self.opacity != nil {
+            map["Opacity"] = self.opacity!
+        }
+        if self.scale != nil {
+            map["Scale"] = self.scale!
+        }
+        if self.width != nil {
+            map["Width"] = self.width!
+        }
+        if self.wmInfoBytesB64 != nil {
+            map["WmInfoBytesB64"] = self.wmInfoBytesB64!
+        }
+        if self.wmInfoSize != nil {
+            map["WmInfoSize"] = self.wmInfoSize!
+        }
+        if self.wmInfoUint != nil {
+            map["WmInfoUint"] = self.wmInfoUint!
+        }
+        if self.wmType != nil {
+            map["WmType"] = self.wmType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Height") {
+            self.height = dict["Height"] as! Int32
+        }
+        if dict.keys.contains("Opacity") {
+            self.opacity = dict["Opacity"] as! Int32
+        }
+        if dict.keys.contains("Scale") {
+            self.scale = dict["Scale"] as! Int32
+        }
+        if dict.keys.contains("Width") {
+            self.width = dict["Width"] as! Int32
+        }
+        if dict.keys.contains("WmInfoBytesB64") {
+            self.wmInfoBytesB64 = dict["WmInfoBytesB64"] as! String
+        }
+        if dict.keys.contains("WmInfoSize") {
+            self.wmInfoSize = dict["WmInfoSize"] as! Int64
+        }
+        if dict.keys.contains("WmInfoUint") {
+            self.wmInfoUint = dict["WmInfoUint"] as! String
+        }
+        if dict.keys.contains("WmType") {
+            self.wmType = dict["WmType"] as! String
+        }
+    }
+}
+
+public class CreateWmBaseImageResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var imageId: String?
+
+        public var imageUrl: String?
+
+        public var imageUrlExp: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.imageId != nil {
+                map["ImageId"] = self.imageId!
+            }
+            if self.imageUrl != nil {
+                map["ImageUrl"] = self.imageUrl!
+            }
+            if self.imageUrlExp != nil {
+                map["ImageUrlExp"] = self.imageUrlExp!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ImageId") {
+                self.imageId = dict["ImageId"] as! String
+            }
+            if dict.keys.contains("ImageUrl") {
+                self.imageUrl = dict["ImageUrl"] as! String
+            }
+            if dict.keys.contains("ImageUrlExp") {
+                self.imageUrlExp = dict["ImageUrlExp"] as! Int64
+            }
+        }
+    }
+    public var data: CreateWmBaseImageResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            var model = CreateWmBaseImageResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateWmBaseImageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateWmBaseImageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateWmBaseImageResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class CreateWmEmbedTaskRequest : Tea.TeaModel {
+    public class DocumentControl : Tea.TeaModel {
+        public class BackgroundControl : Tea.TeaModel {
+            public class BgInvisibleControl : Tea.TeaModel {
+                public var opacity: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.opacity != nil {
+                        map["Opacity"] = self.opacity!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Opacity") {
+                        self.opacity = dict["Opacity"] as! Int64
+                    }
+                }
+            }
+            public class BgVisibleControl : Tea.TeaModel {
+                public var angle: Int64?
+
+                public var fontColor: String?
+
+                public var fontSize: Int64?
+
+                public var horizontalNumber: Int64?
+
+                public var mode: String?
+
+                public var opacity: Int64?
+
+                public var posX: String?
+
+                public var posY: String?
+
+                public var verticalNumber: Int64?
+
+                public var visibleText: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.angle != nil {
+                        map["Angle"] = self.angle!
+                    }
+                    if self.fontColor != nil {
+                        map["FontColor"] = self.fontColor!
+                    }
+                    if self.fontSize != nil {
+                        map["FontSize"] = self.fontSize!
+                    }
+                    if self.horizontalNumber != nil {
+                        map["HorizontalNumber"] = self.horizontalNumber!
+                    }
+                    if self.mode != nil {
+                        map["Mode"] = self.mode!
+                    }
+                    if self.opacity != nil {
+                        map["Opacity"] = self.opacity!
+                    }
+                    if self.posX != nil {
+                        map["PosX"] = self.posX!
+                    }
+                    if self.posY != nil {
+                        map["PosY"] = self.posY!
+                    }
+                    if self.verticalNumber != nil {
+                        map["VerticalNumber"] = self.verticalNumber!
+                    }
+                    if self.visibleText != nil {
+                        map["VisibleText"] = self.visibleText!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Angle") {
+                        self.angle = dict["Angle"] as! Int64
+                    }
+                    if dict.keys.contains("FontColor") {
+                        self.fontColor = dict["FontColor"] as! String
+                    }
+                    if dict.keys.contains("FontSize") {
+                        self.fontSize = dict["FontSize"] as! Int64
+                    }
+                    if dict.keys.contains("HorizontalNumber") {
+                        self.horizontalNumber = dict["HorizontalNumber"] as! Int64
+                    }
+                    if dict.keys.contains("Mode") {
+                        self.mode = dict["Mode"] as! String
+                    }
+                    if dict.keys.contains("Opacity") {
+                        self.opacity = dict["Opacity"] as! Int64
+                    }
+                    if dict.keys.contains("PosX") {
+                        self.posX = dict["PosX"] as! String
+                    }
+                    if dict.keys.contains("PosY") {
+                        self.posY = dict["PosY"] as! String
+                    }
+                    if dict.keys.contains("VerticalNumber") {
+                        self.verticalNumber = dict["VerticalNumber"] as! Int64
+                    }
+                    if dict.keys.contains("VisibleText") {
+                        self.visibleText = dict["VisibleText"] as! String
+                    }
+                }
+            }
+            public var bgAddInvisible: Bool?
+
+            public var bgAddVisible: Bool?
+
+            public var bgInvisibleControl: CreateWmEmbedTaskRequest.DocumentControl.BackgroundControl.BgInvisibleControl?
+
+            public var bgVisibleControl: CreateWmEmbedTaskRequest.DocumentControl.BackgroundControl.BgVisibleControl?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.bgInvisibleControl?.validate()
+                try self.bgVisibleControl?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bgAddInvisible != nil {
+                    map["BgAddInvisible"] = self.bgAddInvisible!
+                }
+                if self.bgAddVisible != nil {
+                    map["BgAddVisible"] = self.bgAddVisible!
+                }
+                if self.bgInvisibleControl != nil {
+                    map["BgInvisibleControl"] = self.bgInvisibleControl?.toMap()
+                }
+                if self.bgVisibleControl != nil {
+                    map["BgVisibleControl"] = self.bgVisibleControl?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("BgAddInvisible") {
+                    self.bgAddInvisible = dict["BgAddInvisible"] as! Bool
+                }
+                if dict.keys.contains("BgAddVisible") {
+                    self.bgAddVisible = dict["BgAddVisible"] as! Bool
+                }
+                if dict.keys.contains("BgInvisibleControl") {
+                    var model = CreateWmEmbedTaskRequest.DocumentControl.BackgroundControl.BgInvisibleControl()
+                    model.fromMap(dict["BgInvisibleControl"] as! [String: Any])
+                    self.bgInvisibleControl = model
+                }
+                if dict.keys.contains("BgVisibleControl") {
+                    var model = CreateWmEmbedTaskRequest.DocumentControl.BackgroundControl.BgVisibleControl()
+                    model.fromMap(dict["BgVisibleControl"] as! [String: Any])
+                    self.bgVisibleControl = model
+                }
+            }
+        }
+        public var backgroundControl: CreateWmEmbedTaskRequest.DocumentControl.BackgroundControl?
+
+        public var invisibleAntiAllCopy: Bool?
+
+        public var invisibleAntiTextCopy: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.backgroundControl?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.backgroundControl != nil {
+                map["BackgroundControl"] = self.backgroundControl?.toMap()
+            }
+            if self.invisibleAntiAllCopy != nil {
+                map["InvisibleAntiAllCopy"] = self.invisibleAntiAllCopy!
+            }
+            if self.invisibleAntiTextCopy != nil {
+                map["InvisibleAntiTextCopy"] = self.invisibleAntiTextCopy!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BackgroundControl") {
+                var model = CreateWmEmbedTaskRequest.DocumentControl.BackgroundControl()
+                model.fromMap(dict["BackgroundControl"] as! [String: Any])
+                self.backgroundControl = model
+            }
+            if dict.keys.contains("InvisibleAntiAllCopy") {
+                self.invisibleAntiAllCopy = dict["InvisibleAntiAllCopy"] as! Bool
+            }
+            if dict.keys.contains("InvisibleAntiTextCopy") {
+                self.invisibleAntiTextCopy = dict["InvisibleAntiTextCopy"] as! Bool
+            }
+        }
+    }
+    public var documentControl: CreateWmEmbedTaskRequest.DocumentControl?
+
+    public var fileUrl: String?
+
+    public var filename: String?
+
+    public var imageEmbedJpegQuality: Int64?
+
+    public var imageEmbedLevel: Int64?
+
+    public var videoBitrate: String?
+
+    public var videoIsLong: Bool?
+
+    public var wmInfoBytesB64: String?
+
+    public var wmInfoSize: Int64?
+
+    public var wmInfoUint: String?
+
+    public var wmType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.documentControl?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.documentControl != nil {
+            map["DocumentControl"] = self.documentControl?.toMap()
+        }
+        if self.fileUrl != nil {
+            map["FileUrl"] = self.fileUrl!
+        }
+        if self.filename != nil {
+            map["Filename"] = self.filename!
+        }
+        if self.imageEmbedJpegQuality != nil {
+            map["ImageEmbedJpegQuality"] = self.imageEmbedJpegQuality!
+        }
+        if self.imageEmbedLevel != nil {
+            map["ImageEmbedLevel"] = self.imageEmbedLevel!
+        }
+        if self.videoBitrate != nil {
+            map["VideoBitrate"] = self.videoBitrate!
+        }
+        if self.videoIsLong != nil {
+            map["VideoIsLong"] = self.videoIsLong!
+        }
+        if self.wmInfoBytesB64 != nil {
+            map["WmInfoBytesB64"] = self.wmInfoBytesB64!
+        }
+        if self.wmInfoSize != nil {
+            map["WmInfoSize"] = self.wmInfoSize!
+        }
+        if self.wmInfoUint != nil {
+            map["WmInfoUint"] = self.wmInfoUint!
+        }
+        if self.wmType != nil {
+            map["WmType"] = self.wmType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DocumentControl") {
+            var model = CreateWmEmbedTaskRequest.DocumentControl()
+            model.fromMap(dict["DocumentControl"] as! [String: Any])
+            self.documentControl = model
+        }
+        if dict.keys.contains("FileUrl") {
+            self.fileUrl = dict["FileUrl"] as! String
+        }
+        if dict.keys.contains("Filename") {
+            self.filename = dict["Filename"] as! String
+        }
+        if dict.keys.contains("ImageEmbedJpegQuality") {
+            self.imageEmbedJpegQuality = dict["ImageEmbedJpegQuality"] as! Int64
+        }
+        if dict.keys.contains("ImageEmbedLevel") {
+            self.imageEmbedLevel = dict["ImageEmbedLevel"] as! Int64
+        }
+        if dict.keys.contains("VideoBitrate") {
+            self.videoBitrate = dict["VideoBitrate"] as! String
+        }
+        if dict.keys.contains("VideoIsLong") {
+            self.videoIsLong = dict["VideoIsLong"] as! Bool
+        }
+        if dict.keys.contains("WmInfoBytesB64") {
+            self.wmInfoBytesB64 = dict["WmInfoBytesB64"] as! String
+        }
+        if dict.keys.contains("WmInfoSize") {
+            self.wmInfoSize = dict["WmInfoSize"] as! Int64
+        }
+        if dict.keys.contains("WmInfoUint") {
+            self.wmInfoUint = dict["WmInfoUint"] as! String
+        }
+        if dict.keys.contains("WmType") {
+            self.wmType = dict["WmType"] as! String
+        }
+    }
+}
+
+public class CreateWmEmbedTaskShrinkRequest : Tea.TeaModel {
+    public var documentControlShrink: String?
+
+    public var fileUrl: String?
+
+    public var filename: String?
+
+    public var imageEmbedJpegQuality: Int64?
+
+    public var imageEmbedLevel: Int64?
+
+    public var videoBitrate: String?
+
+    public var videoIsLong: Bool?
+
+    public var wmInfoBytesB64: String?
+
+    public var wmInfoSize: Int64?
+
+    public var wmInfoUint: String?
+
+    public var wmType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.documentControlShrink != nil {
+            map["DocumentControl"] = self.documentControlShrink!
+        }
+        if self.fileUrl != nil {
+            map["FileUrl"] = self.fileUrl!
+        }
+        if self.filename != nil {
+            map["Filename"] = self.filename!
+        }
+        if self.imageEmbedJpegQuality != nil {
+            map["ImageEmbedJpegQuality"] = self.imageEmbedJpegQuality!
+        }
+        if self.imageEmbedLevel != nil {
+            map["ImageEmbedLevel"] = self.imageEmbedLevel!
+        }
+        if self.videoBitrate != nil {
+            map["VideoBitrate"] = self.videoBitrate!
+        }
+        if self.videoIsLong != nil {
+            map["VideoIsLong"] = self.videoIsLong!
+        }
+        if self.wmInfoBytesB64 != nil {
+            map["WmInfoBytesB64"] = self.wmInfoBytesB64!
+        }
+        if self.wmInfoSize != nil {
+            map["WmInfoSize"] = self.wmInfoSize!
+        }
+        if self.wmInfoUint != nil {
+            map["WmInfoUint"] = self.wmInfoUint!
+        }
+        if self.wmType != nil {
+            map["WmType"] = self.wmType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DocumentControl") {
+            self.documentControlShrink = dict["DocumentControl"] as! String
+        }
+        if dict.keys.contains("FileUrl") {
+            self.fileUrl = dict["FileUrl"] as! String
+        }
+        if dict.keys.contains("Filename") {
+            self.filename = dict["Filename"] as! String
+        }
+        if dict.keys.contains("ImageEmbedJpegQuality") {
+            self.imageEmbedJpegQuality = dict["ImageEmbedJpegQuality"] as! Int64
+        }
+        if dict.keys.contains("ImageEmbedLevel") {
+            self.imageEmbedLevel = dict["ImageEmbedLevel"] as! Int64
+        }
+        if dict.keys.contains("VideoBitrate") {
+            self.videoBitrate = dict["VideoBitrate"] as! String
+        }
+        if dict.keys.contains("VideoIsLong") {
+            self.videoIsLong = dict["VideoIsLong"] as! Bool
+        }
+        if dict.keys.contains("WmInfoBytesB64") {
+            self.wmInfoBytesB64 = dict["WmInfoBytesB64"] as! String
+        }
+        if dict.keys.contains("WmInfoSize") {
+            self.wmInfoSize = dict["WmInfoSize"] as! Int64
+        }
+        if dict.keys.contains("WmInfoUint") {
+            self.wmInfoUint = dict["WmInfoUint"] as! String
+        }
+        if dict.keys.contains("WmType") {
+            self.wmType = dict["WmType"] as! String
+        }
+    }
+}
+
+public class CreateWmEmbedTaskResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var taskId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("TaskId") {
+                self.taskId = dict["TaskId"] as! String
+            }
+        }
+    }
+    public var data: CreateWmEmbedTaskResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            var model = CreateWmEmbedTaskResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateWmEmbedTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateWmEmbedTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateWmEmbedTaskResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class CreateWmExtractTaskRequest : Tea.TeaModel {
+    public var documentIsCapture: Bool?
+
+    public var fileUrl: String?
+
+    public var filename: String?
+
+    public var videoIsLong: Bool?
+
+    public var videoSpeed: String?
+
+    public var wmInfoSize: Int64?
+
+    public var wmType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.documentIsCapture != nil {
+            map["DocumentIsCapture"] = self.documentIsCapture!
+        }
+        if self.fileUrl != nil {
+            map["FileUrl"] = self.fileUrl!
+        }
+        if self.filename != nil {
+            map["Filename"] = self.filename!
+        }
+        if self.videoIsLong != nil {
+            map["VideoIsLong"] = self.videoIsLong!
+        }
+        if self.videoSpeed != nil {
+            map["VideoSpeed"] = self.videoSpeed!
+        }
+        if self.wmInfoSize != nil {
+            map["WmInfoSize"] = self.wmInfoSize!
+        }
+        if self.wmType != nil {
+            map["WmType"] = self.wmType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DocumentIsCapture") {
+            self.documentIsCapture = dict["DocumentIsCapture"] as! Bool
+        }
+        if dict.keys.contains("FileUrl") {
+            self.fileUrl = dict["FileUrl"] as! String
+        }
+        if dict.keys.contains("Filename") {
+            self.filename = dict["Filename"] as! String
+        }
+        if dict.keys.contains("VideoIsLong") {
+            self.videoIsLong = dict["VideoIsLong"] as! Bool
+        }
+        if dict.keys.contains("VideoSpeed") {
+            self.videoSpeed = dict["VideoSpeed"] as! String
+        }
+        if dict.keys.contains("WmInfoSize") {
+            self.wmInfoSize = dict["WmInfoSize"] as! Int64
+        }
+        if dict.keys.contains("WmType") {
+            self.wmType = dict["WmType"] as! String
+        }
+    }
+}
+
+public class CreateWmExtractTaskResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var taskId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("TaskId") {
+                self.taskId = dict["TaskId"] as! String
+            }
+        }
+    }
+    public var data: CreateWmExtractTaskResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            var model = CreateWmExtractTaskResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateWmExtractTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateWmExtractTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateWmExtractTaskResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class CreateWmInfoMappingRequest : Tea.TeaModel {
+    public var wmInfoBytesB64: String?
+
+    public var wmInfoSize: Int64?
+
+    public var wmType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.wmInfoBytesB64 != nil {
+            map["WmInfoBytesB64"] = self.wmInfoBytesB64!
+        }
+        if self.wmInfoSize != nil {
+            map["WmInfoSize"] = self.wmInfoSize!
+        }
+        if self.wmType != nil {
+            map["WmType"] = self.wmType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("WmInfoBytesB64") {
+            self.wmInfoBytesB64 = dict["WmInfoBytesB64"] as! String
+        }
+        if dict.keys.contains("WmInfoSize") {
+            self.wmInfoSize = dict["WmInfoSize"] as! Int64
+        }
+        if dict.keys.contains("WmType") {
+            self.wmType = dict["WmType"] as! String
+        }
+    }
+}
+
+public class CreateWmInfoMappingResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var wmInfoUint: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.wmInfoUint != nil {
+                map["WmInfoUint"] = self.wmInfoUint!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("WmInfoUint") {
+                self.wmInfoUint = dict["WmInfoUint"] as! Int64
+            }
+        }
+    }
+    public var data: CreateWmInfoMappingResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            var model = CreateWmInfoMappingResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateWmInfoMappingResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateWmInfoMappingResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateWmInfoMappingResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DeleteClientUserRequest : Tea.TeaModel {
     public var id: String?
 
@@ -5909,6 +7071,408 @@ public class GetUserGroupResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = GetUserGroupResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetWmEmbedTaskRequest : Tea.TeaModel {
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("TaskId") {
+            self.taskId = dict["TaskId"] as! String
+        }
+    }
+}
+
+public class GetWmEmbedTaskResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var fileUrl: String?
+
+        public var fileUrlExp: String?
+
+        public var filename: String?
+
+        public var outFileHashMd5: String?
+
+        public var outFileSize: Int64?
+
+        public var taskId: String?
+
+        public var taskStatus: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fileUrl != nil {
+                map["FileUrl"] = self.fileUrl!
+            }
+            if self.fileUrlExp != nil {
+                map["FileUrlExp"] = self.fileUrlExp!
+            }
+            if self.filename != nil {
+                map["Filename"] = self.filename!
+            }
+            if self.outFileHashMd5 != nil {
+                map["OutFileHashMd5"] = self.outFileHashMd5!
+            }
+            if self.outFileSize != nil {
+                map["OutFileSize"] = self.outFileSize!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            if self.taskStatus != nil {
+                map["TaskStatus"] = self.taskStatus!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("FileUrl") {
+                self.fileUrl = dict["FileUrl"] as! String
+            }
+            if dict.keys.contains("FileUrlExp") {
+                self.fileUrlExp = dict["FileUrlExp"] as! String
+            }
+            if dict.keys.contains("Filename") {
+                self.filename = dict["Filename"] as! String
+            }
+            if dict.keys.contains("OutFileHashMd5") {
+                self.outFileHashMd5 = dict["OutFileHashMd5"] as! String
+            }
+            if dict.keys.contains("OutFileSize") {
+                self.outFileSize = dict["OutFileSize"] as! Int64
+            }
+            if dict.keys.contains("TaskId") {
+                self.taskId = dict["TaskId"] as! String
+            }
+            if dict.keys.contains("TaskStatus") {
+                self.taskStatus = dict["TaskStatus"] as! String
+            }
+        }
+    }
+    public var data: GetWmEmbedTaskResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            var model = GetWmEmbedTaskResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class GetWmEmbedTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetWmEmbedTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetWmEmbedTaskResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetWmExtractTaskRequest : Tea.TeaModel {
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("TaskId") {
+            self.taskId = dict["TaskId"] as! String
+        }
+    }
+}
+
+public class GetWmExtractTaskResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var createTime: String?
+
+        public var filename: String?
+
+        public var status: String?
+
+        public var taskId: String?
+
+        public var wmInfoBytesB64: String?
+
+        public var wmInfoSize: Int64?
+
+        public var wmInfoUint: Int64?
+
+        public var wmType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.filename != nil {
+                map["Filename"] = self.filename!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            if self.wmInfoBytesB64 != nil {
+                map["WmInfoBytesB64"] = self.wmInfoBytesB64!
+            }
+            if self.wmInfoSize != nil {
+                map["WmInfoSize"] = self.wmInfoSize!
+            }
+            if self.wmInfoUint != nil {
+                map["WmInfoUint"] = self.wmInfoUint!
+            }
+            if self.wmType != nil {
+                map["WmType"] = self.wmType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CreateTime") {
+                self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("Filename") {
+                self.filename = dict["Filename"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("TaskId") {
+                self.taskId = dict["TaskId"] as! String
+            }
+            if dict.keys.contains("WmInfoBytesB64") {
+                self.wmInfoBytesB64 = dict["WmInfoBytesB64"] as! String
+            }
+            if dict.keys.contains("WmInfoSize") {
+                self.wmInfoSize = dict["WmInfoSize"] as! Int64
+            }
+            if dict.keys.contains("WmInfoUint") {
+                self.wmInfoUint = dict["WmInfoUint"] as! Int64
+            }
+            if dict.keys.contains("WmType") {
+                self.wmType = dict["WmType"] as! String
+            }
+        }
+    }
+    public var data: GetWmExtractTaskResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            var model = GetWmExtractTaskResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class GetWmExtractTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetWmExtractTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetWmExtractTaskResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -14465,6 +16029,171 @@ public class ListUsersResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ListUsersResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class LookupWmInfoMappingRequest : Tea.TeaModel {
+    public var wmInfoSize: Int64?
+
+    public var wmInfoUint: String?
+
+    public var wmType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.wmInfoSize != nil {
+            map["WmInfoSize"] = self.wmInfoSize!
+        }
+        if self.wmInfoUint != nil {
+            map["WmInfoUint"] = self.wmInfoUint!
+        }
+        if self.wmType != nil {
+            map["WmType"] = self.wmType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("WmInfoSize") {
+            self.wmInfoSize = dict["WmInfoSize"] as! Int64
+        }
+        if dict.keys.contains("WmInfoUint") {
+            self.wmInfoUint = dict["WmInfoUint"] as! String
+        }
+        if dict.keys.contains("WmType") {
+            self.wmType = dict["WmType"] as! String
+        }
+    }
+}
+
+public class LookupWmInfoMappingResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var wmInfoBytesB64: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.wmInfoBytesB64 != nil {
+                map["WmInfoBytesB64"] = self.wmInfoBytesB64!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("WmInfoBytesB64") {
+                self.wmInfoBytesB64 = dict["WmInfoBytesB64"] as! String
+            }
+        }
+    }
+    public var data: LookupWmInfoMappingResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            var model = LookupWmInfoMappingResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class LookupWmInfoMappingResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: LookupWmInfoMappingResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = LookupWmInfoMappingResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

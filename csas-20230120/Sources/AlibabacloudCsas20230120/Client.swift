@@ -470,6 +470,210 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createWmBaseImageWithOptions(_ request: CreateWmBaseImageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateWmBaseImageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.height)) {
+            body["Height"] = request.height!;
+        }
+        if (!TeaUtils.Client.isUnset(request.opacity)) {
+            body["Opacity"] = request.opacity!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scale)) {
+            body["Scale"] = request.scale!;
+        }
+        if (!TeaUtils.Client.isUnset(request.width)) {
+            body["Width"] = request.width!;
+        }
+        if (!TeaUtils.Client.isUnset(request.wmInfoBytesB64)) {
+            body["WmInfoBytesB64"] = request.wmInfoBytesB64 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.wmInfoSize)) {
+            body["WmInfoSize"] = request.wmInfoSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.wmInfoUint)) {
+            body["WmInfoUint"] = request.wmInfoUint ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.wmType)) {
+            body["WmType"] = request.wmType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateWmBaseImage",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateWmBaseImageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createWmBaseImage(_ request: CreateWmBaseImageRequest) async throws -> CreateWmBaseImageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createWmBaseImageWithOptions(request as! CreateWmBaseImageRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createWmEmbedTaskWithOptions(_ tmpReq: CreateWmEmbedTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateWmEmbedTaskResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateWmEmbedTaskShrinkRequest = CreateWmEmbedTaskShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.documentControl)) {
+            request.documentControlShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.documentControl, "DocumentControl", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.documentControlShrink)) {
+            body["DocumentControl"] = request.documentControlShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileUrl)) {
+            body["FileUrl"] = request.fileUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filename)) {
+            body["Filename"] = request.filename ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageEmbedJpegQuality)) {
+            body["ImageEmbedJpegQuality"] = request.imageEmbedJpegQuality!;
+        }
+        if (!TeaUtils.Client.isUnset(request.imageEmbedLevel)) {
+            body["ImageEmbedLevel"] = request.imageEmbedLevel!;
+        }
+        if (!TeaUtils.Client.isUnset(request.videoBitrate)) {
+            body["VideoBitrate"] = request.videoBitrate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.videoIsLong)) {
+            body["VideoIsLong"] = request.videoIsLong!;
+        }
+        if (!TeaUtils.Client.isUnset(request.wmInfoBytesB64)) {
+            body["WmInfoBytesB64"] = request.wmInfoBytesB64 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.wmInfoSize)) {
+            body["WmInfoSize"] = request.wmInfoSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.wmInfoUint)) {
+            body["WmInfoUint"] = request.wmInfoUint ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.wmType)) {
+            body["WmType"] = request.wmType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateWmEmbedTask",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateWmEmbedTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createWmEmbedTask(_ request: CreateWmEmbedTaskRequest) async throws -> CreateWmEmbedTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createWmEmbedTaskWithOptions(request as! CreateWmEmbedTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createWmExtractTaskWithOptions(_ request: CreateWmExtractTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateWmExtractTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.documentIsCapture)) {
+            body["DocumentIsCapture"] = request.documentIsCapture!;
+        }
+        if (!TeaUtils.Client.isUnset(request.fileUrl)) {
+            body["FileUrl"] = request.fileUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filename)) {
+            body["Filename"] = request.filename ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.videoIsLong)) {
+            body["VideoIsLong"] = request.videoIsLong!;
+        }
+        if (!TeaUtils.Client.isUnset(request.videoSpeed)) {
+            body["VideoSpeed"] = request.videoSpeed ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.wmInfoSize)) {
+            body["WmInfoSize"] = request.wmInfoSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.wmType)) {
+            body["WmType"] = request.wmType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateWmExtractTask",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateWmExtractTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createWmExtractTask(_ request: CreateWmExtractTaskRequest) async throws -> CreateWmExtractTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createWmExtractTaskWithOptions(request as! CreateWmExtractTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createWmInfoMappingWithOptions(_ request: CreateWmInfoMappingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateWmInfoMappingResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.wmInfoBytesB64)) {
+            body["WmInfoBytesB64"] = request.wmInfoBytesB64 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.wmInfoSize)) {
+            body["WmInfoSize"] = request.wmInfoSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.wmType)) {
+            body["WmType"] = request.wmType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateWmInfoMapping",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateWmInfoMappingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createWmInfoMapping(_ request: CreateWmInfoMappingRequest) async throws -> CreateWmInfoMappingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createWmInfoMappingWithOptions(request as! CreateWmInfoMappingRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteClientUserWithOptions(_ request: DeleteClientUserRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteClientUserResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1115,6 +1319,62 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getUserGroup(_ request: GetUserGroupRequest) async throws -> GetUserGroupResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getUserGroupWithOptions(request as! GetUserGroupRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getWmEmbedTaskWithOptions(_ request: GetWmEmbedTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetWmEmbedTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetWmEmbedTask",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetWmEmbedTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getWmEmbedTask(_ request: GetWmEmbedTaskRequest) async throws -> GetWmEmbedTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getWmEmbedTaskWithOptions(request as! GetWmEmbedTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getWmExtractTaskWithOptions(_ request: GetWmExtractTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetWmExtractTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetWmExtractTask",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetWmExtractTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getWmExtractTask(_ request: GetWmExtractTaskRequest) async throws -> GetWmExtractTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getWmExtractTaskWithOptions(request as! GetWmExtractTaskRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1895,6 +2155,34 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listUsers(_ request: ListUsersRequest) async throws -> ListUsersResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listUsersWithOptions(request as! ListUsersRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func lookupWmInfoMappingWithOptions(_ request: LookupWmInfoMappingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> LookupWmInfoMappingResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "LookupWmInfoMapping",
+            "version": "2023-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(LookupWmInfoMappingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func lookupWmInfoMapping(_ request: LookupWmInfoMappingRequest) async throws -> LookupWmInfoMappingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await lookupWmInfoMappingWithOptions(request as! LookupWmInfoMappingRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
