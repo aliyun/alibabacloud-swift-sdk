@@ -553,6 +553,131 @@ public class AttachSceneDefenseObjectResponse : Tea.TeaModel {
     }
 }
 
+public class ConfigDomainSecurityProfileRequest : Tea.TeaModel {
+    public var cluster: String?
+
+    public var config: String?
+
+    public var domain: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cluster != nil {
+            map["Cluster"] = self.cluster!
+        }
+        if self.config != nil {
+            map["Config"] = self.config!
+        }
+        if self.domain != nil {
+            map["Domain"] = self.domain!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Cluster") {
+            self.cluster = dict["Cluster"] as! String
+        }
+        if dict.keys.contains("Config") {
+            self.config = dict["Config"] as! String
+        }
+        if dict.keys.contains("Domain") {
+            self.domain = dict["Domain"] as! String
+        }
+    }
+}
+
+public class ConfigDomainSecurityProfileResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ConfigDomainSecurityProfileResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ConfigDomainSecurityProfileResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ConfigDomainSecurityProfileResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ConfigL7RsPolicyRequest : Tea.TeaModel {
     public var domain: String?
 
@@ -680,6 +805,123 @@ public class ConfigL7RsPolicyResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ConfigL7RsPolicyResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ConfigL7UsKeepaliveRequest : Tea.TeaModel {
+    public var domain: String?
+
+    public var upstreamKeepalive: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.domain != nil {
+            map["Domain"] = self.domain!
+        }
+        if self.upstreamKeepalive != nil {
+            map["UpstreamKeepalive"] = self.upstreamKeepalive!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Domain") {
+            self.domain = dict["Domain"] as! String
+        }
+        if dict.keys.contains("UpstreamKeepalive") {
+            self.upstreamKeepalive = dict["UpstreamKeepalive"] as! String
+        }
+    }
+}
+
+public class ConfigL7UsKeepaliveResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ConfigL7UsKeepaliveResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ConfigL7UsKeepaliveResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ConfigL7UsKeepaliveResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -12859,13 +13101,21 @@ public class DescribeInstanceDetailsRequest : Tea.TeaModel {
 public class DescribeInstanceDetailsResponseBody : Tea.TeaModel {
     public class InstanceDetails : Tea.TeaModel {
         public class EipInfos : Tea.TeaModel {
+            public var certConfigured: Bool?
+
             public var eip: String?
+
+            public var functionVersion: String?
 
             public var ipMode: String?
 
             public var ipVersion: String?
 
+            public var ssl13Enabled: Bool?
+
             public var status: String?
+
+            public var tlsVersion: String?
 
             public override init() {
                 super.init()
@@ -12881,8 +13131,14 @@ public class DescribeInstanceDetailsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.certConfigured != nil {
+                    map["CertConfigured"] = self.certConfigured!
+                }
                 if self.eip != nil {
                     map["Eip"] = self.eip!
+                }
+                if self.functionVersion != nil {
+                    map["FunctionVersion"] = self.functionVersion!
                 }
                 if self.ipMode != nil {
                     map["IpMode"] = self.ipMode!
@@ -12890,15 +13146,27 @@ public class DescribeInstanceDetailsResponseBody : Tea.TeaModel {
                 if self.ipVersion != nil {
                     map["IpVersion"] = self.ipVersion!
                 }
+                if self.ssl13Enabled != nil {
+                    map["Ssl13Enabled"] = self.ssl13Enabled!
+                }
                 if self.status != nil {
                     map["Status"] = self.status!
+                }
+                if self.tlsVersion != nil {
+                    map["TlsVersion"] = self.tlsVersion!
                 }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CertConfigured") {
+                    self.certConfigured = dict["CertConfigured"] as! Bool
+                }
                 if dict.keys.contains("Eip") {
                     self.eip = dict["Eip"] as! String
+                }
+                if dict.keys.contains("FunctionVersion") {
+                    self.functionVersion = dict["FunctionVersion"] as! String
                 }
                 if dict.keys.contains("IpMode") {
                     self.ipMode = dict["IpMode"] as! String
@@ -12906,8 +13174,14 @@ public class DescribeInstanceDetailsResponseBody : Tea.TeaModel {
                 if dict.keys.contains("IpVersion") {
                     self.ipVersion = dict["IpVersion"] as! String
                 }
+                if dict.keys.contains("Ssl13Enabled") {
+                    self.ssl13Enabled = dict["Ssl13Enabled"] as! Bool
+                }
                 if dict.keys.contains("Status") {
                     self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("TlsVersion") {
+                    self.tlsVersion = dict["TlsVersion"] as! String
                 }
             }
         }
@@ -14773,6 +15047,171 @@ public class DescribeL7RsPolicyResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DescribeL7RsPolicyResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeL7UsKeepaliveRequest : Tea.TeaModel {
+    public var domain: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.domain != nil {
+            map["Domain"] = self.domain!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Domain") {
+            self.domain = dict["Domain"] as! String
+        }
+    }
+}
+
+public class DescribeL7UsKeepaliveResponseBody : Tea.TeaModel {
+    public class RsKeepalive : Tea.TeaModel {
+        public var enabled: Bool?
+
+        public var keepaliveRequests: Int64?
+
+        public var keepaliveTimeout: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.keepaliveRequests != nil {
+                map["KeepaliveRequests"] = self.keepaliveRequests!
+            }
+            if self.keepaliveTimeout != nil {
+                map["KeepaliveTimeout"] = self.keepaliveTimeout!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Enabled") {
+                self.enabled = dict["Enabled"] as! Bool
+            }
+            if dict.keys.contains("KeepaliveRequests") {
+                self.keepaliveRequests = dict["KeepaliveRequests"] as! Int64
+            }
+            if dict.keys.contains("KeepaliveTimeout") {
+                self.keepaliveTimeout = dict["KeepaliveTimeout"] as! Int64
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var rsKeepalive: DescribeL7UsKeepaliveResponseBody.RsKeepalive?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.rsKeepalive?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.rsKeepalive != nil {
+            map["RsKeepalive"] = self.rsKeepalive?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("RsKeepalive") {
+            var model = DescribeL7UsKeepaliveResponseBody.RsKeepalive()
+            model.fromMap(dict["RsKeepalive"] as! [String: Any])
+            self.rsKeepalive = model
+        }
+    }
+}
+
+public class DescribeL7UsKeepaliveResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeL7UsKeepaliveResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeL7UsKeepaliveResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
