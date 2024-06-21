@@ -203,6 +203,8 @@ public class CreateTaskRequest : Tea.TeaModel {
 
             public var ocrAuxiliaryEnabled: Bool?
 
+            public var translateLlmSceneEnabled: Bool?
+
             public override init() {
                 super.init()
             }
@@ -229,6 +231,9 @@ public class CreateTaskRequest : Tea.TeaModel {
                 if self.ocrAuxiliaryEnabled != nil {
                     map["OcrAuxiliaryEnabled"] = self.ocrAuxiliaryEnabled!
                 }
+                if self.translateLlmSceneEnabled != nil {
+                    map["TranslateLlmSceneEnabled"] = self.translateLlmSceneEnabled!
+                }
                 return map
             }
 
@@ -244,6 +249,9 @@ public class CreateTaskRequest : Tea.TeaModel {
                 }
                 if dict.keys.contains("OcrAuxiliaryEnabled") {
                     self.ocrAuxiliaryEnabled = dict["OcrAuxiliaryEnabled"] as! Bool
+                }
+                if dict.keys.contains("TranslateLlmSceneEnabled") {
+                    self.translateLlmSceneEnabled = dict["TranslateLlmSceneEnabled"] as! Bool
                 }
             }
         }
