@@ -19034,6 +19034,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.intranetIp)) {
             query["IntranetIp"] = request.intranetIp ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.operation)) {
+            query["Operation"] = request.operation ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize ?? "";
         }
