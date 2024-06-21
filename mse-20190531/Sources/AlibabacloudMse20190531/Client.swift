@@ -215,6 +215,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.chargeType)) {
             query["ChargeType"] = request.chargeType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.clbNetworkType)) {
+            query["ClbNetworkType"] = request.clbNetworkType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.enableHardwareAcceleration)) {
             query["EnableHardwareAcceleration"] = request.enableHardwareAcceleration!;
         }

@@ -2117,6 +2117,8 @@ public class AddGatewayRequest : Tea.TeaModel {
 
     public var chargeType: String?
 
+    public var clbNetworkType: String?
+
     public var enableHardwareAcceleration: Bool?
 
     public var enableSls: Bool?
@@ -2176,6 +2178,9 @@ public class AddGatewayRequest : Tea.TeaModel {
         }
         if self.chargeType != nil {
             map["ChargeType"] = self.chargeType!
+        }
+        if self.clbNetworkType != nil {
+            map["ClbNetworkType"] = self.clbNetworkType!
         }
         if self.enableHardwareAcceleration != nil {
             map["EnableHardwareAcceleration"] = self.enableHardwareAcceleration!
@@ -2254,6 +2259,9 @@ public class AddGatewayRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ChargeType") {
             self.chargeType = dict["ChargeType"] as! String
+        }
+        if dict.keys.contains("ClbNetworkType") {
+            self.clbNetworkType = dict["ClbNetworkType"] as! String
         }
         if dict.keys.contains("EnableHardwareAcceleration") {
             self.enableHardwareAcceleration = dict["EnableHardwareAcceleration"] as! Bool
@@ -2376,6 +2384,8 @@ public class AddGatewayShrinkRequest : Tea.TeaModel {
 
     public var chargeType: String?
 
+    public var clbNetworkType: String?
+
     public var enableHardwareAcceleration: Bool?
 
     public var enableSls: Bool?
@@ -2435,6 +2445,9 @@ public class AddGatewayShrinkRequest : Tea.TeaModel {
         }
         if self.chargeType != nil {
             map["ChargeType"] = self.chargeType!
+        }
+        if self.clbNetworkType != nil {
+            map["ClbNetworkType"] = self.clbNetworkType!
         }
         if self.enableHardwareAcceleration != nil {
             map["EnableHardwareAcceleration"] = self.enableHardwareAcceleration!
@@ -2509,6 +2522,9 @@ public class AddGatewayShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ChargeType") {
             self.chargeType = dict["ChargeType"] as! String
+        }
+        if dict.keys.contains("ClbNetworkType") {
+            self.clbNetworkType = dict["ClbNetworkType"] as! String
         }
         if dict.keys.contains("EnableHardwareAcceleration") {
             self.enableHardwareAcceleration = dict["EnableHardwareAcceleration"] as! Bool
