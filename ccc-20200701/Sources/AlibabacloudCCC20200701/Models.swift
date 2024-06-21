@@ -25812,6 +25812,10 @@ public class LaunchSurveyRequest : Tea.TeaModel {
 
     public var surveyChannel: String?
 
+    public var surveyTemplateId: String?
+
+    public var surveyTemplateVariables: String?
+
     public var userId: String?
 
     public override init() {
@@ -25849,6 +25853,12 @@ public class LaunchSurveyRequest : Tea.TeaModel {
         if self.surveyChannel != nil {
             map["SurveyChannel"] = self.surveyChannel!
         }
+        if self.surveyTemplateId != nil {
+            map["SurveyTemplateId"] = self.surveyTemplateId!
+        }
+        if self.surveyTemplateVariables != nil {
+            map["SurveyTemplateVariables"] = self.surveyTemplateVariables!
+        }
         if self.userId != nil {
             map["UserId"] = self.userId!
         }
@@ -25876,6 +25886,12 @@ public class LaunchSurveyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SurveyChannel") {
             self.surveyChannel = dict["SurveyChannel"] as! String
+        }
+        if dict.keys.contains("SurveyTemplateId") {
+            self.surveyTemplateId = dict["SurveyTemplateId"] as! String
+        }
+        if dict.keys.contains("SurveyTemplateVariables") {
+            self.surveyTemplateVariables = dict["SurveyTemplateVariables"] as! String
         }
         if dict.keys.contains("UserId") {
             self.userId = dict["UserId"] as! String
@@ -48655,6 +48671,8 @@ public class ListRealtimeAgentStatesRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var mediaType: String?
+
     public var outboundScenario: Bool?
 
     public var pageNumber: Int32?
@@ -48695,6 +48713,9 @@ public class ListRealtimeAgentStatesRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.mediaType != nil {
+            map["MediaType"] = self.mediaType!
+        }
         if self.outboundScenario != nil {
             map["OutboundScenario"] = self.outboundScenario!
         }
@@ -48731,6 +48752,9 @@ public class ListRealtimeAgentStatesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("MediaType") {
+            self.mediaType = dict["MediaType"] as! String
         }
         if dict.keys.contains("OutboundScenario") {
             self.outboundScenario = dict["OutboundScenario"] as! Bool
@@ -49079,6 +49103,8 @@ public class ListRealtimeAgentStatesResponse : Tea.TeaModel {
 public class ListRealtimeSkillGroupStatesRequest : Tea.TeaModel {
     public var instanceId: String?
 
+    public var mediaType: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -49102,6 +49128,9 @@ public class ListRealtimeSkillGroupStatesRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.mediaType != nil {
+            map["MediaType"] = self.mediaType!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -49117,6 +49146,9 @@ public class ListRealtimeSkillGroupStatesRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("MediaType") {
+            self.mediaType = dict["MediaType"] as! String
         }
         if dict.keys.contains("PageNumber") {
             self.pageNumber = dict["PageNumber"] as! Int32
