@@ -3023,6 +3023,43 @@ public class CreateChatappMigrationInitiateResponse : Tea.TeaModel {
 public class CreateChatappTemplateRequest : Tea.TeaModel {
     public class Components : Tea.TeaModel {
         public class Buttons : Tea.TeaModel {
+            public class SupportedApps : Tea.TeaModel {
+                public var packageName: String?
+
+                public var signatureHash: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.packageName != nil {
+                        map["PackageName"] = self.packageName!
+                    }
+                    if self.signatureHash != nil {
+                        map["SignatureHash"] = self.signatureHash!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("PackageName") {
+                        self.packageName = dict["PackageName"] as! String
+                    }
+                    if dict.keys.contains("SignatureHash") {
+                        self.signatureHash = dict["SignatureHash"] as! String
+                    }
+                }
+            }
             public var autofillText: String?
 
             public var couponCode: String?
@@ -3040,6 +3077,8 @@ public class CreateChatappTemplateRequest : Tea.TeaModel {
             public var phoneNumber: String?
 
             public var signatureHash: String?
+
+            public var supportedApps: [CreateChatappTemplateRequest.Components.Buttons.SupportedApps]?
 
             public var text: String?
 
@@ -3090,6 +3129,13 @@ public class CreateChatappTemplateRequest : Tea.TeaModel {
                 if self.signatureHash != nil {
                     map["SignatureHash"] = self.signatureHash!
                 }
+                if self.supportedApps != nil {
+                    var tmp : [Any] = []
+                    for k in self.supportedApps! {
+                        tmp.append(k.toMap())
+                    }
+                    map["SupportedApps"] = tmp
+                }
                 if self.text != nil {
                     map["Text"] = self.text!
                 }
@@ -3132,6 +3178,17 @@ public class CreateChatappTemplateRequest : Tea.TeaModel {
                 }
                 if dict.keys.contains("SignatureHash") {
                     self.signatureHash = dict["SignatureHash"] as! String
+                }
+                if dict.keys.contains("SupportedApps") {
+                    var tmp : [CreateChatappTemplateRequest.Components.Buttons.SupportedApps] = []
+                    for v in dict["SupportedApps"] as! [Any] {
+                        var model = CreateChatappTemplateRequest.Components.Buttons.SupportedApps()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.supportedApps = tmp
                 }
                 if dict.keys.contains("Text") {
                     self.text = dict["Text"] as! String
@@ -5466,6 +5523,43 @@ public class GetChatappTemplateDetailResponseBody : Tea.TeaModel {
                         }
                     }
                 }
+                public class SupportedApps : Tea.TeaModel {
+                    public var packageName: String?
+
+                    public var signatureHash: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.packageName != nil {
+                            map["PackageName"] = self.packageName!
+                        }
+                        if self.signatureHash != nil {
+                            map["SignatureHash"] = self.signatureHash!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("PackageName") {
+                            self.packageName = dict["PackageName"] as! String
+                        }
+                        if dict.keys.contains("SignatureHash") {
+                            self.signatureHash = dict["SignatureHash"] as! String
+                        }
+                    }
+                }
                 public var autofillText: String?
 
                 public var couponCode: String?
@@ -5485,6 +5579,8 @@ public class GetChatappTemplateDetailResponseBody : Tea.TeaModel {
                 public var phoneNumber: String?
 
                 public var signatureHash: String?
+
+                public var supportedApps: [GetChatappTemplateDetailResponseBody.Data.Components.Buttons.SupportedApps]?
 
                 public var text: String?
 
@@ -5539,6 +5635,13 @@ public class GetChatappTemplateDetailResponseBody : Tea.TeaModel {
                     if self.signatureHash != nil {
                         map["SignatureHash"] = self.signatureHash!
                     }
+                    if self.supportedApps != nil {
+                        var tmp : [Any] = []
+                        for k in self.supportedApps! {
+                            tmp.append(k.toMap())
+                        }
+                        map["SupportedApps"] = tmp
+                    }
                     if self.text != nil {
                         map["Text"] = self.text!
                     }
@@ -5586,6 +5689,17 @@ public class GetChatappTemplateDetailResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("SignatureHash") {
                         self.signatureHash = dict["SignatureHash"] as! String
+                    }
+                    if dict.keys.contains("SupportedApps") {
+                        var tmp : [GetChatappTemplateDetailResponseBody.Data.Components.Buttons.SupportedApps] = []
+                        for v in dict["SupportedApps"] as! [Any] {
+                            var model = GetChatappTemplateDetailResponseBody.Data.Components.Buttons.SupportedApps()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.supportedApps = tmp
                     }
                     if dict.keys.contains("Text") {
                         self.text = dict["Text"] as! String
@@ -10614,6 +10728,43 @@ public class ListProductCatalogResponse : Tea.TeaModel {
 public class ModifyChatappTemplateRequest : Tea.TeaModel {
     public class Components : Tea.TeaModel {
         public class Buttons : Tea.TeaModel {
+            public class SupportedApps : Tea.TeaModel {
+                public var packageName: String?
+
+                public var signatureHash: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.packageName != nil {
+                        map["PackageName"] = self.packageName!
+                    }
+                    if self.signatureHash != nil {
+                        map["SignatureHash"] = self.signatureHash!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("PackageName") {
+                        self.packageName = dict["PackageName"] as! String
+                    }
+                    if dict.keys.contains("SignatureHash") {
+                        self.signatureHash = dict["SignatureHash"] as! String
+                    }
+                }
+            }
             public var autofillText: String?
 
             public var couponCode: String?
@@ -10631,6 +10782,8 @@ public class ModifyChatappTemplateRequest : Tea.TeaModel {
             public var phoneNumber: String?
 
             public var signatureHash: String?
+
+            public var supportedApps: [ModifyChatappTemplateRequest.Components.Buttons.SupportedApps]?
 
             public var text: String?
 
@@ -10681,6 +10834,13 @@ public class ModifyChatappTemplateRequest : Tea.TeaModel {
                 if self.signatureHash != nil {
                     map["SignatureHash"] = self.signatureHash!
                 }
+                if self.supportedApps != nil {
+                    var tmp : [Any] = []
+                    for k in self.supportedApps! {
+                        tmp.append(k.toMap())
+                    }
+                    map["SupportedApps"] = tmp
+                }
                 if self.text != nil {
                     map["Text"] = self.text!
                 }
@@ -10723,6 +10883,17 @@ public class ModifyChatappTemplateRequest : Tea.TeaModel {
                 }
                 if dict.keys.contains("SignatureHash") {
                     self.signatureHash = dict["SignatureHash"] as! String
+                }
+                if dict.keys.contains("SupportedApps") {
+                    var tmp : [ModifyChatappTemplateRequest.Components.Buttons.SupportedApps] = []
+                    for v in dict["SupportedApps"] as! [Any] {
+                        var model = ModifyChatappTemplateRequest.Components.Buttons.SupportedApps()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.supportedApps = tmp
                 }
                 if dict.keys.contains("Text") {
                     self.text = dict["Text"] as! String
