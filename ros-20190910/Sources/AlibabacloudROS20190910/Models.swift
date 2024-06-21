@@ -3718,6 +3718,8 @@ public class DeleteDiagnosticResponse : Tea.TeaModel {
 public class DeleteStackRequest : Tea.TeaModel {
     public var deleteOptions: [String]?
 
+    public var parallelism: Int64?
+
     public var ramRoleName: String?
 
     public var regionId: String?
@@ -3745,6 +3747,9 @@ public class DeleteStackRequest : Tea.TeaModel {
         if self.deleteOptions != nil {
             map["DeleteOptions"] = self.deleteOptions!
         }
+        if self.parallelism != nil {
+            map["Parallelism"] = self.parallelism!
+        }
         if self.ramRoleName != nil {
             map["RamRoleName"] = self.ramRoleName!
         }
@@ -3766,6 +3771,9 @@ public class DeleteStackRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DeleteOptions") {
             self.deleteOptions = dict["DeleteOptions"] as! [String]
+        }
+        if dict.keys.contains("Parallelism") {
+            self.parallelism = dict["Parallelism"] as! Int64
         }
         if dict.keys.contains("RamRoleName") {
             self.ramRoleName = dict["RamRoleName"] as! String

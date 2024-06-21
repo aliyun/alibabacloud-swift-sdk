@@ -764,6 +764,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.deleteOptions)) {
             query["DeleteOptions"] = request.deleteOptions ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.parallelism)) {
+            query["Parallelism"] = request.parallelism!;
+        }
         if (!TeaUtils.Client.isUnset(request.ramRoleName)) {
             query["RamRoleName"] = request.ramRoleName ?? "";
         }
