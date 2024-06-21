@@ -2273,6 +2273,386 @@ public class DescribeAppKeyResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeAppRecordingFilesRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var channelId: String?
+
+    public var endTs: Int64?
+
+    public var pageNo: Int32?
+
+    public var pageSize: Int32?
+
+    public var startTs: Int64?
+
+    public var taskIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.channelId != nil {
+            map["ChannelId"] = self.channelId!
+        }
+        if self.endTs != nil {
+            map["EndTs"] = self.endTs!
+        }
+        if self.pageNo != nil {
+            map["PageNo"] = self.pageNo!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.startTs != nil {
+            map["StartTs"] = self.startTs!
+        }
+        if self.taskIds != nil {
+            map["TaskIds"] = self.taskIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppId") {
+            self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("ChannelId") {
+            self.channelId = dict["ChannelId"] as! String
+        }
+        if dict.keys.contains("EndTs") {
+            self.endTs = dict["EndTs"] as! Int64
+        }
+        if dict.keys.contains("PageNo") {
+            self.pageNo = dict["PageNo"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("StartTs") {
+            self.startTs = dict["StartTs"] as! Int64
+        }
+        if dict.keys.contains("TaskIds") {
+            self.taskIds = dict["TaskIds"] as! [String]
+        }
+    }
+}
+
+public class DescribeAppRecordingFilesShrinkRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var channelId: String?
+
+    public var endTs: Int64?
+
+    public var pageNo: Int32?
+
+    public var pageSize: Int32?
+
+    public var startTs: Int64?
+
+    public var taskIdsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.channelId != nil {
+            map["ChannelId"] = self.channelId!
+        }
+        if self.endTs != nil {
+            map["EndTs"] = self.endTs!
+        }
+        if self.pageNo != nil {
+            map["PageNo"] = self.pageNo!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.startTs != nil {
+            map["StartTs"] = self.startTs!
+        }
+        if self.taskIdsShrink != nil {
+            map["TaskIds"] = self.taskIdsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppId") {
+            self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("ChannelId") {
+            self.channelId = dict["ChannelId"] as! String
+        }
+        if dict.keys.contains("EndTs") {
+            self.endTs = dict["EndTs"] as! Int64
+        }
+        if dict.keys.contains("PageNo") {
+            self.pageNo = dict["PageNo"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("StartTs") {
+            self.startTs = dict["StartTs"] as! Int64
+        }
+        if dict.keys.contains("TaskIds") {
+            self.taskIdsShrink = dict["TaskIds"] as! String
+        }
+    }
+}
+
+public class DescribeAppRecordingFilesResponseBody : Tea.TeaModel {
+    public class Items : Tea.TeaModel {
+        public var bucket: String?
+
+        public var channelId: String?
+
+        public var fileCreateTs: Int64?
+
+        public var fileDuration: Int32?
+
+        public var filePath: String?
+
+        public var fileSize: Int32?
+
+        public var region: Int32?
+
+        public var startTs: Int32?
+
+        public var taskId: String?
+
+        public var vendor: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bucket != nil {
+                map["Bucket"] = self.bucket!
+            }
+            if self.channelId != nil {
+                map["ChannelId"] = self.channelId!
+            }
+            if self.fileCreateTs != nil {
+                map["FileCreateTs"] = self.fileCreateTs!
+            }
+            if self.fileDuration != nil {
+                map["FileDuration"] = self.fileDuration!
+            }
+            if self.filePath != nil {
+                map["FilePath"] = self.filePath!
+            }
+            if self.fileSize != nil {
+                map["FileSize"] = self.fileSize!
+            }
+            if self.region != nil {
+                map["Region"] = self.region!
+            }
+            if self.startTs != nil {
+                map["StartTs"] = self.startTs!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            if self.vendor != nil {
+                map["Vendor"] = self.vendor!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Bucket") {
+                self.bucket = dict["Bucket"] as! String
+            }
+            if dict.keys.contains("ChannelId") {
+                self.channelId = dict["ChannelId"] as! String
+            }
+            if dict.keys.contains("FileCreateTs") {
+                self.fileCreateTs = dict["FileCreateTs"] as! Int64
+            }
+            if dict.keys.contains("FileDuration") {
+                self.fileDuration = dict["FileDuration"] as! Int32
+            }
+            if dict.keys.contains("FilePath") {
+                self.filePath = dict["FilePath"] as! String
+            }
+            if dict.keys.contains("FileSize") {
+                self.fileSize = dict["FileSize"] as! Int32
+            }
+            if dict.keys.contains("Region") {
+                self.region = dict["Region"] as! Int32
+            }
+            if dict.keys.contains("StartTs") {
+                self.startTs = dict["StartTs"] as! Int32
+            }
+            if dict.keys.contains("TaskId") {
+                self.taskId = dict["TaskId"] as! String
+            }
+            if dict.keys.contains("Vendor") {
+                self.vendor = dict["Vendor"] as! Int32
+            }
+        }
+    }
+    public var items: [DescribeAppRecordingFilesResponseBody.Items]?
+
+    public var pageNo: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalCnt: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.items != nil {
+            var tmp : [Any] = []
+            for k in self.items! {
+                tmp.append(k.toMap())
+            }
+            map["Items"] = tmp
+        }
+        if self.pageNo != nil {
+            map["PageNo"] = self.pageNo!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCnt != nil {
+            map["TotalCnt"] = self.totalCnt!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Items") {
+            var tmp : [DescribeAppRecordingFilesResponseBody.Items] = []
+            for v in dict["Items"] as! [Any] {
+                var model = DescribeAppRecordingFilesResponseBody.Items()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.items = tmp
+        }
+        if dict.keys.contains("PageNo") {
+            self.pageNo = dict["PageNo"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalCnt") {
+            self.totalCnt = dict["TotalCnt"] as! Int32
+        }
+    }
+}
+
+public class DescribeAppRecordingFilesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeAppRecordingFilesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeAppRecordingFilesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeAppStreamingOutTemplatesRequest : Tea.TeaModel {
     public class Condition : Tea.TeaModel {
         public var name: String?

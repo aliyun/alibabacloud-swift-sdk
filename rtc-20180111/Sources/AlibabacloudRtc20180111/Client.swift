@@ -556,6 +556,39 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeAppRecordingFilesWithOptions(_ tmpReq: DescribeAppRecordingFilesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeAppRecordingFilesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DescribeAppRecordingFilesShrinkRequest = DescribeAppRecordingFilesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.taskIds)) {
+            request.taskIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.taskIds, "TaskIds", "json")
+        }
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeAppRecordingFiles",
+            "version": "2018-01-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeAppRecordingFilesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeAppRecordingFiles(_ request: DescribeAppRecordingFilesRequest) async throws -> DescribeAppRecordingFilesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeAppRecordingFilesWithOptions(request as! DescribeAppRecordingFilesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeAppStreamingOutTemplatesWithOptions(_ tmpReq: DescribeAppStreamingOutTemplatesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeAppStreamingOutTemplatesResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: DescribeAppStreamingOutTemplatesShrinkRequest = DescribeAppStreamingOutTemplatesShrinkRequest([:])
