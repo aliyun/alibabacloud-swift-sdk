@@ -155,6 +155,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateEventSourceShrinkRequest = CreateEventSourceShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.externalSourceConfig)) {
+            request.externalSourceConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.externalSourceConfig, "ExternalSourceConfig", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.sourceHttpEventParameters)) {
             request.sourceHttpEventParametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sourceHttpEventParameters, "SourceHttpEventParameters", "json")
         }
@@ -185,6 +188,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.eventSourceName)) {
             body["EventSourceName"] = request.eventSourceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.externalSourceConfigShrink)) {
+            body["ExternalSourceConfig"] = request.externalSourceConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.externalSourceType)) {
+            body["ExternalSourceType"] = request.externalSourceType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.linkedExternalSource)) {
+            body["LinkedExternalSource"] = request.linkedExternalSource!;
         }
         if (!TeaUtils.Client.isUnset(request.sourceHttpEventParametersShrink)) {
             body["SourceHttpEventParameters"] = request.sourceHttpEventParametersShrink ?? "";
@@ -1689,6 +1701,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpdateEventSourceShrinkRequest = UpdateEventSourceShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.externalSourceConfig)) {
+            request.externalSourceConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.externalSourceConfig, "ExternalSourceConfig", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.sourceHttpEventParameters)) {
             request.sourceHttpEventParametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sourceHttpEventParameters, "SourceHttpEventParameters", "json")
         }
@@ -1719,6 +1734,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.eventSourceName)) {
             body["EventSourceName"] = request.eventSourceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.externalSourceConfigShrink)) {
+            body["ExternalSourceConfig"] = request.externalSourceConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.externalSourceType)) {
+            body["ExternalSourceType"] = request.externalSourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.linkedExternalSource)) {
+            body["LinkedExternalSource"] = request.linkedExternalSource!;
         }
         if (!TeaUtils.Client.isUnset(request.sourceHttpEventParametersShrink)) {
             body["SourceHttpEventParameters"] = request.sourceHttpEventParametersShrink ?? "";
