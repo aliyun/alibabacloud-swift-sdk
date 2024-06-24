@@ -15702,9 +15702,9 @@ public class DescribeNetworkRegionBlockRequest : Tea.TeaModel {
 
 public class DescribeNetworkRegionBlockResponseBody : Tea.TeaModel {
     public class Config : Tea.TeaModel {
-        public var countries: [String]?
+        public var countries: [Int64]?
 
-        public var provinces: [String]?
+        public var provinces: [Int64]?
 
         public var regionBlockSwitch: String?
 
@@ -15736,10 +15736,10 @@ public class DescribeNetworkRegionBlockResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Countries") {
-                self.countries = dict["Countries"] as! [String]
+                self.countries = dict["Countries"] as! [Int64]
             }
             if dict.keys.contains("Provinces") {
-                self.provinces = dict["Provinces"] as! [String]
+                self.provinces = dict["Provinces"] as! [Int64]
             }
             if dict.keys.contains("RegionBlockSwitch") {
                 self.regionBlockSwitch = dict["RegionBlockSwitch"] as! String
