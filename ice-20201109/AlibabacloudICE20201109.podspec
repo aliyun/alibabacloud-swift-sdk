@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudICE20201109"
-  spec.version      = "2.4.1"
+  spec.version      = "2.5.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud ICE (20201109) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/ice-20201109" 
@@ -19,7 +19,7 @@ Pod::Spec.new do |spec|
 
   spec.dependency 'Tea',  '~> 1.0.0'
   spec.dependency 'TeaUtils',  '~> 1.0.5'
-  spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.4'
+  spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.5'
   spec.dependency 'AlibabaCloudOpenApiUtil',  '~> 1.0.1'
   spec.dependency 'AlibabacloudEndpointUtil',  '~> 1.0.0'
 

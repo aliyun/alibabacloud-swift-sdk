@@ -7194,6 +7194,55 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitVideoTranslationJobWithOptions(_ request: SubmitVideoTranslationJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitVideoTranslationJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.editingConfig)) {
+            query["EditingConfig"] = request.editingConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.inputConfig)) {
+            query["InputConfig"] = request.inputConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outputConfig)) {
+            query["OutputConfig"] = request.outputConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.title)) {
+            query["Title"] = request.title ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userData)) {
+            query["UserData"] = request.userData ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitVideoTranslationJob",
+            "version": "2020-11-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitVideoTranslationJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitVideoTranslationJob(_ request: SubmitVideoTranslationJobRequest) async throws -> SubmitVideoTranslationJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitVideoTranslationJobWithOptions(request as! SubmitVideoTranslationJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateAvatarTrainingJobWithOptions(_ request: UpdateAvatarTrainingJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAvatarTrainingJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
