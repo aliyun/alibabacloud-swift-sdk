@@ -627,6 +627,12 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
         public var mountPath: String?
 
+        public var optionType: String?
+
+        public var options: String?
+
+        public var uri: String?
+
         public override init() {
             super.init()
         }
@@ -647,6 +653,15 @@ public class CreateInstanceRequest : Tea.TeaModel {
             if self.mountPath != nil {
                 map["MountPath"] = self.mountPath!
             }
+            if self.optionType != nil {
+                map["OptionType"] = self.optionType!
+            }
+            if self.options != nil {
+                map["Options"] = self.options!
+            }
+            if self.uri != nil {
+                map["Uri"] = self.uri!
+            }
             return map
         }
 
@@ -656,6 +671,15 @@ public class CreateInstanceRequest : Tea.TeaModel {
             }
             if dict.keys.contains("MountPath") {
                 self.mountPath = dict["MountPath"] as! String
+            }
+            if dict.keys.contains("OptionType") {
+                self.optionType = dict["OptionType"] as! String
+            }
+            if dict.keys.contains("Options") {
+                self.options = dict["Options"] as! String
+            }
+            if dict.keys.contains("Uri") {
+                self.uri = dict["Uri"] as! String
             }
         }
     }
@@ -2237,6 +2261,12 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
         public var mountPath: String?
 
+        public var optionType: String?
+
+        public var options: String?
+
+        public var uri: String?
+
         public override init() {
             super.init()
         }
@@ -2257,6 +2287,15 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             if self.mountPath != nil {
                 map["MountPath"] = self.mountPath!
             }
+            if self.optionType != nil {
+                map["OptionType"] = self.optionType!
+            }
+            if self.options != nil {
+                map["Options"] = self.options!
+            }
+            if self.uri != nil {
+                map["Uri"] = self.uri!
+            }
             return map
         }
 
@@ -2266,6 +2305,15 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("MountPath") {
                 self.mountPath = dict["MountPath"] as! String
+            }
+            if dict.keys.contains("OptionType") {
+                self.optionType = dict["OptionType"] as! String
+            }
+            if dict.keys.contains("Options") {
+                self.options = dict["Options"] as! String
+            }
+            if dict.keys.contains("Uri") {
+                self.uri = dict["Uri"] as! String
             }
         }
     }
@@ -7766,6 +7814,12 @@ public class UpdateInstanceRequest : Tea.TeaModel {
 
         public var mountPath: String?
 
+        public var optionType: String?
+
+        public var options: String?
+
+        public var uri: String?
+
         public override init() {
             super.init()
         }
@@ -7786,6 +7840,15 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             if self.mountPath != nil {
                 map["MountPath"] = self.mountPath!
             }
+            if self.optionType != nil {
+                map["OptionType"] = self.optionType!
+            }
+            if self.options != nil {
+                map["Options"] = self.options!
+            }
+            if self.uri != nil {
+                map["Uri"] = self.uri!
+            }
             return map
         }
 
@@ -7795,6 +7858,15 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             }
             if dict.keys.contains("MountPath") {
                 self.mountPath = dict["MountPath"] as! String
+            }
+            if dict.keys.contains("OptionType") {
+                self.optionType = dict["OptionType"] as! String
+            }
+            if dict.keys.contains("Options") {
+                self.options = dict["Options"] as! String
+            }
+            if dict.keys.contains("Uri") {
+                self.uri = dict["Uri"] as! String
             }
         }
     }
