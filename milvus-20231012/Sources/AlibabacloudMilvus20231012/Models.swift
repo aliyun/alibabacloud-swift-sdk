@@ -581,6 +581,8 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
 
         public var payType: Int32?
 
+        public var productCode: String?
+
         public var regionId: String?
 
         public var runningTime: Int64?
@@ -650,6 +652,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
             if self.payType != nil {
                 map["PayType"] = self.payType!
             }
+            if self.productCode != nil {
+                map["ProductCode"] = self.productCode!
+            }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
@@ -718,6 +723,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("PayType") {
                 self.payType = dict["PayType"] as! Int32
+            }
+            if dict.keys.contains("ProductCode") {
+                self.productCode = dict["ProductCode"] as! String
             }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
@@ -1109,6 +1117,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
         public var payType: Int32?
 
+        public var productCode: String?
+
         public var regionId: String?
 
         public var runningTime: Int32?
@@ -1163,6 +1173,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             if self.payType != nil {
                 map["PayType"] = self.payType!
             }
+            if self.productCode != nil {
+                map["ProductCode"] = self.productCode!
+            }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
@@ -1213,6 +1226,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("PayType") {
                 self.payType = dict["PayType"] as! Int32
+            }
+            if dict.keys.contains("ProductCode") {
+                self.productCode = dict["ProductCode"] as! String
             }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
