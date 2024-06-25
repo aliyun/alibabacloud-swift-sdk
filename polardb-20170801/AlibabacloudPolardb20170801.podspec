@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudPolardb20170801"
-  spec.version      = "4.1.3"
+  spec.version      = "4.1.4"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud ApsaraDB for POLARDB (20170801) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/polardb-20170801" 
@@ -19,7 +19,7 @@ Pod::Spec.new do |spec|
 
   spec.dependency 'Tea',  '~> 1.0.0'
   spec.dependency 'TeaUtils',  '~> 1.0.5'
-  spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.4'
+  spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.5'
   spec.dependency 'AlibabaCloudOpenApiUtil',  '~> 1.0.1'
   spec.dependency 'AlibabacloudEndpointUtil',  '~> 1.0.0'
 

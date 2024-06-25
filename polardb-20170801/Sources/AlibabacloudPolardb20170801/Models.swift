@@ -14327,6 +14327,8 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
 
             public var storageSpace: Int64?
 
+            public var storageType: String?
+
             public var storageUsed: Int64?
 
             public var strictConsistency: String?
@@ -14435,6 +14437,9 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
                 if self.storageSpace != nil {
                     map["StorageSpace"] = self.storageSpace!
                 }
+                if self.storageType != nil {
+                    map["StorageType"] = self.storageType!
+                }
                 if self.storageUsed != nil {
                     map["StorageUsed"] = self.storageUsed!
                 }
@@ -14539,6 +14544,9 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("StorageSpace") {
                     self.storageSpace = dict["StorageSpace"] as! Int64
+                }
+                if dict.keys.contains("StorageType") {
+                    self.storageType = dict["StorageType"] as! String
                 }
                 if dict.keys.contains("StorageUsed") {
                     self.storageUsed = dict["StorageUsed"] as! Int64
@@ -22258,6 +22266,8 @@ public class DescribeSlowLogRecordsRequest : Tea.TeaModel {
 
     public var endTime: String?
 
+    public var nodeId: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -22299,6 +22309,9 @@ public class DescribeSlowLogRecordsRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.nodeId != nil {
+            map["NodeId"] = self.nodeId!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -22338,6 +22351,9 @@ public class DescribeSlowLogRecordsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EndTime") {
             self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("NodeId") {
+            self.nodeId = dict["NodeId"] as! String
         }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
