@@ -452,6 +452,8 @@ public class MaintenanceWindow : Tea.TeaModel {
 
     public var maintenanceTime: String?
 
+    public var recurrence: String?
+
     public var weeklyPeriod: String?
 
     public override init() {
@@ -477,6 +479,9 @@ public class MaintenanceWindow : Tea.TeaModel {
         if self.maintenanceTime != nil {
             map["maintenance_time"] = self.maintenanceTime!
         }
+        if self.recurrence != nil {
+            map["recurrence"] = self.recurrence!
+        }
         if self.weeklyPeriod != nil {
             map["weekly_period"] = self.weeklyPeriod!
         }
@@ -492,6 +497,9 @@ public class MaintenanceWindow : Tea.TeaModel {
         }
         if dict.keys.contains("maintenance_time") {
             self.maintenanceTime = dict["maintenance_time"] as! String
+        }
+        if dict.keys.contains("recurrence") {
+            self.recurrence = dict["recurrence"] as! String
         }
         if dict.keys.contains("weekly_period") {
             self.weeklyPeriod = dict["weekly_period"] as! String
@@ -13912,6 +13920,8 @@ public class DescribeClustersRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var resourceGroupId: String?
+
     public override init() {
         super.init()
     }
@@ -13932,6 +13942,9 @@ public class DescribeClustersRequest : Tea.TeaModel {
         if self.name != nil {
             map["name"] = self.name!
         }
+        if self.resourceGroupId != nil {
+            map["resource_group_id"] = self.resourceGroupId!
+        }
         return map
     }
 
@@ -13941,6 +13954,9 @@ public class DescribeClustersRequest : Tea.TeaModel {
         }
         if dict.keys.contains("name") {
             self.name = dict["name"] as! String
+        }
+        if dict.keys.contains("resource_group_id") {
+            self.resourceGroupId = dict["resource_group_id"] as! String
         }
     }
 }
