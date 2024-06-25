@@ -114,9 +114,6 @@ public class BatchExportConfigurationsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -258,9 +255,6 @@ public class BatchImportConfigurationsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -427,7 +421,15 @@ public class CheckConfigurationCloneResponseBody : Tea.TeaModel {
                 self.success = dict["Success"] as! Bool
             }
             if dict.keys.contains("SuccessItems") {
-                self.successItems = dict["SuccessItems"] as! [CheckConfigurationCloneResponseBody.Result.SuccessItems]
+                var tmp : [CheckConfigurationCloneResponseBody.Result.SuccessItems] = []
+                for v in dict["SuccessItems"] as! [Any] {
+                    var model = CheckConfigurationCloneResponseBody.Result.SuccessItems()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.successItems = tmp
             }
             if dict.keys.contains("TotalCount") {
                 self.totalCount = dict["TotalCount"] as! Int32
@@ -507,9 +509,6 @@ public class CheckConfigurationCloneResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -683,9 +682,6 @@ public class CheckConfigurationExportResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -852,7 +848,15 @@ public class CloneConfigurationResponseBody : Tea.TeaModel {
                 self.success = dict["Success"] as! Bool
             }
             if dict.keys.contains("SuccessItems") {
-                self.successItems = dict["SuccessItems"] as! [CloneConfigurationResponseBody.Result.SuccessItems]
+                var tmp : [CloneConfigurationResponseBody.Result.SuccessItems] = []
+                for v in dict["SuccessItems"] as! [Any] {
+                    var model = CloneConfigurationResponseBody.Result.SuccessItems()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.successItems = tmp
             }
             if dict.keys.contains("TotalCount") {
                 self.totalCount = dict["TotalCount"] as! Int32
@@ -932,9 +936,6 @@ public class CloneConfigurationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1116,9 +1117,6 @@ public class CreateConfigurationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1252,9 +1250,6 @@ public class CreateNamespaceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1396,9 +1391,6 @@ public class DeleteConfigurationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1524,9 +1516,6 @@ public class DeleteNamespaceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1716,9 +1705,6 @@ public class DeployConfigurationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1807,6 +1793,10 @@ public class DescribeConfigurationResponseBody : Tea.TeaModel {
 
         public var desc: String?
 
+        public var gmtCreate: String?
+
+        public var gmtModified: String?
+
         public var group: String?
 
         public var md5: String?
@@ -1841,6 +1831,12 @@ public class DescribeConfigurationResponseBody : Tea.TeaModel {
             if self.desc != nil {
                 map["Desc"] = self.desc!
             }
+            if self.gmtCreate != nil {
+                map["GmtCreate"] = self.gmtCreate!
+            }
+            if self.gmtModified != nil {
+                map["GmtModified"] = self.gmtModified!
+            }
             if self.group != nil {
                 map["Group"] = self.group!
             }
@@ -1868,6 +1864,12 @@ public class DescribeConfigurationResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Desc") {
                 self.desc = dict["Desc"] as! String
+            }
+            if dict.keys.contains("GmtCreate") {
+                self.gmtCreate = dict["GmtCreate"] as! String
+            }
+            if dict.keys.contains("GmtModified") {
+                self.gmtModified = dict["GmtModified"] as! String
             }
             if dict.keys.contains("Group") {
                 self.group = dict["Group"] as! String
@@ -1956,9 +1958,6 @@ public class DescribeConfigurationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2092,9 +2091,6 @@ public class DescribeImportFileUrlResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2292,9 +2288,6 @@ public class DescribeNamespaceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2438,7 +2431,15 @@ public class DescribeNamespacesResponseBody : Tea.TeaModel {
             self.message = dict["Message"] as! String
         }
         if dict.keys.contains("Namespaces") {
-            self.namespaces = dict["Namespaces"] as! [DescribeNamespacesResponseBody.Namespaces]
+            var tmp : [DescribeNamespacesResponseBody.Namespaces] = []
+            for v in dict["Namespaces"] as! [Any] {
+                var model = DescribeNamespacesResponseBody.Namespaces()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.namespaces = tmp
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
@@ -2463,9 +2464,6 @@ public class DescribeNamespacesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2609,7 +2607,15 @@ public class DescribeNamespacesWithCreateResponseBody : Tea.TeaModel {
             self.message = dict["Message"] as! String
         }
         if dict.keys.contains("Namespaces") {
-            self.namespaces = dict["Namespaces"] as! [DescribeNamespacesWithCreateResponseBody.Namespaces]
+            var tmp : [DescribeNamespacesWithCreateResponseBody.Namespaces] = []
+            for v in dict["Namespaces"] as! [Any] {
+                var model = DescribeNamespacesWithCreateResponseBody.Namespaces()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.namespaces = tmp
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
@@ -2634,9 +2640,6 @@ public class DescribeNamespacesWithCreateResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2876,7 +2879,15 @@ public class DescribeTraceByConfigurationResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("EventDetails") {
-                    self.eventDetails = dict["EventDetails"] as! [DescribeTraceByConfigurationResponseBody.Traces.EventGroups.EventDetails]
+                    var tmp : [DescribeTraceByConfigurationResponseBody.Traces.EventGroups.EventDetails] = []
+                    for v in dict["EventDetails"] as! [Any] {
+                        var model = DescribeTraceByConfigurationResponseBody.Traces.EventGroups.EventDetails()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.eventDetails = tmp
                 }
                 if dict.keys.contains("EventType") {
                     self.eventType = dict["EventType"] as! String
@@ -2916,7 +2927,15 @@ public class DescribeTraceByConfigurationResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("EventGroups") {
-                self.eventGroups = dict["EventGroups"] as! [DescribeTraceByConfigurationResponseBody.Traces.EventGroups]
+                var tmp : [DescribeTraceByConfigurationResponseBody.Traces.EventGroups] = []
+                for v in dict["EventGroups"] as! [Any] {
+                    var model = DescribeTraceByConfigurationResponseBody.Traces.EventGroups()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.eventGroups = tmp
             }
             if dict.keys.contains("Timestamp") {
                 self.timestamp = dict["Timestamp"] as! Int64
@@ -2975,7 +2994,15 @@ public class DescribeTraceByConfigurationResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Traces") {
-            self.traces = dict["Traces"] as! [DescribeTraceByConfigurationResponseBody.Traces]
+            var tmp : [DescribeTraceByConfigurationResponseBody.Traces] = []
+            for v in dict["Traces"] as! [Any] {
+                var model = DescribeTraceByConfigurationResponseBody.Traces()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.traces = tmp
         }
     }
 }
@@ -2997,9 +3024,6 @@ public class DescribeTraceByConfigurationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3133,9 +3157,6 @@ public class UpdateNamespaceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 

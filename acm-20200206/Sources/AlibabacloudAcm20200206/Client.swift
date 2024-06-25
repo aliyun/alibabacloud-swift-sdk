@@ -24,13 +24,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func batchExportConfigurations(_ request: BatchExportConfigurationsRequest) async throws -> BatchExportConfigurationsResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await batchExportConfigurationsWithOptions(request as! BatchExportConfigurationsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func batchExportConfigurationsWithOptions(_ request: BatchExportConfigurationsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchExportConfigurationsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -60,10 +53,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func batchImportConfigurations(_ request: BatchImportConfigurationsRequest) async throws -> BatchImportConfigurationsResponse {
+    public func batchExportConfigurations(_ request: BatchExportConfigurationsRequest) async throws -> BatchExportConfigurationsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await batchImportConfigurationsWithOptions(request as! BatchImportConfigurationsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await batchExportConfigurationsWithOptions(request as! BatchExportConfigurationsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -99,10 +92,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func checkConfigurationClone(_ request: CheckConfigurationCloneRequest) async throws -> CheckConfigurationCloneResponse {
+    public func batchImportConfigurations(_ request: BatchImportConfigurationsRequest) async throws -> BatchImportConfigurationsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await checkConfigurationCloneWithOptions(request as! CheckConfigurationCloneRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await batchImportConfigurationsWithOptions(request as! BatchImportConfigurationsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -141,10 +134,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func checkConfigurationExport(_ request: CheckConfigurationExportRequest) async throws -> CheckConfigurationExportResponse {
+    public func checkConfigurationClone(_ request: CheckConfigurationCloneRequest) async throws -> CheckConfigurationCloneResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await checkConfigurationExportWithOptions(request as! CheckConfigurationExportRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await checkConfigurationCloneWithOptions(request as! CheckConfigurationCloneRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -177,10 +170,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func cloneConfiguration(_ request: CloneConfigurationRequest) async throws -> CloneConfigurationResponse {
+    public func checkConfigurationExport(_ request: CheckConfigurationExportRequest) async throws -> CheckConfigurationExportResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await cloneConfigurationWithOptions(request as! CloneConfigurationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await checkConfigurationExportWithOptions(request as! CheckConfigurationExportRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -219,10 +212,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createConfiguration(_ request: CreateConfigurationRequest) async throws -> CreateConfigurationResponse {
+    public func cloneConfiguration(_ request: CloneConfigurationRequest) async throws -> CloneConfigurationResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await createConfigurationWithOptions(request as! CreateConfigurationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await cloneConfigurationWithOptions(request as! CloneConfigurationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -273,10 +266,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createNamespace(_ request: CreateNamespaceRequest) async throws -> CreateNamespaceResponse {
+    public func createConfiguration(_ request: CreateConfigurationRequest) async throws -> CreateConfigurationResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await createNamespaceWithOptions(request as! CreateNamespaceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await createConfigurationWithOptions(request as! CreateConfigurationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -306,10 +299,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteConfiguration(_ request: DeleteConfigurationRequest) async throws -> DeleteConfigurationResponse {
+    public func createNamespace(_ request: CreateNamespaceRequest) async throws -> CreateNamespaceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteConfigurationWithOptions(request as! DeleteConfigurationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await createNamespaceWithOptions(request as! CreateNamespaceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -345,10 +338,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteNamespace(_ request: DeleteNamespaceRequest) async throws -> DeleteNamespaceResponse {
+    public func deleteConfiguration(_ request: DeleteConfigurationRequest) async throws -> DeleteConfigurationResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteNamespaceWithOptions(request as! DeleteNamespaceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteConfigurationWithOptions(request as! DeleteConfigurationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -378,10 +371,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deployConfiguration(_ request: DeployConfigurationRequest) async throws -> DeployConfigurationResponse {
+    public func deleteNamespace(_ request: DeleteNamespaceRequest) async throws -> DeleteNamespaceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deployConfigurationWithOptions(request as! DeployConfigurationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteNamespaceWithOptions(request as! DeleteNamespaceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -435,10 +428,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeConfiguration(_ request: DescribeConfigurationRequest) async throws -> DescribeConfigurationResponse {
+    public func deployConfiguration(_ request: DeployConfigurationRequest) async throws -> DeployConfigurationResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await describeConfigurationWithOptions(request as! DescribeConfigurationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deployConfigurationWithOptions(request as! DeployConfigurationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -474,10 +467,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeImportFileUrl(_ request: DescribeImportFileUrlRequest) async throws -> DescribeImportFileUrlResponse {
+    public func describeConfiguration(_ request: DescribeConfigurationRequest) async throws -> DescribeConfigurationResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await describeImportFileUrlWithOptions(request as! DescribeImportFileUrlRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await describeConfigurationWithOptions(request as! DescribeConfigurationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -507,10 +500,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeNamespace(_ request: DescribeNamespaceRequest) async throws -> DescribeNamespaceResponse {
+    public func describeImportFileUrl(_ request: DescribeImportFileUrlRequest) async throws -> DescribeImportFileUrlResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await describeNamespaceWithOptions(request as! DescribeNamespaceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await describeImportFileUrlWithOptions(request as! DescribeImportFileUrlRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -540,10 +533,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeNamespaces() async throws -> DescribeNamespacesResponse {
+    public func describeNamespace(_ request: DescribeNamespaceRequest) async throws -> DescribeNamespaceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await describeNamespacesWithOptions(headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await describeNamespaceWithOptions(request as! DescribeNamespaceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -567,10 +560,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeNamespacesWithCreate() async throws -> DescribeNamespacesWithCreateResponse {
+    public func describeNamespaces() async throws -> DescribeNamespacesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await describeNamespacesWithCreateWithOptions(headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await describeNamespacesWithOptions(headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -594,10 +587,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeTraceByConfiguration(_ request: DescribeTraceByConfigurationRequest) async throws -> DescribeTraceByConfigurationResponse {
+    public func describeNamespacesWithCreate() async throws -> DescribeNamespacesWithCreateResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await describeTraceByConfigurationWithOptions(request as! DescribeTraceByConfigurationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await describeNamespacesWithCreateWithOptions(headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -639,10 +632,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateNamespace(_ request: UpdateNamespaceRequest) async throws -> UpdateNamespaceResponse {
+    public func describeTraceByConfiguration(_ request: DescribeTraceByConfigurationRequest) async throws -> DescribeTraceByConfigurationResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await updateNamespaceWithOptions(request as! UpdateNamespaceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await describeTraceByConfigurationWithOptions(request as! DescribeTraceByConfigurationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -672,5 +665,12 @@ open class Client : AlibabacloudOpenApi.Client {
         ])
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
         return Tea.TeaConverter.fromMap(UpdateNamespaceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateNamespace(_ request: UpdateNamespaceRequest) async throws -> UpdateNamespaceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateNamespaceWithOptions(request as! UpdateNamespaceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 }
