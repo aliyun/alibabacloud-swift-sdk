@@ -164,6 +164,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func attachToPolicyWithOptions(_ tmpReq: AttachToPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AttachToPolicyResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: AttachToPolicyShrinkRequest = AttachToPolicyShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.ipPortProtocolList)) {
+            request.ipPortProtocolListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ipPortProtocolList, "IpPortProtocolList", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ipPortProtocolListShrink)) {
+            query["IpPortProtocolList"] = request.ipPortProtocolListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.policyId)) {
+            query["PolicyId"] = request.policyId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AttachToPolicy",
+            "version": "2018-07-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AttachToPolicyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func attachToPolicy(_ request: AttachToPolicyRequest) async throws -> AttachToPolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await attachToPolicyWithOptions(request as! AttachToPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func checkAccessLogAuthWithOptions(_ request: CheckAccessLogAuthRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CheckAccessLogAuthResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

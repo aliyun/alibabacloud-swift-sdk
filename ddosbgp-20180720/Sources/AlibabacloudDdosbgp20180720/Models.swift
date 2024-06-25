@@ -554,6 +554,218 @@ public class AttachAssetGroupToInstanceResponse : Tea.TeaModel {
     }
 }
 
+public class AttachToPolicyRequest : Tea.TeaModel {
+    public class IpPortProtocolList : Tea.TeaModel {
+        public var ip: String?
+
+        public var port: Int32?
+
+        public var protocol_: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.ip != nil {
+                map["Ip"] = self.ip!
+            }
+            if self.port != nil {
+                map["Port"] = self.port!
+            }
+            if self.protocol_ != nil {
+                map["Protocol"] = self.protocol_!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Ip") {
+                self.ip = dict["Ip"] as! String
+            }
+            if dict.keys.contains("Port") {
+                self.port = dict["Port"] as! Int32
+            }
+            if dict.keys.contains("Protocol") {
+                self.protocol_ = dict["Protocol"] as! String
+            }
+        }
+    }
+    public var ipPortProtocolList: [AttachToPolicyRequest.IpPortProtocolList]?
+
+    public var policyId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ipPortProtocolList != nil {
+            var tmp : [Any] = []
+            for k in self.ipPortProtocolList! {
+                tmp.append(k.toMap())
+            }
+            map["IpPortProtocolList"] = tmp
+        }
+        if self.policyId != nil {
+            map["PolicyId"] = self.policyId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("IpPortProtocolList") {
+            var tmp : [AttachToPolicyRequest.IpPortProtocolList] = []
+            for v in dict["IpPortProtocolList"] as! [Any] {
+                var model = AttachToPolicyRequest.IpPortProtocolList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.ipPortProtocolList = tmp
+        }
+        if dict.keys.contains("PolicyId") {
+            self.policyId = dict["PolicyId"] as! String
+        }
+    }
+}
+
+public class AttachToPolicyShrinkRequest : Tea.TeaModel {
+    public var ipPortProtocolListShrink: String?
+
+    public var policyId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ipPortProtocolListShrink != nil {
+            map["IpPortProtocolList"] = self.ipPortProtocolListShrink!
+        }
+        if self.policyId != nil {
+            map["PolicyId"] = self.policyId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("IpPortProtocolList") {
+            self.ipPortProtocolListShrink = dict["IpPortProtocolList"] as! String
+        }
+        if dict.keys.contains("PolicyId") {
+            self.policyId = dict["PolicyId"] as! String
+        }
+    }
+}
+
+public class AttachToPolicyResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class AttachToPolicyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AttachToPolicyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = AttachToPolicyResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CheckAccessLogAuthRequest : Tea.TeaModel {
     public var regionId: String?
 
