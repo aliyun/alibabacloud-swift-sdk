@@ -16360,6 +16360,8 @@ public class DescribeNodePoolVulsResponseBody : Tea.TeaModel {
 
             public var necessity: String?
 
+            public var needReboot: Bool?
+
             public override init() {
                 super.init()
             }
@@ -16386,6 +16388,9 @@ public class DescribeNodePoolVulsResponseBody : Tea.TeaModel {
                 if self.necessity != nil {
                     map["necessity"] = self.necessity!
                 }
+                if self.needReboot != nil {
+                    map["need_reboot"] = self.needReboot!
+                }
                 return map
             }
 
@@ -16401,6 +16406,9 @@ public class DescribeNodePoolVulsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("necessity") {
                     self.necessity = dict["necessity"] as! String
+                }
+                if dict.keys.contains("need_reboot") {
+                    self.needReboot = dict["need_reboot"] as! Bool
                 }
             }
         }
