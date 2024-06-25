@@ -11472,7 +11472,7 @@ public class GetTrafficControlTaskTrafficRequest : Tea.TeaModel {
 }
 
 public class GetTrafficControlTaskTrafficResponseBody : Tea.TeaModel {
-    public class TrafficControlTaskTraffic : Tea.TeaModel {
+    public class TrafficControlTaskTrafficInfo : Tea.TeaModel {
         public class TargetTraffics : Tea.TeaModel {
             public var data: [[String: Any]]?
 
@@ -11510,7 +11510,7 @@ public class GetTrafficControlTaskTrafficResponseBody : Tea.TeaModel {
                 }
             }
         }
-        public var targetTraffics: [GetTrafficControlTaskTrafficResponseBody.TrafficControlTaskTraffic.TargetTraffics]?
+        public var targetTraffics: [GetTrafficControlTaskTrafficResponseBody.TrafficControlTaskTrafficInfo.TargetTraffics]?
 
         public var taskTraffics: [String: Any]?
 
@@ -11543,9 +11543,9 @@ public class GetTrafficControlTaskTrafficResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("TargetTraffics") {
-                var tmp : [GetTrafficControlTaskTrafficResponseBody.TrafficControlTaskTraffic.TargetTraffics] = []
+                var tmp : [GetTrafficControlTaskTrafficResponseBody.TrafficControlTaskTrafficInfo.TargetTraffics] = []
                 for v in dict["TargetTraffics"] as! [Any] {
-                    var model = GetTrafficControlTaskTrafficResponseBody.TrafficControlTaskTraffic.TargetTraffics()
+                    var model = GetTrafficControlTaskTrafficResponseBody.TrafficControlTaskTrafficInfo.TargetTraffics()
                     if v != nil {
                         model.fromMap(v as! [String: Any])
                     }
@@ -11560,7 +11560,7 @@ public class GetTrafficControlTaskTrafficResponseBody : Tea.TeaModel {
     }
     public var requestId: String?
 
-    public var trafficControlTaskTraffic: GetTrafficControlTaskTrafficResponseBody.TrafficControlTaskTraffic?
+    public var trafficControlTaskTrafficInfo: GetTrafficControlTaskTrafficResponseBody.TrafficControlTaskTrafficInfo?
 
     public override init() {
         super.init()
@@ -11572,7 +11572,7 @@ public class GetTrafficControlTaskTrafficResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.trafficControlTaskTraffic?.validate()
+        try self.trafficControlTaskTrafficInfo?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -11580,8 +11580,8 @@ public class GetTrafficControlTaskTrafficResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
-        if self.trafficControlTaskTraffic != nil {
-            map["TrafficControlTaskTraffic"] = self.trafficControlTaskTraffic?.toMap()
+        if self.trafficControlTaskTrafficInfo != nil {
+            map["TrafficControlTaskTrafficInfo"] = self.trafficControlTaskTrafficInfo?.toMap()
         }
         return map
     }
@@ -11590,10 +11590,10 @@ public class GetTrafficControlTaskTrafficResponseBody : Tea.TeaModel {
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
-        if dict.keys.contains("TrafficControlTaskTraffic") {
-            var model = GetTrafficControlTaskTrafficResponseBody.TrafficControlTaskTraffic()
-            model.fromMap(dict["TrafficControlTaskTraffic"] as! [String: Any])
-            self.trafficControlTaskTraffic = model
+        if dict.keys.contains("TrafficControlTaskTrafficInfo") {
+            var model = GetTrafficControlTaskTrafficResponseBody.TrafficControlTaskTrafficInfo()
+            model.fromMap(dict["TrafficControlTaskTrafficInfo"] as! [String: Any])
+            self.trafficControlTaskTrafficInfo = model
         }
     }
 }
@@ -12861,6 +12861,10 @@ public class ListExperimentGroupsRequest : Tea.TeaModel {
 
     public var status: String?
 
+    public var timeRangeEnd: String?
+
+    public var timeRangeStart: String?
+
     public override init() {
         super.init()
     }
@@ -12887,6 +12891,12 @@ public class ListExperimentGroupsRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.timeRangeEnd != nil {
+            map["TimeRangeEnd"] = self.timeRangeEnd!
+        }
+        if self.timeRangeStart != nil {
+            map["TimeRangeStart"] = self.timeRangeStart!
+        }
         return map
     }
 
@@ -12902,6 +12912,12 @@ public class ListExperimentGroupsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("TimeRangeEnd") {
+            self.timeRangeEnd = dict["TimeRangeEnd"] as! String
+        }
+        if dict.keys.contains("TimeRangeStart") {
+            self.timeRangeStart = dict["TimeRangeStart"] as! String
         }
     }
 }

@@ -1984,7 +1984,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GenerateTrafficControlTaskCode",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/trafficcontroltasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTaskId)) + "/action/code",
+            "pathname": "/api/v1/trafficcontroltasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTaskId)) + "/action/generatecode",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -2017,7 +2017,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GenerateTrafficControlTaskConfig",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/trafficcontroltasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTaskId)) + "/action/config",
+            "pathname": "/api/v1/trafficcontroltasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTaskId)) + "/action/generateconfig",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -2641,7 +2641,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetTrafficControlTaskTraffic",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/trafficcontroltasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTaskId)) + "/action/traffic",
+            "pathname": "/api/v1/trafficcontroltasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTaskId)) + "/trafficinfo",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -2890,6 +2890,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["Status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timeRangeEnd)) {
+            query["TimeRangeEnd"] = request.timeRangeEnd ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timeRangeStart)) {
+            query["TimeRangeStart"] = request.timeRangeStart ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -3555,7 +3561,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListTrafficControlTargetTrafficHistory",
             "version": "2022-12-13",
             "protocol": "HTTPS",
-            "pathname": "/api/v1/trafficcontroltargets/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTargetId)) + "/action/traffichistory",
+            "pathname": "/api/v1/trafficcontroltargets/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrafficControlTargetId)) + "/traffichistories",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
