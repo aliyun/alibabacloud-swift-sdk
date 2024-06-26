@@ -664,6 +664,8 @@ public class CreateAppGroupRequest : Tea.TeaModel {
 
     public var appType: Int32?
 
+    public var appVersion: Int32?
+
     public var description_: String?
 
     public var enableLog: Bool?
@@ -685,8 +687,6 @@ public class CreateAppGroupRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var scheduleBusyWorkers: Bool?
-
-    public var version: Int32?
 
     public override init() {
         super.init()
@@ -710,6 +710,9 @@ public class CreateAppGroupRequest : Tea.TeaModel {
         }
         if self.appType != nil {
             map["AppType"] = self.appType!
+        }
+        if self.appVersion != nil {
+            map["AppVersion"] = self.appVersion!
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
@@ -744,9 +747,6 @@ public class CreateAppGroupRequest : Tea.TeaModel {
         if self.scheduleBusyWorkers != nil {
             map["ScheduleBusyWorkers"] = self.scheduleBusyWorkers!
         }
-        if self.version != nil {
-            map["Version"] = self.version!
-        }
         return map
     }
 
@@ -759,6 +759,9 @@ public class CreateAppGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AppType") {
             self.appType = dict["AppType"] as! Int32
+        }
+        if dict.keys.contains("AppVersion") {
+            self.appVersion = dict["AppVersion"] as! Int32
         }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
@@ -792,9 +795,6 @@ public class CreateAppGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ScheduleBusyWorkers") {
             self.scheduleBusyWorkers = dict["ScheduleBusyWorkers"] as! Bool
-        }
-        if dict.keys.contains("Version") {
-            self.version = dict["Version"] as! Int32
         }
     }
 }
@@ -2776,6 +2776,36 @@ public class DeleteWorkflowResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeRegionsRequest : Tea.TeaModel {
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
 public class DescribeRegionsResponseBody : Tea.TeaModel {
     public class Regions : Tea.TeaModel {
         public var localName: String?
@@ -4311,6 +4341,8 @@ public class GetAppGroupResponseBody : Tea.TeaModel {
 
         public var appName: String?
 
+        public var appVersion: String?
+
         public var curJobs: Int32?
 
         public var description_: String?
@@ -4341,6 +4373,9 @@ public class GetAppGroupResponseBody : Tea.TeaModel {
             if self.appName != nil {
                 map["AppName"] = self.appName!
             }
+            if self.appVersion != nil {
+                map["AppVersion"] = self.appVersion!
+            }
             if self.curJobs != nil {
                 map["CurJobs"] = self.curJobs!
             }
@@ -4365,6 +4400,9 @@ public class GetAppGroupResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("AppName") {
                 self.appName = dict["AppName"] as! String
+            }
+            if dict.keys.contains("AppVersion") {
+                self.appVersion = dict["AppVersion"] as! String
             }
             if dict.keys.contains("CurJobs") {
                 self.curJobs = dict["CurJobs"] as! Int32
@@ -7827,11 +7865,11 @@ public class ListGroupsResponseBody : Tea.TeaModel {
 
             public var appName: String?
 
+            public var appVersion: Int32?
+
             public var description_: String?
 
             public var groupId: String?
-
-            public var version: Int32?
 
             public override init() {
                 super.init()
@@ -7856,14 +7894,14 @@ public class ListGroupsResponseBody : Tea.TeaModel {
                 if self.appName != nil {
                     map["AppName"] = self.appName!
                 }
+                if self.appVersion != nil {
+                    map["AppVersion"] = self.appVersion!
+                }
                 if self.description_ != nil {
                     map["Description"] = self.description_!
                 }
                 if self.groupId != nil {
                     map["GroupId"] = self.groupId!
-                }
-                if self.version != nil {
-                    map["Version"] = self.version!
                 }
                 return map
             }
@@ -7878,14 +7916,14 @@ public class ListGroupsResponseBody : Tea.TeaModel {
                 if dict.keys.contains("AppName") {
                     self.appName = dict["AppName"] as! String
                 }
+                if dict.keys.contains("AppVersion") {
+                    self.appVersion = dict["AppVersion"] as! Int32
+                }
                 if dict.keys.contains("Description") {
                     self.description_ = dict["Description"] as! String
                 }
                 if dict.keys.contains("GroupId") {
                     self.groupId = dict["GroupId"] as! String
-                }
-                if dict.keys.contains("Version") {
-                    self.version = dict["Version"] as! Int32
                 }
             }
         }
@@ -10316,6 +10354,8 @@ public class StopInstanceResponse : Tea.TeaModel {
 }
 
 public class UpdateAppGroupRequest : Tea.TeaModel {
+    public var appVersion: Int32?
+
     public var description_: String?
 
     public var groupId: String?
@@ -10325,8 +10365,6 @@ public class UpdateAppGroupRequest : Tea.TeaModel {
     public var namespace: String?
 
     public var regionId: String?
-
-    public var version: Int32?
 
     public override init() {
         super.init()
@@ -10342,6 +10380,9 @@ public class UpdateAppGroupRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appVersion != nil {
+            map["AppVersion"] = self.appVersion!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -10357,13 +10398,13 @@ public class UpdateAppGroupRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
-        if self.version != nil {
-            map["Version"] = self.version!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppVersion") {
+            self.appVersion = dict["AppVersion"] as! Int32
+        }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
         }
@@ -10378,9 +10419,6 @@ public class UpdateAppGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
-        }
-        if dict.keys.contains("Version") {
-            self.version = dict["Version"] as! Int32
         }
     }
 }
