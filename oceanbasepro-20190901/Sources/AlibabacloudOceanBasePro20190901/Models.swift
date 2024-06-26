@@ -1853,6 +1853,8 @@ public class CreateMySqlDataSourceRequest : Tea.TeaModel {
 
     public var type: String?
 
+    public var useSsl: Bool?
+
     public var userName: String?
 
     public var vpcId: String?
@@ -1898,6 +1900,9 @@ public class CreateMySqlDataSourceRequest : Tea.TeaModel {
         if self.type != nil {
             map["Type"] = self.type!
         }
+        if self.useSsl != nil {
+            map["UseSsl"] = self.useSsl!
+        }
         if self.userName != nil {
             map["UserName"] = self.userName!
         }
@@ -1934,6 +1939,9 @@ public class CreateMySqlDataSourceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Type") {
             self.type = dict["Type"] as! String
+        }
+        if dict.keys.contains("UseSsl") {
+            self.useSsl = dict["UseSsl"] as! Bool
         }
         if dict.keys.contains("UserName") {
             self.userName = dict["UserName"] as! String
@@ -2958,6 +2966,10 @@ public class CreateProjectRequest : Tea.TeaModel {
 
         public var rocketMqSendMsgTimeout: Int64?
 
+        public var sinkStoreFormat: String?
+
+        public var sourceStoreFormat: String?
+
         public var syncSchema: Bool?
 
         public var syncSchemaColumnName: String?
@@ -3015,6 +3027,12 @@ public class CreateProjectRequest : Tea.TeaModel {
             if self.rocketMqSendMsgTimeout != nil {
                 map["RocketMqSendMsgTimeout"] = self.rocketMqSendMsgTimeout!
             }
+            if self.sinkStoreFormat != nil {
+                map["SinkStoreFormat"] = self.sinkStoreFormat!
+            }
+            if self.sourceStoreFormat != nil {
+                map["SourceStoreFormat"] = self.sourceStoreFormat!
+            }
             if self.syncSchema != nil {
                 map["SyncSchema"] = self.syncSchema!
             }
@@ -3068,6 +3086,12 @@ public class CreateProjectRequest : Tea.TeaModel {
             }
             if dict.keys.contains("RocketMqSendMsgTimeout") {
                 self.rocketMqSendMsgTimeout = dict["RocketMqSendMsgTimeout"] as! Int64
+            }
+            if dict.keys.contains("SinkStoreFormat") {
+                self.sinkStoreFormat = dict["SinkStoreFormat"] as! String
+            }
+            if dict.keys.contains("SourceStoreFormat") {
+                self.sourceStoreFormat = dict["SourceStoreFormat"] as! String
             }
             if dict.keys.contains("SyncSchema") {
                 self.syncSchema = dict["SyncSchema"] as! Bool
@@ -24963,6 +24987,10 @@ public class DescribeProjectResponseBody : Tea.TeaModel {
 
             public var rocketMqSendMsgTimeout: Int64?
 
+            public var sinkStoreFormat: String?
+
+            public var sourceStoreFormat: String?
+
             public var tableCategory: String?
 
             public override init() {
@@ -25009,6 +25037,12 @@ public class DescribeProjectResponseBody : Tea.TeaModel {
                 if self.rocketMqSendMsgTimeout != nil {
                     map["RocketMqSendMsgTimeout"] = self.rocketMqSendMsgTimeout!
                 }
+                if self.sinkStoreFormat != nil {
+                    map["SinkStoreFormat"] = self.sinkStoreFormat!
+                }
+                if self.sourceStoreFormat != nil {
+                    map["SourceStoreFormat"] = self.sourceStoreFormat!
+                }
                 if self.tableCategory != nil {
                     map["TableCategory"] = self.tableCategory!
                 }
@@ -25045,6 +25079,12 @@ public class DescribeProjectResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("RocketMqSendMsgTimeout") {
                     self.rocketMqSendMsgTimeout = dict["RocketMqSendMsgTimeout"] as! Int64
+                }
+                if dict.keys.contains("SinkStoreFormat") {
+                    self.sinkStoreFormat = dict["SinkStoreFormat"] as! String
+                }
+                if dict.keys.contains("SourceStoreFormat") {
+                    self.sourceStoreFormat = dict["SourceStoreFormat"] as! String
                 }
                 if dict.keys.contains("TableCategory") {
                     self.tableCategory = dict["TableCategory"] as! String
@@ -54905,6 +54945,43 @@ public class SwitchoverInstanceResponse : Tea.TeaModel {
 }
 
 public class UpdateProjectConfigRequest : Tea.TeaModel {
+    public class CommonTransferConfig : Tea.TeaModel {
+        public var sinkStoreFormat: String?
+
+        public var sourceStoreFormat: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.sinkStoreFormat != nil {
+                map["SinkStoreFormat"] = self.sinkStoreFormat!
+            }
+            if self.sourceStoreFormat != nil {
+                map["SourceStoreFormat"] = self.sourceStoreFormat!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("SinkStoreFormat") {
+                self.sinkStoreFormat = dict["SinkStoreFormat"] as! String
+            }
+            if dict.keys.contains("SourceStoreFormat") {
+                self.sourceStoreFormat = dict["SourceStoreFormat"] as! String
+            }
+        }
+    }
     public class FullTransferConfig : Tea.TeaModel {
         public var readWorkerNum: Int32?
 
@@ -55080,6 +55157,8 @@ public class UpdateProjectConfigRequest : Tea.TeaModel {
             }
         }
     }
+    public var commonTransferConfig: UpdateProjectConfigRequest.CommonTransferConfig?
+
     public var fullTransferConfig: UpdateProjectConfigRequest.FullTransferConfig?
 
     public var id: String?
@@ -55098,6 +55177,7 @@ public class UpdateProjectConfigRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.commonTransferConfig?.validate()
         try self.fullTransferConfig?.validate()
         try self.incrTransferConfig?.validate()
         try self.reverseIncrTransferConfig?.validate()
@@ -55105,6 +55185,9 @@ public class UpdateProjectConfigRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.commonTransferConfig != nil {
+            map["CommonTransferConfig"] = self.commonTransferConfig?.toMap()
+        }
         if self.fullTransferConfig != nil {
             map["FullTransferConfig"] = self.fullTransferConfig?.toMap()
         }
@@ -55121,6 +55204,11 @@ public class UpdateProjectConfigRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CommonTransferConfig") {
+            var model = UpdateProjectConfigRequest.CommonTransferConfig()
+            model.fromMap(dict["CommonTransferConfig"] as! [String: Any])
+            self.commonTransferConfig = model
+        }
         if dict.keys.contains("FullTransferConfig") {
             var model = UpdateProjectConfigRequest.FullTransferConfig()
             model.fromMap(dict["FullTransferConfig"] as! [String: Any])
@@ -55143,6 +55231,8 @@ public class UpdateProjectConfigRequest : Tea.TeaModel {
 }
 
 public class UpdateProjectConfigShrinkRequest : Tea.TeaModel {
+    public var commonTransferConfigShrink: String?
+
     public var fullTransferConfigShrink: String?
 
     public var id: String?
@@ -55165,6 +55255,9 @@ public class UpdateProjectConfigShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.commonTransferConfigShrink != nil {
+            map["CommonTransferConfig"] = self.commonTransferConfigShrink!
+        }
         if self.fullTransferConfigShrink != nil {
             map["FullTransferConfig"] = self.fullTransferConfigShrink!
         }
@@ -55181,6 +55274,9 @@ public class UpdateProjectConfigShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CommonTransferConfig") {
+            self.commonTransferConfigShrink = dict["CommonTransferConfig"] as! String
+        }
         if dict.keys.contains("FullTransferConfig") {
             self.fullTransferConfigShrink = dict["FullTransferConfig"] as! String
         }

@@ -321,6 +321,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.type)) {
             body["Type"] = request.type ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.useSsl)) {
+            body["UseSsl"] = request.useSsl!;
+        }
         if (!TeaUtils.Client.isUnset(request.userName)) {
             body["UserName"] = request.userName ?? "";
         }
@@ -5436,6 +5439,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpdateProjectConfigShrinkRequest = UpdateProjectConfigShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.commonTransferConfig)) {
+            request.commonTransferConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.commonTransferConfig, "CommonTransferConfig", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.fullTransferConfig)) {
             request.fullTransferConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.fullTransferConfig, "FullTransferConfig", "json")
         }
@@ -5446,6 +5452,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.reverseIncrTransferConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.reverseIncrTransferConfig, "ReverseIncrTransferConfig", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.commonTransferConfigShrink)) {
+            body["CommonTransferConfig"] = request.commonTransferConfigShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.fullTransferConfigShrink)) {
             body["FullTransferConfig"] = request.fullTransferConfigShrink ?? "";
         }
