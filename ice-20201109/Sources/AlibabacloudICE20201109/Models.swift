@@ -21914,6 +21914,244 @@ public class GetSnapshotUrlsResponse : Tea.TeaModel {
     }
 }
 
+public class GetStorageListRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var status: String?
+
+    public var storageType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.storageType != nil {
+            map["StorageType"] = self.storageType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppId") {
+            self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("Status") {
+            self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("StorageType") {
+            self.storageType = dict["StorageType"] as! String
+        }
+    }
+}
+
+public class GetStorageListResponseBody : Tea.TeaModel {
+    public class StorageInfoList : Tea.TeaModel {
+        public var appId: String?
+
+        public var creationTime: String?
+
+        public var defaultStorage: Bool?
+
+        public var editingTempFileStorage: Bool?
+
+        public var modifiedTime: String?
+
+        public var path: String?
+
+        public var status: String?
+
+        public var storageLocation: String?
+
+        public var storageType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.appId != nil {
+                map["AppId"] = self.appId!
+            }
+            if self.creationTime != nil {
+                map["CreationTime"] = self.creationTime!
+            }
+            if self.defaultStorage != nil {
+                map["DefaultStorage"] = self.defaultStorage!
+            }
+            if self.editingTempFileStorage != nil {
+                map["EditingTempFileStorage"] = self.editingTempFileStorage!
+            }
+            if self.modifiedTime != nil {
+                map["ModifiedTime"] = self.modifiedTime!
+            }
+            if self.path != nil {
+                map["Path"] = self.path!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.storageLocation != nil {
+                map["StorageLocation"] = self.storageLocation!
+            }
+            if self.storageType != nil {
+                map["StorageType"] = self.storageType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AppId") {
+                self.appId = dict["AppId"] as! String
+            }
+            if dict.keys.contains("CreationTime") {
+                self.creationTime = dict["CreationTime"] as! String
+            }
+            if dict.keys.contains("DefaultStorage") {
+                self.defaultStorage = dict["DefaultStorage"] as! Bool
+            }
+            if dict.keys.contains("EditingTempFileStorage") {
+                self.editingTempFileStorage = dict["EditingTempFileStorage"] as! Bool
+            }
+            if dict.keys.contains("ModifiedTime") {
+                self.modifiedTime = dict["ModifiedTime"] as! String
+            }
+            if dict.keys.contains("Path") {
+                self.path = dict["Path"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("StorageLocation") {
+                self.storageLocation = dict["StorageLocation"] as! String
+            }
+            if dict.keys.contains("StorageType") {
+                self.storageType = dict["StorageType"] as! String
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var storageInfoList: [GetStorageListResponseBody.StorageInfoList]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.storageInfoList != nil {
+            var tmp : [Any] = []
+            for k in self.storageInfoList! {
+                tmp.append(k.toMap())
+            }
+            map["StorageInfoList"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("StorageInfoList") {
+            var tmp : [GetStorageListResponseBody.StorageInfoList] = []
+            for v in dict["StorageInfoList"] as! [Any] {
+                var model = GetStorageListResponseBody.StorageInfoList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.storageInfoList = tmp
+        }
+    }
+}
+
+public class GetStorageListResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetStorageListResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetStorageListResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class GetSystemTemplateRequest : Tea.TeaModel {
     public var templateId: String?
 
