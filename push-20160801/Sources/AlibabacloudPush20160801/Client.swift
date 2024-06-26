@@ -624,6 +624,51 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.expireTime)) {
             query["ExpireTime"] = request.expireTime ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.harmonyAction)) {
+            query["HarmonyAction"] = request.harmonyAction ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.harmonyActionType)) {
+            query["HarmonyActionType"] = request.harmonyActionType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.harmonyCategory)) {
+            query["HarmonyCategory"] = request.harmonyCategory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.harmonyExtParameters)) {
+            query["HarmonyExtParameters"] = request.harmonyExtParameters ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.harmonyImageUrl)) {
+            query["HarmonyImageUrl"] = request.harmonyImageUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.harmonyInboxContent)) {
+            query["HarmonyInboxContent"] = request.harmonyInboxContent ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.harmonyNotificationSlotType)) {
+            query["HarmonyNotificationSlotType"] = request.harmonyNotificationSlotType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.harmonyNotifyId)) {
+            query["HarmonyNotifyId"] = request.harmonyNotifyId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.harmonyReceiptId)) {
+            query["HarmonyReceiptId"] = request.harmonyReceiptId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.harmonyRemind)) {
+            query["HarmonyRemind"] = request.harmonyRemind!;
+        }
+        if (!TeaUtils.Client.isUnset(request.harmonyRemindBody)) {
+            query["HarmonyRemindBody"] = request.harmonyRemindBody ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.harmonyRemindTitle)) {
+            query["HarmonyRemindTitle"] = request.harmonyRemindTitle ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.harmonyRenderStyle)) {
+            query["HarmonyRenderStyle"] = request.harmonyRenderStyle ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.harmonyTestMessage)) {
+            query["HarmonyTestMessage"] = request.harmonyTestMessage!;
+        }
+        if (!TeaUtils.Client.isUnset(request.harmonyUri)) {
+            query["HarmonyUri"] = request.harmonyUri ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.jobKey)) {
             query["JobKey"] = request.jobKey ?? "";
         }
