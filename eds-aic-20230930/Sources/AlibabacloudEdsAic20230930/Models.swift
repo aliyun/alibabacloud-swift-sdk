@@ -920,6 +920,8 @@ public class CreateAndroidInstanceGroupResponse : Tea.TeaModel {
 public class CreateAppRequest : Tea.TeaModel {
     public var appName: String?
 
+    public var bizRegionId: String?
+
     public var description_: String?
 
     public var fileName: String?
@@ -949,6 +951,9 @@ public class CreateAppRequest : Tea.TeaModel {
         if self.appName != nil {
             map["AppName"] = self.appName!
         }
+        if self.bizRegionId != nil {
+            map["BizRegionId"] = self.bizRegionId!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -973,6 +978,9 @@ public class CreateAppRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AppName") {
             self.appName = dict["AppName"] as! String
+        }
+        if dict.keys.contains("BizRegionId") {
+            self.bizRegionId = dict["BizRegionId"] as! String
         }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
@@ -3010,6 +3018,8 @@ public class DescribeAppsRequest : Tea.TeaModel {
 
     public var appName: String?
 
+    public var bizRegionId: String?
+
     public var installationStatus: String?
 
     public var maxResults: Int32?
@@ -3038,6 +3048,9 @@ public class DescribeAppsRequest : Tea.TeaModel {
         if self.appName != nil {
             map["AppName"] = self.appName!
         }
+        if self.bizRegionId != nil {
+            map["BizRegionId"] = self.bizRegionId!
+        }
         if self.installationStatus != nil {
             map["InstallationStatus"] = self.installationStatus!
         }
@@ -3059,6 +3072,9 @@ public class DescribeAppsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AppName") {
             self.appName = dict["AppName"] as! String
+        }
+        if dict.keys.contains("BizRegionId") {
+            self.bizRegionId = dict["BizRegionId"] as! String
         }
         if dict.keys.contains("InstallationStatus") {
             self.installationStatus = dict["InstallationStatus"] as! String
@@ -3082,6 +3098,8 @@ public class DescribeAppsResponseBody : Tea.TeaModel {
         public var appId: Int32?
 
         public var appName: String?
+
+        public var bizRegionId: String?
 
         public var description_: String?
 
@@ -3120,6 +3138,9 @@ public class DescribeAppsResponseBody : Tea.TeaModel {
             if self.appName != nil {
                 map["AppName"] = self.appName!
             }
+            if self.bizRegionId != nil {
+                map["BizRegionId"] = self.bizRegionId!
+            }
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
@@ -3153,6 +3174,9 @@ public class DescribeAppsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("AppName") {
                 self.appName = dict["AppName"] as! String
+            }
+            if dict.keys.contains("BizRegionId") {
+                self.bizRegionId = dict["BizRegionId"] as! String
             }
             if dict.keys.contains("Description") {
                 self.description_ = dict["Description"] as! String
