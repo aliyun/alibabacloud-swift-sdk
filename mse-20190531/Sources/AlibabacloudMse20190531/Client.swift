@@ -759,6 +759,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.requestPars)) {
             query["RequestPars"] = request.requestPars ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.syncType)) {
+            query["SyncType"] = request.syncType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.targetClusterName)) {
             query["TargetClusterName"] = request.targetClusterName ?? "";
         }
@@ -5006,7 +5009,37 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listAnsInstancesWithOptions(_ request: ListAnsInstancesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAnsInstancesResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clusterId)) {
+            query["ClusterId"] = request.clusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clusterName)) {
+            query["ClusterName"] = request.clusterName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.groupName)) {
+            query["GroupName"] = request.groupName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.namespaceId)) {
+            query["NamespaceId"] = request.namespaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNum)) {
+            query["PageNum"] = request.pageNum!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.requestPars)) {
+            query["RequestPars"] = request.requestPars ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceName)) {
+            query["ServiceName"] = request.serviceName ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -5015,7 +5048,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "version": "2019-05-31",
             "protocol": "HTTPS",
             "pathname": "/",
-            "method": "GET",
+            "method": "POST",
             "authType": "AK",
             "style": "RPC",
             "reqBodyType": "formData",
@@ -10064,6 +10097,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.requestPars)) {
             query["RequestPars"] = request.requestPars ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.syncType)) {
+            query["SyncType"] = request.syncType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.targetClusterName)) {
             query["TargetClusterName"] = request.targetClusterName ?? "";

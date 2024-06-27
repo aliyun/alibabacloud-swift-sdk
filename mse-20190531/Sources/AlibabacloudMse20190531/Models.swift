@@ -5740,6 +5740,8 @@ public class AddMigrationTaskRequest : Tea.TeaModel {
 
     public var requestPars: String?
 
+    public var syncType: String?
+
     public var targetClusterName: String?
 
     public var targetClusterUrl: String?
@@ -5781,6 +5783,9 @@ public class AddMigrationTaskRequest : Tea.TeaModel {
         if self.requestPars != nil {
             map["RequestPars"] = self.requestPars!
         }
+        if self.syncType != nil {
+            map["SyncType"] = self.syncType!
+        }
         if self.targetClusterName != nil {
             map["TargetClusterName"] = self.targetClusterName!
         }
@@ -5815,6 +5820,9 @@ public class AddMigrationTaskRequest : Tea.TeaModel {
         if dict.keys.contains("RequestPars") {
             self.requestPars = dict["RequestPars"] as! String
         }
+        if dict.keys.contains("SyncType") {
+            self.syncType = dict["SyncType"] as! String
+        }
         if dict.keys.contains("TargetClusterName") {
             self.targetClusterName = dict["TargetClusterName"] as! String
         }
@@ -5840,6 +5848,8 @@ public class AddMigrationTaskResponseBody : Tea.TeaModel {
         public var originInstanceNamespace: String?
 
         public var projectDesc: String?
+
+        public var syncType: String?
 
         public var targetClusterName: String?
 
@@ -5881,6 +5891,9 @@ public class AddMigrationTaskResponseBody : Tea.TeaModel {
             if self.projectDesc != nil {
                 map["ProjectDesc"] = self.projectDesc!
             }
+            if self.syncType != nil {
+                map["SyncType"] = self.syncType!
+            }
             if self.targetClusterName != nil {
                 map["TargetClusterName"] = self.targetClusterName!
             }
@@ -5914,6 +5927,9 @@ public class AddMigrationTaskResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ProjectDesc") {
                 self.projectDesc = dict["ProjectDesc"] as! String
+            }
+            if dict.keys.contains("SyncType") {
+                self.syncType = dict["SyncType"] as! String
             }
             if dict.keys.contains("TargetClusterName") {
                 self.targetClusterName = dict["TargetClusterName"] as! String
@@ -32246,6 +32262,8 @@ public class ImportNacosConfigResponseBody : Tea.TeaModel {
 
             public var group: String?
 
+            public var reason: String?
+
             public override init() {
                 super.init()
             }
@@ -32266,6 +32284,9 @@ public class ImportNacosConfigResponseBody : Tea.TeaModel {
                 if self.group != nil {
                     map["Group"] = self.group!
                 }
+                if self.reason != nil {
+                    map["Reason"] = self.reason!
+                }
                 return map
             }
 
@@ -32275,6 +32296,9 @@ public class ImportNacosConfigResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Group") {
                     self.group = dict["Group"] as! String
+                }
+                if dict.keys.contains("Reason") {
+                    self.reason = dict["Reason"] as! String
                 }
             }
         }
@@ -48922,6 +48946,8 @@ public class ListMigrationTaskResponseBody : Tea.TeaModel {
 
         public var projectDesc: String?
 
+        public var syncType: String?
+
         public var targetClusterName: String?
 
         public var targetClusterUrl: String?
@@ -48968,6 +48994,9 @@ public class ListMigrationTaskResponseBody : Tea.TeaModel {
             if self.projectDesc != nil {
                 map["ProjectDesc"] = self.projectDesc!
             }
+            if self.syncType != nil {
+                map["SyncType"] = self.syncType!
+            }
             if self.targetClusterName != nil {
                 map["TargetClusterName"] = self.targetClusterName!
             }
@@ -49007,6 +49036,9 @@ public class ListMigrationTaskResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ProjectDesc") {
                 self.projectDesc = dict["ProjectDesc"] as! String
+            }
+            if dict.keys.contains("SyncType") {
+                self.syncType = dict["SyncType"] as! String
             }
             if dict.keys.contains("TargetClusterName") {
                 self.targetClusterName = dict["TargetClusterName"] as! String
@@ -71657,6 +71689,8 @@ public class UpdateMigrationTaskRequest : Tea.TeaModel {
 
     public var requestPars: String?
 
+    public var syncType: String?
+
     public var targetClusterName: String?
 
     public var targetClusterUrl: String?
@@ -71701,6 +71735,9 @@ public class UpdateMigrationTaskRequest : Tea.TeaModel {
         if self.requestPars != nil {
             map["RequestPars"] = self.requestPars!
         }
+        if self.syncType != nil {
+            map["SyncType"] = self.syncType!
+        }
         if self.targetClusterName != nil {
             map["TargetClusterName"] = self.targetClusterName!
         }
@@ -71738,6 +71775,9 @@ public class UpdateMigrationTaskRequest : Tea.TeaModel {
         if dict.keys.contains("RequestPars") {
             self.requestPars = dict["RequestPars"] as! String
         }
+        if dict.keys.contains("SyncType") {
+            self.syncType = dict["SyncType"] as! String
+        }
         if dict.keys.contains("TargetClusterName") {
             self.targetClusterName = dict["TargetClusterName"] as! String
         }
@@ -71767,6 +71807,8 @@ public class UpdateMigrationTaskResponseBody : Tea.TeaModel {
         public var originInstanceNamespace: String?
 
         public var projectDesc: String?
+
+        public var syncType: String?
 
         public var targetClusterName: String?
 
@@ -71814,6 +71856,9 @@ public class UpdateMigrationTaskResponseBody : Tea.TeaModel {
             if self.projectDesc != nil {
                 map["ProjectDesc"] = self.projectDesc!
             }
+            if self.syncType != nil {
+                map["SyncType"] = self.syncType!
+            }
             if self.targetClusterName != nil {
                 map["TargetClusterName"] = self.targetClusterName!
             }
@@ -71853,6 +71898,9 @@ public class UpdateMigrationTaskResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ProjectDesc") {
                 self.projectDesc = dict["ProjectDesc"] as! String
+            }
+            if dict.keys.contains("SyncType") {
+                self.syncType = dict["SyncType"] as! String
             }
             if dict.keys.contains("TargetClusterName") {
                 self.targetClusterName = dict["TargetClusterName"] as! String
