@@ -23494,6 +23494,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 public var DBInstanceIds: DescribeDBInstanceAttributeResponseBody.Items.DBInstanceAttribute.Extra.DBInstanceIds?
 
+                public var recoveryModel: String?
+
                 public override init() {
                     super.init()
                 }
@@ -23512,6 +23514,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                     if self.DBInstanceIds != nil {
                         map["DBInstanceIds"] = self.DBInstanceIds?.toMap()
                     }
+                    if self.recoveryModel != nil {
+                        map["RecoveryModel"] = self.recoveryModel!
+                    }
                     return map
                 }
 
@@ -23520,6 +23525,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                         var model = DescribeDBInstanceAttributeResponseBody.Items.DBInstanceAttribute.Extra.DBInstanceIds()
                         model.fromMap(dict["DBInstanceIds"] as! [String: Any])
                         self.DBInstanceIds = model
+                    }
+                    if dict.keys.contains("RecoveryModel") {
+                        self.recoveryModel = dict["RecoveryModel"] as! String
                     }
                 }
             }
@@ -46336,11 +46344,15 @@ public class DescribeParametersResponseBody : Tea.TeaModel {
     }
     public class RunningParameters : Tea.TeaModel {
         public class DBInstanceParameter : Tea.TeaModel {
+            public var parameterDefaultValue: String?
+
             public var parameterDescription: String?
 
             public var parameterName: String?
 
             public var parameterValue: String?
+
+            public var parameterValueRange: String?
 
             public override init() {
                 super.init()
@@ -46356,6 +46368,9 @@ public class DescribeParametersResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.parameterDefaultValue != nil {
+                    map["ParameterDefaultValue"] = self.parameterDefaultValue!
+                }
                 if self.parameterDescription != nil {
                     map["ParameterDescription"] = self.parameterDescription!
                 }
@@ -46365,10 +46380,16 @@ public class DescribeParametersResponseBody : Tea.TeaModel {
                 if self.parameterValue != nil {
                     map["ParameterValue"] = self.parameterValue!
                 }
+                if self.parameterValueRange != nil {
+                    map["ParameterValueRange"] = self.parameterValueRange!
+                }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ParameterDefaultValue") {
+                    self.parameterDefaultValue = dict["ParameterDefaultValue"] as! String
+                }
                 if dict.keys.contains("ParameterDescription") {
                     self.parameterDescription = dict["ParameterDescription"] as! String
                 }
@@ -46377,6 +46398,9 @@ public class DescribeParametersResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ParameterValue") {
                     self.parameterValue = dict["ParameterValue"] as! String
+                }
+                if dict.keys.contains("ParameterValueRange") {
+                    self.parameterValueRange = dict["ParameterValueRange"] as! String
                 }
             }
         }
