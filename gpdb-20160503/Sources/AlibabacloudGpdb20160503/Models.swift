@@ -22269,7 +22269,11 @@ public class DescribeStreamingDataServiceResponseBody : Tea.TeaModel {
 
     public var serviceIp: String?
 
+    public var serviceManaged: Bool?
+
     public var serviceName: String?
+
+    public var serviceOwnerId: String?
 
     public var servicePort: Int32?
 
@@ -22309,8 +22313,14 @@ public class DescribeStreamingDataServiceResponseBody : Tea.TeaModel {
         if self.serviceIp != nil {
             map["ServiceIp"] = self.serviceIp!
         }
+        if self.serviceManaged != nil {
+            map["ServiceManaged"] = self.serviceManaged!
+        }
         if self.serviceName != nil {
             map["ServiceName"] = self.serviceName!
+        }
+        if self.serviceOwnerId != nil {
+            map["ServiceOwnerId"] = self.serviceOwnerId!
         }
         if self.servicePort != nil {
             map["ServicePort"] = self.servicePort!
@@ -22343,8 +22353,14 @@ public class DescribeStreamingDataServiceResponseBody : Tea.TeaModel {
         if dict.keys.contains("ServiceIp") {
             self.serviceIp = dict["ServiceIp"] as! String
         }
+        if dict.keys.contains("ServiceManaged") {
+            self.serviceManaged = dict["ServiceManaged"] as! Bool
+        }
         if dict.keys.contains("ServiceName") {
             self.serviceName = dict["ServiceName"] as! String
+        }
+        if dict.keys.contains("ServiceOwnerId") {
+            self.serviceOwnerId = dict["ServiceOwnerId"] as! String
         }
         if dict.keys.contains("ServicePort") {
             self.servicePort = dict["ServicePort"] as! Int32
@@ -27686,7 +27702,11 @@ public class ListStreamingDataServicesResponseBody : Tea.TeaModel {
 
         public var serviceIp: String?
 
+        public var serviceManaged: Bool?
+
         public var serviceName: String?
+
+        public var serviceOwnerId: String?
 
         public var servicePort: String?
 
@@ -27725,8 +27745,14 @@ public class ListStreamingDataServicesResponseBody : Tea.TeaModel {
             if self.serviceIp != nil {
                 map["ServiceIp"] = self.serviceIp!
             }
+            if self.serviceManaged != nil {
+                map["ServiceManaged"] = self.serviceManaged!
+            }
             if self.serviceName != nil {
                 map["ServiceName"] = self.serviceName!
+            }
+            if self.serviceOwnerId != nil {
+                map["ServiceOwnerId"] = self.serviceOwnerId!
             }
             if self.servicePort != nil {
                 map["ServicePort"] = self.servicePort!
@@ -27759,8 +27785,14 @@ public class ListStreamingDataServicesResponseBody : Tea.TeaModel {
             if dict.keys.contains("ServiceIp") {
                 self.serviceIp = dict["ServiceIp"] as! String
             }
+            if dict.keys.contains("ServiceManaged") {
+                self.serviceManaged = dict["ServiceManaged"] as! Bool
+            }
             if dict.keys.contains("ServiceName") {
                 self.serviceName = dict["ServiceName"] as! String
+            }
+            if dict.keys.contains("ServiceOwnerId") {
+                self.serviceOwnerId = dict["ServiceOwnerId"] as! String
             }
             if dict.keys.contains("ServicePort") {
                 self.servicePort = dict["ServicePort"] as! String
