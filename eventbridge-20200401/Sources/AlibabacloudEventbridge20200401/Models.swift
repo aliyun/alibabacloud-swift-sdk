@@ -4431,6 +4431,51 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                     }
                 }
             }
+            public class HeaderParameters : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
             public class NetworkType : Tea.TeaModel {
                 public var form: String?
 
@@ -4750,6 +4795,8 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
 
             public var data: CreateEventStreamingRequest.Sink.SinkPrometheusParameters.Data?
 
+            public var headerParameters: CreateEventStreamingRequest.Sink.SinkPrometheusParameters.HeaderParameters?
+
             public var networkType: CreateEventStreamingRequest.Sink.SinkPrometheusParameters.NetworkType?
 
             public var password: CreateEventStreamingRequest.Sink.SinkPrometheusParameters.Password?
@@ -4776,6 +4823,7 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
             public override func validate() throws -> Void {
                 try self.authorizationType?.validate()
                 try self.data?.validate()
+                try self.headerParameters?.validate()
                 try self.networkType?.validate()
                 try self.password?.validate()
                 try self.securityGroupId?.validate()
@@ -4792,6 +4840,9 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 }
                 if self.data != nil {
                     map["Data"] = self.data?.toMap()
+                }
+                if self.headerParameters != nil {
+                    map["HeaderParameters"] = self.headerParameters?.toMap()
                 }
                 if self.networkType != nil {
                     map["NetworkType"] = self.networkType?.toMap()
@@ -4827,6 +4878,11 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                     var model = CreateEventStreamingRequest.Sink.SinkPrometheusParameters.Data()
                     model.fromMap(dict["Data"] as! [String: Any])
                     self.data = model
+                }
+                if dict.keys.contains("HeaderParameters") {
+                    var model = CreateEventStreamingRequest.Sink.SinkPrometheusParameters.HeaderParameters()
+                    model.fromMap(dict["HeaderParameters"] as! [String: Any])
+                    self.headerParameters = model
                 }
                 if dict.keys.contains("NetworkType") {
                     var model = CreateEventStreamingRequest.Sink.SinkPrometheusParameters.NetworkType()
@@ -33033,6 +33089,51 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                     }
                 }
             }
+            public class HeaderParameters : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
             public class NetworkType : Tea.TeaModel {
                 public var form: String?
 
@@ -33352,6 +33453,8 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
 
             public var data: UpdateEventStreamingRequest.Sink.SinkPrometheusParameters.Data?
 
+            public var headerParameters: UpdateEventStreamingRequest.Sink.SinkPrometheusParameters.HeaderParameters?
+
             public var networkType: UpdateEventStreamingRequest.Sink.SinkPrometheusParameters.NetworkType?
 
             public var password: UpdateEventStreamingRequest.Sink.SinkPrometheusParameters.Password?
@@ -33378,6 +33481,7 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
             public override func validate() throws -> Void {
                 try self.authorizationType?.validate()
                 try self.data?.validate()
+                try self.headerParameters?.validate()
                 try self.networkType?.validate()
                 try self.password?.validate()
                 try self.securityGroupId?.validate()
@@ -33394,6 +33498,9 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 }
                 if self.data != nil {
                     map["Data"] = self.data?.toMap()
+                }
+                if self.headerParameters != nil {
+                    map["HeaderParameters"] = self.headerParameters?.toMap()
                 }
                 if self.networkType != nil {
                     map["NetworkType"] = self.networkType?.toMap()
@@ -33429,6 +33536,11 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                     var model = UpdateEventStreamingRequest.Sink.SinkPrometheusParameters.Data()
                     model.fromMap(dict["Data"] as! [String: Any])
                     self.data = model
+                }
+                if dict.keys.contains("HeaderParameters") {
+                    var model = UpdateEventStreamingRequest.Sink.SinkPrometheusParameters.HeaderParameters()
+                    model.fromMap(dict["HeaderParameters"] as! [String: Any])
+                    self.headerParameters = model
                 }
                 if dict.keys.contains("NetworkType") {
                     var model = UpdateEventStreamingRequest.Sink.SinkPrometheusParameters.NetworkType()
