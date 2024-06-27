@@ -10883,6 +10883,8 @@ public class DescribeParentInstanceResponseBody : Tea.TeaModel {
 
         public var authStatus: Int32?
 
+        public var authTime: Int64?
+
         public var clusterStatus: String?
 
         public var connectNode: String?
@@ -10934,6 +10936,9 @@ public class DescribeParentInstanceResponseBody : Tea.TeaModel {
             }
             if self.authStatus != nil {
                 map["AuthStatus"] = self.authStatus!
+            }
+            if self.authTime != nil {
+                map["AuthTime"] = self.authTime!
             }
             if self.clusterStatus != nil {
                 map["ClusterStatus"] = self.clusterStatus!
@@ -10992,6 +10997,9 @@ public class DescribeParentInstanceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("AuthStatus") {
                 self.authStatus = dict["AuthStatus"] as! Int32
+            }
+            if dict.keys.contains("AuthTime") {
+                self.authTime = dict["AuthTime"] as! Int64
             }
             if dict.keys.contains("ClusterStatus") {
                 self.clusterStatus = dict["ClusterStatus"] as! String
