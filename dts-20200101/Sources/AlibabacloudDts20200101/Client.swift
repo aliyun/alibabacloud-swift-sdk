@@ -2628,6 +2628,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dedicatedClusterId)) {
             query["DedicatedClusterId"] = request.dedicatedClusterId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.destProductType)) {
+            query["DestProductType"] = request.destProductType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dtsBisLabel)) {
             query["DtsBisLabel"] = request.dtsBisLabel ?? "";
         }
@@ -2675,6 +2678,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.srcProductType)) {
+            query["SrcProductType"] = request.srcProductType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["Status"] = request.status ?? "";

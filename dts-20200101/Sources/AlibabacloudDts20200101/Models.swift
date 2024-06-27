@@ -18464,6 +18464,8 @@ public class DescribeDtsJobDetailResponse : Tea.TeaModel {
 public class DescribeDtsJobsRequest : Tea.TeaModel {
     public var dedicatedClusterId: String?
 
+    public var destProductType: String?
+
     public var dtsBisLabel: String?
 
     public var dtsInstanceId: String?
@@ -18496,6 +18498,8 @@ public class DescribeDtsJobsRequest : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
+    public var srcProductType: String?
+
     public var status: String?
 
     public var tags: String?
@@ -18522,6 +18526,9 @@ public class DescribeDtsJobsRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.dedicatedClusterId != nil {
             map["DedicatedClusterId"] = self.dedicatedClusterId!
+        }
+        if self.destProductType != nil {
+            map["DestProductType"] = self.destProductType!
         }
         if self.dtsBisLabel != nil {
             map["DtsBisLabel"] = self.dtsBisLabel!
@@ -18571,6 +18578,9 @@ public class DescribeDtsJobsRequest : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
+        if self.srcProductType != nil {
+            map["SrcProductType"] = self.srcProductType!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -18592,6 +18602,9 @@ public class DescribeDtsJobsRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DedicatedClusterId") {
             self.dedicatedClusterId = dict["DedicatedClusterId"] as! String
+        }
+        if dict.keys.contains("DestProductType") {
+            self.destProductType = dict["DestProductType"] as! String
         }
         if dict.keys.contains("DtsBisLabel") {
             self.dtsBisLabel = dict["DtsBisLabel"] as! String
@@ -18640,6 +18653,9 @@ public class DescribeDtsJobsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceGroupId") {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("SrcProductType") {
+            self.srcProductType = dict["SrcProductType"] as! String
         }
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! String
