@@ -5579,6 +5579,51 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class GdnMemberList : Tea.TeaModel {
+            public var memberName: String?
+
+            public var role: String?
+
+            public var status: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.memberName != nil {
+                    map["MemberName"] = self.memberName!
+                }
+                if self.role != nil {
+                    map["Role"] = self.role!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("MemberName") {
+                    self.memberName = dict["MemberName"] as! String
+                }
+                if dict.keys.contains("Role") {
+                    self.role = dict["Role"] as! String
+                }
+                if dict.keys.contains("Status") {
+                    self.status = dict["Status"] as! String
+                }
+            }
+        }
         public class TagSet : Tea.TeaModel {
             public var key: String?
 
@@ -5659,6 +5704,12 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
         public var expireDate: String?
 
         public var expired: String?
+
+        public var gdnInstanceName: String?
+
+        public var gdnMemberList: [DescribeDBInstanceAttributeResponseBody.DBInstance.GdnMemberList]?
+
+        public var gdnRole: String?
 
         public var id: String?
 
@@ -5805,6 +5856,19 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if self.expired != nil {
                 map["Expired"] = self.expired!
+            }
+            if self.gdnInstanceName != nil {
+                map["GdnInstanceName"] = self.gdnInstanceName!
+            }
+            if self.gdnMemberList != nil {
+                var tmp : [Any] = []
+                for k in self.gdnMemberList! {
+                    tmp.append(k.toMap())
+                }
+                map["GdnMemberList"] = tmp
+            }
+            if self.gdnRole != nil {
+                map["GdnRole"] = self.gdnRole!
             }
             if self.id != nil {
                 map["Id"] = self.id!
@@ -5982,6 +6046,23 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Expired") {
                 self.expired = dict["Expired"] as! String
+            }
+            if dict.keys.contains("GdnInstanceName") {
+                self.gdnInstanceName = dict["GdnInstanceName"] as! String
+            }
+            if dict.keys.contains("GdnMemberList") {
+                var tmp : [DescribeDBInstanceAttributeResponseBody.DBInstance.GdnMemberList] = []
+                for v in dict["GdnMemberList"] as! [Any] {
+                    var model = DescribeDBInstanceAttributeResponseBody.DBInstance.GdnMemberList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.gdnMemberList = tmp
+            }
+            if dict.keys.contains("GdnRole") {
+                self.gdnRole = dict["GdnRole"] as! String
             }
             if dict.keys.contains("Id") {
                 self.id = dict["Id"] as! String
