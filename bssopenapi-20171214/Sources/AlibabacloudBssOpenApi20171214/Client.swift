@@ -1678,6 +1678,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }
+        if (!TeaUtils.Client.isUnset(request.pipCode)) {
+            query["PipCode"] = request.pipCode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.productCode)) {
             query["ProductCode"] = request.productCode ?? "";
         }
@@ -1715,40 +1718,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeSplitItemBill(_ request: DescribeSplitItemBillRequest) async throws -> DescribeSplitItemBillResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeSplitItemBillWithOptions(request as! DescribeSplitItemBillRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func enableBillGenerationWithOptions(_ request: EnableBillGenerationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnableBillGenerationResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.ownerId)) {
-            query["OwnerId"] = request.ownerId!;
-        }
-        if (!TeaUtils.Client.isUnset(request.productCode)) {
-            query["ProductCode"] = request.productCode ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "EnableBillGeneration",
-            "version": "2017-12-14",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(EnableBillGenerationResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func enableBillGeneration(_ request: EnableBillGenerationRequest) async throws -> EnableBillGenerationResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await enableBillGenerationWithOptions(request as! EnableBillGenerationRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4363,6 +4332,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.subscribeType)) {
             query["SubscribeType"] = request.subscribeType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.usingSsl)) {
+            query["UsingSsl"] = request.usingSsl ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
