@@ -22868,7 +22868,187 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                             }
                         }
                     }
+                    public class InstanceEndpoint : Tea.TeaModel {
+                        public var form: String?
+
+                        public var template: String?
+
+                        public var value: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.form != nil {
+                                map["Form"] = self.form!
+                            }
+                            if self.template != nil {
+                                map["Template"] = self.template!
+                            }
+                            if self.value != nil {
+                                map["Value"] = self.value!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("Form") {
+                                self.form = dict["Form"] as! String
+                            }
+                            if dict.keys.contains("Template") {
+                                self.template = dict["Template"] as! String
+                            }
+                            if dict.keys.contains("Value") {
+                                self.value = dict["Value"] as! String
+                            }
+                        }
+                    }
                     public class InstanceId : Tea.TeaModel {
+                        public var form: String?
+
+                        public var template: String?
+
+                        public var value: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.form != nil {
+                                map["Form"] = self.form!
+                            }
+                            if self.template != nil {
+                                map["Template"] = self.template!
+                            }
+                            if self.value != nil {
+                                map["Value"] = self.value!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("Form") {
+                                self.form = dict["Form"] as! String
+                            }
+                            if dict.keys.contains("Template") {
+                                self.template = dict["Template"] as! String
+                            }
+                            if dict.keys.contains("Value") {
+                                self.value = dict["Value"] as! String
+                            }
+                        }
+                    }
+                    public class InstancePassword : Tea.TeaModel {
+                        public var form: String?
+
+                        public var template: String?
+
+                        public var value: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.form != nil {
+                                map["Form"] = self.form!
+                            }
+                            if self.template != nil {
+                                map["Template"] = self.template!
+                            }
+                            if self.value != nil {
+                                map["Value"] = self.value!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("Form") {
+                                self.form = dict["Form"] as! String
+                            }
+                            if dict.keys.contains("Template") {
+                                self.template = dict["Template"] as! String
+                            }
+                            if dict.keys.contains("Value") {
+                                self.value = dict["Value"] as! String
+                            }
+                        }
+                    }
+                    public class InstanceType : Tea.TeaModel {
+                        public var form: String?
+
+                        public var template: String?
+
+                        public var value: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.form != nil {
+                                map["Form"] = self.form!
+                            }
+                            if self.template != nil {
+                                map["Template"] = self.template!
+                            }
+                            if self.value != nil {
+                                map["Value"] = self.value!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("Form") {
+                                self.form = dict["Form"] as! String
+                            }
+                            if dict.keys.contains("Template") {
+                                self.template = dict["Template"] as! String
+                            }
+                            if dict.keys.contains("Value") {
+                                self.value = dict["Value"] as! String
+                            }
+                        }
+                    }
+                    public class InstanceUsername : Tea.TeaModel {
                         public var form: String?
 
                         public var template: String?
@@ -22958,7 +23138,97 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                             }
                         }
                     }
+                    public class Network : Tea.TeaModel {
+                        public var form: String?
+
+                        public var template: String?
+
+                        public var value: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.form != nil {
+                                map["Form"] = self.form!
+                            }
+                            if self.template != nil {
+                                map["Template"] = self.template!
+                            }
+                            if self.value != nil {
+                                map["Value"] = self.value!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("Form") {
+                                self.form = dict["Form"] as! String
+                            }
+                            if dict.keys.contains("Template") {
+                                self.template = dict["Template"] as! String
+                            }
+                            if dict.keys.contains("Value") {
+                                self.value = dict["Value"] as! String
+                            }
+                        }
+                    }
                     public class Properties : Tea.TeaModel {
+                        public var form: String?
+
+                        public var template: String?
+
+                        public var value: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.form != nil {
+                                map["Form"] = self.form!
+                            }
+                            if self.template != nil {
+                                map["Template"] = self.template!
+                            }
+                            if self.value != nil {
+                                map["Value"] = self.value!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("Form") {
+                                self.form = dict["Form"] as! String
+                            }
+                            if dict.keys.contains("Template") {
+                                self.template = dict["Template"] as! String
+                            }
+                            if dict.keys.contains("Value") {
+                                self.value = dict["Value"] as! String
+                            }
+                        }
+                    }
+                    public class SecurityGroupId : Tea.TeaModel {
                         public var form: String?
 
                         public var template: String?
@@ -23093,17 +23363,123 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                             }
                         }
                     }
+                    public class VSwitchIds : Tea.TeaModel {
+                        public var form: String?
+
+                        public var template: String?
+
+                        public var value: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.form != nil {
+                                map["Form"] = self.form!
+                            }
+                            if self.template != nil {
+                                map["Template"] = self.template!
+                            }
+                            if self.value != nil {
+                                map["Value"] = self.value!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("Form") {
+                                self.form = dict["Form"] as! String
+                            }
+                            if dict.keys.contains("Template") {
+                                self.template = dict["Template"] as! String
+                            }
+                            if dict.keys.contains("Value") {
+                                self.value = dict["Value"] as! String
+                            }
+                        }
+                    }
+                    public class VpcId : Tea.TeaModel {
+                        public var form: String?
+
+                        public var template: String?
+
+                        public var value: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.form != nil {
+                                map["Form"] = self.form!
+                            }
+                            if self.template != nil {
+                                map["Template"] = self.template!
+                            }
+                            if self.value != nil {
+                                map["Value"] = self.value!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("Form") {
+                                self.form = dict["Form"] as! String
+                            }
+                            if dict.keys.contains("Template") {
+                                self.template = dict["Template"] as! String
+                            }
+                            if dict.keys.contains("Value") {
+                                self.value = dict["Value"] as! String
+                            }
+                        }
+                    }
                     public var body: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.Body?
+
+                    public var instanceEndpoint: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.InstanceEndpoint?
 
                     public var instanceId: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.InstanceId?
 
+                    public var instancePassword: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.InstancePassword?
+
+                    public var instanceType: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.InstanceType?
+
+                    public var instanceUsername: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.InstanceUsername?
+
                     public var keys: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.Keys?
 
+                    public var network: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.Network?
+
                     public var properties: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.Properties?
+
+                    public var securityGroupId: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.SecurityGroupId?
 
                     public var tags: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.Tags?
 
                     public var topic: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.Topic?
+
+                    public var vSwitchIds: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.VSwitchIds?
+
+                    public var vpcId: ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.VpcId?
 
                     public override init() {
                         super.init()
@@ -23116,11 +23492,19 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
 
                     public override func validate() throws -> Void {
                         try self.body?.validate()
+                        try self.instanceEndpoint?.validate()
                         try self.instanceId?.validate()
+                        try self.instancePassword?.validate()
+                        try self.instanceType?.validate()
+                        try self.instanceUsername?.validate()
                         try self.keys?.validate()
+                        try self.network?.validate()
                         try self.properties?.validate()
+                        try self.securityGroupId?.validate()
                         try self.tags?.validate()
                         try self.topic?.validate()
+                        try self.vSwitchIds?.validate()
+                        try self.vpcId?.validate()
                     }
 
                     public override func toMap() -> [String : Any] {
@@ -23128,20 +23512,44 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                         if self.body != nil {
                             map["Body"] = self.body?.toMap()
                         }
+                        if self.instanceEndpoint != nil {
+                            map["InstanceEndpoint"] = self.instanceEndpoint?.toMap()
+                        }
                         if self.instanceId != nil {
                             map["InstanceId"] = self.instanceId?.toMap()
+                        }
+                        if self.instancePassword != nil {
+                            map["InstancePassword"] = self.instancePassword?.toMap()
+                        }
+                        if self.instanceType != nil {
+                            map["InstanceType"] = self.instanceType?.toMap()
+                        }
+                        if self.instanceUsername != nil {
+                            map["InstanceUsername"] = self.instanceUsername?.toMap()
                         }
                         if self.keys != nil {
                             map["Keys"] = self.keys?.toMap()
                         }
+                        if self.network != nil {
+                            map["Network"] = self.network?.toMap()
+                        }
                         if self.properties != nil {
                             map["Properties"] = self.properties?.toMap()
+                        }
+                        if self.securityGroupId != nil {
+                            map["SecurityGroupId"] = self.securityGroupId?.toMap()
                         }
                         if self.tags != nil {
                             map["Tags"] = self.tags?.toMap()
                         }
                         if self.topic != nil {
                             map["Topic"] = self.topic?.toMap()
+                        }
+                        if self.vSwitchIds != nil {
+                            map["VSwitchIds"] = self.vSwitchIds?.toMap()
+                        }
+                        if self.vpcId != nil {
+                            map["VpcId"] = self.vpcId?.toMap()
                         }
                         return map
                     }
@@ -23152,20 +23560,50 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                             model.fromMap(dict["Body"] as! [String: Any])
                             self.body = model
                         }
+                        if dict.keys.contains("InstanceEndpoint") {
+                            var model = ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.InstanceEndpoint()
+                            model.fromMap(dict["InstanceEndpoint"] as! [String: Any])
+                            self.instanceEndpoint = model
+                        }
                         if dict.keys.contains("InstanceId") {
                             var model = ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.InstanceId()
                             model.fromMap(dict["InstanceId"] as! [String: Any])
                             self.instanceId = model
+                        }
+                        if dict.keys.contains("InstancePassword") {
+                            var model = ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.InstancePassword()
+                            model.fromMap(dict["InstancePassword"] as! [String: Any])
+                            self.instancePassword = model
+                        }
+                        if dict.keys.contains("InstanceType") {
+                            var model = ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.InstanceType()
+                            model.fromMap(dict["InstanceType"] as! [String: Any])
+                            self.instanceType = model
+                        }
+                        if dict.keys.contains("InstanceUsername") {
+                            var model = ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.InstanceUsername()
+                            model.fromMap(dict["InstanceUsername"] as! [String: Any])
+                            self.instanceUsername = model
                         }
                         if dict.keys.contains("Keys") {
                             var model = ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.Keys()
                             model.fromMap(dict["Keys"] as! [String: Any])
                             self.keys = model
                         }
+                        if dict.keys.contains("Network") {
+                            var model = ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.Network()
+                            model.fromMap(dict["Network"] as! [String: Any])
+                            self.network = model
+                        }
                         if dict.keys.contains("Properties") {
                             var model = ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.Properties()
                             model.fromMap(dict["Properties"] as! [String: Any])
                             self.properties = model
+                        }
+                        if dict.keys.contains("SecurityGroupId") {
+                            var model = ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.SecurityGroupId()
+                            model.fromMap(dict["SecurityGroupId"] as! [String: Any])
+                            self.securityGroupId = model
                         }
                         if dict.keys.contains("Tags") {
                             var model = ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.Tags()
@@ -23176,6 +23614,16 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                             var model = ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.Topic()
                             model.fromMap(dict["Topic"] as! [String: Any])
                             self.topic = model
+                        }
+                        if dict.keys.contains("VSwitchIds") {
+                            var model = ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.VSwitchIds()
+                            model.fromMap(dict["VSwitchIds"] as! [String: Any])
+                            self.vSwitchIds = model
+                        }
+                        if dict.keys.contains("VpcId") {
+                            var model = ListEventStreamingsResponseBody.Data.EventStreamings.Sink.SinkRocketMQParameters.VpcId()
+                            model.fromMap(dict["VpcId"] as! [String: Any])
+                            self.vpcId = model
                         }
                     }
                 }
@@ -34150,7 +34598,187 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                     }
                 }
             }
+            public class InstanceEndpoint : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
             public class InstanceId : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public class InstancePassword : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public class InstanceType : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public class InstanceUsername : Tea.TeaModel {
                 public var form: String?
 
                 public var template: String?
@@ -34240,7 +34868,97 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                     }
                 }
             }
+            public class Network : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
             public class Properties : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public class SecurityGroupId : Tea.TeaModel {
                 public var form: String?
 
                 public var template: String?
@@ -34375,17 +35093,123 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                     }
                 }
             }
+            public class VSwitchIds : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public class VpcId : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
             public var body: UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.Body?
+
+            public var instanceEndpoint: UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.InstanceEndpoint?
 
             public var instanceId: UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.InstanceId?
 
+            public var instancePassword: UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.InstancePassword?
+
+            public var instanceType: UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.InstanceType?
+
+            public var instanceUsername: UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.InstanceUsername?
+
             public var keys: UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.Keys?
 
+            public var network: UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.Network?
+
             public var properties: UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.Properties?
+
+            public var securityGroupId: UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.SecurityGroupId?
 
             public var tags: UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.Tags?
 
             public var topic: UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.Topic?
+
+            public var vSwitchIds: UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.VSwitchIds?
+
+            public var vpcId: UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.VpcId?
 
             public override init() {
                 super.init()
@@ -34398,11 +35222,19 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.body?.validate()
+                try self.instanceEndpoint?.validate()
                 try self.instanceId?.validate()
+                try self.instancePassword?.validate()
+                try self.instanceType?.validate()
+                try self.instanceUsername?.validate()
                 try self.keys?.validate()
+                try self.network?.validate()
                 try self.properties?.validate()
+                try self.securityGroupId?.validate()
                 try self.tags?.validate()
                 try self.topic?.validate()
+                try self.vSwitchIds?.validate()
+                try self.vpcId?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -34410,20 +35242,44 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 if self.body != nil {
                     map["Body"] = self.body?.toMap()
                 }
+                if self.instanceEndpoint != nil {
+                    map["InstanceEndpoint"] = self.instanceEndpoint?.toMap()
+                }
                 if self.instanceId != nil {
                     map["InstanceId"] = self.instanceId?.toMap()
+                }
+                if self.instancePassword != nil {
+                    map["InstancePassword"] = self.instancePassword?.toMap()
+                }
+                if self.instanceType != nil {
+                    map["InstanceType"] = self.instanceType?.toMap()
+                }
+                if self.instanceUsername != nil {
+                    map["InstanceUsername"] = self.instanceUsername?.toMap()
                 }
                 if self.keys != nil {
                     map["Keys"] = self.keys?.toMap()
                 }
+                if self.network != nil {
+                    map["Network"] = self.network?.toMap()
+                }
                 if self.properties != nil {
                     map["Properties"] = self.properties?.toMap()
+                }
+                if self.securityGroupId != nil {
+                    map["SecurityGroupId"] = self.securityGroupId?.toMap()
                 }
                 if self.tags != nil {
                     map["Tags"] = self.tags?.toMap()
                 }
                 if self.topic != nil {
                     map["Topic"] = self.topic?.toMap()
+                }
+                if self.vSwitchIds != nil {
+                    map["VSwitchIds"] = self.vSwitchIds?.toMap()
+                }
+                if self.vpcId != nil {
+                    map["VpcId"] = self.vpcId?.toMap()
                 }
                 return map
             }
@@ -34434,20 +35290,50 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                     model.fromMap(dict["Body"] as! [String: Any])
                     self.body = model
                 }
+                if dict.keys.contains("InstanceEndpoint") {
+                    var model = UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.InstanceEndpoint()
+                    model.fromMap(dict["InstanceEndpoint"] as! [String: Any])
+                    self.instanceEndpoint = model
+                }
                 if dict.keys.contains("InstanceId") {
                     var model = UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.InstanceId()
                     model.fromMap(dict["InstanceId"] as! [String: Any])
                     self.instanceId = model
+                }
+                if dict.keys.contains("InstancePassword") {
+                    var model = UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.InstancePassword()
+                    model.fromMap(dict["InstancePassword"] as! [String: Any])
+                    self.instancePassword = model
+                }
+                if dict.keys.contains("InstanceType") {
+                    var model = UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.InstanceType()
+                    model.fromMap(dict["InstanceType"] as! [String: Any])
+                    self.instanceType = model
+                }
+                if dict.keys.contains("InstanceUsername") {
+                    var model = UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.InstanceUsername()
+                    model.fromMap(dict["InstanceUsername"] as! [String: Any])
+                    self.instanceUsername = model
                 }
                 if dict.keys.contains("Keys") {
                     var model = UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.Keys()
                     model.fromMap(dict["Keys"] as! [String: Any])
                     self.keys = model
                 }
+                if dict.keys.contains("Network") {
+                    var model = UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.Network()
+                    model.fromMap(dict["Network"] as! [String: Any])
+                    self.network = model
+                }
                 if dict.keys.contains("Properties") {
                     var model = UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.Properties()
                     model.fromMap(dict["Properties"] as! [String: Any])
                     self.properties = model
+                }
+                if dict.keys.contains("SecurityGroupId") {
+                    var model = UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.SecurityGroupId()
+                    model.fromMap(dict["SecurityGroupId"] as! [String: Any])
+                    self.securityGroupId = model
                 }
                 if dict.keys.contains("Tags") {
                     var model = UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.Tags()
@@ -34458,6 +35344,16 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                     var model = UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.Topic()
                     model.fromMap(dict["Topic"] as! [String: Any])
                     self.topic = model
+                }
+                if dict.keys.contains("VSwitchIds") {
+                    var model = UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.VSwitchIds()
+                    model.fromMap(dict["VSwitchIds"] as! [String: Any])
+                    self.vSwitchIds = model
+                }
+                if dict.keys.contains("VpcId") {
+                    var model = UpdateEventStreamingRequest.Sink.SinkRocketMQParameters.VpcId()
+                    model.fromMap(dict["VpcId"] as! [String: Any])
+                    self.vpcId = model
                 }
             }
         }
