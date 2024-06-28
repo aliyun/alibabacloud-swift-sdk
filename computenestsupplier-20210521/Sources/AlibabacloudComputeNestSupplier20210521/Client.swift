@@ -771,6 +771,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.fileName)) {
             query["FileName"] = request.fileName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.visibility)) {
+            query["Visibility"] = request.visibility ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])

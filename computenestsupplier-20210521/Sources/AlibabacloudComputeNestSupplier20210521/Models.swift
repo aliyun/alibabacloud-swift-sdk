@@ -6082,6 +6082,8 @@ public class GetServiceTemplateParameterConstraintsResponse : Tea.TeaModel {
 public class GetUploadCredentialsRequest : Tea.TeaModel {
     public var fileName: String?
 
+    public var visibility: String?
+
     public override init() {
         super.init()
     }
@@ -6099,12 +6101,18 @@ public class GetUploadCredentialsRequest : Tea.TeaModel {
         if self.fileName != nil {
             map["FileName"] = self.fileName!
         }
+        if self.visibility != nil {
+            map["Visibility"] = self.visibility!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("FileName") {
             self.fileName = dict["FileName"] as! String
+        }
+        if dict.keys.contains("Visibility") {
+            self.visibility = dict["Visibility"] as! String
         }
     }
 }
