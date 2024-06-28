@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudVpc20160428` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/vpc-20160428" "5.1.12"
+github "alibabacloud-sdk-swift/vpc-20160428" "5.2.0"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudVpc20160428` into your Xcode project using [Swift Pack
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/vpc-20160428.git", from: "5.1.12")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/vpc-20160428.git", from: "5.2.0")
 ]
 ```
 
