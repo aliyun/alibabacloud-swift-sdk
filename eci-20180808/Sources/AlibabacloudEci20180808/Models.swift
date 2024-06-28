@@ -5295,6 +5295,8 @@ public class DeleteContainerGroupRequest : Tea.TeaModel {
 
     public var containerGroupId: String?
 
+    public var force: Bool?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -5325,6 +5327,9 @@ public class DeleteContainerGroupRequest : Tea.TeaModel {
         if self.containerGroupId != nil {
             map["ContainerGroupId"] = self.containerGroupId!
         }
+        if self.force != nil {
+            map["Force"] = self.force!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -5349,6 +5354,9 @@ public class DeleteContainerGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ContainerGroupId") {
             self.containerGroupId = dict["ContainerGroupId"] as! String
+        }
+        if dict.keys.contains("Force") {
+            self.force = dict["Force"] as! Bool
         }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
