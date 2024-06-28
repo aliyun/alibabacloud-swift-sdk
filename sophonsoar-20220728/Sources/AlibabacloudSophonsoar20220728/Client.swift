@@ -115,6 +115,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.lang)) {
             body["Lang"] = request.lang ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.taskflowType)) {
+            body["TaskflowType"] = request.taskflowType ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
