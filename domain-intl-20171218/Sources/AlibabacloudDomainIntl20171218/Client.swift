@@ -904,6 +904,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func queryDomainListWithOptions(_ request: QueryDomainListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryDomainListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ccompany)) {
+            query["Ccompany"] = request.ccompany ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.domainName)) {
             query["DomainName"] = request.domainName ?? "";
         }
