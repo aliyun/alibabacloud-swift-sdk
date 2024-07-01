@@ -523,6 +523,8 @@ public class CreateServiceInstanceRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceAutoPay: Bool?
+
     public var resourceGroupId: String?
 
     public var serviceId: String?
@@ -584,6 +586,9 @@ public class CreateServiceInstanceRequest : Tea.TeaModel {
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.resourceAutoPay != nil {
+            map["ResourceAutoPay"] = self.resourceAutoPay!
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
@@ -650,6 +655,9 @@ public class CreateServiceInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceAutoPay") {
+            self.resourceAutoPay = dict["ResourceAutoPay"] as! Bool
         }
         if dict.keys.contains("ResourceGroupId") {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
@@ -858,6 +866,8 @@ public class CreateServiceInstanceShrinkRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceAutoPay: Bool?
+
     public var resourceGroupId: String?
 
     public var serviceId: String?
@@ -919,6 +929,9 @@ public class CreateServiceInstanceShrinkRequest : Tea.TeaModel {
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.resourceAutoPay != nil {
+            map["ResourceAutoPay"] = self.resourceAutoPay!
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
@@ -985,6 +998,9 @@ public class CreateServiceInstanceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceAutoPay") {
+            self.resourceAutoPay = dict["ResourceAutoPay"] as! Bool
         }
         if dict.keys.contains("ResourceGroupId") {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
