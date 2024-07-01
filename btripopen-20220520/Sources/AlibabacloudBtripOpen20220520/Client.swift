@@ -57,6 +57,171 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addDepartmentWithOptions(_ tmpReq: AddDepartmentRequest, _ headers: AddDepartmentHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddDepartmentResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: AddDepartmentShrinkRequest = AddDepartmentShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.managerEmployeeIdList)) {
+            request.managerEmployeeIdListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.managerEmployeeIdList, "manager_employee_id_list", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deptName)) {
+            body["dept_name"] = request.deptName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.managerEmployeeIdListShrink)) {
+            body["manager_employee_id_list"] = request.managerEmployeeIdListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outDeptId)) {
+            body["out_dept_id"] = request.outDeptId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outDeptPid)) {
+            body["out_dept_pid"] = request.outDeptPid ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddDepartment",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/department/v2/add",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddDepartmentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addDepartment(_ request: AddDepartmentRequest) async throws -> AddDepartmentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: AddDepartmentHeaders = AddDepartmentHeaders([:])
+        return try await addDepartmentWithOptions(request as! AddDepartmentRequest, headers as! AddDepartmentHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addEmployeeWithOptions(_ tmpReq: AddEmployeeRequest, _ headers: AddEmployeeHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddEmployeeResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: AddEmployeeShrinkRequest = AddEmployeeShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.baseCityCodeList)) {
+            request.baseCityCodeListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.baseCityCodeList, "base_city_code_list", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.certList)) {
+            request.certListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.certList, "cert_list", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.customRoleCodeList)) {
+            request.customRoleCodeListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.customRoleCodeList, "custom_role_code_list", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.outDeptIdList)) {
+            request.outDeptIdListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.outDeptIdList, "out_dept_id_list", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.avatar)) {
+            body["avatar"] = request.avatar ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.baseCityCodeListShrink)) {
+            body["base_city_code_list"] = request.baseCityCodeListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.birthday)) {
+            body["birthday"] = request.birthday ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certListShrink)) {
+            body["cert_list"] = request.certListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customRoleCodeListShrink)) {
+            body["custom_role_code_list"] = request.customRoleCodeListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.email)) {
+            body["email"] = request.email ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.gender)) {
+            body["gender"] = request.gender ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isAdmin)) {
+            body["is_admin"] = request.isAdmin!;
+        }
+        if (!TeaUtils.Client.isUnset(request.isBoss)) {
+            body["is_boss"] = request.isBoss!;
+        }
+        if (!TeaUtils.Client.isUnset(request.isDeptLeader)) {
+            body["is_dept_leader"] = request.isDeptLeader!;
+        }
+        if (!TeaUtils.Client.isUnset(request.jobNo)) {
+            body["job_no"] = request.jobNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.managerUserId)) {
+            body["manager_user_id"] = request.managerUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outDeptIdListShrink)) {
+            body["out_dept_id_list"] = request.outDeptIdListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.phone)) {
+            body["phone"] = request.phone ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.positionLevel)) {
+            body["position_level"] = request.positionLevel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.realName)) {
+            body["real_name"] = request.realName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.realNameEn)) {
+            body["real_name_en"] = request.realNameEn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.unionId)) {
+            body["union_id"] = request.unionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            body["user_id"] = request.userId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userNick)) {
+            body["user_nick"] = request.userNick ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddEmployee",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/employee/v2/add",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddEmployeeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addEmployee(_ request: AddEmployeeRequest) async throws -> AddEmployeeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: AddEmployeeHeaders = AddEmployeeHeaders([:])
+        return try await addEmployeeWithOptions(request as! AddEmployeeRequest, headers as! AddEmployeeHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func addEmployeesToCustomRoleWithOptions(_ tmpReq: AddEmployeesToCustomRoleRequest, _ headers: AddEmployeesToCustomRoleHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddEmployeesToCustomRoleResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: AddEmployeesToCustomRoleShrinkRequest = AddEmployeesToCustomRoleShrinkRequest([:])
@@ -2134,6 +2299,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDepartmentWithOptions(_ request: DeleteDepartmentRequest, _ headers: DeleteDepartmentHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDepartmentResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.outDeptId)) {
+            body["out_dept_id"] = request.outDeptId ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteDepartment",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/department/v2/delete",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteDepartmentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDepartment(_ request: DeleteDepartmentRequest) async throws -> DeleteDepartmentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: DeleteDepartmentHeaders = DeleteDepartmentHeaders([:])
+        return try await deleteDepartmentWithOptions(request as! DeleteDepartmentRequest, headers as! DeleteDepartmentHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteEmployeesFromCustomRoleWithOptions(_ tmpReq: DeleteEmployeesFromCustomRoleRequest, _ headers: DeleteEmployeesFromCustomRoleHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteEmployeesFromCustomRoleResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: DeleteEmployeesFromCustomRoleShrinkRequest = DeleteEmployeesFromCustomRoleShrinkRequest([:])
@@ -2540,6 +2745,166 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: ExceedApplySyncHeaders = ExceedApplySyncHeaders([:])
         return try await exceedApplySyncWithOptions(request as! ExceedApplySyncRequest, headers as! ExceedApplySyncHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func externalUserAddWithOptions(_ tmpReq: ExternalUserAddRequest, _ headers: ExternalUserAddHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ExternalUserAddResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ExternalUserAddShrinkRequest = ExternalUserAddShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.certRequestList)) {
+            request.certRequestListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.certRequestList, "cert_request_list", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.birthday)) {
+            body["birthday"] = request.birthday ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certRequestListShrink)) {
+            body["cert_request_list"] = request.certRequestListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.email)) {
+            body["email"] = request.email ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.externalUserId)) {
+            body["external_user_id"] = request.externalUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.phone)) {
+            body["phone"] = request.phone ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.realName)) {
+            body["real_name"] = request.realName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.realNameEn)) {
+            body["real_name_en"] = request.realNameEn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userType)) {
+            body["user_type"] = request.userType!;
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ExternalUserAdd",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/user/v1/externalUsers",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ExternalUserAddResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func externalUserAdd(_ request: ExternalUserAddRequest) async throws -> ExternalUserAddResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: ExternalUserAddHeaders = ExternalUserAddHeaders([:])
+        return try await externalUserAddWithOptions(request as! ExternalUserAddRequest, headers as! ExternalUserAddHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func externalUserDeleteWithOptions(_ externalUserId: String, _ headers: ExternalUserDeleteHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ExternalUserDeleteResponse {
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ExternalUserDelete",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/user/v1/externalUsers/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(externalUserId)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ExternalUserDeleteResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func externalUserDelete(_ externalUserId: String) async throws -> ExternalUserDeleteResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: ExternalUserDeleteHeaders = ExternalUserDeleteHeaders([:])
+        return try await externalUserDeleteWithOptions(externalUserId as! String, headers as! ExternalUserDeleteHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func externalUserUpdateWithOptions(_ externalUserId: String, _ tmpReq: ExternalUserUpdateRequest, _ headers: ExternalUserUpdateHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ExternalUserUpdateResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ExternalUserUpdateShrinkRequest = ExternalUserUpdateShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.certRequestList)) {
+            request.certRequestListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.certRequestList, "cert_request_list", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.birthday)) {
+            body["birthday"] = request.birthday ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certRequestListShrink)) {
+            body["cert_request_list"] = request.certRequestListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.email)) {
+            body["email"] = request.email ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.phone)) {
+            body["phone"] = request.phone ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.realName)) {
+            body["real_name"] = request.realName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.realNameEn)) {
+            body["real_name_en"] = request.realNameEn ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ExternalUserUpdate",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/user/v1/externalUsers/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(externalUserId)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ExternalUserUpdateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func externalUserUpdate(_ externalUserId: String, _ request: ExternalUserUpdateRequest) async throws -> ExternalUserUpdateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: ExternalUserUpdateHeaders = ExternalUserUpdateHeaders([:])
+        return try await externalUserUpdateWithOptions(externalUserId as! String, request as! ExternalUserUpdateRequest, headers as! ExternalUserUpdateHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5650,6 +6015,61 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: HotelStaticInfoHeaders = HotelStaticInfoHeaders([:])
         return try await hotelStaticInfoWithOptions(request as! HotelStaticInfoRequest, headers as! HotelStaticInfoHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func hotelSuggestWithOptions(_ request: HotelSuggestRequest, _ headers: HotelSuggestHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> HotelSuggestResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.btripUserId)) {
+            query["btrip_user_id"] = request.btripUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.checkIn)) {
+            query["check_in"] = request.checkIn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.checkOut)) {
+            query["check_out"] = request.checkOut ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cityCode)) {
+            query["city_code"] = request.cityCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.keyword)) {
+            query["keyword"] = request.keyword ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.searchType)) {
+            query["search_type"] = request.searchType!;
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripSoCorpToken)) {
+            realHeaders["x-acs-btrip-so-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripSoCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "HotelSuggest",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/dtb-hotel/v1/suggest-infos",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(HotelSuggestResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func hotelSuggest(_ request: HotelSuggestRequest) async throws -> HotelSuggestResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: HotelSuggestHeaders = HotelSuggestHeaders([:])
+        return try await hotelSuggestWithOptions(request as! HotelSuggestRequest, headers as! HotelSuggestHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -9598,6 +10018,211 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: UpdateCustomRoleHeaders = UpdateCustomRoleHeaders([:])
         return try await updateCustomRoleWithOptions(request as! UpdateCustomRoleRequest, headers as! UpdateCustomRoleHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateDepartmentWithOptions(_ tmpReq: UpdateDepartmentRequest, _ headers: UpdateDepartmentHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateDepartmentResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateDepartmentShrinkRequest = UpdateDepartmentShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.managerEmployeeIdList)) {
+            request.managerEmployeeIdListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.managerEmployeeIdList, "manager_employee_id_list", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deptName)) {
+            body["dept_name"] = request.deptName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.managerEmployeeIdListShrink)) {
+            body["manager_employee_id_list"] = request.managerEmployeeIdListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outDeptId)) {
+            body["out_dept_id"] = request.outDeptId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outDeptPid)) {
+            body["out_dept_pid"] = request.outDeptPid ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateDepartment",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/department/v2/update",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateDepartmentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateDepartment(_ request: UpdateDepartmentRequest) async throws -> UpdateDepartmentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: UpdateDepartmentHeaders = UpdateDepartmentHeaders([:])
+        return try await updateDepartmentWithOptions(request as! UpdateDepartmentRequest, headers as! UpdateDepartmentHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateEmployeeWithOptions(_ tmpReq: UpdateEmployeeRequest, _ headers: UpdateEmployeeHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateEmployeeResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateEmployeeShrinkRequest = UpdateEmployeeShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.baseCityCodeList)) {
+            request.baseCityCodeListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.baseCityCodeList, "base_city_code_list", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.certList)) {
+            request.certListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.certList, "cert_list", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.customRoleCodeList)) {
+            request.customRoleCodeListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.customRoleCodeList, "custom_role_code_list", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.outDeptIdList)) {
+            request.outDeptIdListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.outDeptIdList, "out_dept_id_list", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.avatar)) {
+            body["avatar"] = request.avatar ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.baseCityCodeListShrink)) {
+            body["base_city_code_list"] = request.baseCityCodeListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.birthday)) {
+            body["birthday"] = request.birthday ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certListShrink)) {
+            body["cert_list"] = request.certListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customRoleCodeListShrink)) {
+            body["custom_role_code_list"] = request.customRoleCodeListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.email)) {
+            body["email"] = request.email ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.gender)) {
+            body["gender"] = request.gender ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isAdmin)) {
+            body["is_admin"] = request.isAdmin!;
+        }
+        if (!TeaUtils.Client.isUnset(request.isBoss)) {
+            body["is_boss"] = request.isBoss!;
+        }
+        if (!TeaUtils.Client.isUnset(request.isDeptLeader)) {
+            body["is_dept_leader"] = request.isDeptLeader!;
+        }
+        if (!TeaUtils.Client.isUnset(request.jobNo)) {
+            body["job_no"] = request.jobNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.managerUserId)) {
+            body["manager_user_id"] = request.managerUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outDeptIdListShrink)) {
+            body["out_dept_id_list"] = request.outDeptIdListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.phone)) {
+            body["phone"] = request.phone ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.positionLevel)) {
+            body["position_level"] = request.positionLevel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.realName)) {
+            body["real_name"] = request.realName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.realNameEn)) {
+            body["real_name_en"] = request.realNameEn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            body["user_id"] = request.userId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userNick)) {
+            body["user_nick"] = request.userNick ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateEmployee",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/employee/v2/update",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateEmployeeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateEmployee(_ request: UpdateEmployeeRequest) async throws -> UpdateEmployeeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: UpdateEmployeeHeaders = UpdateEmployeeHeaders([:])
+        return try await updateEmployeeWithOptions(request as! UpdateEmployeeRequest, headers as! UpdateEmployeeHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateEmployeeLeaveStatusWithOptions(_ request: UpdateEmployeeLeaveStatusRequest, _ headers: UpdateEmployeeLeaveStatusHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateEmployeeLeaveStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.isLeave)) {
+            body["is_leave"] = request.isLeave!;
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            body["user_id"] = request.userId ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateEmployeeLeaveStatus",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/employee/v2/updateLeaveStatus",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateEmployeeLeaveStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateEmployeeLeaveStatus(_ request: UpdateEmployeeLeaveStatusRequest) async throws -> UpdateEmployeeLeaveStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: UpdateEmployeeLeaveStatusHeaders = UpdateEmployeeLeaveStatusHeaders([:])
+        return try await updateEmployeeLeaveStatusWithOptions(request as! UpdateEmployeeLeaveStatusRequest, headers as! UpdateEmployeeLeaveStatusHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
