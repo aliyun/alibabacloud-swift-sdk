@@ -182,6 +182,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createAndroidInstanceGroupWithOptions(_ request: CreateAndroidInstanceGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAndroidInstanceGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.amount)) {
+            query["Amount"] = request.amount!;
+        }
         if (!TeaUtils.Client.isUnset(request.autoPay)) {
             query["AutoPay"] = request.autoPay!;
         }
@@ -1472,6 +1475,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.androidInstanceIds)) {
             query["AndroidInstanceIds"] = request.androidInstanceIds ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.forceStop)) {
+            query["ForceStop"] = request.forceStop!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -1761,6 +1767,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.androidInstanceIds)) {
             query["AndroidInstanceIds"] = request.androidInstanceIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.forceStop)) {
+            query["ForceStop"] = request.forceStop!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

@@ -697,6 +697,8 @@ public class CheckResourceStockResponse : Tea.TeaModel {
 }
 
 public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
+    public var amount: Int32?
+
     public var autoPay: Bool?
 
     public var autoRenew: Bool?
@@ -737,6 +739,9 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.amount != nil {
+            map["Amount"] = self.amount!
+        }
         if self.autoPay != nil {
             map["AutoPay"] = self.autoPay!
         }
@@ -780,6 +785,9 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Amount") {
+            self.amount = dict["Amount"] as! Int32
+        }
         if dict.keys.contains("AutoPay") {
             self.autoPay = dict["AutoPay"] as! Bool
         }
@@ -2327,6 +2335,8 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
 
         public var disks: [DescribeAndroidInstanceGroupsResponseBody.InstanceGroupModel.Disks]?
 
+        public var errorCode: String?
+
         public var gmtCreate: String?
 
         public var gmtExpired: String?
@@ -2399,6 +2409,9 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Disks"] = tmp
+            }
+            if self.errorCode != nil {
+                map["ErrorCode"] = self.errorCode!
             }
             if self.gmtCreate != nil {
                 map["GmtCreate"] = self.gmtCreate!
@@ -2486,6 +2499,9 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.disks = tmp
+            }
+            if dict.keys.contains("ErrorCode") {
+                self.errorCode = dict["ErrorCode"] as! String
             }
             if dict.keys.contains("GmtCreate") {
                 self.gmtCreate = dict["GmtCreate"] as! String
@@ -6795,6 +6811,8 @@ public class ModifyPolicyGroupResponse : Tea.TeaModel {
 public class RebootAndroidInstancesInGroupRequest : Tea.TeaModel {
     public var androidInstanceIds: [String]?
 
+    public var forceStop: Bool?
+
     public override init() {
         super.init()
     }
@@ -6812,12 +6830,18 @@ public class RebootAndroidInstancesInGroupRequest : Tea.TeaModel {
         if self.androidInstanceIds != nil {
             map["AndroidInstanceIds"] = self.androidInstanceIds!
         }
+        if self.forceStop != nil {
+            map["ForceStop"] = self.forceStop!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AndroidInstanceIds") {
             self.androidInstanceIds = dict["AndroidInstanceIds"] as! [String]
+        }
+        if dict.keys.contains("ForceStop") {
+            self.forceStop = dict["ForceStop"] as! Bool
         }
     }
 }
@@ -7867,6 +7891,8 @@ public class StartAndroidInstanceResponse : Tea.TeaModel {
 public class StopAndroidInstanceRequest : Tea.TeaModel {
     public var androidInstanceIds: [String]?
 
+    public var forceStop: Bool?
+
     public override init() {
         super.init()
     }
@@ -7884,12 +7910,18 @@ public class StopAndroidInstanceRequest : Tea.TeaModel {
         if self.androidInstanceIds != nil {
             map["AndroidInstanceIds"] = self.androidInstanceIds!
         }
+        if self.forceStop != nil {
+            map["ForceStop"] = self.forceStop!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AndroidInstanceIds") {
             self.androidInstanceIds = dict["AndroidInstanceIds"] as! [String]
+        }
+        if dict.keys.contains("ForceStop") {
+            self.forceStop = dict["ForceStop"] as! Bool
         }
     }
 }
