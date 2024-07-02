@@ -5095,6 +5095,8 @@ public class InitFaceVerifyRequest : Tea.TeaModel {
 
     public var validityDate: String?
 
+    public var videoEvidence: String?
+
     public var voluntaryCustomizedContent: String?
 
     public override init() {
@@ -5210,6 +5212,9 @@ public class InitFaceVerifyRequest : Tea.TeaModel {
         if self.validityDate != nil {
             map["ValidityDate"] = self.validityDate!
         }
+        if self.videoEvidence != nil {
+            map["VideoEvidence"] = self.videoEvidence!
+        }
         if self.voluntaryCustomizedContent != nil {
             map["VoluntaryCustomizedContent"] = self.voluntaryCustomizedContent!
         }
@@ -5315,6 +5320,9 @@ public class InitFaceVerifyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ValidityDate") {
             self.validityDate = dict["ValidityDate"] as! String
+        }
+        if dict.keys.contains("VideoEvidence") {
+            self.videoEvidence = dict["VideoEvidence"] as! String
         }
         if dict.keys.contains("VoluntaryCustomizedContent") {
             self.voluntaryCustomizedContent = dict["VoluntaryCustomizedContent"] as! String

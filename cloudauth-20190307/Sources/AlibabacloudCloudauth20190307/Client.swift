@@ -1086,6 +1086,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.validityDate)) {
             query["ValidityDate"] = request.validityDate ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.videoEvidence)) {
+            query["VideoEvidence"] = request.videoEvidence ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.voluntaryCustomizedContent)) {
             query["VoluntaryCustomizedContent"] = request.voluntaryCustomizedContent ?? "";
         }
