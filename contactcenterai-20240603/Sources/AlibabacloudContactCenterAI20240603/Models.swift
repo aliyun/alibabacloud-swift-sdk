@@ -100,49 +100,49 @@ public class RunCompletionRequest : Tea.TeaModel {
             }
         }
     }
-    public class Dimensions : Tea.TeaModel {
-        public var desc: String?
-
-        public var name: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.desc != nil {
-                map["Desc"] = self.desc!
-            }
-            if self.name != nil {
-                map["Name"] = self.name!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Desc") {
-                self.desc = dict["Desc"] as! String
-            }
-            if dict.keys.contains("Name") {
-                self.name = dict["Name"] as! String
-            }
-        }
-    }
     public class Fields : Tea.TeaModel {
+        public class EnumValues : Tea.TeaModel {
+            public var desc: String?
+
+            public var enumValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.desc != nil {
+                    map["Desc"] = self.desc!
+                }
+                if self.enumValue != nil {
+                    map["EnumValue"] = self.enumValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Desc") {
+                    self.desc = dict["Desc"] as! String
+                }
+                if dict.keys.contains("EnumValue") {
+                    self.enumValue = dict["EnumValue"] as! String
+                }
+            }
+        }
         public var code: String?
 
         public var desc: String?
 
-        public var enums: [String]?
+        public var enumValues: [RunCompletionRequest.Fields.EnumValues]?
 
         public var name: String?
 
@@ -166,8 +166,12 @@ public class RunCompletionRequest : Tea.TeaModel {
             if self.desc != nil {
                 map["Desc"] = self.desc!
             }
-            if self.enums != nil {
-                map["Enums"] = self.enums!
+            if self.enumValues != nil {
+                var tmp : [Any] = []
+                for k in self.enumValues! {
+                    tmp.append(k.toMap())
+                }
+                map["EnumValues"] = tmp
             }
             if self.name != nil {
                 map["Name"] = self.name!
@@ -182,21 +186,123 @@ public class RunCompletionRequest : Tea.TeaModel {
             if dict.keys.contains("Desc") {
                 self.desc = dict["Desc"] as! String
             }
-            if dict.keys.contains("Enums") {
-                self.enums = dict["Enums"] as! [String]
+            if dict.keys.contains("EnumValues") {
+                var tmp : [RunCompletionRequest.Fields.EnumValues] = []
+                for v in dict["EnumValues"] as! [Any] {
+                    var model = RunCompletionRequest.Fields.EnumValues()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.enumValues = tmp
             }
             if dict.keys.contains("Name") {
                 self.name = dict["Name"] as! String
             }
         }
     }
-    public var dialogue: RunCompletionRequest.Dialogue?
+    public class ServiceInspection : Tea.TeaModel {
+        public class InspectionContents : Tea.TeaModel {
+            public var content: String?
 
-    public var dimensions: [RunCompletionRequest.Dimensions]?
+            public var title: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.content != nil {
+                    map["Content"] = self.content!
+                }
+                if self.title != nil {
+                    map["Title"] = self.title!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Content") {
+                    self.content = dict["Content"] as! String
+                }
+                if dict.keys.contains("Title") {
+                    self.title = dict["Title"] as! String
+                }
+            }
+        }
+        public var inspectionContents: [RunCompletionRequest.ServiceInspection.InspectionContents]?
+
+        public var inspectionIntroduction: String?
+
+        public var sceneIntroduction: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.inspectionContents != nil {
+                var tmp : [Any] = []
+                for k in self.inspectionContents! {
+                    tmp.append(k.toMap())
+                }
+                map["InspectionContents"] = tmp
+            }
+            if self.inspectionIntroduction != nil {
+                map["InspectionIntroduction"] = self.inspectionIntroduction!
+            }
+            if self.sceneIntroduction != nil {
+                map["SceneIntroduction"] = self.sceneIntroduction!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("InspectionContents") {
+                var tmp : [RunCompletionRequest.ServiceInspection.InspectionContents] = []
+                for v in dict["InspectionContents"] as! [Any] {
+                    var model = RunCompletionRequest.ServiceInspection.InspectionContents()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.inspectionContents = tmp
+            }
+            if dict.keys.contains("InspectionIntroduction") {
+                self.inspectionIntroduction = dict["InspectionIntroduction"] as! String
+            }
+            if dict.keys.contains("SceneIntroduction") {
+                self.sceneIntroduction = dict["SceneIntroduction"] as! String
+            }
+        }
+    }
+    public var dialogue: RunCompletionRequest.Dialogue?
 
     public var fields: [RunCompletionRequest.Fields]?
 
     public var modelCode: String?
+
+    public var serviceInspection: RunCompletionRequest.ServiceInspection?
 
     public var stream: Bool?
 
@@ -213,19 +319,13 @@ public class RunCompletionRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.dialogue?.validate()
+        try self.serviceInspection?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.dialogue != nil {
             map["Dialogue"] = self.dialogue?.toMap()
-        }
-        if self.dimensions != nil {
-            var tmp : [Any] = []
-            for k in self.dimensions! {
-                tmp.append(k.toMap())
-            }
-            map["Dimensions"] = tmp
         }
         if self.fields != nil {
             var tmp : [Any] = []
@@ -236,6 +336,9 @@ public class RunCompletionRequest : Tea.TeaModel {
         }
         if self.modelCode != nil {
             map["ModelCode"] = self.modelCode!
+        }
+        if self.serviceInspection != nil {
+            map["ServiceInspection"] = self.serviceInspection?.toMap()
         }
         if self.stream != nil {
             map["Stream"] = self.stream!
@@ -252,17 +355,6 @@ public class RunCompletionRequest : Tea.TeaModel {
             model.fromMap(dict["Dialogue"] as! [String: Any])
             self.dialogue = model
         }
-        if dict.keys.contains("Dimensions") {
-            var tmp : [RunCompletionRequest.Dimensions] = []
-            for v in dict["Dimensions"] as! [Any] {
-                var model = RunCompletionRequest.Dimensions()
-                if v != nil {
-                    model.fromMap(v as! [String: Any])
-                }
-                tmp.append(model)
-            }
-            self.dimensions = tmp
-        }
         if dict.keys.contains("Fields") {
             var tmp : [RunCompletionRequest.Fields] = []
             for v in dict["Fields"] as! [Any] {
@@ -276,6 +368,11 @@ public class RunCompletionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ModelCode") {
             self.modelCode = dict["ModelCode"] as! String
+        }
+        if dict.keys.contains("ServiceInspection") {
+            var model = RunCompletionRequest.ServiceInspection()
+            model.fromMap(dict["ServiceInspection"] as! [String: Any])
+            self.serviceInspection = model
         }
         if dict.keys.contains("Stream") {
             self.stream = dict["Stream"] as! Bool
