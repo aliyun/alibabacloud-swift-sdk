@@ -54764,6 +54764,573 @@ public class ListTicketTasksResponse : Tea.TeaModel {
     }
 }
 
+public class ListTicketTemplatesRequest : Tea.TeaModel {
+    public var categoryId: String?
+
+    public var instanceId: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var searchPattern: String?
+
+    public var state: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.categoryId != nil {
+            map["CategoryId"] = self.categoryId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.searchPattern != nil {
+            map["SearchPattern"] = self.searchPattern!
+        }
+        if self.state != nil {
+            map["State"] = self.state!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CategoryId") {
+            self.categoryId = dict["CategoryId"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SearchPattern") {
+            self.searchPattern = dict["SearchPattern"] as! String
+        }
+        if dict.keys.contains("State") {
+            self.state = dict["State"] as! String
+        }
+    }
+}
+
+public class ListTicketTemplatesResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class List : Tea.TeaModel {
+            public class TicketFields : Tea.TeaModel {
+                public var array: Bool?
+
+                public var attribute: String?
+
+                public var createdTime: Int64?
+
+                public var creator: String?
+
+                public var dataType: String?
+
+                public var description_: String?
+
+                public var disabled: Bool?
+
+                public var displayName: String?
+
+                public var displayOrder: Int32?
+
+                public var editorType: String?
+
+                public var maxLength: Int32?
+
+                public var maximum: Double?
+
+                public var minLength: Int32?
+
+                public var minimum: Double?
+
+                public var name: String?
+
+                public var pattern: String?
+
+                public var patternErrorMessage: String?
+
+                public var readOnly: Bool?
+
+                public var required_: Bool?
+
+                public var system: Bool?
+
+                public var updatedTime: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.array != nil {
+                        map["Array"] = self.array!
+                    }
+                    if self.attribute != nil {
+                        map["Attribute"] = self.attribute!
+                    }
+                    if self.createdTime != nil {
+                        map["CreatedTime"] = self.createdTime!
+                    }
+                    if self.creator != nil {
+                        map["Creator"] = self.creator!
+                    }
+                    if self.dataType != nil {
+                        map["DataType"] = self.dataType!
+                    }
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
+                    if self.disabled != nil {
+                        map["Disabled"] = self.disabled!
+                    }
+                    if self.displayName != nil {
+                        map["DisplayName"] = self.displayName!
+                    }
+                    if self.displayOrder != nil {
+                        map["DisplayOrder"] = self.displayOrder!
+                    }
+                    if self.editorType != nil {
+                        map["EditorType"] = self.editorType!
+                    }
+                    if self.maxLength != nil {
+                        map["MaxLength"] = self.maxLength!
+                    }
+                    if self.maximum != nil {
+                        map["Maximum"] = self.maximum!
+                    }
+                    if self.minLength != nil {
+                        map["MinLength"] = self.minLength!
+                    }
+                    if self.minimum != nil {
+                        map["Minimum"] = self.minimum!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.pattern != nil {
+                        map["Pattern"] = self.pattern!
+                    }
+                    if self.patternErrorMessage != nil {
+                        map["PatternErrorMessage"] = self.patternErrorMessage!
+                    }
+                    if self.readOnly != nil {
+                        map["ReadOnly"] = self.readOnly!
+                    }
+                    if self.required_ != nil {
+                        map["Required"] = self.required_!
+                    }
+                    if self.system != nil {
+                        map["System"] = self.system!
+                    }
+                    if self.updatedTime != nil {
+                        map["UpdatedTime"] = self.updatedTime!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Array") {
+                        self.array = dict["Array"] as! Bool
+                    }
+                    if dict.keys.contains("Attribute") {
+                        self.attribute = dict["Attribute"] as! String
+                    }
+                    if dict.keys.contains("CreatedTime") {
+                        self.createdTime = dict["CreatedTime"] as! Int64
+                    }
+                    if dict.keys.contains("Creator") {
+                        self.creator = dict["Creator"] as! String
+                    }
+                    if dict.keys.contains("DataType") {
+                        self.dataType = dict["DataType"] as! String
+                    }
+                    if dict.keys.contains("Description") {
+                        self.description_ = dict["Description"] as! String
+                    }
+                    if dict.keys.contains("Disabled") {
+                        self.disabled = dict["Disabled"] as! Bool
+                    }
+                    if dict.keys.contains("DisplayName") {
+                        self.displayName = dict["DisplayName"] as! String
+                    }
+                    if dict.keys.contains("DisplayOrder") {
+                        self.displayOrder = dict["DisplayOrder"] as! Int32
+                    }
+                    if dict.keys.contains("EditorType") {
+                        self.editorType = dict["EditorType"] as! String
+                    }
+                    if dict.keys.contains("MaxLength") {
+                        self.maxLength = dict["MaxLength"] as! Int32
+                    }
+                    if dict.keys.contains("Maximum") {
+                        self.maximum = dict["Maximum"] as! Double
+                    }
+                    if dict.keys.contains("MinLength") {
+                        self.minLength = dict["MinLength"] as! Int32
+                    }
+                    if dict.keys.contains("Minimum") {
+                        self.minimum = dict["Minimum"] as! Double
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("Pattern") {
+                        self.pattern = dict["Pattern"] as! String
+                    }
+                    if dict.keys.contains("PatternErrorMessage") {
+                        self.patternErrorMessage = dict["PatternErrorMessage"] as! String
+                    }
+                    if dict.keys.contains("ReadOnly") {
+                        self.readOnly = dict["ReadOnly"] as! Bool
+                    }
+                    if dict.keys.contains("Required") {
+                        self.required_ = dict["Required"] as! Bool
+                    }
+                    if dict.keys.contains("System") {
+                        self.system = dict["System"] as! Bool
+                    }
+                    if dict.keys.contains("UpdatedTime") {
+                        self.updatedTime = dict["UpdatedTime"] as! Int64
+                    }
+                }
+            }
+            public var appliedVersion: String?
+
+            public var categoryId: String?
+
+            public var editor: String?
+
+            public var instanceId: String?
+
+            public var latestVersion: String?
+
+            public var name: String?
+
+            public var processDefinition: String?
+
+            public var state: String?
+
+            public var templateId: String?
+
+            public var ticketFields: [ListTicketTemplatesResponseBody.Data.List.TicketFields]?
+
+            public var updatedTime: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.appliedVersion != nil {
+                    map["AppliedVersion"] = self.appliedVersion!
+                }
+                if self.categoryId != nil {
+                    map["CategoryId"] = self.categoryId!
+                }
+                if self.editor != nil {
+                    map["Editor"] = self.editor!
+                }
+                if self.instanceId != nil {
+                    map["InstanceId"] = self.instanceId!
+                }
+                if self.latestVersion != nil {
+                    map["LatestVersion"] = self.latestVersion!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.processDefinition != nil {
+                    map["ProcessDefinition"] = self.processDefinition!
+                }
+                if self.state != nil {
+                    map["State"] = self.state!
+                }
+                if self.templateId != nil {
+                    map["TemplateId"] = self.templateId!
+                }
+                if self.ticketFields != nil {
+                    var tmp : [Any] = []
+                    for k in self.ticketFields! {
+                        tmp.append(k.toMap())
+                    }
+                    map["TicketFields"] = tmp
+                }
+                if self.updatedTime != nil {
+                    map["UpdatedTime"] = self.updatedTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AppliedVersion") {
+                    self.appliedVersion = dict["AppliedVersion"] as! String
+                }
+                if dict.keys.contains("CategoryId") {
+                    self.categoryId = dict["CategoryId"] as! String
+                }
+                if dict.keys.contains("Editor") {
+                    self.editor = dict["Editor"] as! String
+                }
+                if dict.keys.contains("InstanceId") {
+                    self.instanceId = dict["InstanceId"] as! String
+                }
+                if dict.keys.contains("LatestVersion") {
+                    self.latestVersion = dict["LatestVersion"] as! String
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("ProcessDefinition") {
+                    self.processDefinition = dict["ProcessDefinition"] as! String
+                }
+                if dict.keys.contains("State") {
+                    self.state = dict["State"] as! String
+                }
+                if dict.keys.contains("TemplateId") {
+                    self.templateId = dict["TemplateId"] as! String
+                }
+                if dict.keys.contains("TicketFields") {
+                    var tmp : [ListTicketTemplatesResponseBody.Data.List.TicketFields] = []
+                    for v in dict["TicketFields"] as! [Any] {
+                        var model = ListTicketTemplatesResponseBody.Data.List.TicketFields()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.ticketFields = tmp
+                }
+                if dict.keys.contains("UpdatedTime") {
+                    self.updatedTime = dict["UpdatedTime"] as! Int64
+                }
+            }
+        }
+        public var list: [ListTicketTemplatesResponseBody.Data.List]?
+
+        public var pageNumber: Int32?
+
+        public var pageSize: Int32?
+
+        public var totalCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.list != nil {
+                var tmp : [Any] = []
+                for k in self.list! {
+                    tmp.append(k.toMap())
+                }
+                map["List"] = tmp
+            }
+            if self.pageNumber != nil {
+                map["PageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("List") {
+                var tmp : [ListTicketTemplatesResponseBody.Data.List] = []
+                for v in dict["List"] as! [Any] {
+                    var model = ListTicketTemplatesResponseBody.Data.List()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.list = tmp
+            }
+            if dict.keys.contains("PageNumber") {
+                self.pageNumber = dict["PageNumber"] as! Int32
+            }
+            if dict.keys.contains("PageSize") {
+                self.pageSize = dict["PageSize"] as! Int32
+            }
+            if dict.keys.contains("TotalCount") {
+                self.totalCount = dict["TotalCount"] as! Int32
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: ListTicketTemplatesResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var params: [String]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.params != nil {
+            map["Params"] = self.params!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = ListTicketTemplatesResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("Params") {
+            self.params = dict["Params"] as! [String]
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ListTicketTemplatesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListTicketTemplatesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListTicketTemplatesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListTicketsRequest : Tea.TeaModel {
     public var assignee: String?
 
