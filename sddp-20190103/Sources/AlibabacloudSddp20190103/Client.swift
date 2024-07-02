@@ -97,6 +97,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.featureType)) {
             query["FeatureType"] = request.featureType!;
         }
+        if (!TeaUtils.Client.isUnset(request.instantlyScan)) {
+            query["InstantlyScan"] = request.instantlyScan!;
+        }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
         }

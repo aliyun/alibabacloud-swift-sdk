@@ -177,6 +177,8 @@ public class CreateDataLimitRequest : Tea.TeaModel {
 
     public var featureType: Int32?
 
+    public var instantlyScan: Bool?
+
     public var lang: String?
 
     public var logStoreDay: Int32?
@@ -233,6 +235,9 @@ public class CreateDataLimitRequest : Tea.TeaModel {
         }
         if self.featureType != nil {
             map["FeatureType"] = self.featureType!
+        }
+        if self.instantlyScan != nil {
+            map["InstantlyScan"] = self.instantlyScan!
         }
         if self.lang != nil {
             map["Lang"] = self.lang!
@@ -291,6 +296,9 @@ public class CreateDataLimitRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FeatureType") {
             self.featureType = dict["FeatureType"] as! Int32
+        }
+        if dict.keys.contains("InstantlyScan") {
+            self.instantlyScan = dict["InstantlyScan"] as! Bool
         }
         if dict.keys.contains("Lang") {
             self.lang = dict["Lang"] as! String
