@@ -4646,6 +4646,10 @@ public class CreateSampleApiRequest : Tea.TeaModel {
 }
 
 public class CreateSampleApiResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var message: String?
+
     public var requestId: String?
 
     public override init() {
@@ -4662,6 +4666,12 @@ public class CreateSampleApiResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -4669,6 +4679,12 @@ public class CreateSampleApiResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
