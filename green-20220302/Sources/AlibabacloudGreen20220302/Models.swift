@@ -613,6 +613,8 @@ public class DescribeImageModerationResultResponseBody : Tea.TeaModel {
 
         public var result: [DescribeImageModerationResultResponseBody.Data.Result]?
 
+        public var riskLevel: String?
+
         public override init() {
             super.init()
         }
@@ -646,6 +648,9 @@ public class DescribeImageModerationResultResponseBody : Tea.TeaModel {
                 }
                 map["Result"] = tmp
             }
+            if self.riskLevel != nil {
+                map["RiskLevel"] = self.riskLevel!
+            }
             return map
         }
 
@@ -672,6 +677,9 @@ public class DescribeImageModerationResultResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.result = tmp
+            }
+            if dict.keys.contains("RiskLevel") {
+                self.riskLevel = dict["RiskLevel"] as! String
             }
         }
     }
@@ -2779,6 +2787,8 @@ public class ImageModerationResponseBody : Tea.TeaModel {
 
         public var result: [ImageModerationResponseBody.Data.Result]?
 
+        public var riskLevel: String?
+
         public override init() {
             super.init()
         }
@@ -2807,6 +2817,9 @@ public class ImageModerationResponseBody : Tea.TeaModel {
                 }
                 map["Result"] = tmp
             }
+            if self.riskLevel != nil {
+                map["RiskLevel"] = self.riskLevel!
+            }
             return map
         }
 
@@ -2829,6 +2842,9 @@ public class ImageModerationResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.result = tmp
+            }
+            if dict.keys.contains("RiskLevel") {
+                self.riskLevel = dict["RiskLevel"] as! String
             }
         }
     }
@@ -3325,6 +3341,8 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
 
         public var result: [TextModerationPlusResponseBody.Data.Result]?
 
+        public var riskLevel: String?
+
         public var score: Double?
 
         public override init() {
@@ -3355,6 +3373,9 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
                 }
                 map["Result"] = tmp
             }
+            if self.riskLevel != nil {
+                map["RiskLevel"] = self.riskLevel!
+            }
             if self.score != nil {
                 map["Score"] = self.score!
             }
@@ -3383,6 +3404,9 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.result = tmp
+            }
+            if dict.keys.contains("RiskLevel") {
+                self.riskLevel = dict["RiskLevel"] as! String
             }
             if dict.keys.contains("Score") {
                 self.score = dict["Score"] as! Double
