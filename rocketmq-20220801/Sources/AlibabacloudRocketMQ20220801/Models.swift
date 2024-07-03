@@ -479,9 +479,40 @@ public class CreateInstanceRequest : Tea.TeaModel {
             }
         }
         public class VpcInfo : Tea.TeaModel {
+            public class VSwitches : Tea.TeaModel {
+                public var vSwitchId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.vSwitchId != nil {
+                        map["vSwitchId"] = self.vSwitchId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("vSwitchId") {
+                        self.vSwitchId = dict["vSwitchId"] as! String
+                    }
+                }
+            }
             public var securityGroupIds: String?
 
             public var vSwitchId: String?
+
+            public var vSwitches: [CreateInstanceRequest.NetworkInfo.VpcInfo.VSwitches]?
 
             public var vpcId: String?
 
@@ -505,6 +536,13 @@ public class CreateInstanceRequest : Tea.TeaModel {
                 if self.vSwitchId != nil {
                     map["vSwitchId"] = self.vSwitchId!
                 }
+                if self.vSwitches != nil {
+                    var tmp : [Any] = []
+                    for k in self.vSwitches! {
+                        tmp.append(k.toMap())
+                    }
+                    map["vSwitches"] = tmp
+                }
                 if self.vpcId != nil {
                     map["vpcId"] = self.vpcId!
                 }
@@ -517,6 +555,17 @@ public class CreateInstanceRequest : Tea.TeaModel {
                 }
                 if dict.keys.contains("vSwitchId") {
                     self.vSwitchId = dict["vSwitchId"] as! String
+                }
+                if dict.keys.contains("vSwitches") {
+                    var tmp : [CreateInstanceRequest.NetworkInfo.VpcInfo.VSwitches] = []
+                    for v in dict["vSwitches"] as! [Any] {
+                        var model = CreateInstanceRequest.NetworkInfo.VpcInfo.VSwitches()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.vSwitches = tmp
                 }
                 if dict.keys.contains("vpcId") {
                     self.vpcId = dict["vpcId"] as! String
