@@ -18722,6 +18722,8 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
 
         public var passwordInherit: Bool?
 
+        public var passwordSetted: Bool?
+
         public var privatePoolOptions_id: String?
 
         public var privatePoolOptions_matchCriteria: String?
@@ -18922,6 +18924,9 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
             }
             if self.passwordInherit != nil {
                 map["PasswordInherit"] = self.passwordInherit!
+            }
+            if self.passwordSetted != nil {
+                map["PasswordSetted"] = self.passwordSetted!
             }
             if self.privatePoolOptions_id != nil {
                 map["PrivatePoolOptions.Id"] = self.privatePoolOptions_id!
@@ -19170,6 +19175,9 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("PasswordInherit") {
                 self.passwordInherit = dict["PasswordInherit"] as! Bool
+            }
+            if dict.keys.contains("PasswordSetted") {
+                self.passwordSetted = dict["PasswordSetted"] as! Bool
             }
             if dict.keys.contains("PrivatePoolOptions.Id") {
                 self.privatePoolOptions_id = dict["PrivatePoolOptions.Id"] as! String
@@ -30663,6 +30671,8 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var password: String?
+
     public var passwordInherit: Bool?
 
     public var ramRoleName: String?
@@ -30838,6 +30848,9 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
+        }
+        if self.password != nil {
+            map["Password"] = self.password!
         }
         if self.passwordInherit != nil {
             map["PasswordInherit"] = self.passwordInherit!
@@ -31051,6 +31064,9 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OwnerId") {
             self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("Password") {
+            self.password = dict["Password"] as! String
         }
         if dict.keys.contains("PasswordInherit") {
             self.passwordInherit = dict["PasswordInherit"] as! Bool
@@ -31867,6 +31883,8 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var password: String?
+
     public var passwordInherit: Bool?
 
     public var ramRoleName: String?
@@ -32042,6 +32060,9 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
+        }
+        if self.password != nil {
+            map["Password"] = self.password!
         }
         if self.passwordInherit != nil {
             map["PasswordInherit"] = self.passwordInherit!
@@ -32255,6 +32276,9 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OwnerId") {
             self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("Password") {
+            self.password = dict["Password"] as! String
         }
         if dict.keys.contains("PasswordInherit") {
             self.passwordInherit = dict["PasswordInherit"] as! Bool

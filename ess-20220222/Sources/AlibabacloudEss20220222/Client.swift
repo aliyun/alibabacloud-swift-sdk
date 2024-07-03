@@ -4162,6 +4162,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }
+        if (!TeaUtils.Client.isUnset(request.password)) {
+            query["Password"] = request.password ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.passwordInherit)) {
             query["PasswordInherit"] = request.passwordInherit!;
         }
