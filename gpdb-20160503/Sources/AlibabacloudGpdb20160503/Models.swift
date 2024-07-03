@@ -16331,6 +16331,8 @@ public class DescribeDocumentRequest : Tea.TeaModel {
 }
 
 public class DescribeDocumentResponseBody : Tea.TeaModel {
+    public var chunkFileUrl: String?
+
     public var docsCount: Int32?
 
     public var documentLoader: String?
@@ -16345,9 +16347,13 @@ public class DescribeDocumentResponseBody : Tea.TeaModel {
 
     public var fileSize: Int64?
 
+    public var fileUrl: String?
+
     public var fileVersion: Int32?
 
     public var message: String?
+
+    public var plainChunkFileUrl: String?
 
     public var requestId: String?
 
@@ -16371,6 +16377,9 @@ public class DescribeDocumentResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.chunkFileUrl != nil {
+            map["ChunkFileUrl"] = self.chunkFileUrl!
+        }
         if self.docsCount != nil {
             map["DocsCount"] = self.docsCount!
         }
@@ -16392,11 +16401,17 @@ public class DescribeDocumentResponseBody : Tea.TeaModel {
         if self.fileSize != nil {
             map["FileSize"] = self.fileSize!
         }
+        if self.fileUrl != nil {
+            map["FileUrl"] = self.fileUrl!
+        }
         if self.fileVersion != nil {
             map["FileVersion"] = self.fileVersion!
         }
         if self.message != nil {
             map["Message"] = self.message!
+        }
+        if self.plainChunkFileUrl != nil {
+            map["PlainChunkFileUrl"] = self.plainChunkFileUrl!
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -16414,6 +16429,9 @@ public class DescribeDocumentResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ChunkFileUrl") {
+            self.chunkFileUrl = dict["ChunkFileUrl"] as! String
+        }
         if dict.keys.contains("DocsCount") {
             self.docsCount = dict["DocsCount"] as! Int32
         }
@@ -16435,11 +16453,17 @@ public class DescribeDocumentResponseBody : Tea.TeaModel {
         if dict.keys.contains("FileSize") {
             self.fileSize = dict["FileSize"] as! Int64
         }
+        if dict.keys.contains("FileUrl") {
+            self.fileUrl = dict["FileUrl"] as! String
+        }
         if dict.keys.contains("FileVersion") {
             self.fileVersion = dict["FileVersion"] as! Int32
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("PlainChunkFileUrl") {
+            self.plainChunkFileUrl = dict["PlainChunkFileUrl"] as! String
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
