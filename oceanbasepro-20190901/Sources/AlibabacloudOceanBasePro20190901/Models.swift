@@ -16523,7 +16523,7 @@ public class DescribeInstanceTopologyResponseBody : Tea.TeaModel {
 
                 public var nodeId: String?
 
-                public var nodeResource: [DescribeInstanceTopologyResponseBody.InstanceTopology.Zones.Nodes.NodeResource]?
+                public var nodeResource: DescribeInstanceTopologyResponseBody.InstanceTopology.Zones.Nodes.NodeResource?
 
                 public var nodeStatus: String?
 
@@ -16541,6 +16541,7 @@ public class DescribeInstanceTopologyResponseBody : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.nodeResource?.validate()
                 }
 
                 public override func toMap() -> [String : Any] {
@@ -16558,11 +16559,7 @@ public class DescribeInstanceTopologyResponseBody : Tea.TeaModel {
                         map["NodeId"] = self.nodeId!
                     }
                     if self.nodeResource != nil {
-                        var tmp : [Any] = []
-                        for k in self.nodeResource! {
-                            tmp.append(k.toMap())
-                        }
-                        map["NodeResource"] = tmp
+                        map["NodeResource"] = self.nodeResource?.toMap()
                     }
                     if self.nodeStatus != nil {
                         map["NodeStatus"] = self.nodeStatus!
@@ -16590,15 +16587,9 @@ public class DescribeInstanceTopologyResponseBody : Tea.TeaModel {
                         self.nodeId = dict["NodeId"] as! String
                     }
                     if dict.keys.contains("NodeResource") {
-                        var tmp : [DescribeInstanceTopologyResponseBody.InstanceTopology.Zones.Nodes.NodeResource] = []
-                        for v in dict["NodeResource"] as! [Any] {
-                            var model = DescribeInstanceTopologyResponseBody.InstanceTopology.Zones.Nodes.NodeResource()
-                            if v != nil {
-                                model.fromMap(v as! [String: Any])
-                            }
-                            tmp.append(model)
-                        }
-                        self.nodeResource = tmp
+                        var model = DescribeInstanceTopologyResponseBody.InstanceTopology.Zones.Nodes.NodeResource()
+                        model.fromMap(dict["NodeResource"] as! [String: Any])
+                        self.nodeResource = model
                     }
                     if dict.keys.contains("NodeStatus") {
                         self.nodeStatus = dict["NodeStatus"] as! String
