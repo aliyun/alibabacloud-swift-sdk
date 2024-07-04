@@ -22899,6 +22899,10 @@ public class DescribeScheduledTasksRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var recurrenceType: String?
+
+    public var recurrenceValue: String?
+
     public var regionId: String?
 
     public var resourceOwnerAccount: String?
@@ -22912,6 +22916,10 @@ public class DescribeScheduledTasksRequest : Tea.TeaModel {
     public var scheduledTaskIds: [String]?
 
     public var scheduledTaskNames: [String]?
+
+    public var taskEnabled: Bool?
+
+    public var taskName: String?
 
     public override init() {
         super.init()
@@ -22939,6 +22947,12 @@ public class DescribeScheduledTasksRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.recurrenceType != nil {
+            map["RecurrenceType"] = self.recurrenceType!
+        }
+        if self.recurrenceValue != nil {
+            map["RecurrenceValue"] = self.recurrenceValue!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -22960,6 +22974,12 @@ public class DescribeScheduledTasksRequest : Tea.TeaModel {
         if self.scheduledTaskNames != nil {
             map["ScheduledTaskNames"] = self.scheduledTaskNames!
         }
+        if self.taskEnabled != nil {
+            map["TaskEnabled"] = self.taskEnabled!
+        }
+        if self.taskName != nil {
+            map["TaskName"] = self.taskName!
+        }
         return map
     }
 
@@ -22975,6 +22995,12 @@ public class DescribeScheduledTasksRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("RecurrenceType") {
+            self.recurrenceType = dict["RecurrenceType"] as! String
+        }
+        if dict.keys.contains("RecurrenceValue") {
+            self.recurrenceValue = dict["RecurrenceValue"] as! String
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
@@ -22996,6 +23022,12 @@ public class DescribeScheduledTasksRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ScheduledTaskNames") {
             self.scheduledTaskNames = dict["ScheduledTaskNames"] as! [String]
+        }
+        if dict.keys.contains("TaskEnabled") {
+            self.taskEnabled = dict["TaskEnabled"] as! Bool
+        }
+        if dict.keys.contains("TaskName") {
+            self.taskName = dict["TaskName"] as! String
         }
     }
 }
