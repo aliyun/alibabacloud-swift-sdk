@@ -4317,6 +4317,8 @@ public class CreateJobRequest : Tea.TeaModel {
     }
     public var codeSource: CreateJobRequest.CodeSource?
 
+    public var credentialConfig: CredentialConfig?
+
     public var dataSources: [CreateJobRequest.DataSources]?
 
     public var debuggerConfigContent: String?
@@ -4364,6 +4366,7 @@ public class CreateJobRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.codeSource?.validate()
+        try self.credentialConfig?.validate()
         try self.elasticSpec?.validate()
         try self.settings?.validate()
         try self.userVpc?.validate()
@@ -4373,6 +4376,9 @@ public class CreateJobRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.codeSource != nil {
             map["CodeSource"] = self.codeSource?.toMap()
+        }
+        if self.credentialConfig != nil {
+            map["CredentialConfig"] = self.credentialConfig?.toMap()
         }
         if self.dataSources != nil {
             var tmp : [Any] = []
@@ -4444,6 +4450,11 @@ public class CreateJobRequest : Tea.TeaModel {
             var model = CreateJobRequest.CodeSource()
             model.fromMap(dict["CodeSource"] as! [String: Any])
             self.codeSource = model
+        }
+        if dict.keys.contains("CredentialConfig") {
+            var model = CredentialConfig()
+            model.fromMap(dict["CredentialConfig"] as! [String: Any])
+            self.credentialConfig = model
         }
         if dict.keys.contains("DataSources") {
             var tmp : [CreateJobRequest.DataSources] = []

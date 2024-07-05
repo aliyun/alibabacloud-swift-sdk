@@ -82,6 +82,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.codeSource)) {
             body["CodeSource"] = request.codeSource!;
         }
+        if (!TeaUtils.Client.isUnset(request.credentialConfig)) {
+            body["CredentialConfig"] = request.credentialConfig!;
+        }
         if (!TeaUtils.Client.isUnset(request.dataSources)) {
             body["DataSources"] = request.dataSources ?? [];
         }
