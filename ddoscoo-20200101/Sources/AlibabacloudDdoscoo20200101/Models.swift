@@ -7610,6 +7610,8 @@ public class DescribeDDosEventAreaRequest : Tea.TeaModel {
 
     public var ip: String?
 
+    public var range: Int64?
+
     public var startTime: Int64?
 
     public override init() {
@@ -7632,6 +7634,9 @@ public class DescribeDDosEventAreaRequest : Tea.TeaModel {
         if self.ip != nil {
             map["Ip"] = self.ip!
         }
+        if self.range != nil {
+            map["Range"] = self.range!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -7644,6 +7649,9 @@ public class DescribeDDosEventAreaRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Ip") {
             self.ip = dict["Ip"] as! String
+        }
+        if dict.keys.contains("Range") {
+            self.range = dict["Range"] as! Int64
         }
         if dict.keys.contains("StartTime") {
             self.startTime = dict["StartTime"] as! Int64
@@ -7974,6 +7982,8 @@ public class DescribeDDosEventIspRequest : Tea.TeaModel {
 
     public var ip: String?
 
+    public var range: Int64?
+
     public var startTime: Int64?
 
     public override init() {
@@ -7996,6 +8006,9 @@ public class DescribeDDosEventIspRequest : Tea.TeaModel {
         if self.ip != nil {
             map["Ip"] = self.ip!
         }
+        if self.range != nil {
+            map["Range"] = self.range!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -8008,6 +8021,9 @@ public class DescribeDDosEventIspRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Ip") {
             self.ip = dict["Ip"] as! String
+        }
+        if dict.keys.contains("Range") {
+            self.range = dict["Range"] as! Int64
         }
         if dict.keys.contains("StartTime") {
             self.startTime = dict["StartTime"] as! Int64
@@ -8903,6 +8919,204 @@ public class DescribeDefenseRecordsResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DescribeDefenseRecordsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeDestinationPortEventRequest : Tea.TeaModel {
+    public var eventType: String?
+
+    public var ip: String?
+
+    public var range: Int64?
+
+    public var region: String?
+
+    public var startTime: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.eventType != nil {
+            map["EventType"] = self.eventType!
+        }
+        if self.ip != nil {
+            map["Ip"] = self.ip!
+        }
+        if self.range != nil {
+            map["Range"] = self.range!
+        }
+        if self.region != nil {
+            map["Region"] = self.region!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EventType") {
+            self.eventType = dict["EventType"] as! String
+        }
+        if dict.keys.contains("Ip") {
+            self.ip = dict["Ip"] as! String
+        }
+        if dict.keys.contains("Range") {
+            self.range = dict["Range"] as! Int64
+        }
+        if dict.keys.contains("Region") {
+            self.region = dict["Region"] as! String
+        }
+        if dict.keys.contains("StartTime") {
+            self.startTime = dict["StartTime"] as! Int64
+        }
+    }
+}
+
+public class DescribeDestinationPortEventResponseBody : Tea.TeaModel {
+    public class PortList : Tea.TeaModel {
+        public var dstPort: String?
+
+        public var inPkts: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dstPort != nil {
+                map["DstPort"] = self.dstPort!
+            }
+            if self.inPkts != nil {
+                map["InPkts"] = self.inPkts!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DstPort") {
+                self.dstPort = dict["DstPort"] as! String
+            }
+            if dict.keys.contains("InPkts") {
+                self.inPkts = dict["InPkts"] as! Int64
+            }
+        }
+    }
+    public var portList: [DescribeDestinationPortEventResponseBody.PortList]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.portList != nil {
+            var tmp : [Any] = []
+            for k in self.portList! {
+                tmp.append(k.toMap())
+            }
+            map["PortList"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PortList") {
+            var tmp : [DescribeDestinationPortEventResponseBody.PortList] = []
+            for v in dict["PortList"] as! [Any] {
+                var model = DescribeDestinationPortEventResponseBody.PortList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.portList = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeDestinationPortEventResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeDestinationPortEventResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeDestinationPortEventResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
