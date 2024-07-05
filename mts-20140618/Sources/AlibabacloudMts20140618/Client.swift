@@ -535,9 +535,6 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
         }
-        if (!TeaUtils.Client.isUnset(request.roleArn)) {
-            query["RoleArn"] = request.roleArn ?? "";
-        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -580,9 +577,6 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
-        }
-        if (!TeaUtils.Client.isUnset(request.roleArn)) {
-            query["RoleArn"] = request.roleArn ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -1948,49 +1942,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func queryEditingJobListWithOptions(_ request: QueryEditingJobListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryEditingJobListResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.jobIds)) {
-            query["JobIds"] = request.jobIds ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
-            query["OwnerAccount"] = request.ownerAccount ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.ownerId)) {
-            query["OwnerId"] = request.ownerId!;
-        }
-        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
-            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
-            query["ResourceOwnerId"] = request.resourceOwnerId!;
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "QueryEditingJobList",
-            "version": "2014-06-18",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(QueryEditingJobListResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func queryEditingJobList(_ request: QueryEditingJobListRequest) async throws -> QueryEditingJobListResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await queryEditingJobListWithOptions(request as! QueryEditingJobListRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func queryFpDBDeleteJobListWithOptions(_ request: QueryFpDBDeleteJobListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryFpDBDeleteJobListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2080,8 +2031,17 @@ open class Client : AlibabacloudOpenApi.Client {
     public func queryFpShotJobListWithOptions(_ request: QueryFpShotJobListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryFpShotJobListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endOfJobCreatedTimeRange)) {
+            query["EndOfJobCreatedTimeRange"] = request.endOfJobCreatedTimeRange ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.jobIds)) {
             query["JobIds"] = request.jobIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maximumPageSize)) {
+            query["MaximumPageSize"] = request.maximumPageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextPageToken)) {
+            query["NextPageToken"] = request.nextPageToken ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
@@ -2089,11 +2049,20 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }
+        if (!TeaUtils.Client.isUnset(request.pipelineId)) {
+            query["PipelineId"] = request.pipelineId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startOfJobCreatedTimeRange)) {
+            query["StartOfJobCreatedTimeRange"] = request.startOfJobCreatedTimeRange ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.state)) {
+            query["State"] = request.state ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -2261,8 +2230,8 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.endOfJobCreatedTimeRange)) {
             query["EndOfJobCreatedTimeRange"] = request.endOfJobCreatedTimeRange ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.jobId)) {
-            query["JobId"] = request.jobId ?? "";
+        if (!TeaUtils.Client.isUnset(request.jobIds)) {
+            query["JobIds"] = request.jobIds ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.maximumPageSize)) {
             query["MaximumPageSize"] = request.maximumPageSize!;
@@ -2791,40 +2760,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func queryVideoQualityJobWithOptions(_ request: QueryVideoQualityJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryVideoQualityJobResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.jobId)) {
-            query["JobId"] = request.jobId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.userId)) {
-            query["UserId"] = request.userId!;
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "QueryVideoQualityJob",
-            "version": "2014-06-18",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(QueryVideoQualityJobResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func queryVideoQualityJob(_ request: QueryVideoQualityJobRequest) async throws -> QueryVideoQualityJobResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await queryVideoQualityJobWithOptions(request as! QueryVideoQualityJobRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func queryWaterMarkTemplateListWithOptions(_ request: QueryWaterMarkTemplateListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryWaterMarkTemplateListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2969,55 +2904,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func reportFpShotJobResultWithOptions(_ request: ReportFpShotJobResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ReportFpShotJobResultResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.details)) {
-            query["Details"] = request.details ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.jobId)) {
-            query["JobId"] = request.jobId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
-            query["OwnerAccount"] = request.ownerAccount ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.ownerId)) {
-            query["OwnerId"] = request.ownerId!;
-        }
-        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
-            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
-            query["ResourceOwnerId"] = request.resourceOwnerId!;
-        }
-        if (!TeaUtils.Client.isUnset(request.result)) {
-            query["Result"] = request.result ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ReportFpShotJobResult",
-            "version": "2014-06-18",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ReportFpShotJobResultResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func reportFpShotJobResult(_ request: ReportFpShotJobResultRequest) async throws -> ReportFpShotJobResultResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await reportFpShotJobResultWithOptions(request as! ReportFpShotJobResultRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func searchMediaWorkflowWithOptions(_ request: SearchMediaWorkflowRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchMediaWorkflowResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3119,6 +3005,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func searchTemplateWithOptions(_ request: SearchTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchTemplateResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.namePrefix)) {
+            query["NamePrefix"] = request.namePrefix ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
         }
@@ -3266,70 +3155,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitAnalysisJob(_ request: SubmitAnalysisJobRequest) async throws -> SubmitAnalysisJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await submitAnalysisJobWithOptions(request as! SubmitAnalysisJobRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func submitEditingJobsWithOptions(_ request: SubmitEditingJobsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitEditingJobsResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.editingInputs)) {
-            query["EditingInputs"] = request.editingInputs ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.editingJobOssFileRoleArn)) {
-            query["EditingJobOssFileRoleArn"] = request.editingJobOssFileRoleArn ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.editingJobOssFileUid)) {
-            query["EditingJobOssFileUid"] = request.editingJobOssFileUid!;
-        }
-        if (!TeaUtils.Client.isUnset(request.editingJobOutputs)) {
-            query["EditingJobOutputs"] = request.editingJobOutputs ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.editingJobURL)) {
-            query["EditingJobURL"] = request.editingJobURL ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.outputBucket)) {
-            query["OutputBucket"] = request.outputBucket ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.outputLocation)) {
-            query["OutputLocation"] = request.outputLocation ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
-            query["OwnerAccount"] = request.ownerAccount ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.ownerId)) {
-            query["OwnerId"] = request.ownerId!;
-        }
-        if (!TeaUtils.Client.isUnset(request.pipelineId)) {
-            query["PipelineId"] = request.pipelineId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
-            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
-            query["ResourceOwnerId"] = request.resourceOwnerId!;
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "SubmitEditingJobs",
-            "version": "2014-06-18",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(SubmitEditingJobsResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func submitEditingJobs(_ request: SubmitEditingJobsRequest) async throws -> SubmitEditingJobsResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await submitEditingJobsWithOptions(request as! SubmitEditingJobsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3763,6 +3588,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pipelineId)) {
             query["PipelineId"] = request.pipelineId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.priority)) {
+            query["Priority"] = request.priority ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
         }
@@ -3852,64 +3680,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitSnapshotJob(_ request: SubmitSnapshotJobRequest) async throws -> SubmitSnapshotJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await submitSnapshotJobWithOptions(request as! SubmitSnapshotJobRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func submitVideoQualityJobWithOptions(_ request: SubmitVideoQualityJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitVideoQualityJobResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.input)) {
-            query["Input"] = request.input ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.jobParams)) {
-            query["JobParams"] = request.jobParams ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.modelId)) {
-            query["ModelId"] = request.modelId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.notifyUrl)) {
-            query["NotifyUrl"] = request.notifyUrl ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.output)) {
-            query["Output"] = request.output ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.pipelineId)) {
-            query["PipelineId"] = request.pipelineId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.scheduleParams)) {
-            query["ScheduleParams"] = request.scheduleParams ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.sourceType)) {
-            query["SourceType"] = request.sourceType ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.userData)) {
-            query["UserData"] = request.userData ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.userId)) {
-            query["UserId"] = request.userId!;
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "SubmitVideoQualityJob",
-            "version": "2014-06-18",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(SubmitVideoQualityJobResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func submitVideoQualityJob(_ request: SubmitVideoQualityJobRequest) async throws -> SubmitVideoQualityJobResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await submitVideoQualityJobWithOptions(request as! SubmitVideoQualityJobRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4311,6 +4081,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.mediaWorkflowId)) {
             query["MediaWorkflowId"] = request.mediaWorkflowId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
         }
@@ -4325,6 +4098,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.topology)) {
             query["Topology"] = request.topology ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.triggerMode)) {
+            query["TriggerMode"] = request.triggerMode ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -4400,6 +4176,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updatePipelineWithOptions(_ request: UpdatePipelineRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdatePipelineResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.extendConfig)) {
+            query["ExtendConfig"] = request.extendConfig ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
         }
