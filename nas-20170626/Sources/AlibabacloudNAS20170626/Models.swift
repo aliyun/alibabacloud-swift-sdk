@@ -10902,6 +10902,35 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class Options : Tea.TeaModel {
+                public var enableOplock: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.enableOplock != nil {
+                        map["EnableOplock"] = self.enableOplock!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("EnableOplock") {
+                        self.enableOplock = dict["EnableOplock"] as! Bool
+                    }
+                }
+            }
             public class Packages : Tea.TeaModel {
                 public class Package : Tea.TeaModel {
                     public var expiredTime: String?
@@ -11143,6 +11172,8 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
 
             public var mountTargets: DescribeFileSystemsResponseBody.FileSystems.FileSystem.MountTargets?
 
+            public var options: DescribeFileSystemsResponseBody.FileSystems.FileSystem.Options?
+
             public var packages: DescribeFileSystemsResponseBody.FileSystems.FileSystem.Packages?
 
             public var protocolType: String?
@@ -11175,6 +11206,7 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
             public override func validate() throws -> Void {
                 try self.ldap?.validate()
                 try self.mountTargets?.validate()
+                try self.options?.validate()
                 try self.packages?.validate()
                 try self.supportedFeatures?.validate()
                 try self.tags?.validate()
@@ -11229,6 +11261,9 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
                 }
                 if self.mountTargets != nil {
                     map["MountTargets"] = self.mountTargets?.toMap()
+                }
+                if self.options != nil {
+                    map["Options"] = self.options?.toMap()
                 }
                 if self.packages != nil {
                     map["Packages"] = self.packages?.toMap()
@@ -11315,6 +11350,11 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
                     var model = DescribeFileSystemsResponseBody.FileSystems.FileSystem.MountTargets()
                     model.fromMap(dict["MountTargets"] as! [String: Any])
                     self.mountTargets = model
+                }
+                if dict.keys.contains("Options") {
+                    var model = DescribeFileSystemsResponseBody.FileSystems.FileSystem.Options()
+                    model.fromMap(dict["Options"] as! [String: Any])
+                    self.options = model
                 }
                 if dict.keys.contains("Packages") {
                     var model = DescribeFileSystemsResponseBody.FileSystems.FileSystem.Packages()
@@ -18895,9 +18935,89 @@ public class ModifyDataFlowAutoRefreshResponse : Tea.TeaModel {
 }
 
 public class ModifyFileSystemRequest : Tea.TeaModel {
+    public class Options : Tea.TeaModel {
+        public var enableOplock: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enableOplock != nil {
+                map["EnableOplock"] = self.enableOplock!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EnableOplock") {
+                self.enableOplock = dict["EnableOplock"] as! Bool
+            }
+        }
+    }
     public var description_: String?
 
     public var fileSystemId: String?
+
+    public var options: ModifyFileSystemRequest.Options?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.options?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.fileSystemId != nil {
+            map["FileSystemId"] = self.fileSystemId!
+        }
+        if self.options != nil {
+            map["Options"] = self.options?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("FileSystemId") {
+            self.fileSystemId = dict["FileSystemId"] as! String
+        }
+        if dict.keys.contains("Options") {
+            var model = ModifyFileSystemRequest.Options()
+            model.fromMap(dict["Options"] as! [String: Any])
+            self.options = model
+        }
+    }
+}
+
+public class ModifyFileSystemShrinkRequest : Tea.TeaModel {
+    public var description_: String?
+
+    public var fileSystemId: String?
+
+    public var optionsShrink: String?
 
     public override init() {
         super.init()
@@ -18919,6 +19039,9 @@ public class ModifyFileSystemRequest : Tea.TeaModel {
         if self.fileSystemId != nil {
             map["FileSystemId"] = self.fileSystemId!
         }
+        if self.optionsShrink != nil {
+            map["Options"] = self.optionsShrink!
+        }
         return map
     }
 
@@ -18928,6 +19051,9 @@ public class ModifyFileSystemRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FileSystemId") {
             self.fileSystemId = dict["FileSystemId"] as! String
+        }
+        if dict.keys.contains("Options") {
+            self.optionsShrink = dict["Options"] as! String
         }
     }
 }
