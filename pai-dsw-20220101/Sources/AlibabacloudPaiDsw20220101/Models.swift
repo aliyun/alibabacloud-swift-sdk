@@ -513,6 +513,67 @@ public class CreateIdleInstanceCullerResponse : Tea.TeaModel {
 }
 
 public class CreateInstanceRequest : Tea.TeaModel {
+    public class Affinity : Tea.TeaModel {
+        public class CPU : Tea.TeaModel {
+            public var enable: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enable != nil {
+                    map["Enable"] = self.enable!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Enable") {
+                    self.enable = dict["Enable"] as! Bool
+                }
+            }
+        }
+        public var CPU: CreateInstanceRequest.Affinity.CPU?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.CPU?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.CPU != nil {
+                map["CPU"] = self.CPU?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CPU") {
+                var model = CreateInstanceRequest.Affinity.CPU()
+                model.fromMap(dict["CPU"] as! [String: Any])
+                self.CPU = model
+            }
+        }
+    }
     public class CloudDisks : Tea.TeaModel {
         public class Status : Tea.TeaModel {
             public var available: Int64?
@@ -864,6 +925,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
     }
     public var accessibility: String?
 
+    public var affinity: CreateInstanceRequest.Affinity?
+
     public var cloudDisks: [CreateInstanceRequest.CloudDisks]?
 
     public var datasets: [CreateInstanceRequest.Datasets]?
@@ -906,6 +969,7 @@ public class CreateInstanceRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.affinity?.validate()
         try self.requestedResource?.validate()
         try self.userVpc?.validate()
     }
@@ -914,6 +978,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.accessibility != nil {
             map["Accessibility"] = self.accessibility!
+        }
+        if self.affinity != nil {
+            map["Affinity"] = self.affinity?.toMap()
         }
         if self.cloudDisks != nil {
             var tmp : [Any] = []
@@ -981,6 +1048,11 @@ public class CreateInstanceRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Accessibility") {
             self.accessibility = dict["Accessibility"] as! String
+        }
+        if dict.keys.contains("Affinity") {
+            var model = CreateInstanceRequest.Affinity()
+            model.fromMap(dict["Affinity"] as! [String: Any])
+            self.affinity = model
         }
         if dict.keys.contains("CloudDisks") {
             var tmp : [CreateInstanceRequest.CloudDisks] = []
@@ -2203,6 +2275,67 @@ public class GetIdleInstanceCullerResponse : Tea.TeaModel {
 }
 
 public class GetInstanceResponseBody : Tea.TeaModel {
+    public class Affinity : Tea.TeaModel {
+        public class CPU : Tea.TeaModel {
+            public var enable: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enable != nil {
+                    map["Enable"] = self.enable!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Enable") {
+                    self.enable = dict["Enable"] as! Bool
+                }
+            }
+        }
+        public var CPU: GetInstanceResponseBody.Affinity.CPU?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.CPU?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.CPU != nil {
+                map["CPU"] = self.CPU?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CPU") {
+                var model = GetInstanceResponseBody.Affinity.CPU()
+                model.fromMap(dict["CPU"] as! [String: Any])
+                self.CPU = model
+            }
+        }
+    }
     public class CloudDisks : Tea.TeaModel {
         public var capacity: String?
 
@@ -2855,6 +2988,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
     public var accumulatedRunningTimeInMs: Int64?
 
+    public var affinity: GetInstanceResponseBody.Affinity?
+
     public var cloudDisks: [GetInstanceResponseBody.CloudDisks]?
 
     public var code: String?
@@ -2947,6 +3082,7 @@ public class GetInstanceResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.affinity?.validate()
         try self.idleInstanceCuller?.validate()
         try self.instanceShutdownTimer?.validate()
         try self.latestSnapshot?.validate()
@@ -2965,6 +3101,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
         if self.accumulatedRunningTimeInMs != nil {
             map["AccumulatedRunningTimeInMs"] = self.accumulatedRunningTimeInMs!
+        }
+        if self.affinity != nil {
+            map["Affinity"] = self.affinity?.toMap()
         }
         if self.cloudDisks != nil {
             var tmp : [Any] = []
@@ -3117,6 +3256,11 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("AccumulatedRunningTimeInMs") {
             self.accumulatedRunningTimeInMs = dict["AccumulatedRunningTimeInMs"] as! Int64
+        }
+        if dict.keys.contains("Affinity") {
+            var model = GetInstanceResponseBody.Affinity()
+            model.fromMap(dict["Affinity"] as! [String: Any])
+            self.affinity = model
         }
         if dict.keys.contains("CloudDisks") {
             var tmp : [GetInstanceResponseBody.CloudDisks] = []
@@ -6377,6 +6521,67 @@ public class ListInstancesShrinkRequest : Tea.TeaModel {
 
 public class ListInstancesResponseBody : Tea.TeaModel {
     public class Instances : Tea.TeaModel {
+        public class Affinity : Tea.TeaModel {
+            public class CPU : Tea.TeaModel {
+                public var enable: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.enable != nil {
+                        map["Enable"] = self.enable!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Enable") {
+                        self.enable = dict["Enable"] as! Bool
+                    }
+                }
+            }
+            public var CPU: ListInstancesResponseBody.Instances.Affinity.CPU?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.CPU?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.CPU != nil {
+                    map["CPU"] = self.CPU?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CPU") {
+                    var model = ListInstancesResponseBody.Instances.Affinity.CPU()
+                    model.fromMap(dict["CPU"] as! [String: Any])
+                    self.CPU = model
+                }
+            }
+        }
         public class CloudDisks : Tea.TeaModel {
             public var capacity: String?
 
@@ -6984,6 +7189,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
         public var accumulatedRunningTimeInMs: Int64?
 
+        public var affinity: ListInstancesResponseBody.Instances.Affinity?
+
         public var cloudDisks: [ListInstancesResponseBody.Instances.CloudDisks]?
 
         public var datasets: [ListInstancesResponseBody.Instances.Datasets]?
@@ -7064,6 +7271,7 @@ public class ListInstancesResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.affinity?.validate()
             try self.idleInstanceCuller?.validate()
             try self.instanceShutdownTimer?.validate()
             try self.latestSnapshot?.validate()
@@ -7081,6 +7289,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if self.accumulatedRunningTimeInMs != nil {
                 map["AccumulatedRunningTimeInMs"] = self.accumulatedRunningTimeInMs!
+            }
+            if self.affinity != nil {
+                map["Affinity"] = self.affinity?.toMap()
             }
             if self.cloudDisks != nil {
                 var tmp : [Any] = []
@@ -7215,6 +7426,11 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("AccumulatedRunningTimeInMs") {
                 self.accumulatedRunningTimeInMs = dict["AccumulatedRunningTimeInMs"] as! Int64
+            }
+            if dict.keys.contains("Affinity") {
+                var model = ListInstancesResponseBody.Instances.Affinity()
+                model.fromMap(dict["Affinity"] as! [String: Any])
+                self.affinity = model
             }
             if dict.keys.contains("CloudDisks") {
                 var tmp : [ListInstancesResponseBody.Instances.CloudDisks] = []
@@ -7772,6 +7988,67 @@ public class StopInstanceResponse : Tea.TeaModel {
 }
 
 public class UpdateInstanceRequest : Tea.TeaModel {
+    public class Affinity : Tea.TeaModel {
+        public class CPU : Tea.TeaModel {
+            public var enable: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enable != nil {
+                    map["Enable"] = self.enable!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Enable") {
+                    self.enable = dict["Enable"] as! Bool
+                }
+            }
+        }
+        public var CPU: UpdateInstanceRequest.Affinity.CPU?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.CPU?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.CPU != nil {
+                map["CPU"] = self.CPU?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CPU") {
+                var model = UpdateInstanceRequest.Affinity.CPU()
+                model.fromMap(dict["CPU"] as! [String: Any])
+                self.CPU = model
+            }
+        }
+    }
     public class CloudDisks : Tea.TeaModel {
         public var capacity: String?
 
@@ -8014,6 +8291,8 @@ public class UpdateInstanceRequest : Tea.TeaModel {
     }
     public var accessibility: String?
 
+    public var affinity: UpdateInstanceRequest.Affinity?
+
     public var cloudDisks: [UpdateInstanceRequest.CloudDisks]?
 
     public var datasets: [UpdateInstanceRequest.Datasets]?
@@ -8056,6 +8335,7 @@ public class UpdateInstanceRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.affinity?.validate()
         try self.requestedResource?.validate()
         try self.userVpc?.validate()
     }
@@ -8064,6 +8344,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.accessibility != nil {
             map["Accessibility"] = self.accessibility!
+        }
+        if self.affinity != nil {
+            map["Affinity"] = self.affinity?.toMap()
         }
         if self.cloudDisks != nil {
             var tmp : [Any] = []
@@ -8127,6 +8410,11 @@ public class UpdateInstanceRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Accessibility") {
             self.accessibility = dict["Accessibility"] as! String
+        }
+        if dict.keys.contains("Affinity") {
+            var model = UpdateInstanceRequest.Affinity()
+            model.fromMap(dict["Affinity"] as! [String: Any])
+            self.affinity = model
         }
         if dict.keys.contains("CloudDisks") {
             var tmp : [UpdateInstanceRequest.CloudDisks] = []
