@@ -2491,6 +2491,8 @@ public class DescribePhoneNumberOnlineTimeResponse : Tea.TeaModel {
 public class DescribePhoneNumberOperatorAttributeRequest : Tea.TeaModel {
     public var authCode: String?
 
+    public var flowName: String?
+
     public var inputNumber: String?
 
     public var mask: String?
@@ -2500,6 +2502,8 @@ public class DescribePhoneNumberOperatorAttributeRequest : Tea.TeaModel {
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
+
+    public var resultCount: String?
 
     public override init() {
         super.init()
@@ -2518,6 +2522,9 @@ public class DescribePhoneNumberOperatorAttributeRequest : Tea.TeaModel {
         if self.authCode != nil {
             map["AuthCode"] = self.authCode!
         }
+        if self.flowName != nil {
+            map["FlowName"] = self.flowName!
+        }
         if self.inputNumber != nil {
             map["InputNumber"] = self.inputNumber!
         }
@@ -2533,12 +2540,18 @@ public class DescribePhoneNumberOperatorAttributeRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.resultCount != nil {
+            map["ResultCount"] = self.resultCount!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AuthCode") {
             self.authCode = dict["AuthCode"] as! String
+        }
+        if dict.keys.contains("FlowName") {
+            self.flowName = dict["FlowName"] as! String
         }
         if dict.keys.contains("InputNumber") {
             self.inputNumber = dict["InputNumber"] as! String
@@ -2554,6 +2567,9 @@ public class DescribePhoneNumberOperatorAttributeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResultCount") {
+            self.resultCount = dict["ResultCount"] as! String
         }
     }
 }
@@ -2628,6 +2644,8 @@ public class DescribePhoneNumberOperatorAttributeResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: String?
 
     public var data: DescribePhoneNumberOperatorAttributeResponseBody.Data?
@@ -2651,6 +2669,9 @@ public class DescribePhoneNumberOperatorAttributeResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -2667,6 +2688,9 @@ public class DescribePhoneNumberOperatorAttributeResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! String
         }

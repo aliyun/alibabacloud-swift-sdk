@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudDytnsapi20200217"
-  spec.version      = "2.6.0"
+  spec.version      = "2.6.1"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud Dytnsapi (20200217) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/dytnsapi-20200217" 
@@ -19,7 +19,7 @@ Pod::Spec.new do |spec|
 
   spec.dependency 'Tea',  '~> 1.0.0'
   spec.dependency 'TeaUtils',  '~> 1.0.5'
-  spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.4'
+  spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.5'
   spec.dependency 'AlibabaCloudOpenApiUtil',  '~> 1.0.1'
   spec.dependency 'AlibabacloudEndpointUtil',  '~> 1.0.0'
 
