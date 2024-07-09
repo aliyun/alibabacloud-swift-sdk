@@ -813,6 +813,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["Status"] = request.status ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.vpcRegionId)) {
+            query["VpcRegionId"] = request.vpcRegionId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -1588,6 +1591,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateResolverRuleWithOptions(_ request: UpdateResolverRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateResolverRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endpointId)) {
+            query["EndpointId"] = request.endpointId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.forwardIp)) {
             query["ForwardIp"] = request.forwardIp ?? [];
         }
