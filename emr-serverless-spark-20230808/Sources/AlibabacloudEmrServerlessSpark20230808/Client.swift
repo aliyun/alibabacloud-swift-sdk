@@ -380,6 +380,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listSessionClustersWithOptions(_ workspaceId: String, _ request: ListSessionClustersRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListSessionClustersResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.kind)) {
+            query["kind"] = request.kind ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["maxResults"] = request.maxResults!;
         }

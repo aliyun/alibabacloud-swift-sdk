@@ -19,7 +19,7 @@ Pod::Spec.new do |spec|
 
   spec.dependency 'Tea',  '~> 1.0.0'
   spec.dependency 'TeaUtils',  '~> 1.0.5'
-  spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.4'
+  spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.5'
   spec.dependency 'AlibabaCloudOpenApiUtil',  '~> 1.0.1'
   spec.dependency 'AlibabacloudEndpointUtil',  '~> 1.0.0'
 

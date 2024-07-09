@@ -3702,6 +3702,8 @@ public class ListReleaseVersionsResponse : Tea.TeaModel {
 }
 
 public class ListSessionClustersRequest : Tea.TeaModel {
+    public var kind: String?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -3726,6 +3728,9 @@ public class ListSessionClustersRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.kind != nil {
+            map["kind"] = self.kind!
+        }
         if self.maxResults != nil {
             map["maxResults"] = self.maxResults!
         }
@@ -3745,6 +3750,9 @@ public class ListSessionClustersRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("kind") {
+            self.kind = dict["kind"] as! String
+        }
         if dict.keys.contains("maxResults") {
             self.maxResults = dict["maxResults"] as! Int32
         }
@@ -3919,9 +3927,17 @@ public class ListSessionClustersResponseBody : Tea.TeaModel {
 
         public var autoStopConfiguration: ListSessionClustersResponseBody.SessionClusters.AutoStopConfiguration?
 
+        public var domain: String?
+
+        public var draftId: String?
+
+        public var kind: String?
+
         public var name: String?
 
         public var queueName: String?
+
+        public var releaseVersion: String?
 
         public var sessionClusterId: String?
 
@@ -3932,6 +3948,8 @@ public class ListSessionClustersResponseBody : Tea.TeaModel {
         public var userId: String?
 
         public var userName: String?
+
+        public var webUI: String?
 
         public var workspaceId: String?
 
@@ -3965,11 +3983,23 @@ public class ListSessionClustersResponseBody : Tea.TeaModel {
             if self.autoStopConfiguration != nil {
                 map["autoStopConfiguration"] = self.autoStopConfiguration?.toMap()
             }
+            if self.domain != nil {
+                map["domain"] = self.domain!
+            }
+            if self.draftId != nil {
+                map["draftId"] = self.draftId!
+            }
+            if self.kind != nil {
+                map["kind"] = self.kind!
+            }
             if self.name != nil {
                 map["name"] = self.name!
             }
             if self.queueName != nil {
                 map["queueName"] = self.queueName!
+            }
+            if self.releaseVersion != nil {
+                map["releaseVersion"] = self.releaseVersion!
             }
             if self.sessionClusterId != nil {
                 map["sessionClusterId"] = self.sessionClusterId!
@@ -3985,6 +4015,9 @@ public class ListSessionClustersResponseBody : Tea.TeaModel {
             }
             if self.userName != nil {
                 map["userName"] = self.userName!
+            }
+            if self.webUI != nil {
+                map["webUI"] = self.webUI!
             }
             if self.workspaceId != nil {
                 map["workspaceId"] = self.workspaceId!
@@ -4014,11 +4047,23 @@ public class ListSessionClustersResponseBody : Tea.TeaModel {
                 model.fromMap(dict["autoStopConfiguration"] as! [String: Any])
                 self.autoStopConfiguration = model
             }
+            if dict.keys.contains("domain") {
+                self.domain = dict["domain"] as! String
+            }
+            if dict.keys.contains("draftId") {
+                self.draftId = dict["draftId"] as! String
+            }
+            if dict.keys.contains("kind") {
+                self.kind = dict["kind"] as! String
+            }
             if dict.keys.contains("name") {
                 self.name = dict["name"] as! String
             }
             if dict.keys.contains("queueName") {
                 self.queueName = dict["queueName"] as! String
+            }
+            if dict.keys.contains("releaseVersion") {
+                self.releaseVersion = dict["releaseVersion"] as! String
             }
             if dict.keys.contains("sessionClusterId") {
                 self.sessionClusterId = dict["sessionClusterId"] as! String
@@ -4036,6 +4081,9 @@ public class ListSessionClustersResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("userName") {
                 self.userName = dict["userName"] as! String
+            }
+            if dict.keys.contains("webUI") {
+                self.webUI = dict["webUI"] as! String
             }
             if dict.keys.contains("workspaceId") {
                 self.workspaceId = dict["workspaceId"] as! String
