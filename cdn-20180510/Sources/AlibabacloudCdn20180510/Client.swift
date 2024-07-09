@@ -1744,6 +1744,74 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCdnFullDomainsBlockIPConfigWithOptions(_ request: DescribeCdnFullDomainsBlockIPConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCdnFullDomainsBlockIPConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.IPList)) {
+            body["IPList"] = request.IPList ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeCdnFullDomainsBlockIPConfig",
+            "version": "2018-05-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeCdnFullDomainsBlockIPConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCdnFullDomainsBlockIPConfig(_ request: DescribeCdnFullDomainsBlockIPConfigRequest) async throws -> DescribeCdnFullDomainsBlockIPConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeCdnFullDomainsBlockIPConfigWithOptions(request as! DescribeCdnFullDomainsBlockIPConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCdnFullDomainsBlockIPHistoryWithOptions(_ request: DescribeCdnFullDomainsBlockIPHistoryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCdnFullDomainsBlockIPHistoryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            body["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.IPList)) {
+            body["IPList"] = request.IPList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            body["StartTime"] = request.startTime ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeCdnFullDomainsBlockIPHistory",
+            "version": "2018-05-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeCdnFullDomainsBlockIPHistoryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCdnFullDomainsBlockIPHistory(_ request: DescribeCdnFullDomainsBlockIPHistoryRequest) async throws -> DescribeCdnFullDomainsBlockIPHistoryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeCdnFullDomainsBlockIPHistoryWithOptions(request as! DescribeCdnFullDomainsBlockIPHistoryRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeCdnHttpsDomainListWithOptions(_ request: DescribeCdnHttpsDomainListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCdnHttpsDomainListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -5907,6 +5975,46 @@ open class Client : AlibabacloudOpenApi.Client {
     public func setCdnDomainStagingConfig(_ request: SetCdnDomainStagingConfigRequest) async throws -> SetCdnDomainStagingConfigResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await setCdnDomainStagingConfigWithOptions(request as! SetCdnDomainStagingConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setCdnFullDomainsBlockIPWithOptions(_ request: SetCdnFullDomainsBlockIPRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetCdnFullDomainsBlockIPResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.blockInterval)) {
+            body["BlockInterval"] = request.blockInterval!;
+        }
+        if (!TeaUtils.Client.isUnset(request.IPList)) {
+            body["IPList"] = request.IPList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operationType)) {
+            body["OperationType"] = request.operationType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.updateType)) {
+            body["UpdateType"] = request.updateType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SetCdnFullDomainsBlockIP",
+            "version": "2018-05-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SetCdnFullDomainsBlockIPResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setCdnFullDomainsBlockIP(_ request: SetCdnFullDomainsBlockIPRequest) async throws -> SetCdnFullDomainsBlockIPResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await setCdnFullDomainsBlockIPWithOptions(request as! SetCdnFullDomainsBlockIPRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
