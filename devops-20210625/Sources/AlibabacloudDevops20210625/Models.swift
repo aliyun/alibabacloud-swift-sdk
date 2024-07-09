@@ -1634,6 +1634,291 @@ public class CreateBranchResponse : Tea.TeaModel {
     }
 }
 
+public class CreateChangeRequestRequest : Tea.TeaModel {
+    public var appCodeRepoSn: String?
+
+    public var autoDeleteBranchWhenEnd: Bool?
+
+    public var branchName: String?
+
+    public var createBranch: Bool?
+
+    public var ownerAccountId: String?
+
+    public var ownerId: String?
+
+    public var title: String?
+
+    public var organizationId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appCodeRepoSn != nil {
+            map["appCodeRepoSn"] = self.appCodeRepoSn!
+        }
+        if self.autoDeleteBranchWhenEnd != nil {
+            map["autoDeleteBranchWhenEnd"] = self.autoDeleteBranchWhenEnd!
+        }
+        if self.branchName != nil {
+            map["branchName"] = self.branchName!
+        }
+        if self.createBranch != nil {
+            map["createBranch"] = self.createBranch!
+        }
+        if self.ownerAccountId != nil {
+            map["ownerAccountId"] = self.ownerAccountId!
+        }
+        if self.ownerId != nil {
+            map["ownerId"] = self.ownerId!
+        }
+        if self.title != nil {
+            map["title"] = self.title!
+        }
+        if self.organizationId != nil {
+            map["organizationId"] = self.organizationId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("appCodeRepoSn") {
+            self.appCodeRepoSn = dict["appCodeRepoSn"] as! String
+        }
+        if dict.keys.contains("autoDeleteBranchWhenEnd") {
+            self.autoDeleteBranchWhenEnd = dict["autoDeleteBranchWhenEnd"] as! Bool
+        }
+        if dict.keys.contains("branchName") {
+            self.branchName = dict["branchName"] as! String
+        }
+        if dict.keys.contains("createBranch") {
+            self.createBranch = dict["createBranch"] as! Bool
+        }
+        if dict.keys.contains("ownerAccountId") {
+            self.ownerAccountId = dict["ownerAccountId"] as! String
+        }
+        if dict.keys.contains("ownerId") {
+            self.ownerId = dict["ownerId"] as! String
+        }
+        if dict.keys.contains("title") {
+            self.title = dict["title"] as! String
+        }
+        if dict.keys.contains("organizationId") {
+            self.organizationId = dict["organizationId"] as! String
+        }
+    }
+}
+
+public class CreateChangeRequestResponseBody : Tea.TeaModel {
+    public var appCodeRepoSn: String?
+
+    public var appName: String?
+
+    public var autoDeleteBranchWhenEnd: Bool?
+
+    public var branch: String?
+
+    public var creatorAccountId: String?
+
+    public var creatorId: String?
+
+    public var gmtCreate: String?
+
+    public var gmtModified: String?
+
+    public var name: String?
+
+    public var originBranch: String?
+
+    public var originBranchRevisionSha: String?
+
+    public var ownerAccountId: String?
+
+    public var ownerId: String?
+
+    public var sn: String?
+
+    public var state: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appCodeRepoSn != nil {
+            map["appCodeRepoSn"] = self.appCodeRepoSn!
+        }
+        if self.appName != nil {
+            map["appName"] = self.appName!
+        }
+        if self.autoDeleteBranchWhenEnd != nil {
+            map["autoDeleteBranchWhenEnd"] = self.autoDeleteBranchWhenEnd!
+        }
+        if self.branch != nil {
+            map["branch"] = self.branch!
+        }
+        if self.creatorAccountId != nil {
+            map["creatorAccountId"] = self.creatorAccountId!
+        }
+        if self.creatorId != nil {
+            map["creatorId"] = self.creatorId!
+        }
+        if self.gmtCreate != nil {
+            map["gmtCreate"] = self.gmtCreate!
+        }
+        if self.gmtModified != nil {
+            map["gmtModified"] = self.gmtModified!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.originBranch != nil {
+            map["originBranch"] = self.originBranch!
+        }
+        if self.originBranchRevisionSha != nil {
+            map["originBranchRevisionSha"] = self.originBranchRevisionSha!
+        }
+        if self.ownerAccountId != nil {
+            map["ownerAccountId"] = self.ownerAccountId!
+        }
+        if self.ownerId != nil {
+            map["ownerId"] = self.ownerId!
+        }
+        if self.sn != nil {
+            map["sn"] = self.sn!
+        }
+        if self.state != nil {
+            map["state"] = self.state!
+        }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("appCodeRepoSn") {
+            self.appCodeRepoSn = dict["appCodeRepoSn"] as! String
+        }
+        if dict.keys.contains("appName") {
+            self.appName = dict["appName"] as! String
+        }
+        if dict.keys.contains("autoDeleteBranchWhenEnd") {
+            self.autoDeleteBranchWhenEnd = dict["autoDeleteBranchWhenEnd"] as! Bool
+        }
+        if dict.keys.contains("branch") {
+            self.branch = dict["branch"] as! String
+        }
+        if dict.keys.contains("creatorAccountId") {
+            self.creatorAccountId = dict["creatorAccountId"] as! String
+        }
+        if dict.keys.contains("creatorId") {
+            self.creatorId = dict["creatorId"] as! String
+        }
+        if dict.keys.contains("gmtCreate") {
+            self.gmtCreate = dict["gmtCreate"] as! String
+        }
+        if dict.keys.contains("gmtModified") {
+            self.gmtModified = dict["gmtModified"] as! String
+        }
+        if dict.keys.contains("name") {
+            self.name = dict["name"] as! String
+        }
+        if dict.keys.contains("originBranch") {
+            self.originBranch = dict["originBranch"] as! String
+        }
+        if dict.keys.contains("originBranchRevisionSha") {
+            self.originBranchRevisionSha = dict["originBranchRevisionSha"] as! String
+        }
+        if dict.keys.contains("ownerAccountId") {
+            self.ownerAccountId = dict["ownerAccountId"] as! String
+        }
+        if dict.keys.contains("ownerId") {
+            self.ownerId = dict["ownerId"] as! String
+        }
+        if dict.keys.contains("sn") {
+            self.sn = dict["sn"] as! String
+        }
+        if dict.keys.contains("state") {
+            self.state = dict["state"] as! String
+        }
+        if dict.keys.contains("type") {
+            self.type = dict["type"] as! String
+        }
+    }
+}
+
+public class CreateChangeRequestResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateChangeRequestResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateChangeRequestResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateCheckRunRequest : Tea.TeaModel {
     public class Annotations : Tea.TeaModel {
         public var annotationLevel: String?
@@ -38554,6 +38839,534 @@ public class ListApplicationsResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ListApplicationsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListChangeRequestWorkflowExecutionsRequest : Tea.TeaModel {
+    public var orderBy: String?
+
+    public var organizationId: String?
+
+    public var page: Int64?
+
+    public var perPage: Int64?
+
+    public var releaseStageSn: String?
+
+    public var releaseWorkflowSn: String?
+
+    public var sort: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.orderBy != nil {
+            map["orderBy"] = self.orderBy!
+        }
+        if self.organizationId != nil {
+            map["organizationId"] = self.organizationId!
+        }
+        if self.page != nil {
+            map["page"] = self.page!
+        }
+        if self.perPage != nil {
+            map["perPage"] = self.perPage!
+        }
+        if self.releaseStageSn != nil {
+            map["releaseStageSn"] = self.releaseStageSn!
+        }
+        if self.releaseWorkflowSn != nil {
+            map["releaseWorkflowSn"] = self.releaseWorkflowSn!
+        }
+        if self.sort != nil {
+            map["sort"] = self.sort!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("orderBy") {
+            self.orderBy = dict["orderBy"] as! String
+        }
+        if dict.keys.contains("organizationId") {
+            self.organizationId = dict["organizationId"] as! String
+        }
+        if dict.keys.contains("page") {
+            self.page = dict["page"] as! Int64
+        }
+        if dict.keys.contains("perPage") {
+            self.perPage = dict["perPage"] as! Int64
+        }
+        if dict.keys.contains("releaseStageSn") {
+            self.releaseStageSn = dict["releaseStageSn"] as! String
+        }
+        if dict.keys.contains("releaseWorkflowSn") {
+            self.releaseWorkflowSn = dict["releaseWorkflowSn"] as! String
+        }
+        if dict.keys.contains("sort") {
+            self.sort = dict["sort"] as! String
+        }
+    }
+}
+
+public class ListChangeRequestWorkflowExecutionsResponseBody : Tea.TeaModel {
+    public var current: Int64?
+
+    public var pageSize: Int64?
+
+    public var pages: Int64?
+
+    public var records: [Any]?
+
+    public var total: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.current != nil {
+            map["current"] = self.current!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.pages != nil {
+            map["pages"] = self.pages!
+        }
+        if self.records != nil {
+            map["records"] = self.records!
+        }
+        if self.total != nil {
+            map["total"] = self.total!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("current") {
+            self.current = dict["current"] as! Int64
+        }
+        if dict.keys.contains("pageSize") {
+            self.pageSize = dict["pageSize"] as! Int64
+        }
+        if dict.keys.contains("pages") {
+            self.pages = dict["pages"] as! Int64
+        }
+        if dict.keys.contains("records") {
+            self.records = dict["records"] as! [Any]
+        }
+        if dict.keys.contains("total") {
+            self.total = dict["total"] as! Int64
+        }
+    }
+}
+
+public class ListChangeRequestWorkflowExecutionsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListChangeRequestWorkflowExecutionsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListChangeRequestWorkflowExecutionsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListChangeRequestsRequest : Tea.TeaModel {
+    public var appNameList: [String]?
+
+    public var displayNameKeyword: String?
+
+    public var nextToken: String?
+
+    public var orderBy: String?
+
+    public var organizationId: String?
+
+    public var ownerIdList: [String]?
+
+    public var page: Int32?
+
+    public var pagination: String?
+
+    public var perPage: Int32?
+
+    public var sort: String?
+
+    public var stateList: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appNameList != nil {
+            map["appNameList"] = self.appNameList!
+        }
+        if self.displayNameKeyword != nil {
+            map["displayNameKeyword"] = self.displayNameKeyword!
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        if self.orderBy != nil {
+            map["orderBy"] = self.orderBy!
+        }
+        if self.organizationId != nil {
+            map["organizationId"] = self.organizationId!
+        }
+        if self.ownerIdList != nil {
+            map["ownerIdList"] = self.ownerIdList!
+        }
+        if self.page != nil {
+            map["page"] = self.page!
+        }
+        if self.pagination != nil {
+            map["pagination"] = self.pagination!
+        }
+        if self.perPage != nil {
+            map["perPage"] = self.perPage!
+        }
+        if self.sort != nil {
+            map["sort"] = self.sort!
+        }
+        if self.stateList != nil {
+            map["stateList"] = self.stateList!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("appNameList") {
+            self.appNameList = dict["appNameList"] as! [String]
+        }
+        if dict.keys.contains("displayNameKeyword") {
+            self.displayNameKeyword = dict["displayNameKeyword"] as! String
+        }
+        if dict.keys.contains("nextToken") {
+            self.nextToken = dict["nextToken"] as! String
+        }
+        if dict.keys.contains("orderBy") {
+            self.orderBy = dict["orderBy"] as! String
+        }
+        if dict.keys.contains("organizationId") {
+            self.organizationId = dict["organizationId"] as! String
+        }
+        if dict.keys.contains("ownerIdList") {
+            self.ownerIdList = dict["ownerIdList"] as! [String]
+        }
+        if dict.keys.contains("page") {
+            self.page = dict["page"] as! Int32
+        }
+        if dict.keys.contains("pagination") {
+            self.pagination = dict["pagination"] as! String
+        }
+        if dict.keys.contains("perPage") {
+            self.perPage = dict["perPage"] as! Int32
+        }
+        if dict.keys.contains("sort") {
+            self.sort = dict["sort"] as! String
+        }
+        if dict.keys.contains("stateList") {
+            self.stateList = dict["stateList"] as! [String]
+        }
+    }
+}
+
+public class ListChangeRequestsShrinkRequest : Tea.TeaModel {
+    public var appNameListShrink: String?
+
+    public var displayNameKeyword: String?
+
+    public var nextToken: String?
+
+    public var orderBy: String?
+
+    public var organizationId: String?
+
+    public var ownerIdListShrink: String?
+
+    public var page: Int32?
+
+    public var pagination: String?
+
+    public var perPage: Int32?
+
+    public var sort: String?
+
+    public var stateListShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appNameListShrink != nil {
+            map["appNameList"] = self.appNameListShrink!
+        }
+        if self.displayNameKeyword != nil {
+            map["displayNameKeyword"] = self.displayNameKeyword!
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        if self.orderBy != nil {
+            map["orderBy"] = self.orderBy!
+        }
+        if self.organizationId != nil {
+            map["organizationId"] = self.organizationId!
+        }
+        if self.ownerIdListShrink != nil {
+            map["ownerIdList"] = self.ownerIdListShrink!
+        }
+        if self.page != nil {
+            map["page"] = self.page!
+        }
+        if self.pagination != nil {
+            map["pagination"] = self.pagination!
+        }
+        if self.perPage != nil {
+            map["perPage"] = self.perPage!
+        }
+        if self.sort != nil {
+            map["sort"] = self.sort!
+        }
+        if self.stateListShrink != nil {
+            map["stateList"] = self.stateListShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("appNameList") {
+            self.appNameListShrink = dict["appNameList"] as! String
+        }
+        if dict.keys.contains("displayNameKeyword") {
+            self.displayNameKeyword = dict["displayNameKeyword"] as! String
+        }
+        if dict.keys.contains("nextToken") {
+            self.nextToken = dict["nextToken"] as! String
+        }
+        if dict.keys.contains("orderBy") {
+            self.orderBy = dict["orderBy"] as! String
+        }
+        if dict.keys.contains("organizationId") {
+            self.organizationId = dict["organizationId"] as! String
+        }
+        if dict.keys.contains("ownerIdList") {
+            self.ownerIdListShrink = dict["ownerIdList"] as! String
+        }
+        if dict.keys.contains("page") {
+            self.page = dict["page"] as! Int32
+        }
+        if dict.keys.contains("pagination") {
+            self.pagination = dict["pagination"] as! String
+        }
+        if dict.keys.contains("perPage") {
+            self.perPage = dict["perPage"] as! Int32
+        }
+        if dict.keys.contains("sort") {
+            self.sort = dict["sort"] as! String
+        }
+        if dict.keys.contains("stateList") {
+            self.stateListShrink = dict["stateList"] as! String
+        }
+    }
+}
+
+public class ListChangeRequestsResponseBody : Tea.TeaModel {
+    public var current: Int64?
+
+    public var data: [Any]?
+
+    public var nextToken: String?
+
+    public var pages: Int64?
+
+    public var perPage: Int64?
+
+    public var total: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.current != nil {
+            map["current"] = self.current!
+        }
+        if self.data != nil {
+            map["data"] = self.data!
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        if self.pages != nil {
+            map["pages"] = self.pages!
+        }
+        if self.perPage != nil {
+            map["perPage"] = self.perPage!
+        }
+        if self.total != nil {
+            map["total"] = self.total!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("current") {
+            self.current = dict["current"] as! Int64
+        }
+        if dict.keys.contains("data") {
+            self.data = dict["data"] as! [Any]
+        }
+        if dict.keys.contains("nextToken") {
+            self.nextToken = dict["nextToken"] as! String
+        }
+        if dict.keys.contains("pages") {
+            self.pages = dict["pages"] as! Int64
+        }
+        if dict.keys.contains("perPage") {
+            self.perPage = dict["perPage"] as! Int64
+        }
+        if dict.keys.contains("total") {
+            self.total = dict["total"] as! Int64
+        }
+    }
+}
+
+public class ListChangeRequestsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListChangeRequestsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListChangeRequestsResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
