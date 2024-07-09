@@ -937,6 +937,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public var environmentVariables: [String: String]?
 
+    public var imageAuth: String?
+
     public var imageId: String?
 
     public var imageUrl: String?
@@ -1004,6 +1006,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if self.environmentVariables != nil {
             map["EnvironmentVariables"] = self.environmentVariables!
+        }
+        if self.imageAuth != nil {
+            map["ImageAuth"] = self.imageAuth!
         }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
@@ -1084,6 +1089,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EnvironmentVariables") {
             self.environmentVariables = dict["EnvironmentVariables"] as! [String: String]
+        }
+        if dict.keys.contains("ImageAuth") {
+            self.imageAuth = dict["ImageAuth"] as! String
         }
         if dict.keys.contains("ImageId") {
             self.imageId = dict["ImageId"] as! String
@@ -3010,6 +3018,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
     public var idleInstanceCuller: GetInstanceResponseBody.IdleInstanceCuller?
 
+    public var imageAuth: String?
+
     public var imageId: String?
 
     public var imageName: String?
@@ -3142,6 +3152,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
         if self.idleInstanceCuller != nil {
             map["IdleInstanceCuller"] = self.idleInstanceCuller?.toMap()
+        }
+        if self.imageAuth != nil {
+            map["ImageAuth"] = self.imageAuth!
         }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
@@ -3309,6 +3322,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             var model = GetInstanceResponseBody.IdleInstanceCuller()
             model.fromMap(dict["IdleInstanceCuller"] as! [String: Any])
             self.idleInstanceCuller = model
+        }
+        if dict.keys.contains("ImageAuth") {
+            self.imageAuth = dict["ImageAuth"] as! String
         }
         if dict.keys.contains("ImageId") {
             self.imageId = dict["ImageId"] as! String
@@ -7207,6 +7223,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
         public var idleInstanceCuller: ListInstancesResponseBody.Instances.IdleInstanceCuller?
 
+        public var imageAuth: String?
+
         public var imageId: String?
 
         public var imageName: String?
@@ -7324,6 +7342,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if self.idleInstanceCuller != nil {
                 map["IdleInstanceCuller"] = self.idleInstanceCuller?.toMap()
+            }
+            if self.imageAuth != nil {
+                map["ImageAuth"] = self.imageAuth!
             }
             if self.imageId != nil {
                 map["ImageId"] = self.imageId!
@@ -7473,6 +7494,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 var model = ListInstancesResponseBody.Instances.IdleInstanceCuller()
                 model.fromMap(dict["IdleInstanceCuller"] as! [String: Any])
                 self.idleInstanceCuller = model
+            }
+            if dict.keys.contains("ImageAuth") {
+                self.imageAuth = dict["ImageAuth"] as! String
             }
             if dict.keys.contains("ImageId") {
                 self.imageId = dict["ImageId"] as! String
@@ -8309,6 +8333,8 @@ public class UpdateInstanceRequest : Tea.TeaModel {
 
     public var ecsSpec: String?
 
+    public var imageAuth: String?
+
     public var imageId: String?
 
     public var imageUrl: String?
@@ -8379,6 +8405,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         }
         if self.ecsSpec != nil {
             map["EcsSpec"] = self.ecsSpec!
+        }
+        if self.imageAuth != nil {
+            map["ImageAuth"] = self.imageAuth!
         }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
@@ -8455,6 +8484,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EcsSpec") {
             self.ecsSpec = dict["EcsSpec"] as! String
+        }
+        if dict.keys.contains("ImageAuth") {
+            self.imageAuth = dict["ImageAuth"] as! String
         }
         if dict.keys.contains("ImageId") {
             self.imageId = dict["ImageId"] as! String
