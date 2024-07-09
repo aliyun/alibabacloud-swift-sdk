@@ -4993,6 +4993,8 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
         public var privatePoolOptions: CreateClusterNodePoolRequest.ScalingGroup.PrivatePoolOptions?
 
+        public var ramRoleName: String?
+
         public var rdsInstances: [String]?
 
         public var scalingPolicy: String?
@@ -5129,6 +5131,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             }
             if self.privatePoolOptions != nil {
                 map["private_pool_options"] = self.privatePoolOptions?.toMap()
+            }
+            if self.ramRoleName != nil {
+                map["ram_role_name"] = self.ramRoleName!
             }
             if self.rdsInstances != nil {
                 map["rds_instances"] = self.rdsInstances!
@@ -5294,6 +5299,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
                 var model = CreateClusterNodePoolRequest.ScalingGroup.PrivatePoolOptions()
                 model.fromMap(dict["private_pool_options"] as! [String: Any])
                 self.privatePoolOptions = model
+            }
+            if dict.keys.contains("ram_role_name") {
+                self.ramRoleName = dict["ram_role_name"] as! String
             }
             if dict.keys.contains("rds_instances") {
                 self.rdsInstances = dict["rds_instances"] as! [String]
@@ -10257,6 +10265,8 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
         public var ramPolicy: String?
 
+        public var ramRoleName: String?
+
         public var rdsInstances: [String]?
 
         public var scalingGroupId: String?
@@ -10398,6 +10408,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             }
             if self.ramPolicy != nil {
                 map["ram_policy"] = self.ramPolicy!
+            }
+            if self.ramRoleName != nil {
+                map["ram_role_name"] = self.ramRoleName!
             }
             if self.rdsInstances != nil {
                 map["rds_instances"] = self.rdsInstances!
@@ -10569,6 +10582,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ram_policy") {
                 self.ramPolicy = dict["ram_policy"] as! String
+            }
+            if dict.keys.contains("ram_role_name") {
+                self.ramRoleName = dict["ram_role_name"] as! String
             }
             if dict.keys.contains("rds_instances") {
                 self.rdsInstances = dict["rds_instances"] as! [String]
@@ -11727,6 +11743,8 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
 
             public var ramPolicy: String?
 
+            public var ramRoleName: String?
+
             public var rdsInstances: [String]?
 
             public var scalingGroupId: String?
@@ -11868,6 +11886,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 }
                 if self.ramPolicy != nil {
                     map["ram_policy"] = self.ramPolicy!
+                }
+                if self.ramRoleName != nil {
+                    map["ram_role_name"] = self.ramRoleName!
                 }
                 if self.rdsInstances != nil {
                     map["rds_instances"] = self.rdsInstances!
@@ -12039,6 +12060,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ram_policy") {
                     self.ramPolicy = dict["ram_policy"] as! String
+                }
+                if dict.keys.contains("ram_role_name") {
+                    self.ramRoleName = dict["ram_role_name"] as! String
                 }
                 if dict.keys.contains("rds_instances") {
                     self.rdsInstances = dict["rds_instances"] as! [String]
