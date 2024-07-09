@@ -321,6 +321,108 @@ public class FilePermissionMember : Tea.TeaModel {
     }
 }
 
+public class Permission : Tea.TeaModel {
+    public var createTime: String?
+
+    public var description_: String?
+
+    public var destCidrIp: String?
+
+    public var ipProtocol: String?
+
+    public var nicType: String?
+
+    public var policy: String?
+
+    public var portRange: String?
+
+    public var priority: String?
+
+    public var sourceCidrIp: String?
+
+    public var sourcePortRange: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.createTime != nil {
+            map["CreateTime"] = self.createTime!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.destCidrIp != nil {
+            map["DestCidrIp"] = self.destCidrIp!
+        }
+        if self.ipProtocol != nil {
+            map["IpProtocol"] = self.ipProtocol!
+        }
+        if self.nicType != nil {
+            map["NicType"] = self.nicType!
+        }
+        if self.policy != nil {
+            map["Policy"] = self.policy!
+        }
+        if self.portRange != nil {
+            map["PortRange"] = self.portRange!
+        }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
+        }
+        if self.sourceCidrIp != nil {
+            map["SourceCidrIp"] = self.sourceCidrIp!
+        }
+        if self.sourcePortRange != nil {
+            map["SourcePortRange"] = self.sourcePortRange!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CreateTime") {
+            self.createTime = dict["CreateTime"] as! String
+        }
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("DestCidrIp") {
+            self.destCidrIp = dict["DestCidrIp"] as! String
+        }
+        if dict.keys.contains("IpProtocol") {
+            self.ipProtocol = dict["IpProtocol"] as! String
+        }
+        if dict.keys.contains("NicType") {
+            self.nicType = dict["NicType"] as! String
+        }
+        if dict.keys.contains("Policy") {
+            self.policy = dict["Policy"] as! String
+        }
+        if dict.keys.contains("PortRange") {
+            self.portRange = dict["PortRange"] as! String
+        }
+        if dict.keys.contains("Priority") {
+            self.priority = dict["Priority"] as! String
+        }
+        if dict.keys.contains("SourceCidrIp") {
+            self.sourceCidrIp = dict["SourceCidrIp"] as! String
+        }
+        if dict.keys.contains("SourcePortRange") {
+            self.sourcePortRange = dict["SourcePortRange"] as! String
+        }
+    }
+}
+
 public class ActivateOfficeSiteRequest : Tea.TeaModel {
     public var officeSiteId: String?
 
@@ -4303,6 +4405,10 @@ public class CreateADConnectorDirectoryResponse : Tea.TeaModel {
 public class CreateADConnectorOfficeSiteRequest : Tea.TeaModel {
     public var adHostname: String?
 
+    public var backupDCHostname: String?
+
+    public var backupDns: String?
+
     public var bandwidth: Int32?
 
     public var cenId: String?
@@ -4357,6 +4463,12 @@ public class CreateADConnectorOfficeSiteRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.adHostname != nil {
             map["AdHostname"] = self.adHostname!
+        }
+        if self.backupDCHostname != nil {
+            map["BackupDCHostname"] = self.backupDCHostname!
+        }
+        if self.backupDns != nil {
+            map["BackupDns"] = self.backupDns!
         }
         if self.bandwidth != nil {
             map["Bandwidth"] = self.bandwidth!
@@ -4421,6 +4533,12 @@ public class CreateADConnectorOfficeSiteRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AdHostname") {
             self.adHostname = dict["AdHostname"] as! String
+        }
+        if dict.keys.contains("BackupDCHostname") {
+            self.backupDCHostname = dict["BackupDCHostname"] as! String
+        }
+        if dict.keys.contains("BackupDns") {
+            self.backupDns = dict["BackupDns"] as! String
         }
         if dict.keys.contains("Bandwidth") {
             self.bandwidth = dict["Bandwidth"] as! Int32
@@ -8557,6 +8675,8 @@ public class CreatePolicyGroupRequest : Tea.TeaModel {
 
     public var localDrive: String?
 
+    public var maxReconnectTime: Int32?
+
     public var name: String?
 
     public var netRedirect: String?
@@ -8709,6 +8829,9 @@ public class CreatePolicyGroupRequest : Tea.TeaModel {
         }
         if self.localDrive != nil {
             map["LocalDrive"] = self.localDrive!
+        }
+        if self.maxReconnectTime != nil {
+            map["MaxReconnectTime"] = self.maxReconnectTime!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -8908,6 +9031,9 @@ public class CreatePolicyGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("LocalDrive") {
             self.localDrive = dict["LocalDrive"] as! String
+        }
+        if dict.keys.contains("MaxReconnectTime") {
+            self.maxReconnectTime = dict["MaxReconnectTime"] as! Int32
         }
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
@@ -17066,6 +17192,8 @@ public class DescribeDesktopOversoldUserGroupResponse : Tea.TeaModel {
 }
 
 public class DescribeDesktopSessionsRequest : Tea.TeaModel {
+    public var checkOsSession: Bool?
+
     public var desktopId: [String]?
 
     public var desktopName: String?
@@ -17086,6 +17214,8 @@ public class DescribeDesktopSessionsRequest : Tea.TeaModel {
 
     public var startTime: String?
 
+    public var subPayType: String?
+
     public override init() {
         super.init()
     }
@@ -17100,6 +17230,9 @@ public class DescribeDesktopSessionsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.checkOsSession != nil {
+            map["CheckOsSession"] = self.checkOsSession!
+        }
         if self.desktopId != nil {
             map["DesktopId"] = self.desktopId!
         }
@@ -17130,10 +17263,16 @@ public class DescribeDesktopSessionsRequest : Tea.TeaModel {
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
+        if self.subPayType != nil {
+            map["SubPayType"] = self.subPayType!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CheckOsSession") {
+            self.checkOsSession = dict["CheckOsSession"] as! Bool
+        }
         if dict.keys.contains("DesktopId") {
             self.desktopId = dict["DesktopId"] as! [String]
         }
@@ -17164,6 +17303,9 @@ public class DescribeDesktopSessionsRequest : Tea.TeaModel {
         if dict.keys.contains("StartTime") {
             self.startTime = dict["StartTime"] as! String
         }
+        if dict.keys.contains("SubPayType") {
+            self.subPayType = dict["SubPayType"] as! String
+        }
     }
 }
 
@@ -17189,6 +17331,8 @@ public class DescribeDesktopSessionsResponseBody : Tea.TeaModel {
 
         public var officeSiteName: String?
 
+        public var osSessionStatus: String?
+
         public var osType: String?
 
         public var protocolType: String?
@@ -17200,6 +17344,8 @@ public class DescribeDesktopSessionsResponseBody : Tea.TeaModel {
         public var sessionStartTime: String?
 
         public var sessionStatus: String?
+
+        public var subPayType: String?
 
         public var totalConnectionTime: Int64?
 
@@ -17247,6 +17393,9 @@ public class DescribeDesktopSessionsResponseBody : Tea.TeaModel {
             if self.officeSiteName != nil {
                 map["OfficeSiteName"] = self.officeSiteName!
             }
+            if self.osSessionStatus != nil {
+                map["OsSessionStatus"] = self.osSessionStatus!
+            }
             if self.osType != nil {
                 map["OsType"] = self.osType!
             }
@@ -17264,6 +17413,9 @@ public class DescribeDesktopSessionsResponseBody : Tea.TeaModel {
             }
             if self.sessionStatus != nil {
                 map["SessionStatus"] = self.sessionStatus!
+            }
+            if self.subPayType != nil {
+                map["SubPayType"] = self.subPayType!
             }
             if self.totalConnectionTime != nil {
                 map["TotalConnectionTime"] = self.totalConnectionTime!
@@ -17302,6 +17454,9 @@ public class DescribeDesktopSessionsResponseBody : Tea.TeaModel {
             if dict.keys.contains("OfficeSiteName") {
                 self.officeSiteName = dict["OfficeSiteName"] as! String
             }
+            if dict.keys.contains("OsSessionStatus") {
+                self.osSessionStatus = dict["OsSessionStatus"] as! String
+            }
             if dict.keys.contains("OsType") {
                 self.osType = dict["OsType"] as! String
             }
@@ -17319,6 +17474,9 @@ public class DescribeDesktopSessionsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SessionStatus") {
                 self.sessionStatus = dict["SessionStatus"] as! String
+            }
+            if dict.keys.contains("SubPayType") {
+                self.subPayType = dict["SubPayType"] as! String
             }
             if dict.keys.contains("TotalConnectionTime") {
                 self.totalConnectionTime = dict["TotalConnectionTime"] as! Int64
@@ -17785,6 +17943,8 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
 
     public var expiredTime: String?
 
+    public var fillResourceGroup: Bool?
+
     public var filterDesktopGroup: Bool?
 
     public var gpuInstanceGroupId: String?
@@ -17816,6 +17976,8 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
     public var queryFotaUpdate: Bool?
 
     public var regionId: String?
+
+    public var resourceGroupId: String?
 
     public var snapshotPolicyId: String?
 
@@ -17872,6 +18034,9 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
         if self.expiredTime != nil {
             map["ExpiredTime"] = self.expiredTime!
         }
+        if self.fillResourceGroup != nil {
+            map["FillResourceGroup"] = self.fillResourceGroup!
+        }
         if self.filterDesktopGroup != nil {
             map["FilterDesktopGroup"] = self.filterDesktopGroup!
         }
@@ -17919,6 +18084,9 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
         }
         if self.snapshotPolicyId != nil {
             map["SnapshotPolicyId"] = self.snapshotPolicyId!
@@ -17973,6 +18141,9 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
         if dict.keys.contains("ExpiredTime") {
             self.expiredTime = dict["ExpiredTime"] as! String
         }
+        if dict.keys.contains("FillResourceGroup") {
+            self.fillResourceGroup = dict["FillResourceGroup"] as! Bool
+        }
         if dict.keys.contains("FilterDesktopGroup") {
             self.filterDesktopGroup = dict["FilterDesktopGroup"] as! Bool
         }
@@ -18020,6 +18191,9 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("SnapshotPolicyId") {
             self.snapshotPolicyId = dict["SnapshotPolicyId"] as! String
@@ -18165,6 +18339,43 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Size") {
                     self.size = dict["Size"] as! Int64
+                }
+            }
+        }
+        public class ResourceGroups : Tea.TeaModel {
+            public var id: String?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Id") {
+                    self.id = dict["Id"] as! String
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
                 }
             }
         }
@@ -18343,6 +18554,8 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
         public var progress: String?
 
         public var protocolType: String?
+
+        public var resourceGroups: [DescribeDesktopsResponseBody.Desktops.ResourceGroups]?
 
         public var sessionType: String?
 
@@ -18527,6 +18740,13 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
             }
             if self.protocolType != nil {
                 map["ProtocolType"] = self.protocolType!
+            }
+            if self.resourceGroups != nil {
+                var tmp : [Any] = []
+                for k in self.resourceGroups! {
+                    tmp.append(k.toMap())
+                }
+                map["ResourceGroups"] = tmp
             }
             if self.sessionType != nil {
                 map["SessionType"] = self.sessionType!
@@ -18726,6 +18946,17 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ProtocolType") {
                 self.protocolType = dict["ProtocolType"] as! String
+            }
+            if dict.keys.contains("ResourceGroups") {
+                var tmp : [DescribeDesktopsResponseBody.Desktops.ResourceGroups] = []
+                for v in dict["ResourceGroups"] as! [Any] {
+                    var model = DescribeDesktopsResponseBody.Desktops.ResourceGroups()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.resourceGroups = tmp
             }
             if dict.keys.contains("SessionType") {
                 self.sessionType = dict["SessionType"] as! String
@@ -20049,6 +20280,12 @@ public class DescribeDirectoriesResponseBody : Tea.TeaModel {
         }
         public var ADConnectors: [DescribeDirectoriesResponseBody.Directories.ADConnectors]?
 
+        public var adHostname: String?
+
+        public var backupDCHostname: String?
+
+        public var backupDns: String?
+
         public var creationTime: String?
 
         public var customSecurityGroupId: String?
@@ -20123,6 +20360,15 @@ public class DescribeDirectoriesResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["ADConnectors"] = tmp
+            }
+            if self.adHostname != nil {
+                map["AdHostname"] = self.adHostname!
+            }
+            if self.backupDCHostname != nil {
+                map["BackupDCHostname"] = self.backupDCHostname!
+            }
+            if self.backupDns != nil {
+                map["BackupDns"] = self.backupDns!
             }
             if self.creationTime != nil {
                 map["CreationTime"] = self.creationTime!
@@ -20223,6 +20469,15 @@ public class DescribeDirectoriesResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.ADConnectors = tmp
+            }
+            if dict.keys.contains("AdHostname") {
+                self.adHostname = dict["AdHostname"] as! String
+            }
+            if dict.keys.contains("BackupDCHostname") {
+                self.backupDCHostname = dict["BackupDCHostname"] as! String
+            }
+            if dict.keys.contains("BackupDns") {
+                self.backupDns = dict["BackupDns"] as! String
             }
             if dict.keys.contains("CreationTime") {
                 self.creationTime = dict["CreationTime"] as! String
@@ -25067,6 +25322,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var clipboard: String?
 
+        public var colorEnhancement: String?
+
         public var cpuDownGradeDuration: Int32?
 
         public var cpuProcessors: [String]?
@@ -25078,6 +25335,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
         public var cpuSampleDuration: Int32?
 
         public var cpuSingleRateLimit: Int32?
+
+        public var displayMode: String?
 
         public var domainList: String?
 
@@ -25100,6 +25359,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
         public var internetCommunicationProtocol: String?
 
         public var localDrive: String?
+
+        public var maxReconnectTime: Int32?
 
         public var memoryDownGradeDuration: Int32?
 
@@ -25131,6 +25392,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var printerRedirection: String?
 
+        public var qualityEnhancement: String?
+
         public var recordContent: String?
 
         public var recordContentExpires: Int64?
@@ -25159,9 +25422,25 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var scopeValue: [String]?
 
+        public var smoothEnhancement: String?
+
+        public var streamingMode: String?
+
+        public var targetFps: Int32?
+
         public var usbRedirect: String?
 
         public var usbSupplyRedirectRule: [DescribePolicyGroupsResponseBody.DescribePolicyGroups.UsbSupplyRedirectRule]?
+
+        public var videoEncAvgKbps: Int32?
+
+        public var videoEncMaxQP: Int32?
+
+        public var videoEncMinQP: Int32?
+
+        public var videoEncPeakKbps: Int32?
+
+        public var videoEncPolicy: String?
 
         public var videoRedirect: String?
 
@@ -25240,6 +25519,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if self.clipboard != nil {
                 map["Clipboard"] = self.clipboard!
             }
+            if self.colorEnhancement != nil {
+                map["ColorEnhancement"] = self.colorEnhancement!
+            }
             if self.cpuDownGradeDuration != nil {
                 map["CpuDownGradeDuration"] = self.cpuDownGradeDuration!
             }
@@ -25257,6 +25539,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if self.cpuSingleRateLimit != nil {
                 map["CpuSingleRateLimit"] = self.cpuSingleRateLimit!
+            }
+            if self.displayMode != nil {
+                map["DisplayMode"] = self.displayMode!
             }
             if self.domainList != nil {
                 map["DomainList"] = self.domainList!
@@ -25294,6 +25579,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if self.localDrive != nil {
                 map["LocalDrive"] = self.localDrive!
+            }
+            if self.maxReconnectTime != nil {
+                map["MaxReconnectTime"] = self.maxReconnectTime!
             }
             if self.memoryDownGradeDuration != nil {
                 map["MemoryDownGradeDuration"] = self.memoryDownGradeDuration!
@@ -25344,6 +25632,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if self.printerRedirection != nil {
                 map["PrinterRedirection"] = self.printerRedirection!
             }
+            if self.qualityEnhancement != nil {
+                map["QualityEnhancement"] = self.qualityEnhancement!
+            }
             if self.recordContent != nil {
                 map["RecordContent"] = self.recordContent!
             }
@@ -25386,6 +25677,15 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if self.scopeValue != nil {
                 map["ScopeValue"] = self.scopeValue!
             }
+            if self.smoothEnhancement != nil {
+                map["SmoothEnhancement"] = self.smoothEnhancement!
+            }
+            if self.streamingMode != nil {
+                map["StreamingMode"] = self.streamingMode!
+            }
+            if self.targetFps != nil {
+                map["TargetFps"] = self.targetFps!
+            }
             if self.usbRedirect != nil {
                 map["UsbRedirect"] = self.usbRedirect!
             }
@@ -25395,6 +25695,21 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["UsbSupplyRedirectRule"] = tmp
+            }
+            if self.videoEncAvgKbps != nil {
+                map["VideoEncAvgKbps"] = self.videoEncAvgKbps!
+            }
+            if self.videoEncMaxQP != nil {
+                map["VideoEncMaxQP"] = self.videoEncMaxQP!
+            }
+            if self.videoEncMinQP != nil {
+                map["VideoEncMinQP"] = self.videoEncMinQP!
+            }
+            if self.videoEncPeakKbps != nil {
+                map["VideoEncPeakKbps"] = self.videoEncPeakKbps!
+            }
+            if self.videoEncPolicy != nil {
+                map["VideoEncPolicy"] = self.videoEncPolicy!
             }
             if self.videoRedirect != nil {
                 map["VideoRedirect"] = self.videoRedirect!
@@ -25490,6 +25805,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if dict.keys.contains("Clipboard") {
                 self.clipboard = dict["Clipboard"] as! String
             }
+            if dict.keys.contains("ColorEnhancement") {
+                self.colorEnhancement = dict["ColorEnhancement"] as! String
+            }
             if dict.keys.contains("CpuDownGradeDuration") {
                 self.cpuDownGradeDuration = dict["CpuDownGradeDuration"] as! Int32
             }
@@ -25507,6 +25825,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("CpuSingleRateLimit") {
                 self.cpuSingleRateLimit = dict["CpuSingleRateLimit"] as! Int32
+            }
+            if dict.keys.contains("DisplayMode") {
+                self.displayMode = dict["DisplayMode"] as! String
             }
             if dict.keys.contains("DomainList") {
                 self.domainList = dict["DomainList"] as! String
@@ -25548,6 +25869,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("LocalDrive") {
                 self.localDrive = dict["LocalDrive"] as! String
+            }
+            if dict.keys.contains("MaxReconnectTime") {
+                self.maxReconnectTime = dict["MaxReconnectTime"] as! Int32
             }
             if dict.keys.contains("MemoryDownGradeDuration") {
                 self.memoryDownGradeDuration = dict["MemoryDownGradeDuration"] as! Int32
@@ -25602,6 +25926,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if dict.keys.contains("PrinterRedirection") {
                 self.printerRedirection = dict["PrinterRedirection"] as! String
             }
+            if dict.keys.contains("QualityEnhancement") {
+                self.qualityEnhancement = dict["QualityEnhancement"] as! String
+            }
             if dict.keys.contains("RecordContent") {
                 self.recordContent = dict["RecordContent"] as! String
             }
@@ -25644,6 +25971,15 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if dict.keys.contains("ScopeValue") {
                 self.scopeValue = dict["ScopeValue"] as! [String]
             }
+            if dict.keys.contains("SmoothEnhancement") {
+                self.smoothEnhancement = dict["SmoothEnhancement"] as! String
+            }
+            if dict.keys.contains("StreamingMode") {
+                self.streamingMode = dict["StreamingMode"] as! String
+            }
+            if dict.keys.contains("TargetFps") {
+                self.targetFps = dict["TargetFps"] as! Int32
+            }
             if dict.keys.contains("UsbRedirect") {
                 self.usbRedirect = dict["UsbRedirect"] as! String
             }
@@ -25657,6 +25993,21 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.usbSupplyRedirectRule = tmp
+            }
+            if dict.keys.contains("VideoEncAvgKbps") {
+                self.videoEncAvgKbps = dict["VideoEncAvgKbps"] as! Int32
+            }
+            if dict.keys.contains("VideoEncMaxQP") {
+                self.videoEncMaxQP = dict["VideoEncMaxQP"] as! Int32
+            }
+            if dict.keys.contains("VideoEncMinQP") {
+                self.videoEncMinQP = dict["VideoEncMinQP"] as! Int32
+            }
+            if dict.keys.contains("VideoEncPeakKbps") {
+                self.videoEncPeakKbps = dict["VideoEncPeakKbps"] as! Int32
+            }
+            if dict.keys.contains("VideoEncPolicy") {
+                self.videoEncPolicy = dict["VideoEncPolicy"] as! String
             }
             if dict.keys.contains("VideoRedirect") {
                 self.videoRedirect = dict["VideoRedirect"] as! String
@@ -35352,8 +35703,6 @@ public class MigrateDesktopsRequest : Tea.TeaModel {
 
     public var targetOfficeSiteId: String?
 
-    public var targetSubnetId: String?
-
     public override init() {
         super.init()
     }
@@ -35377,9 +35726,6 @@ public class MigrateDesktopsRequest : Tea.TeaModel {
         if self.targetOfficeSiteId != nil {
             map["TargetOfficeSiteId"] = self.targetOfficeSiteId!
         }
-        if self.targetSubnetId != nil {
-            map["TargetSubnetId"] = self.targetSubnetId!
-        }
         return map
     }
 
@@ -35392,9 +35738,6 @@ public class MigrateDesktopsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TargetOfficeSiteId") {
             self.targetOfficeSiteId = dict["TargetOfficeSiteId"] as! String
-        }
-        if dict.keys.contains("TargetSubnetId") {
-            self.targetSubnetId = dict["TargetSubnetId"] as! String
         }
     }
 }
@@ -35811,6 +36154,10 @@ public class ModifyADConnectorDirectoryResponse : Tea.TeaModel {
 public class ModifyADConnectorOfficeSiteRequest : Tea.TeaModel {
     public var adHostname: String?
 
+    public var backupDCHostname: String?
+
+    public var backupDns: String?
+
     public var dnsAddress: [String]?
 
     public var domainName: String?
@@ -35849,6 +36196,12 @@ public class ModifyADConnectorOfficeSiteRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.adHostname != nil {
             map["AdHostname"] = self.adHostname!
+        }
+        if self.backupDCHostname != nil {
+            map["BackupDCHostname"] = self.backupDCHostname!
+        }
+        if self.backupDns != nil {
+            map["BackupDns"] = self.backupDns!
         }
         if self.dnsAddress != nil {
             map["DnsAddress"] = self.dnsAddress!
@@ -35889,6 +36242,12 @@ public class ModifyADConnectorOfficeSiteRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AdHostname") {
             self.adHostname = dict["AdHostname"] as! String
+        }
+        if dict.keys.contains("BackupDCHostname") {
+            self.backupDCHostname = dict["BackupDCHostname"] as! String
+        }
+        if dict.keys.contains("BackupDns") {
+            self.backupDns = dict["BackupDns"] as! String
         }
         if dict.keys.contains("DnsAddress") {
             self.dnsAddress = dict["DnsAddress"] as! [String]
@@ -41299,6 +41658,8 @@ public class ModifyPolicyGroupRequest : Tea.TeaModel {
 
     public var localDrive: String?
 
+    public var maxReconnectTime: Int32?
+
     public var name: String?
 
     public var netRedirect: String?
@@ -41457,6 +41818,9 @@ public class ModifyPolicyGroupRequest : Tea.TeaModel {
         }
         if self.localDrive != nil {
             map["LocalDrive"] = self.localDrive!
+        }
+        if self.maxReconnectTime != nil {
+            map["MaxReconnectTime"] = self.maxReconnectTime!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -41673,6 +42037,9 @@ public class ModifyPolicyGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("LocalDrive") {
             self.localDrive = dict["LocalDrive"] as! String
+        }
+        if dict.keys.contains("MaxReconnectTime") {
+            self.maxReconnectTime = dict["MaxReconnectTime"] as! Int32
         }
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
@@ -43485,6 +43852,8 @@ public class RenewDesktopsRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceType: String?
+
     public override init() {
         super.init()
     }
@@ -43520,6 +43889,9 @@ public class RenewDesktopsRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
         return map
     }
 
@@ -43544,6 +43916,9 @@ public class RenewDesktopsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceType") {
+            self.resourceType = dict["ResourceType"] as! String
         }
     }
 }
@@ -45120,6 +45495,131 @@ public class SetDesktopGroupTimerStatusResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = SetDesktopGroupTimerStatusResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class SetDesktopMaintenanceRequest : Tea.TeaModel {
+    public var desktopIds: [String]?
+
+    public var mode: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.desktopIds != nil {
+            map["DesktopIds"] = self.desktopIds!
+        }
+        if self.mode != nil {
+            map["Mode"] = self.mode!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DesktopIds") {
+            self.desktopIds = dict["DesktopIds"] as! [String]
+        }
+        if dict.keys.contains("Mode") {
+            self.mode = dict["Mode"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class SetDesktopMaintenanceResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class SetDesktopMaintenanceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SetDesktopMaintenanceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = SetDesktopMaintenanceResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
