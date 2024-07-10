@@ -24201,6 +24201,8 @@ public class DescribeOfficeSitesRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var securityProtection: String?
+
     public var status: String?
 
     public override init() {
@@ -24232,6 +24234,9 @@ public class DescribeOfficeSitesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.securityProtection != nil {
+            map["SecurityProtection"] = self.securityProtection!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -24253,6 +24258,9 @@ public class DescribeOfficeSitesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("SecurityProtection") {
+            self.securityProtection = dict["SecurityProtection"] as! String
         }
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! String
@@ -24458,6 +24466,8 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
 
         public var rdsLicenseStatus: String?
 
+        public var securityProtection: String?
+
         public var ssoEnabled: Bool?
 
         public var ssoType: String?
@@ -24614,6 +24624,9 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             }
             if self.rdsLicenseStatus != nil {
                 map["RdsLicenseStatus"] = self.rdsLicenseStatus!
+            }
+            if self.securityProtection != nil {
+                map["SecurityProtection"] = self.securityProtection!
             }
             if self.ssoEnabled != nil {
                 map["SsoEnabled"] = self.ssoEnabled!
@@ -24782,6 +24795,9 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             if dict.keys.contains("RdsLicenseStatus") {
                 self.rdsLicenseStatus = dict["RdsLicenseStatus"] as! String
             }
+            if dict.keys.contains("SecurityProtection") {
+                self.securityProtection = dict["SecurityProtection"] as! String
+            }
             if dict.keys.contains("SsoEnabled") {
                 self.ssoEnabled = dict["SsoEnabled"] as! Bool
             }
@@ -24826,6 +24842,8 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var totalCount: Int32?
+
     public override init() {
         super.init()
     }
@@ -24853,6 +24871,9 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
         return map
     }
 
@@ -24873,6 +24894,9 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! Int32
         }
     }
 }
