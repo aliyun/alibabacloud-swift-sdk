@@ -14417,7 +14417,367 @@ public class GetOrderDetailResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class OrderList : Tea.TeaModel {
             public class Order : Tea.TeaModel {
+                public class BillModuleConfig : Tea.TeaModel {
+                    public class BillModuleConfig : Tea.TeaModel {
+                        public class BillModuleProperties : Tea.TeaModel {
+                            public class BillModuleProperties : Tea.TeaModel {
+                                public var attrApiCode: String?
+
+                                public var moduleApiCode: String?
+
+                                public var value: String?
+
+                                public override init() {
+                                    super.init()
+                                }
+
+                                public init(_ dict: [String: Any]) {
+                                    super.init()
+                                    self.fromMap(dict)
+                                }
+
+                                public override func validate() throws -> Void {
+                                }
+
+                                public override func toMap() -> [String : Any] {
+                                    var map = super.toMap()
+                                    if self.attrApiCode != nil {
+                                        map["AttrApiCode"] = self.attrApiCode!
+                                    }
+                                    if self.moduleApiCode != nil {
+                                        map["ModuleApiCode"] = self.moduleApiCode!
+                                    }
+                                    if self.value != nil {
+                                        map["Value"] = self.value!
+                                    }
+                                    return map
+                                }
+
+                                public override func fromMap(_ dict: [String: Any]) -> Void {
+                                    if dict.keys.contains("AttrApiCode") {
+                                        self.attrApiCode = dict["AttrApiCode"] as! String
+                                    }
+                                    if dict.keys.contains("ModuleApiCode") {
+                                        self.moduleApiCode = dict["ModuleApiCode"] as! String
+                                    }
+                                    if dict.keys.contains("Value") {
+                                        self.value = dict["Value"] as! String
+                                    }
+                                }
+                            }
+                            public var billModuleProperties: [GetOrderDetailResponseBody.Data.OrderList.Order.BillModuleConfig.BillModuleConfig.BillModuleProperties.BillModuleProperties]?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.billModuleProperties != nil {
+                                    var tmp : [Any] = []
+                                    for k in self.billModuleProperties! {
+                                        tmp.append(k.toMap())
+                                    }
+                                    map["billModuleProperties"] = tmp
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any]) -> Void {
+                                if dict.keys.contains("billModuleProperties") {
+                                    var tmp : [GetOrderDetailResponseBody.Data.OrderList.Order.BillModuleConfig.BillModuleConfig.BillModuleProperties.BillModuleProperties] = []
+                                    for v in dict["billModuleProperties"] as! [Any] {
+                                        var model = GetOrderDetailResponseBody.Data.OrderList.Order.BillModuleConfig.BillModuleConfig.BillModuleProperties.BillModuleProperties()
+                                        if v != nil {
+                                            model.fromMap(v as! [String: Any])
+                                        }
+                                        tmp.append(model)
+                                    }
+                                    self.billModuleProperties = tmp
+                                }
+                            }
+                        }
+                        public var apiCode: String?
+
+                        public var billModuleProperties: GetOrderDetailResponseBody.Data.OrderList.Order.BillModuleConfig.BillModuleConfig.BillModuleProperties?
+
+                        public var code: String?
+
+                        public var name: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                            try self.billModuleProperties?.validate()
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.apiCode != nil {
+                                map["ApiCode"] = self.apiCode!
+                            }
+                            if self.billModuleProperties != nil {
+                                map["BillModuleProperties"] = self.billModuleProperties?.toMap()
+                            }
+                            if self.code != nil {
+                                map["Code"] = self.code!
+                            }
+                            if self.name != nil {
+                                map["Name"] = self.name!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("ApiCode") {
+                                self.apiCode = dict["ApiCode"] as! String
+                            }
+                            if dict.keys.contains("BillModuleProperties") {
+                                var model = GetOrderDetailResponseBody.Data.OrderList.Order.BillModuleConfig.BillModuleConfig.BillModuleProperties()
+                                model.fromMap(dict["BillModuleProperties"] as! [String: Any])
+                                self.billModuleProperties = model
+                            }
+                            if dict.keys.contains("Code") {
+                                self.code = dict["Code"] as! String
+                            }
+                            if dict.keys.contains("Name") {
+                                self.name = dict["Name"] as! String
+                            }
+                        }
+                    }
+                    public var billModuleConfig: [GetOrderDetailResponseBody.Data.OrderList.Order.BillModuleConfig.BillModuleConfig]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.billModuleConfig != nil {
+                            var tmp : [Any] = []
+                            for k in self.billModuleConfig! {
+                                tmp.append(k.toMap())
+                            }
+                            map["billModuleConfig"] = tmp
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("billModuleConfig") {
+                            var tmp : [GetOrderDetailResponseBody.Data.OrderList.Order.BillModuleConfig.BillModuleConfig] = []
+                            for v in dict["billModuleConfig"] as! [Any] {
+                                var model = GetOrderDetailResponseBody.Data.OrderList.Order.BillModuleConfig.BillModuleConfig()
+                                if v != nil {
+                                    model.fromMap(v as! [String: Any])
+                                }
+                                tmp.append(model)
+                            }
+                            self.billModuleConfig = tmp
+                        }
+                    }
+                }
+                public class OriginalModuleConfig : Tea.TeaModel {
+                    public class OriginalModuleConfig : Tea.TeaModel {
+                        public class ModuleProperties : Tea.TeaModel {
+                            public class ModuleProperties : Tea.TeaModel {
+                                public var code: String?
+
+                                public var name: String?
+
+                                public var value: String?
+
+                                public override init() {
+                                    super.init()
+                                }
+
+                                public init(_ dict: [String: Any]) {
+                                    super.init()
+                                    self.fromMap(dict)
+                                }
+
+                                public override func validate() throws -> Void {
+                                }
+
+                                public override func toMap() -> [String : Any] {
+                                    var map = super.toMap()
+                                    if self.code != nil {
+                                        map["Code"] = self.code!
+                                    }
+                                    if self.name != nil {
+                                        map["Name"] = self.name!
+                                    }
+                                    if self.value != nil {
+                                        map["Value"] = self.value!
+                                    }
+                                    return map
+                                }
+
+                                public override func fromMap(_ dict: [String: Any]) -> Void {
+                                    if dict.keys.contains("Code") {
+                                        self.code = dict["Code"] as! String
+                                    }
+                                    if dict.keys.contains("Name") {
+                                        self.name = dict["Name"] as! String
+                                    }
+                                    if dict.keys.contains("Value") {
+                                        self.value = dict["Value"] as! String
+                                    }
+                                }
+                            }
+                            public var moduleProperties: [GetOrderDetailResponseBody.Data.OrderList.Order.OriginalModuleConfig.OriginalModuleConfig.ModuleProperties.ModuleProperties]?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.moduleProperties != nil {
+                                    var tmp : [Any] = []
+                                    for k in self.moduleProperties! {
+                                        tmp.append(k.toMap())
+                                    }
+                                    map["moduleProperties"] = tmp
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any]) -> Void {
+                                if dict.keys.contains("moduleProperties") {
+                                    var tmp : [GetOrderDetailResponseBody.Data.OrderList.Order.OriginalModuleConfig.OriginalModuleConfig.ModuleProperties.ModuleProperties] = []
+                                    for v in dict["moduleProperties"] as! [Any] {
+                                        var model = GetOrderDetailResponseBody.Data.OrderList.Order.OriginalModuleConfig.OriginalModuleConfig.ModuleProperties.ModuleProperties()
+                                        if v != nil {
+                                            model.fromMap(v as! [String: Any])
+                                        }
+                                        tmp.append(model)
+                                    }
+                                    self.moduleProperties = tmp
+                                }
+                            }
+                        }
+                        public var code: String?
+
+                        public var moduleProperties: GetOrderDetailResponseBody.Data.OrderList.Order.OriginalModuleConfig.OriginalModuleConfig.ModuleProperties?
+
+                        public var name: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                            try self.moduleProperties?.validate()
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.code != nil {
+                                map["Code"] = self.code!
+                            }
+                            if self.moduleProperties != nil {
+                                map["ModuleProperties"] = self.moduleProperties?.toMap()
+                            }
+                            if self.name != nil {
+                                map["Name"] = self.name!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("Code") {
+                                self.code = dict["Code"] as! String
+                            }
+                            if dict.keys.contains("ModuleProperties") {
+                                var model = GetOrderDetailResponseBody.Data.OrderList.Order.OriginalModuleConfig.OriginalModuleConfig.ModuleProperties()
+                                model.fromMap(dict["ModuleProperties"] as! [String: Any])
+                                self.moduleProperties = model
+                            }
+                            if dict.keys.contains("Name") {
+                                self.name = dict["Name"] as! String
+                            }
+                        }
+                    }
+                    public var originalModuleConfig: [GetOrderDetailResponseBody.Data.OrderList.Order.OriginalModuleConfig.OriginalModuleConfig]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.originalModuleConfig != nil {
+                            var tmp : [Any] = []
+                            for k in self.originalModuleConfig! {
+                                tmp.append(k.toMap())
+                            }
+                            map["originalModuleConfig"] = tmp
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("originalModuleConfig") {
+                            var tmp : [GetOrderDetailResponseBody.Data.OrderList.Order.OriginalModuleConfig.OriginalModuleConfig] = []
+                            for v in dict["originalModuleConfig"] as! [Any] {
+                                var model = GetOrderDetailResponseBody.Data.OrderList.Order.OriginalModuleConfig.OriginalModuleConfig()
+                                if v != nil {
+                                    model.fromMap(v as! [String: Any])
+                                }
+                                tmp.append(model)
+                            }
+                            self.originalModuleConfig = tmp
+                        }
+                    }
+                }
                 public var afterTaxAmount: String?
+
+                public var billModuleConfig: GetOrderDetailResponseBody.Data.OrderList.Order.BillModuleConfig?
 
                 public var commodityCode: String?
 
@@ -14440,6 +14800,8 @@ public class GetOrderDetailResponseBody : Tea.TeaModel {
                 public var orderType: String?
 
                 public var originalConfig: String?
+
+                public var originalModuleConfig: GetOrderDetailResponseBody.Data.OrderList.Order.OriginalModuleConfig?
 
                 public var paymentCurrency: String?
 
@@ -14483,12 +14845,17 @@ public class GetOrderDetailResponseBody : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.billModuleConfig?.validate()
+                    try self.originalModuleConfig?.validate()
                 }
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
                     if self.afterTaxAmount != nil {
                         map["AfterTaxAmount"] = self.afterTaxAmount!
+                    }
+                    if self.billModuleConfig != nil {
+                        map["BillModuleConfig"] = self.billModuleConfig?.toMap()
                     }
                     if self.commodityCode != nil {
                         map["CommodityCode"] = self.commodityCode!
@@ -14522,6 +14889,9 @@ public class GetOrderDetailResponseBody : Tea.TeaModel {
                     }
                     if self.originalConfig != nil {
                         map["OriginalConfig"] = self.originalConfig!
+                    }
+                    if self.originalModuleConfig != nil {
+                        map["OriginalModuleConfig"] = self.originalModuleConfig?.toMap()
                     }
                     if self.paymentCurrency != nil {
                         map["PaymentCurrency"] = self.paymentCurrency!
@@ -14578,6 +14948,11 @@ public class GetOrderDetailResponseBody : Tea.TeaModel {
                     if dict.keys.contains("AfterTaxAmount") {
                         self.afterTaxAmount = dict["AfterTaxAmount"] as! String
                     }
+                    if dict.keys.contains("BillModuleConfig") {
+                        var model = GetOrderDetailResponseBody.Data.OrderList.Order.BillModuleConfig()
+                        model.fromMap(dict["BillModuleConfig"] as! [String: Any])
+                        self.billModuleConfig = model
+                    }
                     if dict.keys.contains("CommodityCode") {
                         self.commodityCode = dict["CommodityCode"] as! String
                     }
@@ -14610,6 +14985,11 @@ public class GetOrderDetailResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("OriginalConfig") {
                         self.originalConfig = dict["OriginalConfig"] as! String
+                    }
+                    if dict.keys.contains("OriginalModuleConfig") {
+                        var model = GetOrderDetailResponseBody.Data.OrderList.Order.OriginalModuleConfig()
+                        model.fromMap(dict["OriginalModuleConfig"] as! [String: Any])
+                        self.originalModuleConfig = model
                     }
                     if dict.keys.contains("PaymentCurrency") {
                         self.paymentCurrency = dict["PaymentCurrency"] as! String
