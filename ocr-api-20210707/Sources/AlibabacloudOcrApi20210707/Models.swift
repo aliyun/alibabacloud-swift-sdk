@@ -8273,6 +8273,354 @@ public class RecognizeGeneralResponse : Tea.TeaModel {
     }
 }
 
+public class RecognizeGeneralStructureRequest : Tea.TeaModel {
+    public var keys: [String]?
+
+    public var url: String?
+
+    public var body: InputStream?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.keys != nil {
+            map["Keys"] = self.keys!
+        }
+        if self.url != nil {
+            map["Url"] = self.url!
+        }
+        if self.body != nil {
+            map["body"] = self.body!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Keys") {
+            self.keys = dict["Keys"] as! [String]
+        }
+        if dict.keys.contains("Url") {
+            self.url = dict["Url"] as! String
+        }
+        if dict.keys.contains("body") {
+            self.body = dict["body"] as! InputStream
+        }
+    }
+}
+
+public class RecognizeGeneralStructureShrinkRequest : Tea.TeaModel {
+    public var keysShrink: String?
+
+    public var url: String?
+
+    public var body: InputStream?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.keysShrink != nil {
+            map["Keys"] = self.keysShrink!
+        }
+        if self.url != nil {
+            map["Url"] = self.url!
+        }
+        if self.body != nil {
+            map["body"] = self.body!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Keys") {
+            self.keysShrink = dict["Keys"] as! String
+        }
+        if dict.keys.contains("Url") {
+            self.url = dict["Url"] as! String
+        }
+        if dict.keys.contains("body") {
+            self.body = dict["body"] as! InputStream
+        }
+    }
+}
+
+public class RecognizeGeneralStructureResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class SubImages : Tea.TeaModel {
+            public class KvInfo : Tea.TeaModel {
+                public var data: Any?
+
+                public var kvCount: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.data != nil {
+                        map["Data"] = self.data!
+                    }
+                    if self.kvCount != nil {
+                        map["KvCount"] = self.kvCount!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Data") {
+                        self.data = dict["Data"] as! Any
+                    }
+                    if dict.keys.contains("KvCount") {
+                        self.kvCount = dict["KvCount"] as! Int32
+                    }
+                }
+            }
+            public var angle: Int32?
+
+            public var kvInfo: RecognizeGeneralStructureResponseBody.Data.SubImages.KvInfo?
+
+            public var subImageId: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.kvInfo?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.angle != nil {
+                    map["Angle"] = self.angle!
+                }
+                if self.kvInfo != nil {
+                    map["KvInfo"] = self.kvInfo?.toMap()
+                }
+                if self.subImageId != nil {
+                    map["SubImageId"] = self.subImageId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Angle") {
+                    self.angle = dict["Angle"] as! Int32
+                }
+                if dict.keys.contains("KvInfo") {
+                    var model = RecognizeGeneralStructureResponseBody.Data.SubImages.KvInfo()
+                    model.fromMap(dict["KvInfo"] as! [String: Any])
+                    self.kvInfo = model
+                }
+                if dict.keys.contains("SubImageId") {
+                    self.subImageId = dict["SubImageId"] as! Int32
+                }
+            }
+        }
+        public var height: Int32?
+
+        public var subImageCount: Int32?
+
+        public var subImages: [RecognizeGeneralStructureResponseBody.Data.SubImages]?
+
+        public var width: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.height != nil {
+                map["Height"] = self.height!
+            }
+            if self.subImageCount != nil {
+                map["SubImageCount"] = self.subImageCount!
+            }
+            if self.subImages != nil {
+                var tmp : [Any] = []
+                for k in self.subImages! {
+                    tmp.append(k.toMap())
+                }
+                map["SubImages"] = tmp
+            }
+            if self.width != nil {
+                map["Width"] = self.width!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Height") {
+                self.height = dict["Height"] as! Int32
+            }
+            if dict.keys.contains("SubImageCount") {
+                self.subImageCount = dict["SubImageCount"] as! Int32
+            }
+            if dict.keys.contains("SubImages") {
+                var tmp : [RecognizeGeneralStructureResponseBody.Data.SubImages] = []
+                for v in dict["SubImages"] as! [Any] {
+                    var model = RecognizeGeneralStructureResponseBody.Data.SubImages()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.subImages = tmp
+            }
+            if dict.keys.contains("Width") {
+                self.width = dict["Width"] as! Int32
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: RecognizeGeneralStructureResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = RecognizeGeneralStructureResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class RecognizeGeneralStructureResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RecognizeGeneralStructureResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = RecognizeGeneralStructureResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class RecognizeHKIdcardRequest : Tea.TeaModel {
     public var url: String?
 

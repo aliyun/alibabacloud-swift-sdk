@@ -1277,6 +1277,47 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func recognizeGeneralStructureWithOptions(_ tmpReq: RecognizeGeneralStructureRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RecognizeGeneralStructureResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: RecognizeGeneralStructureShrinkRequest = RecognizeGeneralStructureShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.keys)) {
+            request.keysShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.keys, "Keys", "simple")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.keysShrink)) {
+            query["Keys"] = request.keysShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.url)) {
+            query["Url"] = request.url ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": request.body!,
+            "stream": tmpReq.body!
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RecognizeGeneralStructure",
+            "version": "2021-07-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RecognizeGeneralStructureResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func recognizeGeneralStructure(_ request: RecognizeGeneralStructureRequest) async throws -> RecognizeGeneralStructureResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await recognizeGeneralStructureWithOptions(request as! RecognizeGeneralStructureRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func recognizeHKIdcardWithOptions(_ request: RecognizeHKIdcardRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RecognizeHKIdcardResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
