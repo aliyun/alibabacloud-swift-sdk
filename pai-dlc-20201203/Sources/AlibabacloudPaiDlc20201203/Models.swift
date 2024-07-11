@@ -3716,6 +3716,12 @@ public class Tensorboard : Tea.TeaModel {
 
     public var jobId: String?
 
+    public var priority: String?
+
+    public var quotaId: String?
+
+    public var quotaName: String?
+
     public var reasonCode: String?
 
     public var reasonMessage: String?
@@ -3773,6 +3779,15 @@ public class Tensorboard : Tea.TeaModel {
         }
         if self.jobId != nil {
             map["JobId"] = self.jobId!
+        }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
+        }
+        if self.quotaId != nil {
+            map["QuotaId"] = self.quotaId!
+        }
+        if self.quotaName != nil {
+            map["QuotaName"] = self.quotaName!
         }
         if self.reasonCode != nil {
             map["ReasonCode"] = self.reasonCode!
@@ -3835,6 +3850,15 @@ public class Tensorboard : Tea.TeaModel {
         }
         if dict.keys.contains("JobId") {
             self.jobId = dict["JobId"] as! String
+        }
+        if dict.keys.contains("Priority") {
+            self.priority = dict["Priority"] as! String
+        }
+        if dict.keys.contains("QuotaId") {
+            self.quotaId = dict["QuotaId"] as! String
+        }
+        if dict.keys.contains("QuotaName") {
+            self.quotaName = dict["QuotaName"] as! String
         }
         if dict.keys.contains("ReasonCode") {
             self.reasonCode = dict["ReasonCode"] as! String
@@ -4641,6 +4665,10 @@ public class CreateTensorboardRequest : Tea.TeaModel {
 
     public var options: String?
 
+    public var priority: String?
+
+    public var quotaId: String?
+
     public var sourceId: String?
 
     public var sourceType: String?
@@ -4702,6 +4730,12 @@ public class CreateTensorboardRequest : Tea.TeaModel {
         }
         if self.options != nil {
             map["Options"] = self.options!
+        }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
+        }
+        if self.quotaId != nil {
+            map["QuotaId"] = self.quotaId!
         }
         if self.sourceId != nil {
             map["SourceId"] = self.sourceId!
@@ -4769,6 +4803,12 @@ public class CreateTensorboardRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Options") {
             self.options = dict["Options"] as! String
+        }
+        if dict.keys.contains("Priority") {
+            self.priority = dict["Priority"] as! String
+        }
+        if dict.keys.contains("QuotaId") {
+            self.quotaId = dict["QuotaId"] as! String
         }
         if dict.keys.contains("SourceId") {
             self.sourceId = dict["SourceId"] as! String
@@ -8010,6 +8050,8 @@ public class ListTensorboardsRequest : Tea.TeaModel {
 
     public var paymentType: String?
 
+    public var quotaId: String?
+
     public var showOwn: Bool?
 
     public var sortBy: String?
@@ -8066,6 +8108,9 @@ public class ListTensorboardsRequest : Tea.TeaModel {
         }
         if self.paymentType != nil {
             map["PaymentType"] = self.paymentType!
+        }
+        if self.quotaId != nil {
+            map["QuotaId"] = self.quotaId!
         }
         if self.showOwn != nil {
             map["ShowOwn"] = self.showOwn!
@@ -8124,6 +8169,9 @@ public class ListTensorboardsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PaymentType") {
             self.paymentType = dict["PaymentType"] as! String
+        }
+        if dict.keys.contains("QuotaId") {
+            self.quotaId = dict["QuotaId"] as! String
         }
         if dict.keys.contains("ShowOwn") {
             self.showOwn = dict["ShowOwn"] as! Bool
