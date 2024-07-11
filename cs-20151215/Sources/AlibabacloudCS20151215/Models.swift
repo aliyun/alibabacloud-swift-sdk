@@ -27646,6 +27646,139 @@ public class UntagResourcesResponse : Tea.TeaModel {
     }
 }
 
+public class UpdateClusterAuditLogConfigRequest : Tea.TeaModel {
+    public var disable: Bool?
+
+    public var slsProjectName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.disable != nil {
+            map["disable"] = self.disable!
+        }
+        if self.slsProjectName != nil {
+            map["sls_project_name"] = self.slsProjectName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("disable") {
+            self.disable = dict["disable"] as! Bool
+        }
+        if dict.keys.contains("sls_project_name") {
+            self.slsProjectName = dict["sls_project_name"] as! String
+        }
+    }
+}
+
+public class UpdateClusterAuditLogConfigResponseBody : Tea.TeaModel {
+    public var clusterId: String?
+
+    public var requestId: String?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["cluster_id"] = self.clusterId!
+        }
+        if self.requestId != nil {
+            map["request_id"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["task_id"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("cluster_id") {
+            self.clusterId = dict["cluster_id"] as! String
+        }
+        if dict.keys.contains("request_id") {
+            self.requestId = dict["request_id"] as! String
+        }
+        if dict.keys.contains("task_id") {
+            self.taskId = dict["task_id"] as! String
+        }
+    }
+}
+
+public class UpdateClusterAuditLogConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateClusterAuditLogConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateClusterAuditLogConfigResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class UpdateContactGroupForAlertResponse : Tea.TeaModel {
     public var headers: [String: String]?
 
