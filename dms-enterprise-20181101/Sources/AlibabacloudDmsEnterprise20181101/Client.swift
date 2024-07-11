@@ -377,6 +377,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.oldApprover)) {
             query["OldApprover"] = request.oldApprover!;
         }
+        if (!TeaUtils.Client.isUnset(request.realLoginUserUid)) {
+            query["RealLoginUserUid"] = request.realLoginUserUid ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.tid)) {
             query["Tid"] = request.tid!;
         }
@@ -800,6 +803,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.paramShrink)) {
             query["Param"] = request.paramShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.realLoginUserUid)) {
+            query["RealLoginUserUid"] = request.realLoginUserUid ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.relatedUserListShrink)) {
             query["RelatedUserList"] = request.relatedUserListShrink ?? "";
         }
@@ -904,6 +910,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pluginParamShrink)) {
             query["PluginParam"] = request.pluginParamShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.realLoginUserUid)) {
+            query["RealLoginUserUid"] = request.realLoginUserUid ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.relatedUserListShrink)) {
             query["RelatedUserList"] = request.relatedUserListShrink ?? "";
@@ -2521,6 +2530,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.orderId)) {
             query["OrderId"] = request.orderId!;
         }
+        if (!TeaUtils.Client.isUnset(request.realLoginUserUid)) {
+            query["RealLoginUserUid"] = request.realLoginUserUid ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.tid)) {
             query["Tid"] = request.tid ?? "";
         }
@@ -2562,6 +2574,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.orderId)) {
             query["OrderId"] = request.orderId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.realLoginUserUid)) {
+            query["RealLoginUserUid"] = request.realLoginUserUid ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tid)) {
             query["Tid"] = request.tid!;
@@ -3200,6 +3215,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.orderId)) {
             query["OrderId"] = request.orderId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.realLoginUserUid)) {
+            query["RealLoginUserUid"] = request.realLoginUserUid ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tid)) {
             query["Tid"] = request.tid!;
@@ -8274,6 +8292,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.orderId)) {
             query["OrderId"] = request.orderId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.realLoginUserUid)) {
+            query["RealLoginUserUid"] = request.realLoginUserUid ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tid)) {
             query["Tid"] = request.tid!;
