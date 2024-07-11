@@ -143,6 +143,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.virtualHost)) {
             body["VirtualHost"] = request.virtualHost ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.XDelayedType)) {
+            body["XDelayedType"] = request.XDelayedType ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
