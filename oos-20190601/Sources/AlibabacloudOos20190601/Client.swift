@@ -2024,6 +2024,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.platform)) {
             query["Platform"] = request.platform ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -2897,6 +2900,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.hasTrigger)) {
             query["HasTrigger"] = request.hasTrigger!;
+        }
+        if (!TeaUtils.Client.isUnset(request.isExample)) {
+            query["IsExample"] = request.isExample!;
         }
         if (!TeaUtils.Client.isUnset(request.isFavorite)) {
             query["IsFavorite"] = request.isFavorite!;
