@@ -12442,6 +12442,8 @@ public class DescribeDBClusterPerformanceRequest : Tea.TeaModel {
 
     public var startTime: String?
 
+    public var type: String?
+
     public override init() {
         super.init()
     }
@@ -12471,6 +12473,9 @@ public class DescribeDBClusterPerformanceRequest : Tea.TeaModel {
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
         return map
     }
 
@@ -12489,6 +12494,9 @@ public class DescribeDBClusterPerformanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("StartTime") {
             self.startTime = dict["StartTime"] as! String
+        }
+        if dict.keys.contains("Type") {
+            self.type = dict["Type"] as! String
         }
     }
 }
