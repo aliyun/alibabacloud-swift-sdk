@@ -2527,6 +2527,8 @@ public class ExportModelFeatureTrainingSetTableRequest : Tea.TeaModel {
 
     public var labelInputConfig: ExportModelFeatureTrainingSetTableRequest.LabelInputConfig?
 
+    public var realTimeIterateInterval: Int64?
+
     public var trainingSetConfig: ExportModelFeatureTrainingSetTableRequest.TrainingSetConfig?
 
     public override init() {
@@ -2555,6 +2557,9 @@ public class ExportModelFeatureTrainingSetTableRequest : Tea.TeaModel {
         if self.labelInputConfig != nil {
             map["LabelInputConfig"] = self.labelInputConfig?.toMap()
         }
+        if self.realTimeIterateInterval != nil {
+            map["RealTimeIterateInterval"] = self.realTimeIterateInterval!
+        }
         if self.trainingSetConfig != nil {
             map["TrainingSetConfig"] = self.trainingSetConfig?.toMap()
         }
@@ -2577,6 +2582,9 @@ public class ExportModelFeatureTrainingSetTableRequest : Tea.TeaModel {
             var model = ExportModelFeatureTrainingSetTableRequest.LabelInputConfig()
             model.fromMap(dict["LabelInputConfig"] as! [String: Any])
             self.labelInputConfig = model
+        }
+        if dict.keys.contains("RealTimeIterateInterval") {
+            self.realTimeIterateInterval = dict["RealTimeIterateInterval"] as! Int64
         }
         if dict.keys.contains("TrainingSetConfig") {
             var model = ExportModelFeatureTrainingSetTableRequest.TrainingSetConfig()

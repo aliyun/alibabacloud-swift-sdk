@@ -681,6 +681,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.labelInputConfig)) {
             body["LabelInputConfig"] = request.labelInputConfig!;
         }
+        if (!TeaUtils.Client.isUnset(request.realTimeIterateInterval)) {
+            body["RealTimeIterateInterval"] = request.realTimeIterateInterval!;
+        }
         if (!TeaUtils.Client.isUnset(request.trainingSetConfig)) {
             body["TrainingSetConfig"] = request.trainingSetConfig!;
         }
