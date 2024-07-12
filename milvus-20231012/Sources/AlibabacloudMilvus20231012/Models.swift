@@ -1908,6 +1908,8 @@ public class UpdateInstanceNameResponse : Tea.TeaModel {
 }
 
 public class UpdatePublicNetworkStatusRequest : Tea.TeaModel {
+    public var cidr: String?
+
     public var componentType: String?
 
     public var instanceId: String?
@@ -1928,6 +1930,9 @@ public class UpdatePublicNetworkStatusRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cidr != nil {
+            map["Cidr"] = self.cidr!
+        }
         if self.componentType != nil {
             map["ComponentType"] = self.componentType!
         }
@@ -1941,6 +1946,9 @@ public class UpdatePublicNetworkStatusRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Cidr") {
+            self.cidr = dict["Cidr"] as! String
+        }
         if dict.keys.contains("ComponentType") {
             self.componentType = dict["ComponentType"] as! String
         }

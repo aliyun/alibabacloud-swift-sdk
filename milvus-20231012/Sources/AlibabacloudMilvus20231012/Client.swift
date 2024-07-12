@@ -285,6 +285,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updatePublicNetworkStatusWithOptions(_ request: UpdatePublicNetworkStatusRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdatePublicNetworkStatusResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cidr)) {
+            query["Cidr"] = request.cidr ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.componentType)) {
             query["ComponentType"] = request.componentType ?? "";
         }
