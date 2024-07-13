@@ -3006,9 +3006,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateApplicationConfigsWithOptions(_ request: UpdateApplicationConfigsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateApplicationConfigsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.applicationConfigs)) {
-            query["ApplicationConfigs"] = request.applicationConfigs ?? [];
-        }
         if (!TeaUtils.Client.isUnset(request.applicationName)) {
             query["ApplicationName"] = request.applicationName ?? "";
         }
@@ -3036,8 +3033,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
+        var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applicationConfigs)) {
+            bodyFlat["ApplicationConfigs"] = request.applicationConfigs ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "UpdateApplicationConfigs",
