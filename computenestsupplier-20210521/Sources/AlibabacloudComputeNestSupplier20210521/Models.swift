@@ -10617,6 +10617,295 @@ public class UpdateArtifactResponse : Tea.TeaModel {
 }
 
 public class UpdateServiceRequest : Tea.TeaModel {
+    public class Commodity : Tea.TeaModel {
+        public class ComponentsMappings : Tea.TeaModel {
+            public var mappings: String?
+
+            public var templateName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.mappings != nil {
+                    map["Mappings"] = self.mappings!
+                }
+                if self.templateName != nil {
+                    map["TemplateName"] = self.templateName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Mappings") {
+                    self.mappings = dict["Mappings"] as! String
+                }
+                if dict.keys.contains("TemplateName") {
+                    self.templateName = dict["TemplateName"] as! String
+                }
+            }
+        }
+        public class MeteringEntityExtraInfos : Tea.TeaModel {
+            public var entityId: String?
+
+            public var metricName: String?
+
+            public var promql: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.entityId != nil {
+                    map["EntityId"] = self.entityId!
+                }
+                if self.metricName != nil {
+                    map["MetricName"] = self.metricName!
+                }
+                if self.promql != nil {
+                    map["Promql"] = self.promql!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EntityId") {
+                    self.entityId = dict["EntityId"] as! String
+                }
+                if dict.keys.contains("MetricName") {
+                    self.metricName = dict["MetricName"] as! String
+                }
+                if dict.keys.contains("Promql") {
+                    self.promql = dict["Promql"] as! String
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+            }
+        }
+        public class MeteringEntityMappings : Tea.TeaModel {
+            public var entityIds: [String]?
+
+            public var specificationName: String?
+
+            public var templateName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.entityIds != nil {
+                    map["EntityIds"] = self.entityIds!
+                }
+                if self.specificationName != nil {
+                    map["SpecificationName"] = self.specificationName!
+                }
+                if self.templateName != nil {
+                    map["TemplateName"] = self.templateName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EntityIds") {
+                    self.entityIds = dict["EntityIds"] as! [String]
+                }
+                if dict.keys.contains("SpecificationName") {
+                    self.specificationName = dict["SpecificationName"] as! String
+                }
+                if dict.keys.contains("TemplateName") {
+                    self.templateName = dict["TemplateName"] as! String
+                }
+            }
+        }
+        public class SpecificationMappings : Tea.TeaModel {
+            public var specificationCode: String?
+
+            public var specificationName: String?
+
+            public var templateName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.specificationCode != nil {
+                    map["SpecificationCode"] = self.specificationCode!
+                }
+                if self.specificationName != nil {
+                    map["SpecificationName"] = self.specificationName!
+                }
+                if self.templateName != nil {
+                    map["TemplateName"] = self.templateName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("SpecificationCode") {
+                    self.specificationCode = dict["SpecificationCode"] as! String
+                }
+                if dict.keys.contains("SpecificationName") {
+                    self.specificationName = dict["SpecificationName"] as! String
+                }
+                if dict.keys.contains("TemplateName") {
+                    self.templateName = dict["TemplateName"] as! String
+                }
+            }
+        }
+        public var componentsMappings: [UpdateServiceRequest.Commodity.ComponentsMappings]?
+
+        public var meteringEntityExtraInfos: [UpdateServiceRequest.Commodity.MeteringEntityExtraInfos]?
+
+        public var meteringEntityMappings: [UpdateServiceRequest.Commodity.MeteringEntityMappings]?
+
+        public var saasBoostConfig: String?
+
+        public var specificationMappings: [UpdateServiceRequest.Commodity.SpecificationMappings]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.componentsMappings != nil {
+                var tmp : [Any] = []
+                for k in self.componentsMappings! {
+                    tmp.append(k.toMap())
+                }
+                map["ComponentsMappings"] = tmp
+            }
+            if self.meteringEntityExtraInfos != nil {
+                var tmp : [Any] = []
+                for k in self.meteringEntityExtraInfos! {
+                    tmp.append(k.toMap())
+                }
+                map["MeteringEntityExtraInfos"] = tmp
+            }
+            if self.meteringEntityMappings != nil {
+                var tmp : [Any] = []
+                for k in self.meteringEntityMappings! {
+                    tmp.append(k.toMap())
+                }
+                map["MeteringEntityMappings"] = tmp
+            }
+            if self.saasBoostConfig != nil {
+                map["SaasBoostConfig"] = self.saasBoostConfig!
+            }
+            if self.specificationMappings != nil {
+                var tmp : [Any] = []
+                for k in self.specificationMappings! {
+                    tmp.append(k.toMap())
+                }
+                map["SpecificationMappings"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ComponentsMappings") {
+                var tmp : [UpdateServiceRequest.Commodity.ComponentsMappings] = []
+                for v in dict["ComponentsMappings"] as! [Any] {
+                    var model = UpdateServiceRequest.Commodity.ComponentsMappings()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.componentsMappings = tmp
+            }
+            if dict.keys.contains("MeteringEntityExtraInfos") {
+                var tmp : [UpdateServiceRequest.Commodity.MeteringEntityExtraInfos] = []
+                for v in dict["MeteringEntityExtraInfos"] as! [Any] {
+                    var model = UpdateServiceRequest.Commodity.MeteringEntityExtraInfos()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.meteringEntityExtraInfos = tmp
+            }
+            if dict.keys.contains("MeteringEntityMappings") {
+                var tmp : [UpdateServiceRequest.Commodity.MeteringEntityMappings] = []
+                for v in dict["MeteringEntityMappings"] as! [Any] {
+                    var model = UpdateServiceRequest.Commodity.MeteringEntityMappings()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.meteringEntityMappings = tmp
+            }
+            if dict.keys.contains("SaasBoostConfig") {
+                self.saasBoostConfig = dict["SaasBoostConfig"] as! String
+            }
+            if dict.keys.contains("SpecificationMappings") {
+                var tmp : [UpdateServiceRequest.Commodity.SpecificationMappings] = []
+                for v in dict["SpecificationMappings"] as! [Any] {
+                    var model = UpdateServiceRequest.Commodity.SpecificationMappings()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.specificationMappings = tmp
+            }
+        }
+    }
     public class ServiceInfo : Tea.TeaModel {
         public class Agreements : Tea.TeaModel {
             public var name: String?
@@ -10770,6 +11059,8 @@ public class UpdateServiceRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var commodity: UpdateServiceRequest.Commodity?
+
     public var deployMetadata: String?
 
     public var deployType: String?
@@ -10820,6 +11111,7 @@ public class UpdateServiceRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.commodity?.validate()
         try self.updateOption?.validate()
     }
 
@@ -10833,6 +11125,9 @@ public class UpdateServiceRequest : Tea.TeaModel {
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.commodity != nil {
+            map["Commodity"] = self.commodity?.toMap()
         }
         if self.deployMetadata != nil {
             map["DeployMetadata"] = self.deployMetadata!
@@ -10910,6 +11205,11 @@ public class UpdateServiceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("Commodity") {
+            var model = UpdateServiceRequest.Commodity()
+            model.fromMap(dict["Commodity"] as! [String: Any])
+            self.commodity = model
         }
         if dict.keys.contains("DeployMetadata") {
             self.deployMetadata = dict["DeployMetadata"] as! String
@@ -11109,6 +11409,8 @@ public class UpdateServiceShrinkRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var commodityShrink: String?
+
     public var deployMetadata: String?
 
     public var deployType: String?
@@ -11171,6 +11473,9 @@ public class UpdateServiceShrinkRequest : Tea.TeaModel {
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.commodityShrink != nil {
+            map["Commodity"] = self.commodityShrink!
         }
         if self.deployMetadata != nil {
             map["DeployMetadata"] = self.deployMetadata!
@@ -11248,6 +11553,9 @@ public class UpdateServiceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("Commodity") {
+            self.commodityShrink = dict["Commodity"] as! String
         }
         if dict.keys.contains("DeployMetadata") {
             self.deployMetadata = dict["DeployMetadata"] as! String
@@ -11400,7 +11708,95 @@ public class UpdateServiceResponse : Tea.TeaModel {
 }
 
 public class UpdateServiceInstanceAttributeRequest : Tea.TeaModel {
+    public class LicenseData : Tea.TeaModel {
+        public var customData: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.customData != nil {
+                map["CustomData"] = self.customData!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CustomData") {
+                self.customData = dict["CustomData"] as! String
+            }
+        }
+    }
     public var endTime: String?
+
+    public var licenseData: UpdateServiceInstanceAttributeRequest.LicenseData?
+
+    public var regionId: String?
+
+    public var serviceInstanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.licenseData?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.licenseData != nil {
+            map["LicenseData"] = self.licenseData?.toMap()
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.serviceInstanceId != nil {
+            map["ServiceInstanceId"] = self.serviceInstanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EndTime") {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("LicenseData") {
+            var model = UpdateServiceInstanceAttributeRequest.LicenseData()
+            model.fromMap(dict["LicenseData"] as! [String: Any])
+            self.licenseData = model
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ServiceInstanceId") {
+            self.serviceInstanceId = dict["ServiceInstanceId"] as! String
+        }
+    }
+}
+
+public class UpdateServiceInstanceAttributeShrinkRequest : Tea.TeaModel {
+    public var endTime: String?
+
+    public var licenseDataShrink: String?
 
     public var regionId: String?
 
@@ -11423,6 +11819,9 @@ public class UpdateServiceInstanceAttributeRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.licenseDataShrink != nil {
+            map["LicenseData"] = self.licenseDataShrink!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -11435,6 +11834,9 @@ public class UpdateServiceInstanceAttributeRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("EndTime") {
             self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("LicenseData") {
+            self.licenseDataShrink = dict["LicenseData"] as! String
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String

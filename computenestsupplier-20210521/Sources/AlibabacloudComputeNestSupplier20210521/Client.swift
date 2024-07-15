@@ -1399,6 +1399,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpdateServiceShrinkRequest = UpdateServiceShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.commodity)) {
+            request.commodityShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.commodity, "Commodity", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.updateOption)) {
             request.updateOptionShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.updateOption, "UpdateOption", "json")
         }
@@ -1411,6 +1414,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.commodityShrink)) {
+            query["Commodity"] = request.commodityShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.deployMetadata)) {
             query["DeployMetadata"] = request.deployMetadata ?? "";
@@ -1497,11 +1503,19 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateServiceInstanceAttributeWithOptions(_ request: UpdateServiceInstanceAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateServiceInstanceAttributeResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func updateServiceInstanceAttributeWithOptions(_ tmpReq: UpdateServiceInstanceAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateServiceInstanceAttributeResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateServiceInstanceAttributeShrinkRequest = UpdateServiceInstanceAttributeShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.licenseData)) {
+            request.licenseDataShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.licenseData, "LicenseData", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.licenseDataShrink)) {
+            query["LicenseData"] = request.licenseDataShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
