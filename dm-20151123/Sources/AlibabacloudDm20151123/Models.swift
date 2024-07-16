@@ -3605,6 +3605,8 @@ public class GetSuppressionListLevelResponse : Tea.TeaModel {
 }
 
 public class GetTrackListRequest : Tea.TeaModel {
+    public var accountName: String?
+
     public var endTime: String?
 
     public var offset: String?
@@ -3625,6 +3627,8 @@ public class GetTrackListRequest : Tea.TeaModel {
 
     public var startTime: String?
 
+    public var tagName: String?
+
     public var total: String?
 
     public override init() {
@@ -3641,6 +3645,9 @@ public class GetTrackListRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accountName != nil {
+            map["AccountName"] = self.accountName!
+        }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
@@ -3671,6 +3678,9 @@ public class GetTrackListRequest : Tea.TeaModel {
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
+        if self.tagName != nil {
+            map["TagName"] = self.tagName!
+        }
         if self.total != nil {
             map["Total"] = self.total!
         }
@@ -3678,6 +3688,9 @@ public class GetTrackListRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccountName") {
+            self.accountName = dict["AccountName"] as! String
+        }
         if dict.keys.contains("EndTime") {
             self.endTime = dict["EndTime"] as! String
         }
@@ -3707,6 +3720,9 @@ public class GetTrackListRequest : Tea.TeaModel {
         }
         if dict.keys.contains("StartTime") {
             self.startTime = dict["StartTime"] as! String
+        }
+        if dict.keys.contains("TagName") {
+            self.tagName = dict["TagName"] as! String
         }
         if dict.keys.contains("Total") {
             self.total = dict["Total"] as! String

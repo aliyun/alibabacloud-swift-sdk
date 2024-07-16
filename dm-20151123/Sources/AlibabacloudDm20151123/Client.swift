@@ -952,6 +952,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getTrackListWithOptions(_ request: GetTrackListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetTrackListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountName)) {
+            query["AccountName"] = request.accountName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
         }
@@ -981,6 +984,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             query["StartTime"] = request.startTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagName)) {
+            query["TagName"] = request.tagName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.total)) {
             query["Total"] = request.total ?? "";
