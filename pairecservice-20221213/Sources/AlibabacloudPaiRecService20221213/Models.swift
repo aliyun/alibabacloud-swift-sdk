@@ -10606,6 +10606,8 @@ public class GetTrafficControlTargetRequest : Tea.TeaModel {
 
 public class GetTrafficControlTargetResponseBody : Tea.TeaModel {
     public class SplitParts : Tea.TeaModel {
+        public var setPoints: [Int64]?
+
         public var setValues: [Int64]?
 
         public var timePoints: [Int64]?
@@ -10624,6 +10626,9 @@ public class GetTrafficControlTargetResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.setPoints != nil {
+                map["SetPoints"] = self.setPoints!
+            }
             if self.setValues != nil {
                 map["SetValues"] = self.setValues!
             }
@@ -10634,6 +10639,9 @@ public class GetTrafficControlTargetResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("SetPoints") {
+                self.setPoints = dict["SetPoints"] as! [Int64]
+            }
             if dict.keys.contains("SetValues") {
                 self.setValues = dict["SetValues"] as! [Int64]
             }
@@ -10918,6 +10926,8 @@ public class GetTrafficControlTaskResponseBody : Tea.TeaModel {
         public class SplitParts : Tea.TeaModel {
             public var setPoints: [Int32]?
 
+            public var setValues: [Int64]?
+
             public var timePoints: [Int32]?
 
             public override init() {
@@ -10937,6 +10947,9 @@ public class GetTrafficControlTaskResponseBody : Tea.TeaModel {
                 if self.setPoints != nil {
                     map["SetPoints"] = self.setPoints!
                 }
+                if self.setValues != nil {
+                    map["SetValues"] = self.setValues!
+                }
                 if self.timePoints != nil {
                     map["TimePoints"] = self.timePoints!
                 }
@@ -10946,6 +10959,9 @@ public class GetTrafficControlTaskResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("SetPoints") {
                     self.setPoints = dict["SetPoints"] as! [Int32]
+                }
+                if dict.keys.contains("SetValues") {
+                    self.setValues = dict["SetValues"] as! [Int64]
                 }
                 if dict.keys.contains("TimePoints") {
                     self.timePoints = dict["TimePoints"] as! [Int32]
@@ -19809,6 +19825,8 @@ public class SplitTrafficControlTargetRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var setPoints: [Int64]?
+
     public var setValues: [Int64]?
 
     public var timePoints: [Int64]?
@@ -19833,6 +19851,9 @@ public class SplitTrafficControlTargetRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.setPoints != nil {
+            map["SetPoints"] = self.setPoints!
+        }
         if self.setValues != nil {
             map["SetValues"] = self.setValues!
         }
@@ -19848,6 +19869,9 @@ public class SplitTrafficControlTargetRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("SetPoints") {
+            self.setPoints = dict["SetPoints"] as! [Int64]
         }
         if dict.keys.contains("SetValues") {
             self.setValues = dict["SetValues"] as! [Int64]
