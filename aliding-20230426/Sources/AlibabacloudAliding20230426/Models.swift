@@ -5173,6 +5173,325 @@ public class CancelScheduleConferenceResponse : Tea.TeaModel {
     }
 }
 
+public class CheckAlibabaStaffHeaders : Tea.TeaModel {
+    public class AccountContext : Tea.TeaModel {
+        public var accountId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountId != nil {
+                map["accountId"] = self.accountId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("accountId") {
+                self.accountId = dict["accountId"] as! String
+            }
+        }
+    }
+    public var commonHeaders: [String: String]?
+
+    public var accountContext: CheckAlibabaStaffHeaders.AccountContext?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.accountContext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.accountContext != nil {
+            map["AccountContext"] = self.accountContext?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("commonHeaders") {
+            self.commonHeaders = dict["commonHeaders"] as! [String: String]
+        }
+        if dict.keys.contains("AccountContext") {
+            var model = CheckAlibabaStaffHeaders.AccountContext()
+            model.fromMap(dict["AccountContext"] as! [String: Any])
+            self.accountContext = model
+        }
+    }
+}
+
+public class CheckAlibabaStaffShrinkHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var accountContextShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.accountContextShrink != nil {
+            map["AccountContext"] = self.accountContextShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("commonHeaders") {
+            self.commonHeaders = dict["commonHeaders"] as! [String: String]
+        }
+        if dict.keys.contains("AccountContext") {
+            self.accountContextShrink = dict["AccountContext"] as! String
+        }
+    }
+}
+
+public class CheckAlibabaStaffRequest : Tea.TeaModel {
+    public class TenantContext : Tea.TeaModel {
+        public var tenantId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tenantId != nil {
+                map["tenantId"] = self.tenantId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("tenantId") {
+                self.tenantId = dict["tenantId"] as! String
+            }
+        }
+    }
+    public var mobile: String?
+
+    public var tenantContext: CheckAlibabaStaffRequest.TenantContext?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.tenantContext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.mobile != nil {
+            map["Mobile"] = self.mobile!
+        }
+        if self.tenantContext != nil {
+            map["TenantContext"] = self.tenantContext?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Mobile") {
+            self.mobile = dict["Mobile"] as! String
+        }
+        if dict.keys.contains("TenantContext") {
+            var model = CheckAlibabaStaffRequest.TenantContext()
+            model.fromMap(dict["TenantContext"] as! [String: Any])
+            self.tenantContext = model
+        }
+    }
+}
+
+public class CheckAlibabaStaffShrinkRequest : Tea.TeaModel {
+    public var mobile: String?
+
+    public var tenantContextShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.mobile != nil {
+            map["Mobile"] = self.mobile!
+        }
+        if self.tenantContextShrink != nil {
+            map["TenantContext"] = self.tenantContextShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Mobile") {
+            self.mobile = dict["Mobile"] as! String
+        }
+        if dict.keys.contains("TenantContext") {
+            self.tenantContextShrink = dict["TenantContext"] as! String
+        }
+    }
+}
+
+public class CheckAlibabaStaffResponseBody : Tea.TeaModel {
+    public var isAlibabaStaff: Bool?
+
+    public var requestId: String?
+
+    public var vendorRequestId: String?
+
+    public var vendorType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.isAlibabaStaff != nil {
+            map["isAlibabaStaff"] = self.isAlibabaStaff!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.vendorRequestId != nil {
+            map["vendorRequestId"] = self.vendorRequestId!
+        }
+        if self.vendorType != nil {
+            map["vendorType"] = self.vendorType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("isAlibabaStaff") {
+            self.isAlibabaStaff = dict["isAlibabaStaff"] as! Bool
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("vendorRequestId") {
+            self.vendorRequestId = dict["vendorRequestId"] as! String
+        }
+        if dict.keys.contains("vendorType") {
+            self.vendorType = dict["vendorType"] as! String
+        }
+    }
+}
+
+public class CheckAlibabaStaffResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CheckAlibabaStaffResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CheckAlibabaStaffResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CheckUserIsGroupMemberHeaders : Tea.TeaModel {
     public class AccountContext : Tea.TeaModel {
         public var accountId: String?
@@ -82010,6 +82329,429 @@ public class UpdateUserAvatarResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = UpdateUserAvatarResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateVideoConferenceSettingHeaders : Tea.TeaModel {
+    public class AccountContext : Tea.TeaModel {
+        public var accountId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountId != nil {
+                map["accountId"] = self.accountId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("accountId") {
+                self.accountId = dict["accountId"] as! String
+            }
+        }
+    }
+    public var commonHeaders: [String: String]?
+
+    public var accountContext: UpdateVideoConferenceSettingHeaders.AccountContext?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.accountContext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.accountContext != nil {
+            map["AccountContext"] = self.accountContext?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("commonHeaders") {
+            self.commonHeaders = dict["commonHeaders"] as! [String: String]
+        }
+        if dict.keys.contains("AccountContext") {
+            var model = UpdateVideoConferenceSettingHeaders.AccountContext()
+            model.fromMap(dict["AccountContext"] as! [String: Any])
+            self.accountContext = model
+        }
+    }
+}
+
+public class UpdateVideoConferenceSettingShrinkHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var accountContextShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.accountContextShrink != nil {
+            map["AccountContext"] = self.accountContextShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("commonHeaders") {
+            self.commonHeaders = dict["commonHeaders"] as! [String: String]
+        }
+        if dict.keys.contains("AccountContext") {
+            self.accountContextShrink = dict["AccountContext"] as! String
+        }
+    }
+}
+
+public class UpdateVideoConferenceSettingRequest : Tea.TeaModel {
+    public class TenantContext : Tea.TeaModel {
+        public var tenantId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tenantId != nil {
+                map["tenantId"] = self.tenantId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("tenantId") {
+                self.tenantId = dict["tenantId"] as! String
+            }
+        }
+    }
+    public var allowUnmuteSelf: Bool?
+
+    public var autoTransferHost: Bool?
+
+    public var forbiddenShareScreen: Bool?
+
+    public var lockConference: Bool?
+
+    public var muteAll: Bool?
+
+    public var onlyInternalEmployeesJoin: Bool?
+
+    public var tenantContext: UpdateVideoConferenceSettingRequest.TenantContext?
+
+    public var conferenceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.tenantContext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allowUnmuteSelf != nil {
+            map["AllowUnmuteSelf"] = self.allowUnmuteSelf!
+        }
+        if self.autoTransferHost != nil {
+            map["AutoTransferHost"] = self.autoTransferHost!
+        }
+        if self.forbiddenShareScreen != nil {
+            map["ForbiddenShareScreen"] = self.forbiddenShareScreen!
+        }
+        if self.lockConference != nil {
+            map["LockConference"] = self.lockConference!
+        }
+        if self.muteAll != nil {
+            map["MuteAll"] = self.muteAll!
+        }
+        if self.onlyInternalEmployeesJoin != nil {
+            map["OnlyInternalEmployeesJoin"] = self.onlyInternalEmployeesJoin!
+        }
+        if self.tenantContext != nil {
+            map["TenantContext"] = self.tenantContext?.toMap()
+        }
+        if self.conferenceId != nil {
+            map["conferenceId"] = self.conferenceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AllowUnmuteSelf") {
+            self.allowUnmuteSelf = dict["AllowUnmuteSelf"] as! Bool
+        }
+        if dict.keys.contains("AutoTransferHost") {
+            self.autoTransferHost = dict["AutoTransferHost"] as! Bool
+        }
+        if dict.keys.contains("ForbiddenShareScreen") {
+            self.forbiddenShareScreen = dict["ForbiddenShareScreen"] as! Bool
+        }
+        if dict.keys.contains("LockConference") {
+            self.lockConference = dict["LockConference"] as! Bool
+        }
+        if dict.keys.contains("MuteAll") {
+            self.muteAll = dict["MuteAll"] as! Bool
+        }
+        if dict.keys.contains("OnlyInternalEmployeesJoin") {
+            self.onlyInternalEmployeesJoin = dict["OnlyInternalEmployeesJoin"] as! Bool
+        }
+        if dict.keys.contains("TenantContext") {
+            var model = UpdateVideoConferenceSettingRequest.TenantContext()
+            model.fromMap(dict["TenantContext"] as! [String: Any])
+            self.tenantContext = model
+        }
+        if dict.keys.contains("conferenceId") {
+            self.conferenceId = dict["conferenceId"] as! String
+        }
+    }
+}
+
+public class UpdateVideoConferenceSettingShrinkRequest : Tea.TeaModel {
+    public var allowUnmuteSelf: Bool?
+
+    public var autoTransferHost: Bool?
+
+    public var forbiddenShareScreen: Bool?
+
+    public var lockConference: Bool?
+
+    public var muteAll: Bool?
+
+    public var onlyInternalEmployeesJoin: Bool?
+
+    public var tenantContextShrink: String?
+
+    public var conferenceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allowUnmuteSelf != nil {
+            map["AllowUnmuteSelf"] = self.allowUnmuteSelf!
+        }
+        if self.autoTransferHost != nil {
+            map["AutoTransferHost"] = self.autoTransferHost!
+        }
+        if self.forbiddenShareScreen != nil {
+            map["ForbiddenShareScreen"] = self.forbiddenShareScreen!
+        }
+        if self.lockConference != nil {
+            map["LockConference"] = self.lockConference!
+        }
+        if self.muteAll != nil {
+            map["MuteAll"] = self.muteAll!
+        }
+        if self.onlyInternalEmployeesJoin != nil {
+            map["OnlyInternalEmployeesJoin"] = self.onlyInternalEmployeesJoin!
+        }
+        if self.tenantContextShrink != nil {
+            map["TenantContext"] = self.tenantContextShrink!
+        }
+        if self.conferenceId != nil {
+            map["conferenceId"] = self.conferenceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AllowUnmuteSelf") {
+            self.allowUnmuteSelf = dict["AllowUnmuteSelf"] as! Bool
+        }
+        if dict.keys.contains("AutoTransferHost") {
+            self.autoTransferHost = dict["AutoTransferHost"] as! Bool
+        }
+        if dict.keys.contains("ForbiddenShareScreen") {
+            self.forbiddenShareScreen = dict["ForbiddenShareScreen"] as! Bool
+        }
+        if dict.keys.contains("LockConference") {
+            self.lockConference = dict["LockConference"] as! Bool
+        }
+        if dict.keys.contains("MuteAll") {
+            self.muteAll = dict["MuteAll"] as! Bool
+        }
+        if dict.keys.contains("OnlyInternalEmployeesJoin") {
+            self.onlyInternalEmployeesJoin = dict["OnlyInternalEmployeesJoin"] as! Bool
+        }
+        if dict.keys.contains("TenantContext") {
+            self.tenantContextShrink = dict["TenantContext"] as! String
+        }
+        if dict.keys.contains("conferenceId") {
+            self.conferenceId = dict["conferenceId"] as! String
+        }
+    }
+}
+
+public class UpdateVideoConferenceSettingResponseBody : Tea.TeaModel {
+    public var caseResult: String?
+
+    public var code: String?
+
+    public var requestId: String?
+
+    public var vendorRequestId: String?
+
+    public var vendorType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.caseResult != nil {
+            map["caseResult"] = self.caseResult!
+        }
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.vendorRequestId != nil {
+            map["vendorRequestId"] = self.vendorRequestId!
+        }
+        if self.vendorType != nil {
+            map["vendorType"] = self.vendorType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("caseResult") {
+            self.caseResult = dict["caseResult"] as! String
+        }
+        if dict.keys.contains("code") {
+            self.code = dict["code"] as! String
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("vendorRequestId") {
+            self.vendorRequestId = dict["vendorRequestId"] as! String
+        }
+        if dict.keys.contains("vendorType") {
+            self.vendorType = dict["vendorType"] as! String
+        }
+    }
+}
+
+public class UpdateVideoConferenceSettingResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateVideoConferenceSettingResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateVideoConferenceSettingResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

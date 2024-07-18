@@ -816,6 +816,59 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func checkAlibabaStaffWithOptions(_ tmpReq: CheckAlibabaStaffRequest, _ tmpHeader: CheckAlibabaStaffHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CheckAlibabaStaffResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CheckAlibabaStaffShrinkRequest = CheckAlibabaStaffShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: CheckAlibabaStaffShrinkHeaders = CheckAlibabaStaffShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.mobile)) {
+            body["Mobile"] = request.mobile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CheckAlibabaStaff",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/im/checkAlibabaStaff",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CheckAlibabaStaffResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func checkAlibabaStaff(_ request: CheckAlibabaStaffRequest) async throws -> CheckAlibabaStaffResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: CheckAlibabaStaffHeaders = CheckAlibabaStaffHeaders([:])
+        return try await checkAlibabaStaffWithOptions(request as! CheckAlibabaStaffRequest, headers as! CheckAlibabaStaffHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func checkUserIsGroupMemberWithOptions(_ request: CheckUserIsGroupMemberRequest, _ tmpHeader: CheckUserIsGroupMemberHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CheckUserIsGroupMemberResponse {
         try TeaUtils.Client.validateModel(request)
         var headers: CheckUserIsGroupMemberShrinkHeaders = CheckUserIsGroupMemberShrinkHeaders([:])
@@ -11397,6 +11450,77 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: UpdateUserAvatarHeaders = UpdateUserAvatarHeaders([:])
         return try await updateUserAvatarWithOptions(request as! UpdateUserAvatarRequest, headers as! UpdateUserAvatarHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateVideoConferenceSettingWithOptions(_ tmpReq: UpdateVideoConferenceSettingRequest, _ tmpHeader: UpdateVideoConferenceSettingHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateVideoConferenceSettingResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateVideoConferenceSettingShrinkRequest = UpdateVideoConferenceSettingShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: UpdateVideoConferenceSettingShrinkHeaders = UpdateVideoConferenceSettingShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allowUnmuteSelf)) {
+            body["AllowUnmuteSelf"] = request.allowUnmuteSelf!;
+        }
+        if (!TeaUtils.Client.isUnset(request.autoTransferHost)) {
+            body["AutoTransferHost"] = request.autoTransferHost!;
+        }
+        if (!TeaUtils.Client.isUnset(request.forbiddenShareScreen)) {
+            body["ForbiddenShareScreen"] = request.forbiddenShareScreen!;
+        }
+        if (!TeaUtils.Client.isUnset(request.lockConference)) {
+            body["LockConference"] = request.lockConference!;
+        }
+        if (!TeaUtils.Client.isUnset(request.muteAll)) {
+            body["MuteAll"] = request.muteAll!;
+        }
+        if (!TeaUtils.Client.isUnset(request.onlyInternalEmployeesJoin)) {
+            body["OnlyInternalEmployeesJoin"] = request.onlyInternalEmployeesJoin!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.conferenceId)) {
+            body["conferenceId"] = request.conferenceId ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateVideoConferenceSetting",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/ysp/updateVideoConferenceSetting",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateVideoConferenceSettingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateVideoConferenceSetting(_ request: UpdateVideoConferenceSettingRequest) async throws -> UpdateVideoConferenceSettingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: UpdateVideoConferenceSettingHeaders = UpdateVideoConferenceSettingHeaders([:])
+        return try await updateVideoConferenceSettingWithOptions(request as! UpdateVideoConferenceSettingRequest, headers as! UpdateVideoConferenceSettingHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
