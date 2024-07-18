@@ -5359,6 +5359,8 @@ public class GetServiceInstanceResponseBody : Tea.TeaModel {
 
     public var operationEndTime: String?
 
+    public var operationExtraInfo: String?
+
     public var operationStartTime: String?
 
     public var outputs: String?
@@ -5452,6 +5454,9 @@ public class GetServiceInstanceResponseBody : Tea.TeaModel {
         }
         if self.operationEndTime != nil {
             map["OperationEndTime"] = self.operationEndTime!
+        }
+        if self.operationExtraInfo != nil {
+            map["OperationExtraInfo"] = self.operationExtraInfo!
         }
         if self.operationStartTime != nil {
             map["OperationStartTime"] = self.operationStartTime!
@@ -5561,6 +5566,9 @@ public class GetServiceInstanceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("OperationEndTime") {
             self.operationEndTime = dict["OperationEndTime"] as! String
+        }
+        if dict.keys.contains("OperationExtraInfo") {
+            self.operationExtraInfo = dict["OperationExtraInfo"] as! String
         }
         if dict.keys.contains("OperationStartTime") {
             self.operationStartTime = dict["OperationStartTime"] as! String
