@@ -12293,6 +12293,51 @@ public class GetTemplateParameterConstraintsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class QueryTimeoutDetails : Tea.TeaModel {
+            public var errorMessage: String?
+
+            public var resourceName: String?
+
+            public var resourceType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.errorMessage != nil {
+                    map["ErrorMessage"] = self.errorMessage!
+                }
+                if self.resourceName != nil {
+                    map["ResourceName"] = self.resourceName!
+                }
+                if self.resourceType != nil {
+                    map["ResourceType"] = self.resourceType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ErrorMessage") {
+                    self.errorMessage = dict["ErrorMessage"] as! String
+                }
+                if dict.keys.contains("ResourceName") {
+                    self.resourceName = dict["ResourceName"] as! String
+                }
+                if dict.keys.contains("ResourceType") {
+                    self.resourceType = dict["ResourceType"] as! String
+                }
+            }
+        }
         public var allowedValues: [String]?
 
         public var associationParameterNames: [String]?
@@ -12312,6 +12357,8 @@ public class GetTemplateParameterConstraintsResponseBody : Tea.TeaModel {
         public var parameterKey: String?
 
         public var queryErrors: [GetTemplateParameterConstraintsResponseBody.ParameterConstraints.QueryErrors]?
+
+        public var queryTimeoutDetails: [GetTemplateParameterConstraintsResponseBody.ParameterConstraints.QueryTimeoutDetails]?
 
         public var type: String?
 
@@ -12370,6 +12417,13 @@ public class GetTemplateParameterConstraintsResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["QueryErrors"] = tmp
+            }
+            if self.queryTimeoutDetails != nil {
+                var tmp : [Any] = []
+                for k in self.queryTimeoutDetails! {
+                    tmp.append(k.toMap())
+                }
+                map["QueryTimeoutDetails"] = tmp
             }
             if self.type != nil {
                 map["Type"] = self.type!
@@ -12431,6 +12485,17 @@ public class GetTemplateParameterConstraintsResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.queryErrors = tmp
+            }
+            if dict.keys.contains("QueryTimeoutDetails") {
+                var tmp : [GetTemplateParameterConstraintsResponseBody.ParameterConstraints.QueryTimeoutDetails] = []
+                for v in dict["QueryTimeoutDetails"] as! [Any] {
+                    var model = GetTemplateParameterConstraintsResponseBody.ParameterConstraints.QueryTimeoutDetails()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.queryTimeoutDetails = tmp
             }
             if dict.keys.contains("Type") {
                 self.type = dict["Type"] as! String
