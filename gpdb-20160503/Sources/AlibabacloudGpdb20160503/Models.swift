@@ -9,6 +9,312 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class ColumnMetadata : Tea.TeaModel {
+    public var columnDefault: String?
+
+    public var comment: String?
+
+    public var dataType: String?
+
+    public var isCaseSensitive: Bool?
+
+    public var isCurrency: Bool?
+
+    public var isPrimaryKey: Bool?
+
+    public var isSigned: Bool?
+
+    public var maxLength: Int32?
+
+    public var name: String?
+
+    public var nullable: Bool?
+
+    public var precision: Int32?
+
+    public var scale: Int32?
+
+    public var schemaName: String?
+
+    public var tableName: String?
+
+    public var udtName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.columnDefault != nil {
+            map["ColumnDefault"] = self.columnDefault!
+        }
+        if self.comment != nil {
+            map["Comment"] = self.comment!
+        }
+        if self.dataType != nil {
+            map["DataType"] = self.dataType!
+        }
+        if self.isCaseSensitive != nil {
+            map["IsCaseSensitive"] = self.isCaseSensitive!
+        }
+        if self.isCurrency != nil {
+            map["IsCurrency"] = self.isCurrency!
+        }
+        if self.isPrimaryKey != nil {
+            map["IsPrimaryKey"] = self.isPrimaryKey!
+        }
+        if self.isSigned != nil {
+            map["IsSigned"] = self.isSigned!
+        }
+        if self.maxLength != nil {
+            map["MaxLength"] = self.maxLength!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.nullable != nil {
+            map["Nullable"] = self.nullable!
+        }
+        if self.precision != nil {
+            map["Precision"] = self.precision!
+        }
+        if self.scale != nil {
+            map["Scale"] = self.scale!
+        }
+        if self.schemaName != nil {
+            map["SchemaName"] = self.schemaName!
+        }
+        if self.tableName != nil {
+            map["TableName"] = self.tableName!
+        }
+        if self.udtName != nil {
+            map["UdtName"] = self.udtName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ColumnDefault") {
+            self.columnDefault = dict["ColumnDefault"] as! String
+        }
+        if dict.keys.contains("Comment") {
+            self.comment = dict["Comment"] as! String
+        }
+        if dict.keys.contains("DataType") {
+            self.dataType = dict["DataType"] as! String
+        }
+        if dict.keys.contains("IsCaseSensitive") {
+            self.isCaseSensitive = dict["IsCaseSensitive"] as! Bool
+        }
+        if dict.keys.contains("IsCurrency") {
+            self.isCurrency = dict["IsCurrency"] as! Bool
+        }
+        if dict.keys.contains("IsPrimaryKey") {
+            self.isPrimaryKey = dict["IsPrimaryKey"] as! Bool
+        }
+        if dict.keys.contains("IsSigned") {
+            self.isSigned = dict["IsSigned"] as! Bool
+        }
+        if dict.keys.contains("MaxLength") {
+            self.maxLength = dict["MaxLength"] as! Int32
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("Nullable") {
+            self.nullable = dict["Nullable"] as! Bool
+        }
+        if dict.keys.contains("Precision") {
+            self.precision = dict["Precision"] as! Int32
+        }
+        if dict.keys.contains("Scale") {
+            self.scale = dict["Scale"] as! Int32
+        }
+        if dict.keys.contains("SchemaName") {
+            self.schemaName = dict["SchemaName"] as! String
+        }
+        if dict.keys.contains("TableName") {
+            self.tableName = dict["TableName"] as! String
+        }
+        if dict.keys.contains("UdtName") {
+            self.udtName = dict["UdtName"] as! String
+        }
+    }
+}
+
+public class Field : Tea.TeaModel {
+    public var blobValue: String?
+
+    public var booleanValue: Bool?
+
+    public var doubleValue: Double?
+
+    public var isNull: Bool?
+
+    public var longValue: Int64?
+
+    public var stringValue: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.blobValue != nil {
+            map["BlobValue"] = self.blobValue!
+        }
+        if self.booleanValue != nil {
+            map["BooleanValue"] = self.booleanValue!
+        }
+        if self.doubleValue != nil {
+            map["DoubleValue"] = self.doubleValue!
+        }
+        if self.isNull != nil {
+            map["IsNull"] = self.isNull!
+        }
+        if self.longValue != nil {
+            map["LongValue"] = self.longValue!
+        }
+        if self.stringValue != nil {
+            map["StringValue"] = self.stringValue!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BlobValue") {
+            self.blobValue = dict["BlobValue"] as! String
+        }
+        if dict.keys.contains("BooleanValue") {
+            self.booleanValue = dict["BooleanValue"] as! Bool
+        }
+        if dict.keys.contains("DoubleValue") {
+            self.doubleValue = dict["DoubleValue"] as! Double
+        }
+        if dict.keys.contains("IsNull") {
+            self.isNull = dict["IsNull"] as! Bool
+        }
+        if dict.keys.contains("LongValue") {
+            self.longValue = dict["LongValue"] as! Int64
+        }
+        if dict.keys.contains("StringValue") {
+            self.stringValue = dict["StringValue"] as! String
+        }
+    }
+}
+
+public class StatementData : Tea.TeaModel {
+    public var createdAt: String?
+
+    public var database: String?
+
+    public var id: String?
+
+    public var parameters: [String]?
+
+    public var secretArn: String?
+
+    public var sql: String?
+
+    public var sqls: [String]?
+
+    public var status: String?
+
+    public var updatedAt: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.createdAt != nil {
+            map["CreatedAt"] = self.createdAt!
+        }
+        if self.database != nil {
+            map["Database"] = self.database!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.parameters != nil {
+            map["Parameters"] = self.parameters!
+        }
+        if self.secretArn != nil {
+            map["SecretArn"] = self.secretArn!
+        }
+        if self.sql != nil {
+            map["Sql"] = self.sql!
+        }
+        if self.sqls != nil {
+            map["Sqls"] = self.sqls!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.updatedAt != nil {
+            map["UpdatedAt"] = self.updatedAt!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CreatedAt") {
+            self.createdAt = dict["CreatedAt"] as! String
+        }
+        if dict.keys.contains("Database") {
+            self.database = dict["Database"] as! String
+        }
+        if dict.keys.contains("Id") {
+            self.id = dict["Id"] as! String
+        }
+        if dict.keys.contains("Parameters") {
+            self.parameters = dict["Parameters"] as! [String]
+        }
+        if dict.keys.contains("SecretArn") {
+            self.secretArn = dict["SecretArn"] as! String
+        }
+        if dict.keys.contains("Sql") {
+            self.sql = dict["Sql"] as! String
+        }
+        if dict.keys.contains("Sqls") {
+            self.sqls = dict["Sqls"] as! [String]
+        }
+        if dict.keys.contains("Status") {
+            self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("UpdatedAt") {
+            self.updatedAt = dict["UpdatedAt"] as! String
+        }
+    }
+}
+
 public class AllocateInstancePublicConnectionRequest : Tea.TeaModel {
     public var addressType: String?
 
@@ -26388,9 +26694,13 @@ public class ListDocumentsRequest : Tea.TeaModel {
 
     public var DBInstanceId: String?
 
+    public var maxResults: Int32?
+
     public var namespace: String?
 
     public var namespacePassword: String?
+
+    public var nextToken: String?
 
     public var ownerId: Int64?
 
@@ -26416,11 +26726,17 @@ public class ListDocumentsRequest : Tea.TeaModel {
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
         if self.namespace != nil {
             map["Namespace"] = self.namespace!
         }
         if self.namespacePassword != nil {
             map["NamespacePassword"] = self.namespacePassword!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
@@ -26438,11 +26754,17 @@ public class ListDocumentsRequest : Tea.TeaModel {
         if dict.keys.contains("DBInstanceId") {
             self.DBInstanceId = dict["DBInstanceId"] as! String
         }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
         if dict.keys.contains("Namespace") {
             self.namespace = dict["Namespace"] as! String
         }
         if dict.keys.contains("NamespacePassword") {
             self.namespacePassword = dict["NamespacePassword"] as! String
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
         }
         if dict.keys.contains("OwnerId") {
             self.ownerId = dict["OwnerId"] as! Int64
@@ -26532,9 +26854,13 @@ public class ListDocumentsResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var count: Int32?
+
     public var items: ListDocumentsResponseBody.Items?
 
     public var message: String?
+
+    public var nextToken: String?
 
     public var requestId: String?
 
@@ -26555,11 +26881,17 @@ public class ListDocumentsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
         if self.items != nil {
             map["Items"] = self.items?.toMap()
         }
         if self.message != nil {
             map["Message"] = self.message!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -26571,6 +26903,9 @@ public class ListDocumentsResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Count") {
+            self.count = dict["Count"] as! Int32
+        }
         if dict.keys.contains("Items") {
             var model = ListDocumentsResponseBody.Items()
             model.fromMap(dict["Items"] as! [String: Any])
@@ -26578,6 +26913,9 @@ public class ListDocumentsResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
@@ -33013,6 +33351,8 @@ public class QueryContentRequest : Tea.TeaModel {
 
     public var hybridSearchArgs: [String: [String: Any]]?
 
+    public var includeFileUrl: Bool?
+
     public var includeMetadataFields: String?
 
     public var includeVector: Bool?
@@ -33072,6 +33412,9 @@ public class QueryContentRequest : Tea.TeaModel {
         }
         if self.hybridSearchArgs != nil {
             map["HybridSearchArgs"] = self.hybridSearchArgs!
+        }
+        if self.includeFileUrl != nil {
+            map["IncludeFileUrl"] = self.includeFileUrl!
         }
         if self.includeMetadataFields != nil {
             map["IncludeMetadataFields"] = self.includeMetadataFields!
@@ -33134,6 +33477,9 @@ public class QueryContentRequest : Tea.TeaModel {
         if dict.keys.contains("HybridSearchArgs") {
             self.hybridSearchArgs = dict["HybridSearchArgs"] as! [String: [String: Any]]
         }
+        if dict.keys.contains("IncludeFileUrl") {
+            self.includeFileUrl = dict["IncludeFileUrl"] as! Bool
+        }
         if dict.keys.contains("IncludeMetadataFields") {
             self.includeMetadataFields = dict["IncludeMetadataFields"] as! String
         }
@@ -33186,6 +33532,8 @@ public class QueryContentAdvanceRequest : Tea.TeaModel {
     public var hybridSearch: String?
 
     public var hybridSearchArgs: [String: [String: Any]]?
+
+    public var includeFileUrl: Bool?
 
     public var includeMetadataFields: String?
 
@@ -33246,6 +33594,9 @@ public class QueryContentAdvanceRequest : Tea.TeaModel {
         }
         if self.hybridSearchArgs != nil {
             map["HybridSearchArgs"] = self.hybridSearchArgs!
+        }
+        if self.includeFileUrl != nil {
+            map["IncludeFileUrl"] = self.includeFileUrl!
         }
         if self.includeMetadataFields != nil {
             map["IncludeMetadataFields"] = self.includeMetadataFields!
@@ -33308,6 +33659,9 @@ public class QueryContentAdvanceRequest : Tea.TeaModel {
         if dict.keys.contains("HybridSearchArgs") {
             self.hybridSearchArgs = dict["HybridSearchArgs"] as! [String: [String: Any]]
         }
+        if dict.keys.contains("IncludeFileUrl") {
+            self.includeFileUrl = dict["IncludeFileUrl"] as! Bool
+        }
         if dict.keys.contains("IncludeMetadataFields") {
             self.includeMetadataFields = dict["IncludeMetadataFields"] as! String
         }
@@ -33360,6 +33714,8 @@ public class QueryContentShrinkRequest : Tea.TeaModel {
     public var hybridSearch: String?
 
     public var hybridSearchArgsShrink: String?
+
+    public var includeFileUrl: Bool?
 
     public var includeMetadataFields: String?
 
@@ -33421,6 +33777,9 @@ public class QueryContentShrinkRequest : Tea.TeaModel {
         if self.hybridSearchArgsShrink != nil {
             map["HybridSearchArgs"] = self.hybridSearchArgsShrink!
         }
+        if self.includeFileUrl != nil {
+            map["IncludeFileUrl"] = self.includeFileUrl!
+        }
         if self.includeMetadataFields != nil {
             map["IncludeMetadataFields"] = self.includeMetadataFields!
         }
@@ -33481,6 +33840,9 @@ public class QueryContentShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("HybridSearchArgs") {
             self.hybridSearchArgsShrink = dict["HybridSearchArgs"] as! String
+        }
+        if dict.keys.contains("IncludeFileUrl") {
+            self.includeFileUrl = dict["IncludeFileUrl"] as! Bool
         }
         if dict.keys.contains("IncludeMetadataFields") {
             self.includeMetadataFields = dict["IncludeMetadataFields"] as! String

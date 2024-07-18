@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudGpdb20160503"
-  spec.version      = "1.4.2"
+  spec.version      = "1.4.3"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud AnalyticDB for PostgreSQL (20160503) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/gpdb-20160503" 
