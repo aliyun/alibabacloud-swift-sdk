@@ -32134,6 +32134,836 @@ public class ListCallDetailRecordsResponse : Tea.TeaModel {
     }
 }
 
+public class ListCallDetailRecordsV2Request : Tea.TeaModel {
+    public var accessChannelTypeList: String?
+
+    public var agentId: String?
+
+    public var broker: String?
+
+    public var calledNumber: String?
+
+    public var callingNumber: String?
+
+    public var contactDispositionList: String?
+
+    public var contactIdList: String?
+
+    public var contactTypeList: String?
+
+    public var earlyMediaStateList: String?
+
+    public var endTime: Int64?
+
+    public var firstAgentId: String?
+
+    public var instanceId: String?
+
+    public var mediaType: String?
+
+    public var number: String?
+
+    public var orderByField: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var satisfactionDescriptionList: String?
+
+    public var satisfactionRateList: String?
+
+    public var satisfactionSurveyChannel: String?
+
+    public var searchPattern: String?
+
+    public var skillGroupIdList: String?
+
+    public var sortOrder: String?
+
+    public var startTime: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessChannelTypeList != nil {
+            map["AccessChannelTypeList"] = self.accessChannelTypeList!
+        }
+        if self.agentId != nil {
+            map["AgentId"] = self.agentId!
+        }
+        if self.broker != nil {
+            map["Broker"] = self.broker!
+        }
+        if self.calledNumber != nil {
+            map["CalledNumber"] = self.calledNumber!
+        }
+        if self.callingNumber != nil {
+            map["CallingNumber"] = self.callingNumber!
+        }
+        if self.contactDispositionList != nil {
+            map["ContactDispositionList"] = self.contactDispositionList!
+        }
+        if self.contactIdList != nil {
+            map["ContactIdList"] = self.contactIdList!
+        }
+        if self.contactTypeList != nil {
+            map["ContactTypeList"] = self.contactTypeList!
+        }
+        if self.earlyMediaStateList != nil {
+            map["EarlyMediaStateList"] = self.earlyMediaStateList!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.firstAgentId != nil {
+            map["FirstAgentId"] = self.firstAgentId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.mediaType != nil {
+            map["MediaType"] = self.mediaType!
+        }
+        if self.number != nil {
+            map["Number"] = self.number!
+        }
+        if self.orderByField != nil {
+            map["OrderByField"] = self.orderByField!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.satisfactionDescriptionList != nil {
+            map["SatisfactionDescriptionList"] = self.satisfactionDescriptionList!
+        }
+        if self.satisfactionRateList != nil {
+            map["SatisfactionRateList"] = self.satisfactionRateList!
+        }
+        if self.satisfactionSurveyChannel != nil {
+            map["SatisfactionSurveyChannel"] = self.satisfactionSurveyChannel!
+        }
+        if self.searchPattern != nil {
+            map["SearchPattern"] = self.searchPattern!
+        }
+        if self.skillGroupIdList != nil {
+            map["SkillGroupIdList"] = self.skillGroupIdList!
+        }
+        if self.sortOrder != nil {
+            map["SortOrder"] = self.sortOrder!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessChannelTypeList") {
+            self.accessChannelTypeList = dict["AccessChannelTypeList"] as! String
+        }
+        if dict.keys.contains("AgentId") {
+            self.agentId = dict["AgentId"] as! String
+        }
+        if dict.keys.contains("Broker") {
+            self.broker = dict["Broker"] as! String
+        }
+        if dict.keys.contains("CalledNumber") {
+            self.calledNumber = dict["CalledNumber"] as! String
+        }
+        if dict.keys.contains("CallingNumber") {
+            self.callingNumber = dict["CallingNumber"] as! String
+        }
+        if dict.keys.contains("ContactDispositionList") {
+            self.contactDispositionList = dict["ContactDispositionList"] as! String
+        }
+        if dict.keys.contains("ContactIdList") {
+            self.contactIdList = dict["ContactIdList"] as! String
+        }
+        if dict.keys.contains("ContactTypeList") {
+            self.contactTypeList = dict["ContactTypeList"] as! String
+        }
+        if dict.keys.contains("EarlyMediaStateList") {
+            self.earlyMediaStateList = dict["EarlyMediaStateList"] as! String
+        }
+        if dict.keys.contains("EndTime") {
+            self.endTime = dict["EndTime"] as! Int64
+        }
+        if dict.keys.contains("FirstAgentId") {
+            self.firstAgentId = dict["FirstAgentId"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("MediaType") {
+            self.mediaType = dict["MediaType"] as! String
+        }
+        if dict.keys.contains("Number") {
+            self.number = dict["Number"] as! String
+        }
+        if dict.keys.contains("OrderByField") {
+            self.orderByField = dict["OrderByField"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SatisfactionDescriptionList") {
+            self.satisfactionDescriptionList = dict["SatisfactionDescriptionList"] as! String
+        }
+        if dict.keys.contains("SatisfactionRateList") {
+            self.satisfactionRateList = dict["SatisfactionRateList"] as! String
+        }
+        if dict.keys.contains("SatisfactionSurveyChannel") {
+            self.satisfactionSurveyChannel = dict["SatisfactionSurveyChannel"] as! String
+        }
+        if dict.keys.contains("SearchPattern") {
+            self.searchPattern = dict["SearchPattern"] as! String
+        }
+        if dict.keys.contains("SkillGroupIdList") {
+            self.skillGroupIdList = dict["SkillGroupIdList"] as! String
+        }
+        if dict.keys.contains("SortOrder") {
+            self.sortOrder = dict["SortOrder"] as! String
+        }
+        if dict.keys.contains("StartTime") {
+            self.startTime = dict["StartTime"] as! Int64
+        }
+    }
+}
+
+public class ListCallDetailRecordsV2ResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class List : Tea.TeaModel {
+            public var accessChannelName: String?
+
+            public var accessChannelType: String?
+
+            public var accessChannelUserId: String?
+
+            public var accessChannelUserName: String?
+
+            public var additionalBroker: String?
+
+            public var agentIds: String?
+
+            public var agentNames: String?
+
+            public var broker: String?
+
+            public var callDuration: String?
+
+            public var calledNumber: String?
+
+            public var calleeLocation: String?
+
+            public var callerLocation: String?
+
+            public var callingNumber: String?
+
+            public var clientAppName: String?
+
+            public var clientIpAddress: String?
+
+            public var clientLocation: String?
+
+            public var clientUserAgent: String?
+
+            public var contactDisposition: String?
+
+            public var contactId: String?
+
+            public var contactType: String?
+
+            public var dialingTime: Int64?
+
+            public var earlyMediaState: String?
+
+            public var earlyMediaText: String?
+
+            public var establishedTime: Int64?
+
+            public var firstResponseTime: Int64?
+
+            public var heldTime: Int64?
+
+            public var instanceId: String?
+
+            public var ivrTime: Int64?
+
+            public var mediaType: String?
+
+            public var messagesSent: Int64?
+
+            public var messagesSentByAgent: Int64?
+
+            public var messagesSentByCustomer: Int64?
+
+            public var offSiteAgentIds: String?
+
+            public var offsiteAgentDestinationNumbers: String?
+
+            public var offsiteAgentOriginatorNumbers: String?
+
+            public var queueTime: Int64?
+
+            public var recordingDuration: Int64?
+
+            public var recordingReady: Bool?
+
+            public var releaseInitiator: String?
+
+            public var releaseReason: String?
+
+            public var releaseTime: Int64?
+
+            public var ringTime: Int64?
+
+            public var satisfactionDescription: String?
+
+            public var satisfactionIndex: Int32?
+
+            public var satisfactionSurveyChannel: String?
+
+            public var satisfactionSurveyOffered: Bool?
+
+            public var skillGroupIds: String?
+
+            public var skillGroupNames: String?
+
+            public var startTime: Int64?
+
+            public var talkTime: Int64?
+
+            public var transferCount: Int64?
+
+            public var waitTime: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.accessChannelName != nil {
+                    map["AccessChannelName"] = self.accessChannelName!
+                }
+                if self.accessChannelType != nil {
+                    map["AccessChannelType"] = self.accessChannelType!
+                }
+                if self.accessChannelUserId != nil {
+                    map["AccessChannelUserId"] = self.accessChannelUserId!
+                }
+                if self.accessChannelUserName != nil {
+                    map["AccessChannelUserName"] = self.accessChannelUserName!
+                }
+                if self.additionalBroker != nil {
+                    map["AdditionalBroker"] = self.additionalBroker!
+                }
+                if self.agentIds != nil {
+                    map["AgentIds"] = self.agentIds!
+                }
+                if self.agentNames != nil {
+                    map["AgentNames"] = self.agentNames!
+                }
+                if self.broker != nil {
+                    map["Broker"] = self.broker!
+                }
+                if self.callDuration != nil {
+                    map["CallDuration"] = self.callDuration!
+                }
+                if self.calledNumber != nil {
+                    map["CalledNumber"] = self.calledNumber!
+                }
+                if self.calleeLocation != nil {
+                    map["CalleeLocation"] = self.calleeLocation!
+                }
+                if self.callerLocation != nil {
+                    map["CallerLocation"] = self.callerLocation!
+                }
+                if self.callingNumber != nil {
+                    map["CallingNumber"] = self.callingNumber!
+                }
+                if self.clientAppName != nil {
+                    map["ClientAppName"] = self.clientAppName!
+                }
+                if self.clientIpAddress != nil {
+                    map["ClientIpAddress"] = self.clientIpAddress!
+                }
+                if self.clientLocation != nil {
+                    map["ClientLocation"] = self.clientLocation!
+                }
+                if self.clientUserAgent != nil {
+                    map["ClientUserAgent"] = self.clientUserAgent!
+                }
+                if self.contactDisposition != nil {
+                    map["ContactDisposition"] = self.contactDisposition!
+                }
+                if self.contactId != nil {
+                    map["ContactId"] = self.contactId!
+                }
+                if self.contactType != nil {
+                    map["ContactType"] = self.contactType!
+                }
+                if self.dialingTime != nil {
+                    map["DialingTime"] = self.dialingTime!
+                }
+                if self.earlyMediaState != nil {
+                    map["EarlyMediaState"] = self.earlyMediaState!
+                }
+                if self.earlyMediaText != nil {
+                    map["EarlyMediaText"] = self.earlyMediaText!
+                }
+                if self.establishedTime != nil {
+                    map["EstablishedTime"] = self.establishedTime!
+                }
+                if self.firstResponseTime != nil {
+                    map["FirstResponseTime"] = self.firstResponseTime!
+                }
+                if self.heldTime != nil {
+                    map["HeldTime"] = self.heldTime!
+                }
+                if self.instanceId != nil {
+                    map["InstanceId"] = self.instanceId!
+                }
+                if self.ivrTime != nil {
+                    map["IvrTime"] = self.ivrTime!
+                }
+                if self.mediaType != nil {
+                    map["MediaType"] = self.mediaType!
+                }
+                if self.messagesSent != nil {
+                    map["MessagesSent"] = self.messagesSent!
+                }
+                if self.messagesSentByAgent != nil {
+                    map["MessagesSentByAgent"] = self.messagesSentByAgent!
+                }
+                if self.messagesSentByCustomer != nil {
+                    map["MessagesSentByCustomer"] = self.messagesSentByCustomer!
+                }
+                if self.offSiteAgentIds != nil {
+                    map["OffSiteAgentIds"] = self.offSiteAgentIds!
+                }
+                if self.offsiteAgentDestinationNumbers != nil {
+                    map["OffsiteAgentDestinationNumbers"] = self.offsiteAgentDestinationNumbers!
+                }
+                if self.offsiteAgentOriginatorNumbers != nil {
+                    map["OffsiteAgentOriginatorNumbers"] = self.offsiteAgentOriginatorNumbers!
+                }
+                if self.queueTime != nil {
+                    map["QueueTime"] = self.queueTime!
+                }
+                if self.recordingDuration != nil {
+                    map["RecordingDuration"] = self.recordingDuration!
+                }
+                if self.recordingReady != nil {
+                    map["RecordingReady"] = self.recordingReady!
+                }
+                if self.releaseInitiator != nil {
+                    map["ReleaseInitiator"] = self.releaseInitiator!
+                }
+                if self.releaseReason != nil {
+                    map["ReleaseReason"] = self.releaseReason!
+                }
+                if self.releaseTime != nil {
+                    map["ReleaseTime"] = self.releaseTime!
+                }
+                if self.ringTime != nil {
+                    map["RingTime"] = self.ringTime!
+                }
+                if self.satisfactionDescription != nil {
+                    map["SatisfactionDescription"] = self.satisfactionDescription!
+                }
+                if self.satisfactionIndex != nil {
+                    map["SatisfactionIndex"] = self.satisfactionIndex!
+                }
+                if self.satisfactionSurveyChannel != nil {
+                    map["SatisfactionSurveyChannel"] = self.satisfactionSurveyChannel!
+                }
+                if self.satisfactionSurveyOffered != nil {
+                    map["SatisfactionSurveyOffered"] = self.satisfactionSurveyOffered!
+                }
+                if self.skillGroupIds != nil {
+                    map["SkillGroupIds"] = self.skillGroupIds!
+                }
+                if self.skillGroupNames != nil {
+                    map["SkillGroupNames"] = self.skillGroupNames!
+                }
+                if self.startTime != nil {
+                    map["StartTime"] = self.startTime!
+                }
+                if self.talkTime != nil {
+                    map["TalkTime"] = self.talkTime!
+                }
+                if self.transferCount != nil {
+                    map["TransferCount"] = self.transferCount!
+                }
+                if self.waitTime != nil {
+                    map["WaitTime"] = self.waitTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AccessChannelName") {
+                    self.accessChannelName = dict["AccessChannelName"] as! String
+                }
+                if dict.keys.contains("AccessChannelType") {
+                    self.accessChannelType = dict["AccessChannelType"] as! String
+                }
+                if dict.keys.contains("AccessChannelUserId") {
+                    self.accessChannelUserId = dict["AccessChannelUserId"] as! String
+                }
+                if dict.keys.contains("AccessChannelUserName") {
+                    self.accessChannelUserName = dict["AccessChannelUserName"] as! String
+                }
+                if dict.keys.contains("AdditionalBroker") {
+                    self.additionalBroker = dict["AdditionalBroker"] as! String
+                }
+                if dict.keys.contains("AgentIds") {
+                    self.agentIds = dict["AgentIds"] as! String
+                }
+                if dict.keys.contains("AgentNames") {
+                    self.agentNames = dict["AgentNames"] as! String
+                }
+                if dict.keys.contains("Broker") {
+                    self.broker = dict["Broker"] as! String
+                }
+                if dict.keys.contains("CallDuration") {
+                    self.callDuration = dict["CallDuration"] as! String
+                }
+                if dict.keys.contains("CalledNumber") {
+                    self.calledNumber = dict["CalledNumber"] as! String
+                }
+                if dict.keys.contains("CalleeLocation") {
+                    self.calleeLocation = dict["CalleeLocation"] as! String
+                }
+                if dict.keys.contains("CallerLocation") {
+                    self.callerLocation = dict["CallerLocation"] as! String
+                }
+                if dict.keys.contains("CallingNumber") {
+                    self.callingNumber = dict["CallingNumber"] as! String
+                }
+                if dict.keys.contains("ClientAppName") {
+                    self.clientAppName = dict["ClientAppName"] as! String
+                }
+                if dict.keys.contains("ClientIpAddress") {
+                    self.clientIpAddress = dict["ClientIpAddress"] as! String
+                }
+                if dict.keys.contains("ClientLocation") {
+                    self.clientLocation = dict["ClientLocation"] as! String
+                }
+                if dict.keys.contains("ClientUserAgent") {
+                    self.clientUserAgent = dict["ClientUserAgent"] as! String
+                }
+                if dict.keys.contains("ContactDisposition") {
+                    self.contactDisposition = dict["ContactDisposition"] as! String
+                }
+                if dict.keys.contains("ContactId") {
+                    self.contactId = dict["ContactId"] as! String
+                }
+                if dict.keys.contains("ContactType") {
+                    self.contactType = dict["ContactType"] as! String
+                }
+                if dict.keys.contains("DialingTime") {
+                    self.dialingTime = dict["DialingTime"] as! Int64
+                }
+                if dict.keys.contains("EarlyMediaState") {
+                    self.earlyMediaState = dict["EarlyMediaState"] as! String
+                }
+                if dict.keys.contains("EarlyMediaText") {
+                    self.earlyMediaText = dict["EarlyMediaText"] as! String
+                }
+                if dict.keys.contains("EstablishedTime") {
+                    self.establishedTime = dict["EstablishedTime"] as! Int64
+                }
+                if dict.keys.contains("FirstResponseTime") {
+                    self.firstResponseTime = dict["FirstResponseTime"] as! Int64
+                }
+                if dict.keys.contains("HeldTime") {
+                    self.heldTime = dict["HeldTime"] as! Int64
+                }
+                if dict.keys.contains("InstanceId") {
+                    self.instanceId = dict["InstanceId"] as! String
+                }
+                if dict.keys.contains("IvrTime") {
+                    self.ivrTime = dict["IvrTime"] as! Int64
+                }
+                if dict.keys.contains("MediaType") {
+                    self.mediaType = dict["MediaType"] as! String
+                }
+                if dict.keys.contains("MessagesSent") {
+                    self.messagesSent = dict["MessagesSent"] as! Int64
+                }
+                if dict.keys.contains("MessagesSentByAgent") {
+                    self.messagesSentByAgent = dict["MessagesSentByAgent"] as! Int64
+                }
+                if dict.keys.contains("MessagesSentByCustomer") {
+                    self.messagesSentByCustomer = dict["MessagesSentByCustomer"] as! Int64
+                }
+                if dict.keys.contains("OffSiteAgentIds") {
+                    self.offSiteAgentIds = dict["OffSiteAgentIds"] as! String
+                }
+                if dict.keys.contains("OffsiteAgentDestinationNumbers") {
+                    self.offsiteAgentDestinationNumbers = dict["OffsiteAgentDestinationNumbers"] as! String
+                }
+                if dict.keys.contains("OffsiteAgentOriginatorNumbers") {
+                    self.offsiteAgentOriginatorNumbers = dict["OffsiteAgentOriginatorNumbers"] as! String
+                }
+                if dict.keys.contains("QueueTime") {
+                    self.queueTime = dict["QueueTime"] as! Int64
+                }
+                if dict.keys.contains("RecordingDuration") {
+                    self.recordingDuration = dict["RecordingDuration"] as! Int64
+                }
+                if dict.keys.contains("RecordingReady") {
+                    self.recordingReady = dict["RecordingReady"] as! Bool
+                }
+                if dict.keys.contains("ReleaseInitiator") {
+                    self.releaseInitiator = dict["ReleaseInitiator"] as! String
+                }
+                if dict.keys.contains("ReleaseReason") {
+                    self.releaseReason = dict["ReleaseReason"] as! String
+                }
+                if dict.keys.contains("ReleaseTime") {
+                    self.releaseTime = dict["ReleaseTime"] as! Int64
+                }
+                if dict.keys.contains("RingTime") {
+                    self.ringTime = dict["RingTime"] as! Int64
+                }
+                if dict.keys.contains("SatisfactionDescription") {
+                    self.satisfactionDescription = dict["SatisfactionDescription"] as! String
+                }
+                if dict.keys.contains("SatisfactionIndex") {
+                    self.satisfactionIndex = dict["SatisfactionIndex"] as! Int32
+                }
+                if dict.keys.contains("SatisfactionSurveyChannel") {
+                    self.satisfactionSurveyChannel = dict["SatisfactionSurveyChannel"] as! String
+                }
+                if dict.keys.contains("SatisfactionSurveyOffered") {
+                    self.satisfactionSurveyOffered = dict["SatisfactionSurveyOffered"] as! Bool
+                }
+                if dict.keys.contains("SkillGroupIds") {
+                    self.skillGroupIds = dict["SkillGroupIds"] as! String
+                }
+                if dict.keys.contains("SkillGroupNames") {
+                    self.skillGroupNames = dict["SkillGroupNames"] as! String
+                }
+                if dict.keys.contains("StartTime") {
+                    self.startTime = dict["StartTime"] as! Int64
+                }
+                if dict.keys.contains("TalkTime") {
+                    self.talkTime = dict["TalkTime"] as! Int64
+                }
+                if dict.keys.contains("TransferCount") {
+                    self.transferCount = dict["TransferCount"] as! Int64
+                }
+                if dict.keys.contains("WaitTime") {
+                    self.waitTime = dict["WaitTime"] as! Int64
+                }
+            }
+        }
+        public var list: [ListCallDetailRecordsV2ResponseBody.Data.List]?
+
+        public var pageNumber: Int32?
+
+        public var pageSize: Int32?
+
+        public var totalCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.list != nil {
+                var tmp : [Any] = []
+                for k in self.list! {
+                    tmp.append(k.toMap())
+                }
+                map["List"] = tmp
+            }
+            if self.pageNumber != nil {
+                map["PageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("List") {
+                var tmp : [ListCallDetailRecordsV2ResponseBody.Data.List] = []
+                for v in dict["List"] as! [Any] {
+                    var model = ListCallDetailRecordsV2ResponseBody.Data.List()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.list = tmp
+            }
+            if dict.keys.contains("PageNumber") {
+                self.pageNumber = dict["PageNumber"] as! Int32
+            }
+            if dict.keys.contains("PageSize") {
+                self.pageSize = dict["PageSize"] as! Int32
+            }
+            if dict.keys.contains("TotalCount") {
+                self.totalCount = dict["TotalCount"] as! Int32
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: ListCallDetailRecordsV2ResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = ListCallDetailRecordsV2ResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ListCallDetailRecordsV2Response : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListCallDetailRecordsV2ResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListCallDetailRecordsV2ResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListCallTagsRequest : Tea.TeaModel {
     public var instanceId: String?
 

@@ -4444,6 +4444,106 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCallDetailRecordsV2WithOptions(_ request: ListCallDetailRecordsV2Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCallDetailRecordsV2Response {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessChannelTypeList)) {
+            query["AccessChannelTypeList"] = request.accessChannelTypeList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.agentId)) {
+            query["AgentId"] = request.agentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.broker)) {
+            query["Broker"] = request.broker ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.calledNumber)) {
+            query["CalledNumber"] = request.calledNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callingNumber)) {
+            query["CallingNumber"] = request.callingNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactDispositionList)) {
+            query["ContactDispositionList"] = request.contactDispositionList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactIdList)) {
+            query["ContactIdList"] = request.contactIdList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactTypeList)) {
+            query["ContactTypeList"] = request.contactTypeList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.earlyMediaStateList)) {
+            query["EarlyMediaStateList"] = request.earlyMediaStateList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.firstAgentId)) {
+            query["FirstAgentId"] = request.firstAgentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mediaType)) {
+            query["MediaType"] = request.mediaType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.number)) {
+            query["Number"] = request.number ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderByField)) {
+            query["OrderByField"] = request.orderByField ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.satisfactionDescriptionList)) {
+            query["SatisfactionDescriptionList"] = request.satisfactionDescriptionList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.satisfactionRateList)) {
+            query["SatisfactionRateList"] = request.satisfactionRateList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.satisfactionSurveyChannel)) {
+            query["SatisfactionSurveyChannel"] = request.satisfactionSurveyChannel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.searchPattern)) {
+            query["SearchPattern"] = request.searchPattern ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.skillGroupIdList)) {
+            query["SkillGroupIdList"] = request.skillGroupIdList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sortOrder)) {
+            query["SortOrder"] = request.sortOrder ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListCallDetailRecordsV2",
+            "version": "2020-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListCallDetailRecordsV2Response(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCallDetailRecordsV2(_ request: ListCallDetailRecordsV2Request) async throws -> ListCallDetailRecordsV2Response {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listCallDetailRecordsV2WithOptions(request as! ListCallDetailRecordsV2Request, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listCallTagsWithOptions(_ request: ListCallTagsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCallTagsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
