@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudComputeNest20210601` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/computenest-20210601" "2.1.1"
+github "alibabacloud-sdk-swift/computenest-20210601" "2.2.0"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudComputeNest20210601` into your Xcode project using [Sw
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/computenest-20210601.git", from: "2.1.1")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/computenest-20210601.git", from: "2.2.0")
 ]
 ```
 
