@@ -33208,6 +33208,8 @@ public class DescribePdnsUserInfoResponseBody : Tea.TeaModel {
 
         public var state: String?
 
+        public var statisticSwitchStatus: String?
+
         public var stoppedService: String?
 
         public override init() {
@@ -33236,6 +33238,9 @@ public class DescribePdnsUserInfoResponseBody : Tea.TeaModel {
             if self.state != nil {
                 map["State"] = self.state!
             }
+            if self.statisticSwitchStatus != nil {
+                map["StatisticSwitchStatus"] = self.statisticSwitchStatus!
+            }
             if self.stoppedService != nil {
                 map["StoppedService"] = self.stoppedService!
             }
@@ -33254,6 +33259,9 @@ public class DescribePdnsUserInfoResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("State") {
                 self.state = dict["State"] as! String
+            }
+            if dict.keys.contains("StatisticSwitchStatus") {
+                self.statisticSwitchStatus = dict["StatisticSwitchStatus"] as! String
             }
             if dict.keys.contains("StoppedService") {
                 self.stoppedService = dict["StoppedService"] as! String
@@ -35896,6 +35904,8 @@ public class GetTxtRecordForVerifyRequest : Tea.TeaModel {
 public class GetTxtRecordForVerifyResponseBody : Tea.TeaModel {
     public var domainName: String?
 
+    public var parentDomainName: String?
+
     public var RR: String?
 
     public var requestId: String?
@@ -35919,6 +35929,9 @@ public class GetTxtRecordForVerifyResponseBody : Tea.TeaModel {
         if self.domainName != nil {
             map["DomainName"] = self.domainName!
         }
+        if self.parentDomainName != nil {
+            map["ParentDomainName"] = self.parentDomainName!
+        }
         if self.RR != nil {
             map["RR"] = self.RR!
         }
@@ -35934,6 +35947,9 @@ public class GetTxtRecordForVerifyResponseBody : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DomainName") {
             self.domainName = dict["DomainName"] as! String
+        }
+        if dict.keys.contains("ParentDomainName") {
+            self.parentDomainName = dict["ParentDomainName"] as! String
         }
         if dict.keys.contains("RR") {
             self.RR = dict["RR"] as! String
