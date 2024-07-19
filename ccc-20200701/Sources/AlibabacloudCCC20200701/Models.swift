@@ -36745,6 +36745,316 @@ public class ListDocumentsResponse : Tea.TeaModel {
     }
 }
 
+public class ListGroupChatMessagesRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var jobId: String?
+
+    public var nextPageToken: String?
+
+    public var pageSize: Int32?
+
+    public var sortOrder: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
+        if self.nextPageToken != nil {
+            map["NextPageToken"] = self.nextPageToken!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.sortOrder != nil {
+            map["SortOrder"] = self.sortOrder!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("JobId") {
+            self.jobId = dict["JobId"] as! String
+        }
+        if dict.keys.contains("NextPageToken") {
+            self.nextPageToken = dict["NextPageToken"] as! String
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SortOrder") {
+            self.sortOrder = dict["SortOrder"] as! String
+        }
+    }
+}
+
+public class ListGroupChatMessagesResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Messages : Tea.TeaModel {
+            public var content: String?
+
+            public var jobId: String?
+
+            public var recalled: Bool?
+
+            public var senderAvatarUrl: String?
+
+            public var senderId: String?
+
+            public var senderName: String?
+
+            public var senderType: String?
+
+            public var timestamp: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.content != nil {
+                    map["Content"] = self.content!
+                }
+                if self.jobId != nil {
+                    map["JobId"] = self.jobId!
+                }
+                if self.recalled != nil {
+                    map["Recalled"] = self.recalled!
+                }
+                if self.senderAvatarUrl != nil {
+                    map["SenderAvatarUrl"] = self.senderAvatarUrl!
+                }
+                if self.senderId != nil {
+                    map["SenderId"] = self.senderId!
+                }
+                if self.senderName != nil {
+                    map["SenderName"] = self.senderName!
+                }
+                if self.senderType != nil {
+                    map["SenderType"] = self.senderType!
+                }
+                if self.timestamp != nil {
+                    map["Timestamp"] = self.timestamp!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Content") {
+                    self.content = dict["Content"] as! String
+                }
+                if dict.keys.contains("JobId") {
+                    self.jobId = dict["JobId"] as! String
+                }
+                if dict.keys.contains("Recalled") {
+                    self.recalled = dict["Recalled"] as! Bool
+                }
+                if dict.keys.contains("SenderAvatarUrl") {
+                    self.senderAvatarUrl = dict["SenderAvatarUrl"] as! String
+                }
+                if dict.keys.contains("SenderId") {
+                    self.senderId = dict["SenderId"] as! String
+                }
+                if dict.keys.contains("SenderName") {
+                    self.senderName = dict["SenderName"] as! String
+                }
+                if dict.keys.contains("SenderType") {
+                    self.senderType = dict["SenderType"] as! String
+                }
+                if dict.keys.contains("Timestamp") {
+                    self.timestamp = dict["Timestamp"] as! Int64
+                }
+            }
+        }
+        public var messages: [ListGroupChatMessagesResponseBody.Data.Messages]?
+
+        public var nextPageToken: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.messages != nil {
+                var tmp : [Any] = []
+                for k in self.messages! {
+                    tmp.append(k.toMap())
+                }
+                map["Messages"] = tmp
+            }
+            if self.nextPageToken != nil {
+                map["NextPageToken"] = self.nextPageToken!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Messages") {
+                var tmp : [ListGroupChatMessagesResponseBody.Data.Messages] = []
+                for v in dict["Messages"] as! [Any] {
+                    var model = ListGroupChatMessagesResponseBody.Data.Messages()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.messages = tmp
+            }
+            if dict.keys.contains("NextPageToken") {
+                self.nextPageToken = dict["NextPageToken"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: ListGroupChatMessagesResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = ListGroupChatMessagesResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ListGroupChatMessagesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListGroupChatMessagesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListGroupChatMessagesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListHistoricalAgentReportRequest : Tea.TeaModel {
     public var agentIdList: String?
 
