@@ -2079,6 +2079,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clipboard)) {
             query["Clipboard"] = request.clipboard ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.deviceRedirects)) {
+            query["DeviceRedirects"] = request.deviceRedirects ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.deviceRules)) {
+            query["DeviceRules"] = request.deviceRules ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.domainList)) {
             query["DomainList"] = request.domainList ?? "";
         }
@@ -3119,6 +3125,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.gpuCount)) {
             query["GpuCount"] = request.gpuCount!;
         }
+        if (!TeaUtils.Client.isUnset(request.gpuDriverType)) {
+            query["GpuDriverType"] = request.gpuDriverType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.imageId)) {
             query["ImageId"] = request.imageId ?? [];
         }
@@ -3889,6 +3898,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.gpuCount)) {
             query["GpuCount"] = request.gpuCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gpuDriverType)) {
+            query["GpuDriverType"] = request.gpuDriverType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.instanceTypeFamily)) {
             query["InstanceTypeFamily"] = request.instanceTypeFamily ?? "";
@@ -8202,6 +8214,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.clipboard)) {
             query["Clipboard"] = request.clipboard ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.deviceRedirects)) {
+            query["DeviceRedirects"] = request.deviceRedirects ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.deviceRules)) {
+            query["DeviceRules"] = request.deviceRules ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.domainList)) {
             query["DomainList"] = request.domainList ?? "";

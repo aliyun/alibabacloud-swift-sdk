@@ -8519,6 +8519,112 @@ public class CreatePolicyGroupRequest : Tea.TeaModel {
             }
         }
     }
+    public class DeviceRedirects : Tea.TeaModel {
+        public var deviceType: String?
+
+        public var redirectType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.deviceType != nil {
+                map["DeviceType"] = self.deviceType!
+            }
+            if self.redirectType != nil {
+                map["RedirectType"] = self.redirectType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DeviceType") {
+                self.deviceType = dict["DeviceType"] as! String
+            }
+            if dict.keys.contains("RedirectType") {
+                self.redirectType = dict["RedirectType"] as! String
+            }
+        }
+    }
+    public class DeviceRules : Tea.TeaModel {
+        public var deviceName: String?
+
+        public var devicePid: String?
+
+        public var deviceType: String?
+
+        public var deviceVid: String?
+
+        public var optCommand: String?
+
+        public var redirectType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.deviceName != nil {
+                map["DeviceName"] = self.deviceName!
+            }
+            if self.devicePid != nil {
+                map["DevicePid"] = self.devicePid!
+            }
+            if self.deviceType != nil {
+                map["DeviceType"] = self.deviceType!
+            }
+            if self.deviceVid != nil {
+                map["DeviceVid"] = self.deviceVid!
+            }
+            if self.optCommand != nil {
+                map["OptCommand"] = self.optCommand!
+            }
+            if self.redirectType != nil {
+                map["RedirectType"] = self.redirectType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DeviceName") {
+                self.deviceName = dict["DeviceName"] as! String
+            }
+            if dict.keys.contains("DevicePid") {
+                self.devicePid = dict["DevicePid"] as! String
+            }
+            if dict.keys.contains("DeviceType") {
+                self.deviceType = dict["DeviceType"] as! String
+            }
+            if dict.keys.contains("DeviceVid") {
+                self.deviceVid = dict["DeviceVid"] as! String
+            }
+            if dict.keys.contains("OptCommand") {
+                self.optCommand = dict["OptCommand"] as! String
+            }
+            if dict.keys.contains("RedirectType") {
+                self.redirectType = dict["RedirectType"] as! String
+            }
+        }
+    }
     public class DomainResolveRule : Tea.TeaModel {
         public var description_: String?
 
@@ -8654,6 +8760,10 @@ public class CreatePolicyGroupRequest : Tea.TeaModel {
     public var clientType: [CreatePolicyGroupRequest.ClientType]?
 
     public var clipboard: String?
+
+    public var deviceRedirects: [CreatePolicyGroupRequest.DeviceRedirects]?
+
+    public var deviceRules: [CreatePolicyGroupRequest.DeviceRules]?
 
     public var domainList: String?
 
@@ -8795,6 +8905,20 @@ public class CreatePolicyGroupRequest : Tea.TeaModel {
         }
         if self.clipboard != nil {
             map["Clipboard"] = self.clipboard!
+        }
+        if self.deviceRedirects != nil {
+            var tmp : [Any] = []
+            for k in self.deviceRedirects! {
+                tmp.append(k.toMap())
+            }
+            map["DeviceRedirects"] = tmp
+        }
+        if self.deviceRules != nil {
+            var tmp : [Any] = []
+            for k in self.deviceRules! {
+                tmp.append(k.toMap())
+            }
+            map["DeviceRules"] = tmp
         }
         if self.domainList != nil {
             map["DomainList"] = self.domainList!
@@ -8993,6 +9117,28 @@ public class CreatePolicyGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Clipboard") {
             self.clipboard = dict["Clipboard"] as! String
+        }
+        if dict.keys.contains("DeviceRedirects") {
+            var tmp : [CreatePolicyGroupRequest.DeviceRedirects] = []
+            for v in dict["DeviceRedirects"] as! [Any] {
+                var model = CreatePolicyGroupRequest.DeviceRedirects()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.deviceRedirects = tmp
+        }
+        if dict.keys.contains("DeviceRules") {
+            var tmp : [CreatePolicyGroupRequest.DeviceRules] = []
+            for v in dict["DeviceRules"] as! [Any] {
+                var model = CreatePolicyGroupRequest.DeviceRules()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.deviceRules = tmp
         }
         if dict.keys.contains("DomainList") {
             self.domainList = dict["DomainList"] as! String
@@ -12378,6 +12524,8 @@ public class DescribeBundlesRequest : Tea.TeaModel {
 
     public var gpuCount: Double?
 
+    public var gpuDriverType: String?
+
     public var imageId: [String]?
 
     public var maxResults: Int32?
@@ -12439,6 +12587,9 @@ public class DescribeBundlesRequest : Tea.TeaModel {
         }
         if self.gpuCount != nil {
             map["GpuCount"] = self.gpuCount!
+        }
+        if self.gpuDriverType != nil {
+            map["GpuDriverType"] = self.gpuDriverType!
         }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
@@ -12503,6 +12654,9 @@ public class DescribeBundlesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GpuCount") {
             self.gpuCount = dict["GpuCount"] as! Double
+        }
+        if dict.keys.contains("GpuDriverType") {
+            self.gpuDriverType = dict["GpuDriverType"] as! String
         }
         if dict.keys.contains("ImageId") {
             self.imageId = dict["ImageId"] as! [String]
@@ -17602,6 +17756,8 @@ public class DescribeDesktopTypesRequest : Tea.TeaModel {
 
     public var gpuCount: Double?
 
+    public var gpuDriverType: String?
+
     public var instanceTypeFamily: String?
 
     public var memorySize: Int32?
@@ -17642,6 +17798,9 @@ public class DescribeDesktopTypesRequest : Tea.TeaModel {
         if self.gpuCount != nil {
             map["GpuCount"] = self.gpuCount!
         }
+        if self.gpuDriverType != nil {
+            map["GpuDriverType"] = self.gpuDriverType!
+        }
         if self.instanceTypeFamily != nil {
             map["InstanceTypeFamily"] = self.instanceTypeFamily!
         }
@@ -17675,6 +17834,9 @@ public class DescribeDesktopTypesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GpuCount") {
             self.gpuCount = dict["GpuCount"] as! Double
+        }
+        if dict.keys.contains("GpuDriverType") {
+            self.gpuDriverType = dict["GpuDriverType"] as! String
         }
         if dict.keys.contains("InstanceTypeFamily") {
             self.instanceTypeFamily = dict["InstanceTypeFamily"] as! String
@@ -25165,6 +25327,112 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class DeviceRedirects : Tea.TeaModel {
+            public var deviceType: String?
+
+            public var redirectType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.deviceType != nil {
+                    map["DeviceType"] = self.deviceType!
+                }
+                if self.redirectType != nil {
+                    map["RedirectType"] = self.redirectType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DeviceType") {
+                    self.deviceType = dict["DeviceType"] as! String
+                }
+                if dict.keys.contains("RedirectType") {
+                    self.redirectType = dict["RedirectType"] as! String
+                }
+            }
+        }
+        public class DeviceRules : Tea.TeaModel {
+            public var deviceName: String?
+
+            public var devicePid: String?
+
+            public var deviceType: String?
+
+            public var deviceVid: String?
+
+            public var optCommand: String?
+
+            public var redirectType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.deviceName != nil {
+                    map["DeviceName"] = self.deviceName!
+                }
+                if self.devicePid != nil {
+                    map["DevicePid"] = self.devicePid!
+                }
+                if self.deviceType != nil {
+                    map["DeviceType"] = self.deviceType!
+                }
+                if self.deviceVid != nil {
+                    map["DeviceVid"] = self.deviceVid!
+                }
+                if self.optCommand != nil {
+                    map["OptCommand"] = self.optCommand!
+                }
+                if self.redirectType != nil {
+                    map["RedirectType"] = self.redirectType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DeviceName") {
+                    self.deviceName = dict["DeviceName"] as! String
+                }
+                if dict.keys.contains("DevicePid") {
+                    self.devicePid = dict["DevicePid"] as! String
+                }
+                if dict.keys.contains("DeviceType") {
+                    self.deviceType = dict["DeviceType"] as! String
+                }
+                if dict.keys.contains("DeviceVid") {
+                    self.deviceVid = dict["DeviceVid"] as! String
+                }
+                if dict.keys.contains("OptCommand") {
+                    self.optCommand = dict["OptCommand"] as! String
+                }
+                if dict.keys.contains("RedirectType") {
+                    self.redirectType = dict["RedirectType"] as! String
+                }
+            }
+        }
         public class DomainResolveRule : Tea.TeaModel {
             public var description_: String?
 
@@ -25359,6 +25627,10 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
         public var cpuSampleDuration: Int32?
 
         public var cpuSingleRateLimit: Int32?
+
+        public var deviceRedirects: [DescribePolicyGroupsResponseBody.DescribePolicyGroups.DeviceRedirects]?
+
+        public var deviceRules: [DescribePolicyGroupsResponseBody.DescribePolicyGroups.DeviceRules]?
 
         public var displayMode: String?
 
@@ -25563,6 +25835,20 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if self.cpuSingleRateLimit != nil {
                 map["CpuSingleRateLimit"] = self.cpuSingleRateLimit!
+            }
+            if self.deviceRedirects != nil {
+                var tmp : [Any] = []
+                for k in self.deviceRedirects! {
+                    tmp.append(k.toMap())
+                }
+                map["DeviceRedirects"] = tmp
+            }
+            if self.deviceRules != nil {
+                var tmp : [Any] = []
+                for k in self.deviceRules! {
+                    tmp.append(k.toMap())
+                }
+                map["DeviceRules"] = tmp
             }
             if self.displayMode != nil {
                 map["DisplayMode"] = self.displayMode!
@@ -25849,6 +26135,28 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("CpuSingleRateLimit") {
                 self.cpuSingleRateLimit = dict["CpuSingleRateLimit"] as! Int32
+            }
+            if dict.keys.contains("DeviceRedirects") {
+                var tmp : [DescribePolicyGroupsResponseBody.DescribePolicyGroups.DeviceRedirects] = []
+                for v in dict["DeviceRedirects"] as! [Any] {
+                    var model = DescribePolicyGroupsResponseBody.DescribePolicyGroups.DeviceRedirects()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.deviceRedirects = tmp
+            }
+            if dict.keys.contains("DeviceRules") {
+                var tmp : [DescribePolicyGroupsResponseBody.DescribePolicyGroups.DeviceRules] = []
+                for v in dict["DeviceRules"] as! [Any] {
+                    var model = DescribePolicyGroupsResponseBody.DescribePolicyGroups.DeviceRules()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.deviceRules = tmp
             }
             if dict.keys.contains("DisplayMode") {
                 self.displayMode = dict["DisplayMode"] as! String
@@ -41412,6 +41720,112 @@ public class ModifyPolicyGroupRequest : Tea.TeaModel {
             }
         }
     }
+    public class DeviceRedirects : Tea.TeaModel {
+        public var deviceType: String?
+
+        public var redirectType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.deviceType != nil {
+                map["DeviceType"] = self.deviceType!
+            }
+            if self.redirectType != nil {
+                map["RedirectType"] = self.redirectType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DeviceType") {
+                self.deviceType = dict["DeviceType"] as! String
+            }
+            if dict.keys.contains("RedirectType") {
+                self.redirectType = dict["RedirectType"] as! String
+            }
+        }
+    }
+    public class DeviceRules : Tea.TeaModel {
+        public var deviceName: String?
+
+        public var devicePid: String?
+
+        public var deviceType: String?
+
+        public var deviceVid: String?
+
+        public var optCommand: String?
+
+        public var redirectType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.deviceName != nil {
+                map["DeviceName"] = self.deviceName!
+            }
+            if self.devicePid != nil {
+                map["DevicePid"] = self.devicePid!
+            }
+            if self.deviceType != nil {
+                map["DeviceType"] = self.deviceType!
+            }
+            if self.deviceVid != nil {
+                map["DeviceVid"] = self.deviceVid!
+            }
+            if self.optCommand != nil {
+                map["OptCommand"] = self.optCommand!
+            }
+            if self.redirectType != nil {
+                map["RedirectType"] = self.redirectType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DeviceName") {
+                self.deviceName = dict["DeviceName"] as! String
+            }
+            if dict.keys.contains("DevicePid") {
+                self.devicePid = dict["DevicePid"] as! String
+            }
+            if dict.keys.contains("DeviceType") {
+                self.deviceType = dict["DeviceType"] as! String
+            }
+            if dict.keys.contains("DeviceVid") {
+                self.deviceVid = dict["DeviceVid"] as! String
+            }
+            if dict.keys.contains("OptCommand") {
+                self.optCommand = dict["OptCommand"] as! String
+            }
+            if dict.keys.contains("RedirectType") {
+                self.redirectType = dict["RedirectType"] as! String
+            }
+        }
+    }
     public class DomainResolveRule : Tea.TeaModel {
         public var description_: String?
 
@@ -41662,6 +42076,10 @@ public class ModifyPolicyGroupRequest : Tea.TeaModel {
 
     public var clipboard: String?
 
+    public var deviceRedirects: [ModifyPolicyGroupRequest.DeviceRedirects]?
+
+    public var deviceRules: [ModifyPolicyGroupRequest.DeviceRules]?
+
     public var domainList: String?
 
     public var domainResolveRule: [ModifyPolicyGroupRequest.DomainResolveRule]?
@@ -41808,6 +42226,20 @@ public class ModifyPolicyGroupRequest : Tea.TeaModel {
         }
         if self.clipboard != nil {
             map["Clipboard"] = self.clipboard!
+        }
+        if self.deviceRedirects != nil {
+            var tmp : [Any] = []
+            for k in self.deviceRedirects! {
+                tmp.append(k.toMap())
+            }
+            map["DeviceRedirects"] = tmp
+        }
+        if self.deviceRules != nil {
+            var tmp : [Any] = []
+            for k in self.deviceRules! {
+                tmp.append(k.toMap())
+            }
+            map["DeviceRules"] = tmp
         }
         if self.domainList != nil {
             map["DomainList"] = self.domainList!
@@ -42023,6 +42455,28 @@ public class ModifyPolicyGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Clipboard") {
             self.clipboard = dict["Clipboard"] as! String
+        }
+        if dict.keys.contains("DeviceRedirects") {
+            var tmp : [ModifyPolicyGroupRequest.DeviceRedirects] = []
+            for v in dict["DeviceRedirects"] as! [Any] {
+                var model = ModifyPolicyGroupRequest.DeviceRedirects()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.deviceRedirects = tmp
+        }
+        if dict.keys.contains("DeviceRules") {
+            var tmp : [ModifyPolicyGroupRequest.DeviceRules] = []
+            for v in dict["DeviceRules"] as! [Any] {
+                var model = ModifyPolicyGroupRequest.DeviceRules()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.deviceRules = tmp
         }
         if dict.keys.contains("DomainList") {
             self.domainList = dict["DomainList"] as! String
