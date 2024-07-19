@@ -1233,6 +1233,8 @@ public class Nodepool : Tea.TeaModel {
 
         public var privatePoolOptions: Nodepool.ScalingGroup.PrivatePoolOptions?
 
+        public var ramRoleName: String?
+
         public var rdsInstances: [String]?
 
         public var scalingPolicy: String?
@@ -1355,6 +1357,9 @@ public class Nodepool : Tea.TeaModel {
             }
             if self.privatePoolOptions != nil {
                 map["private_pool_options"] = self.privatePoolOptions?.toMap()
+            }
+            if self.ramRoleName != nil {
+                map["ram_role_name"] = self.ramRoleName!
             }
             if self.rdsInstances != nil {
                 map["rds_instances"] = self.rdsInstances!
@@ -1500,6 +1505,9 @@ public class Nodepool : Tea.TeaModel {
                 var model = Nodepool.ScalingGroup.PrivatePoolOptions()
                 model.fromMap(dict["private_pool_options"] as! [String: Any])
                 self.privatePoolOptions = model
+            }
+            if dict.keys.contains("ram_role_name") {
+                self.ramRoleName = dict["ram_role_name"] as! String
             }
             if dict.keys.contains("rds_instances") {
                 self.rdsInstances = dict["rds_instances"] as! [String]
