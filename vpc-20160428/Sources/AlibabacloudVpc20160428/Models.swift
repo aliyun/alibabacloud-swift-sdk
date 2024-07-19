@@ -9564,6 +9564,8 @@ public class CreateFailoverTestJobRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var dryRun: Bool?
+
     public var jobDuration: Int32?
 
     public var jobType: String?
@@ -9602,6 +9604,9 @@ public class CreateFailoverTestJobRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.jobDuration != nil {
             map["JobDuration"] = self.jobDuration!
         }
@@ -9638,6 +9643,9 @@ public class CreateFailoverTestJobRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
         }
         if dict.keys.contains("JobDuration") {
             self.jobDuration = dict["JobDuration"] as! Int32
@@ -103854,6 +103862,8 @@ public class UpdateFailoverTestJobRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var dryRun: Bool?
+
     public var jobDuration: Int32?
 
     public var jobId: String?
@@ -103890,6 +103900,9 @@ public class UpdateFailoverTestJobRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.jobDuration != nil {
             map["JobDuration"] = self.jobDuration!
         }
@@ -103923,6 +103936,9 @@ public class UpdateFailoverTestJobRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
         }
         if dict.keys.contains("JobDuration") {
             self.jobDuration = dict["JobDuration"] as! Int32
