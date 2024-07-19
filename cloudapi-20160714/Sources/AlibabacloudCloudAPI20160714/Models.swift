@@ -41808,6 +41808,265 @@ public class EnableInstanceAccessControlResponse : Tea.TeaModel {
     }
 }
 
+public class ExportOASRequest : Tea.TeaModel {
+    public var apiIdList: [String]?
+
+    public var dataFormat: String?
+
+    public var groupId: String?
+
+    public var oasVersion: String?
+
+    public var pageNumber: Int32?
+
+    public var securityToken: String?
+
+    public var stageName: String?
+
+    public var withXExtensions: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.apiIdList != nil {
+            map["ApiIdList"] = self.apiIdList!
+        }
+        if self.dataFormat != nil {
+            map["DataFormat"] = self.dataFormat!
+        }
+        if self.groupId != nil {
+            map["GroupId"] = self.groupId!
+        }
+        if self.oasVersion != nil {
+            map["OasVersion"] = self.oasVersion!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
+        if self.stageName != nil {
+            map["StageName"] = self.stageName!
+        }
+        if self.withXExtensions != nil {
+            map["WithXExtensions"] = self.withXExtensions!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ApiIdList") {
+            self.apiIdList = dict["ApiIdList"] as! [String]
+        }
+        if dict.keys.contains("DataFormat") {
+            self.dataFormat = dict["DataFormat"] as! String
+        }
+        if dict.keys.contains("GroupId") {
+            self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("OasVersion") {
+            self.oasVersion = dict["OasVersion"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("SecurityToken") {
+            self.securityToken = dict["SecurityToken"] as! String
+        }
+        if dict.keys.contains("StageName") {
+            self.stageName = dict["StageName"] as! String
+        }
+        if dict.keys.contains("WithXExtensions") {
+            self.withXExtensions = dict["WithXExtensions"] as! Bool
+        }
+    }
+}
+
+public class ExportOASShrinkRequest : Tea.TeaModel {
+    public var apiIdListShrink: String?
+
+    public var dataFormat: String?
+
+    public var groupId: String?
+
+    public var oasVersion: String?
+
+    public var pageNumber: Int32?
+
+    public var securityToken: String?
+
+    public var stageName: String?
+
+    public var withXExtensions: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.apiIdListShrink != nil {
+            map["ApiIdList"] = self.apiIdListShrink!
+        }
+        if self.dataFormat != nil {
+            map["DataFormat"] = self.dataFormat!
+        }
+        if self.groupId != nil {
+            map["GroupId"] = self.groupId!
+        }
+        if self.oasVersion != nil {
+            map["OasVersion"] = self.oasVersion!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
+        if self.stageName != nil {
+            map["StageName"] = self.stageName!
+        }
+        if self.withXExtensions != nil {
+            map["WithXExtensions"] = self.withXExtensions!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ApiIdList") {
+            self.apiIdListShrink = dict["ApiIdList"] as! String
+        }
+        if dict.keys.contains("DataFormat") {
+            self.dataFormat = dict["DataFormat"] as! String
+        }
+        if dict.keys.contains("GroupId") {
+            self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("OasVersion") {
+            self.oasVersion = dict["OasVersion"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("SecurityToken") {
+            self.securityToken = dict["SecurityToken"] as! String
+        }
+        if dict.keys.contains("StageName") {
+            self.stageName = dict["StageName"] as! String
+        }
+        if dict.keys.contains("WithXExtensions") {
+            self.withXExtensions = dict["WithXExtensions"] as! Bool
+        }
+    }
+}
+
+public class ExportOASResponseBody : Tea.TeaModel {
+    public var data: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            self.data = dict["Data"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ExportOASResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ExportOASResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ExportOASResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ImportOASRequest : Tea.TeaModel {
     public var authType: String?
 

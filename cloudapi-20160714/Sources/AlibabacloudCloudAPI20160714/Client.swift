@@ -6118,6 +6118,63 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func exportOASWithOptions(_ tmpReq: ExportOASRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ExportOASResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ExportOASShrinkRequest = ExportOASShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.apiIdList)) {
+            request.apiIdListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.apiIdList, "ApiIdList", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiIdListShrink)) {
+            query["ApiIdList"] = request.apiIdListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dataFormat)) {
+            query["DataFormat"] = request.dataFormat ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.groupId)) {
+            query["GroupId"] = request.groupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.oasVersion)) {
+            query["OasVersion"] = request.oasVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.securityToken)) {
+            query["SecurityToken"] = request.securityToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.stageName)) {
+            query["StageName"] = request.stageName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.withXExtensions)) {
+            query["WithXExtensions"] = request.withXExtensions!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ExportOAS",
+            "version": "2016-07-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ExportOASResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func exportOAS(_ request: ExportOASRequest) async throws -> ExportOASResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await exportOASWithOptions(request as! ExportOASRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func importOASWithOptions(_ request: ImportOASRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImportOASResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
