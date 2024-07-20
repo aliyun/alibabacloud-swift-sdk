@@ -1316,6 +1316,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.endpointGroupType)) {
             query["EndpointGroupType"] = request.endpointGroupType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.endpointProtocolVersion)) {
+            query["EndpointProtocolVersion"] = request.endpointProtocolVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endpointRequestProtocol)) {
             query["EndpointRequestProtocol"] = request.endpointRequestProtocol ?? "";
         }
@@ -4791,6 +4794,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listEndpointGroupIpAddressCidrBlocksWithOptions(_ request: ListEndpointGroupIpAddressCidrBlocksRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListEndpointGroupIpAddressCidrBlocksResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceleratorId)) {
+            query["AcceleratorId"] = request.acceleratorId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endpointGroupRegion)) {
             query["EndpointGroupRegion"] = request.endpointGroupRegion ?? "";
         }
@@ -6350,6 +6356,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.endpointGroupRegion)) {
             query["EndpointGroupRegion"] = request.endpointGroupRegion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endpointProtocolVersion)) {
+            query["EndpointProtocolVersion"] = request.endpointProtocolVersion ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.endpointRequestProtocol)) {
             query["EndpointRequestProtocol"] = request.endpointRequestProtocol ?? "";
