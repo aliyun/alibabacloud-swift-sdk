@@ -31573,6 +31573,251 @@ public class DissociateNetworkPackageResponse : Tea.TeaModel {
     }
 }
 
+public class DownloadCdsFileRequest : Tea.TeaModel {
+    public var cdsId: String?
+
+    public var endUserId: String?
+
+    public var fileId: String?
+
+    public var groupId: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cdsId != nil {
+            map["CdsId"] = self.cdsId!
+        }
+        if self.endUserId != nil {
+            map["EndUserId"] = self.endUserId!
+        }
+        if self.fileId != nil {
+            map["FileId"] = self.fileId!
+        }
+        if self.groupId != nil {
+            map["GroupId"] = self.groupId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CdsId") {
+            self.cdsId = dict["CdsId"] as! String
+        }
+        if dict.keys.contains("EndUserId") {
+            self.endUserId = dict["EndUserId"] as! String
+        }
+        if dict.keys.contains("FileId") {
+            self.fileId = dict["FileId"] as! String
+        }
+        if dict.keys.contains("GroupId") {
+            self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class DownloadCdsFileResponseBody : Tea.TeaModel {
+    public class DownloadFileModel : Tea.TeaModel {
+        public var downloadType: String?
+
+        public var downloadUrl: String?
+
+        public var expirationSecond: String?
+
+        public var expirationTime: String?
+
+        public var fileId: String?
+
+        public var size: Int64?
+
+        public var streamUrl: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.downloadType != nil {
+                map["DownloadType"] = self.downloadType!
+            }
+            if self.downloadUrl != nil {
+                map["DownloadUrl"] = self.downloadUrl!
+            }
+            if self.expirationSecond != nil {
+                map["ExpirationSecond"] = self.expirationSecond!
+            }
+            if self.expirationTime != nil {
+                map["ExpirationTime"] = self.expirationTime!
+            }
+            if self.fileId != nil {
+                map["FileId"] = self.fileId!
+            }
+            if self.size != nil {
+                map["Size"] = self.size!
+            }
+            if self.streamUrl != nil {
+                map["StreamUrl"] = self.streamUrl!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DownloadType") {
+                self.downloadType = dict["DownloadType"] as! String
+            }
+            if dict.keys.contains("DownloadUrl") {
+                self.downloadUrl = dict["DownloadUrl"] as! String
+            }
+            if dict.keys.contains("ExpirationSecond") {
+                self.expirationSecond = dict["ExpirationSecond"] as! String
+            }
+            if dict.keys.contains("ExpirationTime") {
+                self.expirationTime = dict["ExpirationTime"] as! String
+            }
+            if dict.keys.contains("FileId") {
+                self.fileId = dict["FileId"] as! String
+            }
+            if dict.keys.contains("Size") {
+                self.size = dict["Size"] as! Int64
+            }
+            if dict.keys.contains("StreamUrl") {
+                self.streamUrl = dict["StreamUrl"] as! String
+            }
+        }
+    }
+    public var downloadFileModel: DownloadCdsFileResponseBody.DownloadFileModel?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.downloadFileModel?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.downloadFileModel != nil {
+            map["DownloadFileModel"] = self.downloadFileModel?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DownloadFileModel") {
+            var model = DownloadCdsFileResponseBody.DownloadFileModel()
+            model.fromMap(dict["DownloadFileModel"] as! [String: Any])
+            self.downloadFileModel = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class DownloadCdsFileResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DownloadCdsFileResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DownloadCdsFileResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ExportClientEventsRequest : Tea.TeaModel {
     public var desktopId: String?
 
