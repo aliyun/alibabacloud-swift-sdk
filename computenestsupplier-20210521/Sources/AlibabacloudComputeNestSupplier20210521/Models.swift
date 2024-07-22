@@ -8610,6 +8610,325 @@ public class ListServiceInstancesResponse : Tea.TeaModel {
     }
 }
 
+public class ListServiceSharedAccountsRequest : Tea.TeaModel {
+    public class Filter : Tea.TeaModel {
+        public var name: String?
+
+        public var value: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Name") {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! [String]
+            }
+        }
+    }
+    public var filter: [ListServiceSharedAccountsRequest.Filter]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var permission: String?
+
+    public var regionId: String?
+
+    public var serviceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.filter != nil {
+            var tmp : [Any] = []
+            for k in self.filter! {
+                tmp.append(k.toMap())
+            }
+            map["Filter"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.permission != nil {
+            map["Permission"] = self.permission!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Filter") {
+            var tmp : [ListServiceSharedAccountsRequest.Filter] = []
+            for v in dict["Filter"] as! [Any] {
+                var model = ListServiceSharedAccountsRequest.Filter()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.filter = tmp
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("Permission") {
+            self.permission = dict["Permission"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ServiceId") {
+            self.serviceId = dict["ServiceId"] as! String
+        }
+    }
+}
+
+public class ListServiceSharedAccountsResponseBody : Tea.TeaModel {
+    public class ShareAccount : Tea.TeaModel {
+        public var createTime: String?
+
+        public var logo: String?
+
+        public var name: String?
+
+        public var permission: String?
+
+        public var serviceId: String?
+
+        public var updateTime: String?
+
+        public var userAliUid: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.logo != nil {
+                map["Logo"] = self.logo!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.permission != nil {
+                map["Permission"] = self.permission!
+            }
+            if self.serviceId != nil {
+                map["ServiceId"] = self.serviceId!
+            }
+            if self.updateTime != nil {
+                map["UpdateTime"] = self.updateTime!
+            }
+            if self.userAliUid != nil {
+                map["UserAliUid"] = self.userAliUid!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CreateTime") {
+                self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("Logo") {
+                self.logo = dict["Logo"] as! String
+            }
+            if dict.keys.contains("Name") {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("Permission") {
+                self.permission = dict["Permission"] as! String
+            }
+            if dict.keys.contains("ServiceId") {
+                self.serviceId = dict["ServiceId"] as! String
+            }
+            if dict.keys.contains("UpdateTime") {
+                self.updateTime = dict["UpdateTime"] as! String
+            }
+            if dict.keys.contains("UserAliUid") {
+                self.userAliUid = dict["UserAliUid"] as! String
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var shareAccount: [ListServiceSharedAccountsResponseBody.ShareAccount]?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.shareAccount != nil {
+            var tmp : [Any] = []
+            for k in self.shareAccount! {
+                tmp.append(k.toMap())
+            }
+            map["ShareAccount"] = tmp
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ShareAccount") {
+            var tmp : [ListServiceSharedAccountsResponseBody.ShareAccount] = []
+            for v in dict["ShareAccount"] as! [Any] {
+                var model = ListServiceSharedAccountsResponseBody.ShareAccount()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.shareAccount = tmp
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! Int32
+        }
+    }
+}
+
+public class ListServiceSharedAccountsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListServiceSharedAccountsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListServiceSharedAccountsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListServiceUsagesRequest : Tea.TeaModel {
     public class Filter : Tea.TeaModel {
         public var name: String?
@@ -10390,6 +10709,147 @@ public class ReleaseArtifactResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ReleaseArtifactResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class RemoveServiceSharedAccountsRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var regionId: String?
+
+    public var serviceId: String?
+
+    public var type: String?
+
+    public var userAliUids: [Int64]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        if self.userAliUids != nil {
+            map["UserAliUids"] = self.userAliUids!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ServiceId") {
+            self.serviceId = dict["ServiceId"] as! String
+        }
+        if dict.keys.contains("Type") {
+            self.type = dict["Type"] as! String
+        }
+        if dict.keys.contains("UserAliUids") {
+            self.userAliUids = dict["UserAliUids"] as! [Int64]
+        }
+    }
+}
+
+public class RemoveServiceSharedAccountsResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class RemoveServiceSharedAccountsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RemoveServiceSharedAccountsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = RemoveServiceSharedAccountsResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

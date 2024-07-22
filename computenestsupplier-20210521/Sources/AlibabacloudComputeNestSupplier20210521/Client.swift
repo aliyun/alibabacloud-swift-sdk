@@ -1115,6 +1115,52 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listServiceSharedAccountsWithOptions(_ request: ListServiceSharedAccountsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListServiceSharedAccountsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.filter)) {
+            query["Filter"] = request.filter ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.permission)) {
+            query["Permission"] = request.permission ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceId)) {
+            query["ServiceId"] = request.serviceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListServiceSharedAccounts",
+            "version": "2021-05-21",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListServiceSharedAccountsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listServiceSharedAccounts(_ request: ListServiceSharedAccountsRequest) async throws -> ListServiceSharedAccountsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listServiceSharedAccountsWithOptions(request as! ListServiceSharedAccountsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listServiceUsagesWithOptions(_ request: ListServiceUsagesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListServiceUsagesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1383,6 +1429,49 @@ open class Client : AlibabacloudOpenApi.Client {
     public func releaseArtifact(_ request: ReleaseArtifactRequest) async throws -> ReleaseArtifactResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await releaseArtifactWithOptions(request as! ReleaseArtifactRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func removeServiceSharedAccountsWithOptions(_ request: RemoveServiceSharedAccountsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RemoveServiceSharedAccountsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceId)) {
+            query["ServiceId"] = request.serviceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["Type"] = request.type ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userAliUids)) {
+            query["UserAliUids"] = request.userAliUids ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RemoveServiceSharedAccounts",
+            "version": "2021-05-21",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RemoveServiceSharedAccountsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func removeServiceSharedAccounts(_ request: RemoveServiceSharedAccountsRequest) async throws -> RemoveServiceSharedAccountsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await removeServiceSharedAccountsWithOptions(request as! RemoveServiceSharedAccountsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
