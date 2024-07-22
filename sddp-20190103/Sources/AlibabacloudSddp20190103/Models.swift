@@ -6433,6 +6433,8 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
 
         public var productId: Int64?
 
+        public var regionId: String?
+
         public var regionName: String?
 
         public var ruleList: [DescribeDataObjectsResponseBody.Items.RuleList]?
@@ -6500,6 +6502,9 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
             }
             if self.productId != nil {
                 map["ProductId"] = self.productId!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
             }
             if self.regionName != nil {
                 map["RegionName"] = self.regionName!
@@ -6570,6 +6575,9 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ProductId") {
                 self.productId = dict["ProductId"] as! Int64
+            }
+            if dict.keys.contains("RegionId") {
+                self.regionId = dict["RegionId"] as! String
             }
             if dict.keys.contains("RegionName") {
                 self.regionName = dict["RegionName"] as! String
