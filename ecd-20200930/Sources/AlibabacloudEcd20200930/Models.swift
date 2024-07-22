@@ -7334,6 +7334,8 @@ public class CreateDesktopsRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var snapshotPolicyId: String?
+
     public var tag: [CreateDesktopsRequest.Tag]?
 
     public var userAssignMode: String?
@@ -7433,6 +7435,9 @@ public class CreateDesktopsRequest : Tea.TeaModel {
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.snapshotPolicyId != nil {
+            map["SnapshotPolicyId"] = self.snapshotPolicyId!
         }
         if self.tag != nil {
             var tmp : [Any] = []
@@ -7547,6 +7552,9 @@ public class CreateDesktopsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("SnapshotPolicyId") {
+            self.snapshotPolicyId = dict["SnapshotPolicyId"] as! String
         }
         if dict.keys.contains("Tag") {
             var tmp : [CreateDesktopsRequest.Tag] = []
