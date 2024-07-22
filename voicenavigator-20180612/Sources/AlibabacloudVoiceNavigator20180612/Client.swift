@@ -1401,6 +1401,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyTTSConfigWithOptions(_ request: ModifyTTSConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyTTSConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aliCustomizedVoice)) {
+            query["AliCustomizedVoice"] = request.aliCustomizedVoice ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.appKey)) {
             query["AppKey"] = request.appKey ?? "";
         }
