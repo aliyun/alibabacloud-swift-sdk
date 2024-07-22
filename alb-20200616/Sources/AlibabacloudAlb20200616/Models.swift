@@ -11825,7 +11825,11 @@ public class GetLoadBalancerAttributeResponseBody : Tea.TeaModel {
 
             public var intranetAddress: String?
 
+            public var intranetAddressHcStatus: String?
+
             public var ipv6Address: String?
+
+            public var ipv6AddressHcStatus: String?
 
             public override init() {
                 super.init()
@@ -11853,8 +11857,14 @@ public class GetLoadBalancerAttributeResponseBody : Tea.TeaModel {
                 if self.intranetAddress != nil {
                     map["IntranetAddress"] = self.intranetAddress!
                 }
+                if self.intranetAddressHcStatus != nil {
+                    map["IntranetAddressHcStatus"] = self.intranetAddressHcStatus!
+                }
                 if self.ipv6Address != nil {
                     map["Ipv6Address"] = self.ipv6Address!
+                }
+                if self.ipv6AddressHcStatus != nil {
+                    map["Ipv6AddressHcStatus"] = self.ipv6AddressHcStatus!
                 }
                 return map
             }
@@ -11872,12 +11882,20 @@ public class GetLoadBalancerAttributeResponseBody : Tea.TeaModel {
                 if dict.keys.contains("IntranetAddress") {
                     self.intranetAddress = dict["IntranetAddress"] as! String
                 }
+                if dict.keys.contains("IntranetAddressHcStatus") {
+                    self.intranetAddressHcStatus = dict["IntranetAddressHcStatus"] as! String
+                }
                 if dict.keys.contains("Ipv6Address") {
                     self.ipv6Address = dict["Ipv6Address"] as! String
+                }
+                if dict.keys.contains("Ipv6AddressHcStatus") {
+                    self.ipv6AddressHcStatus = dict["Ipv6AddressHcStatus"] as! String
                 }
             }
         }
         public var loadBalancerAddresses: [GetLoadBalancerAttributeResponseBody.ZoneMappings.LoadBalancerAddresses]?
+
+        public var status: String?
 
         public var vSwitchId: String?
 
@@ -11904,6 +11922,9 @@ public class GetLoadBalancerAttributeResponseBody : Tea.TeaModel {
                 }
                 map["LoadBalancerAddresses"] = tmp
             }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
             if self.vSwitchId != nil {
                 map["VSwitchId"] = self.vSwitchId!
             }
@@ -11924,6 +11945,9 @@ public class GetLoadBalancerAttributeResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.loadBalancerAddresses = tmp
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
             }
             if dict.keys.contains("VSwitchId") {
                 self.vSwitchId = dict["VSwitchId"] as! String
