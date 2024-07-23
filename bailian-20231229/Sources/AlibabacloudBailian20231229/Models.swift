@@ -3072,6 +3072,8 @@ public class RetrieveRequest : Tea.TeaModel {
 
     public var saveRetrieverHistory: Bool?
 
+    public var searchFilters: [[String: String]]?
+
     public var sparseSimilarityTopK: Int32?
 
     public override init() {
@@ -3126,6 +3128,9 @@ public class RetrieveRequest : Tea.TeaModel {
         if self.saveRetrieverHistory != nil {
             map["SaveRetrieverHistory"] = self.saveRetrieverHistory!
         }
+        if self.searchFilters != nil {
+            map["SearchFilters"] = self.searchFilters!
+        }
         if self.sparseSimilarityTopK != nil {
             map["SparseSimilarityTopK"] = self.sparseSimilarityTopK!
         }
@@ -3179,6 +3184,9 @@ public class RetrieveRequest : Tea.TeaModel {
         if dict.keys.contains("SaveRetrieverHistory") {
             self.saveRetrieverHistory = dict["SaveRetrieverHistory"] as! Bool
         }
+        if dict.keys.contains("SearchFilters") {
+            self.searchFilters = dict["SearchFilters"] as! [[String: String]]
+        }
         if dict.keys.contains("SparseSimilarityTopK") {
             self.sparseSimilarityTopK = dict["SparseSimilarityTopK"] as! Int32
         }
@@ -3205,6 +3213,8 @@ public class RetrieveShrinkRequest : Tea.TeaModel {
     public var rewriteShrink: String?
 
     public var saveRetrieverHistory: Bool?
+
+    public var searchFiltersShrink: String?
 
     public var sparseSimilarityTopK: Int32?
 
@@ -3252,6 +3262,9 @@ public class RetrieveShrinkRequest : Tea.TeaModel {
         if self.saveRetrieverHistory != nil {
             map["SaveRetrieverHistory"] = self.saveRetrieverHistory!
         }
+        if self.searchFiltersShrink != nil {
+            map["SearchFilters"] = self.searchFiltersShrink!
+        }
         if self.sparseSimilarityTopK != nil {
             map["SparseSimilarityTopK"] = self.sparseSimilarityTopK!
         }
@@ -3288,6 +3301,9 @@ public class RetrieveShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SaveRetrieverHistory") {
             self.saveRetrieverHistory = dict["SaveRetrieverHistory"] as! Bool
+        }
+        if dict.keys.contains("SearchFilters") {
+            self.searchFiltersShrink = dict["SearchFilters"] as! String
         }
         if dict.keys.contains("SparseSimilarityTopK") {
             self.sparseSimilarityTopK = dict["SparseSimilarityTopK"] as! Int32

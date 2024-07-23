@@ -494,6 +494,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.rewrite)) {
             request.rewriteShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.rewrite, "Rewrite", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.searchFilters)) {
+            request.searchFiltersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.searchFilters, "SearchFilters", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.denseSimilarityTopK)) {
             query["DenseSimilarityTopK"] = request.denseSimilarityTopK!;
@@ -524,6 +527,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.saveRetrieverHistory)) {
             query["SaveRetrieverHistory"] = request.saveRetrieverHistory!;
+        }
+        if (!TeaUtils.Client.isUnset(request.searchFiltersShrink)) {
+            query["SearchFilters"] = request.searchFiltersShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.sparseSimilarityTopK)) {
             query["SparseSimilarityTopK"] = request.sparseSimilarityTopK!;
