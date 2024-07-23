@@ -14226,9 +14226,19 @@ public class DescribeCloudDriveGroupsRequest : Tea.TeaModel {
 public class DescribeCloudDriveGroupsResponseBody : Tea.TeaModel {
     public class CloudDriveGroups : Tea.TeaModel {
         public class AdminUserInfos : Tea.TeaModel {
+            public var email: String?
+
             public var endUserId: String?
 
+            public var jobNumber: String?
+
             public var nickName: String?
+
+            public var phone: String?
+
+            public var realNickName: String?
+
+            public var remark: String?
 
             public override init() {
                 super.init()
@@ -14244,21 +14254,51 @@ public class DescribeCloudDriveGroupsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.email != nil {
+                    map["Email"] = self.email!
+                }
                 if self.endUserId != nil {
                     map["EndUserId"] = self.endUserId!
                 }
+                if self.jobNumber != nil {
+                    map["JobNumber"] = self.jobNumber!
+                }
                 if self.nickName != nil {
                     map["NickName"] = self.nickName!
+                }
+                if self.phone != nil {
+                    map["Phone"] = self.phone!
+                }
+                if self.realNickName != nil {
+                    map["RealNickName"] = self.realNickName!
+                }
+                if self.remark != nil {
+                    map["Remark"] = self.remark!
                 }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Email") {
+                    self.email = dict["Email"] as! String
+                }
                 if dict.keys.contains("EndUserId") {
                     self.endUserId = dict["EndUserId"] as! String
                 }
+                if dict.keys.contains("JobNumber") {
+                    self.jobNumber = dict["JobNumber"] as! String
+                }
                 if dict.keys.contains("NickName") {
                     self.nickName = dict["NickName"] as! String
+                }
+                if dict.keys.contains("Phone") {
+                    self.phone = dict["Phone"] as! String
+                }
+                if dict.keys.contains("RealNickName") {
+                    self.realNickName = dict["RealNickName"] as! String
+                }
+                if dict.keys.contains("Remark") {
+                    self.remark = dict["Remark"] as! String
                 }
             }
         }
