@@ -48168,7 +48168,7 @@ public class DescribePriceResponseBody : Tea.TeaModel {
 
         public var discountPrice: Double?
 
-        public var orderLines: String?
+        public var orderLines: Any?
 
         public var originalPrice: Double?
 
@@ -48248,7 +48248,7 @@ public class DescribePriceResponseBody : Tea.TeaModel {
                 self.discountPrice = dict["DiscountPrice"] as! Double
             }
             if dict.keys.contains("OrderLines") {
-                self.orderLines = dict["OrderLines"] as! String
+                self.orderLines = dict["OrderLines"] as! Any
             }
             if dict.keys.contains("OriginalPrice") {
                 self.originalPrice = dict["OriginalPrice"] as! Double
