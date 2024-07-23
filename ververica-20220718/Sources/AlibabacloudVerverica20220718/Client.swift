@@ -535,6 +535,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getLatestJobStartLogWithOptions(_ namespace: String, _ deploymentId: String, _ headers: GetLatestJobStartLogHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetLatestJobStartLogResponse {
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetLatestJobStartLog",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/deployments/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(deploymentId)) + "/latest_jobmanager_start_log",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetLatestJobStartLogResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getLatestJobStartLog(_ namespace: String, _ deploymentId: String) async throws -> GetLatestJobStartLogResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetLatestJobStartLogHeaders = GetLatestJobStartLogHeaders([:])
+        return try await getLatestJobStartLogWithOptions(namespace as! String, deploymentId as! String, headers as! GetLatestJobStartLogHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getMemberWithOptions(_ namespace: String, _ member: String, _ headers: GetMemberHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMemberResponse {
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
@@ -1150,5 +1184,41 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: UpdateMemberHeaders = UpdateMemberHeaders([:])
         return try await updateMemberWithOptions(namespace as! String, request as! UpdateMemberRequest, headers as! UpdateMemberHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func validateSqlStatementWithOptions(_ namespace: String, _ request: ValidateSqlStatementRequest, _ headers: ValidateSqlStatementHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ValidateSqlStatementResponse {
+        try TeaUtils.Client.validateModel(request)
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ValidateSqlStatement",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/sql-statement/validate",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ValidateSqlStatementResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func validateSqlStatement(_ namespace: String, _ request: ValidateSqlStatementRequest) async throws -> ValidateSqlStatementResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: ValidateSqlStatementHeaders = ValidateSqlStatementHeaders([:])
+        return try await validateSqlStatementWithOptions(namespace as! String, request as! ValidateSqlStatementRequest, headers as! ValidateSqlStatementHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 }
