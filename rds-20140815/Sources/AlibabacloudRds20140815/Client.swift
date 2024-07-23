@@ -1254,6 +1254,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.amount)) {
             query["Amount"] = request.amount!;
         }
+        if (!TeaUtils.Client.isUnset(request.autoCreateProxy)) {
+            query["AutoCreateProxy"] = request.autoCreateProxy!;
+        }
         if (!TeaUtils.Client.isUnset(request.autoPay)) {
             query["AutoPay"] = request.autoPay!;
         }
@@ -2522,6 +2525,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createReadOnlyDBInstanceWithOptions(_ request: CreateReadOnlyDBInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateReadOnlyDBInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoCreateProxy)) {
+            query["AutoCreateProxy"] = request.autoCreateProxy!;
+        }
         if (!TeaUtils.Client.isUnset(request.autoPay)) {
             query["AutoPay"] = request.autoPay!;
         }

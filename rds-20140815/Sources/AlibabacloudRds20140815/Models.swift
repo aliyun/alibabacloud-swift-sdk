@@ -4542,6 +4542,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
     }
     public var amount: Int32?
 
+    public var autoCreateProxy: Bool?
+
     public var autoPay: Bool?
 
     public var autoRenew: String?
@@ -4669,6 +4671,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.amount != nil {
             map["Amount"] = self.amount!
+        }
+        if self.autoCreateProxy != nil {
+            map["AutoCreateProxy"] = self.autoCreateProxy!
         }
         if self.autoPay != nil {
             map["AutoPay"] = self.autoPay!
@@ -4845,6 +4850,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Amount") {
             self.amount = dict["Amount"] as! Int32
+        }
+        if dict.keys.contains("AutoCreateProxy") {
+            self.autoCreateProxy = dict["AutoCreateProxy"] as! Bool
         }
         if dict.keys.contains("AutoPay") {
             self.autoPay = dict["AutoPay"] as! Bool
@@ -5064,6 +5072,8 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
     }
     public var amount: Int32?
 
+    public var autoCreateProxy: Bool?
+
     public var autoPay: Bool?
 
     public var autoRenew: String?
@@ -5190,6 +5200,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.amount != nil {
             map["Amount"] = self.amount!
+        }
+        if self.autoCreateProxy != nil {
+            map["AutoCreateProxy"] = self.autoCreateProxy!
         }
         if self.autoPay != nil {
             map["AutoPay"] = self.autoPay!
@@ -5366,6 +5379,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Amount") {
             self.amount = dict["Amount"] as! Int32
+        }
+        if dict.keys.contains("AutoCreateProxy") {
+            self.autoCreateProxy = dict["AutoCreateProxy"] as! Bool
         }
         if dict.keys.contains("AutoPay") {
             self.autoPay = dict["AutoPay"] as! Bool
@@ -10329,6 +10345,8 @@ public class CreatePostgresExtensionsResponse : Tea.TeaModel {
 }
 
 public class CreateReadOnlyDBInstanceRequest : Tea.TeaModel {
+    public var autoCreateProxy: Bool?
+
     public var autoPay: Bool?
 
     public var autoRenew: String?
@@ -10413,6 +10431,9 @@ public class CreateReadOnlyDBInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoCreateProxy != nil {
+            map["AutoCreateProxy"] = self.autoCreateProxy!
+        }
         if self.autoPay != nil {
             map["AutoPay"] = self.autoPay!
         }
@@ -10522,6 +10543,9 @@ public class CreateReadOnlyDBInstanceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AutoCreateProxy") {
+            self.autoCreateProxy = dict["AutoCreateProxy"] as! Bool
+        }
         if dict.keys.contains("AutoPay") {
             self.autoPay = dict["AutoPay"] as! Bool
         }
