@@ -2207,21 +2207,6 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.jobId)) {
             query["JobId"] = request.jobId ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.signature)) {
-            query["Signature"] = request.signature ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.signatureMehtod)) {
-            query["SignatureMehtod"] = request.signatureMehtod ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.signatureNonce)) {
-            query["SignatureNonce"] = request.signatureNonce ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.signatureType)) {
-            query["SignatureType"] = request.signatureType ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.signatureVersion)) {
-            query["SignatureVersion"] = request.signatureVersion ?? "";
-        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])

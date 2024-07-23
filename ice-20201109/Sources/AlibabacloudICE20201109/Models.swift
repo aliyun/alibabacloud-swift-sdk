@@ -10567,16 +10567,6 @@ public class GetAvatarTrainingJobResponse : Tea.TeaModel {
 public class GetBatchMediaProducingJobRequest : Tea.TeaModel {
     public var jobId: String?
 
-    public var signature: String?
-
-    public var signatureMehtod: String?
-
-    public var signatureNonce: String?
-
-    public var signatureType: String?
-
-    public var signatureVersion: String?
-
     public override init() {
         super.init()
     }
@@ -10594,42 +10584,12 @@ public class GetBatchMediaProducingJobRequest : Tea.TeaModel {
         if self.jobId != nil {
             map["JobId"] = self.jobId!
         }
-        if self.signature != nil {
-            map["Signature"] = self.signature!
-        }
-        if self.signatureMehtod != nil {
-            map["SignatureMehtod"] = self.signatureMehtod!
-        }
-        if self.signatureNonce != nil {
-            map["SignatureNonce"] = self.signatureNonce!
-        }
-        if self.signatureType != nil {
-            map["SignatureType"] = self.signatureType!
-        }
-        if self.signatureVersion != nil {
-            map["SignatureVersion"] = self.signatureVersion!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("JobId") {
             self.jobId = dict["JobId"] as! String
-        }
-        if dict.keys.contains("Signature") {
-            self.signature = dict["Signature"] as! String
-        }
-        if dict.keys.contains("SignatureMehtod") {
-            self.signatureMehtod = dict["SignatureMehtod"] as! String
-        }
-        if dict.keys.contains("SignatureNonce") {
-            self.signatureNonce = dict["SignatureNonce"] as! String
-        }
-        if dict.keys.contains("SignatureType") {
-            self.signatureType = dict["SignatureType"] as! String
-        }
-        if dict.keys.contains("SignatureVersion") {
-            self.signatureVersion = dict["SignatureVersion"] as! String
         }
     }
 }
@@ -10646,6 +10606,8 @@ public class GetBatchMediaProducingJobResponseBody : Tea.TeaModel {
             public var mediaId: String?
 
             public var mediaURL: String?
+
+            public var projectId: String?
 
             public var status: String?
 
@@ -10678,6 +10640,9 @@ public class GetBatchMediaProducingJobResponseBody : Tea.TeaModel {
                 if self.mediaURL != nil {
                     map["MediaURL"] = self.mediaURL!
                 }
+                if self.projectId != nil {
+                    map["ProjectId"] = self.projectId!
+                }
                 if self.status != nil {
                     map["Status"] = self.status!
                 }
@@ -10699,6 +10664,9 @@ public class GetBatchMediaProducingJobResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("MediaURL") {
                     self.mediaURL = dict["MediaURL"] as! String
+                }
+                if dict.keys.contains("ProjectId") {
+                    self.projectId = dict["ProjectId"] as! String
                 }
                 if dict.keys.contains("Status") {
                     self.status = dict["Status"] as! String
@@ -29925,7 +29893,7 @@ public class ListDNADBResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
-        public var model: Int32?
+        public var model: String?
 
         public var name: String?
 
@@ -29971,7 +29939,7 @@ public class ListDNADBResponseBody : Tea.TeaModel {
                 self.description_ = dict["Description"] as! String
             }
             if dict.keys.contains("Model") {
-                self.model = dict["Model"] as! Int32
+                self.model = dict["Model"] as! String
             }
             if dict.keys.contains("Name") {
                 self.name = dict["Name"] as! String
