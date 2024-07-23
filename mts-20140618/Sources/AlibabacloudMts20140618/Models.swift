@@ -37335,7 +37335,7 @@ public class SubmitCopyrightJobRequest : Tea.TeaModel {
 
     public var input: String?
 
-    public var level: String?
+    public var level: Int64?
 
     public var message: String?
 
@@ -37412,7 +37412,7 @@ public class SubmitCopyrightJobRequest : Tea.TeaModel {
             self.input = dict["Input"] as! String
         }
         if dict.keys.contains("Level") {
-            self.level = dict["Level"] as! String
+            self.level = dict["Level"] as! Int64
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
@@ -44541,7 +44541,7 @@ public class SubmitTraceAbJobRequest : Tea.TeaModel {
 
     public var input: String?
 
-    public var level: String?
+    public var level: Int64?
 
     public var output: String?
 
@@ -44608,7 +44608,7 @@ public class SubmitTraceAbJobRequest : Tea.TeaModel {
             self.input = dict["Input"] as! String
         }
         if dict.keys.contains("Level") {
-            self.level = dict["Level"] as! String
+            self.level = dict["Level"] as! Int64
         }
         if dict.keys.contains("Output") {
             self.output = dict["Output"] as! String

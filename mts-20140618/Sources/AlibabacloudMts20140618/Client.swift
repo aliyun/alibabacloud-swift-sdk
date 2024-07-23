@@ -3399,7 +3399,7 @@ open class Client : AlibabacloudOpenApi.Client {
             query["Input"] = request.input ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.level)) {
-            query["Level"] = request.level ?? "";
+            query["Level"] = request.level!;
         }
         if (!TeaUtils.Client.isUnset(request.message)) {
             query["Message"] = request.message ?? "";
@@ -4022,7 +4022,7 @@ open class Client : AlibabacloudOpenApi.Client {
             query["Input"] = request.input ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.level)) {
-            query["Level"] = request.level ?? "";
+            query["Level"] = request.level!;
         }
         if (!TeaUtils.Client.isUnset(request.output)) {
             query["Output"] = request.output ?? "";
