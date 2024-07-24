@@ -2620,6 +2620,8 @@ public class AllocateIpv6InternetBandwidthRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var dryRun: Bool?
+
     public var internetChargeType: String?
 
     public var ipv6AddressId: String?
@@ -2656,6 +2658,9 @@ public class AllocateIpv6InternetBandwidthRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.internetChargeType != nil {
             map["InternetChargeType"] = self.internetChargeType!
         }
@@ -2689,6 +2694,9 @@ public class AllocateIpv6InternetBandwidthRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
         }
         if dict.keys.contains("InternetChargeType") {
             self.internetChargeType = dict["InternetChargeType"] as! String
@@ -27037,6 +27045,10 @@ public class DeleteIpv6EgressOnlyRuleResponse : Tea.TeaModel {
 }
 
 public class DeleteIpv6GatewayRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
     public var ipv6GatewayId: String?
 
     public var ownerAccount: String?
@@ -27063,6 +27075,12 @@ public class DeleteIpv6GatewayRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.ipv6GatewayId != nil {
             map["Ipv6GatewayId"] = self.ipv6GatewayId!
         }
@@ -27085,6 +27103,12 @@ public class DeleteIpv6GatewayRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
         if dict.keys.contains("Ipv6GatewayId") {
             self.ipv6GatewayId = dict["Ipv6GatewayId"] as! String
         }
@@ -27186,6 +27210,10 @@ public class DeleteIpv6GatewayResponse : Tea.TeaModel {
 }
 
 public class DeleteIpv6InternetBandwidthRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
     public var ipv6AddressId: String?
 
     public var ipv6InternetBandwidthId: String?
@@ -27214,6 +27242,12 @@ public class DeleteIpv6InternetBandwidthRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.ipv6AddressId != nil {
             map["Ipv6AddressId"] = self.ipv6AddressId!
         }
@@ -27239,6 +27273,12 @@ public class DeleteIpv6InternetBandwidthRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
         if dict.keys.contains("Ipv6AddressId") {
             self.ipv6AddressId = dict["Ipv6AddressId"] as! String
         }
@@ -30476,6 +30516,10 @@ public class DeleteVSwitchResponse : Tea.TeaModel {
 }
 
 public class DeleteVSwitchCidrReservationRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -30502,6 +30546,12 @@ public class DeleteVSwitchCidrReservationRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -30524,6 +30574,12 @@ public class DeleteVSwitchCidrReservationRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
         }
@@ -31120,6 +31176,8 @@ public class DeleteVirtualBorderRouterResponse : Tea.TeaModel {
 }
 
 public class DeleteVpcRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var dryRun: Bool?
 
     public var forceDelete: Bool?
@@ -31150,6 +31208,9 @@ public class DeleteVpcRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
@@ -31178,6 +31239,9 @@ public class DeleteVpcRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("DryRun") {
             self.dryRun = dict["DryRun"] as! Bool
         }
@@ -50320,6 +50384,8 @@ public class DescribePhysicalConnectionsResponse : Tea.TeaModel {
 }
 
 public class DescribePublicIpAddressRequest : Tea.TeaModel {
+    public var ipVersion: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -50348,6 +50414,9 @@ public class DescribePublicIpAddressRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.ipVersion != nil {
+            map["IpVersion"] = self.ipVersion!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -50373,6 +50442,9 @@ public class DescribePublicIpAddressRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("IpVersion") {
+            self.ipVersion = dict["IpVersion"] as! String
+        }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
         }
@@ -88341,7 +88413,11 @@ public class ModifyIPv6TranslatorEntryResponse : Tea.TeaModel {
 }
 
 public class ModifyIpv6AddressAttributeRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var description_: String?
+
+    public var dryRun: Bool?
 
     public var ipv6AddressId: String?
 
@@ -88371,8 +88447,14 @@ public class ModifyIpv6AddressAttributeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.ipv6AddressId != nil {
             map["Ipv6AddressId"] = self.ipv6AddressId!
@@ -88399,8 +88481,14 @@ public class ModifyIpv6AddressAttributeRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
         }
         if dict.keys.contains("Ipv6AddressId") {
             self.ipv6AddressId = dict["Ipv6AddressId"] as! String
@@ -88506,7 +88594,11 @@ public class ModifyIpv6AddressAttributeResponse : Tea.TeaModel {
 }
 
 public class ModifyIpv6GatewayAttributeRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var description_: String?
+
+    public var dryRun: Bool?
 
     public var ipv6GatewayId: String?
 
@@ -88536,8 +88628,14 @@ public class ModifyIpv6GatewayAttributeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.ipv6GatewayId != nil {
             map["Ipv6GatewayId"] = self.ipv6GatewayId!
@@ -88564,8 +88662,14 @@ public class ModifyIpv6GatewayAttributeRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
         }
         if dict.keys.contains("Ipv6GatewayId") {
             self.ipv6GatewayId = dict["Ipv6GatewayId"] as! String
@@ -88675,6 +88779,8 @@ public class ModifyIpv6InternetBandwidthRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var dryRun: Bool?
+
     public var ipv6AddressId: String?
 
     public var ipv6InternetBandwidthId: String?
@@ -88709,6 +88815,9 @@ public class ModifyIpv6InternetBandwidthRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.ipv6AddressId != nil {
             map["Ipv6AddressId"] = self.ipv6AddressId!
         }
@@ -88739,6 +88848,9 @@ public class ModifyIpv6InternetBandwidthRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
         }
         if dict.keys.contains("Ipv6AddressId") {
             self.ipv6AddressId = dict["Ipv6AddressId"] as! String
@@ -92786,6 +92898,10 @@ public class ModifyVSwitchAttributeResponse : Tea.TeaModel {
 }
 
 public class ModifyVSwitchCidrReservationAttributeRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -92816,6 +92932,12 @@ public class ModifyVSwitchCidrReservationAttributeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -92844,6 +92966,12 @@ public class ModifyVSwitchCidrReservationAttributeRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
         }

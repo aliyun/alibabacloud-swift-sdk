@@ -861,6 +861,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.internetChargeType)) {
             query["InternetChargeType"] = request.internetChargeType ?? "";
         }
@@ -7442,6 +7448,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteIpv6GatewayWithOptions(_ request: DeleteIpv6GatewayRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteIpv6GatewayResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.ipv6GatewayId)) {
             query["Ipv6GatewayId"] = request.ipv6GatewayId ?? "";
         }
@@ -7491,6 +7503,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteIpv6InternetBandwidthWithOptions(_ request: DeleteIpv6InternetBandwidthRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteIpv6InternetBandwidthResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.ipv6AddressId)) {
             query["Ipv6AddressId"] = request.ipv6AddressId ?? "";
         }
@@ -8476,6 +8494,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteVSwitchCidrReservationWithOptions(_ request: DeleteVSwitchCidrReservationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteVSwitchCidrReservationResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
         }
@@ -8678,6 +8702,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteVpcWithOptions(_ request: DeleteVpcRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteVpcResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
         }
@@ -11454,6 +11481,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describePublicIpAddressWithOptions(_ request: DescribePublicIpAddressRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribePublicIpAddressResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ipVersion)) {
+            query["IpVersion"] = request.ipVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
         }
@@ -17686,8 +17716,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyIpv6AddressAttributeWithOptions(_ request: ModifyIpv6AddressAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyIpv6AddressAttributeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
         }
         if (!TeaUtils.Client.isUnset(request.ipv6AddressId)) {
             query["Ipv6AddressId"] = request.ipv6AddressId ?? "";
@@ -17741,8 +17777,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyIpv6GatewayAttributeWithOptions(_ request: ModifyIpv6GatewayAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyIpv6GatewayAttributeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
         }
         if (!TeaUtils.Client.isUnset(request.ipv6GatewayId)) {
             query["Ipv6GatewayId"] = request.ipv6GatewayId ?? "";
@@ -17801,6 +17843,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
         }
         if (!TeaUtils.Client.isUnset(request.ipv6AddressId)) {
             query["Ipv6AddressId"] = request.ipv6AddressId ?? "";
@@ -18844,6 +18892,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyVSwitchCidrReservationAttributeWithOptions(_ request: ModifyVSwitchCidrReservationAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyVSwitchCidrReservationAttributeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
         }
