@@ -29471,10 +29471,12 @@ public class UpgradeClusterAddonsRequest : Tea.TeaModel {
     }
 }
 
-public class UpgradeClusterAddonsResponse : Tea.TeaModel {
-    public var headers: [String: String]?
+public class UpgradeClusterAddonsResponseBody : Tea.TeaModel {
+    public var clusterId: String?
 
-    public var statusCode: Int32?
+    public var requestId: String?
+
+    public var taskId: String?
 
     public override init() {
         super.init()
@@ -29490,11 +29492,61 @@ public class UpgradeClusterAddonsResponse : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clusterId != nil {
+            map["cluster_id"] = self.clusterId!
+        }
+        if self.requestId != nil {
+            map["request_id"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["task_id"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("cluster_id") {
+            self.clusterId = dict["cluster_id"] as! String
+        }
+        if dict.keys.contains("request_id") {
+            self.requestId = dict["request_id"] as! String
+        }
+        if dict.keys.contains("task_id") {
+            self.taskId = dict["task_id"] as! String
+        }
+    }
+}
+
+public class UpgradeClusterAddonsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpgradeClusterAddonsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
         if self.headers != nil {
             map["headers"] = self.headers!
         }
         if self.statusCode != nil {
             map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
         }
         return map
     }
@@ -29505,6 +29557,11 @@ public class UpgradeClusterAddonsResponse : Tea.TeaModel {
         }
         if dict.keys.contains("statusCode") {
             self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpgradeClusterAddonsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
         }
     }
 }
