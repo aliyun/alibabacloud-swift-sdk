@@ -707,6 +707,8 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
 
     public var chargeType: String?
 
+    public var gpuAcceleration: Bool?
+
     public var imageId: String?
 
     public var instanceGroupName: String?
@@ -754,6 +756,9 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
         if self.chargeType != nil {
             map["ChargeType"] = self.chargeType!
         }
+        if self.gpuAcceleration != nil {
+            map["GpuAcceleration"] = self.gpuAcceleration!
+        }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
         }
@@ -799,6 +804,9 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ChargeType") {
             self.chargeType = dict["ChargeType"] as! String
+        }
+        if dict.keys.contains("GpuAcceleration") {
+            self.gpuAcceleration = dict["GpuAcceleration"] as! Bool
         }
         if dict.keys.contains("ImageId") {
             self.imageId = dict["ImageId"] as! String
@@ -2367,6 +2375,8 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
 
         public var regionId: String?
 
+        public var renderingType: String?
+
         public var resolutionHeight: Int32?
 
         public var resolutionWidth: Int32?
@@ -2458,6 +2468,9 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
+            if self.renderingType != nil {
+                map["RenderingType"] = self.renderingType!
+            }
             if self.resolutionHeight != nil {
                 map["ResolutionHeight"] = self.resolutionHeight!
             }
@@ -2547,6 +2560,9 @@ public class DescribeAndroidInstanceGroupsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("RenderingType") {
+                self.renderingType = dict["RenderingType"] as! String
             }
             if dict.keys.contains("ResolutionHeight") {
                 self.resolutionHeight = dict["ResolutionHeight"] as! Int32
@@ -2799,6 +2815,8 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
 
         public var regionId: String?
 
+        public var renderingType: String?
+
         public override init() {
             super.init()
         }
@@ -2861,6 +2879,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
+            if self.renderingType != nil {
+                map["RenderingType"] = self.renderingType!
+            }
             return map
         }
 
@@ -2912,6 +2933,9 @@ public class DescribeAndroidInstancesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("RenderingType") {
+                self.renderingType = dict["RenderingType"] as! String
             }
         }
     }
@@ -3797,6 +3821,10 @@ public class DescribeImageListResponseBody : Tea.TeaModel {
 
         public var language: String?
 
+        public var releaseTime: String?
+
+        public var renderingType: String?
+
         public var status: String?
 
         public var systemType: String?
@@ -3849,6 +3877,12 @@ public class DescribeImageListResponseBody : Tea.TeaModel {
             if self.language != nil {
                 map["Language"] = self.language!
             }
+            if self.releaseTime != nil {
+                map["ReleaseTime"] = self.releaseTime!
+            }
+            if self.renderingType != nil {
+                map["RenderingType"] = self.renderingType!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -3896,6 +3930,12 @@ public class DescribeImageListResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Language") {
                 self.language = dict["Language"] as! String
+            }
+            if dict.keys.contains("ReleaseTime") {
+                self.releaseTime = dict["ReleaseTime"] as! String
+            }
+            if dict.keys.contains("RenderingType") {
+                self.renderingType = dict["RenderingType"] as! String
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
@@ -8681,6 +8721,8 @@ public class UpgradeAndroidInstanceGroupRequest : Tea.TeaModel {
 }
 
 public class UpgradeAndroidInstanceGroupResponseBody : Tea.TeaModel {
+    public var instanceIds: String?
+
     public var orderId: String?
 
     public var requestId: String?
@@ -8699,6 +8741,9 @@ public class UpgradeAndroidInstanceGroupResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
         if self.orderId != nil {
             map["OrderId"] = self.orderId!
         }
@@ -8709,6 +8754,9 @@ public class UpgradeAndroidInstanceGroupResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIds = dict["InstanceIds"] as! String
+        }
         if dict.keys.contains("OrderId") {
             self.orderId = dict["OrderId"] as! String
         }
