@@ -12150,9 +12150,44 @@ public class GetResultResponseBody : Tea.TeaModel {
             public class ReviewHistoryList : Tea.TeaModel {
                 public class ReviewHistory : Tea.TeaModel {
                     public class ReviewRightRule : Tea.TeaModel {
-                        public var rid: Int64?
+                        public class ReviewRightRule : Tea.TeaModel {
+                            public var rid: Int64?
 
-                        public var ruleName: String?
+                            public var ruleName: String?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.rid != nil {
+                                    map["rid"] = self.rid!
+                                }
+                                if self.ruleName != nil {
+                                    map["ruleName"] = self.ruleName!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any]) -> Void {
+                                if dict.keys.contains("rid") {
+                                    self.rid = dict["rid"] as! Int64
+                                }
+                                if dict.keys.contains("ruleName") {
+                                    self.ruleName = dict["ruleName"] as! String
+                                }
+                            }
+                        }
+                        public var reviewRightRule: [GetResultResponseBody.Data.ResultInfo.ReviewHistoryList.ReviewHistory.ReviewRightRule.ReviewRightRule]?
 
                         public override init() {
                             super.init()
@@ -12168,21 +12203,27 @@ public class GetResultResponseBody : Tea.TeaModel {
 
                         public override func toMap() -> [String : Any] {
                             var map = super.toMap()
-                            if self.rid != nil {
-                                map["Rid"] = self.rid!
-                            }
-                            if self.ruleName != nil {
-                                map["RuleName"] = self.ruleName!
+                            if self.reviewRightRule != nil {
+                                var tmp : [Any] = []
+                                for k in self.reviewRightRule! {
+                                    tmp.append(k.toMap())
+                                }
+                                map["ReviewRightRule"] = tmp
                             }
                             return map
                         }
 
                         public override func fromMap(_ dict: [String: Any]) -> Void {
-                            if dict.keys.contains("Rid") {
-                                self.rid = dict["Rid"] as! Int64
-                            }
-                            if dict.keys.contains("RuleName") {
-                                self.ruleName = dict["RuleName"] as! String
+                            if dict.keys.contains("ReviewRightRule") {
+                                var tmp : [GetResultResponseBody.Data.ResultInfo.ReviewHistoryList.ReviewHistory.ReviewRightRule.ReviewRightRule] = []
+                                for v in dict["ReviewRightRule"] as! [Any] {
+                                    var model = GetResultResponseBody.Data.ResultInfo.ReviewHistoryList.ReviewHistory.ReviewRightRule.ReviewRightRule()
+                                    if v != nil {
+                                        model.fromMap(v as! [String: Any])
+                                    }
+                                    tmp.append(model)
+                                }
+                                self.reviewRightRule = tmp
                             }
                         }
                     }
@@ -13994,9 +14035,44 @@ public class GetResultToReviewResponseBody : Tea.TeaModel {
         public class ReviewHistoryList : Tea.TeaModel {
             public class ReviewHistory : Tea.TeaModel {
                 public class ReviewRightRule : Tea.TeaModel {
-                    public var rid: Int64?
+                    public class ReviewRightRule : Tea.TeaModel {
+                        public var rid: Int64?
 
-                    public var ruleName: String?
+                        public var ruleName: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.rid != nil {
+                                map["rid"] = self.rid!
+                            }
+                            if self.ruleName != nil {
+                                map["ruleName"] = self.ruleName!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("rid") {
+                                self.rid = dict["rid"] as! Int64
+                            }
+                            if dict.keys.contains("ruleName") {
+                                self.ruleName = dict["ruleName"] as! String
+                            }
+                        }
+                    }
+                    public var reviewRightRule: [GetResultToReviewResponseBody.Data.ReviewHistoryList.ReviewHistory.ReviewRightRule.ReviewRightRule]?
 
                     public override init() {
                         super.init()
@@ -14012,21 +14088,27 @@ public class GetResultToReviewResponseBody : Tea.TeaModel {
 
                     public override func toMap() -> [String : Any] {
                         var map = super.toMap()
-                        if self.rid != nil {
-                            map["Rid"] = self.rid!
-                        }
-                        if self.ruleName != nil {
-                            map["RuleName"] = self.ruleName!
+                        if self.reviewRightRule != nil {
+                            var tmp : [Any] = []
+                            for k in self.reviewRightRule! {
+                                tmp.append(k.toMap())
+                            }
+                            map["ReviewRightRule"] = tmp
                         }
                         return map
                     }
 
                     public override func fromMap(_ dict: [String: Any]) -> Void {
-                        if dict.keys.contains("Rid") {
-                            self.rid = dict["Rid"] as! Int64
-                        }
-                        if dict.keys.contains("RuleName") {
-                            self.ruleName = dict["RuleName"] as! String
+                        if dict.keys.contains("ReviewRightRule") {
+                            var tmp : [GetResultToReviewResponseBody.Data.ReviewHistoryList.ReviewHistory.ReviewRightRule.ReviewRightRule] = []
+                            for v in dict["ReviewRightRule"] as! [Any] {
+                                var model = GetResultToReviewResponseBody.Data.ReviewHistoryList.ReviewHistory.ReviewRightRule.ReviewRightRule()
+                                if v != nil {
+                                    model.fromMap(v as! [String: Any])
+                                }
+                                tmp.append(model)
+                            }
+                            self.reviewRightRule = tmp
                         }
                     }
                 }
