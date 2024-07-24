@@ -2573,6 +2573,52 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeDtsJobConfigWithOptions(_ request: DescribeDtsJobConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDtsJobConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dtsJobId)) {
+            query["DtsJobId"] = request.dtsJobId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.forAcceleration)) {
+            query["ForAcceleration"] = request.forAcceleration ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.module)) {
+            query["Module"] = request.module ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeDtsJobConfig",
+            "version": "2020-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeDtsJobConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeDtsJobConfig(_ request: DescribeDtsJobConfigRequest) async throws -> DescribeDtsJobConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeDtsJobConfigWithOptions(request as! DescribeDtsJobConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeDtsJobDetailWithOptions(_ request: DescribeDtsJobDetailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDtsJobDetailResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

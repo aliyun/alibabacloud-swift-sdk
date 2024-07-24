@@ -11534,6 +11534,276 @@ public class DescribeDtsEtlJobVersionInfoResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeDtsJobConfigRequest : Tea.TeaModel {
+    public var dtsJobId: String?
+
+    public var forAcceleration: String?
+
+    public var module: String?
+
+    public var ownerId: String?
+
+    public var regionId: String?
+
+    public var resourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dtsJobId != nil {
+            map["DtsJobId"] = self.dtsJobId!
+        }
+        if self.forAcceleration != nil {
+            map["ForAcceleration"] = self.forAcceleration!
+        }
+        if self.module != nil {
+            map["Module"] = self.module!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DtsJobId") {
+            self.dtsJobId = dict["DtsJobId"] as! String
+        }
+        if dict.keys.contains("ForAcceleration") {
+            self.forAcceleration = dict["ForAcceleration"] as! String
+        }
+        if dict.keys.contains("Module") {
+            self.module = dict["Module"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+    }
+}
+
+public class DescribeDtsJobConfigResponseBody : Tea.TeaModel {
+    public class Parameters : Tea.TeaModel {
+        public var checkingCode: String?
+
+        public var defaultValue: String?
+
+        public var description_: String?
+
+        public var forceRestart: String?
+
+        public var modifiable: String?
+
+        public var module: String?
+
+        public var name: String?
+
+        public var recommendValue: String?
+
+        public var runningValue: String?
+
+        public var valueType: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.checkingCode != nil {
+                map["CheckingCode"] = self.checkingCode!
+            }
+            if self.defaultValue != nil {
+                map["DefaultValue"] = self.defaultValue!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.forceRestart != nil {
+                map["ForceRestart"] = self.forceRestart!
+            }
+            if self.modifiable != nil {
+                map["Modifiable"] = self.modifiable!
+            }
+            if self.module != nil {
+                map["Module"] = self.module!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.recommendValue != nil {
+                map["RecommendValue"] = self.recommendValue!
+            }
+            if self.runningValue != nil {
+                map["RunningValue"] = self.runningValue!
+            }
+            if self.valueType != nil {
+                map["ValueType"] = self.valueType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CheckingCode") {
+                self.checkingCode = dict["CheckingCode"] as! String
+            }
+            if dict.keys.contains("DefaultValue") {
+                self.defaultValue = dict["DefaultValue"] as! String
+            }
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("ForceRestart") {
+                self.forceRestart = dict["ForceRestart"] as! String
+            }
+            if dict.keys.contains("Modifiable") {
+                self.modifiable = dict["Modifiable"] as! String
+            }
+            if dict.keys.contains("Module") {
+                self.module = dict["Module"] as! String
+            }
+            if dict.keys.contains("Name") {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("RecommendValue") {
+                self.recommendValue = dict["RecommendValue"] as! String
+            }
+            if dict.keys.contains("RunningValue") {
+                self.runningValue = dict["RunningValue"] as! String
+            }
+            if dict.keys.contains("ValueType") {
+                self.valueType = dict["ValueType"] as! Int32
+            }
+        }
+    }
+    public var parameters: [DescribeDtsJobConfigResponseBody.Parameters]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.parameters != nil {
+            var tmp : [Any] = []
+            for k in self.parameters! {
+                tmp.append(k.toMap())
+            }
+            map["Parameters"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Parameters") {
+            var tmp : [DescribeDtsJobConfigResponseBody.Parameters] = []
+            for v in dict["Parameters"] as! [Any] {
+                var model = DescribeDtsJobConfigResponseBody.Parameters()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.parameters = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeDtsJobConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeDtsJobConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeDtsJobConfigResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeDtsJobDetailRequest : Tea.TeaModel {
     public var dtsInstanceID: String?
 
