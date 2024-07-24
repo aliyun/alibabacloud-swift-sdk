@@ -14317,6 +14317,8 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
 
             public var expired: String?
 
+            public var hotStandbyCluster: String?
+
             public var lockMode: String?
 
             public var memorySize: String?
@@ -14417,6 +14419,9 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
                 }
                 if self.expired != nil {
                     map["Expired"] = self.expired!
+                }
+                if self.hotStandbyCluster != nil {
+                    map["HotStandbyCluster"] = self.hotStandbyCluster!
                 }
                 if self.lockMode != nil {
                     map["LockMode"] = self.lockMode!
@@ -14525,6 +14530,9 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Expired") {
                     self.expired = dict["Expired"] as! String
+                }
+                if dict.keys.contains("HotStandbyCluster") {
+                    self.hotStandbyCluster = dict["HotStandbyCluster"] as! String
                 }
                 if dict.keys.contains("LockMode") {
                     self.lockMode = dict["LockMode"] as! String
