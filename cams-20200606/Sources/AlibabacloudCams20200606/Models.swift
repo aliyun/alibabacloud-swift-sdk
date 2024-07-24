@@ -10,9 +10,15 @@ public class AddChatappPhoneNumberRequest : Tea.TeaModel {
 
     public var custSpaceId: String?
 
+    public var ownerId: Int64?
+
     public var phoneNumber: String?
 
     public var preValidateId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
 
     public var verifiedName: String?
 
@@ -36,11 +42,20 @@ public class AddChatappPhoneNumberRequest : Tea.TeaModel {
         if self.custSpaceId != nil {
             map["CustSpaceId"] = self.custSpaceId!
         }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
         if self.phoneNumber != nil {
             map["PhoneNumber"] = self.phoneNumber!
         }
         if self.preValidateId != nil {
             map["PreValidateId"] = self.preValidateId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
         }
         if self.verifiedName != nil {
             map["VerifiedName"] = self.verifiedName!
@@ -55,11 +70,20 @@ public class AddChatappPhoneNumberRequest : Tea.TeaModel {
         if dict.keys.contains("CustSpaceId") {
             self.custSpaceId = dict["CustSpaceId"] as! String
         }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
         if dict.keys.contains("PhoneNumber") {
             self.phoneNumber = dict["PhoneNumber"] as! String
         }
         if dict.keys.contains("PreValidateId") {
             self.preValidateId = dict["PreValidateId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
         }
         if dict.keys.contains("VerifiedName") {
             self.verifiedName = dict["VerifiedName"] as! String
@@ -75,6 +99,8 @@ public class AddChatappPhoneNumberResponseBody : Tea.TeaModel {
     public var message: String?
 
     public var requestId: String?
+
+    public var success: Bool?
 
     public override init() {
         super.init()
@@ -102,6 +128,9 @@ public class AddChatappPhoneNumberResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
         return map
     }
 
@@ -117,6 +146,9 @@ public class AddChatappPhoneNumberResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
         }
     }
 }
@@ -1382,6 +1414,12 @@ public class BeeBotChatResponse : Tea.TeaModel {
 }
 
 public class ChatappBindWabaRequest : Tea.TeaModel {
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
     public var wabaId: String?
 
     public override init() {
@@ -1398,6 +1436,15 @@ public class ChatappBindWabaRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
         if self.wabaId != nil {
             map["WabaId"] = self.wabaId!
         }
@@ -1405,6 +1452,15 @@ public class ChatappBindWabaRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
         if dict.keys.contains("WabaId") {
             self.wabaId = dict["WabaId"] as! String
         }
@@ -1459,6 +1515,8 @@ public class ChatappBindWabaResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var success: Bool?
+
     public override init() {
         super.init()
     }
@@ -1489,6 +1547,9 @@ public class ChatappBindWabaResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
         return map
     }
 
@@ -1509,6 +1570,9 @@ public class ChatappBindWabaResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
         }
     }
 }
@@ -2258,7 +2322,13 @@ public class ChatappPhoneNumberDeregisterResponse : Tea.TeaModel {
 public class ChatappPhoneNumberRegisterRequest : Tea.TeaModel {
     public var custSpaceId: String?
 
+    public var ownerId: Int64?
+
     public var phoneNumber: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
 
     public override init() {
         super.init()
@@ -2277,8 +2347,17 @@ public class ChatappPhoneNumberRegisterRequest : Tea.TeaModel {
         if self.custSpaceId != nil {
             map["CustSpaceId"] = self.custSpaceId!
         }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
         if self.phoneNumber != nil {
             map["PhoneNumber"] = self.phoneNumber!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
         }
         return map
     }
@@ -2287,8 +2366,17 @@ public class ChatappPhoneNumberRegisterRequest : Tea.TeaModel {
         if dict.keys.contains("CustSpaceId") {
             self.custSpaceId = dict["CustSpaceId"] as! String
         }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
         if dict.keys.contains("PhoneNumber") {
             self.phoneNumber = dict["PhoneNumber"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
         }
     }
 }
@@ -2301,6 +2389,8 @@ public class ChatappPhoneNumberRegisterResponseBody : Tea.TeaModel {
     public var message: String?
 
     public var requestId: String?
+
+    public var success: Bool?
 
     public override init() {
         super.init()
@@ -2328,6 +2418,9 @@ public class ChatappPhoneNumberRegisterResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
         return map
     }
 
@@ -2343,6 +2436,9 @@ public class ChatappPhoneNumberRegisterResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
         }
     }
 }
@@ -2399,6 +2495,12 @@ public class ChatappPhoneNumberRegisterResponse : Tea.TeaModel {
 public class ChatappSyncPhoneNumberRequest : Tea.TeaModel {
     public var custSpaceId: String?
 
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
     public override init() {
         super.init()
     }
@@ -2416,12 +2518,30 @@ public class ChatappSyncPhoneNumberRequest : Tea.TeaModel {
         if self.custSpaceId != nil {
             map["CustSpaceId"] = self.custSpaceId!
         }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("CustSpaceId") {
             self.custSpaceId = dict["CustSpaceId"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
         }
     }
 }
@@ -2554,6 +2674,8 @@ public class ChatappSyncPhoneNumberResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var success: Bool?
+
     public override init() {
         super.init()
     }
@@ -2587,6 +2709,9 @@ public class ChatappSyncPhoneNumberResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
         return map
     }
 
@@ -2613,6 +2738,9 @@ public class ChatappSyncPhoneNumberResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
         }
     }
 }
@@ -2669,7 +2797,13 @@ public class ChatappSyncPhoneNumberResponse : Tea.TeaModel {
 public class ChatappVerifyAndRegisterRequest : Tea.TeaModel {
     public var custSpaceId: String?
 
+    public var ownerId: Int64?
+
     public var phoneNumber: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
 
     public var verifyCode: String?
 
@@ -2690,8 +2824,17 @@ public class ChatappVerifyAndRegisterRequest : Tea.TeaModel {
         if self.custSpaceId != nil {
             map["CustSpaceId"] = self.custSpaceId!
         }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
         if self.phoneNumber != nil {
             map["PhoneNumber"] = self.phoneNumber!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
         }
         if self.verifyCode != nil {
             map["VerifyCode"] = self.verifyCode!
@@ -2703,8 +2846,17 @@ public class ChatappVerifyAndRegisterRequest : Tea.TeaModel {
         if dict.keys.contains("CustSpaceId") {
             self.custSpaceId = dict["CustSpaceId"] as! String
         }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
         if dict.keys.contains("PhoneNumber") {
             self.phoneNumber = dict["PhoneNumber"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
         }
         if dict.keys.contains("VerifyCode") {
             self.verifyCode = dict["VerifyCode"] as! String
@@ -2720,6 +2872,8 @@ public class ChatappVerifyAndRegisterResponseBody : Tea.TeaModel {
     public var message: String?
 
     public var requestId: String?
+
+    public var success: Bool?
 
     public override init() {
         super.init()
@@ -2747,6 +2901,9 @@ public class ChatappVerifyAndRegisterResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
         return map
     }
 
@@ -2762,6 +2919,9 @@ public class ChatappVerifyAndRegisterResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
         }
     }
 }
@@ -4398,6 +4558,12 @@ public class DeleteChatappTemplateRequest : Tea.TeaModel {
 
     public var language: String?
 
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
     public var templateCode: String?
 
     public var templateName: String?
@@ -4430,6 +4596,15 @@ public class DeleteChatappTemplateRequest : Tea.TeaModel {
         if self.language != nil {
             map["Language"] = self.language!
         }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
         if self.templateCode != nil {
             map["TemplateCode"] = self.templateCode!
         }
@@ -4455,6 +4630,15 @@ public class DeleteChatappTemplateRequest : Tea.TeaModel {
         if dict.keys.contains("Language") {
             self.language = dict["Language"] as! String
         }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
         if dict.keys.contains("TemplateCode") {
             self.templateCode = dict["TemplateCode"] as! String
         }
@@ -4475,6 +4659,8 @@ public class DeleteChatappTemplateResponseBody : Tea.TeaModel {
     public var message: String?
 
     public var requestId: String?
+
+    public var success: Bool?
 
     public override init() {
         super.init()
@@ -4502,6 +4688,9 @@ public class DeleteChatappTemplateResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
         return map
     }
 
@@ -4517,6 +4706,9 @@ public class DeleteChatappTemplateResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
         }
     }
 }
@@ -6898,7 +7090,13 @@ public class GetChatappVerifyCodeRequest : Tea.TeaModel {
 
     public var method: String?
 
+    public var ownerId: Int64?
+
     public var phoneNumber: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
 
     public override init() {
         super.init()
@@ -6923,8 +7121,17 @@ public class GetChatappVerifyCodeRequest : Tea.TeaModel {
         if self.method != nil {
             map["Method"] = self.method!
         }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
         if self.phoneNumber != nil {
             map["PhoneNumber"] = self.phoneNumber!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
         }
         return map
     }
@@ -6939,8 +7146,17 @@ public class GetChatappVerifyCodeRequest : Tea.TeaModel {
         if dict.keys.contains("Method") {
             self.method = dict["Method"] as! String
         }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
         if dict.keys.contains("PhoneNumber") {
             self.phoneNumber = dict["PhoneNumber"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
         }
     }
 }
@@ -6953,6 +7169,8 @@ public class GetChatappVerifyCodeResponseBody : Tea.TeaModel {
     public var message: String?
 
     public var requestId: String?
+
+    public var success: Bool?
 
     public override init() {
         super.init()
@@ -6980,6 +7198,9 @@ public class GetChatappVerifyCodeResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
         return map
     }
 
@@ -6995,6 +7216,9 @@ public class GetChatappVerifyCodeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
         }
     }
 }
@@ -7051,7 +7275,13 @@ public class GetChatappVerifyCodeResponse : Tea.TeaModel {
 public class GetCommerceSettingRequest : Tea.TeaModel {
     public var custSpaceId: String?
 
+    public var ownerId: Int64?
+
     public var phoneNumber: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
 
     public override init() {
         super.init()
@@ -7070,8 +7300,17 @@ public class GetCommerceSettingRequest : Tea.TeaModel {
         if self.custSpaceId != nil {
             map["CustSpaceId"] = self.custSpaceId!
         }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
         if self.phoneNumber != nil {
             map["PhoneNumber"] = self.phoneNumber!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
         }
         return map
     }
@@ -7080,8 +7319,17 @@ public class GetCommerceSettingRequest : Tea.TeaModel {
         if dict.keys.contains("CustSpaceId") {
             self.custSpaceId = dict["CustSpaceId"] as! String
         }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
         if dict.keys.contains("PhoneNumber") {
             self.phoneNumber = dict["PhoneNumber"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
         }
     }
 }
@@ -7124,6 +7372,8 @@ public class GetCommerceSettingResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: String?
 
     public var data: GetCommerceSettingResponseBody.Data?
@@ -7131,6 +7381,8 @@ public class GetCommerceSettingResponseBody : Tea.TeaModel {
     public var message: String?
 
     public var requestId: String?
+
+    public var success: Bool?
 
     public override init() {
         super.init()
@@ -7147,6 +7399,9 @@ public class GetCommerceSettingResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -7159,10 +7414,16 @@ public class GetCommerceSettingResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! String
         }
@@ -7176,6 +7437,9 @@ public class GetCommerceSettingResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
         }
     }
 }
@@ -9353,6 +9617,8 @@ public class ListChatappTemplateResponseBody : Tea.TeaModel {
 
         public var language: String?
 
+        public var lastUpdateTime: Int64?
+
         public var reason: String?
 
         public var templateCode: String?
@@ -9384,6 +9650,9 @@ public class ListChatappTemplateResponseBody : Tea.TeaModel {
             if self.language != nil {
                 map["Language"] = self.language!
             }
+            if self.lastUpdateTime != nil {
+                map["LastUpdateTime"] = self.lastUpdateTime!
+            }
             if self.reason != nil {
                 map["Reason"] = self.reason!
             }
@@ -9408,6 +9677,9 @@ public class ListChatappTemplateResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Language") {
                 self.language = dict["Language"] as! String
+            }
+            if dict.keys.contains("LastUpdateTime") {
+                self.lastUpdateTime = dict["LastUpdateTime"] as! Int64
             }
             if dict.keys.contains("Reason") {
                 self.reason = dict["Reason"] as! String
@@ -11892,9 +12164,15 @@ public class ModifyPhoneBusinessProfileRequest : Tea.TeaModel {
 
     public var email: String?
 
+    public var ownerId: Int64?
+
     public var phoneNumber: String?
 
     public var profilePictureUrl: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
 
     public var vertical: String?
 
@@ -11929,11 +12207,20 @@ public class ModifyPhoneBusinessProfileRequest : Tea.TeaModel {
         if self.email != nil {
             map["Email"] = self.email!
         }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
         if self.phoneNumber != nil {
             map["PhoneNumber"] = self.phoneNumber!
         }
         if self.profilePictureUrl != nil {
             map["ProfilePictureUrl"] = self.profilePictureUrl!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
         }
         if self.vertical != nil {
             map["Vertical"] = self.vertical!
@@ -11960,11 +12247,20 @@ public class ModifyPhoneBusinessProfileRequest : Tea.TeaModel {
         if dict.keys.contains("Email") {
             self.email = dict["Email"] as! String
         }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
         if dict.keys.contains("PhoneNumber") {
             self.phoneNumber = dict["PhoneNumber"] as! String
         }
         if dict.keys.contains("ProfilePictureUrl") {
             self.profilePictureUrl = dict["ProfilePictureUrl"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
         }
         if dict.keys.contains("Vertical") {
             self.vertical = dict["Vertical"] as! String
@@ -11986,9 +12282,15 @@ public class ModifyPhoneBusinessProfileShrinkRequest : Tea.TeaModel {
 
     public var email: String?
 
+    public var ownerId: Int64?
+
     public var phoneNumber: String?
 
     public var profilePictureUrl: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
 
     public var vertical: String?
 
@@ -12023,11 +12325,20 @@ public class ModifyPhoneBusinessProfileShrinkRequest : Tea.TeaModel {
         if self.email != nil {
             map["Email"] = self.email!
         }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
         if self.phoneNumber != nil {
             map["PhoneNumber"] = self.phoneNumber!
         }
         if self.profilePictureUrl != nil {
             map["ProfilePictureUrl"] = self.profilePictureUrl!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
         }
         if self.vertical != nil {
             map["Vertical"] = self.vertical!
@@ -12054,11 +12365,20 @@ public class ModifyPhoneBusinessProfileShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("Email") {
             self.email = dict["Email"] as! String
         }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
         if dict.keys.contains("PhoneNumber") {
             self.phoneNumber = dict["PhoneNumber"] as! String
         }
         if dict.keys.contains("ProfilePictureUrl") {
             self.profilePictureUrl = dict["ProfilePictureUrl"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
         }
         if dict.keys.contains("Vertical") {
             self.vertical = dict["Vertical"] as! String
@@ -12077,6 +12397,8 @@ public class ModifyPhoneBusinessProfileResponseBody : Tea.TeaModel {
     public var message: String?
 
     public var requestId: String?
+
+    public var success: Bool?
 
     public override init() {
         super.init()
@@ -12104,6 +12426,9 @@ public class ModifyPhoneBusinessProfileResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
         return map
     }
 
@@ -12119,6 +12444,9 @@ public class ModifyPhoneBusinessProfileResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
         }
     }
 }
@@ -12855,7 +13183,13 @@ public class QueryChatappPhoneNumbersResponse : Tea.TeaModel {
 public class QueryPhoneBusinessProfileRequest : Tea.TeaModel {
     public var custSpaceId: String?
 
+    public var ownerId: Int64?
+
     public var phoneNumber: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
 
     public override init() {
         super.init()
@@ -12874,8 +13208,17 @@ public class QueryPhoneBusinessProfileRequest : Tea.TeaModel {
         if self.custSpaceId != nil {
             map["CustSpaceId"] = self.custSpaceId!
         }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
         if self.phoneNumber != nil {
             map["PhoneNumber"] = self.phoneNumber!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
         }
         return map
     }
@@ -12884,8 +13227,17 @@ public class QueryPhoneBusinessProfileRequest : Tea.TeaModel {
         if dict.keys.contains("CustSpaceId") {
             self.custSpaceId = dict["CustSpaceId"] as! String
         }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
         if dict.keys.contains("PhoneNumber") {
             self.phoneNumber = dict["PhoneNumber"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
         }
     }
 }
@@ -12978,6 +13330,8 @@ public class QueryPhoneBusinessProfileResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var success: Bool?
+
     public override init() {
         super.init()
     }
@@ -13008,6 +13362,9 @@ public class QueryPhoneBusinessProfileResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
         return map
     }
 
@@ -13028,6 +13385,9 @@ public class QueryPhoneBusinessProfileResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
         }
     }
 }
@@ -13084,6 +13444,12 @@ public class QueryPhoneBusinessProfileResponse : Tea.TeaModel {
 public class QueryWabaBusinessInfoRequest : Tea.TeaModel {
     public var custSpaceId: String?
 
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
     public var wabaId: String?
 
     public override init() {
@@ -13103,6 +13469,15 @@ public class QueryWabaBusinessInfoRequest : Tea.TeaModel {
         if self.custSpaceId != nil {
             map["CustSpaceId"] = self.custSpaceId!
         }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
         if self.wabaId != nil {
             map["WabaId"] = self.wabaId!
         }
@@ -13112,6 +13487,15 @@ public class QueryWabaBusinessInfoRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("CustSpaceId") {
             self.custSpaceId = dict["CustSpaceId"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
         }
         if dict.keys.contains("WabaId") {
             self.wabaId = dict["WabaId"] as! String
@@ -13183,6 +13567,8 @@ public class QueryWabaBusinessInfoResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var success: Bool?
+
     public override init() {
         super.init()
     }
@@ -13213,6 +13599,9 @@ public class QueryWabaBusinessInfoResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
         return map
     }
 
@@ -13233,6 +13622,9 @@ public class QueryWabaBusinessInfoResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
         }
     }
 }
@@ -15034,7 +15426,13 @@ public class UpdateCommerceSettingRequest : Tea.TeaModel {
 
     public var custSpaceId: String?
 
+    public var ownerId: Int64?
+
     public var phoneNumber: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
 
     public override init() {
         super.init()
@@ -15059,8 +15457,17 @@ public class UpdateCommerceSettingRequest : Tea.TeaModel {
         if self.custSpaceId != nil {
             map["CustSpaceId"] = self.custSpaceId!
         }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
         if self.phoneNumber != nil {
             map["PhoneNumber"] = self.phoneNumber!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
         }
         return map
     }
@@ -15075,18 +15482,31 @@ public class UpdateCommerceSettingRequest : Tea.TeaModel {
         if dict.keys.contains("CustSpaceId") {
             self.custSpaceId = dict["CustSpaceId"] as! String
         }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
         if dict.keys.contains("PhoneNumber") {
             self.phoneNumber = dict["PhoneNumber"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
         }
     }
 }
 
 public class UpdateCommerceSettingResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
     public var code: String?
 
     public var message: String?
 
     public var requestId: String?
+
+    public var success: Bool?
 
     public override init() {
         super.init()
@@ -15102,6 +15522,9 @@ public class UpdateCommerceSettingResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -15111,10 +15534,16 @@ public class UpdateCommerceSettingResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! String
         }
@@ -15123,6 +15552,9 @@ public class UpdateCommerceSettingResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
         }
     }
 }
