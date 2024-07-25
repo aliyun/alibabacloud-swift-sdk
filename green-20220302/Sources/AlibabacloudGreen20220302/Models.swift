@@ -1408,6 +1408,8 @@ public class DescribeUrlModerationResultResponseBody : Tea.TeaModel {
 
             public var icpType: String?
 
+            public var siteType: String?
+
             public override init() {
                 super.init()
             }
@@ -1428,6 +1430,9 @@ public class DescribeUrlModerationResultResponseBody : Tea.TeaModel {
                 if self.icpType != nil {
                     map["IcpType"] = self.icpType!
                 }
+                if self.siteType != nil {
+                    map["SiteType"] = self.siteType!
+                }
                 return map
             }
 
@@ -1437,6 +1442,9 @@ public class DescribeUrlModerationResultResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("IcpType") {
                     self.icpType = dict["IcpType"] as! String
+                }
+                if dict.keys.contains("SiteType") {
+                    self.siteType = dict["SiteType"] as! String
                 }
             }
         }
@@ -2333,9 +2341,64 @@ public class ImageModerationResponseBody : Tea.TeaModel {
                 }
             }
             public class PublicFigure : Tea.TeaModel {
+                public class Location : Tea.TeaModel {
+                    public var h: Int32?
+
+                    public var w: Int32?
+
+                    public var x: Int32?
+
+                    public var y: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.h != nil {
+                            map["H"] = self.h!
+                        }
+                        if self.w != nil {
+                            map["W"] = self.w!
+                        }
+                        if self.x != nil {
+                            map["X"] = self.x!
+                        }
+                        if self.y != nil {
+                            map["Y"] = self.y!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("H") {
+                            self.h = dict["H"] as! Int32
+                        }
+                        if dict.keys.contains("W") {
+                            self.w = dict["W"] as! Int32
+                        }
+                        if dict.keys.contains("X") {
+                            self.x = dict["X"] as! Int32
+                        }
+                        if dict.keys.contains("Y") {
+                            self.y = dict["Y"] as! Int32
+                        }
+                    }
+                }
                 public var figureId: String?
 
                 public var figureName: String?
+
+                public var location: [ImageModerationResponseBody.Data.Ext.PublicFigure.Location]?
 
                 public override init() {
                     super.init()
@@ -2357,6 +2420,13 @@ public class ImageModerationResponseBody : Tea.TeaModel {
                     if self.figureName != nil {
                         map["FigureName"] = self.figureName!
                     }
+                    if self.location != nil {
+                        var tmp : [Any] = []
+                        for k in self.location! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Location"] = tmp
+                    }
                     return map
                 }
 
@@ -2366,6 +2436,17 @@ public class ImageModerationResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("FigureName") {
                         self.figureName = dict["FigureName"] as! String
+                    }
+                    if dict.keys.contains("Location") {
+                        var tmp : [ImageModerationResponseBody.Data.Ext.PublicFigure.Location] = []
+                        for v in dict["Location"] as! [Any] {
+                            var model = ImageModerationResponseBody.Data.Ext.PublicFigure.Location()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.location = tmp
                     }
                 }
             }
