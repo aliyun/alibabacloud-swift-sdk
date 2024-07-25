@@ -4310,6 +4310,33 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func revokeK8sClusterKubeConfigWithOptions(_ ClusterId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RevokeK8sClusterKubeConfigResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RevokeK8sClusterKubeConfig",
+            "version": "2015-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/k8s/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ClusterId)) + "/certs",
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RevokeK8sClusterKubeConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func revokeK8sClusterKubeConfig(_ ClusterId: String) async throws -> RevokeK8sClusterKubeConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await revokeK8sClusterKubeConfigWithOptions(ClusterId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func runClusterCheckWithOptions(_ clusterId: String, _ request: RunClusterCheckRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RunClusterCheckResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
