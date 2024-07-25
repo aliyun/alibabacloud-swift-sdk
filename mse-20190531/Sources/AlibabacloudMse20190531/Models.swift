@@ -13891,6 +13891,249 @@ public class CreateOrUpdateSwimmingLaneGroupResponse : Tea.TeaModel {
     }
 }
 
+public class CreatePluginConfigRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var config: String?
+
+    public var configLevel: Int32?
+
+    public var enable: Bool?
+
+    public var gatewayUniqueId: String?
+
+    public var pluginId: Int64?
+
+    public var resourceIdList: [Int64]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.config != nil {
+            map["Config"] = self.config!
+        }
+        if self.configLevel != nil {
+            map["ConfigLevel"] = self.configLevel!
+        }
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.pluginId != nil {
+            map["PluginId"] = self.pluginId!
+        }
+        if self.resourceIdList != nil {
+            map["ResourceIdList"] = self.resourceIdList!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("Config") {
+            self.config = dict["Config"] as! String
+        }
+        if dict.keys.contains("ConfigLevel") {
+            self.configLevel = dict["ConfigLevel"] as! Int32
+        }
+        if dict.keys.contains("Enable") {
+            self.enable = dict["Enable"] as! Bool
+        }
+        if dict.keys.contains("GatewayUniqueId") {
+            self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+        }
+        if dict.keys.contains("PluginId") {
+            self.pluginId = dict["PluginId"] as! Int64
+        }
+        if dict.keys.contains("ResourceIdList") {
+            self.resourceIdList = dict["ResourceIdList"] as! [Int64]
+        }
+    }
+}
+
+public class CreatePluginConfigShrinkRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var config: String?
+
+    public var configLevel: Int32?
+
+    public var enable: Bool?
+
+    public var gatewayUniqueId: String?
+
+    public var pluginId: Int64?
+
+    public var resourceIdListShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.config != nil {
+            map["Config"] = self.config!
+        }
+        if self.configLevel != nil {
+            map["ConfigLevel"] = self.configLevel!
+        }
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.pluginId != nil {
+            map["PluginId"] = self.pluginId!
+        }
+        if self.resourceIdListShrink != nil {
+            map["ResourceIdList"] = self.resourceIdListShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("Config") {
+            self.config = dict["Config"] as! String
+        }
+        if dict.keys.contains("ConfigLevel") {
+            self.configLevel = dict["ConfigLevel"] as! Int32
+        }
+        if dict.keys.contains("Enable") {
+            self.enable = dict["Enable"] as! Bool
+        }
+        if dict.keys.contains("GatewayUniqueId") {
+            self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+        }
+        if dict.keys.contains("PluginId") {
+            self.pluginId = dict["PluginId"] as! Int64
+        }
+        if dict.keys.contains("ResourceIdList") {
+            self.resourceIdListShrink = dict["ResourceIdList"] as! String
+        }
+    }
+}
+
+public class CreatePluginConfigResponseBody : Tea.TeaModel {
+    public var pluginConfigID: Int64?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.pluginConfigID != nil {
+            map["PluginConfigID"] = self.pluginConfigID!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PluginConfigID") {
+            self.pluginConfigID = dict["PluginConfigID"] as! Int64
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreatePluginConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreatePluginConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreatePluginConfigResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateZnodeRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
@@ -18765,6 +19008,131 @@ public class DeleteNamespaceResponse : Tea.TeaModel {
     }
 }
 
+public class DeletePluginConfigRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var gatewayUniqueId: String?
+
+    public var pluginConfigId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.pluginConfigId != nil {
+            map["PluginConfigId"] = self.pluginConfigId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("GatewayUniqueId") {
+            self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+        }
+        if dict.keys.contains("PluginConfigId") {
+            self.pluginConfigId = dict["PluginConfigId"] as! Int64
+        }
+    }
+}
+
+public class DeletePluginConfigResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DeletePluginConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeletePluginConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeletePluginConfigResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DeleteSecurityGroupRuleRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
@@ -19728,6 +20096,195 @@ public class DeleteZnodeResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DeleteZnodeResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class EnableHttp2Request : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var enableHttp2: Bool?
+
+    public var gatewayUniqueId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.enableHttp2 != nil {
+            map["EnableHttp2"] = self.enableHttp2!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("EnableHttp2") {
+            self.enableHttp2 = dict["EnableHttp2"] as! Bool
+        }
+        if dict.keys.contains("GatewayUniqueId") {
+            self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+        }
+    }
+}
+
+public class EnableHttp2ResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var data: Bool?
+
+    public var dynamicCode: String?
+
+    public var dynamicMessage: String?
+
+    public var errorCode: String?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.dynamicCode != nil {
+            map["DynamicCode"] = self.dynamicCode!
+        }
+        if self.dynamicMessage != nil {
+            map["DynamicMessage"] = self.dynamicMessage!
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Data") {
+            self.data = dict["Data"] as! Bool
+        }
+        if dict.keys.contains("DynamicCode") {
+            self.dynamicCode = dict["DynamicCode"] as! String
+        }
+        if dict.keys.contains("DynamicMessage") {
+            self.dynamicMessage = dict["DynamicMessage"] as! String
+        }
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class EnableHttp2Response : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: EnableHttp2ResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = EnableHttp2ResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -53526,6 +54083,195 @@ public class OrderClusterHealthCheckRiskNoticeResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = OrderClusterHealthCheckRiskNoticeResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class PreserveHeaderFormatRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var gatewayUniqueId: String?
+
+    public var preserveHeaderFormat: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.preserveHeaderFormat != nil {
+            map["PreserveHeaderFormat"] = self.preserveHeaderFormat!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("GatewayUniqueId") {
+            self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+        }
+        if dict.keys.contains("PreserveHeaderFormat") {
+            self.preserveHeaderFormat = dict["PreserveHeaderFormat"] as! Bool
+        }
+    }
+}
+
+public class PreserveHeaderFormatResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var data: Bool?
+
+    public var dynamicCode: String?
+
+    public var dynamicMessage: String?
+
+    public var errorCode: String?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.dynamicCode != nil {
+            map["DynamicCode"] = self.dynamicCode!
+        }
+        if self.dynamicMessage != nil {
+            map["DynamicMessage"] = self.dynamicMessage!
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Data") {
+            self.data = dict["Data"] as! Bool
+        }
+        if dict.keys.contains("DynamicCode") {
+            self.dynamicCode = dict["DynamicCode"] as! String
+        }
+        if dict.keys.contains("DynamicMessage") {
+            self.dynamicMessage = dict["DynamicMessage"] as! String
+        }
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class PreserveHeaderFormatResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: PreserveHeaderFormatResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = PreserveHeaderFormatResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
