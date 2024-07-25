@@ -4143,6 +4143,8 @@ public class ListInstancesRequest : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
+    public var seriesCodes: [String]?
+
     public var tags: String?
 
     public override init() {
@@ -4171,6 +4173,9 @@ public class ListInstancesRequest : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["resourceGroupId"] = self.resourceGroupId!
         }
+        if self.seriesCodes != nil {
+            map["seriesCodes"] = self.seriesCodes!
+        }
         if self.tags != nil {
             map["tags"] = self.tags!
         }
@@ -4189,6 +4194,79 @@ public class ListInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("resourceGroupId") {
             self.resourceGroupId = dict["resourceGroupId"] as! String
+        }
+        if dict.keys.contains("seriesCodes") {
+            self.seriesCodes = dict["seriesCodes"] as! [String]
+        }
+        if dict.keys.contains("tags") {
+            self.tags = dict["tags"] as! String
+        }
+    }
+}
+
+public class ListInstancesShrinkRequest : Tea.TeaModel {
+    public var filter: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var resourceGroupId: String?
+
+    public var seriesCodesShrink: String?
+
+    public var tags: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.filter != nil {
+            map["filter"] = self.filter!
+        }
+        if self.pageNumber != nil {
+            map["pageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.resourceGroupId != nil {
+            map["resourceGroupId"] = self.resourceGroupId!
+        }
+        if self.seriesCodesShrink != nil {
+            map["seriesCodes"] = self.seriesCodesShrink!
+        }
+        if self.tags != nil {
+            map["tags"] = self.tags!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("filter") {
+            self.filter = dict["filter"] as! String
+        }
+        if dict.keys.contains("pageNumber") {
+            self.pageNumber = dict["pageNumber"] as! Int32
+        }
+        if dict.keys.contains("pageSize") {
+            self.pageSize = dict["pageSize"] as! Int32
+        }
+        if dict.keys.contains("resourceGroupId") {
+            self.resourceGroupId = dict["resourceGroupId"] as! String
+        }
+        if dict.keys.contains("seriesCodes") {
+            self.seriesCodesShrink = dict["seriesCodes"] as! String
         }
         if dict.keys.contains("tags") {
             self.tags = dict["tags"] as! String

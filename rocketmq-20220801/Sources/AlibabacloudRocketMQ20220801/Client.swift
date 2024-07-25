@@ -500,8 +500,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listInstancesWithOptions(_ request: ListInstancesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListInstancesResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listInstancesWithOptions(_ tmpReq: ListInstancesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListInstancesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListInstancesShrinkRequest = ListInstancesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.seriesCodes)) {
+            request.seriesCodesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.seriesCodes, "seriesCodes", "simple")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.filter)) {
             query["filter"] = request.filter ?? "";
@@ -514,6 +519,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             query["resourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.seriesCodesShrink)) {
+            query["seriesCodes"] = request.seriesCodesShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tags)) {
             query["tags"] = request.tags ?? "";
