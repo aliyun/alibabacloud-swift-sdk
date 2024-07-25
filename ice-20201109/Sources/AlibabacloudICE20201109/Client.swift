@@ -6665,6 +6665,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitMediaAiAnalysisJobWithOptions(_ request: SubmitMediaAiAnalysisJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitMediaAiAnalysisJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.analysisParams)) {
+            query["AnalysisParams"] = request.analysisParams ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.input)) {
+            query["Input"] = request.input ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitMediaAiAnalysisJob",
+            "version": "2020-11-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitMediaAiAnalysisJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitMediaAiAnalysisJob(_ request: SubmitMediaAiAnalysisJobRequest) async throws -> SubmitMediaAiAnalysisJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitMediaAiAnalysisJobWithOptions(request as! SubmitMediaAiAnalysisJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func submitMediaCensorJobWithOptions(_ tmpReq: SubmitMediaCensorJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitMediaCensorJobResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: SubmitMediaCensorJobShrinkRequest = SubmitMediaCensorJobShrinkRequest([:])
