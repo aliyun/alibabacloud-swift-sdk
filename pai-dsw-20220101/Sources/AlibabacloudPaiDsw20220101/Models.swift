@@ -6288,6 +6288,8 @@ public class ListInstancesRequest : Tea.TeaModel {
 
     public var accessibility: String?
 
+    public var createUserId: String?
+
     public var instanceId: String?
 
     public var instanceName: String?
@@ -6329,6 +6331,9 @@ public class ListInstancesRequest : Tea.TeaModel {
         }
         if self.accessibility != nil {
             map["Accessibility"] = self.accessibility!
+        }
+        if self.createUserId != nil {
+            map["CreateUserId"] = self.createUserId!
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
@@ -6373,6 +6378,9 @@ public class ListInstancesRequest : Tea.TeaModel {
         if dict.keys.contains("Accessibility") {
             self.accessibility = dict["Accessibility"] as! String
         }
+        if dict.keys.contains("CreateUserId") {
+            self.createUserId = dict["CreateUserId"] as! String
+        }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
         }
@@ -6413,6 +6421,8 @@ public class ListInstancesShrinkRequest : Tea.TeaModel {
     public var acceleratorType: String?
 
     public var accessibility: String?
+
+    public var createUserId: String?
 
     public var instanceId: String?
 
@@ -6456,6 +6466,9 @@ public class ListInstancesShrinkRequest : Tea.TeaModel {
         if self.accessibility != nil {
             map["Accessibility"] = self.accessibility!
         }
+        if self.createUserId != nil {
+            map["CreateUserId"] = self.createUserId!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -6498,6 +6511,9 @@ public class ListInstancesShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Accessibility") {
             self.accessibility = dict["Accessibility"] as! String
+        }
+        if dict.keys.contains("CreateUserId") {
+            self.createUserId = dict["CreateUserId"] as! String
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
