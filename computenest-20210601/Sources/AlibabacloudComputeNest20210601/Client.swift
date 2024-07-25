@@ -607,6 +607,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listServiceInstanceLogsWithOptions(_ request: ListServiceInstanceLogsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListServiceInstanceLogsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.filter)) {
+            query["Filter"] = request.filter ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.logSource)) {
             query["LogSource"] = request.logSource ?? "";
         }
