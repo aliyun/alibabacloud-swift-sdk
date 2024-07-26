@@ -11032,6 +11032,8 @@ public class ListHttpApisRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var publishedOnly: Bool?
+
     public override init() {
         super.init()
     }
@@ -11055,6 +11057,9 @@ public class ListHttpApisRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["pageSize"] = self.pageSize!
         }
+        if self.publishedOnly != nil {
+            map["publishedOnly"] = self.publishedOnly!
+        }
         return map
     }
 
@@ -11067,6 +11072,9 @@ public class ListHttpApisRequest : Tea.TeaModel {
         }
         if dict.keys.contains("pageSize") {
             self.pageSize = dict["pageSize"] as! Int32
+        }
+        if dict.keys.contains("publishedOnly") {
+            self.publishedOnly = dict["publishedOnly"] as! Bool
         }
     }
 }
