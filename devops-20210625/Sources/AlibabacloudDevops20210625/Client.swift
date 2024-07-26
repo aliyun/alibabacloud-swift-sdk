@@ -210,6 +210,39 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cancelExecutionReleaseStageWithOptions(_ appName: String, _ releaseWorkflowSn: String, _ releaseStageSn: String, _ executionNumber: String, _ request: CancelExecutionReleaseStageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CancelExecutionReleaseStageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.organizationId)) {
+            query["organizationId"] = request.organizationId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CancelExecutionReleaseStage",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/appstack/apps/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(appName)) + "/releaseWorkflows/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(releaseWorkflowSn)) + "/releaseStages/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(releaseStageSn)) + "/executions/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(executionNumber)) + "%3Acancel",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CancelExecutionReleaseStageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cancelExecutionReleaseStage(_ appName: String, _ releaseWorkflowSn: String, _ releaseStageSn: String, _ executionNumber: String, _ request: CancelExecutionReleaseStageRequest) async throws -> CancelExecutionReleaseStageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await cancelExecutionReleaseStageWithOptions(appName as! String, releaseWorkflowSn as! String, releaseStageSn as! String, executionNumber as! String, request as! CancelExecutionReleaseStageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func closeMergeRequestWithOptions(_ repositoryId: String, _ localId: String, _ request: CloseMergeRequestRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CloseMergeRequestResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3057,6 +3090,44 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func executeChangeRequestReleaseStageWithOptions(_ appName: String, _ releaseWorkflowSn: String, _ releaseStageSn: String, _ request: ExecuteChangeRequestReleaseStageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ExecuteChangeRequestReleaseStageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.organizationId)) {
+            query["organizationId"] = request.organizationId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.params)) {
+            body["params"] = request.params ?? [:];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ExecuteChangeRequestReleaseStage",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/appstack/apps/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(appName)) + "/releaseWorkflows/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(releaseWorkflowSn)) + "/releaseStages/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(releaseStageSn)) + "%3Aexecute",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ExecuteChangeRequestReleaseStageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func executeChangeRequestReleaseStage(_ appName: String, _ releaseWorkflowSn: String, _ releaseStageSn: String, _ request: ExecuteChangeRequestReleaseStageRequest) async throws -> ExecuteChangeRequestReleaseStageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await executeChangeRequestReleaseStageWithOptions(appName as! String, releaseWorkflowSn as! String, releaseStageSn as! String, request as! ExecuteChangeRequestReleaseStageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func exportInsightCustomValueWithOptions(_ organizationId: String, _ request: ExportInsightCustomValueRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ExportInsightCustomValueResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -4434,6 +4505,39 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getPushRuleWithOptions(repositoryId as! String, pushRuleId as! String, request as! GetPushRuleRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getReleaseStagePipelineRunWithOptions(_ appName: String, _ releaseWorkflowSn: String, _ releaseStageSn: String, _ executionNumber: String, _ request: GetReleaseStagePipelineRunRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetReleaseStagePipelineRunResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.organizationId)) {
+            query["organizationId"] = request.organizationId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetReleaseStagePipelineRun",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/appstack/apps/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(appName)) + "/releaseWorkflows/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(releaseWorkflowSn)) + "/releaseStages/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(releaseStageSn)) + "/executions/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(executionNumber)) + "%3AgetPipelineRun",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetReleaseStagePipelineRunResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getReleaseStagePipelineRun(_ appName: String, _ releaseWorkflowSn: String, _ releaseStageSn: String, _ executionNumber: String, _ request: GetReleaseStagePipelineRunRequest) async throws -> GetReleaseStagePipelineRunResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getReleaseStagePipelineRunWithOptions(appName as! String, releaseWorkflowSn as! String, releaseStageSn as! String, executionNumber as! String, request as! GetReleaseStagePipelineRunRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
