@@ -4288,6 +4288,420 @@ public class ResourceStatistic : Tea.TeaModel {
     }
 }
 
+public class RouteRulesConflictInfo : Tea.TeaModel {
+    public class Conflicts : Tea.TeaModel {
+        public class Details : Tea.TeaModel {
+            public class ConflictingMatch : Tea.TeaModel {
+                public class OperationInfo : Tea.TeaModel {
+                    public var name: String?
+
+                    public var operationId: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.name != nil {
+                            map["name"] = self.name!
+                        }
+                        if self.operationId != nil {
+                            map["operationId"] = self.operationId!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("name") {
+                            self.name = dict["name"] as! String
+                        }
+                        if dict.keys.contains("operationId") {
+                            self.operationId = dict["operationId"] as! String
+                        }
+                    }
+                }
+                public var match: HttpRouteMatch?
+
+                public var operationInfo: RouteRulesConflictInfo.Conflicts.Details.ConflictingMatch.OperationInfo?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.match?.validate()
+                    try self.operationInfo?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.match != nil {
+                        map["match"] = self.match?.toMap()
+                    }
+                    if self.operationInfo != nil {
+                        map["operationInfo"] = self.operationInfo?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("match") {
+                        var model = HttpRouteMatch()
+                        model.fromMap(dict["match"] as! [String: Any])
+                        self.match = model
+                    }
+                    if dict.keys.contains("operationInfo") {
+                        var model = RouteRulesConflictInfo.Conflicts.Details.ConflictingMatch.OperationInfo()
+                        model.fromMap(dict["operationInfo"] as! [String: Any])
+                        self.operationInfo = model
+                    }
+                }
+            }
+            public class DetectedMatch : Tea.TeaModel {
+                public class OperationInfo : Tea.TeaModel {
+                    public var name: String?
+
+                    public var operationId: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.name != nil {
+                            map["name"] = self.name!
+                        }
+                        if self.operationId != nil {
+                            map["operationId"] = self.operationId!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("name") {
+                            self.name = dict["name"] as! String
+                        }
+                        if dict.keys.contains("operationId") {
+                            self.operationId = dict["operationId"] as! String
+                        }
+                    }
+                }
+                public var match: HttpRouteMatch?
+
+                public var operationInfo: RouteRulesConflictInfo.Conflicts.Details.DetectedMatch.OperationInfo?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.match?.validate()
+                    try self.operationInfo?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.match != nil {
+                        map["match"] = self.match?.toMap()
+                    }
+                    if self.operationInfo != nil {
+                        map["operationInfo"] = self.operationInfo?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("match") {
+                        var model = HttpRouteMatch()
+                        model.fromMap(dict["match"] as! [String: Any])
+                        self.match = model
+                    }
+                    if dict.keys.contains("operationInfo") {
+                        var model = RouteRulesConflictInfo.Conflicts.Details.DetectedMatch.OperationInfo()
+                        model.fromMap(dict["operationInfo"] as! [String: Any])
+                        self.operationInfo = model
+                    }
+                }
+            }
+            public var conflictingMatch: RouteRulesConflictInfo.Conflicts.Details.ConflictingMatch?
+
+            public var detectedMatch: RouteRulesConflictInfo.Conflicts.Details.DetectedMatch?
+
+            public var level: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.conflictingMatch?.validate()
+                try self.detectedMatch?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.conflictingMatch != nil {
+                    map["conflictingMatch"] = self.conflictingMatch?.toMap()
+                }
+                if self.detectedMatch != nil {
+                    map["detectedMatch"] = self.detectedMatch?.toMap()
+                }
+                if self.level != nil {
+                    map["level"] = self.level!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("conflictingMatch") {
+                    var model = RouteRulesConflictInfo.Conflicts.Details.ConflictingMatch()
+                    model.fromMap(dict["conflictingMatch"] as! [String: Any])
+                    self.conflictingMatch = model
+                }
+                if dict.keys.contains("detectedMatch") {
+                    var model = RouteRulesConflictInfo.Conflicts.Details.DetectedMatch()
+                    model.fromMap(dict["detectedMatch"] as! [String: Any])
+                    self.detectedMatch = model
+                }
+                if dict.keys.contains("level") {
+                    self.level = dict["level"] as! String
+                }
+            }
+        }
+        public class EnvironmentInfo : Tea.TeaModel {
+            public var environmentId: String?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.environmentId != nil {
+                    map["environmentId"] = self.environmentId!
+                }
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("environmentId") {
+                    self.environmentId = dict["environmentId"] as! String
+                }
+                if dict.keys.contains("name") {
+                    self.name = dict["name"] as! String
+                }
+            }
+        }
+        public var details: [RouteRulesConflictInfo.Conflicts.Details]?
+
+        public var environmentInfo: RouteRulesConflictInfo.Conflicts.EnvironmentInfo?
+
+        public var resourceId: String?
+
+        public var resourceName: String?
+
+        public var resourceType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.environmentInfo?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.details != nil {
+                var tmp : [Any] = []
+                for k in self.details! {
+                    tmp.append(k.toMap())
+                }
+                map["details"] = tmp
+            }
+            if self.environmentInfo != nil {
+                map["environmentInfo"] = self.environmentInfo?.toMap()
+            }
+            if self.resourceId != nil {
+                map["resourceId"] = self.resourceId!
+            }
+            if self.resourceName != nil {
+                map["resourceName"] = self.resourceName!
+            }
+            if self.resourceType != nil {
+                map["resourceType"] = self.resourceType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("details") {
+                var tmp : [RouteRulesConflictInfo.Conflicts.Details] = []
+                for v in dict["details"] as! [Any] {
+                    var model = RouteRulesConflictInfo.Conflicts.Details()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.details = tmp
+            }
+            if dict.keys.contains("environmentInfo") {
+                var model = RouteRulesConflictInfo.Conflicts.EnvironmentInfo()
+                model.fromMap(dict["environmentInfo"] as! [String: Any])
+                self.environmentInfo = model
+            }
+            if dict.keys.contains("resourceId") {
+                self.resourceId = dict["resourceId"] as! String
+            }
+            if dict.keys.contains("resourceName") {
+                self.resourceName = dict["resourceName"] as! String
+            }
+            if dict.keys.contains("resourceType") {
+                self.resourceType = dict["resourceType"] as! String
+            }
+        }
+    }
+    public class DomainInfo : Tea.TeaModel {
+        public var domainId: String?
+
+        public var name: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.domainId != nil {
+                map["domainId"] = self.domainId!
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("domainId") {
+                self.domainId = dict["domainId"] as! String
+            }
+            if dict.keys.contains("name") {
+                self.name = dict["name"] as! String
+            }
+        }
+    }
+    public var conflicts: [RouteRulesConflictInfo.Conflicts]?
+
+    public var domainInfo: RouteRulesConflictInfo.DomainInfo?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.domainInfo?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.conflicts != nil {
+            var tmp : [Any] = []
+            for k in self.conflicts! {
+                tmp.append(k.toMap())
+            }
+            map["conflicts"] = tmp
+        }
+        if self.domainInfo != nil {
+            map["domainInfo"] = self.domainInfo?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("conflicts") {
+            var tmp : [RouteRulesConflictInfo.Conflicts] = []
+            for v in dict["conflicts"] as! [Any] {
+                var model = RouteRulesConflictInfo.Conflicts()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.conflicts = tmp
+        }
+        if dict.keys.contains("domainInfo") {
+            var model = RouteRulesConflictInfo.DomainInfo()
+            model.fromMap(dict["domainInfo"] as! [String: Any])
+            self.domainInfo = model
+        }
+    }
+}
+
 public class ServiceHealthCheck : Tea.TeaModel {
     public var enable: Bool?
 
@@ -9255,6 +9669,8 @@ public class GetHttpApiOperationResponse : Tea.TeaModel {
 }
 
 public class ListDomainsRequest : Tea.TeaModel {
+    public var gatewayId: String?
+
     public var nameLike: String?
 
     public var pageNumber: Int32?
@@ -9275,6 +9691,9 @@ public class ListDomainsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.gatewayId != nil {
+            map["gatewayId"] = self.gatewayId!
+        }
         if self.nameLike != nil {
             map["nameLike"] = self.nameLike!
         }
@@ -9288,6 +9707,9 @@ public class ListDomainsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("gatewayId") {
+            self.gatewayId = dict["gatewayId"] as! String
+        }
         if dict.keys.contains("nameLike") {
             self.nameLike = dict["nameLike"] as! String
         }

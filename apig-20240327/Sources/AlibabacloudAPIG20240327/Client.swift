@@ -828,6 +828,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listDomainsWithOptions(_ request: ListDomainsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDomainsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.gatewayId)) {
+            query["gatewayId"] = request.gatewayId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.nameLike)) {
             query["nameLike"] = request.nameLike ?? "";
         }
