@@ -31675,6 +31675,8 @@ public class ListCallDetailRecordsResponseBody : Tea.TeaModel {
 
             public var callDuration: String?
 
+            public var callIds: String?
+
             public var calledNumber: String?
 
             public var calleeLocation: String?
@@ -31761,6 +31763,9 @@ public class ListCallDetailRecordsResponseBody : Tea.TeaModel {
                 }
                 if self.callDuration != nil {
                     map["CallDuration"] = self.callDuration!
+                }
+                if self.callIds != nil {
+                    map["CallIds"] = self.callIds!
                 }
                 if self.calledNumber != nil {
                     map["CalledNumber"] = self.calledNumber!
@@ -31867,6 +31872,9 @@ public class ListCallDetailRecordsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("CallDuration") {
                     self.callDuration = dict["CallDuration"] as! String
+                }
+                if dict.keys.contains("CallIds") {
+                    self.callIds = dict["CallIds"] as! String
                 }
                 if dict.keys.contains("CalledNumber") {
                     self.calledNumber = dict["CalledNumber"] as! String
