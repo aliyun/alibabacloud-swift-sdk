@@ -8193,6 +8193,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func passReleaseStagePipelineValidateWithOptions(_ appName: String, _ releaseWorkflowSn: String, _ releaseStageSn: String, _ executionNumber: String, _ request: PassReleaseStagePipelineValidateRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PassReleaseStagePipelineValidateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            query["jobId"] = request.jobId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.organizationId)) {
+            query["organizationId"] = request.organizationId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "PassReleaseStagePipelineValidate",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/appstack/apps/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(appName)) + "/releaseWorkflows/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(releaseWorkflowSn)) + "/releaseStages/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(releaseStageSn)) + "/executions/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(executionNumber)) + "%3ApassPipelineValidate",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PassReleaseStagePipelineValidateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func passReleaseStagePipelineValidate(_ appName: String, _ releaseWorkflowSn: String, _ releaseStageSn: String, _ executionNumber: String, _ request: PassReleaseStagePipelineValidateRequest) async throws -> PassReleaseStagePipelineValidateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await passReleaseStagePipelineValidateWithOptions(appName as! String, releaseWorkflowSn as! String, releaseStageSn as! String, executionNumber as! String, request as! PassReleaseStagePipelineValidateRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func refusePipelineValidateWithOptions(_ organizationId: String, _ pipelineId: String, _ pipelineRunId: String, _ jobId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RefusePipelineValidateResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -8217,6 +8253,42 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await refusePipelineValidateWithOptions(organizationId as! String, pipelineId as! String, pipelineRunId as! String, jobId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func refuseReleaseStagePipelineValidateWithOptions(_ appName: String, _ releaseWorkflowSn: String, _ releaseStageSn: String, _ executionNumber: String, _ request: RefuseReleaseStagePipelineValidateRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RefuseReleaseStagePipelineValidateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            query["jobId"] = request.jobId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.organizationId)) {
+            query["organizationId"] = request.organizationId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RefuseReleaseStagePipelineValidate",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/appstack/apps/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(appName)) + "/releaseWorkflows/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(releaseWorkflowSn)) + "/releaseStages/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(releaseStageSn)) + "/executions/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(executionNumber)) + "%3ArefusePipelineValidate",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RefuseReleaseStagePipelineValidateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func refuseReleaseStagePipelineValidate(_ appName: String, _ releaseWorkflowSn: String, _ releaseStageSn: String, _ executionNumber: String, _ request: RefuseReleaseStagePipelineValidateRequest) async throws -> RefuseReleaseStagePipelineValidateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await refuseReleaseStagePipelineValidateWithOptions(appName as! String, releaseWorkflowSn as! String, releaseStageSn as! String, executionNumber as! String, request as! RefuseReleaseStagePipelineValidateRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
