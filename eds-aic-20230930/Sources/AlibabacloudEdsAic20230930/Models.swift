@@ -511,6 +511,8 @@ public class CheckResourceStockRequest : Tea.TeaModel {
 
     public var bizRegionId: String?
 
+    public var gpuAcceleration: Bool?
+
     public var zoneId: String?
 
     public override init() {
@@ -533,6 +535,9 @@ public class CheckResourceStockRequest : Tea.TeaModel {
         if self.bizRegionId != nil {
             map["BizRegionId"] = self.bizRegionId!
         }
+        if self.gpuAcceleration != nil {
+            map["GpuAcceleration"] = self.gpuAcceleration!
+        }
         if self.zoneId != nil {
             map["ZoneId"] = self.zoneId!
         }
@@ -545,6 +550,9 @@ public class CheckResourceStockRequest : Tea.TeaModel {
         }
         if dict.keys.contains("BizRegionId") {
             self.bizRegionId = dict["BizRegionId"] as! String
+        }
+        if dict.keys.contains("GpuAcceleration") {
+            self.gpuAcceleration = dict["GpuAcceleration"] as! Bool
         }
         if dict.keys.contains("ZoneId") {
             self.zoneId = dict["ZoneId"] as! String

@@ -151,6 +151,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.bizRegionId)) {
             query["BizRegionId"] = request.bizRegionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.gpuAcceleration)) {
+            query["GpuAcceleration"] = request.gpuAcceleration!;
+        }
         if (!TeaUtils.Client.isUnset(request.zoneId)) {
             query["ZoneId"] = request.zoneId ?? "";
         }
