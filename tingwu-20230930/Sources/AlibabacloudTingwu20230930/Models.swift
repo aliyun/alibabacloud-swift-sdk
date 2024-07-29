@@ -284,6 +284,108 @@ public class CreateTaskRequest : Tea.TeaModel {
                 }
             }
         }
+        public class ServiceInspection : Tea.TeaModel {
+            public class InspectionContents : Tea.TeaModel {
+                public var content: String?
+
+                public var title: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.content != nil {
+                        map["Content"] = self.content!
+                    }
+                    if self.title != nil {
+                        map["Title"] = self.title!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Content") {
+                        self.content = dict["Content"] as! String
+                    }
+                    if dict.keys.contains("Title") {
+                        self.title = dict["Title"] as! String
+                    }
+                }
+            }
+            public var inspectionContents: [CreateTaskRequest.Parameters.ServiceInspection.InspectionContents]?
+
+            public var inspectionIntroduction: String?
+
+            public var sceneIntroduction: String?
+
+            public var speakerMap: [String: Any]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.inspectionContents != nil {
+                    var tmp : [Any] = []
+                    for k in self.inspectionContents! {
+                        tmp.append(k.toMap())
+                    }
+                    map["InspectionContents"] = tmp
+                }
+                if self.inspectionIntroduction != nil {
+                    map["InspectionIntroduction"] = self.inspectionIntroduction!
+                }
+                if self.sceneIntroduction != nil {
+                    map["SceneIntroduction"] = self.sceneIntroduction!
+                }
+                if self.speakerMap != nil {
+                    map["SpeakerMap"] = self.speakerMap!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("InspectionContents") {
+                    var tmp : [CreateTaskRequest.Parameters.ServiceInspection.InspectionContents] = []
+                    for v in dict["InspectionContents"] as! [Any] {
+                        var model = CreateTaskRequest.Parameters.ServiceInspection.InspectionContents()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.inspectionContents = tmp
+                }
+                if dict.keys.contains("InspectionIntroduction") {
+                    self.inspectionIntroduction = dict["InspectionIntroduction"] as! String
+                }
+                if dict.keys.contains("SceneIntroduction") {
+                    self.sceneIntroduction = dict["SceneIntroduction"] as! String
+                }
+                if dict.keys.contains("SpeakerMap") {
+                    self.speakerMap = dict["SpeakerMap"] as! [String: Any]
+                }
+            }
+        }
         public class Summarization : Tea.TeaModel {
             public var types: [String]?
 
@@ -534,6 +636,10 @@ public class CreateTaskRequest : Tea.TeaModel {
 
         public var pptExtractionEnabled: Bool?
 
+        public var serviceInspection: CreateTaskRequest.Parameters.ServiceInspection?
+
+        public var serviceInspectionEnabled: Bool?
+
         public var summarization: CreateTaskRequest.Parameters.Summarization?
 
         public var summarizationEnabled: Bool?
@@ -561,6 +667,7 @@ public class CreateTaskRequest : Tea.TeaModel {
             try self.customPrompt?.validate()
             try self.extraParams?.validate()
             try self.meetingAssistance?.validate()
+            try self.serviceInspection?.validate()
             try self.summarization?.validate()
             try self.transcoding?.validate()
             try self.transcription?.validate()
@@ -589,6 +696,12 @@ public class CreateTaskRequest : Tea.TeaModel {
             }
             if self.pptExtractionEnabled != nil {
                 map["PptExtractionEnabled"] = self.pptExtractionEnabled!
+            }
+            if self.serviceInspection != nil {
+                map["ServiceInspection"] = self.serviceInspection?.toMap()
+            }
+            if self.serviceInspectionEnabled != nil {
+                map["ServiceInspectionEnabled"] = self.serviceInspectionEnabled!
             }
             if self.summarization != nil {
                 map["Summarization"] = self.summarization?.toMap()
@@ -641,6 +754,14 @@ public class CreateTaskRequest : Tea.TeaModel {
             }
             if dict.keys.contains("PptExtractionEnabled") {
                 self.pptExtractionEnabled = dict["PptExtractionEnabled"] as! Bool
+            }
+            if dict.keys.contains("ServiceInspection") {
+                var model = CreateTaskRequest.Parameters.ServiceInspection()
+                model.fromMap(dict["ServiceInspection"] as! [String: Any])
+                self.serviceInspection = model
+            }
+            if dict.keys.contains("ServiceInspectionEnabled") {
+                self.serviceInspectionEnabled = dict["ServiceInspectionEnabled"] as! Bool
             }
             if dict.keys.contains("Summarization") {
                 var model = CreateTaskRequest.Parameters.Summarization()
