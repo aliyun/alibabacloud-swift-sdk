@@ -777,6 +777,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }
+        if (!TeaUtils.Client.isUnset(request.polarSccTimeoutAction)) {
+            query["PolarSccTimeoutAction"] = request.polarSccTimeoutAction ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.polarSccWaitTimeout)) {
+            query["PolarSccWaitTimeout"] = request.polarSccWaitTimeout ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.readWriteMode)) {
             query["ReadWriteMode"] = request.readWriteMode ?? "";
         }
@@ -785,6 +791,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sccMode)) {
+            query["SccMode"] = request.sccMode ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -5646,6 +5655,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }
+        if (!TeaUtils.Client.isUnset(request.polarSccTimeoutAction)) {
+            query["PolarSccTimeoutAction"] = request.polarSccTimeoutAction ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.polarSccWaitTimeout)) {
+            query["PolarSccWaitTimeout"] = request.polarSccWaitTimeout ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.readWriteMode)) {
             query["ReadWriteMode"] = request.readWriteMode ?? "";
         }
@@ -5654,6 +5669,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sccMode)) {
+            query["SccMode"] = request.sccMode ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

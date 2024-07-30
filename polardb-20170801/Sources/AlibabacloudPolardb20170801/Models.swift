@@ -2264,11 +2264,17 @@ public class CreateDBClusterEndpointRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var polarSccTimeoutAction: String?
+
+    public var polarSccWaitTimeout: String?
+
     public var readWriteMode: String?
 
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
+
+    public var sccMode: String?
 
     public override init() {
         super.init()
@@ -2311,6 +2317,12 @@ public class CreateDBClusterEndpointRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.polarSccTimeoutAction != nil {
+            map["PolarSccTimeoutAction"] = self.polarSccTimeoutAction!
+        }
+        if self.polarSccWaitTimeout != nil {
+            map["PolarSccWaitTimeout"] = self.polarSccWaitTimeout!
+        }
         if self.readWriteMode != nil {
             map["ReadWriteMode"] = self.readWriteMode!
         }
@@ -2319,6 +2331,9 @@ public class CreateDBClusterEndpointRequest : Tea.TeaModel {
         }
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.sccMode != nil {
+            map["SccMode"] = self.sccMode!
         }
         return map
     }
@@ -2351,6 +2366,12 @@ public class CreateDBClusterEndpointRequest : Tea.TeaModel {
         if dict.keys.contains("OwnerId") {
             self.ownerId = dict["OwnerId"] as! Int64
         }
+        if dict.keys.contains("PolarSccTimeoutAction") {
+            self.polarSccTimeoutAction = dict["PolarSccTimeoutAction"] as! String
+        }
+        if dict.keys.contains("PolarSccWaitTimeout") {
+            self.polarSccWaitTimeout = dict["PolarSccWaitTimeout"] as! String
+        }
         if dict.keys.contains("ReadWriteMode") {
             self.readWriteMode = dict["ReadWriteMode"] as! String
         }
@@ -2359,6 +2380,9 @@ public class CreateDBClusterEndpointRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("SccMode") {
+            self.sccMode = dict["SccMode"] as! String
         }
     }
 }
@@ -9358,6 +9382,8 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
 
         public var memorySize: String?
 
+        public var mirrorInsName: String?
+
         public var orca: String?
 
         public var remoteMemorySize: String?
@@ -9428,6 +9454,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
             if self.memorySize != nil {
                 map["MemorySize"] = self.memorySize!
             }
+            if self.mirrorInsName != nil {
+                map["MirrorInsName"] = self.mirrorInsName!
+            }
             if self.orca != nil {
                 map["Orca"] = self.orca!
             }
@@ -9494,6 +9523,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("MemorySize") {
                 self.memorySize = dict["MemorySize"] as! String
+            }
+            if dict.keys.contains("MirrorInsName") {
+                self.mirrorInsName = dict["MirrorInsName"] as! String
             }
             if dict.keys.contains("Orca") {
                 self.orca = dict["Orca"] as! String
@@ -11002,7 +11034,13 @@ public class DescribeDBClusterEndpointsResponseBody : Tea.TeaModel {
 
         public var nodes: String?
 
+        public var polarSccTimeoutAction: String?
+
+        public var polarSccWaitTimeout: String?
+
         public var readWriteMode: String?
+
+        public var sccMode: String?
 
         public override init() {
             super.init()
@@ -11049,8 +11087,17 @@ public class DescribeDBClusterEndpointsResponseBody : Tea.TeaModel {
             if self.nodes != nil {
                 map["Nodes"] = self.nodes!
             }
+            if self.polarSccTimeoutAction != nil {
+                map["PolarSccTimeoutAction"] = self.polarSccTimeoutAction!
+            }
+            if self.polarSccWaitTimeout != nil {
+                map["PolarSccWaitTimeout"] = self.polarSccWaitTimeout!
+            }
             if self.readWriteMode != nil {
                 map["ReadWriteMode"] = self.readWriteMode!
+            }
+            if self.sccMode != nil {
+                map["SccMode"] = self.sccMode!
             }
             return map
         }
@@ -11091,8 +11138,17 @@ public class DescribeDBClusterEndpointsResponseBody : Tea.TeaModel {
             if dict.keys.contains("Nodes") {
                 self.nodes = dict["Nodes"] as! String
             }
+            if dict.keys.contains("PolarSccTimeoutAction") {
+                self.polarSccTimeoutAction = dict["PolarSccTimeoutAction"] as! String
+            }
+            if dict.keys.contains("PolarSccWaitTimeout") {
+                self.polarSccWaitTimeout = dict["PolarSccWaitTimeout"] as! String
+            }
             if dict.keys.contains("ReadWriteMode") {
                 self.readWriteMode = dict["ReadWriteMode"] as! String
+            }
+            if dict.keys.contains("SccMode") {
+                self.sccMode = dict["SccMode"] as! String
             }
         }
     }
@@ -13091,6 +13147,8 @@ public class DescribeDBClusterServerlessConfRequest : Tea.TeaModel {
 }
 
 public class DescribeDBClusterServerlessConfResponseBody : Tea.TeaModel {
+    public var agileScaleMax: String?
+
     public var allowShutDown: String?
 
     public var DBClusterId: String?
@@ -13119,6 +13177,8 @@ public class DescribeDBClusterServerlessConfResponseBody : Tea.TeaModel {
 
     public var switchs: String?
 
+    public var traditionalScaleMaxThreshold: String?
+
     public override init() {
         super.init()
     }
@@ -13133,6 +13193,9 @@ public class DescribeDBClusterServerlessConfResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.agileScaleMax != nil {
+            map["AgileScaleMax"] = self.agileScaleMax!
+        }
         if self.allowShutDown != nil {
             map["AllowShutDown"] = self.allowShutDown!
         }
@@ -13175,10 +13238,16 @@ public class DescribeDBClusterServerlessConfResponseBody : Tea.TeaModel {
         if self.switchs != nil {
             map["Switchs"] = self.switchs!
         }
+        if self.traditionalScaleMaxThreshold != nil {
+            map["TraditionalScaleMaxThreshold"] = self.traditionalScaleMaxThreshold!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AgileScaleMax") {
+            self.agileScaleMax = dict["AgileScaleMax"] as! String
+        }
         if dict.keys.contains("AllowShutDown") {
             self.allowShutDown = dict["AllowShutDown"] as! String
         }
@@ -13220,6 +13289,9 @@ public class DescribeDBClusterServerlessConfResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Switchs") {
             self.switchs = dict["Switchs"] as! String
+        }
+        if dict.keys.contains("TraditionalScaleMaxThreshold") {
+            self.traditionalScaleMaxThreshold = dict["TraditionalScaleMaxThreshold"] as! String
         }
     }
 }
@@ -27397,11 +27469,17 @@ public class ModifyDBClusterEndpointRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var polarSccTimeoutAction: String?
+
+    public var polarSccWaitTimeout: String?
+
     public var readWriteMode: String?
 
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
+
+    public var sccMode: String?
 
     public override init() {
         super.init()
@@ -27441,6 +27519,12 @@ public class ModifyDBClusterEndpointRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.polarSccTimeoutAction != nil {
+            map["PolarSccTimeoutAction"] = self.polarSccTimeoutAction!
+        }
+        if self.polarSccWaitTimeout != nil {
+            map["PolarSccWaitTimeout"] = self.polarSccWaitTimeout!
+        }
         if self.readWriteMode != nil {
             map["ReadWriteMode"] = self.readWriteMode!
         }
@@ -27449,6 +27533,9 @@ public class ModifyDBClusterEndpointRequest : Tea.TeaModel {
         }
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.sccMode != nil {
+            map["SccMode"] = self.sccMode!
         }
         return map
     }
@@ -27478,6 +27565,12 @@ public class ModifyDBClusterEndpointRequest : Tea.TeaModel {
         if dict.keys.contains("OwnerId") {
             self.ownerId = dict["OwnerId"] as! Int64
         }
+        if dict.keys.contains("PolarSccTimeoutAction") {
+            self.polarSccTimeoutAction = dict["PolarSccTimeoutAction"] as! String
+        }
+        if dict.keys.contains("PolarSccWaitTimeout") {
+            self.polarSccWaitTimeout = dict["PolarSccWaitTimeout"] as! String
+        }
         if dict.keys.contains("ReadWriteMode") {
             self.readWriteMode = dict["ReadWriteMode"] as! String
         }
@@ -27486,6 +27579,9 @@ public class ModifyDBClusterEndpointRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("SccMode") {
+            self.sccMode = dict["SccMode"] as! String
         }
     }
 }
