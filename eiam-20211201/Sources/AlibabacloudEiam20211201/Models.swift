@@ -9329,6 +9329,1931 @@ public class GetRootOrganizationalUnitResponse : Tea.TeaModel {
     }
 }
 
+public class GetSynchronizationJobRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var synchronizationJobId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.synchronizationJobId != nil {
+            map["SynchronizationJobId"] = self.synchronizationJobId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("SynchronizationJobId") {
+            self.synchronizationJobId = dict["SynchronizationJobId"] as! String
+        }
+    }
+}
+
+public class GetSynchronizationJobResponseBody : Tea.TeaModel {
+    public class SynchronizationJob : Tea.TeaModel {
+        public class Result : Tea.TeaModel {
+            public class GroupMemberStatistics : Tea.TeaModel {
+                public class Binded : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Created : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Deleted : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Pushed : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Same : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Updated : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public var binded: GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupMemberStatistics.Binded?
+
+                public var created: GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupMemberStatistics.Created?
+
+                public var deleted: GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupMemberStatistics.Deleted?
+
+                public var pushed: GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupMemberStatistics.Pushed?
+
+                public var same: GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupMemberStatistics.Same?
+
+                public var updated: GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupMemberStatistics.Updated?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.binded?.validate()
+                    try self.created?.validate()
+                    try self.deleted?.validate()
+                    try self.pushed?.validate()
+                    try self.same?.validate()
+                    try self.updated?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.binded != nil {
+                        map["Binded"] = self.binded?.toMap()
+                    }
+                    if self.created != nil {
+                        map["Created"] = self.created?.toMap()
+                    }
+                    if self.deleted != nil {
+                        map["Deleted"] = self.deleted?.toMap()
+                    }
+                    if self.pushed != nil {
+                        map["Pushed"] = self.pushed?.toMap()
+                    }
+                    if self.same != nil {
+                        map["Same"] = self.same?.toMap()
+                    }
+                    if self.updated != nil {
+                        map["Updated"] = self.updated?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Binded") {
+                        var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupMemberStatistics.Binded()
+                        model.fromMap(dict["Binded"] as! [String: Any])
+                        self.binded = model
+                    }
+                    if dict.keys.contains("Created") {
+                        var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupMemberStatistics.Created()
+                        model.fromMap(dict["Created"] as! [String: Any])
+                        self.created = model
+                    }
+                    if dict.keys.contains("Deleted") {
+                        var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupMemberStatistics.Deleted()
+                        model.fromMap(dict["Deleted"] as! [String: Any])
+                        self.deleted = model
+                    }
+                    if dict.keys.contains("Pushed") {
+                        var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupMemberStatistics.Pushed()
+                        model.fromMap(dict["Pushed"] as! [String: Any])
+                        self.pushed = model
+                    }
+                    if dict.keys.contains("Same") {
+                        var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupMemberStatistics.Same()
+                        model.fromMap(dict["Same"] as! [String: Any])
+                        self.same = model
+                    }
+                    if dict.keys.contains("Updated") {
+                        var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupMemberStatistics.Updated()
+                        model.fromMap(dict["Updated"] as! [String: Any])
+                        self.updated = model
+                    }
+                }
+            }
+            public class GroupStatistics : Tea.TeaModel {
+                public class Binded : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Created : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Deleted : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Pushed : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Same : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Updated : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public var binded: GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupStatistics.Binded?
+
+                public var created: GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupStatistics.Created?
+
+                public var deleted: GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupStatistics.Deleted?
+
+                public var pushed: GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupStatistics.Pushed?
+
+                public var same: GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupStatistics.Same?
+
+                public var updated: GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupStatistics.Updated?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.binded?.validate()
+                    try self.created?.validate()
+                    try self.deleted?.validate()
+                    try self.pushed?.validate()
+                    try self.same?.validate()
+                    try self.updated?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.binded != nil {
+                        map["Binded"] = self.binded?.toMap()
+                    }
+                    if self.created != nil {
+                        map["Created"] = self.created?.toMap()
+                    }
+                    if self.deleted != nil {
+                        map["Deleted"] = self.deleted?.toMap()
+                    }
+                    if self.pushed != nil {
+                        map["Pushed"] = self.pushed?.toMap()
+                    }
+                    if self.same != nil {
+                        map["Same"] = self.same?.toMap()
+                    }
+                    if self.updated != nil {
+                        map["Updated"] = self.updated?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Binded") {
+                        var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupStatistics.Binded()
+                        model.fromMap(dict["Binded"] as! [String: Any])
+                        self.binded = model
+                    }
+                    if dict.keys.contains("Created") {
+                        var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupStatistics.Created()
+                        model.fromMap(dict["Created"] as! [String: Any])
+                        self.created = model
+                    }
+                    if dict.keys.contains("Deleted") {
+                        var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupStatistics.Deleted()
+                        model.fromMap(dict["Deleted"] as! [String: Any])
+                        self.deleted = model
+                    }
+                    if dict.keys.contains("Pushed") {
+                        var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupStatistics.Pushed()
+                        model.fromMap(dict["Pushed"] as! [String: Any])
+                        self.pushed = model
+                    }
+                    if dict.keys.contains("Same") {
+                        var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupStatistics.Same()
+                        model.fromMap(dict["Same"] as! [String: Any])
+                        self.same = model
+                    }
+                    if dict.keys.contains("Updated") {
+                        var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupStatistics.Updated()
+                        model.fromMap(dict["Updated"] as! [String: Any])
+                        self.updated = model
+                    }
+                }
+            }
+            public class OrganizationalUnitStatistics : Tea.TeaModel {
+                public class Binded : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Created : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Deleted : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Pushed : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Same : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Updated : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public var binded: GetSynchronizationJobResponseBody.SynchronizationJob.Result.OrganizationalUnitStatistics.Binded?
+
+                public var created: GetSynchronizationJobResponseBody.SynchronizationJob.Result.OrganizationalUnitStatistics.Created?
+
+                public var deleted: GetSynchronizationJobResponseBody.SynchronizationJob.Result.OrganizationalUnitStatistics.Deleted?
+
+                public var pushed: GetSynchronizationJobResponseBody.SynchronizationJob.Result.OrganizationalUnitStatistics.Pushed?
+
+                public var same: GetSynchronizationJobResponseBody.SynchronizationJob.Result.OrganizationalUnitStatistics.Same?
+
+                public var updated: GetSynchronizationJobResponseBody.SynchronizationJob.Result.OrganizationalUnitStatistics.Updated?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.binded?.validate()
+                    try self.created?.validate()
+                    try self.deleted?.validate()
+                    try self.pushed?.validate()
+                    try self.same?.validate()
+                    try self.updated?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.binded != nil {
+                        map["Binded"] = self.binded?.toMap()
+                    }
+                    if self.created != nil {
+                        map["Created"] = self.created?.toMap()
+                    }
+                    if self.deleted != nil {
+                        map["Deleted"] = self.deleted?.toMap()
+                    }
+                    if self.pushed != nil {
+                        map["Pushed"] = self.pushed?.toMap()
+                    }
+                    if self.same != nil {
+                        map["Same"] = self.same?.toMap()
+                    }
+                    if self.updated != nil {
+                        map["Updated"] = self.updated?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Binded") {
+                        var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.OrganizationalUnitStatistics.Binded()
+                        model.fromMap(dict["Binded"] as! [String: Any])
+                        self.binded = model
+                    }
+                    if dict.keys.contains("Created") {
+                        var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.OrganizationalUnitStatistics.Created()
+                        model.fromMap(dict["Created"] as! [String: Any])
+                        self.created = model
+                    }
+                    if dict.keys.contains("Deleted") {
+                        var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.OrganizationalUnitStatistics.Deleted()
+                        model.fromMap(dict["Deleted"] as! [String: Any])
+                        self.deleted = model
+                    }
+                    if dict.keys.contains("Pushed") {
+                        var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.OrganizationalUnitStatistics.Pushed()
+                        model.fromMap(dict["Pushed"] as! [String: Any])
+                        self.pushed = model
+                    }
+                    if dict.keys.contains("Same") {
+                        var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.OrganizationalUnitStatistics.Same()
+                        model.fromMap(dict["Same"] as! [String: Any])
+                        self.same = model
+                    }
+                    if dict.keys.contains("Updated") {
+                        var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.OrganizationalUnitStatistics.Updated()
+                        model.fromMap(dict["Updated"] as! [String: Any])
+                        self.updated = model
+                    }
+                }
+            }
+            public class UserStatistics : Tea.TeaModel {
+                public class Binded : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Created : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Deleted : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Pushed : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Same : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Updated : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public var binded: GetSynchronizationJobResponseBody.SynchronizationJob.Result.UserStatistics.Binded?
+
+                public var created: GetSynchronizationJobResponseBody.SynchronizationJob.Result.UserStatistics.Created?
+
+                public var deleted: GetSynchronizationJobResponseBody.SynchronizationJob.Result.UserStatistics.Deleted?
+
+                public var pushed: GetSynchronizationJobResponseBody.SynchronizationJob.Result.UserStatistics.Pushed?
+
+                public var same: GetSynchronizationJobResponseBody.SynchronizationJob.Result.UserStatistics.Same?
+
+                public var updated: GetSynchronizationJobResponseBody.SynchronizationJob.Result.UserStatistics.Updated?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.binded?.validate()
+                    try self.created?.validate()
+                    try self.deleted?.validate()
+                    try self.pushed?.validate()
+                    try self.same?.validate()
+                    try self.updated?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.binded != nil {
+                        map["Binded"] = self.binded?.toMap()
+                    }
+                    if self.created != nil {
+                        map["Created"] = self.created?.toMap()
+                    }
+                    if self.deleted != nil {
+                        map["Deleted"] = self.deleted?.toMap()
+                    }
+                    if self.pushed != nil {
+                        map["Pushed"] = self.pushed?.toMap()
+                    }
+                    if self.same != nil {
+                        map["Same"] = self.same?.toMap()
+                    }
+                    if self.updated != nil {
+                        map["Updated"] = self.updated?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Binded") {
+                        var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.UserStatistics.Binded()
+                        model.fromMap(dict["Binded"] as! [String: Any])
+                        self.binded = model
+                    }
+                    if dict.keys.contains("Created") {
+                        var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.UserStatistics.Created()
+                        model.fromMap(dict["Created"] as! [String: Any])
+                        self.created = model
+                    }
+                    if dict.keys.contains("Deleted") {
+                        var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.UserStatistics.Deleted()
+                        model.fromMap(dict["Deleted"] as! [String: Any])
+                        self.deleted = model
+                    }
+                    if dict.keys.contains("Pushed") {
+                        var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.UserStatistics.Pushed()
+                        model.fromMap(dict["Pushed"] as! [String: Any])
+                        self.pushed = model
+                    }
+                    if dict.keys.contains("Same") {
+                        var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.UserStatistics.Same()
+                        model.fromMap(dict["Same"] as! [String: Any])
+                        self.same = model
+                    }
+                    if dict.keys.contains("Updated") {
+                        var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.UserStatistics.Updated()
+                        model.fromMap(dict["Updated"] as! [String: Any])
+                        self.updated = model
+                    }
+                }
+            }
+            public var errorCode: String?
+
+            public var errorMessage: String?
+
+            public var groupMemberStatistics: GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupMemberStatistics?
+
+            public var groupStatistics: GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupStatistics?
+
+            public var organizationalUnitStatistics: GetSynchronizationJobResponseBody.SynchronizationJob.Result.OrganizationalUnitStatistics?
+
+            public var userStatistics: GetSynchronizationJobResponseBody.SynchronizationJob.Result.UserStatistics?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.groupMemberStatistics?.validate()
+                try self.groupStatistics?.validate()
+                try self.organizationalUnitStatistics?.validate()
+                try self.userStatistics?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.errorCode != nil {
+                    map["ErrorCode"] = self.errorCode!
+                }
+                if self.errorMessage != nil {
+                    map["ErrorMessage"] = self.errorMessage!
+                }
+                if self.groupMemberStatistics != nil {
+                    map["GroupMemberStatistics"] = self.groupMemberStatistics?.toMap()
+                }
+                if self.groupStatistics != nil {
+                    map["GroupStatistics"] = self.groupStatistics?.toMap()
+                }
+                if self.organizationalUnitStatistics != nil {
+                    map["OrganizationalUnitStatistics"] = self.organizationalUnitStatistics?.toMap()
+                }
+                if self.userStatistics != nil {
+                    map["UserStatistics"] = self.userStatistics?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ErrorCode") {
+                    self.errorCode = dict["ErrorCode"] as! String
+                }
+                if dict.keys.contains("ErrorMessage") {
+                    self.errorMessage = dict["ErrorMessage"] as! String
+                }
+                if dict.keys.contains("GroupMemberStatistics") {
+                    var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupMemberStatistics()
+                    model.fromMap(dict["GroupMemberStatistics"] as! [String: Any])
+                    self.groupMemberStatistics = model
+                }
+                if dict.keys.contains("GroupStatistics") {
+                    var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.GroupStatistics()
+                    model.fromMap(dict["GroupStatistics"] as! [String: Any])
+                    self.groupStatistics = model
+                }
+                if dict.keys.contains("OrganizationalUnitStatistics") {
+                    var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.OrganizationalUnitStatistics()
+                    model.fromMap(dict["OrganizationalUnitStatistics"] as! [String: Any])
+                    self.organizationalUnitStatistics = model
+                }
+                if dict.keys.contains("UserStatistics") {
+                    var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result.UserStatistics()
+                    model.fromMap(dict["UserStatistics"] as! [String: Any])
+                    self.userStatistics = model
+                }
+            }
+        }
+        public var direction: String?
+
+        public var endTime: Int64?
+
+        public var result: GetSynchronizationJobResponseBody.SynchronizationJob.Result?
+
+        public var startTime: Int64?
+
+        public var status: String?
+
+        public var synchronizationJobId: String?
+
+        public var targetId: String?
+
+        public var targetType: String?
+
+        public var triggerType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.result?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.direction != nil {
+                map["Direction"] = self.direction!
+            }
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            if self.result != nil {
+                map["Result"] = self.result?.toMap()
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.synchronizationJobId != nil {
+                map["SynchronizationJobId"] = self.synchronizationJobId!
+            }
+            if self.targetId != nil {
+                map["TargetId"] = self.targetId!
+            }
+            if self.targetType != nil {
+                map["TargetType"] = self.targetType!
+            }
+            if self.triggerType != nil {
+                map["TriggerType"] = self.triggerType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Direction") {
+                self.direction = dict["Direction"] as! String
+            }
+            if dict.keys.contains("EndTime") {
+                self.endTime = dict["EndTime"] as! Int64
+            }
+            if dict.keys.contains("Result") {
+                var model = GetSynchronizationJobResponseBody.SynchronizationJob.Result()
+                model.fromMap(dict["Result"] as! [String: Any])
+                self.result = model
+            }
+            if dict.keys.contains("StartTime") {
+                self.startTime = dict["StartTime"] as! Int64
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("SynchronizationJobId") {
+                self.synchronizationJobId = dict["SynchronizationJobId"] as! String
+            }
+            if dict.keys.contains("TargetId") {
+                self.targetId = dict["TargetId"] as! String
+            }
+            if dict.keys.contains("TargetType") {
+                self.targetType = dict["TargetType"] as! String
+            }
+            if dict.keys.contains("TriggerType") {
+                self.triggerType = dict["TriggerType"] as! String
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var synchronizationJob: GetSynchronizationJobResponseBody.SynchronizationJob?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.synchronizationJob?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.synchronizationJob != nil {
+            map["SynchronizationJob"] = self.synchronizationJob?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SynchronizationJob") {
+            var model = GetSynchronizationJobResponseBody.SynchronizationJob()
+            model.fromMap(dict["SynchronizationJob"] as! [String: Any])
+            self.synchronizationJob = model
+        }
+    }
+}
+
+public class GetSynchronizationJobResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetSynchronizationJobResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetSynchronizationJobResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class GetUserRequest : Tea.TeaModel {
     public var instanceId: String?
 
@@ -14255,6 +16180,2028 @@ public class ListRegionsResponse : Tea.TeaModel {
     }
 }
 
+public class ListSynchronizationJobsRequest : Tea.TeaModel {
+    public var direction: String?
+
+    public var endTime: Int64?
+
+    public var instanceId: String?
+
+    public var maxResults: Int64?
+
+    public var nextToken: String?
+
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
+    public var startTime: Int64?
+
+    public var status: String?
+
+    public var targetIds: [String]?
+
+    public var targetType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.direction != nil {
+            map["Direction"] = self.direction!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.targetIds != nil {
+            map["TargetIds"] = self.targetIds!
+        }
+        if self.targetType != nil {
+            map["TargetType"] = self.targetType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Direction") {
+            self.direction = dict["Direction"] as! String
+        }
+        if dict.keys.contains("EndTime") {
+            self.endTime = dict["EndTime"] as! Int64
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int64
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int64
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int64
+        }
+        if dict.keys.contains("StartTime") {
+            self.startTime = dict["StartTime"] as! Int64
+        }
+        if dict.keys.contains("Status") {
+            self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("TargetIds") {
+            self.targetIds = dict["TargetIds"] as! [String]
+        }
+        if dict.keys.contains("TargetType") {
+            self.targetType = dict["TargetType"] as! String
+        }
+    }
+}
+
+public class ListSynchronizationJobsResponseBody : Tea.TeaModel {
+    public class SynchronizationJobs : Tea.TeaModel {
+        public class Result : Tea.TeaModel {
+            public class GroupMemberStatistics : Tea.TeaModel {
+                public class Binded : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Created : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Deleted : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Pushed : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Same : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Updated : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public var binded: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupMemberStatistics.Binded?
+
+                public var created: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupMemberStatistics.Created?
+
+                public var deleted: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupMemberStatistics.Deleted?
+
+                public var pushed: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupMemberStatistics.Pushed?
+
+                public var same: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupMemberStatistics.Same?
+
+                public var updated: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupMemberStatistics.Updated?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.binded?.validate()
+                    try self.created?.validate()
+                    try self.deleted?.validate()
+                    try self.pushed?.validate()
+                    try self.same?.validate()
+                    try self.updated?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.binded != nil {
+                        map["Binded"] = self.binded?.toMap()
+                    }
+                    if self.created != nil {
+                        map["Created"] = self.created?.toMap()
+                    }
+                    if self.deleted != nil {
+                        map["Deleted"] = self.deleted?.toMap()
+                    }
+                    if self.pushed != nil {
+                        map["Pushed"] = self.pushed?.toMap()
+                    }
+                    if self.same != nil {
+                        map["Same"] = self.same?.toMap()
+                    }
+                    if self.updated != nil {
+                        map["Updated"] = self.updated?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Binded") {
+                        var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupMemberStatistics.Binded()
+                        model.fromMap(dict["Binded"] as! [String: Any])
+                        self.binded = model
+                    }
+                    if dict.keys.contains("Created") {
+                        var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupMemberStatistics.Created()
+                        model.fromMap(dict["Created"] as! [String: Any])
+                        self.created = model
+                    }
+                    if dict.keys.contains("Deleted") {
+                        var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupMemberStatistics.Deleted()
+                        model.fromMap(dict["Deleted"] as! [String: Any])
+                        self.deleted = model
+                    }
+                    if dict.keys.contains("Pushed") {
+                        var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupMemberStatistics.Pushed()
+                        model.fromMap(dict["Pushed"] as! [String: Any])
+                        self.pushed = model
+                    }
+                    if dict.keys.contains("Same") {
+                        var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupMemberStatistics.Same()
+                        model.fromMap(dict["Same"] as! [String: Any])
+                        self.same = model
+                    }
+                    if dict.keys.contains("Updated") {
+                        var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupMemberStatistics.Updated()
+                        model.fromMap(dict["Updated"] as! [String: Any])
+                        self.updated = model
+                    }
+                }
+            }
+            public class GroupStatistics : Tea.TeaModel {
+                public class Binded : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Created : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Deleted : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Pushed : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Same : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Updated : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public var binded: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupStatistics.Binded?
+
+                public var created: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupStatistics.Created?
+
+                public var deleted: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupStatistics.Deleted?
+
+                public var pushed: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupStatistics.Pushed?
+
+                public var same: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupStatistics.Same?
+
+                public var updated: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupStatistics.Updated?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.binded?.validate()
+                    try self.created?.validate()
+                    try self.deleted?.validate()
+                    try self.pushed?.validate()
+                    try self.same?.validate()
+                    try self.updated?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.binded != nil {
+                        map["Binded"] = self.binded?.toMap()
+                    }
+                    if self.created != nil {
+                        map["Created"] = self.created?.toMap()
+                    }
+                    if self.deleted != nil {
+                        map["Deleted"] = self.deleted?.toMap()
+                    }
+                    if self.pushed != nil {
+                        map["Pushed"] = self.pushed?.toMap()
+                    }
+                    if self.same != nil {
+                        map["Same"] = self.same?.toMap()
+                    }
+                    if self.updated != nil {
+                        map["Updated"] = self.updated?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Binded") {
+                        var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupStatistics.Binded()
+                        model.fromMap(dict["Binded"] as! [String: Any])
+                        self.binded = model
+                    }
+                    if dict.keys.contains("Created") {
+                        var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupStatistics.Created()
+                        model.fromMap(dict["Created"] as! [String: Any])
+                        self.created = model
+                    }
+                    if dict.keys.contains("Deleted") {
+                        var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupStatistics.Deleted()
+                        model.fromMap(dict["Deleted"] as! [String: Any])
+                        self.deleted = model
+                    }
+                    if dict.keys.contains("Pushed") {
+                        var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupStatistics.Pushed()
+                        model.fromMap(dict["Pushed"] as! [String: Any])
+                        self.pushed = model
+                    }
+                    if dict.keys.contains("Same") {
+                        var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupStatistics.Same()
+                        model.fromMap(dict["Same"] as! [String: Any])
+                        self.same = model
+                    }
+                    if dict.keys.contains("Updated") {
+                        var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupStatistics.Updated()
+                        model.fromMap(dict["Updated"] as! [String: Any])
+                        self.updated = model
+                    }
+                }
+            }
+            public class OrganizationalUnitStatistics : Tea.TeaModel {
+                public class Binded : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Created : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Deleted : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Pushed : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Same : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Updated : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public var binded: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.OrganizationalUnitStatistics.Binded?
+
+                public var created: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.OrganizationalUnitStatistics.Created?
+
+                public var deleted: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.OrganizationalUnitStatistics.Deleted?
+
+                public var pushed: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.OrganizationalUnitStatistics.Pushed?
+
+                public var same: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.OrganizationalUnitStatistics.Same?
+
+                public var updated: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.OrganizationalUnitStatistics.Updated?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.binded?.validate()
+                    try self.created?.validate()
+                    try self.deleted?.validate()
+                    try self.pushed?.validate()
+                    try self.same?.validate()
+                    try self.updated?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.binded != nil {
+                        map["Binded"] = self.binded?.toMap()
+                    }
+                    if self.created != nil {
+                        map["Created"] = self.created?.toMap()
+                    }
+                    if self.deleted != nil {
+                        map["Deleted"] = self.deleted?.toMap()
+                    }
+                    if self.pushed != nil {
+                        map["Pushed"] = self.pushed?.toMap()
+                    }
+                    if self.same != nil {
+                        map["Same"] = self.same?.toMap()
+                    }
+                    if self.updated != nil {
+                        map["Updated"] = self.updated?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Binded") {
+                        var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.OrganizationalUnitStatistics.Binded()
+                        model.fromMap(dict["Binded"] as! [String: Any])
+                        self.binded = model
+                    }
+                    if dict.keys.contains("Created") {
+                        var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.OrganizationalUnitStatistics.Created()
+                        model.fromMap(dict["Created"] as! [String: Any])
+                        self.created = model
+                    }
+                    if dict.keys.contains("Deleted") {
+                        var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.OrganizationalUnitStatistics.Deleted()
+                        model.fromMap(dict["Deleted"] as! [String: Any])
+                        self.deleted = model
+                    }
+                    if dict.keys.contains("Pushed") {
+                        var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.OrganizationalUnitStatistics.Pushed()
+                        model.fromMap(dict["Pushed"] as! [String: Any])
+                        self.pushed = model
+                    }
+                    if dict.keys.contains("Same") {
+                        var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.OrganizationalUnitStatistics.Same()
+                        model.fromMap(dict["Same"] as! [String: Any])
+                        self.same = model
+                    }
+                    if dict.keys.contains("Updated") {
+                        var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.OrganizationalUnitStatistics.Updated()
+                        model.fromMap(dict["Updated"] as! [String: Any])
+                        self.updated = model
+                    }
+                }
+            }
+            public class UserStatistics : Tea.TeaModel {
+                public class Binded : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Created : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Deleted : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Pushed : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Same : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public class Updated : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
+                public var binded: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.UserStatistics.Binded?
+
+                public var created: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.UserStatistics.Created?
+
+                public var deleted: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.UserStatistics.Deleted?
+
+                public var pushed: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.UserStatistics.Pushed?
+
+                public var same: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.UserStatistics.Same?
+
+                public var updated: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.UserStatistics.Updated?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.binded?.validate()
+                    try self.created?.validate()
+                    try self.deleted?.validate()
+                    try self.pushed?.validate()
+                    try self.same?.validate()
+                    try self.updated?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.binded != nil {
+                        map["Binded"] = self.binded?.toMap()
+                    }
+                    if self.created != nil {
+                        map["Created"] = self.created?.toMap()
+                    }
+                    if self.deleted != nil {
+                        map["Deleted"] = self.deleted?.toMap()
+                    }
+                    if self.pushed != nil {
+                        map["Pushed"] = self.pushed?.toMap()
+                    }
+                    if self.same != nil {
+                        map["Same"] = self.same?.toMap()
+                    }
+                    if self.updated != nil {
+                        map["Updated"] = self.updated?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Binded") {
+                        var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.UserStatistics.Binded()
+                        model.fromMap(dict["Binded"] as! [String: Any])
+                        self.binded = model
+                    }
+                    if dict.keys.contains("Created") {
+                        var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.UserStatistics.Created()
+                        model.fromMap(dict["Created"] as! [String: Any])
+                        self.created = model
+                    }
+                    if dict.keys.contains("Deleted") {
+                        var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.UserStatistics.Deleted()
+                        model.fromMap(dict["Deleted"] as! [String: Any])
+                        self.deleted = model
+                    }
+                    if dict.keys.contains("Pushed") {
+                        var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.UserStatistics.Pushed()
+                        model.fromMap(dict["Pushed"] as! [String: Any])
+                        self.pushed = model
+                    }
+                    if dict.keys.contains("Same") {
+                        var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.UserStatistics.Same()
+                        model.fromMap(dict["Same"] as! [String: Any])
+                        self.same = model
+                    }
+                    if dict.keys.contains("Updated") {
+                        var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.UserStatistics.Updated()
+                        model.fromMap(dict["Updated"] as! [String: Any])
+                        self.updated = model
+                    }
+                }
+            }
+            public var errorCode: String?
+
+            public var errorMessage: String?
+
+            public var groupMemberStatistics: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupMemberStatistics?
+
+            public var groupStatistics: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupStatistics?
+
+            public var organizationalUnitStatistics: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.OrganizationalUnitStatistics?
+
+            public var userStatistics: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.UserStatistics?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.groupMemberStatistics?.validate()
+                try self.groupStatistics?.validate()
+                try self.organizationalUnitStatistics?.validate()
+                try self.userStatistics?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.errorCode != nil {
+                    map["ErrorCode"] = self.errorCode!
+                }
+                if self.errorMessage != nil {
+                    map["ErrorMessage"] = self.errorMessage!
+                }
+                if self.groupMemberStatistics != nil {
+                    map["GroupMemberStatistics"] = self.groupMemberStatistics?.toMap()
+                }
+                if self.groupStatistics != nil {
+                    map["GroupStatistics"] = self.groupStatistics?.toMap()
+                }
+                if self.organizationalUnitStatistics != nil {
+                    map["OrganizationalUnitStatistics"] = self.organizationalUnitStatistics?.toMap()
+                }
+                if self.userStatistics != nil {
+                    map["UserStatistics"] = self.userStatistics?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ErrorCode") {
+                    self.errorCode = dict["ErrorCode"] as! String
+                }
+                if dict.keys.contains("ErrorMessage") {
+                    self.errorMessage = dict["ErrorMessage"] as! String
+                }
+                if dict.keys.contains("GroupMemberStatistics") {
+                    var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupMemberStatistics()
+                    model.fromMap(dict["GroupMemberStatistics"] as! [String: Any])
+                    self.groupMemberStatistics = model
+                }
+                if dict.keys.contains("GroupStatistics") {
+                    var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.GroupStatistics()
+                    model.fromMap(dict["GroupStatistics"] as! [String: Any])
+                    self.groupStatistics = model
+                }
+                if dict.keys.contains("OrganizationalUnitStatistics") {
+                    var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.OrganizationalUnitStatistics()
+                    model.fromMap(dict["OrganizationalUnitStatistics"] as! [String: Any])
+                    self.organizationalUnitStatistics = model
+                }
+                if dict.keys.contains("UserStatistics") {
+                    var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.UserStatistics()
+                    model.fromMap(dict["UserStatistics"] as! [String: Any])
+                    self.userStatistics = model
+                }
+            }
+        }
+        public var direction: String?
+
+        public var endTime: Int64?
+
+        public var result: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result?
+
+        public var startTime: Int64?
+
+        public var status: String?
+
+        public var synchronizationJobId: String?
+
+        public var targetId: String?
+
+        public var targetType: String?
+
+        public var triggerType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.result?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.direction != nil {
+                map["Direction"] = self.direction!
+            }
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            if self.result != nil {
+                map["Result"] = self.result?.toMap()
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.synchronizationJobId != nil {
+                map["SynchronizationJobId"] = self.synchronizationJobId!
+            }
+            if self.targetId != nil {
+                map["TargetId"] = self.targetId!
+            }
+            if self.targetType != nil {
+                map["TargetType"] = self.targetType!
+            }
+            if self.triggerType != nil {
+                map["TriggerType"] = self.triggerType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Direction") {
+                self.direction = dict["Direction"] as! String
+            }
+            if dict.keys.contains("EndTime") {
+                self.endTime = dict["EndTime"] as! Int64
+            }
+            if dict.keys.contains("Result") {
+                var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result()
+                model.fromMap(dict["Result"] as! [String: Any])
+                self.result = model
+            }
+            if dict.keys.contains("StartTime") {
+                self.startTime = dict["StartTime"] as! Int64
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("SynchronizationJobId") {
+                self.synchronizationJobId = dict["SynchronizationJobId"] as! String
+            }
+            if dict.keys.contains("TargetId") {
+                self.targetId = dict["TargetId"] as! String
+            }
+            if dict.keys.contains("TargetType") {
+                self.targetType = dict["TargetType"] as! String
+            }
+            if dict.keys.contains("TriggerType") {
+                self.triggerType = dict["TriggerType"] as! String
+            }
+        }
+    }
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var synchronizationJobs: [ListSynchronizationJobsResponseBody.SynchronizationJobs]?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.synchronizationJobs != nil {
+            var tmp : [Any] = []
+            for k in self.synchronizationJobs! {
+                tmp.append(k.toMap())
+            }
+            map["SynchronizationJobs"] = tmp
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SynchronizationJobs") {
+            var tmp : [ListSynchronizationJobsResponseBody.SynchronizationJobs] = []
+            for v in dict["SynchronizationJobs"] as! [Any] {
+                var model = ListSynchronizationJobsResponseBody.SynchronizationJobs()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.synchronizationJobs = tmp
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! Int64
+        }
+    }
+}
+
+public class ListSynchronizationJobsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListSynchronizationJobsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListSynchronizationJobsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListUsersRequest : Tea.TeaModel {
     public var displayNameStartsWith: String?
 
@@ -16150,6 +20097,139 @@ public class RevokeApplicationFromUsersResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = RevokeApplicationFromUsersResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class RunSynchronizationJobRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var targetId: String?
+
+    public var targetType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.targetId != nil {
+            map["TargetId"] = self.targetId!
+        }
+        if self.targetType != nil {
+            map["TargetType"] = self.targetType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("TargetId") {
+            self.targetId = dict["TargetId"] as! String
+        }
+        if dict.keys.contains("TargetType") {
+            self.targetType = dict["TargetType"] as! String
+        }
+    }
+}
+
+public class RunSynchronizationJobResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var synchronizationJobId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.synchronizationJobId != nil {
+            map["SynchronizationJobId"] = self.synchronizationJobId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SynchronizationJobId") {
+            self.synchronizationJobId = dict["SynchronizationJobId"] as! String
+        }
+    }
+}
+
+public class RunSynchronizationJobResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RunSynchronizationJobResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = RunSynchronizationJobResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
