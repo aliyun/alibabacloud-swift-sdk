@@ -11995,6 +11995,8 @@ public class UpdateServiceRequest : Tea.TeaModel {
         }
     }
     public class UpdateOption : Tea.TeaModel {
+        public var updateArtifact: Bool?
+
         public var updateFrom: String?
 
         public override init() {
@@ -12011,6 +12013,9 @@ public class UpdateServiceRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.updateArtifact != nil {
+                map["UpdateArtifact"] = self.updateArtifact!
+            }
             if self.updateFrom != nil {
                 map["UpdateFrom"] = self.updateFrom!
             }
@@ -12018,6 +12023,9 @@ public class UpdateServiceRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("UpdateArtifact") {
+                self.updateArtifact = dict["UpdateArtifact"] as! Bool
+            }
             if dict.keys.contains("UpdateFrom") {
                 self.updateFrom = dict["UpdateFrom"] as! String
             }
