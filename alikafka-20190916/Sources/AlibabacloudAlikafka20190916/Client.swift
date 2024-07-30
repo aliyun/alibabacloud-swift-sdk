@@ -1088,6 +1088,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.consumerId)) {
             query["ConsumerId"] = request.consumerId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.hideLastTimestamp)) {
+            query["HideLastTimestamp"] = request.hideLastTimestamp!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
