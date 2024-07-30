@@ -23456,6 +23456,8 @@ public class DescribeWebCCRulesV2ResponseBody : Tea.TeaModel {
             public class Condition : Tea.TeaModel {
                 public var content: String?
 
+                public var contentList: String?
+
                 public var field: String?
 
                 public var headerName: String?
@@ -23479,6 +23481,9 @@ public class DescribeWebCCRulesV2ResponseBody : Tea.TeaModel {
                     if self.content != nil {
                         map["Content"] = self.content!
                     }
+                    if self.contentList != nil {
+                        map["ContentList"] = self.contentList!
+                    }
                     if self.field != nil {
                         map["Field"] = self.field!
                     }
@@ -23494,6 +23499,9 @@ public class DescribeWebCCRulesV2ResponseBody : Tea.TeaModel {
                 public override func fromMap(_ dict: [String: Any]) -> Void {
                     if dict.keys.contains("Content") {
                         self.content = dict["Content"] as! String
+                    }
+                    if dict.keys.contains("ContentList") {
+                        self.contentList = dict["ContentList"] as! String
                     }
                     if dict.keys.contains("Field") {
                         self.field = dict["Field"] as! String
