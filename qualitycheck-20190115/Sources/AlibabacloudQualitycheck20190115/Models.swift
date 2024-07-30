@@ -10375,6 +10375,8 @@ public class GetResultResponseBody : Tea.TeaModel {
 
                     public var end: Int64?
 
+                    public var identity: String?
+
                     public var role: String?
 
                     public var speechRate: Int32?
@@ -10404,6 +10406,9 @@ public class GetResultResponseBody : Tea.TeaModel {
                         if self.end != nil {
                             map["End"] = self.end!
                         }
+                        if self.identity != nil {
+                            map["Identity"] = self.identity!
+                        }
                         if self.role != nil {
                             map["Role"] = self.role!
                         }
@@ -10425,6 +10430,9 @@ public class GetResultResponseBody : Tea.TeaModel {
                         }
                         if dict.keys.contains("End") {
                             self.end = dict["End"] as! Int64
+                        }
+                        if dict.keys.contains("Identity") {
+                            self.identity = dict["Identity"] as! String
                         }
                         if dict.keys.contains("Role") {
                             self.role = dict["Role"] as! String
