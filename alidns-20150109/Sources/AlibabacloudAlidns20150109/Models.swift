@@ -33056,6 +33056,8 @@ public class DescribePdnsUdpIpSegmentsResponseBody : Tea.TeaModel {
 
     public var totalCount: Int64?
 
+    public var totalPages: String?
+
     public override init() {
         super.init()
     }
@@ -33089,6 +33091,9 @@ public class DescribePdnsUdpIpSegmentsResponseBody : Tea.TeaModel {
         if self.totalCount != nil {
             map["TotalCount"] = self.totalCount!
         }
+        if self.totalPages != nil {
+            map["TotalPages"] = self.totalPages!
+        }
         return map
     }
 
@@ -33115,6 +33120,9 @@ public class DescribePdnsUdpIpSegmentsResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("TotalCount") {
             self.totalCount = dict["TotalCount"] as! Int64
+        }
+        if dict.keys.contains("TotalPages") {
+            self.totalPages = dict["TotalPages"] as! String
         }
     }
 }
