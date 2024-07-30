@@ -219,4 +219,47 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listEnrolledAccountsWithOptions(request as! ListEnrolledAccountsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAccountFactoryBaselineWithOptions(_ request: UpdateAccountFactoryBaselineRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAccountFactoryBaselineResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baselineId)) {
+            query["BaselineId"] = request.baselineId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.baselineItems)) {
+            query["BaselineItems"] = request.baselineItems ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.baselineName)) {
+            query["BaselineName"] = request.baselineName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateAccountFactoryBaseline",
+            "version": "2021-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateAccountFactoryBaselineResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAccountFactoryBaseline(_ request: UpdateAccountFactoryBaselineRequest) async throws -> UpdateAccountFactoryBaselineResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateAccountFactoryBaselineWithOptions(request as! UpdateAccountFactoryBaselineRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
 }
