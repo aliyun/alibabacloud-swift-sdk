@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudWafOpenapi20211001` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/waf-openapi-20211001" "4.0.0"
+github "alibabacloud-sdk-swift/waf-openapi-20211001" "5.0.0"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudWafOpenapi20211001` into your Xcode project using [Swi
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/waf-openapi-20211001.git", from: "4.0.0")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/waf-openapi-20211001.git", from: "5.0.0")
 ]
 ```
 
