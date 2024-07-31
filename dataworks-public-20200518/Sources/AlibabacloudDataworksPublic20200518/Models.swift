@@ -9,6 +9,90 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class Cluster : Tea.TeaModel {
+    public var clusterBizId: String?
+
+    public var clusterId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterBizId != nil {
+            map["ClusterBizId"] = self.clusterBizId!
+        }
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClusterBizId") {
+            self.clusterBizId = dict["ClusterBizId"] as! String
+        }
+        if dict.keys.contains("ClusterId") {
+            self.clusterId = dict["ClusterId"] as! Int64
+        }
+    }
+}
+
+public class ClusterConfig : Tea.TeaModel {
+    public var configValue: String?
+
+    public var enableOverwrite: Bool?
+
+    public var moduleName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configValue != nil {
+            map["ConfigValue"] = self.configValue!
+        }
+        if self.enableOverwrite != nil {
+            map["EnableOverwrite"] = self.enableOverwrite!
+        }
+        if self.moduleName != nil {
+            map["ModuleName"] = self.moduleName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ConfigValue") {
+            self.configValue = dict["ConfigValue"] as! String
+        }
+        if dict.keys.contains("EnableOverwrite") {
+            self.enableOverwrite = dict["EnableOverwrite"] as! Bool
+        }
+        if dict.keys.contains("ModuleName") {
+            self.moduleName = dict["ModuleName"] as! String
+        }
+    }
+}
+
 public class Collection : Tea.TeaModel {
     public var collectionType: String?
 
@@ -44836,6 +44920,8 @@ public class GetQualityRuleResponseBody : Tea.TeaModel {
 
         public var ruleType: Int32?
 
+        public var taskSetting: String?
+
         public var templateId: Int32?
 
         public var templateName: String?
@@ -44917,6 +45003,9 @@ public class GetQualityRuleResponseBody : Tea.TeaModel {
             if self.ruleType != nil {
                 map["RuleType"] = self.ruleType!
             }
+            if self.taskSetting != nil {
+                map["TaskSetting"] = self.taskSetting!
+            }
             if self.templateId != nil {
                 map["TemplateId"] = self.templateId!
             }
@@ -44992,6 +45081,9 @@ public class GetQualityRuleResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RuleType") {
                 self.ruleType = dict["RuleType"] as! Int32
+            }
+            if dict.keys.contains("TaskSetting") {
+                self.taskSetting = dict["TaskSetting"] as! String
             }
             if dict.keys.contains("TemplateId") {
                 self.templateId = dict["TemplateId"] as! Int32
@@ -49620,6 +49712,416 @@ public class ListCalcEnginesResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ListCalcEnginesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListClusterConfigsRequest : Tea.TeaModel {
+    public var clusterId: Int64?
+
+    public var configType: String?
+
+    public var projectId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.configType != nil {
+            map["ConfigType"] = self.configType!
+        }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClusterId") {
+            self.clusterId = dict["ClusterId"] as! Int64
+        }
+        if dict.keys.contains("ConfigType") {
+            self.configType = dict["ConfigType"] as! String
+        }
+        if dict.keys.contains("ProjectId") {
+            self.projectId = dict["ProjectId"] as! Int64
+        }
+    }
+}
+
+public class ListClusterConfigsResponseBody : Tea.TeaModel {
+    public var clusterConfigs: [ClusterConfig]?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterConfigs != nil {
+            var tmp : [Any] = []
+            for k in self.clusterConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["ClusterConfigs"] = tmp
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClusterConfigs") {
+            var tmp : [ClusterConfig] = []
+            for v in dict["ClusterConfigs"] as! [Any] {
+                var model = ClusterConfig()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.clusterConfigs = tmp
+        }
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class ListClusterConfigsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListClusterConfigsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListClusterConfigsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListClustersRequest : Tea.TeaModel {
+    public var clusterType: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterType != nil {
+            map["ClusterType"] = self.clusterType!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClusterType") {
+            self.clusterType = dict["ClusterType"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+    }
+}
+
+public class ListClustersResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var clusters: [Cluster]?
+
+        public var pageNumber: Int32?
+
+        public var pageSize: Int32?
+
+        public var totalCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clusters != nil {
+                var tmp : [Any] = []
+                for k in self.clusters! {
+                    tmp.append(k.toMap())
+                }
+                map["Clusters"] = tmp
+            }
+            if self.pageNumber != nil {
+                map["PageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Clusters") {
+                var tmp : [Cluster] = []
+                for v in dict["Clusters"] as! [Any] {
+                    var model = Cluster()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.clusters = tmp
+            }
+            if dict.keys.contains("PageNumber") {
+                self.pageNumber = dict["PageNumber"] as! Int32
+            }
+            if dict.keys.contains("PageSize") {
+                self.pageSize = dict["PageSize"] as! Int32
+            }
+            if dict.keys.contains("TotalCount") {
+                self.totalCount = dict["TotalCount"] as! Int32
+            }
+        }
+    }
+    public var data: ListClustersResponseBody.Data?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            var model = ListClustersResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class ListClustersResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListClustersResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListClustersResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -79802,6 +80304,245 @@ public class UpdateBusinessResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = UpdateBusinessResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateClusterConfigsRequest : Tea.TeaModel {
+    public var clusterId: Int64?
+
+    public var configType: String?
+
+    public var configValues: [ClusterConfig]?
+
+    public var projectId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.configType != nil {
+            map["ConfigType"] = self.configType!
+        }
+        if self.configValues != nil {
+            var tmp : [Any] = []
+            for k in self.configValues! {
+                tmp.append(k.toMap())
+            }
+            map["ConfigValues"] = tmp
+        }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClusterId") {
+            self.clusterId = dict["ClusterId"] as! Int64
+        }
+        if dict.keys.contains("ConfigType") {
+            self.configType = dict["ConfigType"] as! String
+        }
+        if dict.keys.contains("ConfigValues") {
+            var tmp : [ClusterConfig] = []
+            for v in dict["ConfigValues"] as! [Any] {
+                var model = ClusterConfig()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.configValues = tmp
+        }
+        if dict.keys.contains("ProjectId") {
+            self.projectId = dict["ProjectId"] as! Int64
+        }
+    }
+}
+
+public class UpdateClusterConfigsShrinkRequest : Tea.TeaModel {
+    public var clusterId: Int64?
+
+    public var configType: String?
+
+    public var configValuesShrink: String?
+
+    public var projectId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.configType != nil {
+            map["ConfigType"] = self.configType!
+        }
+        if self.configValuesShrink != nil {
+            map["ConfigValues"] = self.configValuesShrink!
+        }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClusterId") {
+            self.clusterId = dict["ClusterId"] as! Int64
+        }
+        if dict.keys.contains("ConfigType") {
+            self.configType = dict["ConfigType"] as! String
+        }
+        if dict.keys.contains("ConfigValues") {
+            self.configValuesShrink = dict["ConfigValues"] as! String
+        }
+        if dict.keys.contains("ProjectId") {
+            self.projectId = dict["ProjectId"] as! Int64
+        }
+    }
+}
+
+public class UpdateClusterConfigsResponseBody : Tea.TeaModel {
+    public var data: Bool?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            self.data = dict["Data"] as! Bool
+        }
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class UpdateClusterConfigsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateClusterConfigsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateClusterConfigsResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
