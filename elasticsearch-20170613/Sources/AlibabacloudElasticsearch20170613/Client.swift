@@ -6877,6 +6877,9 @@ open class Client : AlibabacloudOpenApi.Client {
             query["dryRun"] = request.dryRun!;
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.plugins)) {
+            body["plugins"] = request.plugins ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.type)) {
             body["type"] = request.type ?? "";
         }

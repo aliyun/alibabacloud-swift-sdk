@@ -43343,6 +43343,53 @@ public class UpdateXpackMonitorConfigResponse : Tea.TeaModel {
 }
 
 public class UpgradeEngineVersionRequest : Tea.TeaModel {
+    public class Plugins : Tea.TeaModel {
+        public var fileVersion: String?
+
+        public var name: String?
+
+        public var version: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fileVersion != nil {
+                map["fileVersion"] = self.fileVersion!
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.version != nil {
+                map["version"] = self.version!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("fileVersion") {
+                self.fileVersion = dict["fileVersion"] as! String
+            }
+            if dict.keys.contains("name") {
+                self.name = dict["name"] as! String
+            }
+            if dict.keys.contains("version") {
+                self.version = dict["version"] as! String
+            }
+        }
+    }
+    public var plugins: [UpgradeEngineVersionRequest.Plugins]?
+
     public var type: String?
 
     public var version: String?
@@ -43365,6 +43412,13 @@ public class UpgradeEngineVersionRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.plugins != nil {
+            var tmp : [Any] = []
+            for k in self.plugins! {
+                tmp.append(k.toMap())
+            }
+            map["plugins"] = tmp
+        }
         if self.type != nil {
             map["type"] = self.type!
         }
@@ -43381,6 +43435,17 @@ public class UpgradeEngineVersionRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("plugins") {
+            var tmp : [UpgradeEngineVersionRequest.Plugins] = []
+            for v in dict["plugins"] as! [Any] {
+                var model = UpgradeEngineVersionRequest.Plugins()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.plugins = tmp
+        }
         if dict.keys.contains("type") {
             self.type = dict["type"] as! String
         }
