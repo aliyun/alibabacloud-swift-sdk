@@ -95,6 +95,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.jobName)) {
             query["JobName"] = request.jobName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.jobScheduler)) {
+            query["JobScheduler"] = request.jobScheduler ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.tasksShrink)) {
             query["Tasks"] = request.tasksShrink ?? "";
         }
