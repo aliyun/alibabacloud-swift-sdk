@@ -2523,6 +2523,8 @@ public class DescAccountSummaryRequest : Tea.TeaModel {
 public class DescAccountSummaryResponseBody : Tea.TeaModel {
     public var dailyQuota: Int32?
 
+    public var dailyRemainFreeQuota: Int32?
+
     public var dayuStatus: Int32?
 
     public var domains: Int32?
@@ -2571,6 +2573,9 @@ public class DescAccountSummaryResponseBody : Tea.TeaModel {
         var map = super.toMap()
         if self.dailyQuota != nil {
             map["DailyQuota"] = self.dailyQuota!
+        }
+        if self.dailyRemainFreeQuota != nil {
+            map["DailyRemainFreeQuota"] = self.dailyRemainFreeQuota!
         }
         if self.dayuStatus != nil {
             map["DayuStatus"] = self.dayuStatus!
@@ -2626,6 +2631,9 @@ public class DescAccountSummaryResponseBody : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DailyQuota") {
             self.dailyQuota = dict["DailyQuota"] as! Int32
+        }
+        if dict.keys.contains("DailyRemainFreeQuota") {
+            self.dailyRemainFreeQuota = dict["DailyRemainFreeQuota"] as! Int32
         }
         if dict.keys.contains("DayuStatus") {
             self.dayuStatus = dict["DayuStatus"] as! Int32
