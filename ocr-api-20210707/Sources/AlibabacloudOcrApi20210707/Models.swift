@@ -6623,6 +6623,8 @@ public class RecognizeEduPaperCutRequest : Tea.TeaModel {
 
     public var imageType: String?
 
+    public var outputOricoord: Bool?
+
     public var subject: String?
 
     public var url: String?
@@ -6649,6 +6651,9 @@ public class RecognizeEduPaperCutRequest : Tea.TeaModel {
         if self.imageType != nil {
             map["ImageType"] = self.imageType!
         }
+        if self.outputOricoord != nil {
+            map["OutputOricoord"] = self.outputOricoord!
+        }
         if self.subject != nil {
             map["Subject"] = self.subject!
         }
@@ -6667,6 +6672,9 @@ public class RecognizeEduPaperCutRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ImageType") {
             self.imageType = dict["ImageType"] as! String
+        }
+        if dict.keys.contains("OutputOricoord") {
+            self.outputOricoord = dict["OutputOricoord"] as! Bool
         }
         if dict.keys.contains("Subject") {
             self.subject = dict["Subject"] as! String

@@ -884,6 +884,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.imageType)) {
             query["ImageType"] = request.imageType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.outputOricoord)) {
+            query["OutputOricoord"] = request.outputOricoord!;
+        }
         if (!TeaUtils.Client.isUnset(request.subject)) {
             query["Subject"] = request.subject ?? "";
         }
