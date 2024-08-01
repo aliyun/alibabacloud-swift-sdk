@@ -627,6 +627,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.templateURL)) {
             query["TemplateURL"] = request.templateURL ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.validationOptions)) {
+            query["ValidationOptions"] = request.validationOptions ?? [];
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.templateBody)) {
             body["TemplateBody"] = request.templateBody ?? "";
@@ -3971,6 +3974,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.isDraft)) {
+            query["IsDraft"] = request.isDraft!;
+        }
+        if (!TeaUtils.Client.isUnset(request.rotateStrategy)) {
+            query["RotateStrategy"] = request.rotateStrategy ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.templateId)) {
             query["TemplateId"] = request.templateId ?? "";
         }
@@ -3979,6 +3988,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.templateURL)) {
             query["TemplateURL"] = request.templateURL ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.validationOptions)) {
+            query["ValidationOptions"] = request.validationOptions ?? [];
         }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.templateBody)) {

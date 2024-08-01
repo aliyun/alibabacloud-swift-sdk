@@ -2859,6 +2859,8 @@ public class CreateTemplateRequest : Tea.TeaModel {
 
     public var templateURL: String?
 
+    public var validationOptions: [String]?
+
     public override init() {
         super.init()
     }
@@ -2895,6 +2897,9 @@ public class CreateTemplateRequest : Tea.TeaModel {
         if self.templateURL != nil {
             map["TemplateURL"] = self.templateURL!
         }
+        if self.validationOptions != nil {
+            map["ValidationOptions"] = self.validationOptions!
+        }
         return map
     }
 
@@ -2924,6 +2929,9 @@ public class CreateTemplateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TemplateURL") {
             self.templateURL = dict["TemplateURL"] as! String
+        }
+        if dict.keys.contains("ValidationOptions") {
+            self.validationOptions = dict["ValidationOptions"] as! [String]
         }
     }
 }
@@ -24651,6 +24659,10 @@ public class UpdateStackTemplateByResourcesResponse : Tea.TeaModel {
 public class UpdateTemplateRequest : Tea.TeaModel {
     public var description_: String?
 
+    public var isDraft: Bool?
+
+    public var rotateStrategy: String?
+
     public var templateBody: String?
 
     public var templateId: String?
@@ -24658,6 +24670,8 @@ public class UpdateTemplateRequest : Tea.TeaModel {
     public var templateName: String?
 
     public var templateURL: String?
+
+    public var validationOptions: [String]?
 
     public override init() {
         super.init()
@@ -24676,6 +24690,12 @@ public class UpdateTemplateRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.isDraft != nil {
+            map["IsDraft"] = self.isDraft!
+        }
+        if self.rotateStrategy != nil {
+            map["RotateStrategy"] = self.rotateStrategy!
+        }
         if self.templateBody != nil {
             map["TemplateBody"] = self.templateBody!
         }
@@ -24688,12 +24708,21 @@ public class UpdateTemplateRequest : Tea.TeaModel {
         if self.templateURL != nil {
             map["TemplateURL"] = self.templateURL!
         }
+        if self.validationOptions != nil {
+            map["ValidationOptions"] = self.validationOptions!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("IsDraft") {
+            self.isDraft = dict["IsDraft"] as! Bool
+        }
+        if dict.keys.contains("RotateStrategy") {
+            self.rotateStrategy = dict["RotateStrategy"] as! String
         }
         if dict.keys.contains("TemplateBody") {
             self.templateBody = dict["TemplateBody"] as! String
@@ -24706,6 +24735,9 @@ public class UpdateTemplateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TemplateURL") {
             self.templateURL = dict["TemplateURL"] as! String
+        }
+        if dict.keys.contains("ValidationOptions") {
+            self.validationOptions = dict["ValidationOptions"] as! [String]
         }
     }
 }
