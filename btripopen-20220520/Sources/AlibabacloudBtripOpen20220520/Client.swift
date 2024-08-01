@@ -2921,6 +2921,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func externalUserQueryWithOptions(_ externalUserId: String, _ headers: ExternalUserQueryHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ExternalUserQueryResponse {
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ExternalUserQuery",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/user/v1/externalUsers/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(externalUserId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ExternalUserQueryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func externalUserQuery(_ externalUserId: String) async throws -> ExternalUserQueryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: ExternalUserQueryHeaders = ExternalUserQueryHeaders([:])
+        return try await externalUserQueryWithOptions(externalUserId as! String, headers as! ExternalUserQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func externalUserUpdateWithOptions(_ externalUserId: String, _ tmpReq: ExternalUserUpdateRequest, _ headers: ExternalUserUpdateHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ExternalUserUpdateResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ExternalUserUpdateShrinkRequest = ExternalUserUpdateShrinkRequest([:])
