@@ -2201,6 +2201,8 @@ public class CreateAggregateConfigDeliveryChannelRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var compliantSnapshot: Bool?
+
     public var configurationItemChangeNotification: Bool?
 
     public var configurationSnapshot: Bool?
@@ -2241,6 +2243,9 @@ public class CreateAggregateConfigDeliveryChannelRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.compliantSnapshot != nil {
+            map["CompliantSnapshot"] = self.compliantSnapshot!
+        }
         if self.configurationItemChangeNotification != nil {
             map["ConfigurationItemChangeNotification"] = self.configurationItemChangeNotification!
         }
@@ -2280,6 +2285,9 @@ public class CreateAggregateConfigDeliveryChannelRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("CompliantSnapshot") {
+            self.compliantSnapshot = dict["CompliantSnapshot"] as! Bool
         }
         if dict.keys.contains("ConfigurationItemChangeNotification") {
             self.configurationItemChangeNotification = dict["ConfigurationItemChangeNotification"] as! Bool
@@ -4349,6 +4357,8 @@ public class CreateCompliancePackResponse : Tea.TeaModel {
 public class CreateConfigDeliveryChannelRequest : Tea.TeaModel {
     public var clientToken: String?
 
+    public var compliantSnapshot: Bool?
+
     public var configurationItemChangeNotification: Bool?
 
     public var configurationSnapshot: Bool?
@@ -4386,6 +4396,9 @@ public class CreateConfigDeliveryChannelRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.compliantSnapshot != nil {
+            map["CompliantSnapshot"] = self.compliantSnapshot!
+        }
         if self.configurationItemChangeNotification != nil {
             map["ConfigurationItemChangeNotification"] = self.configurationItemChangeNotification!
         }
@@ -4422,6 +4435,9 @@ public class CreateConfigDeliveryChannelRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("CompliantSnapshot") {
+            self.compliantSnapshot = dict["CompliantSnapshot"] as! Bool
         }
         if dict.keys.contains("ConfigurationItemChangeNotification") {
             self.configurationItemChangeNotification = dict["ConfigurationItemChangeNotification"] as! Bool
@@ -11167,6 +11183,8 @@ public class GetAggregateConfigDeliveryChannelResponseBody : Tea.TeaModel {
 
         public var aggregatorId: String?
 
+        public var compliantSnapshot: Bool?
+
         public var configurationItemChangeNotification: Bool?
 
         public var configurationSnapshot: Bool?
@@ -11212,6 +11230,9 @@ public class GetAggregateConfigDeliveryChannelResponseBody : Tea.TeaModel {
             }
             if self.aggregatorId != nil {
                 map["AggregatorId"] = self.aggregatorId!
+            }
+            if self.compliantSnapshot != nil {
+                map["CompliantSnapshot"] = self.compliantSnapshot!
             }
             if self.configurationItemChangeNotification != nil {
                 map["ConfigurationItemChangeNotification"] = self.configurationItemChangeNotification!
@@ -11261,6 +11282,9 @@ public class GetAggregateConfigDeliveryChannelResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("AggregatorId") {
                 self.aggregatorId = dict["AggregatorId"] as! String
+            }
+            if dict.keys.contains("CompliantSnapshot") {
+                self.compliantSnapshot = dict["CompliantSnapshot"] as! Bool
             }
             if dict.keys.contains("ConfigurationItemChangeNotification") {
                 self.configurationItemChangeNotification = dict["ConfigurationItemChangeNotification"] as! Bool
@@ -16786,6 +16810,8 @@ public class GetConfigDeliveryChannelResponseBody : Tea.TeaModel {
     public class DeliveryChannel : Tea.TeaModel {
         public var accountId: Int64?
 
+        public var compliantSnapshot: Bool?
+
         public var configurationItemChangeNotification: Bool?
 
         public var configurationSnapshot: Bool?
@@ -16828,6 +16854,9 @@ public class GetConfigDeliveryChannelResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.accountId != nil {
                 map["AccountId"] = self.accountId!
+            }
+            if self.compliantSnapshot != nil {
+                map["CompliantSnapshot"] = self.compliantSnapshot!
             }
             if self.configurationItemChangeNotification != nil {
                 map["ConfigurationItemChangeNotification"] = self.configurationItemChangeNotification!
@@ -16874,6 +16903,9 @@ public class GetConfigDeliveryChannelResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("AccountId") {
                 self.accountId = dict["AccountId"] as! Int64
+            }
+            if dict.keys.contains("CompliantSnapshot") {
+                self.compliantSnapshot = dict["CompliantSnapshot"] as! Bool
             }
             if dict.keys.contains("ConfigurationItemChangeNotification") {
                 self.configurationItemChangeNotification = dict["ConfigurationItemChangeNotification"] as! Bool
@@ -22590,6 +22622,8 @@ public class ListAggregateConfigDeliveryChannelsResponseBody : Tea.TeaModel {
 
         public var aggregatorId: String?
 
+        public var compliantSnapshot: Bool?
+
         public var configurationItemChangeNotification: Bool?
 
         public var configurationSnapshot: Bool?
@@ -22635,6 +22669,9 @@ public class ListAggregateConfigDeliveryChannelsResponseBody : Tea.TeaModel {
             }
             if self.aggregatorId != nil {
                 map["AggregatorId"] = self.aggregatorId!
+            }
+            if self.compliantSnapshot != nil {
+                map["CompliantSnapshot"] = self.compliantSnapshot!
             }
             if self.configurationItemChangeNotification != nil {
                 map["ConfigurationItemChangeNotification"] = self.configurationItemChangeNotification!
@@ -22684,6 +22721,9 @@ public class ListAggregateConfigDeliveryChannelsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("AggregatorId") {
                 self.aggregatorId = dict["AggregatorId"] as! String
+            }
+            if dict.keys.contains("CompliantSnapshot") {
+                self.compliantSnapshot = dict["CompliantSnapshot"] as! Bool
             }
             if dict.keys.contains("ConfigurationItemChangeNotification") {
                 self.configurationItemChangeNotification = dict["ConfigurationItemChangeNotification"] as! Bool
@@ -26964,6 +27004,8 @@ public class ListConfigDeliveryChannelsResponseBody : Tea.TeaModel {
     public class DeliveryChannels : Tea.TeaModel {
         public var accountId: Int64?
 
+        public var compliantSnapshot: Bool?
+
         public var configurationItemChangeNotification: Bool?
 
         public var configurationSnapshot: Bool?
@@ -27006,6 +27048,9 @@ public class ListConfigDeliveryChannelsResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.accountId != nil {
                 map["AccountId"] = self.accountId!
+            }
+            if self.compliantSnapshot != nil {
+                map["CompliantSnapshot"] = self.compliantSnapshot!
             }
             if self.configurationItemChangeNotification != nil {
                 map["ConfigurationItemChangeNotification"] = self.configurationItemChangeNotification!
@@ -27052,6 +27097,9 @@ public class ListConfigDeliveryChannelsResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("AccountId") {
                 self.accountId = dict["AccountId"] as! Int64
+            }
+            if dict.keys.contains("CompliantSnapshot") {
+                self.compliantSnapshot = dict["CompliantSnapshot"] as! Bool
             }
             if dict.keys.contains("ConfigurationItemChangeNotification") {
                 self.configurationItemChangeNotification = dict["ConfigurationItemChangeNotification"] as! Bool
@@ -34218,6 +34266,8 @@ public class UpdateAggregateConfigDeliveryChannelRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var compliantSnapshot: Bool?
+
     public var configurationItemChangeNotification: Bool?
 
     public var configurationSnapshot: Bool?
@@ -34259,6 +34309,9 @@ public class UpdateAggregateConfigDeliveryChannelRequest : Tea.TeaModel {
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.compliantSnapshot != nil {
+            map["CompliantSnapshot"] = self.compliantSnapshot!
         }
         if self.configurationItemChangeNotification != nil {
             map["ConfigurationItemChangeNotification"] = self.configurationItemChangeNotification!
@@ -34302,6 +34355,9 @@ public class UpdateAggregateConfigDeliveryChannelRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("CompliantSnapshot") {
+            self.compliantSnapshot = dict["CompliantSnapshot"] as! Bool
         }
         if dict.keys.contains("ConfigurationItemChangeNotification") {
             self.configurationItemChangeNotification = dict["ConfigurationItemChangeNotification"] as! Bool
@@ -36302,6 +36358,8 @@ public class UpdateCompliancePackResponse : Tea.TeaModel {
 public class UpdateConfigDeliveryChannelRequest : Tea.TeaModel {
     public var clientToken: String?
 
+    public var compliantSnapshot: Bool?
+
     public var configurationItemChangeNotification: Bool?
 
     public var configurationSnapshot: Bool?
@@ -36340,6 +36398,9 @@ public class UpdateConfigDeliveryChannelRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.compliantSnapshot != nil {
+            map["CompliantSnapshot"] = self.compliantSnapshot!
         }
         if self.configurationItemChangeNotification != nil {
             map["ConfigurationItemChangeNotification"] = self.configurationItemChangeNotification!
@@ -36380,6 +36441,9 @@ public class UpdateConfigDeliveryChannelRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("CompliantSnapshot") {
+            self.compliantSnapshot = dict["CompliantSnapshot"] as! Bool
         }
         if dict.keys.contains("ConfigurationItemChangeNotification") {
             self.configurationItemChangeNotification = dict["ConfigurationItemChangeNotification"] as! Bool

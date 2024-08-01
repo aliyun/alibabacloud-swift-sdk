@@ -404,6 +404,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.compliantSnapshot)) {
+            query["CompliantSnapshot"] = request.compliantSnapshot!;
+        }
         if (!TeaUtils.Client.isUnset(request.configurationItemChangeNotification)) {
             query["ConfigurationItemChangeNotification"] = request.configurationItemChangeNotification!;
         }
@@ -772,6 +775,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.compliantSnapshot)) {
+            query["CompliantSnapshot"] = request.compliantSnapshot!;
         }
         if (!TeaUtils.Client.isUnset(request.configurationItemChangeNotification)) {
             query["ConfigurationItemChangeNotification"] = request.configurationItemChangeNotification!;
@@ -4976,6 +4982,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.compliantSnapshot)) {
+            query["CompliantSnapshot"] = request.compliantSnapshot!;
+        }
         if (!TeaUtils.Client.isUnset(request.configurationItemChangeNotification)) {
             query["ConfigurationItemChangeNotification"] = request.configurationItemChangeNotification!;
         }
@@ -5332,6 +5341,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.compliantSnapshot)) {
+            query["CompliantSnapshot"] = request.compliantSnapshot!;
         }
         if (!TeaUtils.Client.isUnset(request.configurationItemChangeNotification)) {
             query["ConfigurationItemChangeNotification"] = request.configurationItemChangeNotification!;
