@@ -58904,6 +58904,8 @@ public class DescribeInvocationResultsResponseBody : Tea.TeaModel {
 
                 public var invokeRecordStatus: String?
 
+                public var launcher: String?
+
                 public var output: String?
 
                 public var repeats: Int32?
@@ -58969,6 +58971,9 @@ public class DescribeInvocationResultsResponseBody : Tea.TeaModel {
                     if self.invokeRecordStatus != nil {
                         map["InvokeRecordStatus"] = self.invokeRecordStatus!
                     }
+                    if self.launcher != nil {
+                        map["Launcher"] = self.launcher!
+                    }
                     if self.output != nil {
                         map["Output"] = self.output!
                     }
@@ -59029,6 +59034,9 @@ public class DescribeInvocationResultsResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("InvokeRecordStatus") {
                         self.invokeRecordStatus = dict["InvokeRecordStatus"] as! String
+                    }
+                    if dict.keys.contains("Launcher") {
+                        self.launcher = dict["Launcher"] as! String
                     }
                     if dict.keys.contains("Output") {
                         self.output = dict["Output"] as! String
@@ -59775,6 +59783,8 @@ public class DescribeInvocationsResponseBody : Tea.TeaModel {
 
             public var invokeStatus: String?
 
+            public var launcher: String?
+
             public var parameters: String?
 
             public var repeatMode: String?
@@ -59846,6 +59856,9 @@ public class DescribeInvocationsResponseBody : Tea.TeaModel {
                 if self.invokeStatus != nil {
                     map["InvokeStatus"] = self.invokeStatus!
                 }
+                if self.launcher != nil {
+                    map["Launcher"] = self.launcher!
+                }
                 if self.parameters != nil {
                     map["Parameters"] = self.parameters!
                 }
@@ -59914,6 +59927,9 @@ public class DescribeInvocationsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("InvokeStatus") {
                     self.invokeStatus = dict["InvokeStatus"] as! String
+                }
+                if dict.keys.contains("Launcher") {
+                    self.launcher = dict["Launcher"] as! String
                 }
                 if dict.keys.contains("Parameters") {
                     self.parameters = dict["Parameters"] as! String
@@ -89216,6 +89232,8 @@ public class InvokeCommandRequest : Tea.TeaModel {
 
     public var instanceId: [String]?
 
+    public var launcher: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -89277,6 +89295,9 @@ public class InvokeCommandRequest : Tea.TeaModel {
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
+        }
+        if self.launcher != nil {
+            map["Launcher"] = self.launcher!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -89352,6 +89373,9 @@ public class InvokeCommandRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! [String]
+        }
+        if dict.keys.contains("Launcher") {
+            self.launcher = dict["Launcher"] as! String
         }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
@@ -89504,6 +89528,8 @@ public class InvokeCommandShrinkRequest : Tea.TeaModel {
 
     public var instanceId: [String]?
 
+    public var launcher: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -89565,6 +89591,9 @@ public class InvokeCommandShrinkRequest : Tea.TeaModel {
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
+        }
+        if self.launcher != nil {
+            map["Launcher"] = self.launcher!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -89640,6 +89669,9 @@ public class InvokeCommandShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! [String]
+        }
+        if dict.keys.contains("Launcher") {
+            self.launcher = dict["Launcher"] as! String
         }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
@@ -110690,6 +110722,8 @@ public class RunCommandRequest : Tea.TeaModel {
 
     public var keepCommand: Bool?
 
+    public var launcher: String?
+
     public var name: String?
 
     public var ownerAccount: String?
@@ -110769,6 +110803,9 @@ public class RunCommandRequest : Tea.TeaModel {
         }
         if self.keepCommand != nil {
             map["KeepCommand"] = self.keepCommand!
+        }
+        if self.launcher != nil {
+            map["Launcher"] = self.launcher!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -110865,6 +110902,9 @@ public class RunCommandRequest : Tea.TeaModel {
         }
         if dict.keys.contains("KeepCommand") {
             self.keepCommand = dict["KeepCommand"] as! Bool
+        }
+        if dict.keys.contains("Launcher") {
+            self.launcher = dict["Launcher"] as! String
         }
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
@@ -111034,6 +111074,8 @@ public class RunCommandShrinkRequest : Tea.TeaModel {
 
     public var keepCommand: Bool?
 
+    public var launcher: String?
+
     public var name: String?
 
     public var ownerAccount: String?
@@ -111113,6 +111155,9 @@ public class RunCommandShrinkRequest : Tea.TeaModel {
         }
         if self.keepCommand != nil {
             map["KeepCommand"] = self.keepCommand!
+        }
+        if self.launcher != nil {
+            map["Launcher"] = self.launcher!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -111209,6 +111254,9 @@ public class RunCommandShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("KeepCommand") {
             self.keepCommand = dict["KeepCommand"] as! Bool
+        }
+        if dict.keys.contains("Launcher") {
+            self.launcher = dict["Launcher"] as! String
         }
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
