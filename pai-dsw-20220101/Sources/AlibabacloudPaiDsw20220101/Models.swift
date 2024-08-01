@@ -5,6 +5,238 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class CredentialConfig : Tea.TeaModel {
+    public class Configs : Tea.TeaModel {
+        public class Roles : Tea.TeaModel {
+            public class UserInfo : Tea.TeaModel {
+                public var accessKeyId: String?
+
+                public var id: String?
+
+                public var securityToken: String?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.accessKeyId != nil {
+                        map["AccessKeyId"] = self.accessKeyId!
+                    }
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.securityToken != nil {
+                        map["SecurityToken"] = self.securityToken!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AccessKeyId") {
+                        self.accessKeyId = dict["AccessKeyId"] as! String
+                    }
+                    if dict.keys.contains("Id") {
+                        self.id = dict["Id"] as! String
+                    }
+                    if dict.keys.contains("SecurityToken") {
+                        self.securityToken = dict["SecurityToken"] as! String
+                    }
+                    if dict.keys.contains("Type") {
+                        self.type = dict["Type"] as! String
+                    }
+                }
+            }
+            public var assumeRoleFor: String?
+
+            public var policy: String?
+
+            public var roleArn: String?
+
+            public var roleType: String?
+
+            public var userInfo: CredentialConfig.Configs.Roles.UserInfo?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.userInfo?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.assumeRoleFor != nil {
+                    map["AssumeRoleFor"] = self.assumeRoleFor!
+                }
+                if self.policy != nil {
+                    map["Policy"] = self.policy!
+                }
+                if self.roleArn != nil {
+                    map["RoleArn"] = self.roleArn!
+                }
+                if self.roleType != nil {
+                    map["RoleType"] = self.roleType!
+                }
+                if self.userInfo != nil {
+                    map["UserInfo"] = self.userInfo?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AssumeRoleFor") {
+                    self.assumeRoleFor = dict["AssumeRoleFor"] as! String
+                }
+                if dict.keys.contains("Policy") {
+                    self.policy = dict["Policy"] as! String
+                }
+                if dict.keys.contains("RoleArn") {
+                    self.roleArn = dict["RoleArn"] as! String
+                }
+                if dict.keys.contains("RoleType") {
+                    self.roleType = dict["RoleType"] as! String
+                }
+                if dict.keys.contains("UserInfo") {
+                    var model = CredentialConfig.Configs.Roles.UserInfo()
+                    model.fromMap(dict["UserInfo"] as! [String: Any])
+                    self.userInfo = model
+                }
+            }
+        }
+        public var key: String?
+
+        public var roles: [CredentialConfig.Configs.Roles]?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.roles != nil {
+                var tmp : [Any] = []
+                for k in self.roles! {
+                    tmp.append(k.toMap())
+                }
+                map["Roles"] = tmp
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Roles") {
+                var tmp : [CredentialConfig.Configs.Roles] = []
+                for v in dict["Roles"] as! [Any] {
+                    var model = CredentialConfig.Configs.Roles()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.roles = tmp
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+        }
+    }
+    public var aliyunEnvRoleKey: String?
+
+    public var configs: [CredentialConfig.Configs]?
+
+    public var enable: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.aliyunEnvRoleKey != nil {
+            map["AliyunEnvRoleKey"] = self.aliyunEnvRoleKey!
+        }
+        if self.configs != nil {
+            var tmp : [Any] = []
+            for k in self.configs! {
+                tmp.append(k.toMap())
+            }
+            map["Configs"] = tmp
+        }
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AliyunEnvRoleKey") {
+            self.aliyunEnvRoleKey = dict["AliyunEnvRoleKey"] as! String
+        }
+        if dict.keys.contains("Configs") {
+            var tmp : [CredentialConfig.Configs] = []
+            for v in dict["Configs"] as! [Any] {
+                var model = CredentialConfig.Configs()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.configs = tmp
+        }
+        if dict.keys.contains("Enable") {
+            self.enable = dict["Enable"] as! Bool
+        }
+    }
+}
+
 public class DemoCategory : Tea.TeaModel {
     public var categoryCode: String?
 
@@ -929,6 +1161,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public var cloudDisks: [CreateInstanceRequest.CloudDisks]?
 
+    public var credentialConfig: CredentialConfig?
+
     public var datasets: [CreateInstanceRequest.Datasets]?
 
     public var driver: String?
@@ -972,6 +1206,7 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.affinity?.validate()
+        try self.credentialConfig?.validate()
         try self.requestedResource?.validate()
         try self.userVpc?.validate()
     }
@@ -990,6 +1225,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["CloudDisks"] = tmp
+        }
+        if self.credentialConfig != nil {
+            map["CredentialConfig"] = self.credentialConfig?.toMap()
         }
         if self.datasets != nil {
             var tmp : [Any] = []
@@ -1069,6 +1307,11 @@ public class CreateInstanceRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.cloudDisks = tmp
+        }
+        if dict.keys.contains("CredentialConfig") {
+            var model = CredentialConfig()
+            model.fromMap(dict["CredentialConfig"] as! [String: Any])
+            self.credentialConfig = model
         }
         if dict.keys.contains("Datasets") {
             var tmp : [CreateInstanceRequest.Datasets] = []
@@ -8444,7 +8687,11 @@ public class UpdateInstanceRequest : Tea.TeaModel {
 
     public var cloudDisks: [UpdateInstanceRequest.CloudDisks]?
 
+    public var credentialConfig: CredentialConfig?
+
     public var datasets: [UpdateInstanceRequest.Datasets]?
+
+    public var disassociateCredential: Bool?
 
     public var disassociateDatasets: Bool?
 
@@ -8487,6 +8734,7 @@ public class UpdateInstanceRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.affinity?.validate()
+        try self.credentialConfig?.validate()
         try self.requestedResource?.validate()
         try self.userVpc?.validate()
     }
@@ -8506,12 +8754,18 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             }
             map["CloudDisks"] = tmp
         }
+        if self.credentialConfig != nil {
+            map["CredentialConfig"] = self.credentialConfig?.toMap()
+        }
         if self.datasets != nil {
             var tmp : [Any] = []
             for k in self.datasets! {
                 tmp.append(k.toMap())
             }
             map["Datasets"] = tmp
+        }
+        if self.disassociateCredential != nil {
+            map["DisassociateCredential"] = self.disassociateCredential!
         }
         if self.disassociateDatasets != nil {
             map["DisassociateDatasets"] = self.disassociateDatasets!
@@ -8581,6 +8835,11 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             }
             self.cloudDisks = tmp
         }
+        if dict.keys.contains("CredentialConfig") {
+            var model = CredentialConfig()
+            model.fromMap(dict["CredentialConfig"] as! [String: Any])
+            self.credentialConfig = model
+        }
         if dict.keys.contains("Datasets") {
             var tmp : [UpdateInstanceRequest.Datasets] = []
             for v in dict["Datasets"] as! [Any] {
@@ -8591,6 +8850,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.datasets = tmp
+        }
+        if dict.keys.contains("DisassociateCredential") {
+            self.disassociateCredential = dict["DisassociateCredential"] as! Bool
         }
         if dict.keys.contains("DisassociateDatasets") {
             self.disassociateDatasets = dict["DisassociateDatasets"] as! Bool

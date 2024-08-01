@@ -75,6 +75,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.cloudDisks)) {
             body["CloudDisks"] = request.cloudDisks ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.credentialConfig)) {
+            body["CredentialConfig"] = request.credentialConfig!;
+        }
         if (!TeaUtils.Client.isUnset(request.datasets)) {
             body["Datasets"] = request.datasets ?? [];
         }
@@ -1037,8 +1040,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.cloudDisks)) {
             body["CloudDisks"] = request.cloudDisks ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.credentialConfig)) {
+            body["CredentialConfig"] = request.credentialConfig!;
+        }
         if (!TeaUtils.Client.isUnset(request.datasets)) {
             body["Datasets"] = request.datasets ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.disassociateCredential)) {
+            body["DisassociateCredential"] = request.disassociateCredential!;
         }
         if (!TeaUtils.Client.isUnset(request.disassociateDatasets)) {
             body["DisassociateDatasets"] = request.disassociateDatasets!;
