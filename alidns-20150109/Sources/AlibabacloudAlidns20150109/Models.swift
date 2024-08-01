@@ -4638,6 +4638,8 @@ public class CreatePdnsAppKeyResponse : Tea.TeaModel {
 public class CreatePdnsUdpIpSegmentRequest : Tea.TeaModel {
     public var ip: String?
 
+    public var ipToken: String?
+
     public var lang: String?
 
     public var name: String?
@@ -4659,6 +4661,9 @@ public class CreatePdnsUdpIpSegmentRequest : Tea.TeaModel {
         if self.ip != nil {
             map["Ip"] = self.ip!
         }
+        if self.ipToken != nil {
+            map["IpToken"] = self.ipToken!
+        }
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
@@ -4671,6 +4676,9 @@ public class CreatePdnsUdpIpSegmentRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Ip") {
             self.ip = dict["Ip"] as! String
+        }
+        if dict.keys.contains("IpToken") {
+            self.ipToken = dict["IpToken"] as! String
         }
         if dict.keys.contains("Lang") {
             self.lang = dict["Lang"] as! String
@@ -53801,6 +53809,8 @@ public class ValidateDnsGtmCnameRrCanUseResponse : Tea.TeaModel {
 public class ValidatePdnsUdpIpSegmentRequest : Tea.TeaModel {
     public var ip: String?
 
+    public var ipToken: String?
+
     public var lang: String?
 
     public override init() {
@@ -53820,6 +53830,9 @@ public class ValidatePdnsUdpIpSegmentRequest : Tea.TeaModel {
         if self.ip != nil {
             map["Ip"] = self.ip!
         }
+        if self.ipToken != nil {
+            map["IpToken"] = self.ipToken!
+        }
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
@@ -53829,6 +53842,9 @@ public class ValidatePdnsUdpIpSegmentRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Ip") {
             self.ip = dict["Ip"] as! String
+        }
+        if dict.keys.contains("IpToken") {
+            self.ipToken = dict["IpToken"] as! String
         }
         if dict.keys.contains("Lang") {
             self.lang = dict["Lang"] as! String

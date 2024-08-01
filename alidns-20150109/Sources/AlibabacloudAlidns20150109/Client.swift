@@ -1124,6 +1124,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ip)) {
             query["Ip"] = request.ip ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.ipToken)) {
+            query["IpToken"] = request.ipToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
         }
@@ -8920,6 +8923,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.ip)) {
             query["Ip"] = request.ip ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ipToken)) {
+            query["IpToken"] = request.ipToken ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
