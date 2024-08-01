@@ -30904,6 +30904,364 @@ public class ListDynamicImageJobsResponse : Tea.TeaModel {
     }
 }
 
+public class ListEditingProjectsRequest : Tea.TeaModel {
+    public var createSource: String?
+
+    public var endTime: String?
+
+    public var keyword: String?
+
+    public var maxResults: String?
+
+    public var nextToken: String?
+
+    public var projectType: String?
+
+    public var sortBy: String?
+
+    public var startTime: String?
+
+    public var status: String?
+
+    public var templateType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.createSource != nil {
+            map["CreateSource"] = self.createSource!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.keyword != nil {
+            map["Keyword"] = self.keyword!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.projectType != nil {
+            map["ProjectType"] = self.projectType!
+        }
+        if self.sortBy != nil {
+            map["SortBy"] = self.sortBy!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.templateType != nil {
+            map["TemplateType"] = self.templateType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CreateSource") {
+            self.createSource = dict["CreateSource"] as! String
+        }
+        if dict.keys.contains("EndTime") {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("Keyword") {
+            self.keyword = dict["Keyword"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! String
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("ProjectType") {
+            self.projectType = dict["ProjectType"] as! String
+        }
+        if dict.keys.contains("SortBy") {
+            self.sortBy = dict["SortBy"] as! String
+        }
+        if dict.keys.contains("StartTime") {
+            self.startTime = dict["StartTime"] as! String
+        }
+        if dict.keys.contains("Status") {
+            self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("TemplateType") {
+            self.templateType = dict["TemplateType"] as! String
+        }
+    }
+}
+
+public class ListEditingProjectsResponseBody : Tea.TeaModel {
+    public class ProjectList : Tea.TeaModel {
+        public var businessConfig: String?
+
+        public var businessStatus: String?
+
+        public var coverURL: String?
+
+        public var createSource: String?
+
+        public var createTime: String?
+
+        public var description_: String?
+
+        public var errorCode: String?
+
+        public var errorMessage: String?
+
+        public var modifiedSource: String?
+
+        public var modifiedTime: String?
+
+        public var projectId: String?
+
+        public var projectType: String?
+
+        public var status: String?
+
+        public var templateType: String?
+
+        public var title: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.businessConfig != nil {
+                map["BusinessConfig"] = self.businessConfig!
+            }
+            if self.businessStatus != nil {
+                map["BusinessStatus"] = self.businessStatus!
+            }
+            if self.coverURL != nil {
+                map["CoverURL"] = self.coverURL!
+            }
+            if self.createSource != nil {
+                map["CreateSource"] = self.createSource!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.errorCode != nil {
+                map["ErrorCode"] = self.errorCode!
+            }
+            if self.errorMessage != nil {
+                map["ErrorMessage"] = self.errorMessage!
+            }
+            if self.modifiedSource != nil {
+                map["ModifiedSource"] = self.modifiedSource!
+            }
+            if self.modifiedTime != nil {
+                map["ModifiedTime"] = self.modifiedTime!
+            }
+            if self.projectId != nil {
+                map["ProjectId"] = self.projectId!
+            }
+            if self.projectType != nil {
+                map["ProjectType"] = self.projectType!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.templateType != nil {
+                map["TemplateType"] = self.templateType!
+            }
+            if self.title != nil {
+                map["Title"] = self.title!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BusinessConfig") {
+                self.businessConfig = dict["BusinessConfig"] as! String
+            }
+            if dict.keys.contains("BusinessStatus") {
+                self.businessStatus = dict["BusinessStatus"] as! String
+            }
+            if dict.keys.contains("CoverURL") {
+                self.coverURL = dict["CoverURL"] as! String
+            }
+            if dict.keys.contains("CreateSource") {
+                self.createSource = dict["CreateSource"] as! String
+            }
+            if dict.keys.contains("CreateTime") {
+                self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("ErrorCode") {
+                self.errorCode = dict["ErrorCode"] as! String
+            }
+            if dict.keys.contains("ErrorMessage") {
+                self.errorMessage = dict["ErrorMessage"] as! String
+            }
+            if dict.keys.contains("ModifiedSource") {
+                self.modifiedSource = dict["ModifiedSource"] as! String
+            }
+            if dict.keys.contains("ModifiedTime") {
+                self.modifiedTime = dict["ModifiedTime"] as! String
+            }
+            if dict.keys.contains("ProjectId") {
+                self.projectId = dict["ProjectId"] as! String
+            }
+            if dict.keys.contains("ProjectType") {
+                self.projectType = dict["ProjectType"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("TemplateType") {
+                self.templateType = dict["TemplateType"] as! String
+            }
+            if dict.keys.contains("Title") {
+                self.title = dict["Title"] as! String
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var projectList: [ListEditingProjectsResponseBody.ProjectList]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.projectList != nil {
+            var tmp : [Any] = []
+            for k in self.projectList! {
+                tmp.append(k.toMap())
+            }
+            map["ProjectList"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("ProjectList") {
+            var tmp : [ListEditingProjectsResponseBody.ProjectList] = []
+            for v in dict["ProjectList"] as! [Any] {
+                var model = ListEditingProjectsResponseBody.ProjectList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.projectList = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ListEditingProjectsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListEditingProjectsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListEditingProjectsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListLiveRecordFilesRequest : Tea.TeaModel {
     public var endTime: String?
 
