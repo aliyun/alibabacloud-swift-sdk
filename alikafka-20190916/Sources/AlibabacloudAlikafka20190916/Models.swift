@@ -12442,6 +12442,8 @@ public class UpgradePrePayOrderResponseBody : Tea.TeaModel {
 
     public var message: String?
 
+    public var orderId: String?
+
     public var requestId: String?
 
     public var success: Bool?
@@ -12466,6 +12468,9 @@ public class UpgradePrePayOrderResponseBody : Tea.TeaModel {
         if self.message != nil {
             map["Message"] = self.message!
         }
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -12481,6 +12486,9 @@ public class UpgradePrePayOrderResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("OrderId") {
+            self.orderId = dict["OrderId"] as! String
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
