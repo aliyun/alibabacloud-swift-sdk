@@ -21272,6 +21272,8 @@ public class ExportInsightWorkitemStatusResponseBody : Tea.TeaModel {
 
         public var projectId: String?
 
+        public var serialNumber: Int32?
+
         public var source: String?
 
         public var sprintId: String?
@@ -21371,6 +21373,9 @@ public class ExportInsightWorkitemStatusResponseBody : Tea.TeaModel {
             }
             if self.projectId != nil {
                 map["projectId"] = self.projectId!
+            }
+            if self.serialNumber != nil {
+                map["serialNumber"] = self.serialNumber!
             }
             if self.source != nil {
                 map["source"] = self.source!
@@ -21474,6 +21479,9 @@ public class ExportInsightWorkitemStatusResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("projectId") {
                 self.projectId = dict["projectId"] as! String
+            }
+            if dict.keys.contains("serialNumber") {
+                self.serialNumber = dict["serialNumber"] as! Int32
             }
             if dict.keys.contains("source") {
                 self.source = dict["source"] as! String
@@ -21738,6 +21746,8 @@ public class ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponseBody : Te
 
         public var reopenNum: Int32?
 
+        public var serialNumber: Int32?
+
         public var seriousLevel: Int32?
 
         public var solution: String?
@@ -21861,6 +21871,9 @@ public class ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponseBody : Te
             }
             if self.reopenNum != nil {
                 map["reopenNum"] = self.reopenNum!
+            }
+            if self.serialNumber != nil {
+                map["serialNumber"] = self.serialNumber!
             }
             if self.seriousLevel != nil {
                 map["seriousLevel"] = self.seriousLevel!
@@ -21991,6 +22004,9 @@ public class ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponseBody : Te
             }
             if dict.keys.contains("reopenNum") {
                 self.reopenNum = dict["reopenNum"] as! Int32
+            }
+            if dict.keys.contains("serialNumber") {
+                self.serialNumber = dict["serialNumber"] as! Int32
             }
             if dict.keys.contains("seriousLevel") {
                 self.seriousLevel = dict["seriousLevel"] as! Int32
