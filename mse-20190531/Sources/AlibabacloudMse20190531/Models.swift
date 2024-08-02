@@ -7978,6 +7978,8 @@ public class BindSentinelBlockFallbackDefinitionResponse : Tea.TeaModel {
 public class CloneNacosConfigRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
+    public var dataIds: String?
+
     public var ids: String?
 
     public var instanceId: String?
@@ -8005,6 +8007,9 @@ public class CloneNacosConfigRequest : Tea.TeaModel {
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
         }
+        if self.dataIds != nil {
+            map["DataIds"] = self.dataIds!
+        }
         if self.ids != nil {
             map["Ids"] = self.ids!
         }
@@ -8026,6 +8031,9 @@ public class CloneNacosConfigRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AcceptLanguage") {
             self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("DataIds") {
+            self.dataIds = dict["DataIds"] as! String
         }
         if dict.keys.contains("Ids") {
             self.ids = dict["Ids"] as! String
@@ -8052,6 +8060,8 @@ public class CloneNacosConfigResponseBody : Tea.TeaModel {
 
             public var group: String?
 
+            public var reason: String?
+
             public override init() {
                 super.init()
             }
@@ -8072,6 +8082,9 @@ public class CloneNacosConfigResponseBody : Tea.TeaModel {
                 if self.group != nil {
                     map["Group"] = self.group!
                 }
+                if self.reason != nil {
+                    map["Reason"] = self.reason!
+                }
                 return map
             }
 
@@ -8081,6 +8094,9 @@ public class CloneNacosConfigResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Group") {
                     self.group = dict["Group"] as! String
+                }
+                if dict.keys.contains("Reason") {
+                    self.reason = dict["Reason"] as! String
                 }
             }
         }
@@ -21394,6 +21410,578 @@ public class FetchLosslessRuleListResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = FetchLosslessRuleListResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GatewayBlackWhiteListRequest : Tea.TeaModel {
+    public class FilterParams : Tea.TeaModel {
+        public var gatewayId: Int64?
+
+        public var gatewayUniqueId: String?
+
+        public var isWhite: Bool?
+
+        public var resourceType: String?
+
+        public var searchContent: String?
+
+        public var searchType: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.gatewayId != nil {
+                map["GatewayId"] = self.gatewayId!
+            }
+            if self.gatewayUniqueId != nil {
+                map["GatewayUniqueId"] = self.gatewayUniqueId!
+            }
+            if self.isWhite != nil {
+                map["IsWhite"] = self.isWhite!
+            }
+            if self.resourceType != nil {
+                map["ResourceType"] = self.resourceType!
+            }
+            if self.searchContent != nil {
+                map["SearchContent"] = self.searchContent!
+            }
+            if self.searchType != nil {
+                map["SearchType"] = self.searchType!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("GatewayId") {
+                self.gatewayId = dict["GatewayId"] as! Int64
+            }
+            if dict.keys.contains("GatewayUniqueId") {
+                self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+            }
+            if dict.keys.contains("IsWhite") {
+                self.isWhite = dict["IsWhite"] as! Bool
+            }
+            if dict.keys.contains("ResourceType") {
+                self.resourceType = dict["ResourceType"] as! String
+            }
+            if dict.keys.contains("SearchContent") {
+                self.searchContent = dict["SearchContent"] as! String
+            }
+            if dict.keys.contains("SearchType") {
+                self.searchType = dict["SearchType"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+        }
+    }
+    public var acceptLanguage: String?
+
+    public var descSort: Bool?
+
+    public var filterParams: GatewayBlackWhiteListRequest.FilterParams?
+
+    public var orderItem: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.filterParams?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.descSort != nil {
+            map["DescSort"] = self.descSort!
+        }
+        if self.filterParams != nil {
+            map["FilterParams"] = self.filterParams?.toMap()
+        }
+        if self.orderItem != nil {
+            map["OrderItem"] = self.orderItem!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("DescSort") {
+            self.descSort = dict["DescSort"] as! Bool
+        }
+        if dict.keys.contains("FilterParams") {
+            var model = GatewayBlackWhiteListRequest.FilterParams()
+            model.fromMap(dict["FilterParams"] as! [String: Any])
+            self.filterParams = model
+        }
+        if dict.keys.contains("OrderItem") {
+            self.orderItem = dict["OrderItem"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+    }
+}
+
+public class GatewayBlackWhiteListShrinkRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var descSort: Bool?
+
+    public var filterParamsShrink: String?
+
+    public var orderItem: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.descSort != nil {
+            map["DescSort"] = self.descSort!
+        }
+        if self.filterParamsShrink != nil {
+            map["FilterParams"] = self.filterParamsShrink!
+        }
+        if self.orderItem != nil {
+            map["OrderItem"] = self.orderItem!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("DescSort") {
+            self.descSort = dict["DescSort"] as! Bool
+        }
+        if dict.keys.contains("FilterParams") {
+            self.filterParamsShrink = dict["FilterParams"] as! String
+        }
+        if dict.keys.contains("OrderItem") {
+            self.orderItem = dict["OrderItem"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+    }
+}
+
+public class GatewayBlackWhiteListResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Result : Tea.TeaModel {
+            public var content: String?
+
+            public var gatewayId: Int64?
+
+            public var gatewayUniqueId: String?
+
+            public var gmtCreate: String?
+
+            public var gmtModified: String?
+
+            public var id: Int64?
+
+            public var isWhite: Bool?
+
+            public var name: String?
+
+            public var note: String?
+
+            public var resourceId: Int64?
+
+            public var resourceIdJsonList: String?
+
+            public var resourceIdNameJson: String?
+
+            public var resourceType: String?
+
+            public var status: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.content != nil {
+                    map["Content"] = self.content!
+                }
+                if self.gatewayId != nil {
+                    map["GatewayId"] = self.gatewayId!
+                }
+                if self.gatewayUniqueId != nil {
+                    map["GatewayUniqueId"] = self.gatewayUniqueId!
+                }
+                if self.gmtCreate != nil {
+                    map["GmtCreate"] = self.gmtCreate!
+                }
+                if self.gmtModified != nil {
+                    map["GmtModified"] = self.gmtModified!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.isWhite != nil {
+                    map["IsWhite"] = self.isWhite!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.note != nil {
+                    map["Note"] = self.note!
+                }
+                if self.resourceId != nil {
+                    map["ResourceId"] = self.resourceId!
+                }
+                if self.resourceIdJsonList != nil {
+                    map["ResourceIdJsonList"] = self.resourceIdJsonList!
+                }
+                if self.resourceIdNameJson != nil {
+                    map["ResourceIdNameJson"] = self.resourceIdNameJson!
+                }
+                if self.resourceType != nil {
+                    map["ResourceType"] = self.resourceType!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Content") {
+                    self.content = dict["Content"] as! String
+                }
+                if dict.keys.contains("GatewayId") {
+                    self.gatewayId = dict["GatewayId"] as! Int64
+                }
+                if dict.keys.contains("GatewayUniqueId") {
+                    self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+                }
+                if dict.keys.contains("GmtCreate") {
+                    self.gmtCreate = dict["GmtCreate"] as! String
+                }
+                if dict.keys.contains("GmtModified") {
+                    self.gmtModified = dict["GmtModified"] as! String
+                }
+                if dict.keys.contains("Id") {
+                    self.id = dict["Id"] as! Int64
+                }
+                if dict.keys.contains("IsWhite") {
+                    self.isWhite = dict["IsWhite"] as! Bool
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("Note") {
+                    self.note = dict["Note"] as! String
+                }
+                if dict.keys.contains("ResourceId") {
+                    self.resourceId = dict["ResourceId"] as! Int64
+                }
+                if dict.keys.contains("ResourceIdJsonList") {
+                    self.resourceIdJsonList = dict["ResourceIdJsonList"] as! String
+                }
+                if dict.keys.contains("ResourceIdNameJson") {
+                    self.resourceIdNameJson = dict["ResourceIdNameJson"] as! String
+                }
+                if dict.keys.contains("ResourceType") {
+                    self.resourceType = dict["ResourceType"] as! String
+                }
+                if dict.keys.contains("Status") {
+                    self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+            }
+        }
+        public var pageNumber: Int32?
+
+        public var pageSize: Int32?
+
+        public var result: [GatewayBlackWhiteListResponseBody.Data.Result]?
+
+        public var totalSize: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.pageNumber != nil {
+                map["PageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.result != nil {
+                var tmp : [Any] = []
+                for k in self.result! {
+                    tmp.append(k.toMap())
+                }
+                map["Result"] = tmp
+            }
+            if self.totalSize != nil {
+                map["TotalSize"] = self.totalSize!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("PageNumber") {
+                self.pageNumber = dict["PageNumber"] as! Int32
+            }
+            if dict.keys.contains("PageSize") {
+                self.pageSize = dict["PageSize"] as! Int32
+            }
+            if dict.keys.contains("Result") {
+                var tmp : [GatewayBlackWhiteListResponseBody.Data.Result] = []
+                for v in dict["Result"] as! [Any] {
+                    var model = GatewayBlackWhiteListResponseBody.Data.Result()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.result = tmp
+            }
+            if dict.keys.contains("TotalSize") {
+                self.totalSize = dict["TotalSize"] as! Int32
+            }
+        }
+    }
+    public var code: Int32?
+
+    public var data: GatewayBlackWhiteListResponseBody.Data?
+
+    public var dynamicCode: String?
+
+    public var dynamicMessage: String?
+
+    public var errorCode: String?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.dynamicCode != nil {
+            map["DynamicCode"] = self.dynamicCode!
+        }
+        if self.dynamicMessage != nil {
+            map["DynamicMessage"] = self.dynamicMessage!
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Data") {
+            var model = GatewayBlackWhiteListResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("DynamicCode") {
+            self.dynamicCode = dict["DynamicCode"] as! String
+        }
+        if dict.keys.contains("DynamicMessage") {
+            self.dynamicMessage = dict["DynamicMessage"] as! String
+        }
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class GatewayBlackWhiteListResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GatewayBlackWhiteListResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GatewayBlackWhiteListResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

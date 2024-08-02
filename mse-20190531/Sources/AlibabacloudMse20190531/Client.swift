@@ -1161,6 +1161,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
             query["AcceptLanguage"] = request.acceptLanguage ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.dataIds)) {
+            query["DataIds"] = request.dataIds ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ids)) {
             query["Ids"] = request.ids ?? "";
         }
@@ -3699,6 +3702,57 @@ open class Client : AlibabacloudOpenApi.Client {
     public func fetchLosslessRuleList(_ request: FetchLosslessRuleListRequest) async throws -> FetchLosslessRuleListResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await fetchLosslessRuleListWithOptions(request as! FetchLosslessRuleListRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func gatewayBlackWhiteListWithOptions(_ tmpReq: GatewayBlackWhiteListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GatewayBlackWhiteListResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GatewayBlackWhiteListShrinkRequest = GatewayBlackWhiteListShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.filterParams)) {
+            request.filterParamsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.filterParams, "FilterParams", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.descSort)) {
+            query["DescSort"] = request.descSort!;
+        }
+        if (!TeaUtils.Client.isUnset(request.filterParamsShrink)) {
+            query["FilterParams"] = request.filterParamsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderItem)) {
+            query["OrderItem"] = request.orderItem ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GatewayBlackWhiteList",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GatewayBlackWhiteListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func gatewayBlackWhiteList(_ request: GatewayBlackWhiteListRequest) async throws -> GatewayBlackWhiteListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await gatewayBlackWhiteListWithOptions(request as! GatewayBlackWhiteListRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
