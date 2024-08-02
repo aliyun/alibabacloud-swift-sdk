@@ -4962,9 +4962,24 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateContactGroupForAlertWithOptions(_ ClusterId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateContactGroupForAlertResponse {
+    public func updateContactGroupForAlertWithOptions(_ ClusterId: String, _ request: UpdateContactGroupForAlertRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateContactGroupForAlertResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.alertRuleGroupName)) {
+            body["alert_rule_group_name"] = request.alertRuleGroupName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contactGroupIds)) {
+            body["contact_group_ids"] = request.contactGroupIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.crName)) {
+            body["cr_name"] = request.crName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.namespace)) {
+            body["namespace"] = request.namespace ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "UpdateContactGroupForAlert",
@@ -4975,17 +4990,17 @@ open class Client : AlibabacloudOpenApi.Client {
             "authType": "AK",
             "style": "ROA",
             "reqBodyType": "json",
-            "bodyType": "none"
+            "bodyType": "json"
         ])
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
         return Tea.TeaConverter.fromMap(UpdateContactGroupForAlertResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateContactGroupForAlert(_ ClusterId: String) async throws -> UpdateContactGroupForAlertResponse {
+    public func updateContactGroupForAlert(_ ClusterId: String, _ request: UpdateContactGroupForAlertRequest) async throws -> UpdateContactGroupForAlertResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await updateContactGroupForAlertWithOptions(ClusterId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await updateContactGroupForAlertWithOptions(ClusterId as! String, request as! UpdateContactGroupForAlertRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
