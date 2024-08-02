@@ -237,15 +237,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.appInstanceGroupId)) {
             body["AppInstanceGroupId"] = request.appInstanceGroupId ?? "";
         }
+        var bodyFlat: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.authorizeUserIds)) {
-            body["AuthorizeUserIds"] = request.authorizeUserIds ?? [];
+            bodyFlat["AuthorizeUserIds"] = request.authorizeUserIds ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.productType)) {
             body["ProductType"] = request.productType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.unAuthorizeUserIds)) {
-            body["UnAuthorizeUserIds"] = request.unAuthorizeUserIds ?? [];
+            bodyFlat["UnAuthorizeUserIds"] = request.unAuthorizeUserIds ?? [];
         }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
@@ -1383,6 +1385,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listRegionsWithOptions(_ request: ListRegionsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListRegionsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizSource)) {
+            query["BizSource"] = request.bizSource ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.productType)) {
             query["ProductType"] = request.productType ?? "";
         }

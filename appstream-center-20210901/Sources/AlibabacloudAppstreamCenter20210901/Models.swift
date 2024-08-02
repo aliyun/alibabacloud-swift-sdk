@@ -9135,6 +9135,8 @@ public class ListProjectsResponse : Tea.TeaModel {
 }
 
 public class ListRegionsRequest : Tea.TeaModel {
+    public var bizSource: String?
+
     public var productType: String?
 
     public override init() {
@@ -9151,6 +9153,9 @@ public class ListRegionsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bizSource != nil {
+            map["BizSource"] = self.bizSource!
+        }
         if self.productType != nil {
             map["ProductType"] = self.productType!
         }
@@ -9158,6 +9163,9 @@ public class ListRegionsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BizSource") {
+            self.bizSource = dict["BizSource"] as! String
+        }
         if dict.keys.contains("ProductType") {
             self.productType = dict["ProductType"] as! String
         }
