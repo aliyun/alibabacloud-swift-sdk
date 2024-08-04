@@ -847,6 +847,8 @@ public class CancelUpsertCollectionDataJobRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -882,6 +884,9 @@ public class CancelUpsertCollectionDataJobRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -906,6 +911,9 @@ public class CancelUpsertCollectionDataJobRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
         }
     }
 }
@@ -1749,6 +1757,8 @@ public class CreateCollectionRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -1808,6 +1818,9 @@ public class CreateCollectionRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -1856,6 +1869,9 @@ public class CreateCollectionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
         }
     }
 }
@@ -3723,6 +3739,8 @@ public class CreateNamespaceRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -3758,6 +3776,9 @@ public class CreateNamespaceRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -3782,6 +3803,9 @@ public class CreateNamespaceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
         }
     }
 }
@@ -5359,6 +5383,8 @@ public class DeleteCollectionRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -5391,6 +5417,9 @@ public class DeleteCollectionRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -5412,6 +5441,9 @@ public class DeleteCollectionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
         }
     }
 }
@@ -5528,6 +5560,8 @@ public class DeleteCollectionDataRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -5566,6 +5600,9 @@ public class DeleteCollectionDataRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -5593,6 +5630,9 @@ public class DeleteCollectionDataRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
         }
     }
 }
@@ -6974,6 +7014,8 @@ public class DeleteNamespaceRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -7006,6 +7048,9 @@ public class DeleteNamespaceRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -7027,6 +7072,9 @@ public class DeleteNamespaceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
         }
     }
 }
@@ -8981,6 +9029,8 @@ public class DescribeCollectionRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -9013,6 +9063,9 @@ public class DescribeCollectionRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -9034,6 +9087,9 @@ public class DescribeCollectionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
         }
     }
 }
@@ -20014,6 +20070,8 @@ public class DescribeNamespaceRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -20046,6 +20104,9 @@ public class DescribeNamespaceRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -20067,6 +20128,9 @@ public class DescribeNamespaceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
         }
     }
 }
@@ -26700,6 +26764,8 @@ public class GetUpsertCollectionDataJobRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -26735,6 +26801,9 @@ public class GetUpsertCollectionDataJobRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -26759,6 +26828,9 @@ public class GetUpsertCollectionDataJobRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
         }
     }
 }
@@ -27344,6 +27416,8 @@ public class InitVectorDatabaseRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -27373,6 +27447,9 @@ public class InitVectorDatabaseRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -27391,6 +27468,9 @@ public class InitVectorDatabaseRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
         }
     }
 }
@@ -27501,6 +27581,8 @@ public class ListCollectionsRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -27530,6 +27612,9 @@ public class ListCollectionsRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -27548,6 +27633,9 @@ public class ListCollectionsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
         }
     }
 }
@@ -29333,6 +29421,8 @@ public class ListNamespacesRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -29362,6 +29452,9 @@ public class ListNamespacesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -29380,6 +29473,9 @@ public class ListNamespacesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
         }
     }
 }
@@ -35102,6 +35198,8 @@ public class QueryCollectionDataRequest : Tea.TeaModel {
 
     public var vector: [Double]?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -35167,6 +35265,9 @@ public class QueryCollectionDataRequest : Tea.TeaModel {
         if self.vector != nil {
             map["Vector"] = self.vector!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -35222,6 +35323,9 @@ public class QueryCollectionDataRequest : Tea.TeaModel {
         if dict.keys.contains("Vector") {
             self.vector = dict["Vector"] as! [Double]
         }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
+        }
     }
 }
 
@@ -35259,6 +35363,8 @@ public class QueryCollectionDataShrinkRequest : Tea.TeaModel {
     public var topK: Int64?
 
     public var vectorShrink: String?
+
+    public var workspaceId: String?
 
     public override init() {
         super.init()
@@ -35325,6 +35431,9 @@ public class QueryCollectionDataShrinkRequest : Tea.TeaModel {
         if self.vectorShrink != nil {
             map["Vector"] = self.vectorShrink!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -35379,6 +35488,9 @@ public class QueryCollectionDataShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Vector") {
             self.vectorShrink = dict["Vector"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
         }
     }
 }
@@ -38777,6 +38889,8 @@ public class UpdateCollectionDataMetadataRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -38818,6 +38932,9 @@ public class UpdateCollectionDataMetadataRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -38849,6 +38966,9 @@ public class UpdateCollectionDataMetadataRequest : Tea.TeaModel {
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
         }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
+        }
     }
 }
 
@@ -38870,6 +38990,8 @@ public class UpdateCollectionDataMetadataShrinkRequest : Tea.TeaModel {
     public var ownerId: Int64?
 
     public var regionId: String?
+
+    public var workspaceId: String?
 
     public override init() {
         super.init()
@@ -38912,6 +39034,9 @@ public class UpdateCollectionDataMetadataShrinkRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -38942,6 +39067,9 @@ public class UpdateCollectionDataMetadataShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
         }
     }
 }
@@ -40718,6 +40846,8 @@ public class UpsertCollectionDataRequest : Tea.TeaModel {
 
     public var rows: [UpsertCollectionDataRequest.Rows]?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -40757,6 +40887,9 @@ public class UpsertCollectionDataRequest : Tea.TeaModel {
             }
             map["Rows"] = tmp
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -40790,6 +40923,9 @@ public class UpsertCollectionDataRequest : Tea.TeaModel {
             }
             self.rows = tmp
         }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
+        }
     }
 }
 
@@ -40807,6 +40943,8 @@ public class UpsertCollectionDataShrinkRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var rowsShrink: String?
+
+    public var workspaceId: String?
 
     public override init() {
         super.init()
@@ -40843,6 +40981,9 @@ public class UpsertCollectionDataShrinkRequest : Tea.TeaModel {
         if self.rowsShrink != nil {
             map["Rows"] = self.rowsShrink!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -40867,6 +41008,9 @@ public class UpsertCollectionDataShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Rows") {
             self.rowsShrink = dict["Rows"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
         }
     }
 }
@@ -40981,6 +41125,8 @@ public class UpsertCollectionDataAsyncRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -41016,6 +41162,9 @@ public class UpsertCollectionDataAsyncRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -41041,6 +41190,9 @@ public class UpsertCollectionDataAsyncRequest : Tea.TeaModel {
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
         }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
+        }
     }
 }
 
@@ -41058,6 +41210,8 @@ public class UpsertCollectionDataAsyncAdvanceRequest : Tea.TeaModel {
     public var ownerId: Int64?
 
     public var regionId: String?
+
+    public var workspaceId: String?
 
     public override init() {
         super.init()
@@ -41094,6 +41248,9 @@ public class UpsertCollectionDataAsyncAdvanceRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -41118,6 +41275,9 @@ public class UpsertCollectionDataAsyncAdvanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
         }
     }
 }
