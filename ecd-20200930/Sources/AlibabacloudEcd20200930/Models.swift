@@ -8875,6 +8875,8 @@ public class CreatePolicyGroupRequest : Tea.TeaModel {
 
     public var watermarkType: String?
 
+    public var wyAssistant: String?
+
     public override init() {
         super.init()
     }
@@ -9084,6 +9086,9 @@ public class CreatePolicyGroupRequest : Tea.TeaModel {
         }
         if self.watermarkType != nil {
             map["WatermarkType"] = self.watermarkType!
+        }
+        if self.wyAssistant != nil {
+            map["WyAssistant"] = self.wyAssistant!
         }
         return map
     }
@@ -9312,6 +9317,9 @@ public class CreatePolicyGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("WatermarkType") {
             self.watermarkType = dict["WatermarkType"] as! String
+        }
+        if dict.keys.contains("WyAssistant") {
+            self.wyAssistant = dict["WyAssistant"] as! String
         }
     }
 }
@@ -25029,6 +25037,8 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
 
         public var creationTime: String?
 
+        public var customAccessPoint: String?
+
         public var customSecurityGroupId: String?
 
         public var desktopAccessType: String?
@@ -25156,6 +25166,9 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             }
             if self.creationTime != nil {
                 map["CreationTime"] = self.creationTime!
+            }
+            if self.customAccessPoint != nil {
+                map["CustomAccessPoint"] = self.customAccessPoint!
             }
             if self.customSecurityGroupId != nil {
                 map["CustomSecurityGroupId"] = self.customSecurityGroupId!
@@ -25322,6 +25335,9 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("CreationTime") {
                 self.creationTime = dict["CreationTime"] as! String
+            }
+            if dict.keys.contains("CustomAccessPoint") {
+                self.customAccessPoint = dict["CustomAccessPoint"] as! String
             }
             if dict.keys.contains("CustomSecurityGroupId") {
                 self.customSecurityGroupId = dict["CustomSecurityGroupId"] as! String
@@ -26223,6 +26239,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var watermarkType: String?
 
+        public var wyAssistant: String?
+
         public override init() {
             super.init()
         }
@@ -26520,6 +26538,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if self.watermarkType != nil {
                 map["WatermarkType"] = self.watermarkType!
+            }
+            if self.wyAssistant != nil {
+                map["WyAssistant"] = self.wyAssistant!
             }
             return map
         }
@@ -26840,6 +26861,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("WatermarkType") {
                 self.watermarkType = dict["WatermarkType"] as! String
+            }
+            if dict.keys.contains("WyAssistant") {
+                self.wyAssistant = dict["WyAssistant"] as! String
             }
         }
     }
@@ -43195,6 +43219,8 @@ public class ModifyPolicyGroupRequest : Tea.TeaModel {
 
     public var watermarkType: String?
 
+    public var wyAssistant: String?
+
     public override init() {
         super.init()
     }
@@ -43421,6 +43447,9 @@ public class ModifyPolicyGroupRequest : Tea.TeaModel {
         }
         if self.watermarkType != nil {
             map["WatermarkType"] = self.watermarkType!
+        }
+        if self.wyAssistant != nil {
+            map["WyAssistant"] = self.wyAssistant!
         }
         return map
     }
@@ -43674,6 +43703,9 @@ public class ModifyPolicyGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("WatermarkType") {
             self.watermarkType = dict["WatermarkType"] as! String
+        }
+        if dict.keys.contains("WyAssistant") {
+            self.wyAssistant = dict["WyAssistant"] as! String
         }
     }
 }
