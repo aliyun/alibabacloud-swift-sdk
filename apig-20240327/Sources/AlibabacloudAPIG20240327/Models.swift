@@ -11217,6 +11217,8 @@ public class ListGatewaysResponse : Tea.TeaModel {
 public class ListHttpApiOperationsRequest : Tea.TeaModel {
     public var method: String?
 
+    public var name: String?
+
     public var nameLike: String?
 
     public var pageNumber: Int32?
@@ -11242,6 +11244,9 @@ public class ListHttpApiOperationsRequest : Tea.TeaModel {
         if self.method != nil {
             map["method"] = self.method!
         }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
         if self.nameLike != nil {
             map["nameLike"] = self.nameLike!
         }
@@ -11260,6 +11265,9 @@ public class ListHttpApiOperationsRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("method") {
             self.method = dict["method"] as! String
+        }
+        if dict.keys.contains("name") {
+            self.name = dict["name"] as! String
         }
         if dict.keys.contains("nameLike") {
             self.nameLike = dict["nameLike"] as! String
@@ -11450,6 +11458,8 @@ public class ListHttpApiOperationsResponse : Tea.TeaModel {
 public class ListHttpApisRequest : Tea.TeaModel {
     public var keyword: String?
 
+    public var name: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -11473,6 +11483,9 @@ public class ListHttpApisRequest : Tea.TeaModel {
         if self.keyword != nil {
             map["keyword"] = self.keyword!
         }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
         if self.pageNumber != nil {
             map["pageNumber"] = self.pageNumber!
         }
@@ -11488,6 +11501,9 @@ public class ListHttpApisRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("keyword") {
             self.keyword = dict["keyword"] as! String
+        }
+        if dict.keys.contains("name") {
+            self.name = dict["name"] as! String
         }
         if dict.keys.contains("pageNumber") {
             self.pageNumber = dict["pageNumber"] as! Int32
