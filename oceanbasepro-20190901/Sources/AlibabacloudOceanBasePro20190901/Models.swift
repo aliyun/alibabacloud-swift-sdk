@@ -37638,7 +37638,7 @@ public class DescribeTenantResponseBody : Tea.TeaModel {
 
         public var instanceType: String?
 
-        public var lowerCaseTableNames: [UInt8]?
+        public var lowerCaseTableNames: Int32?
 
         public var masterIntranetAddressZone: String?
 
@@ -37864,7 +37864,7 @@ public class DescribeTenantResponseBody : Tea.TeaModel {
                 self.instanceType = dict["InstanceType"] as! String
             }
             if dict.keys.contains("LowerCaseTableNames") {
-                self.lowerCaseTableNames = dict["LowerCaseTableNames"] as! [UInt8]
+                self.lowerCaseTableNames = dict["LowerCaseTableNames"] as! Int32
             }
             if dict.keys.contains("MasterIntranetAddressZone") {
                 self.masterIntranetAddressZone = dict["MasterIntranetAddressZone"] as! String
