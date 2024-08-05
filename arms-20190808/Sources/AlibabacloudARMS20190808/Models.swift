@@ -3856,163 +3856,6 @@ public class AddPrometheusIntegrationResponse : Tea.TeaModel {
     }
 }
 
-public class AddPrometheusRemoteWriteRequest : Tea.TeaModel {
-    public var clusterId: String?
-
-    public var regionId: String?
-
-    public var remoteWriteYaml: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.clusterId != nil {
-            map["ClusterId"] = self.clusterId!
-        }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
-        if self.remoteWriteYaml != nil {
-            map["RemoteWriteYaml"] = self.remoteWriteYaml!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("ClusterId") {
-            self.clusterId = dict["ClusterId"] as! String
-        }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
-        }
-        if dict.keys.contains("RemoteWriteYaml") {
-            self.remoteWriteYaml = dict["RemoteWriteYaml"] as! String
-        }
-    }
-}
-
-public class AddPrometheusRemoteWriteResponseBody : Tea.TeaModel {
-    public var code: Int32?
-
-    public var data: String?
-
-    public var message: String?
-
-    public var requestId: String?
-
-    public var success: Bool?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.code != nil {
-            map["Code"] = self.code!
-        }
-        if self.data != nil {
-            map["Data"] = self.data!
-        }
-        if self.message != nil {
-            map["Message"] = self.message!
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        if self.success != nil {
-            map["Success"] = self.success!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Code") {
-            self.code = dict["Code"] as! Int32
-        }
-        if dict.keys.contains("Data") {
-            self.data = dict["Data"] as! String
-        }
-        if dict.keys.contains("Message") {
-            self.message = dict["Message"] as! String
-        }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
-        }
-        if dict.keys.contains("Success") {
-            self.success = dict["Success"] as! Bool
-        }
-    }
-}
-
-public class AddPrometheusRemoteWriteResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: AddPrometheusRemoteWriteResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") {
-            var model = AddPrometheusRemoteWriteResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
 public class AddRecordingRuleRequest : Tea.TeaModel {
     public var clusterId: String?
 
@@ -20751,163 +20594,6 @@ public class DeletePrometheusMonitoringResponse : Tea.TeaModel {
     }
 }
 
-public class DeletePrometheusRemoteWriteRequest : Tea.TeaModel {
-    public var clusterId: String?
-
-    public var regionId: String?
-
-    public var remoteWriteNames: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.clusterId != nil {
-            map["ClusterId"] = self.clusterId!
-        }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
-        if self.remoteWriteNames != nil {
-            map["RemoteWriteNames"] = self.remoteWriteNames!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("ClusterId") {
-            self.clusterId = dict["ClusterId"] as! String
-        }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
-        }
-        if dict.keys.contains("RemoteWriteNames") {
-            self.remoteWriteNames = dict["RemoteWriteNames"] as! String
-        }
-    }
-}
-
-public class DeletePrometheusRemoteWriteResponseBody : Tea.TeaModel {
-    public var code: Int32?
-
-    public var data: String?
-
-    public var message: String?
-
-    public var requestId: String?
-
-    public var success: Bool?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.code != nil {
-            map["Code"] = self.code!
-        }
-        if self.data != nil {
-            map["Data"] = self.data!
-        }
-        if self.message != nil {
-            map["Message"] = self.message!
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        if self.success != nil {
-            map["Success"] = self.success!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Code") {
-            self.code = dict["Code"] as! Int32
-        }
-        if dict.keys.contains("Data") {
-            self.data = dict["Data"] as! String
-        }
-        if dict.keys.contains("Message") {
-            self.message = dict["Message"] as! String
-        }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
-        }
-        if dict.keys.contains("Success") {
-            self.success = dict["Success"] as! Bool
-        }
-    }
-}
-
-public class DeletePrometheusRemoteWriteResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: DeletePrometheusRemoteWriteResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") {
-            var model = DeletePrometheusRemoteWriteResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
 public class DeleteRetcodeAppRequest : Tea.TeaModel {
     public var appId: String?
 
@@ -31798,6 +31484,10 @@ public class GetPrometheusInstanceResponseBody : Tea.TeaModel {
 
         public var clusterType: String?
 
+        public var dbInstanceStatus: String?
+
+        public var enableAuthToken: String?
+
         public var grafanaInstanceId: String?
 
         public var httpApiInterUrl: String?
@@ -31805,6 +31495,8 @@ public class GetPrometheusInstanceResponseBody : Tea.TeaModel {
         public var httpApiIntraUrl: String?
 
         public var paymentType: String?
+
+        public var product: String?
 
         public var pushGatewayInterUrl: String?
 
@@ -31829,6 +31521,8 @@ public class GetPrometheusInstanceResponseBody : Tea.TeaModel {
         public var storageDuration: Int32?
 
         public var subClustersJson: String?
+
+        public var surpportAuthTypes: [String]?
 
         public var tags: [GetPrometheusInstanceResponseBody.Data.Tags]?
 
@@ -31870,6 +31564,12 @@ public class GetPrometheusInstanceResponseBody : Tea.TeaModel {
             if self.clusterType != nil {
                 map["ClusterType"] = self.clusterType!
             }
+            if self.dbInstanceStatus != nil {
+                map["DbInstanceStatus"] = self.dbInstanceStatus!
+            }
+            if self.enableAuthToken != nil {
+                map["EnableAuthToken"] = self.enableAuthToken!
+            }
             if self.grafanaInstanceId != nil {
                 map["GrafanaInstanceId"] = self.grafanaInstanceId!
             }
@@ -31881,6 +31581,9 @@ public class GetPrometheusInstanceResponseBody : Tea.TeaModel {
             }
             if self.paymentType != nil {
                 map["PaymentType"] = self.paymentType!
+            }
+            if self.product != nil {
+                map["Product"] = self.product!
             }
             if self.pushGatewayInterUrl != nil {
                 map["PushGatewayInterUrl"] = self.pushGatewayInterUrl!
@@ -31917,6 +31620,9 @@ public class GetPrometheusInstanceResponseBody : Tea.TeaModel {
             }
             if self.subClustersJson != nil {
                 map["SubClustersJson"] = self.subClustersJson!
+            }
+            if self.surpportAuthTypes != nil {
+                map["SurpportAuthTypes"] = self.surpportAuthTypes!
             }
             if self.tags != nil {
                 var tmp : [Any] = []
@@ -31956,6 +31662,12 @@ public class GetPrometheusInstanceResponseBody : Tea.TeaModel {
             if dict.keys.contains("ClusterType") {
                 self.clusterType = dict["ClusterType"] as! String
             }
+            if dict.keys.contains("DbInstanceStatus") {
+                self.dbInstanceStatus = dict["DbInstanceStatus"] as! String
+            }
+            if dict.keys.contains("EnableAuthToken") {
+                self.enableAuthToken = dict["EnableAuthToken"] as! String
+            }
             if dict.keys.contains("GrafanaInstanceId") {
                 self.grafanaInstanceId = dict["GrafanaInstanceId"] as! String
             }
@@ -31967,6 +31679,9 @@ public class GetPrometheusInstanceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("PaymentType") {
                 self.paymentType = dict["PaymentType"] as! String
+            }
+            if dict.keys.contains("Product") {
+                self.product = dict["Product"] as! String
             }
             if dict.keys.contains("PushGatewayInterUrl") {
                 self.pushGatewayInterUrl = dict["PushGatewayInterUrl"] as! String
@@ -32003,6 +31718,9 @@ public class GetPrometheusInstanceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SubClustersJson") {
                 self.subClustersJson = dict["SubClustersJson"] as! String
+            }
+            if dict.keys.contains("SurpportAuthTypes") {
+                self.surpportAuthTypes = dict["SurpportAuthTypes"] as! [String]
             }
             if dict.keys.contains("Tags") {
                 var tmp : [GetPrometheusInstanceResponseBody.Data.Tags] = []
@@ -32663,211 +32381,6 @@ public class GetPrometheusMonitoringResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = GetPrometheusMonitoringResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
-public class GetPrometheusRemoteWriteRequest : Tea.TeaModel {
-    public var clusterId: String?
-
-    public var regionId: String?
-
-    public var remoteWriteName: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.clusterId != nil {
-            map["ClusterId"] = self.clusterId!
-        }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
-        if self.remoteWriteName != nil {
-            map["RemoteWriteName"] = self.remoteWriteName!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("ClusterId") {
-            self.clusterId = dict["ClusterId"] as! String
-        }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
-        }
-        if dict.keys.contains("RemoteWriteName") {
-            self.remoteWriteName = dict["RemoteWriteName"] as! String
-        }
-    }
-}
-
-public class GetPrometheusRemoteWriteResponseBody : Tea.TeaModel {
-    public class Data : Tea.TeaModel {
-        public var clusterId: String?
-
-        public var remoteWriteName: String?
-
-        public var remoteWriteYaml: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.clusterId != nil {
-                map["ClusterId"] = self.clusterId!
-            }
-            if self.remoteWriteName != nil {
-                map["RemoteWriteName"] = self.remoteWriteName!
-            }
-            if self.remoteWriteYaml != nil {
-                map["RemoteWriteYaml"] = self.remoteWriteYaml!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("ClusterId") {
-                self.clusterId = dict["ClusterId"] as! String
-            }
-            if dict.keys.contains("RemoteWriteName") {
-                self.remoteWriteName = dict["RemoteWriteName"] as! String
-            }
-            if dict.keys.contains("RemoteWriteYaml") {
-                self.remoteWriteYaml = dict["RemoteWriteYaml"] as! String
-            }
-        }
-    }
-    public var code: Int32?
-
-    public var data: GetPrometheusRemoteWriteResponseBody.Data?
-
-    public var message: String?
-
-    public var requestId: String?
-
-    public var success: Bool?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.data?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.code != nil {
-            map["Code"] = self.code!
-        }
-        if self.data != nil {
-            map["Data"] = self.data?.toMap()
-        }
-        if self.message != nil {
-            map["Message"] = self.message!
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        if self.success != nil {
-            map["Success"] = self.success!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Code") {
-            self.code = dict["Code"] as! Int32
-        }
-        if dict.keys.contains("Data") {
-            var model = GetPrometheusRemoteWriteResponseBody.Data()
-            model.fromMap(dict["Data"] as! [String: Any])
-            self.data = model
-        }
-        if dict.keys.contains("Message") {
-            self.message = dict["Message"] as! String
-        }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
-        }
-        if dict.keys.contains("Success") {
-            self.success = dict["Success"] as! Bool
-        }
-    }
-}
-
-public class GetPrometheusRemoteWriteResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: GetPrometheusRemoteWriteResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") {
-            var model = GetPrometheusRemoteWriteResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -35852,6 +35365,8 @@ public class GetRumUploadFilesRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var versionId: String?
+
     public override init() {
         super.init()
     }
@@ -35875,6 +35390,9 @@ public class GetRumUploadFilesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.versionId != nil {
+            map["VersionId"] = self.versionId!
+        }
         return map
     }
 
@@ -35887,6 +35405,9 @@ public class GetRumUploadFilesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("VersionId") {
+            self.versionId = dict["VersionId"] as! String
         }
     }
 }
@@ -45061,6 +44582,8 @@ public class ListAlertsRequest : Tea.TeaModel {
 
     public var integrationType: String?
 
+    public var owner: String?
+
     public var page: Int64?
 
     public var regionId: String?
@@ -45103,6 +44626,9 @@ public class ListAlertsRequest : Tea.TeaModel {
         if self.integrationType != nil {
             map["IntegrationType"] = self.integrationType!
         }
+        if self.owner != nil {
+            map["Owner"] = self.owner!
+        }
         if self.page != nil {
             map["Page"] = self.page!
         }
@@ -45142,6 +44668,9 @@ public class ListAlertsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("IntegrationType") {
             self.integrationType = dict["IntegrationType"] as! String
+        }
+        if dict.keys.contains("Owner") {
+            self.owner = dict["Owner"] as! String
         }
         if dict.keys.contains("Page") {
             self.page = dict["Page"] as! Int64
@@ -48792,6 +48321,8 @@ public class ListEnvironmentsRequest : Tea.TeaModel {
 
     public var feePackage: String?
 
+    public var filterRegionIds: String?
+
     public var regionId: String?
 
     public var resourceGroupId: String?
@@ -48824,6 +48355,9 @@ public class ListEnvironmentsRequest : Tea.TeaModel {
         if self.feePackage != nil {
             map["FeePackage"] = self.feePackage!
         }
+        if self.filterRegionIds != nil {
+            map["FilterRegionIds"] = self.filterRegionIds!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -48853,6 +48387,9 @@ public class ListEnvironmentsRequest : Tea.TeaModel {
         if dict.keys.contains("FeePackage") {
             self.feePackage = dict["FeePackage"] as! String
         }
+        if dict.keys.contains("FilterRegionIds") {
+            self.filterRegionIds = dict["FilterRegionIds"] as! String
+        }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
         }
@@ -48881,6 +48418,8 @@ public class ListEnvironmentsShrinkRequest : Tea.TeaModel {
     public var environmentType: String?
 
     public var feePackage: String?
+
+    public var filterRegionIds: String?
 
     public var regionId: String?
 
@@ -48914,6 +48453,9 @@ public class ListEnvironmentsShrinkRequest : Tea.TeaModel {
         if self.feePackage != nil {
             map["FeePackage"] = self.feePackage!
         }
+        if self.filterRegionIds != nil {
+            map["FilterRegionIds"] = self.filterRegionIds!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -48938,6 +48480,9 @@ public class ListEnvironmentsShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FeePackage") {
             self.feePackage = dict["FeePackage"] as! String
+        }
+        if dict.keys.contains("FilterRegionIds") {
+            self.filterRegionIds = dict["FilterRegionIds"] as! String
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
@@ -54057,212 +53602,6 @@ public class ListPrometheusMonitoringResponse : Tea.TeaModel {
     }
 }
 
-public class ListPrometheusRemoteWritesRequest : Tea.TeaModel {
-    public var clusterId: String?
-
-    public var regionId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.clusterId != nil {
-            map["ClusterId"] = self.clusterId!
-        }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("ClusterId") {
-            self.clusterId = dict["ClusterId"] as! String
-        }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
-        }
-    }
-}
-
-public class ListPrometheusRemoteWritesResponseBody : Tea.TeaModel {
-    public class Data : Tea.TeaModel {
-        public var clusterId: String?
-
-        public var remoteWriteName: String?
-
-        public var remoteWriteYaml: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.clusterId != nil {
-                map["ClusterId"] = self.clusterId!
-            }
-            if self.remoteWriteName != nil {
-                map["RemoteWriteName"] = self.remoteWriteName!
-            }
-            if self.remoteWriteYaml != nil {
-                map["RemoteWriteYaml"] = self.remoteWriteYaml!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("ClusterId") {
-                self.clusterId = dict["ClusterId"] as! String
-            }
-            if dict.keys.contains("RemoteWriteName") {
-                self.remoteWriteName = dict["RemoteWriteName"] as! String
-            }
-            if dict.keys.contains("RemoteWriteYaml") {
-                self.remoteWriteYaml = dict["RemoteWriteYaml"] as! String
-            }
-        }
-    }
-    public var code: Int32?
-
-    public var data: [ListPrometheusRemoteWritesResponseBody.Data]?
-
-    public var message: String?
-
-    public var requestId: String?
-
-    public var success: Bool?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.code != nil {
-            map["Code"] = self.code!
-        }
-        if self.data != nil {
-            var tmp : [Any] = []
-            for k in self.data! {
-                tmp.append(k.toMap())
-            }
-            map["Data"] = tmp
-        }
-        if self.message != nil {
-            map["Message"] = self.message!
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        if self.success != nil {
-            map["Success"] = self.success!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Code") {
-            self.code = dict["Code"] as! Int32
-        }
-        if dict.keys.contains("Data") {
-            var tmp : [ListPrometheusRemoteWritesResponseBody.Data] = []
-            for v in dict["Data"] as! [Any] {
-                var model = ListPrometheusRemoteWritesResponseBody.Data()
-                if v != nil {
-                    model.fromMap(v as! [String: Any])
-                }
-                tmp.append(model)
-            }
-            self.data = tmp
-        }
-        if dict.keys.contains("Message") {
-            self.message = dict["Message"] as! String
-        }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
-        }
-        if dict.keys.contains("Success") {
-            self.success = dict["Success"] as! Bool
-        }
-    }
-}
-
-public class ListPrometheusRemoteWritesResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: ListPrometheusRemoteWritesResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") {
-            var model = ListPrometheusRemoteWritesResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
 public class ListRetcodeAppsRequest : Tea.TeaModel {
     public class Tags : Tea.TeaModel {
         public var key: String?
@@ -58564,9 +57903,11 @@ public class QueryCommercialUsageResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: String?
+    public var code: Int32?
 
     public var data: QueryCommercialUsageResponseBody.Data?
+
+    public var httpStatusCode: Int32?
 
     public var message: String?
 
@@ -58595,6 +57936,9 @@ public class QueryCommercialUsageResponseBody : Tea.TeaModel {
         if self.data != nil {
             map["Data"] = self.data?.toMap()
         }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
         if self.message != nil {
             map["Message"] = self.message!
         }
@@ -58609,12 +57953,15 @@ public class QueryCommercialUsageResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Code") {
-            self.code = dict["Code"] as! String
+            self.code = dict["Code"] as! Int32
         }
         if dict.keys.contains("Data") {
             var model = QueryCommercialUsageResponseBody.Data()
             model.fromMap(dict["Data"] as! [String: Any])
             self.data = model
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
@@ -70038,171 +69385,6 @@ public class UpdatePrometheusMonitoringStatusResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = UpdatePrometheusMonitoringStatusResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
-public class UpdatePrometheusRemoteWriteRequest : Tea.TeaModel {
-    public var clusterId: String?
-
-    public var regionId: String?
-
-    public var remoteWriteName: String?
-
-    public var remoteWriteYaml: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.clusterId != nil {
-            map["ClusterId"] = self.clusterId!
-        }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
-        if self.remoteWriteName != nil {
-            map["RemoteWriteName"] = self.remoteWriteName!
-        }
-        if self.remoteWriteYaml != nil {
-            map["RemoteWriteYaml"] = self.remoteWriteYaml!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("ClusterId") {
-            self.clusterId = dict["ClusterId"] as! String
-        }
-        if dict.keys.contains("RegionId") {
-            self.regionId = dict["RegionId"] as! String
-        }
-        if dict.keys.contains("RemoteWriteName") {
-            self.remoteWriteName = dict["RemoteWriteName"] as! String
-        }
-        if dict.keys.contains("RemoteWriteYaml") {
-            self.remoteWriteYaml = dict["RemoteWriteYaml"] as! String
-        }
-    }
-}
-
-public class UpdatePrometheusRemoteWriteResponseBody : Tea.TeaModel {
-    public var code: Int32?
-
-    public var data: String?
-
-    public var message: String?
-
-    public var requestId: String?
-
-    public var success: Bool?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.code != nil {
-            map["Code"] = self.code!
-        }
-        if self.data != nil {
-            map["Data"] = self.data!
-        }
-        if self.message != nil {
-            map["Message"] = self.message!
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        if self.success != nil {
-            map["Success"] = self.success!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Code") {
-            self.code = dict["Code"] as! Int32
-        }
-        if dict.keys.contains("Data") {
-            self.data = dict["Data"] as! String
-        }
-        if dict.keys.contains("Message") {
-            self.message = dict["Message"] as! String
-        }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
-        }
-        if dict.keys.contains("Success") {
-            self.success = dict["Success"] as! Bool
-        }
-    }
-}
-
-public class UpdatePrometheusRemoteWriteResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: UpdatePrometheusRemoteWriteResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") {
-            var model = UpdatePrometheusRemoteWriteResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

@@ -334,45 +334,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func addPrometheusRemoteWriteWithOptions(_ request: AddPrometheusRemoteWriteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddPrometheusRemoteWriteResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.clusterId)) {
-            query["ClusterId"] = request.clusterId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.regionId)) {
-            query["RegionId"] = request.regionId ?? "";
-        }
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.remoteWriteYaml)) {
-            body["RemoteWriteYaml"] = request.remoteWriteYaml ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query),
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "AddPrometheusRemoteWrite",
-            "version": "2019-08-08",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(AddPrometheusRemoteWriteResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func addPrometheusRemoteWrite(_ request: AddPrometheusRemoteWriteRequest) async throws -> AddPrometheusRemoteWriteResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await addPrometheusRemoteWriteWithOptions(request as! AddPrometheusRemoteWriteRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func addRecordingRuleWithOptions(_ request: AddRecordingRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddRecordingRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3331,43 +3292,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deletePrometheusRemoteWriteWithOptions(_ request: DeletePrometheusRemoteWriteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeletePrometheusRemoteWriteResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.clusterId)) {
-            query["ClusterId"] = request.clusterId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.regionId)) {
-            query["RegionId"] = request.regionId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.remoteWriteNames)) {
-            query["RemoteWriteNames"] = request.remoteWriteNames ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DeletePrometheusRemoteWrite",
-            "version": "2019-08-08",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DeletePrometheusRemoteWriteResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deletePrometheusRemoteWrite(_ request: DeletePrometheusRemoteWriteRequest) async throws -> DeletePrometheusRemoteWriteResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await deletePrometheusRemoteWriteWithOptions(request as! DeletePrometheusRemoteWriteRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteRetcodeAppWithOptions(_ request: DeleteRetcodeAppRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteRetcodeAppResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -5015,43 +4939,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getPrometheusRemoteWriteWithOptions(_ request: GetPrometheusRemoteWriteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetPrometheusRemoteWriteResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.clusterId)) {
-            query["ClusterId"] = request.clusterId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.regionId)) {
-            query["RegionId"] = request.regionId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.remoteWriteName)) {
-            query["RemoteWriteName"] = request.remoteWriteName ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "GetPrometheusRemoteWrite",
-            "version": "2019-08-08",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(GetPrometheusRemoteWriteResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getPrometheusRemoteWrite(_ request: GetPrometheusRemoteWriteRequest) async throws -> GetPrometheusRemoteWriteResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await getPrometheusRemoteWriteWithOptions(request as! GetPrometheusRemoteWriteRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getRecordingRuleWithOptions(_ request: GetRecordingRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetRecordingRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -5455,6 +5342,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.versionId)) {
+            query["VersionId"] = request.versionId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -6343,6 +6233,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.integrationType)) {
             query["IntegrationType"] = request.integrationType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.owner)) {
+            query["Owner"] = request.owner ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.page)) {
             query["Page"] = request.page!;
         }
@@ -6805,6 +6698,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.feePackage)) {
             query["FeePackage"] = request.feePackage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filterRegionIds)) {
+            query["FilterRegionIds"] = request.filterRegionIds ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
@@ -7348,40 +7244,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listPrometheusMonitoring(_ request: ListPrometheusMonitoringRequest) async throws -> ListPrometheusMonitoringResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listPrometheusMonitoringWithOptions(request as! ListPrometheusMonitoringRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listPrometheusRemoteWritesWithOptions(_ request: ListPrometheusRemoteWritesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPrometheusRemoteWritesResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.clusterId)) {
-            query["ClusterId"] = request.clusterId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.regionId)) {
-            query["RegionId"] = request.regionId ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ListPrometheusRemoteWrites",
-            "version": "2019-08-08",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ListPrometheusRemoteWritesResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listPrometheusRemoteWrites(_ request: ListPrometheusRemoteWritesRequest) async throws -> ListPrometheusRemoteWritesResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await listPrometheusRemoteWritesWithOptions(request as! ListPrometheusRemoteWritesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -10102,48 +9964,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updatePrometheusMonitoringStatus(_ request: UpdatePrometheusMonitoringStatusRequest) async throws -> UpdatePrometheusMonitoringStatusResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updatePrometheusMonitoringStatusWithOptions(request as! UpdatePrometheusMonitoringStatusRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updatePrometheusRemoteWriteWithOptions(_ request: UpdatePrometheusRemoteWriteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdatePrometheusRemoteWriteResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.clusterId)) {
-            query["ClusterId"] = request.clusterId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.regionId)) {
-            query["RegionId"] = request.regionId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.remoteWriteName)) {
-            query["RemoteWriteName"] = request.remoteWriteName ?? "";
-        }
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.remoteWriteYaml)) {
-            body["RemoteWriteYaml"] = request.remoteWriteYaml ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query),
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "UpdatePrometheusRemoteWrite",
-            "version": "2019-08-08",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(UpdatePrometheusRemoteWriteResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updatePrometheusRemoteWrite(_ request: UpdatePrometheusRemoteWriteRequest) async throws -> UpdatePrometheusRemoteWriteResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await updatePrometheusRemoteWriteWithOptions(request as! UpdatePrometheusRemoteWriteRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
