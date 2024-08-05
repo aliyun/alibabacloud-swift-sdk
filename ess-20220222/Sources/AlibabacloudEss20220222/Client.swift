@@ -902,6 +902,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.scalingGroupId)) {
             query["ScalingGroupId"] = request.scalingGroupId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.timeZone)) {
+            query["TimeZone"] = request.timeZone ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -4050,6 +4053,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.scalingGroupId)) {
             query["ScalingGroupId"] = request.scalingGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timeZone)) {
+            query["TimeZone"] = request.timeZone ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

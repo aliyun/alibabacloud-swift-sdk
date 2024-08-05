@@ -5042,6 +5042,8 @@ public class CreateNotificationConfigurationRequest : Tea.TeaModel {
 
     public var scalingGroupId: String?
 
+    public var timeZone: String?
+
     public override init() {
         super.init()
     }
@@ -5074,6 +5076,9 @@ public class CreateNotificationConfigurationRequest : Tea.TeaModel {
         if self.scalingGroupId != nil {
             map["ScalingGroupId"] = self.scalingGroupId!
         }
+        if self.timeZone != nil {
+            map["TimeZone"] = self.timeZone!
+        }
         return map
     }
 
@@ -5095,6 +5100,9 @@ public class CreateNotificationConfigurationRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ScalingGroupId") {
             self.scalingGroupId = dict["ScalingGroupId"] as! String
+        }
+        if dict.keys.contains("TimeZone") {
+            self.timeZone = dict["TimeZone"] as! String
         }
     }
 }
@@ -16471,6 +16479,8 @@ public class DescribeNotificationConfigurationsResponseBody : Tea.TeaModel {
 
         public var scalingGroupId: String?
 
+        public var timeZone: String?
+
         public override init() {
             super.init()
         }
@@ -16494,6 +16504,9 @@ public class DescribeNotificationConfigurationsResponseBody : Tea.TeaModel {
             if self.scalingGroupId != nil {
                 map["ScalingGroupId"] = self.scalingGroupId!
             }
+            if self.timeZone != nil {
+                map["TimeZone"] = self.timeZone!
+            }
             return map
         }
 
@@ -16506,6 +16519,9 @@ public class DescribeNotificationConfigurationsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ScalingGroupId") {
                 self.scalingGroupId = dict["ScalingGroupId"] as! String
+            }
+            if dict.keys.contains("TimeZone") {
+                self.timeZone = dict["TimeZone"] as! String
             }
         }
     }
@@ -29823,6 +29839,8 @@ public class ModifyNotificationConfigurationRequest : Tea.TeaModel {
 
     public var scalingGroupId: String?
 
+    public var timeZone: String?
+
     public override init() {
         super.init()
     }
@@ -29855,6 +29873,9 @@ public class ModifyNotificationConfigurationRequest : Tea.TeaModel {
         if self.scalingGroupId != nil {
             map["ScalingGroupId"] = self.scalingGroupId!
         }
+        if self.timeZone != nil {
+            map["TimeZone"] = self.timeZone!
+        }
         return map
     }
 
@@ -29876,6 +29897,9 @@ public class ModifyNotificationConfigurationRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ScalingGroupId") {
             self.scalingGroupId = dict["ScalingGroupId"] as! String
+        }
+        if dict.keys.contains("TimeZone") {
+            self.timeZone = dict["TimeZone"] as! String
         }
     }
 }
