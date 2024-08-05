@@ -9534,6 +9534,35 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class OperatingTool : Tea.TeaModel {
+        public var isEnable: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.isEnable != nil {
+                map["IsEnable"] = self.isEnable!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("IsEnable") {
+                self.isEnable = dict["IsEnable"] as! Bool
+            }
+        }
+    }
     public var chargeType: String?
 
     public var commodityCode: String?
@@ -9547,6 +9576,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
     public var gmtModifiedTime: String?
 
     public var instanceId: String?
+
+    public var operatingTool: GetInstanceResponseBody.OperatingTool?
 
     public var regionId: String?
 
@@ -9567,6 +9598,7 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.config?.validate()
+        try self.operatingTool?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -9591,6 +9623,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
+        }
+        if self.operatingTool != nil {
+            map["OperatingTool"] = self.operatingTool?.toMap()
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -9630,6 +9665,11 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("OperatingTool") {
+            var model = GetInstanceResponseBody.OperatingTool()
+            model.fromMap(dict["OperatingTool"] as! [String: Any])
+            self.operatingTool = model
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
@@ -16283,6 +16323,35 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class OperatingTool : Tea.TeaModel {
+            public var isEnable: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.isEnable != nil {
+                    map["IsEnable"] = self.isEnable!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("IsEnable") {
+                    self.isEnable = dict["IsEnable"] as! Bool
+                }
+            }
+        }
         public var chargeType: String?
 
         public var commodityCode: String?
@@ -16296,6 +16365,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
         public var gmtModifiedTime: String?
 
         public var instanceId: String?
+
+        public var operatingTool: ListInstancesResponseBody.Instances.OperatingTool?
 
         public var regionId: String?
 
@@ -16314,6 +16385,7 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.config?.validate()
+            try self.operatingTool?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -16338,6 +16410,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
+            }
+            if self.operatingTool != nil {
+                map["OperatingTool"] = self.operatingTool?.toMap()
             }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
@@ -16374,6 +16449,11 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("InstanceId") {
                 self.instanceId = dict["InstanceId"] as! String
+            }
+            if dict.keys.contains("OperatingTool") {
+                var model = ListInstancesResponseBody.Instances.OperatingTool()
+                model.fromMap(dict["OperatingTool"] as! [String: Any])
+                self.operatingTool = model
             }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
