@@ -20269,6 +20269,8 @@ public class GetClusterAddonInstanceResponse : Tea.TeaModel {
 }
 
 public class GetClusterAuditProjectResponseBody : Tea.TeaModel {
+    public var auditEnabled: Bool?
+
     public var slsProjectName: String?
 
     public override init() {
@@ -20285,6 +20287,9 @@ public class GetClusterAuditProjectResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.auditEnabled != nil {
+            map["audit_enabled"] = self.auditEnabled!
+        }
         if self.slsProjectName != nil {
             map["sls_project_name"] = self.slsProjectName!
         }
@@ -20292,6 +20297,9 @@ public class GetClusterAuditProjectResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("audit_enabled") {
+            self.auditEnabled = dict["audit_enabled"] as! Bool
+        }
         if dict.keys.contains("sls_project_name") {
             self.slsProjectName = dict["sls_project_name"] as! String
         }
