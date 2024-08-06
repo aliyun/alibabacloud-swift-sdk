@@ -10909,6 +10909,162 @@ public class ListGatewaysResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class SecurityGroup : Tea.TeaModel {
+                public var securityGroupId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.securityGroupId != nil {
+                        map["securityGroupId"] = self.securityGroupId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("securityGroupId") {
+                        self.securityGroupId = dict["securityGroupId"] as! String
+                    }
+                }
+            }
+            public class VSwitch : Tea.TeaModel {
+                public var vSwitchId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.vSwitchId != nil {
+                        map["vSwitchId"] = self.vSwitchId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("vSwitchId") {
+                        self.vSwitchId = dict["vSwitchId"] as! String
+                    }
+                }
+            }
+            public class Vpc : Tea.TeaModel {
+                public var vpcId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.vpcId != nil {
+                        map["vpcId"] = self.vpcId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("vpcId") {
+                        self.vpcId = dict["vpcId"] as! String
+                    }
+                }
+            }
+            public class Zones : Tea.TeaModel {
+                public class VSwitch : Tea.TeaModel {
+                    public var vSwitchId: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.vSwitchId != nil {
+                            map["vSwitchId"] = self.vSwitchId!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("vSwitchId") {
+                            self.vSwitchId = dict["vSwitchId"] as! String
+                        }
+                    }
+                }
+                public var vSwitch: ListGatewaysResponseBody.Data.Items.Zones.VSwitch?
+
+                public var zoneId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.vSwitch?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.vSwitch != nil {
+                        map["vSwitch"] = self.vSwitch?.toMap()
+                    }
+                    if self.zoneId != nil {
+                        map["zoneId"] = self.zoneId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("vSwitch") {
+                        var model = ListGatewaysResponseBody.Data.Items.Zones.VSwitch()
+                        model.fromMap(dict["vSwitch"] as! [String: Any])
+                        self.vSwitch = model
+                    }
+                    if dict.keys.contains("zoneId") {
+                        self.zoneId = dict["zoneId"] as! String
+                    }
+                }
+            }
             public var chargeType: String?
 
             public var createFrom: String?
@@ -10925,6 +11081,8 @@ public class ListGatewaysResponseBody : Tea.TeaModel {
 
             public var replicas: String?
 
+            public var securityGroup: ListGatewaysResponseBody.Data.Items.SecurityGroup?
+
             public var spec: String?
 
             public var status: String?
@@ -10933,7 +11091,13 @@ public class ListGatewaysResponseBody : Tea.TeaModel {
 
             public var updateTimestamp: Int64?
 
+            public var vSwitch: ListGatewaysResponseBody.Data.Items.VSwitch?
+
             public var version: String?
+
+            public var vpc: ListGatewaysResponseBody.Data.Items.Vpc?
+
+            public var zones: [ListGatewaysResponseBody.Data.Items.Zones]?
 
             public override init() {
                 super.init()
@@ -10945,6 +11109,9 @@ public class ListGatewaysResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.securityGroup?.validate()
+                try self.vSwitch?.validate()
+                try self.vpc?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -10977,6 +11144,9 @@ public class ListGatewaysResponseBody : Tea.TeaModel {
                 if self.replicas != nil {
                     map["replicas"] = self.replicas!
                 }
+                if self.securityGroup != nil {
+                    map["securityGroup"] = self.securityGroup?.toMap()
+                }
                 if self.spec != nil {
                     map["spec"] = self.spec!
                 }
@@ -10989,8 +11159,21 @@ public class ListGatewaysResponseBody : Tea.TeaModel {
                 if self.updateTimestamp != nil {
                     map["updateTimestamp"] = self.updateTimestamp!
                 }
+                if self.vSwitch != nil {
+                    map["vSwitch"] = self.vSwitch?.toMap()
+                }
                 if self.version != nil {
                     map["version"] = self.version!
+                }
+                if self.vpc != nil {
+                    map["vpc"] = self.vpc?.toMap()
+                }
+                if self.zones != nil {
+                    var tmp : [Any] = []
+                    for k in self.zones! {
+                        tmp.append(k.toMap())
+                    }
+                    map["zones"] = tmp
                 }
                 return map
             }
@@ -11028,6 +11211,11 @@ public class ListGatewaysResponseBody : Tea.TeaModel {
                 if dict.keys.contains("replicas") {
                     self.replicas = dict["replicas"] as! String
                 }
+                if dict.keys.contains("securityGroup") {
+                    var model = ListGatewaysResponseBody.Data.Items.SecurityGroup()
+                    model.fromMap(dict["securityGroup"] as! [String: Any])
+                    self.securityGroup = model
+                }
                 if dict.keys.contains("spec") {
                     self.spec = dict["spec"] as! String
                 }
@@ -11040,8 +11228,29 @@ public class ListGatewaysResponseBody : Tea.TeaModel {
                 if dict.keys.contains("updateTimestamp") {
                     self.updateTimestamp = dict["updateTimestamp"] as! Int64
                 }
+                if dict.keys.contains("vSwitch") {
+                    var model = ListGatewaysResponseBody.Data.Items.VSwitch()
+                    model.fromMap(dict["vSwitch"] as! [String: Any])
+                    self.vSwitch = model
+                }
                 if dict.keys.contains("version") {
                     self.version = dict["version"] as! String
+                }
+                if dict.keys.contains("vpc") {
+                    var model = ListGatewaysResponseBody.Data.Items.Vpc()
+                    model.fromMap(dict["vpc"] as! [String: Any])
+                    self.vpc = model
+                }
+                if dict.keys.contains("zones") {
+                    var tmp : [ListGatewaysResponseBody.Data.Items.Zones] = []
+                    for v in dict["zones"] as! [Any] {
+                        var model = ListGatewaysResponseBody.Data.Items.Zones()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.zones = tmp
                 }
             }
         }
