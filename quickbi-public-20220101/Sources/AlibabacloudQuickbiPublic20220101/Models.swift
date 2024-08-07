@@ -9031,6 +9031,155 @@ public class ModifyApiDatasourceParametersResponse : Tea.TeaModel {
     }
 }
 
+public class ModifyCopilotEmbedConfigRequest : Tea.TeaModel {
+    public var agentName: String?
+
+    public var copilotId: String?
+
+    public var dataRange: String?
+
+    public var moduleName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.agentName != nil {
+            map["AgentName"] = self.agentName!
+        }
+        if self.copilotId != nil {
+            map["CopilotId"] = self.copilotId!
+        }
+        if self.dataRange != nil {
+            map["DataRange"] = self.dataRange!
+        }
+        if self.moduleName != nil {
+            map["ModuleName"] = self.moduleName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AgentName") {
+            self.agentName = dict["AgentName"] as! String
+        }
+        if dict.keys.contains("CopilotId") {
+            self.copilotId = dict["CopilotId"] as! String
+        }
+        if dict.keys.contains("DataRange") {
+            self.dataRange = dict["DataRange"] as! String
+        }
+        if dict.keys.contains("ModuleName") {
+            self.moduleName = dict["ModuleName"] as! String
+        }
+    }
+}
+
+public class ModifyCopilotEmbedConfigResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var result: Bool?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            map["Result"] = self.result!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Result") {
+            self.result = dict["Result"] as! Bool
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class ModifyCopilotEmbedConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyCopilotEmbedConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ModifyCopilotEmbedConfigResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class QueryApprovalInfoRequest : Tea.TeaModel {
     public var page: Int32?
 
@@ -10073,6 +10222,284 @@ public class QueryComponentPerformanceResponse : Tea.TeaModel {
     }
 }
 
+public class QueryCopilotEmbedConfigRequest : Tea.TeaModel {
+    public var keyword: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.keyword != nil {
+            map["Keyword"] = self.keyword!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Keyword") {
+            self.keyword = dict["Keyword"] as! String
+        }
+    }
+}
+
+public class QueryCopilotEmbedConfigResponseBody : Tea.TeaModel {
+    public class Result : Tea.TeaModel {
+        public class DataRange : Tea.TeaModel {
+            public var allCube: Bool?
+
+            public var allTheme: Bool?
+
+            public var llmCubes: [String]?
+
+            public var themes: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.allCube != nil {
+                    map["AllCube"] = self.allCube!
+                }
+                if self.allTheme != nil {
+                    map["AllTheme"] = self.allTheme!
+                }
+                if self.llmCubes != nil {
+                    map["LlmCubes"] = self.llmCubes!
+                }
+                if self.themes != nil {
+                    map["Themes"] = self.themes!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AllCube") {
+                    self.allCube = dict["AllCube"] as! Bool
+                }
+                if dict.keys.contains("AllTheme") {
+                    self.allTheme = dict["AllTheme"] as! Bool
+                }
+                if dict.keys.contains("LlmCubes") {
+                    self.llmCubes = dict["LlmCubes"] as! [String]
+                }
+                if dict.keys.contains("Themes") {
+                    self.themes = dict["Themes"] as! [String]
+                }
+            }
+        }
+        public var agentName: String?
+
+        public var copilotId: String?
+
+        public var createUser: String?
+
+        public var createUserName: String?
+
+        public var dataRange: QueryCopilotEmbedConfigResponseBody.Result.DataRange?
+
+        public var modifyUser: String?
+
+        public var moduleName: String?
+
+        public var showName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.dataRange?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.agentName != nil {
+                map["AgentName"] = self.agentName!
+            }
+            if self.copilotId != nil {
+                map["CopilotId"] = self.copilotId!
+            }
+            if self.createUser != nil {
+                map["CreateUser"] = self.createUser!
+            }
+            if self.createUserName != nil {
+                map["CreateUserName"] = self.createUserName!
+            }
+            if self.dataRange != nil {
+                map["DataRange"] = self.dataRange?.toMap()
+            }
+            if self.modifyUser != nil {
+                map["ModifyUser"] = self.modifyUser!
+            }
+            if self.moduleName != nil {
+                map["ModuleName"] = self.moduleName!
+            }
+            if self.showName != nil {
+                map["ShowName"] = self.showName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AgentName") {
+                self.agentName = dict["AgentName"] as! String
+            }
+            if dict.keys.contains("CopilotId") {
+                self.copilotId = dict["CopilotId"] as! String
+            }
+            if dict.keys.contains("CreateUser") {
+                self.createUser = dict["CreateUser"] as! String
+            }
+            if dict.keys.contains("CreateUserName") {
+                self.createUserName = dict["CreateUserName"] as! String
+            }
+            if dict.keys.contains("DataRange") {
+                var model = QueryCopilotEmbedConfigResponseBody.Result.DataRange()
+                model.fromMap(dict["DataRange"] as! [String: Any])
+                self.dataRange = model
+            }
+            if dict.keys.contains("ModifyUser") {
+                self.modifyUser = dict["ModifyUser"] as! String
+            }
+            if dict.keys.contains("ModuleName") {
+                self.moduleName = dict["ModuleName"] as! String
+            }
+            if dict.keys.contains("ShowName") {
+                self.showName = dict["ShowName"] as! String
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var result: [QueryCopilotEmbedConfigResponseBody.Result]?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            var tmp : [Any] = []
+            for k in self.result! {
+                tmp.append(k.toMap())
+            }
+            map["Result"] = tmp
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Result") {
+            var tmp : [QueryCopilotEmbedConfigResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = QueryCopilotEmbedConfigResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class QueryCopilotEmbedConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryCopilotEmbedConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = QueryCopilotEmbedConfigResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class QueryCubeOptimizationRequest : Tea.TeaModel {
     public var workspaceId: String?
 
@@ -10799,6 +11226,636 @@ public class QueryCubePerformanceResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = QueryCubePerformanceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class QueryDataRequest : Tea.TeaModel {
+    public var apiId: String?
+
+    public var conditions: String?
+
+    public var returnFields: String?
+
+    public var userId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.apiId != nil {
+            map["ApiId"] = self.apiId!
+        }
+        if self.conditions != nil {
+            map["Conditions"] = self.conditions!
+        }
+        if self.returnFields != nil {
+            map["ReturnFields"] = self.returnFields!
+        }
+        if self.userId != nil {
+            map["UserId"] = self.userId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ApiId") {
+            self.apiId = dict["ApiId"] as! String
+        }
+        if dict.keys.contains("Conditions") {
+            self.conditions = dict["Conditions"] as! String
+        }
+        if dict.keys.contains("ReturnFields") {
+            self.returnFields = dict["ReturnFields"] as! String
+        }
+        if dict.keys.contains("UserId") {
+            self.userId = dict["UserId"] as! String
+        }
+    }
+}
+
+public class QueryDataResponseBody : Tea.TeaModel {
+    public class Result : Tea.TeaModel {
+        public class Headers : Tea.TeaModel {
+            public var aggregator: String?
+
+            public var column: String?
+
+            public var dataType: String?
+
+            public var granularity: String?
+
+            public var label: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.aggregator != nil {
+                    map["Aggregator"] = self.aggregator!
+                }
+                if self.column != nil {
+                    map["Column"] = self.column!
+                }
+                if self.dataType != nil {
+                    map["DataType"] = self.dataType!
+                }
+                if self.granularity != nil {
+                    map["Granularity"] = self.granularity!
+                }
+                if self.label != nil {
+                    map["Label"] = self.label!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Aggregator") {
+                    self.aggregator = dict["Aggregator"] as! String
+                }
+                if dict.keys.contains("Column") {
+                    self.column = dict["Column"] as! String
+                }
+                if dict.keys.contains("DataType") {
+                    self.dataType = dict["DataType"] as! String
+                }
+                if dict.keys.contains("Granularity") {
+                    self.granularity = dict["Granularity"] as! String
+                }
+                if dict.keys.contains("Label") {
+                    self.label = dict["Label"] as! String
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+            }
+        }
+        public var headers: [QueryDataResponseBody.Result.Headers]?
+
+        public var sql: String?
+
+        public var values: [[String: Any]]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.headers != nil {
+                var tmp : [Any] = []
+                for k in self.headers! {
+                    tmp.append(k.toMap())
+                }
+                map["Headers"] = tmp
+            }
+            if self.sql != nil {
+                map["Sql"] = self.sql!
+            }
+            if self.values != nil {
+                map["Values"] = self.values!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Headers") {
+                var tmp : [QueryDataResponseBody.Result.Headers] = []
+                for v in dict["Headers"] as! [Any] {
+                    var model = QueryDataResponseBody.Result.Headers()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.headers = tmp
+            }
+            if dict.keys.contains("Sql") {
+                self.sql = dict["Sql"] as! String
+            }
+            if dict.keys.contains("Values") {
+                self.values = dict["Values"] as! [[String: Any]]
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var result: QueryDataResponseBody.Result?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.result?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            map["Result"] = self.result?.toMap()
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Result") {
+            var model = QueryDataResponseBody.Result()
+            model.fromMap(dict["Result"] as! [String: Any])
+            self.result = model
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class QueryDataResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryDataResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = QueryDataResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class QueryDataRangeRequest : Tea.TeaModel {
+    public var keyword: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.keyword != nil {
+            map["Keyword"] = self.keyword!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Keyword") {
+            self.keyword = dict["Keyword"] as! String
+        }
+        if dict.keys.contains("Type") {
+            self.type = dict["Type"] as! String
+        }
+    }
+}
+
+public class QueryDataRangeResponseBody : Tea.TeaModel {
+    public class Result : Tea.TeaModel {
+        public class ApiCopilotLlmCubeModels : Tea.TeaModel {
+            public var alias: String?
+
+            public var createUser: String?
+
+            public var llmCubeId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.alias != nil {
+                    map["Alias"] = self.alias!
+                }
+                if self.createUser != nil {
+                    map["CreateUser"] = self.createUser!
+                }
+                if self.llmCubeId != nil {
+                    map["LlmCubeId"] = self.llmCubeId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Alias") {
+                    self.alias = dict["Alias"] as! String
+                }
+                if dict.keys.contains("CreateUser") {
+                    self.createUser = dict["CreateUser"] as! String
+                }
+                if dict.keys.contains("LlmCubeId") {
+                    self.llmCubeId = dict["LlmCubeId"] as! String
+                }
+            }
+        }
+        public class ApiCopilotThemeModels : Tea.TeaModel {
+            public class ApiCopilotLlmCubeModels : Tea.TeaModel {
+                public var alias: String?
+
+                public var createUser: String?
+
+                public var llmCubeId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.alias != nil {
+                        map["Alias"] = self.alias!
+                    }
+                    if self.createUser != nil {
+                        map["CreateUser"] = self.createUser!
+                    }
+                    if self.llmCubeId != nil {
+                        map["LlmCubeId"] = self.llmCubeId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Alias") {
+                        self.alias = dict["Alias"] as! String
+                    }
+                    if dict.keys.contains("CreateUser") {
+                        self.createUser = dict["CreateUser"] as! String
+                    }
+                    if dict.keys.contains("LlmCubeId") {
+                        self.llmCubeId = dict["LlmCubeId"] as! String
+                    }
+                }
+            }
+            public var apiCopilotLlmCubeModels: [QueryDataRangeResponseBody.Result.ApiCopilotThemeModels.ApiCopilotLlmCubeModels]?
+
+            public var createUser: String?
+
+            public var themeId: String?
+
+            public var themeName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.apiCopilotLlmCubeModels != nil {
+                    var tmp : [Any] = []
+                    for k in self.apiCopilotLlmCubeModels! {
+                        tmp.append(k.toMap())
+                    }
+                    map["ApiCopilotLlmCubeModels"] = tmp
+                }
+                if self.createUser != nil {
+                    map["CreateUser"] = self.createUser!
+                }
+                if self.themeId != nil {
+                    map["ThemeId"] = self.themeId!
+                }
+                if self.themeName != nil {
+                    map["ThemeName"] = self.themeName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ApiCopilotLlmCubeModels") {
+                    var tmp : [QueryDataRangeResponseBody.Result.ApiCopilotThemeModels.ApiCopilotLlmCubeModels] = []
+                    for v in dict["ApiCopilotLlmCubeModels"] as! [Any] {
+                        var model = QueryDataRangeResponseBody.Result.ApiCopilotThemeModels.ApiCopilotLlmCubeModels()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.apiCopilotLlmCubeModels = tmp
+                }
+                if dict.keys.contains("CreateUser") {
+                    self.createUser = dict["CreateUser"] as! String
+                }
+                if dict.keys.contains("ThemeId") {
+                    self.themeId = dict["ThemeId"] as! String
+                }
+                if dict.keys.contains("ThemeName") {
+                    self.themeName = dict["ThemeName"] as! String
+                }
+            }
+        }
+        public var apiCopilotLlmCubeModels: [QueryDataRangeResponseBody.Result.ApiCopilotLlmCubeModels]?
+
+        public var apiCopilotThemeModels: [QueryDataRangeResponseBody.Result.ApiCopilotThemeModels]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.apiCopilotLlmCubeModels != nil {
+                var tmp : [Any] = []
+                for k in self.apiCopilotLlmCubeModels! {
+                    tmp.append(k.toMap())
+                }
+                map["ApiCopilotLlmCubeModels"] = tmp
+            }
+            if self.apiCopilotThemeModels != nil {
+                var tmp : [Any] = []
+                for k in self.apiCopilotThemeModels! {
+                    tmp.append(k.toMap())
+                }
+                map["ApiCopilotThemeModels"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ApiCopilotLlmCubeModels") {
+                var tmp : [QueryDataRangeResponseBody.Result.ApiCopilotLlmCubeModels] = []
+                for v in dict["ApiCopilotLlmCubeModels"] as! [Any] {
+                    var model = QueryDataRangeResponseBody.Result.ApiCopilotLlmCubeModels()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.apiCopilotLlmCubeModels = tmp
+            }
+            if dict.keys.contains("ApiCopilotThemeModels") {
+                var tmp : [QueryDataRangeResponseBody.Result.ApiCopilotThemeModels] = []
+                for v in dict["ApiCopilotThemeModels"] as! [Any] {
+                    var model = QueryDataRangeResponseBody.Result.ApiCopilotThemeModels()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.apiCopilotThemeModels = tmp
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var result: QueryDataRangeResponseBody.Result?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.result?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            map["Result"] = self.result?.toMap()
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Result") {
+            var model = QueryDataRangeResponseBody.Result()
+            model.fromMap(dict["Result"] as! [String: Any])
+            self.result = model
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class QueryDataRangeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryDataRangeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = QueryDataRangeResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
