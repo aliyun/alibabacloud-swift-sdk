@@ -2597,6 +2597,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getChatMediaUrlWithOptions(_ request: GetChatMediaUrlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetChatMediaUrlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mediaId)) {
+            body["MediaId"] = request.mediaId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.requestId)) {
+            body["RequestId"] = request.requestId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetChatMediaUrl",
+            "version": "2020-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetChatMediaUrlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getChatMediaUrl(_ request: GetChatMediaUrlRequest) async throws -> GetChatMediaUrlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getChatMediaUrlWithOptions(request as! GetChatMediaUrlRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getContactFlowWithOptions(_ request: GetContactFlowRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetContactFlowResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
