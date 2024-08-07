@@ -1620,6 +1620,196 @@ public class CheckSessionResponse : Tea.TeaModel {
     }
 }
 
+public class CountTextRequest : Tea.TeaModel {
+    public var generationSource: String?
+
+    public var industry: String?
+
+    public var publishStatus: String?
+
+    public var style: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.generationSource != nil {
+            map["generationSource"] = self.generationSource!
+        }
+        if self.industry != nil {
+            map["industry"] = self.industry!
+        }
+        if self.publishStatus != nil {
+            map["publishStatus"] = self.publishStatus!
+        }
+        if self.style != nil {
+            map["style"] = self.style!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("generationSource") {
+            self.generationSource = dict["generationSource"] as! String
+        }
+        if dict.keys.contains("industry") {
+            self.industry = dict["industry"] as! String
+        }
+        if dict.keys.contains("publishStatus") {
+            self.publishStatus = dict["publishStatus"] as! String
+        }
+        if dict.keys.contains("style") {
+            self.style = dict["style"] as! String
+        }
+    }
+}
+
+public class CountTextResponseBody : Tea.TeaModel {
+    public class CountTextCmdList : Tea.TeaModel {
+        public var count: Int64?
+
+        public var theme: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.count != nil {
+                map["count"] = self.count!
+            }
+            if self.theme != nil {
+                map["theme"] = self.theme!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("count") {
+                self.count = dict["count"] as! Int64
+            }
+            if dict.keys.contains("theme") {
+                self.theme = dict["theme"] as! String
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var countTextCmdList: [CountTextResponseBody.CountTextCmdList]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.countTextCmdList != nil {
+            var tmp : [Any] = []
+            for k in self.countTextCmdList! {
+                tmp.append(k.toMap())
+            }
+            map["countTextCmdList"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("countTextCmdList") {
+            var tmp : [CountTextResponseBody.CountTextCmdList] = []
+            for v in dict["countTextCmdList"] as! [Any] {
+                var model = CountTextResponseBody.CountTextCmdList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.countTextCmdList = tmp
+        }
+    }
+}
+
+public class CountTextResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CountTextResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CountTextResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateIllustrationTaskRequest : Tea.TeaModel {
     public var body: IllustrationTaskCreateCmd?
 
@@ -2788,6 +2978,8 @@ public class ListTextsRequest : Tea.TeaModel {
 
     public var industry: String?
 
+    public var keyword: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -2818,6 +3010,9 @@ public class ListTextsRequest : Tea.TeaModel {
         if self.industry != nil {
             map["industry"] = self.industry!
         }
+        if self.keyword != nil {
+            map["keyword"] = self.keyword!
+        }
         if self.pageNumber != nil {
             map["pageNumber"] = self.pageNumber!
         }
@@ -2842,6 +3037,9 @@ public class ListTextsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("industry") {
             self.industry = dict["industry"] as! String
+        }
+        if dict.keys.contains("keyword") {
+            self.keyword = dict["keyword"] as! String
         }
         if dict.keys.contains("pageNumber") {
             self.pageNumber = dict["pageNumber"] as! Int32
@@ -4505,6 +4703,8 @@ public class SubmitProjectTaskRequest : Tea.TeaModel {
 
     public var subtitleTag: Int32?
 
+    public var transparentBackground: Int32?
+
     public override init() {
         super.init()
     }
@@ -4532,6 +4732,9 @@ public class SubmitProjectTaskRequest : Tea.TeaModel {
         if self.subtitleTag != nil {
             map["subtitleTag"] = self.subtitleTag!
         }
+        if self.transparentBackground != nil {
+            map["transparentBackground"] = self.transparentBackground!
+        }
         return map
     }
 
@@ -4552,6 +4755,9 @@ public class SubmitProjectTaskRequest : Tea.TeaModel {
         }
         if dict.keys.contains("subtitleTag") {
             self.subtitleTag = dict["subtitleTag"] as! Int32
+        }
+        if dict.keys.contains("transparentBackground") {
+            self.transparentBackground = dict["transparentBackground"] as! Int32
         }
     }
 }
