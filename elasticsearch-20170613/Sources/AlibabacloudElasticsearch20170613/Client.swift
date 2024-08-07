@@ -6460,6 +6460,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.endpoints)) {
             body["endpoints"] = request.endpoints ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.esInstanceId)) {
+            body["esInstanceId"] = request.esInstanceId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.password)) {
             body["password"] = request.password ?? "";
         }

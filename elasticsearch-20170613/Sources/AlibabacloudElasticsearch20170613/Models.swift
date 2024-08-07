@@ -41504,6 +41504,8 @@ public class UpdateLogstashSettingsResponse : Tea.TeaModel {
 public class UpdatePipelineManagementConfigRequest : Tea.TeaModel {
     public var endpoints: [String]?
 
+    public var esInstanceId: String?
+
     public var password: String?
 
     public var pipelineIds: [String]?
@@ -41531,6 +41533,9 @@ public class UpdatePipelineManagementConfigRequest : Tea.TeaModel {
         if self.endpoints != nil {
             map["endpoints"] = self.endpoints!
         }
+        if self.esInstanceId != nil {
+            map["esInstanceId"] = self.esInstanceId!
+        }
         if self.password != nil {
             map["password"] = self.password!
         }
@@ -41552,6 +41557,9 @@ public class UpdatePipelineManagementConfigRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("endpoints") {
             self.endpoints = dict["endpoints"] as! [String]
+        }
+        if dict.keys.contains("esInstanceId") {
+            self.esInstanceId = dict["esInstanceId"] as! String
         }
         if dict.keys.contains("password") {
             self.password = dict["password"] as! String
