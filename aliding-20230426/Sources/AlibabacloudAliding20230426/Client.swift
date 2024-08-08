@@ -1144,6 +1144,71 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func commitFileWithOptions(_ tmpReq: CommitFileRequest, _ tmpHeader: CommitFileHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CommitFileResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CommitFileShrinkRequest = CommitFileShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: CommitFileShrinkHeaders = CommitFileShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.option)) {
+            request.optionShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.option, "Option", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.optionShrink)) {
+            body["Option"] = request.optionShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.parentDentryUuid)) {
+            body["ParentDentryUuid"] = request.parentDentryUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uploadKey)) {
+            body["UploadKey"] = request.uploadKey ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CommitFile",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/documents/commitFile",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CommitFileResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func commitFile(_ request: CommitFileRequest) async throws -> CommitFileResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: CommitFileHeaders = CommitFileHeaders([:])
+        return try await commitFileWithOptions(request as! CommitFileRequest, headers as! CommitFileHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createDeliveryPlanWithOptions(_ tmpReq: CreateDeliveryPlanRequest, _ tmpHeader: CreateDeliveryPlanHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDeliveryPlanResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateDeliveryPlanShrinkRequest = CreateDeliveryPlanShrinkRequest([:])
@@ -4061,6 +4126,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dentryUuid)) {
             body["DentryUuid"] = request.dentryUuid ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.generateCp)) {
+            body["GenerateCp"] = request.generateCp!;
+        }
         if (!TeaUtils.Client.isUnset(request.targetFormat)) {
             body["TargetFormat"] = request.targetFormat ?? "";
         }
@@ -4264,6 +4332,68 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: GetFileDownloadInfoHeaders = GetFileDownloadInfoHeaders([:])
         return try await getFileDownloadInfoWithOptions(request as! GetFileDownloadInfoRequest, headers as! GetFileDownloadInfoHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getFileUploadInfoWithOptions(_ tmpReq: GetFileUploadInfoRequest, _ tmpHeader: GetFileUploadInfoHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetFileUploadInfoResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetFileUploadInfoShrinkRequest = GetFileUploadInfoShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: GetFileUploadInfoShrinkHeaders = GetFileUploadInfoShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.option)) {
+            request.optionShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.option, "Option", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.optionShrink)) {
+            body["Option"] = request.optionShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.parentDentryUuid)) {
+            body["ParentDentryUuid"] = request.parentDentryUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.protocol_)) {
+            body["Protocol"] = request.protocol_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetFileUploadInfo",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/documents/getFileUploadInfo",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetFileUploadInfoResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getFileUploadInfo(_ request: GetFileUploadInfoRequest) async throws -> GetFileUploadInfoResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetFileUploadInfoHeaders = GetFileUploadInfoHeaders([:])
+        return try await getFileUploadInfoWithOptions(request as! GetFileUploadInfoRequest, headers as! GetFileUploadInfoHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5002,6 +5132,71 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: GetMineWorkspaceHeaders = GetMineWorkspaceHeaders([:])
         return try await getMineWorkspaceWithOptions(request as! GetMineWorkspaceRequest, headers as! GetMineWorkspaceHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMultipartFileUploadInfosWithOptions(_ tmpReq: GetMultipartFileUploadInfosRequest, _ tmpHeader: GetMultipartFileUploadInfosHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMultipartFileUploadInfosResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetMultipartFileUploadInfosShrinkRequest = GetMultipartFileUploadInfosShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: GetMultipartFileUploadInfosShrinkHeaders = GetMultipartFileUploadInfosShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.option)) {
+            request.optionShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.option, "Option", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.partNumbers)) {
+            request.partNumbersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.partNumbers, "PartNumbers", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.optionShrink)) {
+            body["Option"] = request.optionShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.partNumbersShrink)) {
+            body["PartNumbers"] = request.partNumbersShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uploadKey)) {
+            body["UploadKey"] = request.uploadKey ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetMultipartFileUploadInfos",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/GetMultipartFileUploadInfos",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetMultipartFileUploadInfosResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMultipartFileUploadInfos(_ request: GetMultipartFileUploadInfosRequest) async throws -> GetMultipartFileUploadInfosResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetMultipartFileUploadInfosHeaders = GetMultipartFileUploadInfosHeaders([:])
+        return try await getMultipartFileUploadInfosWithOptions(request as! GetMultipartFileUploadInfosRequest, headers as! GetMultipartFileUploadInfosHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5774,6 +5969,68 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getScheduleWithOptions(_ tmpReq: GetScheduleRequest, _ tmpHeader: GetScheduleHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetScheduleResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetScheduleShrinkRequest = GetScheduleShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: GetScheduleShrinkHeaders = GetScheduleShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.userIds)) {
+            request.userIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.userIds, "UserIds", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            body["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            body["StartTime"] = request.startTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userIdsShrink)) {
+            body["UserIds"] = request.userIdsShrink ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetSchedule",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/calendar/getSchedule",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetScheduleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getSchedule(_ request: GetScheduleRequest) async throws -> GetScheduleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetScheduleHeaders = GetScheduleHeaders([:])
+        return try await getScheduleWithOptions(request as! GetScheduleRequest, headers as! GetScheduleHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getSheetWithOptions(_ tmpReq: GetSheetRequest, _ tmpHeader: GetSheetHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetSheetResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: GetSheetShrinkRequest = GetSheetShrinkRequest([:])
@@ -6366,6 +6623,65 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: GrantHonorHeaders = GrantHonorHeaders([:])
         return try await grantHonorWithOptions(request as! GrantHonorRequest, headers as! GrantHonorHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func initMultipartFileUploadWithOptions(_ tmpReq: InitMultipartFileUploadRequest, _ tmpHeader: InitMultipartFileUploadHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> InitMultipartFileUploadResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: InitMultipartFileUploadShrinkRequest = InitMultipartFileUploadShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: InitMultipartFileUploadShrinkHeaders = InitMultipartFileUploadShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.option)) {
+            request.optionShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.option, "Option", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.optionShrink)) {
+            body["Option"] = request.optionShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.parentDentryUuid)) {
+            body["ParentDentryUuid"] = request.parentDentryUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "InitMultipartFileUpload",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/documents/initMultipartFileUpload",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(InitMultipartFileUploadResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func initMultipartFileUpload(_ request: InitMultipartFileUploadRequest) async throws -> InitMultipartFileUploadResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: InitMultipartFileUploadHeaders = InitMultipartFileUploadHeaders([:])
+        return try await initMultipartFileUploadWithOptions(request as! InitMultipartFileUploadRequest, headers as! InitMultipartFileUploadHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
