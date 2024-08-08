@@ -56440,6 +56440,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                         public class PrivateIpSet : Tea.TeaModel {
                             public var primary: Bool?
 
+                            public var privateDnsName: String?
+
                             public var privateIpAddress: String?
 
                             public override init() {
@@ -56459,6 +56461,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                                 if self.primary != nil {
                                     map["Primary"] = self.primary!
                                 }
+                                if self.privateDnsName != nil {
+                                    map["PrivateDnsName"] = self.privateDnsName!
+                                }
                                 if self.privateIpAddress != nil {
                                     map["PrivateIpAddress"] = self.privateIpAddress!
                                 }
@@ -56468,6 +56473,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                             public override func fromMap(_ dict: [String: Any]) -> Void {
                                 if dict.keys.contains("Primary") {
                                     self.primary = dict["Primary"] as! Bool
+                                }
+                                if dict.keys.contains("PrivateDnsName") {
+                                    self.privateDnsName = dict["PrivateDnsName"] as! String
                                 }
                                 if dict.keys.contains("PrivateIpAddress") {
                                     self.privateIpAddress = dict["PrivateIpAddress"] as! String
@@ -56725,6 +56733,67 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                             tmp.append(model)
                         }
                         self.lockReason = tmp
+                    }
+                }
+            }
+            public class PrivateDnsNameOptions : Tea.TeaModel {
+                public var enableInstanceIdDnsAAAARecord: Bool?
+
+                public var enableInstanceIdDnsARecord: Bool?
+
+                public var enableIpDnsARecord: Bool?
+
+                public var enableIpDnsPtrRecord: Bool?
+
+                public var hostnameType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.enableInstanceIdDnsAAAARecord != nil {
+                        map["EnableInstanceIdDnsAAAARecord"] = self.enableInstanceIdDnsAAAARecord!
+                    }
+                    if self.enableInstanceIdDnsARecord != nil {
+                        map["EnableInstanceIdDnsARecord"] = self.enableInstanceIdDnsARecord!
+                    }
+                    if self.enableIpDnsARecord != nil {
+                        map["EnableIpDnsARecord"] = self.enableIpDnsARecord!
+                    }
+                    if self.enableIpDnsPtrRecord != nil {
+                        map["EnableIpDnsPtrRecord"] = self.enableIpDnsPtrRecord!
+                    }
+                    if self.hostnameType != nil {
+                        map["HostnameType"] = self.hostnameType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("EnableInstanceIdDnsAAAARecord") {
+                        self.enableInstanceIdDnsAAAARecord = dict["EnableInstanceIdDnsAAAARecord"] as! Bool
+                    }
+                    if dict.keys.contains("EnableInstanceIdDnsARecord") {
+                        self.enableInstanceIdDnsARecord = dict["EnableInstanceIdDnsARecord"] as! Bool
+                    }
+                    if dict.keys.contains("EnableIpDnsARecord") {
+                        self.enableIpDnsARecord = dict["EnableIpDnsARecord"] as! Bool
+                    }
+                    if dict.keys.contains("EnableIpDnsPtrRecord") {
+                        self.enableIpDnsPtrRecord = dict["EnableIpDnsPtrRecord"] as! Bool
+                    }
+                    if dict.keys.contains("HostnameType") {
+                        self.hostnameType = dict["HostnameType"] as! String
                     }
                 }
             }
@@ -57068,6 +57137,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
             public var operationLocks: DescribeInstancesResponseBody.Instances.Instance.OperationLocks?
 
+            public var privateDnsNameOptions: DescribeInstancesResponseBody.Instances.Instance.PrivateDnsNameOptions?
+
             public var publicIpAddress: DescribeInstancesResponseBody.Instances.Instance.PublicIpAddress?
 
             public var rdmaIpAddress: DescribeInstancesResponseBody.Instances.Instance.RdmaIpAddress?
@@ -57127,6 +57198,7 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 try self.metadataOptions?.validate()
                 try self.networkInterfaces?.validate()
                 try self.operationLocks?.validate()
+                try self.privateDnsNameOptions?.validate()
                 try self.publicIpAddress?.validate()
                 try self.rdmaIpAddress?.validate()
                 try self.securityGroupIds?.validate()
@@ -57270,6 +57342,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 }
                 if self.operationLocks != nil {
                     map["OperationLocks"] = self.operationLocks?.toMap()
+                }
+                if self.privateDnsNameOptions != nil {
+                    map["PrivateDnsNameOptions"] = self.privateDnsNameOptions?.toMap()
                 }
                 if self.publicIpAddress != nil {
                     map["PublicIpAddress"] = self.publicIpAddress?.toMap()
@@ -57488,6 +57563,11 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                     var model = DescribeInstancesResponseBody.Instances.Instance.OperationLocks()
                     model.fromMap(dict["OperationLocks"] as! [String: Any])
                     self.operationLocks = model
+                }
+                if dict.keys.contains("PrivateDnsNameOptions") {
+                    var model = DescribeInstancesResponseBody.Instances.Instance.PrivateDnsNameOptions()
+                    model.fromMap(dict["PrivateDnsNameOptions"] as! [String: Any])
+                    self.privateDnsNameOptions = model
                 }
                 if dict.keys.contains("PublicIpAddress") {
                     var model = DescribeInstancesResponseBody.Instances.Instance.PublicIpAddress()
@@ -65775,6 +65855,8 @@ public class DescribeNetworkInterfacesResponseBody : Tea.TeaModel {
 
                     public var primary: Bool?
 
+                    public var privateDnsName: String?
+
                     public var privateIpAddress: String?
 
                     public override init() {
@@ -65798,6 +65880,9 @@ public class DescribeNetworkInterfacesResponseBody : Tea.TeaModel {
                         if self.primary != nil {
                             map["Primary"] = self.primary!
                         }
+                        if self.privateDnsName != nil {
+                            map["PrivateDnsName"] = self.privateDnsName!
+                        }
                         if self.privateIpAddress != nil {
                             map["PrivateIpAddress"] = self.privateIpAddress!
                         }
@@ -65812,6 +65897,9 @@ public class DescribeNetworkInterfacesResponseBody : Tea.TeaModel {
                         }
                         if dict.keys.contains("Primary") {
                             self.primary = dict["Primary"] as! Bool
+                        }
+                        if dict.keys.contains("PrivateDnsName") {
+                            self.privateDnsName = dict["PrivateDnsName"] as! String
                         }
                         if dict.keys.contains("PrivateIpAddress") {
                             self.privateIpAddress = dict["PrivateIpAddress"] as! String
@@ -97081,6 +97169,67 @@ public class ModifyInstanceAttributeRequest : Tea.TeaModel {
             }
         }
     }
+    public class PrivateDnsNameOptions : Tea.TeaModel {
+        public var enableInstanceIdDnsAAAARecord: Bool?
+
+        public var enableInstanceIdDnsARecord: Bool?
+
+        public var enableIpDnsARecord: Bool?
+
+        public var enableIpDnsPtrRecord: Bool?
+
+        public var hostnameType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enableInstanceIdDnsAAAARecord != nil {
+                map["EnableInstanceIdDnsAAAARecord"] = self.enableInstanceIdDnsAAAARecord!
+            }
+            if self.enableInstanceIdDnsARecord != nil {
+                map["EnableInstanceIdDnsARecord"] = self.enableInstanceIdDnsARecord!
+            }
+            if self.enableIpDnsARecord != nil {
+                map["EnableIpDnsARecord"] = self.enableIpDnsARecord!
+            }
+            if self.enableIpDnsPtrRecord != nil {
+                map["EnableIpDnsPtrRecord"] = self.enableIpDnsPtrRecord!
+            }
+            if self.hostnameType != nil {
+                map["HostnameType"] = self.hostnameType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EnableInstanceIdDnsAAAARecord") {
+                self.enableInstanceIdDnsAAAARecord = dict["EnableInstanceIdDnsAAAARecord"] as! Bool
+            }
+            if dict.keys.contains("EnableInstanceIdDnsARecord") {
+                self.enableInstanceIdDnsARecord = dict["EnableInstanceIdDnsARecord"] as! Bool
+            }
+            if dict.keys.contains("EnableIpDnsARecord") {
+                self.enableIpDnsARecord = dict["EnableIpDnsARecord"] as! Bool
+            }
+            if dict.keys.contains("EnableIpDnsPtrRecord") {
+                self.enableIpDnsPtrRecord = dict["EnableIpDnsPtrRecord"] as! Bool
+            }
+            if dict.keys.contains("HostnameType") {
+                self.hostnameType = dict["HostnameType"] as! String
+            }
+        }
+    }
     public class RemoteConnectionOptions : Tea.TeaModel {
         public var password: String?
 
@@ -97142,6 +97291,8 @@ public class ModifyInstanceAttributeRequest : Tea.TeaModel {
 
     public var password: String?
 
+    public var privateDnsNameOptions: ModifyInstanceAttributeRequest.PrivateDnsNameOptions?
+
     public var recyclable: Bool?
 
     public var remoteConnectionOptions: ModifyInstanceAttributeRequest.RemoteConnectionOptions?
@@ -97165,6 +97316,7 @@ public class ModifyInstanceAttributeRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.cpuOptions?.validate()
+        try self.privateDnsNameOptions?.validate()
         try self.remoteConnectionOptions?.validate()
     }
 
@@ -97205,6 +97357,9 @@ public class ModifyInstanceAttributeRequest : Tea.TeaModel {
         }
         if self.password != nil {
             map["Password"] = self.password!
+        }
+        if self.privateDnsNameOptions != nil {
+            map["PrivateDnsNameOptions"] = self.privateDnsNameOptions?.toMap()
         }
         if self.recyclable != nil {
             map["Recyclable"] = self.recyclable!
@@ -97265,6 +97420,11 @@ public class ModifyInstanceAttributeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Password") {
             self.password = dict["Password"] as! String
+        }
+        if dict.keys.contains("PrivateDnsNameOptions") {
+            var model = ModifyInstanceAttributeRequest.PrivateDnsNameOptions()
+            model.fromMap(dict["PrivateDnsNameOptions"] as! [String: Any])
+            self.privateDnsNameOptions = model
         }
         if dict.keys.contains("Recyclable") {
             self.recyclable = dict["Recyclable"] as! Bool
@@ -112130,6 +112290,67 @@ public class RunInstancesRequest : Tea.TeaModel {
             }
         }
     }
+    public class PrivateDnsNameOptions : Tea.TeaModel {
+        public var enableInstanceIdDnsAAAARecord: Bool?
+
+        public var enableInstanceIdDnsARecord: Bool?
+
+        public var enableIpDnsARecord: Bool?
+
+        public var enableIpDnsPtrRecord: Bool?
+
+        public var hostnameType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enableInstanceIdDnsAAAARecord != nil {
+                map["EnableInstanceIdDnsAAAARecord"] = self.enableInstanceIdDnsAAAARecord!
+            }
+            if self.enableInstanceIdDnsARecord != nil {
+                map["EnableInstanceIdDnsARecord"] = self.enableInstanceIdDnsARecord!
+            }
+            if self.enableIpDnsARecord != nil {
+                map["EnableIpDnsARecord"] = self.enableIpDnsARecord!
+            }
+            if self.enableIpDnsPtrRecord != nil {
+                map["EnableIpDnsPtrRecord"] = self.enableIpDnsPtrRecord!
+            }
+            if self.hostnameType != nil {
+                map["HostnameType"] = self.hostnameType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EnableInstanceIdDnsAAAARecord") {
+                self.enableInstanceIdDnsAAAARecord = dict["EnableInstanceIdDnsAAAARecord"] as! Bool
+            }
+            if dict.keys.contains("EnableInstanceIdDnsARecord") {
+                self.enableInstanceIdDnsARecord = dict["EnableInstanceIdDnsARecord"] as! Bool
+            }
+            if dict.keys.contains("EnableIpDnsARecord") {
+                self.enableIpDnsARecord = dict["EnableIpDnsARecord"] as! Bool
+            }
+            if dict.keys.contains("EnableIpDnsPtrRecord") {
+                self.enableIpDnsPtrRecord = dict["EnableIpDnsPtrRecord"] as! Bool
+            }
+            if dict.keys.contains("HostnameType") {
+                self.hostnameType = dict["HostnameType"] as! String
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -112277,6 +112498,8 @@ public class RunInstancesRequest : Tea.TeaModel {
 
     public var periodUnit: String?
 
+    public var privateDnsNameOptions: RunInstancesRequest.PrivateDnsNameOptions?
+
     public var privateIpAddress: String?
 
     public var ramRoleName: String?
@@ -112337,6 +112560,7 @@ public class RunInstancesRequest : Tea.TeaModel {
         try self.systemDisk?.validate()
         try self.imageOptions?.validate()
         try self.networkOptions?.validate()
+        try self.privateDnsNameOptions?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -112517,6 +112741,9 @@ public class RunInstancesRequest : Tea.TeaModel {
         }
         if self.periodUnit != nil {
             map["PeriodUnit"] = self.periodUnit!
+        }
+        if self.privateDnsNameOptions != nil {
+            map["PrivateDnsNameOptions"] = self.privateDnsNameOptions?.toMap()
         }
         if self.privateIpAddress != nil {
             map["PrivateIpAddress"] = self.privateIpAddress!
@@ -112793,6 +113020,11 @@ public class RunInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PeriodUnit") {
             self.periodUnit = dict["PeriodUnit"] as! String
+        }
+        if dict.keys.contains("PrivateDnsNameOptions") {
+            var model = RunInstancesRequest.PrivateDnsNameOptions()
+            model.fromMap(dict["PrivateDnsNameOptions"] as! [String: Any])
+            self.privateDnsNameOptions = model
         }
         if dict.keys.contains("PrivateIpAddress") {
             self.privateIpAddress = dict["PrivateIpAddress"] as! String
