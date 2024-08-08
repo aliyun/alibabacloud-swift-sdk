@@ -1540,6 +1540,43 @@ public class HttpApiApiInfo : Tea.TeaModel {
                 }
             }
         }
+        public class GatewayInfo : Tea.TeaModel {
+            public var gatewayId: String?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.gatewayId != nil {
+                    map["gatewayId"] = self.gatewayId!
+                }
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("gatewayId") {
+                    self.gatewayId = dict["gatewayId"] as! String
+                }
+                if dict.keys.contains("name") {
+                    self.name = dict["name"] as! String
+                }
+            }
+        }
         public class ServiceConfigs : Tea.TeaModel {
             public var gatewayServiceId: String?
 
@@ -1668,15 +1705,25 @@ public class HttpApiApiInfo : Tea.TeaModel {
                 }
             }
         }
+        public var alias: String?
+
         public var backendScene: String?
 
         public var backendType: String?
 
         public var cloudProductConfig: HttpApiApiInfo.Environments.CloudProductConfig?
 
+        public var customDomains: [HttpApiDomainInfo]?
+
         public var dnsConfigs: [HttpApiApiInfo.Environments.DnsConfigs]?
 
         public var environmentId: String?
+
+        public var gatewayInfo: HttpApiApiInfo.Environments.GatewayInfo?
+
+        public var name: String?
+
+        public var publishStatus: String?
 
         public var serviceConfigs: [HttpApiApiInfo.Environments.ServiceConfigs]?
 
@@ -1693,10 +1740,14 @@ public class HttpApiApiInfo : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.cloudProductConfig?.validate()
+            try self.gatewayInfo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.alias != nil {
+                map["alias"] = self.alias!
+            }
             if self.backendScene != nil {
                 map["backendScene"] = self.backendScene!
             }
@@ -1705,6 +1756,13 @@ public class HttpApiApiInfo : Tea.TeaModel {
             }
             if self.cloudProductConfig != nil {
                 map["cloudProductConfig"] = self.cloudProductConfig?.toMap()
+            }
+            if self.customDomains != nil {
+                var tmp : [Any] = []
+                for k in self.customDomains! {
+                    tmp.append(k.toMap())
+                }
+                map["customDomains"] = tmp
             }
             if self.dnsConfigs != nil {
                 var tmp : [Any] = []
@@ -1715,6 +1773,15 @@ public class HttpApiApiInfo : Tea.TeaModel {
             }
             if self.environmentId != nil {
                 map["environmentId"] = self.environmentId!
+            }
+            if self.gatewayInfo != nil {
+                map["gatewayInfo"] = self.gatewayInfo?.toMap()
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.publishStatus != nil {
+                map["publishStatus"] = self.publishStatus!
             }
             if self.serviceConfigs != nil {
                 var tmp : [Any] = []
@@ -1734,6 +1801,9 @@ public class HttpApiApiInfo : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("alias") {
+                self.alias = dict["alias"] as! String
+            }
             if dict.keys.contains("backendScene") {
                 self.backendScene = dict["backendScene"] as! String
             }
@@ -1744,6 +1814,17 @@ public class HttpApiApiInfo : Tea.TeaModel {
                 var model = HttpApiApiInfo.Environments.CloudProductConfig()
                 model.fromMap(dict["cloudProductConfig"] as! [String: Any])
                 self.cloudProductConfig = model
+            }
+            if dict.keys.contains("customDomains") {
+                var tmp : [HttpApiDomainInfo] = []
+                for v in dict["customDomains"] as! [Any] {
+                    var model = HttpApiDomainInfo()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.customDomains = tmp
             }
             if dict.keys.contains("dnsConfigs") {
                 var tmp : [HttpApiApiInfo.Environments.DnsConfigs] = []
@@ -1758,6 +1839,17 @@ public class HttpApiApiInfo : Tea.TeaModel {
             }
             if dict.keys.contains("environmentId") {
                 self.environmentId = dict["environmentId"] as! String
+            }
+            if dict.keys.contains("gatewayInfo") {
+                var model = HttpApiApiInfo.Environments.GatewayInfo()
+                model.fromMap(dict["gatewayInfo"] as! [String: Any])
+                self.gatewayInfo = model
+            }
+            if dict.keys.contains("name") {
+                self.name = dict["name"] as! String
+            }
+            if dict.keys.contains("publishStatus") {
+                self.publishStatus = dict["publishStatus"] as! String
             }
             if dict.keys.contains("serviceConfigs") {
                 var tmp : [HttpApiApiInfo.Environments.ServiceConfigs] = []
