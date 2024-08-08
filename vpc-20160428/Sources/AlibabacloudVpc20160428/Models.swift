@@ -79811,7 +79811,7 @@ public class ListPublicIpAddressPoolsResponseBody : Tea.TeaModel {
 
         public var usedIpNum: Int32?
 
-        public var userType: Bool?
+        public var userType: String?
 
         public var zones: [String]?
 
@@ -79954,7 +79954,7 @@ public class ListPublicIpAddressPoolsResponseBody : Tea.TeaModel {
                 self.usedIpNum = dict["UsedIpNum"] as! Int32
             }
             if dict.keys.contains("UserType") {
-                self.userType = dict["UserType"] as! Bool
+                self.userType = dict["UserType"] as! String
             }
             if dict.keys.contains("Zones") {
                 self.zones = dict["Zones"] as! [String]
