@@ -24747,6 +24747,8 @@ public class UpdateTemplateResponseBody : Tea.TeaModel {
 
     public var templateId: String?
 
+    public var templateVersion: String?
+
     public override init() {
         super.init()
     }
@@ -24767,6 +24769,9 @@ public class UpdateTemplateResponseBody : Tea.TeaModel {
         if self.templateId != nil {
             map["TemplateId"] = self.templateId!
         }
+        if self.templateVersion != nil {
+            map["TemplateVersion"] = self.templateVersion!
+        }
         return map
     }
 
@@ -24776,6 +24781,9 @@ public class UpdateTemplateResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("TemplateId") {
             self.templateId = dict["TemplateId"] as! String
+        }
+        if dict.keys.contains("TemplateVersion") {
+            self.templateVersion = dict["TemplateVersion"] as! String
         }
     }
 }
