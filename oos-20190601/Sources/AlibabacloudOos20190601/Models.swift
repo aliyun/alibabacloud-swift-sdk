@@ -6020,6 +6020,8 @@ public class GetApplicationGroupResponseBody : Tea.TeaModel {
 
         public var name: String?
 
+        public var operationMetadata: String?
+
         public var progress: String?
 
         public var status: String?
@@ -6072,6 +6074,9 @@ public class GetApplicationGroupResponseBody : Tea.TeaModel {
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.operationMetadata != nil {
+                map["OperationMetadata"] = self.operationMetadata!
+            }
             if self.progress != nil {
                 map["Progress"] = self.progress!
             }
@@ -6117,6 +6122,9 @@ public class GetApplicationGroupResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Name") {
                 self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("OperationMetadata") {
+                self.operationMetadata = dict["OperationMetadata"] as! String
             }
             if dict.keys.contains("Progress") {
                 self.progress = dict["Progress"] as! String
@@ -20751,6 +20759,10 @@ public class UpdateApplicationGroupRequest : Tea.TeaModel {
 
     public var newName: String?
 
+    public var operationName: String?
+
+    public var parameters: [String: Any]?
+
     public var regionId: String?
 
     public override init() {
@@ -20776,6 +20788,12 @@ public class UpdateApplicationGroupRequest : Tea.TeaModel {
         if self.newName != nil {
             map["NewName"] = self.newName!
         }
+        if self.operationName != nil {
+            map["OperationName"] = self.operationName!
+        }
+        if self.parameters != nil {
+            map["Parameters"] = self.parameters!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -20791,6 +20809,82 @@ public class UpdateApplicationGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("NewName") {
             self.newName = dict["NewName"] as! String
+        }
+        if dict.keys.contains("OperationName") {
+            self.operationName = dict["OperationName"] as! String
+        }
+        if dict.keys.contains("Parameters") {
+            self.parameters = dict["Parameters"] as! [String: Any]
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class UpdateApplicationGroupShrinkRequest : Tea.TeaModel {
+    public var applicationName: String?
+
+    public var name: String?
+
+    public var newName: String?
+
+    public var operationName: String?
+
+    public var parametersShrink: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationName != nil {
+            map["ApplicationName"] = self.applicationName!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.newName != nil {
+            map["NewName"] = self.newName!
+        }
+        if self.operationName != nil {
+            map["OperationName"] = self.operationName!
+        }
+        if self.parametersShrink != nil {
+            map["Parameters"] = self.parametersShrink!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ApplicationName") {
+            self.applicationName = dict["ApplicationName"] as! String
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("NewName") {
+            self.newName = dict["NewName"] as! String
+        }
+        if dict.keys.contains("OperationName") {
+            self.operationName = dict["OperationName"] as! String
+        }
+        if dict.keys.contains("Parameters") {
+            self.parametersShrink = dict["Parameters"] as! String
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String

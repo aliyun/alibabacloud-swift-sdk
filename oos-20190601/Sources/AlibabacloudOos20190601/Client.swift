@@ -3463,8 +3463,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateApplicationGroupWithOptions(_ request: UpdateApplicationGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateApplicationGroupResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func updateApplicationGroupWithOptions(_ tmpReq: UpdateApplicationGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateApplicationGroupResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateApplicationGroupShrinkRequest = UpdateApplicationGroupShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.parameters)) {
+            request.parametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.parameters, "Parameters", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.applicationName)) {
             query["ApplicationName"] = request.applicationName ?? "";
@@ -3474,6 +3479,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.newName)) {
             query["NewName"] = request.newName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operationName)) {
+            query["OperationName"] = request.operationName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.parametersShrink)) {
+            query["Parameters"] = request.parametersShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
