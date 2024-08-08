@@ -4885,6 +4885,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.targetDBNodeId)) {
             query["TargetDBNodeId"] = request.targetDBNodeId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.targetZoneType)) {
+            query["TargetZoneType"] = request.targetZoneType ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])

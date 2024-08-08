@@ -24869,6 +24869,8 @@ public class FailoverDBClusterRequest : Tea.TeaModel {
 
     public var targetDBNodeId: String?
 
+    public var targetZoneType: String?
+
     public override init() {
         super.init()
     }
@@ -24907,6 +24909,9 @@ public class FailoverDBClusterRequest : Tea.TeaModel {
         if self.targetDBNodeId != nil {
             map["TargetDBNodeId"] = self.targetDBNodeId!
         }
+        if self.targetZoneType != nil {
+            map["TargetZoneType"] = self.targetZoneType!
+        }
         return map
     }
 
@@ -24934,6 +24939,9 @@ public class FailoverDBClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TargetDBNodeId") {
             self.targetDBNodeId = dict["TargetDBNodeId"] as! String
+        }
+        if dict.keys.contains("TargetZoneType") {
+            self.targetZoneType = dict["TargetZoneType"] as! String
         }
     }
 }
