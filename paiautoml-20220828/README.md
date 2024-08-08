@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudPaiAutoML20220828` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/paiautoml-20220828" "1.3.0"
+github "alibabacloud-sdk-swift/paiautoml-20220828" "1.4.0"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudPaiAutoML20220828` into your Xcode project using [Swif
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/paiautoml-20220828.git", from: "1.3.0")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/paiautoml-20220828.git", from: "1.4.0")
 ]
 ```
 

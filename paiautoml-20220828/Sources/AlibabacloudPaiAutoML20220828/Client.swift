@@ -24,6 +24,51 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAutofeExperimentWithOptions(_ request: CreateAutofeExperimentRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAutofeExperimentResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessibility)) {
+            body["Accessibility"] = request.accessibility ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.autofeExperimentConfiguration)) {
+            body["AutofeExperimentConfiguration"] = request.autofeExperimentConfiguration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            body["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateAutofeExperiment",
+            "version": "2022-08-28",
+            "protocol": "HTTPS",
+            "pathname": "/api/automl/v1/autofe/experiment",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateAutofeExperimentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAutofeExperiment(_ request: CreateAutofeExperimentRequest) async throws -> CreateAutofeExperimentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createAutofeExperimentWithOptions(request as! CreateAutofeExperimentRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createHpoExperimentWithOptions(_ request: CreateHpoExperimentRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateHpoExperimentResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -69,6 +114,33 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createServiceIdentityRoleWithOptions(_ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateServiceIdentityRoleResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateServiceIdentityRole",
+            "version": "2022-08-28",
+            "protocol": "HTTPS",
+            "pathname": "/api/automl/v1/serviceidentityrole",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateServiceIdentityRoleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createServiceIdentityRole() async throws -> CreateServiceIdentityRoleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createServiceIdentityRoleWithOptions(headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteHpoExperimentWithOptions(_ ExperimentId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteHpoExperimentResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -77,7 +149,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteHpoExperiment",
             "version": "2022-08-28",
             "protocol": "HTTPS",
-            "pathname": "/api/automl/v1/hpo/experiment/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId) + "/delete",
+            "pathname": "/api/automl/v1/hpo/experiment/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId)) + "/delete",
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
@@ -96,6 +168,33 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAutofeExperimentWithOptions(_ ExperimentId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAutofeExperimentResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetAutofeExperiment",
+            "version": "2022-08-28",
+            "protocol": "HTTPS",
+            "pathname": "/api/automl/v1/autofe/experiment/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetAutofeExperimentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAutofeExperiment(_ ExperimentId: String) async throws -> GetAutofeExperimentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getAutofeExperimentWithOptions(ExperimentId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getHpoExperimentWithOptions(_ ExperimentId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetHpoExperimentResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -104,7 +203,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetHpoExperiment",
             "version": "2022-08-28",
             "protocol": "HTTPS",
-            "pathname": "/api/automl/v1/hpo/experiment/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId),
+            "pathname": "/api/automl/v1/hpo/experiment/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -131,7 +230,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetHpoTrial",
             "version": "2022-08-28",
             "protocol": "HTTPS",
-            "pathname": "/api/automl/v1/hpo/experiment/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId) + "/trial/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrialId),
+            "pathname": "/api/automl/v1/hpo/experiment/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId)) + "/trial/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrialId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -147,6 +246,33 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getHpoTrialWithOptions(ExperimentId as! String, TrialId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getServiceIdentityRoleWithOptions(_ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetServiceIdentityRoleResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetServiceIdentityRole",
+            "version": "2022-08-28",
+            "protocol": "HTTPS",
+            "pathname": "/api/automl/v1/serviceidentityrole",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetServiceIdentityRoleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getServiceIdentityRole() async throws -> GetServiceIdentityRoleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getServiceIdentityRoleWithOptions(headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -170,7 +296,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListHpoExperimentLogs",
             "version": "2022-08-28",
             "protocol": "HTTPS",
-            "pathname": "/api/automl/v1/hpo/experiment/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId) + "/logs",
+            "pathname": "/api/automl/v1/hpo/experiment/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId)) + "/logs",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -263,7 +389,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListHpoTrialCommands",
             "version": "2022-08-28",
             "protocol": "HTTPS",
-            "pathname": "/api/automl/v1/hpo/experiment/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId) + "/trial/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrialId) + "/commands",
+            "pathname": "/api/automl/v1/hpo/experiment/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId)) + "/trial/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrialId)) + "/commands",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -290,7 +416,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListHpoTrialLogNames",
             "version": "2022-08-28",
             "protocol": "HTTPS",
-            "pathname": "/api/automl/v1/hpo/experiment/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId) + "/trial/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrialId) + "/lognames",
+            "pathname": "/api/automl/v1/hpo/experiment/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId)) + "/trial/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrialId)) + "/lognames",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -329,7 +455,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListHpoTrialLogs",
             "version": "2022-08-28",
             "protocol": "HTTPS",
-            "pathname": "/api/automl/v1/hpo/experiment/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId) + "/trial/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrialId) + "/logs",
+            "pathname": "/api/automl/v1/hpo/experiment/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId)) + "/trial/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrialId)) + "/logs",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -371,7 +497,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListHpoTrials",
             "version": "2022-08-28",
             "protocol": "HTTPS",
-            "pathname": "/api/automl/v1/hpo/experiment/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId) + "/trials",
+            "pathname": "/api/automl/v1/hpo/experiment/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId)) + "/trials",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -407,7 +533,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "RestartHpoTrials",
             "version": "2022-08-28",
             "protocol": "HTTPS",
-            "pathname": "/api/automl/v1/hpo/experiment/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId) + "/restart_trials",
+            "pathname": "/api/automl/v1/hpo/experiment/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId)) + "/restart_trials",
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
@@ -434,7 +560,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "StopHpoExperiment",
             "version": "2022-08-28",
             "protocol": "HTTPS",
-            "pathname": "/api/automl/v1/hpo/experiment/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId) + "/stop",
+            "pathname": "/api/automl/v1/hpo/experiment/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId)) + "/stop",
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
@@ -467,7 +593,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "StopHpoTrials",
             "version": "2022-08-28",
             "protocol": "HTTPS",
-            "pathname": "/api/automl/v1/hpo/experiment/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId) + "/stop_trials",
+            "pathname": "/api/automl/v1/hpo/experiment/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId)) + "/stop_trials",
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
@@ -512,7 +638,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "UpdateHpoExperiment",
             "version": "2022-08-28",
             "protocol": "HTTPS",
-            "pathname": "/api/automl/v1/hpo/experiment/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId) + "/update",
+            "pathname": "/api/automl/v1/hpo/experiment/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId)) + "/update",
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",

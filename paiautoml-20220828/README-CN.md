@@ -17,7 +17,7 @@
 要使用 [Carthage](https://github.com/Carthage/Carthage) 将 `AlibabacloudPaiAutoML20220828` 集成到你的 Xcode 项目中，需要在 `Cartfile` 中定义以下内容:
 
 ```ogdl
-github "alibabacloud-sdk-swift/paiautoml-20220828" "1.3.0"
+github "alibabacloud-sdk-swift/paiautoml-20220828" "1.4.0"
 ```
 
 ### Swift 包管理工具
@@ -26,7 +26,7 @@ github "alibabacloud-sdk-swift/paiautoml-20220828" "1.3.0"
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/paiautoml-20220828.git", from: "1.3.0")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/paiautoml-20220828.git", from: "1.4.0")
 ]
 ```
 
