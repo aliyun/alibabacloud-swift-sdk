@@ -16994,6 +16994,8 @@ public class CreateSnatEntryRequest : Tea.TeaModel {
 
     public var eipAffinity: Int32?
 
+    public var networkInterfaceId: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -17034,6 +17036,9 @@ public class CreateSnatEntryRequest : Tea.TeaModel {
         if self.eipAffinity != nil {
             map["EipAffinity"] = self.eipAffinity!
         }
+        if self.networkInterfaceId != nil {
+            map["NetworkInterfaceId"] = self.networkInterfaceId!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -17073,6 +17078,9 @@ public class CreateSnatEntryRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EipAffinity") {
             self.eipAffinity = dict["EipAffinity"] as! Int32
+        }
+        if dict.keys.contains("NetworkInterfaceId") {
+            self.networkInterfaceId = dict["NetworkInterfaceId"] as! String
         }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
@@ -54353,6 +54361,8 @@ public class DescribeServerRelatedGlobalAccelerationInstancesResponse : Tea.TeaM
 public class DescribeSnatTableEntriesRequest : Tea.TeaModel {
     public var natGatewayId: String?
 
+    public var networkInterfaceIds: [String]?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -54395,6 +54405,9 @@ public class DescribeSnatTableEntriesRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.natGatewayId != nil {
             map["NatGatewayId"] = self.natGatewayId!
+        }
+        if self.networkInterfaceIds != nil {
+            map["NetworkInterfaceIds"] = self.networkInterfaceIds!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -54441,6 +54454,9 @@ public class DescribeSnatTableEntriesRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("NatGatewayId") {
             self.natGatewayId = dict["NatGatewayId"] as! String
+        }
+        if dict.keys.contains("NetworkInterfaceIds") {
+            self.networkInterfaceIds = dict["NetworkInterfaceIds"] as! [String]
         }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
@@ -54491,6 +54507,8 @@ public class DescribeSnatTableEntriesResponseBody : Tea.TeaModel {
 
             public var natGatewayId: String?
 
+            public var networkInterfaceId: String?
+
             public var snatEntryId: String?
 
             public var snatEntryName: String?
@@ -54525,6 +54543,9 @@ public class DescribeSnatTableEntriesResponseBody : Tea.TeaModel {
                 if self.natGatewayId != nil {
                     map["NatGatewayId"] = self.natGatewayId!
                 }
+                if self.networkInterfaceId != nil {
+                    map["NetworkInterfaceId"] = self.networkInterfaceId!
+                }
                 if self.snatEntryId != nil {
                     map["SnatEntryId"] = self.snatEntryId!
                 }
@@ -54555,6 +54576,9 @@ public class DescribeSnatTableEntriesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("NatGatewayId") {
                     self.natGatewayId = dict["NatGatewayId"] as! String
+                }
+                if dict.keys.contains("NetworkInterfaceId") {
+                    self.networkInterfaceId = dict["NetworkInterfaceId"] as! String
                 }
                 if dict.keys.contains("SnatEntryId") {
                     self.snatEntryId = dict["SnatEntryId"] as! String
@@ -91016,6 +91040,8 @@ public class ModifySnatEntryRequest : Tea.TeaModel {
 
     public var eipAffinity: Int32?
 
+    public var networkInterfaceId: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -91054,6 +91080,9 @@ public class ModifySnatEntryRequest : Tea.TeaModel {
         if self.eipAffinity != nil {
             map["EipAffinity"] = self.eipAffinity!
         }
+        if self.networkInterfaceId != nil {
+            map["NetworkInterfaceId"] = self.networkInterfaceId!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -91090,6 +91119,9 @@ public class ModifySnatEntryRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EipAffinity") {
             self.eipAffinity = dict["EipAffinity"] as! Int32
+        }
+        if dict.keys.contains("NetworkInterfaceId") {
+            self.networkInterfaceId = dict["NetworkInterfaceId"] as! String
         }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
