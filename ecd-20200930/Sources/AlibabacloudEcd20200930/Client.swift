@@ -1625,6 +1625,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.profileFollowSwitch)) {
             query["ProfileFollowSwitch"] = request.profileFollowSwitch!;
         }
+        if (!TeaUtils.Client.isUnset(request.promotionId)) {
+            query["PromotionId"] = request.promotionId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ratioThreshold)) {
             query["RatioThreshold"] = request.ratioThreshold!;
         }

@@ -6353,6 +6353,8 @@ public class CreateDesktopGroupRequest : Tea.TeaModel {
 
     public var profileFollowSwitch: Bool?
 
+    public var promotionId: String?
+
     public var ratioThreshold: Double?
 
     public var regionId: String?
@@ -6474,6 +6476,9 @@ public class CreateDesktopGroupRequest : Tea.TeaModel {
         }
         if self.profileFollowSwitch != nil {
             map["ProfileFollowSwitch"] = self.profileFollowSwitch!
+        }
+        if self.promotionId != nil {
+            map["PromotionId"] = self.promotionId!
         }
         if self.ratioThreshold != nil {
             map["RatioThreshold"] = self.ratioThreshold!
@@ -6599,6 +6604,9 @@ public class CreateDesktopGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ProfileFollowSwitch") {
             self.profileFollowSwitch = dict["ProfileFollowSwitch"] as! Bool
+        }
+        if dict.keys.contains("PromotionId") {
+            self.promotionId = dict["PromotionId"] as! String
         }
         if dict.keys.contains("RatioThreshold") {
             self.ratioThreshold = dict["RatioThreshold"] as! Double
