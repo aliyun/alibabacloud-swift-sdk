@@ -4227,6 +4227,8 @@ public class DescribeDataLimitsResponseBody : Tea.TeaModel {
 
         public var lastFinishedTime: Int64?
 
+        public var lastStartTime: Int64?
+
         public var localName: String?
 
         public var logStoreDay: Int32?
@@ -4336,6 +4338,9 @@ public class DescribeDataLimitsResponseBody : Tea.TeaModel {
             }
             if self.lastFinishedTime != nil {
                 map["LastFinishedTime"] = self.lastFinishedTime!
+            }
+            if self.lastStartTime != nil {
+                map["LastStartTime"] = self.lastStartTime!
             }
             if self.localName != nil {
                 map["LocalName"] = self.localName!
@@ -4460,6 +4465,9 @@ public class DescribeDataLimitsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("LastFinishedTime") {
                 self.lastFinishedTime = dict["LastFinishedTime"] as! Int64
+            }
+            if dict.keys.contains("LastStartTime") {
+                self.lastStartTime = dict["LastStartTime"] as! Int64
             }
             if dict.keys.contains("LocalName") {
                 self.localName = dict["LocalName"] as! String
