@@ -498,6 +498,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.androidActivity)) {
             query["AndroidActivity"] = request.androidActivity ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.androidBadgeAddNum)) {
+            query["AndroidBadgeAddNum"] = request.androidBadgeAddNum!;
+        }
+        if (!TeaUtils.Client.isUnset(request.androidBadgeClass)) {
+            query["AndroidBadgeClass"] = request.androidBadgeClass ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.androidBadgeSetNum)) {
+            query["AndroidBadgeSetNum"] = request.androidBadgeSetNum!;
+        }
         if (!TeaUtils.Client.isUnset(request.androidBigBody)) {
             query["AndroidBigBody"] = request.androidBigBody ?? "";
         }

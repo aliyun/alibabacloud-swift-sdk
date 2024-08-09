@@ -1685,6 +1685,12 @@ public class MassPushRequest : Tea.TeaModel {
     public class PushTask : Tea.TeaModel {
         public var androidActivity: String?
 
+        public var androidBadgeAddNum: Int32?
+
+        public var androidBadgeClass: String?
+
+        public var androidBadgeSetNum: Int32?
+
         public var androidBigBody: String?
 
         public var androidBigPictureUrl: String?
@@ -1863,6 +1869,15 @@ public class MassPushRequest : Tea.TeaModel {
             var map = super.toMap()
             if self.androidActivity != nil {
                 map["AndroidActivity"] = self.androidActivity!
+            }
+            if self.androidBadgeAddNum != nil {
+                map["AndroidBadgeAddNum"] = self.androidBadgeAddNum!
+            }
+            if self.androidBadgeClass != nil {
+                map["AndroidBadgeClass"] = self.androidBadgeClass!
+            }
+            if self.androidBadgeSetNum != nil {
+                map["AndroidBadgeSetNum"] = self.androidBadgeSetNum!
             }
             if self.androidBigBody != nil {
                 map["AndroidBigBody"] = self.androidBigBody!
@@ -2113,6 +2128,15 @@ public class MassPushRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("AndroidActivity") {
                 self.androidActivity = dict["AndroidActivity"] as! String
+            }
+            if dict.keys.contains("AndroidBadgeAddNum") {
+                self.androidBadgeAddNum = dict["AndroidBadgeAddNum"] as! Int32
+            }
+            if dict.keys.contains("AndroidBadgeClass") {
+                self.androidBadgeClass = dict["AndroidBadgeClass"] as! String
+            }
+            if dict.keys.contains("AndroidBadgeSetNum") {
+                self.androidBadgeSetNum = dict["AndroidBadgeSetNum"] as! Int32
             }
             if dict.keys.contains("AndroidBigBody") {
                 self.androidBigBody = dict["AndroidBigBody"] as! String
@@ -2530,6 +2554,12 @@ public class MassPushResponse : Tea.TeaModel {
 public class PushRequest : Tea.TeaModel {
     public var androidActivity: String?
 
+    public var androidBadgeAddNum: Int32?
+
+    public var androidBadgeClass: String?
+
+    public var androidBadgeSetNum: Int32?
+
     public var androidBigBody: String?
 
     public var androidBigPictureUrl: String?
@@ -2720,6 +2750,15 @@ public class PushRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.androidActivity != nil {
             map["AndroidActivity"] = self.androidActivity!
+        }
+        if self.androidBadgeAddNum != nil {
+            map["AndroidBadgeAddNum"] = self.androidBadgeAddNum!
+        }
+        if self.androidBadgeClass != nil {
+            map["AndroidBadgeClass"] = self.androidBadgeClass!
+        }
+        if self.androidBadgeSetNum != nil {
+            map["AndroidBadgeSetNum"] = self.androidBadgeSetNum!
         }
         if self.androidBigBody != nil {
             map["AndroidBigBody"] = self.androidBigBody!
@@ -2988,6 +3027,15 @@ public class PushRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AndroidActivity") {
             self.androidActivity = dict["AndroidActivity"] as! String
+        }
+        if dict.keys.contains("AndroidBadgeAddNum") {
+            self.androidBadgeAddNum = dict["AndroidBadgeAddNum"] as! Int32
+        }
+        if dict.keys.contains("AndroidBadgeClass") {
+            self.androidBadgeClass = dict["AndroidBadgeClass"] as! String
+        }
+        if dict.keys.contains("AndroidBadgeSetNum") {
+            self.androidBadgeSetNum = dict["AndroidBadgeSetNum"] as! Int32
         }
         if dict.keys.contains("AndroidBigBody") {
             self.androidBigBody = dict["AndroidBigBody"] as! String
