@@ -1274,6 +1274,8 @@ public class EventInfo : Tea.TeaModel {
 public class ExtraPodSpec : Tea.TeaModel {
     public var initContainers: [ContainerSpec]?
 
+    public var lifecycle: Lifecycle?
+
     public var podAnnotations: [String: String]?
 
     public var podLabels: [String: String]?
@@ -1292,6 +1294,7 @@ public class ExtraPodSpec : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.lifecycle?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -1302,6 +1305,9 @@ public class ExtraPodSpec : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["InitContainers"] = tmp
+        }
+        if self.lifecycle != nil {
+            map["Lifecycle"] = self.lifecycle?.toMap()
         }
         if self.podAnnotations != nil {
             map["PodAnnotations"] = self.podAnnotations!
@@ -1333,6 +1339,11 @@ public class ExtraPodSpec : Tea.TeaModel {
                 tmp.append(model)
             }
             self.initContainers = tmp
+        }
+        if dict.keys.contains("Lifecycle") {
+            var model = Lifecycle()
+            model.fromMap(dict["Lifecycle"] as! [String: Any])
+            self.lifecycle = model
         }
         if dict.keys.contains("PodAnnotations") {
             self.podAnnotations = dict["PodAnnotations"] as! [String: String]
@@ -2618,6 +2629,172 @@ public class JobSpec : Tea.TeaModel {
         }
         if dict.keys.contains("UseSpotInstance") {
             self.useSpotInstance = dict["UseSpotInstance"] as! Bool
+        }
+    }
+}
+
+public class Lifecycle : Tea.TeaModel {
+    public class PostStart : Tea.TeaModel {
+        public class Exec : Tea.TeaModel {
+            public var command: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.command != nil {
+                    map["Command"] = self.command!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Command") {
+                    self.command = dict["Command"] as! [String]
+                }
+            }
+        }
+        public var exec: Lifecycle.PostStart.Exec?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.exec?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.exec != nil {
+                map["Exec"] = self.exec?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Exec") {
+                var model = Lifecycle.PostStart.Exec()
+                model.fromMap(dict["Exec"] as! [String: Any])
+                self.exec = model
+            }
+        }
+    }
+    public class PreStop : Tea.TeaModel {
+        public class Exec : Tea.TeaModel {
+            public var command: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.command != nil {
+                    map["Command"] = self.command!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Command") {
+                    self.command = dict["Command"] as! [String]
+                }
+            }
+        }
+        public var exec: Lifecycle.PreStop.Exec?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.exec?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.exec != nil {
+                map["Exec"] = self.exec?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Exec") {
+                var model = Lifecycle.PreStop.Exec()
+                model.fromMap(dict["Exec"] as! [String: Any])
+                self.exec = model
+            }
+        }
+    }
+    public var postStart: Lifecycle.PostStart?
+
+    public var preStop: Lifecycle.PreStop?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.postStart?.validate()
+        try self.preStop?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.postStart != nil {
+            map["PostStart"] = self.postStart?.toMap()
+        }
+        if self.preStop != nil {
+            map["PreStop"] = self.preStop?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PostStart") {
+            var model = Lifecycle.PostStart()
+            model.fromMap(dict["PostStart"] as! [String: Any])
+            self.postStart = model
+        }
+        if dict.keys.contains("PreStop") {
+            var model = Lifecycle.PreStop()
+            model.fromMap(dict["PreStop"] as! [String: Any])
+            self.preStop = model
         }
     }
 }
@@ -4238,6 +4415,8 @@ public class CreateJobRequest : Tea.TeaModel {
 
         public var mountPath: String?
 
+        public var options: String?
+
         public var uri: String?
 
         public override init() {
@@ -4260,6 +4439,9 @@ public class CreateJobRequest : Tea.TeaModel {
             if self.mountPath != nil {
                 map["MountPath"] = self.mountPath!
             }
+            if self.options != nil {
+                map["Options"] = self.options!
+            }
             if self.uri != nil {
                 map["Uri"] = self.uri!
             }
@@ -4272,6 +4454,9 @@ public class CreateJobRequest : Tea.TeaModel {
             }
             if dict.keys.contains("MountPath") {
                 self.mountPath = dict["MountPath"] as! String
+            }
+            if dict.keys.contains("Options") {
+                self.options = dict["Options"] as! String
             }
             if dict.keys.contains("Uri") {
                 self.uri = dict["Uri"] as! String
