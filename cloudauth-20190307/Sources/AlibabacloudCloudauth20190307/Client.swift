@@ -999,6 +999,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func initFaceVerifyWithOptions(_ request: InitFaceVerifyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> InitFaceVerifyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appQualityCheck)) {
+            query["AppQualityCheck"] = request.appQualityCheck ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.birthday)) {
             query["Birthday"] = request.birthday ?? "";
         }

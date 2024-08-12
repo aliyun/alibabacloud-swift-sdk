@@ -5029,6 +5029,8 @@ public class Id2MetaVerifyResponse : Tea.TeaModel {
 }
 
 public class InitFaceVerifyRequest : Tea.TeaModel {
+    public var appQualityCheck: String?
+
     public var authId: String?
 
     public var birthday: String?
@@ -5113,6 +5115,9 @@ public class InitFaceVerifyRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appQualityCheck != nil {
+            map["AppQualityCheck"] = self.appQualityCheck!
+        }
         if self.authId != nil {
             map["AuthId"] = self.authId!
         }
@@ -5222,6 +5227,9 @@ public class InitFaceVerifyRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppQualityCheck") {
+            self.appQualityCheck = dict["AppQualityCheck"] as! String
+        }
         if dict.keys.contains("AuthId") {
             self.authId = dict["AuthId"] as! String
         }
