@@ -276,8 +276,6 @@ public class ApplyFirewallTemplateRequest : Tea.TeaModel {
 
     public var firewallTemplateId: String?
 
-    public var instanceId: String?
-
     public var instanceIds: [String]?
 
     public var regionId: String?
@@ -302,9 +300,6 @@ public class ApplyFirewallTemplateRequest : Tea.TeaModel {
         if self.firewallTemplateId != nil {
             map["FirewallTemplateId"] = self.firewallTemplateId!
         }
-        if self.instanceId != nil {
-            map["InstanceId"] = self.instanceId!
-        }
         if self.instanceIds != nil {
             map["InstanceIds"] = self.instanceIds!
         }
@@ -320,9 +315,6 @@ public class ApplyFirewallTemplateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FirewallTemplateId") {
             self.firewallTemplateId = dict["FirewallTemplateId"] as! String
-        }
-        if dict.keys.contains("InstanceId") {
-            self.instanceId = dict["InstanceId"] as! String
         }
         if dict.keys.contains("InstanceIds") {
             self.instanceIds = dict["InstanceIds"] as! [String]
@@ -930,7 +922,7 @@ public class CreateCustomImageRequest : Tea.TeaModel {
 
     public var regionId: String?
 
-    public var resoureGroupId: String?
+    public var resourceGroupId: String?
 
     public var systemSnapshotId: String?
 
@@ -968,8 +960,8 @@ public class CreateCustomImageRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
-        if self.resoureGroupId != nil {
-            map["ResoureGroupId"] = self.resoureGroupId!
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
         }
         if self.systemSnapshotId != nil {
             map["SystemSnapshotId"] = self.systemSnapshotId!
@@ -1003,8 +995,8 @@ public class CreateCustomImageRequest : Tea.TeaModel {
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
         }
-        if dict.keys.contains("ResoureGroupId") {
-            self.resoureGroupId = dict["ResoureGroupId"] as! String
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("SystemSnapshotId") {
             self.systemSnapshotId = dict["SystemSnapshotId"] as! String
@@ -3505,8 +3497,6 @@ public class DeleteFirewallTemplateRulesRequest : Tea.TeaModel {
 
     public var firewallTemplateRuleId: [String]?
 
-    public var instanceId: String?
-
     public var regionId: String?
 
     public override init() {
@@ -3532,9 +3522,6 @@ public class DeleteFirewallTemplateRulesRequest : Tea.TeaModel {
         if self.firewallTemplateRuleId != nil {
             map["FirewallTemplateRuleId"] = self.firewallTemplateRuleId!
         }
-        if self.instanceId != nil {
-            map["InstanceId"] = self.instanceId!
-        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -3550,9 +3537,6 @@ public class DeleteFirewallTemplateRulesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FirewallTemplateRuleId") {
             self.firewallTemplateRuleId = dict["FirewallTemplateRuleId"] as! [String]
-        }
-        if dict.keys.contains("InstanceId") {
-            self.instanceId = dict["InstanceId"] as! String
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
@@ -3644,8 +3628,6 @@ public class DeleteFirewallTemplatesRequest : Tea.TeaModel {
 
     public var firewallTemplateId: [String]?
 
-    public var instanceId: String?
-
     public var regionId: String?
 
     public override init() {
@@ -3668,9 +3650,6 @@ public class DeleteFirewallTemplatesRequest : Tea.TeaModel {
         if self.firewallTemplateId != nil {
             map["FirewallTemplateId"] = self.firewallTemplateId!
         }
-        if self.instanceId != nil {
-            map["InstanceId"] = self.instanceId!
-        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -3683,9 +3662,6 @@ public class DeleteFirewallTemplatesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FirewallTemplateId") {
             self.firewallTemplateId = dict["FirewallTemplateId"] as! [String]
-        }
-        if dict.keys.contains("InstanceId") {
-            self.instanceId = dict["InstanceId"] as! String
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
@@ -7361,8 +7337,6 @@ public class DescribeFirewallTemplateApplyResultsRequest : Tea.TeaModel {
 
     public var firewallTemplateId: String?
 
-    public var instanceId: String?
-
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -7391,9 +7365,6 @@ public class DescribeFirewallTemplateApplyResultsRequest : Tea.TeaModel {
         if self.firewallTemplateId != nil {
             map["FirewallTemplateId"] = self.firewallTemplateId!
         }
-        if self.instanceId != nil {
-            map["InstanceId"] = self.instanceId!
-        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -7415,9 +7386,6 @@ public class DescribeFirewallTemplateApplyResultsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FirewallTemplateId") {
             self.firewallTemplateId = dict["FirewallTemplateId"] as! String
-        }
-        if dict.keys.contains("InstanceId") {
-            self.instanceId = dict["InstanceId"] as! String
         }
         if dict.keys.contains("PageNumber") {
             self.pageNumber = dict["PageNumber"] as! Int32
@@ -15967,8 +15935,6 @@ public class ModifyFirewallTemplateRequest : Tea.TeaModel {
 
     public var firewallTemplateRule: [ModifyFirewallTemplateRequest.FirewallTemplateRule]?
 
-    public var instanceId: String?
-
     public var name: String?
 
     public var regionId: String?
@@ -16003,9 +15969,6 @@ public class ModifyFirewallTemplateRequest : Tea.TeaModel {
             }
             map["FirewallTemplateRule"] = tmp
         }
-        if self.instanceId != nil {
-            map["InstanceId"] = self.instanceId!
-        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -16035,9 +15998,6 @@ public class ModifyFirewallTemplateRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.firewallTemplateRule = tmp
-        }
-        if dict.keys.contains("InstanceId") {
-            self.instanceId = dict["InstanceId"] as! String
         }
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
