@@ -6096,6 +6096,8 @@ public class ListListenersRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var secSensorEnabled: String?
+
     public var tag: [ListListenersRequest.Tag]?
 
     public override init() {
@@ -6130,6 +6132,9 @@ public class ListListenersRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.secSensorEnabled != nil {
+            map["SecSensorEnabled"] = self.secSensorEnabled!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -6158,6 +6163,9 @@ public class ListListenersRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("SecSensorEnabled") {
+            self.secSensorEnabled = dict["SecSensorEnabled"] as! String
         }
         if dict.keys.contains("Tag") {
             var tmp : [ListListenersRequest.Tag] = []
