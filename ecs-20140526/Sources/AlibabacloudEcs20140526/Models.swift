@@ -51662,6 +51662,8 @@ public class DescribeInstanceHistoryEventsResponseBody : Tea.TeaModel {
 
             public var reason: String?
 
+            public var reasonCode: String?
+
             public var resourceType: String?
 
             public override init() {
@@ -51711,6 +51713,9 @@ public class DescribeInstanceHistoryEventsResponseBody : Tea.TeaModel {
                 if self.reason != nil {
                     map["Reason"] = self.reason!
                 }
+                if self.reasonCode != nil {
+                    map["ReasonCode"] = self.reasonCode!
+                }
                 if self.resourceType != nil {
                     map["ResourceType"] = self.resourceType!
                 }
@@ -51753,6 +51758,9 @@ public class DescribeInstanceHistoryEventsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Reason") {
                     self.reason = dict["Reason"] as! String
+                }
+                if dict.keys.contains("ReasonCode") {
+                    self.reasonCode = dict["ReasonCode"] as! String
                 }
                 if dict.keys.contains("ResourceType") {
                     self.resourceType = dict["ResourceType"] as! String
