@@ -25243,6 +25243,635 @@ public class GetGatewayAuthDetailResponse : Tea.TeaModel {
     }
 }
 
+public class GetGatewayConfigRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var gatewayUniqueId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("GatewayUniqueId") {
+            self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+        }
+    }
+}
+
+public class GetGatewayConfigResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class SlsConfigDetails : Tea.TeaModel {
+            public var gatewayId: Int64?
+
+            public var gatewayUniqueId: String?
+
+            public var gmtCreate: String?
+
+            public var gmtModified: String?
+
+            public var id: Int64?
+
+            public var logOn: Bool?
+
+            public var logStoreName: String?
+
+            public var nginxCompatible: Bool?
+
+            public var projectName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.gatewayId != nil {
+                    map["GatewayId"] = self.gatewayId!
+                }
+                if self.gatewayUniqueId != nil {
+                    map["GatewayUniqueId"] = self.gatewayUniqueId!
+                }
+                if self.gmtCreate != nil {
+                    map["GmtCreate"] = self.gmtCreate!
+                }
+                if self.gmtModified != nil {
+                    map["GmtModified"] = self.gmtModified!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.logOn != nil {
+                    map["LogOn"] = self.logOn!
+                }
+                if self.logStoreName != nil {
+                    map["LogStoreName"] = self.logStoreName!
+                }
+                if self.nginxCompatible != nil {
+                    map["NginxCompatible"] = self.nginxCompatible!
+                }
+                if self.projectName != nil {
+                    map["ProjectName"] = self.projectName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("GatewayId") {
+                    self.gatewayId = dict["GatewayId"] as! Int64
+                }
+                if dict.keys.contains("GatewayUniqueId") {
+                    self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+                }
+                if dict.keys.contains("GmtCreate") {
+                    self.gmtCreate = dict["GmtCreate"] as! String
+                }
+                if dict.keys.contains("GmtModified") {
+                    self.gmtModified = dict["GmtModified"] as! String
+                }
+                if dict.keys.contains("Id") {
+                    self.id = dict["Id"] as! Int64
+                }
+                if dict.keys.contains("LogOn") {
+                    self.logOn = dict["LogOn"] as! Bool
+                }
+                if dict.keys.contains("LogStoreName") {
+                    self.logStoreName = dict["LogStoreName"] as! String
+                }
+                if dict.keys.contains("NginxCompatible") {
+                    self.nginxCompatible = dict["NginxCompatible"] as! Bool
+                }
+                if dict.keys.contains("ProjectName") {
+                    self.projectName = dict["ProjectName"] as! String
+                }
+            }
+        }
+        public class XtraceDetails : Tea.TeaModel {
+            public var gatewayId: Int64?
+
+            public var gatewayUniqueId: String?
+
+            public var gmtCreate: String?
+
+            public var gmtModified: String?
+
+            public var id: Int64?
+
+            public var sample: Int32?
+
+            public var serviceId: Int64?
+
+            public var servicePort: String?
+
+            public var traceOn: Bool?
+
+            public var traceType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.gatewayId != nil {
+                    map["GatewayId"] = self.gatewayId!
+                }
+                if self.gatewayUniqueId != nil {
+                    map["GatewayUniqueId"] = self.gatewayUniqueId!
+                }
+                if self.gmtCreate != nil {
+                    map["GmtCreate"] = self.gmtCreate!
+                }
+                if self.gmtModified != nil {
+                    map["GmtModified"] = self.gmtModified!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.sample != nil {
+                    map["Sample"] = self.sample!
+                }
+                if self.serviceId != nil {
+                    map["ServiceId"] = self.serviceId!
+                }
+                if self.servicePort != nil {
+                    map["ServicePort"] = self.servicePort!
+                }
+                if self.traceOn != nil {
+                    map["TraceOn"] = self.traceOn!
+                }
+                if self.traceType != nil {
+                    map["TraceType"] = self.traceType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("GatewayId") {
+                    self.gatewayId = dict["GatewayId"] as! Int64
+                }
+                if dict.keys.contains("GatewayUniqueId") {
+                    self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+                }
+                if dict.keys.contains("GmtCreate") {
+                    self.gmtCreate = dict["GmtCreate"] as! String
+                }
+                if dict.keys.contains("GmtModified") {
+                    self.gmtModified = dict["GmtModified"] as! String
+                }
+                if dict.keys.contains("Id") {
+                    self.id = dict["Id"] as! Int64
+                }
+                if dict.keys.contains("Sample") {
+                    self.sample = dict["Sample"] as! Int32
+                }
+                if dict.keys.contains("ServiceId") {
+                    self.serviceId = dict["ServiceId"] as! Int64
+                }
+                if dict.keys.contains("ServicePort") {
+                    self.servicePort = dict["ServicePort"] as! String
+                }
+                if dict.keys.contains("TraceOn") {
+                    self.traceOn = dict["TraceOn"] as! Bool
+                }
+                if dict.keys.contains("TraceType") {
+                    self.traceType = dict["TraceType"] as! String
+                }
+            }
+        }
+        public var accessLogHeader: String?
+
+        public var downstreamConnectionBufferLimits: Int32?
+
+        public var downstreamHttp2MaxConcurrentStream: Int32?
+
+        public var downstreamIdleTime: Int32?
+
+        public var enableCustomAuthConfigPush: String?
+
+        public var enableGenerateRequestId: Bool?
+
+        public var enableGzip: Bool?
+
+        public var enableHardwareAccelerate: Bool?
+
+        public var enableHttp2: Bool?
+
+        public var enableHttp3: Bool?
+
+        public var enableProxyProtocol: Bool?
+
+        public var enableSlashMerge: Bool?
+
+        public var enableWaf: Bool?
+
+        public var gatewayUniqueId: String?
+
+        public var initialConnectionWindowSize: Int32?
+
+        public var initialStreamWindowSize: Int32?
+
+        public var keepaliveHeaderTimeout: Int32?
+
+        public var logFilterConfig: String?
+
+        public var noSupportedConfigList: String?
+
+        public var pathWithEscapedSlashes: String?
+
+        public var preserveHeaderFormat: Bool?
+
+        public var slsConfigDetails: GetGatewayConfigResponseBody.Data.SlsConfigDetails?
+
+        public var supportWaf: Bool?
+
+        public var upstreamIdleTimeout: Int32?
+
+        public var websocketTermGracePeriod: Int32?
+
+        public var xffTrustedNum: Int32?
+
+        public var xtraceDetails: GetGatewayConfigResponseBody.Data.XtraceDetails?
+
+        public var zipAlgorithm: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.slsConfigDetails?.validate()
+            try self.xtraceDetails?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accessLogHeader != nil {
+                map["AccessLogHeader"] = self.accessLogHeader!
+            }
+            if self.downstreamConnectionBufferLimits != nil {
+                map["DownstreamConnectionBufferLimits"] = self.downstreamConnectionBufferLimits!
+            }
+            if self.downstreamHttp2MaxConcurrentStream != nil {
+                map["DownstreamHttp2MaxConcurrentStream"] = self.downstreamHttp2MaxConcurrentStream!
+            }
+            if self.downstreamIdleTime != nil {
+                map["DownstreamIdleTime"] = self.downstreamIdleTime!
+            }
+            if self.enableCustomAuthConfigPush != nil {
+                map["EnableCustomAuthConfigPush"] = self.enableCustomAuthConfigPush!
+            }
+            if self.enableGenerateRequestId != nil {
+                map["EnableGenerateRequestId"] = self.enableGenerateRequestId!
+            }
+            if self.enableGzip != nil {
+                map["EnableGzip"] = self.enableGzip!
+            }
+            if self.enableHardwareAccelerate != nil {
+                map["EnableHardwareAccelerate"] = self.enableHardwareAccelerate!
+            }
+            if self.enableHttp2 != nil {
+                map["EnableHttp2"] = self.enableHttp2!
+            }
+            if self.enableHttp3 != nil {
+                map["EnableHttp3"] = self.enableHttp3!
+            }
+            if self.enableProxyProtocol != nil {
+                map["EnableProxyProtocol"] = self.enableProxyProtocol!
+            }
+            if self.enableSlashMerge != nil {
+                map["EnableSlashMerge"] = self.enableSlashMerge!
+            }
+            if self.enableWaf != nil {
+                map["EnableWaf"] = self.enableWaf!
+            }
+            if self.gatewayUniqueId != nil {
+                map["GatewayUniqueId"] = self.gatewayUniqueId!
+            }
+            if self.initialConnectionWindowSize != nil {
+                map["InitialConnectionWindowSize"] = self.initialConnectionWindowSize!
+            }
+            if self.initialStreamWindowSize != nil {
+                map["InitialStreamWindowSize"] = self.initialStreamWindowSize!
+            }
+            if self.keepaliveHeaderTimeout != nil {
+                map["KeepaliveHeaderTimeout"] = self.keepaliveHeaderTimeout!
+            }
+            if self.logFilterConfig != nil {
+                map["LogFilterConfig"] = self.logFilterConfig!
+            }
+            if self.noSupportedConfigList != nil {
+                map["NoSupportedConfigList"] = self.noSupportedConfigList!
+            }
+            if self.pathWithEscapedSlashes != nil {
+                map["PathWithEscapedSlashes"] = self.pathWithEscapedSlashes!
+            }
+            if self.preserveHeaderFormat != nil {
+                map["PreserveHeaderFormat"] = self.preserveHeaderFormat!
+            }
+            if self.slsConfigDetails != nil {
+                map["SlsConfigDetails"] = self.slsConfigDetails?.toMap()
+            }
+            if self.supportWaf != nil {
+                map["SupportWaf"] = self.supportWaf!
+            }
+            if self.upstreamIdleTimeout != nil {
+                map["UpstreamIdleTimeout"] = self.upstreamIdleTimeout!
+            }
+            if self.websocketTermGracePeriod != nil {
+                map["WebsocketTermGracePeriod"] = self.websocketTermGracePeriod!
+            }
+            if self.xffTrustedNum != nil {
+                map["XffTrustedNum"] = self.xffTrustedNum!
+            }
+            if self.xtraceDetails != nil {
+                map["XtraceDetails"] = self.xtraceDetails?.toMap()
+            }
+            if self.zipAlgorithm != nil {
+                map["ZipAlgorithm"] = self.zipAlgorithm!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AccessLogHeader") {
+                self.accessLogHeader = dict["AccessLogHeader"] as! String
+            }
+            if dict.keys.contains("DownstreamConnectionBufferLimits") {
+                self.downstreamConnectionBufferLimits = dict["DownstreamConnectionBufferLimits"] as! Int32
+            }
+            if dict.keys.contains("DownstreamHttp2MaxConcurrentStream") {
+                self.downstreamHttp2MaxConcurrentStream = dict["DownstreamHttp2MaxConcurrentStream"] as! Int32
+            }
+            if dict.keys.contains("DownstreamIdleTime") {
+                self.downstreamIdleTime = dict["DownstreamIdleTime"] as! Int32
+            }
+            if dict.keys.contains("EnableCustomAuthConfigPush") {
+                self.enableCustomAuthConfigPush = dict["EnableCustomAuthConfigPush"] as! String
+            }
+            if dict.keys.contains("EnableGenerateRequestId") {
+                self.enableGenerateRequestId = dict["EnableGenerateRequestId"] as! Bool
+            }
+            if dict.keys.contains("EnableGzip") {
+                self.enableGzip = dict["EnableGzip"] as! Bool
+            }
+            if dict.keys.contains("EnableHardwareAccelerate") {
+                self.enableHardwareAccelerate = dict["EnableHardwareAccelerate"] as! Bool
+            }
+            if dict.keys.contains("EnableHttp2") {
+                self.enableHttp2 = dict["EnableHttp2"] as! Bool
+            }
+            if dict.keys.contains("EnableHttp3") {
+                self.enableHttp3 = dict["EnableHttp3"] as! Bool
+            }
+            if dict.keys.contains("EnableProxyProtocol") {
+                self.enableProxyProtocol = dict["EnableProxyProtocol"] as! Bool
+            }
+            if dict.keys.contains("EnableSlashMerge") {
+                self.enableSlashMerge = dict["EnableSlashMerge"] as! Bool
+            }
+            if dict.keys.contains("EnableWaf") {
+                self.enableWaf = dict["EnableWaf"] as! Bool
+            }
+            if dict.keys.contains("GatewayUniqueId") {
+                self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+            }
+            if dict.keys.contains("InitialConnectionWindowSize") {
+                self.initialConnectionWindowSize = dict["InitialConnectionWindowSize"] as! Int32
+            }
+            if dict.keys.contains("InitialStreamWindowSize") {
+                self.initialStreamWindowSize = dict["InitialStreamWindowSize"] as! Int32
+            }
+            if dict.keys.contains("KeepaliveHeaderTimeout") {
+                self.keepaliveHeaderTimeout = dict["KeepaliveHeaderTimeout"] as! Int32
+            }
+            if dict.keys.contains("LogFilterConfig") {
+                self.logFilterConfig = dict["LogFilterConfig"] as! String
+            }
+            if dict.keys.contains("NoSupportedConfigList") {
+                self.noSupportedConfigList = dict["NoSupportedConfigList"] as! String
+            }
+            if dict.keys.contains("PathWithEscapedSlashes") {
+                self.pathWithEscapedSlashes = dict["PathWithEscapedSlashes"] as! String
+            }
+            if dict.keys.contains("PreserveHeaderFormat") {
+                self.preserveHeaderFormat = dict["PreserveHeaderFormat"] as! Bool
+            }
+            if dict.keys.contains("SlsConfigDetails") {
+                var model = GetGatewayConfigResponseBody.Data.SlsConfigDetails()
+                model.fromMap(dict["SlsConfigDetails"] as! [String: Any])
+                self.slsConfigDetails = model
+            }
+            if dict.keys.contains("SupportWaf") {
+                self.supportWaf = dict["SupportWaf"] as! Bool
+            }
+            if dict.keys.contains("UpstreamIdleTimeout") {
+                self.upstreamIdleTimeout = dict["UpstreamIdleTimeout"] as! Int32
+            }
+            if dict.keys.contains("WebsocketTermGracePeriod") {
+                self.websocketTermGracePeriod = dict["WebsocketTermGracePeriod"] as! Int32
+            }
+            if dict.keys.contains("XffTrustedNum") {
+                self.xffTrustedNum = dict["XffTrustedNum"] as! Int32
+            }
+            if dict.keys.contains("XtraceDetails") {
+                var model = GetGatewayConfigResponseBody.Data.XtraceDetails()
+                model.fromMap(dict["XtraceDetails"] as! [String: Any])
+                self.xtraceDetails = model
+            }
+            if dict.keys.contains("ZipAlgorithm") {
+                self.zipAlgorithm = dict["ZipAlgorithm"] as! String
+            }
+        }
+    }
+    public var code: Int32?
+
+    public var data: GetGatewayConfigResponseBody.Data?
+
+    public var dynamicCode: String?
+
+    public var dynamicMessage: String?
+
+    public var errorCode: String?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.dynamicCode != nil {
+            map["DynamicCode"] = self.dynamicCode!
+        }
+        if self.dynamicMessage != nil {
+            map["DynamicMessage"] = self.dynamicMessage!
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Data") {
+            var model = GetGatewayConfigResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("DynamicCode") {
+            self.dynamicCode = dict["DynamicCode"] as! String
+        }
+        if dict.keys.contains("DynamicMessage") {
+            self.dynamicMessage = dict["DynamicMessage"] as! String
+        }
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class GetGatewayConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetGatewayConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetGatewayConfigResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class GetGatewayDomainDetailRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
