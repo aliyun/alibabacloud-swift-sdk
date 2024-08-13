@@ -5,6 +5,76 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class OssUploadCredential : Tea.TeaModel {
+    public var accessKeyId: String?
+
+    public var endpoint: String?
+
+    public var filePath: String?
+
+    public var ossPolicy: String?
+
+    public var ossSignature: String?
+
+    public var stsToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessKeyId != nil {
+            map["AccessKeyId"] = self.accessKeyId!
+        }
+        if self.endpoint != nil {
+            map["Endpoint"] = self.endpoint!
+        }
+        if self.filePath != nil {
+            map["FilePath"] = self.filePath!
+        }
+        if self.ossPolicy != nil {
+            map["OssPolicy"] = self.ossPolicy!
+        }
+        if self.ossSignature != nil {
+            map["OssSignature"] = self.ossSignature!
+        }
+        if self.stsToken != nil {
+            map["StsToken"] = self.stsToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessKeyId") {
+            self.accessKeyId = dict["AccessKeyId"] as! String
+        }
+        if dict.keys.contains("Endpoint") {
+            self.endpoint = dict["Endpoint"] as! String
+        }
+        if dict.keys.contains("FilePath") {
+            self.filePath = dict["FilePath"] as! String
+        }
+        if dict.keys.contains("OssPolicy") {
+            self.ossPolicy = dict["OssPolicy"] as! String
+        }
+        if dict.keys.contains("OssSignature") {
+            self.ossSignature = dict["OssSignature"] as! String
+        }
+        if dict.keys.contains("StsToken") {
+            self.stsToken = dict["StsToken"] as! String
+        }
+    }
+}
+
 public class ApproveFotaUpdateRequest : Tea.TeaModel {
     public var appVersion: String?
 
@@ -1461,6 +1531,8 @@ public class DescribeGlobalDesktopsResponseBody : Tea.TeaModel {
 
         public var regionId: String?
 
+        public var regionLocation: String?
+
         public var sessionType: String?
 
         public var sessions: [DescribeGlobalDesktopsResponseBody.Desktops.Sessions]?
@@ -1597,6 +1669,9 @@ public class DescribeGlobalDesktopsResponseBody : Tea.TeaModel {
             }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
+            }
+            if self.regionLocation != nil {
+                map["RegionLocation"] = self.regionLocation!
             }
             if self.sessionType != nil {
                 map["SessionType"] = self.sessionType!
@@ -1745,6 +1820,9 @@ public class DescribeGlobalDesktopsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("RegionLocation") {
+                self.regionLocation = dict["RegionLocation"] as! String
             }
             if dict.keys.contains("SessionType") {
                 self.sessionType = dict["SessionType"] as! String
