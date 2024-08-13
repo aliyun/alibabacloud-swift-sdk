@@ -1911,6 +1911,13 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listTerminalsWithOptions(_ request: ListTerminalsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTerminalsResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.serialNumbers)) {
+            query["SerialNumbers"] = request.serialNumbers ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.uuids)) {
+            query["Uuids"] = request.uuids ?? [];
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             body["MaxResults"] = request.maxResults!;
@@ -1925,6 +1932,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["TerminalGroupId"] = request.terminalGroupId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([

@@ -10863,7 +10863,11 @@ public class ListTerminalsRequest : Tea.TeaModel {
 
     public var searchKeyword: String?
 
+    public var serialNumbers: [String]?
+
     public var terminalGroupId: String?
+
+    public var uuids: [String]?
 
     public override init() {
         super.init()
@@ -10888,8 +10892,14 @@ public class ListTerminalsRequest : Tea.TeaModel {
         if self.searchKeyword != nil {
             map["SearchKeyword"] = self.searchKeyword!
         }
+        if self.serialNumbers != nil {
+            map["SerialNumbers"] = self.serialNumbers!
+        }
         if self.terminalGroupId != nil {
             map["TerminalGroupId"] = self.terminalGroupId!
+        }
+        if self.uuids != nil {
+            map["Uuids"] = self.uuids!
         }
         return map
     }
@@ -10904,8 +10914,14 @@ public class ListTerminalsRequest : Tea.TeaModel {
         if dict.keys.contains("SearchKeyword") {
             self.searchKeyword = dict["SearchKeyword"] as! String
         }
+        if dict.keys.contains("SerialNumbers") {
+            self.serialNumbers = dict["SerialNumbers"] as! [String]
+        }
         if dict.keys.contains("TerminalGroupId") {
             self.terminalGroupId = dict["TerminalGroupId"] as! String
+        }
+        if dict.keys.contains("Uuids") {
+            self.uuids = dict["Uuids"] as! [String]
         }
     }
 }
