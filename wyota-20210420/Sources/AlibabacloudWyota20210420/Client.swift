@@ -2541,6 +2541,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func sendOpsMessageToTerminalsWithOptions(_ request: SendOpsMessageToTerminalsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SendOpsMessageToTerminalsResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.delay)) {
+            query["Delay"] = request.delay!;
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.msg)) {
             body["Msg"] = request.msg ?? "";
@@ -2557,6 +2561,7 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([

@@ -14372,6 +14372,8 @@ public class ReportUserFbIssueResponse : Tea.TeaModel {
 }
 
 public class SendOpsMessageToTerminalsRequest : Tea.TeaModel {
+    public var delay: Bool?
+
     public var msg: String?
 
     public var opsAction: String?
@@ -14394,6 +14396,9 @@ public class SendOpsMessageToTerminalsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.delay != nil {
+            map["Delay"] = self.delay!
+        }
         if self.msg != nil {
             map["Msg"] = self.msg!
         }
@@ -14410,6 +14415,9 @@ public class SendOpsMessageToTerminalsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Delay") {
+            self.delay = dict["Delay"] as! Bool
+        }
         if dict.keys.contains("Msg") {
             self.msg = dict["Msg"] as! String
         }
