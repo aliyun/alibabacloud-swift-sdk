@@ -2409,6 +2409,8 @@ public class CreateAppInfoRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var resourceGroupId: String?
+
     public override init() {
         super.init()
     }
@@ -2429,6 +2431,9 @@ public class CreateAppInfoRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         return map
     }
 
@@ -2438,6 +2443,9 @@ public class CreateAppInfoRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
     }
 }
@@ -7298,17 +7306,31 @@ public class DescribeVodCertificateListResponseBody : Tea.TeaModel {
     public class CertificateListModel : Tea.TeaModel {
         public class CertList : Tea.TeaModel {
             public class Cert : Tea.TeaModel {
+                public var algorithm: String?
+
                 public var certId: Int64?
+
+                public var certIdentifier: String?
 
                 public var certName: String?
 
                 public var common: String?
 
+                public var createTime: Int64?
+
+                public var domainMatchCert: Bool?
+
+                public var endTime: Int64?
+
                 public var fingerprint: String?
+
+                public var instanceId: String?
 
                 public var issuer: String?
 
                 public var lastTime: Int64?
+
+                public var signAlgorithm: String?
 
                 public override init() {
                     super.init()
@@ -7324,8 +7346,14 @@ public class DescribeVodCertificateListResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.algorithm != nil {
+                        map["Algorithm"] = self.algorithm!
+                    }
                     if self.certId != nil {
                         map["CertId"] = self.certId!
+                    }
+                    if self.certIdentifier != nil {
+                        map["CertIdentifier"] = self.certIdentifier!
                     }
                     if self.certName != nil {
                         map["CertName"] = self.certName!
@@ -7333,8 +7361,20 @@ public class DescribeVodCertificateListResponseBody : Tea.TeaModel {
                     if self.common != nil {
                         map["Common"] = self.common!
                     }
+                    if self.createTime != nil {
+                        map["CreateTime"] = self.createTime!
+                    }
+                    if self.domainMatchCert != nil {
+                        map["DomainMatchCert"] = self.domainMatchCert!
+                    }
+                    if self.endTime != nil {
+                        map["EndTime"] = self.endTime!
+                    }
                     if self.fingerprint != nil {
                         map["Fingerprint"] = self.fingerprint!
+                    }
+                    if self.instanceId != nil {
+                        map["InstanceId"] = self.instanceId!
                     }
                     if self.issuer != nil {
                         map["Issuer"] = self.issuer!
@@ -7342,12 +7382,21 @@ public class DescribeVodCertificateListResponseBody : Tea.TeaModel {
                     if self.lastTime != nil {
                         map["LastTime"] = self.lastTime!
                     }
+                    if self.signAlgorithm != nil {
+                        map["SignAlgorithm"] = self.signAlgorithm!
+                    }
                     return map
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Algorithm") {
+                        self.algorithm = dict["Algorithm"] as! String
+                    }
                     if dict.keys.contains("CertId") {
                         self.certId = dict["CertId"] as! Int64
+                    }
+                    if dict.keys.contains("CertIdentifier") {
+                        self.certIdentifier = dict["CertIdentifier"] as! String
                     }
                     if dict.keys.contains("CertName") {
                         self.certName = dict["CertName"] as! String
@@ -7355,14 +7404,29 @@ public class DescribeVodCertificateListResponseBody : Tea.TeaModel {
                     if dict.keys.contains("Common") {
                         self.common = dict["Common"] as! String
                     }
+                    if dict.keys.contains("CreateTime") {
+                        self.createTime = dict["CreateTime"] as! Int64
+                    }
+                    if dict.keys.contains("DomainMatchCert") {
+                        self.domainMatchCert = dict["DomainMatchCert"] as! Bool
+                    }
+                    if dict.keys.contains("EndTime") {
+                        self.endTime = dict["EndTime"] as! Int64
+                    }
                     if dict.keys.contains("Fingerprint") {
                         self.fingerprint = dict["Fingerprint"] as! String
+                    }
+                    if dict.keys.contains("InstanceId") {
+                        self.instanceId = dict["InstanceId"] as! String
                     }
                     if dict.keys.contains("Issuer") {
                         self.issuer = dict["Issuer"] as! String
                     }
                     if dict.keys.contains("LastTime") {
                         self.lastTime = dict["LastTime"] as! Int64
+                    }
+                    if dict.keys.contains("SignAlgorithm") {
+                        self.signAlgorithm = dict["SignAlgorithm"] as! String
                     }
                 }
             }
@@ -18957,6 +19021,8 @@ public class GetAppInfosResponseBody : Tea.TeaModel {
 
         public var modificationTime: String?
 
+        public var resourceGroupId: String?
+
         public var status: String?
 
         public var type: String?
@@ -18990,6 +19056,9 @@ public class GetAppInfosResponseBody : Tea.TeaModel {
             if self.modificationTime != nil {
                 map["ModificationTime"] = self.modificationTime!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -19014,6 +19083,9 @@ public class GetAppInfosResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ModificationTime") {
                 self.modificationTime = dict["ModificationTime"] as! String
+            }
+            if dict.keys.contains("ResourceGroupId") {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
@@ -25636,6 +25708,8 @@ public class GetMezzanineInfoResponseBody : Tea.TeaModel {
 
         public var outputType: String?
 
+        public var preprocessStatus: String?
+
         public var restoreExpiration: String?
 
         public var restoreStatus: String?
@@ -25696,6 +25770,9 @@ public class GetMezzanineInfoResponseBody : Tea.TeaModel {
             }
             if self.outputType != nil {
                 map["OutputType"] = self.outputType!
+            }
+            if self.preprocessStatus != nil {
+                map["PreprocessStatus"] = self.preprocessStatus!
             }
             if self.restoreExpiration != nil {
                 map["RestoreExpiration"] = self.restoreExpiration!
@@ -25763,6 +25840,9 @@ public class GetMezzanineInfoResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("OutputType") {
                 self.outputType = dict["OutputType"] as! String
+            }
+            if dict.keys.contains("PreprocessStatus") {
+                self.preprocessStatus = dict["PreprocessStatus"] as! String
             }
             if dict.keys.contains("RestoreExpiration") {
                 self.restoreExpiration = dict["RestoreExpiration"] as! String
@@ -30635,6 +30715,8 @@ public class ListAppInfoRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var resourceGroupId: String?
+
     public var status: String?
 
     public override init() {
@@ -30657,6 +30739,9 @@ public class ListAppInfoRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -30669,6 +30754,9 @@ public class ListAppInfoRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! String
@@ -30687,6 +30775,10 @@ public class ListAppInfoResponseBody : Tea.TeaModel {
         public var description_: String?
 
         public var modificationTime: String?
+
+        public var regionId: String?
+
+        public var resourceGroupId: String?
 
         public var status: String?
 
@@ -30721,6 +30813,12 @@ public class ListAppInfoResponseBody : Tea.TeaModel {
             if self.modificationTime != nil {
                 map["ModificationTime"] = self.modificationTime!
             }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -30745,6 +30843,12 @@ public class ListAppInfoResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ModificationTime") {
                 self.modificationTime = dict["ModificationTime"] as! String
+            }
+            if dict.keys.contains("RegionId") {
+                self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("ResourceGroupId") {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
