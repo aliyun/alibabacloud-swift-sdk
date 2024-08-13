@@ -23089,6 +23089,8 @@ public class DescribeInvocationsRequest : Tea.TeaModel {
 
     public var endUserId: String?
 
+    public var includeInvokeDesktops: Bool?
+
     public var includeOutput: Bool?
 
     public var invokeId: String?
@@ -23130,6 +23132,9 @@ public class DescribeInvocationsRequest : Tea.TeaModel {
         if self.endUserId != nil {
             map["EndUserId"] = self.endUserId!
         }
+        if self.includeInvokeDesktops != nil {
+            map["IncludeInvokeDesktops"] = self.includeInvokeDesktops!
+        }
         if self.includeOutput != nil {
             map["IncludeOutput"] = self.includeOutput!
         }
@@ -23166,6 +23171,9 @@ public class DescribeInvocationsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EndUserId") {
             self.endUserId = dict["EndUserId"] as! String
+        }
+        if dict.keys.contains("IncludeInvokeDesktops") {
+            self.includeInvokeDesktops = dict["IncludeInvokeDesktops"] as! Bool
         }
         if dict.keys.contains("IncludeOutput") {
             self.includeOutput = dict["IncludeOutput"] as! Bool
@@ -23333,6 +23341,10 @@ public class DescribeInvocationsResponseBody : Tea.TeaModel {
 
         public var invocationStatus: String?
 
+        public var invokeDesktopCount: Int32?
+
+        public var invokeDesktopSucceedCount: Int32?
+
         public var invokeDesktops: [DescribeInvocationsResponseBody.Invocations.InvokeDesktops]?
 
         public var invokeId: String?
@@ -23366,6 +23378,12 @@ public class DescribeInvocationsResponseBody : Tea.TeaModel {
             if self.invocationStatus != nil {
                 map["InvocationStatus"] = self.invocationStatus!
             }
+            if self.invokeDesktopCount != nil {
+                map["InvokeDesktopCount"] = self.invokeDesktopCount!
+            }
+            if self.invokeDesktopSucceedCount != nil {
+                map["InvokeDesktopSucceedCount"] = self.invokeDesktopSucceedCount!
+            }
             if self.invokeDesktops != nil {
                 var tmp : [Any] = []
                 for k in self.invokeDesktops! {
@@ -23394,6 +23412,12 @@ public class DescribeInvocationsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("InvocationStatus") {
                 self.invocationStatus = dict["InvocationStatus"] as! String
+            }
+            if dict.keys.contains("InvokeDesktopCount") {
+                self.invokeDesktopCount = dict["InvokeDesktopCount"] as! Int32
+            }
+            if dict.keys.contains("InvokeDesktopSucceedCount") {
+                self.invokeDesktopSucceedCount = dict["InvokeDesktopSucceedCount"] as! Int32
             }
             if dict.keys.contains("InvokeDesktops") {
                 var tmp : [DescribeInvocationsResponseBody.Invocations.InvokeDesktops] = []
