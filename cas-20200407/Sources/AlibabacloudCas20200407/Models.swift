@@ -3660,6 +3660,8 @@ public class GetUserCertificateDetailResponseBody : Tea.TeaModel {
 
     public var id: Int64?
 
+    public var instanceId: String?
+
     public var issuer: String?
 
     public var key: String?
@@ -3677,6 +3679,10 @@ public class GetUserCertificateDetailResponseBody : Tea.TeaModel {
     public var resourceGroupId: String?
 
     public var sans: String?
+
+    public var serialNo: String?
+
+    public var sha2: String?
 
     public var signCert: String?
 
@@ -3734,6 +3740,9 @@ public class GetUserCertificateDetailResponseBody : Tea.TeaModel {
         if self.id != nil {
             map["Id"] = self.id!
         }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
         if self.issuer != nil {
             map["Issuer"] = self.issuer!
         }
@@ -3760,6 +3769,12 @@ public class GetUserCertificateDetailResponseBody : Tea.TeaModel {
         }
         if self.sans != nil {
             map["Sans"] = self.sans!
+        }
+        if self.serialNo != nil {
+            map["SerialNo"] = self.serialNo!
+        }
+        if self.sha2 != nil {
+            map["Sha2"] = self.sha2!
         }
         if self.signCert != nil {
             map["SignCert"] = self.signCert!
@@ -3810,6 +3825,9 @@ public class GetUserCertificateDetailResponseBody : Tea.TeaModel {
         if dict.keys.contains("Id") {
             self.id = dict["Id"] as! Int64
         }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
         if dict.keys.contains("Issuer") {
             self.issuer = dict["Issuer"] as! String
         }
@@ -3836,6 +3854,12 @@ public class GetUserCertificateDetailResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Sans") {
             self.sans = dict["Sans"] as! String
+        }
+        if dict.keys.contains("SerialNo") {
+            self.serialNo = dict["SerialNo"] as! String
+        }
+        if dict.keys.contains("Sha2") {
+            self.sha2 = dict["Sha2"] as! String
         }
         if dict.keys.contains("SignCert") {
             self.signCert = dict["SignCert"] as! String
@@ -4717,6 +4741,8 @@ public class ListCloudAccessResponse : Tea.TeaModel {
 }
 
 public class ListCloudResourcesRequest : Tea.TeaModel {
+    public var certIds: [Int64]?
+
     public var cloudName: String?
 
     public var cloudProduct: String?
@@ -4743,6 +4769,9 @@ public class ListCloudResourcesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.certIds != nil {
+            map["CertIds"] = self.certIds!
+        }
         if self.cloudName != nil {
             map["CloudName"] = self.cloudName!
         }
@@ -4765,6 +4794,87 @@ public class ListCloudResourcesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CertIds") {
+            self.certIds = dict["CertIds"] as! [Int64]
+        }
+        if dict.keys.contains("CloudName") {
+            self.cloudName = dict["CloudName"] as! String
+        }
+        if dict.keys.contains("CloudProduct") {
+            self.cloudProduct = dict["CloudProduct"] as! String
+        }
+        if dict.keys.contains("CurrentPage") {
+            self.currentPage = dict["CurrentPage"] as! Int32
+        }
+        if dict.keys.contains("Keyword") {
+            self.keyword = dict["Keyword"] as! String
+        }
+        if dict.keys.contains("SecretId") {
+            self.secretId = dict["SecretId"] as! String
+        }
+        if dict.keys.contains("ShowSize") {
+            self.showSize = dict["ShowSize"] as! Int32
+        }
+    }
+}
+
+public class ListCloudResourcesShrinkRequest : Tea.TeaModel {
+    public var certIdsShrink: String?
+
+    public var cloudName: String?
+
+    public var cloudProduct: String?
+
+    public var currentPage: Int32?
+
+    public var keyword: String?
+
+    public var secretId: String?
+
+    public var showSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.certIdsShrink != nil {
+            map["CertIds"] = self.certIdsShrink!
+        }
+        if self.cloudName != nil {
+            map["CloudName"] = self.cloudName!
+        }
+        if self.cloudProduct != nil {
+            map["CloudProduct"] = self.cloudProduct!
+        }
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.keyword != nil {
+            map["Keyword"] = self.keyword!
+        }
+        if self.secretId != nil {
+            map["SecretId"] = self.secretId!
+        }
+        if self.showSize != nil {
+            map["ShowSize"] = self.showSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CertIds") {
+            self.certIdsShrink = dict["CertIds"] as! String
+        }
         if dict.keys.contains("CloudName") {
             self.cloudName = dict["CloudName"] as! String
         }

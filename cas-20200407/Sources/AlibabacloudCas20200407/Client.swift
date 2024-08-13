@@ -1111,9 +1111,17 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listCloudResourcesWithOptions(_ request: ListCloudResourcesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCloudResourcesResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listCloudResourcesWithOptions(_ tmpReq: ListCloudResourcesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCloudResourcesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListCloudResourcesShrinkRequest = ListCloudResourcesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.certIds)) {
+            request.certIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.certIds, "CertIds", "json")
+        }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.certIdsShrink)) {
+            query["CertIds"] = request.certIdsShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.cloudName)) {
             query["CloudName"] = request.cloudName ?? "";
         }
