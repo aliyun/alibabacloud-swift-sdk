@@ -6886,6 +6886,8 @@ public class ListPolicyRequest : Tea.TeaModel {
 
     public var pageSize: Int64?
 
+    public var productType: String?
+
     public var type: String?
 
     public override init() {
@@ -6911,6 +6913,9 @@ public class ListPolicyRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.productType != nil {
+            map["ProductType"] = self.productType!
+        }
         if self.type != nil {
             map["Type"] = self.type!
         }
@@ -6926,6 +6931,9 @@ public class ListPolicyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") {
             self.pageSize = dict["PageSize"] as! Int64
+        }
+        if dict.keys.contains("ProductType") {
+            self.productType = dict["ProductType"] as! String
         }
         if dict.keys.contains("Type") {
             self.type = dict["Type"] as! String
@@ -7577,6 +7585,8 @@ public class ListPolicyResponseBody : Tea.TeaModel {
 
         public var name: String?
 
+        public var remark: String?
+
         public var type: String?
 
         public override init() {
@@ -7606,6 +7616,9 @@ public class ListPolicyResponseBody : Tea.TeaModel {
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.remark != nil {
+                map["Remark"] = self.remark!
+            }
             if self.type != nil {
                 map["Type"] = self.type!
             }
@@ -7626,6 +7639,9 @@ public class ListPolicyResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Name") {
                 self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("Remark") {
+                self.remark = dict["Remark"] as! String
             }
             if dict.keys.contains("Type") {
                 self.type = dict["Type"] as! String
@@ -7929,6 +7945,8 @@ public class ListPolicyAttachmentResponseBody : Tea.TeaModel {
 
         public var policyName: String?
 
+        public var policyRemark: String?
+
         public var policyType: String?
 
         public var port: Int32?
@@ -7963,6 +7981,9 @@ public class ListPolicyAttachmentResponseBody : Tea.TeaModel {
             if self.policyName != nil {
                 map["PolicyName"] = self.policyName!
             }
+            if self.policyRemark != nil {
+                map["PolicyRemark"] = self.policyRemark!
+            }
             if self.policyType != nil {
                 map["PolicyType"] = self.policyType!
             }
@@ -7990,6 +8011,9 @@ public class ListPolicyAttachmentResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("PolicyName") {
                 self.policyName = dict["PolicyName"] as! String
+            }
+            if dict.keys.contains("PolicyRemark") {
+                self.policyRemark = dict["PolicyRemark"] as! String
             }
             if dict.keys.contains("PolicyType") {
                 self.policyType = dict["PolicyType"] as! String
