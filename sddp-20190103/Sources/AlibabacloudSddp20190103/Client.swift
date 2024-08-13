@@ -1562,6 +1562,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.lastScanTimeStart)) {
             query["LastScanTimeStart"] = request.lastScanTimeStart!;
         }
+        if (!TeaUtils.Client.isUnset(request.marker)) {
+            query["Marker"] = request.marker!;
+        }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
         }

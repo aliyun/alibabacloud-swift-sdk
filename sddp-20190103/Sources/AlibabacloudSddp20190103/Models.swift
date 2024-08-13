@@ -10031,6 +10031,8 @@ public class DescribeOssObjectsRequest : Tea.TeaModel {
 
     public var lastScanTimeStart: Int64?
 
+    public var marker: Int64?
+
     public var name: String?
 
     public var pageSize: Int32?
@@ -10075,6 +10077,9 @@ public class DescribeOssObjectsRequest : Tea.TeaModel {
         if self.lastScanTimeStart != nil {
             map["LastScanTimeStart"] = self.lastScanTimeStart!
         }
+        if self.marker != nil {
+            map["Marker"] = self.marker!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -10114,6 +10119,9 @@ public class DescribeOssObjectsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("LastScanTimeStart") {
             self.lastScanTimeStart = dict["LastScanTimeStart"] as! Int64
+        }
+        if dict.keys.contains("Marker") {
+            self.marker = dict["Marker"] as! Int64
         }
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
@@ -10355,11 +10363,17 @@ public class DescribeOssObjectsResponseBody : Tea.TeaModel {
 
     public var items: [DescribeOssObjectsResponseBody.Items]?
 
+    public var marker: String?
+
+    public var nextMarker: String?
+
     public var pageSize: Int32?
 
     public var requestId: String?
 
     public var totalCount: Int32?
+
+    public var truncated: Bool?
 
     public override init() {
         super.init()
@@ -10385,6 +10399,12 @@ public class DescribeOssObjectsResponseBody : Tea.TeaModel {
             }
             map["Items"] = tmp
         }
+        if self.marker != nil {
+            map["Marker"] = self.marker!
+        }
+        if self.nextMarker != nil {
+            map["NextMarker"] = self.nextMarker!
+        }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
@@ -10393,6 +10413,9 @@ public class DescribeOssObjectsResponseBody : Tea.TeaModel {
         }
         if self.totalCount != nil {
             map["TotalCount"] = self.totalCount!
+        }
+        if self.truncated != nil {
+            map["Truncated"] = self.truncated!
         }
         return map
     }
@@ -10412,6 +10435,12 @@ public class DescribeOssObjectsResponseBody : Tea.TeaModel {
             }
             self.items = tmp
         }
+        if dict.keys.contains("Marker") {
+            self.marker = dict["Marker"] as! String
+        }
+        if dict.keys.contains("NextMarker") {
+            self.nextMarker = dict["NextMarker"] as! String
+        }
         if dict.keys.contains("PageSize") {
             self.pageSize = dict["PageSize"] as! Int32
         }
@@ -10420,6 +10449,9 @@ public class DescribeOssObjectsResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("TotalCount") {
             self.totalCount = dict["TotalCount"] as! Int32
+        }
+        if dict.keys.contains("Truncated") {
+            self.truncated = dict["Truncated"] as! Bool
         }
     }
 }
