@@ -3257,6 +3257,43 @@ public class ListEvaluationResultsRequest : Tea.TeaModel {
 public class ListEvaluationResultsResponseBody : Tea.TeaModel {
     public class Results : Tea.TeaModel {
         public class MetricResults : Tea.TeaModel {
+            public class ErrorInfo : Tea.TeaModel {
+                public var code: String?
+
+                public var message: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.code != nil {
+                        map["Code"] = self.code!
+                    }
+                    if self.message != nil {
+                        map["Message"] = self.message!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Code") {
+                        self.code = dict["Code"] as! String
+                    }
+                    if dict.keys.contains("Message") {
+                        self.message = dict["Message"] as! String
+                    }
+                }
+            }
             public class ResourcesSummary : Tea.TeaModel {
                 public var nonCompliant: Int32?
 
@@ -3286,6 +3323,8 @@ public class ListEvaluationResultsResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var errorInfo: ListEvaluationResultsResponseBody.Results.MetricResults.ErrorInfo?
+
             public var evaluationTime: String?
 
             public var id: String?
@@ -3308,11 +3347,15 @@ public class ListEvaluationResultsResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.errorInfo?.validate()
                 try self.resourcesSummary?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.errorInfo != nil {
+                    map["ErrorInfo"] = self.errorInfo?.toMap()
+                }
                 if self.evaluationTime != nil {
                     map["EvaluationTime"] = self.evaluationTime!
                 }
@@ -3335,6 +3378,11 @@ public class ListEvaluationResultsResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ErrorInfo") {
+                    var model = ListEvaluationResultsResponseBody.Results.MetricResults.ErrorInfo()
+                    model.fromMap(dict["ErrorInfo"] as! [String: Any])
+                    self.errorInfo = model
+                }
                 if dict.keys.contains("EvaluationTime") {
                     self.evaluationTime = dict["EvaluationTime"] as! String
                 }
