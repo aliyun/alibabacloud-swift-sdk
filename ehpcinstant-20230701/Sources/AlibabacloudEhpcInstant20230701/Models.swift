@@ -3315,6 +3315,8 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
 
         public var hostName: [String]?
 
+        public var image: String?
+
         public var ipAddress: [String]?
 
         public var jobId: String?
@@ -3356,6 +3358,9 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
             if self.hostName != nil {
                 map["HostName"] = self.hostName!
             }
+            if self.image != nil {
+                map["Image"] = self.image!
+            }
             if self.ipAddress != nil {
                 map["IpAddress"] = self.ipAddress!
             }
@@ -3392,6 +3397,9 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("HostName") {
                 self.hostName = dict["HostName"] as! [String]
+            }
+            if dict.keys.contains("Image") {
+                self.image = dict["Image"] as! String
             }
             if dict.keys.contains("IpAddress") {
                 self.ipAddress = dict["IpAddress"] as! [String]
@@ -3938,12 +3946,91 @@ public class ListJobExecutorsRequest : Tea.TeaModel {
 }
 
 public class ListJobExecutorsResponseBody : Tea.TeaModel {
+    public class ExecutorStatus : Tea.TeaModel {
+        public var deleted: Int32?
+
+        public var exception: Int32?
+
+        public var failed: Int32?
+
+        public var initing: Int32?
+
+        public var pending: Int32?
+
+        public var running: Int32?
+
+        public var succeeded: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.deleted != nil {
+                map["Deleted"] = self.deleted!
+            }
+            if self.exception != nil {
+                map["Exception"] = self.exception!
+            }
+            if self.failed != nil {
+                map["Failed"] = self.failed!
+            }
+            if self.initing != nil {
+                map["Initing"] = self.initing!
+            }
+            if self.pending != nil {
+                map["Pending"] = self.pending!
+            }
+            if self.running != nil {
+                map["Running"] = self.running!
+            }
+            if self.succeeded != nil {
+                map["Succeeded"] = self.succeeded!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Deleted") {
+                self.deleted = dict["Deleted"] as! Int32
+            }
+            if dict.keys.contains("Exception") {
+                self.exception = dict["Exception"] as! Int32
+            }
+            if dict.keys.contains("Failed") {
+                self.failed = dict["Failed"] as! Int32
+            }
+            if dict.keys.contains("Initing") {
+                self.initing = dict["Initing"] as! Int32
+            }
+            if dict.keys.contains("Pending") {
+                self.pending = dict["Pending"] as! Int32
+            }
+            if dict.keys.contains("Running") {
+                self.running = dict["Running"] as! Int32
+            }
+            if dict.keys.contains("Succeeded") {
+                self.succeeded = dict["Succeeded"] as! Int32
+            }
+        }
+    }
     public class Executors : Tea.TeaModel {
         public var arrayIndex: Int32?
 
         public var createTime: String?
 
         public var endTime: String?
+
+        public var executorId: String?
 
         public var hostName: [String]?
 
@@ -3976,6 +4063,9 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
             if self.endTime != nil {
                 map["EndTime"] = self.endTime!
             }
+            if self.executorId != nil {
+                map["ExecutorId"] = self.executorId!
+            }
             if self.hostName != nil {
                 map["HostName"] = self.hostName!
             }
@@ -4001,6 +4091,9 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
             if dict.keys.contains("EndTime") {
                 self.endTime = dict["EndTime"] as! String
             }
+            if dict.keys.contains("ExecutorId") {
+                self.executorId = dict["ExecutorId"] as! String
+            }
             if dict.keys.contains("HostName") {
                 self.hostName = dict["HostName"] as! [String]
             }
@@ -4015,6 +4108,8 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var executorStatus: ListJobExecutorsResponseBody.ExecutorStatus?
+
     public var executors: [ListJobExecutorsResponseBody.Executors]?
 
     public var jobId: String?
@@ -4039,10 +4134,14 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.executorStatus?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.executorStatus != nil {
+            map["ExecutorStatus"] = self.executorStatus?.toMap()
+        }
         if self.executors != nil {
             var tmp : [Any] = []
             for k in self.executors! {
@@ -4072,6 +4171,11 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ExecutorStatus") {
+            var model = ListJobExecutorsResponseBody.ExecutorStatus()
+            model.fromMap(dict["ExecutorStatus"] as! [String: Any])
+            self.executorStatus = model
+        }
         if dict.keys.contains("Executors") {
             var tmp : [ListJobExecutorsResponseBody.Executors] = []
             for v in dict["Executors"] as! [Any] {
