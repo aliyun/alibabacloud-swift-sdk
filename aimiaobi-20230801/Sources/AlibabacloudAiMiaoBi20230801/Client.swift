@@ -229,6 +229,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.agentKey)) {
             query["AgentKey"] = request.agentKey ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.id)) {
             body["Id"] = request.id!;
@@ -1266,6 +1269,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.agentKey)) {
             query["AgentKey"] = request.agentKey ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.type)) {
             body["Type"] = request.type ?? "";
@@ -1399,11 +1405,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             body["EndTime"] = request.endTime ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.query)) {
+            body["Query"] = request.query ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.size)) {
             body["Size"] = request.size!;
         }
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             body["StartTime"] = request.startTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            body["TaskId"] = request.taskId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.title)) {
             body["Title"] = request.title ?? "";
@@ -2177,6 +2189,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.agentKey)) {
             query["AgentKey"] = request.agentKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
         }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.author)) {

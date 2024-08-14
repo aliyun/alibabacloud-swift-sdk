@@ -1017,6 +1017,8 @@ public class DeleteGeneratedContentRequest : Tea.TeaModel {
 
     public var id: Int64?
 
+    public var regionId: String?
+
     public override init() {
         super.init()
     }
@@ -1037,6 +1039,9 @@ public class DeleteGeneratedContentRequest : Tea.TeaModel {
         if self.id != nil {
             map["Id"] = self.id!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
         return map
     }
 
@@ -1046,6 +1051,9 @@ public class DeleteGeneratedContentRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Id") {
             self.id = dict["Id"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
         }
     }
 }
@@ -8500,6 +8508,8 @@ public class ListAsyncTasksResponse : Tea.TeaModel {
 public class ListBuildConfigsRequest : Tea.TeaModel {
     public var agentKey: String?
 
+    public var regionId: String?
+
     public var type: String?
 
     public override init() {
@@ -8519,6 +8529,9 @@ public class ListBuildConfigsRequest : Tea.TeaModel {
         if self.agentKey != nil {
             map["AgentKey"] = self.agentKey!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
         if self.type != nil {
             map["Type"] = self.type!
         }
@@ -8528,6 +8541,9 @@ public class ListBuildConfigsRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AgentKey") {
             self.agentKey = dict["AgentKey"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
         }
         if dict.keys.contains("Type") {
             self.type = dict["Type"] as! String
@@ -9373,9 +9389,13 @@ public class ListGeneratedContentsRequest : Tea.TeaModel {
 
     public var endTime: String?
 
+    public var query: String?
+
     public var size: Int32?
 
     public var startTime: String?
+
+    public var taskId: String?
 
     public var title: String?
 
@@ -9405,11 +9425,17 @@ public class ListGeneratedContentsRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.query != nil {
+            map["Query"] = self.query!
+        }
         if self.size != nil {
             map["Size"] = self.size!
         }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
         }
         if self.title != nil {
             map["Title"] = self.title!
@@ -9430,11 +9456,17 @@ public class ListGeneratedContentsRequest : Tea.TeaModel {
         if dict.keys.contains("EndTime") {
             self.endTime = dict["EndTime"] as! String
         }
+        if dict.keys.contains("Query") {
+            self.query = dict["Query"] as! String
+        }
         if dict.keys.contains("Size") {
             self.size = dict["Size"] as! Int32
         }
         if dict.keys.contains("StartTime") {
             self.startTime = dict["StartTime"] as! String
+        }
+        if dict.keys.contains("TaskId") {
+            self.taskId = dict["TaskId"] as! String
         }
         if dict.keys.contains("Title") {
             self.title = dict["Title"] as! String
@@ -14548,6 +14580,8 @@ public class UpdateMaterialDocumentRequest : Tea.TeaModel {
 
     public var pubTime: String?
 
+    public var regionId: String?
+
     public var shareAttr: Int32?
 
     public var srcFrom: String?
@@ -14598,6 +14632,9 @@ public class UpdateMaterialDocumentRequest : Tea.TeaModel {
         if self.pubTime != nil {
             map["PubTime"] = self.pubTime!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
         if self.shareAttr != nil {
             map["ShareAttr"] = self.shareAttr!
         }
@@ -14644,6 +14681,9 @@ public class UpdateMaterialDocumentRequest : Tea.TeaModel {
         if dict.keys.contains("PubTime") {
             self.pubTime = dict["PubTime"] as! String
         }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
         if dict.keys.contains("ShareAttr") {
             self.shareAttr = dict["ShareAttr"] as! Int32
         }
@@ -14681,6 +14721,8 @@ public class UpdateMaterialDocumentShrinkRequest : Tea.TeaModel {
     public var id: Int64?
 
     public var pubTime: String?
+
+    public var regionId: String?
 
     public var shareAttr: Int32?
 
@@ -14732,6 +14774,9 @@ public class UpdateMaterialDocumentShrinkRequest : Tea.TeaModel {
         if self.pubTime != nil {
             map["PubTime"] = self.pubTime!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
         if self.shareAttr != nil {
             map["ShareAttr"] = self.shareAttr!
         }
@@ -14777,6 +14822,9 @@ public class UpdateMaterialDocumentShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PubTime") {
             self.pubTime = dict["PubTime"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
         }
         if dict.keys.contains("ShareAttr") {
             self.shareAttr = dict["ShareAttr"] as! Int32
