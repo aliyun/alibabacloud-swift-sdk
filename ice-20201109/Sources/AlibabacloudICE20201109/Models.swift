@@ -35737,6 +35737,8 @@ public class ListMediaProducingJobsRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var projectId: String?
+
     public var sortBy: String?
 
     public var startTime: String?
@@ -35775,6 +35777,9 @@ public class ListMediaProducingJobsRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
         if self.sortBy != nil {
             map["SortBy"] = self.sortBy!
         }
@@ -35805,6 +35810,9 @@ public class ListMediaProducingJobsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("NextToken") {
             self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("ProjectId") {
+            self.projectId = dict["ProjectId"] as! String
         }
         if dict.keys.contains("SortBy") {
             self.sortBy = dict["SortBy"] as! String
