@@ -5215,6 +5215,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.nextVersion)) {
             body["next_version"] = request.nextVersion ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.rollingPolicy)) {
+            body["rolling_policy"] = request.rollingPolicy!;
+        }
         if (!TeaUtils.Client.isUnset(request.version)) {
             body["version"] = request.version ?? "";
         }

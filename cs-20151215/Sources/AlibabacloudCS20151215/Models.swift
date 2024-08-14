@@ -29450,11 +29450,42 @@ public class UpdateUserPermissionsResponse : Tea.TeaModel {
 }
 
 public class UpgradeClusterRequest : Tea.TeaModel {
+    public class RollingPolicy : Tea.TeaModel {
+        public var maxParallelism: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.maxParallelism != nil {
+                map["max_parallelism"] = self.maxParallelism!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("max_parallelism") {
+                self.maxParallelism = dict["max_parallelism"] as! Int32
+            }
+        }
+    }
     public var componentName: String?
 
     public var masterOnly: Bool?
 
     public var nextVersion: String?
+
+    public var rollingPolicy: UpgradeClusterRequest.RollingPolicy?
 
     public var version: String?
 
@@ -29468,6 +29499,7 @@ public class UpgradeClusterRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.rollingPolicy?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -29480,6 +29512,9 @@ public class UpgradeClusterRequest : Tea.TeaModel {
         }
         if self.nextVersion != nil {
             map["next_version"] = self.nextVersion!
+        }
+        if self.rollingPolicy != nil {
+            map["rolling_policy"] = self.rollingPolicy?.toMap()
         }
         if self.version != nil {
             map["version"] = self.version!
@@ -29496,6 +29531,11 @@ public class UpgradeClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("next_version") {
             self.nextVersion = dict["next_version"] as! String
+        }
+        if dict.keys.contains("rolling_policy") {
+            var model = UpgradeClusterRequest.RollingPolicy()
+            model.fromMap(dict["rolling_policy"] as! [String: Any])
+            self.rollingPolicy = model
         }
         if dict.keys.contains("version") {
             self.version = dict["version"] as! String
