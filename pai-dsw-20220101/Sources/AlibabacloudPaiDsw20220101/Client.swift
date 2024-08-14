@@ -908,6 +908,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.createUserId)) {
             query["CreateUserId"] = request.createUserId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.gpuType)) {
+            query["GpuType"] = request.gpuType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageName)) {
+            query["ImageName"] = request.imageName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
@@ -916,6 +922,30 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.labelsShrink)) {
             query["Labels"] = request.labelsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxCpu)) {
+            query["MaxCpu"] = request.maxCpu ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxGpu)) {
+            query["MaxGpu"] = request.maxGpu ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxGpuMemory)) {
+            query["MaxGpuMemory"] = request.maxGpuMemory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxMemory)) {
+            query["MaxMemory"] = request.maxMemory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.minCpu)) {
+            query["MinCpu"] = request.minCpu ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.minGpu)) {
+            query["MinGpu"] = request.minGpu ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.minGpuMemory)) {
+            query["MinGpuMemory"] = request.minGpuMemory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.minMemory)) {
+            query["MinMemory"] = request.minMemory ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.order)) {
             query["Order"] = request.order ?? "";

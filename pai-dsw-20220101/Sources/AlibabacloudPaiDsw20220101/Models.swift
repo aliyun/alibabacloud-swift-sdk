@@ -6642,11 +6642,31 @@ public class ListInstancesRequest : Tea.TeaModel {
 
     public var createUserId: String?
 
+    public var gpuType: String?
+
+    public var imageName: String?
+
     public var instanceId: String?
 
     public var instanceName: String?
 
     public var labels: [String: Any]?
+
+    public var maxCpu: String?
+
+    public var maxGpu: String?
+
+    public var maxGpuMemory: String?
+
+    public var maxMemory: String?
+
+    public var minCpu: String?
+
+    public var minGpu: String?
+
+    public var minGpuMemory: String?
+
+    public var minMemory: String?
 
     public var order: String?
 
@@ -6687,6 +6707,12 @@ public class ListInstancesRequest : Tea.TeaModel {
         if self.createUserId != nil {
             map["CreateUserId"] = self.createUserId!
         }
+        if self.gpuType != nil {
+            map["GpuType"] = self.gpuType!
+        }
+        if self.imageName != nil {
+            map["ImageName"] = self.imageName!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -6695,6 +6721,30 @@ public class ListInstancesRequest : Tea.TeaModel {
         }
         if self.labels != nil {
             map["Labels"] = self.labels!
+        }
+        if self.maxCpu != nil {
+            map["MaxCpu"] = self.maxCpu!
+        }
+        if self.maxGpu != nil {
+            map["MaxGpu"] = self.maxGpu!
+        }
+        if self.maxGpuMemory != nil {
+            map["MaxGpuMemory"] = self.maxGpuMemory!
+        }
+        if self.maxMemory != nil {
+            map["MaxMemory"] = self.maxMemory!
+        }
+        if self.minCpu != nil {
+            map["MinCpu"] = self.minCpu!
+        }
+        if self.minGpu != nil {
+            map["MinGpu"] = self.minGpu!
+        }
+        if self.minGpuMemory != nil {
+            map["MinGpuMemory"] = self.minGpuMemory!
+        }
+        if self.minMemory != nil {
+            map["MinMemory"] = self.minMemory!
         }
         if self.order != nil {
             map["Order"] = self.order!
@@ -6733,6 +6783,12 @@ public class ListInstancesRequest : Tea.TeaModel {
         if dict.keys.contains("CreateUserId") {
             self.createUserId = dict["CreateUserId"] as! String
         }
+        if dict.keys.contains("GpuType") {
+            self.gpuType = dict["GpuType"] as! String
+        }
+        if dict.keys.contains("ImageName") {
+            self.imageName = dict["ImageName"] as! String
+        }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
         }
@@ -6741,6 +6797,30 @@ public class ListInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Labels") {
             self.labels = dict["Labels"] as! [String: Any]
+        }
+        if dict.keys.contains("MaxCpu") {
+            self.maxCpu = dict["MaxCpu"] as! String
+        }
+        if dict.keys.contains("MaxGpu") {
+            self.maxGpu = dict["MaxGpu"] as! String
+        }
+        if dict.keys.contains("MaxGpuMemory") {
+            self.maxGpuMemory = dict["MaxGpuMemory"] as! String
+        }
+        if dict.keys.contains("MaxMemory") {
+            self.maxMemory = dict["MaxMemory"] as! String
+        }
+        if dict.keys.contains("MinCpu") {
+            self.minCpu = dict["MinCpu"] as! String
+        }
+        if dict.keys.contains("MinGpu") {
+            self.minGpu = dict["MinGpu"] as! String
+        }
+        if dict.keys.contains("MinGpuMemory") {
+            self.minGpuMemory = dict["MinGpuMemory"] as! String
+        }
+        if dict.keys.contains("MinMemory") {
+            self.minMemory = dict["MinMemory"] as! String
         }
         if dict.keys.contains("Order") {
             self.order = dict["Order"] as! String
@@ -6776,11 +6856,31 @@ public class ListInstancesShrinkRequest : Tea.TeaModel {
 
     public var createUserId: String?
 
+    public var gpuType: String?
+
+    public var imageName: String?
+
     public var instanceId: String?
 
     public var instanceName: String?
 
     public var labelsShrink: String?
+
+    public var maxCpu: String?
+
+    public var maxGpu: String?
+
+    public var maxGpuMemory: String?
+
+    public var maxMemory: String?
+
+    public var minCpu: String?
+
+    public var minGpu: String?
+
+    public var minGpuMemory: String?
+
+    public var minMemory: String?
 
     public var order: String?
 
@@ -6821,6 +6921,12 @@ public class ListInstancesShrinkRequest : Tea.TeaModel {
         if self.createUserId != nil {
             map["CreateUserId"] = self.createUserId!
         }
+        if self.gpuType != nil {
+            map["GpuType"] = self.gpuType!
+        }
+        if self.imageName != nil {
+            map["ImageName"] = self.imageName!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -6829,6 +6935,30 @@ public class ListInstancesShrinkRequest : Tea.TeaModel {
         }
         if self.labelsShrink != nil {
             map["Labels"] = self.labelsShrink!
+        }
+        if self.maxCpu != nil {
+            map["MaxCpu"] = self.maxCpu!
+        }
+        if self.maxGpu != nil {
+            map["MaxGpu"] = self.maxGpu!
+        }
+        if self.maxGpuMemory != nil {
+            map["MaxGpuMemory"] = self.maxGpuMemory!
+        }
+        if self.maxMemory != nil {
+            map["MaxMemory"] = self.maxMemory!
+        }
+        if self.minCpu != nil {
+            map["MinCpu"] = self.minCpu!
+        }
+        if self.minGpu != nil {
+            map["MinGpu"] = self.minGpu!
+        }
+        if self.minGpuMemory != nil {
+            map["MinGpuMemory"] = self.minGpuMemory!
+        }
+        if self.minMemory != nil {
+            map["MinMemory"] = self.minMemory!
         }
         if self.order != nil {
             map["Order"] = self.order!
@@ -6867,6 +6997,12 @@ public class ListInstancesShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("CreateUserId") {
             self.createUserId = dict["CreateUserId"] as! String
         }
+        if dict.keys.contains("GpuType") {
+            self.gpuType = dict["GpuType"] as! String
+        }
+        if dict.keys.contains("ImageName") {
+            self.imageName = dict["ImageName"] as! String
+        }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
         }
@@ -6875,6 +7011,30 @@ public class ListInstancesShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Labels") {
             self.labelsShrink = dict["Labels"] as! String
+        }
+        if dict.keys.contains("MaxCpu") {
+            self.maxCpu = dict["MaxCpu"] as! String
+        }
+        if dict.keys.contains("MaxGpu") {
+            self.maxGpu = dict["MaxGpu"] as! String
+        }
+        if dict.keys.contains("MaxGpuMemory") {
+            self.maxGpuMemory = dict["MaxGpuMemory"] as! String
+        }
+        if dict.keys.contains("MaxMemory") {
+            self.maxMemory = dict["MaxMemory"] as! String
+        }
+        if dict.keys.contains("MinCpu") {
+            self.minCpu = dict["MinCpu"] as! String
+        }
+        if dict.keys.contains("MinGpu") {
+            self.minGpu = dict["MinGpu"] as! String
+        }
+        if dict.keys.contains("MinGpuMemory") {
+            self.minGpuMemory = dict["MinGpuMemory"] as! String
+        }
+        if dict.keys.contains("MinMemory") {
+            self.minMemory = dict["MinMemory"] as! String
         }
         if dict.keys.contains("Order") {
             self.order = dict["Order"] as! String
