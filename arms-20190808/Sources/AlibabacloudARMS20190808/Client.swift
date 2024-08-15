@@ -1686,6 +1686,16 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createOrUpdateSilencePolicyWithOptions(_ request: CreateOrUpdateSilencePolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateOrUpdateSilencePolicyResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.effectiveTimeType)) {
+            query["EffectiveTimeType"] = request.effectiveTimeType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timePeriod)) {
+            query["TimePeriod"] = request.timePeriod ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timeSlots)) {
+            query["TimeSlots"] = request.timeSlots ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.id)) {
             body["Id"] = request.id!;
@@ -1703,6 +1713,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["State"] = request.state ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([

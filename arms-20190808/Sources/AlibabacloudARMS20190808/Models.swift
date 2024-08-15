@@ -2470,7 +2470,103 @@ public class QueryDataResponse : Tea.TeaModel {
     }
 }
 
-public class DataBonreeSDKConfigModuleConfigValue : Tea.TeaModel {
+public class DataBonreeSDKConfigModuleConfigDefaultConfigValue : Tea.TeaModel {
+    public var enable: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enable != nil {
+            map["enable"] = self.enable!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("enable") {
+            self.enable = dict["enable"] as! Bool
+        }
+    }
+}
+
+public class DataBonreeSDKConfigModuleConfigVersionConfigsValue : Tea.TeaModel {
+    public var useCustom: Bool?
+
+    public var customConfig: [String: DataBonreeSDKConfigModuleConfigVersionConfigsValueCustomConfigValue]?
+
+    public var description_: String?
+
+    public var updateTime: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.useCustom != nil {
+            map["useCustom"] = self.useCustom!
+        }
+        if self.customConfig != nil {
+            var tmp : [String: Any] = [:]
+            for (k, v) in self.customConfig! {
+                tmp[k] = v.toMap()
+            }
+            map["customConfig"] = tmp
+        }
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.updateTime != nil {
+            map["updateTime"] = self.updateTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("useCustom") {
+            self.useCustom = dict["useCustom"] as! Bool
+        }
+        if dict.keys.contains("customConfig") {
+            var tmp : [String: DataBonreeSDKConfigModuleConfigVersionConfigsValueCustomConfigValue] = [:]
+            for (k, v) in dict["customConfig"] as! [String: Any] {
+                if v != nil {
+                    var model = DataBonreeSDKConfigModuleConfigVersionConfigsValueCustomConfigValue()
+                    model.fromMap(v as! [String: Any])
+                    tmp[k] = model
+                }
+            }
+            self.customConfig = tmp
+        }
+        if dict.keys.contains("description") {
+            self.description_ = dict["description"] as! String
+        }
+        if dict.keys.contains("updateTime") {
+            self.updateTime = dict["updateTime"] as! Int64
+        }
+    }
+}
+
+public class DataBonreeSDKConfigModuleConfigVersionConfigsValueCustomConfigValue : Tea.TeaModel {
     public var enable: Bool?
 
     public override init() {
@@ -10825,6 +10921,8 @@ public class CreateOrUpdateNotificationPolicyResponse : Tea.TeaModel {
 }
 
 public class CreateOrUpdateSilencePolicyRequest : Tea.TeaModel {
+    public var effectiveTimeType: String?
+
     public var id: Int64?
 
     public var matchingRules: String?
@@ -10834,6 +10932,10 @@ public class CreateOrUpdateSilencePolicyRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var state: String?
+
+    public var timePeriod: String?
+
+    public var timeSlots: String?
 
     public override init() {
         super.init()
@@ -10849,6 +10951,9 @@ public class CreateOrUpdateSilencePolicyRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.effectiveTimeType != nil {
+            map["EffectiveTimeType"] = self.effectiveTimeType!
+        }
         if self.id != nil {
             map["Id"] = self.id!
         }
@@ -10864,10 +10969,19 @@ public class CreateOrUpdateSilencePolicyRequest : Tea.TeaModel {
         if self.state != nil {
             map["State"] = self.state!
         }
+        if self.timePeriod != nil {
+            map["TimePeriod"] = self.timePeriod!
+        }
+        if self.timeSlots != nil {
+            map["TimeSlots"] = self.timeSlots!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EffectiveTimeType") {
+            self.effectiveTimeType = dict["EffectiveTimeType"] as! String
+        }
         if dict.keys.contains("Id") {
             self.id = dict["Id"] as! Int64
         }
@@ -10882,6 +10996,12 @@ public class CreateOrUpdateSilencePolicyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("State") {
             self.state = dict["State"] as! String
+        }
+        if dict.keys.contains("TimePeriod") {
+            self.timePeriod = dict["TimePeriod"] as! String
+        }
+        if dict.keys.contains("TimeSlots") {
+            self.timeSlots = dict["TimeSlots"] as! String
         }
     }
 }
@@ -10974,6 +11094,8 @@ public class CreateOrUpdateSilencePolicyResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var effectiveTimeType: String?
+
         public var id: Int64?
 
         public var matchingRules: [CreateOrUpdateSilencePolicyResponseBody.SilencePolicy.MatchingRules]?
@@ -10981,6 +11103,10 @@ public class CreateOrUpdateSilencePolicyResponseBody : Tea.TeaModel {
         public var name: String?
 
         public var state: String?
+
+        public var timePeriod: String?
+
+        public var timeSlots: String?
 
         public override init() {
             super.init()
@@ -10996,6 +11122,9 @@ public class CreateOrUpdateSilencePolicyResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.effectiveTimeType != nil {
+                map["EffectiveTimeType"] = self.effectiveTimeType!
+            }
             if self.id != nil {
                 map["Id"] = self.id!
             }
@@ -11012,10 +11141,19 @@ public class CreateOrUpdateSilencePolicyResponseBody : Tea.TeaModel {
             if self.state != nil {
                 map["State"] = self.state!
             }
+            if self.timePeriod != nil {
+                map["TimePeriod"] = self.timePeriod!
+            }
+            if self.timeSlots != nil {
+                map["TimeSlots"] = self.timeSlots!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EffectiveTimeType") {
+                self.effectiveTimeType = dict["EffectiveTimeType"] as! String
+            }
             if dict.keys.contains("Id") {
                 self.id = dict["Id"] as! Int64
             }
@@ -11035,6 +11173,12 @@ public class CreateOrUpdateSilencePolicyResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("State") {
                 self.state = dict["State"] as! String
+            }
+            if dict.keys.contains("TimePeriod") {
+                self.timePeriod = dict["TimePeriod"] as! String
+            }
+            if dict.keys.contains("TimeSlots") {
+                self.timeSlots = dict["TimeSlots"] as! String
             }
         }
     }
@@ -31522,7 +31666,7 @@ public class GetPrometheusInstanceResponseBody : Tea.TeaModel {
 
         public var subClustersJson: String?
 
-        public var surpportAuthTypes: [String]?
+        public var supportAuthTypes: [String]?
 
         public var tags: [GetPrometheusInstanceResponseBody.Data.Tags]?
 
@@ -31621,8 +31765,8 @@ public class GetPrometheusInstanceResponseBody : Tea.TeaModel {
             if self.subClustersJson != nil {
                 map["SubClustersJson"] = self.subClustersJson!
             }
-            if self.surpportAuthTypes != nil {
-                map["SurpportAuthTypes"] = self.surpportAuthTypes!
+            if self.supportAuthTypes != nil {
+                map["SupportAuthTypes"] = self.supportAuthTypes!
             }
             if self.tags != nil {
                 var tmp : [Any] = []
@@ -31719,8 +31863,8 @@ public class GetPrometheusInstanceResponseBody : Tea.TeaModel {
             if dict.keys.contains("SubClustersJson") {
                 self.subClustersJson = dict["SubClustersJson"] as! String
             }
-            if dict.keys.contains("SurpportAuthTypes") {
-                self.surpportAuthTypes = dict["SurpportAuthTypes"] as! [String]
+            if dict.keys.contains("SupportAuthTypes") {
+                self.supportAuthTypes = dict["SupportAuthTypes"] as! [String]
             }
             if dict.keys.contains("Tags") {
                 var tmp : [GetPrometheusInstanceResponseBody.Data.Tags] = []
@@ -33391,9 +33535,76 @@ public class GetRumAppInfoRequest : Tea.TeaModel {
 public class GetRumAppInfoResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class BonreeSDKConfig : Tea.TeaModel {
-            public var enable: Bool?
+            public class ModuleConfig : Tea.TeaModel {
+                public var defaultConfig: [String: DataBonreeSDKConfigModuleConfigDefaultConfigValue]?
 
-            public var moduleConfig: [String: DataBonreeSDKConfigModuleConfigValue]?
+                public var enable: Bool?
+
+                public var versionConfigs: [String: DataBonreeSDKConfigModuleConfigVersionConfigsValue]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.defaultConfig != nil {
+                        var tmp : [String: Any] = [:]
+                        for (k, v) in self.defaultConfig! {
+                            tmp[k] = v.toMap()
+                        }
+                        map["defaultConfig"] = tmp
+                    }
+                    if self.enable != nil {
+                        map["enable"] = self.enable!
+                    }
+                    if self.versionConfigs != nil {
+                        var tmp : [String: Any] = [:]
+                        for (k, v) in self.versionConfigs! {
+                            tmp[k] = v.toMap()
+                        }
+                        map["versionConfigs"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("defaultConfig") {
+                        var tmp : [String: DataBonreeSDKConfigModuleConfigDefaultConfigValue] = [:]
+                        for (k, v) in dict["defaultConfig"] as! [String: Any] {
+                            if v != nil {
+                                var model = DataBonreeSDKConfigModuleConfigDefaultConfigValue()
+                                model.fromMap(v as! [String: Any])
+                                tmp[k] = model
+                            }
+                        }
+                        self.defaultConfig = tmp
+                    }
+                    if dict.keys.contains("enable") {
+                        self.enable = dict["enable"] as! Bool
+                    }
+                    if dict.keys.contains("versionConfigs") {
+                        var tmp : [String: DataBonreeSDKConfigModuleConfigVersionConfigsValue] = [:]
+                        for (k, v) in dict["versionConfigs"] as! [String: Any] {
+                            if v != nil {
+                                var model = DataBonreeSDKConfigModuleConfigVersionConfigsValue()
+                                model.fromMap(v as! [String: Any])
+                                tmp[k] = model
+                            }
+                        }
+                        self.versionConfigs = tmp
+                    }
+                }
+            }
+            public var moduleConfig: GetRumAppInfoResponseBody.Data.BonreeSDKConfig.ModuleConfig?
 
             public override init() {
                 super.init()
@@ -33405,37 +33616,22 @@ public class GetRumAppInfoResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.moduleConfig?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
-                if self.enable != nil {
-                    map["enable"] = self.enable!
-                }
                 if self.moduleConfig != nil {
-                    var tmp : [String: Any] = [:]
-                    for (k, v) in self.moduleConfig! {
-                        tmp[k] = v.toMap()
-                    }
-                    map["moduleConfig"] = tmp
+                    map["moduleConfig"] = self.moduleConfig?.toMap()
                 }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("enable") {
-                    self.enable = dict["enable"] as! Bool
-                }
                 if dict.keys.contains("moduleConfig") {
-                    var tmp : [String: DataBonreeSDKConfigModuleConfigValue] = [:]
-                    for (k, v) in dict["moduleConfig"] as! [String: Any] {
-                        if v != nil {
-                            var model = DataBonreeSDKConfigModuleConfigValue()
-                            model.fromMap(v as! [String: Any])
-                            tmp[k] = model
-                        }
-                    }
-                    self.moduleConfig = tmp
+                    var model = GetRumAppInfoResponseBody.Data.BonreeSDKConfig.ModuleConfig()
+                    model.fromMap(dict["moduleConfig"] as! [String: Any])
+                    self.moduleConfig = model
                 }
             }
         }
@@ -33445,6 +33641,8 @@ public class GetRumAppInfoResponseBody : Tea.TeaModel {
             public var domain: String?
 
             public var propagatorTypes: [String]?
+
+            public var samplingRate: Int32?
 
             public var tracing: Bool?
 
@@ -33471,6 +33669,9 @@ public class GetRumAppInfoResponseBody : Tea.TeaModel {
                 if self.propagatorTypes != nil {
                     map["PropagatorTypes"] = self.propagatorTypes!
                 }
+                if self.samplingRate != nil {
+                    map["SamplingRate"] = self.samplingRate!
+                }
                 if self.tracing != nil {
                     map["Tracing"] = self.tracing!
                 }
@@ -33486,6 +33687,9 @@ public class GetRumAppInfoResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("PropagatorTypes") {
                     self.propagatorTypes = dict["PropagatorTypes"] as! [String]
+                }
+                if dict.keys.contains("SamplingRate") {
+                    self.samplingRate = dict["SamplingRate"] as! Int32
                 }
                 if dict.keys.contains("Tracing") {
                     self.tracing = dict["Tracing"] as! Bool
@@ -54327,6 +54531,8 @@ public class ListSilencePoliciesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var effectiveTimeType: String?
+
             public var id: Int64?
 
             public var matchingRules: [ListSilencePoliciesResponseBody.PageBean.SilencePolicies.MatchingRules]?
@@ -54334,6 +54540,10 @@ public class ListSilencePoliciesResponseBody : Tea.TeaModel {
             public var name: String?
 
             public var state: String?
+
+            public var timePeriod: String?
+
+            public var timeSlots: String?
 
             public override init() {
                 super.init()
@@ -54349,6 +54559,9 @@ public class ListSilencePoliciesResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.effectiveTimeType != nil {
+                    map["EffectiveTimeType"] = self.effectiveTimeType!
+                }
                 if self.id != nil {
                     map["Id"] = self.id!
                 }
@@ -54365,10 +54578,19 @@ public class ListSilencePoliciesResponseBody : Tea.TeaModel {
                 if self.state != nil {
                     map["State"] = self.state!
                 }
+                if self.timePeriod != nil {
+                    map["TimePeriod"] = self.timePeriod!
+                }
+                if self.timeSlots != nil {
+                    map["TimeSlots"] = self.timeSlots!
+                }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EffectiveTimeType") {
+                    self.effectiveTimeType = dict["EffectiveTimeType"] as! String
+                }
                 if dict.keys.contains("Id") {
                     self.id = dict["Id"] as! Int64
                 }
@@ -54388,6 +54610,12 @@ public class ListSilencePoliciesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("State") {
                     self.state = dict["State"] as! String
+                }
+                if dict.keys.contains("TimePeriod") {
+                    self.timePeriod = dict["TimePeriod"] as! String
+                }
+                if dict.keys.contains("TimeSlots") {
+                    self.timeSlots = dict["TimeSlots"] as! String
                 }
             }
         }
