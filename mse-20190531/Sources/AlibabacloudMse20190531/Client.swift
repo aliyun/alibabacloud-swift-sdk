@@ -10510,6 +10510,70 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateNacosGrayConfigWithOptions(_ request: UpdateNacosGrayConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateNacosGrayConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.appName)) {
+            query["AppName"] = request.appName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.content)) {
+            query["Content"] = request.content ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dataId)) {
+            query["DataId"] = request.dataId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.grayRule)) {
+            query["GrayRule"] = request.grayRule ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.grayType)) {
+            query["GrayType"] = request.grayType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.group)) {
+            query["Group"] = request.group ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.namespaceId)) {
+            query["NamespaceId"] = request.namespaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.requestPars)) {
+            query["RequestPars"] = request.requestPars ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.stopGray)) {
+            query["StopGray"] = request.stopGray!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateNacosGrayConfig",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateNacosGrayConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateNacosGrayConfig(_ request: UpdateNacosGrayConfigRequest) async throws -> UpdateNacosGrayConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateNacosGrayConfigWithOptions(request as! UpdateNacosGrayConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateNacosInstanceWithOptions(_ request: UpdateNacosInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateNacosInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

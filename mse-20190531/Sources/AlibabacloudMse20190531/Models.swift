@@ -74450,6 +74450,211 @@ public class UpdateNacosConfigResponse : Tea.TeaModel {
     }
 }
 
+public class UpdateNacosGrayConfigRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var appName: String?
+
+    public var content: String?
+
+    public var dataId: String?
+
+    public var grayRule: String?
+
+    public var grayType: String?
+
+    public var group: String?
+
+    public var instanceId: String?
+
+    public var namespaceId: String?
+
+    public var regionId: String?
+
+    public var requestPars: String?
+
+    public var stopGray: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.content != nil {
+            map["Content"] = self.content!
+        }
+        if self.dataId != nil {
+            map["DataId"] = self.dataId!
+        }
+        if self.grayRule != nil {
+            map["GrayRule"] = self.grayRule!
+        }
+        if self.grayType != nil {
+            map["GrayType"] = self.grayType!
+        }
+        if self.group != nil {
+            map["Group"] = self.group!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.namespaceId != nil {
+            map["NamespaceId"] = self.namespaceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.requestPars != nil {
+            map["RequestPars"] = self.requestPars!
+        }
+        if self.stopGray != nil {
+            map["StopGray"] = self.stopGray!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("AppName") {
+            self.appName = dict["AppName"] as! String
+        }
+        if dict.keys.contains("Content") {
+            self.content = dict["Content"] as! String
+        }
+        if dict.keys.contains("DataId") {
+            self.dataId = dict["DataId"] as! String
+        }
+        if dict.keys.contains("GrayRule") {
+            self.grayRule = dict["GrayRule"] as! String
+        }
+        if dict.keys.contains("GrayType") {
+            self.grayType = dict["GrayType"] as! String
+        }
+        if dict.keys.contains("Group") {
+            self.group = dict["Group"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("NamespaceId") {
+            self.namespaceId = dict["NamespaceId"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("RequestPars") {
+            self.requestPars = dict["RequestPars"] as! String
+        }
+        if dict.keys.contains("StopGray") {
+            self.stopGray = dict["StopGray"] as! Bool
+        }
+    }
+}
+
+public class UpdateNacosGrayConfigResponseBody : Tea.TeaModel {
+    public var data: Bool?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            self.data = dict["Data"] as! Bool
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UpdateNacosGrayConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateNacosGrayConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateNacosGrayConfigResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class UpdateNacosInstanceRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
