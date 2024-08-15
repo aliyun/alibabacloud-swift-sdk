@@ -4877,7 +4877,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "PushMonitor",
             "version": "2021-04-13",
             "protocol": "HTTPS",
-            "pathname": "/api/monitor/push/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(apiKey),
+            "pathname": "/api/monitor/push/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(apiKey)),
             "method": "POST",
             "authType": "Anonymous",
             "style": "ROA",
