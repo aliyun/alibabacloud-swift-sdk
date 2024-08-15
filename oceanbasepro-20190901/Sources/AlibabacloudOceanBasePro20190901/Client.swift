@@ -2292,6 +2292,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             body["InstanceId"] = request.instanceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.parseTable)) {
+            body["ParseTable"] = request.parseTable!;
+        }
         if (!TeaUtils.Client.isUnset(request.sqlId)) {
             body["SqlId"] = request.sqlId ?? "";
         }

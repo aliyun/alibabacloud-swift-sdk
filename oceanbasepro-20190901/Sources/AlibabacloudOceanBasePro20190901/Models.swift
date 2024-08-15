@@ -14323,6 +14323,8 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var allowCreateProxySqlFirewallRule: Bool?
+
         public var allowModifyInternetAddressConnectionLimit: Bool?
 
         public var autoRenewal: Bool?
@@ -14433,6 +14435,9 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.allowCreateProxySqlFirewallRule != nil {
+                map["AllowCreateProxySqlFirewallRule"] = self.allowCreateProxySqlFirewallRule!
+            }
             if self.allowModifyInternetAddressConnectionLimit != nil {
                 map["AllowModifyInternetAddressConnectionLimit"] = self.allowModifyInternetAddressConnectionLimit!
             }
@@ -14575,6 +14580,9 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AllowCreateProxySqlFirewallRule") {
+                self.allowCreateProxySqlFirewallRule = dict["AllowCreateProxySqlFirewallRule"] as! Bool
+            }
             if dict.keys.contains("AllowModifyInternetAddressConnectionLimit") {
                 self.allowModifyInternetAddressConnectionLimit = dict["AllowModifyInternetAddressConnectionLimit"] as! Bool
             }
@@ -18779,6 +18787,8 @@ public class DescribeOasSQLDetailsRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var parseTable: Bool?
+
     public var sqlId: String?
 
     public var startTime: String?
@@ -18811,6 +18821,9 @@ public class DescribeOasSQLDetailsRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.parseTable != nil {
+            map["ParseTable"] = self.parseTable!
+        }
         if self.sqlId != nil {
             map["SqlId"] = self.sqlId!
         }
@@ -18835,6 +18848,9 @@ public class DescribeOasSQLDetailsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("ParseTable") {
+            self.parseTable = dict["ParseTable"] as! Bool
         }
         if dict.keys.contains("SqlId") {
             self.sqlId = dict["SqlId"] as! String
@@ -20213,6 +20229,10 @@ public class DescribeOasSQLPlansResponseBody : Tea.TeaModel {
 
         public var mergedVersion: Int64?
 
+        public var outlineId: String?
+
+        public var outlineStatus: String?
+
         public var planExplain: DescribeOasSQLPlansResponseBody.Data.PlanExplain?
 
         public var planHash: String?
@@ -20224,6 +20244,8 @@ public class DescribeOasSQLPlansResponseBody : Tea.TeaModel {
         public var plans: [DescribeOasSQLPlansResponseBody.Data.Plans]?
 
         public var querySql: String?
+
+        public var tableScan: Bool?
 
         public override init() {
             super.init()
@@ -20261,6 +20283,12 @@ public class DescribeOasSQLPlansResponseBody : Tea.TeaModel {
             if self.mergedVersion != nil {
                 map["MergedVersion"] = self.mergedVersion!
             }
+            if self.outlineId != nil {
+                map["OutlineId"] = self.outlineId!
+            }
+            if self.outlineStatus != nil {
+                map["OutlineStatus"] = self.outlineStatus!
+            }
             if self.planExplain != nil {
                 map["PlanExplain"] = self.planExplain?.toMap()
             }
@@ -20282,6 +20310,9 @@ public class DescribeOasSQLPlansResponseBody : Tea.TeaModel {
             }
             if self.querySql != nil {
                 map["QuerySql"] = self.querySql!
+            }
+            if self.tableScan != nil {
+                map["TableScan"] = self.tableScan!
             }
             return map
         }
@@ -20307,6 +20338,12 @@ public class DescribeOasSQLPlansResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("MergedVersion") {
                 self.mergedVersion = dict["MergedVersion"] as! Int64
+            }
+            if dict.keys.contains("OutlineId") {
+                self.outlineId = dict["OutlineId"] as! String
+            }
+            if dict.keys.contains("OutlineStatus") {
+                self.outlineStatus = dict["OutlineStatus"] as! String
             }
             if dict.keys.contains("PlanExplain") {
                 var model = DescribeOasSQLPlansResponseBody.Data.PlanExplain()
@@ -20335,6 +20372,9 @@ public class DescribeOasSQLPlansResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("QuerySql") {
                 self.querySql = dict["QuerySql"] as! String
+            }
+            if dict.keys.contains("TableScan") {
+                self.tableScan = dict["TableScan"] as! Bool
             }
         }
     }
@@ -33600,6 +33640,8 @@ public class DescribeSQLSamplesResponseBody : Tea.TeaModel {
 
         public var obUserId: Double?
 
+        public var paramsValue: String?
+
         public var partitionCount: Double?
 
         public var planId: Double?
@@ -33746,6 +33788,9 @@ public class DescribeSQLSamplesResponseBody : Tea.TeaModel {
             }
             if self.obUserId != nil {
                 map["ObUserId"] = self.obUserId!
+            }
+            if self.paramsValue != nil {
+                map["ParamsValue"] = self.paramsValue!
             }
             if self.partitionCount != nil {
                 map["PartitionCount"] = self.partitionCount!
@@ -33909,6 +33954,9 @@ public class DescribeSQLSamplesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ObUserId") {
                 self.obUserId = dict["ObUserId"] as! Double
+            }
+            if dict.keys.contains("ParamsValue") {
+                self.paramsValue = dict["ParamsValue"] as! String
             }
             if dict.keys.contains("PartitionCount") {
                 self.partitionCount = dict["PartitionCount"] as! Double
@@ -36999,9 +37047,13 @@ public class DescribeTenantResponseBody : Tea.TeaModel {
 
             public var intranetRpcPort: Int32?
 
+            public var intranetSqlPort: Int32?
+
             public var maxConnectionLimit: Int64?
 
             public var maxConnectionNum: Int64?
+
+            public var odpVersion: String?
 
             public var parallelQueryDegree: Int64?
 
@@ -37080,11 +37132,17 @@ public class DescribeTenantResponseBody : Tea.TeaModel {
                 if self.intranetRpcPort != nil {
                     map["IntranetRpcPort"] = self.intranetRpcPort!
                 }
+                if self.intranetSqlPort != nil {
+                    map["IntranetSqlPort"] = self.intranetSqlPort!
+                }
                 if self.maxConnectionLimit != nil {
                     map["MaxConnectionLimit"] = self.maxConnectionLimit!
                 }
                 if self.maxConnectionNum != nil {
                     map["MaxConnectionNum"] = self.maxConnectionNum!
+                }
+                if self.odpVersion != nil {
+                    map["OdpVersion"] = self.odpVersion!
                 }
                 if self.parallelQueryDegree != nil {
                     map["ParallelQueryDegree"] = self.parallelQueryDegree!
@@ -37159,11 +37217,17 @@ public class DescribeTenantResponseBody : Tea.TeaModel {
                 if dict.keys.contains("IntranetRpcPort") {
                     self.intranetRpcPort = dict["IntranetRpcPort"] as! Int32
                 }
+                if dict.keys.contains("IntranetSqlPort") {
+                    self.intranetSqlPort = dict["IntranetSqlPort"] as! Int32
+                }
                 if dict.keys.contains("MaxConnectionLimit") {
                     self.maxConnectionLimit = dict["MaxConnectionLimit"] as! Int64
                 }
                 if dict.keys.contains("MaxConnectionNum") {
                     self.maxConnectionNum = dict["MaxConnectionNum"] as! Int64
+                }
+                if dict.keys.contains("OdpVersion") {
+                    self.odpVersion = dict["OdpVersion"] as! String
                 }
                 if dict.keys.contains("ParallelQueryDegree") {
                     self.parallelQueryDegree = dict["ParallelQueryDegree"] as! Int64
@@ -37644,6 +37708,8 @@ public class DescribeTenantResponseBody : Tea.TeaModel {
 
         public var maxParallelQueryDegree: Int64?
 
+        public var odpVersion: String?
+
         public var payType: String?
 
         public var primaryZone: String?
@@ -37751,6 +37817,9 @@ public class DescribeTenantResponseBody : Tea.TeaModel {
             }
             if self.maxParallelQueryDegree != nil {
                 map["MaxParallelQueryDegree"] = self.maxParallelQueryDegree!
+            }
+            if self.odpVersion != nil {
+                map["OdpVersion"] = self.odpVersion!
             }
             if self.payType != nil {
                 map["PayType"] = self.payType!
@@ -37871,6 +37940,9 @@ public class DescribeTenantResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("MaxParallelQueryDegree") {
                 self.maxParallelQueryDegree = dict["MaxParallelQueryDegree"] as! Int64
+            }
+            if dict.keys.contains("OdpVersion") {
+                self.odpVersion = dict["OdpVersion"] as! String
             }
             if dict.keys.contains("PayType") {
                 self.payType = dict["PayType"] as! String
