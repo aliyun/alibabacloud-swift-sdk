@@ -1902,6 +1902,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeCheckJobsWithOptions(_ request: DescribeCheckJobsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCheckJobsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.checkJobId)) {
+            query["CheckJobId"] = request.checkJobId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.checkType)) {
             query["CheckType"] = request.checkType!;
         }

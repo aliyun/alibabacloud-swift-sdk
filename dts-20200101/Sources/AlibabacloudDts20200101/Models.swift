@@ -7599,6 +7599,8 @@ public class DescribeChannelAccountResponse : Tea.TeaModel {
 }
 
 public class DescribeCheckJobsRequest : Tea.TeaModel {
+    public var checkJobId: String?
+
     public var checkType: Int32?
 
     public var instanceId: String?
@@ -7625,6 +7627,9 @@ public class DescribeCheckJobsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.checkJobId != nil {
+            map["CheckJobId"] = self.checkJobId!
+        }
         if self.checkType != nil {
             map["CheckType"] = self.checkType!
         }
@@ -7647,6 +7652,9 @@ public class DescribeCheckJobsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CheckJobId") {
+            self.checkJobId = dict["CheckJobId"] as! String
+        }
         if dict.keys.contains("CheckType") {
             self.checkType = dict["CheckType"] as! Int32
         }
@@ -21064,6 +21072,8 @@ public class DescribeDtsJobsResponseBody : Tea.TeaModel {
 
         public var dtsJobName: String?
 
+        public var duRealUsage: String?
+
         public var duUsage: Int64?
 
         public var endTimestamp: String?
@@ -21218,6 +21228,9 @@ public class DescribeDtsJobsResponseBody : Tea.TeaModel {
             }
             if self.dtsJobName != nil {
                 map["DtsJobName"] = self.dtsJobName!
+            }
+            if self.duRealUsage != nil {
+                map["DuRealUsage"] = self.duRealUsage!
             }
             if self.duUsage != nil {
                 map["DuUsage"] = self.duUsage!
@@ -21399,6 +21412,9 @@ public class DescribeDtsJobsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("DtsJobName") {
                 self.dtsJobName = dict["DtsJobName"] as! String
+            }
+            if dict.keys.contains("DuRealUsage") {
+                self.duRealUsage = dict["DuRealUsage"] as! String
             }
             if dict.keys.contains("DuUsage") {
                 self.duUsage = dict["DuUsage"] as! Int64
