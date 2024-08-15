@@ -1325,9 +1325,13 @@ public class GetTaskInfoResponseBody : Tea.TeaModel {
         public class Result : Tea.TeaModel {
             public var autoChapters: String?
 
+            public var customPrompt: String?
+
             public var meetingAssistance: String?
 
             public var pptExtraction: String?
+
+            public var serviceInspection: String?
 
             public var summarization: String?
 
@@ -1354,11 +1358,17 @@ public class GetTaskInfoResponseBody : Tea.TeaModel {
                 if self.autoChapters != nil {
                     map["AutoChapters"] = self.autoChapters!
                 }
+                if self.customPrompt != nil {
+                    map["CustomPrompt"] = self.customPrompt!
+                }
                 if self.meetingAssistance != nil {
                     map["MeetingAssistance"] = self.meetingAssistance!
                 }
                 if self.pptExtraction != nil {
                     map["PptExtraction"] = self.pptExtraction!
+                }
+                if self.serviceInspection != nil {
+                    map["ServiceInspection"] = self.serviceInspection!
                 }
                 if self.summarization != nil {
                     map["Summarization"] = self.summarization!
@@ -1379,11 +1389,17 @@ public class GetTaskInfoResponseBody : Tea.TeaModel {
                 if dict.keys.contains("AutoChapters") {
                     self.autoChapters = dict["AutoChapters"] as! String
                 }
+                if dict.keys.contains("CustomPrompt") {
+                    self.customPrompt = dict["CustomPrompt"] as! String
+                }
                 if dict.keys.contains("MeetingAssistance") {
                     self.meetingAssistance = dict["MeetingAssistance"] as! String
                 }
                 if dict.keys.contains("PptExtraction") {
                     self.pptExtraction = dict["PptExtraction"] as! String
+                }
+                if dict.keys.contains("ServiceInspection") {
+                    self.serviceInspection = dict["ServiceInspection"] as! String
                 }
                 if dict.keys.contains("Summarization") {
                     self.summarization = dict["Summarization"] as! String
