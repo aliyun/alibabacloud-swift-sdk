@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudVpc20160428"
-  spec.version      = "5.2.4"
+  spec.version      = "5.3.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud Virtual Private Cloud (20160428) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/vpc-20160428" 
@@ -19,7 +19,7 @@ Pod::Spec.new do |spec|
 
   spec.dependency 'Tea',  '~> 1.0.0'
   spec.dependency 'TeaUtils',  '~> 1.0.6'
-  spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.6'
+  spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.7'
   spec.dependency 'AlibabaCloudOpenApiUtil',  '~> 1.0.1'
   spec.dependency 'AlibabacloudEndpointUtil',  '~> 1.0.0'
 

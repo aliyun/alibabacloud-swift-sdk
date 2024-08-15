@@ -46579,6 +46579,527 @@ public class DescribeIpv6GatewaysResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeNatGatewayAssociateNetworkInterfacesRequest : Tea.TeaModel {
+    public class Filter : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
+    public var clientToken: String?
+
+    public var filter: [DescribeNatGatewayAssociateNetworkInterfacesRequest.Filter]?
+
+    public var maxResults: Int32?
+
+    public var natGatewayId: String?
+
+    public var nextToken: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceGroupId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var tag: [DescribeNatGatewayAssociateNetworkInterfacesRequest.Tag]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.filter != nil {
+            var tmp : [Any] = []
+            for k in self.filter! {
+                tmp.append(k.toMap())
+            }
+            map["Filter"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.natGatewayId != nil {
+            map["NatGatewayId"] = self.natGatewayId!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("Filter") {
+            var tmp : [DescribeNatGatewayAssociateNetworkInterfacesRequest.Filter] = []
+            for v in dict["Filter"] as! [Any] {
+                var model = DescribeNatGatewayAssociateNetworkInterfacesRequest.Filter()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.filter = tmp
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NatGatewayId") {
+            self.natGatewayId = dict["NatGatewayId"] as! String
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("OwnerAccount") {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [DescribeNatGatewayAssociateNetworkInterfacesRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = DescribeNatGatewayAssociateNetworkInterfacesRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
+    }
+}
+
+public class DescribeNatGatewayAssociateNetworkInterfacesResponseBody : Tea.TeaModel {
+    public class AssociateNetworkInterfaces : Tea.TeaModel {
+        public class AssociateNetworkInterface : Tea.TeaModel {
+            public class IPv4Sets : Tea.TeaModel {
+                public class IPv4Set : Tea.TeaModel {
+                    public var IPv4Address: String?
+
+                    public var primary: Bool?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.IPv4Address != nil {
+                            map["IPv4Address"] = self.IPv4Address!
+                        }
+                        if self.primary != nil {
+                            map["Primary"] = self.primary!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("IPv4Address") {
+                            self.IPv4Address = dict["IPv4Address"] as! String
+                        }
+                        if dict.keys.contains("Primary") {
+                            self.primary = dict["Primary"] as! Bool
+                        }
+                    }
+                }
+                public var IPv4Set: [DescribeNatGatewayAssociateNetworkInterfacesResponseBody.AssociateNetworkInterfaces.AssociateNetworkInterface.IPv4Sets.IPv4Set]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.IPv4Set != nil {
+                        var tmp : [Any] = []
+                        for k in self.IPv4Set! {
+                            tmp.append(k.toMap())
+                        }
+                        map["IPv4Set"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("IPv4Set") {
+                        var tmp : [DescribeNatGatewayAssociateNetworkInterfacesResponseBody.AssociateNetworkInterfaces.AssociateNetworkInterface.IPv4Sets.IPv4Set] = []
+                        for v in dict["IPv4Set"] as! [Any] {
+                            var model = DescribeNatGatewayAssociateNetworkInterfacesResponseBody.AssociateNetworkInterfaces.AssociateNetworkInterface.IPv4Sets.IPv4Set()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.IPv4Set = tmp
+                    }
+                }
+            }
+            public var IPv4Sets: DescribeNatGatewayAssociateNetworkInterfacesResponseBody.AssociateNetworkInterfaces.AssociateNetworkInterface.IPv4Sets?
+
+            public var networkInterfaceId: String?
+
+            public var resourceId: String?
+
+            public var resourceOwnerId: String?
+
+            public var resourceType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.IPv4Sets?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.IPv4Sets != nil {
+                    map["IPv4Sets"] = self.IPv4Sets?.toMap()
+                }
+                if self.networkInterfaceId != nil {
+                    map["NetworkInterfaceId"] = self.networkInterfaceId!
+                }
+                if self.resourceId != nil {
+                    map["ResourceId"] = self.resourceId!
+                }
+                if self.resourceOwnerId != nil {
+                    map["ResourceOwnerId"] = self.resourceOwnerId!
+                }
+                if self.resourceType != nil {
+                    map["ResourceType"] = self.resourceType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("IPv4Sets") {
+                    var model = DescribeNatGatewayAssociateNetworkInterfacesResponseBody.AssociateNetworkInterfaces.AssociateNetworkInterface.IPv4Sets()
+                    model.fromMap(dict["IPv4Sets"] as! [String: Any])
+                    self.IPv4Sets = model
+                }
+                if dict.keys.contains("NetworkInterfaceId") {
+                    self.networkInterfaceId = dict["NetworkInterfaceId"] as! String
+                }
+                if dict.keys.contains("ResourceId") {
+                    self.resourceId = dict["ResourceId"] as! String
+                }
+                if dict.keys.contains("ResourceOwnerId") {
+                    self.resourceOwnerId = dict["ResourceOwnerId"] as! String
+                }
+                if dict.keys.contains("ResourceType") {
+                    self.resourceType = dict["ResourceType"] as! String
+                }
+            }
+        }
+        public var associateNetworkInterface: [DescribeNatGatewayAssociateNetworkInterfacesResponseBody.AssociateNetworkInterfaces.AssociateNetworkInterface]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.associateNetworkInterface != nil {
+                var tmp : [Any] = []
+                for k in self.associateNetworkInterface! {
+                    tmp.append(k.toMap())
+                }
+                map["AssociateNetworkInterface"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AssociateNetworkInterface") {
+                var tmp : [DescribeNatGatewayAssociateNetworkInterfacesResponseBody.AssociateNetworkInterfaces.AssociateNetworkInterface] = []
+                for v in dict["AssociateNetworkInterface"] as! [Any] {
+                    var model = DescribeNatGatewayAssociateNetworkInterfacesResponseBody.AssociateNetworkInterfaces.AssociateNetworkInterface()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.associateNetworkInterface = tmp
+            }
+        }
+    }
+    public var associateNetworkInterfaces: DescribeNatGatewayAssociateNetworkInterfacesResponseBody.AssociateNetworkInterfaces?
+
+    public var maxResults: Int32?
+
+    public var natGatewayId: String?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.associateNetworkInterfaces?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.associateNetworkInterfaces != nil {
+            map["AssociateNetworkInterfaces"] = self.associateNetworkInterfaces?.toMap()
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.natGatewayId != nil {
+            map["NatGatewayId"] = self.natGatewayId!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AssociateNetworkInterfaces") {
+            var model = DescribeNatGatewayAssociateNetworkInterfacesResponseBody.AssociateNetworkInterfaces()
+            model.fromMap(dict["AssociateNetworkInterfaces"] as! [String: Any])
+            self.associateNetworkInterfaces = model
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NatGatewayId") {
+            self.natGatewayId = dict["NatGatewayId"] as! String
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! Int32
+        }
+    }
+}
+
+public class DescribeNatGatewayAssociateNetworkInterfacesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeNatGatewayAssociateNetworkInterfacesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeNatGatewayAssociateNetworkInterfacesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeNatGatewaysRequest : Tea.TeaModel {
     public class Tag : Tea.TeaModel {
         public var key: String?
