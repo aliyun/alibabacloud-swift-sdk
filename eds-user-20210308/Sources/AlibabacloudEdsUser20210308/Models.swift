@@ -2293,6 +2293,8 @@ public class FilterUsersRequest : Tea.TeaModel {
 
     public var propertyKeyValueFilterParam: [FilterUsersRequest.PropertyKeyValueFilterParam]?
 
+    public var status: Int32?
+
     public override init() {
         super.init()
     }
@@ -2349,6 +2351,9 @@ public class FilterUsersRequest : Tea.TeaModel {
             }
             map["PropertyKeyValueFilterParam"] = tmp
         }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
         return map
     }
 
@@ -2403,6 +2408,9 @@ public class FilterUsersRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.propertyKeyValueFilterParam = tmp
+        }
+        if dict.keys.contains("Status") {
+            self.status = dict["Status"] as! Int32
         }
     }
 }
@@ -2504,6 +2512,8 @@ public class FilterUsersShrinkRequest : Tea.TeaModel {
 
     public var propertyKeyValueFilterParam: [FilterUsersShrinkRequest.PropertyKeyValueFilterParam]?
 
+    public var status: Int32?
+
     public override init() {
         super.init()
     }
@@ -2559,6 +2569,9 @@ public class FilterUsersShrinkRequest : Tea.TeaModel {
             }
             map["PropertyKeyValueFilterParam"] = tmp
         }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
         return map
     }
 
@@ -2611,6 +2624,9 @@ public class FilterUsersShrinkRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.propertyKeyValueFilterParam = tmp
+        }
+        if dict.keys.contains("Status") {
+            self.status = dict["Status"] as! Int32
         }
     }
 }
