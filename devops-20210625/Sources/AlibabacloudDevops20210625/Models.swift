@@ -19756,6 +19756,8 @@ public class ExportInsightSpaceResponseBody : Tea.TeaModel {
     public class Result : Tea.TeaModel {
         public var category: String?
 
+        public var customCode: String?
+
         public var description_: String?
 
         public var gmtCreate: Int64?
@@ -19796,6 +19798,9 @@ public class ExportInsightSpaceResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.category != nil {
                 map["category"] = self.category!
+            }
+            if self.customCode != nil {
+                map["customCode"] = self.customCode!
             }
             if self.description_ != nil {
                 map["description"] = self.description_!
@@ -19839,6 +19844,9 @@ public class ExportInsightSpaceResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("category") {
                 self.category = dict["category"] as! String
+            }
+            if dict.keys.contains("customCode") {
+                self.customCode = dict["customCode"] as! String
             }
             if dict.keys.contains("description") {
                 self.description_ = dict["description"] as! String
