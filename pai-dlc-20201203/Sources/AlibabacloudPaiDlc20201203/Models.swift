@@ -129,6 +129,52 @@ public class AliyunAccounts : Tea.TeaModel {
     }
 }
 
+public class AssignNodeSpec : Tea.TeaModel {
+    public var antiAffinityNodeNames: String?
+
+    public var enableAssignNode: Bool?
+
+    public var nodeNames: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.antiAffinityNodeNames != nil {
+            map["AntiAffinityNodeNames"] = self.antiAffinityNodeNames!
+        }
+        if self.enableAssignNode != nil {
+            map["EnableAssignNode"] = self.enableAssignNode!
+        }
+        if self.nodeNames != nil {
+            map["NodeNames"] = self.nodeNames!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AntiAffinityNodeNames") {
+            self.antiAffinityNodeNames = dict["AntiAffinityNodeNames"] as! String
+        }
+        if dict.keys.contains("EnableAssignNode") {
+            self.enableAssignNode = dict["EnableAssignNode"] as! Bool
+        }
+        if dict.keys.contains("NodeNames") {
+            self.nodeNames = dict["NodeNames"] as! String
+        }
+    }
+}
+
 public class AssumeUserInfo : Tea.TeaModel {
     public var accessKeyId: String?
 
@@ -2528,6 +2574,8 @@ public class JobSettings : Tea.TeaModel {
 }
 
 public class JobSpec : Tea.TeaModel {
+    public var assignNodeSpec: AssignNodeSpec?
+
     public var ecsSpec: String?
 
     public var extraPodSpec: ExtraPodSpec?
@@ -2556,6 +2604,7 @@ public class JobSpec : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.assignNodeSpec?.validate()
         try self.extraPodSpec?.validate()
         try self.imageConfig?.validate()
         try self.resourceConfig?.validate()
@@ -2564,6 +2613,9 @@ public class JobSpec : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.assignNodeSpec != nil {
+            map["AssignNodeSpec"] = self.assignNodeSpec?.toMap()
+        }
         if self.ecsSpec != nil {
             map["EcsSpec"] = self.ecsSpec!
         }
@@ -2595,6 +2647,11 @@ public class JobSpec : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AssignNodeSpec") {
+            var model = AssignNodeSpec()
+            model.fromMap(dict["AssignNodeSpec"] as! [String: Any])
+            self.assignNodeSpec = model
+        }
         if dict.keys.contains("EcsSpec") {
             self.ecsSpec = dict["EcsSpec"] as! String
         }
