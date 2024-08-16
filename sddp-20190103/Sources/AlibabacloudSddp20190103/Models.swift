@@ -1847,17 +1847,23 @@ public class DescribeCategoryTemplateRuleListResponse : Tea.TeaModel {
 public class DescribeColumnsRequest : Tea.TeaModel {
     public var currentPage: Int32?
 
+    public var engineType: String?
+
     public var instanceId: Int64?
 
     public var instanceName: String?
 
     public var lang: String?
 
+    public var modelTagId: String?
+
     public var name: String?
 
     public var pageSize: Int32?
 
     public var productCode: String?
+
+    public var productId: String?
 
     public var riskLevelId: Int64?
 
@@ -1870,6 +1876,10 @@ public class DescribeColumnsRequest : Tea.TeaModel {
     public var tableId: Int64?
 
     public var tableName: String?
+
+    public var templateId: String?
+
+    public var templateRuleId: String?
 
     public override init() {
         super.init()
@@ -1888,6 +1898,9 @@ public class DescribeColumnsRequest : Tea.TeaModel {
         if self.currentPage != nil {
             map["CurrentPage"] = self.currentPage!
         }
+        if self.engineType != nil {
+            map["EngineType"] = self.engineType!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -1897,6 +1910,9 @@ public class DescribeColumnsRequest : Tea.TeaModel {
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
+        if self.modelTagId != nil {
+            map["ModelTagId"] = self.modelTagId!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -1905,6 +1921,9 @@ public class DescribeColumnsRequest : Tea.TeaModel {
         }
         if self.productCode != nil {
             map["ProductCode"] = self.productCode!
+        }
+        if self.productId != nil {
+            map["ProductId"] = self.productId!
         }
         if self.riskLevelId != nil {
             map["RiskLevelId"] = self.riskLevelId!
@@ -1924,12 +1943,21 @@ public class DescribeColumnsRequest : Tea.TeaModel {
         if self.tableName != nil {
             map["TableName"] = self.tableName!
         }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
+        if self.templateRuleId != nil {
+            map["TemplateRuleId"] = self.templateRuleId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("CurrentPage") {
             self.currentPage = dict["CurrentPage"] as! Int32
+        }
+        if dict.keys.contains("EngineType") {
+            self.engineType = dict["EngineType"] as! String
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! Int64
@@ -1940,6 +1968,9 @@ public class DescribeColumnsRequest : Tea.TeaModel {
         if dict.keys.contains("Lang") {
             self.lang = dict["Lang"] as! String
         }
+        if dict.keys.contains("ModelTagId") {
+            self.modelTagId = dict["ModelTagId"] as! String
+        }
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
         }
@@ -1948,6 +1979,9 @@ public class DescribeColumnsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ProductCode") {
             self.productCode = dict["ProductCode"] as! String
+        }
+        if dict.keys.contains("ProductId") {
+            self.productId = dict["ProductId"] as! String
         }
         if dict.keys.contains("RiskLevelId") {
             self.riskLevelId = dict["RiskLevelId"] as! Int64
@@ -1966,6 +2000,12 @@ public class DescribeColumnsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TableName") {
             self.tableName = dict["TableName"] as! String
+        }
+        if dict.keys.contains("TemplateId") {
+            self.templateId = dict["TemplateId"] as! String
+        }
+        if dict.keys.contains("TemplateRuleId") {
+            self.templateRuleId = dict["TemplateRuleId"] as! String
         }
     }
 }
@@ -2028,6 +2068,8 @@ public class DescribeColumnsResponseBody : Tea.TeaModel {
         public var odpsRiskLevelValue: Int32?
 
         public var productCode: String?
+
+        public var regionId: String?
 
         public var revisionId: Int64?
 
@@ -2096,6 +2138,9 @@ public class DescribeColumnsResponseBody : Tea.TeaModel {
             }
             if self.productCode != nil {
                 map["ProductCode"] = self.productCode!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
             }
             if self.revisionId != nil {
                 map["RevisionId"] = self.revisionId!
@@ -2168,6 +2213,9 @@ public class DescribeColumnsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ProductCode") {
                 self.productCode = dict["ProductCode"] as! String
+            }
+            if dict.keys.contains("RegionId") {
+                self.regionId = dict["RegionId"] as! String
             }
             if dict.keys.contains("RevisionId") {
                 self.revisionId = dict["RevisionId"] as! Int64
@@ -9692,9 +9740,17 @@ public class DescribeOssObjectDetailResponse : Tea.TeaModel {
 }
 
 public class DescribeOssObjectDetailV2Request : Tea.TeaModel {
+    public var bucketName: String?
+
     public var id: String?
 
     public var lang: String?
+
+    public var objectKey: String?
+
+    public var serviceRegionId: String?
+
+    public var templateId: Int64?
 
     public override init() {
         super.init()
@@ -9710,21 +9766,45 @@ public class DescribeOssObjectDetailV2Request : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bucketName != nil {
+            map["BucketName"] = self.bucketName!
+        }
         if self.id != nil {
             map["Id"] = self.id!
         }
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
+        if self.objectKey != nil {
+            map["ObjectKey"] = self.objectKey!
+        }
+        if self.serviceRegionId != nil {
+            map["ServiceRegionId"] = self.serviceRegionId!
+        }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BucketName") {
+            self.bucketName = dict["BucketName"] as! String
+        }
         if dict.keys.contains("Id") {
             self.id = dict["Id"] as! String
         }
         if dict.keys.contains("Lang") {
             self.lang = dict["Lang"] as! String
+        }
+        if dict.keys.contains("ObjectKey") {
+            self.objectKey = dict["ObjectKey"] as! String
+        }
+        if dict.keys.contains("ServiceRegionId") {
+            self.serviceRegionId = dict["ServiceRegionId"] as! String
+        }
+        if dict.keys.contains("TemplateId") {
+            self.templateId = dict["TemplateId"] as! Int64
         }
     }
 }
@@ -10961,6 +11041,8 @@ public class DescribeParentInstanceResponseBody : Tea.TeaModel {
 
         public var parentId: String?
 
+        public var regionId: String?
+
         public var resourceType: String?
 
         public var supportConnectNodes: String?
@@ -11026,6 +11108,9 @@ public class DescribeParentInstanceResponseBody : Tea.TeaModel {
             if self.parentId != nil {
                 map["ParentId"] = self.parentId!
             }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
             if self.resourceType != nil {
                 map["ResourceType"] = self.resourceType!
             }
@@ -11086,6 +11171,9 @@ public class DescribeParentInstanceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ParentId") {
                 self.parentId = dict["ParentId"] as! String
+            }
+            if dict.keys.contains("RegionId") {
+                self.regionId = dict["RegionId"] as! String
             }
             if dict.keys.contains("ResourceType") {
                 self.resourceType = dict["ResourceType"] as! String

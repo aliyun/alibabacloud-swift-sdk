@@ -516,6 +516,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.currentPage)) {
             query["CurrentPage"] = request.currentPage!;
         }
+        if (!TeaUtils.Client.isUnset(request.engineType)) {
+            query["EngineType"] = request.engineType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId!;
         }
@@ -525,6 +528,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.modelTagId)) {
+            query["ModelTagId"] = request.modelTagId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
         }
@@ -533,6 +539,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.productCode)) {
             query["ProductCode"] = request.productCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productId)) {
+            query["ProductId"] = request.productId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.riskLevelId)) {
             query["RiskLevelId"] = request.riskLevelId!;
@@ -551,6 +560,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.tableName)) {
             query["TableName"] = request.tableName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateId)) {
+            query["TemplateId"] = request.templateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateRuleId)) {
+            query["TemplateRuleId"] = request.templateRuleId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -1510,11 +1525,23 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeOssObjectDetailV2WithOptions(_ request: DescribeOssObjectDetailV2Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeOssObjectDetailV2Response {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bucketName)) {
+            query["BucketName"] = request.bucketName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.id)) {
             query["Id"] = request.id ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.objectKey)) {
+            query["ObjectKey"] = request.objectKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceRegionId)) {
+            query["ServiceRegionId"] = request.serviceRegionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateId)) {
+            query["TemplateId"] = request.templateId!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
