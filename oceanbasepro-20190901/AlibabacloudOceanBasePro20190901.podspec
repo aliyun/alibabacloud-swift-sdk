@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudOceanBasePro20190901"
-  spec.version      = "7.0.1"
+  spec.version      = "7.0.2"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud OceanBasePro (20190901) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/oceanbasepro-20190901" 
