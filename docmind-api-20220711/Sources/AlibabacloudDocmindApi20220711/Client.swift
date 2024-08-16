@@ -134,6 +134,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDocParserResultWithOptions(_ request: GetDocParserResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDocParserResultResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.id)) {
+            query["Id"] = request.id ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.layoutNum)) {
+            query["LayoutNum"] = request.layoutNum!;
+        }
+        if (!TeaUtils.Client.isUnset(request.layoutStepSize)) {
+            query["LayoutStepSize"] = request.layoutStepSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetDocParserResult",
+            "version": "2022-07-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetDocParserResultResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDocParserResult(_ request: GetDocParserResultRequest) async throws -> GetDocParserResultResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getDocParserResultWithOptions(request as! GetDocParserResultRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getDocStructureResultWithOptions(_ request: GetDocStructureResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDocStructureResultResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -145,6 +182,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.revealMarkdown)) {
             query["RevealMarkdown"] = request.revealMarkdown!;
+        }
+        if (!TeaUtils.Client.isUnset(request.useUrlResponseBody)) {
+            query["UseUrlResponseBody"] = request.useUrlResponseBody!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -323,6 +363,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getTableUnderstandingResult(_ request: GetTableUnderstandingResultRequest) async throws -> GetTableUnderstandingResultResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getTableUnderstandingResultWithOptions(request as! GetTableUnderstandingResultRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryDocParserStatusWithOptions(_ request: QueryDocParserStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryDocParserStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.id)) {
+            query["Id"] = request.id ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryDocParserStatus",
+            "version": "2022-07-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryDocParserStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryDocParserStatus(_ request: QueryDocParserStatusRequest) async throws -> QueryDocParserStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryDocParserStatusWithOptions(request as! QueryDocParserStatusRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -960,6 +1031,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.revealMarkdown)) {
             query["RevealMarkdown"] = request.revealMarkdown!;
         }
+        if (!TeaUtils.Client.isUnset(request.useUrlResponseBody)) {
+            query["UseUrlResponseBody"] = request.useUrlResponseBody!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -1054,6 +1128,118 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         var submitDigitalDocStructureJobResp: SubmitDigitalDocStructureJobResponse = try await submitDigitalDocStructureJobWithOptions(submitDigitalDocStructureJobReq as! SubmitDigitalDocStructureJobRequest, runtime as! TeaUtils.RuntimeOptions)
         return submitDigitalDocStructureJobResp as! SubmitDigitalDocStructureJobResponse
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitDocParserJobWithOptions(_ request: SubmitDocParserJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitDocParserJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fileName)) {
+            query["FileName"] = request.fileName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileNameExtension)) {
+            query["FileNameExtension"] = request.fileNameExtension ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileUrl)) {
+            query["FileUrl"] = request.fileUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formulaEnhancement)) {
+            query["FormulaEnhancement"] = request.formulaEnhancement!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitDocParserJob",
+            "version": "2022-07-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitDocParserJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitDocParserJob(_ request: SubmitDocParserJobRequest) async throws -> SubmitDocParserJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitDocParserJobWithOptions(request as! SubmitDocParserJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitDocParserJobAdvance(_ request: SubmitDocParserJobAdvanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitDocParserJobResponse {
+        var accessKeyId: String = try await self._credential!.getAccessKeyId()
+        var accessKeySecret: String = try await self._credential!.getAccessKeySecret()
+        var securityToken: String = try await self._credential!.getSecurityToken()
+        var credentialType: String = self._credential!.getType()
+        var openPlatformEndpoint: String = self._openPlatformEndpoint ?? ""
+        if (TeaUtils.Client.empty(openPlatformEndpoint)) {
+            openPlatformEndpoint = "openplatform.aliyuncs.com"
+        }
+        if (TeaUtils.Client.isUnset(credentialType)) {
+            credentialType = "access_key"
+        }
+        var authConfig: AlibabacloudOpenApi.Config = AlibabacloudOpenApi.Config([
+            "accessKeyId": accessKeyId as! String,
+            "accessKeySecret": accessKeySecret as! String,
+            "securityToken": securityToken as! String,
+            "type": credentialType as! String,
+            "endpoint": openPlatformEndpoint as! String,
+            "protocol": self._protocol ?? "",
+            "regionId": self._regionId ?? ""
+        ])
+        var authClient: AlibabacloudOpenPlatform20191219.Client = try AlibabacloudOpenPlatform20191219.Client(authConfig)
+        var authRequest: AlibabacloudOpenPlatform20191219.AuthorizeFileUploadRequest = AlibabacloudOpenPlatform20191219.AuthorizeFileUploadRequest([
+            "product": "docmind-api",
+            "regionId": self._regionId ?? ""
+        ])
+        var authResponse: AlibabacloudOpenPlatform20191219.AuthorizeFileUploadResponse = AlibabacloudOpenPlatform20191219.AuthorizeFileUploadResponse([:])
+        var ossConfig: AlibabaCloudOssSdk.Config = AlibabaCloudOssSdk.Config([
+            "accessKeyId": accessKeyId as! String,
+            "accessKeySecret": accessKeySecret as! String,
+            "type": "access_key",
+            "protocol": self._protocol ?? "",
+            "regionId": self._regionId ?? ""
+        ])
+        var ossClient: AlibabaCloudOssSdk.Client = try AlibabaCloudOssSdk.Client(ossConfig)
+        var fileObj: TeaFileForm.FileField = TeaFileForm.FileField([:])
+        var ossHeader: AlibabaCloudOssSdk.PostObjectRequest.Header = AlibabaCloudOssSdk.PostObjectRequest.Header([:])
+        var uploadRequest: AlibabaCloudOssSdk.PostObjectRequest = AlibabaCloudOssSdk.PostObjectRequest([:])
+        var ossRuntime: AlibabaCloudOSSUtil.RuntimeOptions = AlibabaCloudOSSUtil.RuntimeOptions([:])
+        AlibabaCloudOpenApiUtil.Client.convert(runtime, ossRuntime)
+        var submitDocParserJobReq: SubmitDocParserJobRequest = SubmitDocParserJobRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(request, submitDocParserJobReq)
+        if (!TeaUtils.Client.isUnset(request.fileUrlObject)) {
+            authResponse = try await authClient.authorizeFileUploadWithOptions(authRequest as! AlibabacloudOpenPlatform20191219.AuthorizeFileUploadRequest, runtime as! TeaUtils.RuntimeOptions)
+            ossConfig.accessKeyId = authResponse.body!.accessKeyId
+            ossConfig.endpoint = AlibabaCloudOpenApiUtil.Client.getEndpoint(authResponse.body!.endpoint, authResponse.body!.useAccelerate, self._endpointType)
+            ossClient = try AlibabaCloudOssSdk.Client(ossConfig)
+            fileObj = TeaFileForm.FileField([
+                "filename": authResponse.body!.objectKey ?? "",
+                "content": request.fileUrlObject!,
+                "contentType": ""
+            ])
+            ossHeader = AlibabaCloudOssSdk.PostObjectRequest.Header([
+                "accessKeyId": authResponse.body!.accessKeyId ?? "",
+                "policy": authResponse.body!.encodedPolicy ?? "",
+                "signature": authResponse.body!.signature ?? "",
+                "key": authResponse.body!.objectKey ?? "",
+                "file": fileObj as! TeaFileForm.FileField,
+                "successActionStatus": "201"
+            ])
+            uploadRequest = AlibabaCloudOssSdk.PostObjectRequest([
+                "bucketName": authResponse.body!.bucket ?? "",
+                "header": ossHeader as! AlibabaCloudOssSdk.PostObjectRequest.Header
+            ])
+            try await ossClient.postObject(uploadRequest as! AlibabaCloudOssSdk.PostObjectRequest, ossRuntime as! AlibabaCloudOSSUtil.RuntimeOptions)
+            submitDocParserJobReq.fileUrl = "http://" + (authResponse.body!.bucket ?? "") + "." + (authResponse.body!.endpoint ?? "") + "/" + (authResponse.body!.objectKey ?? "")
+        }
+        var submitDocParserJobResp: SubmitDocParserJobResponse = try await submitDocParserJobWithOptions(submitDocParserJobReq as! SubmitDocParserJobRequest, runtime as! TeaUtils.RuntimeOptions)
+        return submitDocParserJobResp as! SubmitDocParserJobResponse
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
