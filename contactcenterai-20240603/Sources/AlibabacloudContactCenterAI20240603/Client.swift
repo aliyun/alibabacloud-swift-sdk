@@ -24,6 +24,60 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func analyzeConversationWithOptions(_ workspaceId: String, _ appId: String, _ request: AnalyzeConversationRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AnalyzeConversationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dialogue)) {
+            body["dialogue"] = request.dialogue!;
+        }
+        if (!TeaUtils.Client.isUnset(request.exampleList)) {
+            body["exampleList"] = request.exampleList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.fields)) {
+            body["fields"] = request.fields ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.modelCode)) {
+            body["modelCode"] = request.modelCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resultTypes)) {
+            body["resultTypes"] = request.resultTypes ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.sceneName)) {
+            body["sceneName"] = request.sceneName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceInspection)) {
+            body["serviceInspection"] = request.serviceInspection!;
+        }
+        if (!TeaUtils.Client.isUnset(request.stream)) {
+            body["stream"] = request.stream!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AnalyzeConversation",
+            "version": "2024-06-03",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/ccai/app/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(appId)) + "/analyze_conversation",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AnalyzeConversationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func analyzeConversation(_ workspaceId: String, _ appId: String, _ request: AnalyzeConversationRequest) async throws -> AnalyzeConversationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await analyzeConversationWithOptions(workspaceId as! String, appId as! String, request as! AnalyzeConversationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func runCompletionWithOptions(_ workspaceId: String, _ appId: String, _ request: RunCompletionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RunCompletionResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
