@@ -738,6 +738,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.executionIds)) {
             query["ExecutionIds"] = request.executionIds ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.force)) {
+            query["Force"] = request.force!;
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }

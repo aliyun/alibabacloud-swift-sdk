@@ -4077,6 +4077,8 @@ public class DeleteApplicationGroupResponse : Tea.TeaModel {
 public class DeleteExecutionsRequest : Tea.TeaModel {
     public var executionIds: String?
 
+    public var force: Bool?
+
     public var regionId: String?
 
     public override init() {
@@ -4096,6 +4098,9 @@ public class DeleteExecutionsRequest : Tea.TeaModel {
         if self.executionIds != nil {
             map["ExecutionIds"] = self.executionIds!
         }
+        if self.force != nil {
+            map["Force"] = self.force!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -4105,6 +4110,9 @@ public class DeleteExecutionsRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ExecutionIds") {
             self.executionIds = dict["ExecutionIds"] as! String
+        }
+        if dict.keys.contains("Force") {
+            self.force = dict["Force"] as! Bool
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
