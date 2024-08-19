@@ -256,6 +256,8 @@ public class AddControlPolicyRequest : Tea.TeaModel {
 
     public var direction: String?
 
+    public var domainResolveType: String?
+
     public var endTime: Int64?
 
     public var ipVersion: String?
@@ -327,6 +329,9 @@ public class AddControlPolicyRequest : Tea.TeaModel {
         }
         if self.direction != nil {
             map["Direction"] = self.direction!
+        }
+        if self.domainResolveType != nil {
+            map["DomainResolveType"] = self.domainResolveType!
         }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
@@ -403,6 +408,9 @@ public class AddControlPolicyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Direction") {
             self.direction = dict["Direction"] as! String
+        }
+        if dict.keys.contains("DomainResolveType") {
+            self.domainResolveType = dict["DomainResolveType"] as! String
         }
         if dict.keys.contains("EndTime") {
             self.endTime = dict["EndTime"] as! Int64
@@ -949,6 +957,8 @@ public class CreateDownloadTaskRequest : Tea.TeaModel {
 
     public var taskData: String?
 
+    public var timeZone: String?
+
     public override init() {
         super.init()
     }
@@ -969,6 +979,9 @@ public class CreateDownloadTaskRequest : Tea.TeaModel {
         if self.taskData != nil {
             map["TaskData"] = self.taskData!
         }
+        if self.timeZone != nil {
+            map["TimeZone"] = self.timeZone!
+        }
         return map
     }
 
@@ -978,6 +991,9 @@ public class CreateDownloadTaskRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TaskData") {
             self.taskData = dict["TaskData"] as! String
+        }
+        if dict.keys.contains("TimeZone") {
+            self.timeZone = dict["TimeZone"] as! String
         }
     }
 }
@@ -1642,6 +1658,123 @@ public class CreateSecurityProxyResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = CreateSecurityProxyResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class CreateSlsLogDispatchRequest : Tea.TeaModel {
+    public var slsRegionId: String?
+
+    public var ttl: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.slsRegionId != nil {
+            map["SlsRegionId"] = self.slsRegionId!
+        }
+        if self.ttl != nil {
+            map["Ttl"] = self.ttl!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("SlsRegionId") {
+            self.slsRegionId = dict["SlsRegionId"] as! String
+        }
+        if dict.keys.contains("Ttl") {
+            self.ttl = dict["Ttl"] as! Int64
+        }
+    }
+}
+
+public class CreateSlsLogDispatchResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateSlsLogDispatchResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateSlsLogDispatchResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateSlsLogDispatchResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -2623,6 +2756,8 @@ public class CreateVpcFirewallControlPolicyRequest : Tea.TeaModel {
 
     public var destinationType: String?
 
+    public var domainResolveType: String?
+
     public var endTime: Int64?
 
     public var lang: String?
@@ -2691,6 +2826,9 @@ public class CreateVpcFirewallControlPolicyRequest : Tea.TeaModel {
         }
         if self.destinationType != nil {
             map["DestinationType"] = self.destinationType!
+        }
+        if self.domainResolveType != nil {
+            map["DomainResolveType"] = self.domainResolveType!
         }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
@@ -2764,6 +2902,9 @@ public class CreateVpcFirewallControlPolicyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DestinationType") {
             self.destinationType = dict["DestinationType"] as! String
+        }
+        if dict.keys.contains("DomainResolveType") {
+            self.domainResolveType = dict["DomainResolveType"] as! String
         }
         if dict.keys.contains("EndTime") {
             self.endTime = dict["EndTime"] as! Int64
@@ -6069,6 +6210,8 @@ public class DescribeControlPolicyResponseBody : Tea.TeaModel {
 
         public var dnsResultTime: Int64?
 
+        public var domainResolveType: String?
+
         public var endTime: Int64?
 
         public var hitLastTime: Int64?
@@ -6172,6 +6315,9 @@ public class DescribeControlPolicyResponseBody : Tea.TeaModel {
             }
             if self.dnsResultTime != nil {
                 map["DnsResultTime"] = self.dnsResultTime!
+            }
+            if self.domainResolveType != nil {
+                map["DomainResolveType"] = self.domainResolveType!
             }
             if self.endTime != nil {
                 map["EndTime"] = self.endTime!
@@ -6284,6 +6430,9 @@ public class DescribeControlPolicyResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("DnsResultTime") {
                 self.dnsResultTime = dict["DnsResultTime"] as! Int64
+            }
+            if dict.keys.contains("DomainResolveType") {
+                self.domainResolveType = dict["DomainResolveType"] as! String
             }
             if dict.keys.contains("EndTime") {
                 self.endTime = dict["EndTime"] as! Int64
@@ -6466,8 +6615,6 @@ public class DescribeControlPolicyResponse : Tea.TeaModel {
 public class DescribeDefaultIPSConfigRequest : Tea.TeaModel {
     public var lang: String?
 
-    public var sourceIp: String?
-
     public override init() {
         super.init()
     }
@@ -6485,9 +6632,6 @@ public class DescribeDefaultIPSConfigRequest : Tea.TeaModel {
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
-        if self.sourceIp != nil {
-            map["SourceIp"] = self.sourceIp!
-        }
         return map
     }
 
@@ -6495,22 +6639,13 @@ public class DescribeDefaultIPSConfigRequest : Tea.TeaModel {
         if dict.keys.contains("Lang") {
             self.lang = dict["Lang"] as! String
         }
-        if dict.keys.contains("SourceIp") {
-            self.sourceIp = dict["SourceIp"] as! String
-        }
     }
 }
 
 public class DescribeDefaultIPSConfigResponseBody : Tea.TeaModel {
-    public var aiRules: Int32?
-
     public var basicRules: Int32?
 
     public var ctiRules: Int32?
-
-    public var enableAllPatch: Int32?
-
-    public var enableDefault: Int32?
 
     public var patchRules: Int32?
 
@@ -6534,20 +6669,11 @@ public class DescribeDefaultIPSConfigResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.aiRules != nil {
-            map["AiRules"] = self.aiRules!
-        }
         if self.basicRules != nil {
             map["BasicRules"] = self.basicRules!
         }
         if self.ctiRules != nil {
             map["CtiRules"] = self.ctiRules!
-        }
-        if self.enableAllPatch != nil {
-            map["EnableAllPatch"] = self.enableAllPatch!
-        }
-        if self.enableDefault != nil {
-            map["EnableDefault"] = self.enableDefault!
         }
         if self.patchRules != nil {
             map["PatchRules"] = self.patchRules!
@@ -6565,20 +6691,11 @@ public class DescribeDefaultIPSConfigResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AiRules") {
-            self.aiRules = dict["AiRules"] as! Int32
-        }
         if dict.keys.contains("BasicRules") {
             self.basicRules = dict["BasicRules"] as! Int32
         }
         if dict.keys.contains("CtiRules") {
             self.ctiRules = dict["CtiRules"] as! Int32
-        }
-        if dict.keys.contains("EnableAllPatch") {
-            self.enableAllPatch = dict["EnableAllPatch"] as! Int32
-        }
-        if dict.keys.contains("EnableDefault") {
-            self.enableDefault = dict["EnableDefault"] as! Int32
         }
         if dict.keys.contains("PatchRules") {
             self.patchRules = dict["PatchRules"] as! Int32
@@ -9204,6 +9321,8 @@ public class DescribeNatAclPageStatusRequest : Tea.TeaModel {
 }
 
 public class DescribeNatAclPageStatusResponseBody : Tea.TeaModel {
+    public var detail: String?
+
     public var natAclPageEnable: Bool?
 
     public var requestId: String?
@@ -9222,6 +9341,9 @@ public class DescribeNatAclPageStatusResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.detail != nil {
+            map["Detail"] = self.detail!
+        }
         if self.natAclPageEnable != nil {
             map["NatAclPageEnable"] = self.natAclPageEnable!
         }
@@ -9232,6 +9354,9 @@ public class DescribeNatAclPageStatusResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Detail") {
+            self.detail = dict["Detail"] as! String
+        }
         if dict.keys.contains("NatAclPageEnable") {
             self.natAclPageEnable = dict["NatAclPageEnable"] as! Bool
         }
@@ -11846,6 +11971,8 @@ public class DescribePostpayTrafficDetailResponseBody : Tea.TeaModel {
 
         public var outBytes: Int64?
 
+        public var protectionDuration: Int64?
+
         public var resourceId: String?
 
         public var totalBytes: Int64?
@@ -11880,6 +12007,9 @@ public class DescribePostpayTrafficDetailResponseBody : Tea.TeaModel {
             if self.outBytes != nil {
                 map["OutBytes"] = self.outBytes!
             }
+            if self.protectionDuration != nil {
+                map["ProtectionDuration"] = self.protectionDuration!
+            }
             if self.resourceId != nil {
                 map["ResourceId"] = self.resourceId!
             }
@@ -11907,6 +12037,9 @@ public class DescribePostpayTrafficDetailResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("OutBytes") {
                 self.outBytes = dict["OutBytes"] as! Int64
+            }
+            if dict.keys.contains("ProtectionDuration") {
+                self.protectionDuration = dict["ProtectionDuration"] as! Int64
             }
             if dict.keys.contains("ResourceId") {
                 self.resourceId = dict["ResourceId"] as! String
@@ -12063,11 +12196,21 @@ public class DescribePostpayTrafficTotalResponseBody : Tea.TeaModel {
 
     public var totalAssets: Int64?
 
+    public var totalBillTraffic: Int64?
+
+    public var totalInternetAssets: Int64?
+
+    public var totalInternetTraffic: Int64?
+
     public var totalNatAssets: Int64?
 
     public var totalNatTraffic: Int64?
 
     public var totalTraffic: Int64?
+
+    public var totalVpcAssets: Int64?
+
+    public var totalVpcTraffic: Int64?
 
     public override init() {
         super.init()
@@ -12089,6 +12232,15 @@ public class DescribePostpayTrafficTotalResponseBody : Tea.TeaModel {
         if self.totalAssets != nil {
             map["TotalAssets"] = self.totalAssets!
         }
+        if self.totalBillTraffic != nil {
+            map["TotalBillTraffic"] = self.totalBillTraffic!
+        }
+        if self.totalInternetAssets != nil {
+            map["TotalInternetAssets"] = self.totalInternetAssets!
+        }
+        if self.totalInternetTraffic != nil {
+            map["TotalInternetTraffic"] = self.totalInternetTraffic!
+        }
         if self.totalNatAssets != nil {
             map["TotalNatAssets"] = self.totalNatAssets!
         }
@@ -12097,6 +12249,12 @@ public class DescribePostpayTrafficTotalResponseBody : Tea.TeaModel {
         }
         if self.totalTraffic != nil {
             map["TotalTraffic"] = self.totalTraffic!
+        }
+        if self.totalVpcAssets != nil {
+            map["TotalVpcAssets"] = self.totalVpcAssets!
+        }
+        if self.totalVpcTraffic != nil {
+            map["TotalVpcTraffic"] = self.totalVpcTraffic!
         }
         return map
     }
@@ -12108,6 +12266,15 @@ public class DescribePostpayTrafficTotalResponseBody : Tea.TeaModel {
         if dict.keys.contains("TotalAssets") {
             self.totalAssets = dict["TotalAssets"] as! Int64
         }
+        if dict.keys.contains("TotalBillTraffic") {
+            self.totalBillTraffic = dict["TotalBillTraffic"] as! Int64
+        }
+        if dict.keys.contains("TotalInternetAssets") {
+            self.totalInternetAssets = dict["TotalInternetAssets"] as! Int64
+        }
+        if dict.keys.contains("TotalInternetTraffic") {
+            self.totalInternetTraffic = dict["TotalInternetTraffic"] as! Int64
+        }
         if dict.keys.contains("TotalNatAssets") {
             self.totalNatAssets = dict["TotalNatAssets"] as! Int64
         }
@@ -12116,6 +12283,12 @@ public class DescribePostpayTrafficTotalResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("TotalTraffic") {
             self.totalTraffic = dict["TotalTraffic"] as! Int64
+        }
+        if dict.keys.contains("TotalVpcAssets") {
+            self.totalVpcAssets = dict["TotalVpcAssets"] as! Int64
+        }
+        if dict.keys.contains("TotalVpcTraffic") {
+            self.totalVpcTraffic = dict["TotalVpcTraffic"] as! Int64
         }
     }
 }
@@ -14570,6 +14743,8 @@ public class DescribeTrFirewallsV2ListResponseBody : Tea.TeaModel {
 
             public var enableAllPatch: Int32?
 
+            public var ruleClass: Int32?
+
             public var runMode: Int32?
 
             public override init() {
@@ -14592,6 +14767,9 @@ public class DescribeTrFirewallsV2ListResponseBody : Tea.TeaModel {
                 if self.enableAllPatch != nil {
                     map["EnableAllPatch"] = self.enableAllPatch!
                 }
+                if self.ruleClass != nil {
+                    map["RuleClass"] = self.ruleClass!
+                }
                 if self.runMode != nil {
                     map["RunMode"] = self.runMode!
                 }
@@ -14604,6 +14782,9 @@ public class DescribeTrFirewallsV2ListResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("EnableAllPatch") {
                     self.enableAllPatch = dict["EnableAllPatch"] as! Int32
+                }
+                if dict.keys.contains("RuleClass") {
+                    self.ruleClass = dict["RuleClass"] as! Int32
                 }
                 if dict.keys.contains("RunMode") {
                     self.runMode = dict["RunMode"] as! Int32
@@ -16584,6 +16765,8 @@ public class DescribeVpcFirewallCenListResponseBody : Tea.TeaModel {
 
             public var enableAllPatch: Int32?
 
+            public var ruleClass: Int32?
+
             public var runMode: Int32?
 
             public override init() {
@@ -16606,6 +16789,9 @@ public class DescribeVpcFirewallCenListResponseBody : Tea.TeaModel {
                 if self.enableAllPatch != nil {
                     map["EnableAllPatch"] = self.enableAllPatch!
                 }
+                if self.ruleClass != nil {
+                    map["RuleClass"] = self.ruleClass!
+                }
                 if self.runMode != nil {
                     map["RunMode"] = self.runMode!
                 }
@@ -16618,6 +16804,9 @@ public class DescribeVpcFirewallCenListResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("EnableAllPatch") {
                     self.enableAllPatch = dict["EnableAllPatch"] as! Int32
+                }
+                if dict.keys.contains("RuleClass") {
+                    self.ruleClass = dict["RuleClass"] as! Int32
                 }
                 if dict.keys.contains("RunMode") {
                     self.runMode = dict["RunMode"] as! Int32
@@ -17241,6 +17430,8 @@ public class DescribeVpcFirewallControlPolicyResponseBody : Tea.TeaModel {
 
         public var destinationType: String?
 
+        public var domainResolveType: String?
+
         public var endTime: Int64?
 
         public var hitLastTime: Int64?
@@ -17335,6 +17526,9 @@ public class DescribeVpcFirewallControlPolicyResponseBody : Tea.TeaModel {
             }
             if self.destinationType != nil {
                 map["DestinationType"] = self.destinationType!
+            }
+            if self.domainResolveType != nil {
+                map["DomainResolveType"] = self.domainResolveType!
             }
             if self.endTime != nil {
                 map["EndTime"] = self.endTime!
@@ -17438,6 +17632,9 @@ public class DescribeVpcFirewallControlPolicyResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("DestinationType") {
                 self.destinationType = dict["DestinationType"] as! String
+            }
+            if dict.keys.contains("DomainResolveType") {
+                self.domainResolveType = dict["DomainResolveType"] as! String
             }
             if dict.keys.contains("EndTime") {
                 self.endTime = dict["EndTime"] as! Int64
@@ -17646,6 +17843,8 @@ public class DescribeVpcFirewallDefaultIPSConfigResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var ruleClass: Int32?
+
     public var runMode: Int32?
 
     public override init() {
@@ -17671,6 +17870,9 @@ public class DescribeVpcFirewallDefaultIPSConfigResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.ruleClass != nil {
+            map["RuleClass"] = self.ruleClass!
+        }
         if self.runMode != nil {
             map["RunMode"] = self.runMode!
         }
@@ -17686,6 +17888,9 @@ public class DescribeVpcFirewallDefaultIPSConfigResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("RuleClass") {
+            self.ruleClass = dict["RuleClass"] as! Int32
         }
         if dict.keys.contains("RunMode") {
             self.runMode = dict["RunMode"] as! Int32
@@ -18618,6 +18823,8 @@ public class DescribeVpcFirewallListResponseBody : Tea.TeaModel {
 
             public var enableAllPatch: Int32?
 
+            public var ruleClass: Int32?
+
             public var runMode: Int32?
 
             public override init() {
@@ -18640,6 +18847,9 @@ public class DescribeVpcFirewallListResponseBody : Tea.TeaModel {
                 if self.enableAllPatch != nil {
                     map["EnableAllPatch"] = self.enableAllPatch!
                 }
+                if self.ruleClass != nil {
+                    map["RuleClass"] = self.ruleClass!
+                }
                 if self.runMode != nil {
                     map["RunMode"] = self.runMode!
                 }
@@ -18652,6 +18862,9 @@ public class DescribeVpcFirewallListResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("EnableAllPatch") {
                     self.enableAllPatch = dict["EnableAllPatch"] as! Int32
+                }
+                if dict.keys.contains("RuleClass") {
+                    self.ruleClass = dict["RuleClass"] as! Int32
                 }
                 if dict.keys.contains("RunMode") {
                     self.runMode = dict["RunMode"] as! Int32
@@ -20377,6 +20590,8 @@ public class ModifyAddressBookRequest : Tea.TeaModel {
 
     public var lang: String?
 
+    public var modifyMode: String?
+
     public var sourceIp: String?
 
     public var tagList: [ModifyAddressBookRequest.TagList]?
@@ -20415,6 +20630,9 @@ public class ModifyAddressBookRequest : Tea.TeaModel {
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
+        if self.modifyMode != nil {
+            map["ModifyMode"] = self.modifyMode!
+        }
         if self.sourceIp != nil {
             map["SourceIp"] = self.sourceIp!
         }
@@ -20449,6 +20667,9 @@ public class ModifyAddressBookRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Lang") {
             self.lang = dict["Lang"] as! String
+        }
+        if dict.keys.contains("ModifyMode") {
+            self.modifyMode = dict["ModifyMode"] as! String
         }
         if dict.keys.contains("SourceIp") {
             self.sourceIp = dict["SourceIp"] as! String
@@ -20572,6 +20793,8 @@ public class ModifyControlPolicyRequest : Tea.TeaModel {
 
     public var direction: String?
 
+    public var domainResolveType: String?
+
     public var endTime: Int64?
 
     public var lang: String?
@@ -20640,6 +20863,9 @@ public class ModifyControlPolicyRequest : Tea.TeaModel {
         }
         if self.direction != nil {
             map["Direction"] = self.direction!
+        }
+        if self.domainResolveType != nil {
+            map["DomainResolveType"] = self.domainResolveType!
         }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
@@ -20710,6 +20936,9 @@ public class ModifyControlPolicyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Direction") {
             self.direction = dict["Direction"] as! String
+        }
+        if dict.keys.contains("DomainResolveType") {
+            self.domainResolveType = dict["DomainResolveType"] as! String
         }
         if dict.keys.contains("EndTime") {
             self.endTime = dict["EndTime"] as! Int64
@@ -20968,15 +21197,9 @@ public class ModifyControlPolicyPositionResponse : Tea.TeaModel {
 }
 
 public class ModifyDefaultIPSConfigRequest : Tea.TeaModel {
-    public var aiRules: String?
-
     public var basicRules: String?
 
     public var ctiRules: String?
-
-    public var enableAllPatch: String?
-
-    public var enableDefault: String?
 
     public var lang: String?
 
@@ -20985,8 +21208,6 @@ public class ModifyDefaultIPSConfigRequest : Tea.TeaModel {
     public var ruleClass: String?
 
     public var runMode: String?
-
-    public var sourceIp: String?
 
     public override init() {
         super.init()
@@ -21002,20 +21223,11 @@ public class ModifyDefaultIPSConfigRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.aiRules != nil {
-            map["AiRules"] = self.aiRules!
-        }
         if self.basicRules != nil {
             map["BasicRules"] = self.basicRules!
         }
         if self.ctiRules != nil {
             map["CtiRules"] = self.ctiRules!
-        }
-        if self.enableAllPatch != nil {
-            map["EnableAllPatch"] = self.enableAllPatch!
-        }
-        if self.enableDefault != nil {
-            map["EnableDefault"] = self.enableDefault!
         }
         if self.lang != nil {
             map["Lang"] = self.lang!
@@ -21029,27 +21241,15 @@ public class ModifyDefaultIPSConfigRequest : Tea.TeaModel {
         if self.runMode != nil {
             map["RunMode"] = self.runMode!
         }
-        if self.sourceIp != nil {
-            map["SourceIp"] = self.sourceIp!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AiRules") {
-            self.aiRules = dict["AiRules"] as! String
-        }
         if dict.keys.contains("BasicRules") {
             self.basicRules = dict["BasicRules"] as! String
         }
         if dict.keys.contains("CtiRules") {
             self.ctiRules = dict["CtiRules"] as! String
-        }
-        if dict.keys.contains("EnableAllPatch") {
-            self.enableAllPatch = dict["EnableAllPatch"] as! String
-        }
-        if dict.keys.contains("EnableDefault") {
-            self.enableDefault = dict["EnableDefault"] as! String
         }
         if dict.keys.contains("Lang") {
             self.lang = dict["Lang"] as! String
@@ -21062,9 +21262,6 @@ public class ModifyDefaultIPSConfigRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RunMode") {
             self.runMode = dict["RunMode"] as! String
-        }
-        if dict.keys.contains("SourceIp") {
-            self.sourceIp = dict["SourceIp"] as! String
         }
     }
 }
@@ -21867,6 +22064,163 @@ public class ModifyNatFirewallControlPolicyPositionResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ModifyNatFirewallControlPolicyPositionResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ModifyObjectGroupOperationRequest : Tea.TeaModel {
+    public var comment: String?
+
+    public var direction: String?
+
+    public var lang: String?
+
+    public var objectList: [String]?
+
+    public var objectOperation: String?
+
+    public var objectType: String?
+
+    public var sourceIp: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.comment != nil {
+            map["Comment"] = self.comment!
+        }
+        if self.direction != nil {
+            map["Direction"] = self.direction!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.objectList != nil {
+            map["ObjectList"] = self.objectList!
+        }
+        if self.objectOperation != nil {
+            map["ObjectOperation"] = self.objectOperation!
+        }
+        if self.objectType != nil {
+            map["ObjectType"] = self.objectType!
+        }
+        if self.sourceIp != nil {
+            map["SourceIp"] = self.sourceIp!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Comment") {
+            self.comment = dict["Comment"] as! String
+        }
+        if dict.keys.contains("Direction") {
+            self.direction = dict["Direction"] as! String
+        }
+        if dict.keys.contains("Lang") {
+            self.lang = dict["Lang"] as! String
+        }
+        if dict.keys.contains("ObjectList") {
+            self.objectList = dict["ObjectList"] as! [String]
+        }
+        if dict.keys.contains("ObjectOperation") {
+            self.objectOperation = dict["ObjectOperation"] as! String
+        }
+        if dict.keys.contains("ObjectType") {
+            self.objectType = dict["ObjectType"] as! String
+        }
+        if dict.keys.contains("SourceIp") {
+            self.sourceIp = dict["SourceIp"] as! String
+        }
+    }
+}
+
+public class ModifyObjectGroupOperationResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ModifyObjectGroupOperationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyObjectGroupOperationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ModifyObjectGroupOperationResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -23041,6 +23395,8 @@ public class ModifyVpcFirewallControlPolicyRequest : Tea.TeaModel {
 
     public var destinationType: String?
 
+    public var domainResolveType: String?
+
     public var endTime: Int64?
 
     public var lang: String?
@@ -23108,6 +23464,9 @@ public class ModifyVpcFirewallControlPolicyRequest : Tea.TeaModel {
         }
         if self.destinationType != nil {
             map["DestinationType"] = self.destinationType!
+        }
+        if self.domainResolveType != nil {
+            map["DomainResolveType"] = self.domainResolveType!
         }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
@@ -23178,6 +23537,9 @@ public class ModifyVpcFirewallControlPolicyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DestinationType") {
             self.destinationType = dict["DestinationType"] as! String
+        }
+        if dict.keys.contains("DomainResolveType") {
+            self.domainResolveType = dict["DomainResolveType"] as! String
         }
         if dict.keys.contains("EndTime") {
             self.endTime = dict["EndTime"] as! Int64
@@ -23447,6 +23809,8 @@ public class ModifyVpcFirewallDefaultIPSConfigRequest : Tea.TeaModel {
 
     public var memberUid: String?
 
+    public var ruleClass: String?
+
     public var runMode: String?
 
     public var sourceIp: String?
@@ -23479,6 +23843,9 @@ public class ModifyVpcFirewallDefaultIPSConfigRequest : Tea.TeaModel {
         if self.memberUid != nil {
             map["MemberUid"] = self.memberUid!
         }
+        if self.ruleClass != nil {
+            map["RuleClass"] = self.ruleClass!
+        }
         if self.runMode != nil {
             map["RunMode"] = self.runMode!
         }
@@ -23503,6 +23870,9 @@ public class ModifyVpcFirewallDefaultIPSConfigRequest : Tea.TeaModel {
         }
         if dict.keys.contains("MemberUid") {
             self.memberUid = dict["MemberUid"] as! String
+        }
+        if dict.keys.contains("RuleClass") {
+            self.ruleClass = dict["RuleClass"] as! String
         }
         if dict.keys.contains("RunMode") {
             self.runMode = dict["RunMode"] as! String

@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudCloudfw20171207"
-  spec.version      = "2.6.2"
+  spec.version      = "3.0.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud Cloudfw (20171207) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/cloudfw-20171207" 
@@ -18,8 +18,8 @@ Pod::Spec.new do |spec|
   spec.tvos.deployment_target    = '13.0'
 
   spec.dependency 'Tea',  '~> 1.0.0'
-  spec.dependency 'TeaUtils',  '~> 1.0.5'
-  spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.4'
+  spec.dependency 'TeaUtils',  '~> 1.0.6'
+  spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.7'
   spec.dependency 'AlibabaCloudOpenApiUtil',  '~> 1.0.1'
   spec.dependency 'AlibabacloudEndpointUtil',  '~> 1.0.0'
 
