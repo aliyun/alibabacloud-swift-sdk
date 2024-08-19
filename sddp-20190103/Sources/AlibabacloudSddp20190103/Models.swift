@@ -14453,6 +14453,217 @@ public class ModifyRuleStatusResponse : Tea.TeaModel {
     }
 }
 
+public class ScanOssObjectV1Request : Tea.TeaModel {
+    public var bucketName: String?
+
+    public var lang: String?
+
+    public var objectKeyList: [String]?
+
+    public var serviceRegionId: String?
+
+    public var templateId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bucketName != nil {
+            map["BucketName"] = self.bucketName!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.objectKeyList != nil {
+            map["ObjectKeyList"] = self.objectKeyList!
+        }
+        if self.serviceRegionId != nil {
+            map["ServiceRegionId"] = self.serviceRegionId!
+        }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BucketName") {
+            self.bucketName = dict["BucketName"] as! String
+        }
+        if dict.keys.contains("Lang") {
+            self.lang = dict["Lang"] as! String
+        }
+        if dict.keys.contains("ObjectKeyList") {
+            self.objectKeyList = dict["ObjectKeyList"] as! [String]
+        }
+        if dict.keys.contains("ServiceRegionId") {
+            self.serviceRegionId = dict["ServiceRegionId"] as! String
+        }
+        if dict.keys.contains("TemplateId") {
+            self.templateId = dict["TemplateId"] as! Int64
+        }
+    }
+}
+
+public class ScanOssObjectV1ShrinkRequest : Tea.TeaModel {
+    public var bucketName: String?
+
+    public var lang: String?
+
+    public var objectKeyListShrink: String?
+
+    public var serviceRegionId: String?
+
+    public var templateId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bucketName != nil {
+            map["BucketName"] = self.bucketName!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.objectKeyListShrink != nil {
+            map["ObjectKeyList"] = self.objectKeyListShrink!
+        }
+        if self.serviceRegionId != nil {
+            map["ServiceRegionId"] = self.serviceRegionId!
+        }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BucketName") {
+            self.bucketName = dict["BucketName"] as! String
+        }
+        if dict.keys.contains("Lang") {
+            self.lang = dict["Lang"] as! String
+        }
+        if dict.keys.contains("ObjectKeyList") {
+            self.objectKeyListShrink = dict["ObjectKeyList"] as! String
+        }
+        if dict.keys.contains("ServiceRegionId") {
+            self.serviceRegionId = dict["ServiceRegionId"] as! String
+        }
+        if dict.keys.contains("TemplateId") {
+            self.templateId = dict["TemplateId"] as! Int64
+        }
+    }
+}
+
+public class ScanOssObjectV1ResponseBody : Tea.TeaModel {
+    public var id: Int64?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Id") {
+            self.id = dict["Id"] as! Int64
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ScanOssObjectV1Response : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ScanOssObjectV1ResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ScanOssObjectV1ResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class StopMaskingProcessRequest : Tea.TeaModel {
     public var id: Int64?
 

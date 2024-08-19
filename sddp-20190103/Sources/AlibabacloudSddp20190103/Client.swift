@@ -2453,6 +2453,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func scanOssObjectV1WithOptions(_ tmpReq: ScanOssObjectV1Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> ScanOssObjectV1Response {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ScanOssObjectV1ShrinkRequest = ScanOssObjectV1ShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.objectKeyList)) {
+            request.objectKeyListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.objectKeyList, "ObjectKeyList", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bucketName)) {
+            query["BucketName"] = request.bucketName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            query["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.objectKeyListShrink)) {
+            query["ObjectKeyList"] = request.objectKeyListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceRegionId)) {
+            query["ServiceRegionId"] = request.serviceRegionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateId)) {
+            query["TemplateId"] = request.templateId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ScanOssObjectV1",
+            "version": "2019-01-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ScanOssObjectV1Response(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func scanOssObjectV1(_ request: ScanOssObjectV1Request) async throws -> ScanOssObjectV1Response {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await scanOssObjectV1WithOptions(request as! ScanOssObjectV1Request, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func stopMaskingProcessWithOptions(_ request: StopMaskingProcessRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StopMaskingProcessResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
