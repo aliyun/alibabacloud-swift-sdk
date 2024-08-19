@@ -92,8 +92,8 @@ public class AnalyzeConversationRequest : Tea.TeaModel {
             }
         }
     }
-    public class ExampleList : Tea.TeaModel {
-        public class SentenceList : Tea.TeaModel {
+    public class Examples : Tea.TeaModel {
+        public class Sentences : Tea.TeaModel {
             public var chatId: String?
 
             public var role: String?
@@ -140,7 +140,7 @@ public class AnalyzeConversationRequest : Tea.TeaModel {
         }
         public var output: String?
 
-        public var sentenceList: [AnalyzeConversationRequest.ExampleList.SentenceList]?
+        public var sentences: [AnalyzeConversationRequest.Examples.Sentences]?
 
         public override init() {
             super.init()
@@ -159,12 +159,12 @@ public class AnalyzeConversationRequest : Tea.TeaModel {
             if self.output != nil {
                 map["output"] = self.output!
             }
-            if self.sentenceList != nil {
+            if self.sentences != nil {
                 var tmp : [Any] = []
-                for k in self.sentenceList! {
+                for k in self.sentences! {
                     tmp.append(k.toMap())
                 }
-                map["sentenceList"] = tmp
+                map["sentences"] = tmp
             }
             return map
         }
@@ -173,16 +173,16 @@ public class AnalyzeConversationRequest : Tea.TeaModel {
             if dict.keys.contains("output") {
                 self.output = dict["output"] as! String
             }
-            if dict.keys.contains("sentenceList") {
-                var tmp : [AnalyzeConversationRequest.ExampleList.SentenceList] = []
-                for v in dict["sentenceList"] as! [Any] {
-                    var model = AnalyzeConversationRequest.ExampleList.SentenceList()
+            if dict.keys.contains("sentences") {
+                var tmp : [AnalyzeConversationRequest.Examples.Sentences] = []
+                for v in dict["sentences"] as! [Any] {
+                    var model = AnalyzeConversationRequest.Examples.Sentences()
                     if v != nil {
                         model.fromMap(v as! [String: Any])
                     }
                     tmp.append(model)
                 }
-                self.sentenceList = tmp
+                self.sentences = tmp
             }
         }
     }
@@ -384,7 +384,7 @@ public class AnalyzeConversationRequest : Tea.TeaModel {
     }
     public var dialogue: AnalyzeConversationRequest.Dialogue?
 
-    public var exampleList: [AnalyzeConversationRequest.ExampleList]?
+    public var examples: [AnalyzeConversationRequest.Examples]?
 
     public var fields: [AnalyzeConversationRequest.Fields]?
 
@@ -417,12 +417,12 @@ public class AnalyzeConversationRequest : Tea.TeaModel {
         if self.dialogue != nil {
             map["dialogue"] = self.dialogue?.toMap()
         }
-        if self.exampleList != nil {
+        if self.examples != nil {
             var tmp : [Any] = []
-            for k in self.exampleList! {
+            for k in self.examples! {
                 tmp.append(k.toMap())
             }
-            map["exampleList"] = tmp
+            map["examples"] = tmp
         }
         if self.fields != nil {
             var tmp : [Any] = []
@@ -455,16 +455,16 @@ public class AnalyzeConversationRequest : Tea.TeaModel {
             model.fromMap(dict["dialogue"] as! [String: Any])
             self.dialogue = model
         }
-        if dict.keys.contains("exampleList") {
-            var tmp : [AnalyzeConversationRequest.ExampleList] = []
-            for v in dict["exampleList"] as! [Any] {
-                var model = AnalyzeConversationRequest.ExampleList()
+        if dict.keys.contains("examples") {
+            var tmp : [AnalyzeConversationRequest.Examples] = []
+            for v in dict["examples"] as! [Any] {
+                var model = AnalyzeConversationRequest.Examples()
                 if v != nil {
                     model.fromMap(v as! [String: Any])
                 }
                 tmp.append(model)
             }
-            self.exampleList = tmp
+            self.examples = tmp
         }
         if dict.keys.contains("fields") {
             var tmp : [AnalyzeConversationRequest.Fields] = []

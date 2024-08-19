@@ -30,8 +30,8 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dialogue)) {
             body["dialogue"] = request.dialogue!;
         }
-        if (!TeaUtils.Client.isUnset(request.exampleList)) {
-            body["exampleList"] = request.exampleList ?? [];
+        if (!TeaUtils.Client.isUnset(request.examples)) {
+            body["examples"] = request.examples ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.fields)) {
             body["fields"] = request.fields ?? [];
