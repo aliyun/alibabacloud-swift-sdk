@@ -715,6 +715,8 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
 
     public var chargeType: String?
 
+    public var clientToken: String?
+
     public var gpuAcceleration: Bool?
 
     public var imageId: String?
@@ -763,6 +765,9 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
         }
         if self.chargeType != nil {
             map["ChargeType"] = self.chargeType!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
         }
         if self.gpuAcceleration != nil {
             map["GpuAcceleration"] = self.gpuAcceleration!
@@ -813,6 +818,9 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
         if dict.keys.contains("ChargeType") {
             self.chargeType = dict["ChargeType"] as! String
         }
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("GpuAcceleration") {
             self.gpuAcceleration = dict["GpuAcceleration"] as! Bool
         }
@@ -847,7 +855,46 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
 }
 
 public class CreateAndroidInstanceGroupResponseBody : Tea.TeaModel {
+    public class InstanceGroupInfos : Tea.TeaModel {
+        public var instanceGroupId: String?
+
+        public var instanceIds: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.instanceGroupId != nil {
+                map["InstanceGroupId"] = self.instanceGroupId!
+            }
+            if self.instanceIds != nil {
+                map["InstanceIds"] = self.instanceIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("InstanceGroupId") {
+                self.instanceGroupId = dict["InstanceGroupId"] as! String
+            }
+            if dict.keys.contains("InstanceIds") {
+                self.instanceIds = dict["InstanceIds"] as! [String]
+            }
+        }
+    }
     public var instanceGroupIds: [String]?
+
+    public var instanceGroupInfos: [CreateAndroidInstanceGroupResponseBody.InstanceGroupInfos]?
 
     public var orderId: String?
 
@@ -870,6 +917,13 @@ public class CreateAndroidInstanceGroupResponseBody : Tea.TeaModel {
         if self.instanceGroupIds != nil {
             map["InstanceGroupIds"] = self.instanceGroupIds!
         }
+        if self.instanceGroupInfos != nil {
+            var tmp : [Any] = []
+            for k in self.instanceGroupInfos! {
+                tmp.append(k.toMap())
+            }
+            map["InstanceGroupInfos"] = tmp
+        }
         if self.orderId != nil {
             map["OrderId"] = self.orderId!
         }
@@ -882,6 +936,17 @@ public class CreateAndroidInstanceGroupResponseBody : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("InstanceGroupIds") {
             self.instanceGroupIds = dict["InstanceGroupIds"] as! [String]
+        }
+        if dict.keys.contains("InstanceGroupInfos") {
+            var tmp : [CreateAndroidInstanceGroupResponseBody.InstanceGroupInfos] = []
+            for v in dict["InstanceGroupInfos"] as! [Any] {
+                var model = CreateAndroidInstanceGroupResponseBody.InstanceGroupInfos()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.instanceGroupInfos = tmp
         }
         if dict.keys.contains("OrderId") {
             self.orderId = dict["OrderId"] as! String
@@ -1115,6 +1180,8 @@ public class CreateAppResponse : Tea.TeaModel {
 }
 
 public class CreateCustomImageRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var description_: String?
 
     public var imageName: String?
@@ -1135,6 +1202,9 @@ public class CreateCustomImageRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -1148,6 +1218,9 @@ public class CreateCustomImageRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
         }
@@ -1161,6 +1234,8 @@ public class CreateCustomImageRequest : Tea.TeaModel {
 }
 
 public class CreateCustomImageResponseBody : Tea.TeaModel {
+    public var imageId: String?
+
     public var requestId: String?
 
     public override init() {
@@ -1177,6 +1252,9 @@ public class CreateCustomImageResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.imageId != nil {
+            map["ImageId"] = self.imageId!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -1184,6 +1262,9 @@ public class CreateCustomImageResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ImageId") {
+            self.imageId = dict["ImageId"] as! String
+        }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
@@ -1413,6 +1494,100 @@ public class CreateKeyPairResponse : Tea.TeaModel {
 }
 
 public class CreatePolicyGroupRequest : Tea.TeaModel {
+    public class NetRedirectPolicy : Tea.TeaModel {
+        public class NetRedirectRule : Tea.TeaModel {
+            public var policy: String?
+
+            public var ruleType: String?
+
+            public var target: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.policy != nil {
+                    map["Policy"] = self.policy!
+                }
+                if self.ruleType != nil {
+                    map["RuleType"] = self.ruleType!
+                }
+                if self.target != nil {
+                    map["Target"] = self.target!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Policy") {
+                    self.policy = dict["Policy"] as! String
+                }
+                if dict.keys.contains("RuleType") {
+                    self.ruleType = dict["RuleType"] as! String
+                }
+                if dict.keys.contains("Target") {
+                    self.target = dict["Target"] as! String
+                }
+            }
+        }
+        public var netRedirect: String?
+
+        public var netRedirectRule: [CreatePolicyGroupRequest.NetRedirectPolicy.NetRedirectRule]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.netRedirect != nil {
+                map["NetRedirect"] = self.netRedirect!
+            }
+            if self.netRedirectRule != nil {
+                var tmp : [Any] = []
+                for k in self.netRedirectRule! {
+                    tmp.append(k.toMap())
+                }
+                map["NetRedirectRule"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("NetRedirect") {
+                self.netRedirect = dict["NetRedirect"] as! String
+            }
+            if dict.keys.contains("NetRedirectRule") {
+                var tmp : [CreatePolicyGroupRequest.NetRedirectPolicy.NetRedirectRule] = []
+                for v in dict["NetRedirectRule"] as! [Any] {
+                    var model = CreatePolicyGroupRequest.NetRedirectPolicy.NetRedirectRule()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.netRedirectRule = tmp
+            }
+        }
+    }
     public var cameraRedirect: String?
 
     public var clipboard: String?
@@ -1420,6 +1595,97 @@ public class CreatePolicyGroupRequest : Tea.TeaModel {
     public var html5FileTransfer: String?
 
     public var localDrive: String?
+
+    public var netRedirectPolicy: CreatePolicyGroupRequest.NetRedirectPolicy?
+
+    public var policyGroupName: String?
+
+    public var resolutionHeight: Int32?
+
+    public var resolutionWidth: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.netRedirectPolicy?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cameraRedirect != nil {
+            map["CameraRedirect"] = self.cameraRedirect!
+        }
+        if self.clipboard != nil {
+            map["Clipboard"] = self.clipboard!
+        }
+        if self.html5FileTransfer != nil {
+            map["Html5FileTransfer"] = self.html5FileTransfer!
+        }
+        if self.localDrive != nil {
+            map["LocalDrive"] = self.localDrive!
+        }
+        if self.netRedirectPolicy != nil {
+            map["NetRedirectPolicy"] = self.netRedirectPolicy?.toMap()
+        }
+        if self.policyGroupName != nil {
+            map["PolicyGroupName"] = self.policyGroupName!
+        }
+        if self.resolutionHeight != nil {
+            map["ResolutionHeight"] = self.resolutionHeight!
+        }
+        if self.resolutionWidth != nil {
+            map["ResolutionWidth"] = self.resolutionWidth!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CameraRedirect") {
+            self.cameraRedirect = dict["CameraRedirect"] as! String
+        }
+        if dict.keys.contains("Clipboard") {
+            self.clipboard = dict["Clipboard"] as! String
+        }
+        if dict.keys.contains("Html5FileTransfer") {
+            self.html5FileTransfer = dict["Html5FileTransfer"] as! String
+        }
+        if dict.keys.contains("LocalDrive") {
+            self.localDrive = dict["LocalDrive"] as! String
+        }
+        if dict.keys.contains("NetRedirectPolicy") {
+            var model = CreatePolicyGroupRequest.NetRedirectPolicy()
+            model.fromMap(dict["NetRedirectPolicy"] as! [String: Any])
+            self.netRedirectPolicy = model
+        }
+        if dict.keys.contains("PolicyGroupName") {
+            self.policyGroupName = dict["PolicyGroupName"] as! String
+        }
+        if dict.keys.contains("ResolutionHeight") {
+            self.resolutionHeight = dict["ResolutionHeight"] as! Int32
+        }
+        if dict.keys.contains("ResolutionWidth") {
+            self.resolutionWidth = dict["ResolutionWidth"] as! Int32
+        }
+    }
+}
+
+public class CreatePolicyGroupShrinkRequest : Tea.TeaModel {
+    public var cameraRedirect: String?
+
+    public var clipboard: String?
+
+    public var html5FileTransfer: String?
+
+    public var localDrive: String?
+
+    public var netRedirectPolicyShrink: String?
 
     public var policyGroupName: String?
 
@@ -1453,6 +1719,9 @@ public class CreatePolicyGroupRequest : Tea.TeaModel {
         if self.localDrive != nil {
             map["LocalDrive"] = self.localDrive!
         }
+        if self.netRedirectPolicyShrink != nil {
+            map["NetRedirectPolicy"] = self.netRedirectPolicyShrink!
+        }
         if self.policyGroupName != nil {
             map["PolicyGroupName"] = self.policyGroupName!
         }
@@ -1477,6 +1746,9 @@ public class CreatePolicyGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("LocalDrive") {
             self.localDrive = dict["LocalDrive"] as! String
+        }
+        if dict.keys.contains("NetRedirectPolicy") {
+            self.netRedirectPolicyShrink = dict["NetRedirectPolicy"] as! String
         }
         if dict.keys.contains("PolicyGroupName") {
             self.policyGroupName = dict["PolicyGroupName"] as! String
@@ -2710,6 +2982,8 @@ public class DescribeAndroidInstancesRequest : Tea.TeaModel {
 
     public var instanceGroupId: String?
 
+    public var instanceGroupIds: [String]?
+
     public var keyPairId: String?
 
     public var maxResults: Int32?
@@ -2743,6 +3017,9 @@ public class DescribeAndroidInstancesRequest : Tea.TeaModel {
         if self.instanceGroupId != nil {
             map["InstanceGroupId"] = self.instanceGroupId!
         }
+        if self.instanceGroupIds != nil {
+            map["InstanceGroupIds"] = self.instanceGroupIds!
+        }
         if self.keyPairId != nil {
             map["KeyPairId"] = self.keyPairId!
         }
@@ -2770,6 +3047,9 @@ public class DescribeAndroidInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceGroupId") {
             self.instanceGroupId = dict["InstanceGroupId"] as! String
+        }
+        if dict.keys.contains("InstanceGroupIds") {
+            self.instanceGroupIds = dict["InstanceGroupIds"] as! [String]
         }
         if dict.keys.contains("KeyPairId") {
             self.keyPairId = dict["KeyPairId"] as! String
@@ -6103,6 +6383,8 @@ public class InstallAppRequest : Tea.TeaModel {
 
     public var instanceGroupIdList: [String]?
 
+    public var instanceIdList: [String]?
+
     public override init() {
         super.init()
     }
@@ -6123,6 +6405,9 @@ public class InstallAppRequest : Tea.TeaModel {
         if self.instanceGroupIdList != nil {
             map["InstanceGroupIdList"] = self.instanceGroupIdList!
         }
+        if self.instanceIdList != nil {
+            map["InstanceIdList"] = self.instanceIdList!
+        }
         return map
     }
 
@@ -6132,6 +6417,9 @@ public class InstallAppRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceGroupIdList") {
             self.instanceGroupIdList = dict["InstanceGroupIdList"] as! [String]
+        }
+        if dict.keys.contains("InstanceIdList") {
+            self.instanceIdList = dict["InstanceIdList"] as! [String]
         }
     }
 }
@@ -6271,6 +6559,100 @@ public class ListPolicyGroupsRequest : Tea.TeaModel {
 
 public class ListPolicyGroupsResponseBody : Tea.TeaModel {
     public class PolicyGroupModel : Tea.TeaModel {
+        public class NetRedirectPolicy : Tea.TeaModel {
+            public class NetRedirectRule : Tea.TeaModel {
+                public var policy: String?
+
+                public var ruleType: String?
+
+                public var target: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.policy != nil {
+                        map["Policy"] = self.policy!
+                    }
+                    if self.ruleType != nil {
+                        map["RuleType"] = self.ruleType!
+                    }
+                    if self.target != nil {
+                        map["Target"] = self.target!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Policy") {
+                        self.policy = dict["Policy"] as! String
+                    }
+                    if dict.keys.contains("RuleType") {
+                        self.ruleType = dict["RuleType"] as! String
+                    }
+                    if dict.keys.contains("Target") {
+                        self.target = dict["Target"] as! String
+                    }
+                }
+            }
+            public var netRedirect: String?
+
+            public var netRedirectRule: [ListPolicyGroupsResponseBody.PolicyGroupModel.NetRedirectPolicy.NetRedirectRule]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.netRedirect != nil {
+                    map["NetRedirect"] = self.netRedirect!
+                }
+                if self.netRedirectRule != nil {
+                    var tmp : [Any] = []
+                    for k in self.netRedirectRule! {
+                        tmp.append(k.toMap())
+                    }
+                    map["NetRedirectRule"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("NetRedirect") {
+                    self.netRedirect = dict["NetRedirect"] as! String
+                }
+                if dict.keys.contains("NetRedirectRule") {
+                    var tmp : [ListPolicyGroupsResponseBody.PolicyGroupModel.NetRedirectPolicy.NetRedirectRule] = []
+                    for v in dict["NetRedirectRule"] as! [Any] {
+                        var model = ListPolicyGroupsResponseBody.PolicyGroupModel.NetRedirectPolicy.NetRedirectRule()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.netRedirectRule = tmp
+                }
+            }
+        }
         public var cameraRedirect: String?
 
         public var clipboard: String?
@@ -6280,6 +6662,8 @@ public class ListPolicyGroupsResponseBody : Tea.TeaModel {
         public var html5FileTransfer: String?
 
         public var localDrive: String?
+
+        public var netRedirectPolicy: ListPolicyGroupsResponseBody.PolicyGroupModel.NetRedirectPolicy?
 
         public var policyGroupId: String?
 
@@ -6299,6 +6683,7 @@ public class ListPolicyGroupsResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.netRedirectPolicy?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -6317,6 +6702,9 @@ public class ListPolicyGroupsResponseBody : Tea.TeaModel {
             }
             if self.localDrive != nil {
                 map["LocalDrive"] = self.localDrive!
+            }
+            if self.netRedirectPolicy != nil {
+                map["NetRedirectPolicy"] = self.netRedirectPolicy?.toMap()
             }
             if self.policyGroupId != nil {
                 map["PolicyGroupId"] = self.policyGroupId!
@@ -6348,6 +6736,11 @@ public class ListPolicyGroupsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("LocalDrive") {
                 self.localDrive = dict["LocalDrive"] as! String
+            }
+            if dict.keys.contains("NetRedirectPolicy") {
+                var model = ListPolicyGroupsResponseBody.PolicyGroupModel.NetRedirectPolicy()
+                model.fromMap(dict["NetRedirectPolicy"] as! [String: Any])
+                self.netRedirectPolicy = model
             }
             if dict.keys.contains("PolicyGroupId") {
                 self.policyGroupId = dict["PolicyGroupId"] as! String
@@ -6970,6 +7363,100 @@ public class ModifyKeyPairNameResponse : Tea.TeaModel {
 }
 
 public class ModifyPolicyGroupRequest : Tea.TeaModel {
+    public class NetRedirectPolicy : Tea.TeaModel {
+        public class NetRedirectRule : Tea.TeaModel {
+            public var policy: String?
+
+            public var ruleType: String?
+
+            public var target: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.policy != nil {
+                    map["Policy"] = self.policy!
+                }
+                if self.ruleType != nil {
+                    map["RuleType"] = self.ruleType!
+                }
+                if self.target != nil {
+                    map["Target"] = self.target!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Policy") {
+                    self.policy = dict["Policy"] as! String
+                }
+                if dict.keys.contains("RuleType") {
+                    self.ruleType = dict["RuleType"] as! String
+                }
+                if dict.keys.contains("Target") {
+                    self.target = dict["Target"] as! String
+                }
+            }
+        }
+        public var netRedirect: String?
+
+        public var netRedirectRule: [ModifyPolicyGroupRequest.NetRedirectPolicy.NetRedirectRule]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.netRedirect != nil {
+                map["NetRedirect"] = self.netRedirect!
+            }
+            if self.netRedirectRule != nil {
+                var tmp : [Any] = []
+                for k in self.netRedirectRule! {
+                    tmp.append(k.toMap())
+                }
+                map["NetRedirectRule"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("NetRedirect") {
+                self.netRedirect = dict["NetRedirect"] as! String
+            }
+            if dict.keys.contains("NetRedirectRule") {
+                var tmp : [ModifyPolicyGroupRequest.NetRedirectPolicy.NetRedirectRule] = []
+                for v in dict["NetRedirectRule"] as! [Any] {
+                    var model = ModifyPolicyGroupRequest.NetRedirectPolicy.NetRedirectRule()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.netRedirectRule = tmp
+            }
+        }
+    }
     public var cameraRedirect: String?
 
     public var clipboard: String?
@@ -6977,6 +7464,105 @@ public class ModifyPolicyGroupRequest : Tea.TeaModel {
     public var html5FileTransfer: String?
 
     public var localDrive: String?
+
+    public var netRedirectPolicy: ModifyPolicyGroupRequest.NetRedirectPolicy?
+
+    public var policyGroupId: String?
+
+    public var policyGroupName: String?
+
+    public var resolutionHeight: Int32?
+
+    public var resolutionWidth: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.netRedirectPolicy?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cameraRedirect != nil {
+            map["CameraRedirect"] = self.cameraRedirect!
+        }
+        if self.clipboard != nil {
+            map["Clipboard"] = self.clipboard!
+        }
+        if self.html5FileTransfer != nil {
+            map["Html5FileTransfer"] = self.html5FileTransfer!
+        }
+        if self.localDrive != nil {
+            map["LocalDrive"] = self.localDrive!
+        }
+        if self.netRedirectPolicy != nil {
+            map["NetRedirectPolicy"] = self.netRedirectPolicy?.toMap()
+        }
+        if self.policyGroupId != nil {
+            map["PolicyGroupId"] = self.policyGroupId!
+        }
+        if self.policyGroupName != nil {
+            map["PolicyGroupName"] = self.policyGroupName!
+        }
+        if self.resolutionHeight != nil {
+            map["ResolutionHeight"] = self.resolutionHeight!
+        }
+        if self.resolutionWidth != nil {
+            map["ResolutionWidth"] = self.resolutionWidth!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CameraRedirect") {
+            self.cameraRedirect = dict["CameraRedirect"] as! String
+        }
+        if dict.keys.contains("Clipboard") {
+            self.clipboard = dict["Clipboard"] as! String
+        }
+        if dict.keys.contains("Html5FileTransfer") {
+            self.html5FileTransfer = dict["Html5FileTransfer"] as! String
+        }
+        if dict.keys.contains("LocalDrive") {
+            self.localDrive = dict["LocalDrive"] as! String
+        }
+        if dict.keys.contains("NetRedirectPolicy") {
+            var model = ModifyPolicyGroupRequest.NetRedirectPolicy()
+            model.fromMap(dict["NetRedirectPolicy"] as! [String: Any])
+            self.netRedirectPolicy = model
+        }
+        if dict.keys.contains("PolicyGroupId") {
+            self.policyGroupId = dict["PolicyGroupId"] as! String
+        }
+        if dict.keys.contains("PolicyGroupName") {
+            self.policyGroupName = dict["PolicyGroupName"] as! String
+        }
+        if dict.keys.contains("ResolutionHeight") {
+            self.resolutionHeight = dict["ResolutionHeight"] as! Int32
+        }
+        if dict.keys.contains("ResolutionWidth") {
+            self.resolutionWidth = dict["ResolutionWidth"] as! Int32
+        }
+    }
+}
+
+public class ModifyPolicyGroupShrinkRequest : Tea.TeaModel {
+    public var cameraRedirect: String?
+
+    public var clipboard: String?
+
+    public var html5FileTransfer: String?
+
+    public var localDrive: String?
+
+    public var netRedirectPolicyShrink: String?
 
     public var policyGroupId: String?
 
@@ -7012,6 +7598,9 @@ public class ModifyPolicyGroupRequest : Tea.TeaModel {
         if self.localDrive != nil {
             map["LocalDrive"] = self.localDrive!
         }
+        if self.netRedirectPolicyShrink != nil {
+            map["NetRedirectPolicy"] = self.netRedirectPolicyShrink!
+        }
         if self.policyGroupId != nil {
             map["PolicyGroupId"] = self.policyGroupId!
         }
@@ -7039,6 +7628,9 @@ public class ModifyPolicyGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("LocalDrive") {
             self.localDrive = dict["LocalDrive"] as! String
+        }
+        if dict.keys.contains("NetRedirectPolicy") {
+            self.netRedirectPolicyShrink = dict["NetRedirectPolicy"] as! String
         }
         if dict.keys.contains("PolicyGroupId") {
             self.policyGroupId = dict["PolicyGroupId"] as! String

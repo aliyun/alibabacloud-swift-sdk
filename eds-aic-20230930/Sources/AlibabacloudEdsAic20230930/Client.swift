@@ -200,6 +200,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.chargeType)) {
             query["ChargeType"] = request.chargeType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.gpuAcceleration)) {
             query["GpuAcceleration"] = request.gpuAcceleration!;
         }
@@ -310,6 +313,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createCustomImageWithOptions(_ request: CreateCustomImageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCustomImageResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["Description"] = request.description_ ?? "";
         }
@@ -375,8 +381,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createPolicyGroupWithOptions(_ request: CreatePolicyGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreatePolicyGroupResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createPolicyGroupWithOptions(_ tmpReq: CreatePolicyGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreatePolicyGroupResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreatePolicyGroupShrinkRequest = CreatePolicyGroupShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.netRedirectPolicy)) {
+            request.netRedirectPolicyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.netRedirectPolicy, "NetRedirectPolicy", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.cameraRedirect)) {
             body["CameraRedirect"] = request.cameraRedirect ?? "";
@@ -389,6 +400,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.localDrive)) {
             body["LocalDrive"] = request.localDrive ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.netRedirectPolicyShrink)) {
+            body["NetRedirectPolicy"] = request.netRedirectPolicyShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.policyGroupName)) {
             body["PolicyGroupName"] = request.policyGroupName ?? "";
@@ -653,6 +667,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.instanceGroupId)) {
             query["InstanceGroupId"] = request.instanceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceGroupIds)) {
+            query["InstanceGroupIds"] = request.instanceGroupIds ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.keyPairId)) {
             query["KeyPairId"] = request.keyPairId ?? "";
@@ -1262,6 +1279,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceGroupIdList)) {
             query["InstanceGroupIdList"] = request.instanceGroupIdList ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.instanceIdList)) {
+            query["InstanceIdList"] = request.instanceIdList ?? [];
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -1472,8 +1492,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func modifyPolicyGroupWithOptions(_ request: ModifyPolicyGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyPolicyGroupResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func modifyPolicyGroupWithOptions(_ tmpReq: ModifyPolicyGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyPolicyGroupResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ModifyPolicyGroupShrinkRequest = ModifyPolicyGroupShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.netRedirectPolicy)) {
+            request.netRedirectPolicyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.netRedirectPolicy, "NetRedirectPolicy", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.cameraRedirect)) {
             body["CameraRedirect"] = request.cameraRedirect ?? "";
@@ -1486,6 +1511,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.localDrive)) {
             body["LocalDrive"] = request.localDrive ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.netRedirectPolicyShrink)) {
+            body["NetRedirectPolicy"] = request.netRedirectPolicyShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.policyGroupId)) {
             body["PolicyGroupId"] = request.policyGroupId ?? "";
