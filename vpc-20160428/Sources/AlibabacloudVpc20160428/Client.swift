@@ -16364,6 +16364,70 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVpcPublishedRouteEntriesWithOptions(_ request: ListVpcPublishedRouteEntriesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListVpcPublishedRouteEntriesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.destinationCidrBlock)) {
+            query["DestinationCidrBlock"] = request.destinationCidrBlock ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.routeTableId)) {
+            query["RouteTableId"] = request.routeTableId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetInstanceId)) {
+            query["TargetInstanceId"] = request.targetInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetType)) {
+            query["TargetType"] = request.targetType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListVpcPublishedRouteEntries",
+            "version": "2016-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListVpcPublishedRouteEntriesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVpcPublishedRouteEntries(_ request: ListVpcPublishedRouteEntriesRequest) async throws -> ListVpcPublishedRouteEntriesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listVpcPublishedRouteEntriesWithOptions(request as! ListVpcPublishedRouteEntriesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listVpnCertificateAssociationsWithOptions(_ request: ListVpnCertificateAssociationsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListVpnCertificateAssociationsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -20121,6 +20185,64 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func publishVpcRouteEntriesWithOptions(_ request: PublishVpcRouteEntriesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PublishVpcRouteEntriesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.routeEntries)) {
+            query["RouteEntries"] = request.routeEntries ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.targetInstanceId)) {
+            query["TargetInstanceId"] = request.targetInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetType)) {
+            query["TargetType"] = request.targetType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "PublishVpcRouteEntries",
+            "version": "2016-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PublishVpcRouteEntriesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func publishVpcRouteEntries(_ request: PublishVpcRouteEntriesRequest) async throws -> PublishVpcRouteEntriesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await publishVpcRouteEntriesWithOptions(request as! PublishVpcRouteEntriesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func publishVpnRouteEntryWithOptions(_ request: PublishVpnRouteEntryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PublishVpnRouteEntryResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -22713,5 +22835,63 @@ open class Client : AlibabacloudOpenApi.Client {
     public func vpcDescribeVpcNatGatewayNetworkInterfaceQuota(_ request: VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest) async throws -> VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await vpcDescribeVpcNatGatewayNetworkInterfaceQuotaWithOptions(request as! VpcDescribeVpcNatGatewayNetworkInterfaceQuotaRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func withdrawVpcPublishedRouteEntriesWithOptions(_ request: WithdrawVpcPublishedRouteEntriesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> WithdrawVpcPublishedRouteEntriesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.routeEntries)) {
+            query["RouteEntries"] = request.routeEntries ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.targetInstanceId)) {
+            query["TargetInstanceId"] = request.targetInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetType)) {
+            query["TargetType"] = request.targetType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "WithdrawVpcPublishedRouteEntries",
+            "version": "2016-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(WithdrawVpcPublishedRouteEntriesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func withdrawVpcPublishedRouteEntries(_ request: WithdrawVpcPublishedRouteEntriesRequest) async throws -> WithdrawVpcPublishedRouteEntriesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await withdrawVpcPublishedRouteEntriesWithOptions(request as! WithdrawVpcPublishedRouteEntriesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 }

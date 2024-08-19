@@ -84290,6 +84290,325 @@ public class ListVpcGatewayEndpointsResponse : Tea.TeaModel {
     }
 }
 
+public class ListVpcPublishedRouteEntriesRequest : Tea.TeaModel {
+    public var destinationCidrBlock: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var routeTableId: String?
+
+    public var targetInstanceId: String?
+
+    public var targetType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.destinationCidrBlock != nil {
+            map["DestinationCidrBlock"] = self.destinationCidrBlock!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.routeTableId != nil {
+            map["RouteTableId"] = self.routeTableId!
+        }
+        if self.targetInstanceId != nil {
+            map["TargetInstanceId"] = self.targetInstanceId!
+        }
+        if self.targetType != nil {
+            map["TargetType"] = self.targetType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DestinationCidrBlock") {
+            self.destinationCidrBlock = dict["DestinationCidrBlock"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("OwnerAccount") {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("RouteTableId") {
+            self.routeTableId = dict["RouteTableId"] as! String
+        }
+        if dict.keys.contains("TargetInstanceId") {
+            self.targetInstanceId = dict["TargetInstanceId"] as! String
+        }
+        if dict.keys.contains("TargetType") {
+            self.targetType = dict["TargetType"] as! String
+        }
+    }
+}
+
+public class ListVpcPublishedRouteEntriesResponseBody : Tea.TeaModel {
+    public class RouteEntries : Tea.TeaModel {
+        public class RoutePublishTargets : Tea.TeaModel {
+            public var publishStatus: String?
+
+            public var publishTargetType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.publishStatus != nil {
+                    map["PublishStatus"] = self.publishStatus!
+                }
+                if self.publishTargetType != nil {
+                    map["PublishTargetType"] = self.publishTargetType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("PublishStatus") {
+                    self.publishStatus = dict["PublishStatus"] as! String
+                }
+                if dict.keys.contains("PublishTargetType") {
+                    self.publishTargetType = dict["PublishTargetType"] as! String
+                }
+            }
+        }
+        public var destinationCidrBlock: String?
+
+        public var routeEntryId: String?
+
+        public var routePublishTargets: [ListVpcPublishedRouteEntriesResponseBody.RouteEntries.RoutePublishTargets]?
+
+        public var routeTableId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.destinationCidrBlock != nil {
+                map["DestinationCidrBlock"] = self.destinationCidrBlock!
+            }
+            if self.routeEntryId != nil {
+                map["RouteEntryId"] = self.routeEntryId!
+            }
+            if self.routePublishTargets != nil {
+                var tmp : [Any] = []
+                for k in self.routePublishTargets! {
+                    tmp.append(k.toMap())
+                }
+                map["RoutePublishTargets"] = tmp
+            }
+            if self.routeTableId != nil {
+                map["RouteTableId"] = self.routeTableId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DestinationCidrBlock") {
+                self.destinationCidrBlock = dict["DestinationCidrBlock"] as! String
+            }
+            if dict.keys.contains("RouteEntryId") {
+                self.routeEntryId = dict["RouteEntryId"] as! String
+            }
+            if dict.keys.contains("RoutePublishTargets") {
+                var tmp : [ListVpcPublishedRouteEntriesResponseBody.RouteEntries.RoutePublishTargets] = []
+                for v in dict["RoutePublishTargets"] as! [Any] {
+                    var model = ListVpcPublishedRouteEntriesResponseBody.RouteEntries.RoutePublishTargets()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.routePublishTargets = tmp
+            }
+            if dict.keys.contains("RouteTableId") {
+                self.routeTableId = dict["RouteTableId"] as! String
+            }
+        }
+    }
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var routeEntries: [ListVpcPublishedRouteEntriesResponseBody.RouteEntries]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.routeEntries != nil {
+            var tmp : [Any] = []
+            for k in self.routeEntries! {
+                tmp.append(k.toMap())
+            }
+            map["RouteEntries"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("RouteEntries") {
+            var tmp : [ListVpcPublishedRouteEntriesResponseBody.RouteEntries] = []
+            for v in dict["RouteEntries"] as! [Any] {
+                var model = ListVpcPublishedRouteEntriesResponseBody.RouteEntries()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.routeEntries = tmp
+        }
+    }
+}
+
+public class ListVpcPublishedRouteEntriesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListVpcPublishedRouteEntriesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListVpcPublishedRouteEntriesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListVpnCertificateAssociationsRequest : Tea.TeaModel {
     public var certificateId: [String]?
 
@@ -98856,6 +99175,228 @@ public class OpenTrafficMirrorServiceResponse : Tea.TeaModel {
     }
 }
 
+public class PublishVpcRouteEntriesRequest : Tea.TeaModel {
+    public class RouteEntries : Tea.TeaModel {
+        public var destinationCidrBlock: String?
+
+        public var routeTableId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.destinationCidrBlock != nil {
+                map["DestinationCidrBlock"] = self.destinationCidrBlock!
+            }
+            if self.routeTableId != nil {
+                map["RouteTableId"] = self.routeTableId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DestinationCidrBlock") {
+                self.destinationCidrBlock = dict["DestinationCidrBlock"] as! String
+            }
+            if dict.keys.contains("RouteTableId") {
+                self.routeTableId = dict["RouteTableId"] as! String
+            }
+        }
+    }
+    public var dryRun: Bool?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var routeEntries: [PublishVpcRouteEntriesRequest.RouteEntries]?
+
+    public var targetInstanceId: String?
+
+    public var targetType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.routeEntries != nil {
+            var tmp : [Any] = []
+            for k in self.routeEntries! {
+                tmp.append(k.toMap())
+            }
+            map["RouteEntries"] = tmp
+        }
+        if self.targetInstanceId != nil {
+            map["TargetInstanceId"] = self.targetInstanceId!
+        }
+        if self.targetType != nil {
+            map["TargetType"] = self.targetType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("OwnerAccount") {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("RouteEntries") {
+            var tmp : [PublishVpcRouteEntriesRequest.RouteEntries] = []
+            for v in dict["RouteEntries"] as! [Any] {
+                var model = PublishVpcRouteEntriesRequest.RouteEntries()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.routeEntries = tmp
+        }
+        if dict.keys.contains("TargetInstanceId") {
+            self.targetInstanceId = dict["TargetInstanceId"] as! String
+        }
+        if dict.keys.contains("TargetType") {
+            self.targetType = dict["TargetType"] as! String
+        }
+    }
+}
+
+public class PublishVpcRouteEntriesResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class PublishVpcRouteEntriesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: PublishVpcRouteEntriesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = PublishVpcRouteEntriesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class PublishVpnRouteEntryRequest : Tea.TeaModel {
     public var clientToken: String?
 
@@ -107436,6 +107977,228 @@ public class VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponse : Tea.TeaMode
         }
         if dict.keys.contains("body") {
             var model = VpcDescribeVpcNatGatewayNetworkInterfaceQuotaResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class WithdrawVpcPublishedRouteEntriesRequest : Tea.TeaModel {
+    public class RouteEntries : Tea.TeaModel {
+        public var destinationCidrBlock: String?
+
+        public var routeTableId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.destinationCidrBlock != nil {
+                map["DestinationCidrBlock"] = self.destinationCidrBlock!
+            }
+            if self.routeTableId != nil {
+                map["RouteTableId"] = self.routeTableId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DestinationCidrBlock") {
+                self.destinationCidrBlock = dict["DestinationCidrBlock"] as! String
+            }
+            if dict.keys.contains("RouteTableId") {
+                self.routeTableId = dict["RouteTableId"] as! String
+            }
+        }
+    }
+    public var dryRun: Bool?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var routeEntries: [WithdrawVpcPublishedRouteEntriesRequest.RouteEntries]?
+
+    public var targetInstanceId: String?
+
+    public var targetType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.routeEntries != nil {
+            var tmp : [Any] = []
+            for k in self.routeEntries! {
+                tmp.append(k.toMap())
+            }
+            map["RouteEntries"] = tmp
+        }
+        if self.targetInstanceId != nil {
+            map["TargetInstanceId"] = self.targetInstanceId!
+        }
+        if self.targetType != nil {
+            map["TargetType"] = self.targetType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("OwnerAccount") {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("RouteEntries") {
+            var tmp : [WithdrawVpcPublishedRouteEntriesRequest.RouteEntries] = []
+            for v in dict["RouteEntries"] as! [Any] {
+                var model = WithdrawVpcPublishedRouteEntriesRequest.RouteEntries()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.routeEntries = tmp
+        }
+        if dict.keys.contains("TargetInstanceId") {
+            self.targetInstanceId = dict["TargetInstanceId"] as! String
+        }
+        if dict.keys.contains("TargetType") {
+            self.targetType = dict["TargetType"] as! String
+        }
+    }
+}
+
+public class WithdrawVpcPublishedRouteEntriesResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class WithdrawVpcPublishedRouteEntriesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: WithdrawVpcPublishedRouteEntriesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = WithdrawVpcPublishedRouteEntriesResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
