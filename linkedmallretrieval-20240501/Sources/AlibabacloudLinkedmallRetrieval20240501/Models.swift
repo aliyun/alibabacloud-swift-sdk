@@ -340,6 +340,8 @@ public class AISearchV2Request : Tea.TeaModel {
 
     public var sessionId: String?
 
+    public var timeRange: String?
+
     public override init() {
         super.init()
     }
@@ -360,6 +362,9 @@ public class AISearchV2Request : Tea.TeaModel {
         if self.sessionId != nil {
             map["sessionId"] = self.sessionId!
         }
+        if self.timeRange != nil {
+            map["timeRange"] = self.timeRange!
+        }
         return map
     }
 
@@ -369,6 +374,9 @@ public class AISearchV2Request : Tea.TeaModel {
         }
         if dict.keys.contains("sessionId") {
             self.sessionId = dict["sessionId"] as! String
+        }
+        if dict.keys.contains("timeRange") {
+            self.timeRange = dict["timeRange"] as! String
         }
     }
 }

@@ -69,6 +69,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.sessionId)) {
             query["sessionId"] = request.sessionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.timeRange)) {
+            query["timeRange"] = request.timeRange ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
