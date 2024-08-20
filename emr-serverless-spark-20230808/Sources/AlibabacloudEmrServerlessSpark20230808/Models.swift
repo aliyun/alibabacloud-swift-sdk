@@ -880,6 +880,8 @@ public class Task : Tea.TeaModel {
 
     public var files: [String]?
 
+    public var fusion: Bool?
+
     public var gmtCreated: String?
 
     public var gmtModified: String?
@@ -981,6 +983,9 @@ public class Task : Tea.TeaModel {
         }
         if self.files != nil {
             map["files"] = self.files!
+        }
+        if self.fusion != nil {
+            map["fusion"] = self.fusion!
         }
         if self.gmtCreated != nil {
             map["gmtCreated"] = self.gmtCreated!
@@ -1100,6 +1105,9 @@ public class Task : Tea.TeaModel {
         }
         if dict.keys.contains("files") {
             self.files = dict["files"] as! [String]
+        }
+        if dict.keys.contains("fusion") {
+            self.fusion = dict["fusion"] as! Bool
         }
         if dict.keys.contains("gmtCreated") {
             self.gmtCreated = dict["gmtCreated"] as! String
@@ -1354,6 +1362,10 @@ public class TaskSnapshot : Tea.TeaModel {
 public class Template : Tea.TeaModel {
     public var creator: Int64?
 
+    public var displaySparkVersion: String?
+
+    public var fusion: Bool?
+
     public var gmtCreated: String?
 
     public var gmtModified: String?
@@ -1394,6 +1406,12 @@ public class Template : Tea.TeaModel {
         var map = super.toMap()
         if self.creator != nil {
             map["creator"] = self.creator!
+        }
+        if self.displaySparkVersion != nil {
+            map["displaySparkVersion"] = self.displaySparkVersion!
+        }
+        if self.fusion != nil {
+            map["fusion"] = self.fusion!
         }
         if self.gmtCreated != nil {
             map["gmtCreated"] = self.gmtCreated!
@@ -1441,6 +1459,12 @@ public class Template : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("creator") {
             self.creator = dict["creator"] as! Int64
+        }
+        if dict.keys.contains("displaySparkVersion") {
+            self.displaySparkVersion = dict["displaySparkVersion"] as! String
+        }
+        if dict.keys.contains("fusion") {
+            self.fusion = dict["fusion"] as! Bool
         }
         if dict.keys.contains("gmtCreated") {
             self.gmtCreated = dict["gmtCreated"] as! String
@@ -3151,9 +3175,13 @@ public class ListJobRunsResponseBody : Tea.TeaModel {
 
         public var creator: String?
 
+        public var displayReleaseVersion: String?
+
         public var endTime: Int64?
 
         public var executionTimeoutSeconds: Int32?
+
+        public var fusion: Bool?
 
         public var jobDriver: JobDriver?
 
@@ -3204,11 +3232,17 @@ public class ListJobRunsResponseBody : Tea.TeaModel {
             if self.creator != nil {
                 map["creator"] = self.creator!
             }
+            if self.displayReleaseVersion != nil {
+                map["displayReleaseVersion"] = self.displayReleaseVersion!
+            }
             if self.endTime != nil {
                 map["endTime"] = self.endTime!
             }
             if self.executionTimeoutSeconds != nil {
                 map["executionTimeoutSeconds"] = self.executionTimeoutSeconds!
+            }
+            if self.fusion != nil {
+                map["fusion"] = self.fusion!
             }
             if self.jobDriver != nil {
                 map["jobDriver"] = self.jobDriver?.toMap()
@@ -3262,11 +3296,17 @@ public class ListJobRunsResponseBody : Tea.TeaModel {
             if dict.keys.contains("creator") {
                 self.creator = dict["creator"] as! String
             }
+            if dict.keys.contains("displayReleaseVersion") {
+                self.displayReleaseVersion = dict["displayReleaseVersion"] as! String
+            }
             if dict.keys.contains("endTime") {
                 self.endTime = dict["endTime"] as! Int64
             }
             if dict.keys.contains("executionTimeoutSeconds") {
                 self.executionTimeoutSeconds = dict["executionTimeoutSeconds"] as! Int32
+            }
+            if dict.keys.contains("fusion") {
+                self.fusion = dict["fusion"] as! Bool
             }
             if dict.keys.contains("jobDriver") {
                 var model = JobDriver()
@@ -3499,6 +3539,10 @@ public class ListReleaseVersionsResponseBody : Tea.TeaModel {
 
         public var cpuArchitectures: [String]?
 
+        public var displayReleaseVersion: String?
+
+        public var fusion: Bool?
+
         public var gmtCreate: Int64?
 
         public var iaasType: String?
@@ -3531,6 +3575,12 @@ public class ListReleaseVersionsResponseBody : Tea.TeaModel {
             if self.cpuArchitectures != nil {
                 map["cpuArchitectures"] = self.cpuArchitectures!
             }
+            if self.displayReleaseVersion != nil {
+                map["displayReleaseVersion"] = self.displayReleaseVersion!
+            }
+            if self.fusion != nil {
+                map["fusion"] = self.fusion!
+            }
             if self.gmtCreate != nil {
                 map["gmtCreate"] = self.gmtCreate!
             }
@@ -3558,6 +3608,12 @@ public class ListReleaseVersionsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("cpuArchitectures") {
                 self.cpuArchitectures = dict["cpuArchitectures"] as! [String]
+            }
+            if dict.keys.contains("displayReleaseVersion") {
+                self.displayReleaseVersion = dict["displayReleaseVersion"] as! String
+            }
+            if dict.keys.contains("fusion") {
+                self.fusion = dict["fusion"] as! Bool
             }
             if dict.keys.contains("gmtCreate") {
                 self.gmtCreate = dict["gmtCreate"] as! Int64
@@ -3927,9 +3983,13 @@ public class ListSessionClustersResponseBody : Tea.TeaModel {
 
         public var autoStopConfiguration: ListSessionClustersResponseBody.SessionClusters.AutoStopConfiguration?
 
+        public var displayReleaseVersion: String?
+
         public var domain: String?
 
         public var draftId: String?
+
+        public var fusion: Bool?
 
         public var kind: String?
 
@@ -3983,11 +4043,17 @@ public class ListSessionClustersResponseBody : Tea.TeaModel {
             if self.autoStopConfiguration != nil {
                 map["autoStopConfiguration"] = self.autoStopConfiguration?.toMap()
             }
+            if self.displayReleaseVersion != nil {
+                map["displayReleaseVersion"] = self.displayReleaseVersion!
+            }
             if self.domain != nil {
                 map["domain"] = self.domain!
             }
             if self.draftId != nil {
                 map["draftId"] = self.draftId!
+            }
+            if self.fusion != nil {
+                map["fusion"] = self.fusion!
             }
             if self.kind != nil {
                 map["kind"] = self.kind!
@@ -4047,11 +4113,17 @@ public class ListSessionClustersResponseBody : Tea.TeaModel {
                 model.fromMap(dict["autoStopConfiguration"] as! [String: Any])
                 self.autoStopConfiguration = model
             }
+            if dict.keys.contains("displayReleaseVersion") {
+                self.displayReleaseVersion = dict["displayReleaseVersion"] as! String
+            }
             if dict.keys.contains("domain") {
                 self.domain = dict["domain"] as! String
             }
             if dict.keys.contains("draftId") {
                 self.draftId = dict["draftId"] as! String
+            }
+            if dict.keys.contains("fusion") {
+                self.fusion = dict["fusion"] as! Bool
             }
             if dict.keys.contains("kind") {
                 self.kind = dict["kind"] as! String
@@ -4682,6 +4754,8 @@ public class ListWorkspacesResponseBody : Tea.TeaModel {
 
         public var dlfCatalogId: String?
 
+        public var dlfType: String?
+
         public var duration: Int32?
 
         public var endTime: Int64?
@@ -4739,6 +4813,9 @@ public class ListWorkspacesResponseBody : Tea.TeaModel {
             }
             if self.dlfCatalogId != nil {
                 map["dlfCatalogId"] = self.dlfCatalogId!
+            }
+            if self.dlfType != nil {
+                map["dlfType"] = self.dlfType!
             }
             if self.duration != nil {
                 map["duration"] = self.duration!
@@ -4800,6 +4877,9 @@ public class ListWorkspacesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("dlfCatalogId") {
                 self.dlfCatalogId = dict["dlfCatalogId"] as! String
+            }
+            if dict.keys.contains("dlfType") {
+                self.dlfType = dict["dlfType"] as! String
             }
             if dict.keys.contains("duration") {
                 self.duration = dict["duration"] as! Int32
@@ -5062,7 +5142,11 @@ public class StartJobRunRequest : Tea.TeaModel {
 
     public var configurationOverrides: StartJobRunRequest.ConfigurationOverrides?
 
+    public var displayReleaseVersion: String?
+
     public var executionTimeoutSeconds: Int32?
+
+    public var fusion: Bool?
 
     public var jobDriver: JobDriver?
 
@@ -5103,8 +5187,14 @@ public class StartJobRunRequest : Tea.TeaModel {
         if self.configurationOverrides != nil {
             map["configurationOverrides"] = self.configurationOverrides?.toMap()
         }
+        if self.displayReleaseVersion != nil {
+            map["displayReleaseVersion"] = self.displayReleaseVersion!
+        }
         if self.executionTimeoutSeconds != nil {
             map["executionTimeoutSeconds"] = self.executionTimeoutSeconds!
+        }
+        if self.fusion != nil {
+            map["fusion"] = self.fusion!
         }
         if self.jobDriver != nil {
             map["jobDriver"] = self.jobDriver?.toMap()
@@ -5146,8 +5236,14 @@ public class StartJobRunRequest : Tea.TeaModel {
             model.fromMap(dict["configurationOverrides"] as! [String: Any])
             self.configurationOverrides = model
         }
+        if dict.keys.contains("displayReleaseVersion") {
+            self.displayReleaseVersion = dict["displayReleaseVersion"] as! String
+        }
         if dict.keys.contains("executionTimeoutSeconds") {
             self.executionTimeoutSeconds = dict["executionTimeoutSeconds"] as! Int32
+        }
+        if dict.keys.contains("fusion") {
+            self.fusion = dict["fusion"] as! Bool
         }
         if dict.keys.contains("jobDriver") {
             var model = JobDriver()

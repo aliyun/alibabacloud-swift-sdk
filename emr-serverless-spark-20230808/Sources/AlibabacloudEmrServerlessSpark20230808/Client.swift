@@ -522,8 +522,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.configurationOverrides)) {
             body["configurationOverrides"] = request.configurationOverrides!;
         }
+        if (!TeaUtils.Client.isUnset(request.displayReleaseVersion)) {
+            body["displayReleaseVersion"] = request.displayReleaseVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.executionTimeoutSeconds)) {
             body["executionTimeoutSeconds"] = request.executionTimeoutSeconds!;
+        }
+        if (!TeaUtils.Client.isUnset(request.fusion)) {
+            body["fusion"] = request.fusion!;
         }
         if (!TeaUtils.Client.isUnset(request.jobDriver)) {
             body["jobDriver"] = request.jobDriver!;
