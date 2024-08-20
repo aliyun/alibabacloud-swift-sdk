@@ -30253,6 +30253,8 @@ public class QuerySavingsPlansDiscountRequest : Tea.TeaModel {
 
     public var spec: String?
 
+    public var spnCommodityCode: String?
+
     public var spnType: String?
 
     public override init() {
@@ -30296,6 +30298,9 @@ public class QuerySavingsPlansDiscountRequest : Tea.TeaModel {
         if self.spec != nil {
             map["Spec"] = self.spec!
         }
+        if self.spnCommodityCode != nil {
+            map["SpnCommodityCode"] = self.spnCommodityCode!
+        }
         if self.spnType != nil {
             map["SpnType"] = self.spnType!
         }
@@ -30329,6 +30334,9 @@ public class QuerySavingsPlansDiscountRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Spec") {
             self.spec = dict["Spec"] as! String
+        }
+        if dict.keys.contains("SpnCommodityCode") {
+            self.spnCommodityCode = dict["SpnCommodityCode"] as! String
         }
         if dict.keys.contains("SpnType") {
             self.spnType = dict["SpnType"] as! String
@@ -30638,6 +30646,8 @@ public class QuerySavingsPlansInstanceRequest : Tea.TeaModel {
             }
         }
     }
+    public var commodityCode: String?
+
     public var endTime: String?
 
     public var instanceId: String?
@@ -30668,6 +30678,9 @@ public class QuerySavingsPlansInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.commodityCode != nil {
+            map["CommodityCode"] = self.commodityCode!
+        }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
@@ -30700,6 +30713,9 @@ public class QuerySavingsPlansInstanceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CommodityCode") {
+            self.commodityCode = dict["CommodityCode"] as! String
+        }
         if dict.keys.contains("EndTime") {
             self.endTime = dict["EndTime"] as! String
         }

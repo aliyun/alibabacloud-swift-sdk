@@ -3586,6 +3586,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func querySavingsPlansInstanceWithOptions(_ request: QuerySavingsPlansInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QuerySavingsPlansInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.commodityCode)) {
+            query["CommodityCode"] = request.commodityCode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
         }
