@@ -3936,6 +3936,8 @@ public class StatusTransitionItem : Tea.TeaModel {
 }
 
 public class Tensorboard : Tea.TeaModel {
+    public var accessibility: String?
+
     public var dataSourceId: String?
 
     public var displayName: String?
@@ -3993,6 +3995,9 @@ public class Tensorboard : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessibility != nil {
+            map["Accessibility"] = self.accessibility!
+        }
         if self.dataSourceId != nil {
             map["DataSourceId"] = self.dataSourceId!
         }
@@ -4064,6 +4069,9 @@ public class Tensorboard : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Accessibility") {
+            self.accessibility = dict["Accessibility"] as! String
+        }
         if dict.keys.contains("DataSourceId") {
             self.dataSourceId = dict["DataSourceId"] as! String
         }
@@ -4581,6 +4589,8 @@ public class CreateJobRequest : Tea.TeaModel {
             }
         }
     }
+    public var accessibility: String?
+
     public var codeSource: CreateJobRequest.CodeSource?
 
     public var credentialConfig: CredentialConfig?
@@ -4640,6 +4650,9 @@ public class CreateJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessibility != nil {
+            map["Accessibility"] = self.accessibility!
+        }
         if self.codeSource != nil {
             map["CodeSource"] = self.codeSource?.toMap()
         }
@@ -4712,6 +4725,9 @@ public class CreateJobRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Accessibility") {
+            self.accessibility = dict["Accessibility"] as! String
+        }
         if dict.keys.contains("CodeSource") {
             var model = CreateJobRequest.CodeSource()
             model.fromMap(dict["CodeSource"] as! [String: Any])
@@ -4889,6 +4905,8 @@ public class CreateJobResponse : Tea.TeaModel {
 }
 
 public class CreateTensorboardRequest : Tea.TeaModel {
+    public var accessibility: String?
+
     public var cpu: Int64?
 
     public var dataSourceId: String?
@@ -4942,6 +4960,9 @@ public class CreateTensorboardRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessibility != nil {
+            map["Accessibility"] = self.accessibility!
+        }
         if self.cpu != nil {
             map["Cpu"] = self.cpu!
         }
@@ -5011,6 +5032,9 @@ public class CreateTensorboardRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Accessibility") {
+            self.accessibility = dict["Accessibility"] as! String
+        }
         if dict.keys.contains("Cpu") {
             self.cpu = dict["Cpu"] as! Int64
         }
@@ -7791,6 +7815,8 @@ public class ListJobSanityCheckResultsResponse : Tea.TeaModel {
 }
 
 public class ListJobsRequest : Tea.TeaModel {
+    public var accessibility: String?
+
     public var businessUserId: String?
 
     public var caller: String?
@@ -7847,6 +7873,9 @@ public class ListJobsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessibility != nil {
+            map["Accessibility"] = self.accessibility!
+        }
         if self.businessUserId != nil {
             map["BusinessUserId"] = self.businessUserId!
         }
@@ -7914,6 +7943,9 @@ public class ListJobsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Accessibility") {
+            self.accessibility = dict["Accessibility"] as! String
+        }
         if dict.keys.contains("BusinessUserId") {
             self.businessUserId = dict["BusinessUserId"] as! String
         }
@@ -7981,6 +8013,8 @@ public class ListJobsRequest : Tea.TeaModel {
 }
 
 public class ListJobsShrinkRequest : Tea.TeaModel {
+    public var accessibility: String?
+
     public var businessUserId: String?
 
     public var caller: String?
@@ -8037,6 +8071,9 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessibility != nil {
+            map["Accessibility"] = self.accessibility!
+        }
         if self.businessUserId != nil {
             map["BusinessUserId"] = self.businessUserId!
         }
@@ -8104,6 +8141,9 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Accessibility") {
+            self.accessibility = dict["Accessibility"] as! String
+        }
         if dict.keys.contains("BusinessUserId") {
             self.businessUserId = dict["BusinessUserId"] as! String
         }
@@ -8278,6 +8318,8 @@ public class ListJobsResponse : Tea.TeaModel {
 }
 
 public class ListTensorboardsRequest : Tea.TeaModel {
+    public var accessibility: String?
+
     public var displayName: String?
 
     public var endTime: String?
@@ -8330,6 +8372,9 @@ public class ListTensorboardsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessibility != nil {
+            map["Accessibility"] = self.accessibility!
+        }
         if self.displayName != nil {
             map["DisplayName"] = self.displayName!
         }
@@ -8391,6 +8436,9 @@ public class ListTensorboardsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Accessibility") {
+            self.accessibility = dict["Accessibility"] as! String
+        }
         if dict.keys.contains("DisplayName") {
             self.displayName = dict["DisplayName"] as! String
         }

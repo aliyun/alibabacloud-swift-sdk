@@ -79,6 +79,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createJobWithOptions(_ request: CreateJobRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateJobResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessibility)) {
+            body["Accessibility"] = request.accessibility ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.codeSource)) {
             body["CodeSource"] = request.codeSource!;
         }
@@ -169,6 +172,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createTensorboardWithOptions(_ request: CreateTensorboardRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateTensorboardResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessibility)) {
+            body["Accessibility"] = request.accessibility ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.cpu)) {
             body["Cpu"] = request.cpu!;
         }
@@ -795,6 +801,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "Tags", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessibility)) {
+            query["Accessibility"] = request.accessibility ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.businessUserId)) {
             query["BusinessUserId"] = request.businessUserId ?? "";
         }
@@ -888,6 +897,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listTensorboardsWithOptions(_ request: ListTensorboardsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTensorboardsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessibility)) {
+            query["Accessibility"] = request.accessibility ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.displayName)) {
             query["DisplayName"] = request.displayName ?? "";
         }
