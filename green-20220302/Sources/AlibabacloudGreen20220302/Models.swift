@@ -569,6 +569,8 @@ public class DescribeImageModerationResultResponseBody : Tea.TeaModel {
         public class Result : Tea.TeaModel {
             public var confidence: Double?
 
+            public var description_: String?
+
             public var label: String?
 
             public override init() {
@@ -588,6 +590,9 @@ public class DescribeImageModerationResultResponseBody : Tea.TeaModel {
                 if self.confidence != nil {
                     map["Confidence"] = self.confidence!
                 }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
                 if self.label != nil {
                     map["Label"] = self.label!
                 }
@@ -597,6 +602,9 @@ public class DescribeImageModerationResultResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Confidence") {
                     self.confidence = dict["Confidence"] as! Double
+                }
+                if dict.keys.contains("Description") {
+                    self.description_ = dict["Description"] as! String
                 }
                 if dict.keys.contains("Label") {
                     self.label = dict["Label"] as! String
@@ -2828,6 +2836,8 @@ public class ImageModerationResponseBody : Tea.TeaModel {
         public class Result : Tea.TeaModel {
             public var confidence: Double?
 
+            public var description_: String?
+
             public var label: String?
 
             public override init() {
@@ -2847,6 +2857,9 @@ public class ImageModerationResponseBody : Tea.TeaModel {
                 if self.confidence != nil {
                     map["Confidence"] = self.confidence!
                 }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
                 if self.label != nil {
                     map["Label"] = self.label!
                 }
@@ -2856,6 +2869,9 @@ public class ImageModerationResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Confidence") {
                     self.confidence = dict["Confidence"] as! Double
+                }
+                if dict.keys.contains("Description") {
+                    self.description_ = dict["Description"] as! String
                 }
                 if dict.keys.contains("Label") {
                     self.label = dict["Label"] as! String
