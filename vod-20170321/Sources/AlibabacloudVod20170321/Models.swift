@@ -9826,6 +9826,308 @@ public class DescribeVodDomainLogResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeVodDomainMax95BpsDataRequest : Tea.TeaModel {
+    public var cycle: String?
+
+    public var domainName: String?
+
+    public var endTime: String?
+
+    public var ownerId: Int64?
+
+    public var startTime: String?
+
+    public var timePoint: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cycle != nil {
+            map["Cycle"] = self.cycle!
+        }
+        if self.domainName != nil {
+            map["DomainName"] = self.domainName!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.timePoint != nil {
+            map["TimePoint"] = self.timePoint!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Cycle") {
+            self.cycle = dict["Cycle"] as! String
+        }
+        if dict.keys.contains("DomainName") {
+            self.domainName = dict["DomainName"] as! String
+        }
+        if dict.keys.contains("EndTime") {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("StartTime") {
+            self.startTime = dict["StartTime"] as! String
+        }
+        if dict.keys.contains("TimePoint") {
+            self.timePoint = dict["TimePoint"] as! String
+        }
+    }
+}
+
+public class DescribeVodDomainMax95BpsDataResponseBody : Tea.TeaModel {
+    public class DetailData : Tea.TeaModel {
+        public class Max95Detail : Tea.TeaModel {
+            public var area: String?
+
+            public var max95Bps: Double?
+
+            public var max95BpsPeakTime: String?
+
+            public var timeStamp: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.area != nil {
+                    map["Area"] = self.area!
+                }
+                if self.max95Bps != nil {
+                    map["Max95Bps"] = self.max95Bps!
+                }
+                if self.max95BpsPeakTime != nil {
+                    map["Max95BpsPeakTime"] = self.max95BpsPeakTime!
+                }
+                if self.timeStamp != nil {
+                    map["TimeStamp"] = self.timeStamp!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Area") {
+                    self.area = dict["Area"] as! String
+                }
+                if dict.keys.contains("Max95Bps") {
+                    self.max95Bps = dict["Max95Bps"] as! Double
+                }
+                if dict.keys.contains("Max95BpsPeakTime") {
+                    self.max95BpsPeakTime = dict["Max95BpsPeakTime"] as! String
+                }
+                if dict.keys.contains("TimeStamp") {
+                    self.timeStamp = dict["TimeStamp"] as! String
+                }
+            }
+        }
+        public var max95Detail: [DescribeVodDomainMax95BpsDataResponseBody.DetailData.Max95Detail]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.max95Detail != nil {
+                var tmp : [Any] = []
+                for k in self.max95Detail! {
+                    tmp.append(k.toMap())
+                }
+                map["Max95Detail"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Max95Detail") {
+                var tmp : [DescribeVodDomainMax95BpsDataResponseBody.DetailData.Max95Detail] = []
+                for v in dict["Max95Detail"] as! [Any] {
+                    var model = DescribeVodDomainMax95BpsDataResponseBody.DetailData.Max95Detail()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.max95Detail = tmp
+            }
+        }
+    }
+    public var detailData: DescribeVodDomainMax95BpsDataResponseBody.DetailData?
+
+    public var domainName: String?
+
+    public var domesticMax95Bps: String?
+
+    public var endTime: String?
+
+    public var max95Bps: String?
+
+    public var overseasMax95Bps: String?
+
+    public var requestId: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.detailData?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.detailData != nil {
+            map["DetailData"] = self.detailData?.toMap()
+        }
+        if self.domainName != nil {
+            map["DomainName"] = self.domainName!
+        }
+        if self.domesticMax95Bps != nil {
+            map["DomesticMax95Bps"] = self.domesticMax95Bps!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.max95Bps != nil {
+            map["Max95Bps"] = self.max95Bps!
+        }
+        if self.overseasMax95Bps != nil {
+            map["OverseasMax95Bps"] = self.overseasMax95Bps!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DetailData") {
+            var model = DescribeVodDomainMax95BpsDataResponseBody.DetailData()
+            model.fromMap(dict["DetailData"] as! [String: Any])
+            self.detailData = model
+        }
+        if dict.keys.contains("DomainName") {
+            self.domainName = dict["DomainName"] as! String
+        }
+        if dict.keys.contains("DomesticMax95Bps") {
+            self.domesticMax95Bps = dict["DomesticMax95Bps"] as! String
+        }
+        if dict.keys.contains("EndTime") {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("Max95Bps") {
+            self.max95Bps = dict["Max95Bps"] as! String
+        }
+        if dict.keys.contains("OverseasMax95Bps") {
+            self.overseasMax95Bps = dict["OverseasMax95Bps"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("StartTime") {
+            self.startTime = dict["StartTime"] as! String
+        }
+    }
+}
+
+public class DescribeVodDomainMax95BpsDataResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeVodDomainMax95BpsDataResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeVodDomainMax95BpsDataResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeVodDomainQpsDataRequest : Tea.TeaModel {
     public var domainName: String?
 

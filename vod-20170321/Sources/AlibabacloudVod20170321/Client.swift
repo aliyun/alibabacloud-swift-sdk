@@ -2157,6 +2157,34 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeVodDomainMax95BpsDataWithOptions(_ request: DescribeVodDomainMax95BpsDataRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeVodDomainMax95BpsDataResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeVodDomainMax95BpsData",
+            "version": "2017-03-21",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeVodDomainMax95BpsDataResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeVodDomainMax95BpsData(_ request: DescribeVodDomainMax95BpsDataRequest) async throws -> DescribeVodDomainMax95BpsDataResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeVodDomainMax95BpsDataWithOptions(request as! DescribeVodDomainMax95BpsDataRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeVodDomainQpsDataWithOptions(_ request: DescribeVodDomainQpsDataRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeVodDomainQpsDataResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
