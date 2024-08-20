@@ -9681,6 +9681,8 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
 
     public var sourceDBCluster: String?
 
+    public var sourceRegionId: String?
+
     public var standbyHAMode: String?
 
     public var storageMax: Int64?
@@ -9865,6 +9867,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if self.sourceDBCluster != nil {
             map["SourceDBCluster"] = self.sourceDBCluster!
+        }
+        if self.sourceRegionId != nil {
+            map["SourceRegionId"] = self.sourceRegionId!
         }
         if self.standbyHAMode != nil {
             map["StandbyHAMode"] = self.standbyHAMode!
@@ -10061,6 +10066,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("SourceDBCluster") {
             self.sourceDBCluster = dict["SourceDBCluster"] as! String
+        }
+        if dict.keys.contains("SourceRegionId") {
+            self.sourceRegionId = dict["SourceRegionId"] as! String
         }
         if dict.keys.contains("StandbyHAMode") {
             self.standbyHAMode = dict["StandbyHAMode"] as! String
