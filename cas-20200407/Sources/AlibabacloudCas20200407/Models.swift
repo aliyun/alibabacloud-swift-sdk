@@ -3513,6 +3513,8 @@ public class GetCsrDetailRequest : Tea.TeaModel {
 public class GetCsrDetailResponseBody : Tea.TeaModel {
     public var csr: String?
 
+    public var privateKey: String?
+
     public var requestId: String?
 
     public override init() {
@@ -3532,6 +3534,9 @@ public class GetCsrDetailResponseBody : Tea.TeaModel {
         if self.csr != nil {
             map["Csr"] = self.csr!
         }
+        if self.privateKey != nil {
+            map["PrivateKey"] = self.privateKey!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -3541,6 +3546,9 @@ public class GetCsrDetailResponseBody : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Csr") {
             self.csr = dict["Csr"] as! String
+        }
+        if dict.keys.contains("PrivateKey") {
+            self.privateKey = dict["PrivateKey"] as! String
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
