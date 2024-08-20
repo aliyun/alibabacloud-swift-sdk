@@ -1495,6 +1495,234 @@ public class AddTextFeedbackResponse : Tea.TeaModel {
     }
 }
 
+public class BatchGetProjectTaskRequest : Tea.TeaModel {
+    public var taskIdList: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.taskIdList != nil {
+            map["taskIdList"] = self.taskIdList!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("taskIdList") {
+            self.taskIdList = dict["taskIdList"] as! [String]
+        }
+    }
+}
+
+public class BatchGetProjectTaskShrinkRequest : Tea.TeaModel {
+    public var taskIdListShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.taskIdListShrink != nil {
+            map["taskIdList"] = self.taskIdListShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("taskIdList") {
+            self.taskIdListShrink = dict["taskIdList"] as! String
+        }
+    }
+}
+
+public class BatchGetProjectTaskResponseBody : Tea.TeaModel {
+    public class ResultList : Tea.TeaModel {
+        public var errorMsg: String?
+
+        public var status: String?
+
+        public var taskId: String?
+
+        public var videoDownloadUrl: String?
+
+        public var videoDuration: Int32?
+
+        public var videoUrl: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.errorMsg != nil {
+                map["errorMsg"] = self.errorMsg!
+            }
+            if self.status != nil {
+                map["status"] = self.status!
+            }
+            if self.taskId != nil {
+                map["taskId"] = self.taskId!
+            }
+            if self.videoDownloadUrl != nil {
+                map["videoDownloadUrl"] = self.videoDownloadUrl!
+            }
+            if self.videoDuration != nil {
+                map["videoDuration"] = self.videoDuration!
+            }
+            if self.videoUrl != nil {
+                map["videoUrl"] = self.videoUrl!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("errorMsg") {
+                self.errorMsg = dict["errorMsg"] as! String
+            }
+            if dict.keys.contains("status") {
+                self.status = dict["status"] as! String
+            }
+            if dict.keys.contains("taskId") {
+                self.taskId = dict["taskId"] as! String
+            }
+            if dict.keys.contains("videoDownloadUrl") {
+                self.videoDownloadUrl = dict["videoDownloadUrl"] as! String
+            }
+            if dict.keys.contains("videoDuration") {
+                self.videoDuration = dict["videoDuration"] as! Int32
+            }
+            if dict.keys.contains("videoUrl") {
+                self.videoUrl = dict["videoUrl"] as! String
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var resultList: [BatchGetProjectTaskResponseBody.ResultList]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.resultList != nil {
+            var tmp : [Any] = []
+            for k in self.resultList! {
+                tmp.append(k.toMap())
+            }
+            map["resultList"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("resultList") {
+            var tmp : [BatchGetProjectTaskResponseBody.ResultList] = []
+            for v in dict["resultList"] as! [Any] {
+                var model = BatchGetProjectTaskResponseBody.ResultList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.resultList = tmp
+        }
+    }
+}
+
+public class BatchGetProjectTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BatchGetProjectTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = BatchGetProjectTaskResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CheckSessionRequest : Tea.TeaModel {
     public var projectId: String?
 
