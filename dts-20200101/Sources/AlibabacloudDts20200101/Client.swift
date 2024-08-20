@@ -1189,6 +1189,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.destinationRegion)) {
             query["DestinationRegion"] = request.destinationRegion ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.dtsRegion)) {
+            query["DtsRegion"] = request.dtsRegion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.du)) {
             query["Du"] = request.du!;
         }

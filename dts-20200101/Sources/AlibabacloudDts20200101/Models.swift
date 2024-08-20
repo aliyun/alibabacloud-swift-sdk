@@ -4669,6 +4669,8 @@ public class CreateDtsInstanceRequest : Tea.TeaModel {
 
     public var destinationRegion: String?
 
+    public var dtsRegion: String?
+
     public var du: Int32?
 
     public var feeType: String?
@@ -4732,6 +4734,9 @@ public class CreateDtsInstanceRequest : Tea.TeaModel {
         }
         if self.destinationRegion != nil {
             map["DestinationRegion"] = self.destinationRegion!
+        }
+        if self.dtsRegion != nil {
+            map["DtsRegion"] = self.dtsRegion!
         }
         if self.du != nil {
             map["Du"] = self.du!
@@ -4802,6 +4807,9 @@ public class CreateDtsInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DestinationRegion") {
             self.destinationRegion = dict["DestinationRegion"] as! String
+        }
+        if dict.keys.contains("DtsRegion") {
+            self.dtsRegion = dict["DtsRegion"] as! String
         }
         if dict.keys.contains("Du") {
             self.du = dict["Du"] as! Int32
