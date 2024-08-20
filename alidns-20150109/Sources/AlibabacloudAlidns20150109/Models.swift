@@ -29128,6 +29128,8 @@ public class DescribeInternetDnsLogsResponseBody : Tea.TeaModel {
 
             public var logTime: Int64?
 
+            public var protocol_: String?
+
             public var queryName: String?
 
             public var queryType: String?
@@ -29167,6 +29169,9 @@ public class DescribeInternetDnsLogsResponseBody : Tea.TeaModel {
                 if self.logTime != nil {
                     map["LogTime"] = self.logTime!
                 }
+                if self.protocol_ != nil {
+                    map["Protocol"] = self.protocol_!
+                }
                 if self.queryName != nil {
                     map["QueryName"] = self.queryName!
                 }
@@ -29203,6 +29208,9 @@ public class DescribeInternetDnsLogsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("LogTime") {
                     self.logTime = dict["LogTime"] as! Int64
+                }
+                if dict.keys.contains("Protocol") {
+                    self.protocol_ = dict["Protocol"] as! String
                 }
                 if dict.keys.contains("QueryName") {
                     self.queryName = dict["QueryName"] as! String
