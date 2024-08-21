@@ -2889,6 +2889,52 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeVodSSLCertificateListWithOptions(_ request: DescribeVodSSLCertificateListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeVodSSLCertificateListResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.domainName)) {
+            query["DomainName"] = request.domainName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.searchKeyword)) {
+            query["SearchKeyword"] = request.searchKeyword ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.securityToken)) {
+            query["SecurityToken"] = request.securityToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeVodSSLCertificateList",
+            "version": "2017-03-21",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeVodSSLCertificateListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeVodSSLCertificateList(_ request: DescribeVodSSLCertificateListRequest) async throws -> DescribeVodSSLCertificateListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeVodSSLCertificateListWithOptions(request as! DescribeVodSSLCertificateListRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeVodStorageDataWithOptions(_ request: DescribeVodStorageDataRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeVodStorageDataResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -5834,6 +5880,67 @@ open class Client : AlibabacloudOpenApi.Client {
     public func setVodDomainCertificate(_ request: SetVodDomainCertificateRequest) async throws -> SetVodDomainCertificateResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await setVodDomainCertificateWithOptions(request as! SetVodDomainCertificateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setVodDomainSSLCertificateWithOptions(_ request: SetVodDomainSSLCertificateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetVodDomainSSLCertificateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.certId)) {
+            query["CertId"] = request.certId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.certName)) {
+            query["CertName"] = request.certName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certRegion)) {
+            query["CertRegion"] = request.certRegion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certType)) {
+            query["CertType"] = request.certType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domainName)) {
+            query["DomainName"] = request.domainName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.env)) {
+            query["Env"] = request.env ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.SSLPri)) {
+            query["SSLPri"] = request.SSLPri ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.SSLProtocol)) {
+            query["SSLProtocol"] = request.SSLProtocol ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.SSLPub)) {
+            query["SSLPub"] = request.SSLPub ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.securityToken)) {
+            query["SecurityToken"] = request.securityToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SetVodDomainSSLCertificate",
+            "version": "2017-03-21",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SetVodDomainSSLCertificateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setVodDomainSSLCertificate(_ request: SetVodDomainSSLCertificateRequest) async throws -> SetVodDomainSSLCertificateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await setVodDomainSSLCertificateWithOptions(request as! SetVodDomainSSLCertificateRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

@@ -8247,15 +8247,27 @@ public class DescribeVodDomainCertificateInfoResponseBody : Tea.TeaModel {
 
             public var certExpireTime: String?
 
+            public var certId: String?
+
             public var certLife: String?
 
             public var certName: String?
 
             public var certOrg: String?
 
+            public var certRegion: String?
+
+            public var certStartTime: String?
+
             public var certType: String?
 
+            public var certUpdateTime: String?
+
+            public var domainCnameStatus: String?
+
             public var domainName: String?
+
+            public var serverCertificate: String?
 
             public var serverCertificateStatus: String?
 
@@ -8281,6 +8293,9 @@ public class DescribeVodDomainCertificateInfoResponseBody : Tea.TeaModel {
                 if self.certExpireTime != nil {
                     map["CertExpireTime"] = self.certExpireTime!
                 }
+                if self.certId != nil {
+                    map["CertId"] = self.certId!
+                }
                 if self.certLife != nil {
                     map["CertLife"] = self.certLife!
                 }
@@ -8290,11 +8305,26 @@ public class DescribeVodDomainCertificateInfoResponseBody : Tea.TeaModel {
                 if self.certOrg != nil {
                     map["CertOrg"] = self.certOrg!
                 }
+                if self.certRegion != nil {
+                    map["CertRegion"] = self.certRegion!
+                }
+                if self.certStartTime != nil {
+                    map["CertStartTime"] = self.certStartTime!
+                }
                 if self.certType != nil {
                     map["CertType"] = self.certType!
                 }
+                if self.certUpdateTime != nil {
+                    map["CertUpdateTime"] = self.certUpdateTime!
+                }
+                if self.domainCnameStatus != nil {
+                    map["DomainCnameStatus"] = self.domainCnameStatus!
+                }
                 if self.domainName != nil {
                     map["DomainName"] = self.domainName!
+                }
+                if self.serverCertificate != nil {
+                    map["ServerCertificate"] = self.serverCertificate!
                 }
                 if self.serverCertificateStatus != nil {
                     map["ServerCertificateStatus"] = self.serverCertificateStatus!
@@ -8312,6 +8342,9 @@ public class DescribeVodDomainCertificateInfoResponseBody : Tea.TeaModel {
                 if dict.keys.contains("CertExpireTime") {
                     self.certExpireTime = dict["CertExpireTime"] as! String
                 }
+                if dict.keys.contains("CertId") {
+                    self.certId = dict["CertId"] as! String
+                }
                 if dict.keys.contains("CertLife") {
                     self.certLife = dict["CertLife"] as! String
                 }
@@ -8321,11 +8354,26 @@ public class DescribeVodDomainCertificateInfoResponseBody : Tea.TeaModel {
                 if dict.keys.contains("CertOrg") {
                     self.certOrg = dict["CertOrg"] as! String
                 }
+                if dict.keys.contains("CertRegion") {
+                    self.certRegion = dict["CertRegion"] as! String
+                }
+                if dict.keys.contains("CertStartTime") {
+                    self.certStartTime = dict["CertStartTime"] as! String
+                }
                 if dict.keys.contains("CertType") {
                     self.certType = dict["CertType"] as! String
                 }
+                if dict.keys.contains("CertUpdateTime") {
+                    self.certUpdateTime = dict["CertUpdateTime"] as! String
+                }
+                if dict.keys.contains("DomainCnameStatus") {
+                    self.domainCnameStatus = dict["DomainCnameStatus"] as! String
+                }
                 if dict.keys.contains("DomainName") {
                     self.domainName = dict["DomainName"] as! String
+                }
+                if dict.keys.contains("ServerCertificate") {
+                    self.serverCertificate = dict["ServerCertificate"] as! String
                 }
                 if dict.keys.contains("ServerCertificateStatus") {
                     self.serverCertificateStatus = dict["ServerCertificateStatus"] as! String
@@ -14638,6 +14686,340 @@ public class DescribeVodRefreshTasksResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DescribeVodRefreshTasksResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeVodSSLCertificateListRequest : Tea.TeaModel {
+    public var domainName: String?
+
+    public var ownerId: Int64?
+
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
+    public var searchKeyword: String?
+
+    public var securityToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.domainName != nil {
+            map["DomainName"] = self.domainName!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.searchKeyword != nil {
+            map["SearchKeyword"] = self.searchKeyword!
+        }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DomainName") {
+            self.domainName = dict["DomainName"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int64
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int64
+        }
+        if dict.keys.contains("SearchKeyword") {
+            self.searchKeyword = dict["SearchKeyword"] as! String
+        }
+        if dict.keys.contains("SecurityToken") {
+            self.securityToken = dict["SecurityToken"] as! String
+        }
+    }
+}
+
+public class DescribeVodSSLCertificateListResponseBody : Tea.TeaModel {
+    public class CertificateListModel : Tea.TeaModel {
+        public class CertList : Tea.TeaModel {
+            public class Cert : Tea.TeaModel {
+                public var certId: Int64?
+
+                public var certName: String?
+
+                public var certRegion: String?
+
+                public var common: String?
+
+                public var fingerprint: String?
+
+                public var issuer: String?
+
+                public var lastTime: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.certId != nil {
+                        map["CertId"] = self.certId!
+                    }
+                    if self.certName != nil {
+                        map["CertName"] = self.certName!
+                    }
+                    if self.certRegion != nil {
+                        map["CertRegion"] = self.certRegion!
+                    }
+                    if self.common != nil {
+                        map["Common"] = self.common!
+                    }
+                    if self.fingerprint != nil {
+                        map["Fingerprint"] = self.fingerprint!
+                    }
+                    if self.issuer != nil {
+                        map["Issuer"] = self.issuer!
+                    }
+                    if self.lastTime != nil {
+                        map["LastTime"] = self.lastTime!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("CertId") {
+                        self.certId = dict["CertId"] as! Int64
+                    }
+                    if dict.keys.contains("CertName") {
+                        self.certName = dict["CertName"] as! String
+                    }
+                    if dict.keys.contains("CertRegion") {
+                        self.certRegion = dict["CertRegion"] as! String
+                    }
+                    if dict.keys.contains("Common") {
+                        self.common = dict["Common"] as! String
+                    }
+                    if dict.keys.contains("Fingerprint") {
+                        self.fingerprint = dict["Fingerprint"] as! String
+                    }
+                    if dict.keys.contains("Issuer") {
+                        self.issuer = dict["Issuer"] as! String
+                    }
+                    if dict.keys.contains("LastTime") {
+                        self.lastTime = dict["LastTime"] as! Int64
+                    }
+                }
+            }
+            public var cert: [DescribeVodSSLCertificateListResponseBody.CertificateListModel.CertList.Cert]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cert != nil {
+                    var tmp : [Any] = []
+                    for k in self.cert! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Cert"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Cert") {
+                    var tmp : [DescribeVodSSLCertificateListResponseBody.CertificateListModel.CertList.Cert] = []
+                    for v in dict["Cert"] as! [Any] {
+                        var model = DescribeVodSSLCertificateListResponseBody.CertificateListModel.CertList.Cert()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.cert = tmp
+                }
+            }
+        }
+        public var certList: DescribeVodSSLCertificateListResponseBody.CertificateListModel.CertList?
+
+        public var count: Int32?
+
+        public var pageNumber: Int64?
+
+        public var pageSize: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.certList?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.certList != nil {
+                map["CertList"] = self.certList?.toMap()
+            }
+            if self.count != nil {
+                map["Count"] = self.count!
+            }
+            if self.pageNumber != nil {
+                map["PageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CertList") {
+                var model = DescribeVodSSLCertificateListResponseBody.CertificateListModel.CertList()
+                model.fromMap(dict["CertList"] as! [String: Any])
+                self.certList = model
+            }
+            if dict.keys.contains("Count") {
+                self.count = dict["Count"] as! Int32
+            }
+            if dict.keys.contains("PageNumber") {
+                self.pageNumber = dict["PageNumber"] as! Int64
+            }
+            if dict.keys.contains("PageSize") {
+                self.pageSize = dict["PageSize"] as! Int64
+            }
+        }
+    }
+    public var certificateListModel: DescribeVodSSLCertificateListResponseBody.CertificateListModel?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.certificateListModel?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.certificateListModel != nil {
+            map["CertificateListModel"] = self.certificateListModel?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CertificateListModel") {
+            var model = DescribeVodSSLCertificateListResponseBody.CertificateListModel()
+            model.fromMap(dict["CertificateListModel"] as! [String: Any])
+            self.certificateListModel = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeVodSSLCertificateListResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeVodSSLCertificateListResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeVodSSLCertificateListResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -37764,6 +38146,195 @@ public class SetVodDomainCertificateResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = SetVodDomainCertificateResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class SetVodDomainSSLCertificateRequest : Tea.TeaModel {
+    public var certId: Int64?
+
+    public var certName: String?
+
+    public var certRegion: String?
+
+    public var certType: String?
+
+    public var domainName: String?
+
+    public var env: String?
+
+    public var ownerId: Int64?
+
+    public var SSLPri: String?
+
+    public var SSLProtocol: String?
+
+    public var SSLPub: String?
+
+    public var securityToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.certId != nil {
+            map["CertId"] = self.certId!
+        }
+        if self.certName != nil {
+            map["CertName"] = self.certName!
+        }
+        if self.certRegion != nil {
+            map["CertRegion"] = self.certRegion!
+        }
+        if self.certType != nil {
+            map["CertType"] = self.certType!
+        }
+        if self.domainName != nil {
+            map["DomainName"] = self.domainName!
+        }
+        if self.env != nil {
+            map["Env"] = self.env!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.SSLPri != nil {
+            map["SSLPri"] = self.SSLPri!
+        }
+        if self.SSLProtocol != nil {
+            map["SSLProtocol"] = self.SSLProtocol!
+        }
+        if self.SSLPub != nil {
+            map["SSLPub"] = self.SSLPub!
+        }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CertId") {
+            self.certId = dict["CertId"] as! Int64
+        }
+        if dict.keys.contains("CertName") {
+            self.certName = dict["CertName"] as! String
+        }
+        if dict.keys.contains("CertRegion") {
+            self.certRegion = dict["CertRegion"] as! String
+        }
+        if dict.keys.contains("CertType") {
+            self.certType = dict["CertType"] as! String
+        }
+        if dict.keys.contains("DomainName") {
+            self.domainName = dict["DomainName"] as! String
+        }
+        if dict.keys.contains("Env") {
+            self.env = dict["Env"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("SSLPri") {
+            self.SSLPri = dict["SSLPri"] as! String
+        }
+        if dict.keys.contains("SSLProtocol") {
+            self.SSLProtocol = dict["SSLProtocol"] as! String
+        }
+        if dict.keys.contains("SSLPub") {
+            self.SSLPub = dict["SSLPub"] as! String
+        }
+        if dict.keys.contains("SecurityToken") {
+            self.securityToken = dict["SecurityToken"] as! String
+        }
+    }
+}
+
+public class SetVodDomainSSLCertificateResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class SetVodDomainSSLCertificateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SetVodDomainSSLCertificateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = SetVodDomainSSLCertificateResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
