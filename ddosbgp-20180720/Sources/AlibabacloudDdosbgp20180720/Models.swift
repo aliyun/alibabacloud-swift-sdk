@@ -3151,6 +3151,8 @@ public class DescribeDdosOriginInstanceBillResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var assetStatus: Int32?
+
     public var debtStatus: Int64?
 
     public var flowList: [DescribeDdosOriginInstanceBillResponseBody.FlowList]?
@@ -3195,6 +3197,9 @@ public class DescribeDdosOriginInstanceBillResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.assetStatus != nil {
+            map["AssetStatus"] = self.assetStatus!
+        }
         if self.debtStatus != nil {
             map["DebtStatus"] = self.debtStatus!
         }
@@ -3256,6 +3261,9 @@ public class DescribeDdosOriginInstanceBillResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AssetStatus") {
+            self.assetStatus = dict["AssetStatus"] as! Int32
+        }
         if dict.keys.contains("DebtStatus") {
             self.debtStatus = dict["DebtStatus"] as! Int64
         }
