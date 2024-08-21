@@ -24342,7 +24342,11 @@ public class DescribeDcdnKvAccountResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var capacity: Int64?
+
     public var capacityString: String?
+
+    public var capacityUsed: Int64?
 
     public var capacityUsedString: String?
 
@@ -24370,8 +24374,14 @@ public class DescribeDcdnKvAccountResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.capacity != nil {
+            map["Capacity"] = self.capacity!
+        }
         if self.capacityString != nil {
             map["CapacityString"] = self.capacityString!
+        }
+        if self.capacityUsed != nil {
+            map["CapacityUsed"] = self.capacityUsed!
         }
         if self.capacityUsedString != nil {
             map["CapacityUsedString"] = self.capacityUsedString!
@@ -24399,8 +24409,14 @@ public class DescribeDcdnKvAccountResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Capacity") {
+            self.capacity = dict["Capacity"] as! Int64
+        }
         if dict.keys.contains("CapacityString") {
             self.capacityString = dict["CapacityString"] as! String
+        }
+        if dict.keys.contains("CapacityUsed") {
+            self.capacityUsed = dict["CapacityUsed"] as! Int64
         }
         if dict.keys.contains("CapacityUsedString") {
             self.capacityUsedString = dict["CapacityUsedString"] as! String
