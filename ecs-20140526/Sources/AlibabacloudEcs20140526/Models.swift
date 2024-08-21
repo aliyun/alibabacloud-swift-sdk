@@ -105198,6 +105198,8 @@ public class PurchaseReservedInstancesOfferingRequest : Tea.TeaModel {
 
     public var scope: String?
 
+    public var startTime: String?
+
     public var tag: [PurchaseReservedInstancesOfferingRequest.Tag]?
 
     public var zoneId: String?
@@ -105270,6 +105272,9 @@ public class PurchaseReservedInstancesOfferingRequest : Tea.TeaModel {
         if self.scope != nil {
             map["Scope"] = self.scope!
         }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -105337,6 +105342,9 @@ public class PurchaseReservedInstancesOfferingRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Scope") {
             self.scope = dict["Scope"] as! String
+        }
+        if dict.keys.contains("StartTime") {
+            self.startTime = dict["StartTime"] as! String
         }
         if dict.keys.contains("Tag") {
             var tmp : [PurchaseReservedInstancesOfferingRequest.Tag] = []
