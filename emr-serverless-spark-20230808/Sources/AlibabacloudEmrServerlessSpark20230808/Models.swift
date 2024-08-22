@@ -2096,9 +2096,13 @@ public class GetJobRunResponseBody : Tea.TeaModel {
 
         public var configurationOverrides: GetJobRunResponseBody.JobRun.ConfigurationOverrides?
 
+        public var displayReleaseVersion: String?
+
         public var endTime: Int64?
 
         public var executionTimeoutSeconds: Int32?
+
+        public var fusion: Bool?
 
         public var jobDriver: JobDriver?
 
@@ -2150,11 +2154,17 @@ public class GetJobRunResponseBody : Tea.TeaModel {
             if self.configurationOverrides != nil {
                 map["configurationOverrides"] = self.configurationOverrides?.toMap()
             }
+            if self.displayReleaseVersion != nil {
+                map["displayReleaseVersion"] = self.displayReleaseVersion!
+            }
             if self.endTime != nil {
                 map["endTime"] = self.endTime!
             }
             if self.executionTimeoutSeconds != nil {
                 map["executionTimeoutSeconds"] = self.executionTimeoutSeconds!
+            }
+            if self.fusion != nil {
+                map["fusion"] = self.fusion!
             }
             if self.jobDriver != nil {
                 map["jobDriver"] = self.jobDriver?.toMap()
@@ -2211,11 +2221,17 @@ public class GetJobRunResponseBody : Tea.TeaModel {
                 model.fromMap(dict["configurationOverrides"] as! [String: Any])
                 self.configurationOverrides = model
             }
+            if dict.keys.contains("displayReleaseVersion") {
+                self.displayReleaseVersion = dict["displayReleaseVersion"] as! String
+            }
             if dict.keys.contains("endTime") {
                 self.endTime = dict["endTime"] as! Int64
             }
             if dict.keys.contains("executionTimeoutSeconds") {
                 self.executionTimeoutSeconds = dict["executionTimeoutSeconds"] as! Int32
+            }
+            if dict.keys.contains("fusion") {
+                self.fusion = dict["fusion"] as! Bool
             }
             if dict.keys.contains("jobDriver") {
                 var model = JobDriver()
