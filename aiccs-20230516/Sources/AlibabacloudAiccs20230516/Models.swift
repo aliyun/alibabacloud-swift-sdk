@@ -367,6 +367,10 @@ public class AddTaskRequest : Tea.TeaModel {
 
     public var callbackUrl: String?
 
+    public var flashSmsTemplateId: Int64?
+
+    public var flashSmsType: Int64?
+
     public var maxConcurrency: Int64?
 
     public var name: String?
@@ -426,6 +430,12 @@ public class AddTaskRequest : Tea.TeaModel {
         }
         if self.callbackUrl != nil {
             map["CallbackUrl"] = self.callbackUrl!
+        }
+        if self.flashSmsTemplateId != nil {
+            map["FlashSmsTemplateId"] = self.flashSmsTemplateId!
+        }
+        if self.flashSmsType != nil {
+            map["FlashSmsType"] = self.flashSmsType!
         }
         if self.maxConcurrency != nil {
             map["MaxConcurrency"] = self.maxConcurrency!
@@ -503,6 +513,12 @@ public class AddTaskRequest : Tea.TeaModel {
         if dict.keys.contains("CallbackUrl") {
             self.callbackUrl = dict["CallbackUrl"] as! String
         }
+        if dict.keys.contains("FlashSmsTemplateId") {
+            self.flashSmsTemplateId = dict["FlashSmsTemplateId"] as! Int64
+        }
+        if dict.keys.contains("FlashSmsType") {
+            self.flashSmsType = dict["FlashSmsType"] as! Int64
+        }
         if dict.keys.contains("MaxConcurrency") {
             self.maxConcurrency = dict["MaxConcurrency"] as! Int64
         }
@@ -573,6 +589,10 @@ public class AddTaskShrinkRequest : Tea.TeaModel {
 
     public var callbackUrl: String?
 
+    public var flashSmsTemplateId: Int64?
+
+    public var flashSmsType: Int64?
+
     public var maxConcurrency: Int64?
 
     public var name: String?
@@ -628,6 +648,12 @@ public class AddTaskShrinkRequest : Tea.TeaModel {
         }
         if self.callbackUrl != nil {
             map["CallbackUrl"] = self.callbackUrl!
+        }
+        if self.flashSmsTemplateId != nil {
+            map["FlashSmsTemplateId"] = self.flashSmsTemplateId!
+        }
+        if self.flashSmsType != nil {
+            map["FlashSmsType"] = self.flashSmsType!
         }
         if self.maxConcurrency != nil {
             map["MaxConcurrency"] = self.maxConcurrency!
@@ -692,6 +718,12 @@ public class AddTaskShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("CallbackUrl") {
             self.callbackUrl = dict["CallbackUrl"] as! String
+        }
+        if dict.keys.contains("FlashSmsTemplateId") {
+            self.flashSmsTemplateId = dict["FlashSmsTemplateId"] as! Int64
+        }
+        if dict.keys.contains("FlashSmsType") {
+            self.flashSmsType = dict["FlashSmsType"] as! Int64
         }
         if dict.keys.contains("MaxConcurrency") {
             self.maxConcurrency = dict["MaxConcurrency"] as! Int64
@@ -780,6 +812,8 @@ public class AddTaskResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int64?
 
     public var message: String?
@@ -807,6 +841,9 @@ public class AddTaskResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -829,6 +866,9 @@ public class AddTaskResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int64
         }
@@ -2158,6 +2198,10 @@ public class EditTaskRequest : Tea.TeaModel {
 
     public var callbackUrl: String?
 
+    public var flashSmsTemplateId: Int64?
+
+    public var flashSmsType: Int64?
+
     public var maxConcurrency: Int64?
 
     public var name: String?
@@ -2217,6 +2261,12 @@ public class EditTaskRequest : Tea.TeaModel {
         }
         if self.callbackUrl != nil {
             map["CallbackUrl"] = self.callbackUrl!
+        }
+        if self.flashSmsTemplateId != nil {
+            map["FlashSmsTemplateId"] = self.flashSmsTemplateId!
+        }
+        if self.flashSmsType != nil {
+            map["FlashSmsType"] = self.flashSmsType!
         }
         if self.maxConcurrency != nil {
             map["MaxConcurrency"] = self.maxConcurrency!
@@ -2294,6 +2344,12 @@ public class EditTaskRequest : Tea.TeaModel {
         if dict.keys.contains("CallbackUrl") {
             self.callbackUrl = dict["CallbackUrl"] as! String
         }
+        if dict.keys.contains("FlashSmsTemplateId") {
+            self.flashSmsTemplateId = dict["FlashSmsTemplateId"] as! Int64
+        }
+        if dict.keys.contains("FlashSmsType") {
+            self.flashSmsType = dict["FlashSmsType"] as! Int64
+        }
         if dict.keys.contains("MaxConcurrency") {
             self.maxConcurrency = dict["MaxConcurrency"] as! Int64
         }
@@ -2364,6 +2420,10 @@ public class EditTaskShrinkRequest : Tea.TeaModel {
 
     public var callbackUrl: String?
 
+    public var flashSmsTemplateId: Int64?
+
+    public var flashSmsType: Int64?
+
     public var maxConcurrency: Int64?
 
     public var name: String?
@@ -2419,6 +2479,12 @@ public class EditTaskShrinkRequest : Tea.TeaModel {
         }
         if self.callbackUrl != nil {
             map["CallbackUrl"] = self.callbackUrl!
+        }
+        if self.flashSmsTemplateId != nil {
+            map["FlashSmsTemplateId"] = self.flashSmsTemplateId!
+        }
+        if self.flashSmsType != nil {
+            map["FlashSmsType"] = self.flashSmsType!
         }
         if self.maxConcurrency != nil {
             map["MaxConcurrency"] = self.maxConcurrency!
@@ -2483,6 +2549,12 @@ public class EditTaskShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("CallbackUrl") {
             self.callbackUrl = dict["CallbackUrl"] as! String
+        }
+        if dict.keys.contains("FlashSmsTemplateId") {
+            self.flashSmsTemplateId = dict["FlashSmsTemplateId"] as! Int64
+        }
+        if dict.keys.contains("FlashSmsType") {
+            self.flashSmsType = dict["FlashSmsType"] as! Int64
         }
         if dict.keys.contains("MaxConcurrency") {
             self.maxConcurrency = dict["MaxConcurrency"] as! Int64
@@ -2571,6 +2643,8 @@ public class EditTaskResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int64?
 
     public var message: String?
@@ -2598,6 +2672,9 @@ public class EditTaskResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -2620,6 +2697,9 @@ public class EditTaskResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int64
         }
@@ -5760,6 +5840,12 @@ public class TaskListResponseBody : Tea.TeaModel {
 
         public var createTime: String?
 
+        public var flashSmsTemplateId: Int64?
+
+        public var flashSmsTemplateName: String?
+
+        public var flashSmsType: Int64?
+
         public var importTime: String?
 
         public var intentTags: [TaskListResponseBody.Model.IntentTags]?
@@ -5820,6 +5906,15 @@ public class TaskListResponseBody : Tea.TeaModel {
             }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
+            }
+            if self.flashSmsTemplateId != nil {
+                map["FlashSmsTemplateId"] = self.flashSmsTemplateId!
+            }
+            if self.flashSmsTemplateName != nil {
+                map["FlashSmsTemplateName"] = self.flashSmsTemplateName!
+            }
+            if self.flashSmsType != nil {
+                map["FlashSmsType"] = self.flashSmsType!
             }
             if self.importTime != nil {
                 map["ImportTime"] = self.importTime!
@@ -5891,6 +5986,15 @@ public class TaskListResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("CreateTime") {
                 self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("FlashSmsTemplateId") {
+                self.flashSmsTemplateId = dict["FlashSmsTemplateId"] as! Int64
+            }
+            if dict.keys.contains("FlashSmsTemplateName") {
+                self.flashSmsTemplateName = dict["FlashSmsTemplateName"] as! String
+            }
+            if dict.keys.contains("FlashSmsType") {
+                self.flashSmsType = dict["FlashSmsType"] as! Int64
             }
             if dict.keys.contains("ImportTime") {
                 self.importTime = dict["ImportTime"] as! String

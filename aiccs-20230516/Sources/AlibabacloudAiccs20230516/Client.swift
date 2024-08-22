@@ -98,6 +98,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.callbackUrl)) {
             query["CallbackUrl"] = request.callbackUrl ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.flashSmsTemplateId)) {
+            query["FlashSmsTemplateId"] = request.flashSmsTemplateId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.flashSmsType)) {
+            query["FlashSmsType"] = request.flashSmsType!;
+        }
         if (!TeaUtils.Client.isUnset(request.maxConcurrency)) {
             query["MaxConcurrency"] = request.maxConcurrency!;
         }
@@ -385,6 +391,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.callbackUrl)) {
             query["CallbackUrl"] = request.callbackUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.flashSmsTemplateId)) {
+            query["FlashSmsTemplateId"] = request.flashSmsTemplateId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.flashSmsType)) {
+            query["FlashSmsType"] = request.flashSmsType!;
         }
         if (!TeaUtils.Client.isUnset(request.maxConcurrency)) {
             query["MaxConcurrency"] = request.maxConcurrency!;
