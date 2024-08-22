@@ -5051,7 +5051,7 @@ public class GetMetricsRequest : Tea.TeaModel {
 public class GetMetricsResponseBody : Tea.TeaModel {
     public var code: String?
 
-    public var dataPoints: String?
+    public var datapoints: String?
 
     public var message: String?
 
@@ -5080,8 +5080,8 @@ public class GetMetricsResponseBody : Tea.TeaModel {
         if self.code != nil {
             map["Code"] = self.code!
         }
-        if self.dataPoints != nil {
-            map["DataPoints"] = self.dataPoints!
+        if self.datapoints != nil {
+            map["Datapoints"] = self.datapoints!
         }
         if self.message != nil {
             map["Message"] = self.message!
@@ -5105,8 +5105,8 @@ public class GetMetricsResponseBody : Tea.TeaModel {
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! String
         }
-        if dict.keys.contains("DataPoints") {
-            self.dataPoints = dict["DataPoints"] as! String
+        if dict.keys.contains("Datapoints") {
+            self.datapoints = dict["Datapoints"] as! String
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
