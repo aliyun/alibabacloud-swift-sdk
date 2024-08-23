@@ -83120,6 +83120,8 @@ public class UpgradeDBInstanceMajorVersionRequest : Tea.TeaModel {
 
     public var targetMajorVersion: String?
 
+    public var upgradeMode: String?
+
     public var usedTime: String?
 
     public var VPCId: String?
@@ -83188,6 +83190,9 @@ public class UpgradeDBInstanceMajorVersionRequest : Tea.TeaModel {
         if self.targetMajorVersion != nil {
             map["TargetMajorVersion"] = self.targetMajorVersion!
         }
+        if self.upgradeMode != nil {
+            map["UpgradeMode"] = self.upgradeMode!
+        }
         if self.usedTime != nil {
             map["UsedTime"] = self.usedTime!
         }
@@ -83251,6 +83256,9 @@ public class UpgradeDBInstanceMajorVersionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TargetMajorVersion") {
             self.targetMajorVersion = dict["TargetMajorVersion"] as! String
+        }
+        if dict.keys.contains("UpgradeMode") {
+            self.upgradeMode = dict["UpgradeMode"] as! String
         }
         if dict.keys.contains("UsedTime") {
             self.usedTime = dict["UsedTime"] as! String
