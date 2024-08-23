@@ -1165,6 +1165,8 @@ public class CheckHadoopDataSourceResponse : Tea.TeaModel {
 public class CheckHadoopNetConnectionRequest : Tea.TeaModel {
     public var DBInstanceId: String?
 
+    public var dataSourceId: String?
+
     public var emrInstanceId: String?
 
     public var regionId: String?
@@ -1186,6 +1188,9 @@ public class CheckHadoopNetConnectionRequest : Tea.TeaModel {
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
+        if self.dataSourceId != nil {
+            map["DataSourceId"] = self.dataSourceId!
+        }
         if self.emrInstanceId != nil {
             map["EmrInstanceId"] = self.emrInstanceId!
         }
@@ -1198,6 +1203,9 @@ public class CheckHadoopNetConnectionRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DBInstanceId") {
             self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("DataSourceId") {
+            self.dataSourceId = dict["DataSourceId"] as! String
         }
         if dict.keys.contains("EmrInstanceId") {
             self.emrInstanceId = dict["EmrInstanceId"] as! String
@@ -1306,6 +1314,8 @@ public class CheckHadoopNetConnectionResponse : Tea.TeaModel {
 public class CheckJDBCSourceNetConnectionRequest : Tea.TeaModel {
     public var DBInstanceId: String?
 
+    public var dataSourceId: String?
+
     public var jdbcConnectionString: String?
 
     public var regionId: String?
@@ -1327,6 +1337,9 @@ public class CheckJDBCSourceNetConnectionRequest : Tea.TeaModel {
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
+        if self.dataSourceId != nil {
+            map["DataSourceId"] = self.dataSourceId!
+        }
         if self.jdbcConnectionString != nil {
             map["JdbcConnectionString"] = self.jdbcConnectionString!
         }
@@ -1339,6 +1352,9 @@ public class CheckJDBCSourceNetConnectionRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DBInstanceId") {
             self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("DataSourceId") {
+            self.dataSourceId = dict["DataSourceId"] as! String
         }
         if dict.keys.contains("JdbcConnectionString") {
             self.jdbcConnectionString = dict["JdbcConnectionString"] as! String
@@ -1576,6 +1592,8 @@ public class CreateAccountRequest : Tea.TeaModel {
 
     public var accountPassword: String?
 
+    public var accountType: String?
+
     public var DBInstanceId: String?
 
     public var databaseName: String?
@@ -1607,6 +1625,9 @@ public class CreateAccountRequest : Tea.TeaModel {
         if self.accountPassword != nil {
             map["AccountPassword"] = self.accountPassword!
         }
+        if self.accountType != nil {
+            map["AccountType"] = self.accountType!
+        }
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
@@ -1631,6 +1652,9 @@ public class CreateAccountRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AccountPassword") {
             self.accountPassword = dict["AccountPassword"] as! String
+        }
+        if dict.keys.contains("AccountType") {
+            self.accountType = dict["AccountType"] as! String
         }
         if dict.keys.contains("DBInstanceId") {
             self.DBInstanceId = dict["DBInstanceId"] as! String
@@ -7906,6 +7930,8 @@ public class DeleteVectorIndexResponse : Tea.TeaModel {
 public class DescribeAccountsRequest : Tea.TeaModel {
     public var accountName: String?
 
+    public var accountType: String?
+
     public var DBInstanceId: String?
 
     public override init() {
@@ -7925,6 +7951,9 @@ public class DescribeAccountsRequest : Tea.TeaModel {
         if self.accountName != nil {
             map["AccountName"] = self.accountName!
         }
+        if self.accountType != nil {
+            map["AccountType"] = self.accountType!
+        }
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
@@ -7934,6 +7963,9 @@ public class DescribeAccountsRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AccountName") {
             self.accountName = dict["AccountName"] as! String
+        }
+        if dict.keys.contains("AccountType") {
+            self.accountType = dict["AccountType"] as! String
         }
         if dict.keys.contains("DBInstanceId") {
             self.DBInstanceId = dict["DBInstanceId"] as! String
@@ -7949,6 +7981,8 @@ public class DescribeAccountsResponseBody : Tea.TeaModel {
             public var accountName: String?
 
             public var accountStatus: String?
+
+            public var accountType: String?
 
             public var DBInstanceId: String?
 
@@ -7975,6 +8009,9 @@ public class DescribeAccountsResponseBody : Tea.TeaModel {
                 if self.accountStatus != nil {
                     map["AccountStatus"] = self.accountStatus!
                 }
+                if self.accountType != nil {
+                    map["AccountType"] = self.accountType!
+                }
                 if self.DBInstanceId != nil {
                     map["DBInstanceId"] = self.DBInstanceId!
                 }
@@ -7990,6 +8027,9 @@ public class DescribeAccountsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("AccountStatus") {
                     self.accountStatus = dict["AccountStatus"] as! String
+                }
+                if dict.keys.contains("AccountType") {
+                    self.accountType = dict["AccountType"] as! String
                 }
                 if dict.keys.contains("DBInstanceId") {
                     self.DBInstanceId = dict["DBInstanceId"] as! String
@@ -10557,6 +10597,10 @@ public class DescribeDBInstanceAttributeResponse : Tea.TeaModel {
 public class DescribeDBInstanceDataBloatRequest : Tea.TeaModel {
     public var DBInstanceId: String?
 
+    public var database: String?
+
+    public var orderBy: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -10578,6 +10622,12 @@ public class DescribeDBInstanceDataBloatRequest : Tea.TeaModel {
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
+        if self.database != nil {
+            map["Database"] = self.database!
+        }
+        if self.orderBy != nil {
+            map["OrderBy"] = self.orderBy!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -10590,6 +10640,12 @@ public class DescribeDBInstanceDataBloatRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DBInstanceId") {
             self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("Database") {
+            self.database = dict["Database"] as! String
+        }
+        if dict.keys.contains("OrderBy") {
+            self.orderBy = dict["OrderBy"] as! String
         }
         if dict.keys.contains("PageNumber") {
             self.pageNumber = dict["PageNumber"] as! Int32
@@ -10835,6 +10891,10 @@ public class DescribeDBInstanceDataBloatResponse : Tea.TeaModel {
 public class DescribeDBInstanceDataSkewRequest : Tea.TeaModel {
     public var DBInstanceId: String?
 
+    public var database: String?
+
+    public var orderBy: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -10856,6 +10916,12 @@ public class DescribeDBInstanceDataSkewRequest : Tea.TeaModel {
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
+        if self.database != nil {
+            map["Database"] = self.database!
+        }
+        if self.orderBy != nil {
+            map["OrderBy"] = self.orderBy!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -10868,6 +10934,12 @@ public class DescribeDBInstanceDataSkewRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DBInstanceId") {
             self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("Database") {
+            self.database = dict["Database"] as! String
+        }
+        if dict.keys.contains("OrderBy") {
+            self.orderBy = dict["OrderBy"] as! String
         }
         if dict.keys.contains("PageNumber") {
             self.pageNumber = dict["PageNumber"] as! Int32
@@ -12051,6 +12123,10 @@ public class DescribeDBInstanceIPArrayListResponse : Tea.TeaModel {
 public class DescribeDBInstanceIndexUsageRequest : Tea.TeaModel {
     public var DBInstanceId: String?
 
+    public var database: String?
+
+    public var orderBy: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -12072,6 +12148,12 @@ public class DescribeDBInstanceIndexUsageRequest : Tea.TeaModel {
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
+        if self.database != nil {
+            map["Database"] = self.database!
+        }
+        if self.orderBy != nil {
+            map["OrderBy"] = self.orderBy!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -12084,6 +12166,12 @@ public class DescribeDBInstanceIndexUsageRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DBInstanceId") {
             self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("Database") {
+            self.database = dict["Database"] as! String
+        }
+        if dict.keys.contains("OrderBy") {
+            self.orderBy = dict["OrderBy"] as! String
         }
         if dict.keys.contains("PageNumber") {
             self.pageNumber = dict["PageNumber"] as! Int32
@@ -12102,7 +12190,7 @@ public class DescribeDBInstanceIndexUsageResponseBody : Tea.TeaModel {
 
         public var indexName: String?
 
-        public var indexScanTimes: Int32?
+        public var indexScanTimes: Int64?
 
         public var indexSize: String?
 
@@ -12174,7 +12262,7 @@ public class DescribeDBInstanceIndexUsageResponseBody : Tea.TeaModel {
                 self.indexName = dict["IndexName"] as! String
             }
             if dict.keys.contains("IndexScanTimes") {
-                self.indexScanTimes = dict["IndexScanTimes"] as! Int32
+                self.indexScanTimes = dict["IndexScanTimes"] as! Int64
             }
             if dict.keys.contains("IndexSize") {
                 self.indexSize = dict["IndexSize"] as! String
@@ -18151,6 +18239,8 @@ public class DescribeHadoopDataSourceResponseBody : Tea.TeaModel {
 
     public var emrInstanceId: String?
 
+    public var externalDataServiceId: String?
+
     public var HDFSConf: String?
 
     public var hadoopCoreConf: String?
@@ -18162,6 +18252,8 @@ public class DescribeHadoopDataSourceResponseBody : Tea.TeaModel {
     public var hiveConf: String?
 
     public var mapReduceConf: String?
+
+    public var modifyTime: String?
 
     public var requestId: String?
 
@@ -18207,6 +18299,9 @@ public class DescribeHadoopDataSourceResponseBody : Tea.TeaModel {
         if self.emrInstanceId != nil {
             map["EmrInstanceId"] = self.emrInstanceId!
         }
+        if self.externalDataServiceId != nil {
+            map["ExternalDataServiceId"] = self.externalDataServiceId!
+        }
         if self.HDFSConf != nil {
             map["HDFSConf"] = self.HDFSConf!
         }
@@ -18224,6 +18319,9 @@ public class DescribeHadoopDataSourceResponseBody : Tea.TeaModel {
         }
         if self.mapReduceConf != nil {
             map["MapReduceConf"] = self.mapReduceConf!
+        }
+        if self.modifyTime != nil {
+            map["ModifyTime"] = self.modifyTime!
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -18262,6 +18360,9 @@ public class DescribeHadoopDataSourceResponseBody : Tea.TeaModel {
         if dict.keys.contains("EmrInstanceId") {
             self.emrInstanceId = dict["EmrInstanceId"] as! String
         }
+        if dict.keys.contains("ExternalDataServiceId") {
+            self.externalDataServiceId = dict["ExternalDataServiceId"] as! String
+        }
         if dict.keys.contains("HDFSConf") {
             self.HDFSConf = dict["HDFSConf"] as! String
         }
@@ -18279,6 +18380,9 @@ public class DescribeHadoopDataSourceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("MapReduceConf") {
             self.mapReduceConf = dict["MapReduceConf"] as! String
+        }
+        if dict.keys.contains("ModifyTime") {
+            self.modifyTime = dict["ModifyTime"] as! String
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
@@ -19443,11 +19547,15 @@ public class DescribeJDBCDataSourceResponseBody : Tea.TeaModel {
 
     public var dataSourceType: String?
 
+    public var externalDataServiceId: String?
+
     public var JDBCConnectionString: String?
 
     public var JDBCPassword: String?
 
     public var JDBCUserName: String?
+
+    public var modifyTime: String?
 
     public var requestId: String?
 
@@ -19485,6 +19593,9 @@ public class DescribeJDBCDataSourceResponseBody : Tea.TeaModel {
         if self.dataSourceType != nil {
             map["DataSourceType"] = self.dataSourceType!
         }
+        if self.externalDataServiceId != nil {
+            map["ExternalDataServiceId"] = self.externalDataServiceId!
+        }
         if self.JDBCConnectionString != nil {
             map["JDBCConnectionString"] = self.JDBCConnectionString!
         }
@@ -19493,6 +19604,9 @@ public class DescribeJDBCDataSourceResponseBody : Tea.TeaModel {
         }
         if self.JDBCUserName != nil {
             map["JDBCUserName"] = self.JDBCUserName!
+        }
+        if self.modifyTime != nil {
+            map["ModifyTime"] = self.modifyTime!
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -19522,6 +19636,9 @@ public class DescribeJDBCDataSourceResponseBody : Tea.TeaModel {
         if dict.keys.contains("DataSourceType") {
             self.dataSourceType = dict["DataSourceType"] as! String
         }
+        if dict.keys.contains("ExternalDataServiceId") {
+            self.externalDataServiceId = dict["ExternalDataServiceId"] as! String
+        }
         if dict.keys.contains("JDBCConnectionString") {
             self.JDBCConnectionString = dict["JDBCConnectionString"] as! String
         }
@@ -19530,6 +19647,9 @@ public class DescribeJDBCDataSourceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("JDBCUserName") {
             self.JDBCUserName = dict["JDBCUserName"] as! String
+        }
+        if dict.keys.contains("ModifyTime") {
+            self.modifyTime = dict["ModifyTime"] as! String
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
