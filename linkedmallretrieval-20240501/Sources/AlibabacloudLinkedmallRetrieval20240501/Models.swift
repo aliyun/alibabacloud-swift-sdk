@@ -387,7 +387,7 @@ public class AISearchV2ResponseBody : Tea.TeaModel {
 
         public var eventId: String?
 
-        public var responseTime: String?
+        public var responseTime: Int64?
 
         public override init() {
             super.init()
@@ -423,7 +423,7 @@ public class AISearchV2ResponseBody : Tea.TeaModel {
                 self.eventId = dict["eventId"] as! String
             }
             if dict.keys.contains("responseTime") {
-                self.responseTime = dict["responseTime"] as! String
+                self.responseTime = dict["responseTime"] as! Int64
             }
         }
     }
