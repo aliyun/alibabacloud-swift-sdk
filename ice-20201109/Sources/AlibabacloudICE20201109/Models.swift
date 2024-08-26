@@ -37318,6 +37318,196 @@ public class ListPublicMediaBasicInfosResponse : Tea.TeaModel {
     }
 }
 
+public class ListSearchLibRequest : Tea.TeaModel {
+    public var pageNo: Int32?
+
+    public var pageSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.pageNo != nil {
+            map["PageNo"] = self.pageNo!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PageNo") {
+            self.pageNo = dict["PageNo"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+    }
+}
+
+public class ListSearchLibResponseBody : Tea.TeaModel {
+    public class SearchLibInfoList : Tea.TeaModel {
+        public var searchLibName: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.searchLibName != nil {
+                map["SearchLibName"] = self.searchLibName!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("SearchLibName") {
+                self.searchLibName = dict["SearchLibName"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var requestId: String?
+
+    public var searchLibInfoList: [ListSearchLibResponseBody.SearchLibInfoList]?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.searchLibInfoList != nil {
+            var tmp : [Any] = []
+            for k in self.searchLibInfoList! {
+                tmp.append(k.toMap())
+            }
+            map["SearchLibInfoList"] = tmp
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SearchLibInfoList") {
+            var tmp : [ListSearchLibResponseBody.SearchLibInfoList] = []
+            for v in dict["SearchLibInfoList"] as! [Any] {
+                var model = ListSearchLibResponseBody.SearchLibInfoList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.searchLibInfoList = tmp
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! String
+        }
+    }
+}
+
+public class ListSearchLibResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListSearchLibResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListSearchLibResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListSmartJobsRequest : Tea.TeaModel {
     public var jobState: String?
 
@@ -45596,6 +45786,187 @@ public class SearchEditingProjectResponse : Tea.TeaModel {
     }
 }
 
+public class SearchIndexJobRerunRequest : Tea.TeaModel {
+    public var mediaIds: String?
+
+    public var searchLibName: String?
+
+    public var task: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.mediaIds != nil {
+            map["MediaIds"] = self.mediaIds!
+        }
+        if self.searchLibName != nil {
+            map["SearchLibName"] = self.searchLibName!
+        }
+        if self.task != nil {
+            map["Task"] = self.task!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MediaIds") {
+            self.mediaIds = dict["MediaIds"] as! String
+        }
+        if dict.keys.contains("SearchLibName") {
+            self.searchLibName = dict["SearchLibName"] as! String
+        }
+        if dict.keys.contains("Task") {
+            self.task = dict["Task"] as! String
+        }
+    }
+}
+
+public class SearchIndexJobRerunResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var mediaIdsNoExist: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.mediaIdsNoExist != nil {
+                map["MediaIdsNoExist"] = self.mediaIdsNoExist!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("MediaIdsNoExist") {
+                self.mediaIdsNoExist = dict["MediaIdsNoExist"] as! [String]
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: SearchIndexJobRerunResponseBody.Data?
+
+    public var requestId: String?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = SearchIndexJobRerunResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! String
+        }
+    }
+}
+
+public class SearchIndexJobRerunResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SearchIndexJobRerunResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = SearchIndexJobRerunResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class SearchMediaRequest : Tea.TeaModel {
     public var entityId: String?
 
@@ -46344,6 +46715,43 @@ public class SearchMediaResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class IndexStatusList : Tea.TeaModel {
+            public var indexStatus: String?
+
+            public var indexType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.indexStatus != nil {
+                    map["IndexStatus"] = self.indexStatus!
+                }
+                if self.indexType != nil {
+                    map["IndexType"] = self.indexType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("IndexStatus") {
+                    self.indexStatus = dict["IndexStatus"] as! String
+                }
+                if dict.keys.contains("IndexType") {
+                    self.indexType = dict["IndexType"] as! String
+                }
+            }
+        }
         public class MediaBasicInfo : Tea.TeaModel {
             public var biz: String?
 
@@ -46555,6 +46963,8 @@ public class SearchMediaResponseBody : Tea.TeaModel {
 
         public var fileInfoList: [SearchMediaResponseBody.MediaInfoList.FileInfoList]?
 
+        public var indexStatusList: [SearchMediaResponseBody.MediaInfoList.IndexStatusList]?
+
         public var mediaBasicInfo: SearchMediaResponseBody.MediaInfoList.MediaBasicInfo?
 
         public var mediaId: String?
@@ -46589,6 +46999,13 @@ public class SearchMediaResponseBody : Tea.TeaModel {
                 }
                 map["FileInfoList"] = tmp
             }
+            if self.indexStatusList != nil {
+                var tmp : [Any] = []
+                for k in self.indexStatusList! {
+                    tmp.append(k.toMap())
+                }
+                map["IndexStatusList"] = tmp
+            }
             if self.mediaBasicInfo != nil {
                 map["MediaBasicInfo"] = self.mediaBasicInfo?.toMap()
             }
@@ -46619,6 +47036,17 @@ public class SearchMediaResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.fileInfoList = tmp
+            }
+            if dict.keys.contains("IndexStatusList") {
+                var tmp : [SearchMediaResponseBody.MediaInfoList.IndexStatusList] = []
+                for v in dict["IndexStatusList"] as! [Any] {
+                    var model = SearchMediaResponseBody.MediaInfoList.IndexStatusList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.indexStatusList = tmp
             }
             if dict.keys.contains("MediaBasicInfo") {
                 var model = SearchMediaResponseBody.MediaInfoList.MediaBasicInfo()
