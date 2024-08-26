@@ -385,6 +385,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getHistoryListByBizTypeWithOptions(_ workspaceId: String, _ request: GetHistoryListByBizTypeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetHistoryListByBizTypeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["bizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.bizType)) {
+            query["bizType"] = request.bizType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.page)) {
+            query["page"] = request.page!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetHistoryListByBizType",
+            "version": "2024-06-28",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/api/history/list",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetHistoryListByBizTypeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getHistoryListByBizType(_ workspaceId: String, _ request: GetHistoryListByBizTypeRequest) async throws -> GetHistoryListByBizTypeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getHistoryListByBizTypeWithOptions(workspaceId as! String, request as! GetHistoryListByBizTypeRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getLibraryWithOptions(_ workspaceId: String, _ request: GetLibraryRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetLibraryResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -682,6 +724,90 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await runChatResultGenerationWithOptions(workspaceId as! String, request as! RunChatResultGenerationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func runLibraryChatGenerationWithOptions(_ workspaceId: String, _ request: RunLibraryChatGenerationRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RunLibraryChatGenerationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.docIdList)) {
+            body["docIdList"] = request.docIdList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.enableFollowUp)) {
+            body["enableFollowUp"] = request.enableFollowUp!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enableMultiQuery)) {
+            body["enableMultiQuery"] = request.enableMultiQuery!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enableOpenQa)) {
+            body["enableOpenQa"] = request.enableOpenQa!;
+        }
+        if (!TeaUtils.Client.isUnset(request.followUpLlm)) {
+            body["followUpLlm"] = request.followUpLlm ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.libraryId)) {
+            body["libraryId"] = request.libraryId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.llmType)) {
+            body["llmType"] = request.llmType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.multiQueryLlm)) {
+            body["multiQueryLlm"] = request.multiQueryLlm ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.query)) {
+            body["query"] = request.query ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.queryCriteria)) {
+            body["queryCriteria"] = request.queryCriteria!;
+        }
+        if (!TeaUtils.Client.isUnset(request.rerankType)) {
+            body["rerankType"] = request.rerankType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionId)) {
+            body["sessionId"] = request.sessionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.stream)) {
+            body["stream"] = request.stream!;
+        }
+        if (!TeaUtils.Client.isUnset(request.subQueryList)) {
+            body["subQueryList"] = request.subQueryList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.textSearchParameter)) {
+            body["textSearchParameter"] = request.textSearchParameter!;
+        }
+        if (!TeaUtils.Client.isUnset(request.topK)) {
+            body["topK"] = request.topK!;
+        }
+        if (!TeaUtils.Client.isUnset(request.vectorSearchParameter)) {
+            body["vectorSearchParameter"] = request.vectorSearchParameter!;
+        }
+        if (!TeaUtils.Client.isUnset(request.withDocumentReference)) {
+            body["withDocumentReference"] = request.withDocumentReference!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RunLibraryChatGeneration",
+            "version": "2024-06-28",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/api/run/library/chat/generation",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RunLibraryChatGenerationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func runLibraryChatGeneration(_ workspaceId: String, _ request: RunLibraryChatGenerationRequest) async throws -> RunLibraryChatGenerationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await runLibraryChatGenerationWithOptions(workspaceId as! String, request as! RunLibraryChatGenerationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

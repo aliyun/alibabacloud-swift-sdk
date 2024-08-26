@@ -2951,6 +2951,380 @@ public class GetFilterDocumentListResponse : Tea.TeaModel {
     }
 }
 
+public class GetHistoryListByBizTypeRequest : Tea.TeaModel {
+    public var bizId: String?
+
+    public var bizType: String?
+
+    public var page: Int32?
+
+    public var pageSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bizId != nil {
+            map["bizId"] = self.bizId!
+        }
+        if self.bizType != nil {
+            map["bizType"] = self.bizType!
+        }
+        if self.page != nil {
+            map["page"] = self.page!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("bizId") {
+            self.bizId = dict["bizId"] as! String
+        }
+        if dict.keys.contains("bizType") {
+            self.bizType = dict["bizType"] as! String
+        }
+        if dict.keys.contains("page") {
+            self.page = dict["page"] as! Int32
+        }
+        if dict.keys.contains("pageSize") {
+            self.pageSize = dict["pageSize"] as! Int32
+        }
+    }
+}
+
+public class GetHistoryListByBizTypeResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Records : Tea.TeaModel {
+            public var bizId: String?
+
+            public var bizType: String?
+
+            public var extraMessage: Any?
+
+            public var gmtCreate: String?
+
+            public var gmtModified: String?
+
+            public var id: Int64?
+
+            public var llmAnswer: String?
+
+            public var llmPrompt: String?
+
+            public var llmType: String?
+
+            public var sessionId: String?
+
+            public var userQuery: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bizId != nil {
+                    map["bizId"] = self.bizId!
+                }
+                if self.bizType != nil {
+                    map["bizType"] = self.bizType!
+                }
+                if self.extraMessage != nil {
+                    map["extraMessage"] = self.extraMessage!
+                }
+                if self.gmtCreate != nil {
+                    map["gmtCreate"] = self.gmtCreate!
+                }
+                if self.gmtModified != nil {
+                    map["gmtModified"] = self.gmtModified!
+                }
+                if self.id != nil {
+                    map["id"] = self.id!
+                }
+                if self.llmAnswer != nil {
+                    map["llmAnswer"] = self.llmAnswer!
+                }
+                if self.llmPrompt != nil {
+                    map["llmPrompt"] = self.llmPrompt!
+                }
+                if self.llmType != nil {
+                    map["llmType"] = self.llmType!
+                }
+                if self.sessionId != nil {
+                    map["sessionId"] = self.sessionId!
+                }
+                if self.userQuery != nil {
+                    map["userQuery"] = self.userQuery!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("bizId") {
+                    self.bizId = dict["bizId"] as! String
+                }
+                if dict.keys.contains("bizType") {
+                    self.bizType = dict["bizType"] as! String
+                }
+                if dict.keys.contains("extraMessage") {
+                    self.extraMessage = dict["extraMessage"] as! Any
+                }
+                if dict.keys.contains("gmtCreate") {
+                    self.gmtCreate = dict["gmtCreate"] as! String
+                }
+                if dict.keys.contains("gmtModified") {
+                    self.gmtModified = dict["gmtModified"] as! String
+                }
+                if dict.keys.contains("id") {
+                    self.id = dict["id"] as! Int64
+                }
+                if dict.keys.contains("llmAnswer") {
+                    self.llmAnswer = dict["llmAnswer"] as! String
+                }
+                if dict.keys.contains("llmPrompt") {
+                    self.llmPrompt = dict["llmPrompt"] as! String
+                }
+                if dict.keys.contains("llmType") {
+                    self.llmType = dict["llmType"] as! String
+                }
+                if dict.keys.contains("sessionId") {
+                    self.sessionId = dict["sessionId"] as! String
+                }
+                if dict.keys.contains("userQuery") {
+                    self.userQuery = dict["userQuery"] as! String
+                }
+            }
+        }
+        public var currentPage: Int64?
+
+        public var pageSize: Int64?
+
+        public var records: [GetHistoryListByBizTypeResponseBody.Data.Records]?
+
+        public var totalPages: Int64?
+
+        public var totalRecords: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.currentPage != nil {
+                map["currentPage"] = self.currentPage!
+            }
+            if self.pageSize != nil {
+                map["pageSize"] = self.pageSize!
+            }
+            if self.records != nil {
+                var tmp : [Any] = []
+                for k in self.records! {
+                    tmp.append(k.toMap())
+                }
+                map["records"] = tmp
+            }
+            if self.totalPages != nil {
+                map["totalPages"] = self.totalPages!
+            }
+            if self.totalRecords != nil {
+                map["totalRecords"] = self.totalRecords!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("currentPage") {
+                self.currentPage = dict["currentPage"] as! Int64
+            }
+            if dict.keys.contains("pageSize") {
+                self.pageSize = dict["pageSize"] as! Int64
+            }
+            if dict.keys.contains("records") {
+                var tmp : [GetHistoryListByBizTypeResponseBody.Data.Records] = []
+                for v in dict["records"] as! [Any] {
+                    var model = GetHistoryListByBizTypeResponseBody.Data.Records()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.records = tmp
+            }
+            if dict.keys.contains("totalPages") {
+                self.totalPages = dict["totalPages"] as! Int64
+            }
+            if dict.keys.contains("totalRecords") {
+                self.totalRecords = dict["totalRecords"] as! Int64
+            }
+        }
+    }
+    public var cost: Int64?
+
+    public var data: GetHistoryListByBizTypeResponseBody.Data?
+
+    public var dataType: String?
+
+    public var errCode: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var time: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cost != nil {
+            map["cost"] = self.cost!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.dataType != nil {
+            map["dataType"] = self.dataType!
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.time != nil {
+            map["time"] = self.time!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("cost") {
+            self.cost = dict["cost"] as! Int64
+        }
+        if dict.keys.contains("data") {
+            var model = GetHistoryListByBizTypeResponseBody.Data()
+            model.fromMap(dict["data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("dataType") {
+            self.dataType = dict["dataType"] as! String
+        }
+        if dict.keys.contains("errCode") {
+            self.errCode = dict["errCode"] as! String
+        }
+        if dict.keys.contains("message") {
+            self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+        if dict.keys.contains("time") {
+            self.time = dict["time"] as! String
+        }
+    }
+}
+
+public class GetHistoryListByBizTypeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetHistoryListByBizTypeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetHistoryListByBizTypeResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class GetLibraryRequest : Tea.TeaModel {
     public var libraryId: String?
 
@@ -7233,6 +7607,549 @@ public class RunChatResultGenerationResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = RunChatResultGenerationResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class RunLibraryChatGenerationRequest : Tea.TeaModel {
+    public class QueryCriteria : Tea.TeaModel {
+        public class And : Tea.TeaModel {
+            public var boost: Double?
+
+            public var key: String?
+
+            public var operator_: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.boost != nil {
+                    map["boost"] = self.boost!
+                }
+                if self.key != nil {
+                    map["key"] = self.key!
+                }
+                if self.operator_ != nil {
+                    map["operator"] = self.operator_!
+                }
+                if self.value != nil {
+                    map["value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("boost") {
+                    self.boost = dict["boost"] as! Double
+                }
+                if dict.keys.contains("key") {
+                    self.key = dict["key"] as! String
+                }
+                if dict.keys.contains("operator") {
+                    self.operator_ = dict["operator"] as! String
+                }
+                if dict.keys.contains("value") {
+                    self.value = dict["value"] as! String
+                }
+            }
+        }
+        public class Or : Tea.TeaModel {
+            public var boost: Double?
+
+            public var key: String?
+
+            public var operator_: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.boost != nil {
+                    map["boost"] = self.boost!
+                }
+                if self.key != nil {
+                    map["key"] = self.key!
+                }
+                if self.operator_ != nil {
+                    map["operator"] = self.operator_!
+                }
+                if self.value != nil {
+                    map["value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("boost") {
+                    self.boost = dict["boost"] as! Double
+                }
+                if dict.keys.contains("key") {
+                    self.key = dict["key"] as! String
+                }
+                if dict.keys.contains("operator") {
+                    self.operator_ = dict["operator"] as! String
+                }
+                if dict.keys.contains("value") {
+                    self.value = dict["value"] as! String
+                }
+            }
+        }
+        public var and: [RunLibraryChatGenerationRequest.QueryCriteria.And]?
+
+        public var or: [RunLibraryChatGenerationRequest.QueryCriteria.Or]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.and != nil {
+                var tmp : [Any] = []
+                for k in self.and! {
+                    tmp.append(k.toMap())
+                }
+                map["and"] = tmp
+            }
+            if self.or != nil {
+                var tmp : [Any] = []
+                for k in self.or! {
+                    tmp.append(k.toMap())
+                }
+                map["or"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("and") {
+                var tmp : [RunLibraryChatGenerationRequest.QueryCriteria.And] = []
+                for v in dict["and"] as! [Any] {
+                    var model = RunLibraryChatGenerationRequest.QueryCriteria.And()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.and = tmp
+            }
+            if dict.keys.contains("or") {
+                var tmp : [RunLibraryChatGenerationRequest.QueryCriteria.Or] = []
+                for v in dict["or"] as! [Any] {
+                    var model = RunLibraryChatGenerationRequest.QueryCriteria.Or()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.or = tmp
+            }
+        }
+    }
+    public class TextSearchParameter : Tea.TeaModel {
+        public var limit: Int32?
+
+        public var searchAnalyzerType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.limit != nil {
+                map["limit"] = self.limit!
+            }
+            if self.searchAnalyzerType != nil {
+                map["searchAnalyzerType"] = self.searchAnalyzerType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("limit") {
+                self.limit = dict["limit"] as! Int32
+            }
+            if dict.keys.contains("searchAnalyzerType") {
+                self.searchAnalyzerType = dict["searchAnalyzerType"] as! String
+            }
+        }
+    }
+    public class VectorSearchParameter : Tea.TeaModel {
+        public var limit: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.limit != nil {
+                map["limit"] = self.limit!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("limit") {
+                self.limit = dict["limit"] as! Int32
+            }
+        }
+    }
+    public var docIdList: [String]?
+
+    public var enableFollowUp: Bool?
+
+    public var enableMultiQuery: Bool?
+
+    public var enableOpenQa: Bool?
+
+    public var followUpLlm: String?
+
+    public var libraryId: String?
+
+    public var llmType: String?
+
+    public var multiQueryLlm: String?
+
+    public var query: String?
+
+    public var queryCriteria: RunLibraryChatGenerationRequest.QueryCriteria?
+
+    public var rerankType: String?
+
+    public var sessionId: String?
+
+    public var stream: Bool?
+
+    public var subQueryList: [String]?
+
+    public var textSearchParameter: RunLibraryChatGenerationRequest.TextSearchParameter?
+
+    public var topK: Int32?
+
+    public var vectorSearchParameter: RunLibraryChatGenerationRequest.VectorSearchParameter?
+
+    public var withDocumentReference: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.queryCriteria?.validate()
+        try self.textSearchParameter?.validate()
+        try self.vectorSearchParameter?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.docIdList != nil {
+            map["docIdList"] = self.docIdList!
+        }
+        if self.enableFollowUp != nil {
+            map["enableFollowUp"] = self.enableFollowUp!
+        }
+        if self.enableMultiQuery != nil {
+            map["enableMultiQuery"] = self.enableMultiQuery!
+        }
+        if self.enableOpenQa != nil {
+            map["enableOpenQa"] = self.enableOpenQa!
+        }
+        if self.followUpLlm != nil {
+            map["followUpLlm"] = self.followUpLlm!
+        }
+        if self.libraryId != nil {
+            map["libraryId"] = self.libraryId!
+        }
+        if self.llmType != nil {
+            map["llmType"] = self.llmType!
+        }
+        if self.multiQueryLlm != nil {
+            map["multiQueryLlm"] = self.multiQueryLlm!
+        }
+        if self.query != nil {
+            map["query"] = self.query!
+        }
+        if self.queryCriteria != nil {
+            map["queryCriteria"] = self.queryCriteria?.toMap()
+        }
+        if self.rerankType != nil {
+            map["rerankType"] = self.rerankType!
+        }
+        if self.sessionId != nil {
+            map["sessionId"] = self.sessionId!
+        }
+        if self.stream != nil {
+            map["stream"] = self.stream!
+        }
+        if self.subQueryList != nil {
+            map["subQueryList"] = self.subQueryList!
+        }
+        if self.textSearchParameter != nil {
+            map["textSearchParameter"] = self.textSearchParameter?.toMap()
+        }
+        if self.topK != nil {
+            map["topK"] = self.topK!
+        }
+        if self.vectorSearchParameter != nil {
+            map["vectorSearchParameter"] = self.vectorSearchParameter?.toMap()
+        }
+        if self.withDocumentReference != nil {
+            map["withDocumentReference"] = self.withDocumentReference!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("docIdList") {
+            self.docIdList = dict["docIdList"] as! [String]
+        }
+        if dict.keys.contains("enableFollowUp") {
+            self.enableFollowUp = dict["enableFollowUp"] as! Bool
+        }
+        if dict.keys.contains("enableMultiQuery") {
+            self.enableMultiQuery = dict["enableMultiQuery"] as! Bool
+        }
+        if dict.keys.contains("enableOpenQa") {
+            self.enableOpenQa = dict["enableOpenQa"] as! Bool
+        }
+        if dict.keys.contains("followUpLlm") {
+            self.followUpLlm = dict["followUpLlm"] as! String
+        }
+        if dict.keys.contains("libraryId") {
+            self.libraryId = dict["libraryId"] as! String
+        }
+        if dict.keys.contains("llmType") {
+            self.llmType = dict["llmType"] as! String
+        }
+        if dict.keys.contains("multiQueryLlm") {
+            self.multiQueryLlm = dict["multiQueryLlm"] as! String
+        }
+        if dict.keys.contains("query") {
+            self.query = dict["query"] as! String
+        }
+        if dict.keys.contains("queryCriteria") {
+            var model = RunLibraryChatGenerationRequest.QueryCriteria()
+            model.fromMap(dict["queryCriteria"] as! [String: Any])
+            self.queryCriteria = model
+        }
+        if dict.keys.contains("rerankType") {
+            self.rerankType = dict["rerankType"] as! String
+        }
+        if dict.keys.contains("sessionId") {
+            self.sessionId = dict["sessionId"] as! String
+        }
+        if dict.keys.contains("stream") {
+            self.stream = dict["stream"] as! Bool
+        }
+        if dict.keys.contains("subQueryList") {
+            self.subQueryList = dict["subQueryList"] as! [String]
+        }
+        if dict.keys.contains("textSearchParameter") {
+            var model = RunLibraryChatGenerationRequest.TextSearchParameter()
+            model.fromMap(dict["textSearchParameter"] as! [String: Any])
+            self.textSearchParameter = model
+        }
+        if dict.keys.contains("topK") {
+            self.topK = dict["topK"] as! Int32
+        }
+        if dict.keys.contains("vectorSearchParameter") {
+            var model = RunLibraryChatGenerationRequest.VectorSearchParameter()
+            model.fromMap(dict["vectorSearchParameter"] as! [String: Any])
+            self.vectorSearchParameter = model
+        }
+        if dict.keys.contains("withDocumentReference") {
+            self.withDocumentReference = dict["withDocumentReference"] as! Bool
+        }
+    }
+}
+
+public class RunLibraryChatGenerationResponseBody : Tea.TeaModel {
+    public var cost: Int64?
+
+    public var data: Any?
+
+    public var dataType: String?
+
+    public var errCode: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var time: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cost != nil {
+            map["cost"] = self.cost!
+        }
+        if self.data != nil {
+            map["data"] = self.data!
+        }
+        if self.dataType != nil {
+            map["dataType"] = self.dataType!
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.time != nil {
+            map["time"] = self.time!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("cost") {
+            self.cost = dict["cost"] as! Int64
+        }
+        if dict.keys.contains("data") {
+            self.data = dict["data"] as! Any
+        }
+        if dict.keys.contains("dataType") {
+            self.dataType = dict["dataType"] as! String
+        }
+        if dict.keys.contains("errCode") {
+            self.errCode = dict["errCode"] as! String
+        }
+        if dict.keys.contains("message") {
+            self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+        if dict.keys.contains("time") {
+            self.time = dict["time"] as! String
+        }
+    }
+}
+
+public class RunLibraryChatGenerationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RunLibraryChatGenerationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = RunLibraryChatGenerationResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
