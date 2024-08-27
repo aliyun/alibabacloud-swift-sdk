@@ -44438,6 +44438,8 @@ public class ModifyApiGroupRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var filterAppCodeForBackend: String?
+
     public var groupId: String?
 
     public var groupName: String?
@@ -44485,6 +44487,9 @@ public class ModifyApiGroupRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.filterAppCodeForBackend != nil {
+            map["FilterAppCodeForBackend"] = self.filterAppCodeForBackend!
         }
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
@@ -44535,6 +44540,9 @@ public class ModifyApiGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("FilterAppCodeForBackend") {
+            self.filterAppCodeForBackend = dict["FilterAppCodeForBackend"] as! String
         }
         if dict.keys.contains("GroupId") {
             self.groupId = dict["GroupId"] as! String
