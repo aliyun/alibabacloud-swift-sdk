@@ -10942,6 +10942,8 @@ public class ListTerminalsResponseBody : Tea.TeaModel {
 
         public var locationInfo: String?
 
+        public var manageTime: String?
+
         public var model: String?
 
         public var online: Bool?
@@ -10949,6 +10951,8 @@ public class ListTerminalsResponseBody : Tea.TeaModel {
         public var passwordFreeLoginUser: String?
 
         public var serialNumber: String?
+
+        public var setPasswordFreeLoginUserTime: String?
 
         public var terminalGroupId: String?
 
@@ -10989,6 +10993,9 @@ public class ListTerminalsResponseBody : Tea.TeaModel {
             if self.locationInfo != nil {
                 map["LocationInfo"] = self.locationInfo!
             }
+            if self.manageTime != nil {
+                map["ManageTime"] = self.manageTime!
+            }
             if self.model != nil {
                 map["Model"] = self.model!
             }
@@ -11000,6 +11007,9 @@ public class ListTerminalsResponseBody : Tea.TeaModel {
             }
             if self.serialNumber != nil {
                 map["SerialNumber"] = self.serialNumber!
+            }
+            if self.setPasswordFreeLoginUserTime != nil {
+                map["SetPasswordFreeLoginUserTime"] = self.setPasswordFreeLoginUserTime!
             }
             if self.terminalGroupId != nil {
                 map["TerminalGroupId"] = self.terminalGroupId!
@@ -11032,6 +11042,9 @@ public class ListTerminalsResponseBody : Tea.TeaModel {
             if dict.keys.contains("LocationInfo") {
                 self.locationInfo = dict["LocationInfo"] as! String
             }
+            if dict.keys.contains("ManageTime") {
+                self.manageTime = dict["ManageTime"] as! String
+            }
             if dict.keys.contains("Model") {
                 self.model = dict["Model"] as! String
             }
@@ -11043,6 +11056,9 @@ public class ListTerminalsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SerialNumber") {
                 self.serialNumber = dict["SerialNumber"] as! String
+            }
+            if dict.keys.contains("SetPasswordFreeLoginUserTime") {
+                self.setPasswordFreeLoginUserTime = dict["SetPasswordFreeLoginUserTime"] as! String
             }
             if dict.keys.contains("TerminalGroupId") {
                 self.terminalGroupId = dict["TerminalGroupId"] as! String
