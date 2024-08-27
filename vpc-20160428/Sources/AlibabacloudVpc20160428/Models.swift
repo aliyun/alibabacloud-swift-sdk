@@ -20499,6 +20499,8 @@ public class CreateVpcRequest : Tea.TeaModel {
 
     public var dryRun: Bool?
 
+    public var enableDnsHostname: Bool?
+
     public var enableIpv6: Bool?
 
     public var ipv4CidrMask: Int32?
@@ -20552,6 +20554,9 @@ public class CreateVpcRequest : Tea.TeaModel {
         }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
+        }
+        if self.enableDnsHostname != nil {
+            map["EnableDnsHostname"] = self.enableDnsHostname!
         }
         if self.enableIpv6 != nil {
             map["EnableIpv6"] = self.enableIpv6!
@@ -20614,6 +20619,9 @@ public class CreateVpcRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DryRun") {
             self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("EnableDnsHostname") {
+            self.enableDnsHostname = dict["EnableDnsHostname"] as! Bool
         }
         if dict.keys.contains("EnableIpv6") {
             self.enableIpv6 = dict["EnableIpv6"] as! Bool
@@ -61662,6 +61670,8 @@ public class DescribeVpcAttributeResponseBody : Tea.TeaModel {
 
     public var dhcpOptionsSetStatus: String?
 
+    public var dnsHostnameStatus: String?
+
     public var enabledIpv6: Bool?
 
     public var ipv4GatewayId: String?
@@ -61746,6 +61756,9 @@ public class DescribeVpcAttributeResponseBody : Tea.TeaModel {
         }
         if self.dhcpOptionsSetStatus != nil {
             map["DhcpOptionsSetStatus"] = self.dhcpOptionsSetStatus!
+        }
+        if self.dnsHostnameStatus != nil {
+            map["DnsHostnameStatus"] = self.dnsHostnameStatus!
         }
         if self.enabledIpv6 != nil {
             map["EnabledIpv6"] = self.enabledIpv6!
@@ -61837,6 +61850,9 @@ public class DescribeVpcAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("DhcpOptionsSetStatus") {
             self.dhcpOptionsSetStatus = dict["DhcpOptionsSetStatus"] as! String
+        }
+        if dict.keys.contains("DnsHostnameStatus") {
+            self.dnsHostnameStatus = dict["DnsHostnameStatus"] as! String
         }
         if dict.keys.contains("EnabledIpv6") {
             self.enabledIpv6 = dict["EnabledIpv6"] as! Bool
@@ -62469,6 +62485,8 @@ public class DescribeVpcsResponseBody : Tea.TeaModel {
 
             public var dhcpOptionsSetStatus: String?
 
+            public var dnsHostnameStatus: String?
+
             public var enabledIpv6: Bool?
 
             public var ipv6CidrBlock: String?
@@ -62542,6 +62560,9 @@ public class DescribeVpcsResponseBody : Tea.TeaModel {
                 if self.dhcpOptionsSetStatus != nil {
                     map["DhcpOptionsSetStatus"] = self.dhcpOptionsSetStatus!
                 }
+                if self.dnsHostnameStatus != nil {
+                    map["DnsHostnameStatus"] = self.dnsHostnameStatus!
+                }
                 if self.enabledIpv6 != nil {
                     map["EnabledIpv6"] = self.enabledIpv6!
                 }
@@ -62614,6 +62635,9 @@ public class DescribeVpcsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("DhcpOptionsSetStatus") {
                     self.dhcpOptionsSetStatus = dict["DhcpOptionsSetStatus"] as! String
+                }
+                if dict.keys.contains("DnsHostnameStatus") {
+                    self.dnsHostnameStatus = dict["DnsHostnameStatus"] as! String
                 }
                 if dict.keys.contains("EnabledIpv6") {
                     self.enabledIpv6 = dict["EnabledIpv6"] as! Bool
@@ -94437,6 +94461,8 @@ public class ModifyVpcAttributeRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var enableDnsHostname: Bool?
+
     public var enableIPv6: Bool?
 
     public var ipv6CidrBlock: String?
@@ -94477,6 +94503,9 @@ public class ModifyVpcAttributeRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.enableDnsHostname != nil {
+            map["EnableDnsHostname"] = self.enableDnsHostname!
+        }
         if self.enableIPv6 != nil {
             map["EnableIPv6"] = self.enableIPv6!
         }
@@ -94516,6 +94545,9 @@ public class ModifyVpcAttributeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("EnableDnsHostname") {
+            self.enableDnsHostname = dict["EnableDnsHostname"] as! Bool
         }
         if dict.keys.contains("EnableIPv6") {
             self.enableIPv6 = dict["EnableIPv6"] as! Bool
