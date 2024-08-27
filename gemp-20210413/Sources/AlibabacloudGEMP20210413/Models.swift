@@ -20529,6 +20529,10 @@ public class ListConfigsResponse : Tea.TeaModel {
 public class ListDataReportForServiceGroupRequest : Tea.TeaModel {
     public var endTime: String?
 
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
     public var serviceGroupName: String?
 
     public var startTime: String?
@@ -20550,6 +20554,12 @@ public class ListDataReportForServiceGroupRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["endTime"] = self.endTime!
         }
+        if self.pageNumber != nil {
+            map["pageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
         if self.serviceGroupName != nil {
             map["serviceGroupName"] = self.serviceGroupName!
         }
@@ -20562,6 +20572,12 @@ public class ListDataReportForServiceGroupRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("endTime") {
             self.endTime = dict["endTime"] as! String
+        }
+        if dict.keys.contains("pageNumber") {
+            self.pageNumber = dict["pageNumber"] as! Int64
+        }
+        if dict.keys.contains("pageSize") {
+            self.pageSize = dict["pageSize"] as! Int64
         }
         if dict.keys.contains("serviceGroupName") {
             self.serviceGroupName = dict["serviceGroupName"] as! String

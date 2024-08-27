@@ -3481,6 +3481,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             body["endTime"] = request.endTime ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            body["pageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["pageSize"] = request.pageSize!;
+        }
         if (!TeaUtils.Client.isUnset(request.serviceGroupName)) {
             body["serviceGroupName"] = request.serviceGroupName ?? "";
         }
