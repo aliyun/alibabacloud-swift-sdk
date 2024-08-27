@@ -3366,6 +3366,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.DBEndpointId)) {
             query["DBEndpointId"] = request.DBEndpointId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.DBNodeId)) {
+            query["DBNodeId"] = request.DBNodeId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
         }

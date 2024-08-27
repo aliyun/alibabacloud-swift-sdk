@@ -16515,6 +16515,8 @@ public class DescribeDBProxyPerformanceRequest : Tea.TeaModel {
 
     public var DBEndpointId: String?
 
+    public var DBNodeId: String?
+
     public var endTime: String?
 
     public var interval: String?
@@ -16545,6 +16547,9 @@ public class DescribeDBProxyPerformanceRequest : Tea.TeaModel {
         if self.DBEndpointId != nil {
             map["DBEndpointId"] = self.DBEndpointId!
         }
+        if self.DBNodeId != nil {
+            map["DBNodeId"] = self.DBNodeId!
+        }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
@@ -16569,6 +16574,9 @@ public class DescribeDBProxyPerformanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DBEndpointId") {
             self.DBEndpointId = dict["DBEndpointId"] as! String
+        }
+        if dict.keys.contains("DBNodeId") {
+            self.DBNodeId = dict["DBNodeId"] as! String
         }
         if dict.keys.contains("EndTime") {
             self.endTime = dict["EndTime"] as! String
