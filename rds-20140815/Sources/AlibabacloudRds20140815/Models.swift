@@ -7395,6 +7395,8 @@ public class CreateDdrInstanceRequest : Tea.TeaModel {
 
     public var DBInstanceStorageType: String?
 
+    public var encryptionKey: String?
+
     public var engine: String?
 
     public var engineVersion: String?
@@ -7422,6 +7424,8 @@ public class CreateDdrInstanceRequest : Tea.TeaModel {
     public var restoreTime: String?
 
     public var restoreType: String?
+
+    public var roleARN: String?
 
     public var securityIPList: String?
 
@@ -7477,6 +7481,9 @@ public class CreateDdrInstanceRequest : Tea.TeaModel {
         if self.DBInstanceStorageType != nil {
             map["DBInstanceStorageType"] = self.DBInstanceStorageType!
         }
+        if self.encryptionKey != nil {
+            map["EncryptionKey"] = self.encryptionKey!
+        }
         if self.engine != nil {
             map["Engine"] = self.engine!
         }
@@ -7518,6 +7525,9 @@ public class CreateDdrInstanceRequest : Tea.TeaModel {
         }
         if self.restoreType != nil {
             map["RestoreType"] = self.restoreType!
+        }
+        if self.roleARN != nil {
+            map["RoleARN"] = self.roleARN!
         }
         if self.securityIPList != nil {
             map["SecurityIPList"] = self.securityIPList!
@@ -7571,6 +7581,9 @@ public class CreateDdrInstanceRequest : Tea.TeaModel {
         if dict.keys.contains("DBInstanceStorageType") {
             self.DBInstanceStorageType = dict["DBInstanceStorageType"] as! String
         }
+        if dict.keys.contains("EncryptionKey") {
+            self.encryptionKey = dict["EncryptionKey"] as! String
+        }
         if dict.keys.contains("Engine") {
             self.engine = dict["Engine"] as! String
         }
@@ -7612,6 +7625,9 @@ public class CreateDdrInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RestoreType") {
             self.restoreType = dict["RestoreType"] as! String
+        }
+        if dict.keys.contains("RoleARN") {
+            self.roleARN = dict["RoleARN"] as! String
         }
         if dict.keys.contains("SecurityIPList") {
             self.securityIPList = dict["SecurityIPList"] as! String
