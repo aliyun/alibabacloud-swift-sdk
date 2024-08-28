@@ -687,6 +687,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createCenInterRegionTrafficQosPolicyWithOptions(_ request: CreateCenInterRegionTrafficQosPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCenInterRegionTrafficQosPolicyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bandwidthGuaranteeMode)) {
+            query["BandwidthGuaranteeMode"] = request.bandwidthGuaranteeMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
@@ -748,6 +751,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createCenInterRegionTrafficQosQueueWithOptions(_ request: CreateCenInterRegionTrafficQosQueueRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCenInterRegionTrafficQosQueueResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bandwidth)) {
+            query["Bandwidth"] = request.bandwidth!;
+        }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
@@ -5032,6 +5038,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listCenInterRegionTrafficQosQueuesWithOptions(_ request: ListCenInterRegionTrafficQosQueuesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCenInterRegionTrafficQosQueuesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.effectiveBandwidthFilter)) {
+            query["EffectiveBandwidthFilter"] = request.effectiveBandwidthFilter!;
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["MaxResults"] = request.maxResults!;
         }
@@ -7958,6 +7967,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateCenInterRegionTrafficQosQueueAttributeWithOptions(_ request: UpdateCenInterRegionTrafficQosQueueAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCenInterRegionTrafficQosQueueAttributeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bandwidth)) {
+            query["Bandwidth"] = request.bandwidth!;
+        }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }

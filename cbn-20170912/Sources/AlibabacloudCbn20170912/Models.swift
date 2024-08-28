@@ -2415,6 +2415,8 @@ public class CreateCenChildInstanceRouteEntryToCenResponse : Tea.TeaModel {
 
 public class CreateCenInterRegionTrafficQosPolicyRequest : Tea.TeaModel {
     public class TrafficQosQueues : Tea.TeaModel {
+        public var bandwidth: String?
+
         public var dscps: [Int32]?
 
         public var qosQueueDescription: String?
@@ -2437,6 +2439,9 @@ public class CreateCenInterRegionTrafficQosPolicyRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.bandwidth != nil {
+                map["Bandwidth"] = self.bandwidth!
+            }
             if self.dscps != nil {
                 map["Dscps"] = self.dscps!
             }
@@ -2453,6 +2458,9 @@ public class CreateCenInterRegionTrafficQosPolicyRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Bandwidth") {
+                self.bandwidth = dict["Bandwidth"] as! String
+            }
             if dict.keys.contains("Dscps") {
                 self.dscps = dict["Dscps"] as! [Int32]
             }
@@ -2467,6 +2475,8 @@ public class CreateCenInterRegionTrafficQosPolicyRequest : Tea.TeaModel {
             }
         }
     }
+    public var bandwidthGuaranteeMode: String?
+
     public var clientToken: String?
 
     public var dryRun: Bool?
@@ -2503,6 +2513,9 @@ public class CreateCenInterRegionTrafficQosPolicyRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bandwidthGuaranteeMode != nil {
+            map["BandwidthGuaranteeMode"] = self.bandwidthGuaranteeMode!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -2544,6 +2557,9 @@ public class CreateCenInterRegionTrafficQosPolicyRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BandwidthGuaranteeMode") {
+            self.bandwidthGuaranteeMode = dict["BandwidthGuaranteeMode"] as! String
+        }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
         }
@@ -2676,6 +2692,8 @@ public class CreateCenInterRegionTrafficQosPolicyResponse : Tea.TeaModel {
 }
 
 public class CreateCenInterRegionTrafficQosQueueRequest : Tea.TeaModel {
+    public var bandwidth: Int64?
+
     public var clientToken: String?
 
     public var dryRun: Bool?
@@ -2712,6 +2730,9 @@ public class CreateCenInterRegionTrafficQosQueueRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bandwidth != nil {
+            map["Bandwidth"] = self.bandwidth!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -2749,6 +2770,9 @@ public class CreateCenInterRegionTrafficQosQueueRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Bandwidth") {
+            self.bandwidth = dict["Bandwidth"] as! Int64
+        }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
         }
@@ -22317,7 +22341,11 @@ public class ListCenInterRegionTrafficQosPoliciesRequest : Tea.TeaModel {
 public class ListCenInterRegionTrafficQosPoliciesResponseBody : Tea.TeaModel {
     public class TrafficQosPolicies : Tea.TeaModel {
         public class TrafficQosQueues : Tea.TeaModel {
+            public var bandwidth: String?
+
             public var dscps: [Int32]?
+
+            public var effectiveBandwidth: String?
 
             public var qosQueueDescription: String?
 
@@ -22341,8 +22369,14 @@ public class ListCenInterRegionTrafficQosPoliciesResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.bandwidth != nil {
+                    map["Bandwidth"] = self.bandwidth!
+                }
                 if self.dscps != nil {
                     map["Dscps"] = self.dscps!
+                }
+                if self.effectiveBandwidth != nil {
+                    map["EffectiveBandwidth"] = self.effectiveBandwidth!
                 }
                 if self.qosQueueDescription != nil {
                     map["QosQueueDescription"] = self.qosQueueDescription!
@@ -22360,8 +22394,14 @@ public class ListCenInterRegionTrafficQosPoliciesResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Bandwidth") {
+                    self.bandwidth = dict["Bandwidth"] as! String
+                }
                 if dict.keys.contains("Dscps") {
                     self.dscps = dict["Dscps"] as! [Int32]
+                }
+                if dict.keys.contains("EffectiveBandwidth") {
+                    self.effectiveBandwidth = dict["EffectiveBandwidth"] as! String
                 }
                 if dict.keys.contains("QosQueueDescription") {
                     self.qosQueueDescription = dict["QosQueueDescription"] as! String
@@ -22377,6 +22417,8 @@ public class ListCenInterRegionTrafficQosPoliciesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var bandwidthGuaranteeMode: String?
+
         public var trafficQosPolicyDescription: String?
 
         public var trafficQosPolicyId: String?
@@ -22405,6 +22447,9 @@ public class ListCenInterRegionTrafficQosPoliciesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.bandwidthGuaranteeMode != nil {
+                map["BandwidthGuaranteeMode"] = self.bandwidthGuaranteeMode!
+            }
             if self.trafficQosPolicyDescription != nil {
                 map["TrafficQosPolicyDescription"] = self.trafficQosPolicyDescription!
             }
@@ -22434,6 +22479,9 @@ public class ListCenInterRegionTrafficQosPoliciesResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BandwidthGuaranteeMode") {
+                self.bandwidthGuaranteeMode = dict["BandwidthGuaranteeMode"] as! String
+            }
             if dict.keys.contains("TrafficQosPolicyDescription") {
                 self.trafficQosPolicyDescription = dict["TrafficQosPolicyDescription"] as! String
             }
@@ -22588,6 +22636,45 @@ public class ListCenInterRegionTrafficQosPoliciesResponse : Tea.TeaModel {
 }
 
 public class ListCenInterRegionTrafficQosQueuesRequest : Tea.TeaModel {
+    public class EffectiveBandwidthFilter : Tea.TeaModel {
+        public var gte: Int64?
+
+        public var lte: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.gte != nil {
+                map["Gte"] = self.gte!
+            }
+            if self.lte != nil {
+                map["Lte"] = self.lte!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Gte") {
+                self.gte = dict["Gte"] as! Int64
+            }
+            if dict.keys.contains("Lte") {
+                self.lte = dict["Lte"] as! Int64
+            }
+        }
+    }
+    public var effectiveBandwidthFilter: ListCenInterRegionTrafficQosQueuesRequest.EffectiveBandwidthFilter?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -22622,10 +22709,14 @@ public class ListCenInterRegionTrafficQosQueuesRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.effectiveBandwidthFilter?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.effectiveBandwidthFilter != nil {
+            map["EffectiveBandwidthFilter"] = self.effectiveBandwidthFilter?.toMap()
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -22666,6 +22757,11 @@ public class ListCenInterRegionTrafficQosQueuesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EffectiveBandwidthFilter") {
+            var model = ListCenInterRegionTrafficQosQueuesRequest.EffectiveBandwidthFilter()
+            model.fromMap(dict["EffectiveBandwidthFilter"] as! [String: Any])
+            self.effectiveBandwidthFilter = model
+        }
         if dict.keys.contains("MaxResults") {
             self.maxResults = dict["MaxResults"] as! Int32
         }
@@ -22707,7 +22803,11 @@ public class ListCenInterRegionTrafficQosQueuesRequest : Tea.TeaModel {
 
 public class ListCenInterRegionTrafficQosQueuesResponseBody : Tea.TeaModel {
     public class TrafficQosQueues : Tea.TeaModel {
+        public var bandwidth: String?
+
         public var dscps: [Int32]?
+
+        public var effectiveBandwidth: String?
 
         public var remainBandwidthPercent: Int32?
 
@@ -22739,8 +22839,14 @@ public class ListCenInterRegionTrafficQosQueuesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.bandwidth != nil {
+                map["Bandwidth"] = self.bandwidth!
+            }
             if self.dscps != nil {
                 map["Dscps"] = self.dscps!
+            }
+            if self.effectiveBandwidth != nil {
+                map["EffectiveBandwidth"] = self.effectiveBandwidth!
             }
             if self.remainBandwidthPercent != nil {
                 map["RemainBandwidthPercent"] = self.remainBandwidthPercent!
@@ -22770,8 +22876,14 @@ public class ListCenInterRegionTrafficQosQueuesResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Bandwidth") {
+                self.bandwidth = dict["Bandwidth"] as! String
+            }
             if dict.keys.contains("Dscps") {
                 self.dscps = dict["Dscps"] as! [Int32]
+            }
+            if dict.keys.contains("EffectiveBandwidth") {
+                self.effectiveBandwidth = dict["EffectiveBandwidth"] as! String
             }
             if dict.keys.contains("RemainBandwidthPercent") {
                 self.remainBandwidthPercent = dict["RemainBandwidthPercent"] as! Int32
@@ -36174,6 +36286,8 @@ public class UpdateCenInterRegionTrafficQosPolicyAttributeResponse : Tea.TeaMode
 }
 
 public class UpdateCenInterRegionTrafficQosQueueAttributeRequest : Tea.TeaModel {
+    public var bandwidth: Int64?
+
     public var clientToken: String?
 
     public var dryRun: Bool?
@@ -36210,6 +36324,9 @@ public class UpdateCenInterRegionTrafficQosQueueAttributeRequest : Tea.TeaModel 
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bandwidth != nil {
+            map["Bandwidth"] = self.bandwidth!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -36247,6 +36364,9 @@ public class UpdateCenInterRegionTrafficQosQueueAttributeRequest : Tea.TeaModel 
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Bandwidth") {
+            self.bandwidth = dict["Bandwidth"] as! Int64
+        }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
         }
