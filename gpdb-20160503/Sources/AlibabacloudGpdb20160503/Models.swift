@@ -35284,6 +35284,59 @@ public class PauseInstanceResponse : Tea.TeaModel {
 }
 
 public class QueryCollectionDataRequest : Tea.TeaModel {
+    public class RelationalTableFilter : Tea.TeaModel {
+        public var collectionMetadataField: String?
+
+        public var condition: String?
+
+        public var tableField: String?
+
+        public var tableName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.collectionMetadataField != nil {
+                map["CollectionMetadataField"] = self.collectionMetadataField!
+            }
+            if self.condition != nil {
+                map["Condition"] = self.condition!
+            }
+            if self.tableField != nil {
+                map["TableField"] = self.tableField!
+            }
+            if self.tableName != nil {
+                map["TableName"] = self.tableName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CollectionMetadataField") {
+                self.collectionMetadataField = dict["CollectionMetadataField"] as! String
+            }
+            if dict.keys.contains("Condition") {
+                self.condition = dict["Condition"] as! String
+            }
+            if dict.keys.contains("TableField") {
+                self.tableField = dict["TableField"] as! String
+            }
+            if dict.keys.contains("TableName") {
+                self.tableName = dict["TableName"] as! String
+            }
+        }
+    }
     public var collection: String?
 
     public var content: String?
@@ -35314,6 +35367,8 @@ public class QueryCollectionDataRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var relationalTableFilter: QueryCollectionDataRequest.RelationalTableFilter?
+
     public var topK: Int64?
 
     public var vector: [Double]?
@@ -35330,6 +35385,7 @@ public class QueryCollectionDataRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.relationalTableFilter?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -35378,6 +35434,9 @@ public class QueryCollectionDataRequest : Tea.TeaModel {
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.relationalTableFilter != nil {
+            map["RelationalTableFilter"] = self.relationalTableFilter?.toMap()
         }
         if self.topK != nil {
             map["TopK"] = self.topK!
@@ -35437,6 +35496,11 @@ public class QueryCollectionDataRequest : Tea.TeaModel {
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
         }
+        if dict.keys.contains("RelationalTableFilter") {
+            var model = QueryCollectionDataRequest.RelationalTableFilter()
+            model.fromMap(dict["RelationalTableFilter"] as! [String: Any])
+            self.relationalTableFilter = model
+        }
         if dict.keys.contains("TopK") {
             self.topK = dict["TopK"] as! Int64
         }
@@ -35479,6 +35543,8 @@ public class QueryCollectionDataShrinkRequest : Tea.TeaModel {
     public var ownerId: Int64?
 
     public var regionId: String?
+
+    public var relationalTableFilterShrink: String?
 
     public var topK: Int64?
 
@@ -35545,6 +35611,9 @@ public class QueryCollectionDataShrinkRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.relationalTableFilterShrink != nil {
+            map["RelationalTableFilter"] = self.relationalTableFilterShrink!
+        }
         if self.topK != nil {
             map["TopK"] = self.topK!
         }
@@ -35602,6 +35671,9 @@ public class QueryCollectionDataShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("RelationalTableFilter") {
+            self.relationalTableFilterShrink = dict["RelationalTableFilter"] as! String
         }
         if dict.keys.contains("TopK") {
             self.topK = dict["TopK"] as! Int64
