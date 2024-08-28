@@ -58,4 +58,59 @@ open class Client : AlibabacloudOpenApi.Client {
         var headers: [String: String] = [:]
         return try await getTokenWithOptions(request as! GetTokenRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchWithOptions(_ request: SearchRequest, _ headers: SearchHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.scene)) {
+            body["scene"] = request.scene ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.searchParam)) {
+            body["searchParam"] = request.searchParam ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.source)) {
+            body["source"] = request.source ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.terminal)) {
+            body["terminal"] = request.terminal ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            body["userId"] = request.userId ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsAirticketAccessToken)) {
+            realHeaders["xAcsAirticketAccessToken"] = TeaUtils.Client.toJSONString(headers.xAcsAirticketAccessToken);
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsAirticketLanguage)) {
+            realHeaders["xAcsAirticketLanguage"] = TeaUtils.Client.toJSONString(headers.xAcsAirticketLanguage);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "Search",
+            "version": "2024-08-15",
+            "protocol": "HTTPS",
+            "pathname": "/v1/distribution/trade/search",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SearchResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func search(_ request: SearchRequest) async throws -> SearchResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: SearchHeaders = SearchHeaders([:])
+        return try await searchWithOptions(request as! SearchRequest, headers as! SearchHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
 }
