@@ -557,6 +557,107 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class MeasureConfig : Tea.TeaModel {
+            public var dataNodeCuNum: Int32?
+
+            public var dataNodeReplica: Int32?
+
+            public var indexNodeCuNum: Int32?
+
+            public var indexNodeReplica: Int32?
+
+            public var mixCoodinatorNodeCuNum: Int32?
+
+            public var mixCoodinatorNodeReplica: Int32?
+
+            public var proxyNodeCuNum: Int32?
+
+            public var proxyNodeReplica: Int32?
+
+            public var queryNodeCuNum: Int32?
+
+            public var queryNodeReplica: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dataNodeCuNum != nil {
+                    map["DataNodeCuNum"] = self.dataNodeCuNum!
+                }
+                if self.dataNodeReplica != nil {
+                    map["DataNodeReplica"] = self.dataNodeReplica!
+                }
+                if self.indexNodeCuNum != nil {
+                    map["IndexNodeCuNum"] = self.indexNodeCuNum!
+                }
+                if self.indexNodeReplica != nil {
+                    map["IndexNodeReplica"] = self.indexNodeReplica!
+                }
+                if self.mixCoodinatorNodeCuNum != nil {
+                    map["MixCoodinatorNodeCuNum"] = self.mixCoodinatorNodeCuNum!
+                }
+                if self.mixCoodinatorNodeReplica != nil {
+                    map["MixCoodinatorNodeReplica"] = self.mixCoodinatorNodeReplica!
+                }
+                if self.proxyNodeCuNum != nil {
+                    map["ProxyNodeCuNum"] = self.proxyNodeCuNum!
+                }
+                if self.proxyNodeReplica != nil {
+                    map["ProxyNodeReplica"] = self.proxyNodeReplica!
+                }
+                if self.queryNodeCuNum != nil {
+                    map["QueryNodeCuNum"] = self.queryNodeCuNum!
+                }
+                if self.queryNodeReplica != nil {
+                    map["QueryNodeReplica"] = self.queryNodeReplica!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DataNodeCuNum") {
+                    self.dataNodeCuNum = dict["DataNodeCuNum"] as! Int32
+                }
+                if dict.keys.contains("DataNodeReplica") {
+                    self.dataNodeReplica = dict["DataNodeReplica"] as! Int32
+                }
+                if dict.keys.contains("IndexNodeCuNum") {
+                    self.indexNodeCuNum = dict["IndexNodeCuNum"] as! Int32
+                }
+                if dict.keys.contains("IndexNodeReplica") {
+                    self.indexNodeReplica = dict["IndexNodeReplica"] as! Int32
+                }
+                if dict.keys.contains("MixCoodinatorNodeCuNum") {
+                    self.mixCoodinatorNodeCuNum = dict["MixCoodinatorNodeCuNum"] as! Int32
+                }
+                if dict.keys.contains("MixCoodinatorNodeReplica") {
+                    self.mixCoodinatorNodeReplica = dict["MixCoodinatorNodeReplica"] as! Int32
+                }
+                if dict.keys.contains("ProxyNodeCuNum") {
+                    self.proxyNodeCuNum = dict["ProxyNodeCuNum"] as! Int32
+                }
+                if dict.keys.contains("ProxyNodeReplica") {
+                    self.proxyNodeReplica = dict["ProxyNodeReplica"] as! Int32
+                }
+                if dict.keys.contains("QueryNodeCuNum") {
+                    self.queryNodeCuNum = dict["QueryNodeCuNum"] as! Int32
+                }
+                if dict.keys.contains("QueryNodeReplica") {
+                    self.queryNodeReplica = dict["QueryNodeReplica"] as! Int32
+                }
+            }
+        }
         public var aclId: String?
 
         public var beginTime: Int64?
@@ -575,6 +676,8 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
 
         public var instanceStatus: String?
 
+        public var measureConfig: GetInstanceDetailResponseBody.Data.MeasureConfig?
+
         public var openPublicNet: Bool?
 
         public var packageType: String?
@@ -584,6 +687,8 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
         public var productCode: String?
 
         public var regionId: String?
+
+        public var resourceGroupId: String?
 
         public var runningTime: Int64?
 
@@ -612,6 +717,7 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.clusterInfo?.validate()
+            try self.measureConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -643,6 +749,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
             if self.instanceStatus != nil {
                 map["InstanceStatus"] = self.instanceStatus!
             }
+            if self.measureConfig != nil {
+                map["MeasureConfig"] = self.measureConfig?.toMap()
+            }
             if self.openPublicNet != nil {
                 map["OpenPublicNet"] = self.openPublicNet!
             }
@@ -657,6 +766,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
             }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
+            }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
             }
             if self.runningTime != nil {
                 map["RunningTime"] = self.runningTime!
@@ -715,6 +827,11 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
             if dict.keys.contains("InstanceStatus") {
                 self.instanceStatus = dict["InstanceStatus"] as! String
             }
+            if dict.keys.contains("MeasureConfig") {
+                var model = GetInstanceDetailResponseBody.Data.MeasureConfig()
+                model.fromMap(dict["MeasureConfig"] as! [String: Any])
+                self.measureConfig = model
+            }
             if dict.keys.contains("OpenPublicNet") {
                 self.openPublicNet = dict["OpenPublicNet"] as! Bool
             }
@@ -729,6 +846,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("ResourceGroupId") {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
             }
             if dict.keys.contains("RunningTime") {
                 self.runningTime = dict["RunningTime"] as! Int64
@@ -896,6 +1016,8 @@ public class ListInstancesRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public override init() {
         super.init()
     }
@@ -925,6 +1047,9 @@ public class ListInstancesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         return map
     }
 
@@ -943,6 +1068,9 @@ public class ListInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
     }
 }
@@ -1121,6 +1249,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
         public var regionId: String?
 
+        public var resourceGroupId: String?
+
         public var runningTime: Int32?
 
         public var sgId: String?
@@ -1179,6 +1309,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.runningTime != nil {
                 map["RunningTime"] = self.runningTime!
             }
@@ -1232,6 +1365,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("ResourceGroupId") {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
             }
             if dict.keys.contains("RunningTime") {
                 self.runningTime = dict["RunningTime"] as! Int32
