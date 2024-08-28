@@ -32996,11 +32996,17 @@ public class DescribePdnsUdpIpSegmentsResponseBody : Tea.TeaModel {
     public class IpSegments : Tea.TeaModel {
         public var createDate: String?
 
+        public var createTimestamp: Int64?
+
+        public var id: String?
+
         public var ip: String?
 
         public var mask: Int64?
 
         public var name: String?
+
+        public var secretKey: String?
 
         public var state: String?
 
@@ -33023,6 +33029,12 @@ public class DescribePdnsUdpIpSegmentsResponseBody : Tea.TeaModel {
             if self.createDate != nil {
                 map["CreateDate"] = self.createDate!
             }
+            if self.createTimestamp != nil {
+                map["CreateTimestamp"] = self.createTimestamp!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
             if self.ip != nil {
                 map["Ip"] = self.ip!
             }
@@ -33031,6 +33043,9 @@ public class DescribePdnsUdpIpSegmentsResponseBody : Tea.TeaModel {
             }
             if self.name != nil {
                 map["Name"] = self.name!
+            }
+            if self.secretKey != nil {
+                map["SecretKey"] = self.secretKey!
             }
             if self.state != nil {
                 map["State"] = self.state!
@@ -33045,6 +33060,12 @@ public class DescribePdnsUdpIpSegmentsResponseBody : Tea.TeaModel {
             if dict.keys.contains("CreateDate") {
                 self.createDate = dict["CreateDate"] as! String
             }
+            if dict.keys.contains("CreateTimestamp") {
+                self.createTimestamp = dict["CreateTimestamp"] as! Int64
+            }
+            if dict.keys.contains("Id") {
+                self.id = dict["Id"] as! String
+            }
             if dict.keys.contains("Ip") {
                 self.ip = dict["Ip"] as! String
             }
@@ -33053,6 +33074,9 @@ public class DescribePdnsUdpIpSegmentsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Name") {
                 self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("SecretKey") {
+                self.secretKey = dict["SecretKey"] as! String
             }
             if dict.keys.contains("State") {
                 self.state = dict["State"] as! String
@@ -33228,6 +33252,8 @@ public class DescribePdnsUserInfoResponseBody : Tea.TeaModel {
 
         public var pdnsId: Int64?
 
+        public var secretKey: String?
+
         public var serviceType: String?
 
         public var state: String?
@@ -33256,6 +33282,9 @@ public class DescribePdnsUserInfoResponseBody : Tea.TeaModel {
             if self.pdnsId != nil {
                 map["PdnsId"] = self.pdnsId!
             }
+            if self.secretKey != nil {
+                map["SecretKey"] = self.secretKey!
+            }
             if self.serviceType != nil {
                 map["ServiceType"] = self.serviceType!
             }
@@ -33277,6 +33306,9 @@ public class DescribePdnsUserInfoResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("PdnsId") {
                 self.pdnsId = dict["PdnsId"] as! Int64
+            }
+            if dict.keys.contains("SecretKey") {
+                self.secretKey = dict["SecretKey"] as! String
             }
             if dict.keys.contains("ServiceType") {
                 self.serviceType = dict["ServiceType"] as! String
