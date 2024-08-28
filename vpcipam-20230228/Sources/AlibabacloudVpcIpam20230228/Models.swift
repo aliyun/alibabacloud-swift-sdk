@@ -422,6 +422,10 @@ public class CreateIpamRequest : Tea.TeaModel {
 }
 
 public class CreateIpamResponseBody : Tea.TeaModel {
+    public var defaultResourceDiscoveryAssociationId: String?
+
+    public var defaultResourceDiscoveryId: String?
+
     public var ipamId: String?
 
     public var privateDefaultScopeId: String?
@@ -429,6 +433,8 @@ public class CreateIpamResponseBody : Tea.TeaModel {
     public var publicDefaultScopeId: String?
 
     public var requestId: String?
+
+    public var resourceDiscoveryAssociationCount: Int32?
 
     public override init() {
         super.init()
@@ -444,6 +450,12 @@ public class CreateIpamResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.defaultResourceDiscoveryAssociationId != nil {
+            map["DefaultResourceDiscoveryAssociationId"] = self.defaultResourceDiscoveryAssociationId!
+        }
+        if self.defaultResourceDiscoveryId != nil {
+            map["DefaultResourceDiscoveryId"] = self.defaultResourceDiscoveryId!
+        }
         if self.ipamId != nil {
             map["IpamId"] = self.ipamId!
         }
@@ -456,10 +468,19 @@ public class CreateIpamResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.resourceDiscoveryAssociationCount != nil {
+            map["ResourceDiscoveryAssociationCount"] = self.resourceDiscoveryAssociationCount!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DefaultResourceDiscoveryAssociationId") {
+            self.defaultResourceDiscoveryAssociationId = dict["DefaultResourceDiscoveryAssociationId"] as! String
+        }
+        if dict.keys.contains("DefaultResourceDiscoveryId") {
+            self.defaultResourceDiscoveryId = dict["DefaultResourceDiscoveryId"] as! String
+        }
         if dict.keys.contains("IpamId") {
             self.ipamId = dict["IpamId"] as! String
         }
@@ -471,6 +492,9 @@ public class CreateIpamResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResourceDiscoveryAssociationCount") {
+            self.resourceDiscoveryAssociationCount = dict["ResourceDiscoveryAssociationCount"] as! Int32
         }
     }
 }
@@ -4163,6 +4187,10 @@ public class ListIpamsResponseBody : Tea.TeaModel {
         }
         public var createTime: String?
 
+        public var defaultResourceDiscoveryAssociationId: String?
+
+        public var defaultResourceDiscoveryId: String?
+
         public var ipamDescription: String?
 
         public var ipamId: String?
@@ -4180,6 +4208,8 @@ public class ListIpamsResponseBody : Tea.TeaModel {
         public var publicDefaultScopeId: String?
 
         public var regionId: String?
+
+        public var resourceDiscoveryAssociationCount: Int32?
 
         public var resourceGroupId: String?
 
@@ -4203,6 +4233,12 @@ public class ListIpamsResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
+            }
+            if self.defaultResourceDiscoveryAssociationId != nil {
+                map["DefaultResourceDiscoveryAssociationId"] = self.defaultResourceDiscoveryAssociationId!
+            }
+            if self.defaultResourceDiscoveryId != nil {
+                map["DefaultResourceDiscoveryId"] = self.defaultResourceDiscoveryId!
             }
             if self.ipamDescription != nil {
                 map["IpamDescription"] = self.ipamDescription!
@@ -4231,6 +4267,9 @@ public class ListIpamsResponseBody : Tea.TeaModel {
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
+            if self.resourceDiscoveryAssociationCount != nil {
+                map["ResourceDiscoveryAssociationCount"] = self.resourceDiscoveryAssociationCount!
+            }
             if self.resourceGroupId != nil {
                 map["ResourceGroupId"] = self.resourceGroupId!
             }
@@ -4250,6 +4289,12 @@ public class ListIpamsResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("CreateTime") {
                 self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("DefaultResourceDiscoveryAssociationId") {
+                self.defaultResourceDiscoveryAssociationId = dict["DefaultResourceDiscoveryAssociationId"] as! String
+            }
+            if dict.keys.contains("DefaultResourceDiscoveryId") {
+                self.defaultResourceDiscoveryId = dict["DefaultResourceDiscoveryId"] as! String
             }
             if dict.keys.contains("IpamDescription") {
                 self.ipamDescription = dict["IpamDescription"] as! String
@@ -4277,6 +4322,9 @@ public class ListIpamsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("ResourceDiscoveryAssociationCount") {
+                self.resourceDiscoveryAssociationCount = dict["ResourceDiscoveryAssociationCount"] as! Int32
             }
             if dict.keys.contains("ResourceGroupId") {
                 self.resourceGroupId = dict["ResourceGroupId"] as! String
