@@ -8756,6 +8756,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 public class ConfigserverAttribute : Tea.TeaModel {
                     public var connectString: String?
 
+                    public var lockMode: String?
+
                     public var maxConnections: Int32?
 
                     public var maxIOPS: Int32?
@@ -8789,6 +8791,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                         if self.connectString != nil {
                             map["ConnectString"] = self.connectString!
                         }
+                        if self.lockMode != nil {
+                            map["LockMode"] = self.lockMode!
+                        }
                         if self.maxConnections != nil {
                             map["MaxConnections"] = self.maxConnections!
                         }
@@ -8819,6 +8824,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                     public override func fromMap(_ dict: [String: Any]) -> Void {
                         if dict.keys.contains("ConnectString") {
                             self.connectString = dict["ConnectString"] as! String
+                        }
+                        if dict.keys.contains("LockMode") {
+                            self.lockMode = dict["LockMode"] as! String
                         }
                         if dict.keys.contains("MaxConnections") {
                             self.maxConnections = dict["MaxConnections"] as! Int32
@@ -8890,6 +8898,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 public class MongosAttribute : Tea.TeaModel {
                     public var connectSting: String?
 
+                    public var lockMode: String?
+
                     public var maxConnections: Int32?
 
                     public var maxIOPS: Int32?
@@ -8927,6 +8937,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                         if self.connectSting != nil {
                             map["ConnectSting"] = self.connectSting!
                         }
+                        if self.lockMode != nil {
+                            map["LockMode"] = self.lockMode!
+                        }
                         if self.maxConnections != nil {
                             map["MaxConnections"] = self.maxConnections!
                         }
@@ -8963,6 +8976,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                     public override func fromMap(_ dict: [String: Any]) -> Void {
                         if dict.keys.contains("ConnectSting") {
                             self.connectSting = dict["ConnectSting"] as! String
+                        }
+                        if dict.keys.contains("LockMode") {
+                            self.lockMode = dict["LockMode"] as! String
                         }
                         if dict.keys.contains("MaxConnections") {
                             self.maxConnections = dict["MaxConnections"] as! Int32
@@ -9158,6 +9174,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 public class ShardAttribute : Tea.TeaModel {
                     public var connectString: String?
 
+                    public var lockMode: String?
+
                     public var maxConnections: Int32?
 
                     public var maxDiskMbps: String?
@@ -9195,6 +9213,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                         if self.connectString != nil {
                             map["ConnectString"] = self.connectString!
                         }
+                        if self.lockMode != nil {
+                            map["LockMode"] = self.lockMode!
+                        }
                         if self.maxConnections != nil {
                             map["MaxConnections"] = self.maxConnections!
                         }
@@ -9231,6 +9252,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                     public override func fromMap(_ dict: [String: Any]) -> Void {
                         if dict.keys.contains("ConnectString") {
                             self.connectString = dict["ConnectString"] as! String
+                        }
+                        if dict.keys.contains("LockMode") {
+                            self.lockMode = dict["LockMode"] as! String
                         }
                         if dict.keys.contains("MaxConnections") {
                             self.maxConnections = dict["MaxConnections"] as! Int32
