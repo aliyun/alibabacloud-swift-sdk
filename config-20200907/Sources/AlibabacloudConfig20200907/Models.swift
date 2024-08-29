@@ -24102,6 +24102,10 @@ public class ListAggregateConfigRulesResponse : Tea.TeaModel {
 public class ListAggregateDiscoveredResourcesRequest : Tea.TeaModel {
     public var aggregatorId: String?
 
+    public var endUpdateTimestamp: Int64?
+
+    public var excludeResourceTypes: String?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -24117,6 +24121,8 @@ public class ListAggregateDiscoveredResourcesRequest : Tea.TeaModel {
     public var resourceOwnerId: Int64?
 
     public var resourceTypes: String?
+
+    public var startUpdateTimestamp: Int64?
 
     public override init() {
         super.init()
@@ -24134,6 +24140,12 @@ public class ListAggregateDiscoveredResourcesRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.aggregatorId != nil {
             map["AggregatorId"] = self.aggregatorId!
+        }
+        if self.endUpdateTimestamp != nil {
+            map["EndUpdateTimestamp"] = self.endUpdateTimestamp!
+        }
+        if self.excludeResourceTypes != nil {
+            map["ExcludeResourceTypes"] = self.excludeResourceTypes!
         }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
@@ -24159,12 +24171,21 @@ public class ListAggregateDiscoveredResourcesRequest : Tea.TeaModel {
         if self.resourceTypes != nil {
             map["ResourceTypes"] = self.resourceTypes!
         }
+        if self.startUpdateTimestamp != nil {
+            map["StartUpdateTimestamp"] = self.startUpdateTimestamp!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AggregatorId") {
             self.aggregatorId = dict["AggregatorId"] as! String
+        }
+        if dict.keys.contains("EndUpdateTimestamp") {
+            self.endUpdateTimestamp = dict["EndUpdateTimestamp"] as! Int64
+        }
+        if dict.keys.contains("ExcludeResourceTypes") {
+            self.excludeResourceTypes = dict["ExcludeResourceTypes"] as! String
         }
         if dict.keys.contains("MaxResults") {
             self.maxResults = dict["MaxResults"] as! Int32
@@ -24189,6 +24210,9 @@ public class ListAggregateDiscoveredResourcesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceTypes") {
             self.resourceTypes = dict["ResourceTypes"] as! String
+        }
+        if dict.keys.contains("StartUpdateTimestamp") {
+            self.startUpdateTimestamp = dict["StartUpdateTimestamp"] as! Int64
         }
     }
 }
@@ -24217,6 +24241,8 @@ public class ListAggregateDiscoveredResourcesResponseBody : Tea.TeaModel {
             public var resourceType: String?
 
             public var tags: String?
+
+            public var updateTime: Int64?
 
             public var version: Int64?
 
@@ -24267,6 +24293,9 @@ public class ListAggregateDiscoveredResourcesResponseBody : Tea.TeaModel {
                 if self.tags != nil {
                     map["Tags"] = self.tags!
                 }
+                if self.updateTime != nil {
+                    map["UpdateTime"] = self.updateTime!
+                }
                 if self.version != nil {
                     map["Version"] = self.version!
                 }
@@ -24306,6 +24335,9 @@ public class ListAggregateDiscoveredResourcesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Tags") {
                     self.tags = dict["Tags"] as! String
+                }
+                if dict.keys.contains("UpdateTime") {
+                    self.updateTime = dict["UpdateTime"] as! Int64
                 }
                 if dict.keys.contains("Version") {
                     self.version = dict["Version"] as! Int64
@@ -28366,6 +28398,10 @@ public class ListConfigRulesResponse : Tea.TeaModel {
 }
 
 public class ListDiscoveredResourcesRequest : Tea.TeaModel {
+    public var endUpdateTimestamp: Int64?
+
+    public var excludeResourceTypes: String?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -28377,6 +28413,8 @@ public class ListDiscoveredResourcesRequest : Tea.TeaModel {
     public var resourceId: String?
 
     public var resourceTypes: String?
+
+    public var startUpdateTimestamp: Int64?
 
     public override init() {
         super.init()
@@ -28392,6 +28430,12 @@ public class ListDiscoveredResourcesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.endUpdateTimestamp != nil {
+            map["EndUpdateTimestamp"] = self.endUpdateTimestamp!
+        }
+        if self.excludeResourceTypes != nil {
+            map["ExcludeResourceTypes"] = self.excludeResourceTypes!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -28410,10 +28454,19 @@ public class ListDiscoveredResourcesRequest : Tea.TeaModel {
         if self.resourceTypes != nil {
             map["ResourceTypes"] = self.resourceTypes!
         }
+        if self.startUpdateTimestamp != nil {
+            map["StartUpdateTimestamp"] = self.startUpdateTimestamp!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EndUpdateTimestamp") {
+            self.endUpdateTimestamp = dict["EndUpdateTimestamp"] as! Int64
+        }
+        if dict.keys.contains("ExcludeResourceTypes") {
+            self.excludeResourceTypes = dict["ExcludeResourceTypes"] as! String
+        }
         if dict.keys.contains("MaxResults") {
             self.maxResults = dict["MaxResults"] as! Int32
         }
@@ -28431,6 +28484,9 @@ public class ListDiscoveredResourcesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceTypes") {
             self.resourceTypes = dict["ResourceTypes"] as! String
+        }
+        if dict.keys.contains("StartUpdateTimestamp") {
+            self.startUpdateTimestamp = dict["StartUpdateTimestamp"] as! Int64
         }
     }
 }
@@ -28457,6 +28513,8 @@ public class ListDiscoveredResourcesResponseBody : Tea.TeaModel {
             public var resourceType: String?
 
             public var tags: String?
+
+            public var updateTime: Int64?
 
             public var version: Int64?
 
@@ -28504,6 +28562,9 @@ public class ListDiscoveredResourcesResponseBody : Tea.TeaModel {
                 if self.tags != nil {
                     map["Tags"] = self.tags!
                 }
+                if self.updateTime != nil {
+                    map["UpdateTime"] = self.updateTime!
+                }
                 if self.version != nil {
                     map["Version"] = self.version!
                 }
@@ -28540,6 +28601,9 @@ public class ListDiscoveredResourcesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Tags") {
                     self.tags = dict["Tags"] as! String
+                }
+                if dict.keys.contains("UpdateTime") {
+                    self.updateTime = dict["UpdateTime"] as! Int64
                 }
                 if dict.keys.contains("Version") {
                     self.version = dict["Version"] as! Int64

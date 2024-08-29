@@ -3492,6 +3492,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.aggregatorId)) {
             query["AggregatorId"] = request.aggregatorId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.endUpdateTimestamp)) {
+            query["EndUpdateTimestamp"] = request.endUpdateTimestamp!;
+        }
+        if (!TeaUtils.Client.isUnset(request.excludeResourceTypes)) {
+            query["ExcludeResourceTypes"] = request.excludeResourceTypes ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["MaxResults"] = request.maxResults!;
         }
@@ -3515,6 +3521,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceTypes)) {
             query["ResourceTypes"] = request.resourceTypes ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startUpdateTimestamp)) {
+            query["StartUpdateTimestamp"] = request.startUpdateTimestamp!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -4011,6 +4020,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listDiscoveredResourcesWithOptions(_ request: ListDiscoveredResourcesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDiscoveredResourcesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endUpdateTimestamp)) {
+            query["EndUpdateTimestamp"] = request.endUpdateTimestamp!;
+        }
+        if (!TeaUtils.Client.isUnset(request.excludeResourceTypes)) {
+            query["ExcludeResourceTypes"] = request.excludeResourceTypes ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["MaxResults"] = request.maxResults!;
         }
@@ -4028,6 +4043,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceTypes)) {
             query["ResourceTypes"] = request.resourceTypes ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startUpdateTimestamp)) {
+            query["StartUpdateTimestamp"] = request.startUpdateTimestamp!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
