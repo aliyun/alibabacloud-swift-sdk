@@ -98,9 +98,6 @@ public class AddDomainResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -226,9 +223,6 @@ public class DeleteDomainResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -366,7 +360,15 @@ public class DescribeDomainsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Domain") {
-                self.domain = dict["Domain"] as! [DescribeDomainsResponseBody.Domains.Domain]
+                var tmp : [DescribeDomainsResponseBody.Domains.Domain] = []
+                for v in dict["Domain"] as! [Any] {
+                    var model = DescribeDomainsResponseBody.Domains.Domain()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.domain = tmp
             }
         }
     }
@@ -451,9 +453,6 @@ public class DescribeDomainsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -496,6 +495,8 @@ public class GetAccountInfoResponseBody : Tea.TeaModel {
 
         public var monthResolveCount: Int32?
 
+        public var packageCount: Int32?
+
         public var signSecret: String?
 
         public var signedCount: Int64?
@@ -503,6 +504,8 @@ public class GetAccountInfoResponseBody : Tea.TeaModel {
         public var unsignedCount: Int64?
 
         public var unsignedEnabled: Bool?
+
+        public var userStatus: Int32?
 
         public override init() {
             super.init()
@@ -530,6 +533,9 @@ public class GetAccountInfoResponseBody : Tea.TeaModel {
             if self.monthResolveCount != nil {
                 map["MonthResolveCount"] = self.monthResolveCount!
             }
+            if self.packageCount != nil {
+                map["PackageCount"] = self.packageCount!
+            }
             if self.signSecret != nil {
                 map["SignSecret"] = self.signSecret!
             }
@@ -541,6 +547,9 @@ public class GetAccountInfoResponseBody : Tea.TeaModel {
             }
             if self.unsignedEnabled != nil {
                 map["UnsignedEnabled"] = self.unsignedEnabled!
+            }
+            if self.userStatus != nil {
+                map["UserStatus"] = self.userStatus!
             }
             return map
         }
@@ -558,6 +567,9 @@ public class GetAccountInfoResponseBody : Tea.TeaModel {
             if dict.keys.contains("MonthResolveCount") {
                 self.monthResolveCount = dict["MonthResolveCount"] as! Int32
             }
+            if dict.keys.contains("PackageCount") {
+                self.packageCount = dict["PackageCount"] as! Int32
+            }
             if dict.keys.contains("SignSecret") {
                 self.signSecret = dict["SignSecret"] as! String
             }
@@ -569,6 +581,9 @@ public class GetAccountInfoResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("UnsignedEnabled") {
                 self.unsignedEnabled = dict["UnsignedEnabled"] as! Bool
+            }
+            if dict.keys.contains("UserStatus") {
+                self.userStatus = dict["UserStatus"] as! Int32
             }
         }
     }
@@ -629,9 +644,6 @@ public class GetAccountInfoResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -813,9 +825,6 @@ public class GetResolveCountSummaryResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -969,7 +978,15 @@ public class GetResolveStatisticsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("DataPoint") {
-                self.dataPoint = dict["DataPoint"] as! [GetResolveStatisticsResponseBody.DataPoints.DataPoint]
+                var tmp : [GetResolveStatisticsResponseBody.DataPoints.DataPoint] = []
+                for v in dict["DataPoint"] as! [Any] {
+                    var model = GetResolveStatisticsResponseBody.DataPoints.DataPoint()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.dataPoint = tmp
             }
         }
     }
@@ -1030,9 +1047,6 @@ public class GetResolveStatisticsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1070,6 +1084,8 @@ public class ListDomainsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var search: String?
+
     public override init() {
         super.init()
     }
@@ -1090,6 +1106,9 @@ public class ListDomainsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.search != nil {
+            map["Search"] = self.search!
+        }
         return map
     }
 
@@ -1099,6 +1118,9 @@ public class ListDomainsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("Search") {
+            self.search = dict["Search"] as! String
         }
     }
 }
@@ -1115,6 +1137,8 @@ public class ListDomainsResponseBody : Tea.TeaModel {
             public var resolvedHttps: Int64?
 
             public var resolvedHttps6: Int64?
+
+            public var timeModified: Int64?
 
             public override init() {
                 super.init()
@@ -1145,6 +1169,9 @@ public class ListDomainsResponseBody : Tea.TeaModel {
                 if self.resolvedHttps6 != nil {
                     map["ResolvedHttps6"] = self.resolvedHttps6!
                 }
+                if self.timeModified != nil {
+                    map["TimeModified"] = self.timeModified!
+                }
                 return map
             }
 
@@ -1163,6 +1190,9 @@ public class ListDomainsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ResolvedHttps6") {
                     self.resolvedHttps6 = dict["ResolvedHttps6"] as! Int64
+                }
+                if dict.keys.contains("TimeModified") {
+                    self.timeModified = dict["TimeModified"] as! Int64
                 }
             }
         }
@@ -1194,7 +1224,15 @@ public class ListDomainsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("DomainInfo") {
-                self.domainInfo = dict["DomainInfo"] as! [ListDomainsResponseBody.DomainInfos.DomainInfo]
+                var tmp : [ListDomainsResponseBody.DomainInfos.DomainInfo] = []
+                for v in dict["DomainInfo"] as! [Any] {
+                    var model = ListDomainsResponseBody.DomainInfos.DomainInfo()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.domainInfo = tmp
             }
         }
     }
@@ -1279,9 +1317,6 @@ public class ListDomainsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 

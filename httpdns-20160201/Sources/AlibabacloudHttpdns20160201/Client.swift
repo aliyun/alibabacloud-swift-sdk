@@ -236,6 +236,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
         }
+        if (!TeaUtils.Client.isUnset(request.search)) {
+            query["Search"] = request.search ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
