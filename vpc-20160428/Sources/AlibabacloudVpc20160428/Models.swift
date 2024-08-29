@@ -91146,6 +91146,8 @@ public class ModifyPhysicalConnectionAttributeResponse : Tea.TeaModel {
 public class ModifyRouteEntryRequest : Tea.TeaModel {
     public var description_: String?
 
+    public var destinationCidrBlock: String?
+
     public var newNextHopId: String?
 
     public var newNextHopType: String?
@@ -91164,6 +91166,8 @@ public class ModifyRouteEntryRequest : Tea.TeaModel {
 
     public var routeEntryName: String?
 
+    public var routeTableId: String?
+
     public override init() {
         super.init()
     }
@@ -91180,6 +91184,9 @@ public class ModifyRouteEntryRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.destinationCidrBlock != nil {
+            map["DestinationCidrBlock"] = self.destinationCidrBlock!
         }
         if self.newNextHopId != nil {
             map["NewNextHopId"] = self.newNextHopId!
@@ -91208,12 +91215,18 @@ public class ModifyRouteEntryRequest : Tea.TeaModel {
         if self.routeEntryName != nil {
             map["RouteEntryName"] = self.routeEntryName!
         }
+        if self.routeTableId != nil {
+            map["RouteTableId"] = self.routeTableId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("DestinationCidrBlock") {
+            self.destinationCidrBlock = dict["DestinationCidrBlock"] as! String
         }
         if dict.keys.contains("NewNextHopId") {
             self.newNextHopId = dict["NewNextHopId"] as! String
@@ -91241,6 +91254,9 @@ public class ModifyRouteEntryRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RouteEntryName") {
             self.routeEntryName = dict["RouteEntryName"] as! String
+        }
+        if dict.keys.contains("RouteTableId") {
+            self.routeTableId = dict["RouteTableId"] as! String
         }
     }
 }
