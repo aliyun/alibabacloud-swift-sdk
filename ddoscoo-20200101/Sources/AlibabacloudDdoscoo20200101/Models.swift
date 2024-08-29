@@ -2555,6 +2555,8 @@ public class CreatePortRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var proxyEnable: Int64?
+
     public var realServers: [String]?
 
     public override init() {
@@ -2583,6 +2585,9 @@ public class CreatePortRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.proxyEnable != nil {
+            map["ProxyEnable"] = self.proxyEnable!
+        }
         if self.realServers != nil {
             map["RealServers"] = self.realServers!
         }
@@ -2601,6 +2606,9 @@ public class CreatePortRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("ProxyEnable") {
+            self.proxyEnable = dict["ProxyEnable"] as! Int64
         }
         if dict.keys.contains("RealServers") {
             self.realServers = dict["RealServers"] as! [String]
@@ -16656,7 +16664,13 @@ public class DescribeNetworkRulesResponseBody : Tea.TeaModel {
 
         public var isAutoCreate: Bool?
 
+        public var payloadRuleEnable: Int64?
+
         public var protocol_: String?
+
+        public var proxyEnable: Int64?
+
+        public var proxyStatus: String?
 
         public var realServers: [String]?
 
@@ -16688,8 +16702,17 @@ public class DescribeNetworkRulesResponseBody : Tea.TeaModel {
             if self.isAutoCreate != nil {
                 map["IsAutoCreate"] = self.isAutoCreate!
             }
+            if self.payloadRuleEnable != nil {
+                map["PayloadRuleEnable"] = self.payloadRuleEnable!
+            }
             if self.protocol_ != nil {
                 map["Protocol"] = self.protocol_!
+            }
+            if self.proxyEnable != nil {
+                map["ProxyEnable"] = self.proxyEnable!
+            }
+            if self.proxyStatus != nil {
+                map["ProxyStatus"] = self.proxyStatus!
             }
             if self.realServers != nil {
                 map["RealServers"] = self.realServers!
@@ -16713,8 +16736,17 @@ public class DescribeNetworkRulesResponseBody : Tea.TeaModel {
             if dict.keys.contains("IsAutoCreate") {
                 self.isAutoCreate = dict["IsAutoCreate"] as! Bool
             }
+            if dict.keys.contains("PayloadRuleEnable") {
+                self.payloadRuleEnable = dict["PayloadRuleEnable"] as! Int64
+            }
             if dict.keys.contains("Protocol") {
                 self.protocol_ = dict["Protocol"] as! String
+            }
+            if dict.keys.contains("ProxyEnable") {
+                self.proxyEnable = dict["ProxyEnable"] as! Int64
+            }
+            if dict.keys.contains("ProxyStatus") {
+                self.proxyStatus = dict["ProxyStatus"] as! String
             }
             if dict.keys.contains("RealServers") {
                 self.realServers = dict["RealServers"] as! [String]
@@ -29300,6 +29332,8 @@ public class ModifyPortRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var proxyEnable: Int64?
+
     public var realServers: [String]?
 
     public override init() {
@@ -29328,6 +29362,9 @@ public class ModifyPortRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.proxyEnable != nil {
+            map["ProxyEnable"] = self.proxyEnable!
+        }
         if self.realServers != nil {
             map["RealServers"] = self.realServers!
         }
@@ -29346,6 +29383,9 @@ public class ModifyPortRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("ProxyEnable") {
+            self.proxyEnable = dict["ProxyEnable"] as! Int64
         }
         if dict.keys.contains("RealServers") {
             self.realServers = dict["RealServers"] as! [String]
