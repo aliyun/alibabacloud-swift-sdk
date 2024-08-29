@@ -1097,6 +1097,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.enableGlobalDomainName)) {
+            query["EnableGlobalDomainName"] = request.enableGlobalDomainName!;
+        }
         if (!TeaUtils.Client.isUnset(request.GDNDescription)) {
             query["GDNDescription"] = request.GDNDescription ?? "";
         }
@@ -6418,6 +6421,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.plannedEndTime)) {
             query["PlannedEndTime"] = request.plannedEndTime ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.plannedFlashingOffTime)) {
+            query["PlannedFlashingOffTime"] = request.plannedFlashingOffTime ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.plannedStartTime)) {
             query["PlannedStartTime"] = request.plannedStartTime ?? "";
         }
@@ -6528,6 +6534,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.plannedEndTime)) {
             query["PlannedEndTime"] = request.plannedEndTime ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.plannedFlashingOffTime)) {
+            query["PlannedFlashingOffTime"] = request.plannedFlashingOffTime ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.plannedStartTime)) {
             query["PlannedStartTime"] = request.plannedStartTime ?? "";
         }
@@ -6629,6 +6638,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyGlobalDatabaseNetworkWithOptions(_ request: ModifyGlobalDatabaseNetworkRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyGlobalDatabaseNetworkResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enableGlobalDomainName)) {
+            query["EnableGlobalDomainName"] = request.enableGlobalDomainName!;
+        }
         if (!TeaUtils.Client.isUnset(request.GDNDescription)) {
             query["GDNDescription"] = request.GDNDescription ?? "";
         }

@@ -3451,6 +3451,8 @@ public class CreateDatabaseResponse : Tea.TeaModel {
 public class CreateGlobalDatabaseNetworkRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var enableGlobalDomainName: Bool?
+
     public var GDNDescription: String?
 
     public var ownerAccount: String?
@@ -3482,6 +3484,9 @@ public class CreateGlobalDatabaseNetworkRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.enableGlobalDomainName != nil {
+            map["EnableGlobalDomainName"] = self.enableGlobalDomainName!
+        }
         if self.GDNDescription != nil {
             map["GDNDescription"] = self.GDNDescription!
         }
@@ -3509,6 +3514,9 @@ public class CreateGlobalDatabaseNetworkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DBClusterId") {
             self.DBClusterId = dict["DBClusterId"] as! String
+        }
+        if dict.keys.contains("EnableGlobalDomainName") {
+            self.enableGlobalDomainName = dict["EnableGlobalDomainName"] as! Bool
         }
         if dict.keys.contains("GDNDescription") {
             self.GDNDescription = dict["GDNDescription"] as! String
@@ -18089,6 +18097,8 @@ public class DescribeGlobalDatabaseNetworkResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var category: String?
+
         public var DBClusterDescription: String?
 
         public var DBClusterId: String?
@@ -18133,6 +18143,9 @@ public class DescribeGlobalDatabaseNetworkResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.category != nil {
+                map["Category"] = self.category!
+            }
             if self.DBClusterDescription != nil {
                 map["DBClusterDescription"] = self.DBClusterDescription!
             }
@@ -18186,6 +18199,9 @@ public class DescribeGlobalDatabaseNetworkResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Category") {
+                self.category = dict["Category"] as! String
+            }
             if dict.keys.contains("DBClusterDescription") {
                 self.DBClusterDescription = dict["DBClusterDescription"] as! String
             }
@@ -18259,6 +18275,8 @@ public class DescribeGlobalDatabaseNetworkResponseBody : Tea.TeaModel {
 
     public var GDNStatus: String?
 
+    public var globalDomainName: String?
+
     public var requestId: String?
 
     public var resourceGroupId: String?
@@ -18312,6 +18330,9 @@ public class DescribeGlobalDatabaseNetworkResponseBody : Tea.TeaModel {
         if self.GDNStatus != nil {
             map["GDNStatus"] = self.GDNStatus!
         }
+        if self.globalDomainName != nil {
+            map["GlobalDomainName"] = self.globalDomainName!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -18364,6 +18385,9 @@ public class DescribeGlobalDatabaseNetworkResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("GDNStatus") {
             self.GDNStatus = dict["GDNStatus"] as! String
+        }
+        if dict.keys.contains("GlobalDomainName") {
+            self.globalDomainName = dict["GlobalDomainName"] as! String
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
@@ -22090,6 +22114,8 @@ public class DescribeScheduleTasksResponseBody : Tea.TeaModel {
 
             public var plannedEndTime: String?
 
+            public var plannedFlashingOffTime: String?
+
             public var plannedStartTime: String?
 
             public var plannedTime: String?
@@ -22134,6 +22160,9 @@ public class DescribeScheduleTasksResponseBody : Tea.TeaModel {
                 if self.plannedEndTime != nil {
                     map["PlannedEndTime"] = self.plannedEndTime!
                 }
+                if self.plannedFlashingOffTime != nil {
+                    map["PlannedFlashingOffTime"] = self.plannedFlashingOffTime!
+                }
                 if self.plannedStartTime != nil {
                     map["PlannedStartTime"] = self.plannedStartTime!
                 }
@@ -22173,6 +22202,9 @@ public class DescribeScheduleTasksResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("PlannedEndTime") {
                     self.plannedEndTime = dict["PlannedEndTime"] as! String
+                }
+                if dict.keys.contains("PlannedFlashingOffTime") {
+                    self.plannedFlashingOffTime = dict["PlannedFlashingOffTime"] as! String
                 }
                 if dict.keys.contains("PlannedStartTime") {
                     self.plannedStartTime = dict["PlannedStartTime"] as! String
@@ -29878,6 +29910,8 @@ public class ModifyDBNodeClassRequest : Tea.TeaModel {
 
     public var plannedEndTime: String?
 
+    public var plannedFlashingOffTime: String?
+
     public var plannedStartTime: String?
 
     public var resourceOwnerAccount: String?
@@ -29924,6 +29958,9 @@ public class ModifyDBNodeClassRequest : Tea.TeaModel {
         if self.plannedEndTime != nil {
             map["PlannedEndTime"] = self.plannedEndTime!
         }
+        if self.plannedFlashingOffTime != nil {
+            map["PlannedFlashingOffTime"] = self.plannedFlashingOffTime!
+        }
         if self.plannedStartTime != nil {
             map["PlannedStartTime"] = self.plannedStartTime!
         }
@@ -29963,6 +30000,9 @@ public class ModifyDBNodeClassRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PlannedEndTime") {
             self.plannedEndTime = dict["PlannedEndTime"] as! String
+        }
+        if dict.keys.contains("PlannedFlashingOffTime") {
+            self.plannedFlashingOffTime = dict["PlannedFlashingOffTime"] as! String
         }
         if dict.keys.contains("PlannedStartTime") {
             self.plannedStartTime = dict["PlannedStartTime"] as! String
@@ -30299,6 +30339,8 @@ public class ModifyDBNodesClassRequest : Tea.TeaModel {
 
     public var plannedEndTime: String?
 
+    public var plannedFlashingOffTime: String?
+
     public var plannedStartTime: String?
 
     public var resourceOwnerAccount: String?
@@ -30346,6 +30388,9 @@ public class ModifyDBNodesClassRequest : Tea.TeaModel {
         if self.plannedEndTime != nil {
             map["PlannedEndTime"] = self.plannedEndTime!
         }
+        if self.plannedFlashingOffTime != nil {
+            map["PlannedFlashingOffTime"] = self.plannedFlashingOffTime!
+        }
         if self.plannedStartTime != nil {
             map["PlannedStartTime"] = self.plannedStartTime!
         }
@@ -30390,6 +30435,9 @@ public class ModifyDBNodesClassRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PlannedEndTime") {
             self.plannedEndTime = dict["PlannedEndTime"] as! String
+        }
+        if dict.keys.contains("PlannedFlashingOffTime") {
+            self.plannedFlashingOffTime = dict["PlannedFlashingOffTime"] as! String
         }
         if dict.keys.contains("PlannedStartTime") {
             self.plannedStartTime = dict["PlannedStartTime"] as! String
@@ -30691,6 +30739,8 @@ public class ModifyDBNodesParametersResponse : Tea.TeaModel {
 }
 
 public class ModifyGlobalDatabaseNetworkRequest : Tea.TeaModel {
+    public var enableGlobalDomainName: Bool?
+
     public var GDNDescription: String?
 
     public var GDNId: String?
@@ -30721,6 +30771,9 @@ public class ModifyGlobalDatabaseNetworkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableGlobalDomainName != nil {
+            map["EnableGlobalDomainName"] = self.enableGlobalDomainName!
+        }
         if self.GDNDescription != nil {
             map["GDNDescription"] = self.GDNDescription!
         }
@@ -30749,6 +30802,9 @@ public class ModifyGlobalDatabaseNetworkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EnableGlobalDomainName") {
+            self.enableGlobalDomainName = dict["EnableGlobalDomainName"] as! Bool
+        }
         if dict.keys.contains("GDNDescription") {
             self.GDNDescription = dict["GDNDescription"] as! String
         }
