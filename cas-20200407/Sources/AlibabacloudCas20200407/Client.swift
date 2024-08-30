@@ -387,85 +387,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createWHClientCertificateWithOptions(_ request: CreateWHClientCertificateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateWHClientCertificateResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.afterTime)) {
-            query["AfterTime"] = request.afterTime!;
-        }
-        if (!TeaUtils.Client.isUnset(request.algorithm)) {
-            query["Algorithm"] = request.algorithm ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.beforeTime)) {
-            query["BeforeTime"] = request.beforeTime!;
-        }
-        if (!TeaUtils.Client.isUnset(request.commonName)) {
-            query["CommonName"] = request.commonName ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.country)) {
-            query["Country"] = request.country ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.csr)) {
-            query["Csr"] = request.csr ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.days)) {
-            query["Days"] = request.days!;
-        }
-        if (!TeaUtils.Client.isUnset(request.immediately)) {
-            query["Immediately"] = request.immediately!;
-        }
-        if (!TeaUtils.Client.isUnset(request.locality)) {
-            query["Locality"] = request.locality ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.months)) {
-            query["Months"] = request.months!;
-        }
-        if (!TeaUtils.Client.isUnset(request.organization)) {
-            query["Organization"] = request.organization ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.organizationUnit)) {
-            query["OrganizationUnit"] = request.organizationUnit ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.parentIdentifier)) {
-            query["ParentIdentifier"] = request.parentIdentifier ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.sanType)) {
-            query["SanType"] = request.sanType!;
-        }
-        if (!TeaUtils.Client.isUnset(request.sanValue)) {
-            query["SanValue"] = request.sanValue ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.state)) {
-            query["State"] = request.state ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.years)) {
-            query["Years"] = request.years!;
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "CreateWHClientCertificate",
-            "version": "2020-04-07",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(CreateWHClientCertificateResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createWHClientCertificate(_ request: CreateWHClientCertificateRequest) async throws -> CreateWHClientCertificateResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await createWHClientCertificateWithOptions(request as! CreateWHClientCertificateRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func decryptWithOptions(_ request: DecryptRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DecryptResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1507,37 +1428,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func revokeWHClientCertificateWithOptions(_ request: RevokeWHClientCertificateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RevokeWHClientCertificateResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.identifier)) {
-            query["Identifier"] = request.identifier ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "RevokeWHClientCertificate",
-            "version": "2020-04-07",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(RevokeWHClientCertificateResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func revokeWHClientCertificate(_ request: RevokeWHClientCertificateRequest) async throws -> RevokeWHClientCertificateResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await revokeWHClientCertificateWithOptions(request as! RevokeWHClientCertificateRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func signWithOptions(_ request: SignRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SignResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1763,46 +1653,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func uploadCsr(_ request: UploadCsrRequest) async throws -> UploadCsrResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await uploadCsrWithOptions(request as! UploadCsrRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func uploadPCACertWithOptions(_ request: UploadPCACertRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UploadPCACertResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.cert)) {
-            query["Cert"] = request.cert ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.name)) {
-            query["Name"] = request.name ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.privateKey)) {
-            query["PrivateKey"] = request.privateKey ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.warehouseId)) {
-            query["WarehouseId"] = request.warehouseId!;
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "UploadPCACert",
-            "version": "2020-04-07",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(UploadPCACertResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func uploadPCACert(_ request: UploadPCACertRequest) async throws -> UploadPCACertResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await uploadPCACertWithOptions(request as! UploadPCACertRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
