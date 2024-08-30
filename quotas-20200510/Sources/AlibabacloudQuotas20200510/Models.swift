@@ -2523,6 +2523,8 @@ public class GetQuotaApplicationResponseBody : Tea.TeaModel {
 
         public var quotaArn: String?
 
+        public var quotaCategory: String?
+
         public var quotaDescription: String?
 
         public var quotaName: String?
@@ -2583,6 +2585,9 @@ public class GetQuotaApplicationResponseBody : Tea.TeaModel {
             if self.quotaArn != nil {
                 map["QuotaArn"] = self.quotaArn!
             }
+            if self.quotaCategory != nil {
+                map["QuotaCategory"] = self.quotaCategory!
+            }
             if self.quotaDescription != nil {
                 map["QuotaDescription"] = self.quotaDescription!
             }
@@ -2637,6 +2642,9 @@ public class GetQuotaApplicationResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("QuotaArn") {
                 self.quotaArn = dict["QuotaArn"] as! String
+            }
+            if dict.keys.contains("QuotaCategory") {
+                self.quotaCategory = dict["QuotaCategory"] as! String
             }
             if dict.keys.contains("QuotaDescription") {
                 self.quotaDescription = dict["QuotaDescription"] as! String
@@ -6171,6 +6179,8 @@ public class ListQuotaApplicationsResponseBody : Tea.TeaModel {
 
         public var quotaArn: String?
 
+        public var quotaCategory: String?
+
         public var quotaDescription: String?
 
         public var quotaName: String?
@@ -6238,6 +6248,9 @@ public class ListQuotaApplicationsResponseBody : Tea.TeaModel {
             if self.quotaArn != nil {
                 map["QuotaArn"] = self.quotaArn!
             }
+            if self.quotaCategory != nil {
+                map["QuotaCategory"] = self.quotaCategory!
+            }
             if self.quotaDescription != nil {
                 map["QuotaDescription"] = self.quotaDescription!
             }
@@ -6300,6 +6313,9 @@ public class ListQuotaApplicationsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("QuotaArn") {
                 self.quotaArn = dict["QuotaArn"] as! String
+            }
+            if dict.keys.contains("QuotaCategory") {
+                self.quotaCategory = dict["QuotaCategory"] as! String
             }
             if dict.keys.contains("QuotaDescription") {
                 self.quotaDescription = dict["QuotaDescription"] as! String
