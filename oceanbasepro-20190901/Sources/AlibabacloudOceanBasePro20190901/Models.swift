@@ -33209,7 +33209,7 @@ public class DescribeRestorableTenantsResponseBody : Tea.TeaModel {
 
         public var tenantId: String?
 
-        public var tenantMode: Int64?
+        public var tenantMode: String?
 
         public var tenantName: String?
 
@@ -33353,7 +33353,7 @@ public class DescribeRestorableTenantsResponseBody : Tea.TeaModel {
                 self.tenantId = dict["TenantId"] as! String
             }
             if dict.keys.contains("TenantMode") {
-                self.tenantMode = dict["TenantMode"] as! Int64
+                self.tenantMode = dict["TenantMode"] as! String
             }
             if dict.keys.contains("TenantName") {
                 self.tenantName = dict["TenantName"] as! String
