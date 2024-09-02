@@ -8138,44 +8138,7 @@ public class ListAclPolicyRequest : Tea.TeaModel {
 
 public class ListAclPolicyResponseBody : Tea.TeaModel {
     public class InternetAclPolicyList : Tea.TeaModel {
-        public var comment: String?
-
-        public var entry: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.comment != nil {
-                map["Comment"] = self.comment!
-            }
-            if self.entry != nil {
-                map["Entry"] = self.entry!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Comment") {
-                self.comment = dict["Comment"] as! String
-            }
-            if dict.keys.contains("Entry") {
-                self.entry = dict["Entry"] as! String
-            }
-        }
-    }
-    public class IntranetVpcAclPolicyList : Tea.TeaModel {
-        public class IntranetAclPolicyList : Tea.TeaModel {
+        public class AclPolicyList : Tea.TeaModel {
             public var comment: String?
 
             public var entry: String?
@@ -8212,7 +8175,85 @@ public class ListAclPolicyResponseBody : Tea.TeaModel {
                 }
             }
         }
-        public var intranetAclPolicyList: [ListAclPolicyResponseBody.IntranetVpcAclPolicyList.IntranetAclPolicyList]?
+        public var aclPolicyList: [ListAclPolicyResponseBody.InternetAclPolicyList.AclPolicyList]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aclPolicyList != nil {
+                var tmp : [Any] = []
+                for k in self.aclPolicyList! {
+                    tmp.append(k.toMap())
+                }
+                map["AclPolicyList"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AclPolicyList") {
+                var tmp : [ListAclPolicyResponseBody.InternetAclPolicyList.AclPolicyList] = []
+                for v in dict["AclPolicyList"] as! [Any] {
+                    var model = ListAclPolicyResponseBody.InternetAclPolicyList.AclPolicyList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.aclPolicyList = tmp
+            }
+        }
+    }
+    public class IntranetVpcAclPolicyList : Tea.TeaModel {
+        public class AclPolicyList : Tea.TeaModel {
+            public var comment: String?
+
+            public var entry: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.comment != nil {
+                    map["Comment"] = self.comment!
+                }
+                if self.entry != nil {
+                    map["Entry"] = self.entry!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Comment") {
+                    self.comment = dict["Comment"] as! String
+                }
+                if dict.keys.contains("Entry") {
+                    self.entry = dict["Entry"] as! String
+                }
+            }
+        }
+        public var aclPolicyList: [ListAclPolicyResponseBody.IntranetVpcAclPolicyList.AclPolicyList]?
 
         public var vpcId: String?
 
@@ -8230,12 +8271,12 @@ public class ListAclPolicyResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.intranetAclPolicyList != nil {
+            if self.aclPolicyList != nil {
                 var tmp : [Any] = []
-                for k in self.intranetAclPolicyList! {
+                for k in self.aclPolicyList! {
                     tmp.append(k.toMap())
                 }
-                map["IntranetAclPolicyList"] = tmp
+                map["AclPolicyList"] = tmp
             }
             if self.vpcId != nil {
                 map["VpcId"] = self.vpcId!
@@ -8244,16 +8285,16 @@ public class ListAclPolicyResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("IntranetAclPolicyList") {
-                var tmp : [ListAclPolicyResponseBody.IntranetVpcAclPolicyList.IntranetAclPolicyList] = []
-                for v in dict["IntranetAclPolicyList"] as! [Any] {
-                    var model = ListAclPolicyResponseBody.IntranetVpcAclPolicyList.IntranetAclPolicyList()
+            if dict.keys.contains("AclPolicyList") {
+                var tmp : [ListAclPolicyResponseBody.IntranetVpcAclPolicyList.AclPolicyList] = []
+                for v in dict["AclPolicyList"] as! [Any] {
+                    var model = ListAclPolicyResponseBody.IntranetVpcAclPolicyList.AclPolicyList()
                     if v != nil {
                         model.fromMap(v as! [String: Any])
                     }
                     tmp.append(model)
                 }
-                self.intranetAclPolicyList = tmp
+                self.aclPolicyList = tmp
             }
             if dict.keys.contains("VpcId") {
                 self.vpcId = dict["VpcId"] as! String
