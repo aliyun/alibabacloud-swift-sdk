@@ -16,8 +16,8 @@ let package = Package(
         dependencies: [
             // Dependencies declare other packages that this package depends on.
             .package(url: "https://github.com/aliyun/tea-swift.git", from: "1.0.0"),
-            .package(url: "https://github.com/alibabacloud-sdk-swift/tea-utils", from: "1.0.3"),
-            .package(url: "https://github.com/alibabacloud-sdk-swift/darabonba-openapi", from: "1.0.3"),
+            .package(url: "https://github.com/alibabacloud-sdk-swift/tea-utils", from: "1.0.6"),
+            .package(url: "https://github.com/alibabacloud-sdk-swift/darabonba-openapi", from: "1.0.7"),
             .package(url: "https://github.com/alibabacloud-sdk-swift/openapi-util", from: "1.0.1"),
             .package(url: "https://github.com/alibabacloud-sdk-swift/endpoint-util", from: "1.0.0"),
         ],
