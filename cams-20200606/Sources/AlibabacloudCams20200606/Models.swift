@@ -13394,6 +13394,10 @@ public class QueryChatappBindWabaResponseBody : Tea.TeaModel {
 
         public var authInternationalRateEligibility: [String: Any]?
 
+        public var businessId: String?
+
+        public var businessName: String?
+
         public var currency: String?
 
         public var id: String?
@@ -13424,6 +13428,12 @@ public class QueryChatappBindWabaResponseBody : Tea.TeaModel {
             if self.authInternationalRateEligibility != nil {
                 map["AuthInternationalRateEligibility"] = self.authInternationalRateEligibility!
             }
+            if self.businessId != nil {
+                map["BusinessId"] = self.businessId!
+            }
+            if self.businessName != nil {
+                map["BusinessName"] = self.businessName!
+            }
             if self.currency != nil {
                 map["Currency"] = self.currency!
             }
@@ -13448,6 +13458,12 @@ public class QueryChatappBindWabaResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("AuthInternationalRateEligibility") {
                 self.authInternationalRateEligibility = dict["AuthInternationalRateEligibility"] as! [String: Any]
+            }
+            if dict.keys.contains("BusinessId") {
+                self.businessId = dict["BusinessId"] as! String
+            }
+            if dict.keys.contains("BusinessName") {
+                self.businessName = dict["BusinessName"] as! String
             }
             if dict.keys.contains("Currency") {
                 self.currency = dict["Currency"] as! String
