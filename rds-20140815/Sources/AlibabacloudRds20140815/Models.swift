@@ -19410,6 +19410,8 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
 
     public var supportVolumeShadowCopy: Int32?
 
+    public var supportsHighFrequencyBackup: Int64?
+
     public override init() {
         super.init()
     }
@@ -19508,6 +19510,9 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
         if self.supportVolumeShadowCopy != nil {
             map["SupportVolumeShadowCopy"] = self.supportVolumeShadowCopy!
         }
+        if self.supportsHighFrequencyBackup != nil {
+            map["SupportsHighFrequencyBackup"] = self.supportsHighFrequencyBackup!
+        }
         return map
     }
 
@@ -19595,6 +19600,9 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("SupportVolumeShadowCopy") {
             self.supportVolumeShadowCopy = dict["SupportVolumeShadowCopy"] as! Int32
+        }
+        if dict.keys.contains("SupportsHighFrequencyBackup") {
+            self.supportsHighFrequencyBackup = dict["SupportsHighFrequencyBackup"] as! Int64
         }
     }
 }
@@ -24749,6 +24757,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                         }
                     }
                 }
+                public var accountSecurityPolicy: String?
+
                 public var DBInstanceIds: DescribeDBInstanceAttributeResponseBody.Items.DBInstanceAttribute.Extra.DBInstanceIds?
 
                 public var recoveryModel: String?
@@ -24768,6 +24778,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.accountSecurityPolicy != nil {
+                        map["AccountSecurityPolicy"] = self.accountSecurityPolicy!
+                    }
                     if self.DBInstanceIds != nil {
                         map["DBInstanceIds"] = self.DBInstanceIds?.toMap()
                     }
@@ -24778,6 +24791,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AccountSecurityPolicy") {
+                        self.accountSecurityPolicy = dict["AccountSecurityPolicy"] as! String
+                    }
                     if dict.keys.contains("DBInstanceIds") {
                         var model = DescribeDBInstanceAttributeResponseBody.Items.DBInstanceAttribute.Extra.DBInstanceIds()
                         model.fromMap(dict["DBInstanceIds"] as! [String: Any])
@@ -25045,6 +25061,10 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
             public var deletionProtection: Bool?
 
+            public var disasterRecoveryInfo: String?
+
+            public var disasterRecoveryInstances: String?
+
             public var engine: String?
 
             public var engineVersion: String?
@@ -25248,6 +25268,12 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.deletionProtection != nil {
                     map["DeletionProtection"] = self.deletionProtection!
+                }
+                if self.disasterRecoveryInfo != nil {
+                    map["DisasterRecoveryInfo"] = self.disasterRecoveryInfo!
+                }
+                if self.disasterRecoveryInstances != nil {
+                    map["DisasterRecoveryInstances"] = self.disasterRecoveryInstances!
                 }
                 if self.engine != nil {
                     map["Engine"] = self.engine!
@@ -25484,6 +25510,12 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("DeletionProtection") {
                     self.deletionProtection = dict["DeletionProtection"] as! Bool
+                }
+                if dict.keys.contains("DisasterRecoveryInfo") {
+                    self.disasterRecoveryInfo = dict["DisasterRecoveryInfo"] as! String
+                }
+                if dict.keys.contains("DisasterRecoveryInstances") {
+                    self.disasterRecoveryInstances = dict["DisasterRecoveryInstances"] as! String
                 }
                 if dict.keys.contains("Engine") {
                     self.engine = dict["Engine"] as! String
@@ -48089,6 +48121,8 @@ public class DescribePostgresExtensionsResponseBody : Tea.TeaModel {
 
         public var requires: String?
 
+        public var uid: String?
+
         public override init() {
             super.init()
         }
@@ -48127,6 +48161,9 @@ public class DescribePostgresExtensionsResponseBody : Tea.TeaModel {
             if self.requires != nil {
                 map["Requires"] = self.requires!
             }
+            if self.uid != nil {
+                map["Uid"] = self.uid!
+            }
             return map
         }
 
@@ -48154,6 +48191,9 @@ public class DescribePostgresExtensionsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Requires") {
                 self.requires = dict["Requires"] as! String
+            }
+            if dict.keys.contains("Uid") {
+                self.uid = dict["Uid"] as! String
             }
         }
     }
@@ -48174,6 +48214,8 @@ public class DescribePostgresExtensionsResponseBody : Tea.TeaModel {
 
         public var requires: String?
 
+        public var uid: String?
+
         public override init() {
             super.init()
         }
@@ -48212,6 +48254,9 @@ public class DescribePostgresExtensionsResponseBody : Tea.TeaModel {
             if self.requires != nil {
                 map["Requires"] = self.requires!
             }
+            if self.uid != nil {
+                map["Uid"] = self.uid!
+            }
             return map
         }
 
@@ -48239,6 +48284,9 @@ public class DescribePostgresExtensionsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Requires") {
                 self.requires = dict["Requires"] as! String
+            }
+            if dict.keys.contains("Uid") {
+                self.uid = dict["Uid"] as! String
             }
         }
     }
