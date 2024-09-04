@@ -605,6 +605,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.kubernetesVersion)) {
             body["kubernetes_version"] = request.kubernetesVersion ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.loadBalancerId)) {
+            body["load_balancer_id"] = request.loadBalancerId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.loadBalancerSpec)) {
             body["load_balancer_spec"] = request.loadBalancerSpec ?? "";
         }

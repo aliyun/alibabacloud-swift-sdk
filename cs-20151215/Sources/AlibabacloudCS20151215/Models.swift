@@ -3496,6 +3496,8 @@ public class CreateClusterRequest : Tea.TeaModel {
 
     public var kubernetesVersion: String?
 
+    public var loadBalancerId: String?
+
     public var loadBalancerSpec: String?
 
     public var loggingType: String?
@@ -3725,6 +3727,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if self.kubernetesVersion != nil {
             map["kubernetes_version"] = self.kubernetesVersion!
+        }
+        if self.loadBalancerId != nil {
+            map["load_balancer_id"] = self.loadBalancerId!
         }
         if self.loadBalancerSpec != nil {
             map["load_balancer_spec"] = self.loadBalancerSpec!
@@ -4026,6 +4031,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("kubernetes_version") {
             self.kubernetesVersion = dict["kubernetes_version"] as! String
+        }
+        if dict.keys.contains("load_balancer_id") {
+            self.loadBalancerId = dict["load_balancer_id"] as! String
         }
         if dict.keys.contains("load_balancer_spec") {
             self.loadBalancerSpec = dict["load_balancer_spec"] as! String
@@ -6546,11 +6554,52 @@ public class DeleteAlertContactShrinkRequest : Tea.TeaModel {
 
 public class DeleteAlertContactResponse : Tea.TeaModel {
     public class Body : Tea.TeaModel {
-        public var status: Bool?
+        public class Result : Tea.TeaModel {
+            public var status: Bool?
 
-        public var msg: String?
+            public var msg: String?
 
-        public var contactId: String?
+            public var contactId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.status != nil {
+                    map["status"] = self.status!
+                }
+                if self.msg != nil {
+                    map["msg"] = self.msg!
+                }
+                if self.contactId != nil {
+                    map["contact_id"] = self.contactId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("status") {
+                    self.status = dict["status"] as! Bool
+                }
+                if dict.keys.contains("msg") {
+                    self.msg = dict["msg"] as! String
+                }
+                if dict.keys.contains("contact_id") {
+                    self.contactId = dict["contact_id"] as! String
+                }
+            }
+        }
+        public var result: [DeleteAlertContactResponse.Body.Result]?
 
         public override init() {
             super.init()
@@ -6566,27 +6615,27 @@ public class DeleteAlertContactResponse : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.status != nil {
-                map["status"] = self.status!
-            }
-            if self.msg != nil {
-                map["msg"] = self.msg!
-            }
-            if self.contactId != nil {
-                map["contact_id"] = self.contactId!
+            if self.result != nil {
+                var tmp : [Any] = []
+                for k in self.result! {
+                    tmp.append(k.toMap())
+                }
+                map["result"] = tmp
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("status") {
-                self.status = dict["status"] as! Bool
-            }
-            if dict.keys.contains("msg") {
-                self.msg = dict["msg"] as! String
-            }
-            if dict.keys.contains("contact_id") {
-                self.contactId = dict["contact_id"] as! String
+            if dict.keys.contains("result") {
+                var tmp : [DeleteAlertContactResponse.Body.Result] = []
+                for v in dict["result"] as! [Any] {
+                    var model = DeleteAlertContactResponse.Body.Result()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.result = tmp
             }
         }
     }
@@ -6594,7 +6643,7 @@ public class DeleteAlertContactResponse : Tea.TeaModel {
 
     public var statusCode: Int32?
 
-    public var body: [DeleteAlertContactResponse.Body]?
+    public var body: DeleteAlertContactResponse.Body?
 
     public override init() {
         super.init()
@@ -6606,6 +6655,7 @@ public class DeleteAlertContactResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.body?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -6617,11 +6667,7 @@ public class DeleteAlertContactResponse : Tea.TeaModel {
             map["statusCode"] = self.statusCode!
         }
         if self.body != nil {
-            var tmp : [Any] = []
-            for k in self.body! {
-                tmp.append(k.toMap())
-            }
-            map["body"] = tmp
+            map["body"] = self.body?.toMap()
         }
         return map
     }
@@ -6634,15 +6680,9 @@ public class DeleteAlertContactResponse : Tea.TeaModel {
             self.statusCode = dict["statusCode"] as! Int32
         }
         if dict.keys.contains("body") {
-            var tmp : [DeleteAlertContactResponse.Body] = []
-            for v in dict["body"] as! [Any] {
-                var model = DeleteAlertContactResponse.Body()
-                if v != nil {
-                    model.fromMap(v as! [String: Any])
-                }
-                tmp.append(model)
-            }
-            self.body = tmp
+            var model = DeleteAlertContactResponse.Body()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
         }
     }
 }
