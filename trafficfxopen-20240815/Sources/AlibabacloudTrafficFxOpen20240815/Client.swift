@@ -24,6 +24,70 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func convertUrlWithOptions(_ request: ConvertUrlRequest, _ headers: ConvertUrlHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ConvertUrlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.countryCallingCode)) {
+            body["countryCallingCode"] = request.countryCallingCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jumpUrl)) {
+            body["jumpUrl"] = request.jumpUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.phone)) {
+            body["phone"] = request.phone ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scene)) {
+            body["scene"] = request.scene ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.source)) {
+            body["source"] = request.source ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.thirdId)) {
+            body["thirdId"] = request.thirdId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uid)) {
+            body["uid"] = request.uid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.xenv)) {
+            body["xenv"] = request.xenv ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsAirticketAccessToken)) {
+            realHeaders["xAcsAirticketAccessToken"] = TeaUtils.Client.toJSONString(headers.xAcsAirticketAccessToken);
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsAirticketLanguage)) {
+            realHeaders["xAcsAirticketLanguage"] = TeaUtils.Client.toJSONString(headers.xAcsAirticketLanguage);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ConvertUrl",
+            "version": "2024-08-15",
+            "protocol": "HTTPS",
+            "pathname": "/v1/distribution/trade/convertUrl",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ConvertUrlResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func convertUrl(_ request: ConvertUrlRequest) async throws -> ConvertUrlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: ConvertUrlHeaders = ConvertUrlHeaders([:])
+        return try await convertUrlWithOptions(request as! ConvertUrlRequest, headers as! ConvertUrlHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getTokenWithOptions(_ request: GetTokenRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetTokenResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
