@@ -243,6 +243,8 @@ public class BankMetaVerifyRequest : Tea.TeaModel {
 
     public var identifyNum: String?
 
+    public var identityType: String?
+
     public var mobile: String?
 
     public var paramType: String?
@@ -273,6 +275,9 @@ public class BankMetaVerifyRequest : Tea.TeaModel {
         if self.identifyNum != nil {
             map["IdentifyNum"] = self.identifyNum!
         }
+        if self.identityType != nil {
+            map["IdentityType"] = self.identityType!
+        }
         if self.mobile != nil {
             map["Mobile"] = self.mobile!
         }
@@ -297,6 +302,9 @@ public class BankMetaVerifyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("IdentifyNum") {
             self.identifyNum = dict["IdentifyNum"] as! String
+        }
+        if dict.keys.contains("IdentityType") {
+            self.identityType = dict["IdentityType"] as! String
         }
         if dict.keys.contains("Mobile") {
             self.mobile = dict["Mobile"] as! String

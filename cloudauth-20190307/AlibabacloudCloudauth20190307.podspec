@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudCloudauth20190307"
-  spec.version      = "1.3.0"
+  spec.version      = "1.4.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud ID Verification (20190307) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/cloudauth-20190307" 
@@ -23,7 +23,7 @@ Pod::Spec.new do |spec|
   spec.dependency 'AlibabacloudOpenPlatform20191219',  '~> 1.0.0'
   spec.dependency 'AlibabaCloudOSSUtil',  '~> 1.0.1'
   spec.dependency 'TeaFileForm',  '~> 1.0.3'
-  spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.6'
+  spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.7'
   spec.dependency 'AlibabaCloudOpenApiUtil',  '~> 1.0.1'
   spec.dependency 'AlibabacloudEndpointUtil',  '~> 1.0.0'
 

@@ -88,6 +88,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.identifyNum)) {
             query["IdentifyNum"] = request.identifyNum ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.identityType)) {
+            query["IdentityType"] = request.identityType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.mobile)) {
             query["Mobile"] = request.mobile ?? "";
         }
