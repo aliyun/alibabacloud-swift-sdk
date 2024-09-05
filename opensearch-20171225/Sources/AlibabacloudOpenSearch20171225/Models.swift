@@ -5273,6 +5273,43 @@ public class CreateAppGroupRequest : Tea.TeaModel {
             }
         }
     }
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["key"] = self.key!
+            }
+            if self.value != nil {
+                map["value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("key") {
+                self.key = dict["key"] as! String
+            }
+            if dict.keys.contains("value") {
+                self.value = dict["value"] as! String
+            }
+        }
+    }
     public var chargeType: String?
 
     public var name: String?
@@ -5280,6 +5317,8 @@ public class CreateAppGroupRequest : Tea.TeaModel {
     public var quota: CreateAppGroupRequest.Quota?
 
     public var resourceGroupId: String?
+
+    public var tags: [CreateAppGroupRequest.Tags]?
 
     public var type: String?
 
@@ -5310,6 +5349,13 @@ public class CreateAppGroupRequest : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["resourceGroupId"] = self.resourceGroupId!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["tags"] = tmp
+        }
         if self.type != nil {
             map["type"] = self.type!
         }
@@ -5330,6 +5376,17 @@ public class CreateAppGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("resourceGroupId") {
             self.resourceGroupId = dict["resourceGroupId"] as! String
+        }
+        if dict.keys.contains("tags") {
+            var tmp : [CreateAppGroupRequest.Tags] = []
+            for v in dict["tags"] as! [Any] {
+                var model = CreateAppGroupRequest.Tags()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tags = tmp
         }
         if dict.keys.contains("type") {
             self.type = dict["type"] as! String

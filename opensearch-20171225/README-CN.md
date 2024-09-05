@@ -17,7 +17,7 @@
 要使用 [Carthage](https://github.com/Carthage/Carthage) 将 `AlibabacloudOpenSearch20171225` 集成到你的 Xcode 项目中，需要在 `Cartfile` 中定义以下内容:
 
 ```ogdl
-github "alibabacloud-sdk-swift/opensearch-20171225" "3.0.0"
+github "alibabacloud-sdk-swift/opensearch-20171225" "3.0.1"
 ```
 
 ### Swift 包管理工具
@@ -26,7 +26,7 @@ github "alibabacloud-sdk-swift/opensearch-20171225" "3.0.0"
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/opensearch-20171225.git", from: "3.0.0")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/opensearch-20171225.git", from: "3.0.1")
 ]
 ```
 
