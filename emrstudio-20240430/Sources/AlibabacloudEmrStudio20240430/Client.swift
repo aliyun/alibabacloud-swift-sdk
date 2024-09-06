@@ -84,15 +84,23 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             query["workspaceId"] = request.workspaceId ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.taskDefinitionJsonValue)) {
+            body["taskDefinitionJsonValue"] = request.taskDefinitionJsonValue ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskRelationJsonValue)) {
+            body["taskRelationJsonValue"] = request.taskRelationJsonValue ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "CreateWorkflow",
             "version": "2024-04-30",
             "protocol": "HTTPS",
-            "pathname": "/dolphinscheduler/v3/projects/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId) + "/workflows",
+            "pathname": "/dolphinscheduler/v3/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId)) + "/workflows",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -125,7 +133,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteWorkflow",
             "version": "2024-04-30",
             "protocol": "HTTPS",
-            "pathname": "/dolphinscheduler/v3/projects/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId) + "/workflows/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(workflowId),
+            "pathname": "/dolphinscheduler/v3/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId)) + "/workflows/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workflowId)),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -158,7 +166,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DescribeManualTask",
             "version": "2024-04-30",
             "protocol": "HTTPS",
-            "pathname": "/dolphinscheduler/v3/projects/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId) + "/manualTasks/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(manualTaskId),
+            "pathname": "/dolphinscheduler/v3/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId)) + "/manualTasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(manualTaskId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -191,7 +199,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DescribeManualTaskInstance",
             "version": "2024-04-30",
             "protocol": "HTTPS",
-            "pathname": "/dolphinscheduler/v3/projects/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId) + "/manualTaskInstances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(manualTaskInstanceId),
+            "pathname": "/dolphinscheduler/v3/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId)) + "/manualTaskInstances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(manualTaskInstanceId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -224,7 +232,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DescribeProject",
             "version": "2024-04-30",
             "protocol": "HTTPS",
-            "pathname": "/dolphinscheduler/v3/projects/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId),
+            "pathname": "/dolphinscheduler/v3/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -257,7 +265,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DescribeTask",
             "version": "2024-04-30",
             "protocol": "HTTPS",
-            "pathname": "/dolphinscheduler/v3/projects/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId) + "/workflows/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(workflowId) + "/tasks/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(taskId),
+            "pathname": "/dolphinscheduler/v3/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId)) + "/workflows/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workflowId)) + "/tasks/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(taskId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -290,7 +298,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DescribeTaskInstance",
             "version": "2024-04-30",
             "protocol": "HTTPS",
-            "pathname": "/dolphinscheduler/v3/projects/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId) + "/workflows/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(workflowInstanceId) + "/taskInstances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(taskInstanceId),
+            "pathname": "/dolphinscheduler/v3/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId)) + "/workflows/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workflowInstanceId)) + "/taskInstances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(taskInstanceId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -323,7 +331,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DescribeWorkflow",
             "version": "2024-04-30",
             "protocol": "HTTPS",
-            "pathname": "/dolphinscheduler/v3/projects/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId) + "/workflows/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(workflowId),
+            "pathname": "/dolphinscheduler/v3/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId)) + "/workflows/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workflowId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -356,7 +364,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DescribeWorkflowInstance",
             "version": "2024-04-30",
             "protocol": "HTTPS",
-            "pathname": "/dolphinscheduler/v3/projects/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId) + "/workflowInstances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(workflowInstanceId),
+            "pathname": "/dolphinscheduler/v3/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId)) + "/workflowInstances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workflowInstanceId)),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -407,7 +415,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListManualTaskInstances",
             "version": "2024-04-30",
             "protocol": "HTTPS",
-            "pathname": "/dolphinscheduler/v3/projects/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId) + "/manualTaskInstances",
+            "pathname": "/dolphinscheduler/v3/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId)) + "/manualTaskInstances",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -452,7 +460,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListManualTasks",
             "version": "2024-04-30",
             "protocol": "HTTPS",
-            "pathname": "/dolphinscheduler/v3/projects/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId) + "/manualTasks",
+            "pathname": "/dolphinscheduler/v3/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId)) + "/manualTasks",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -548,7 +556,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListTaskInstances",
             "version": "2024-04-30",
             "protocol": "HTTPS",
-            "pathname": "/dolphinscheduler/v3/projects/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId) + "/taskInstances",
+            "pathname": "/dolphinscheduler/v3/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId)) + "/taskInstances",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -596,7 +604,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListTasks",
             "version": "2024-04-30",
             "protocol": "HTTPS",
-            "pathname": "/dolphinscheduler/v3/projects/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId) + "/tasks",
+            "pathname": "/dolphinscheduler/v3/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId)) + "/tasks",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -647,7 +655,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListWorkflowInstances",
             "version": "2024-04-30",
             "protocol": "HTTPS",
-            "pathname": "/dolphinscheduler/v3/projects/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId) + "/workflowInstances",
+            "pathname": "/dolphinscheduler/v3/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId)) + "/workflowInstances",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -689,7 +697,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListWorkflows",
             "version": "2024-04-30",
             "protocol": "HTTPS",
-            "pathname": "/dolphinscheduler/v3/projects/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId) + "/workflows",
+            "pathname": "/dolphinscheduler/v3/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId)) + "/workflows",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -761,7 +769,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "RunWorkflow",
             "version": "2024-04-30",
             "protocol": "HTTPS",
-            "pathname": "/dolphinscheduler/v3/projects/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId) + "/executors/run-workflow",
+            "pathname": "/dolphinscheduler/v3/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId)) + "/executors/run-workflow",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -840,15 +848,23 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             query["workspaceId"] = request.workspaceId ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.taskDefinitionJsonValue)) {
+            body["taskDefinitionJsonValue"] = request.taskDefinitionJsonValue ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskRelationJsonValue)) {
+            body["taskRelationJsonValue"] = request.taskRelationJsonValue ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "UpdateWorkflow",
             "version": "2024-04-30",
             "protocol": "HTTPS",
-            "pathname": "/dolphinscheduler/v3/projects/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId) + "/workflows/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(workflowId),
+            "pathname": "/dolphinscheduler/v3/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(projectId)) + "/workflows/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workflowId)),
             "method": "PUT",
             "authType": "AK",
             "style": "ROA",
