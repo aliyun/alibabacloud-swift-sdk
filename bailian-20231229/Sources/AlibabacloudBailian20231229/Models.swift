@@ -3214,6 +3214,10 @@ public class GetIndexJobStatusRequest : Tea.TeaModel {
 
     public var jobId: String?
 
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
     public override init() {
         super.init()
     }
@@ -3234,6 +3238,12 @@ public class GetIndexJobStatusRequest : Tea.TeaModel {
         if self.jobId != nil {
             map["JobId"] = self.jobId!
         }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
         return map
     }
 
@@ -3243,6 +3253,12 @@ public class GetIndexJobStatusRequest : Tea.TeaModel {
         }
         if dict.keys.contains("JobId") {
             self.jobId = dict["JobId"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("pageSize") {
+            self.pageSize = dict["pageSize"] as! Int32
         }
     }
 }
