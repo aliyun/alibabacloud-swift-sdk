@@ -32342,6 +32342,10 @@ public class ListCallDetailRecordsV2Request : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var releaseInitiatorList: String?
+
+    public var releaseReasonList: String?
+
     public var satisfactionDescriptionList: String?
 
     public var satisfactionRateList: String?
@@ -32421,6 +32425,12 @@ public class ListCallDetailRecordsV2Request : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.releaseInitiatorList != nil {
+            map["ReleaseInitiatorList"] = self.releaseInitiatorList!
+        }
+        if self.releaseReasonList != nil {
+            map["ReleaseReasonList"] = self.releaseReasonList!
+        }
         if self.satisfactionDescriptionList != nil {
             map["SatisfactionDescriptionList"] = self.satisfactionDescriptionList!
         }
@@ -32497,6 +32507,12 @@ public class ListCallDetailRecordsV2Request : Tea.TeaModel {
         if dict.keys.contains("PageSize") {
             self.pageSize = dict["PageSize"] as! Int32
         }
+        if dict.keys.contains("ReleaseInitiatorList") {
+            self.releaseInitiatorList = dict["ReleaseInitiatorList"] as! String
+        }
+        if dict.keys.contains("ReleaseReasonList") {
+            self.releaseReasonList = dict["ReleaseReasonList"] as! String
+        }
         if dict.keys.contains("SatisfactionDescriptionList") {
             self.satisfactionDescriptionList = dict["SatisfactionDescriptionList"] as! String
         }
@@ -32541,6 +32557,8 @@ public class ListCallDetailRecordsV2ResponseBody : Tea.TeaModel {
             public var broker: String?
 
             public var callDuration: String?
+
+            public var callIds: String?
 
             public var calledNumber: String?
 
@@ -32668,6 +32686,9 @@ public class ListCallDetailRecordsV2ResponseBody : Tea.TeaModel {
                 }
                 if self.callDuration != nil {
                     map["CallDuration"] = self.callDuration!
+                }
+                if self.callIds != nil {
+                    map["CallIds"] = self.callIds!
                 }
                 if self.calledNumber != nil {
                     map["CalledNumber"] = self.calledNumber!
@@ -32828,6 +32849,9 @@ public class ListCallDetailRecordsV2ResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("CallDuration") {
                     self.callDuration = dict["CallDuration"] as! String
+                }
+                if dict.keys.contains("CallIds") {
+                    self.callIds = dict["CallIds"] as! String
                 }
                 if dict.keys.contains("CalledNumber") {
                     self.calledNumber = dict["CalledNumber"] as! String
@@ -60221,6 +60245,8 @@ public class MakeCallRequest : Tea.TeaModel {
 
     public var deviceId: String?
 
+    public var flashSmsVariables: String?
+
     public var instanceId: String?
 
     public var maskedCallee: String?
@@ -60256,6 +60282,9 @@ public class MakeCallRequest : Tea.TeaModel {
         if self.deviceId != nil {
             map["DeviceId"] = self.deviceId!
         }
+        if self.flashSmsVariables != nil {
+            map["FlashSmsVariables"] = self.flashSmsVariables!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -60286,6 +60315,9 @@ public class MakeCallRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DeviceId") {
             self.deviceId = dict["DeviceId"] as! String
+        }
+        if dict.keys.contains("FlashSmsVariables") {
+            self.flashSmsVariables = dict["FlashSmsVariables"] as! String
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
