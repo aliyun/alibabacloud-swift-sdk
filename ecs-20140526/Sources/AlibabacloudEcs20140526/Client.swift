@@ -8288,6 +8288,74 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeDiskDefaultKMSKeyIdWithOptions(_ request: DescribeDiskDefaultKMSKeyIdRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDiskDefaultKMSKeyIdResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeDiskDefaultKMSKeyId",
+            "version": "2014-05-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeDiskDefaultKMSKeyIdResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeDiskDefaultKMSKeyId(_ request: DescribeDiskDefaultKMSKeyIdRequest) async throws -> DescribeDiskDefaultKMSKeyIdResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeDiskDefaultKMSKeyIdWithOptions(request as! DescribeDiskDefaultKMSKeyIdRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeDiskEncryptionByDefaultStatusWithOptions(_ request: DescribeDiskEncryptionByDefaultStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDiskEncryptionByDefaultStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeDiskEncryptionByDefaultStatus",
+            "version": "2014-05-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeDiskEncryptionByDefaultStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeDiskEncryptionByDefaultStatus(_ request: DescribeDiskEncryptionByDefaultStatusRequest) async throws -> DescribeDiskEncryptionByDefaultStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeDiskEncryptionByDefaultStatusWithOptions(request as! DescribeDiskEncryptionByDefaultStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeDiskMonitorDataWithOptions(_ request: DescribeDiskMonitorDataRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDiskMonitorDataResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -14256,6 +14324,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func disableDiskEncryptionByDefaultWithOptions(_ request: DisableDiskEncryptionByDefaultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DisableDiskEncryptionByDefaultResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DisableDiskEncryptionByDefault",
+            "version": "2014-05-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DisableDiskEncryptionByDefaultResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func disableDiskEncryptionByDefault(_ request: DisableDiskEncryptionByDefaultRequest) async throws -> DisableDiskEncryptionByDefaultResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await disableDiskEncryptionByDefaultWithOptions(request as! DisableDiskEncryptionByDefaultRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func eipFillParamsWithOptions(_ request: EipFillParamsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EipFillParamsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -14400,6 +14502,49 @@ open class Client : AlibabacloudOpenApi.Client {
     public func eipNotifyPaid(_ request: EipNotifyPaidRequest) async throws -> EipNotifyPaidResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await eipNotifyPaidWithOptions(request as! EipNotifyPaidRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enableDiskEncryptionByDefaultWithOptions(_ request: EnableDiskEncryptionByDefaultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnableDiskEncryptionByDefaultResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "EnableDiskEncryptionByDefault",
+            "version": "2014-05-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(EnableDiskEncryptionByDefaultResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enableDiskEncryptionByDefault(_ request: EnableDiskEncryptionByDefaultRequest) async throws -> EnableDiskEncryptionByDefaultResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await enableDiskEncryptionByDefaultWithOptions(request as! EnableDiskEncryptionByDefaultRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -16268,6 +16413,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyDiskChargeType(_ request: ModifyDiskChargeTypeRequest) async throws -> ModifyDiskChargeTypeResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifyDiskChargeTypeWithOptions(request as! ModifyDiskChargeTypeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyDiskDefaultKMSKeyIdWithOptions(_ request: ModifyDiskDefaultKMSKeyIdRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDiskDefaultKMSKeyIdResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.KMSKeyId)) {
+            query["KMSKeyId"] = request.KMSKeyId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyDiskDefaultKMSKeyId",
+            "version": "2014-05-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyDiskDefaultKMSKeyIdResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyDiskDefaultKMSKeyId(_ request: ModifyDiskDefaultKMSKeyIdRequest) async throws -> ModifyDiskDefaultKMSKeyIdResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyDiskDefaultKMSKeyIdWithOptions(request as! ModifyDiskDefaultKMSKeyIdRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -20362,6 +20544,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func resetDisk(_ request: ResetDiskRequest) async throws -> ResetDiskResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await resetDiskWithOptions(request as! ResetDiskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func resetDiskDefaultKMSKeyIdWithOptions(_ request: ResetDiskDefaultKMSKeyIdRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ResetDiskDefaultKMSKeyIdResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ResetDiskDefaultKMSKeyId",
+            "version": "2014-05-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ResetDiskDefaultKMSKeyIdResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func resetDiskDefaultKMSKeyId(_ request: ResetDiskDefaultKMSKeyIdRequest) async throws -> ResetDiskDefaultKMSKeyIdResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await resetDiskDefaultKMSKeyIdWithOptions(request as! ResetDiskDefaultKMSKeyIdRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
