@@ -33,6 +33,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dateTimeString)) {
             query["DateTimeString"] = request.dateTimeString ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.endDateTime)) {
+            query["EndDateTime"] = request.endDateTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startDateTime)) {
+            query["StartDateTime"] = request.startDateTime ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -66,6 +72,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.dateTimeString)) {
             query["DateTimeString"] = request.dateTimeString ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endDateTime)) {
+            query["EndDateTime"] = request.endDateTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startDateTime)) {
+            query["StartDateTime"] = request.startDateTime ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

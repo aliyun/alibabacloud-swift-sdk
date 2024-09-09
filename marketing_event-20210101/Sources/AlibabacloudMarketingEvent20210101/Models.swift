@@ -10,6 +10,10 @@ public class FindGuestCredentialsRecordRequest : Tea.TeaModel {
 
     public var dateTimeString: String?
 
+    public var endDateTime: String?
+
+    public var startDateTime: String?
+
     public override init() {
         super.init()
     }
@@ -30,6 +34,12 @@ public class FindGuestCredentialsRecordRequest : Tea.TeaModel {
         if self.dateTimeString != nil {
             map["DateTimeString"] = self.dateTimeString!
         }
+        if self.endDateTime != nil {
+            map["EndDateTime"] = self.endDateTime!
+        }
+        if self.startDateTime != nil {
+            map["StartDateTime"] = self.startDateTime!
+        }
         return map
     }
 
@@ -39,6 +49,12 @@ public class FindGuestCredentialsRecordRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DateTimeString") {
             self.dateTimeString = dict["DateTimeString"] as! String
+        }
+        if dict.keys.contains("EndDateTime") {
+            self.endDateTime = dict["EndDateTime"] as! String
+        }
+        if dict.keys.contains("StartDateTime") {
+            self.startDateTime = dict["StartDateTime"] as! String
         }
     }
 }
@@ -531,6 +547,10 @@ public class FindGuestTicketRecordRequest : Tea.TeaModel {
 
     public var dateTimeString: String?
 
+    public var endDateTime: String?
+
+    public var startDateTime: String?
+
     public override init() {
         super.init()
     }
@@ -551,6 +571,12 @@ public class FindGuestTicketRecordRequest : Tea.TeaModel {
         if self.dateTimeString != nil {
             map["DateTimeString"] = self.dateTimeString!
         }
+        if self.endDateTime != nil {
+            map["EndDateTime"] = self.endDateTime!
+        }
+        if self.startDateTime != nil {
+            map["StartDateTime"] = self.startDateTime!
+        }
         return map
     }
 
@@ -560,6 +586,12 @@ public class FindGuestTicketRecordRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DateTimeString") {
             self.dateTimeString = dict["DateTimeString"] as! String
+        }
+        if dict.keys.contains("EndDateTime") {
+            self.endDateTime = dict["EndDateTime"] as! String
+        }
+        if dict.keys.contains("StartDateTime") {
+            self.startDateTime = dict["StartDateTime"] as! String
         }
     }
 }
