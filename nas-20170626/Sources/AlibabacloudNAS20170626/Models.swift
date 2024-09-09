@@ -2469,6 +2469,8 @@ public class CreateDataFlowTaskRequest : Tea.TeaModel {
 
     public var conflictPolicy: String?
 
+    public var createDirIfNotExist: Bool?
+
     public var dataFlowId: String?
 
     public var dataType: String?
@@ -2476,6 +2478,8 @@ public class CreateDataFlowTaskRequest : Tea.TeaModel {
     public var directory: String?
 
     public var dryRun: Bool?
+
+    public var dstDirectory: String?
 
     public var entryList: String?
 
@@ -2505,6 +2509,9 @@ public class CreateDataFlowTaskRequest : Tea.TeaModel {
         if self.conflictPolicy != nil {
             map["ConflictPolicy"] = self.conflictPolicy!
         }
+        if self.createDirIfNotExist != nil {
+            map["CreateDirIfNotExist"] = self.createDirIfNotExist!
+        }
         if self.dataFlowId != nil {
             map["DataFlowId"] = self.dataFlowId!
         }
@@ -2516,6 +2523,9 @@ public class CreateDataFlowTaskRequest : Tea.TeaModel {
         }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
+        }
+        if self.dstDirectory != nil {
+            map["DstDirectory"] = self.dstDirectory!
         }
         if self.entryList != nil {
             map["EntryList"] = self.entryList!
@@ -2539,6 +2549,9 @@ public class CreateDataFlowTaskRequest : Tea.TeaModel {
         if dict.keys.contains("ConflictPolicy") {
             self.conflictPolicy = dict["ConflictPolicy"] as! String
         }
+        if dict.keys.contains("CreateDirIfNotExist") {
+            self.createDirIfNotExist = dict["CreateDirIfNotExist"] as! Bool
+        }
         if dict.keys.contains("DataFlowId") {
             self.dataFlowId = dict["DataFlowId"] as! String
         }
@@ -2550,6 +2563,9 @@ public class CreateDataFlowTaskRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DryRun") {
             self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("DstDirectory") {
+            self.dstDirectory = dict["DstDirectory"] as! String
         }
         if dict.keys.contains("EntryList") {
             self.entryList = dict["EntryList"] as! String
@@ -8787,6 +8803,169 @@ public class DescribeDataFlowTasksRequest : Tea.TeaModel {
 public class DescribeDataFlowTasksResponseBody : Tea.TeaModel {
     public class TaskInfo : Tea.TeaModel {
         public class Task : Tea.TeaModel {
+            public class ProgressStats : Tea.TeaModel {
+                public var actualBytes: Int64?
+
+                public var actualFiles: Int64?
+
+                public var averageSpeed: Int64?
+
+                public var bytesDone: Int64?
+
+                public var bytesTotal: Int64?
+
+                public var filesDone: Int64?
+
+                public var filesTotal: Int64?
+
+                public var remainTime: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.actualBytes != nil {
+                        map["ActualBytes"] = self.actualBytes!
+                    }
+                    if self.actualFiles != nil {
+                        map["ActualFiles"] = self.actualFiles!
+                    }
+                    if self.averageSpeed != nil {
+                        map["AverageSpeed"] = self.averageSpeed!
+                    }
+                    if self.bytesDone != nil {
+                        map["BytesDone"] = self.bytesDone!
+                    }
+                    if self.bytesTotal != nil {
+                        map["BytesTotal"] = self.bytesTotal!
+                    }
+                    if self.filesDone != nil {
+                        map["FilesDone"] = self.filesDone!
+                    }
+                    if self.filesTotal != nil {
+                        map["FilesTotal"] = self.filesTotal!
+                    }
+                    if self.remainTime != nil {
+                        map["RemainTime"] = self.remainTime!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ActualBytes") {
+                        self.actualBytes = dict["ActualBytes"] as! Int64
+                    }
+                    if dict.keys.contains("ActualFiles") {
+                        self.actualFiles = dict["ActualFiles"] as! Int64
+                    }
+                    if dict.keys.contains("AverageSpeed") {
+                        self.averageSpeed = dict["AverageSpeed"] as! Int64
+                    }
+                    if dict.keys.contains("BytesDone") {
+                        self.bytesDone = dict["BytesDone"] as! Int64
+                    }
+                    if dict.keys.contains("BytesTotal") {
+                        self.bytesTotal = dict["BytesTotal"] as! Int64
+                    }
+                    if dict.keys.contains("FilesDone") {
+                        self.filesDone = dict["FilesDone"] as! Int64
+                    }
+                    if dict.keys.contains("FilesTotal") {
+                        self.filesTotal = dict["FilesTotal"] as! Int64
+                    }
+                    if dict.keys.contains("RemainTime") {
+                        self.remainTime = dict["RemainTime"] as! Int64
+                    }
+                }
+            }
+            public class Reports : Tea.TeaModel {
+                public class Report : Tea.TeaModel {
+                    public var name: String?
+
+                    public var path: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.name != nil {
+                            map["Name"] = self.name!
+                        }
+                        if self.path != nil {
+                            map["Path"] = self.path!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Name") {
+                            self.name = dict["Name"] as! String
+                        }
+                        if dict.keys.contains("Path") {
+                            self.path = dict["Path"] as! String
+                        }
+                    }
+                }
+                public var report: [DescribeDataFlowTasksResponseBody.TaskInfo.Task.Reports.Report]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.report != nil {
+                        var tmp : [Any] = []
+                        for k in self.report! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Report"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Report") {
+                        var tmp : [DescribeDataFlowTasksResponseBody.TaskInfo.Task.Reports.Report] = []
+                        for v in dict["Report"] as! [Any] {
+                            var model = DescribeDataFlowTasksResponseBody.TaskInfo.Task.Reports.Report()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.report = tmp
+                    }
+                }
+            }
             public var conflictPolicy: String?
 
             public var createTime: String?
@@ -8797,7 +8976,11 @@ public class DescribeDataFlowTasksResponseBody : Tea.TeaModel {
 
             public var directory: String?
 
+            public var dstDirectory: String?
+
             public var endTime: String?
+
+            public var errorMsg: String?
 
             public var fileSystemPath: String?
 
@@ -8809,7 +8992,11 @@ public class DescribeDataFlowTasksResponseBody : Tea.TeaModel {
 
             public var progress: Int64?
 
+            public var progressStats: DescribeDataFlowTasksResponseBody.TaskInfo.Task.ProgressStats?
+
             public var reportPath: String?
+
+            public var reports: DescribeDataFlowTasksResponseBody.TaskInfo.Task.Reports?
 
             public var sourceStorage: String?
 
@@ -8831,6 +9018,8 @@ public class DescribeDataFlowTasksResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.progressStats?.validate()
+                try self.reports?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -8850,8 +9039,14 @@ public class DescribeDataFlowTasksResponseBody : Tea.TeaModel {
                 if self.directory != nil {
                     map["Directory"] = self.directory!
                 }
+                if self.dstDirectory != nil {
+                    map["DstDirectory"] = self.dstDirectory!
+                }
                 if self.endTime != nil {
                     map["EndTime"] = self.endTime!
+                }
+                if self.errorMsg != nil {
+                    map["ErrorMsg"] = self.errorMsg!
                 }
                 if self.fileSystemPath != nil {
                     map["FileSystemPath"] = self.fileSystemPath!
@@ -8868,8 +9063,14 @@ public class DescribeDataFlowTasksResponseBody : Tea.TeaModel {
                 if self.progress != nil {
                     map["Progress"] = self.progress!
                 }
+                if self.progressStats != nil {
+                    map["ProgressStats"] = self.progressStats?.toMap()
+                }
                 if self.reportPath != nil {
                     map["ReportPath"] = self.reportPath!
+                }
+                if self.reports != nil {
+                    map["Reports"] = self.reports?.toMap()
                 }
                 if self.sourceStorage != nil {
                     map["SourceStorage"] = self.sourceStorage!
@@ -8905,8 +9106,14 @@ public class DescribeDataFlowTasksResponseBody : Tea.TeaModel {
                 if dict.keys.contains("Directory") {
                     self.directory = dict["Directory"] as! String
                 }
+                if dict.keys.contains("DstDirectory") {
+                    self.dstDirectory = dict["DstDirectory"] as! String
+                }
                 if dict.keys.contains("EndTime") {
                     self.endTime = dict["EndTime"] as! String
+                }
+                if dict.keys.contains("ErrorMsg") {
+                    self.errorMsg = dict["ErrorMsg"] as! String
                 }
                 if dict.keys.contains("FileSystemPath") {
                     self.fileSystemPath = dict["FileSystemPath"] as! String
@@ -8923,8 +9130,18 @@ public class DescribeDataFlowTasksResponseBody : Tea.TeaModel {
                 if dict.keys.contains("Progress") {
                     self.progress = dict["Progress"] as! Int64
                 }
+                if dict.keys.contains("ProgressStats") {
+                    var model = DescribeDataFlowTasksResponseBody.TaskInfo.Task.ProgressStats()
+                    model.fromMap(dict["ProgressStats"] as! [String: Any])
+                    self.progressStats = model
+                }
                 if dict.keys.contains("ReportPath") {
                     self.reportPath = dict["ReportPath"] as! String
+                }
+                if dict.keys.contains("Reports") {
+                    var model = DescribeDataFlowTasksResponseBody.TaskInfo.Task.Reports()
+                    model.fromMap(dict["Reports"] as! [String: Any])
+                    self.reports = model
                 }
                 if dict.keys.contains("SourceStorage") {
                     self.sourceStorage = dict["SourceStorage"] as! String
@@ -16302,6 +16519,8 @@ public class GetRecycleBinAttributeRequest : Tea.TeaModel {
 
 public class GetRecycleBinAttributeResponseBody : Tea.TeaModel {
     public class RecycleBinAttribute : Tea.TeaModel {
+        public var archiveSize: Int64?
+
         public var enableTime: String?
 
         public var reservedDays: Int64?
@@ -16326,6 +16545,9 @@ public class GetRecycleBinAttributeResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.archiveSize != nil {
+                map["ArchiveSize"] = self.archiveSize!
+            }
             if self.enableTime != nil {
                 map["EnableTime"] = self.enableTime!
             }
@@ -16345,6 +16567,9 @@ public class GetRecycleBinAttributeResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ArchiveSize") {
+                self.archiveSize = dict["ArchiveSize"] as! Int64
+            }
             if dict.keys.contains("EnableTime") {
                 self.enableTime = dict["EnableTime"] as! String
             }
@@ -20165,6 +20390,8 @@ public class ModifySmbAclResponse : Tea.TeaModel {
 }
 
 public class OpenNASServiceResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
     public var orderId: String?
 
     public var requestId: String?
@@ -20183,6 +20410,9 @@ public class OpenNASServiceResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.orderId != nil {
             map["OrderId"] = self.orderId!
         }
@@ -20193,6 +20423,9 @@ public class OpenNASServiceResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("OrderId") {
             self.orderId = dict["OrderId"] as! String
         }
