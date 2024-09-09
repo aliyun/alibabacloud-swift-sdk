@@ -24,39 +24,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func changeProjectFeatureEntityHotIdVersionWithOptions(_ InstanceId: String, _ ProjectId: String, _ FeatureEntityName: String, _ request: ChangeProjectFeatureEntityHotIdVersionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ChangeProjectFeatureEntityHotIdVersionResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.version)) {
-            body["Version"] = request.version ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ChangeProjectFeatureEntityHotIdVersion",
-            "version": "2023-06-21",
-            "protocol": "HTTPS",
-            "pathname": "/api/v1/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ProjectId)) + "/featureentities/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(FeatureEntityName)) + "/action/changehotidversion",
-            "method": "POST",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ChangeProjectFeatureEntityHotIdVersionResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func changeProjectFeatureEntityHotIdVersion(_ InstanceId: String, _ ProjectId: String, _ FeatureEntityName: String, _ request: ChangeProjectFeatureEntityHotIdVersionRequest) async throws -> ChangeProjectFeatureEntityHotIdVersionResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await changeProjectFeatureEntityHotIdVersionWithOptions(InstanceId as! String, ProjectId as! String, FeatureEntityName as! String, request as! ChangeProjectFeatureEntityHotIdVersionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func checkInstanceDatasourceWithOptions(_ InstanceId: String, _ request: CheckInstanceDatasourceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CheckInstanceDatasourceResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -329,6 +296,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.features)) {
             body["Features"] = request.features ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.labelPriorityLevel)) {
+            body["LabelPriorityLevel"] = request.labelPriorityLevel!;
         }
         if (!TeaUtils.Client.isUnset(request.labelTableId)) {
             body["LabelTableId"] = request.labelTableId ?? "";
@@ -684,6 +654,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.realTimeIterateInterval)) {
             body["RealTimeIterateInterval"] = request.realTimeIterateInterval!;
         }
+        if (!TeaUtils.Client.isUnset(request.realTimePartitionCountValue)) {
+            body["RealTimePartitionCountValue"] = request.realTimePartitionCountValue!;
+        }
         if (!TeaUtils.Client.isUnset(request.trainingSetConfig)) {
             body["TrainingSetConfig"] = request.trainingSetConfig!;
         }
@@ -1008,87 +981,6 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getProjectFeatureEntityWithOptions(InstanceId as! String, ProjectId as! String, FeatureEntityName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getProjectFeatureEntityHotIdsWithOptions(_ InstanceId: String, _ ProjectId: String, _ NextSeqNumber: String, _ FeatureEntityName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetProjectFeatureEntityHotIdsResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "GetProjectFeatureEntityHotIds",
-            "version": "2023-06-21",
-            "protocol": "HTTPS",
-            "pathname": "/api/v1/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ProjectId)) + "/featureentities/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(FeatureEntityName)) + "/hotids/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(NextSeqNumber)),
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(GetProjectFeatureEntityHotIdsResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getProjectFeatureEntityHotIds(_ InstanceId: String, _ ProjectId: String, _ NextSeqNumber: String, _ FeatureEntityName: String) async throws -> GetProjectFeatureEntityHotIdsResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await getProjectFeatureEntityHotIdsWithOptions(InstanceId as! String, ProjectId as! String, NextSeqNumber as! String, FeatureEntityName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getProjectFeatureViewWithOptions(_ InstanceId: String, _ ProjectId: String, _ FeatureViewName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetProjectFeatureViewResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "GetProjectFeatureView",
-            "version": "2023-06-21",
-            "protocol": "HTTPS",
-            "pathname": "/api/v1/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ProjectId)) + "/featureviews/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(FeatureViewName)),
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(GetProjectFeatureViewResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getProjectFeatureView(_ InstanceId: String, _ ProjectId: String, _ FeatureViewName: String) async throws -> GetProjectFeatureViewResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await getProjectFeatureViewWithOptions(InstanceId as! String, ProjectId as! String, FeatureViewName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getProjectModelFeatureWithOptions(_ InstanceId: String, _ ProjectId: String, _ ModelFeatureName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetProjectModelFeatureResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "GetProjectModelFeature",
-            "version": "2023-06-21",
-            "protocol": "HTTPS",
-            "pathname": "/api/v1/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ProjectId)) + "/modelfeatures/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ModelFeatureName)),
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(GetProjectModelFeatureResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getProjectModelFeature(_ InstanceId: String, _ ProjectId: String, _ ModelFeatureName: String) async throws -> GetProjectModelFeatureResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await getProjectModelFeatureWithOptions(InstanceId as! String, ProjectId as! String, ModelFeatureName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1645,60 +1537,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listProjectFeatureViewOwnersWithOptions(_ InstanceId: String, _ ProjectId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListProjectFeatureViewOwnersResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ListProjectFeatureViewOwners",
-            "version": "2023-06-21",
-            "protocol": "HTTPS",
-            "pathname": "/api/v1/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ProjectId)) + "/featureviewowners",
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ListProjectFeatureViewOwnersResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listProjectFeatureViewOwners(_ InstanceId: String, _ ProjectId: String) async throws -> ListProjectFeatureViewOwnersResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await listProjectFeatureViewOwnersWithOptions(InstanceId as! String, ProjectId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listProjectFeatureViewTagsWithOptions(_ InstanceId: String, _ ProjectId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListProjectFeatureViewTagsResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ListProjectFeatureViewTags",
-            "version": "2023-06-21",
-            "protocol": "HTTPS",
-            "pathname": "/api/v1/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ProjectId)) + "/featureviewtags",
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ListProjectFeatureViewTagsResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listProjectFeatureViewTags(_ InstanceId: String, _ ProjectId: String) async throws -> ListProjectFeatureViewTagsResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await listProjectFeatureViewTagsWithOptions(InstanceId as! String, ProjectId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listProjectFeatureViewsWithOptions(_ InstanceId: String, _ ProjectId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListProjectFeatureViewsResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -2189,41 +2027,5 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await writeFeatureViewTableWithOptions(InstanceId as! String, FeatureViewId as! String, request as! WriteFeatureViewTableRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func writeProjectFeatureEntityHotIdsWithOptions(_ InstanceId: String, _ ProjectId: String, _ FeatureEntityName: String, _ request: WriteProjectFeatureEntityHotIdsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> WriteProjectFeatureEntityHotIdsResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.hotIds)) {
-            body["HotIds"] = request.hotIds ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.version)) {
-            body["Version"] = request.version ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "WriteProjectFeatureEntityHotIds",
-            "version": "2023-06-21",
-            "protocol": "HTTPS",
-            "pathname": "/api/v1/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ProjectId)) + "/featureentities/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(FeatureEntityName)) + "/action/writehotids",
-            "method": "POST",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(WriteProjectFeatureEntityHotIdsResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func writeProjectFeatureEntityHotIds(_ InstanceId: String, _ ProjectId: String, _ FeatureEntityName: String, _ request: WriteProjectFeatureEntityHotIdsRequest) async throws -> WriteProjectFeatureEntityHotIdsResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await writeProjectFeatureEntityHotIdsWithOptions(InstanceId as! String, ProjectId as! String, FeatureEntityName as! String, request as! WriteProjectFeatureEntityHotIdsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 }
