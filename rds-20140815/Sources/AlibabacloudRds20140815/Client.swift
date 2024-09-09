@@ -1004,6 +1004,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.accountType)) {
             query["AccountType"] = request.accountType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.checkPolicy)) {
+            query["CheckPolicy"] = request.checkPolicy!;
+        }
         if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
             query["DBInstanceId"] = request.DBInstanceId ?? "";
         }
@@ -12812,6 +12815,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.serverlessConfigurationShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.serverlessConfiguration, "ServerlessConfiguration", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allowMajorVersionUpgrade)) {
+            query["AllowMajorVersionUpgrade"] = request.allowMajorVersionUpgrade!;
+        }
         if (!TeaUtils.Client.isUnset(request.autoUseCoupon)) {
             query["AutoUseCoupon"] = request.autoUseCoupon!;
         }
@@ -12884,8 +12890,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.usedTime)) {
             query["UsedTime"] = request.usedTime!;
         }
+        if (!TeaUtils.Client.isUnset(request.vSwitchId)) {
+            query["VSwitchId"] = request.vSwitchId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.zoneId)) {
             query["ZoneId"] = request.zoneId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.zoneIdSlave1)) {
+            query["ZoneIdSlave1"] = request.zoneIdSlave1 ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -15707,6 +15719,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
         }
         if (!TeaUtils.Client.isUnset(request.imageId)) {
             query["ImageId"] = request.imageId ?? "";

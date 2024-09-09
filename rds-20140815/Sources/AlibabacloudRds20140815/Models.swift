@@ -3601,6 +3601,8 @@ public class CreateAccountRequest : Tea.TeaModel {
 
     public var accountType: String?
 
+    public var checkPolicy: Bool?
+
     public var DBInstanceId: String?
 
     public var ownerAccount: String?
@@ -3637,6 +3639,9 @@ public class CreateAccountRequest : Tea.TeaModel {
         if self.accountType != nil {
             map["AccountType"] = self.accountType!
         }
+        if self.checkPolicy != nil {
+            map["CheckPolicy"] = self.checkPolicy!
+        }
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
@@ -3667,6 +3672,9 @@ public class CreateAccountRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AccountType") {
             self.accountType = dict["AccountType"] as! String
+        }
+        if dict.keys.contains("CheckPolicy") {
+            self.checkPolicy = dict["CheckPolicy"] as! Bool
         }
         if dict.keys.contains("DBInstanceId") {
             self.DBInstanceId = dict["DBInstanceId"] as! String
@@ -16330,6 +16338,8 @@ public class DescribeAccountsResponseBody : Tea.TeaModel {
 
             public var bypassRLS: String?
 
+            public var checkPolicy: Bool?
+
             public var createDB: String?
 
             public var createRole: String?
@@ -16337,6 +16347,8 @@ public class DescribeAccountsResponseBody : Tea.TeaModel {
             public var DBInstanceId: String?
 
             public var databasePrivileges: DescribeAccountsResponseBody.Accounts.DBInstanceAccount.DatabasePrivileges?
+
+            public var passwordExpireTime: String?
 
             public var privExceeded: String?
 
@@ -16374,6 +16386,9 @@ public class DescribeAccountsResponseBody : Tea.TeaModel {
                 if self.bypassRLS != nil {
                     map["BypassRLS"] = self.bypassRLS!
                 }
+                if self.checkPolicy != nil {
+                    map["CheckPolicy"] = self.checkPolicy!
+                }
                 if self.createDB != nil {
                     map["CreateDB"] = self.createDB!
                 }
@@ -16385,6 +16400,9 @@ public class DescribeAccountsResponseBody : Tea.TeaModel {
                 }
                 if self.databasePrivileges != nil {
                     map["DatabasePrivileges"] = self.databasePrivileges?.toMap()
+                }
+                if self.passwordExpireTime != nil {
+                    map["PasswordExpireTime"] = self.passwordExpireTime!
                 }
                 if self.privExceeded != nil {
                     map["PrivExceeded"] = self.privExceeded!
@@ -16414,6 +16432,9 @@ public class DescribeAccountsResponseBody : Tea.TeaModel {
                 if dict.keys.contains("BypassRLS") {
                     self.bypassRLS = dict["BypassRLS"] as! String
                 }
+                if dict.keys.contains("CheckPolicy") {
+                    self.checkPolicy = dict["CheckPolicy"] as! Bool
+                }
                 if dict.keys.contains("CreateDB") {
                     self.createDB = dict["CreateDB"] as! String
                 }
@@ -16427,6 +16448,9 @@ public class DescribeAccountsResponseBody : Tea.TeaModel {
                     var model = DescribeAccountsResponseBody.Accounts.DBInstanceAccount.DatabasePrivileges()
                     model.fromMap(dict["DatabasePrivileges"] as! [String: Any])
                     self.databasePrivileges = model
+                }
+                if dict.keys.contains("PasswordExpireTime") {
+                    self.passwordExpireTime = dict["PasswordExpireTime"] as! String
                 }
                 if dict.keys.contains("PrivExceeded") {
                     self.privExceeded = dict["PrivExceeded"] as! String
@@ -50963,6 +50987,8 @@ public class DescribeRCInstanceAttributeResponseBody : Tea.TeaModel {
 
     public var ioOptimized: String?
 
+    public var keyPairName: String?
+
     public var memory: Int32?
 
     public var operationLocks: DescribeRCInstanceAttributeResponseBody.OperationLocks?
@@ -51083,6 +51109,9 @@ public class DescribeRCInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if self.ioOptimized != nil {
             map["IoOptimized"] = self.ioOptimized!
+        }
+        if self.keyPairName != nil {
+            map["KeyPairName"] = self.keyPairName!
         }
         if self.memory != nil {
             map["Memory"] = self.memory!
@@ -51206,6 +51235,9 @@ public class DescribeRCInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("IoOptimized") {
             self.ioOptimized = dict["IoOptimized"] as! String
+        }
+        if dict.keys.contains("KeyPairName") {
+            self.keyPairName = dict["KeyPairName"] as! String
         }
         if dict.keys.contains("Memory") {
             self.memory = dict["Memory"] as! Int32
@@ -68887,6 +68919,8 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
             }
         }
     }
+    public var allowMajorVersionUpgrade: Bool?
+
     public var autoUseCoupon: Bool?
 
     public var burstingEnabled: Bool?
@@ -68935,7 +68969,11 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
 
     public var usedTime: Int64?
 
+    public var vSwitchId: String?
+
     public var zoneId: String?
+
+    public var zoneIdSlave1: String?
 
     public override init() {
         super.init()
@@ -68952,6 +68990,9 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.allowMajorVersionUpgrade != nil {
+            map["AllowMajorVersionUpgrade"] = self.allowMajorVersionUpgrade!
+        }
         if self.autoUseCoupon != nil {
             map["AutoUseCoupon"] = self.autoUseCoupon!
         }
@@ -69024,13 +69065,22 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
         if self.usedTime != nil {
             map["UsedTime"] = self.usedTime!
         }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
         if self.zoneId != nil {
             map["ZoneId"] = self.zoneId!
+        }
+        if self.zoneIdSlave1 != nil {
+            map["ZoneIdSlave1"] = self.zoneIdSlave1!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AllowMajorVersionUpgrade") {
+            self.allowMajorVersionUpgrade = dict["AllowMajorVersionUpgrade"] as! Bool
+        }
         if dict.keys.contains("AutoUseCoupon") {
             self.autoUseCoupon = dict["AutoUseCoupon"] as! Bool
         }
@@ -69105,13 +69155,21 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
         if dict.keys.contains("UsedTime") {
             self.usedTime = dict["UsedTime"] as! Int64
         }
+        if dict.keys.contains("VSwitchId") {
+            self.vSwitchId = dict["VSwitchId"] as! String
+        }
         if dict.keys.contains("ZoneId") {
             self.zoneId = dict["ZoneId"] as! String
+        }
+        if dict.keys.contains("ZoneIdSlave1") {
+            self.zoneIdSlave1 = dict["ZoneIdSlave1"] as! String
         }
     }
 }
 
 public class ModifyDBInstanceSpecShrinkRequest : Tea.TeaModel {
+    public var allowMajorVersionUpgrade: Bool?
+
     public var autoUseCoupon: Bool?
 
     public var burstingEnabled: Bool?
@@ -69160,7 +69218,11 @@ public class ModifyDBInstanceSpecShrinkRequest : Tea.TeaModel {
 
     public var usedTime: Int64?
 
+    public var vSwitchId: String?
+
     public var zoneId: String?
+
+    public var zoneIdSlave1: String?
 
     public override init() {
         super.init()
@@ -69176,6 +69238,9 @@ public class ModifyDBInstanceSpecShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.allowMajorVersionUpgrade != nil {
+            map["AllowMajorVersionUpgrade"] = self.allowMajorVersionUpgrade!
+        }
         if self.autoUseCoupon != nil {
             map["AutoUseCoupon"] = self.autoUseCoupon!
         }
@@ -69248,13 +69313,22 @@ public class ModifyDBInstanceSpecShrinkRequest : Tea.TeaModel {
         if self.usedTime != nil {
             map["UsedTime"] = self.usedTime!
         }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
         if self.zoneId != nil {
             map["ZoneId"] = self.zoneId!
+        }
+        if self.zoneIdSlave1 != nil {
+            map["ZoneIdSlave1"] = self.zoneIdSlave1!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AllowMajorVersionUpgrade") {
+            self.allowMajorVersionUpgrade = dict["AllowMajorVersionUpgrade"] as! Bool
+        }
         if dict.keys.contains("AutoUseCoupon") {
             self.autoUseCoupon = dict["AutoUseCoupon"] as! Bool
         }
@@ -69327,8 +69401,14 @@ public class ModifyDBInstanceSpecShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("UsedTime") {
             self.usedTime = dict["UsedTime"] as! Int64
         }
+        if dict.keys.contains("VSwitchId") {
+            self.vSwitchId = dict["VSwitchId"] as! String
+        }
         if dict.keys.contains("ZoneId") {
             self.zoneId = dict["ZoneId"] as! String
+        }
+        if dict.keys.contains("ZoneIdSlave1") {
+            self.zoneIdSlave1 = dict["ZoneIdSlave1"] as! String
         }
     }
 }
@@ -79738,6 +79818,8 @@ public class RunRCInstancesRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var dryRun: Bool?
+
     public var imageId: String?
 
     public var instanceChargeType: String?
@@ -79811,6 +79893,9 @@ public class RunRCInstancesRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
@@ -79896,6 +79981,9 @@ public class RunRCInstancesRequest : Tea.TeaModel {
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
         }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
         if dict.keys.contains("ImageId") {
             self.imageId = dict["ImageId"] as! String
         }
@@ -79967,6 +80055,8 @@ public class RunRCInstancesShrinkRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var dryRun: Bool?
+
     public var imageId: String?
 
     public var instanceChargeType: String?
@@ -80035,6 +80125,9 @@ public class RunRCInstancesShrinkRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
@@ -80111,6 +80204,9 @@ public class RunRCInstancesShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
         }
         if dict.keys.contains("ImageId") {
             self.imageId = dict["ImageId"] as! String
