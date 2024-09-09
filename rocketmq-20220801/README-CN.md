@@ -17,7 +17,7 @@
 要使用 [Carthage](https://github.com/Carthage/Carthage) 将 `AlibabacloudRocketMQ20220801` 集成到你的 Xcode 项目中，需要在 `Cartfile` 中定义以下内容:
 
 ```ogdl
-github "alibabacloud-sdk-swift/rocketmq-20220801" "1.2.6"
+github "alibabacloud-sdk-swift/rocketmq-20220801" "1.3.0"
 ```
 
 ### Swift 包管理工具
@@ -26,7 +26,7 @@ github "alibabacloud-sdk-swift/rocketmq-20220801" "1.2.6"
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/rocketmq-20220801.git", from: "1.2.6")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/rocketmq-20220801.git", from: "1.3.0")
 ]
 ```
 
