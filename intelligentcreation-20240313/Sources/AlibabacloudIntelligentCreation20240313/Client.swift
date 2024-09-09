@@ -208,6 +208,78 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createRealisticPortraitWithOptions(_ request: CreateRealisticPortraitRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateRealisticPortraitResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ages)) {
+            body["ages"] = request.ages ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.cloth)) {
+            body["cloth"] = request.cloth!;
+        }
+        if (!TeaUtils.Client.isUnset(request.color)) {
+            body["color"] = request.color!;
+        }
+        if (!TeaUtils.Client.isUnset(request.custom)) {
+            body["custom"] = request.custom ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.face)) {
+            body["face"] = request.face ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.figure)) {
+            body["figure"] = request.figure!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gender)) {
+            body["gender"] = request.gender!;
+        }
+        if (!TeaUtils.Client.isUnset(request.hairColor)) {
+            body["hairColor"] = request.hairColor!;
+        }
+        if (!TeaUtils.Client.isUnset(request.hairstyle)) {
+            body["hairstyle"] = request.hairstyle!;
+        }
+        if (!TeaUtils.Client.isUnset(request.height)) {
+            body["height"] = request.height!;
+        }
+        if (!TeaUtils.Client.isUnset(request.imageUrl)) {
+            body["imageUrl"] = request.imageUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.numbers)) {
+            body["numbers"] = request.numbers!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ratio)) {
+            body["ratio"] = request.ratio ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.width)) {
+            body["width"] = request.width!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateRealisticPortrait",
+            "version": "2024-03-13",
+            "protocol": "HTTPS",
+            "pathname": "/yic/yic-console/openService/v1/images/portrait/realistic",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateRealisticPortraitResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createRealisticPortrait(_ request: CreateRealisticPortraitRequest) async throws -> CreateRealisticPortraitResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createRealisticPortraitWithOptions(request as! CreateRealisticPortraitRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createTextTaskWithOptions(_ request: CreateTextTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateTextTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
@@ -693,6 +765,60 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryTextStreamWithOptions(_ textId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryTextStreamResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryTextStream",
+            "version": "2024-03-13",
+            "protocol": "HTTPS",
+            "pathname": "/yic/yic-console/openService/v1/stream/queryTextStream/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(textId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryTextStreamResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryTextStream(_ textId: String) async throws -> QueryTextStreamResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await queryTextStreamWithOptions(textId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func selectImageTaskWithOptions(_ taskId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SelectImageTaskResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SelectImageTask",
+            "version": "2024-03-13",
+            "protocol": "HTTPS",
+            "pathname": "/yic/yic-console/openService/v1/images/portrait/select/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(taskId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SelectImageTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func selectImageTask(_ taskId: String) async throws -> SelectImageTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await selectImageTaskWithOptions(taskId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func selectResourceWithOptions(_ request: SelectResourceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SelectResourceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -915,5 +1041,53 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await submitProjectTaskWithOptions(request as! SubmitProjectTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func transferPortraitStyleWithOptions(_ request: TransferPortraitStyleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TransferPortraitStyleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.height)) {
+            body["height"] = request.height!;
+        }
+        if (!TeaUtils.Client.isUnset(request.imageUrl)) {
+            body["imageUrl"] = request.imageUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.numbers)) {
+            body["numbers"] = request.numbers!;
+        }
+        if (!TeaUtils.Client.isUnset(request.redrawAmplitude)) {
+            body["redrawAmplitude"] = request.redrawAmplitude!;
+        }
+        if (!TeaUtils.Client.isUnset(request.style)) {
+            body["style"] = request.style!;
+        }
+        if (!TeaUtils.Client.isUnset(request.width)) {
+            body["width"] = request.width!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TransferPortraitStyle",
+            "version": "2024-03-13",
+            "protocol": "HTTPS",
+            "pathname": "/yic/yic-console/openService/v1/images/portrait/transferPortraitStyle",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TransferPortraitStyleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func transferPortraitStyle(_ request: TransferPortraitStyleRequest) async throws -> TransferPortraitStyleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await transferPortraitStyleWithOptions(request as! TransferPortraitStyleRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 }
