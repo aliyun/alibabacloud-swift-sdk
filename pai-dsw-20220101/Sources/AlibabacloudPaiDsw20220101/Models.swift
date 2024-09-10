@@ -3354,6 +3354,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
     public var code: String?
 
+    public var credentialConfig: CredentialConfig?
+
     public var datasets: [GetInstanceResponseBody.Datasets]?
 
     public var driver: String?
@@ -3445,6 +3447,7 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.affinity?.validate()
+        try self.credentialConfig?.validate()
         try self.idleInstanceCuller?.validate()
         try self.instanceShutdownTimer?.validate()
         try self.latestSnapshot?.validate()
@@ -3476,6 +3479,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
         if self.code != nil {
             map["Code"] = self.code!
+        }
+        if self.credentialConfig != nil {
+            map["CredentialConfig"] = self.credentialConfig?.toMap()
         }
         if self.datasets != nil {
             var tmp : [Any] = []
@@ -3640,6 +3646,11 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("CredentialConfig") {
+            var model = CredentialConfig()
+            model.fromMap(dict["CredentialConfig"] as! [String: Any])
+            self.credentialConfig = model
         }
         if dict.keys.contains("Datasets") {
             var tmp : [GetInstanceResponseBody.Datasets] = []
@@ -7737,6 +7748,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
         public var cloudDisks: [ListInstancesResponseBody.Instances.CloudDisks]?
 
+        public var credentialConfig: CredentialConfig?
+
         public var datasets: [ListInstancesResponseBody.Instances.Datasets]?
 
         public var driver: String?
@@ -7818,6 +7831,7 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.affinity?.validate()
+            try self.credentialConfig?.validate()
             try self.idleInstanceCuller?.validate()
             try self.instanceShutdownTimer?.validate()
             try self.latestSnapshot?.validate()
@@ -7845,6 +7859,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["CloudDisks"] = tmp
+            }
+            if self.credentialConfig != nil {
+                map["CredentialConfig"] = self.credentialConfig?.toMap()
             }
             if self.datasets != nil {
                 var tmp : [Any] = []
@@ -7991,6 +8008,11 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.cloudDisks = tmp
+            }
+            if dict.keys.contains("CredentialConfig") {
+                var model = CredentialConfig()
+                model.fromMap(dict["CredentialConfig"] as! [String: Any])
+                self.credentialConfig = model
             }
             if dict.keys.contains("Datasets") {
                 var tmp : [ListInstancesResponseBody.Instances.Datasets] = []
