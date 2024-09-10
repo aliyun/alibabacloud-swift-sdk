@@ -11,6 +11,8 @@ public class CreateTaskRequest : Tea.TeaModel {
 
         public var format: String?
 
+        public var languageHints: [String]?
+
         public var multipleStreamsEnabled: Bool?
 
         public var outputPath: String?
@@ -45,6 +47,9 @@ public class CreateTaskRequest : Tea.TeaModel {
             if self.format != nil {
                 map["Format"] = self.format!
             }
+            if self.languageHints != nil {
+                map["LanguageHints"] = self.languageHints!
+            }
             if self.multipleStreamsEnabled != nil {
                 map["MultipleStreamsEnabled"] = self.multipleStreamsEnabled!
             }
@@ -75,6 +80,9 @@ public class CreateTaskRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Format") {
                 self.format = dict["Format"] as! String
+            }
+            if dict.keys.contains("LanguageHints") {
+                self.languageHints = dict["LanguageHints"] as! [String]
             }
             if dict.keys.contains("MultipleStreamsEnabled") {
                 self.multipleStreamsEnabled = dict["MultipleStreamsEnabled"] as! Bool
