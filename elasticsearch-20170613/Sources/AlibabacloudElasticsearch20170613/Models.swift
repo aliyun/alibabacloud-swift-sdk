@@ -10642,7 +10642,11 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
 
         public var kibanaPort: Int32?
 
+        public var kibanaPrivateDomain: String?
+
         public var kibanaPrivateIPWhitelist: [String]?
+
+        public var kibanaPrivatePort: String?
 
         public var masterConfiguration: DescribeInstanceResponseBody.Result.MasterConfiguration?
 
@@ -10814,8 +10818,14 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
             if self.kibanaPort != nil {
                 map["kibanaPort"] = self.kibanaPort!
             }
+            if self.kibanaPrivateDomain != nil {
+                map["kibanaPrivateDomain"] = self.kibanaPrivateDomain!
+            }
             if self.kibanaPrivateIPWhitelist != nil {
                 map["kibanaPrivateIPWhitelist"] = self.kibanaPrivateIPWhitelist!
+            }
+            if self.kibanaPrivatePort != nil {
+                map["kibanaPrivatePort"] = self.kibanaPrivatePort!
             }
             if self.masterConfiguration != nil {
                 map["masterConfiguration"] = self.masterConfiguration?.toMap()
@@ -11024,8 +11034,14 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
             if dict.keys.contains("kibanaPort") {
                 self.kibanaPort = dict["kibanaPort"] as! Int32
             }
+            if dict.keys.contains("kibanaPrivateDomain") {
+                self.kibanaPrivateDomain = dict["kibanaPrivateDomain"] as! String
+            }
             if dict.keys.contains("kibanaPrivateIPWhitelist") {
                 self.kibanaPrivateIPWhitelist = dict["kibanaPrivateIPWhitelist"] as! [String]
+            }
+            if dict.keys.contains("kibanaPrivatePort") {
+                self.kibanaPrivatePort = dict["kibanaPrivatePort"] as! String
             }
             if dict.keys.contains("masterConfiguration") {
                 var model = DescribeInstanceResponseBody.Result.MasterConfiguration()
