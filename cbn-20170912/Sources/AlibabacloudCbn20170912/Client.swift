@@ -1754,8 +1754,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createTransitRouterVpcAttachmentWithOptions(_ request: CreateTransitRouterVpcAttachmentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateTransitRouterVpcAttachmentResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createTransitRouterVpcAttachmentWithOptions(_ tmpReq: CreateTransitRouterVpcAttachmentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateTransitRouterVpcAttachmentResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateTransitRouterVpcAttachmentShrinkRequest = CreateTransitRouterVpcAttachmentShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.transitRouterVPCAttachmentOptions)) {
+            request.transitRouterVPCAttachmentOptionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.transitRouterVPCAttachmentOptions, "TransitRouterVPCAttachmentOptions", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.autoPublishRouteEnabled)) {
             query["AutoPublishRouteEnabled"] = request.autoPublishRouteEnabled!;
@@ -1798,6 +1803,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.transitRouterId)) {
             query["TransitRouterId"] = request.transitRouterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.transitRouterVPCAttachmentOptionsShrink)) {
+            query["TransitRouterVPCAttachmentOptions"] = request.transitRouterVPCAttachmentOptionsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.vpcId)) {
             query["VpcId"] = request.vpcId ?? "";
@@ -4076,6 +4084,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.childInstanceOwnerId)) {
             query["ChildInstanceOwnerId"] = request.childInstanceOwnerId!;
         }
+        if (!TeaUtils.Client.isUnset(request.enabledIpv6)) {
+            query["EnabledIpv6"] = request.enabledIpv6!;
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["MaxResults"] = request.maxResults!;
         }
@@ -5171,6 +5182,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.cenId)) {
             query["CenId"] = request.cenId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enabledIpv6)) {
+            query["EnabledIpv6"] = request.enabledIpv6!;
         }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
@@ -8443,8 +8457,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateTransitRouterVpcAttachmentAttributeWithOptions(_ request: UpdateTransitRouterVpcAttachmentAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateTransitRouterVpcAttachmentAttributeResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func updateTransitRouterVpcAttachmentAttributeWithOptions(_ tmpReq: UpdateTransitRouterVpcAttachmentAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateTransitRouterVpcAttachmentAttributeResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateTransitRouterVpcAttachmentAttributeShrinkRequest = UpdateTransitRouterVpcAttachmentAttributeShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.transitRouterVPCAttachmentOptions)) {
+            request.transitRouterVPCAttachmentOptionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.transitRouterVPCAttachmentOptions, "TransitRouterVPCAttachmentOptions", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.autoPublishRouteEnabled)) {
             query["AutoPublishRouteEnabled"] = request.autoPublishRouteEnabled!;
@@ -8475,6 +8494,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.transitRouterAttachmentName)) {
             query["TransitRouterAttachmentName"] = request.transitRouterAttachmentName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.transitRouterVPCAttachmentOptionsShrink)) {
+            query["TransitRouterVPCAttachmentOptions"] = request.transitRouterVPCAttachmentOptionsShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

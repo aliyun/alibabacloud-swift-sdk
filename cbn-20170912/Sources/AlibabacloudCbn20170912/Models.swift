@@ -180,6 +180,8 @@ public class ActiveFlowLogResponse : Tea.TeaModel {
 
 public class AddTrafficMatchRuleToTrafficMarkingPolicyRequest : Tea.TeaModel {
     public class TrafficMatchRules : Tea.TeaModel {
+        public var addressFamily: String?
+
         public var dstCidr: String?
 
         public var dstPortRange: [Int32]?
@@ -210,6 +212,9 @@ public class AddTrafficMatchRuleToTrafficMarkingPolicyRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.addressFamily != nil {
+                map["AddressFamily"] = self.addressFamily!
+            }
             if self.dstCidr != nil {
                 map["DstCidr"] = self.dstCidr!
             }
@@ -238,6 +243,9 @@ public class AddTrafficMatchRuleToTrafficMarkingPolicyRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AddressFamily") {
+                self.addressFamily = dict["AddressFamily"] as! String
+            }
             if dict.keys.contains("DstCidr") {
                 self.dstCidr = dict["DstCidr"] as! String
             }
@@ -3549,6 +3557,8 @@ public class CreateFlowlogResponse : Tea.TeaModel {
 
 public class CreateTrafficMarkingPolicyRequest : Tea.TeaModel {
     public class TrafficMatchRules : Tea.TeaModel {
+        public var addressFamily: String?
+
         public var dstCidr: String?
 
         public var dstPortRange: [Int32]?
@@ -3579,6 +3589,9 @@ public class CreateTrafficMarkingPolicyRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.addressFamily != nil {
+                map["AddressFamily"] = self.addressFamily!
+            }
             if self.dstCidr != nil {
                 map["DstCidr"] = self.dstCidr!
             }
@@ -3607,6 +3620,9 @@ public class CreateTrafficMarkingPolicyRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AddressFamily") {
+                self.addressFamily = dict["AddressFamily"] as! String
+            }
             if dict.keys.contains("DstCidr") {
                 self.dstCidr = dict["DstCidr"] as! String
             }
@@ -6648,6 +6664,8 @@ public class CreateTransitRouterVpcAttachmentRequest : Tea.TeaModel {
 
     public var transitRouterId: String?
 
+    public var transitRouterVPCAttachmentOptions: [String: String]?
+
     public var vpcId: String?
 
     public var vpcOwnerId: Int64?
@@ -6713,6 +6731,9 @@ public class CreateTransitRouterVpcAttachmentRequest : Tea.TeaModel {
         }
         if self.transitRouterId != nil {
             map["TransitRouterId"] = self.transitRouterId!
+        }
+        if self.transitRouterVPCAttachmentOptions != nil {
+            map["TransitRouterVPCAttachmentOptions"] = self.transitRouterVPCAttachmentOptions!
         }
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
@@ -6781,6 +6802,9 @@ public class CreateTransitRouterVpcAttachmentRequest : Tea.TeaModel {
         if dict.keys.contains("TransitRouterId") {
             self.transitRouterId = dict["TransitRouterId"] as! String
         }
+        if dict.keys.contains("TransitRouterVPCAttachmentOptions") {
+            self.transitRouterVPCAttachmentOptions = dict["TransitRouterVPCAttachmentOptions"] as! [String: String]
+        }
         if dict.keys.contains("VpcId") {
             self.vpcId = dict["VpcId"] as! String
         }
@@ -6791,6 +6815,270 @@ public class CreateTransitRouterVpcAttachmentRequest : Tea.TeaModel {
             var tmp : [CreateTransitRouterVpcAttachmentRequest.ZoneMappings] = []
             for v in dict["ZoneMappings"] as! [Any] {
                 var model = CreateTransitRouterVpcAttachmentRequest.ZoneMappings()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.zoneMappings = tmp
+        }
+    }
+}
+
+public class CreateTransitRouterVpcAttachmentShrinkRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
+    public class ZoneMappings : Tea.TeaModel {
+        public var vSwitchId: String?
+
+        public var zoneId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.vSwitchId != nil {
+                map["VSwitchId"] = self.vSwitchId!
+            }
+            if self.zoneId != nil {
+                map["ZoneId"] = self.zoneId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("VSwitchId") {
+                self.vSwitchId = dict["VSwitchId"] as! String
+            }
+            if dict.keys.contains("ZoneId") {
+                self.zoneId = dict["ZoneId"] as! String
+            }
+        }
+    }
+    public var autoPublishRouteEnabled: Bool?
+
+    public var cenId: String?
+
+    public var chargeType: String?
+
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var tag: [CreateTransitRouterVpcAttachmentShrinkRequest.Tag]?
+
+    public var transitRouterAttachmentDescription: String?
+
+    public var transitRouterAttachmentName: String?
+
+    public var transitRouterId: String?
+
+    public var transitRouterVPCAttachmentOptionsShrink: String?
+
+    public var vpcId: String?
+
+    public var vpcOwnerId: Int64?
+
+    public var zoneMappings: [CreateTransitRouterVpcAttachmentShrinkRequest.ZoneMappings]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoPublishRouteEnabled != nil {
+            map["AutoPublishRouteEnabled"] = self.autoPublishRouteEnabled!
+        }
+        if self.cenId != nil {
+            map["CenId"] = self.cenId!
+        }
+        if self.chargeType != nil {
+            map["ChargeType"] = self.chargeType!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
+        if self.transitRouterAttachmentDescription != nil {
+            map["TransitRouterAttachmentDescription"] = self.transitRouterAttachmentDescription!
+        }
+        if self.transitRouterAttachmentName != nil {
+            map["TransitRouterAttachmentName"] = self.transitRouterAttachmentName!
+        }
+        if self.transitRouterId != nil {
+            map["TransitRouterId"] = self.transitRouterId!
+        }
+        if self.transitRouterVPCAttachmentOptionsShrink != nil {
+            map["TransitRouterVPCAttachmentOptions"] = self.transitRouterVPCAttachmentOptionsShrink!
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
+        if self.vpcOwnerId != nil {
+            map["VpcOwnerId"] = self.vpcOwnerId!
+        }
+        if self.zoneMappings != nil {
+            var tmp : [Any] = []
+            for k in self.zoneMappings! {
+                tmp.append(k.toMap())
+            }
+            map["ZoneMappings"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AutoPublishRouteEnabled") {
+            self.autoPublishRouteEnabled = dict["AutoPublishRouteEnabled"] as! Bool
+        }
+        if dict.keys.contains("CenId") {
+            self.cenId = dict["CenId"] as! String
+        }
+        if dict.keys.contains("ChargeType") {
+            self.chargeType = dict["ChargeType"] as! String
+        }
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("OwnerAccount") {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [CreateTransitRouterVpcAttachmentShrinkRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateTransitRouterVpcAttachmentShrinkRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
+        if dict.keys.contains("TransitRouterAttachmentDescription") {
+            self.transitRouterAttachmentDescription = dict["TransitRouterAttachmentDescription"] as! String
+        }
+        if dict.keys.contains("TransitRouterAttachmentName") {
+            self.transitRouterAttachmentName = dict["TransitRouterAttachmentName"] as! String
+        }
+        if dict.keys.contains("TransitRouterId") {
+            self.transitRouterId = dict["TransitRouterId"] as! String
+        }
+        if dict.keys.contains("TransitRouterVPCAttachmentOptions") {
+            self.transitRouterVPCAttachmentOptionsShrink = dict["TransitRouterVPCAttachmentOptions"] as! String
+        }
+        if dict.keys.contains("VpcId") {
+            self.vpcId = dict["VpcId"] as! String
+        }
+        if dict.keys.contains("VpcOwnerId") {
+            self.vpcOwnerId = dict["VpcOwnerId"] as! Int64
+        }
+        if dict.keys.contains("ZoneMappings") {
+            var tmp : [CreateTransitRouterVpcAttachmentShrinkRequest.ZoneMappings] = []
+            for v in dict["ZoneMappings"] as! [Any] {
+                var model = CreateTransitRouterVpcAttachmentShrinkRequest.ZoneMappings()
                 if v != nil {
                     model.fromMap(v as! [String: Any])
                 }
@@ -18185,6 +18473,8 @@ public class DescribeGrantRulesToCenRequest : Tea.TeaModel {
 
     public var childInstanceOwnerId: Int64?
 
+    public var enabledIpv6: Bool?
+
     public var maxResults: Int64?
 
     public var nextToken: String?
@@ -18224,6 +18514,9 @@ public class DescribeGrantRulesToCenRequest : Tea.TeaModel {
         if self.childInstanceOwnerId != nil {
             map["ChildInstanceOwnerId"] = self.childInstanceOwnerId!
         }
+        if self.enabledIpv6 != nil {
+            map["EnabledIpv6"] = self.enabledIpv6!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -18260,6 +18553,9 @@ public class DescribeGrantRulesToCenRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ChildInstanceOwnerId") {
             self.childInstanceOwnerId = dict["ChildInstanceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("EnabledIpv6") {
+            self.enabledIpv6 = dict["EnabledIpv6"] as! Bool
         }
         if dict.keys.contains("MaxResults") {
             self.maxResults = dict["MaxResults"] as! Int64
@@ -23338,6 +23634,8 @@ public class ListGrantVSwitchEnisResponse : Tea.TeaModel {
 public class ListGrantVSwitchesToCenRequest : Tea.TeaModel {
     public var cenId: String?
 
+    public var enabledIpv6: Bool?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -23373,6 +23671,9 @@ public class ListGrantVSwitchesToCenRequest : Tea.TeaModel {
         if self.cenId != nil {
             map["CenId"] = self.cenId!
         }
+        if self.enabledIpv6 != nil {
+            map["EnabledIpv6"] = self.enabledIpv6!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -23406,6 +23707,9 @@ public class ListGrantVSwitchesToCenRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("CenId") {
             self.cenId = dict["CenId"] as! String
+        }
+        if dict.keys.contains("EnabledIpv6") {
+            self.enabledIpv6 = dict["EnabledIpv6"] as! Bool
         }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
@@ -24061,6 +24365,8 @@ public class ListTrafficMarkingPoliciesRequest : Tea.TeaModel {
 public class ListTrafficMarkingPoliciesResponseBody : Tea.TeaModel {
     public class TrafficMarkingPolicies : Tea.TeaModel {
         public class TrafficMatchRules : Tea.TeaModel {
+            public var addressFamily: String?
+
             public var dstCidr: String?
 
             public var dstPortRange: [Int32]?
@@ -24095,6 +24401,9 @@ public class ListTrafficMarkingPoliciesResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.addressFamily != nil {
+                    map["AddressFamily"] = self.addressFamily!
+                }
                 if self.dstCidr != nil {
                     map["DstCidr"] = self.dstCidr!
                 }
@@ -24129,6 +24438,9 @@ public class ListTrafficMarkingPoliciesResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AddressFamily") {
+                    self.addressFamily = dict["AddressFamily"] as! String
+                }
                 if dict.keys.contains("DstCidr") {
                     self.dstCidr = dict["DstCidr"] as! String
                 }
@@ -30281,6 +30593,8 @@ public class ListTransitRouterVpcAttachmentsResponseBody : Tea.TeaModel {
 
         public var transitRouterId: String?
 
+        public var transitRouterVPCAttachmentOptions: [String: String]?
+
         public var vpcId: String?
 
         public var vpcOwnerId: Int64?
@@ -30342,6 +30656,9 @@ public class ListTransitRouterVpcAttachmentsResponseBody : Tea.TeaModel {
             }
             if self.transitRouterId != nil {
                 map["TransitRouterId"] = self.transitRouterId!
+            }
+            if self.transitRouterVPCAttachmentOptions != nil {
+                map["TransitRouterVPCAttachmentOptions"] = self.transitRouterVPCAttachmentOptions!
             }
             if self.vpcId != nil {
                 map["VpcId"] = self.vpcId!
@@ -30406,6 +30723,9 @@ public class ListTransitRouterVpcAttachmentsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("TransitRouterId") {
                 self.transitRouterId = dict["TransitRouterId"] as! String
+            }
+            if dict.keys.contains("TransitRouterVPCAttachmentOptions") {
+                self.transitRouterVPCAttachmentOptions = dict["TransitRouterVPCAttachmentOptions"] as! [String: String]
             }
             if dict.keys.contains("VpcId") {
                 self.vpcId = dict["VpcId"] as! String
@@ -36484,6 +36804,8 @@ public class UpdateCenInterRegionTrafficQosQueueAttributeResponse : Tea.TeaModel
 
 public class UpdateTrafficMarkingPolicyAttributeRequest : Tea.TeaModel {
     public class AddTrafficMatchRules : Tea.TeaModel {
+        public var addressFamily: String?
+
         public var dstCidr: String?
 
         public var dstPortRange: [Int32]?
@@ -36514,6 +36836,9 @@ public class UpdateTrafficMarkingPolicyAttributeRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.addressFamily != nil {
+                map["AddressFamily"] = self.addressFamily!
+            }
             if self.dstCidr != nil {
                 map["DstCidr"] = self.dstCidr!
             }
@@ -36542,6 +36867,9 @@ public class UpdateTrafficMarkingPolicyAttributeRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AddressFamily") {
+                self.addressFamily = dict["AddressFamily"] as! String
+            }
             if dict.keys.contains("DstCidr") {
                 self.dstCidr = dict["DstCidr"] as! String
             }
@@ -36569,6 +36897,8 @@ public class UpdateTrafficMarkingPolicyAttributeRequest : Tea.TeaModel {
         }
     }
     public class DeleteTrafficMatchRules : Tea.TeaModel {
+        public var addressFamily: String?
+
         public var dstCidr: String?
 
         public var dstPortRange: [Int32]?
@@ -36599,6 +36929,9 @@ public class UpdateTrafficMarkingPolicyAttributeRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.addressFamily != nil {
+                map["AddressFamily"] = self.addressFamily!
+            }
             if self.dstCidr != nil {
                 map["DstCidr"] = self.dstCidr!
             }
@@ -36627,6 +36960,9 @@ public class UpdateTrafficMarkingPolicyAttributeRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AddressFamily") {
+                self.addressFamily = dict["AddressFamily"] as! String
+            }
             if dict.keys.contains("DstCidr") {
                 self.dstCidr = dict["DstCidr"] as! String
             }
@@ -38020,6 +38356,8 @@ public class UpdateTransitRouterVpcAttachmentAttributeRequest : Tea.TeaModel {
 
     public var transitRouterAttachmentName: String?
 
+    public var transitRouterVPCAttachmentOptions: [String: String]?
+
     public override init() {
         super.init()
     }
@@ -38064,6 +38402,9 @@ public class UpdateTransitRouterVpcAttachmentAttributeRequest : Tea.TeaModel {
         if self.transitRouterAttachmentName != nil {
             map["TransitRouterAttachmentName"] = self.transitRouterAttachmentName!
         }
+        if self.transitRouterVPCAttachmentOptions != nil {
+            map["TransitRouterVPCAttachmentOptions"] = self.transitRouterVPCAttachmentOptions!
+        }
         return map
     }
 
@@ -38097,6 +38438,119 @@ public class UpdateTransitRouterVpcAttachmentAttributeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TransitRouterAttachmentName") {
             self.transitRouterAttachmentName = dict["TransitRouterAttachmentName"] as! String
+        }
+        if dict.keys.contains("TransitRouterVPCAttachmentOptions") {
+            self.transitRouterVPCAttachmentOptions = dict["TransitRouterVPCAttachmentOptions"] as! [String: String]
+        }
+    }
+}
+
+public class UpdateTransitRouterVpcAttachmentAttributeShrinkRequest : Tea.TeaModel {
+    public var autoPublishRouteEnabled: Bool?
+
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var transitRouterAttachmentDescription: String?
+
+    public var transitRouterAttachmentId: String?
+
+    public var transitRouterAttachmentName: String?
+
+    public var transitRouterVPCAttachmentOptionsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoPublishRouteEnabled != nil {
+            map["AutoPublishRouteEnabled"] = self.autoPublishRouteEnabled!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.transitRouterAttachmentDescription != nil {
+            map["TransitRouterAttachmentDescription"] = self.transitRouterAttachmentDescription!
+        }
+        if self.transitRouterAttachmentId != nil {
+            map["TransitRouterAttachmentId"] = self.transitRouterAttachmentId!
+        }
+        if self.transitRouterAttachmentName != nil {
+            map["TransitRouterAttachmentName"] = self.transitRouterAttachmentName!
+        }
+        if self.transitRouterVPCAttachmentOptionsShrink != nil {
+            map["TransitRouterVPCAttachmentOptions"] = self.transitRouterVPCAttachmentOptionsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AutoPublishRouteEnabled") {
+            self.autoPublishRouteEnabled = dict["AutoPublishRouteEnabled"] as! Bool
+        }
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("OwnerAccount") {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("TransitRouterAttachmentDescription") {
+            self.transitRouterAttachmentDescription = dict["TransitRouterAttachmentDescription"] as! String
+        }
+        if dict.keys.contains("TransitRouterAttachmentId") {
+            self.transitRouterAttachmentId = dict["TransitRouterAttachmentId"] as! String
+        }
+        if dict.keys.contains("TransitRouterAttachmentName") {
+            self.transitRouterAttachmentName = dict["TransitRouterAttachmentName"] as! String
+        }
+        if dict.keys.contains("TransitRouterVPCAttachmentOptions") {
+            self.transitRouterVPCAttachmentOptionsShrink = dict["TransitRouterVPCAttachmentOptions"] as! String
         }
     }
 }
