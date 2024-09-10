@@ -4010,6 +4010,10 @@ public class DescribeInstanceSpecsResponseBody : Tea.TeaModel {
 
             public var bindIpCount: Int32?
 
+            public var elasticBwMbps: Int32?
+
+            public var elasticBwMode: String?
+
             public var ipAdvanceThre: Int32?
 
             public var ipBasicThre: Int32?
@@ -4042,6 +4046,12 @@ public class DescribeInstanceSpecsResponseBody : Tea.TeaModel {
                 if self.bindIpCount != nil {
                     map["BindIpCount"] = self.bindIpCount!
                 }
+                if self.elasticBwMbps != nil {
+                    map["ElasticBwMbps"] = self.elasticBwMbps!
+                }
+                if self.elasticBwMode != nil {
+                    map["ElasticBwMode"] = self.elasticBwMode!
+                }
                 if self.ipAdvanceThre != nil {
                     map["IpAdvanceThre"] = self.ipAdvanceThre!
                 }
@@ -4070,6 +4080,12 @@ public class DescribeInstanceSpecsResponseBody : Tea.TeaModel {
                 if dict.keys.contains("BindIpCount") {
                     self.bindIpCount = dict["BindIpCount"] as! Int32
                 }
+                if dict.keys.contains("ElasticBwMbps") {
+                    self.elasticBwMbps = dict["ElasticBwMbps"] as! Int32
+                }
+                if dict.keys.contains("ElasticBwMode") {
+                    self.elasticBwMode = dict["ElasticBwMode"] as! String
+                }
                 if dict.keys.contains("IpAdvanceThre") {
                     self.ipAdvanceThre = dict["IpAdvanceThre"] as! Int32
                 }
@@ -4095,6 +4111,8 @@ public class DescribeInstanceSpecsResponseBody : Tea.TeaModel {
         public var availableDeleteBlackholeCount: String?
 
         public var defenseTimesPercent: Int32?
+
+        public var downgradeStatus: Int32?
 
         public var instanceId: String?
 
@@ -4130,6 +4148,9 @@ public class DescribeInstanceSpecsResponseBody : Tea.TeaModel {
             if self.defenseTimesPercent != nil {
                 map["DefenseTimesPercent"] = self.defenseTimesPercent!
             }
+            if self.downgradeStatus != nil {
+                map["DowngradeStatus"] = self.downgradeStatus!
+            }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
@@ -4157,6 +4178,9 @@ public class DescribeInstanceSpecsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("DefenseTimesPercent") {
                 self.defenseTimesPercent = dict["DefenseTimesPercent"] as! Int32
+            }
+            if dict.keys.contains("DowngradeStatus") {
+                self.downgradeStatus = dict["DowngradeStatus"] as! Int32
             }
             if dict.keys.contains("InstanceId") {
                 self.instanceId = dict["InstanceId"] as! String
