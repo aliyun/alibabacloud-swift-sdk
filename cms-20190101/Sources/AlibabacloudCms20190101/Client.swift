@@ -144,37 +144,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func batchCreateIntantSiteMonitorWithOptions(_ request: BatchCreateIntantSiteMonitorRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchCreateIntantSiteMonitorResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.taskList)) {
-            query["TaskList"] = request.taskList ?? [];
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "BatchCreateIntantSiteMonitor",
-            "version": "2019-01-01",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(BatchCreateIntantSiteMonitorResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func batchCreateIntantSiteMonitor(_ request: BatchCreateIntantSiteMonitorRequest) async throws -> BatchCreateIntantSiteMonitorResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await batchCreateIntantSiteMonitorWithOptions(request as! BatchCreateIntantSiteMonitorRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func batchExportWithOptions(_ tmpReq: BatchExportRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchExportResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: BatchExportShrinkRequest = BatchExportShrinkRequest([:])
@@ -220,177 +189,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func batchExport(_ request: BatchExportRequest) async throws -> BatchExportResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await batchExportWithOptions(request as! BatchExportRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createCmsCallNumOrderWithOptions(_ request: CreateCmsCallNumOrderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCmsCallNumOrderResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.autoPay)) {
-            query["AutoPay"] = request.autoPay!;
-        }
-        if (!TeaUtils.Client.isUnset(request.autoRenewPeriod)) {
-            query["AutoRenewPeriod"] = request.autoRenewPeriod!;
-        }
-        if (!TeaUtils.Client.isUnset(request.autoUseCoupon)) {
-            query["AutoUseCoupon"] = request.autoUseCoupon!;
-        }
-        if (!TeaUtils.Client.isUnset(request.period)) {
-            query["Period"] = request.period!;
-        }
-        if (!TeaUtils.Client.isUnset(request.periodUnit)) {
-            query["PeriodUnit"] = request.periodUnit ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.phoneCount)) {
-            query["PhoneCount"] = request.phoneCount ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "CreateCmsCallNumOrder",
-            "version": "2019-01-01",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(CreateCmsCallNumOrderResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createCmsCallNumOrder(_ request: CreateCmsCallNumOrderRequest) async throws -> CreateCmsCallNumOrderResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await createCmsCallNumOrderWithOptions(request as! CreateCmsCallNumOrderRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createCmsOrderWithOptions(_ request: CreateCmsOrderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCmsOrderResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.apiCount)) {
-            query["ApiCount"] = request.apiCount ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.autoPay)) {
-            query["AutoPay"] = request.autoPay!;
-        }
-        if (!TeaUtils.Client.isUnset(request.autoRenewPeriod)) {
-            query["AutoRenewPeriod"] = request.autoRenewPeriod!;
-        }
-        if (!TeaUtils.Client.isUnset(request.autoUseCoupon)) {
-            query["AutoUseCoupon"] = request.autoUseCoupon!;
-        }
-        if (!TeaUtils.Client.isUnset(request.customTimeSeries)) {
-            query["CustomTimeSeries"] = request.customTimeSeries ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.eventStoreNum)) {
-            query["EventStoreNum"] = request.eventStoreNum ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.eventStoreTime)) {
-            query["EventStoreTime"] = request.eventStoreTime ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.logMonitorStream)) {
-            query["LogMonitorStream"] = request.logMonitorStream ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.payType)) {
-            query["PayType"] = request.payType ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.period)) {
-            query["Period"] = request.period!;
-        }
-        if (!TeaUtils.Client.isUnset(request.periodUnit)) {
-            query["PeriodUnit"] = request.periodUnit ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.phoneCount)) {
-            query["PhoneCount"] = request.phoneCount ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.siteEcsNum)) {
-            query["SiteEcsNum"] = request.siteEcsNum ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.siteOperatorNum)) {
-            query["SiteOperatorNum"] = request.siteOperatorNum ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.siteTaskNum)) {
-            query["SiteTaskNum"] = request.siteTaskNum ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.smsCount)) {
-            query["SmsCount"] = request.smsCount ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.suggestType)) {
-            query["SuggestType"] = request.suggestType ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "CreateCmsOrder",
-            "version": "2019-01-01",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(CreateCmsOrderResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createCmsOrder(_ request: CreateCmsOrderRequest) async throws -> CreateCmsOrderResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await createCmsOrderWithOptions(request as! CreateCmsOrderRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createCmsSmspackageOrderWithOptions(_ request: CreateCmsSmspackageOrderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCmsSmspackageOrderResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.autoPay)) {
-            query["AutoPay"] = request.autoPay!;
-        }
-        if (!TeaUtils.Client.isUnset(request.autoRenewPeriod)) {
-            query["AutoRenewPeriod"] = request.autoRenewPeriod!;
-        }
-        if (!TeaUtils.Client.isUnset(request.autoUseCoupon)) {
-            query["AutoUseCoupon"] = request.autoUseCoupon!;
-        }
-        if (!TeaUtils.Client.isUnset(request.period)) {
-            query["Period"] = request.period!;
-        }
-        if (!TeaUtils.Client.isUnset(request.periodUnit)) {
-            query["PeriodUnit"] = request.periodUnit ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.smsCount)) {
-            query["SmsCount"] = request.smsCount ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "CreateCmsSmspackageOrder",
-            "version": "2019-01-01",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(CreateCmsSmspackageOrderResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createCmsSmspackageOrder(_ request: CreateCmsSmspackageOrderRequest) async throws -> CreateCmsSmspackageOrderResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await createCmsSmspackageOrderWithOptions(request as! CreateCmsSmspackageOrderRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1157,6 +955,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.taskType)) {
             query["TaskType"] = request.taskType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vpcConfig)) {
+            query["VpcConfig"] = request.vpcConfig ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
