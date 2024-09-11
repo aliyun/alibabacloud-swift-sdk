@@ -1620,6 +1620,163 @@ public class BindAccountLessLoginUserResponse : Tea.TeaModel {
     }
 }
 
+public class BindPasswordFreeLoginUserRequest : Tea.TeaModel {
+    public var endUserId: String?
+
+    public var serialNumber: String?
+
+    public var uuid: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endUserId != nil {
+            map["EndUserId"] = self.endUserId!
+        }
+        if self.serialNumber != nil {
+            map["SerialNumber"] = self.serialNumber!
+        }
+        if self.uuid != nil {
+            map["Uuid"] = self.uuid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EndUserId") {
+            self.endUserId = dict["EndUserId"] as! String
+        }
+        if dict.keys.contains("SerialNumber") {
+            self.serialNumber = dict["SerialNumber"] as! String
+        }
+        if dict.keys.contains("Uuid") {
+            self.uuid = dict["Uuid"] as! String
+        }
+    }
+}
+
+public class BindPasswordFreeLoginUserResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class BindPasswordFreeLoginUserResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BindPasswordFreeLoginUserResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = BindPasswordFreeLoginUserResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CheckUuidValidRequest : Tea.TeaModel {
     public var bluetooth: String?
 
@@ -2889,6 +3046,8 @@ public class DescribeAppOtaVersionResponseBody : Tea.TeaModel {
 
             public var osType: String?
 
+            public var otaType: Int32?
+
             public var project: String?
 
             public var protocolType: String?
@@ -2944,6 +3103,9 @@ public class DescribeAppOtaVersionResponseBody : Tea.TeaModel {
                 if self.osType != nil {
                     map["OsType"] = self.osType!
                 }
+                if self.otaType != nil {
+                    map["OtaType"] = self.otaType!
+                }
                 if self.project != nil {
                     map["Project"] = self.project!
                 }
@@ -2998,6 +3160,9 @@ public class DescribeAppOtaVersionResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("OsType") {
                     self.osType = dict["OsType"] as! String
+                }
+                if dict.keys.contains("OtaType") {
+                    self.otaType = dict["OtaType"] as! Int32
                 }
                 if dict.keys.contains("Project") {
                     self.project = dict["Project"] as! String
@@ -15724,6 +15889,8 @@ public class UpdateLabelResponse : Tea.TeaModel {
 }
 
 public class UpdateTerminalPolicyRequest : Tea.TeaModel {
+    public var backgroundModeTitle: String?
+
     public var displayLayout: String?
 
     public var displayResolution: String?
@@ -15734,9 +15901,13 @@ public class UpdateTerminalPolicyRequest : Tea.TeaModel {
 
     public var enableAutoLogin: Int32?
 
+    public var enableBackgroundMode: Int32?
+
     public var enableBluetooth: Int32?
 
     public var enableModifyPassword: Int32?
+
+    public var enableScheduledReboot: Int32?
 
     public var enableScheduledShutdown: Int32?
 
@@ -15758,6 +15929,8 @@ public class UpdateTerminalPolicyRequest : Tea.TeaModel {
 
     public var powerOnBehavior: Int32?
 
+    public var scheduledReboot: String?
+
     public var scheduledShutdown: String?
 
     public var settingLock: Int32?
@@ -15778,6 +15951,9 @@ public class UpdateTerminalPolicyRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.backgroundModeTitle != nil {
+            map["BackgroundModeTitle"] = self.backgroundModeTitle!
+        }
         if self.displayLayout != nil {
             map["DisplayLayout"] = self.displayLayout!
         }
@@ -15793,11 +15969,17 @@ public class UpdateTerminalPolicyRequest : Tea.TeaModel {
         if self.enableAutoLogin != nil {
             map["EnableAutoLogin"] = self.enableAutoLogin!
         }
+        if self.enableBackgroundMode != nil {
+            map["EnableBackgroundMode"] = self.enableBackgroundMode!
+        }
         if self.enableBluetooth != nil {
             map["EnableBluetooth"] = self.enableBluetooth!
         }
         if self.enableModifyPassword != nil {
             map["EnableModifyPassword"] = self.enableModifyPassword!
+        }
+        if self.enableScheduledReboot != nil {
+            map["EnableScheduledReboot"] = self.enableScheduledReboot!
         }
         if self.enableScheduledShutdown != nil {
             map["EnableScheduledShutdown"] = self.enableScheduledShutdown!
@@ -15829,6 +16011,9 @@ public class UpdateTerminalPolicyRequest : Tea.TeaModel {
         if self.powerOnBehavior != nil {
             map["PowerOnBehavior"] = self.powerOnBehavior!
         }
+        if self.scheduledReboot != nil {
+            map["ScheduledReboot"] = self.scheduledReboot!
+        }
         if self.scheduledShutdown != nil {
             map["ScheduledShutdown"] = self.scheduledShutdown!
         }
@@ -15842,6 +16027,9 @@ public class UpdateTerminalPolicyRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BackgroundModeTitle") {
+            self.backgroundModeTitle = dict["BackgroundModeTitle"] as! String
+        }
         if dict.keys.contains("DisplayLayout") {
             self.displayLayout = dict["DisplayLayout"] as! String
         }
@@ -15857,11 +16045,17 @@ public class UpdateTerminalPolicyRequest : Tea.TeaModel {
         if dict.keys.contains("EnableAutoLogin") {
             self.enableAutoLogin = dict["EnableAutoLogin"] as! Int32
         }
+        if dict.keys.contains("EnableBackgroundMode") {
+            self.enableBackgroundMode = dict["EnableBackgroundMode"] as! Int32
+        }
         if dict.keys.contains("EnableBluetooth") {
             self.enableBluetooth = dict["EnableBluetooth"] as! Int32
         }
         if dict.keys.contains("EnableModifyPassword") {
             self.enableModifyPassword = dict["EnableModifyPassword"] as! Int32
+        }
+        if dict.keys.contains("EnableScheduledReboot") {
+            self.enableScheduledReboot = dict["EnableScheduledReboot"] as! Int32
         }
         if dict.keys.contains("EnableScheduledShutdown") {
             self.enableScheduledShutdown = dict["EnableScheduledShutdown"] as! Int32
@@ -15892,6 +16086,9 @@ public class UpdateTerminalPolicyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PowerOnBehavior") {
             self.powerOnBehavior = dict["PowerOnBehavior"] as! Int32
+        }
+        if dict.keys.contains("ScheduledReboot") {
+            self.scheduledReboot = dict["ScheduledReboot"] as! String
         }
         if dict.keys.contains("ScheduledShutdown") {
             self.scheduledShutdown = dict["ScheduledShutdown"] as! String

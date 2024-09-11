@@ -444,6 +444,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func bindPasswordFreeLoginUserWithOptions(_ request: BindPasswordFreeLoginUserRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BindPasswordFreeLoginUserResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endUserId)) {
+            body["EndUserId"] = request.endUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serialNumber)) {
+            body["SerialNumber"] = request.serialNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uuid)) {
+            body["Uuid"] = request.uuid ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BindPasswordFreeLoginUser",
+            "version": "2021-04-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BindPasswordFreeLoginUserResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func bindPasswordFreeLoginUser(_ request: BindPasswordFreeLoginUserRequest) async throws -> BindPasswordFreeLoginUserResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await bindPasswordFreeLoginUserWithOptions(request as! BindPasswordFreeLoginUserRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func checkUuidValidWithOptions(_ request: CheckUuidValidRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CheckUuidValidResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -2861,6 +2898,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateTerminalPolicyWithOptions(_ request: UpdateTerminalPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateTerminalPolicyResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.backgroundModeTitle)) {
+            body["BackgroundModeTitle"] = request.backgroundModeTitle ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.displayLayout)) {
             body["DisplayLayout"] = request.displayLayout ?? "";
         }
@@ -2876,11 +2916,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.enableAutoLogin)) {
             body["EnableAutoLogin"] = request.enableAutoLogin!;
         }
+        if (!TeaUtils.Client.isUnset(request.enableBackgroundMode)) {
+            body["EnableBackgroundMode"] = request.enableBackgroundMode!;
+        }
         if (!TeaUtils.Client.isUnset(request.enableBluetooth)) {
             body["EnableBluetooth"] = request.enableBluetooth!;
         }
         if (!TeaUtils.Client.isUnset(request.enableModifyPassword)) {
             body["EnableModifyPassword"] = request.enableModifyPassword!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enableScheduledReboot)) {
+            body["EnableScheduledReboot"] = request.enableScheduledReboot!;
         }
         if (!TeaUtils.Client.isUnset(request.enableScheduledShutdown)) {
             body["EnableScheduledShutdown"] = request.enableScheduledShutdown!;
@@ -2911,6 +2957,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.powerOnBehavior)) {
             body["PowerOnBehavior"] = request.powerOnBehavior!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scheduledReboot)) {
+            body["ScheduledReboot"] = request.scheduledReboot ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.scheduledShutdown)) {
             body["ScheduledShutdown"] = request.scheduledShutdown ?? "";
