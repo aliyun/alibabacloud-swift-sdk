@@ -2778,6 +2778,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func unbindPasswordFreeLoginUserWithOptions(_ request: UnbindPasswordFreeLoginUserRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UnbindPasswordFreeLoginUserResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.serialNumber)) {
+            body["SerialNumber"] = request.serialNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uuid)) {
+            body["Uuid"] = request.uuid ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UnbindPasswordFreeLoginUser",
+            "version": "2021-04-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UnbindPasswordFreeLoginUserResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func unbindPasswordFreeLoginUser(_ request: UnbindPasswordFreeLoginUserRequest) async throws -> UnbindPasswordFreeLoginUserResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await unbindPasswordFreeLoginUserWithOptions(request as! UnbindPasswordFreeLoginUserRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateAliasWithOptions(_ request: UpdateAliasRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAliasResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
