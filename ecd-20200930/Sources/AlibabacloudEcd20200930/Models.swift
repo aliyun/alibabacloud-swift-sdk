@@ -35599,6 +35599,8 @@ public class ListCdsFilesResponse : Tea.TeaModel {
 }
 
 public class ListDirectoryUsersRequest : Tea.TeaModel {
+    public var assignedInfo: String?
+
     public var directoryId: String?
 
     public var filter: String?
@@ -35610,6 +35612,8 @@ public class ListDirectoryUsersRequest : Tea.TeaModel {
     public var OUPath: String?
 
     public var regionId: String?
+
+    public var sortType: String?
 
     public override init() {
         super.init()
@@ -35625,6 +35629,9 @@ public class ListDirectoryUsersRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.assignedInfo != nil {
+            map["AssignedInfo"] = self.assignedInfo!
+        }
         if self.directoryId != nil {
             map["DirectoryId"] = self.directoryId!
         }
@@ -35643,10 +35650,16 @@ public class ListDirectoryUsersRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.sortType != nil {
+            map["SortType"] = self.sortType!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AssignedInfo") {
+            self.assignedInfo = dict["AssignedInfo"] as! String
+        }
         if dict.keys.contains("DirectoryId") {
             self.directoryId = dict["DirectoryId"] as! String
         }
@@ -35665,11 +35678,16 @@ public class ListDirectoryUsersRequest : Tea.TeaModel {
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
         }
+        if dict.keys.contains("SortType") {
+            self.sortType = dict["SortType"] as! String
+        }
     }
 }
 
 public class ListDirectoryUsersResponseBody : Tea.TeaModel {
     public class Users : Tea.TeaModel {
+        public var assignedDesktopNumber: Int32?
+
         public var displayName: String?
 
         public var endUser: String?
@@ -35688,6 +35706,9 @@ public class ListDirectoryUsersResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.assignedDesktopNumber != nil {
+                map["AssignedDesktopNumber"] = self.assignedDesktopNumber!
+            }
             if self.displayName != nil {
                 map["DisplayName"] = self.displayName!
             }
@@ -35698,6 +35719,9 @@ public class ListDirectoryUsersResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AssignedDesktopNumber") {
+                self.assignedDesktopNumber = dict["AssignedDesktopNumber"] as! Int32
+            }
             if dict.keys.contains("DisplayName") {
                 self.displayName = dict["DisplayName"] as! String
             }

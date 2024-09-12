@@ -6496,6 +6496,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listDirectoryUsersWithOptions(_ request: ListDirectoryUsersRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDirectoryUsersResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.assignedInfo)) {
+            query["AssignedInfo"] = request.assignedInfo ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.directoryId)) {
             query["DirectoryId"] = request.directoryId ?? "";
         }
@@ -6513,6 +6516,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sortType)) {
+            query["SortType"] = request.sortType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
