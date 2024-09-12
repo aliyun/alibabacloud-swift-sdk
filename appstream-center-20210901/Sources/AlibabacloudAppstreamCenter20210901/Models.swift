@@ -1964,6 +1964,8 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
                 }
             }
         }
+        public var maxIdleAppInstanceAmount: Int32?
+
         public var maxScalingAmount: Int32?
 
         public var nodeAmount: Int32?
@@ -2002,6 +2004,9 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.maxIdleAppInstanceAmount != nil {
+                map["MaxIdleAppInstanceAmount"] = self.maxIdleAppInstanceAmount!
+            }
             if self.maxScalingAmount != nil {
                 map["MaxScalingAmount"] = self.maxScalingAmount!
             }
@@ -2046,6 +2051,9 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("MaxIdleAppInstanceAmount") {
+                self.maxIdleAppInstanceAmount = dict["MaxIdleAppInstanceAmount"] as! Int32
+            }
             if dict.keys.contains("MaxScalingAmount") {
                 self.maxScalingAmount = dict["MaxScalingAmount"] as! Int32
             }
@@ -4254,6 +4262,8 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
             }
             public var amount: Int32?
 
+            public var maxIdleAppInstanceAmount: Int32?
+
             public var maxScalingAmount: Int32?
 
             public var nodeAmount: Int32?
@@ -4304,6 +4314,9 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
                 var map = super.toMap()
                 if self.amount != nil {
                     map["Amount"] = self.amount!
+                }
+                if self.maxIdleAppInstanceAmount != nil {
+                    map["MaxIdleAppInstanceAmount"] = self.maxIdleAppInstanceAmount!
                 }
                 if self.maxScalingAmount != nil {
                     map["MaxScalingAmount"] = self.maxScalingAmount!
@@ -4366,6 +4379,9 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Amount") {
                     self.amount = dict["Amount"] as! Int32
+                }
+                if dict.keys.contains("MaxIdleAppInstanceAmount") {
+                    self.maxIdleAppInstanceAmount = dict["MaxIdleAppInstanceAmount"] as! Int32
                 }
                 if dict.keys.contains("MaxScalingAmount") {
                     self.maxScalingAmount = dict["MaxScalingAmount"] as! Int32
@@ -7330,6 +7346,8 @@ public class ListAppInstanceGroupResponseBody : Tea.TeaModel {
             }
             public var amount: Int32?
 
+            public var maxIdleAppInstanceAmount: Int32?
+
             public var maxScalingAmount: Int32?
 
             public var nodeAmount: Int32?
@@ -7380,6 +7398,9 @@ public class ListAppInstanceGroupResponseBody : Tea.TeaModel {
                 var map = super.toMap()
                 if self.amount != nil {
                     map["Amount"] = self.amount!
+                }
+                if self.maxIdleAppInstanceAmount != nil {
+                    map["MaxIdleAppInstanceAmount"] = self.maxIdleAppInstanceAmount!
                 }
                 if self.maxScalingAmount != nil {
                     map["MaxScalingAmount"] = self.maxScalingAmount!
@@ -7442,6 +7463,9 @@ public class ListAppInstanceGroupResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Amount") {
                     self.amount = dict["Amount"] as! Int32
+                }
+                if dict.keys.contains("MaxIdleAppInstanceAmount") {
+                    self.maxIdleAppInstanceAmount = dict["MaxIdleAppInstanceAmount"] as! Int32
                 }
                 if dict.keys.contains("MaxScalingAmount") {
                     self.maxScalingAmount = dict["MaxScalingAmount"] as! Int32
@@ -11002,6 +11026,8 @@ public class ModifyNodePoolAttributeRequest : Tea.TeaModel {
                 }
             }
         }
+        public var maxIdleAppInstanceAmount: Int32?
+
         public var maxScalingAmount: Int32?
 
         public var nodeAmount: Int32?
@@ -11036,6 +11062,9 @@ public class ModifyNodePoolAttributeRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.maxIdleAppInstanceAmount != nil {
+                map["MaxIdleAppInstanceAmount"] = self.maxIdleAppInstanceAmount!
+            }
             if self.maxScalingAmount != nil {
                 map["MaxScalingAmount"] = self.maxScalingAmount!
             }
@@ -11074,6 +11103,9 @@ public class ModifyNodePoolAttributeRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("MaxIdleAppInstanceAmount") {
+                self.maxIdleAppInstanceAmount = dict["MaxIdleAppInstanceAmount"] as! Int32
+            }
             if dict.keys.contains("MaxScalingAmount") {
                 self.maxScalingAmount = dict["MaxScalingAmount"] as! Int32
             }
