@@ -6997,6 +6997,999 @@ public class ModifyDeviceInfoResponse : Tea.TeaModel {
     }
 }
 
+public class Vehicle5ItemQueryRequest : Tea.TeaModel {
+    public var paramType: String?
+
+    public var vehicleNum: String?
+
+    public var vehicleType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.paramType != nil {
+            map["ParamType"] = self.paramType!
+        }
+        if self.vehicleNum != nil {
+            map["VehicleNum"] = self.vehicleNum!
+        }
+        if self.vehicleType != nil {
+            map["VehicleType"] = self.vehicleType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ParamType") {
+            self.paramType = dict["ParamType"] as! String
+        }
+        if dict.keys.contains("VehicleNum") {
+            self.vehicleNum = dict["VehicleNum"] as! String
+        }
+        if dict.keys.contains("VehicleType") {
+            self.vehicleType = dict["VehicleType"] as! String
+        }
+    }
+}
+
+public class Vehicle5ItemQueryResponseBody : Tea.TeaModel {
+    public class ResultObject : Tea.TeaModel {
+        public var bizCode: String?
+
+        public var vehicleInfo: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bizCode != nil {
+                map["BizCode"] = self.bizCode!
+            }
+            if self.vehicleInfo != nil {
+                map["VehicleInfo"] = self.vehicleInfo!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BizCode") {
+                self.bizCode = dict["BizCode"] as! String
+            }
+            if dict.keys.contains("VehicleInfo") {
+                self.vehicleInfo = dict["VehicleInfo"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var resultObject: Vehicle5ItemQueryResponseBody.ResultObject?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.resultObject?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resultObject != nil {
+            map["ResultObject"] = self.resultObject?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResultObject") {
+            var model = Vehicle5ItemQueryResponseBody.ResultObject()
+            model.fromMap(dict["ResultObject"] as! [String: Any])
+            self.resultObject = model
+        }
+    }
+}
+
+public class Vehicle5ItemQueryResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: Vehicle5ItemQueryResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = Vehicle5ItemQueryResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class VehicleInsureQueryRequest : Tea.TeaModel {
+    public var paramType: String?
+
+    public var vehicleNum: String?
+
+    public var vehicleType: String?
+
+    public var vin: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.paramType != nil {
+            map["ParamType"] = self.paramType!
+        }
+        if self.vehicleNum != nil {
+            map["VehicleNum"] = self.vehicleNum!
+        }
+        if self.vehicleType != nil {
+            map["VehicleType"] = self.vehicleType!
+        }
+        if self.vin != nil {
+            map["Vin"] = self.vin!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ParamType") {
+            self.paramType = dict["ParamType"] as! String
+        }
+        if dict.keys.contains("VehicleNum") {
+            self.vehicleNum = dict["VehicleNum"] as! String
+        }
+        if dict.keys.contains("VehicleType") {
+            self.vehicleType = dict["VehicleType"] as! String
+        }
+        if dict.keys.contains("Vin") {
+            self.vin = dict["Vin"] as! String
+        }
+    }
+}
+
+public class VehicleInsureQueryResponseBody : Tea.TeaModel {
+    public class ResultObject : Tea.TeaModel {
+        public var bizCode: String?
+
+        public var vehicleInfo: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bizCode != nil {
+                map["BizCode"] = self.bizCode!
+            }
+            if self.vehicleInfo != nil {
+                map["VehicleInfo"] = self.vehicleInfo!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BizCode") {
+                self.bizCode = dict["BizCode"] as! String
+            }
+            if dict.keys.contains("VehicleInfo") {
+                self.vehicleInfo = dict["VehicleInfo"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var resultObject: VehicleInsureQueryResponseBody.ResultObject?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.resultObject?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resultObject != nil {
+            map["ResultObject"] = self.resultObject?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResultObject") {
+            var model = VehicleInsureQueryResponseBody.ResultObject()
+            model.fromMap(dict["ResultObject"] as! [String: Any])
+            self.resultObject = model
+        }
+    }
+}
+
+public class VehicleInsureQueryResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: VehicleInsureQueryResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = VehicleInsureQueryResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class VehicleMetaVerifyRequest : Tea.TeaModel {
+    public var identifyNum: String?
+
+    public var paramType: String?
+
+    public var userName: String?
+
+    public var vehicleNum: String?
+
+    public var vehicleType: String?
+
+    public var verifyMetaType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.identifyNum != nil {
+            map["IdentifyNum"] = self.identifyNum!
+        }
+        if self.paramType != nil {
+            map["ParamType"] = self.paramType!
+        }
+        if self.userName != nil {
+            map["UserName"] = self.userName!
+        }
+        if self.vehicleNum != nil {
+            map["VehicleNum"] = self.vehicleNum!
+        }
+        if self.vehicleType != nil {
+            map["VehicleType"] = self.vehicleType!
+        }
+        if self.verifyMetaType != nil {
+            map["VerifyMetaType"] = self.verifyMetaType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("IdentifyNum") {
+            self.identifyNum = dict["IdentifyNum"] as! String
+        }
+        if dict.keys.contains("ParamType") {
+            self.paramType = dict["ParamType"] as! String
+        }
+        if dict.keys.contains("UserName") {
+            self.userName = dict["UserName"] as! String
+        }
+        if dict.keys.contains("VehicleNum") {
+            self.vehicleNum = dict["VehicleNum"] as! String
+        }
+        if dict.keys.contains("VehicleType") {
+            self.vehicleType = dict["VehicleType"] as! String
+        }
+        if dict.keys.contains("VerifyMetaType") {
+            self.verifyMetaType = dict["VerifyMetaType"] as! String
+        }
+    }
+}
+
+public class VehicleMetaVerifyResponseBody : Tea.TeaModel {
+    public class ResultObject : Tea.TeaModel {
+        public var bizCode: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bizCode != nil {
+                map["BizCode"] = self.bizCode!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BizCode") {
+                self.bizCode = dict["BizCode"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var resultObject: VehicleMetaVerifyResponseBody.ResultObject?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.resultObject?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resultObject != nil {
+            map["ResultObject"] = self.resultObject?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResultObject") {
+            var model = VehicleMetaVerifyResponseBody.ResultObject()
+            model.fromMap(dict["ResultObject"] as! [String: Any])
+            self.resultObject = model
+        }
+    }
+}
+
+public class VehicleMetaVerifyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: VehicleMetaVerifyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = VehicleMetaVerifyResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class VehicleMetaVerifyV2Request : Tea.TeaModel {
+    public var identifyNum: String?
+
+    public var paramType: String?
+
+    public var userName: String?
+
+    public var vehicleNum: String?
+
+    public var vehicleType: String?
+
+    public var verifyMetaType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.identifyNum != nil {
+            map["IdentifyNum"] = self.identifyNum!
+        }
+        if self.paramType != nil {
+            map["ParamType"] = self.paramType!
+        }
+        if self.userName != nil {
+            map["UserName"] = self.userName!
+        }
+        if self.vehicleNum != nil {
+            map["VehicleNum"] = self.vehicleNum!
+        }
+        if self.vehicleType != nil {
+            map["VehicleType"] = self.vehicleType!
+        }
+        if self.verifyMetaType != nil {
+            map["VerifyMetaType"] = self.verifyMetaType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("IdentifyNum") {
+            self.identifyNum = dict["IdentifyNum"] as! String
+        }
+        if dict.keys.contains("ParamType") {
+            self.paramType = dict["ParamType"] as! String
+        }
+        if dict.keys.contains("UserName") {
+            self.userName = dict["UserName"] as! String
+        }
+        if dict.keys.contains("VehicleNum") {
+            self.vehicleNum = dict["VehicleNum"] as! String
+        }
+        if dict.keys.contains("VehicleType") {
+            self.vehicleType = dict["VehicleType"] as! String
+        }
+        if dict.keys.contains("VerifyMetaType") {
+            self.verifyMetaType = dict["VerifyMetaType"] as! String
+        }
+    }
+}
+
+public class VehicleMetaVerifyV2ResponseBody : Tea.TeaModel {
+    public class ResultObject : Tea.TeaModel {
+        public var bizCode: String?
+
+        public var vehicleInfo: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bizCode != nil {
+                map["BizCode"] = self.bizCode!
+            }
+            if self.vehicleInfo != nil {
+                map["VehicleInfo"] = self.vehicleInfo!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BizCode") {
+                self.bizCode = dict["BizCode"] as! String
+            }
+            if dict.keys.contains("VehicleInfo") {
+                self.vehicleInfo = dict["VehicleInfo"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var resultObject: VehicleMetaVerifyV2ResponseBody.ResultObject?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.resultObject?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resultObject != nil {
+            map["ResultObject"] = self.resultObject?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResultObject") {
+            var model = VehicleMetaVerifyV2ResponseBody.ResultObject()
+            model.fromMap(dict["ResultObject"] as! [String: Any])
+            self.resultObject = model
+        }
+    }
+}
+
+public class VehicleMetaVerifyV2Response : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: VehicleMetaVerifyV2ResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = VehicleMetaVerifyV2ResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class VehicleQueryRequest : Tea.TeaModel {
+    public var paramType: String?
+
+    public var vehicleNum: String?
+
+    public var vehicleType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.paramType != nil {
+            map["ParamType"] = self.paramType!
+        }
+        if self.vehicleNum != nil {
+            map["VehicleNum"] = self.vehicleNum!
+        }
+        if self.vehicleType != nil {
+            map["VehicleType"] = self.vehicleType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ParamType") {
+            self.paramType = dict["ParamType"] as! String
+        }
+        if dict.keys.contains("VehicleNum") {
+            self.vehicleNum = dict["VehicleNum"] as! String
+        }
+        if dict.keys.contains("VehicleType") {
+            self.vehicleType = dict["VehicleType"] as! String
+        }
+    }
+}
+
+public class VehicleQueryResponseBody : Tea.TeaModel {
+    public class ResultObject : Tea.TeaModel {
+        public var bizCode: String?
+
+        public var vehicleInfo: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bizCode != nil {
+                map["BizCode"] = self.bizCode!
+            }
+            if self.vehicleInfo != nil {
+                map["VehicleInfo"] = self.vehicleInfo!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BizCode") {
+                self.bizCode = dict["BizCode"] as! String
+            }
+            if dict.keys.contains("VehicleInfo") {
+                self.vehicleInfo = dict["VehicleInfo"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var resultObject: VehicleQueryResponseBody.ResultObject?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.resultObject?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resultObject != nil {
+            map["ResultObject"] = self.resultObject?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResultObject") {
+            var model = VehicleQueryResponseBody.ResultObject()
+            model.fromMap(dict["ResultObject"] as! [String: Any])
+            self.resultObject = model
+        }
+    }
+}
+
+public class VehicleQueryResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: VehicleQueryResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = VehicleQueryResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class VerifyMaterialRequest : Tea.TeaModel {
     public var bizId: String?
 

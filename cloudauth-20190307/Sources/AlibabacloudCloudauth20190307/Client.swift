@@ -1434,6 +1434,212 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func vehicle5ItemQueryWithOptions(_ request: Vehicle5ItemQueryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> Vehicle5ItemQueryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.paramType)) {
+            query["ParamType"] = request.paramType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vehicleNum)) {
+            query["VehicleNum"] = request.vehicleNum ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vehicleType)) {
+            query["VehicleType"] = request.vehicleType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "Vehicle5ItemQuery",
+            "version": "2019-03-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(Vehicle5ItemQueryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func vehicle5ItemQuery(_ request: Vehicle5ItemQueryRequest) async throws -> Vehicle5ItemQueryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await vehicle5ItemQueryWithOptions(request as! Vehicle5ItemQueryRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func vehicleInsureQueryWithOptions(_ request: VehicleInsureQueryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> VehicleInsureQueryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.paramType)) {
+            query["ParamType"] = request.paramType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vehicleNum)) {
+            query["VehicleNum"] = request.vehicleNum ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vehicleType)) {
+            query["VehicleType"] = request.vehicleType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vin)) {
+            query["Vin"] = request.vin ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "VehicleInsureQuery",
+            "version": "2019-03-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(VehicleInsureQueryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func vehicleInsureQuery(_ request: VehicleInsureQueryRequest) async throws -> VehicleInsureQueryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await vehicleInsureQueryWithOptions(request as! VehicleInsureQueryRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func vehicleMetaVerifyWithOptions(_ request: VehicleMetaVerifyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> VehicleMetaVerifyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.identifyNum)) {
+            query["IdentifyNum"] = request.identifyNum ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.paramType)) {
+            query["ParamType"] = request.paramType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userName)) {
+            query["UserName"] = request.userName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vehicleNum)) {
+            query["VehicleNum"] = request.vehicleNum ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vehicleType)) {
+            query["VehicleType"] = request.vehicleType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.verifyMetaType)) {
+            query["VerifyMetaType"] = request.verifyMetaType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "VehicleMetaVerify",
+            "version": "2019-03-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(VehicleMetaVerifyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func vehicleMetaVerify(_ request: VehicleMetaVerifyRequest) async throws -> VehicleMetaVerifyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await vehicleMetaVerifyWithOptions(request as! VehicleMetaVerifyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func vehicleMetaVerifyV2WithOptions(_ request: VehicleMetaVerifyV2Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> VehicleMetaVerifyV2Response {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.identifyNum)) {
+            query["IdentifyNum"] = request.identifyNum ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.paramType)) {
+            query["ParamType"] = request.paramType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userName)) {
+            query["UserName"] = request.userName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vehicleNum)) {
+            query["VehicleNum"] = request.vehicleNum ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vehicleType)) {
+            query["VehicleType"] = request.vehicleType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.verifyMetaType)) {
+            query["VerifyMetaType"] = request.verifyMetaType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "VehicleMetaVerifyV2",
+            "version": "2019-03-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(VehicleMetaVerifyV2Response(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func vehicleMetaVerifyV2(_ request: VehicleMetaVerifyV2Request) async throws -> VehicleMetaVerifyV2Response {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await vehicleMetaVerifyV2WithOptions(request as! VehicleMetaVerifyV2Request, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func vehicleQueryWithOptions(_ request: VehicleQueryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> VehicleQueryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.paramType)) {
+            query["ParamType"] = request.paramType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vehicleNum)) {
+            query["VehicleNum"] = request.vehicleNum ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vehicleType)) {
+            query["VehicleType"] = request.vehicleType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "VehicleQuery",
+            "version": "2019-03-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(VehicleQueryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func vehicleQuery(_ request: VehicleQueryRequest) async throws -> VehicleQueryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await vehicleQueryWithOptions(request as! VehicleQueryRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func verifyMaterialWithOptions(_ request: VerifyMaterialRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> VerifyMaterialResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
