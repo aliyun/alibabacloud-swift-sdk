@@ -50,6 +50,8 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
                 public class LabelResult : Tea.TeaModel {
                     public var confidence: Double?
 
+                    public var description_: String?
+
                     public var label: String?
 
                     public override init() {
@@ -69,6 +71,9 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
                         if self.confidence != nil {
                             map["Confidence"] = self.confidence!
                         }
+                        if self.description_ != nil {
+                            map["Description"] = self.description_!
+                        }
                         if self.label != nil {
                             map["Label"] = self.label!
                         }
@@ -78,6 +83,9 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
                     public override func fromMap(_ dict: [String: Any]) -> Void {
                         if dict.keys.contains("Confidence") {
                             self.confidence = dict["Confidence"] as! Double
+                        }
+                        if dict.keys.contains("Description") {
+                            self.description_ = dict["Description"] as! String
                         }
                         if dict.keys.contains("Label") {
                             self.label = dict["Label"] as! String
@@ -143,6 +151,8 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
 
                 public var location: DescribeFileModerationResultResponseBody.Data.PageResult.ImageResult.Location?
 
+                public var riskLevel: String?
+
                 public var service: String?
 
                 public override init() {
@@ -173,6 +183,9 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
                     if self.location != nil {
                         map["Location"] = self.location?.toMap()
                     }
+                    if self.riskLevel != nil {
+                        map["RiskLevel"] = self.riskLevel!
+                    }
                     if self.service != nil {
                         map["Service"] = self.service!
                     }
@@ -199,6 +212,9 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
                         model.fromMap(dict["Location"] as! [String: Any])
                         self.location = model
                     }
+                    if dict.keys.contains("RiskLevel") {
+                        self.riskLevel = dict["RiskLevel"] as! String
+                    }
                     if dict.keys.contains("Service") {
                         self.service = dict["Service"] as! String
                     }
@@ -208,6 +224,8 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
                 public var description_: String?
 
                 public var labels: String?
+
+                public var riskLevel: String?
 
                 public var riskTips: String?
 
@@ -239,6 +257,9 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
                     if self.labels != nil {
                         map["Labels"] = self.labels!
                     }
+                    if self.riskLevel != nil {
+                        map["RiskLevel"] = self.riskLevel!
+                    }
                     if self.riskTips != nil {
                         map["RiskTips"] = self.riskTips!
                     }
@@ -263,6 +284,9 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("Labels") {
                         self.labels = dict["Labels"] as! String
+                    }
+                    if dict.keys.contains("RiskLevel") {
+                        self.riskLevel = dict["RiskLevel"] as! String
                     }
                     if dict.keys.contains("RiskTips") {
                         self.riskTips = dict["RiskTips"] as! String
@@ -365,11 +389,246 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class PageSummary : Tea.TeaModel {
+            public class ImageSummary : Tea.TeaModel {
+                public class ImageLabels : Tea.TeaModel {
+                    public var description_: String?
+
+                    public var label: String?
+
+                    public var labelSum: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.description_ != nil {
+                            map["Description"] = self.description_!
+                        }
+                        if self.label != nil {
+                            map["Label"] = self.label!
+                        }
+                        if self.labelSum != nil {
+                            map["LabelSum"] = self.labelSum!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Description") {
+                            self.description_ = dict["Description"] as! String
+                        }
+                        if dict.keys.contains("Label") {
+                            self.label = dict["Label"] as! String
+                        }
+                        if dict.keys.contains("LabelSum") {
+                            self.labelSum = dict["LabelSum"] as! Int32
+                        }
+                    }
+                }
+                public var imageLabels: [DescribeFileModerationResultResponseBody.Data.PageSummary.ImageSummary.ImageLabels]?
+
+                public var riskLevel: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.imageLabels != nil {
+                        var tmp : [Any] = []
+                        for k in self.imageLabels! {
+                            tmp.append(k.toMap())
+                        }
+                        map["ImageLabels"] = tmp
+                    }
+                    if self.riskLevel != nil {
+                        map["RiskLevel"] = self.riskLevel!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ImageLabels") {
+                        var tmp : [DescribeFileModerationResultResponseBody.Data.PageSummary.ImageSummary.ImageLabels] = []
+                        for v in dict["ImageLabels"] as! [Any] {
+                            var model = DescribeFileModerationResultResponseBody.Data.PageSummary.ImageSummary.ImageLabels()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.imageLabels = tmp
+                    }
+                    if dict.keys.contains("RiskLevel") {
+                        self.riskLevel = dict["RiskLevel"] as! String
+                    }
+                }
+            }
+            public class TextSummary : Tea.TeaModel {
+                public class TextLabels : Tea.TeaModel {
+                    public var label: String?
+
+                    public var labelSum: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.label != nil {
+                            map["Label"] = self.label!
+                        }
+                        if self.labelSum != nil {
+                            map["LabelSum"] = self.labelSum!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Label") {
+                            self.label = dict["Label"] as! String
+                        }
+                        if dict.keys.contains("LabelSum") {
+                            self.labelSum = dict["LabelSum"] as! Int32
+                        }
+                    }
+                }
+                public var riskLevel: String?
+
+                public var textLabels: [DescribeFileModerationResultResponseBody.Data.PageSummary.TextSummary.TextLabels]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.riskLevel != nil {
+                        map["RiskLevel"] = self.riskLevel!
+                    }
+                    if self.textLabels != nil {
+                        var tmp : [Any] = []
+                        for k in self.textLabels! {
+                            tmp.append(k.toMap())
+                        }
+                        map["TextLabels"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("RiskLevel") {
+                        self.riskLevel = dict["RiskLevel"] as! String
+                    }
+                    if dict.keys.contains("TextLabels") {
+                        var tmp : [DescribeFileModerationResultResponseBody.Data.PageSummary.TextSummary.TextLabels] = []
+                        for v in dict["TextLabels"] as! [Any] {
+                            var model = DescribeFileModerationResultResponseBody.Data.PageSummary.TextSummary.TextLabels()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.textLabels = tmp
+                    }
+                }
+            }
+            public var imageSummary: DescribeFileModerationResultResponseBody.Data.PageSummary.ImageSummary?
+
+            public var pageSum: Int32?
+
+            public var textSummary: DescribeFileModerationResultResponseBody.Data.PageSummary.TextSummary?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.imageSummary?.validate()
+                try self.textSummary?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.imageSummary != nil {
+                    map["ImageSummary"] = self.imageSummary?.toMap()
+                }
+                if self.pageSum != nil {
+                    map["PageSum"] = self.pageSum!
+                }
+                if self.textSummary != nil {
+                    map["TextSummary"] = self.textSummary?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ImageSummary") {
+                    var model = DescribeFileModerationResultResponseBody.Data.PageSummary.ImageSummary()
+                    model.fromMap(dict["ImageSummary"] as! [String: Any])
+                    self.imageSummary = model
+                }
+                if dict.keys.contains("PageSum") {
+                    self.pageSum = dict["PageSum"] as! Int32
+                }
+                if dict.keys.contains("TextSummary") {
+                    var model = DescribeFileModerationResultResponseBody.Data.PageSummary.TextSummary()
+                    model.fromMap(dict["TextSummary"] as! [String: Any])
+                    self.textSummary = model
+                }
+            }
+        }
         public var dataId: String?
 
         public var docType: String?
 
         public var pageResult: [DescribeFileModerationResultResponseBody.Data.PageResult]?
+
+        public var pageSummary: DescribeFileModerationResultResponseBody.Data.PageSummary?
+
+        public var riskLevel: String?
 
         public var url: String?
 
@@ -383,6 +642,7 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.pageSummary?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -399,6 +659,12 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["PageResult"] = tmp
+            }
+            if self.pageSummary != nil {
+                map["PageSummary"] = self.pageSummary?.toMap()
+            }
+            if self.riskLevel != nil {
+                map["RiskLevel"] = self.riskLevel!
             }
             if self.url != nil {
                 map["Url"] = self.url!
@@ -423,6 +689,14 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.pageResult = tmp
+            }
+            if dict.keys.contains("PageSummary") {
+                var model = DescribeFileModerationResultResponseBody.Data.PageSummary()
+                model.fromMap(dict["PageSummary"] as! [String: Any])
+                self.pageSummary = model
+            }
+            if dict.keys.contains("RiskLevel") {
+                self.riskLevel = dict["RiskLevel"] as! String
             }
             if dict.keys.contains("Url") {
                 self.url = dict["Url"] as! String
@@ -2105,6 +2379,475 @@ public class ImageModerationResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class FaceData : Tea.TeaModel {
+                public class Bang : Tea.TeaModel {
+                    public var confidence: Double?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.confidence != nil {
+                            map["Confidence"] = self.confidence!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Confidence") {
+                            self.confidence = dict["Confidence"] as! Double
+                        }
+                        if dict.keys.contains("Value") {
+                            self.value = dict["Value"] as! String
+                        }
+                    }
+                }
+                public class Gender : Tea.TeaModel {
+                    public var confidence: Double?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.confidence != nil {
+                            map["Confidence"] = self.confidence!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Confidence") {
+                            self.confidence = dict["Confidence"] as! Double
+                        }
+                        if dict.keys.contains("Value") {
+                            self.value = dict["Value"] as! String
+                        }
+                    }
+                }
+                public class Hairstyle : Tea.TeaModel {
+                    public var confidence: Double?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.confidence != nil {
+                            map["Confidence"] = self.confidence!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Confidence") {
+                            self.confidence = dict["Confidence"] as! Double
+                        }
+                        if dict.keys.contains("Value") {
+                            self.value = dict["Value"] as! String
+                        }
+                    }
+                }
+                public class Hat : Tea.TeaModel {
+                    public var confidence: Double?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.confidence != nil {
+                            map["Confidence"] = self.confidence!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Confidence") {
+                            self.confidence = dict["Confidence"] as! Double
+                        }
+                        if dict.keys.contains("Value") {
+                            self.value = dict["Value"] as! String
+                        }
+                    }
+                }
+                public class Location : Tea.TeaModel {
+                    public var h: Int32?
+
+                    public var w: Int32?
+
+                    public var x: Int32?
+
+                    public var y: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.h != nil {
+                            map["H"] = self.h!
+                        }
+                        if self.w != nil {
+                            map["W"] = self.w!
+                        }
+                        if self.x != nil {
+                            map["X"] = self.x!
+                        }
+                        if self.y != nil {
+                            map["Y"] = self.y!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("H") {
+                            self.h = dict["H"] as! Int32
+                        }
+                        if dict.keys.contains("W") {
+                            self.w = dict["W"] as! Int32
+                        }
+                        if dict.keys.contains("X") {
+                            self.x = dict["X"] as! Int32
+                        }
+                        if dict.keys.contains("Y") {
+                            self.y = dict["Y"] as! Int32
+                        }
+                    }
+                }
+                public class Mask : Tea.TeaModel {
+                    public var confidence: Double?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.confidence != nil {
+                            map["Confidence"] = self.confidence!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Confidence") {
+                            self.confidence = dict["Confidence"] as! Double
+                        }
+                        if dict.keys.contains("Value") {
+                            self.value = dict["Value"] as! String
+                        }
+                    }
+                }
+                public class Mustache : Tea.TeaModel {
+                    public var confidence: Double?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.confidence != nil {
+                            map["Confidence"] = self.confidence!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Confidence") {
+                            self.confidence = dict["Confidence"] as! Double
+                        }
+                        if dict.keys.contains("Value") {
+                            self.value = dict["Value"] as! String
+                        }
+                    }
+                }
+                public class Quality : Tea.TeaModel {
+                    public var blur: Double?
+
+                    public var integrity: Double?
+
+                    public var pitch: Double?
+
+                    public var roll: Double?
+
+                    public var yaw: Double?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.blur != nil {
+                            map["Blur"] = self.blur!
+                        }
+                        if self.integrity != nil {
+                            map["Integrity"] = self.integrity!
+                        }
+                        if self.pitch != nil {
+                            map["Pitch"] = self.pitch!
+                        }
+                        if self.roll != nil {
+                            map["Roll"] = self.roll!
+                        }
+                        if self.yaw != nil {
+                            map["Yaw"] = self.yaw!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Blur") {
+                            self.blur = dict["Blur"] as! Double
+                        }
+                        if dict.keys.contains("Integrity") {
+                            self.integrity = dict["Integrity"] as! Double
+                        }
+                        if dict.keys.contains("Pitch") {
+                            self.pitch = dict["Pitch"] as! Double
+                        }
+                        if dict.keys.contains("Roll") {
+                            self.roll = dict["Roll"] as! Double
+                        }
+                        if dict.keys.contains("Yaw") {
+                            self.yaw = dict["Yaw"] as! Double
+                        }
+                    }
+                }
+                public var age: Int32?
+
+                public var bang: ImageModerationResponseBody.Data.Ext.FaceData.Bang?
+
+                public var gender: ImageModerationResponseBody.Data.Ext.FaceData.Gender?
+
+                public var glasses: String?
+
+                public var hairstyle: ImageModerationResponseBody.Data.Ext.FaceData.Hairstyle?
+
+                public var hat: ImageModerationResponseBody.Data.Ext.FaceData.Hat?
+
+                public var location: ImageModerationResponseBody.Data.Ext.FaceData.Location?
+
+                public var mask: ImageModerationResponseBody.Data.Ext.FaceData.Mask?
+
+                public var mustache: ImageModerationResponseBody.Data.Ext.FaceData.Mustache?
+
+                public var quality: ImageModerationResponseBody.Data.Ext.FaceData.Quality?
+
+                public var smile: Double?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.bang?.validate()
+                    try self.gender?.validate()
+                    try self.hairstyle?.validate()
+                    try self.hat?.validate()
+                    try self.location?.validate()
+                    try self.mask?.validate()
+                    try self.mustache?.validate()
+                    try self.quality?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.age != nil {
+                        map["Age"] = self.age!
+                    }
+                    if self.bang != nil {
+                        map["Bang"] = self.bang?.toMap()
+                    }
+                    if self.gender != nil {
+                        map["Gender"] = self.gender?.toMap()
+                    }
+                    if self.glasses != nil {
+                        map["Glasses"] = self.glasses!
+                    }
+                    if self.hairstyle != nil {
+                        map["Hairstyle"] = self.hairstyle?.toMap()
+                    }
+                    if self.hat != nil {
+                        map["Hat"] = self.hat?.toMap()
+                    }
+                    if self.location != nil {
+                        map["Location"] = self.location?.toMap()
+                    }
+                    if self.mask != nil {
+                        map["Mask"] = self.mask?.toMap()
+                    }
+                    if self.mustache != nil {
+                        map["Mustache"] = self.mustache?.toMap()
+                    }
+                    if self.quality != nil {
+                        map["Quality"] = self.quality?.toMap()
+                    }
+                    if self.smile != nil {
+                        map["Smile"] = self.smile!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Age") {
+                        self.age = dict["Age"] as! Int32
+                    }
+                    if dict.keys.contains("Bang") {
+                        var model = ImageModerationResponseBody.Data.Ext.FaceData.Bang()
+                        model.fromMap(dict["Bang"] as! [String: Any])
+                        self.bang = model
+                    }
+                    if dict.keys.contains("Gender") {
+                        var model = ImageModerationResponseBody.Data.Ext.FaceData.Gender()
+                        model.fromMap(dict["Gender"] as! [String: Any])
+                        self.gender = model
+                    }
+                    if dict.keys.contains("Glasses") {
+                        self.glasses = dict["Glasses"] as! String
+                    }
+                    if dict.keys.contains("Hairstyle") {
+                        var model = ImageModerationResponseBody.Data.Ext.FaceData.Hairstyle()
+                        model.fromMap(dict["Hairstyle"] as! [String: Any])
+                        self.hairstyle = model
+                    }
+                    if dict.keys.contains("Hat") {
+                        var model = ImageModerationResponseBody.Data.Ext.FaceData.Hat()
+                        model.fromMap(dict["Hat"] as! [String: Any])
+                        self.hat = model
+                    }
+                    if dict.keys.contains("Location") {
+                        var model = ImageModerationResponseBody.Data.Ext.FaceData.Location()
+                        model.fromMap(dict["Location"] as! [String: Any])
+                        self.location = model
+                    }
+                    if dict.keys.contains("Mask") {
+                        var model = ImageModerationResponseBody.Data.Ext.FaceData.Mask()
+                        model.fromMap(dict["Mask"] as! [String: Any])
+                        self.mask = model
+                    }
+                    if dict.keys.contains("Mustache") {
+                        var model = ImageModerationResponseBody.Data.Ext.FaceData.Mustache()
+                        model.fromMap(dict["Mustache"] as! [String: Any])
+                        self.mustache = model
+                    }
+                    if dict.keys.contains("Quality") {
+                        var model = ImageModerationResponseBody.Data.Ext.FaceData.Quality()
+                        model.fromMap(dict["Quality"] as! [String: Any])
+                        self.quality = model
+                    }
+                    if dict.keys.contains("Smile") {
+                        self.smile = dict["Smile"] as! Double
+                    }
+                }
+            }
             public class LogoData : Tea.TeaModel {
                 public class Location : Tea.TeaModel {
                     public var h: Int32?
@@ -2704,6 +3447,8 @@ public class ImageModerationResponseBody : Tea.TeaModel {
             }
             public var customImage: [ImageModerationResponseBody.Data.Ext.CustomImage]?
 
+            public var faceData: [ImageModerationResponseBody.Data.Ext.FaceData]?
+
             public var logoData: [ImageModerationResponseBody.Data.Ext.LogoData]?
 
             public var ocrResult: [ImageModerationResponseBody.Data.Ext.OcrResult]?
@@ -2735,6 +3480,13 @@ public class ImageModerationResponseBody : Tea.TeaModel {
                         tmp.append(k.toMap())
                     }
                     map["CustomImage"] = tmp
+                }
+                if self.faceData != nil {
+                    var tmp : [Any] = []
+                    for k in self.faceData! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FaceData"] = tmp
                 }
                 if self.logoData != nil {
                     var tmp : [Any] = []
@@ -2781,6 +3533,17 @@ public class ImageModerationResponseBody : Tea.TeaModel {
                         tmp.append(model)
                     }
                     self.customImage = tmp
+                }
+                if dict.keys.contains("FaceData") {
+                    var tmp : [ImageModerationResponseBody.Data.Ext.FaceData] = []
+                    for v in dict["FaceData"] as! [Any] {
+                        var model = ImageModerationResponseBody.Data.Ext.FaceData()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.faceData = tmp
                 }
                 if dict.keys.contains("LogoData") {
                     var tmp : [ImageModerationResponseBody.Data.Ext.LogoData] = []
@@ -3374,6 +4137,8 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
 
             public var customizedHit: [TextModerationPlusResponseBody.Data.Result.CustomizedHit]?
 
+            public var description_: String?
+
             public var label: String?
 
             public var riskWords: String?
@@ -3402,6 +4167,9 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
                     }
                     map["CustomizedHit"] = tmp
                 }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
                 if self.label != nil {
                     map["Label"] = self.label!
                 }
@@ -3425,6 +4193,9 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
                         tmp.append(model)
                     }
                     self.customizedHit = tmp
+                }
+                if dict.keys.contains("Description") {
+                    self.description_ = dict["Description"] as! String
                 }
                 if dict.keys.contains("Label") {
                     self.label = dict["Label"] as! String
