@@ -5455,6 +5455,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func removeStandbyInstanceWithOptions(_ request: RemoveStandbyInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RemoveStandbyInstanceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.forced)) {
+            body["Forced"] = request.forced!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetInstanceId)) {
+            body["TargetInstanceId"] = request.targetInstanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RemoveStandbyInstance",
+            "version": "2019-09-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RemoveStandbyInstanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func removeStandbyInstance(_ request: RemoveStandbyInstanceRequest) async throws -> RemoveStandbyInstanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await removeStandbyInstanceWithOptions(request as! RemoveStandbyInstanceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func resumeProjectWithOptions(_ request: ResumeProjectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ResumeProjectResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
