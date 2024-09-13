@@ -61,29 +61,23 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createTaskOrderWithOptions(_ request: CreateTaskOrderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateTaskOrderResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.customerRealName)) {
-            query["CustomerRealName"] = request.customerRealName ?? "";
+        if (!TeaUtils.Client.isUnset(request.createUserId)) {
+            query["CreateUserId"] = request.createUserId ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.customerUserId)) {
-            query["CustomerUserId"] = request.customerUserId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.importantDescription)) {
-            query["ImportantDescription"] = request.importantDescription ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.isImportant)) {
-            query["IsImportant"] = request.isImportant ?? "";
+        if (!TeaUtils.Client.isUnset(request.isUrgent)) {
+            query["IsUrgent"] = request.isUrgent!;
         }
         if (!TeaUtils.Client.isUnset(request.openGroupId)) {
             query["OpenGroupId"] = request.openGroupId ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.productType)) {
-            query["ProductType"] = request.productType ?? "";
+        if (!TeaUtils.Client.isUnset(request.overview)) {
+            query["Overview"] = request.overview ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.productTypeName)) {
-            query["ProductTypeName"] = request.productTypeName ?? "";
+        if (!TeaUtils.Client.isUnset(request.productCode)) {
+            query["ProductCode"] = request.productCode ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.taskTitle)) {
-            query["TaskTitle"] = request.taskTitle ?? "";
+        if (!TeaUtils.Client.isUnset(request.urgentDescription)) {
+            query["UrgentDescription"] = request.urgentDescription ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -283,35 +277,23 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listDdTaskOrderWithOptions(_ request: ListDdTaskOrderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDdTaskOrderResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.callerParentId)) {
-            query["CallerParentId"] = request.callerParentId!;
-        }
-        if (!TeaUtils.Client.isUnset(request.callerType)) {
-            query["CallerType"] = request.callerType ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.callerUid)) {
-            query["CallerUid"] = request.callerUid!;
-        }
         if (!TeaUtils.Client.isUnset(request.createRealName)) {
             query["CreateRealName"] = request.createRealName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.isUrgent)) {
+            query["IsUrgent"] = request.isUrgent!;
+        }
         if (!TeaUtils.Client.isUnset(request.openGroupId)) {
             query["OpenGroupId"] = request.openGroupId ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.orderId)) {
-            query["OrderId"] = request.orderId ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.pageNo)) {
-            query["PageNo"] = request.pageNo ?? "";
+            query["PageNo"] = request.pageNo!;
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
-            query["PageSize"] = request.pageSize ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.requestId)) {
-            query["RequestId"] = request.requestId ?? "";
+            query["PageSize"] = request.pageSize!;
         }
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             query["StartTime"] = request.startTime ?? "";
@@ -346,12 +328,12 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listEnterpriseDingtalkGroupCustomerMembersWithOptions(_ request: ListEnterpriseDingtalkGroupCustomerMembersRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListEnterpriseDingtalkGroupCustomerMembersResponse {
         try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
+        var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.openGroupId)) {
-            body["OpenGroupId"] = request.openGroupId ?? "";
+            query["OpenGroupId"] = request.openGroupId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "ListEnterpriseDingtalkGroupCustomerMembers",

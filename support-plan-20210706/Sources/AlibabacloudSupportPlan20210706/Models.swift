@@ -201,21 +201,17 @@ public class CloseTaskOrderResponse : Tea.TeaModel {
 }
 
 public class CreateTaskOrderRequest : Tea.TeaModel {
-    public var customerRealName: String?
+    public var createUserId: String?
 
-    public var customerUserId: String?
-
-    public var importantDescription: String?
-
-    public var isImportant: String?
+    public var isUrgent: Bool?
 
     public var openGroupId: String?
 
-    public var productType: String?
+    public var overview: String?
 
-    public var productTypeName: String?
+    public var productCode: String?
 
-    public var taskTitle: String?
+    public var urgentDescription: String?
 
     public override init() {
         super.init()
@@ -231,57 +227,45 @@ public class CreateTaskOrderRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.customerRealName != nil {
-            map["CustomerRealName"] = self.customerRealName!
+        if self.createUserId != nil {
+            map["CreateUserId"] = self.createUserId!
         }
-        if self.customerUserId != nil {
-            map["CustomerUserId"] = self.customerUserId!
-        }
-        if self.importantDescription != nil {
-            map["ImportantDescription"] = self.importantDescription!
-        }
-        if self.isImportant != nil {
-            map["IsImportant"] = self.isImportant!
+        if self.isUrgent != nil {
+            map["IsUrgent"] = self.isUrgent!
         }
         if self.openGroupId != nil {
             map["OpenGroupId"] = self.openGroupId!
         }
-        if self.productType != nil {
-            map["ProductType"] = self.productType!
+        if self.overview != nil {
+            map["Overview"] = self.overview!
         }
-        if self.productTypeName != nil {
-            map["ProductTypeName"] = self.productTypeName!
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
         }
-        if self.taskTitle != nil {
-            map["TaskTitle"] = self.taskTitle!
+        if self.urgentDescription != nil {
+            map["UrgentDescription"] = self.urgentDescription!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("CustomerRealName") {
-            self.customerRealName = dict["CustomerRealName"] as! String
+        if dict.keys.contains("CreateUserId") {
+            self.createUserId = dict["CreateUserId"] as! String
         }
-        if dict.keys.contains("CustomerUserId") {
-            self.customerUserId = dict["CustomerUserId"] as! String
-        }
-        if dict.keys.contains("ImportantDescription") {
-            self.importantDescription = dict["ImportantDescription"] as! String
-        }
-        if dict.keys.contains("IsImportant") {
-            self.isImportant = dict["IsImportant"] as! String
+        if dict.keys.contains("IsUrgent") {
+            self.isUrgent = dict["IsUrgent"] as! Bool
         }
         if dict.keys.contains("OpenGroupId") {
             self.openGroupId = dict["OpenGroupId"] as! String
         }
-        if dict.keys.contains("ProductType") {
-            self.productType = dict["ProductType"] as! String
+        if dict.keys.contains("Overview") {
+            self.overview = dict["Overview"] as! String
         }
-        if dict.keys.contains("ProductTypeName") {
-            self.productTypeName = dict["ProductTypeName"] as! String
+        if dict.keys.contains("ProductCode") {
+            self.productCode = dict["ProductCode"] as! String
         }
-        if dict.keys.contains("TaskTitle") {
-            self.taskTitle = dict["TaskTitle"] as! String
+        if dict.keys.contains("UrgentDescription") {
+            self.urgentDescription = dict["UrgentDescription"] as! String
         }
     }
 }
@@ -1370,25 +1354,17 @@ public class GetEnterpriseDingtalkGroupCustomerMemberResponse : Tea.TeaModel {
 }
 
 public class ListDdTaskOrderRequest : Tea.TeaModel {
-    public var callerParentId: Int64?
-
-    public var callerType: String?
-
-    public var callerUid: Int64?
-
     public var createRealName: String?
 
     public var endTime: String?
 
+    public var isUrgent: Bool?
+
     public var openGroupId: String?
 
-    public var orderId: String?
+    public var pageNo: Int64?
 
-    public var pageNo: String?
-
-    public var pageSize: String?
-
-    public var requestId: String?
+    public var pageSize: Int64?
 
     public var startTime: String?
 
@@ -1408,35 +1384,23 @@ public class ListDdTaskOrderRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.callerParentId != nil {
-            map["CallerParentId"] = self.callerParentId!
-        }
-        if self.callerType != nil {
-            map["CallerType"] = self.callerType!
-        }
-        if self.callerUid != nil {
-            map["CallerUid"] = self.callerUid!
-        }
         if self.createRealName != nil {
             map["CreateRealName"] = self.createRealName!
         }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.isUrgent != nil {
+            map["IsUrgent"] = self.isUrgent!
+        }
         if self.openGroupId != nil {
             map["OpenGroupId"] = self.openGroupId!
-        }
-        if self.orderId != nil {
-            map["OrderId"] = self.orderId!
         }
         if self.pageNo != nil {
             map["PageNo"] = self.pageNo!
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
         }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
@@ -1448,35 +1412,23 @@ public class ListDdTaskOrderRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("CallerParentId") {
-            self.callerParentId = dict["CallerParentId"] as! Int64
-        }
-        if dict.keys.contains("CallerType") {
-            self.callerType = dict["CallerType"] as! String
-        }
-        if dict.keys.contains("CallerUid") {
-            self.callerUid = dict["CallerUid"] as! Int64
-        }
         if dict.keys.contains("CreateRealName") {
             self.createRealName = dict["CreateRealName"] as! String
         }
         if dict.keys.contains("EndTime") {
             self.endTime = dict["EndTime"] as! String
         }
+        if dict.keys.contains("IsUrgent") {
+            self.isUrgent = dict["IsUrgent"] as! Bool
+        }
         if dict.keys.contains("OpenGroupId") {
             self.openGroupId = dict["OpenGroupId"] as! String
         }
-        if dict.keys.contains("OrderId") {
-            self.orderId = dict["OrderId"] as! String
-        }
         if dict.keys.contains("PageNo") {
-            self.pageNo = dict["PageNo"] as! String
+            self.pageNo = dict["PageNo"] as! Int64
         }
         if dict.keys.contains("PageSize") {
-            self.pageSize = dict["PageSize"] as! String
-        }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
+            self.pageSize = dict["PageSize"] as! Int64
         }
         if dict.keys.contains("StartTime") {
             self.startTime = dict["StartTime"] as! String
@@ -1629,9 +1581,54 @@ public class ListEnterpriseDingtalkGroupCustomerMembersRequest : Tea.TeaModel {
 }
 
 public class ListEnterpriseDingtalkGroupCustomerMembersResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var isAdmin: Bool?
+
+        public var name: String?
+
+        public var userId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.isAdmin != nil {
+                map["IsAdmin"] = self.isAdmin!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.userId != nil {
+                map["UserId"] = self.userId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("IsAdmin") {
+                self.isAdmin = dict["IsAdmin"] as! Bool
+            }
+            if dict.keys.contains("Name") {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("UserId") {
+                self.userId = dict["UserId"] as! String
+            }
+        }
+    }
     public var code: String?
 
-    public var data: [EnterpriseDingtalkGroupMember]?
+    public var data: [ListEnterpriseDingtalkGroupCustomerMembersResponseBody.Data]?
 
     public var message: String?
 
@@ -1680,9 +1677,9 @@ public class ListEnterpriseDingtalkGroupCustomerMembersResponseBody : Tea.TeaMod
             self.code = dict["Code"] as! String
         }
         if dict.keys.contains("Data") {
-            var tmp : [EnterpriseDingtalkGroupMember] = []
+            var tmp : [ListEnterpriseDingtalkGroupCustomerMembersResponseBody.Data] = []
             for v in dict["Data"] as! [Any] {
-                var model = EnterpriseDingtalkGroupMember()
+                var model = ListEnterpriseDingtalkGroupCustomerMembersResponseBody.Data()
                 if v != nil {
                     model.fromMap(v as! [String: Any])
                 }
