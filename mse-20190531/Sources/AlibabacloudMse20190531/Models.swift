@@ -7975,6 +7975,147 @@ public class BindSentinelBlockFallbackDefinitionResponse : Tea.TeaModel {
     }
 }
 
+public class ChangeResourceGroupRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var resourceGroupId: String?
+
+    public var resourceId: String?
+
+    public var resourceRegionId: String?
+
+    public var resourceType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
+        }
+        if self.resourceRegionId != nil {
+            map["ResourceRegionId"] = self.resourceRegionId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("ResourceId") {
+            self.resourceId = dict["ResourceId"] as! String
+        }
+        if dict.keys.contains("ResourceRegionId") {
+            self.resourceRegionId = dict["ResourceRegionId"] as! String
+        }
+        if dict.keys.contains("ResourceType") {
+            self.resourceType = dict["ResourceType"] as! String
+        }
+    }
+}
+
+public class ChangeResourceGroupResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ChangeResourceGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ChangeResourceGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ChangeResourceGroupResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CloneNacosConfigRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
@@ -12393,6 +12534,8 @@ public class CreateOrUpdateSwimmingLaneRequest : Tea.TeaModel {
         }
         public var canaryModel: Int32?
 
+        public var condition: String?
+
         public var conditions: [CreateOrUpdateSwimmingLaneRequest.GatewaySwimmingLaneRouteJson.Conditions]?
 
         public var gatewayId: Int64?
@@ -12423,6 +12566,9 @@ public class CreateOrUpdateSwimmingLaneRequest : Tea.TeaModel {
             var map = super.toMap()
             if self.canaryModel != nil {
                 map["CanaryModel"] = self.canaryModel!
+            }
+            if self.condition != nil {
+                map["Condition"] = self.condition!
             }
             if self.conditions != nil {
                 var tmp : [Any] = []
@@ -12459,6 +12605,9 @@ public class CreateOrUpdateSwimmingLaneRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("CanaryModel") {
                 self.canaryModel = dict["CanaryModel"] as! Int32
+            }
+            if dict.keys.contains("Condition") {
+                self.condition = dict["Condition"] as! String
             }
             if dict.keys.contains("Conditions") {
                 var tmp : [CreateOrUpdateSwimmingLaneRequest.GatewaySwimmingLaneRouteJson.Conditions] = []
@@ -13415,6 +13564,8 @@ public class CreateOrUpdateSwimmingLaneGroupRequest : Tea.TeaModel {
 
     public var status: Int32?
 
+    public var swimVersion: Int32?
+
     public override init() {
         super.init()
     }
@@ -13474,6 +13625,9 @@ public class CreateOrUpdateSwimmingLaneGroupRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.swimVersion != nil {
+            map["SwimVersion"] = self.swimVersion!
+        }
         return map
     }
 
@@ -13523,6 +13677,9 @@ public class CreateOrUpdateSwimmingLaneGroupRequest : Tea.TeaModel {
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! Int32
         }
+        if dict.keys.contains("SwimVersion") {
+            self.swimVersion = dict["SwimVersion"] as! Int32
+        }
     }
 }
 
@@ -13556,6 +13713,8 @@ public class CreateOrUpdateSwimmingLaneGroupShrinkRequest : Tea.TeaModel {
     public var routeIdsShrink: String?
 
     public var status: Int32?
+
+    public var swimVersion: Int32?
 
     public override init() {
         super.init()
@@ -13616,6 +13775,9 @@ public class CreateOrUpdateSwimmingLaneGroupShrinkRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.swimVersion != nil {
+            map["SwimVersion"] = self.swimVersion!
+        }
         return map
     }
 
@@ -13664,6 +13826,9 @@ public class CreateOrUpdateSwimmingLaneGroupShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! Int32
+        }
+        if dict.keys.contains("SwimVersion") {
+            self.swimVersion = dict["SwimVersion"] as! Int32
         }
     }
 }
@@ -28413,6 +28578,8 @@ public class GetGatewayServiceDetailResponseBody : Tea.TeaModel {
 
         public var serviceNameInRegistry: String?
 
+        public var servicePort: Int32?
+
         public var serviceProtocol: String?
 
         public var sourceId: Int64?
@@ -28499,6 +28666,9 @@ public class GetGatewayServiceDetailResponseBody : Tea.TeaModel {
             }
             if self.serviceNameInRegistry != nil {
                 map["ServiceNameInRegistry"] = self.serviceNameInRegistry!
+            }
+            if self.servicePort != nil {
+                map["ServicePort"] = self.servicePort!
             }
             if self.serviceProtocol != nil {
                 map["ServiceProtocol"] = self.serviceProtocol!
@@ -28598,6 +28768,9 @@ public class GetGatewayServiceDetailResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ServiceNameInRegistry") {
                 self.serviceNameInRegistry = dict["ServiceNameInRegistry"] as! String
+            }
+            if dict.keys.contains("ServicePort") {
+                self.servicePort = dict["ServicePort"] as! Int32
             }
             if dict.keys.contains("ServiceProtocol") {
                 self.serviceProtocol = dict["ServiceProtocol"] as! String
@@ -42497,6 +42670,43 @@ public class ListGatewayResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Result : Tea.TeaModel {
             public class ElasticPolicy : Tea.TeaModel {
+                public class EnableScaleTimePolicyList : Tea.TeaModel {
+                    public var endTime: String?
+
+                    public var startTime: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.endTime != nil {
+                            map["EndTime"] = self.endTime!
+                        }
+                        if self.startTime != nil {
+                            map["StartTime"] = self.startTime!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("EndTime") {
+                            self.endTime = dict["EndTime"] as! String
+                        }
+                        if dict.keys.contains("StartTime") {
+                            self.startTime = dict["StartTime"] as! String
+                        }
+                    }
+                }
                 public class TimePolicyList : Tea.TeaModel {
                     public var desiredReplica: Int32?
 
@@ -42546,6 +42756,10 @@ public class ListGatewayResponseBody : Tea.TeaModel {
 
                 public var elasticType: String?
 
+                public var enableScaleTimePolicyList: [ListGatewayResponseBody.Data.Result.ElasticPolicy.EnableScaleTimePolicyList]?
+
+                public var loadWarningThreshold: Bool?
+
                 public var maxReplica: Int32?
 
                 public var timePolicyList: [ListGatewayResponseBody.Data.Result.ElasticPolicy.TimePolicyList]?
@@ -42570,6 +42784,16 @@ public class ListGatewayResponseBody : Tea.TeaModel {
                     if self.elasticType != nil {
                         map["ElasticType"] = self.elasticType!
                     }
+                    if self.enableScaleTimePolicyList != nil {
+                        var tmp : [Any] = []
+                        for k in self.enableScaleTimePolicyList! {
+                            tmp.append(k.toMap())
+                        }
+                        map["EnableScaleTimePolicyList"] = tmp
+                    }
+                    if self.loadWarningThreshold != nil {
+                        map["LoadWarningThreshold"] = self.loadWarningThreshold!
+                    }
                     if self.maxReplica != nil {
                         map["MaxReplica"] = self.maxReplica!
                     }
@@ -42589,6 +42813,20 @@ public class ListGatewayResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("ElasticType") {
                         self.elasticType = dict["ElasticType"] as! String
+                    }
+                    if dict.keys.contains("EnableScaleTimePolicyList") {
+                        var tmp : [ListGatewayResponseBody.Data.Result.ElasticPolicy.EnableScaleTimePolicyList] = []
+                        for v in dict["EnableScaleTimePolicyList"] as! [Any] {
+                            var model = ListGatewayResponseBody.Data.Result.ElasticPolicy.EnableScaleTimePolicyList()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.enableScaleTimePolicyList = tmp
+                    }
+                    if dict.keys.contains("LoadWarningThreshold") {
+                        self.loadWarningThreshold = dict["LoadWarningThreshold"] as! Bool
                     }
                     if dict.keys.contains("MaxReplica") {
                         self.maxReplica = dict["MaxReplica"] as! Int32
@@ -47098,6 +47336,8 @@ public class ListGatewayRouteResponseBody : Tea.TeaModel {
 
             public var domainNameList: [String]?
 
+            public var dynamicRoute: Bool?
+
             public var enableWaf: String?
 
             public var fallback: Bool?
@@ -47176,6 +47416,9 @@ public class ListGatewayRouteResponseBody : Tea.TeaModel {
                 }
                 if self.domainNameList != nil {
                     map["DomainNameList"] = self.domainNameList!
+                }
+                if self.dynamicRoute != nil {
+                    map["DynamicRoute"] = self.dynamicRoute!
                 }
                 if self.enableWaf != nil {
                     map["EnableWaf"] = self.enableWaf!
@@ -47270,6 +47513,9 @@ public class ListGatewayRouteResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("DomainNameList") {
                     self.domainNameList = dict["DomainNameList"] as! [String]
+                }
+                if dict.keys.contains("DynamicRoute") {
+                    self.dynamicRoute = dict["DynamicRoute"] as! Bool
                 }
                 if dict.keys.contains("EnableWaf") {
                     self.enableWaf = dict["EnableWaf"] as! String
@@ -56207,6 +56453,8 @@ public class QueryAllSwimmingLaneResponseBody : Tea.TeaModel {
 
                 public var name: String?
 
+                public var nameList: [String]?
+
                 public var type: String?
 
                 public var value: String?
@@ -56231,6 +56479,9 @@ public class QueryAllSwimmingLaneResponseBody : Tea.TeaModel {
                     if self.name != nil {
                         map["Name"] = self.name!
                     }
+                    if self.nameList != nil {
+                        map["NameList"] = self.nameList!
+                    }
                     if self.type != nil {
                         map["Type"] = self.type!
                     }
@@ -56246,6 +56497,9 @@ public class QueryAllSwimmingLaneResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("Name") {
                         self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("NameList") {
+                        self.nameList = dict["NameList"] as! [String]
                     }
                     if dict.keys.contains("Type") {
                         self.type = dict["Type"] as! String
@@ -56747,6 +57001,8 @@ public class QueryAllSwimmingLaneGroupResponseBody : Tea.TeaModel {
 
         public var region: String?
 
+        public var swimVersion: Int32?
+
         public var userId: String?
 
         public override init() {
@@ -56796,6 +57052,9 @@ public class QueryAllSwimmingLaneGroupResponseBody : Tea.TeaModel {
             if self.region != nil {
                 map["Region"] = self.region!
             }
+            if self.swimVersion != nil {
+                map["SwimVersion"] = self.swimVersion!
+            }
             if self.userId != nil {
                 map["UserId"] = self.userId!
             }
@@ -56835,6 +57094,9 @@ public class QueryAllSwimmingLaneGroupResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Region") {
                 self.region = dict["Region"] as! String
+            }
+            if dict.keys.contains("SwimVersion") {
+                self.swimVersion = dict["SwimVersion"] as! Int32
             }
             if dict.keys.contains("UserId") {
                 self.userId = dict["UserId"] as! String
