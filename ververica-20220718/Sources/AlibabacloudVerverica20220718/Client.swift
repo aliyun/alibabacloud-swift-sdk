@@ -24,6 +24,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func applyScheduledPlanWithOptions(_ namespace: String, _ scheduledPlanId: String, _ headers: ApplyScheduledPlanHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ApplyScheduledPlanResponse {
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ApplyScheduledPlan",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/scheduled-plans/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(scheduledPlanId)) + "%3Aapply",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ApplyScheduledPlanResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func applyScheduledPlan(_ namespace: String, _ scheduledPlanId: String) async throws -> ApplyScheduledPlanResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: ApplyScheduledPlanHeaders = ApplyScheduledPlanHeaders([:])
+        return try await applyScheduledPlanWithOptions(namespace as! String, scheduledPlanId as! String, headers as! ApplyScheduledPlanHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createDeploymentWithOptions(_ namespace: String, _ request: CreateDeploymentRequest, _ headers: CreateDeploymentHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDeploymentResponse {
         try TeaUtils.Client.validateModel(request)
         var realHeaders: [String: String] = [:]
@@ -93,6 +127,47 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: CreateDeploymentDraftHeaders = CreateDeploymentDraftHeaders([:])
         return try await createDeploymentDraftWithOptions(namespace as! String, request as! CreateDeploymentDraftRequest, headers as! CreateDeploymentDraftHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDeploymentTargetWithOptions(_ namespace: String, _ request: CreateDeploymentTargetRequest, _ headers: CreateDeploymentTargetHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDeploymentTargetResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deploymentTargetName)) {
+            query["deploymentTargetName"] = request.deploymentTargetName ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateDeploymentTarget",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/deployment-targets",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateDeploymentTargetResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDeploymentTarget(_ namespace: String, _ request: CreateDeploymentTargetRequest) async throws -> CreateDeploymentTargetResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: CreateDeploymentTargetHeaders = CreateDeploymentTargetHeaders([:])
+        return try await createDeploymentTargetWithOptions(namespace as! String, request as! CreateDeploymentTargetRequest, headers as! CreateDeploymentTargetHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -211,6 +286,78 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: CreateSavepointHeaders = CreateSavepointHeaders([:])
         return try await createSavepointWithOptions(namespace as! String, request as! CreateSavepointRequest, headers as! CreateSavepointHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createScheduledPlanWithOptions(_ namespace: String, _ request: CreateScheduledPlanRequest, _ headers: CreateScheduledPlanHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateScheduledPlanResponse {
+        try TeaUtils.Client.validateModel(request)
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateScheduledPlan",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/scheduled-plans",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateScheduledPlanResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createScheduledPlan(_ namespace: String, _ request: CreateScheduledPlanRequest) async throws -> CreateScheduledPlanResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: CreateScheduledPlanHeaders = CreateScheduledPlanHeaders([:])
+        return try await createScheduledPlanWithOptions(namespace as! String, request as! CreateScheduledPlanRequest, headers as! CreateScheduledPlanHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createSessionClusterWithOptions(_ namespace: String, _ request: CreateSessionClusterRequest, _ headers: CreateSessionClusterHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSessionClusterResponse {
+        try TeaUtils.Client.validateModel(request)
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateSessionCluster",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/sessionclusters",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateSessionClusterResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createSessionCluster(_ namespace: String, _ request: CreateSessionClusterRequest) async throws -> CreateSessionClusterResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: CreateSessionClusterHeaders = CreateSessionClusterHeaders([:])
+        return try await createSessionClusterWithOptions(namespace as! String, request as! CreateSessionClusterRequest, headers as! CreateSessionClusterHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -388,6 +535,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDeploymentTargetWithOptions(_ namespace: String, _ deploymentTargetName: String, _ headers: DeleteDeploymentTargetHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDeploymentTargetResponse {
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteDeploymentTarget",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/deployment-targets/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(deploymentTargetName)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteDeploymentTargetResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDeploymentTarget(_ namespace: String, _ deploymentTargetName: String) async throws -> DeleteDeploymentTargetResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: DeleteDeploymentTargetHeaders = DeleteDeploymentTargetHeaders([:])
+        return try await deleteDeploymentTargetWithOptions(namespace as! String, deploymentTargetName as! String, headers as! DeleteDeploymentTargetHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteFolderWithOptions(_ namespace: String, _ folderId: String, _ headers: DeleteFolderHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteFolderResponse {
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
@@ -521,6 +702,74 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: DeleteSavepointHeaders = DeleteSavepointHeaders([:])
         return try await deleteSavepointWithOptions(namespace as! String, savepointId as! String, headers as! DeleteSavepointHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteScheduledPlanWithOptions(_ namespace: String, _ scheduledPlanId: String, _ headers: DeleteScheduledPlanHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteScheduledPlanResponse {
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteScheduledPlan",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/scheduled-plans/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(scheduledPlanId)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteScheduledPlanResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteScheduledPlan(_ namespace: String, _ scheduledPlanId: String) async throws -> DeleteScheduledPlanResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: DeleteScheduledPlanHeaders = DeleteScheduledPlanHeaders([:])
+        return try await deleteScheduledPlanWithOptions(namespace as! String, scheduledPlanId as! String, headers as! DeleteScheduledPlanHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteSessionClusterWithOptions(_ namespace: String, _ sessionClusterName: String, _ headers: DeleteSessionClusterHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteSessionClusterResponse {
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteSessionCluster",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/sessionclusters/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(sessionClusterName)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteSessionClusterResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteSessionCluster(_ namespace: String, _ sessionClusterName: String) async throws -> DeleteSessionClusterResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: DeleteSessionClusterHeaders = DeleteSessionClusterHeaders([:])
+        return try await deleteSessionClusterWithOptions(namespace as! String, sessionClusterName as! String, headers as! DeleteSessionClusterHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -792,6 +1041,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAppliedScheduledPlanWithOptions(_ namespace: String, _ request: GetAppliedScheduledPlanRequest, _ headers: GetAppliedScheduledPlanHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAppliedScheduledPlanResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deploymentId)) {
+            query["deploymentId"] = request.deploymentId ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetAppliedScheduledPlan",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/scheduled-plans%3AgetExecutedScheduledPlan",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetAppliedScheduledPlanResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAppliedScheduledPlan(_ namespace: String, _ request: GetAppliedScheduledPlanRequest) async throws -> GetAppliedScheduledPlanResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetAppliedScheduledPlanHeaders = GetAppliedScheduledPlanHeaders([:])
+        return try await getAppliedScheduledPlanWithOptions(namespace as! String, request as! GetAppliedScheduledPlanRequest, headers as! GetAppliedScheduledPlanHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getCatalogsWithOptions(_ namespace: String, _ request: GetCatalogsRequest, _ headers: GetCatalogsHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCatalogsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1011,6 +1300,52 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: GetDeploymentDraftLockHeaders = GetDeploymentDraftLockHeaders([:])
         return try await getDeploymentDraftLockWithOptions(namespace as! String, request as! GetDeploymentDraftLockRequest, headers as! GetDeploymentDraftLockHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getEventsWithOptions(_ namespace: String, _ request: GetEventsRequest, _ headers: GetEventsHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetEventsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deploymentId)) {
+            query["deploymentId"] = request.deploymentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageIndex)) {
+            query["pageIndex"] = request.pageIndex!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetEvents",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/events",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetEventsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getEvents(_ namespace: String, _ request: GetEventsRequest) async throws -> GetEventsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetEventsHeaders = GetEventsHeaders([:])
+        return try await getEventsWithOptions(namespace as! String, request as! GetEventsRequest, headers as! GetEventsHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1291,6 +1626,40 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: GetSavepointHeaders = GetSavepointHeaders([:])
         return try await getSavepointWithOptions(namespace as! String, savepointId as! String, headers as! GetSavepointHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getSessionClusterWithOptions(_ namespace: String, _ sessionClusterName: String, _ headers: GetSessionClusterHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetSessionClusterResponse {
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetSessionCluster",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/sessionclusters/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(sessionClusterName)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetSessionClusterResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getSessionCluster(_ namespace: String, _ sessionClusterName: String) async throws -> GetSessionClusterResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetSessionClusterHeaders = GetSessionClusterHeaders([:])
+        return try await getSessionClusterWithOptions(namespace as! String, sessionClusterName as! String, headers as! GetSessionClusterHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1812,6 +2181,129 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listScheduledPlanWithOptions(_ namespace: String, _ request: ListScheduledPlanRequest, _ headers: ListScheduledPlanHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListScheduledPlanResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deploymentId)) {
+            query["deploymentId"] = request.deploymentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageIndex)) {
+            query["pageIndex"] = request.pageIndex!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListScheduledPlan",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/scheduled-plans",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListScheduledPlanResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listScheduledPlan(_ namespace: String, _ request: ListScheduledPlanRequest) async throws -> ListScheduledPlanResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: ListScheduledPlanHeaders = ListScheduledPlanHeaders([:])
+        return try await listScheduledPlanWithOptions(namespace as! String, request as! ListScheduledPlanRequest, headers as! ListScheduledPlanHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listScheduledPlanExecutedHistoryWithOptions(_ namespace: String, _ request: ListScheduledPlanExecutedHistoryRequest, _ headers: ListScheduledPlanExecutedHistoryHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListScheduledPlanExecutedHistoryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deploymentId)) {
+            query["deploymentId"] = request.deploymentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.origin)) {
+            query["origin"] = request.origin ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListScheduledPlanExecutedHistory",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/job-resource-upgradings",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListScheduledPlanExecutedHistoryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listScheduledPlanExecutedHistory(_ namespace: String, _ request: ListScheduledPlanExecutedHistoryRequest) async throws -> ListScheduledPlanExecutedHistoryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: ListScheduledPlanExecutedHistoryHeaders = ListScheduledPlanExecutedHistoryHeaders([:])
+        return try await listScheduledPlanExecutedHistoryWithOptions(namespace as! String, request as! ListScheduledPlanExecutedHistoryRequest, headers as! ListScheduledPlanExecutedHistoryHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listSessionClustersWithOptions(_ namespace: String, _ headers: ListSessionClustersHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListSessionClustersResponse {
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListSessionClusters",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/sessionclusters",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListSessionClustersResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listSessionClusters(_ namespace: String) async throws -> ListSessionClustersResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: ListSessionClustersHeaders = ListSessionClustersHeaders([:])
+        return try await listSessionClustersWithOptions(namespace as! String, headers as! ListSessionClustersHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listVariablesWithOptions(_ namespace: String, _ request: ListVariablesRequest, _ headers: ListVariablesHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListVariablesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2013,6 +2505,74 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startSessionClusterWithOptions(_ namespace: String, _ sessionClusterName: String, _ headers: StartSessionClusterHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> StartSessionClusterResponse {
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StartSessionCluster",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/sessionclusters/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(sessionClusterName)) + "%3Astart",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StartSessionClusterResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startSessionCluster(_ namespace: String, _ sessionClusterName: String) async throws -> StartSessionClusterResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: StartSessionClusterHeaders = StartSessionClusterHeaders([:])
+        return try await startSessionClusterWithOptions(namespace as! String, sessionClusterName as! String, headers as! StartSessionClusterHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopApplyScheduledPlanWithOptions(_ namespace: String, _ scheduledPlanId: String, _ headers: StopApplyScheduledPlanHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> StopApplyScheduledPlanResponse {
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StopApplyScheduledPlan",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/scheduled-plans/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(scheduledPlanId)) + "%3Astop",
+            "method": "PATCH",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StopApplyScheduledPlanResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopApplyScheduledPlan(_ namespace: String, _ scheduledPlanId: String) async throws -> StopApplyScheduledPlanResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: StopApplyScheduledPlanHeaders = StopApplyScheduledPlanHeaders([:])
+        return try await stopApplyScheduledPlanWithOptions(namespace as! String, scheduledPlanId as! String, headers as! StopApplyScheduledPlanHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func stopJobWithOptions(_ namespace: String, _ jobId: String, _ request: StopJobRequest, _ headers: StopJobHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> StopJobResponse {
         try TeaUtils.Client.validateModel(request)
         var realHeaders: [String: String] = [:]
@@ -2046,6 +2606,40 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: StopJobHeaders = StopJobHeaders([:])
         return try await stopJobWithOptions(namespace as! String, jobId as! String, request as! StopJobRequest, headers as! StopJobHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopSessionClusterWithOptions(_ namespace: String, _ sessionClusterName: String, _ headers: StopSessionClusterHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> StopSessionClusterResponse {
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StopSessionCluster",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/sessionclusters/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(sessionClusterName)) + "%3Astop",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StopSessionClusterResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopSessionCluster(_ namespace: String, _ sessionClusterName: String) async throws -> StopSessionClusterResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: StopSessionClusterHeaders = StopSessionClusterHeaders([:])
+        return try await stopSessionClusterWithOptions(namespace as! String, sessionClusterName as! String, headers as! StopSessionClusterHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2121,6 +2715,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateDeploymentTargetWithOptions(_ namespace: String, _ deploymentTargetName: String, _ request: UpdateDeploymentTargetRequest, _ headers: UpdateDeploymentTargetHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateDeploymentTargetResponse {
+        try TeaUtils.Client.validateModel(request)
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateDeploymentTarget",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/deployment-targets/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(deploymentTargetName)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateDeploymentTargetResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateDeploymentTarget(_ namespace: String, _ deploymentTargetName: String, _ request: UpdateDeploymentTargetRequest) async throws -> UpdateDeploymentTargetResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: UpdateDeploymentTargetHeaders = UpdateDeploymentTargetHeaders([:])
+        return try await updateDeploymentTargetWithOptions(namespace as! String, deploymentTargetName as! String, request as! UpdateDeploymentTargetRequest, headers as! UpdateDeploymentTargetHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateFolderWithOptions(_ namespace: String, _ folderId: String, _ request: UpdateFolderRequest, _ headers: UpdateFolderHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateFolderResponse {
         try TeaUtils.Client.validateModel(request)
         var realHeaders: [String: String] = [:]
@@ -2190,6 +2820,78 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: UpdateMemberHeaders = UpdateMemberHeaders([:])
         return try await updateMemberWithOptions(namespace as! String, request as! UpdateMemberRequest, headers as! UpdateMemberHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateScheduledPlanWithOptions(_ namespace: String, _ scheduledPlanId: String, _ request: UpdateScheduledPlanRequest, _ headers: UpdateScheduledPlanHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateScheduledPlanResponse {
+        try TeaUtils.Client.validateModel(request)
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateScheduledPlan",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/scheduled-plans/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(scheduledPlanId)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateScheduledPlanResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateScheduledPlan(_ namespace: String, _ scheduledPlanId: String, _ request: UpdateScheduledPlanRequest) async throws -> UpdateScheduledPlanResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: UpdateScheduledPlanHeaders = UpdateScheduledPlanHeaders([:])
+        return try await updateScheduledPlanWithOptions(namespace as! String, scheduledPlanId as! String, request as! UpdateScheduledPlanRequest, headers as! UpdateScheduledPlanHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateSessionClusterWithOptions(_ namespace: String, _ sessionClusterName: String, _ request: UpdateSessionClusterRequest, _ headers: UpdateSessionClusterHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateSessionClusterResponse {
+        try TeaUtils.Client.validateModel(request)
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateSessionCluster",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/namespaces/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace)) + "/sessionclusters/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(sessionClusterName)),
+            "method": "PATCH",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateSessionClusterResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateSessionCluster(_ namespace: String, _ sessionClusterName: String, _ request: UpdateSessionClusterRequest) async throws -> UpdateSessionClusterResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: UpdateSessionClusterHeaders = UpdateSessionClusterHeaders([:])
+        return try await updateSessionClusterWithOptions(namespace as! String, sessionClusterName as! String, request as! UpdateSessionClusterRequest, headers as! UpdateSessionClusterHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
