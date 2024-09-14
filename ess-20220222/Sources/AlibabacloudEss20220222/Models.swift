@@ -1594,6 +1594,147 @@ public class AttachVServerGroupsResponse : Tea.TeaModel {
     }
 }
 
+public class CancelInstanceRefreshRequest : Tea.TeaModel {
+    public var instanceRefreshTaskId: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var scalingGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceRefreshTaskId != nil {
+            map["InstanceRefreshTaskId"] = self.instanceRefreshTaskId!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.scalingGroupId != nil {
+            map["ScalingGroupId"] = self.scalingGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceRefreshTaskId") {
+            self.instanceRefreshTaskId = dict["InstanceRefreshTaskId"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ScalingGroupId") {
+            self.scalingGroupId = dict["ScalingGroupId"] as! String
+        }
+    }
+}
+
+public class CancelInstanceRefreshResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CancelInstanceRefreshResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CancelInstanceRefreshResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CancelInstanceRefreshResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ChangeResourceGroupRequest : Tea.TeaModel {
     public var newResourceGroupId: String?
 
@@ -8781,6 +8922,116 @@ public class CreateScalingRuleRequest : Tea.TeaModel {
             }
         }
     }
+    public class HybridMetrics : Tea.TeaModel {
+        public class Dimensions : Tea.TeaModel {
+            public var dimensionKey: String?
+
+            public var dimensionValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dimensionKey != nil {
+                    map["DimensionKey"] = self.dimensionKey!
+                }
+                if self.dimensionValue != nil {
+                    map["DimensionValue"] = self.dimensionValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DimensionKey") {
+                    self.dimensionKey = dict["DimensionKey"] as! String
+                }
+                if dict.keys.contains("DimensionValue") {
+                    self.dimensionValue = dict["DimensionValue"] as! String
+                }
+            }
+        }
+        public var dimensions: [CreateScalingRuleRequest.HybridMetrics.Dimensions]?
+
+        public var expression: String?
+
+        public var id: String?
+
+        public var metricName: String?
+
+        public var statistic: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dimensions != nil {
+                var tmp : [Any] = []
+                for k in self.dimensions! {
+                    tmp.append(k.toMap())
+                }
+                map["Dimensions"] = tmp
+            }
+            if self.expression != nil {
+                map["Expression"] = self.expression!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.metricName != nil {
+                map["MetricName"] = self.metricName!
+            }
+            if self.statistic != nil {
+                map["Statistic"] = self.statistic!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Dimensions") {
+                var tmp : [CreateScalingRuleRequest.HybridMetrics.Dimensions] = []
+                for v in dict["Dimensions"] as! [Any] {
+                    var model = CreateScalingRuleRequest.HybridMetrics.Dimensions()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.dimensions = tmp
+            }
+            if dict.keys.contains("Expression") {
+                self.expression = dict["Expression"] as! String
+            }
+            if dict.keys.contains("Id") {
+                self.id = dict["Id"] as! String
+            }
+            if dict.keys.contains("MetricName") {
+                self.metricName = dict["MetricName"] as! String
+            }
+            if dict.keys.contains("Statistic") {
+                self.statistic = dict["Statistic"] as! String
+            }
+        }
+    }
     public class StepAdjustments : Tea.TeaModel {
         public var metricIntervalLowerBound: Double?
 
@@ -8838,9 +9089,15 @@ public class CreateScalingRuleRequest : Tea.TeaModel {
 
     public var estimatedInstanceWarmup: Int32?
 
+    public var hybridMetrics: [CreateScalingRuleRequest.HybridMetrics]?
+
+    public var hybridMonitorNamespace: String?
+
     public var initialMaxSize: Int32?
 
     public var metricName: String?
+
+    public var metricType: String?
 
     public var minAdjustmentMagnitude: Int32?
 
@@ -8910,11 +9167,24 @@ public class CreateScalingRuleRequest : Tea.TeaModel {
         if self.estimatedInstanceWarmup != nil {
             map["EstimatedInstanceWarmup"] = self.estimatedInstanceWarmup!
         }
+        if self.hybridMetrics != nil {
+            var tmp : [Any] = []
+            for k in self.hybridMetrics! {
+                tmp.append(k.toMap())
+            }
+            map["HybridMetrics"] = tmp
+        }
+        if self.hybridMonitorNamespace != nil {
+            map["HybridMonitorNamespace"] = self.hybridMonitorNamespace!
+        }
         if self.initialMaxSize != nil {
             map["InitialMaxSize"] = self.initialMaxSize!
         }
         if self.metricName != nil {
             map["MetricName"] = self.metricName!
+        }
+        if self.metricType != nil {
+            map["MetricType"] = self.metricType!
         }
         if self.minAdjustmentMagnitude != nil {
             map["MinAdjustmentMagnitude"] = self.minAdjustmentMagnitude!
@@ -8998,11 +9268,28 @@ public class CreateScalingRuleRequest : Tea.TeaModel {
         if dict.keys.contains("EstimatedInstanceWarmup") {
             self.estimatedInstanceWarmup = dict["EstimatedInstanceWarmup"] as! Int32
         }
+        if dict.keys.contains("HybridMetrics") {
+            var tmp : [CreateScalingRuleRequest.HybridMetrics] = []
+            for v in dict["HybridMetrics"] as! [Any] {
+                var model = CreateScalingRuleRequest.HybridMetrics()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.hybridMetrics = tmp
+        }
+        if dict.keys.contains("HybridMonitorNamespace") {
+            self.hybridMonitorNamespace = dict["HybridMonitorNamespace"] as! String
+        }
         if dict.keys.contains("InitialMaxSize") {
             self.initialMaxSize = dict["InitialMaxSize"] as! Int32
         }
         if dict.keys.contains("MetricName") {
             self.metricName = dict["MetricName"] as! String
+        }
+        if dict.keys.contains("MetricType") {
+            self.metricType = dict["MetricType"] as! String
         }
         if dict.keys.contains("MinAdjustmentMagnitude") {
             self.minAdjustmentMagnitude = dict["MinAdjustmentMagnitude"] as! Int32
@@ -10890,6 +11177,116 @@ public class DescribeAlarmsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class HybridMetrics : Tea.TeaModel {
+            public class Dimensions : Tea.TeaModel {
+                public var dimensionKey: String?
+
+                public var dimensionValue: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.dimensionKey != nil {
+                        map["DimensionKey"] = self.dimensionKey!
+                    }
+                    if self.dimensionValue != nil {
+                        map["DimensionValue"] = self.dimensionValue!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("DimensionKey") {
+                        self.dimensionKey = dict["DimensionKey"] as! String
+                    }
+                    if dict.keys.contains("DimensionValue") {
+                        self.dimensionValue = dict["DimensionValue"] as! String
+                    }
+                }
+            }
+            public var dimensions: [DescribeAlarmsResponseBody.AlarmList.HybridMetrics.Dimensions]?
+
+            public var expression: String?
+
+            public var id: String?
+
+            public var metricName: String?
+
+            public var statistic: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dimensions != nil {
+                    var tmp : [Any] = []
+                    for k in self.dimensions! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Dimensions"] = tmp
+                }
+                if self.expression != nil {
+                    map["Expression"] = self.expression!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.metricName != nil {
+                    map["MetricName"] = self.metricName!
+                }
+                if self.statistic != nil {
+                    map["Statistic"] = self.statistic!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Dimensions") {
+                    var tmp : [DescribeAlarmsResponseBody.AlarmList.HybridMetrics.Dimensions] = []
+                    for v in dict["Dimensions"] as! [Any] {
+                        var model = DescribeAlarmsResponseBody.AlarmList.HybridMetrics.Dimensions()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.dimensions = tmp
+                }
+                if dict.keys.contains("Expression") {
+                    self.expression = dict["Expression"] as! String
+                }
+                if dict.keys.contains("Id") {
+                    self.id = dict["Id"] as! String
+                }
+                if dict.keys.contains("MetricName") {
+                    self.metricName = dict["MetricName"] as! String
+                }
+                if dict.keys.contains("Statistic") {
+                    self.statistic = dict["Statistic"] as! String
+                }
+            }
+        }
         public var alarmActions: [String]?
 
         public var alarmTaskId: String?
@@ -10910,6 +11307,10 @@ public class DescribeAlarmsResponseBody : Tea.TeaModel {
 
         public var expressionsLogicOperator: String?
 
+        public var hybridMetrics: [DescribeAlarmsResponseBody.AlarmList.HybridMetrics]?
+
+        public var hybridMonitorNamespace: String?
+
         public var metricName: String?
 
         public var metricType: String?
@@ -10917,6 +11318,8 @@ public class DescribeAlarmsResponseBody : Tea.TeaModel {
         public var name: String?
 
         public var period: Int32?
+
+        public var promQL: String?
 
         public var scalingGroupId: String?
 
@@ -10978,6 +11381,16 @@ public class DescribeAlarmsResponseBody : Tea.TeaModel {
             if self.expressionsLogicOperator != nil {
                 map["ExpressionsLogicOperator"] = self.expressionsLogicOperator!
             }
+            if self.hybridMetrics != nil {
+                var tmp : [Any] = []
+                for k in self.hybridMetrics! {
+                    tmp.append(k.toMap())
+                }
+                map["HybridMetrics"] = tmp
+            }
+            if self.hybridMonitorNamespace != nil {
+                map["HybridMonitorNamespace"] = self.hybridMonitorNamespace!
+            }
             if self.metricName != nil {
                 map["MetricName"] = self.metricName!
             }
@@ -10989,6 +11402,9 @@ public class DescribeAlarmsResponseBody : Tea.TeaModel {
             }
             if self.period != nil {
                 map["Period"] = self.period!
+            }
+            if self.promQL != nil {
+                map["PromQL"] = self.promQL!
             }
             if self.scalingGroupId != nil {
                 map["ScalingGroupId"] = self.scalingGroupId!
@@ -11052,6 +11468,20 @@ public class DescribeAlarmsResponseBody : Tea.TeaModel {
             if dict.keys.contains("ExpressionsLogicOperator") {
                 self.expressionsLogicOperator = dict["ExpressionsLogicOperator"] as! String
             }
+            if dict.keys.contains("HybridMetrics") {
+                var tmp : [DescribeAlarmsResponseBody.AlarmList.HybridMetrics] = []
+                for v in dict["HybridMetrics"] as! [Any] {
+                    var model = DescribeAlarmsResponseBody.AlarmList.HybridMetrics()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.hybridMetrics = tmp
+            }
+            if dict.keys.contains("HybridMonitorNamespace") {
+                self.hybridMonitorNamespace = dict["HybridMonitorNamespace"] as! String
+            }
             if dict.keys.contains("MetricName") {
                 self.metricName = dict["MetricName"] as! String
             }
@@ -11063,6 +11493,9 @@ public class DescribeAlarmsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Period") {
                 self.period = dict["Period"] as! Int32
+            }
+            if dict.keys.contains("PromQL") {
+                self.promQL = dict["PromQL"] as! String
             }
             if dict.keys.contains("ScalingGroupId") {
                 self.scalingGroupId = dict["ScalingGroupId"] as! String
@@ -15616,6 +16049,380 @@ public class DescribeEciScalingConfigurationsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeInstanceRefreshesRequest : Tea.TeaModel {
+    public var instanceRefreshTaskIds: [String]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var scalingGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceRefreshTaskIds != nil {
+            map["InstanceRefreshTaskIds"] = self.instanceRefreshTaskIds!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.scalingGroupId != nil {
+            map["ScalingGroupId"] = self.scalingGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceRefreshTaskIds") {
+            self.instanceRefreshTaskIds = dict["InstanceRefreshTaskIds"] as! [String]
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("OwnerAccount") {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("ScalingGroupId") {
+            self.scalingGroupId = dict["ScalingGroupId"] as! String
+        }
+    }
+}
+
+public class DescribeInstanceRefreshesResponseBody : Tea.TeaModel {
+    public class InstanceRefreshTasks : Tea.TeaModel {
+        public class DesiredConfiguration : Tea.TeaModel {
+            public var imageId: String?
+
+            public var scalingConfigurationId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.imageId != nil {
+                    map["ImageId"] = self.imageId!
+                }
+                if self.scalingConfigurationId != nil {
+                    map["ScalingConfigurationId"] = self.scalingConfigurationId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ImageId") {
+                    self.imageId = dict["ImageId"] as! String
+                }
+                if dict.keys.contains("ScalingConfigurationId") {
+                    self.scalingConfigurationId = dict["ScalingConfigurationId"] as! String
+                }
+            }
+        }
+        public var desiredConfiguration: DescribeInstanceRefreshesResponseBody.InstanceRefreshTasks.DesiredConfiguration?
+
+        public var detail: String?
+
+        public var endTime: String?
+
+        public var finishedUpdateCapacity: Int32?
+
+        public var instanceRefreshTaskId: String?
+
+        public var maxHealthyPercentage: Int32?
+
+        public var minHealthyPercentage: Int32?
+
+        public var regionId: String?
+
+        public var scalingGroupId: String?
+
+        public var startTime: String?
+
+        public var status: String?
+
+        public var totalNeedUpdateCapacity: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.desiredConfiguration?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.desiredConfiguration != nil {
+                map["DesiredConfiguration"] = self.desiredConfiguration?.toMap()
+            }
+            if self.detail != nil {
+                map["Detail"] = self.detail!
+            }
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            if self.finishedUpdateCapacity != nil {
+                map["FinishedUpdateCapacity"] = self.finishedUpdateCapacity!
+            }
+            if self.instanceRefreshTaskId != nil {
+                map["InstanceRefreshTaskId"] = self.instanceRefreshTaskId!
+            }
+            if self.maxHealthyPercentage != nil {
+                map["MaxHealthyPercentage"] = self.maxHealthyPercentage!
+            }
+            if self.minHealthyPercentage != nil {
+                map["MinHealthyPercentage"] = self.minHealthyPercentage!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.scalingGroupId != nil {
+                map["ScalingGroupId"] = self.scalingGroupId!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.totalNeedUpdateCapacity != nil {
+                map["TotalNeedUpdateCapacity"] = self.totalNeedUpdateCapacity!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DesiredConfiguration") {
+                var model = DescribeInstanceRefreshesResponseBody.InstanceRefreshTasks.DesiredConfiguration()
+                model.fromMap(dict["DesiredConfiguration"] as! [String: Any])
+                self.desiredConfiguration = model
+            }
+            if dict.keys.contains("Detail") {
+                self.detail = dict["Detail"] as! String
+            }
+            if dict.keys.contains("EndTime") {
+                self.endTime = dict["EndTime"] as! String
+            }
+            if dict.keys.contains("FinishedUpdateCapacity") {
+                self.finishedUpdateCapacity = dict["FinishedUpdateCapacity"] as! Int32
+            }
+            if dict.keys.contains("InstanceRefreshTaskId") {
+                self.instanceRefreshTaskId = dict["InstanceRefreshTaskId"] as! String
+            }
+            if dict.keys.contains("MaxHealthyPercentage") {
+                self.maxHealthyPercentage = dict["MaxHealthyPercentage"] as! Int32
+            }
+            if dict.keys.contains("MinHealthyPercentage") {
+                self.minHealthyPercentage = dict["MinHealthyPercentage"] as! Int32
+            }
+            if dict.keys.contains("RegionId") {
+                self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("ScalingGroupId") {
+                self.scalingGroupId = dict["ScalingGroupId"] as! String
+            }
+            if dict.keys.contains("StartTime") {
+                self.startTime = dict["StartTime"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("TotalNeedUpdateCapacity") {
+                self.totalNeedUpdateCapacity = dict["TotalNeedUpdateCapacity"] as! Int32
+            }
+        }
+    }
+    public var instanceRefreshTasks: [DescribeInstanceRefreshesResponseBody.InstanceRefreshTasks]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceRefreshTasks != nil {
+            var tmp : [Any] = []
+            for k in self.instanceRefreshTasks! {
+                tmp.append(k.toMap())
+            }
+            map["InstanceRefreshTasks"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceRefreshTasks") {
+            var tmp : [DescribeInstanceRefreshesResponseBody.InstanceRefreshTasks] = []
+            for v in dict["InstanceRefreshTasks"] as! [Any] {
+                var model = DescribeInstanceRefreshesResponseBody.InstanceRefreshTasks()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.instanceRefreshTasks = tmp
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! Int32
+        }
+    }
+}
+
+public class DescribeInstanceRefreshesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeInstanceRefreshesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeInstanceRefreshesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeLifecycleActionsRequest : Tea.TeaModel {
     public var lifecycleActionStatus: String?
 
@@ -17377,6 +18184,8 @@ public class DescribeRegionsResponse : Tea.TeaModel {
 }
 
 public class DescribeScalingActivitiesRequest : Tea.TeaModel {
+    public var instanceRefreshTaskId: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -17411,6 +18220,9 @@ public class DescribeScalingActivitiesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.instanceRefreshTaskId != nil {
+            map["InstanceRefreshTaskId"] = self.instanceRefreshTaskId!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -17445,6 +18257,9 @@ public class DescribeScalingActivitiesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceRefreshTaskId") {
+            self.instanceRefreshTaskId = dict["InstanceRefreshTaskId"] as! String
+        }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
         }
@@ -17543,6 +18358,8 @@ public class DescribeScalingActivitiesResponseBody : Tea.TeaModel {
 
         public var errorMessage: String?
 
+        public var instanceRefreshTaskId: String?
+
         public var lifecycleHookContext: DescribeScalingActivitiesResponseBody.ScalingActivities.LifecycleHookContext?
 
         public var progress: Int32?
@@ -17626,6 +18443,9 @@ public class DescribeScalingActivitiesResponseBody : Tea.TeaModel {
             }
             if self.errorMessage != nil {
                 map["ErrorMessage"] = self.errorMessage!
+            }
+            if self.instanceRefreshTaskId != nil {
+                map["InstanceRefreshTaskId"] = self.instanceRefreshTaskId!
             }
             if self.lifecycleHookContext != nil {
                 map["LifecycleHookContext"] = self.lifecycleHookContext?.toMap()
@@ -17714,6 +18534,9 @@ public class DescribeScalingActivitiesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ErrorMessage") {
                 self.errorMessage = dict["ErrorMessage"] as! String
+            }
+            if dict.keys.contains("InstanceRefreshTaskId") {
+                self.instanceRefreshTaskId = dict["InstanceRefreshTaskId"] as! String
             }
             if dict.keys.contains("LifecycleHookContext") {
                 var model = DescribeScalingActivitiesResponseBody.ScalingActivities.LifecycleHookContext()
@@ -21110,6 +21933,8 @@ public class DescribeScalingGroupsResponseBody : Tea.TeaModel {
 
         public var spotAllocationStrategy: String?
 
+        public var spotCapacity: Int32?
+
         public var spotInstancePools: Int32?
 
         public var spotInstanceRemedy: Bool?
@@ -21310,6 +22135,9 @@ public class DescribeScalingGroupsResponseBody : Tea.TeaModel {
             }
             if self.spotAllocationStrategy != nil {
                 map["SpotAllocationStrategy"] = self.spotAllocationStrategy!
+            }
+            if self.spotCapacity != nil {
+                map["SpotCapacity"] = self.spotCapacity!
             }
             if self.spotInstancePools != nil {
                 map["SpotInstancePools"] = self.spotInstancePools!
@@ -21542,6 +22370,9 @@ public class DescribeScalingGroupsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SpotAllocationStrategy") {
                 self.spotAllocationStrategy = dict["SpotAllocationStrategy"] as! String
+            }
+            if dict.keys.contains("SpotCapacity") {
+                self.spotCapacity = dict["SpotCapacity"] as! Int32
             }
             if dict.keys.contains("SpotInstancePools") {
                 self.spotInstancePools = dict["SpotInstancePools"] as! Int32
@@ -22483,6 +23314,116 @@ public class DescribeScalingRulesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class HybridMetrics : Tea.TeaModel {
+            public class Dimensions : Tea.TeaModel {
+                public var dimensionKey: String?
+
+                public var dimensionValue: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.dimensionKey != nil {
+                        map["DimensionKey"] = self.dimensionKey!
+                    }
+                    if self.dimensionValue != nil {
+                        map["DimensionValue"] = self.dimensionValue!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("DimensionKey") {
+                        self.dimensionKey = dict["DimensionKey"] as! String
+                    }
+                    if dict.keys.contains("DimensionValue") {
+                        self.dimensionValue = dict["DimensionValue"] as! String
+                    }
+                }
+            }
+            public var dimensions: [DescribeScalingRulesResponseBody.ScalingRules.HybridMetrics.Dimensions]?
+
+            public var expression: String?
+
+            public var id: String?
+
+            public var metricName: String?
+
+            public var statistic: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dimensions != nil {
+                    var tmp : [Any] = []
+                    for k in self.dimensions! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Dimensions"] = tmp
+                }
+                if self.expression != nil {
+                    map["Expression"] = self.expression!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.metricName != nil {
+                    map["MetricName"] = self.metricName!
+                }
+                if self.statistic != nil {
+                    map["Statistic"] = self.statistic!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Dimensions") {
+                    var tmp : [DescribeScalingRulesResponseBody.ScalingRules.HybridMetrics.Dimensions] = []
+                    for v in dict["Dimensions"] as! [Any] {
+                        var model = DescribeScalingRulesResponseBody.ScalingRules.HybridMetrics.Dimensions()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.dimensions = tmp
+                }
+                if dict.keys.contains("Expression") {
+                    self.expression = dict["Expression"] as! String
+                }
+                if dict.keys.contains("Id") {
+                    self.id = dict["Id"] as! String
+                }
+                if dict.keys.contains("MetricName") {
+                    self.metricName = dict["MetricName"] as! String
+                }
+                if dict.keys.contains("Statistic") {
+                    self.statistic = dict["Statistic"] as! String
+                }
+            }
+        }
         public class StepAdjustments : Tea.TeaModel {
             public var metricIntervalLowerBound: Double?
 
@@ -22542,11 +23483,17 @@ public class DescribeScalingRulesResponseBody : Tea.TeaModel {
 
         public var estimatedInstanceWarmup: Int32?
 
+        public var hybridMetrics: [DescribeScalingRulesResponseBody.ScalingRules.HybridMetrics]?
+
+        public var hybridMonitorNamespace: String?
+
         public var initialMaxSize: Int32?
 
         public var maxSize: Int32?
 
         public var metricName: String?
+
+        public var metricType: String?
 
         public var minAdjustmentMagnitude: Int32?
 
@@ -22621,6 +23568,16 @@ public class DescribeScalingRulesResponseBody : Tea.TeaModel {
             if self.estimatedInstanceWarmup != nil {
                 map["EstimatedInstanceWarmup"] = self.estimatedInstanceWarmup!
             }
+            if self.hybridMetrics != nil {
+                var tmp : [Any] = []
+                for k in self.hybridMetrics! {
+                    tmp.append(k.toMap())
+                }
+                map["HybridMetrics"] = tmp
+            }
+            if self.hybridMonitorNamespace != nil {
+                map["HybridMonitorNamespace"] = self.hybridMonitorNamespace!
+            }
             if self.initialMaxSize != nil {
                 map["InitialMaxSize"] = self.initialMaxSize!
             }
@@ -22629,6 +23586,9 @@ public class DescribeScalingRulesResponseBody : Tea.TeaModel {
             }
             if self.metricName != nil {
                 map["MetricName"] = self.metricName!
+            }
+            if self.metricType != nil {
+                map["MetricType"] = self.metricType!
             }
             if self.minAdjustmentMagnitude != nil {
                 map["MinAdjustmentMagnitude"] = self.minAdjustmentMagnitude!
@@ -22720,6 +23680,20 @@ public class DescribeScalingRulesResponseBody : Tea.TeaModel {
             if dict.keys.contains("EstimatedInstanceWarmup") {
                 self.estimatedInstanceWarmup = dict["EstimatedInstanceWarmup"] as! Int32
             }
+            if dict.keys.contains("HybridMetrics") {
+                var tmp : [DescribeScalingRulesResponseBody.ScalingRules.HybridMetrics] = []
+                for v in dict["HybridMetrics"] as! [Any] {
+                    var model = DescribeScalingRulesResponseBody.ScalingRules.HybridMetrics()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.hybridMetrics = tmp
+            }
+            if dict.keys.contains("HybridMonitorNamespace") {
+                self.hybridMonitorNamespace = dict["HybridMonitorNamespace"] as! String
+            }
             if dict.keys.contains("InitialMaxSize") {
                 self.initialMaxSize = dict["InitialMaxSize"] as! Int32
             }
@@ -22728,6 +23702,9 @@ public class DescribeScalingRulesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("MetricName") {
                 self.metricName = dict["MetricName"] as! String
+            }
+            if dict.keys.contains("MetricType") {
+                self.metricType = dict["MetricType"] as! String
             }
             if dict.keys.contains("MinAdjustmentMagnitude") {
                 self.minAdjustmentMagnitude = dict["MinAdjustmentMagnitude"] as! Int32
@@ -32938,6 +33915,116 @@ public class ModifyScalingRuleRequest : Tea.TeaModel {
             }
         }
     }
+    public class HybridMetrics : Tea.TeaModel {
+        public class Dimensions : Tea.TeaModel {
+            public var dimensionKey: String?
+
+            public var dimensionValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dimensionKey != nil {
+                    map["DimensionKey"] = self.dimensionKey!
+                }
+                if self.dimensionValue != nil {
+                    map["DimensionValue"] = self.dimensionValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DimensionKey") {
+                    self.dimensionKey = dict["DimensionKey"] as! String
+                }
+                if dict.keys.contains("DimensionValue") {
+                    self.dimensionValue = dict["DimensionValue"] as! String
+                }
+            }
+        }
+        public var dimensions: [ModifyScalingRuleRequest.HybridMetrics.Dimensions]?
+
+        public var expression: String?
+
+        public var id: String?
+
+        public var metricName: String?
+
+        public var statistic: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dimensions != nil {
+                var tmp : [Any] = []
+                for k in self.dimensions! {
+                    tmp.append(k.toMap())
+                }
+                map["Dimensions"] = tmp
+            }
+            if self.expression != nil {
+                map["Expression"] = self.expression!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.metricName != nil {
+                map["MetricName"] = self.metricName!
+            }
+            if self.statistic != nil {
+                map["Statistic"] = self.statistic!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Dimensions") {
+                var tmp : [ModifyScalingRuleRequest.HybridMetrics.Dimensions] = []
+                for v in dict["Dimensions"] as! [Any] {
+                    var model = ModifyScalingRuleRequest.HybridMetrics.Dimensions()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.dimensions = tmp
+            }
+            if dict.keys.contains("Expression") {
+                self.expression = dict["Expression"] as! String
+            }
+            if dict.keys.contains("Id") {
+                self.id = dict["Id"] as! String
+            }
+            if dict.keys.contains("MetricName") {
+                self.metricName = dict["MetricName"] as! String
+            }
+            if dict.keys.contains("Statistic") {
+                self.statistic = dict["Statistic"] as! String
+            }
+        }
+    }
     public class StepAdjustments : Tea.TeaModel {
         public var metricIntervalLowerBound: Double?
 
@@ -32995,9 +34082,15 @@ public class ModifyScalingRuleRequest : Tea.TeaModel {
 
     public var estimatedInstanceWarmup: Int32?
 
+    public var hybridMetrics: [ModifyScalingRuleRequest.HybridMetrics]?
+
+    public var hybridMonitorNamespace: String?
+
     public var initialMaxSize: Int32?
 
     public var metricName: String?
+
+    public var metricType: String?
 
     public var minAdjustmentMagnitude: Int32?
 
@@ -33065,11 +34158,24 @@ public class ModifyScalingRuleRequest : Tea.TeaModel {
         if self.estimatedInstanceWarmup != nil {
             map["EstimatedInstanceWarmup"] = self.estimatedInstanceWarmup!
         }
+        if self.hybridMetrics != nil {
+            var tmp : [Any] = []
+            for k in self.hybridMetrics! {
+                tmp.append(k.toMap())
+            }
+            map["HybridMetrics"] = tmp
+        }
+        if self.hybridMonitorNamespace != nil {
+            map["HybridMonitorNamespace"] = self.hybridMonitorNamespace!
+        }
         if self.initialMaxSize != nil {
             map["InitialMaxSize"] = self.initialMaxSize!
         }
         if self.metricName != nil {
             map["MetricName"] = self.metricName!
+        }
+        if self.metricType != nil {
+            map["MetricType"] = self.metricType!
         }
         if self.minAdjustmentMagnitude != nil {
             map["MinAdjustmentMagnitude"] = self.minAdjustmentMagnitude!
@@ -33150,11 +34256,28 @@ public class ModifyScalingRuleRequest : Tea.TeaModel {
         if dict.keys.contains("EstimatedInstanceWarmup") {
             self.estimatedInstanceWarmup = dict["EstimatedInstanceWarmup"] as! Int32
         }
+        if dict.keys.contains("HybridMetrics") {
+            var tmp : [ModifyScalingRuleRequest.HybridMetrics] = []
+            for v in dict["HybridMetrics"] as! [Any] {
+                var model = ModifyScalingRuleRequest.HybridMetrics()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.hybridMetrics = tmp
+        }
+        if dict.keys.contains("HybridMonitorNamespace") {
+            self.hybridMonitorNamespace = dict["HybridMonitorNamespace"] as! String
+        }
         if dict.keys.contains("InitialMaxSize") {
             self.initialMaxSize = dict["InitialMaxSize"] as! Int32
         }
         if dict.keys.contains("MetricName") {
             self.metricName = dict["MetricName"] as! String
+        }
+        if dict.keys.contains("MetricType") {
+            self.metricType = dict["MetricType"] as! String
         }
         if dict.keys.contains("MinAdjustmentMagnitude") {
             self.minAdjustmentMagnitude = dict["MinAdjustmentMagnitude"] as! Int32
@@ -34047,6 +35170,147 @@ public class RemoveInstancesResponse : Tea.TeaModel {
     }
 }
 
+public class ResumeInstanceRefreshRequest : Tea.TeaModel {
+    public var instanceRefreshTaskId: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var scalingGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceRefreshTaskId != nil {
+            map["InstanceRefreshTaskId"] = self.instanceRefreshTaskId!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.scalingGroupId != nil {
+            map["ScalingGroupId"] = self.scalingGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceRefreshTaskId") {
+            self.instanceRefreshTaskId = dict["InstanceRefreshTaskId"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ScalingGroupId") {
+            self.scalingGroupId = dict["ScalingGroupId"] as! String
+        }
+    }
+}
+
+public class ResumeInstanceRefreshResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ResumeInstanceRefreshResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ResumeInstanceRefreshResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ResumeInstanceRefreshResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ResumeProcessesRequest : Tea.TeaModel {
     public var clientToken: String?
 
@@ -34190,6 +35454,147 @@ public class ResumeProcessesResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ResumeProcessesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class RollbackInstanceRefreshRequest : Tea.TeaModel {
+    public var instanceRefreshTaskId: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var scalingGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceRefreshTaskId != nil {
+            map["InstanceRefreshTaskId"] = self.instanceRefreshTaskId!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.scalingGroupId != nil {
+            map["ScalingGroupId"] = self.scalingGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceRefreshTaskId") {
+            self.instanceRefreshTaskId = dict["InstanceRefreshTaskId"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ScalingGroupId") {
+            self.scalingGroupId = dict["ScalingGroupId"] as! String
+        }
+    }
+}
+
+public class RollbackInstanceRefreshResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class RollbackInstanceRefreshResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RollbackInstanceRefreshResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = RollbackInstanceRefreshResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -35138,6 +36543,360 @@ public class SetInstancesProtectionResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = SetInstancesProtectionResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class StartInstanceRefreshRequest : Tea.TeaModel {
+    public class DesiredConfiguration : Tea.TeaModel {
+        public var imageId: String?
+
+        public var scalingConfigurationId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.imageId != nil {
+                map["ImageId"] = self.imageId!
+            }
+            if self.scalingConfigurationId != nil {
+                map["ScalingConfigurationId"] = self.scalingConfigurationId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ImageId") {
+                self.imageId = dict["ImageId"] as! String
+            }
+            if dict.keys.contains("ScalingConfigurationId") {
+                self.scalingConfigurationId = dict["ScalingConfigurationId"] as! String
+            }
+        }
+    }
+    public var clientToken: String?
+
+    public var desiredConfiguration: StartInstanceRefreshRequest.DesiredConfiguration?
+
+    public var maxHealthyPercentage: Int32?
+
+    public var minHealthyPercentage: Int32?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var scalingGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.desiredConfiguration?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.desiredConfiguration != nil {
+            map["DesiredConfiguration"] = self.desiredConfiguration?.toMap()
+        }
+        if self.maxHealthyPercentage != nil {
+            map["MaxHealthyPercentage"] = self.maxHealthyPercentage!
+        }
+        if self.minHealthyPercentage != nil {
+            map["MinHealthyPercentage"] = self.minHealthyPercentage!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.scalingGroupId != nil {
+            map["ScalingGroupId"] = self.scalingGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DesiredConfiguration") {
+            var model = StartInstanceRefreshRequest.DesiredConfiguration()
+            model.fromMap(dict["DesiredConfiguration"] as! [String: Any])
+            self.desiredConfiguration = model
+        }
+        if dict.keys.contains("MaxHealthyPercentage") {
+            self.maxHealthyPercentage = dict["MaxHealthyPercentage"] as! Int32
+        }
+        if dict.keys.contains("MinHealthyPercentage") {
+            self.minHealthyPercentage = dict["MinHealthyPercentage"] as! Int32
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ScalingGroupId") {
+            self.scalingGroupId = dict["ScalingGroupId"] as! String
+        }
+    }
+}
+
+public class StartInstanceRefreshResponseBody : Tea.TeaModel {
+    public var instanceRefreshTaskId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceRefreshTaskId != nil {
+            map["InstanceRefreshTaskId"] = self.instanceRefreshTaskId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceRefreshTaskId") {
+            self.instanceRefreshTaskId = dict["InstanceRefreshTaskId"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class StartInstanceRefreshResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: StartInstanceRefreshResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = StartInstanceRefreshResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class SuspendInstanceRefreshRequest : Tea.TeaModel {
+    public var instanceRefreshTaskId: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var scalingGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceRefreshTaskId != nil {
+            map["InstanceRefreshTaskId"] = self.instanceRefreshTaskId!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.scalingGroupId != nil {
+            map["ScalingGroupId"] = self.scalingGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceRefreshTaskId") {
+            self.instanceRefreshTaskId = dict["InstanceRefreshTaskId"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ScalingGroupId") {
+            self.scalingGroupId = dict["ScalingGroupId"] as! String
+        }
+    }
+}
+
+public class SuspendInstanceRefreshResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class SuspendInstanceRefreshResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SuspendInstanceRefreshResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = SuspendInstanceRefreshResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
