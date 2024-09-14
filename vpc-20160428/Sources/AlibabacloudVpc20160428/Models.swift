@@ -84429,6 +84429,8 @@ public class ListVpcPublishedRouteEntriesResponseBody : Tea.TeaModel {
         public class RoutePublishTargets : Tea.TeaModel {
             public var publishStatus: String?
 
+            public var publishTargetInstanceId: String?
+
             public var publishTargetType: String?
 
             public override init() {
@@ -84448,6 +84450,9 @@ public class ListVpcPublishedRouteEntriesResponseBody : Tea.TeaModel {
                 if self.publishStatus != nil {
                     map["PublishStatus"] = self.publishStatus!
                 }
+                if self.publishTargetInstanceId != nil {
+                    map["PublishTargetInstanceId"] = self.publishTargetInstanceId!
+                }
                 if self.publishTargetType != nil {
                     map["PublishTargetType"] = self.publishTargetType!
                 }
@@ -84457,6 +84462,9 @@ public class ListVpcPublishedRouteEntriesResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("PublishStatus") {
                     self.publishStatus = dict["PublishStatus"] as! String
+                }
+                if dict.keys.contains("PublishTargetInstanceId") {
+                    self.publishTargetInstanceId = dict["PublishTargetInstanceId"] as! String
                 }
                 if dict.keys.contains("PublishTargetType") {
                     self.publishTargetType = dict["PublishTargetType"] as! String
