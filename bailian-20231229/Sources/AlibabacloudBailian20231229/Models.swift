@@ -1359,11 +1359,114 @@ public class CreateIndexRequest : Tea.TeaModel {
             }
         }
     }
+    public class DataSource : Tea.TeaModel {
+        public var credentialId: String?
+
+        public var credentialKey: String?
+
+        public var database: String?
+
+        public var endpoint: String?
+
+        public var isPrivateLink: Bool?
+
+        public var region: String?
+
+        public var subPath: String?
+
+        public var subType: String?
+
+        public var table: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.credentialId != nil {
+                map["CredentialId"] = self.credentialId!
+            }
+            if self.credentialKey != nil {
+                map["CredentialKey"] = self.credentialKey!
+            }
+            if self.database != nil {
+                map["Database"] = self.database!
+            }
+            if self.endpoint != nil {
+                map["Endpoint"] = self.endpoint!
+            }
+            if self.isPrivateLink != nil {
+                map["IsPrivateLink"] = self.isPrivateLink!
+            }
+            if self.region != nil {
+                map["Region"] = self.region!
+            }
+            if self.subPath != nil {
+                map["SubPath"] = self.subPath!
+            }
+            if self.subType != nil {
+                map["SubType"] = self.subType!
+            }
+            if self.table != nil {
+                map["Table"] = self.table!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CredentialId") {
+                self.credentialId = dict["CredentialId"] as! String
+            }
+            if dict.keys.contains("CredentialKey") {
+                self.credentialKey = dict["CredentialKey"] as! String
+            }
+            if dict.keys.contains("Database") {
+                self.database = dict["Database"] as! String
+            }
+            if dict.keys.contains("Endpoint") {
+                self.endpoint = dict["Endpoint"] as! String
+            }
+            if dict.keys.contains("IsPrivateLink") {
+                self.isPrivateLink = dict["IsPrivateLink"] as! Bool
+            }
+            if dict.keys.contains("Region") {
+                self.region = dict["Region"] as! String
+            }
+            if dict.keys.contains("SubPath") {
+                self.subPath = dict["SubPath"] as! String
+            }
+            if dict.keys.contains("SubType") {
+                self.subType = dict["SubType"] as! String
+            }
+            if dict.keys.contains("Table") {
+                self.table = dict["Table"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+        }
+    }
     public var categoryIds: [String]?
 
     public var chunkSize: Int32?
 
     public var columns: [CreateIndexRequest.Columns]?
+
+    public var dataSource: CreateIndexRequest.DataSource?
 
     public var description_: String?
 
@@ -1401,6 +1504,7 @@ public class CreateIndexRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.dataSource?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -1417,6 +1521,9 @@ public class CreateIndexRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Columns"] = tmp
+        }
+        if self.dataSource != nil {
+            map["DataSource"] = self.dataSource?.toMap()
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
@@ -1478,6 +1585,11 @@ public class CreateIndexRequest : Tea.TeaModel {
             }
             self.columns = tmp
         }
+        if dict.keys.contains("DataSource") {
+            var model = CreateIndexRequest.DataSource()
+            model.fromMap(dict["DataSource"] as! [String: Any])
+            self.dataSource = model
+        }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
         }
@@ -1527,6 +1639,8 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
 
     public var columnsShrink: String?
 
+    public var dataSourceShrink: String?
+
     public var description_: String?
 
     public var documentIdsShrink: String?
@@ -1575,6 +1689,9 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         }
         if self.columnsShrink != nil {
             map["Columns"] = self.columnsShrink!
+        }
+        if self.dataSourceShrink != nil {
+            map["DataSource"] = self.dataSourceShrink!
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
@@ -1627,6 +1744,9 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Columns") {
             self.columnsShrink = dict["Columns"] as! String
+        }
+        if dict.keys.contains("DataSource") {
+            self.dataSourceShrink = dict["DataSource"] as! String
         }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
@@ -7073,6 +7193,8 @@ public class RetrieveRequest : Tea.TeaModel {
 
     public var enableRewrite: Bool?
 
+    public var images: [String]?
+
     public var indexId: String?
 
     public var query: String?
@@ -7113,6 +7235,9 @@ public class RetrieveRequest : Tea.TeaModel {
         }
         if self.enableRewrite != nil {
             map["EnableRewrite"] = self.enableRewrite!
+        }
+        if self.images != nil {
+            map["Images"] = self.images!
         }
         if self.indexId != nil {
             map["IndexId"] = self.indexId!
@@ -7161,6 +7286,9 @@ public class RetrieveRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EnableRewrite") {
             self.enableRewrite = dict["EnableRewrite"] as! Bool
+        }
+        if dict.keys.contains("Images") {
+            self.images = dict["Images"] as! [String]
         }
         if dict.keys.contains("IndexId") {
             self.indexId = dict["IndexId"] as! String
@@ -7215,6 +7343,8 @@ public class RetrieveShrinkRequest : Tea.TeaModel {
 
     public var enableRewrite: Bool?
 
+    public var imagesShrink: String?
+
     public var indexId: String?
 
     public var query: String?
@@ -7256,6 +7386,9 @@ public class RetrieveShrinkRequest : Tea.TeaModel {
         if self.enableRewrite != nil {
             map["EnableRewrite"] = self.enableRewrite!
         }
+        if self.imagesShrink != nil {
+            map["Images"] = self.imagesShrink!
+        }
         if self.indexId != nil {
             map["IndexId"] = self.indexId!
         }
@@ -7295,6 +7428,9 @@ public class RetrieveShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EnableRewrite") {
             self.enableRewrite = dict["EnableRewrite"] as! Bool
+        }
+        if dict.keys.contains("Images") {
+            self.imagesShrink = dict["Images"] as! String
         }
         if dict.keys.contains("IndexId") {
             self.indexId = dict["IndexId"] as! String

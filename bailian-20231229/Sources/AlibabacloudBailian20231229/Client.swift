@@ -198,6 +198,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.columns)) {
             request.columnsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.columns, "Columns", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.dataSource)) {
+            request.dataSourceShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dataSource, "DataSource", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.documentIds)) {
             request.documentIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.documentIds, "DocumentIds", "json")
         }
@@ -210,6 +213,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.columnsShrink)) {
             query["Columns"] = request.columnsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dataSourceShrink)) {
+            query["DataSource"] = request.dataSourceShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
@@ -1024,6 +1030,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: RetrieveShrinkRequest = RetrieveShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.images)) {
+            request.imagesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.images, "Images", "simple")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.rerank)) {
             request.rerankShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.rerank, "Rerank", "json")
         }
@@ -1042,6 +1051,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.enableRewrite)) {
             query["EnableRewrite"] = request.enableRewrite!;
+        }
+        if (!TeaUtils.Client.isUnset(request.imagesShrink)) {
+            query["Images"] = request.imagesShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.indexId)) {
             query["IndexId"] = request.indexId ?? "";
