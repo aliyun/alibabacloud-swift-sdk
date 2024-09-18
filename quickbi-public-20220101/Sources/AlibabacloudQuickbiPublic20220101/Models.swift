@@ -13024,6 +13024,8 @@ public class QueryDatasetInfoResponseBody : Tea.TeaModel {
 
             public var factColumn: String?
 
+            public var fieldDescription: String?
+
             public var granularity: String?
 
             public var refUid: String?
@@ -13061,6 +13063,9 @@ public class QueryDatasetInfoResponseBody : Tea.TeaModel {
                 if self.factColumn != nil {
                     map["FactColumn"] = self.factColumn!
                 }
+                if self.fieldDescription != nil {
+                    map["FieldDescription"] = self.fieldDescription!
+                }
                 if self.granularity != nil {
                     map["Granularity"] = self.granularity!
                 }
@@ -13091,6 +13096,9 @@ public class QueryDatasetInfoResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("FactColumn") {
                     self.factColumn = dict["FactColumn"] as! String
+                }
+                if dict.keys.contains("FieldDescription") {
+                    self.fieldDescription = dict["FieldDescription"] as! String
                 }
                 if dict.keys.contains("Granularity") {
                     self.granularity = dict["Granularity"] as! String
@@ -13168,6 +13176,8 @@ public class QueryDatasetInfoResponseBody : Tea.TeaModel {
 
             public var factColumn: String?
 
+            public var fieldDescription: String?
+
             public var measureType: String?
 
             public var tableUniqueId: String?
@@ -13200,6 +13210,9 @@ public class QueryDatasetInfoResponseBody : Tea.TeaModel {
                 if self.factColumn != nil {
                     map["FactColumn"] = self.factColumn!
                 }
+                if self.fieldDescription != nil {
+                    map["FieldDescription"] = self.fieldDescription!
+                }
                 if self.measureType != nil {
                     map["MeasureType"] = self.measureType!
                 }
@@ -13224,6 +13237,9 @@ public class QueryDatasetInfoResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("FactColumn") {
                     self.factColumn = dict["FactColumn"] as! String
+                }
+                if dict.keys.contains("FieldDescription") {
+                    self.fieldDescription = dict["FieldDescription"] as! String
                 }
                 if dict.keys.contains("MeasureType") {
                     self.measureType = dict["MeasureType"] as! String
