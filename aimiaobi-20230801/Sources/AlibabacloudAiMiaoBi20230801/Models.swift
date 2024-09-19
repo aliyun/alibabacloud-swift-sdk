@@ -8663,15 +8663,25 @@ public class GetTopicSelectionPerspectiveAnalysisTaskResponseBody : Tea.TeaModel
         public class HotViewPointsResult : Tea.TeaModel {
             public class Attitudes : Tea.TeaModel {
                 public class News : Tea.TeaModel {
+                    public var content: String?
+
                     public var docId: String?
 
                     public var docUuid: String?
 
                     public var imageUrls: [String]?
 
+                    public var source: String?
+
+                    public var summary: String?
+
                     public var tags: [String]?
 
+                    public var title: String?
+
                     public var topic: String?
+
+                    public var url: String?
 
                     public override init() {
                         super.init()
@@ -8687,6 +8697,9 @@ public class GetTopicSelectionPerspectiveAnalysisTaskResponseBody : Tea.TeaModel
 
                     public override func toMap() -> [String : Any] {
                         var map = super.toMap()
+                        if self.content != nil {
+                            map["Content"] = self.content!
+                        }
                         if self.docId != nil {
                             map["DocId"] = self.docId!
                         }
@@ -8696,16 +8709,31 @@ public class GetTopicSelectionPerspectiveAnalysisTaskResponseBody : Tea.TeaModel
                         if self.imageUrls != nil {
                             map["ImageUrls"] = self.imageUrls!
                         }
+                        if self.source != nil {
+                            map["Source"] = self.source!
+                        }
+                        if self.summary != nil {
+                            map["Summary"] = self.summary!
+                        }
                         if self.tags != nil {
                             map["Tags"] = self.tags!
                         }
+                        if self.title != nil {
+                            map["Title"] = self.title!
+                        }
                         if self.topic != nil {
                             map["Topic"] = self.topic!
+                        }
+                        if self.url != nil {
+                            map["Url"] = self.url!
                         }
                         return map
                     }
 
                     public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Content") {
+                            self.content = dict["Content"] as! String
+                        }
                         if dict.keys.contains("DocId") {
                             self.docId = dict["DocId"] as! String
                         }
@@ -8715,11 +8743,23 @@ public class GetTopicSelectionPerspectiveAnalysisTaskResponseBody : Tea.TeaModel
                         if dict.keys.contains("ImageUrls") {
                             self.imageUrls = dict["ImageUrls"] as! [String]
                         }
+                        if dict.keys.contains("Source") {
+                            self.source = dict["Source"] as! String
+                        }
+                        if dict.keys.contains("Summary") {
+                            self.summary = dict["Summary"] as! String
+                        }
                         if dict.keys.contains("Tags") {
                             self.tags = dict["Tags"] as! [String]
                         }
+                        if dict.keys.contains("Title") {
+                            self.title = dict["Title"] as! String
+                        }
                         if dict.keys.contains("Topic") {
                             self.topic = dict["Topic"] as! String
+                        }
+                        if dict.keys.contains("Url") {
+                            self.url = dict["Url"] as! String
                         }
                     }
                 }
