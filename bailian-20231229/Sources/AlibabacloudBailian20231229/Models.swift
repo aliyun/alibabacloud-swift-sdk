@@ -217,6 +217,8 @@ public class AddFileRequest : Tea.TeaModel {
 
     public var parser: String?
 
+    public var tags: [String]?
+
     public override init() {
         super.init()
     }
@@ -240,6 +242,9 @@ public class AddFileRequest : Tea.TeaModel {
         if self.parser != nil {
             map["Parser"] = self.parser!
         }
+        if self.tags != nil {
+            map["Tags"] = self.tags!
+        }
         return map
     }
 
@@ -252,6 +257,63 @@ public class AddFileRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Parser") {
             self.parser = dict["Parser"] as! String
+        }
+        if dict.keys.contains("Tags") {
+            self.tags = dict["Tags"] as! [String]
+        }
+    }
+}
+
+public class AddFileShrinkRequest : Tea.TeaModel {
+    public var categoryId: String?
+
+    public var leaseId: String?
+
+    public var parser: String?
+
+    public var tagsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.categoryId != nil {
+            map["CategoryId"] = self.categoryId!
+        }
+        if self.leaseId != nil {
+            map["LeaseId"] = self.leaseId!
+        }
+        if self.parser != nil {
+            map["Parser"] = self.parser!
+        }
+        if self.tagsShrink != nil {
+            map["Tags"] = self.tagsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CategoryId") {
+            self.categoryId = dict["CategoryId"] as! String
+        }
+        if dict.keys.contains("LeaseId") {
+            self.leaseId = dict["LeaseId"] as! String
+        }
+        if dict.keys.contains("Parser") {
+            self.parser = dict["Parser"] as! String
+        }
+        if dict.keys.contains("Tags") {
+            self.tagsShrink = dict["Tags"] as! String
         }
     }
 }
@@ -3140,6 +3202,8 @@ public class DescribeFileResponseBody : Tea.TeaModel {
 
         public var status: String?
 
+        public var tags: [String]?
+
         public override init() {
             super.init()
         }
@@ -3178,6 +3242,9 @@ public class DescribeFileResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.tags != nil {
+                map["Tags"] = self.tags!
+            }
             return map
         }
 
@@ -3205,6 +3272,9 @@ public class DescribeFileResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("Tags") {
+                self.tags = dict["Tags"] as! [String]
             }
         }
     }
@@ -5067,6 +5137,8 @@ public class ListFileResponseBody : Tea.TeaModel {
 
             public var status: String?
 
+            public var tags: [String]?
+
             public override init() {
                 super.init()
             }
@@ -5105,6 +5177,9 @@ public class ListFileResponseBody : Tea.TeaModel {
                 if self.status != nil {
                     map["Status"] = self.status!
                 }
+                if self.tags != nil {
+                    map["Tags"] = self.tags!
+                }
                 return map
             }
 
@@ -5132,6 +5207,9 @@ public class ListFileResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Status") {
                     self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("Tags") {
+                    self.tags = dict["Tags"] as! [String]
                 }
             }
         }
