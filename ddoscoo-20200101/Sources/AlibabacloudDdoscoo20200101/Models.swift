@@ -270,8 +270,6 @@ public class AssociateWebCertRequest : Tea.TeaModel {
 
     public var key: String?
 
-    public var resourceGroupId: String?
-
     public override init() {
         super.init()
     }
@@ -307,9 +305,6 @@ public class AssociateWebCertRequest : Tea.TeaModel {
         if self.key != nil {
             map["Key"] = self.key!
         }
-        if self.resourceGroupId != nil {
-            map["ResourceGroupId"] = self.resourceGroupId!
-        }
         return map
     }
 
@@ -334,9 +329,6 @@ public class AssociateWebCertRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Key") {
             self.key = dict["Key"] as! String
-        }
-        if dict.keys.contains("ResourceGroupId") {
-            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
     }
 }
@@ -15167,6 +15159,8 @@ public class DescribeL7RsPolicyResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var rsAttrRwTimeoutMax: Int64?
+
     public var upstreamRetry: Int32?
 
     public override init() {
@@ -15196,6 +15190,9 @@ public class DescribeL7RsPolicyResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.rsAttrRwTimeoutMax != nil {
+            map["RsAttrRwTimeoutMax"] = self.rsAttrRwTimeoutMax!
+        }
         if self.upstreamRetry != nil {
             map["UpstreamRetry"] = self.upstreamRetry!
         }
@@ -15219,6 +15216,9 @@ public class DescribeL7RsPolicyResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("RsAttrRwTimeoutMax") {
+            self.rsAttrRwTimeoutMax = dict["RsAttrRwTimeoutMax"] as! Int64
         }
         if dict.keys.contains("UpstreamRetry") {
             self.upstreamRetry = dict["UpstreamRetry"] as! Int32
@@ -25696,6 +25696,8 @@ public class DescribeWebRulesResponseBody : Tea.TeaModel {
 
         public var sslProtocols: String?
 
+        public var userCertName: String?
+
         public var whiteList: [String]?
 
         public override init() {
@@ -25790,6 +25792,9 @@ public class DescribeWebRulesResponseBody : Tea.TeaModel {
             if self.sslProtocols != nil {
                 map["SslProtocols"] = self.sslProtocols!
             }
+            if self.userCertName != nil {
+                map["UserCertName"] = self.userCertName!
+            }
             if self.whiteList != nil {
                 map["WhiteList"] = self.whiteList!
             }
@@ -25883,6 +25888,9 @@ public class DescribeWebRulesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SslProtocols") {
                 self.sslProtocols = dict["SslProtocols"] as! String
+            }
+            if dict.keys.contains("UserCertName") {
+                self.userCertName = dict["UserCertName"] as! String
             }
             if dict.keys.contains("WhiteList") {
                 self.whiteList = dict["WhiteList"] as! [String]
