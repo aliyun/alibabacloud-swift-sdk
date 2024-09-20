@@ -1075,6 +1075,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.airLegs)) {
             request.airLegsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.airLegs, "air_legs", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.searchControlOptions)) {
+            request.searchControlOptionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.searchControlOptions, "search_control_options", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.adults)) {
             body["adults"] = request.adults!;
@@ -1090,6 +1093,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.infants)) {
             body["infants"] = request.infants!;
+        }
+        if (!TeaUtils.Client.isUnset(request.searchControlOptionsShrink)) {
+            body["search_control_options"] = request.searchControlOptionsShrink ?? "";
         }
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
