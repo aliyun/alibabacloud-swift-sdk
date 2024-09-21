@@ -987,6 +987,820 @@ public class OrgEmission : Tea.TeaModel {
     }
 }
 
+public class BatchSaveInstructionStatusRequest : Tea.TeaModel {
+    public var factoryId: String?
+
+    public var pKey: String?
+
+    public var statusList: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.factoryId != nil {
+            map["factoryId"] = self.factoryId!
+        }
+        if self.pKey != nil {
+            map["pKey"] = self.pKey!
+        }
+        if self.statusList != nil {
+            map["statusList"] = self.statusList!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("factoryId") {
+            self.factoryId = dict["factoryId"] as! String
+        }
+        if dict.keys.contains("pKey") {
+            self.pKey = dict["pKey"] as! String
+        }
+        if dict.keys.contains("statusList") {
+            self.statusList = dict["statusList"] as! String
+        }
+    }
+}
+
+public class BatchSaveInstructionStatusResponseBody : Tea.TeaModel {
+    public var data: Bool?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("data") {
+            self.data = dict["data"] as! Bool
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+    }
+}
+
+public class BatchSaveInstructionStatusResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BatchSaveInstructionStatusResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = BatchSaveInstructionStatusResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class BatchUpdateSystemRunningPlanRequest : Tea.TeaModel {
+    public var controlType: Int32?
+
+    public var dateType: Int32?
+
+    public var earliestStartupTime: String?
+
+    public var endTime: String?
+
+    public var factoryId: String?
+
+    public var latestShutdownTime: String?
+
+    public var maxCarbonDioxide: Double?
+
+    public var maxTem: Double?
+
+    public var minTem: Double?
+
+    public var seasonMode: Int32?
+
+    public var startTime: String?
+
+    public var systemId: String?
+
+    public var workingEndTime: String?
+
+    public var workingStartTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.controlType != nil {
+            map["controlType"] = self.controlType!
+        }
+        if self.dateType != nil {
+            map["dateType"] = self.dateType!
+        }
+        if self.earliestStartupTime != nil {
+            map["earliestStartupTime"] = self.earliestStartupTime!
+        }
+        if self.endTime != nil {
+            map["endTime"] = self.endTime!
+        }
+        if self.factoryId != nil {
+            map["factoryId"] = self.factoryId!
+        }
+        if self.latestShutdownTime != nil {
+            map["latestShutdownTime"] = self.latestShutdownTime!
+        }
+        if self.maxCarbonDioxide != nil {
+            map["maxCarbonDioxide"] = self.maxCarbonDioxide!
+        }
+        if self.maxTem != nil {
+            map["maxTem"] = self.maxTem!
+        }
+        if self.minTem != nil {
+            map["minTem"] = self.minTem!
+        }
+        if self.seasonMode != nil {
+            map["seasonMode"] = self.seasonMode!
+        }
+        if self.startTime != nil {
+            map["startTime"] = self.startTime!
+        }
+        if self.systemId != nil {
+            map["systemId"] = self.systemId!
+        }
+        if self.workingEndTime != nil {
+            map["workingEndTime"] = self.workingEndTime!
+        }
+        if self.workingStartTime != nil {
+            map["workingStartTime"] = self.workingStartTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("controlType") {
+            self.controlType = dict["controlType"] as! Int32
+        }
+        if dict.keys.contains("dateType") {
+            self.dateType = dict["dateType"] as! Int32
+        }
+        if dict.keys.contains("earliestStartupTime") {
+            self.earliestStartupTime = dict["earliestStartupTime"] as! String
+        }
+        if dict.keys.contains("endTime") {
+            self.endTime = dict["endTime"] as! String
+        }
+        if dict.keys.contains("factoryId") {
+            self.factoryId = dict["factoryId"] as! String
+        }
+        if dict.keys.contains("latestShutdownTime") {
+            self.latestShutdownTime = dict["latestShutdownTime"] as! String
+        }
+        if dict.keys.contains("maxCarbonDioxide") {
+            self.maxCarbonDioxide = dict["maxCarbonDioxide"] as! Double
+        }
+        if dict.keys.contains("maxTem") {
+            self.maxTem = dict["maxTem"] as! Double
+        }
+        if dict.keys.contains("minTem") {
+            self.minTem = dict["minTem"] as! Double
+        }
+        if dict.keys.contains("seasonMode") {
+            self.seasonMode = dict["seasonMode"] as! Int32
+        }
+        if dict.keys.contains("startTime") {
+            self.startTime = dict["startTime"] as! String
+        }
+        if dict.keys.contains("systemId") {
+            self.systemId = dict["systemId"] as! String
+        }
+        if dict.keys.contains("workingEndTime") {
+            self.workingEndTime = dict["workingEndTime"] as! String
+        }
+        if dict.keys.contains("workingStartTime") {
+            self.workingStartTime = dict["workingStartTime"] as! String
+        }
+    }
+}
+
+public class BatchUpdateSystemRunningPlanResponseBody : Tea.TeaModel {
+    public var data: Bool?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("data") {
+            self.data = dict["data"] as! Bool
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+    }
+}
+
+public class BatchUpdateSystemRunningPlanResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BatchUpdateSystemRunningPlanResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = BatchUpdateSystemRunningPlanResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class EditProhibitedDevicesRequest : Tea.TeaModel {
+    public class HvacDeviceConfigVOList : Tea.TeaModel {
+        public var buildingId: String?
+
+        public var deviceId: String?
+
+        public var deviceName: String?
+
+        public var deviceType: String?
+
+        public var fenceId: String?
+
+        public var floorId: String?
+
+        public var isForbidden: Int32?
+
+        public var isUnfavorableArea: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.buildingId != nil {
+                map["buildingId"] = self.buildingId!
+            }
+            if self.deviceId != nil {
+                map["deviceId"] = self.deviceId!
+            }
+            if self.deviceName != nil {
+                map["deviceName"] = self.deviceName!
+            }
+            if self.deviceType != nil {
+                map["deviceType"] = self.deviceType!
+            }
+            if self.fenceId != nil {
+                map["fenceId"] = self.fenceId!
+            }
+            if self.floorId != nil {
+                map["floorId"] = self.floorId!
+            }
+            if self.isForbidden != nil {
+                map["isForbidden"] = self.isForbidden!
+            }
+            if self.isUnfavorableArea != nil {
+                map["isUnfavorableArea"] = self.isUnfavorableArea!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("buildingId") {
+                self.buildingId = dict["buildingId"] as! String
+            }
+            if dict.keys.contains("deviceId") {
+                self.deviceId = dict["deviceId"] as! String
+            }
+            if dict.keys.contains("deviceName") {
+                self.deviceName = dict["deviceName"] as! String
+            }
+            if dict.keys.contains("deviceType") {
+                self.deviceType = dict["deviceType"] as! String
+            }
+            if dict.keys.contains("fenceId") {
+                self.fenceId = dict["fenceId"] as! String
+            }
+            if dict.keys.contains("floorId") {
+                self.floorId = dict["floorId"] as! String
+            }
+            if dict.keys.contains("isForbidden") {
+                self.isForbidden = dict["isForbidden"] as! Int32
+            }
+            if dict.keys.contains("isUnfavorableArea") {
+                self.isUnfavorableArea = dict["isUnfavorableArea"] as! Int32
+            }
+        }
+    }
+    public var factoryId: String?
+
+    public var hvacDeviceConfigVOList: [EditProhibitedDevicesRequest.HvacDeviceConfigVOList]?
+
+    public var systemId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.factoryId != nil {
+            map["factoryId"] = self.factoryId!
+        }
+        if self.hvacDeviceConfigVOList != nil {
+            var tmp : [Any] = []
+            for k in self.hvacDeviceConfigVOList! {
+                tmp.append(k.toMap())
+            }
+            map["hvacDeviceConfigVOList"] = tmp
+        }
+        if self.systemId != nil {
+            map["systemId"] = self.systemId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("factoryId") {
+            self.factoryId = dict["factoryId"] as! String
+        }
+        if dict.keys.contains("hvacDeviceConfigVOList") {
+            var tmp : [EditProhibitedDevicesRequest.HvacDeviceConfigVOList] = []
+            for v in dict["hvacDeviceConfigVOList"] as! [Any] {
+                var model = EditProhibitedDevicesRequest.HvacDeviceConfigVOList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.hvacDeviceConfigVOList = tmp
+        }
+        if dict.keys.contains("systemId") {
+            self.systemId = dict["systemId"] as! String
+        }
+    }
+}
+
+public class EditProhibitedDevicesResponseBody : Tea.TeaModel {
+    public var data: Bool?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("data") {
+            self.data = dict["data"] as! Bool
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+    }
+}
+
+public class EditProhibitedDevicesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: EditProhibitedDevicesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = EditProhibitedDevicesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class EditUnfavorableAreaDevicesRequest : Tea.TeaModel {
+    public class HvacDeviceConfigVOList : Tea.TeaModel {
+        public var buildingId: String?
+
+        public var deviceId: String?
+
+        public var deviceName: String?
+
+        public var deviceType: String?
+
+        public var fenceId: String?
+
+        public var floorId: String?
+
+        public var isForbidden: Int32?
+
+        public var isUnfavorableArea: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.buildingId != nil {
+                map["buildingId"] = self.buildingId!
+            }
+            if self.deviceId != nil {
+                map["deviceId"] = self.deviceId!
+            }
+            if self.deviceName != nil {
+                map["deviceName"] = self.deviceName!
+            }
+            if self.deviceType != nil {
+                map["deviceType"] = self.deviceType!
+            }
+            if self.fenceId != nil {
+                map["fenceId"] = self.fenceId!
+            }
+            if self.floorId != nil {
+                map["floorId"] = self.floorId!
+            }
+            if self.isForbidden != nil {
+                map["isForbidden"] = self.isForbidden!
+            }
+            if self.isUnfavorableArea != nil {
+                map["isUnfavorableArea"] = self.isUnfavorableArea!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("buildingId") {
+                self.buildingId = dict["buildingId"] as! String
+            }
+            if dict.keys.contains("deviceId") {
+                self.deviceId = dict["deviceId"] as! String
+            }
+            if dict.keys.contains("deviceName") {
+                self.deviceName = dict["deviceName"] as! String
+            }
+            if dict.keys.contains("deviceType") {
+                self.deviceType = dict["deviceType"] as! String
+            }
+            if dict.keys.contains("fenceId") {
+                self.fenceId = dict["fenceId"] as! String
+            }
+            if dict.keys.contains("floorId") {
+                self.floorId = dict["floorId"] as! String
+            }
+            if dict.keys.contains("isForbidden") {
+                self.isForbidden = dict["isForbidden"] as! Int32
+            }
+            if dict.keys.contains("isUnfavorableArea") {
+                self.isUnfavorableArea = dict["isUnfavorableArea"] as! Int32
+            }
+        }
+    }
+    public var factoryId: String?
+
+    public var hvacDeviceConfigVOList: [EditUnfavorableAreaDevicesRequest.HvacDeviceConfigVOList]?
+
+    public var systemId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.factoryId != nil {
+            map["factoryId"] = self.factoryId!
+        }
+        if self.hvacDeviceConfigVOList != nil {
+            var tmp : [Any] = []
+            for k in self.hvacDeviceConfigVOList! {
+                tmp.append(k.toMap())
+            }
+            map["hvacDeviceConfigVOList"] = tmp
+        }
+        if self.systemId != nil {
+            map["systemId"] = self.systemId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("factoryId") {
+            self.factoryId = dict["factoryId"] as! String
+        }
+        if dict.keys.contains("hvacDeviceConfigVOList") {
+            var tmp : [EditUnfavorableAreaDevicesRequest.HvacDeviceConfigVOList] = []
+            for v in dict["hvacDeviceConfigVOList"] as! [Any] {
+                var model = EditUnfavorableAreaDevicesRequest.HvacDeviceConfigVOList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.hvacDeviceConfigVOList = tmp
+        }
+        if dict.keys.contains("systemId") {
+            self.systemId = dict["systemId"] as! String
+        }
+    }
+}
+
+public class EditUnfavorableAreaDevicesResponseBody : Tea.TeaModel {
+    public var data: Bool?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("data") {
+            self.data = dict["data"] as! Bool
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+    }
+}
+
+public class EditUnfavorableAreaDevicesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: EditUnfavorableAreaDevicesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = EditUnfavorableAreaDevicesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class GenerateResultRequest : Tea.TeaModel {
     public var code: String?
 
@@ -9208,6 +10022,243 @@ public class SendDocumentAskQuestionResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = SendDocumentAskQuestionResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class SetRunningPlanRequest : Tea.TeaModel {
+    public var controlType: Int32?
+
+    public var dateType: Int32?
+
+    public var earliestStartupTime: String?
+
+    public var endTime: String?
+
+    public var factoryId: String?
+
+    public var latestShutdownTime: String?
+
+    public var maxCarbonDioxide: Double?
+
+    public var maxTem: Double?
+
+    public var minTem: Double?
+
+    public var pKey: String?
+
+    public var seasonMode: Int32?
+
+    public var startTime: String?
+
+    public var statisticsTime: String?
+
+    public var systemId: String?
+
+    public var workingEndTime: String?
+
+    public var workingStartTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.controlType != nil {
+            map["controlType"] = self.controlType!
+        }
+        if self.dateType != nil {
+            map["dateType"] = self.dateType!
+        }
+        if self.earliestStartupTime != nil {
+            map["earliestStartupTime"] = self.earliestStartupTime!
+        }
+        if self.endTime != nil {
+            map["endTime"] = self.endTime!
+        }
+        if self.factoryId != nil {
+            map["factoryId"] = self.factoryId!
+        }
+        if self.latestShutdownTime != nil {
+            map["latestShutdownTime"] = self.latestShutdownTime!
+        }
+        if self.maxCarbonDioxide != nil {
+            map["maxCarbonDioxide"] = self.maxCarbonDioxide!
+        }
+        if self.maxTem != nil {
+            map["maxTem"] = self.maxTem!
+        }
+        if self.minTem != nil {
+            map["minTem"] = self.minTem!
+        }
+        if self.pKey != nil {
+            map["pKey"] = self.pKey!
+        }
+        if self.seasonMode != nil {
+            map["seasonMode"] = self.seasonMode!
+        }
+        if self.startTime != nil {
+            map["startTime"] = self.startTime!
+        }
+        if self.statisticsTime != nil {
+            map["statisticsTime"] = self.statisticsTime!
+        }
+        if self.systemId != nil {
+            map["systemId"] = self.systemId!
+        }
+        if self.workingEndTime != nil {
+            map["workingEndTime"] = self.workingEndTime!
+        }
+        if self.workingStartTime != nil {
+            map["workingStartTime"] = self.workingStartTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("controlType") {
+            self.controlType = dict["controlType"] as! Int32
+        }
+        if dict.keys.contains("dateType") {
+            self.dateType = dict["dateType"] as! Int32
+        }
+        if dict.keys.contains("earliestStartupTime") {
+            self.earliestStartupTime = dict["earliestStartupTime"] as! String
+        }
+        if dict.keys.contains("endTime") {
+            self.endTime = dict["endTime"] as! String
+        }
+        if dict.keys.contains("factoryId") {
+            self.factoryId = dict["factoryId"] as! String
+        }
+        if dict.keys.contains("latestShutdownTime") {
+            self.latestShutdownTime = dict["latestShutdownTime"] as! String
+        }
+        if dict.keys.contains("maxCarbonDioxide") {
+            self.maxCarbonDioxide = dict["maxCarbonDioxide"] as! Double
+        }
+        if dict.keys.contains("maxTem") {
+            self.maxTem = dict["maxTem"] as! Double
+        }
+        if dict.keys.contains("minTem") {
+            self.minTem = dict["minTem"] as! Double
+        }
+        if dict.keys.contains("pKey") {
+            self.pKey = dict["pKey"] as! String
+        }
+        if dict.keys.contains("seasonMode") {
+            self.seasonMode = dict["seasonMode"] as! Int32
+        }
+        if dict.keys.contains("startTime") {
+            self.startTime = dict["startTime"] as! String
+        }
+        if dict.keys.contains("statisticsTime") {
+            self.statisticsTime = dict["statisticsTime"] as! String
+        }
+        if dict.keys.contains("systemId") {
+            self.systemId = dict["systemId"] as! String
+        }
+        if dict.keys.contains("workingEndTime") {
+            self.workingEndTime = dict["workingEndTime"] as! String
+        }
+        if dict.keys.contains("workingStartTime") {
+            self.workingStartTime = dict["workingStartTime"] as! String
+        }
+    }
+}
+
+public class SetRunningPlanResponseBody : Tea.TeaModel {
+    public var data: Bool?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("data") {
+            self.data = dict["data"] as! Bool
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+    }
+}
+
+public class SetRunningPlanResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SetRunningPlanResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = SetRunningPlanResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

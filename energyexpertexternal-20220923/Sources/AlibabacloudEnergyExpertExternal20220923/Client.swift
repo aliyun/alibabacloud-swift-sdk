@@ -28,6 +28,195 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchSaveInstructionStatusWithOptions(_ request: BatchSaveInstructionStatusRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchSaveInstructionStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.factoryId)) {
+            body["factoryId"] = request.factoryId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pKey)) {
+            body["pKey"] = request.pKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.statusList)) {
+            body["statusList"] = request.statusList ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchSaveInstructionStatus",
+            "version": "2022-09-23",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/carbon/hvac/batchSaveInstructionStatus",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchSaveInstructionStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchSaveInstructionStatus(_ request: BatchSaveInstructionStatusRequest) async throws -> BatchSaveInstructionStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await batchSaveInstructionStatusWithOptions(request as! BatchSaveInstructionStatusRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchUpdateSystemRunningPlanWithOptions(_ request: BatchUpdateSystemRunningPlanRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchUpdateSystemRunningPlanResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.controlType)) {
+            body["controlType"] = request.controlType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dateType)) {
+            body["dateType"] = request.dateType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.earliestStartupTime)) {
+            body["earliestStartupTime"] = request.earliestStartupTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            body["endTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.factoryId)) {
+            body["factoryId"] = request.factoryId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.latestShutdownTime)) {
+            body["latestShutdownTime"] = request.latestShutdownTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxCarbonDioxide)) {
+            body["maxCarbonDioxide"] = request.maxCarbonDioxide!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxTem)) {
+            body["maxTem"] = request.maxTem!;
+        }
+        if (!TeaUtils.Client.isUnset(request.minTem)) {
+            body["minTem"] = request.minTem!;
+        }
+        if (!TeaUtils.Client.isUnset(request.seasonMode)) {
+            body["seasonMode"] = request.seasonMode!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            body["startTime"] = request.startTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.systemId)) {
+            body["systemId"] = request.systemId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workingEndTime)) {
+            body["workingEndTime"] = request.workingEndTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workingStartTime)) {
+            body["workingStartTime"] = request.workingStartTime ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchUpdateSystemRunningPlan",
+            "version": "2022-09-23",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/carbon/hvac/batchUpdateSystemRunningPlan",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchUpdateSystemRunningPlanResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchUpdateSystemRunningPlan(_ request: BatchUpdateSystemRunningPlanRequest) async throws -> BatchUpdateSystemRunningPlanResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await batchUpdateSystemRunningPlanWithOptions(request as! BatchUpdateSystemRunningPlanRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func editProhibitedDevicesWithOptions(_ request: EditProhibitedDevicesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> EditProhibitedDevicesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.factoryId)) {
+            body["factoryId"] = request.factoryId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.hvacDeviceConfigVOList)) {
+            body["hvacDeviceConfigVOList"] = request.hvacDeviceConfigVOList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.systemId)) {
+            body["systemId"] = request.systemId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "EditProhibitedDevices",
+            "version": "2022-09-23",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/carbon/hvac/editProhibitedDevices",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(EditProhibitedDevicesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func editProhibitedDevices(_ request: EditProhibitedDevicesRequest) async throws -> EditProhibitedDevicesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await editProhibitedDevicesWithOptions(request as! EditProhibitedDevicesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func editUnfavorableAreaDevicesWithOptions(_ request: EditUnfavorableAreaDevicesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> EditUnfavorableAreaDevicesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.factoryId)) {
+            body["factoryId"] = request.factoryId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.hvacDeviceConfigVOList)) {
+            body["hvacDeviceConfigVOList"] = request.hvacDeviceConfigVOList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.systemId)) {
+            body["systemId"] = request.systemId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "EditUnfavorableAreaDevices",
+            "version": "2022-09-23",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/carbon/hvac/editUnfavorableAreaDevices",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(EditUnfavorableAreaDevicesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func editUnfavorableAreaDevices(_ request: EditUnfavorableAreaDevicesRequest) async throws -> EditUnfavorableAreaDevicesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await editUnfavorableAreaDevicesWithOptions(request as! EditUnfavorableAreaDevicesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func generateResultWithOptions(_ request: GenerateResultRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GenerateResultResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1186,6 +1375,84 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await sendDocumentAskQuestionWithOptions(request as! SendDocumentAskQuestionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setRunningPlanWithOptions(_ request: SetRunningPlanRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SetRunningPlanResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.controlType)) {
+            body["controlType"] = request.controlType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dateType)) {
+            body["dateType"] = request.dateType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.earliestStartupTime)) {
+            body["earliestStartupTime"] = request.earliestStartupTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            body["endTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.factoryId)) {
+            body["factoryId"] = request.factoryId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.latestShutdownTime)) {
+            body["latestShutdownTime"] = request.latestShutdownTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxCarbonDioxide)) {
+            body["maxCarbonDioxide"] = request.maxCarbonDioxide!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxTem)) {
+            body["maxTem"] = request.maxTem!;
+        }
+        if (!TeaUtils.Client.isUnset(request.minTem)) {
+            body["minTem"] = request.minTem!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pKey)) {
+            body["pKey"] = request.pKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.seasonMode)) {
+            body["seasonMode"] = request.seasonMode!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            body["startTime"] = request.startTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.statisticsTime)) {
+            body["statisticsTime"] = request.statisticsTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.systemId)) {
+            body["systemId"] = request.systemId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workingEndTime)) {
+            body["workingEndTime"] = request.workingEndTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workingStartTime)) {
+            body["workingStartTime"] = request.workingStartTime ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SetRunningPlan",
+            "version": "2022-09-23",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/carbon/hvac/setRunningPlan",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SetRunningPlanResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setRunningPlan(_ request: SetRunningPlanRequest) async throws -> SetRunningPlanResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await setRunningPlanWithOptions(request as! SetRunningPlanRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
