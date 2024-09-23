@@ -3373,6 +3373,8 @@ public class GetUserCertificateDetailResponseBody : Tea.TeaModel {
 
     public var cert: String?
 
+    public var certIdentifier: String?
+
     public var city: String?
 
     public var common: String?
@@ -3443,6 +3445,9 @@ public class GetUserCertificateDetailResponseBody : Tea.TeaModel {
         }
         if self.cert != nil {
             map["Cert"] = self.cert!
+        }
+        if self.certIdentifier != nil {
+            map["CertIdentifier"] = self.certIdentifier!
         }
         if self.city != nil {
             map["City"] = self.city!
@@ -3528,6 +3533,9 @@ public class GetUserCertificateDetailResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Cert") {
             self.cert = dict["Cert"] as! String
+        }
+        if dict.keys.contains("CertIdentifier") {
+            self.certIdentifier = dict["CertIdentifier"] as! String
         }
         if dict.keys.contains("City") {
             self.city = dict["City"] as! String
