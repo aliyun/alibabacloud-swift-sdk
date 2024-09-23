@@ -10814,6 +10814,581 @@ public class GetClusterResponse : Tea.TeaModel {
     }
 }
 
+public class GetClusterCloneMetaRequest : Tea.TeaModel {
+    public var clusterId: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClusterId") {
+            self.clusterId = dict["ClusterId"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class GetClusterCloneMetaResponseBody : Tea.TeaModel {
+    public class ClusterCloneMeta : Tea.TeaModel {
+        public class ScalingPolicies : Tea.TeaModel {
+            public class Constraints : Tea.TeaModel {
+                public var maxCapacity: Int32?
+
+                public var minCapacity: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.maxCapacity != nil {
+                        map["MaxCapacity"] = self.maxCapacity!
+                    }
+                    if self.minCapacity != nil {
+                        map["MinCapacity"] = self.minCapacity!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("MaxCapacity") {
+                        self.maxCapacity = dict["MaxCapacity"] as! Int32
+                    }
+                    if dict.keys.contains("MinCapacity") {
+                        self.minCapacity = dict["MinCapacity"] as! Int32
+                    }
+                }
+            }
+            public class ScalingRules : Tea.TeaModel {
+                public var activityType: String?
+
+                public var adjustmentValue: Int32?
+
+                public var metricsTrigger: MetricsTrigger?
+
+                public var ruleName: String?
+
+                public var timeTrigger: TimeTrigger?
+
+                public var triggerType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.metricsTrigger?.validate()
+                    try self.timeTrigger?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.activityType != nil {
+                        map["ActivityType"] = self.activityType!
+                    }
+                    if self.adjustmentValue != nil {
+                        map["AdjustmentValue"] = self.adjustmentValue!
+                    }
+                    if self.metricsTrigger != nil {
+                        map["MetricsTrigger"] = self.metricsTrigger?.toMap()
+                    }
+                    if self.ruleName != nil {
+                        map["RuleName"] = self.ruleName!
+                    }
+                    if self.timeTrigger != nil {
+                        map["TimeTrigger"] = self.timeTrigger?.toMap()
+                    }
+                    if self.triggerType != nil {
+                        map["TriggerType"] = self.triggerType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ActivityType") {
+                        self.activityType = dict["ActivityType"] as! String
+                    }
+                    if dict.keys.contains("AdjustmentValue") {
+                        self.adjustmentValue = dict["AdjustmentValue"] as! Int32
+                    }
+                    if dict.keys.contains("MetricsTrigger") {
+                        var model = MetricsTrigger()
+                        model.fromMap(dict["MetricsTrigger"] as! [String: Any])
+                        self.metricsTrigger = model
+                    }
+                    if dict.keys.contains("RuleName") {
+                        self.ruleName = dict["RuleName"] as! String
+                    }
+                    if dict.keys.contains("TimeTrigger") {
+                        var model = TimeTrigger()
+                        model.fromMap(dict["TimeTrigger"] as! [String: Any])
+                        self.timeTrigger = model
+                    }
+                    if dict.keys.contains("TriggerType") {
+                        self.triggerType = dict["TriggerType"] as! String
+                    }
+                }
+            }
+            public var clusterId: String?
+
+            public var constraints: GetClusterCloneMetaResponseBody.ClusterCloneMeta.ScalingPolicies.Constraints?
+
+            public var nodeGroupId: String?
+
+            public var scalingPolicyId: String?
+
+            public var scalingRules: [GetClusterCloneMetaResponseBody.ClusterCloneMeta.ScalingPolicies.ScalingRules]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.constraints?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.clusterId != nil {
+                    map["ClusterId"] = self.clusterId!
+                }
+                if self.constraints != nil {
+                    map["Constraints"] = self.constraints?.toMap()
+                }
+                if self.nodeGroupId != nil {
+                    map["NodeGroupId"] = self.nodeGroupId!
+                }
+                if self.scalingPolicyId != nil {
+                    map["ScalingPolicyId"] = self.scalingPolicyId!
+                }
+                if self.scalingRules != nil {
+                    var tmp : [Any] = []
+                    for k in self.scalingRules! {
+                        tmp.append(k.toMap())
+                    }
+                    map["ScalingRules"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ClusterId") {
+                    self.clusterId = dict["ClusterId"] as! String
+                }
+                if dict.keys.contains("Constraints") {
+                    var model = GetClusterCloneMetaResponseBody.ClusterCloneMeta.ScalingPolicies.Constraints()
+                    model.fromMap(dict["Constraints"] as! [String: Any])
+                    self.constraints = model
+                }
+                if dict.keys.contains("NodeGroupId") {
+                    self.nodeGroupId = dict["NodeGroupId"] as! String
+                }
+                if dict.keys.contains("ScalingPolicyId") {
+                    self.scalingPolicyId = dict["ScalingPolicyId"] as! String
+                }
+                if dict.keys.contains("ScalingRules") {
+                    var tmp : [GetClusterCloneMetaResponseBody.ClusterCloneMeta.ScalingPolicies.ScalingRules] = []
+                    for v in dict["ScalingRules"] as! [Any] {
+                        var model = GetClusterCloneMetaResponseBody.ClusterCloneMeta.ScalingPolicies.ScalingRules()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.scalingRules = tmp
+                }
+            }
+        }
+        public var applicationConfigs: [ApplicationConfig]?
+
+        public var applications: [Application]?
+
+        public var bootstrapScripts: [Script]?
+
+        public var clusterId: String?
+
+        public var clusterName: String?
+
+        public var clusterState: String?
+
+        public var clusterType: String?
+
+        public var deployMode: String?
+
+        public var emrDefaultRole: String?
+
+        public var existCloneConfig: Bool?
+
+        public var nodeAttributes: NodeAttributes?
+
+        public var nodeGroups: [NodeGroup]?
+
+        public var paymentType: String?
+
+        public var regionId: String?
+
+        public var releaseVersion: String?
+
+        public var resourceGroupId: String?
+
+        public var scalingPolicies: [GetClusterCloneMetaResponseBody.ClusterCloneMeta.ScalingPolicies]?
+
+        public var securityMode: String?
+
+        public var subscriptionConfig: SubscriptionConfig?
+
+        public var tags: [Tag]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.nodeAttributes?.validate()
+            try self.subscriptionConfig?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.applicationConfigs != nil {
+                var tmp : [Any] = []
+                for k in self.applicationConfigs! {
+                    tmp.append(k.toMap())
+                }
+                map["ApplicationConfigs"] = tmp
+            }
+            if self.applications != nil {
+                var tmp : [Any] = []
+                for k in self.applications! {
+                    tmp.append(k.toMap())
+                }
+                map["Applications"] = tmp
+            }
+            if self.bootstrapScripts != nil {
+                var tmp : [Any] = []
+                for k in self.bootstrapScripts! {
+                    tmp.append(k.toMap())
+                }
+                map["BootstrapScripts"] = tmp
+            }
+            if self.clusterId != nil {
+                map["ClusterId"] = self.clusterId!
+            }
+            if self.clusterName != nil {
+                map["ClusterName"] = self.clusterName!
+            }
+            if self.clusterState != nil {
+                map["ClusterState"] = self.clusterState!
+            }
+            if self.clusterType != nil {
+                map["ClusterType"] = self.clusterType!
+            }
+            if self.deployMode != nil {
+                map["DeployMode"] = self.deployMode!
+            }
+            if self.emrDefaultRole != nil {
+                map["EmrDefaultRole"] = self.emrDefaultRole!
+            }
+            if self.existCloneConfig != nil {
+                map["ExistCloneConfig"] = self.existCloneConfig!
+            }
+            if self.nodeAttributes != nil {
+                map["NodeAttributes"] = self.nodeAttributes?.toMap()
+            }
+            if self.nodeGroups != nil {
+                var tmp : [Any] = []
+                for k in self.nodeGroups! {
+                    tmp.append(k.toMap())
+                }
+                map["NodeGroups"] = tmp
+            }
+            if self.paymentType != nil {
+                map["PaymentType"] = self.paymentType!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.releaseVersion != nil {
+                map["ReleaseVersion"] = self.releaseVersion!
+            }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
+            if self.scalingPolicies != nil {
+                var tmp : [Any] = []
+                for k in self.scalingPolicies! {
+                    tmp.append(k.toMap())
+                }
+                map["ScalingPolicies"] = tmp
+            }
+            if self.securityMode != nil {
+                map["SecurityMode"] = self.securityMode!
+            }
+            if self.subscriptionConfig != nil {
+                map["SubscriptionConfig"] = self.subscriptionConfig?.toMap()
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ApplicationConfigs") {
+                var tmp : [ApplicationConfig] = []
+                for v in dict["ApplicationConfigs"] as! [Any] {
+                    var model = ApplicationConfig()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.applicationConfigs = tmp
+            }
+            if dict.keys.contains("Applications") {
+                var tmp : [Application] = []
+                for v in dict["Applications"] as! [Any] {
+                    var model = Application()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.applications = tmp
+            }
+            if dict.keys.contains("BootstrapScripts") {
+                var tmp : [Script] = []
+                for v in dict["BootstrapScripts"] as! [Any] {
+                    var model = Script()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.bootstrapScripts = tmp
+            }
+            if dict.keys.contains("ClusterId") {
+                self.clusterId = dict["ClusterId"] as! String
+            }
+            if dict.keys.contains("ClusterName") {
+                self.clusterName = dict["ClusterName"] as! String
+            }
+            if dict.keys.contains("ClusterState") {
+                self.clusterState = dict["ClusterState"] as! String
+            }
+            if dict.keys.contains("ClusterType") {
+                self.clusterType = dict["ClusterType"] as! String
+            }
+            if dict.keys.contains("DeployMode") {
+                self.deployMode = dict["DeployMode"] as! String
+            }
+            if dict.keys.contains("EmrDefaultRole") {
+                self.emrDefaultRole = dict["EmrDefaultRole"] as! String
+            }
+            if dict.keys.contains("ExistCloneConfig") {
+                self.existCloneConfig = dict["ExistCloneConfig"] as! Bool
+            }
+            if dict.keys.contains("NodeAttributes") {
+                var model = NodeAttributes()
+                model.fromMap(dict["NodeAttributes"] as! [String: Any])
+                self.nodeAttributes = model
+            }
+            if dict.keys.contains("NodeGroups") {
+                var tmp : [NodeGroup] = []
+                for v in dict["NodeGroups"] as! [Any] {
+                    var model = NodeGroup()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.nodeGroups = tmp
+            }
+            if dict.keys.contains("PaymentType") {
+                self.paymentType = dict["PaymentType"] as! String
+            }
+            if dict.keys.contains("RegionId") {
+                self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("ReleaseVersion") {
+                self.releaseVersion = dict["ReleaseVersion"] as! String
+            }
+            if dict.keys.contains("ResourceGroupId") {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
+            }
+            if dict.keys.contains("ScalingPolicies") {
+                var tmp : [GetClusterCloneMetaResponseBody.ClusterCloneMeta.ScalingPolicies] = []
+                for v in dict["ScalingPolicies"] as! [Any] {
+                    var model = GetClusterCloneMetaResponseBody.ClusterCloneMeta.ScalingPolicies()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.scalingPolicies = tmp
+            }
+            if dict.keys.contains("SecurityMode") {
+                self.securityMode = dict["SecurityMode"] as! String
+            }
+            if dict.keys.contains("SubscriptionConfig") {
+                var model = SubscriptionConfig()
+                model.fromMap(dict["SubscriptionConfig"] as! [String: Any])
+                self.subscriptionConfig = model
+            }
+            if dict.keys.contains("Tags") {
+                var tmp : [Tag] = []
+                for v in dict["Tags"] as! [Any] {
+                    var model = Tag()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tags = tmp
+            }
+        }
+    }
+    public var clusterCloneMeta: GetClusterCloneMetaResponseBody.ClusterCloneMeta?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.clusterCloneMeta?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterCloneMeta != nil {
+            map["ClusterCloneMeta"] = self.clusterCloneMeta?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClusterCloneMeta") {
+            var model = GetClusterCloneMetaResponseBody.ClusterCloneMeta()
+            model.fromMap(dict["ClusterCloneMeta"] as! [String: Any])
+            self.clusterCloneMeta = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class GetClusterCloneMetaResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetClusterCloneMetaResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetClusterCloneMetaResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class GetDoctorApplicationRequest : Tea.TeaModel {
     public var appId: String?
 
