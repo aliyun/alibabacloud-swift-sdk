@@ -4968,6 +4968,8 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
 
                 public var labels: String?
 
+                public var riskLevel: String?
+
                 public var riskTips: String?
 
                 public var riskWords: String?
@@ -5008,6 +5010,9 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                     if self.labels != nil {
                         map["Labels"] = self.labels!
                     }
+                    if self.riskLevel != nil {
+                        map["RiskLevel"] = self.riskLevel!
+                    }
                     if self.riskTips != nil {
                         map["RiskTips"] = self.riskTips!
                     }
@@ -5045,6 +5050,9 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                     if dict.keys.contains("Labels") {
                         self.labels = dict["Labels"] as! String
                     }
+                    if dict.keys.contains("RiskLevel") {
+                        self.riskLevel = dict["RiskLevel"] as! String
+                    }
                     if dict.keys.contains("RiskTips") {
                         self.riskTips = dict["RiskTips"] as! String
                     }
@@ -5070,6 +5078,8 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
             }
             public var audioSummarys: [VideoModerationResultResponseBody.Data.AudioResult.AudioSummarys]?
 
+            public var riskLevel: String?
+
             public var sliceDetails: [VideoModerationResultResponseBody.Data.AudioResult.SliceDetails]?
 
             public override init() {
@@ -5093,6 +5103,9 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                     }
                     map["AudioSummarys"] = tmp
                 }
+                if self.riskLevel != nil {
+                    map["RiskLevel"] = self.riskLevel!
+                }
                 if self.sliceDetails != nil {
                     var tmp : [Any] = []
                     for k in self.sliceDetails! {
@@ -5115,6 +5128,9 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                     }
                     self.audioSummarys = tmp
                 }
+                if dict.keys.contains("RiskLevel") {
+                    self.riskLevel = dict["RiskLevel"] as! String
+                }
                 if dict.keys.contains("SliceDetails") {
                     var tmp : [VideoModerationResultResponseBody.Data.AudioResult.SliceDetails] = []
                     for v in dict["SliceDetails"] as! [Any] {
@@ -5130,6 +5146,8 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
         }
         public class FrameResult : Tea.TeaModel {
             public class FrameSummarys : Tea.TeaModel {
+                public var description_: String?
+
                 public var label: String?
 
                 public var labelSum: Int32?
@@ -5148,6 +5166,9 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
                     if self.label != nil {
                         map["Label"] = self.label!
                     }
@@ -5158,6 +5179,9 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Description") {
+                        self.description_ = dict["Description"] as! String
+                    }
                     if dict.keys.contains("Label") {
                         self.label = dict["Label"] as! String
                     }
@@ -5237,6 +5261,8 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                     public class Result : Tea.TeaModel {
                         public var confidence: Double?
 
+                        public var description_: String?
+
                         public var label: String?
 
                         public override init() {
@@ -5256,6 +5282,9 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                             if self.confidence != nil {
                                 map["Confidence"] = self.confidence!
                             }
+                            if self.description_ != nil {
+                                map["Description"] = self.description_!
+                            }
                             if self.label != nil {
                                 map["Label"] = self.label!
                             }
@@ -5265,6 +5294,9 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                         public override func fromMap(_ dict: [String: Any]) -> Void {
                             if dict.keys.contains("Confidence") {
                                 self.confidence = dict["Confidence"] as! Double
+                            }
+                            if dict.keys.contains("Description") {
+                                self.description_ = dict["Description"] as! String
                             }
                             if dict.keys.contains("Label") {
                                 self.label = dict["Label"] as! String
@@ -5371,6 +5403,8 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
 
                 public var results: [VideoModerationResultResponseBody.Data.FrameResult.Frames.Results]?
 
+                public var riskLevel: String?
+
                 public var tempUrl: String?
 
                 public var timestamp: Int64?
@@ -5399,6 +5433,9 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                         }
                         map["Results"] = tmp
                     }
+                    if self.riskLevel != nil {
+                        map["RiskLevel"] = self.riskLevel!
+                    }
                     if self.tempUrl != nil {
                         map["TempUrl"] = self.tempUrl!
                     }
@@ -5423,6 +5460,9 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                         }
                         self.results = tmp
                     }
+                    if dict.keys.contains("RiskLevel") {
+                        self.riskLevel = dict["RiskLevel"] as! String
+                    }
                     if dict.keys.contains("TempUrl") {
                         self.tempUrl = dict["TempUrl"] as! String
                     }
@@ -5436,6 +5476,8 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
             public var frameSummarys: [VideoModerationResultResponseBody.Data.FrameResult.FrameSummarys]?
 
             public var frames: [VideoModerationResultResponseBody.Data.FrameResult.Frames]?
+
+            public var riskLevel: String?
 
             public override init() {
                 super.init()
@@ -5468,6 +5510,9 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                     }
                     map["Frames"] = tmp
                 }
+                if self.riskLevel != nil {
+                    map["RiskLevel"] = self.riskLevel!
+                }
                 return map
             }
 
@@ -5497,6 +5542,9 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                     }
                     self.frames = tmp
                 }
+                if dict.keys.contains("RiskLevel") {
+                    self.riskLevel = dict["RiskLevel"] as! String
+                }
             }
         }
         public var audioResult: VideoModerationResultResponseBody.Data.AudioResult?
@@ -5506,6 +5554,8 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
         public var frameResult: VideoModerationResultResponseBody.Data.FrameResult?
 
         public var liveId: String?
+
+        public var riskLevel: String?
 
         public var taskId: String?
 
@@ -5537,6 +5587,9 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
             if self.liveId != nil {
                 map["LiveId"] = self.liveId!
             }
+            if self.riskLevel != nil {
+                map["RiskLevel"] = self.riskLevel!
+            }
             if self.taskId != nil {
                 map["TaskId"] = self.taskId!
             }
@@ -5559,6 +5612,9 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("LiveId") {
                 self.liveId = dict["LiveId"] as! String
+            }
+            if dict.keys.contains("RiskLevel") {
+                self.riskLevel = dict["RiskLevel"] as! String
             }
             if dict.keys.contains("TaskId") {
                 self.taskId = dict["TaskId"] as! String
