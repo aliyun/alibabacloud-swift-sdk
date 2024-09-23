@@ -312,6 +312,43 @@ public class ChangeResourceGroupResponse : Tea.TeaModel {
 }
 
 public class CreateIpamRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var clientToken: String?
 
     public var dryRun: Bool?
@@ -333,6 +370,8 @@ public class CreateIpamRequest : Tea.TeaModel {
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
+
+    public var tag: [CreateIpamRequest.Tag]?
 
     public override init() {
         super.init()
@@ -381,6 +420,13 @@ public class CreateIpamRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
@@ -417,6 +463,17 @@ public class CreateIpamRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [CreateIpamRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateIpamRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
     }
 }
@@ -549,11 +606,50 @@ public class CreateIpamResponse : Tea.TeaModel {
 }
 
 public class CreateIpamPoolRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var allocationDefaultCidrMask: Int32?
 
     public var allocationMaxCidrMask: Int32?
 
     public var allocationMinCidrMask: Int32?
+
+    public var autoImport: Bool?
 
     public var clientToken: String?
 
@@ -581,6 +677,8 @@ public class CreateIpamPoolRequest : Tea.TeaModel {
 
     public var sourceIpamPoolId: String?
 
+    public var tag: [CreateIpamPoolRequest.Tag]?
+
     public override init() {
         super.init()
     }
@@ -603,6 +701,9 @@ public class CreateIpamPoolRequest : Tea.TeaModel {
         }
         if self.allocationMinCidrMask != nil {
             map["AllocationMinCidrMask"] = self.allocationMinCidrMask!
+        }
+        if self.autoImport != nil {
+            map["AutoImport"] = self.autoImport!
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
@@ -643,6 +744,13 @@ public class CreateIpamPoolRequest : Tea.TeaModel {
         if self.sourceIpamPoolId != nil {
             map["SourceIpamPoolId"] = self.sourceIpamPoolId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
@@ -655,6 +763,9 @@ public class CreateIpamPoolRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AllocationMinCidrMask") {
             self.allocationMinCidrMask = dict["AllocationMinCidrMask"] as! Int32
+        }
+        if dict.keys.contains("AutoImport") {
+            self.autoImport = dict["AutoImport"] as! Bool
         }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
@@ -694,6 +805,17 @@ public class CreateIpamPoolRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SourceIpamPoolId") {
             self.sourceIpamPoolId = dict["SourceIpamPoolId"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [CreateIpamPoolRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateIpamPoolRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
     }
 }
@@ -959,6 +1081,43 @@ public class CreateIpamPoolAllocationResponse : Tea.TeaModel {
 }
 
 public class CreateIpamScopeRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var clientToken: String?
 
     public var dryRun: Bool?
@@ -980,6 +1139,8 @@ public class CreateIpamScopeRequest : Tea.TeaModel {
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
+
+    public var tag: [CreateIpamScopeRequest.Tag]?
 
     public override init() {
         super.init()
@@ -1028,6 +1189,13 @@ public class CreateIpamScopeRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
@@ -1064,6 +1232,17 @@ public class CreateIpamScopeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [CreateIpamScopeRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateIpamScopeRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
     }
 }
@@ -2277,6 +2456,8 @@ public class ListIpamPoolAllocationsResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var count: Int64?
+
     public var ipamPoolAllocations: [ListIpamPoolAllocationsResponseBody.IpamPoolAllocations]?
 
     public var maxResults: Int64?
@@ -2301,6 +2482,9 @@ public class ListIpamPoolAllocationsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
         if self.ipamPoolAllocations != nil {
             var tmp : [Any] = []
             for k in self.ipamPoolAllocations! {
@@ -2324,6 +2508,9 @@ public class ListIpamPoolAllocationsResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Count") {
+            self.count = dict["Count"] as! Int64
+        }
         if dict.keys.contains("IpamPoolAllocations") {
             var tmp : [ListIpamPoolAllocationsResponseBody.IpamPoolAllocations] = []
             for v in dict["IpamPoolAllocations"] as! [Any] {
@@ -2507,6 +2694,8 @@ public class ListIpamPoolCidrsResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var count: Int64?
+
     public var ipamPoolCidrs: [ListIpamPoolCidrsResponseBody.IpamPoolCidrs]?
 
     public var maxResults: Int64?
@@ -2531,6 +2720,9 @@ public class ListIpamPoolCidrsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
         if self.ipamPoolCidrs != nil {
             var tmp : [Any] = []
             for k in self.ipamPoolCidrs! {
@@ -2554,6 +2746,9 @@ public class ListIpamPoolCidrsResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Count") {
+            self.count = dict["Count"] as! Int64
+        }
         if dict.keys.contains("IpamPoolCidrs") {
             var tmp : [ListIpamPoolCidrsResponseBody.IpamPoolCidrs] = []
             for v in dict["IpamPoolCidrs"] as! [Any] {
@@ -2673,6 +2868,8 @@ public class ListIpamPoolsRequest : Tea.TeaModel {
 
     public var ipamScopeId: String?
 
+    public var isShared: Bool?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -2717,6 +2914,9 @@ public class ListIpamPoolsRequest : Tea.TeaModel {
         }
         if self.ipamScopeId != nil {
             map["IpamScopeId"] = self.ipamScopeId!
+        }
+        if self.isShared != nil {
+            map["IsShared"] = self.isShared!
         }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
@@ -2767,6 +2967,9 @@ public class ListIpamPoolsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("IpamScopeId") {
             self.ipamScopeId = dict["IpamScopeId"] as! String
+        }
+        if dict.keys.contains("IsShared") {
+            self.isShared = dict["IsShared"] as! Bool
         }
         if dict.keys.contains("MaxResults") {
             self.maxResults = dict["MaxResults"] as! Int32
@@ -2857,6 +3060,8 @@ public class ListIpamPoolsResponseBody : Tea.TeaModel {
 
         public var allocationMinCidrMask: Int32?
 
+        public var autoImport: Bool?
+
         public var createTime: String?
 
         public var hasSubPool: Bool?
@@ -2876,6 +3081,8 @@ public class ListIpamPoolsResponseBody : Tea.TeaModel {
         public var ipamScopeId: String?
 
         public var ipamScopeType: String?
+
+        public var isShared: Bool?
 
         public var ownerId: Int64?
 
@@ -2914,6 +3121,9 @@ public class ListIpamPoolsResponseBody : Tea.TeaModel {
             if self.allocationMinCidrMask != nil {
                 map["AllocationMinCidrMask"] = self.allocationMinCidrMask!
             }
+            if self.autoImport != nil {
+                map["AutoImport"] = self.autoImport!
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -2943,6 +3153,9 @@ public class ListIpamPoolsResponseBody : Tea.TeaModel {
             }
             if self.ipamScopeType != nil {
                 map["IpamScopeType"] = self.ipamScopeType!
+            }
+            if self.isShared != nil {
+                map["IsShared"] = self.isShared!
             }
             if self.ownerId != nil {
                 map["OwnerId"] = self.ownerId!
@@ -2982,6 +3195,9 @@ public class ListIpamPoolsResponseBody : Tea.TeaModel {
             if dict.keys.contains("AllocationMinCidrMask") {
                 self.allocationMinCidrMask = dict["AllocationMinCidrMask"] as! Int32
             }
+            if dict.keys.contains("AutoImport") {
+                self.autoImport = dict["AutoImport"] as! Bool
+            }
             if dict.keys.contains("CreateTime") {
                 self.createTime = dict["CreateTime"] as! String
             }
@@ -3011,6 +3227,9 @@ public class ListIpamPoolsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("IpamScopeType") {
                 self.ipamScopeType = dict["IpamScopeType"] as! String
+            }
+            if dict.keys.contains("IsShared") {
+                self.isShared = dict["IsShared"] as! Bool
             }
             if dict.keys.contains("OwnerId") {
                 self.ownerId = dict["OwnerId"] as! Int64
@@ -3043,6 +3262,8 @@ public class ListIpamPoolsResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var count: Int64?
+
     public var ipamPools: [ListIpamPoolsResponseBody.IpamPools]?
 
     public var maxResults: Int64?
@@ -3067,6 +3288,9 @@ public class ListIpamPoolsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
         if self.ipamPools != nil {
             var tmp : [Any] = []
             for k in self.ipamPools! {
@@ -3090,6 +3314,9 @@ public class ListIpamPoolsResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Count") {
+            self.count = dict["Count"] as! Int64
+        }
         if dict.keys.contains("IpamPools") {
             var tmp : [ListIpamPoolsResponseBody.IpamPools] = []
             for v in dict["IpamPools"] as! [Any] {
@@ -3182,6 +3409,8 @@ public class ListIpamResourceCidrsRequest : Tea.TeaModel {
 
     public var resourceType: String?
 
+    public var vpcId: String?
+
     public override init() {
         super.init()
     }
@@ -3220,6 +3449,9 @@ public class ListIpamResourceCidrsRequest : Tea.TeaModel {
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
         }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
         return map
     }
 
@@ -3247,6 +3479,9 @@ public class ListIpamResourceCidrsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceType") {
             self.resourceType = dict["ResourceType"] as! String
+        }
+        if dict.keys.contains("VpcId") {
+            self.vpcId = dict["VpcId"] as! String
         }
     }
 }
@@ -3284,6 +3519,8 @@ public class ListIpamResourceCidrsResponseBody : Tea.TeaModel {
         public var sourceCidr: String?
 
         public var status: String?
+
+        public var vpcId: String?
 
         public override init() {
             super.init()
@@ -3347,6 +3584,9 @@ public class ListIpamResourceCidrsResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.vpcId != nil {
+                map["VpcId"] = self.vpcId!
+            }
             return map
         }
 
@@ -3399,8 +3639,13 @@ public class ListIpamResourceCidrsResponseBody : Tea.TeaModel {
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
             }
+            if dict.keys.contains("VpcId") {
+                self.vpcId = dict["VpcId"] as! String
+            }
         }
     }
+    public var count: Int64?
+
     public var ipamResourceCidrs: [ListIpamResourceCidrsResponseBody.IpamResourceCidrs]?
 
     public var maxResults: Int64?
@@ -3425,6 +3670,9 @@ public class ListIpamResourceCidrsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
         if self.ipamResourceCidrs != nil {
             var tmp : [Any] = []
             for k in self.ipamResourceCidrs! {
@@ -3448,6 +3696,9 @@ public class ListIpamResourceCidrsResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Count") {
+            self.count = dict["Count"] as! Int64
+        }
         if dict.keys.contains("IpamResourceCidrs") {
             var tmp : [ListIpamResourceCidrsResponseBody.IpamResourceCidrs] = []
             for v in dict["IpamResourceCidrs"] as! [Any] {
@@ -3865,6 +4116,8 @@ public class ListIpamScopesResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var count: Int64?
+
     public var ipamScopes: [ListIpamScopesResponseBody.IpamScopes]?
 
     public var maxResults: Int64?
@@ -3889,6 +4142,9 @@ public class ListIpamScopesResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
         if self.ipamScopes != nil {
             var tmp : [Any] = []
             for k in self.ipamScopes! {
@@ -3912,6 +4168,9 @@ public class ListIpamScopesResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Count") {
+            self.count = dict["Count"] as! Int64
+        }
         if dict.keys.contains("IpamScopes") {
             var tmp : [ListIpamScopesResponseBody.IpamScopes] = []
             for v in dict["IpamScopes"] as! [Any] {
@@ -4345,6 +4604,8 @@ public class ListIpamsResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var count: Int64?
+
     public var ipams: [ListIpamsResponseBody.Ipams]?
 
     public var maxResults: Int64?
@@ -4369,6 +4630,9 @@ public class ListIpamsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
         if self.ipams != nil {
             var tmp : [Any] = []
             for k in self.ipams! {
@@ -4392,6 +4656,9 @@ public class ListIpamsResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Count") {
+            self.count = dict["Count"] as! Int64
+        }
         if dict.keys.contains("Ipams") {
             var tmp : [ListIpamsResponseBody.Ipams] = []
             for v in dict["Ipams"] as! [Any] {
@@ -5534,6 +5801,8 @@ public class UpdateIpamPoolRequest : Tea.TeaModel {
 
     public var allocationMinCidrMask: Int32?
 
+    public var autoImport: Bool?
+
     public var clearAllocationDefaultCidrMask: Bool?
 
     public var clientToken: String?
@@ -5578,6 +5847,9 @@ public class UpdateIpamPoolRequest : Tea.TeaModel {
         }
         if self.allocationMinCidrMask != nil {
             map["AllocationMinCidrMask"] = self.allocationMinCidrMask!
+        }
+        if self.autoImport != nil {
+            map["AutoImport"] = self.autoImport!
         }
         if self.clearAllocationDefaultCidrMask != nil {
             map["ClearAllocationDefaultCidrMask"] = self.clearAllocationDefaultCidrMask!
@@ -5624,6 +5896,9 @@ public class UpdateIpamPoolRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AllocationMinCidrMask") {
             self.allocationMinCidrMask = dict["AllocationMinCidrMask"] as! Int32
+        }
+        if dict.keys.contains("AutoImport") {
+            self.autoImport = dict["AutoImport"] as! Bool
         }
         if dict.keys.contains("ClearAllocationDefaultCidrMask") {
             self.clearAllocationDefaultCidrMask = dict["ClearAllocationDefaultCidrMask"] as! Bool
