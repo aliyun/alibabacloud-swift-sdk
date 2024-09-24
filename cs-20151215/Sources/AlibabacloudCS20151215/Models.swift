@@ -2504,14 +2504,14 @@ public class CancelOperationPlanResponseBody : Tea.TeaModel {
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.requestId != nil {
-            map["requestId"] = self.requestId!
+            map["request_id"] = self.requestId!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("requestId") {
-            self.requestId = dict["requestId"] as! String
+        if dict.keys.contains("request_id") {
+            self.requestId = dict["request_id"] as! String
         }
     }
 }
@@ -3444,6 +3444,10 @@ public class CreateClusterRequest : Tea.TeaModel {
 
     public var apiAudiences: String?
 
+    public var autoRenew: Bool?
+
+    public var autoRenewPeriod: Int64?
+
     public var chargeType: String?
 
     public var cisEnabled: Bool?
@@ -3622,6 +3626,8 @@ public class CreateClusterRequest : Tea.TeaModel {
 
     public var zoneId: String?
 
+    public var zoneIds: [String]?
+
     public override init() {
         super.init()
     }
@@ -3649,6 +3655,12 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if self.apiAudiences != nil {
             map["api_audiences"] = self.apiAudiences!
+        }
+        if self.autoRenew != nil {
+            map["auto_renew"] = self.autoRenew!
+        }
+        if self.autoRenewPeriod != nil {
+            map["auto_renew_period"] = self.autoRenewPeriod!
         }
         if self.chargeType != nil {
             map["charge_type"] = self.chargeType!
@@ -3933,6 +3945,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         if self.zoneId != nil {
             map["zone_id"] = self.zoneId!
         }
+        if self.zoneIds != nil {
+            map["zone_ids"] = self.zoneIds!
+        }
         return map
     }
 
@@ -3953,6 +3968,12 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("api_audiences") {
             self.apiAudiences = dict["api_audiences"] as! String
+        }
+        if dict.keys.contains("auto_renew") {
+            self.autoRenew = dict["auto_renew"] as! Bool
+        }
+        if dict.keys.contains("auto_renew_period") {
+            self.autoRenewPeriod = dict["auto_renew_period"] as! Int64
         }
         if dict.keys.contains("charge_type") {
             self.chargeType = dict["charge_type"] as! String
@@ -4254,6 +4275,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("zone_id") {
             self.zoneId = dict["zone_id"] as! String
+        }
+        if dict.keys.contains("zone_ids") {
+            self.zoneIds = dict["zone_ids"] as! [String]
         }
     }
 }
