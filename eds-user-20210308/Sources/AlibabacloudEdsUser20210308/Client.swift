@@ -323,8 +323,16 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeUsersWithOptions(_ request: DescribeUsersRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeUsersResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func describeUsersWithOptions(_ tmpReq: DescribeUsersRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeUsersResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DescribeUsersShrinkRequest = DescribeUsersShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.filterWithAssignedResources)) {
+            request.filterWithAssignedResourcesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.filterWithAssignedResources, "FilterWithAssignedResources", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.showExtras)) {
+            request.showExtrasShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.showExtras, "ShowExtras", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.filter)) {
             query["Filter"] = request.filter ?? "";
@@ -342,11 +350,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.excludeEndUserIds)) {
             body["ExcludeEndUserIds"] = request.excludeEndUserIds ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.filterWithAssignedResourcesShrink)) {
+            body["FilterWithAssignedResources"] = request.filterWithAssignedResourcesShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.groupId)) {
             body["GroupId"] = request.groupId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.orgId)) {
             body["OrgId"] = request.orgId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.showExtrasShrink)) {
+            body["ShowExtras"] = request.showExtrasShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query),

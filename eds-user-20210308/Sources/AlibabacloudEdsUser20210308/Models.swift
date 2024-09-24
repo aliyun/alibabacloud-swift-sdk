@@ -1843,6 +1843,8 @@ public class DescribeUsersRequest : Tea.TeaModel {
 
     public var filter: String?
 
+    public var filterWithAssignedResources: [String: Bool]?
+
     public var groupId: String?
 
     public var maxResults: Int64?
@@ -1850,6 +1852,8 @@ public class DescribeUsersRequest : Tea.TeaModel {
     public var nextToken: String?
 
     public var orgId: String?
+
+    public var showExtras: [String: Any]?
 
     public override init() {
         super.init()
@@ -1874,6 +1878,9 @@ public class DescribeUsersRequest : Tea.TeaModel {
         if self.filter != nil {
             map["Filter"] = self.filter!
         }
+        if self.filterWithAssignedResources != nil {
+            map["FilterWithAssignedResources"] = self.filterWithAssignedResources!
+        }
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
@@ -1885,6 +1892,9 @@ public class DescribeUsersRequest : Tea.TeaModel {
         }
         if self.orgId != nil {
             map["OrgId"] = self.orgId!
+        }
+        if self.showExtras != nil {
+            map["ShowExtras"] = self.showExtras!
         }
         return map
     }
@@ -1899,6 +1909,9 @@ public class DescribeUsersRequest : Tea.TeaModel {
         if dict.keys.contains("Filter") {
             self.filter = dict["Filter"] as! String
         }
+        if dict.keys.contains("FilterWithAssignedResources") {
+            self.filterWithAssignedResources = dict["FilterWithAssignedResources"] as! [String: Bool]
+        }
         if dict.keys.contains("GroupId") {
             self.groupId = dict["GroupId"] as! String
         }
@@ -1911,11 +1924,137 @@ public class DescribeUsersRequest : Tea.TeaModel {
         if dict.keys.contains("OrgId") {
             self.orgId = dict["OrgId"] as! String
         }
+        if dict.keys.contains("ShowExtras") {
+            self.showExtras = dict["ShowExtras"] as! [String: Any]
+        }
+    }
+}
+
+public class DescribeUsersShrinkRequest : Tea.TeaModel {
+    public var endUserIds: [String]?
+
+    public var excludeEndUserIds: [String]?
+
+    public var filter: String?
+
+    public var filterWithAssignedResourcesShrink: String?
+
+    public var groupId: String?
+
+    public var maxResults: Int64?
+
+    public var nextToken: String?
+
+    public var orgId: String?
+
+    public var showExtrasShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endUserIds != nil {
+            map["EndUserIds"] = self.endUserIds!
+        }
+        if self.excludeEndUserIds != nil {
+            map["ExcludeEndUserIds"] = self.excludeEndUserIds!
+        }
+        if self.filter != nil {
+            map["Filter"] = self.filter!
+        }
+        if self.filterWithAssignedResourcesShrink != nil {
+            map["FilterWithAssignedResources"] = self.filterWithAssignedResourcesShrink!
+        }
+        if self.groupId != nil {
+            map["GroupId"] = self.groupId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.orgId != nil {
+            map["OrgId"] = self.orgId!
+        }
+        if self.showExtrasShrink != nil {
+            map["ShowExtras"] = self.showExtrasShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EndUserIds") {
+            self.endUserIds = dict["EndUserIds"] as! [String]
+        }
+        if dict.keys.contains("ExcludeEndUserIds") {
+            self.excludeEndUserIds = dict["ExcludeEndUserIds"] as! [String]
+        }
+        if dict.keys.contains("Filter") {
+            self.filter = dict["Filter"] as! String
+        }
+        if dict.keys.contains("FilterWithAssignedResources") {
+            self.filterWithAssignedResourcesShrink = dict["FilterWithAssignedResources"] as! String
+        }
+        if dict.keys.contains("GroupId") {
+            self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int64
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("OrgId") {
+            self.orgId = dict["OrgId"] as! String
+        }
+        if dict.keys.contains("ShowExtras") {
+            self.showExtrasShrink = dict["ShowExtras"] as! String
+        }
     }
 }
 
 public class DescribeUsersResponseBody : Tea.TeaModel {
     public class Users : Tea.TeaModel {
+        public class Extras : Tea.TeaModel {
+            public var assignedResourceCount: [String: Any]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.assignedResourceCount != nil {
+                    map["AssignedResourceCount"] = self.assignedResourceCount!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AssignedResourceCount") {
+                    self.assignedResourceCount = dict["AssignedResourceCount"] as! [String: Any]
+                }
+            }
+        }
         public class Groups : Tea.TeaModel {
             public var groupId: String?
 
@@ -1998,6 +2137,8 @@ public class DescribeUsersResponseBody : Tea.TeaModel {
 
         public var endUserId: String?
 
+        public var extras: DescribeUsersResponseBody.Users.Extras?
+
         public var groups: [DescribeUsersResponseBody.Users.Groups]?
 
         public var id: Int64?
@@ -2034,6 +2175,7 @@ public class DescribeUsersResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.extras?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -2049,6 +2191,9 @@ public class DescribeUsersResponseBody : Tea.TeaModel {
             }
             if self.endUserId != nil {
                 map["EndUserId"] = self.endUserId!
+            }
+            if self.extras != nil {
+                map["Extras"] = self.extras?.toMap()
             }
             if self.groups != nil {
                 var tmp : [Any] = []
@@ -2112,6 +2257,11 @@ public class DescribeUsersResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("EndUserId") {
                 self.endUserId = dict["EndUserId"] as! String
+            }
+            if dict.keys.contains("Extras") {
+                var model = DescribeUsersResponseBody.Users.Extras()
+                model.fromMap(dict["Extras"] as! [String: Any])
+                self.extras = model
             }
             if dict.keys.contains("Groups") {
                 var tmp : [DescribeUsersResponseBody.Users.Groups] = []
