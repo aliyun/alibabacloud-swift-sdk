@@ -25,6 +25,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchSetDesktopManagerWithOptions(_ request: BatchSetDesktopManagerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchSetDesktopManagerResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.isDesktopManager)) {
+            body["IsDesktopManager"] = request.isDesktopManager ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.users)) {
+            body["Users"] = request.users ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchSetDesktopManager",
+            "version": "2021-03-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchSetDesktopManagerResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchSetDesktopManager(_ request: BatchSetDesktopManagerRequest) async throws -> BatchSetDesktopManagerResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await batchSetDesktopManagerWithOptions(request as! BatchSetDesktopManagerRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func checkUsedPropertyWithOptions(_ request: CheckUsedPropertyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CheckUsedPropertyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
