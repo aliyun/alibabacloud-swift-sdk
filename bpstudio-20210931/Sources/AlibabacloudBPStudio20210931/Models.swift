@@ -3341,7 +3341,7 @@ public class GetResult4QueryInstancePrice4ModifyResponseBody : Tea.TeaModel {
         public class PriceList : Tea.TeaModel {
             public var discountAmount: Double?
 
-            public var ERROR: String?
+            public var error: String?
 
             public var nodeType: String?
 
@@ -3370,8 +3370,8 @@ public class GetResult4QueryInstancePrice4ModifyResponseBody : Tea.TeaModel {
                 if self.discountAmount != nil {
                     map["DiscountAmount"] = self.discountAmount!
                 }
-                if self.ERROR != nil {
-                    map["ERROR"] = self.ERROR!
+                if self.error != nil {
+                    map["Error"] = self.error!
                 }
                 if self.nodeType != nil {
                     map["NodeType"] = self.nodeType!
@@ -3395,8 +3395,8 @@ public class GetResult4QueryInstancePrice4ModifyResponseBody : Tea.TeaModel {
                 if dict.keys.contains("DiscountAmount") {
                     self.discountAmount = dict["DiscountAmount"] as! Double
                 }
-                if dict.keys.contains("ERROR") {
-                    self.ERROR = dict["ERROR"] as! String
+                if dict.keys.contains("Error") {
+                    self.error = dict["Error"] as! String
                 }
                 if dict.keys.contains("NodeType") {
                     self.nodeType = dict["NodeType"] as! String
@@ -5815,11 +5815,113 @@ public class QueryInstanceSpec4ModifyShrinkRequest : Tea.TeaModel {
 }
 
 public class QueryInstanceSpec4ModifyResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class OptionalValues : Tea.TeaModel {
+            public var label: String?
+
+            public var max: Double?
+
+            public var min: Double?
+
+            public var step: Double?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.label != nil {
+                    map["Label"] = self.label!
+                }
+                if self.max != nil {
+                    map["Max"] = self.max!
+                }
+                if self.min != nil {
+                    map["Min"] = self.min!
+                }
+                if self.step != nil {
+                    map["Step"] = self.step!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Label") {
+                    self.label = dict["Label"] as! String
+                }
+                if dict.keys.contains("Max") {
+                    self.max = dict["Max"] as! Double
+                }
+                if dict.keys.contains("Min") {
+                    self.min = dict["Min"] as! Double
+                }
+                if dict.keys.contains("Step") {
+                    self.step = dict["Step"] as! Double
+                }
+                if dict.keys.contains("Value") {
+                    self.value = dict["Value"] as! String
+                }
+            }
+        }
+        public var optionalValues: [QueryInstanceSpec4ModifyResponseBody.Data.OptionalValues]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.optionalValues != nil {
+                var tmp : [Any] = []
+                for k in self.optionalValues! {
+                    tmp.append(k.toMap())
+                }
+                map["OptionalValues"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("OptionalValues") {
+                var tmp : [QueryInstanceSpec4ModifyResponseBody.Data.OptionalValues] = []
+                for v in dict["OptionalValues"] as! [Any] {
+                    var model = QueryInstanceSpec4ModifyResponseBody.Data.OptionalValues()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.optionalValues = tmp
+            }
+        }
+    }
     public var accessDeniedDetail: String?
 
     public var code: String?
 
-    public var data: String?
+    public var data: QueryInstanceSpec4ModifyResponseBody.Data?
 
     public var message: String?
 
@@ -5837,6 +5939,7 @@ public class QueryInstanceSpec4ModifyResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -5848,7 +5951,7 @@ public class QueryInstanceSpec4ModifyResponseBody : Tea.TeaModel {
             map["Code"] = self.code!
         }
         if self.data != nil {
-            map["Data"] = self.data!
+            map["Data"] = self.data?.toMap()
         }
         if self.message != nil {
             map["Message"] = self.message!
@@ -5870,7 +5973,9 @@ public class QueryInstanceSpec4ModifyResponseBody : Tea.TeaModel {
             self.code = dict["Code"] as! String
         }
         if dict.keys.contains("Data") {
-            self.data = dict["Data"] as! String
+            var model = QueryInstanceSpec4ModifyResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
