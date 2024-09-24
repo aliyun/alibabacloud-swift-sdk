@@ -869,6 +869,155 @@ public class CancelDataFlowAutoRefreshResponse : Tea.TeaModel {
     }
 }
 
+public class CancelDataFlowSubTaskRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dataFlowId: String?
+
+    public var dataFlowSubTaskId: String?
+
+    public var dataFlowTaskId: String?
+
+    public var dryRun: Bool?
+
+    public var fileSystemId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dataFlowId != nil {
+            map["DataFlowId"] = self.dataFlowId!
+        }
+        if self.dataFlowSubTaskId != nil {
+            map["DataFlowSubTaskId"] = self.dataFlowSubTaskId!
+        }
+        if self.dataFlowTaskId != nil {
+            map["DataFlowTaskId"] = self.dataFlowTaskId!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.fileSystemId != nil {
+            map["FileSystemId"] = self.fileSystemId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DataFlowId") {
+            self.dataFlowId = dict["DataFlowId"] as! String
+        }
+        if dict.keys.contains("DataFlowSubTaskId") {
+            self.dataFlowSubTaskId = dict["DataFlowSubTaskId"] as! String
+        }
+        if dict.keys.contains("DataFlowTaskId") {
+            self.dataFlowTaskId = dict["DataFlowTaskId"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("FileSystemId") {
+            self.fileSystemId = dict["FileSystemId"] as! String
+        }
+    }
+}
+
+public class CancelDataFlowSubTaskResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CancelDataFlowSubTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CancelDataFlowSubTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CancelDataFlowSubTaskResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CancelDataFlowTaskRequest : Tea.TeaModel {
     public var clientToken: String?
 
@@ -2458,6 +2607,219 @@ public class CreateDataFlowResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = CreateDataFlowResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class CreateDataFlowSubTaskRequest : Tea.TeaModel {
+    public class Condition : Tea.TeaModel {
+        public var modifyTime: Int64?
+
+        public var size: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.modifyTime != nil {
+                map["ModifyTime"] = self.modifyTime!
+            }
+            if self.size != nil {
+                map["Size"] = self.size!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ModifyTime") {
+                self.modifyTime = dict["ModifyTime"] as! Int64
+            }
+            if dict.keys.contains("Size") {
+                self.size = dict["Size"] as! Int64
+            }
+        }
+    }
+    public var clientToken: String?
+
+    public var condition: CreateDataFlowSubTaskRequest.Condition?
+
+    public var dataFlowId: String?
+
+    public var dataFlowTaskId: String?
+
+    public var dryRun: Bool?
+
+    public var dstFilePath: String?
+
+    public var fileSystemId: String?
+
+    public var srcFilePath: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.condition?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.condition != nil {
+            map["Condition"] = self.condition?.toMap()
+        }
+        if self.dataFlowId != nil {
+            map["DataFlowId"] = self.dataFlowId!
+        }
+        if self.dataFlowTaskId != nil {
+            map["DataFlowTaskId"] = self.dataFlowTaskId!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.dstFilePath != nil {
+            map["DstFilePath"] = self.dstFilePath!
+        }
+        if self.fileSystemId != nil {
+            map["FileSystemId"] = self.fileSystemId!
+        }
+        if self.srcFilePath != nil {
+            map["SrcFilePath"] = self.srcFilePath!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("Condition") {
+            var model = CreateDataFlowSubTaskRequest.Condition()
+            model.fromMap(dict["Condition"] as! [String: Any])
+            self.condition = model
+        }
+        if dict.keys.contains("DataFlowId") {
+            self.dataFlowId = dict["DataFlowId"] as! String
+        }
+        if dict.keys.contains("DataFlowTaskId") {
+            self.dataFlowTaskId = dict["DataFlowTaskId"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("DstFilePath") {
+            self.dstFilePath = dict["DstFilePath"] as! String
+        }
+        if dict.keys.contains("FileSystemId") {
+            self.fileSystemId = dict["FileSystemId"] as! String
+        }
+        if dict.keys.contains("SrcFilePath") {
+            self.srcFilePath = dict["SrcFilePath"] as! String
+        }
+    }
+}
+
+public class CreateDataFlowSubTaskResponseBody : Tea.TeaModel {
+    public var dataFlowSubTaskId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataFlowSubTaskId != nil {
+            map["DataFlowSubTaskId"] = self.dataFlowSubTaskId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DataFlowSubTaskId") {
+            self.dataFlowSubTaskId = dict["DataFlowSubTaskId"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateDataFlowSubTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateDataFlowSubTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateDataFlowSubTaskResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -8691,6 +9053,485 @@ public class DescribeBlackListClientsResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DescribeBlackListClientsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeDataFlowSubTasksRequest : Tea.TeaModel {
+    public class Filters : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
+    public var fileSystemId: String?
+
+    public var filters: [DescribeDataFlowSubTasksRequest.Filters]?
+
+    public var maxResults: Int64?
+
+    public var nextToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.fileSystemId != nil {
+            map["FileSystemId"] = self.fileSystemId!
+        }
+        if self.filters != nil {
+            var tmp : [Any] = []
+            for k in self.filters! {
+                tmp.append(k.toMap())
+            }
+            map["Filters"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("FileSystemId") {
+            self.fileSystemId = dict["FileSystemId"] as! String
+        }
+        if dict.keys.contains("Filters") {
+            var tmp : [DescribeDataFlowSubTasksRequest.Filters] = []
+            for v in dict["Filters"] as! [Any] {
+                var model = DescribeDataFlowSubTasksRequest.Filters()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.filters = tmp
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int64
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+    }
+}
+
+public class DescribeDataFlowSubTasksResponseBody : Tea.TeaModel {
+    public class DataFlowSubTask : Tea.TeaModel {
+        public class DataFlowSubTask : Tea.TeaModel {
+            public class FileDetail : Tea.TeaModel {
+                public var checksum: String?
+
+                public var modifyTime: Int64?
+
+                public var size: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.checksum != nil {
+                        map["Checksum"] = self.checksum!
+                    }
+                    if self.modifyTime != nil {
+                        map["ModifyTime"] = self.modifyTime!
+                    }
+                    if self.size != nil {
+                        map["Size"] = self.size!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Checksum") {
+                        self.checksum = dict["Checksum"] as! String
+                    }
+                    if dict.keys.contains("ModifyTime") {
+                        self.modifyTime = dict["ModifyTime"] as! Int64
+                    }
+                    if dict.keys.contains("Size") {
+                        self.size = dict["Size"] as! Int64
+                    }
+                }
+            }
+            public class ProgressStats : Tea.TeaModel {
+                public var actualBytes: Int64?
+
+                public var averageSpeed: Int64?
+
+                public var bytesDone: Int64?
+
+                public var bytesTotal: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.actualBytes != nil {
+                        map["ActualBytes"] = self.actualBytes!
+                    }
+                    if self.averageSpeed != nil {
+                        map["AverageSpeed"] = self.averageSpeed!
+                    }
+                    if self.bytesDone != nil {
+                        map["BytesDone"] = self.bytesDone!
+                    }
+                    if self.bytesTotal != nil {
+                        map["BytesTotal"] = self.bytesTotal!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ActualBytes") {
+                        self.actualBytes = dict["ActualBytes"] as! Int64
+                    }
+                    if dict.keys.contains("AverageSpeed") {
+                        self.averageSpeed = dict["AverageSpeed"] as! Int64
+                    }
+                    if dict.keys.contains("BytesDone") {
+                        self.bytesDone = dict["BytesDone"] as! Int64
+                    }
+                    if dict.keys.contains("BytesTotal") {
+                        self.bytesTotal = dict["BytesTotal"] as! Int64
+                    }
+                }
+            }
+            public var createTime: String?
+
+            public var dataFlowId: String?
+
+            public var dataFlowSubTaskId: String?
+
+            public var dataFlowTaskId: String?
+
+            public var dstFilePath: String?
+
+            public var endTime: String?
+
+            public var errorMsg: String?
+
+            public var fileDetail: DescribeDataFlowSubTasksResponseBody.DataFlowSubTask.DataFlowSubTask.FileDetail?
+
+            public var fileSystemId: String?
+
+            public var progress: Int32?
+
+            public var progressStats: DescribeDataFlowSubTasksResponseBody.DataFlowSubTask.DataFlowSubTask.ProgressStats?
+
+            public var srcFilePath: String?
+
+            public var startTime: String?
+
+            public var status: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.fileDetail?.validate()
+                try self.progressStats?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.createTime != nil {
+                    map["CreateTime"] = self.createTime!
+                }
+                if self.dataFlowId != nil {
+                    map["DataFlowId"] = self.dataFlowId!
+                }
+                if self.dataFlowSubTaskId != nil {
+                    map["DataFlowSubTaskId"] = self.dataFlowSubTaskId!
+                }
+                if self.dataFlowTaskId != nil {
+                    map["DataFlowTaskId"] = self.dataFlowTaskId!
+                }
+                if self.dstFilePath != nil {
+                    map["DstFilePath"] = self.dstFilePath!
+                }
+                if self.endTime != nil {
+                    map["EndTime"] = self.endTime!
+                }
+                if self.errorMsg != nil {
+                    map["ErrorMsg"] = self.errorMsg!
+                }
+                if self.fileDetail != nil {
+                    map["FileDetail"] = self.fileDetail?.toMap()
+                }
+                if self.fileSystemId != nil {
+                    map["FileSystemId"] = self.fileSystemId!
+                }
+                if self.progress != nil {
+                    map["Progress"] = self.progress!
+                }
+                if self.progressStats != nil {
+                    map["ProgressStats"] = self.progressStats?.toMap()
+                }
+                if self.srcFilePath != nil {
+                    map["SrcFilePath"] = self.srcFilePath!
+                }
+                if self.startTime != nil {
+                    map["StartTime"] = self.startTime!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CreateTime") {
+                    self.createTime = dict["CreateTime"] as! String
+                }
+                if dict.keys.contains("DataFlowId") {
+                    self.dataFlowId = dict["DataFlowId"] as! String
+                }
+                if dict.keys.contains("DataFlowSubTaskId") {
+                    self.dataFlowSubTaskId = dict["DataFlowSubTaskId"] as! String
+                }
+                if dict.keys.contains("DataFlowTaskId") {
+                    self.dataFlowTaskId = dict["DataFlowTaskId"] as! String
+                }
+                if dict.keys.contains("DstFilePath") {
+                    self.dstFilePath = dict["DstFilePath"] as! String
+                }
+                if dict.keys.contains("EndTime") {
+                    self.endTime = dict["EndTime"] as! String
+                }
+                if dict.keys.contains("ErrorMsg") {
+                    self.errorMsg = dict["ErrorMsg"] as! String
+                }
+                if dict.keys.contains("FileDetail") {
+                    var model = DescribeDataFlowSubTasksResponseBody.DataFlowSubTask.DataFlowSubTask.FileDetail()
+                    model.fromMap(dict["FileDetail"] as! [String: Any])
+                    self.fileDetail = model
+                }
+                if dict.keys.contains("FileSystemId") {
+                    self.fileSystemId = dict["FileSystemId"] as! String
+                }
+                if dict.keys.contains("Progress") {
+                    self.progress = dict["Progress"] as! Int32
+                }
+                if dict.keys.contains("ProgressStats") {
+                    var model = DescribeDataFlowSubTasksResponseBody.DataFlowSubTask.DataFlowSubTask.ProgressStats()
+                    model.fromMap(dict["ProgressStats"] as! [String: Any])
+                    self.progressStats = model
+                }
+                if dict.keys.contains("SrcFilePath") {
+                    self.srcFilePath = dict["SrcFilePath"] as! String
+                }
+                if dict.keys.contains("StartTime") {
+                    self.startTime = dict["StartTime"] as! String
+                }
+                if dict.keys.contains("Status") {
+                    self.status = dict["Status"] as! String
+                }
+            }
+        }
+        public var dataFlowSubTask: [DescribeDataFlowSubTasksResponseBody.DataFlowSubTask.DataFlowSubTask]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dataFlowSubTask != nil {
+                var tmp : [Any] = []
+                for k in self.dataFlowSubTask! {
+                    tmp.append(k.toMap())
+                }
+                map["DataFlowSubTask"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DataFlowSubTask") {
+                var tmp : [DescribeDataFlowSubTasksResponseBody.DataFlowSubTask.DataFlowSubTask] = []
+                for v in dict["DataFlowSubTask"] as! [Any] {
+                    var model = DescribeDataFlowSubTasksResponseBody.DataFlowSubTask.DataFlowSubTask()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.dataFlowSubTask = tmp
+            }
+        }
+    }
+    public var dataFlowSubTask: DescribeDataFlowSubTasksResponseBody.DataFlowSubTask?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.dataFlowSubTask?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataFlowSubTask != nil {
+            map["DataFlowSubTask"] = self.dataFlowSubTask?.toMap()
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DataFlowSubTask") {
+            var model = DescribeDataFlowSubTasksResponseBody.DataFlowSubTask()
+            model.fromMap(dict["DataFlowSubTask"] as! [String: Any])
+            self.dataFlowSubTask = model
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeDataFlowSubTasksResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeDataFlowSubTasksResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeDataFlowSubTasksResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
