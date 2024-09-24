@@ -8128,6 +8128,10 @@ public class DescribeInternetOpenIpResponseBody : Tea.TeaModel {
 
         public var serviceNameList: [String]?
 
+        public var srcIpCnt: Int64?
+
+        public var totalReplyBytes: Int64?
+
         public var trafficPercent1Day: String?
 
         public var trafficPercent30Day: String?
@@ -8184,6 +8188,12 @@ public class DescribeInternetOpenIpResponseBody : Tea.TeaModel {
             if self.serviceNameList != nil {
                 map["ServiceNameList"] = self.serviceNameList!
             }
+            if self.srcIpCnt != nil {
+                map["SrcIpCnt"] = self.srcIpCnt!
+            }
+            if self.totalReplyBytes != nil {
+                map["TotalReplyBytes"] = self.totalReplyBytes!
+            }
             if self.trafficPercent1Day != nil {
                 map["TrafficPercent1Day"] = self.trafficPercent1Day!
             }
@@ -8232,6 +8242,12 @@ public class DescribeInternetOpenIpResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ServiceNameList") {
                 self.serviceNameList = dict["ServiceNameList"] as! [String]
+            }
+            if dict.keys.contains("SrcIpCnt") {
+                self.srcIpCnt = dict["SrcIpCnt"] as! Int64
+            }
+            if dict.keys.contains("TotalReplyBytes") {
+                self.totalReplyBytes = dict["TotalReplyBytes"] as! Int64
             }
             if dict.keys.contains("TrafficPercent1Day") {
                 self.trafficPercent1Day = dict["TrafficPercent1Day"] as! String
@@ -11886,6 +11902,8 @@ public class DescribePostpayTrafficDetailRequest : Tea.TeaModel {
 
     public var pageSize: Int64?
 
+    public var regionNo: String?
+
     public var searchItem: String?
 
     public var startTime: String?
@@ -11921,6 +11939,9 @@ public class DescribePostpayTrafficDetailRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.regionNo != nil {
+            map["RegionNo"] = self.regionNo!
+        }
         if self.searchItem != nil {
             map["SearchItem"] = self.searchItem!
         }
@@ -11949,6 +11970,9 @@ public class DescribePostpayTrafficDetailRequest : Tea.TeaModel {
         if dict.keys.contains("PageSize") {
             self.pageSize = dict["PageSize"] as! Int64
         }
+        if dict.keys.contains("RegionNo") {
+            self.regionNo = dict["RegionNo"] as! String
+        }
         if dict.keys.contains("SearchItem") {
             self.searchItem = dict["SearchItem"] as! String
         }
@@ -11972,6 +11996,8 @@ public class DescribePostpayTrafficDetailResponseBody : Tea.TeaModel {
         public var outBytes: Int64?
 
         public var protectionDuration: Int64?
+
+        public var regionNo: String?
 
         public var resourceId: String?
 
@@ -12010,6 +12036,9 @@ public class DescribePostpayTrafficDetailResponseBody : Tea.TeaModel {
             if self.protectionDuration != nil {
                 map["ProtectionDuration"] = self.protectionDuration!
             }
+            if self.regionNo != nil {
+                map["RegionNo"] = self.regionNo!
+            }
             if self.resourceId != nil {
                 map["ResourceId"] = self.resourceId!
             }
@@ -12040,6 +12069,9 @@ public class DescribePostpayTrafficDetailResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ProtectionDuration") {
                 self.protectionDuration = dict["ProtectionDuration"] as! Int64
+            }
+            if dict.keys.contains("RegionNo") {
+                self.regionNo = dict["RegionNo"] as! String
             }
             if dict.keys.contains("ResourceId") {
                 self.resourceId = dict["ResourceId"] as! String
@@ -15565,6 +15597,211 @@ public class DescribeUserAssetIPTrafficInfoResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DescribeUserAssetIPTrafficInfoResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeUserBuyVersionRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+    }
+}
+
+public class DescribeUserBuyVersionResponseBody : Tea.TeaModel {
+    public var aliUid: Int64?
+
+    public var expire: Int64?
+
+    public var instanceId: String?
+
+    public var instanceStatus: String?
+
+    public var ipNumber: Int64?
+
+    public var logStatus: Bool?
+
+    public var logStorage: Int64?
+
+    public var maxOverflow: Int64?
+
+    public var requestId: String?
+
+    public var startTime: Int64?
+
+    public var userStatus: Bool?
+
+    public var version: Int32?
+
+    public var vpcNumber: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.aliUid != nil {
+            map["AliUid"] = self.aliUid!
+        }
+        if self.expire != nil {
+            map["Expire"] = self.expire!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.instanceStatus != nil {
+            map["InstanceStatus"] = self.instanceStatus!
+        }
+        if self.ipNumber != nil {
+            map["IpNumber"] = self.ipNumber!
+        }
+        if self.logStatus != nil {
+            map["LogStatus"] = self.logStatus!
+        }
+        if self.logStorage != nil {
+            map["LogStorage"] = self.logStorage!
+        }
+        if self.maxOverflow != nil {
+            map["MaxOverflow"] = self.maxOverflow!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.userStatus != nil {
+            map["UserStatus"] = self.userStatus!
+        }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
+        if self.vpcNumber != nil {
+            map["VpcNumber"] = self.vpcNumber!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AliUid") {
+            self.aliUid = dict["AliUid"] as! Int64
+        }
+        if dict.keys.contains("Expire") {
+            self.expire = dict["Expire"] as! Int64
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("InstanceStatus") {
+            self.instanceStatus = dict["InstanceStatus"] as! String
+        }
+        if dict.keys.contains("IpNumber") {
+            self.ipNumber = dict["IpNumber"] as! Int64
+        }
+        if dict.keys.contains("LogStatus") {
+            self.logStatus = dict["LogStatus"] as! Bool
+        }
+        if dict.keys.contains("LogStorage") {
+            self.logStorage = dict["LogStorage"] as! Int64
+        }
+        if dict.keys.contains("MaxOverflow") {
+            self.maxOverflow = dict["MaxOverflow"] as! Int64
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("StartTime") {
+            self.startTime = dict["StartTime"] as! Int64
+        }
+        if dict.keys.contains("UserStatus") {
+            self.userStatus = dict["UserStatus"] as! Bool
+        }
+        if dict.keys.contains("Version") {
+            self.version = dict["Version"] as! Int32
+        }
+        if dict.keys.contains("VpcNumber") {
+            self.vpcNumber = dict["VpcNumber"] as! Int64
+        }
+    }
+}
+
+public class DescribeUserBuyVersionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeUserBuyVersionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeUserBuyVersionResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
