@@ -1837,6 +1837,8 @@ public class DescribeOrgsResponse : Tea.TeaModel {
 }
 
 public class DescribeUsersRequest : Tea.TeaModel {
+    public var bizType: String?
+
     public var endUserIds: [String]?
 
     public var excludeEndUserIds: [String]?
@@ -1855,6 +1857,8 @@ public class DescribeUsersRequest : Tea.TeaModel {
 
     public var showExtras: [String: Any]?
 
+    public var solutionId: String?
+
     public override init() {
         super.init()
     }
@@ -1869,6 +1873,9 @@ public class DescribeUsersRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bizType != nil {
+            map["BizType"] = self.bizType!
+        }
         if self.endUserIds != nil {
             map["EndUserIds"] = self.endUserIds!
         }
@@ -1896,10 +1903,16 @@ public class DescribeUsersRequest : Tea.TeaModel {
         if self.showExtras != nil {
             map["ShowExtras"] = self.showExtras!
         }
+        if self.solutionId != nil {
+            map["SolutionId"] = self.solutionId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BizType") {
+            self.bizType = dict["BizType"] as! String
+        }
         if dict.keys.contains("EndUserIds") {
             self.endUserIds = dict["EndUserIds"] as! [String]
         }
@@ -1927,10 +1940,15 @@ public class DescribeUsersRequest : Tea.TeaModel {
         if dict.keys.contains("ShowExtras") {
             self.showExtras = dict["ShowExtras"] as! [String: Any]
         }
+        if dict.keys.contains("SolutionId") {
+            self.solutionId = dict["SolutionId"] as! String
+        }
     }
 }
 
 public class DescribeUsersShrinkRequest : Tea.TeaModel {
+    public var bizType: String?
+
     public var endUserIds: [String]?
 
     public var excludeEndUserIds: [String]?
@@ -1949,6 +1967,8 @@ public class DescribeUsersShrinkRequest : Tea.TeaModel {
 
     public var showExtrasShrink: String?
 
+    public var solutionId: String?
+
     public override init() {
         super.init()
     }
@@ -1963,6 +1983,9 @@ public class DescribeUsersShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bizType != nil {
+            map["BizType"] = self.bizType!
+        }
         if self.endUserIds != nil {
             map["EndUserIds"] = self.endUserIds!
         }
@@ -1990,10 +2013,16 @@ public class DescribeUsersShrinkRequest : Tea.TeaModel {
         if self.showExtrasShrink != nil {
             map["ShowExtras"] = self.showExtrasShrink!
         }
+        if self.solutionId != nil {
+            map["SolutionId"] = self.solutionId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BizType") {
+            self.bizType = dict["BizType"] as! String
+        }
         if dict.keys.contains("EndUserIds") {
             self.endUserIds = dict["EndUserIds"] as! [String]
         }
@@ -2020,6 +2049,9 @@ public class DescribeUsersShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ShowExtras") {
             self.showExtrasShrink = dict["ShowExtras"] as! String
+        }
+        if dict.keys.contains("SolutionId") {
+            self.solutionId = dict["SolutionId"] as! String
         }
     }
 }
