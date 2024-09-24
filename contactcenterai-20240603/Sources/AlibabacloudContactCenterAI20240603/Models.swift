@@ -6,6 +6,43 @@ import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
 public class AnalyzeConversationRequest : Tea.TeaModel {
+    public class CategoryTags : Tea.TeaModel {
+        public var tagDesc: String?
+
+        public var tagName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tagDesc != nil {
+                map["tagDesc"] = self.tagDesc!
+            }
+            if self.tagName != nil {
+                map["tagName"] = self.tagName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("tagDesc") {
+                self.tagDesc = dict["tagDesc"] as! String
+            }
+            if dict.keys.contains("tagName") {
+                self.tagName = dict["tagName"] as! String
+            }
+        }
+    }
     public class Dialogue : Tea.TeaModel {
         public class Sentences : Tea.TeaModel {
             public var role: String?
@@ -382,6 +419,45 @@ public class AnalyzeConversationRequest : Tea.TeaModel {
             }
         }
     }
+    public class UserProfiles : Tea.TeaModel {
+        public var name: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.value != nil {
+                map["value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("name") {
+                self.name = dict["name"] as! String
+            }
+            if dict.keys.contains("value") {
+                self.value = dict["value"] as! String
+            }
+        }
+    }
+    public var categoryTags: [AnalyzeConversationRequest.CategoryTags]?
+
     public var dialogue: AnalyzeConversationRequest.Dialogue?
 
     public var examples: [AnalyzeConversationRequest.Examples]?
@@ -397,6 +473,8 @@ public class AnalyzeConversationRequest : Tea.TeaModel {
     public var serviceInspection: AnalyzeConversationRequest.ServiceInspection?
 
     public var stream: Bool?
+
+    public var userProfiles: [AnalyzeConversationRequest.UserProfiles]?
 
     public override init() {
         super.init()
@@ -414,6 +492,13 @@ public class AnalyzeConversationRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.categoryTags != nil {
+            var tmp : [Any] = []
+            for k in self.categoryTags! {
+                tmp.append(k.toMap())
+            }
+            map["categoryTags"] = tmp
+        }
         if self.dialogue != nil {
             map["dialogue"] = self.dialogue?.toMap()
         }
@@ -446,10 +531,28 @@ public class AnalyzeConversationRequest : Tea.TeaModel {
         if self.stream != nil {
             map["stream"] = self.stream!
         }
+        if self.userProfiles != nil {
+            var tmp : [Any] = []
+            for k in self.userProfiles! {
+                tmp.append(k.toMap())
+            }
+            map["userProfiles"] = tmp
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("categoryTags") {
+            var tmp : [AnalyzeConversationRequest.CategoryTags] = []
+            for v in dict["categoryTags"] as! [Any] {
+                var model = AnalyzeConversationRequest.CategoryTags()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.categoryTags = tmp
+        }
         if dict.keys.contains("dialogue") {
             var model = AnalyzeConversationRequest.Dialogue()
             model.fromMap(dict["dialogue"] as! [String: Any])
@@ -493,6 +596,17 @@ public class AnalyzeConversationRequest : Tea.TeaModel {
         }
         if dict.keys.contains("stream") {
             self.stream = dict["stream"] as! Bool
+        }
+        if dict.keys.contains("userProfiles") {
+            var tmp : [AnalyzeConversationRequest.UserProfiles] = []
+            for v in dict["userProfiles"] as! [Any] {
+                var model = AnalyzeConversationRequest.UserProfiles()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.userProfiles = tmp
         }
     }
 }

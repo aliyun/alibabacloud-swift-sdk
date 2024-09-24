@@ -27,6 +27,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func analyzeConversationWithOptions(_ workspaceId: String, _ appId: String, _ request: AnalyzeConversationRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AnalyzeConversationResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.categoryTags)) {
+            body["categoryTags"] = request.categoryTags ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.dialogue)) {
             body["dialogue"] = request.dialogue!;
         }
@@ -50,6 +53,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.stream)) {
             body["stream"] = request.stream!;
+        }
+        if (!TeaUtils.Client.isUnset(request.userProfiles)) {
+            body["userProfiles"] = request.userProfiles ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
