@@ -32692,6 +32692,8 @@ public class GetServiceListPageResponseBody : Tea.TeaModel {
 
             public var serviceName: String?
 
+            public var serviceType: String?
+
             public var version: String?
 
             public override init() {
@@ -32726,6 +32728,9 @@ public class GetServiceListPageResponseBody : Tea.TeaModel {
                 if self.serviceName != nil {
                     map["ServiceName"] = self.serviceName!
                 }
+                if self.serviceType != nil {
+                    map["ServiceType"] = self.serviceType!
+                }
                 if self.version != nil {
                     map["Version"] = self.version!
                 }
@@ -32750,6 +32755,9 @@ public class GetServiceListPageResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ServiceName") {
                     self.serviceName = dict["ServiceName"] as! String
+                }
+                if dict.keys.contains("ServiceType") {
+                    self.serviceType = dict["ServiceType"] as! String
                 }
                 if dict.keys.contains("Version") {
                     self.version = dict["Version"] as! String
