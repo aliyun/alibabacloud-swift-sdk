@@ -22542,6 +22542,8 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
 
             public var returnRowCounts: Int64?
 
+            public var SQLHash: String?
+
             public var SQLText: String?
 
             public override init() {
@@ -22585,6 +22587,9 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
                 if self.returnRowCounts != nil {
                     map["ReturnRowCounts"] = self.returnRowCounts!
                 }
+                if self.SQLHash != nil {
+                    map["SQLHash"] = self.SQLHash!
+                }
                 if self.SQLText != nil {
                     map["SQLText"] = self.SQLText!
                 }
@@ -22618,6 +22623,9 @@ public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ReturnRowCounts") {
                     self.returnRowCounts = dict["ReturnRowCounts"] as! Int64
+                }
+                if dict.keys.contains("SQLHash") {
+                    self.SQLHash = dict["SQLHash"] as! String
                 }
                 if dict.keys.contains("SQLText") {
                     self.SQLText = dict["SQLText"] as! String
