@@ -1274,6 +1274,8 @@ public class CreateServiceRequest : Tea.TeaModel {
 
     public var deployType: String?
 
+    public var dryRun: Bool?
+
     public var duration: Int64?
 
     public var isSupportOperated: Bool?
@@ -1345,6 +1347,9 @@ public class CreateServiceRequest : Tea.TeaModel {
         }
         if self.deployType != nil {
             map["DeployType"] = self.deployType!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.duration != nil {
             map["Duration"] = self.duration!
@@ -1436,6 +1441,9 @@ public class CreateServiceRequest : Tea.TeaModel {
         if dict.keys.contains("DeployType") {
             self.deployType = dict["DeployType"] as! String
         }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
         if dict.keys.contains("Duration") {
             self.duration = dict["Duration"] as! Int64
         }
@@ -1516,6 +1524,134 @@ public class CreateServiceRequest : Tea.TeaModel {
 }
 
 public class CreateServiceResponseBody : Tea.TeaModel {
+    public class DryRunResult : Tea.TeaModel {
+        public class RolePolicy : Tea.TeaModel {
+            public class MissingPolicy : Tea.TeaModel {
+                public var action: [String]?
+
+                public var resource: String?
+
+                public var serviceName: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.action != nil {
+                        map["Action"] = self.action!
+                    }
+                    if self.resource != nil {
+                        map["Resource"] = self.resource!
+                    }
+                    if self.serviceName != nil {
+                        map["ServiceName"] = self.serviceName!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Action") {
+                        self.action = dict["Action"] as! [String]
+                    }
+                    if dict.keys.contains("Resource") {
+                        self.resource = dict["Resource"] as! String
+                    }
+                    if dict.keys.contains("ServiceName") {
+                        self.serviceName = dict["ServiceName"] as! String
+                    }
+                }
+            }
+            public var missingPolicy: [CreateServiceResponseBody.DryRunResult.RolePolicy.MissingPolicy]?
+
+            public var policy: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.missingPolicy != nil {
+                    var tmp : [Any] = []
+                    for k in self.missingPolicy! {
+                        tmp.append(k.toMap())
+                    }
+                    map["MissingPolicy"] = tmp
+                }
+                if self.policy != nil {
+                    map["Policy"] = self.policy!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("MissingPolicy") {
+                    var tmp : [CreateServiceResponseBody.DryRunResult.RolePolicy.MissingPolicy] = []
+                    for v in dict["MissingPolicy"] as! [Any] {
+                        var model = CreateServiceResponseBody.DryRunResult.RolePolicy.MissingPolicy()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.missingPolicy = tmp
+                }
+                if dict.keys.contains("Policy") {
+                    self.policy = dict["Policy"] as! String
+                }
+            }
+        }
+        public var rolePolicy: CreateServiceResponseBody.DryRunResult.RolePolicy?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.rolePolicy?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.rolePolicy != nil {
+                map["RolePolicy"] = self.rolePolicy?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("RolePolicy") {
+                var model = CreateServiceResponseBody.DryRunResult.RolePolicy()
+                model.fromMap(dict["RolePolicy"] as! [String: Any])
+                self.rolePolicy = model
+            }
+        }
+    }
+    public var dryRunResult: CreateServiceResponseBody.DryRunResult?
+
     public var requestId: String?
 
     public var serviceId: String?
@@ -1534,10 +1670,14 @@ public class CreateServiceResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.dryRunResult?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRunResult != nil {
+            map["DryRunResult"] = self.dryRunResult?.toMap()
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -1554,6 +1694,11 @@ public class CreateServiceResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DryRunResult") {
+            var model = CreateServiceResponseBody.DryRunResult()
+            model.fromMap(dict["DryRunResult"] as! [String: Any])
+            self.dryRunResult = model
+        }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
@@ -6598,6 +6743,171 @@ public class GetUploadCredentialsResponse : Tea.TeaModel {
     }
 }
 
+public class LaunchServiceRequest : Tea.TeaModel {
+    public var categories: [String]?
+
+    public var clientToken: String?
+
+    public var recommend: Bool?
+
+    public var regionId: String?
+
+    public var serviceId: String?
+
+    public var serviceVersion: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.categories != nil {
+            map["Categories"] = self.categories!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.recommend != nil {
+            map["Recommend"] = self.recommend!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
+        if self.serviceVersion != nil {
+            map["ServiceVersion"] = self.serviceVersion!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Categories") {
+            self.categories = dict["Categories"] as! [String]
+        }
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("Recommend") {
+            self.recommend = dict["Recommend"] as! Bool
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ServiceId") {
+            self.serviceId = dict["ServiceId"] as! String
+        }
+        if dict.keys.contains("ServiceVersion") {
+            self.serviceVersion = dict["ServiceVersion"] as! String
+        }
+    }
+}
+
+public class LaunchServiceResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var serviceLaunchResultType: String?
+
+    public var version: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.serviceLaunchResultType != nil {
+            map["ServiceLaunchResultType"] = self.serviceLaunchResultType!
+        }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ServiceLaunchResultType") {
+            self.serviceLaunchResultType = dict["ServiceLaunchResultType"] as! String
+        }
+        if dict.keys.contains("Version") {
+            self.version = dict["Version"] as! String
+        }
+    }
+}
+
+public class LaunchServiceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: LaunchServiceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = LaunchServiceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListAcrImageRepositoriesRequest : Tea.TeaModel {
     public var artifactType: String?
 
@@ -10151,6 +10461,131 @@ public class ModifyServiceInstanceResourcesResponse : Tea.TeaModel {
     }
 }
 
+public class PreLaunchServiceRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var regionId: String?
+
+    public var serviceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ServiceId") {
+            self.serviceId = dict["ServiceId"] as! String
+        }
+    }
+}
+
+public class PreLaunchServiceResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class PreLaunchServiceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: PreLaunchServiceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = PreLaunchServiceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class PushMeteringDataRequest : Tea.TeaModel {
     public var metering: String?
 
@@ -11589,7 +12024,7 @@ public class UpdateArtifactResponse : Tea.TeaModel {
 public class UpdateServiceRequest : Tea.TeaModel {
     public class Commodity : Tea.TeaModel {
         public class ComponentsMappings : Tea.TeaModel {
-            public var mappings: String?
+            public var mappings: [String: String]?
 
             public var templateName: String?
 
@@ -11618,7 +12053,7 @@ public class UpdateServiceRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Mappings") {
-                    self.mappings = dict["Mappings"] as! String
+                    self.mappings = dict["Mappings"] as! [String: String]
                 }
                 if dict.keys.contains("TemplateName") {
                     self.templateName = dict["TemplateName"] as! String
@@ -12043,6 +12478,8 @@ public class UpdateServiceRequest : Tea.TeaModel {
 
     public var deployType: String?
 
+    public var dryRun: Bool?
+
     public var duration: Int64?
 
     public var isSupportOperated: Bool?
@@ -12112,6 +12549,9 @@ public class UpdateServiceRequest : Tea.TeaModel {
         }
         if self.deployType != nil {
             map["DeployType"] = self.deployType!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.duration != nil {
             map["Duration"] = self.duration!
@@ -12194,6 +12634,9 @@ public class UpdateServiceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DeployType") {
             self.deployType = dict["DeployType"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
         }
         if dict.keys.contains("Duration") {
             self.duration = dict["Duration"] as! Int64
@@ -12393,6 +12836,8 @@ public class UpdateServiceShrinkRequest : Tea.TeaModel {
 
     public var deployType: String?
 
+    public var dryRun: Bool?
+
     public var duration: Int64?
 
     public var isSupportOperated: Bool?
@@ -12460,6 +12905,9 @@ public class UpdateServiceShrinkRequest : Tea.TeaModel {
         }
         if self.deployType != nil {
             map["DeployType"] = self.deployType!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.duration != nil {
             map["Duration"] = self.duration!
@@ -12541,6 +12989,9 @@ public class UpdateServiceShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("DeployType") {
             self.deployType = dict["DeployType"] as! String
         }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
         if dict.keys.contains("Duration") {
             self.duration = dict["Duration"] as! Int64
         }
@@ -12607,6 +13058,134 @@ public class UpdateServiceShrinkRequest : Tea.TeaModel {
 }
 
 public class UpdateServiceResponseBody : Tea.TeaModel {
+    public class DryRunResult : Tea.TeaModel {
+        public class RolePolicy : Tea.TeaModel {
+            public class MissingPolicy : Tea.TeaModel {
+                public var action: [String]?
+
+                public var resource: String?
+
+                public var serviceName: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.action != nil {
+                        map["Action"] = self.action!
+                    }
+                    if self.resource != nil {
+                        map["Resource"] = self.resource!
+                    }
+                    if self.serviceName != nil {
+                        map["ServiceName"] = self.serviceName!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Action") {
+                        self.action = dict["Action"] as! [String]
+                    }
+                    if dict.keys.contains("Resource") {
+                        self.resource = dict["Resource"] as! String
+                    }
+                    if dict.keys.contains("ServiceName") {
+                        self.serviceName = dict["ServiceName"] as! String
+                    }
+                }
+            }
+            public var missingPolicy: [UpdateServiceResponseBody.DryRunResult.RolePolicy.MissingPolicy]?
+
+            public var policy: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.missingPolicy != nil {
+                    var tmp : [Any] = []
+                    for k in self.missingPolicy! {
+                        tmp.append(k.toMap())
+                    }
+                    map["MissingPolicy"] = tmp
+                }
+                if self.policy != nil {
+                    map["Policy"] = self.policy!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("MissingPolicy") {
+                    var tmp : [UpdateServiceResponseBody.DryRunResult.RolePolicy.MissingPolicy] = []
+                    for v in dict["MissingPolicy"] as! [Any] {
+                        var model = UpdateServiceResponseBody.DryRunResult.RolePolicy.MissingPolicy()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.missingPolicy = tmp
+                }
+                if dict.keys.contains("Policy") {
+                    self.policy = dict["Policy"] as! String
+                }
+            }
+        }
+        public var rolePolicy: UpdateServiceResponseBody.DryRunResult.RolePolicy?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.rolePolicy?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.rolePolicy != nil {
+                map["RolePolicy"] = self.rolePolicy?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("RolePolicy") {
+                var model = UpdateServiceResponseBody.DryRunResult.RolePolicy()
+                model.fromMap(dict["RolePolicy"] as! [String: Any])
+                self.rolePolicy = model
+            }
+        }
+    }
+    public var dryRunResult: UpdateServiceResponseBody.DryRunResult?
+
     public var requestId: String?
 
     public override init() {
@@ -12619,10 +13198,14 @@ public class UpdateServiceResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.dryRunResult?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRunResult != nil {
+            map["DryRunResult"] = self.dryRunResult?.toMap()
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -12630,6 +13213,11 @@ public class UpdateServiceResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DryRunResult") {
+            var model = UpdateServiceResponseBody.DryRunResult()
+            model.fromMap(dict["DryRunResult"] as! [String: Any])
+            self.dryRunResult = model
+        }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
@@ -12719,6 +13307,8 @@ public class UpdateServiceInstanceAttributeRequest : Tea.TeaModel {
 
     public var licenseData: UpdateServiceInstanceAttributeRequest.LicenseData?
 
+    public var reason: String?
+
     public var regionId: String?
 
     public var serviceInstanceId: String?
@@ -12744,6 +13334,9 @@ public class UpdateServiceInstanceAttributeRequest : Tea.TeaModel {
         if self.licenseData != nil {
             map["LicenseData"] = self.licenseData?.toMap()
         }
+        if self.reason != nil {
+            map["Reason"] = self.reason!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -12762,6 +13355,9 @@ public class UpdateServiceInstanceAttributeRequest : Tea.TeaModel {
             model.fromMap(dict["LicenseData"] as! [String: Any])
             self.licenseData = model
         }
+        if dict.keys.contains("Reason") {
+            self.reason = dict["Reason"] as! String
+        }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
         }
@@ -12775,6 +13371,8 @@ public class UpdateServiceInstanceAttributeShrinkRequest : Tea.TeaModel {
     public var endTime: String?
 
     public var licenseDataShrink: String?
+
+    public var reason: String?
 
     public var regionId: String?
 
@@ -12800,6 +13398,9 @@ public class UpdateServiceInstanceAttributeShrinkRequest : Tea.TeaModel {
         if self.licenseDataShrink != nil {
             map["LicenseData"] = self.licenseDataShrink!
         }
+        if self.reason != nil {
+            map["Reason"] = self.reason!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -12815,6 +13416,9 @@ public class UpdateServiceInstanceAttributeShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("LicenseData") {
             self.licenseDataShrink = dict["LicenseData"] as! String
+        }
+        if dict.keys.contains("Reason") {
+            self.reason = dict["Reason"] as! String
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
