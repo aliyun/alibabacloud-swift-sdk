@@ -486,8 +486,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func credentialVerifyWithOptions(_ request: CredentialVerifyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CredentialVerifyResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func credentialVerifyWithOptions(_ tmpReq: CredentialVerifyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CredentialVerifyResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CredentialVerifyShrinkRequest = CredentialVerifyShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.merchantDetail)) {
+            request.merchantDetailShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.merchantDetail, "MerchantDetail", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.certNum)) {
             query["CertNum"] = request.certNum ?? "";
@@ -510,8 +515,20 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.isOCR)) {
             query["IsOCR"] = request.isOCR ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.merchantDetailShrink)) {
+            query["MerchantDetail"] = request.merchantDetailShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.merchantId)) {
             query["MerchantId"] = request.merchantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productCode)) {
+            query["ProductCode"] = request.productCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.prompt)) {
+            query["Prompt"] = request.prompt ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.promptModel)) {
+            query["PromptModel"] = request.promptModel ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.userName)) {
             query["UserName"] = request.userName ?? "";
@@ -1137,6 +1154,52 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func insertWhiteListSettingWithOptions(_ request: InsertWhiteListSettingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> InsertWhiteListSettingResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.certNo)) {
+            query["CertNo"] = request.certNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certifyId)) {
+            query["CertifyId"] = request.certifyId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.remark)) {
+            query["Remark"] = request.remark ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sceneId)) {
+            query["SceneId"] = request.sceneId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceCode)) {
+            query["ServiceCode"] = request.serviceCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.validDay)) {
+            query["ValidDay"] = request.validDay!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "InsertWhiteListSetting",
+            "version": "2019-03-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(InsertWhiteListSettingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func insertWhiteListSetting(_ request: InsertWhiteListSettingRequest) async throws -> InsertWhiteListSettingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await insertWhiteListSettingWithOptions(request as! InsertWhiteListSettingRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func livenessFaceVerifyWithOptions(_ request: LivenessFaceVerifyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> LivenessFaceVerifyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1431,6 +1494,100 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyDeviceInfo(_ request: ModifyDeviceInfoRequest) async throws -> ModifyDeviceInfoResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifyDeviceInfoWithOptions(request as! ModifyDeviceInfoRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func pageQueryWhiteListSettingWithOptions(_ request: PageQueryWhiteListSettingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PageQueryWhiteListSettingResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.certNo)) {
+            query["CertNo"] = request.certNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certifyId)) {
+            query["CertifyId"] = request.certifyId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.currentPage)) {
+            query["CurrentPage"] = request.currentPage!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sceneId)) {
+            query["SceneId"] = request.sceneId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceCode)) {
+            query["ServiceCode"] = request.serviceCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["Status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.validEndDate)) {
+            query["ValidEndDate"] = request.validEndDate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.validStartDate)) {
+            query["ValidStartDate"] = request.validStartDate ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "PageQueryWhiteListSetting",
+            "version": "2019-03-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PageQueryWhiteListSettingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func pageQueryWhiteListSetting(_ request: PageQueryWhiteListSettingRequest) async throws -> PageQueryWhiteListSettingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await pageQueryWhiteListSettingWithOptions(request as! PageQueryWhiteListSettingRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func removeWhiteListSettingWithOptions(_ tmpReq: RemoveWhiteListSettingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RemoveWhiteListSettingResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: RemoveWhiteListSettingShrinkRequest = RemoveWhiteListSettingShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.ids)) {
+            request.idsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ids, "Ids", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.idsShrink)) {
+            query["Ids"] = request.idsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceCode)) {
+            query["ServiceCode"] = request.serviceCode ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RemoveWhiteListSetting",
+            "version": "2019-03-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RemoveWhiteListSettingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func removeWhiteListSetting(_ request: RemoveWhiteListSettingRequest) async throws -> RemoveWhiteListSettingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await removeWhiteListSettingWithOptions(request as! RemoveWhiteListSettingRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
