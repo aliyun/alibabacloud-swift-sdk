@@ -10266,6 +10266,8 @@ public class SetRunningPlanResponse : Tea.TeaModel {
 }
 
 public class SubmitDocumentAnalyzeJobRequest : Tea.TeaModel {
+    public var dataType: String?
+
     public var fileName: String?
 
     public var fileUrl: String?
@@ -10288,6 +10290,9 @@ public class SubmitDocumentAnalyzeJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dataType != nil {
+            map["dataType"] = self.dataType!
+        }
         if self.fileName != nil {
             map["fileName"] = self.fileName!
         }
@@ -10304,6 +10309,9 @@ public class SubmitDocumentAnalyzeJobRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("dataType") {
+            self.dataType = dict["dataType"] as! String
+        }
         if dict.keys.contains("fileName") {
             self.fileName = dict["fileName"] as! String
         }
@@ -10320,6 +10328,8 @@ public class SubmitDocumentAnalyzeJobRequest : Tea.TeaModel {
 }
 
 public class SubmitDocumentAnalyzeJobAdvanceRequest : Tea.TeaModel {
+    public var dataType: String?
+
     public var fileName: String?
 
     public var fileUrlObject: InputStream?
@@ -10342,6 +10352,9 @@ public class SubmitDocumentAnalyzeJobAdvanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dataType != nil {
+            map["dataType"] = self.dataType!
+        }
         if self.fileName != nil {
             map["fileName"] = self.fileName!
         }
@@ -10358,6 +10371,9 @@ public class SubmitDocumentAnalyzeJobAdvanceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("dataType") {
+            self.dataType = dict["dataType"] as! String
+        }
         if dict.keys.contains("fileName") {
             self.fileName = dict["fileName"] as! String
         }

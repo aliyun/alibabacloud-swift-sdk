@@ -1459,6 +1459,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitDocumentAnalyzeJobWithOptions(_ request: SubmitDocumentAnalyzeJobRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitDocumentAnalyzeJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dataType)) {
+            query["dataType"] = request.dataType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.fileName)) {
             query["fileName"] = request.fileName ?? "";
         }
