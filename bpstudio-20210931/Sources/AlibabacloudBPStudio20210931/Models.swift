@@ -1426,9 +1426,62 @@ public class ExecuteOperationSyncShrinkRequest : Tea.TeaModel {
 }
 
 public class ExecuteOperationSyncResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var arguments: String?
+
+        public var message: String?
+
+        public var operationId: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.arguments != nil {
+                map["Arguments"] = self.arguments!
+            }
+            if self.message != nil {
+                map["Message"] = self.message!
+            }
+            if self.operationId != nil {
+                map["OperationId"] = self.operationId!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Arguments") {
+                self.arguments = dict["Arguments"] as! String
+            }
+            if dict.keys.contains("Message") {
+                self.message = dict["Message"] as! String
+            }
+            if dict.keys.contains("OperationId") {
+                self.operationId = dict["OperationId"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+        }
+    }
     public var code: Int32?
 
-    public var data: String?
+    public var data: ExecuteOperationSyncResponseBody.Data?
 
     public var message: String?
 
@@ -1444,6 +1497,7 @@ public class ExecuteOperationSyncResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -1452,7 +1506,7 @@ public class ExecuteOperationSyncResponseBody : Tea.TeaModel {
             map["Code"] = self.code!
         }
         if self.data != nil {
-            map["Data"] = self.data!
+            map["Data"] = self.data?.toMap()
         }
         if self.message != nil {
             map["Message"] = self.message!
@@ -1468,7 +1522,9 @@ public class ExecuteOperationSyncResponseBody : Tea.TeaModel {
             self.code = dict["Code"] as! Int32
         }
         if dict.keys.contains("Data") {
-            self.data = dict["Data"] as! String
+            var model = ExecuteOperationSyncResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
