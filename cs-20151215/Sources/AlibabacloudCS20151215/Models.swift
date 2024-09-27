@@ -4658,6 +4658,8 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
         public var nodeNameMode: String?
 
+        public var preUserData: String?
+
         public var runtime: String?
 
         public var runtimeVersion: String?
@@ -4697,6 +4699,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             }
             if self.nodeNameMode != nil {
                 map["node_name_mode"] = self.nodeNameMode!
+            }
+            if self.preUserData != nil {
+                map["pre_user_data"] = self.preUserData!
             }
             if self.runtime != nil {
                 map["runtime"] = self.runtime!
@@ -4740,6 +4745,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             }
             if dict.keys.contains("node_name_mode") {
                 self.nodeNameMode = dict["node_name_mode"] as! String
+            }
+            if dict.keys.contains("pre_user_data") {
+                self.preUserData = dict["pre_user_data"] as! String
             }
             if dict.keys.contains("runtime") {
                 self.runtime = dict["runtime"] as! String
@@ -9941,6 +9949,8 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
         public var nodeNameMode: String?
 
+        public var preUserData: String?
+
         public var runtime: String?
 
         public var runtimeVersion: String?
@@ -9980,6 +9990,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             }
             if self.nodeNameMode != nil {
                 map["node_name_mode"] = self.nodeNameMode!
+            }
+            if self.preUserData != nil {
+                map["pre_user_data"] = self.preUserData!
             }
             if self.runtime != nil {
                 map["runtime"] = self.runtime!
@@ -10023,6 +10036,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("node_name_mode") {
                 self.nodeNameMode = dict["node_name_mode"] as! String
+            }
+            if dict.keys.contains("pre_user_data") {
+                self.preUserData = dict["pre_user_data"] as! String
             }
             if dict.keys.contains("runtime") {
                 self.runtime = dict["runtime"] as! String
@@ -11419,6 +11435,8 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
 
             public var nodeNameMode: String?
 
+            public var preUserData: String?
+
             public var runtime: String?
 
             public var runtimeVersion: String?
@@ -11458,6 +11476,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 }
                 if self.nodeNameMode != nil {
                     map["node_name_mode"] = self.nodeNameMode!
+                }
+                if self.preUserData != nil {
+                    map["pre_user_data"] = self.preUserData!
                 }
                 if self.runtime != nil {
                     map["runtime"] = self.runtime!
@@ -11501,6 +11522,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("node_name_mode") {
                     self.nodeNameMode = dict["node_name_mode"] as! String
+                }
+                if dict.keys.contains("pre_user_data") {
+                    self.preUserData = dict["pre_user_data"] as! String
                 }
                 if dict.keys.contains("runtime") {
                     self.runtime = dict["runtime"] as! String
@@ -23985,6 +24009,8 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
 
         public var labels: [Tag]?
 
+        public var preUserData: String?
+
         public var runtime: String?
 
         public var runtimeVersion: String?
@@ -24021,6 +24047,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["labels"] = tmp
+            }
+            if self.preUserData != nil {
+                map["pre_user_data"] = self.preUserData!
             }
             if self.runtime != nil {
                 map["runtime"] = self.runtime!
@@ -24061,6 +24090,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.labels = tmp
+            }
+            if dict.keys.contains("pre_user_data") {
+                self.preUserData = dict["pre_user_data"] as! String
             }
             if dict.keys.contains("runtime") {
                 self.runtime = dict["runtime"] as! String
