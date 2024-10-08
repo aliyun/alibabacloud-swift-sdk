@@ -2116,6 +2116,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.resourceName)) {
             query["ResourceName"] = request.resourceName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.role)) {
+            query["Role"] = request.role ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.serviceName)) {
             query["ServiceName"] = request.serviceName ?? "";
         }

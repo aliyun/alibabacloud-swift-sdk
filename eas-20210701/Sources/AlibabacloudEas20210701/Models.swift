@@ -10667,6 +10667,8 @@ public class ListServicesRequest : Tea.TeaModel {
 
     public var resourceName: String?
 
+    public var role: String?
+
     public var serviceName: String?
 
     public var serviceStatus: String?
@@ -10723,6 +10725,9 @@ public class ListServicesRequest : Tea.TeaModel {
         if self.resourceName != nil {
             map["ResourceName"] = self.resourceName!
         }
+        if self.role != nil {
+            map["Role"] = self.role!
+        }
         if self.serviceName != nil {
             map["ServiceName"] = self.serviceName!
         }
@@ -10775,6 +10780,9 @@ public class ListServicesRequest : Tea.TeaModel {
         if dict.keys.contains("ResourceName") {
             self.resourceName = dict["ResourceName"] as! String
         }
+        if dict.keys.contains("Role") {
+            self.role = dict["Role"] as! String
+        }
         if dict.keys.contains("ServiceName") {
             self.serviceName = dict["ServiceName"] as! String
         }
@@ -10816,6 +10824,8 @@ public class ListServicesShrinkRequest : Tea.TeaModel {
     public var quotaId: String?
 
     public var resourceName: String?
+
+    public var role: String?
 
     public var serviceName: String?
 
@@ -10873,6 +10883,9 @@ public class ListServicesShrinkRequest : Tea.TeaModel {
         if self.resourceName != nil {
             map["ResourceName"] = self.resourceName!
         }
+        if self.role != nil {
+            map["Role"] = self.role!
+        }
         if self.serviceName != nil {
             map["ServiceName"] = self.serviceName!
         }
@@ -10924,6 +10937,9 @@ public class ListServicesShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceName") {
             self.resourceName = dict["ResourceName"] as! String
+        }
+        if dict.keys.contains("Role") {
+            self.role = dict["Role"] as! String
         }
         if dict.keys.contains("ServiceName") {
             self.serviceName = dict["ServiceName"] as! String
