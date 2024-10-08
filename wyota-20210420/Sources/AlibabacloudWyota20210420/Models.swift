@@ -1048,6 +1048,277 @@ public class AddTerminalResponse : Tea.TeaModel {
     }
 }
 
+public class AddTerminalsRequest : Tea.TeaModel {
+    public class AddTerminalParams : Tea.TeaModel {
+        public var alias: String?
+
+        public var clientType: Int32?
+
+        public var serialNumber: String?
+
+        public var terminalGroupId: String?
+
+        public var uuid: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.alias != nil {
+                map["Alias"] = self.alias!
+            }
+            if self.clientType != nil {
+                map["ClientType"] = self.clientType!
+            }
+            if self.serialNumber != nil {
+                map["SerialNumber"] = self.serialNumber!
+            }
+            if self.terminalGroupId != nil {
+                map["TerminalGroupId"] = self.terminalGroupId!
+            }
+            if self.uuid != nil {
+                map["Uuid"] = self.uuid!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Alias") {
+                self.alias = dict["Alias"] as! String
+            }
+            if dict.keys.contains("ClientType") {
+                self.clientType = dict["ClientType"] as! Int32
+            }
+            if dict.keys.contains("SerialNumber") {
+                self.serialNumber = dict["SerialNumber"] as! String
+            }
+            if dict.keys.contains("TerminalGroupId") {
+                self.terminalGroupId = dict["TerminalGroupId"] as! String
+            }
+            if dict.keys.contains("Uuid") {
+                self.uuid = dict["Uuid"] as! String
+            }
+        }
+    }
+    public var addTerminalParams: [AddTerminalsRequest.AddTerminalParams]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.addTerminalParams != nil {
+            var tmp : [Any] = []
+            for k in self.addTerminalParams! {
+                tmp.append(k.toMap())
+            }
+            map["AddTerminalParams"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AddTerminalParams") {
+            var tmp : [AddTerminalsRequest.AddTerminalParams] = []
+            for v in dict["AddTerminalParams"] as! [Any] {
+                var model = AddTerminalsRequest.AddTerminalParams()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.addTerminalParams = tmp
+        }
+    }
+}
+
+public class AddTerminalsResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var errorCode: String?
+
+        public var serialNumber: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.errorCode != nil {
+                map["ErrorCode"] = self.errorCode!
+            }
+            if self.serialNumber != nil {
+                map["SerialNumber"] = self.serialNumber!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ErrorCode") {
+                self.errorCode = dict["ErrorCode"] as! String
+            }
+            if dict.keys.contains("SerialNumber") {
+                self.serialNumber = dict["SerialNumber"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: [AddTerminalsResponseBody.Data]?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var tmp : [AddTerminalsResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = AddTerminalsResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class AddTerminalsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AddTerminalsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = AddTerminalsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class AttachEndUsersRequest : Tea.TeaModel {
     public var endUserIds: String?
 
@@ -1796,6 +2067,8 @@ public class CheckUuidValidRequest : Tea.TeaModel {
 
     public var wlan: String?
 
+    public var wosAppVersion: String?
+
     public override init() {
         super.init()
     }
@@ -1837,6 +2110,9 @@ public class CheckUuidValidRequest : Tea.TeaModel {
         if self.wlan != nil {
             map["Wlan"] = self.wlan!
         }
+        if self.wosAppVersion != nil {
+            map["WosAppVersion"] = self.wosAppVersion!
+        }
         return map
     }
 
@@ -1868,11 +2144,45 @@ public class CheckUuidValidRequest : Tea.TeaModel {
         if dict.keys.contains("Wlan") {
             self.wlan = dict["Wlan"] as! String
         }
+        if dict.keys.contains("WosAppVersion") {
+            self.wosAppVersion = dict["WosAppVersion"] as! String
+        }
     }
 }
 
 public class CheckUuidValidResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var newUpgrade: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.newUpgrade != nil {
+                map["NewUpgrade"] = self.newUpgrade!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("NewUpgrade") {
+                self.newUpgrade = dict["NewUpgrade"] as! Bool
+            }
+        }
+    }
     public var code: String?
+
+    public var data: CheckUuidValidResponseBody.Data?
 
     public var message: String?
 
@@ -1888,12 +2198,16 @@ public class CheckUuidValidResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.code != nil {
             map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
         }
         if self.message != nil {
             map["Message"] = self.message!
@@ -1907,6 +2221,11 @@ public class CheckUuidValidResponseBody : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = CheckUuidValidResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
@@ -11022,9 +11341,13 @@ public class ListTerminalResponse : Tea.TeaModel {
 }
 
 public class ListTerminalsRequest : Tea.TeaModel {
+    public var inManage: Bool?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
+
+    public var passwordFreeLoginUser: String?
 
     public var searchKeyword: String?
 
@@ -11033,6 +11356,8 @@ public class ListTerminalsRequest : Tea.TeaModel {
     public var terminalGroupId: String?
 
     public var uuids: [String]?
+
+    public var withBindUser: Bool?
 
     public override init() {
         super.init()
@@ -11048,11 +11373,17 @@ public class ListTerminalsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.inManage != nil {
+            map["InManage"] = self.inManage!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
+        }
+        if self.passwordFreeLoginUser != nil {
+            map["PasswordFreeLoginUser"] = self.passwordFreeLoginUser!
         }
         if self.searchKeyword != nil {
             map["SearchKeyword"] = self.searchKeyword!
@@ -11066,15 +11397,24 @@ public class ListTerminalsRequest : Tea.TeaModel {
         if self.uuids != nil {
             map["Uuids"] = self.uuids!
         }
+        if self.withBindUser != nil {
+            map["WithBindUser"] = self.withBindUser!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InManage") {
+            self.inManage = dict["InManage"] as! Bool
+        }
         if dict.keys.contains("MaxResults") {
             self.maxResults = dict["MaxResults"] as! Int32
         }
         if dict.keys.contains("NextToken") {
             self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("PasswordFreeLoginUser") {
+            self.passwordFreeLoginUser = dict["PasswordFreeLoginUser"] as! String
         }
         if dict.keys.contains("SearchKeyword") {
             self.searchKeyword = dict["SearchKeyword"] as! String
@@ -11088,12 +11428,17 @@ public class ListTerminalsRequest : Tea.TeaModel {
         if dict.keys.contains("Uuids") {
             self.uuids = dict["Uuids"] as! [String]
         }
+        if dict.keys.contains("WithBindUser") {
+            self.withBindUser = dict["WithBindUser"] as! Bool
+        }
     }
 }
 
 public class ListTerminalsResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var alias: String?
+
+        public var bindUserCount: Int32?
 
         public var buildId: String?
 
@@ -11105,6 +11450,8 @@ public class ListTerminalsResponseBody : Tea.TeaModel {
 
         public var ipv4: String?
 
+        public var lastLoginUser: String?
+
         public var locationInfo: String?
 
         public var manageTime: String?
@@ -11114,6 +11461,8 @@ public class ListTerminalsResponseBody : Tea.TeaModel {
         public var online: Bool?
 
         public var passwordFreeLoginUser: String?
+
+        public var publicIpv4: String?
 
         public var serialNumber: String?
 
@@ -11140,6 +11489,9 @@ public class ListTerminalsResponseBody : Tea.TeaModel {
             if self.alias != nil {
                 map["Alias"] = self.alias!
             }
+            if self.bindUserCount != nil {
+                map["BindUserCount"] = self.bindUserCount!
+            }
             if self.buildId != nil {
                 map["BuildId"] = self.buildId!
             }
@@ -11155,6 +11507,9 @@ public class ListTerminalsResponseBody : Tea.TeaModel {
             if self.ipv4 != nil {
                 map["Ipv4"] = self.ipv4!
             }
+            if self.lastLoginUser != nil {
+                map["LastLoginUser"] = self.lastLoginUser!
+            }
             if self.locationInfo != nil {
                 map["LocationInfo"] = self.locationInfo!
             }
@@ -11169,6 +11524,9 @@ public class ListTerminalsResponseBody : Tea.TeaModel {
             }
             if self.passwordFreeLoginUser != nil {
                 map["PasswordFreeLoginUser"] = self.passwordFreeLoginUser!
+            }
+            if self.publicIpv4 != nil {
+                map["PublicIpv4"] = self.publicIpv4!
             }
             if self.serialNumber != nil {
                 map["SerialNumber"] = self.serialNumber!
@@ -11189,6 +11547,9 @@ public class ListTerminalsResponseBody : Tea.TeaModel {
             if dict.keys.contains("Alias") {
                 self.alias = dict["Alias"] as! String
             }
+            if dict.keys.contains("BindUserCount") {
+                self.bindUserCount = dict["BindUserCount"] as! Int32
+            }
             if dict.keys.contains("BuildId") {
                 self.buildId = dict["BuildId"] as! String
             }
@@ -11204,6 +11565,9 @@ public class ListTerminalsResponseBody : Tea.TeaModel {
             if dict.keys.contains("Ipv4") {
                 self.ipv4 = dict["Ipv4"] as! String
             }
+            if dict.keys.contains("LastLoginUser") {
+                self.lastLoginUser = dict["LastLoginUser"] as! String
+            }
             if dict.keys.contains("LocationInfo") {
                 self.locationInfo = dict["LocationInfo"] as! String
             }
@@ -11218,6 +11582,9 @@ public class ListTerminalsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("PasswordFreeLoginUser") {
                 self.passwordFreeLoginUser = dict["PasswordFreeLoginUser"] as! String
+            }
+            if dict.keys.contains("PublicIpv4") {
+                self.publicIpv4 = dict["PublicIpv4"] as! String
             }
             if dict.keys.contains("SerialNumber") {
                 self.serialNumber = dict["SerialNumber"] as! String

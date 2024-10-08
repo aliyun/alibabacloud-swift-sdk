@@ -299,6 +299,39 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addTerminalsWithOptions(_ request: AddTerminalsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddTerminalsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.addTerminalParams)) {
+            bodyFlat["AddTerminalParams"] = request.addTerminalParams ?? [];
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddTerminals",
+            "version": "2021-04-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddTerminalsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addTerminals(_ request: AddTerminalsRequest) async throws -> AddTerminalsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await addTerminalsWithOptions(request as! AddTerminalsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func attachEndUsersWithOptions(_ request: AttachEndUsersRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AttachEndUsersResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -510,6 +543,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.wlan)) {
             body["Wlan"] = request.wlan ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.wosAppVersion)) {
+            body["WosAppVersion"] = request.wosAppVersion ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
@@ -1948,28 +1984,37 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listTerminalsWithOptions(_ request: ListTerminalsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTerminalsResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.serialNumbers)) {
-            query["SerialNumbers"] = request.serialNumbers ?? [];
-        }
-        if (!TeaUtils.Client.isUnset(request.uuids)) {
-            query["Uuids"] = request.uuids ?? [];
-        }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.inManage)) {
+            body["InManage"] = request.inManage!;
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             body["MaxResults"] = request.maxResults!;
         }
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
             body["NextToken"] = request.nextToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.passwordFreeLoginUser)) {
+            body["PasswordFreeLoginUser"] = request.passwordFreeLoginUser ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.searchKeyword)) {
             body["SearchKeyword"] = request.searchKeyword ?? "";
+        }
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.serialNumbers)) {
+            bodyFlat["SerialNumbers"] = request.serialNumbers ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.terminalGroupId)) {
             body["TerminalGroupId"] = request.terminalGroupId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.uuids)) {
+            bodyFlat["Uuids"] = request.uuids ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.withBindUser)) {
+            body["WithBindUser"] = request.withBindUser!;
+        }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
