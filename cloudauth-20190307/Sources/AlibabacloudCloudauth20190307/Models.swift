@@ -2116,7 +2116,7 @@ public class CredentialVerifyResponseBody : Tea.TeaModel {
         public class VlResult : Tea.TeaModel {
             public var success: Bool?
 
-            public var vlContent: [String: Any]?
+            public var vlContent: String?
 
             public override init() {
                 super.init()
@@ -2146,7 +2146,7 @@ public class CredentialVerifyResponseBody : Tea.TeaModel {
                     self.success = dict["Success"] as! Bool
                 }
                 if dict.keys.contains("VlContent") {
-                    self.vlContent = dict["VlContent"] as! [String: Any]
+                    self.vlContent = dict["VlContent"] as! String
                 }
             }
         }
