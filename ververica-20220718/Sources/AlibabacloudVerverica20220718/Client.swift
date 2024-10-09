@@ -1924,6 +1924,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["pageSize"] = request.pageSize!;
         }
+        if (!TeaUtils.Client.isUnset(request.sortName)) {
+            query["sortName"] = request.sortName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["status"] = request.status ?? "";
         }

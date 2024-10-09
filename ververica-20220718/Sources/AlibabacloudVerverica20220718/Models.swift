@@ -15300,6 +15300,8 @@ public class ListDeploymentsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var sortName: String?
+
     public var status: String?
 
     public override init() {
@@ -15340,6 +15342,9 @@ public class ListDeploymentsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["pageSize"] = self.pageSize!
         }
+        if self.sortName != nil {
+            map["sortName"] = self.sortName!
+        }
         if self.status != nil {
             map["status"] = self.status!
         }
@@ -15370,6 +15375,9 @@ public class ListDeploymentsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("pageSize") {
             self.pageSize = dict["pageSize"] as! Int32
+        }
+        if dict.keys.contains("sortName") {
+            self.sortName = dict["sortName"] as! String
         }
         if dict.keys.contains("status") {
             self.status = dict["status"] as! String
