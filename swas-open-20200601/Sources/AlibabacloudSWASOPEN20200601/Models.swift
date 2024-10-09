@@ -11082,7 +11082,15 @@ public class ListCustomImagesResponseBody : Tea.TeaModel {
 
         public var regionId: String?
 
+        public var requiredDataDiskSize: Int32?
+
+        public var requiredSystemDiskSize: Int32?
+
         public var resourceGroupId: String?
+
+        public var sourceImageName: String?
+
+        public var sourceImageVersion: String?
 
         public var status: String?
 
@@ -11147,8 +11155,20 @@ public class ListCustomImagesResponseBody : Tea.TeaModel {
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
+            if self.requiredDataDiskSize != nil {
+                map["RequiredDataDiskSize"] = self.requiredDataDiskSize!
+            }
+            if self.requiredSystemDiskSize != nil {
+                map["RequiredSystemDiskSize"] = self.requiredSystemDiskSize!
+            }
             if self.resourceGroupId != nil {
                 map["ResourceGroupId"] = self.resourceGroupId!
+            }
+            if self.sourceImageName != nil {
+                map["SourceImageName"] = self.sourceImageName!
+            }
+            if self.sourceImageVersion != nil {
+                map["SourceImageVersion"] = self.sourceImageVersion!
             }
             if self.status != nil {
                 map["Status"] = self.status!
@@ -11212,8 +11232,20 @@ public class ListCustomImagesResponseBody : Tea.TeaModel {
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
             }
+            if dict.keys.contains("RequiredDataDiskSize") {
+                self.requiredDataDiskSize = dict["RequiredDataDiskSize"] as! Int32
+            }
+            if dict.keys.contains("RequiredSystemDiskSize") {
+                self.requiredSystemDiskSize = dict["RequiredSystemDiskSize"] as! Int32
+            }
             if dict.keys.contains("ResourceGroupId") {
                 self.resourceGroupId = dict["ResourceGroupId"] as! String
+            }
+            if dict.keys.contains("SourceImageName") {
+                self.sourceImageName = dict["SourceImageName"] as! String
+            }
+            if dict.keys.contains("SourceImageVersion") {
+                self.sourceImageVersion = dict["SourceImageVersion"] as! String
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
