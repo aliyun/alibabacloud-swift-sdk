@@ -11725,6 +11725,8 @@ public class CreateImageComponentRequest : Tea.TeaModel {
 
     public var componentType: String?
 
+    public var componentVersion: String?
+
     public var content: String?
 
     public var description_: String?
@@ -11766,6 +11768,9 @@ public class CreateImageComponentRequest : Tea.TeaModel {
         }
         if self.componentType != nil {
             map["ComponentType"] = self.componentType!
+        }
+        if self.componentVersion != nil {
+            map["ComponentVersion"] = self.componentVersion!
         }
         if self.content != nil {
             map["Content"] = self.content!
@@ -11813,6 +11818,9 @@ public class CreateImageComponentRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ComponentType") {
             self.componentType = dict["ComponentType"] as! String
+        }
+        if dict.keys.contains("ComponentVersion") {
+            self.componentVersion = dict["ComponentVersion"] as! String
         }
         if dict.keys.contains("Content") {
             self.content = dict["Content"] as! String
@@ -11997,6 +12005,8 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var imageFamily: String?
+
     public var imageName: String?
 
     public var instanceType: String?
@@ -12011,6 +12021,8 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var repairMode: String?
+
     public var resourceGroupId: String?
 
     public var resourceOwnerAccount: String?
@@ -12020,6 +12032,8 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
     public var systemDiskSize: Int32?
 
     public var tag: [CreateImagePipelineRequest.Tag]?
+
+    public var testContent: String?
 
     public var toRegionId: [String]?
 
@@ -12060,6 +12074,9 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.imageFamily != nil {
+            map["ImageFamily"] = self.imageFamily!
+        }
         if self.imageName != nil {
             map["ImageName"] = self.imageName!
         }
@@ -12081,6 +12098,9 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.repairMode != nil {
+            map["RepairMode"] = self.repairMode!
+        }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
@@ -12099,6 +12119,9 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Tag"] = tmp
+        }
+        if self.testContent != nil {
+            map["TestContent"] = self.testContent!
         }
         if self.toRegionId != nil {
             map["ToRegionId"] = self.toRegionId!
@@ -12131,6 +12154,9 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
         }
+        if dict.keys.contains("ImageFamily") {
+            self.imageFamily = dict["ImageFamily"] as! String
+        }
         if dict.keys.contains("ImageName") {
             self.imageName = dict["ImageName"] as! String
         }
@@ -12151,6 +12177,9 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("RepairMode") {
+            self.repairMode = dict["RepairMode"] as! String
         }
         if dict.keys.contains("ResourceGroupId") {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
@@ -12174,6 +12203,9 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.tag = tmp
+        }
+        if dict.keys.contains("TestContent") {
+            self.testContent = dict["TestContent"] as! String
         }
         if dict.keys.contains("ToRegionId") {
             self.toRegionId = dict["ToRegionId"] as! [String]
@@ -45886,6 +45918,10 @@ public class DescribeImageComponentsRequest : Tea.TeaModel {
             }
         }
     }
+    public var componentType: String?
+
+    public var componentVersion: String?
+
     public var imageComponentId: [String]?
 
     public var maxResults: Int32?
@@ -45908,6 +45944,8 @@ public class DescribeImageComponentsRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var systemType: String?
+
     public var tag: [DescribeImageComponentsRequest.Tag]?
 
     public override init() {
@@ -45924,6 +45962,12 @@ public class DescribeImageComponentsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.componentType != nil {
+            map["ComponentType"] = self.componentType!
+        }
+        if self.componentVersion != nil {
+            map["ComponentVersion"] = self.componentVersion!
+        }
         if self.imageComponentId != nil {
             map["ImageComponentId"] = self.imageComponentId!
         }
@@ -45957,6 +46001,9 @@ public class DescribeImageComponentsRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.systemType != nil {
+            map["SystemType"] = self.systemType!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -45968,6 +46015,12 @@ public class DescribeImageComponentsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ComponentType") {
+            self.componentType = dict["ComponentType"] as! String
+        }
+        if dict.keys.contains("ComponentVersion") {
+            self.componentVersion = dict["ComponentVersion"] as! String
+        }
         if dict.keys.contains("ImageComponentId") {
             self.imageComponentId = dict["ImageComponentId"] as! [String]
         }
@@ -46001,6 +46054,9 @@ public class DescribeImageComponentsRequest : Tea.TeaModel {
         if dict.keys.contains("ResourceOwnerId") {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
         }
+        if dict.keys.contains("SystemType") {
+            self.systemType = dict["SystemType"] as! String
+        }
         if dict.keys.contains("Tag") {
             var tmp : [DescribeImageComponentsRequest.Tag] = []
             for v in dict["Tag"] as! [Any] {
@@ -46018,6 +46074,92 @@ public class DescribeImageComponentsRequest : Tea.TeaModel {
 public class DescribeImageComponentsResponseBody : Tea.TeaModel {
     public class ImageComponent : Tea.TeaModel {
         public class ImageComponentSet : Tea.TeaModel {
+            public class Parameters : Tea.TeaModel {
+                public class Parameter : Tea.TeaModel {
+                    public var defaultValue: String?
+
+                    public var name: String?
+
+                    public var type: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.defaultValue != nil {
+                            map["DefaultValue"] = self.defaultValue!
+                        }
+                        if self.name != nil {
+                            map["Name"] = self.name!
+                        }
+                        if self.type != nil {
+                            map["Type"] = self.type!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("DefaultValue") {
+                            self.defaultValue = dict["DefaultValue"] as! String
+                        }
+                        if dict.keys.contains("Name") {
+                            self.name = dict["Name"] as! String
+                        }
+                        if dict.keys.contains("Type") {
+                            self.type = dict["Type"] as! String
+                        }
+                    }
+                }
+                public var parameter: [DescribeImageComponentsResponseBody.ImageComponent.ImageComponentSet.Parameters.Parameter]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.parameter != nil {
+                        var tmp : [Any] = []
+                        for k in self.parameter! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Parameter"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Parameter") {
+                        var tmp : [DescribeImageComponentsResponseBody.ImageComponent.ImageComponentSet.Parameters.Parameter] = []
+                        for v in dict["Parameter"] as! [Any] {
+                            var model = DescribeImageComponentsResponseBody.ImageComponent.ImageComponentSet.Parameters.Parameter()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.parameter = tmp
+                    }
+                }
+            }
             public class Tags : Tea.TeaModel {
                 public class Tag : Tea.TeaModel {
                     public var tagKey: String?
@@ -46098,6 +46240,8 @@ public class DescribeImageComponentsResponseBody : Tea.TeaModel {
             }
             public var componentType: String?
 
+            public var componentVersion: String?
+
             public var content: String?
 
             public var creationTime: String?
@@ -46109,6 +46253,8 @@ public class DescribeImageComponentsResponseBody : Tea.TeaModel {
             public var name: String?
 
             public var owner: String?
+
+            public var parameters: DescribeImageComponentsResponseBody.ImageComponent.ImageComponentSet.Parameters?
 
             public var resourceGroupId: String?
 
@@ -46126,6 +46272,7 @@ public class DescribeImageComponentsResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.parameters?.validate()
                 try self.tags?.validate()
             }
 
@@ -46133,6 +46280,9 @@ public class DescribeImageComponentsResponseBody : Tea.TeaModel {
                 var map = super.toMap()
                 if self.componentType != nil {
                     map["ComponentType"] = self.componentType!
+                }
+                if self.componentVersion != nil {
+                    map["ComponentVersion"] = self.componentVersion!
                 }
                 if self.content != nil {
                     map["Content"] = self.content!
@@ -46152,6 +46302,9 @@ public class DescribeImageComponentsResponseBody : Tea.TeaModel {
                 if self.owner != nil {
                     map["Owner"] = self.owner!
                 }
+                if self.parameters != nil {
+                    map["Parameters"] = self.parameters?.toMap()
+                }
                 if self.resourceGroupId != nil {
                     map["ResourceGroupId"] = self.resourceGroupId!
                 }
@@ -46167,6 +46320,9 @@ public class DescribeImageComponentsResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("ComponentType") {
                     self.componentType = dict["ComponentType"] as! String
+                }
+                if dict.keys.contains("ComponentVersion") {
+                    self.componentVersion = dict["ComponentVersion"] as! String
                 }
                 if dict.keys.contains("Content") {
                     self.content = dict["Content"] as! String
@@ -46185,6 +46341,11 @@ public class DescribeImageComponentsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Owner") {
                     self.owner = dict["Owner"] as! String
+                }
+                if dict.keys.contains("Parameters") {
+                    var model = DescribeImageComponentsResponseBody.ImageComponent.ImageComponentSet.Parameters()
+                    model.fromMap(dict["Parameters"] as! [String: Any])
+                    self.parameters = model
                 }
                 if dict.keys.contains("ResourceGroupId") {
                     self.resourceGroupId = dict["ResourceGroupId"] as! String
@@ -47719,6 +47880,8 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
 
             public var description_: String?
 
+            public var imageFamily: String?
+
             public var imageName: String?
 
             public var imagePipelineId: String?
@@ -47729,11 +47892,15 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
 
             public var name: String?
 
+            public var repairMode: String?
+
             public var resourceGroupId: String?
 
             public var systemDiskSize: Int32?
 
             public var tags: DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.Tags?
+
+            public var testContent: String?
 
             public var toRegionIds: DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ToRegionIds?
 
@@ -47777,6 +47944,9 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                 if self.description_ != nil {
                     map["Description"] = self.description_!
                 }
+                if self.imageFamily != nil {
+                    map["ImageFamily"] = self.imageFamily!
+                }
                 if self.imageName != nil {
                     map["ImageName"] = self.imageName!
                 }
@@ -47792,6 +47962,9 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                 if self.name != nil {
                     map["Name"] = self.name!
                 }
+                if self.repairMode != nil {
+                    map["RepairMode"] = self.repairMode!
+                }
                 if self.resourceGroupId != nil {
                     map["ResourceGroupId"] = self.resourceGroupId!
                 }
@@ -47800,6 +47973,9 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                 }
                 if self.tags != nil {
                     map["Tags"] = self.tags?.toMap()
+                }
+                if self.testContent != nil {
+                    map["TestContent"] = self.testContent!
                 }
                 if self.toRegionIds != nil {
                     map["ToRegionIds"] = self.toRegionIds?.toMap()
@@ -47834,6 +48010,9 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                 if dict.keys.contains("Description") {
                     self.description_ = dict["Description"] as! String
                 }
+                if dict.keys.contains("ImageFamily") {
+                    self.imageFamily = dict["ImageFamily"] as! String
+                }
                 if dict.keys.contains("ImageName") {
                     self.imageName = dict["ImageName"] as! String
                 }
@@ -47849,6 +48028,9 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                 if dict.keys.contains("Name") {
                     self.name = dict["Name"] as! String
                 }
+                if dict.keys.contains("RepairMode") {
+                    self.repairMode = dict["RepairMode"] as! String
+                }
                 if dict.keys.contains("ResourceGroupId") {
                     self.resourceGroupId = dict["ResourceGroupId"] as! String
                 }
@@ -47859,6 +48041,9 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                     var model = DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.Tags()
                     model.fromMap(dict["Tags"] as! [String: Any])
                     self.tags = model
+                }
+                if dict.keys.contains("TestContent") {
+                    self.testContent = dict["TestContent"] as! String
                 }
                 if dict.keys.contains("ToRegionIds") {
                     var model = DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ToRegionIds()

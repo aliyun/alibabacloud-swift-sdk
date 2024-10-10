@@ -2914,6 +2914,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.componentType)) {
             query["ComponentType"] = request.componentType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.componentVersion)) {
+            query["ComponentVersion"] = request.componentVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.content)) {
             query["Content"] = request.content ?? "";
         }
@@ -3002,6 +3005,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.imageFamily)) {
+            query["ImageFamily"] = request.imageFamily ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.imageName)) {
             query["ImageName"] = request.imageName ?? "";
         }
@@ -3026,6 +3032,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.repairMode)) {
+            query["RepairMode"] = request.repairMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             query["ResourceGroupId"] = request.resourceGroupId ?? "";
         }
@@ -3043,6 +3052,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.tag)) {
             query["Tag"] = request.tag ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.testContent)) {
+            query["TestContent"] = request.testContent ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.toRegionId)) {
             query["ToRegionId"] = request.toRegionId ?? [];
@@ -9096,6 +9108,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeImageComponentsWithOptions(_ request: DescribeImageComponentsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeImageComponentsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.componentType)) {
+            query["ComponentType"] = request.componentType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.componentVersion)) {
+            query["ComponentVersion"] = request.componentVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.imageComponentId)) {
             query["ImageComponentId"] = request.imageComponentId ?? [];
         }
@@ -9134,6 +9152,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.systemType)) {
+            query["SystemType"] = request.systemType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tag)) {
             query["Tag"] = request.tag ?? [];
