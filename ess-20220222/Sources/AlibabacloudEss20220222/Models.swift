@@ -5968,6 +5968,35 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
             }
         }
     }
+    public class SecurityOptions : Tea.TeaModel {
+        public var confidentialComputingMode: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.confidentialComputingMode != nil {
+                map["ConfidentialComputingMode"] = self.confidentialComputingMode!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ConfidentialComputingMode") {
+                self.confidentialComputingMode = dict["ConfidentialComputingMode"] as! String
+            }
+        }
+    }
     public class SpotPriceLimits : Tea.TeaModel {
         public var instanceType: String?
 
@@ -6097,6 +6126,8 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
 
     public var securityGroupIds: [String]?
 
+    public var securityOptions: CreateScalingConfigurationRequest.SecurityOptions?
+
     public var spotDuration: Int32?
 
     public var spotInterruptionBehavior: String?
@@ -6132,6 +6163,7 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
         try self.imageOptions?.validate()
         try self.privatePoolOptions?.validate()
         try self.systemDisk?.validate()
+        try self.securityOptions?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -6293,6 +6325,9 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
         }
         if self.securityGroupIds != nil {
             map["SecurityGroupIds"] = self.securityGroupIds!
+        }
+        if self.securityOptions != nil {
+            map["SecurityOptions"] = self.securityOptions?.toMap()
         }
         if self.spotDuration != nil {
             map["SpotDuration"] = self.spotDuration!
@@ -6518,6 +6553,11 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityGroupIds") {
             self.securityGroupIds = dict["SecurityGroupIds"] as! [String]
+        }
+        if dict.keys.contains("SecurityOptions") {
+            var model = CreateScalingConfigurationRequest.SecurityOptions()
+            model.fromMap(dict["SecurityOptions"] as! [String: Any])
+            self.securityOptions = model
         }
         if dict.keys.contains("SpotDuration") {
             self.spotDuration = dict["SpotDuration"] as! Int32
@@ -7204,6 +7244,35 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
             }
         }
     }
+    public class SecurityOptions : Tea.TeaModel {
+        public var confidentialComputingMode: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.confidentialComputingMode != nil {
+                map["ConfidentialComputingMode"] = self.confidentialComputingMode!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ConfidentialComputingMode") {
+                self.confidentialComputingMode = dict["ConfidentialComputingMode"] as! String
+            }
+        }
+    }
     public class SpotPriceLimits : Tea.TeaModel {
         public var instanceType: String?
 
@@ -7333,6 +7402,8 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
 
     public var securityGroupIds: [String]?
 
+    public var securityOptions: CreateScalingConfigurationShrinkRequest.SecurityOptions?
+
     public var spotDuration: Int32?
 
     public var spotInterruptionBehavior: String?
@@ -7368,6 +7439,7 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
         try self.imageOptions?.validate()
         try self.privatePoolOptions?.validate()
         try self.systemDisk?.validate()
+        try self.securityOptions?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -7529,6 +7601,9 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
         }
         if self.securityGroupIds != nil {
             map["SecurityGroupIds"] = self.securityGroupIds!
+        }
+        if self.securityOptions != nil {
+            map["SecurityOptions"] = self.securityOptions?.toMap()
         }
         if self.spotDuration != nil {
             map["SpotDuration"] = self.spotDuration!
@@ -7754,6 +7829,11 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityGroupIds") {
             self.securityGroupIds = dict["SecurityGroupIds"] as! [String]
+        }
+        if dict.keys.contains("SecurityOptions") {
+            var model = CreateScalingConfigurationShrinkRequest.SecurityOptions()
+            model.fromMap(dict["SecurityOptions"] as! [String: Any])
+            self.securityOptions = model
         }
         if dict.keys.contains("SpotDuration") {
             self.spotDuration = dict["SpotDuration"] as! Int32
@@ -19419,6 +19499,35 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class SecurityOptions : Tea.TeaModel {
+            public var confidentialComputingMode: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.confidentialComputingMode != nil {
+                    map["ConfidentialComputingMode"] = self.confidentialComputingMode!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ConfidentialComputingMode") {
+                    self.confidentialComputingMode = dict["ConfidentialComputingMode"] as! String
+                }
+            }
+        }
         public class SpotPriceLimits : Tea.TeaModel {
             public var instanceType: String?
 
@@ -19585,6 +19694,8 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
 
         public var securityGroupIds: [String]?
 
+        public var securityOptions: DescribeScalingConfigurationsResponseBody.ScalingConfigurations.SecurityOptions?
+
         public var spotDuration: Int32?
 
         public var spotInterruptionBehavior: String?
@@ -19642,6 +19753,7 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.schedulerOptions?.validate()
+            try self.securityOptions?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -19799,6 +19911,9 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
             }
             if self.securityGroupIds != nil {
                 map["SecurityGroupIds"] = self.securityGroupIds!
+            }
+            if self.securityOptions != nil {
+                map["SecurityOptions"] = self.securityOptions?.toMap()
             }
             if self.spotDuration != nil {
                 map["SpotDuration"] = self.spotDuration!
@@ -20052,6 +20167,11 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SecurityGroupIds") {
                 self.securityGroupIds = dict["SecurityGroupIds"] as! [String]
+            }
+            if dict.keys.contains("SecurityOptions") {
+                var model = DescribeScalingConfigurationsResponseBody.ScalingConfigurations.SecurityOptions()
+                model.fromMap(dict["SecurityOptions"] as! [String: Any])
+                self.securityOptions = model
             }
             if dict.keys.contains("SpotDuration") {
                 self.spotDuration = dict["SpotDuration"] as! Int32
@@ -31601,6 +31721,35 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
             }
         }
     }
+    public class SecurityOptions : Tea.TeaModel {
+        public var confidentialComputingMode: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.confidentialComputingMode != nil {
+                map["ConfidentialComputingMode"] = self.confidentialComputingMode!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ConfidentialComputingMode") {
+                self.confidentialComputingMode = dict["ConfidentialComputingMode"] as! String
+            }
+        }
+    }
     public class SpotPriceLimits : Tea.TeaModel {
         public var instanceType: String?
 
@@ -31724,6 +31873,8 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
 
     public var securityGroupIds: [String]?
 
+    public var securityOptions: ModifyScalingConfigurationRequest.SecurityOptions?
+
     public var spotDuration: Int32?
 
     public var spotInterruptionBehavior: String?
@@ -31759,6 +31910,7 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
         try self.imageOptions?.validate()
         try self.privatePoolOptions?.validate()
         try self.systemDisk?.validate()
+        try self.securityOptions?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -31911,6 +32063,9 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
         }
         if self.securityGroupIds != nil {
             map["SecurityGroupIds"] = self.securityGroupIds!
+        }
+        if self.securityOptions != nil {
+            map["SecurityOptions"] = self.securityOptions?.toMap()
         }
         if self.spotDuration != nil {
             map["SpotDuration"] = self.spotDuration!
@@ -32127,6 +32282,11 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityGroupIds") {
             self.securityGroupIds = dict["SecurityGroupIds"] as! [String]
+        }
+        if dict.keys.contains("SecurityOptions") {
+            var model = ModifyScalingConfigurationRequest.SecurityOptions()
+            model.fromMap(dict["SecurityOptions"] as! [String: Any])
+            self.securityOptions = model
         }
         if dict.keys.contains("SpotDuration") {
             self.spotDuration = dict["SpotDuration"] as! Int32
@@ -32813,6 +32973,35 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
             }
         }
     }
+    public class SecurityOptions : Tea.TeaModel {
+        public var confidentialComputingMode: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.confidentialComputingMode != nil {
+                map["ConfidentialComputingMode"] = self.confidentialComputingMode!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ConfidentialComputingMode") {
+                self.confidentialComputingMode = dict["ConfidentialComputingMode"] as! String
+            }
+        }
+    }
     public class SpotPriceLimits : Tea.TeaModel {
         public var instanceType: String?
 
@@ -32936,6 +33125,8 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
 
     public var securityGroupIds: [String]?
 
+    public var securityOptions: ModifyScalingConfigurationShrinkRequest.SecurityOptions?
+
     public var spotDuration: Int32?
 
     public var spotInterruptionBehavior: String?
@@ -32971,6 +33162,7 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
         try self.imageOptions?.validate()
         try self.privatePoolOptions?.validate()
         try self.systemDisk?.validate()
+        try self.securityOptions?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -33123,6 +33315,9 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
         }
         if self.securityGroupIds != nil {
             map["SecurityGroupIds"] = self.securityGroupIds!
+        }
+        if self.securityOptions != nil {
+            map["SecurityOptions"] = self.securityOptions?.toMap()
         }
         if self.spotDuration != nil {
             map["SpotDuration"] = self.spotDuration!
@@ -33339,6 +33534,11 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityGroupIds") {
             self.securityGroupIds = dict["SecurityGroupIds"] as! [String]
+        }
+        if dict.keys.contains("SecurityOptions") {
+            var model = ModifyScalingConfigurationShrinkRequest.SecurityOptions()
+            model.fromMap(dict["SecurityOptions"] as! [String: Any])
+            self.securityOptions = model
         }
         if dict.keys.contains("SpotDuration") {
             self.spotDuration = dict["SpotDuration"] as! Int32

@@ -1110,6 +1110,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.securityGroupIds)) {
             query["SecurityGroupIds"] = request.securityGroupIds ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.securityOptions)) {
+            query["SecurityOptions"] = request.securityOptions!;
+        }
         if (!TeaUtils.Client.isUnset(request.spotDuration)) {
             query["SpotDuration"] = request.spotDuration!;
         }
@@ -4319,6 +4322,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.securityGroupIds)) {
             query["SecurityGroupIds"] = request.securityGroupIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.securityOptions)) {
+            query["SecurityOptions"] = request.securityOptions!;
         }
         if (!TeaUtils.Client.isUnset(request.spotDuration)) {
             query["SpotDuration"] = request.spotDuration!;
