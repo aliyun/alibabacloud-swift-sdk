@@ -188,6 +188,75 @@ public class GetConnectionTicketRequest : Tea.TeaModel {
 }
 
 public class GetConnectionTicketResponseBody : Tea.TeaModel {
+    public class BindQueueInfo : Tea.TeaModel {
+        public var length: Int32?
+
+        public var rank: Int32?
+
+        public var remainingTimeMin: Int32?
+
+        public var requestKey: String?
+
+        public var targetId: String?
+
+        public var waitTimeMin: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.length != nil {
+                map["Length"] = self.length!
+            }
+            if self.rank != nil {
+                map["Rank"] = self.rank!
+            }
+            if self.remainingTimeMin != nil {
+                map["RemainingTimeMin"] = self.remainingTimeMin!
+            }
+            if self.requestKey != nil {
+                map["RequestKey"] = self.requestKey!
+            }
+            if self.targetId != nil {
+                map["TargetId"] = self.targetId!
+            }
+            if self.waitTimeMin != nil {
+                map["WaitTimeMin"] = self.waitTimeMin!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Length") {
+                self.length = dict["Length"] as! Int32
+            }
+            if dict.keys.contains("Rank") {
+                self.rank = dict["Rank"] as! Int32
+            }
+            if dict.keys.contains("RemainingTimeMin") {
+                self.remainingTimeMin = dict["RemainingTimeMin"] as! Int32
+            }
+            if dict.keys.contains("RequestKey") {
+                self.requestKey = dict["RequestKey"] as! String
+            }
+            if dict.keys.contains("TargetId") {
+                self.targetId = dict["TargetId"] as! String
+            }
+            if dict.keys.contains("WaitTimeMin") {
+                self.waitTimeMin = dict["WaitTimeMin"] as! Int32
+            }
+        }
+    }
     public class Policy : Tea.TeaModel {
         public var resolutionAdaptive: String?
 
@@ -239,6 +308,8 @@ public class GetConnectionTicketResponseBody : Tea.TeaModel {
 
     public var appInstancePersistentId: String?
 
+    public var bindQueueInfo: GetConnectionTicketResponseBody.BindQueueInfo?
+
     public var code: String?
 
     public var loginToken: String?
@@ -273,6 +344,7 @@ public class GetConnectionTicketResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.bindQueueInfo?.validate()
         try self.policy?.validate()
     }
 
@@ -286,6 +358,9 @@ public class GetConnectionTicketResponseBody : Tea.TeaModel {
         }
         if self.appInstancePersistentId != nil {
             map["AppInstancePersistentId"] = self.appInstancePersistentId!
+        }
+        if self.bindQueueInfo != nil {
+            map["BindQueueInfo"] = self.bindQueueInfo?.toMap()
         }
         if self.code != nil {
             map["Code"] = self.code!
@@ -335,6 +410,11 @@ public class GetConnectionTicketResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("AppInstancePersistentId") {
             self.appInstancePersistentId = dict["AppInstancePersistentId"] as! String
+        }
+        if dict.keys.contains("BindQueueInfo") {
+            var model = GetConnectionTicketResponseBody.BindQueueInfo()
+            model.fromMap(dict["BindQueueInfo"] as! [String: Any])
+            self.bindQueueInfo = model
         }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! String
