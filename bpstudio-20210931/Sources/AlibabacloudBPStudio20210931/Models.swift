@@ -3158,6 +3158,8 @@ public class GetResource4ModifyRecordResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var attribute: String?
 
+        public var error: String?
+
         public var modifyTime: String?
 
         public var resourceId: String?
@@ -3183,6 +3185,9 @@ public class GetResource4ModifyRecordResponseBody : Tea.TeaModel {
             if self.attribute != nil {
                 map["Attribute"] = self.attribute!
             }
+            if self.error != nil {
+                map["Error"] = self.error!
+            }
             if self.modifyTime != nil {
                 map["ModifyTime"] = self.modifyTime!
             }
@@ -3201,6 +3206,9 @@ public class GetResource4ModifyRecordResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Attribute") {
                 self.attribute = dict["Attribute"] as! String
+            }
+            if dict.keys.contains("Error") {
+                self.error = dict["Error"] as! String
             }
             if dict.keys.contains("ModifyTime") {
                 self.modifyTime = dict["ModifyTime"] as! String
