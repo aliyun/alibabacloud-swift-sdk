@@ -996,6 +996,10 @@ public class EnableResourceCenterResponse : Tea.TeaModel {
 public class ExecuteMultiAccountSQLQueryRequest : Tea.TeaModel {
     public var expression: String?
 
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
     public var scope: String?
 
     public override init() {
@@ -1015,6 +1019,12 @@ public class ExecuteMultiAccountSQLQueryRequest : Tea.TeaModel {
         if self.expression != nil {
             map["Expression"] = self.expression!
         }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
         if self.scope != nil {
             map["Scope"] = self.scope!
         }
@@ -1024,6 +1034,12 @@ public class ExecuteMultiAccountSQLQueryRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Expression") {
             self.expression = dict["Expression"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
         }
         if dict.keys.contains("Scope") {
             self.scope = dict["Scope"] as! String
@@ -1194,6 +1210,10 @@ public class ExecuteMultiAccountSQLQueryResponse : Tea.TeaModel {
 public class ExecuteSQLQueryRequest : Tea.TeaModel {
     public var expression: String?
 
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
     public var scope: String?
 
     public override init() {
@@ -1213,6 +1233,12 @@ public class ExecuteSQLQueryRequest : Tea.TeaModel {
         if self.expression != nil {
             map["Expression"] = self.expression!
         }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
         if self.scope != nil {
             map["Scope"] = self.scope!
         }
@@ -1222,6 +1248,12 @@ public class ExecuteSQLQueryRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Expression") {
             self.expression = dict["Expression"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
         }
         if dict.keys.contains("Scope") {
             self.scope = dict["Scope"] as! String
