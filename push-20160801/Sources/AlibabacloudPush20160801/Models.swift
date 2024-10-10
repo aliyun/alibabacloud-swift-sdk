@@ -1777,9 +1777,17 @@ public class MassPushRequest : Tea.TeaModel {
 
         public var harmonyActionType: String?
 
+        public var harmonyBadgeAddNum: Int32?
+
+        public var harmonyBadgeSetNum: Int32?
+
         public var harmonyCategory: String?
 
         public var harmonyExtParameters: String?
+
+        public var harmonyExtensionExtraData: String?
+
+        public var harmonyExtensionPush: Bool?
 
         public var harmonyImageUrl: String?
 
@@ -2008,11 +2016,23 @@ public class MassPushRequest : Tea.TeaModel {
             if self.harmonyActionType != nil {
                 map["HarmonyActionType"] = self.harmonyActionType!
             }
+            if self.harmonyBadgeAddNum != nil {
+                map["HarmonyBadgeAddNum"] = self.harmonyBadgeAddNum!
+            }
+            if self.harmonyBadgeSetNum != nil {
+                map["HarmonyBadgeSetNum"] = self.harmonyBadgeSetNum!
+            }
             if self.harmonyCategory != nil {
                 map["HarmonyCategory"] = self.harmonyCategory!
             }
             if self.harmonyExtParameters != nil {
                 map["HarmonyExtParameters"] = self.harmonyExtParameters!
+            }
+            if self.harmonyExtensionExtraData != nil {
+                map["HarmonyExtensionExtraData"] = self.harmonyExtensionExtraData!
+            }
+            if self.harmonyExtensionPush != nil {
+                map["HarmonyExtensionPush"] = self.harmonyExtensionPush!
             }
             if self.harmonyImageUrl != nil {
                 map["HarmonyImageUrl"] = self.harmonyImageUrl!
@@ -2267,11 +2287,23 @@ public class MassPushRequest : Tea.TeaModel {
             if dict.keys.contains("HarmonyActionType") {
                 self.harmonyActionType = dict["HarmonyActionType"] as! String
             }
+            if dict.keys.contains("HarmonyBadgeAddNum") {
+                self.harmonyBadgeAddNum = dict["HarmonyBadgeAddNum"] as! Int32
+            }
+            if dict.keys.contains("HarmonyBadgeSetNum") {
+                self.harmonyBadgeSetNum = dict["HarmonyBadgeSetNum"] as! Int32
+            }
             if dict.keys.contains("HarmonyCategory") {
                 self.harmonyCategory = dict["HarmonyCategory"] as! String
             }
             if dict.keys.contains("HarmonyExtParameters") {
                 self.harmonyExtParameters = dict["HarmonyExtParameters"] as! String
+            }
+            if dict.keys.contains("HarmonyExtensionExtraData") {
+                self.harmonyExtensionExtraData = dict["HarmonyExtensionExtraData"] as! String
+            }
+            if dict.keys.contains("HarmonyExtensionPush") {
+                self.harmonyExtensionPush = dict["HarmonyExtensionPush"] as! Bool
             }
             if dict.keys.contains("HarmonyImageUrl") {
                 self.harmonyImageUrl = dict["HarmonyImageUrl"] as! String
@@ -2648,9 +2680,17 @@ public class PushRequest : Tea.TeaModel {
 
     public var harmonyActionType: String?
 
+    public var harmonyBadgeAddNum: Int32?
+
+    public var harmonyBadgeSetNum: Int32?
+
     public var harmonyCategory: String?
 
     public var harmonyExtParameters: String?
+
+    public var harmonyExtensionExtraData: String?
+
+    public var harmonyExtensionPush: Bool?
 
     public var harmonyImageUrl: String?
 
@@ -2892,11 +2932,23 @@ public class PushRequest : Tea.TeaModel {
         if self.harmonyActionType != nil {
             map["HarmonyActionType"] = self.harmonyActionType!
         }
+        if self.harmonyBadgeAddNum != nil {
+            map["HarmonyBadgeAddNum"] = self.harmonyBadgeAddNum!
+        }
+        if self.harmonyBadgeSetNum != nil {
+            map["HarmonyBadgeSetNum"] = self.harmonyBadgeSetNum!
+        }
         if self.harmonyCategory != nil {
             map["HarmonyCategory"] = self.harmonyCategory!
         }
         if self.harmonyExtParameters != nil {
             map["HarmonyExtParameters"] = self.harmonyExtParameters!
+        }
+        if self.harmonyExtensionExtraData != nil {
+            map["HarmonyExtensionExtraData"] = self.harmonyExtensionExtraData!
+        }
+        if self.harmonyExtensionPush != nil {
+            map["HarmonyExtensionPush"] = self.harmonyExtensionPush!
         }
         if self.harmonyImageUrl != nil {
             map["HarmonyImageUrl"] = self.harmonyImageUrl!
@@ -3169,11 +3221,23 @@ public class PushRequest : Tea.TeaModel {
         if dict.keys.contains("HarmonyActionType") {
             self.harmonyActionType = dict["HarmonyActionType"] as! String
         }
+        if dict.keys.contains("HarmonyBadgeAddNum") {
+            self.harmonyBadgeAddNum = dict["HarmonyBadgeAddNum"] as! Int32
+        }
+        if dict.keys.contains("HarmonyBadgeSetNum") {
+            self.harmonyBadgeSetNum = dict["HarmonyBadgeSetNum"] as! Int32
+        }
         if dict.keys.contains("HarmonyCategory") {
             self.harmonyCategory = dict["HarmonyCategory"] as! String
         }
         if dict.keys.contains("HarmonyExtParameters") {
             self.harmonyExtParameters = dict["HarmonyExtParameters"] as! String
+        }
+        if dict.keys.contains("HarmonyExtensionExtraData") {
+            self.harmonyExtensionExtraData = dict["HarmonyExtensionExtraData"] as! String
+        }
+        if dict.keys.contains("HarmonyExtensionPush") {
+            self.harmonyExtensionPush = dict["HarmonyExtensionPush"] as! Bool
         }
         if dict.keys.contains("HarmonyImageUrl") {
             self.harmonyImageUrl = dict["HarmonyImageUrl"] as! String

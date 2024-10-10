@@ -639,11 +639,23 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.harmonyActionType)) {
             query["HarmonyActionType"] = request.harmonyActionType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.harmonyBadgeAddNum)) {
+            query["HarmonyBadgeAddNum"] = request.harmonyBadgeAddNum!;
+        }
+        if (!TeaUtils.Client.isUnset(request.harmonyBadgeSetNum)) {
+            query["HarmonyBadgeSetNum"] = request.harmonyBadgeSetNum!;
+        }
         if (!TeaUtils.Client.isUnset(request.harmonyCategory)) {
             query["HarmonyCategory"] = request.harmonyCategory ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.harmonyExtParameters)) {
             query["HarmonyExtParameters"] = request.harmonyExtParameters ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.harmonyExtensionExtraData)) {
+            query["HarmonyExtensionExtraData"] = request.harmonyExtensionExtraData ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.harmonyExtensionPush)) {
+            query["HarmonyExtensionPush"] = request.harmonyExtensionPush!;
         }
         if (!TeaUtils.Client.isUnset(request.harmonyImageUrl)) {
             query["HarmonyImageUrl"] = request.harmonyImageUrl ?? "";
