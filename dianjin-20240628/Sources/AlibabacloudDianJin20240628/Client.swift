@@ -28,6 +28,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDocsSummaryTaskWithOptions(_ workspaceId: String, _ request: CreateDocsSummaryTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDocsSummaryTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.docInfos)) {
+            body["docInfos"] = request.docInfos ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.enableTable)) {
+            body["enableTable"] = request.enableTable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instruction)) {
+            body["instruction"] = request.instruction ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelId)) {
+            body["modelId"] = request.modelId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateDocsSummaryTask",
+            "version": "2024-06-28",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/api/task/summary/docs",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateDocsSummaryTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDocsSummaryTask(_ workspaceId: String, _ request: CreateDocsSummaryTaskRequest) async throws -> CreateDocsSummaryTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createDocsSummaryTaskWithOptions(workspaceId as! String, request as! CreateDocsSummaryTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createFinReportSummaryTaskWithOptions(_ workspaceId: String, _ request: CreateFinReportSummaryTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateFinReportSummaryTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -205,6 +247,54 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await createPredefinedDocumentWithOptions(workspaceId as! String, request as! CreatePredefinedDocumentRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createQualityCheckTaskWithOptions(_ workspaceId: String, _ request: CreateQualityCheckTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateQualityCheckTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.conversationList)) {
+            body["conversationList"] = request.conversationList!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gmtService)) {
+            body["gmtService"] = request.gmtService ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.metaData)) {
+            body["metaData"] = request.metaData ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.qualityGroup)) {
+            body["qualityGroup"] = request.qualityGroup ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.requestId)) {
+            body["requestId"] = request.requestId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateQualityCheckTask",
+            "version": "2024-06-28",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/api/qualitycheck/task/submit",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateQualityCheckTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createQualityCheckTask(_ workspaceId: String, _ request: CreateQualityCheckTaskRequest) async throws -> CreateQualityCheckTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createQualityCheckTaskWithOptions(workspaceId as! String, request as! CreateQualityCheckTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -664,6 +754,39 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getParseResultWithOptions(workspaceId as! String, request as! GetParseResultRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getQualityCheckTaskResultWithOptions(_ workspaceId: String, _ request: GetQualityCheckTaskResultRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetQualityCheckTaskResultResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            query["taskId"] = request.taskId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetQualityCheckTaskResult",
+            "version": "2024-06-28",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/api/qualitycheck/task/query",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetQualityCheckTaskResultResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getQualityCheckTaskResult(_ workspaceId: String, _ request: GetQualityCheckTaskResultRequest) async throws -> GetQualityCheckTaskResultResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getQualityCheckTaskResultWithOptions(workspaceId as! String, request as! GetQualityCheckTaskResultRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
