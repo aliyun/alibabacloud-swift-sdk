@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudMse20190531` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/mse-20190531" "6.11.1"
+github "alibabacloud-sdk-swift/mse-20190531" "6.12.0"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudMse20190531` into your Xcode project using [Swift Pack
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/mse-20190531.git", from: "6.11.1")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/mse-20190531.git", from: "6.12.0")
 ]
 ```
 

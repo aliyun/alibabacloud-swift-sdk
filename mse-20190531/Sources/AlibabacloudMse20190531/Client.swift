@@ -5269,6 +5269,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func initializeServiceLinkRoleWithOptions(_ request: InitializeServiceLinkRoleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> InitializeServiceLinkRoleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roleName)) {
+            query["RoleName"] = request.roleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.token)) {
+            query["Token"] = request.token ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "InitializeServiceLinkRole",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(InitializeServiceLinkRoleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func initializeServiceLinkRole(_ request: InitializeServiceLinkRoleRequest) async throws -> InitializeServiceLinkRoleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await initializeServiceLinkRoleWithOptions(request as! InitializeServiceLinkRoleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listAnsInstancesWithOptions(_ request: ListAnsInstancesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAnsInstancesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

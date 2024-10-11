@@ -2884,6 +2884,8 @@ public class AddGatewayAuthRequest : Tea.TeaModel {
 
         public var tokenKey: String?
 
+        public var withRematchRoute: Bool?
+
         public var withRequestBody: Bool?
 
         public override init() {
@@ -2924,6 +2926,9 @@ public class AddGatewayAuthRequest : Tea.TeaModel {
             if self.tokenKey != nil {
                 map["TokenKey"] = self.tokenKey!
             }
+            if self.withRematchRoute != nil {
+                map["WithRematchRoute"] = self.withRematchRoute!
+            }
             if self.withRequestBody != nil {
                 map["WithRequestBody"] = self.withRequestBody!
             }
@@ -2954,6 +2959,9 @@ public class AddGatewayAuthRequest : Tea.TeaModel {
             }
             if dict.keys.contains("TokenKey") {
                 self.tokenKey = dict["TokenKey"] as! String
+            }
+            if dict.keys.contains("WithRematchRoute") {
+                self.withRematchRoute = dict["WithRematchRoute"] as! Bool
             }
             if dict.keys.contains("WithRequestBody") {
                 self.withRequestBody = dict["WithRequestBody"] as! Bool
@@ -24777,6 +24785,8 @@ public class GetGatewayAuthDetailResponseBody : Tea.TeaModel {
 
             public var tokenKey: String?
 
+            public var withRematchRoute: Bool?
+
             public var withRequestBody: Bool?
 
             public override init() {
@@ -24821,6 +24831,9 @@ public class GetGatewayAuthDetailResponseBody : Tea.TeaModel {
                 if self.tokenKey != nil {
                     map["TokenKey"] = self.tokenKey!
                 }
+                if self.withRematchRoute != nil {
+                    map["WithRematchRoute"] = self.withRematchRoute!
+                }
                 if self.withRequestBody != nil {
                     map["WithRequestBody"] = self.withRequestBody!
                 }
@@ -24856,6 +24869,9 @@ public class GetGatewayAuthDetailResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("TokenKey") {
                     self.tokenKey = dict["TokenKey"] as! String
+                }
+                if dict.keys.contains("WithRematchRoute") {
+                    self.withRematchRoute = dict["WithRematchRoute"] as! Bool
                 }
                 if dict.keys.contains("WithRequestBody") {
                     self.withRequestBody = dict["WithRequestBody"] as! Bool
@@ -35062,6 +35078,211 @@ public class ImportZookeeperDataResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ImportZookeeperDataResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class InitializeServiceLinkRoleRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var roleName: String?
+
+    public var token: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.roleName != nil {
+            map["RoleName"] = self.roleName!
+        }
+        if self.token != nil {
+            map["Token"] = self.token!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("RoleName") {
+            self.roleName = dict["RoleName"] as! String
+        }
+        if dict.keys.contains("Token") {
+            self.token = dict["Token"] as! String
+        }
+    }
+}
+
+public class InitializeServiceLinkRoleResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var requiredPermission: String?
+
+        public var roleName: String?
+
+        public var serviceName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.requiredPermission != nil {
+                map["RequiredPermission"] = self.requiredPermission!
+            }
+            if self.roleName != nil {
+                map["RoleName"] = self.roleName!
+            }
+            if self.serviceName != nil {
+                map["ServiceName"] = self.serviceName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("RequiredPermission") {
+                self.requiredPermission = dict["RequiredPermission"] as! String
+            }
+            if dict.keys.contains("RoleName") {
+                self.roleName = dict["RoleName"] as! String
+            }
+            if dict.keys.contains("ServiceName") {
+                self.serviceName = dict["ServiceName"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: InitializeServiceLinkRoleResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = InitializeServiceLinkRoleResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class InitializeServiceLinkRoleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: InitializeServiceLinkRoleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = InitializeServiceLinkRoleResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
