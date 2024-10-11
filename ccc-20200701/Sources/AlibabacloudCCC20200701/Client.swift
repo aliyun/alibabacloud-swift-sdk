@@ -4521,6 +4521,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.agentId)) {
             query["AgentId"] = request.agentId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.analyticsReportReady)) {
+            query["AnalyticsReportReady"] = request.analyticsReportReady!;
+        }
         if (!TeaUtils.Client.isUnset(request.broker)) {
             query["Broker"] = request.broker ?? "";
         }

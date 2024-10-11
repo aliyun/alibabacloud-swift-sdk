@@ -15021,6 +15021,291 @@ public class GetCallDetailRecordResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class AnalyticsReport : Tea.TeaModel {
+            public class Emotion : Tea.TeaModel {
+                public var confidence: Int32?
+
+                public var remark: String?
+
+                public var success: Bool?
+
+                public var taskId: String?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.confidence != nil {
+                        map["Confidence"] = self.confidence!
+                    }
+                    if self.remark != nil {
+                        map["Remark"] = self.remark!
+                    }
+                    if self.success != nil {
+                        map["Success"] = self.success!
+                    }
+                    if self.taskId != nil {
+                        map["TaskId"] = self.taskId!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Confidence") {
+                        self.confidence = dict["Confidence"] as! Int32
+                    }
+                    if dict.keys.contains("Remark") {
+                        self.remark = dict["Remark"] as! String
+                    }
+                    if dict.keys.contains("Success") {
+                        self.success = dict["Success"] as! Bool
+                    }
+                    if dict.keys.contains("TaskId") {
+                        self.taskId = dict["TaskId"] as! String
+                    }
+                    if dict.keys.contains("Type") {
+                        self.type = dict["Type"] as! String
+                    }
+                }
+            }
+            public class ProblemSolving : Tea.TeaModel {
+                public var problem: String?
+
+                public var solution: String?
+
+                public var solved: Bool?
+
+                public var success: Bool?
+
+                public var taskId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.problem != nil {
+                        map["Problem"] = self.problem!
+                    }
+                    if self.solution != nil {
+                        map["Solution"] = self.solution!
+                    }
+                    if self.solved != nil {
+                        map["Solved"] = self.solved!
+                    }
+                    if self.success != nil {
+                        map["Success"] = self.success!
+                    }
+                    if self.taskId != nil {
+                        map["TaskId"] = self.taskId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Problem") {
+                        self.problem = dict["Problem"] as! String
+                    }
+                    if dict.keys.contains("Solution") {
+                        self.solution = dict["Solution"] as! String
+                    }
+                    if dict.keys.contains("Solved") {
+                        self.solved = dict["Solved"] as! Bool
+                    }
+                    if dict.keys.contains("Success") {
+                        self.success = dict["Success"] as! Bool
+                    }
+                    if dict.keys.contains("TaskId") {
+                        self.taskId = dict["TaskId"] as! String
+                    }
+                }
+            }
+            public class Satisfaction : Tea.TeaModel {
+                public var remark: String?
+
+                public var satisfactionDescription: String?
+
+                public var success: Bool?
+
+                public var taskId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.remark != nil {
+                        map["Remark"] = self.remark!
+                    }
+                    if self.satisfactionDescription != nil {
+                        map["SatisfactionDescription"] = self.satisfactionDescription!
+                    }
+                    if self.success != nil {
+                        map["Success"] = self.success!
+                    }
+                    if self.taskId != nil {
+                        map["TaskId"] = self.taskId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Remark") {
+                        self.remark = dict["Remark"] as! String
+                    }
+                    if dict.keys.contains("SatisfactionDescription") {
+                        self.satisfactionDescription = dict["SatisfactionDescription"] as! String
+                    }
+                    if dict.keys.contains("Success") {
+                        self.success = dict["Success"] as! Bool
+                    }
+                    if dict.keys.contains("TaskId") {
+                        self.taskId = dict["TaskId"] as! String
+                    }
+                }
+            }
+            public class TodoList : Tea.TeaModel {
+                public var success: Bool?
+
+                public var taskId: String?
+
+                public var tasks: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.success != nil {
+                        map["Success"] = self.success!
+                    }
+                    if self.taskId != nil {
+                        map["TaskId"] = self.taskId!
+                    }
+                    if self.tasks != nil {
+                        map["Tasks"] = self.tasks!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Success") {
+                        self.success = dict["Success"] as! Bool
+                    }
+                    if dict.keys.contains("TaskId") {
+                        self.taskId = dict["TaskId"] as! String
+                    }
+                    if dict.keys.contains("Tasks") {
+                        self.tasks = dict["Tasks"] as! [String]
+                    }
+                }
+            }
+            public var emotion: GetCallDetailRecordResponseBody.Data.AnalyticsReport.Emotion?
+
+            public var problemSolving: GetCallDetailRecordResponseBody.Data.AnalyticsReport.ProblemSolving?
+
+            public var satisfaction: GetCallDetailRecordResponseBody.Data.AnalyticsReport.Satisfaction?
+
+            public var todoList: GetCallDetailRecordResponseBody.Data.AnalyticsReport.TodoList?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.emotion?.validate()
+                try self.problemSolving?.validate()
+                try self.satisfaction?.validate()
+                try self.todoList?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.emotion != nil {
+                    map["Emotion"] = self.emotion?.toMap()
+                }
+                if self.problemSolving != nil {
+                    map["ProblemSolving"] = self.problemSolving?.toMap()
+                }
+                if self.satisfaction != nil {
+                    map["Satisfaction"] = self.satisfaction?.toMap()
+                }
+                if self.todoList != nil {
+                    map["TodoList"] = self.todoList?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Emotion") {
+                    var model = GetCallDetailRecordResponseBody.Data.AnalyticsReport.Emotion()
+                    model.fromMap(dict["Emotion"] as! [String: Any])
+                    self.emotion = model
+                }
+                if dict.keys.contains("ProblemSolving") {
+                    var model = GetCallDetailRecordResponseBody.Data.AnalyticsReport.ProblemSolving()
+                    model.fromMap(dict["ProblemSolving"] as! [String: Any])
+                    self.problemSolving = model
+                }
+                if dict.keys.contains("Satisfaction") {
+                    var model = GetCallDetailRecordResponseBody.Data.AnalyticsReport.Satisfaction()
+                    model.fromMap(dict["Satisfaction"] as! [String: Any])
+                    self.satisfaction = model
+                }
+                if dict.keys.contains("TodoList") {
+                    var model = GetCallDetailRecordResponseBody.Data.AnalyticsReport.TodoList()
+                    model.fromMap(dict["TodoList"] as! [String: Any])
+                    self.todoList = model
+                }
+            }
+        }
         public class CustomerEvents : Tea.TeaModel {
             public class EventSequence : Tea.TeaModel {
                 public var event: String?
@@ -15317,6 +15602,10 @@ public class GetCallDetailRecordResponseBody : Tea.TeaModel {
 
         public var agentNames: String?
 
+        public var analyticsReport: GetCallDetailRecordResponseBody.Data.AnalyticsReport?
+
+        public var analyticsReportReady: Bool?
+
         public var callDuration: Int64?
 
         public var calledNumber: String?
@@ -15375,6 +15664,7 @@ public class GetCallDetailRecordResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.analyticsReport?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -15391,6 +15681,12 @@ public class GetCallDetailRecordResponseBody : Tea.TeaModel {
             }
             if self.agentNames != nil {
                 map["AgentNames"] = self.agentNames!
+            }
+            if self.analyticsReport != nil {
+                map["AnalyticsReport"] = self.analyticsReport?.toMap()
+            }
+            if self.analyticsReportReady != nil {
+                map["AnalyticsReportReady"] = self.analyticsReportReady!
             }
             if self.callDuration != nil {
                 map["CallDuration"] = self.callDuration!
@@ -15496,6 +15792,14 @@ public class GetCallDetailRecordResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("AgentNames") {
                 self.agentNames = dict["AgentNames"] as! String
+            }
+            if dict.keys.contains("AnalyticsReport") {
+                var model = GetCallDetailRecordResponseBody.Data.AnalyticsReport()
+                model.fromMap(dict["AnalyticsReport"] as! [String: Any])
+                self.analyticsReport = model
+            }
+            if dict.keys.contains("AnalyticsReportReady") {
+                self.analyticsReportReady = dict["AnalyticsReportReady"] as! Bool
             }
             if dict.keys.contains("CallDuration") {
                 self.callDuration = dict["CallDuration"] as! Int64
@@ -32509,6 +32813,8 @@ public class ListCallDetailRecordsV2Request : Tea.TeaModel {
 
     public var agentId: String?
 
+    public var analyticsReportReady: Bool?
+
     public var broker: String?
 
     public var calledNumber: String?
@@ -32576,6 +32882,9 @@ public class ListCallDetailRecordsV2Request : Tea.TeaModel {
         }
         if self.agentId != nil {
             map["AgentId"] = self.agentId!
+        }
+        if self.analyticsReportReady != nil {
+            map["AnalyticsReportReady"] = self.analyticsReportReady!
         }
         if self.broker != nil {
             map["Broker"] = self.broker!
@@ -32659,6 +32968,9 @@ public class ListCallDetailRecordsV2Request : Tea.TeaModel {
         if dict.keys.contains("AgentId") {
             self.agentId = dict["AgentId"] as! String
         }
+        if dict.keys.contains("AnalyticsReportReady") {
+            self.analyticsReportReady = dict["AnalyticsReportReady"] as! Bool
+        }
         if dict.keys.contains("Broker") {
             self.broker = dict["Broker"] as! String
         }
@@ -32737,6 +33049,291 @@ public class ListCallDetailRecordsV2Request : Tea.TeaModel {
 public class ListCallDetailRecordsV2ResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class List : Tea.TeaModel {
+            public class AnalyticsReport : Tea.TeaModel {
+                public class Emotion : Tea.TeaModel {
+                    public var confidence: Int32?
+
+                    public var remark: String?
+
+                    public var success: Bool?
+
+                    public var taskId: String?
+
+                    public var type: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.confidence != nil {
+                            map["Confidence"] = self.confidence!
+                        }
+                        if self.remark != nil {
+                            map["Remark"] = self.remark!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.taskId != nil {
+                            map["TaskId"] = self.taskId!
+                        }
+                        if self.type != nil {
+                            map["Type"] = self.type!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Confidence") {
+                            self.confidence = dict["Confidence"] as! Int32
+                        }
+                        if dict.keys.contains("Remark") {
+                            self.remark = dict["Remark"] as! String
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Bool
+                        }
+                        if dict.keys.contains("TaskId") {
+                            self.taskId = dict["TaskId"] as! String
+                        }
+                        if dict.keys.contains("Type") {
+                            self.type = dict["Type"] as! String
+                        }
+                    }
+                }
+                public class ProblemSolving : Tea.TeaModel {
+                    public var problem: String?
+
+                    public var solution: String?
+
+                    public var solved: Bool?
+
+                    public var success: Bool?
+
+                    public var taskId: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.problem != nil {
+                            map["Problem"] = self.problem!
+                        }
+                        if self.solution != nil {
+                            map["Solution"] = self.solution!
+                        }
+                        if self.solved != nil {
+                            map["Solved"] = self.solved!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.taskId != nil {
+                            map["TaskId"] = self.taskId!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Problem") {
+                            self.problem = dict["Problem"] as! String
+                        }
+                        if dict.keys.contains("Solution") {
+                            self.solution = dict["Solution"] as! String
+                        }
+                        if dict.keys.contains("Solved") {
+                            self.solved = dict["Solved"] as! Bool
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Bool
+                        }
+                        if dict.keys.contains("TaskId") {
+                            self.taskId = dict["TaskId"] as! String
+                        }
+                    }
+                }
+                public class Satisfaction : Tea.TeaModel {
+                    public var remark: String?
+
+                    public var satisfactionDescription: String?
+
+                    public var success: Bool?
+
+                    public var taskId: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.remark != nil {
+                            map["Remark"] = self.remark!
+                        }
+                        if self.satisfactionDescription != nil {
+                            map["SatisfactionDescription"] = self.satisfactionDescription!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.taskId != nil {
+                            map["TaskId"] = self.taskId!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Remark") {
+                            self.remark = dict["Remark"] as! String
+                        }
+                        if dict.keys.contains("SatisfactionDescription") {
+                            self.satisfactionDescription = dict["SatisfactionDescription"] as! String
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Bool
+                        }
+                        if dict.keys.contains("TaskId") {
+                            self.taskId = dict["TaskId"] as! String
+                        }
+                    }
+                }
+                public class TodoList : Tea.TeaModel {
+                    public var success: Bool?
+
+                    public var taskId: String?
+
+                    public var tasks: [String]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.taskId != nil {
+                            map["TaskId"] = self.taskId!
+                        }
+                        if self.tasks != nil {
+                            map["Tasks"] = self.tasks!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Bool
+                        }
+                        if dict.keys.contains("TaskId") {
+                            self.taskId = dict["TaskId"] as! String
+                        }
+                        if dict.keys.contains("Tasks") {
+                            self.tasks = dict["Tasks"] as! [String]
+                        }
+                    }
+                }
+                public var emotion: ListCallDetailRecordsV2ResponseBody.Data.List.AnalyticsReport.Emotion?
+
+                public var problemSolving: ListCallDetailRecordsV2ResponseBody.Data.List.AnalyticsReport.ProblemSolving?
+
+                public var satisfaction: ListCallDetailRecordsV2ResponseBody.Data.List.AnalyticsReport.Satisfaction?
+
+                public var todoList: ListCallDetailRecordsV2ResponseBody.Data.List.AnalyticsReport.TodoList?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.emotion?.validate()
+                    try self.problemSolving?.validate()
+                    try self.satisfaction?.validate()
+                    try self.todoList?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.emotion != nil {
+                        map["Emotion"] = self.emotion?.toMap()
+                    }
+                    if self.problemSolving != nil {
+                        map["ProblemSolving"] = self.problemSolving?.toMap()
+                    }
+                    if self.satisfaction != nil {
+                        map["Satisfaction"] = self.satisfaction?.toMap()
+                    }
+                    if self.todoList != nil {
+                        map["TodoList"] = self.todoList?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Emotion") {
+                        var model = ListCallDetailRecordsV2ResponseBody.Data.List.AnalyticsReport.Emotion()
+                        model.fromMap(dict["Emotion"] as! [String: Any])
+                        self.emotion = model
+                    }
+                    if dict.keys.contains("ProblemSolving") {
+                        var model = ListCallDetailRecordsV2ResponseBody.Data.List.AnalyticsReport.ProblemSolving()
+                        model.fromMap(dict["ProblemSolving"] as! [String: Any])
+                        self.problemSolving = model
+                    }
+                    if dict.keys.contains("Satisfaction") {
+                        var model = ListCallDetailRecordsV2ResponseBody.Data.List.AnalyticsReport.Satisfaction()
+                        model.fromMap(dict["Satisfaction"] as! [String: Any])
+                        self.satisfaction = model
+                    }
+                    if dict.keys.contains("TodoList") {
+                        var model = ListCallDetailRecordsV2ResponseBody.Data.List.AnalyticsReport.TodoList()
+                        model.fromMap(dict["TodoList"] as! [String: Any])
+                        self.todoList = model
+                    }
+                }
+            }
             public var accessChannelName: String?
 
             public var accessChannelType: String?
@@ -32750,6 +33347,10 @@ public class ListCallDetailRecordsV2ResponseBody : Tea.TeaModel {
             public var agentIds: String?
 
             public var agentNames: String?
+
+            public var analyticsReport: ListCallDetailRecordsV2ResponseBody.Data.List.AnalyticsReport?
+
+            public var analyticsReportReady: Bool?
 
             public var broker: String?
 
@@ -32853,6 +33454,7 @@ public class ListCallDetailRecordsV2ResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.analyticsReport?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -32877,6 +33479,12 @@ public class ListCallDetailRecordsV2ResponseBody : Tea.TeaModel {
                 }
                 if self.agentNames != nil {
                     map["AgentNames"] = self.agentNames!
+                }
+                if self.analyticsReport != nil {
+                    map["AnalyticsReport"] = self.analyticsReport?.toMap()
+                }
+                if self.analyticsReportReady != nil {
+                    map["AnalyticsReportReady"] = self.analyticsReportReady!
                 }
                 if self.broker != nil {
                     map["Broker"] = self.broker!
@@ -33040,6 +33648,14 @@ public class ListCallDetailRecordsV2ResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("AgentNames") {
                     self.agentNames = dict["AgentNames"] as! String
+                }
+                if dict.keys.contains("AnalyticsReport") {
+                    var model = ListCallDetailRecordsV2ResponseBody.Data.List.AnalyticsReport()
+                    model.fromMap(dict["AnalyticsReport"] as! [String: Any])
+                    self.analyticsReport = model
+                }
+                if dict.keys.contains("AnalyticsReportReady") {
+                    self.analyticsReportReady = dict["AnalyticsReportReady"] as! Bool
                 }
                 if dict.keys.contains("Broker") {
                     self.broker = dict["Broker"] as! String
