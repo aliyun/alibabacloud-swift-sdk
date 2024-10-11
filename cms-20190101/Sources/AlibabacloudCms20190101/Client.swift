@@ -4502,6 +4502,58 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeSyntheticProbeListWithOptions(_ request: DescribeSyntheticProbeListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeSyntheticProbeListResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.city)) {
+            query["City"] = request.city ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.idcProbe)) {
+            query["IdcProbe"] = request.idcProbe!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ipv4)) {
+            query["Ipv4"] = request.ipv4!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ipv6)) {
+            query["Ipv6"] = request.ipv6!;
+        }
+        if (!TeaUtils.Client.isUnset(request.isp)) {
+            query["Isp"] = request.isp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lmProbe)) {
+            query["LmProbe"] = request.lmProbe!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mbProbe)) {
+            query["MbProbe"] = request.mbProbe!;
+        }
+        if (!TeaUtils.Client.isUnset(request.viewAll)) {
+            query["ViewAll"] = request.viewAll!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeSyntheticProbeList",
+            "version": "2019-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeSyntheticProbeListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeSyntheticProbeList(_ request: DescribeSyntheticProbeListRequest) async throws -> DescribeSyntheticProbeListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeSyntheticProbeListWithOptions(request as! DescribeSyntheticProbeListRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeSystemEventAttributeWithOptions(_ request: DescribeSystemEventAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeSystemEventAttributeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

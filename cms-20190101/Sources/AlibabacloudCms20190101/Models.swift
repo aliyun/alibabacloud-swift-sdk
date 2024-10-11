@@ -37554,6 +37554,8 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
 
                 public var ispName: String?
 
+                public var type: String?
+
                 public override init() {
                     super.init()
                 }
@@ -37580,6 +37582,9 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
                     if self.ispName != nil {
                         map["IspName"] = self.ispName!
                     }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
                     return map
                 }
 
@@ -37595,6 +37600,9 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("IspName") {
                         self.ispName = dict["IspName"] as! String
+                    }
+                    if dict.keys.contains("Type") {
+                        self.type = dict["Type"] as! String
                     }
                 }
             }
@@ -38123,6 +38131,8 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
 
             public var retryDelay: Int32?
 
+            public var screenShot: Bool?
+
             public var strictMode: Bool?
 
             public var timeOut: Int64?
@@ -38280,6 +38290,9 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.retryDelay != nil {
                     map["retry_delay"] = self.retryDelay!
+                }
+                if self.screenShot != nil {
+                    map["screen_shot"] = self.screenShot!
                 }
                 if self.strictMode != nil {
                     map["strict_mode"] = self.strictMode!
@@ -38442,6 +38455,9 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
                 if dict.keys.contains("retry_delay") {
                     self.retryDelay = dict["retry_delay"] as! Int32
                 }
+                if dict.keys.contains("screen_shot") {
+                    self.screenShot = dict["screen_shot"] as! Bool
+                }
                 if dict.keys.contains("strict_mode") {
                     self.strictMode = dict["strict_mode"] as! Bool
                 }
@@ -38470,6 +38486,8 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
             }
         }
         public class VpcConfig : Tea.TeaModel {
+            public var region: String?
+
             public var securityGroupId: String?
 
             public var vpcId: String?
@@ -38490,6 +38508,9 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.region != nil {
+                    map["Region"] = self.region!
+                }
                 if self.securityGroupId != nil {
                     map["SecurityGroupId"] = self.securityGroupId!
                 }
@@ -38503,6 +38524,9 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Region") {
+                    self.region = dict["Region"] as! String
+                }
                 if dict.keys.contains("SecurityGroupId") {
                     self.securityGroupId = dict["SecurityGroupId"] as! String
                 }
@@ -40729,6 +40753,396 @@ public class DescribeSiteMonitorStatisticsResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DescribeSiteMonitorStatisticsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeSyntheticProbeListRequest : Tea.TeaModel {
+    public var city: String?
+
+    public var idcProbe: Bool?
+
+    public var ipv4: Bool?
+
+    public var ipv6: Bool?
+
+    public var isp: String?
+
+    public var lmProbe: Bool?
+
+    public var mbProbe: Bool?
+
+    public var regionId: String?
+
+    public var viewAll: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.city != nil {
+            map["City"] = self.city!
+        }
+        if self.idcProbe != nil {
+            map["IdcProbe"] = self.idcProbe!
+        }
+        if self.ipv4 != nil {
+            map["Ipv4"] = self.ipv4!
+        }
+        if self.ipv6 != nil {
+            map["Ipv6"] = self.ipv6!
+        }
+        if self.isp != nil {
+            map["Isp"] = self.isp!
+        }
+        if self.lmProbe != nil {
+            map["LmProbe"] = self.lmProbe!
+        }
+        if self.mbProbe != nil {
+            map["MbProbe"] = self.mbProbe!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.viewAll != nil {
+            map["ViewAll"] = self.viewAll!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("City") {
+            self.city = dict["City"] as! String
+        }
+        if dict.keys.contains("IdcProbe") {
+            self.idcProbe = dict["IdcProbe"] as! Bool
+        }
+        if dict.keys.contains("Ipv4") {
+            self.ipv4 = dict["Ipv4"] as! Bool
+        }
+        if dict.keys.contains("Ipv6") {
+            self.ipv6 = dict["Ipv6"] as! Bool
+        }
+        if dict.keys.contains("Isp") {
+            self.isp = dict["Isp"] as! String
+        }
+        if dict.keys.contains("LmProbe") {
+            self.lmProbe = dict["LmProbe"] as! Bool
+        }
+        if dict.keys.contains("MbProbe") {
+            self.mbProbe = dict["MbProbe"] as! Bool
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ViewAll") {
+            self.viewAll = dict["ViewAll"] as! Bool
+        }
+    }
+}
+
+public class DescribeSyntheticProbeListResponseBody : Tea.TeaModel {
+    public class IspCityList : Tea.TeaModel {
+        public var areaCn: String?
+
+        public var areaEn: String?
+
+        public var city: String?
+
+        public var cityCn: String?
+
+        public var cityEn: String?
+
+        public var country: String?
+
+        public var countryCn: String?
+
+        public var countryEn: String?
+
+        public var idcV4ProbeCount: Int32?
+
+        public var idcV6ProbeCount: Int32?
+
+        public var ipPool: [String]?
+
+        public var isp: String?
+
+        public var ispCn: String?
+
+        public var ispEn: String?
+
+        public var lmProbeCount: Int32?
+
+        public var mbProbeCount: Int32?
+
+        public var region: String?
+
+        public var regionCn: String?
+
+        public var regionEn: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.areaCn != nil {
+                map["AreaCn"] = self.areaCn!
+            }
+            if self.areaEn != nil {
+                map["AreaEn"] = self.areaEn!
+            }
+            if self.city != nil {
+                map["City"] = self.city!
+            }
+            if self.cityCn != nil {
+                map["CityCn"] = self.cityCn!
+            }
+            if self.cityEn != nil {
+                map["CityEn"] = self.cityEn!
+            }
+            if self.country != nil {
+                map["Country"] = self.country!
+            }
+            if self.countryCn != nil {
+                map["CountryCn"] = self.countryCn!
+            }
+            if self.countryEn != nil {
+                map["CountryEn"] = self.countryEn!
+            }
+            if self.idcV4ProbeCount != nil {
+                map["IdcV4ProbeCount"] = self.idcV4ProbeCount!
+            }
+            if self.idcV6ProbeCount != nil {
+                map["IdcV6ProbeCount"] = self.idcV6ProbeCount!
+            }
+            if self.ipPool != nil {
+                map["IpPool"] = self.ipPool!
+            }
+            if self.isp != nil {
+                map["Isp"] = self.isp!
+            }
+            if self.ispCn != nil {
+                map["IspCn"] = self.ispCn!
+            }
+            if self.ispEn != nil {
+                map["IspEn"] = self.ispEn!
+            }
+            if self.lmProbeCount != nil {
+                map["LmProbeCount"] = self.lmProbeCount!
+            }
+            if self.mbProbeCount != nil {
+                map["MbProbeCount"] = self.mbProbeCount!
+            }
+            if self.region != nil {
+                map["Region"] = self.region!
+            }
+            if self.regionCn != nil {
+                map["RegionCn"] = self.regionCn!
+            }
+            if self.regionEn != nil {
+                map["RegionEn"] = self.regionEn!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AreaCn") {
+                self.areaCn = dict["AreaCn"] as! String
+            }
+            if dict.keys.contains("AreaEn") {
+                self.areaEn = dict["AreaEn"] as! String
+            }
+            if dict.keys.contains("City") {
+                self.city = dict["City"] as! String
+            }
+            if dict.keys.contains("CityCn") {
+                self.cityCn = dict["CityCn"] as! String
+            }
+            if dict.keys.contains("CityEn") {
+                self.cityEn = dict["CityEn"] as! String
+            }
+            if dict.keys.contains("Country") {
+                self.country = dict["Country"] as! String
+            }
+            if dict.keys.contains("CountryCn") {
+                self.countryCn = dict["CountryCn"] as! String
+            }
+            if dict.keys.contains("CountryEn") {
+                self.countryEn = dict["CountryEn"] as! String
+            }
+            if dict.keys.contains("IdcV4ProbeCount") {
+                self.idcV4ProbeCount = dict["IdcV4ProbeCount"] as! Int32
+            }
+            if dict.keys.contains("IdcV6ProbeCount") {
+                self.idcV6ProbeCount = dict["IdcV6ProbeCount"] as! Int32
+            }
+            if dict.keys.contains("IpPool") {
+                self.ipPool = dict["IpPool"] as! [String]
+            }
+            if dict.keys.contains("Isp") {
+                self.isp = dict["Isp"] as! String
+            }
+            if dict.keys.contains("IspCn") {
+                self.ispCn = dict["IspCn"] as! String
+            }
+            if dict.keys.contains("IspEn") {
+                self.ispEn = dict["IspEn"] as! String
+            }
+            if dict.keys.contains("LmProbeCount") {
+                self.lmProbeCount = dict["LmProbeCount"] as! Int32
+            }
+            if dict.keys.contains("MbProbeCount") {
+                self.mbProbeCount = dict["MbProbeCount"] as! Int32
+            }
+            if dict.keys.contains("Region") {
+                self.region = dict["Region"] as! String
+            }
+            if dict.keys.contains("RegionCn") {
+                self.regionCn = dict["RegionCn"] as! String
+            }
+            if dict.keys.contains("RegionEn") {
+                self.regionEn = dict["RegionEn"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var ispCityList: [DescribeSyntheticProbeListResponseBody.IspCityList]?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.ispCityList != nil {
+            var tmp : [Any] = []
+            for k in self.ispCityList! {
+                tmp.append(k.toMap())
+            }
+            map["IspCityList"] = tmp
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("IspCityList") {
+            var tmp : [DescribeSyntheticProbeListResponseBody.IspCityList] = []
+            for v in dict["IspCityList"] as! [Any] {
+                var model = DescribeSyntheticProbeListResponseBody.IspCityList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.ispCityList = tmp
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! String
+        }
+    }
+}
+
+public class DescribeSyntheticProbeListResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeSyntheticProbeListResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeSyntheticProbeListResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
