@@ -8335,6 +8335,8 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
 
             public var resourceGroupId: String?
 
+            public var scaleOutDisableWriteWindows: String?
+
             public var scaleOutStatus: DescribeDBClustersResponseBody.DBClusters.DBCluster.ScaleOutStatus?
 
             public var storageType: String?
@@ -8440,6 +8442,9 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
                 if self.resourceGroupId != nil {
                     map["ResourceGroupId"] = self.resourceGroupId!
                 }
+                if self.scaleOutDisableWriteWindows != nil {
+                    map["ScaleOutDisableWriteWindows"] = self.scaleOutDisableWriteWindows!
+                }
                 if self.scaleOutStatus != nil {
                     map["ScaleOutStatus"] = self.scaleOutStatus?.toMap()
                 }
@@ -8539,6 +8544,9 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ResourceGroupId") {
                     self.resourceGroupId = dict["ResourceGroupId"] as! String
+                }
+                if dict.keys.contains("ScaleOutDisableWriteWindows") {
+                    self.scaleOutDisableWriteWindows = dict["ScaleOutDisableWriteWindows"] as! String
                 }
                 if dict.keys.contains("ScaleOutStatus") {
                     var model = DescribeDBClustersResponseBody.DBClusters.DBCluster.ScaleOutStatus()
@@ -12291,6 +12299,8 @@ public class ModifyDBClusterRequest : Tea.TeaModel {
 
     public var dbNodeStorageType: String?
 
+    public var disableWriteWindows: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -12330,6 +12340,9 @@ public class ModifyDBClusterRequest : Tea.TeaModel {
         if self.dbNodeStorageType != nil {
             map["DbNodeStorageType"] = self.dbNodeStorageType!
         }
+        if self.disableWriteWindows != nil {
+            map["DisableWriteWindows"] = self.disableWriteWindows!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -12363,6 +12376,9 @@ public class ModifyDBClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DbNodeStorageType") {
             self.dbNodeStorageType = dict["DbNodeStorageType"] as! String
+        }
+        if dict.keys.contains("DisableWriteWindows") {
+            self.disableWriteWindows = dict["DisableWriteWindows"] as! String
         }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
