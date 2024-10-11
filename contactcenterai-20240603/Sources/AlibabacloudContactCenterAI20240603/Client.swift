@@ -153,6 +153,63 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createTaskWithOptions(_ workspaceId: String, _ appId: String, _ request: CreateTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dialogue)) {
+            body["dialogue"] = request.dialogue!;
+        }
+        if (!TeaUtils.Client.isUnset(request.examples)) {
+            body["examples"] = request.examples!;
+        }
+        if (!TeaUtils.Client.isUnset(request.fields)) {
+            body["fields"] = request.fields ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.modelCode)) {
+            body["modelCode"] = request.modelCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resultTypes)) {
+            body["resultTypes"] = request.resultTypes ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceInspection)) {
+            body["serviceInspection"] = request.serviceInspection!;
+        }
+        if (!TeaUtils.Client.isUnset(request.taskType)) {
+            body["taskType"] = request.taskType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateIds)) {
+            body["templateIds"] = request.templateIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.transcription)) {
+            body["transcription"] = request.transcription!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateTask",
+            "version": "2024-06-03",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/ccai/app/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(appId)) + "/createTask",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createTask(_ workspaceId: String, _ appId: String, _ request: CreateTaskRequest) async throws -> CreateTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createTaskWithOptions(workspaceId as! String, appId as! String, request as! CreateTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getTaskResultWithOptions(_ request: GetTaskResultRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetTaskResultResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
