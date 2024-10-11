@@ -10526,6 +10526,232 @@ public class DeleteCustomScenePolicyResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteKvRequest : Tea.TeaModel {
+    public var key: String?
+
+    public var namespace: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.key != nil {
+            map["Key"] = self.key!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Key") {
+            self.key = dict["Key"] as! String
+        }
+        if dict.keys.contains("Namespace") {
+            self.namespace = dict["Namespace"] as! String
+        }
+    }
+}
+
+public class DeleteKvResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DeleteKvResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteKvResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteKvResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DeleteKvNamespaceRequest : Tea.TeaModel {
+    public var namespace: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Namespace") {
+            self.namespace = dict["Namespace"] as! String
+        }
+    }
+}
+
+public class DeleteKvNamespaceResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DeleteKvNamespaceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteKvNamespaceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteKvNamespaceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DeleteListRequest : Tea.TeaModel {
     public var id: Int64?
 
@@ -12981,6 +13207,93 @@ public class DescribeIPRangeListResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeKvAccountStatusResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Status") {
+            self.status = dict["Status"] as! String
+        }
+    }
+}
+
+public class DescribeKvAccountStatusResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeKvAccountStatusResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeKvAccountStatusResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribePreloadTasksRequest : Tea.TeaModel {
     public var content: String?
 
@@ -14151,6 +14464,379 @@ public class GetCacheReserveSpecificationResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = GetCacheReserveSpecificationResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetKvRequest : Tea.TeaModel {
+    public var base64: Bool?
+
+    public var key: String?
+
+    public var namespace: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.base64 != nil {
+            map["Base64"] = self.base64!
+        }
+        if self.key != nil {
+            map["Key"] = self.key!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Base64") {
+            self.base64 = dict["Base64"] as! Bool
+        }
+        if dict.keys.contains("Key") {
+            self.key = dict["Key"] as! String
+        }
+        if dict.keys.contains("Namespace") {
+            self.namespace = dict["Namespace"] as! String
+        }
+    }
+}
+
+public class GetKvResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var value: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.value != nil {
+            map["Value"] = self.value!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Value") {
+            self.value = dict["Value"] as! String
+        }
+    }
+}
+
+public class GetKvResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetKvResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetKvResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetKvAccountResponseBody : Tea.TeaModel {
+    public class NamespaceList : Tea.TeaModel {
+        public var capacity: Int64?
+
+        public var capacityString: String?
+
+        public var capacityUsed: Int64?
+
+        public var capacityUsedString: String?
+
+        public var description_: String?
+
+        public var namespace: String?
+
+        public var namespaceId: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.capacity != nil {
+                map["Capacity"] = self.capacity!
+            }
+            if self.capacityString != nil {
+                map["CapacityString"] = self.capacityString!
+            }
+            if self.capacityUsed != nil {
+                map["CapacityUsed"] = self.capacityUsed!
+            }
+            if self.capacityUsedString != nil {
+                map["CapacityUsedString"] = self.capacityUsedString!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.namespace != nil {
+                map["Namespace"] = self.namespace!
+            }
+            if self.namespaceId != nil {
+                map["NamespaceId"] = self.namespaceId!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Capacity") {
+                self.capacity = dict["Capacity"] as! Int64
+            }
+            if dict.keys.contains("CapacityString") {
+                self.capacityString = dict["CapacityString"] as! String
+            }
+            if dict.keys.contains("CapacityUsed") {
+                self.capacityUsed = dict["CapacityUsed"] as! Int64
+            }
+            if dict.keys.contains("CapacityUsedString") {
+                self.capacityUsedString = dict["CapacityUsedString"] as! String
+            }
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("Namespace") {
+                self.namespace = dict["Namespace"] as! String
+            }
+            if dict.keys.contains("NamespaceId") {
+                self.namespaceId = dict["NamespaceId"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+        }
+    }
+    public var capacity: Int64?
+
+    public var capacityString: String?
+
+    public var capacityUsed: Int64?
+
+    public var capacityUsedString: String?
+
+    public var namespaceList: [GetKvAccountResponseBody.NamespaceList]?
+
+    public var namespaceQuota: Int32?
+
+    public var namespaceUsed: Int32?
+
+    public var requestId: String?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.capacity != nil {
+            map["Capacity"] = self.capacity!
+        }
+        if self.capacityString != nil {
+            map["CapacityString"] = self.capacityString!
+        }
+        if self.capacityUsed != nil {
+            map["CapacityUsed"] = self.capacityUsed!
+        }
+        if self.capacityUsedString != nil {
+            map["CapacityUsedString"] = self.capacityUsedString!
+        }
+        if self.namespaceList != nil {
+            var tmp : [Any] = []
+            for k in self.namespaceList! {
+                tmp.append(k.toMap())
+            }
+            map["NamespaceList"] = tmp
+        }
+        if self.namespaceQuota != nil {
+            map["NamespaceQuota"] = self.namespaceQuota!
+        }
+        if self.namespaceUsed != nil {
+            map["NamespaceUsed"] = self.namespaceUsed!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Capacity") {
+            self.capacity = dict["Capacity"] as! Int64
+        }
+        if dict.keys.contains("CapacityString") {
+            self.capacityString = dict["CapacityString"] as! String
+        }
+        if dict.keys.contains("CapacityUsed") {
+            self.capacityUsed = dict["CapacityUsed"] as! Int64
+        }
+        if dict.keys.contains("CapacityUsedString") {
+            self.capacityUsedString = dict["CapacityUsedString"] as! String
+        }
+        if dict.keys.contains("NamespaceList") {
+            var tmp : [GetKvAccountResponseBody.NamespaceList] = []
+            for v in dict["NamespaceList"] as! [Any] {
+                var model = GetKvAccountResponseBody.NamespaceList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.namespaceList = tmp
+        }
+        if dict.keys.contains("NamespaceQuota") {
+            self.namespaceQuota = dict["NamespaceQuota"] as! Int32
+        }
+        if dict.keys.contains("NamespaceUsed") {
+            self.namespaceUsed = dict["NamespaceUsed"] as! Int32
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Status") {
+            self.status = dict["Status"] as! String
+        }
+    }
+}
+
+public class GetKvAccountResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetKvAccountResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetKvAccountResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
