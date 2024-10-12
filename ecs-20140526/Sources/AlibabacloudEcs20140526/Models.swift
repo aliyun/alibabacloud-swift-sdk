@@ -13941,6 +13941,12 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
 
     public var hostName: String?
 
+    public var httpEndpoint: String?
+
+    public var httpPutResponseHopLimit: Int32?
+
+    public var httpTokens: String?
+
     public var imageId: String?
 
     public var imageOwnerAlias: String?
@@ -14070,6 +14076,15 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
         }
         if self.hostName != nil {
             map["HostName"] = self.hostName!
+        }
+        if self.httpEndpoint != nil {
+            map["HttpEndpoint"] = self.httpEndpoint!
+        }
+        if self.httpPutResponseHopLimit != nil {
+            map["HttpPutResponseHopLimit"] = self.httpPutResponseHopLimit!
+        }
+        if self.httpTokens != nil {
+            map["HttpTokens"] = self.httpTokens!
         }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
@@ -14246,6 +14261,15 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("HostName") {
             self.hostName = dict["HostName"] as! String
+        }
+        if dict.keys.contains("HttpEndpoint") {
+            self.httpEndpoint = dict["HttpEndpoint"] as! String
+        }
+        if dict.keys.contains("HttpPutResponseHopLimit") {
+            self.httpPutResponseHopLimit = dict["HttpPutResponseHopLimit"] as! Int32
+        }
+        if dict.keys.contains("HttpTokens") {
+            self.httpTokens = dict["HttpTokens"] as! String
         }
         if dict.keys.contains("ImageId") {
             self.imageId = dict["ImageId"] as! String
@@ -14857,6 +14881,12 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
 
     public var hostName: String?
 
+    public var httpEndpoint: String?
+
+    public var httpPutResponseHopLimit: Int32?
+
+    public var httpTokens: String?
+
     public var imageId: String?
 
     public var imageOwnerAlias: String?
@@ -14984,6 +15014,15 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
         }
         if self.hostName != nil {
             map["HostName"] = self.hostName!
+        }
+        if self.httpEndpoint != nil {
+            map["HttpEndpoint"] = self.httpEndpoint!
+        }
+        if self.httpPutResponseHopLimit != nil {
+            map["HttpPutResponseHopLimit"] = self.httpPutResponseHopLimit!
+        }
+        if self.httpTokens != nil {
+            map["HttpTokens"] = self.httpTokens!
         }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
@@ -15153,6 +15192,15 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("HostName") {
             self.hostName = dict["HostName"] as! String
+        }
+        if dict.keys.contains("HttpEndpoint") {
+            self.httpEndpoint = dict["HttpEndpoint"] as! String
+        }
+        if dict.keys.contains("HttpPutResponseHopLimit") {
+            self.httpPutResponseHopLimit = dict["HttpPutResponseHopLimit"] as! Int32
+        }
+        if dict.keys.contains("HttpTokens") {
+            self.httpTokens = dict["HttpTokens"] as! String
         }
         if dict.keys.contains("ImageId") {
             self.imageId = dict["ImageId"] as! String
@@ -61799,6 +61847,12 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
 
                 public var hostName: String?
 
+                public var httpEndpoint: String?
+
+                public var httpPutResponseHopLimit: Int32?
+
+                public var httpTokens: String?
+
                 public var imageId: String?
 
                 public var imageOwnerAlias: String?
@@ -61910,6 +61964,15 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
                     }
                     if self.hostName != nil {
                         map["HostName"] = self.hostName!
+                    }
+                    if self.httpEndpoint != nil {
+                        map["HttpEndpoint"] = self.httpEndpoint!
+                    }
+                    if self.httpPutResponseHopLimit != nil {
+                        map["HttpPutResponseHopLimit"] = self.httpPutResponseHopLimit!
+                    }
+                    if self.httpTokens != nil {
+                        map["HttpTokens"] = self.httpTokens!
                     }
                     if self.imageId != nil {
                         map["ImageId"] = self.imageId!
@@ -62041,6 +62104,15 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("HostName") {
                         self.hostName = dict["HostName"] as! String
+                    }
+                    if dict.keys.contains("HttpEndpoint") {
+                        self.httpEndpoint = dict["HttpEndpoint"] as! String
+                    }
+                    if dict.keys.contains("HttpPutResponseHopLimit") {
+                        self.httpPutResponseHopLimit = dict["HttpPutResponseHopLimit"] as! Int32
+                    }
+                    if dict.keys.contains("HttpTokens") {
+                        self.httpTokens = dict["HttpTokens"] as! String
                     }
                     if dict.keys.contains("ImageId") {
                         self.imageId = dict["ImageId"] as! String
@@ -106088,11 +106160,19 @@ public class PurchaseElasticityAssuranceRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
     public var period: Int32?
 
     public var periodUnit: String?
 
     public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
 
     public var startTime: String?
 
@@ -106117,6 +106197,12 @@ public class PurchaseElasticityAssuranceRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
         if self.period != nil {
             map["Period"] = self.period!
         }
@@ -106125,6 +106211,12 @@ public class PurchaseElasticityAssuranceRequest : Tea.TeaModel {
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
         }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
@@ -106141,6 +106233,12 @@ public class PurchaseElasticityAssuranceRequest : Tea.TeaModel {
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
         }
+        if dict.keys.contains("OwnerAccount") {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
         if dict.keys.contains("Period") {
             self.period = dict["Period"] as! Int32
         }
@@ -106149,6 +106247,12 @@ public class PurchaseElasticityAssuranceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
         }
         if dict.keys.contains("StartTime") {
             self.startTime = dict["StartTime"] as! String
