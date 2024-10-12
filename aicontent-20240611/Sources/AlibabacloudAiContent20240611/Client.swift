@@ -51,6 +51,150 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func aliyunConsoleOpenApiQueryAliyunConsoleServiceListWithOptions(_ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AliyunConsoleOpenApiQueryAliyunConsoleServiceList",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/aliyunconsole/queryAliyunConsoleServiceList",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func aliyunConsoleOpenApiQueryAliyunConsoleServiceList() async throws -> AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await aliyunConsoleOpenApiQueryAliyunConsoleServiceListWithOptions(headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func personalizedTextToImageAddInferenceJobWithOptions(_ request: PersonalizedTextToImageAddInferenceJobRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PersonalizedTextToImageAddInferenceJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.imageNumber)) {
+            body["imageNumber"] = request.imageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.imageUrl)) {
+            body["imageUrl"] = request.imageUrl ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.prompt)) {
+            body["prompt"] = request.prompt ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.seed)) {
+            body["seed"] = request.seed!;
+        }
+        if (!TeaUtils.Client.isUnset(request.strength)) {
+            body["strength"] = request.strength!;
+        }
+        if (!TeaUtils.Client.isUnset(request.trainSteps)) {
+            body["trainSteps"] = request.trainSteps!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "PersonalizedTextToImageAddInferenceJob",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/personalizedtxt2img/addPreModelInferenceJob",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PersonalizedTextToImageAddInferenceJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func personalizedTextToImageAddInferenceJob(_ request: PersonalizedTextToImageAddInferenceJobRequest) async throws -> PersonalizedTextToImageAddInferenceJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await personalizedTextToImageAddInferenceJobWithOptions(request as! PersonalizedTextToImageAddInferenceJobRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func personalizedTextToImageQueryImageAssetWithOptions(_ request: PersonalizedTextToImageQueryImageAssetRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PersonalizedTextToImageQueryImageAssetResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.encodeFormat)) {
+            query["encodeFormat"] = request.encodeFormat ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageId)) {
+            query["imageId"] = request.imageId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "PersonalizedTextToImageQueryImageAsset",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/personalizedtxt2img/queryImageAssetFromImageId",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "any"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PersonalizedTextToImageQueryImageAssetResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func personalizedTextToImageQueryImageAsset(_ request: PersonalizedTextToImageQueryImageAssetRequest) async throws -> PersonalizedTextToImageQueryImageAssetResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await personalizedTextToImageQueryImageAssetWithOptions(request as! PersonalizedTextToImageQueryImageAssetRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func personalizedTextToImageQueryPreModelInferenceJobInfoWithOptions(_ request: PersonalizedTextToImageQueryPreModelInferenceJobInfoRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.inferenceJobId)) {
+            query["inferenceJobId"] = request.inferenceJobId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "PersonalizedTextToImageQueryPreModelInferenceJobInfo",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/personalizedtxt2img/queryPreModelInferenceJobInfo",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func personalizedTextToImageQueryPreModelInferenceJobInfo(_ request: PersonalizedTextToImageQueryPreModelInferenceJobInfoRequest) async throws -> PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await personalizedTextToImageQueryPreModelInferenceJobInfoWithOptions(request as! PersonalizedTextToImageQueryPreModelInferenceJobInfoRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func personalizedtxt2imgAddInferenceJobWithOptions(_ request: Personalizedtxt2imgAddInferenceJobRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> Personalizedtxt2imgAddInferenceJobResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]

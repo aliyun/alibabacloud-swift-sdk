@@ -823,6 +823,772 @@ public class AliyunConsoleOpenApiQueryAliyunConsoleServcieListResponse : Tea.Tea
     }
 }
 
+public class AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var freeConcurrencyCount: Int32?
+
+        public var freeCount: Int32?
+
+        public var serviceCode: String?
+
+        public var serviceName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.freeConcurrencyCount != nil {
+                map["FreeConcurrencyCount"] = self.freeConcurrencyCount!
+            }
+            if self.freeCount != nil {
+                map["FreeCount"] = self.freeCount!
+            }
+            if self.serviceCode != nil {
+                map["ServiceCode"] = self.serviceCode!
+            }
+            if self.serviceName != nil {
+                map["ServiceName"] = self.serviceName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("FreeConcurrencyCount") {
+                self.freeConcurrencyCount = dict["FreeConcurrencyCount"] as! Int32
+            }
+            if dict.keys.contains("FreeCount") {
+                self.freeCount = dict["FreeCount"] as! Int32
+            }
+            if dict.keys.contains("ServiceCode") {
+                self.serviceCode = dict["ServiceCode"] as! String
+            }
+            if dict.keys.contains("ServiceName") {
+                self.serviceName = dict["ServiceName"] as! String
+            }
+        }
+    }
+    public var data: [AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody.Data]?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["data"] = tmp
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["errMessage"] = self.errMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("data") {
+            var tmp : [AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody.Data] = []
+            for v in dict["data"] as! [Any] {
+                var model = AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
+        }
+        if dict.keys.contains("errCode") {
+            self.errCode = dict["errCode"] as! String
+        }
+        if dict.keys.contains("errMessage") {
+            self.errMessage = dict["errMessage"] as! String
+        }
+        if dict.keys.contains("httpStatusCode") {
+            self.httpStatusCode = dict["httpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class PersonalizedTextToImageAddInferenceJobRequest : Tea.TeaModel {
+    public var imageNumber: Int32?
+
+    public var imageUrl: [String]?
+
+    public var prompt: String?
+
+    public var seed: Int64?
+
+    public var strength: Double?
+
+    public var trainSteps: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.imageNumber != nil {
+            map["imageNumber"] = self.imageNumber!
+        }
+        if self.imageUrl != nil {
+            map["imageUrl"] = self.imageUrl!
+        }
+        if self.prompt != nil {
+            map["prompt"] = self.prompt!
+        }
+        if self.seed != nil {
+            map["seed"] = self.seed!
+        }
+        if self.strength != nil {
+            map["strength"] = self.strength!
+        }
+        if self.trainSteps != nil {
+            map["trainSteps"] = self.trainSteps!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("imageNumber") {
+            self.imageNumber = dict["imageNumber"] as! Int32
+        }
+        if dict.keys.contains("imageUrl") {
+            self.imageUrl = dict["imageUrl"] as! [String]
+        }
+        if dict.keys.contains("prompt") {
+            self.prompt = dict["prompt"] as! String
+        }
+        if dict.keys.contains("seed") {
+            self.seed = dict["seed"] as! Int64
+        }
+        if dict.keys.contains("strength") {
+            self.strength = dict["strength"] as! Double
+        }
+        if dict.keys.contains("trainSteps") {
+            self.trainSteps = dict["trainSteps"] as! Int32
+        }
+    }
+}
+
+public class PersonalizedTextToImageAddInferenceJobResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var createTime: String?
+
+        public var id: String?
+
+        public var jobStatus: String?
+
+        public var jobTrainProgress: Double?
+
+        public var modelId: String?
+
+        public var promptId: String?
+
+        public var resultImageUrl: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.createTime != nil {
+                map["createTime"] = self.createTime!
+            }
+            if self.id != nil {
+                map["id"] = self.id!
+            }
+            if self.jobStatus != nil {
+                map["jobStatus"] = self.jobStatus!
+            }
+            if self.jobTrainProgress != nil {
+                map["jobTrainProgress"] = self.jobTrainProgress!
+            }
+            if self.modelId != nil {
+                map["modelId"] = self.modelId!
+            }
+            if self.promptId != nil {
+                map["promptId"] = self.promptId!
+            }
+            if self.resultImageUrl != nil {
+                map["resultImageUrl"] = self.resultImageUrl!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("createTime") {
+                self.createTime = dict["createTime"] as! String
+            }
+            if dict.keys.contains("id") {
+                self.id = dict["id"] as! String
+            }
+            if dict.keys.contains("jobStatus") {
+                self.jobStatus = dict["jobStatus"] as! String
+            }
+            if dict.keys.contains("jobTrainProgress") {
+                self.jobTrainProgress = dict["jobTrainProgress"] as! Double
+            }
+            if dict.keys.contains("modelId") {
+                self.modelId = dict["modelId"] as! String
+            }
+            if dict.keys.contains("promptId") {
+                self.promptId = dict["promptId"] as! String
+            }
+            if dict.keys.contains("resultImageUrl") {
+                self.resultImageUrl = dict["resultImageUrl"] as! [String]
+            }
+        }
+    }
+    public var data: PersonalizedTextToImageAddInferenceJobResponseBody.Data?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["errMessage"] = self.errMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("data") {
+            var model = PersonalizedTextToImageAddInferenceJobResponseBody.Data()
+            model.fromMap(dict["data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("errCode") {
+            self.errCode = dict["errCode"] as! String
+        }
+        if dict.keys.contains("errMessage") {
+            self.errMessage = dict["errMessage"] as! String
+        }
+        if dict.keys.contains("httpStatusCode") {
+            self.httpStatusCode = dict["httpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class PersonalizedTextToImageAddInferenceJobResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: PersonalizedTextToImageAddInferenceJobResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = PersonalizedTextToImageAddInferenceJobResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class PersonalizedTextToImageQueryImageAssetRequest : Tea.TeaModel {
+    public var encodeFormat: String?
+
+    public var imageId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.encodeFormat != nil {
+            map["encodeFormat"] = self.encodeFormat!
+        }
+        if self.imageId != nil {
+            map["imageId"] = self.imageId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("encodeFormat") {
+            self.encodeFormat = dict["encodeFormat"] as! String
+        }
+        if dict.keys.contains("imageId") {
+            self.imageId = dict["imageId"] as! String
+        }
+    }
+}
+
+public class PersonalizedTextToImageQueryImageAssetResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: Any?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            self.body = dict["body"] as! Any
+        }
+    }
+}
+
+public class PersonalizedTextToImageQueryPreModelInferenceJobInfoRequest : Tea.TeaModel {
+    public var inferenceJobId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.inferenceJobId != nil {
+            map["inferenceJobId"] = self.inferenceJobId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("inferenceJobId") {
+            self.inferenceJobId = dict["inferenceJobId"] as! String
+        }
+    }
+}
+
+public class PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var createTime: String?
+
+        public var id: String?
+
+        public var jobStatus: String?
+
+        public var jobTrainProgress: Double?
+
+        public var modelId: String?
+
+        public var promptId: String?
+
+        public var resultImageUrl: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.createTime != nil {
+                map["createTime"] = self.createTime!
+            }
+            if self.id != nil {
+                map["id"] = self.id!
+            }
+            if self.jobStatus != nil {
+                map["jobStatus"] = self.jobStatus!
+            }
+            if self.jobTrainProgress != nil {
+                map["jobTrainProgress"] = self.jobTrainProgress!
+            }
+            if self.modelId != nil {
+                map["modelId"] = self.modelId!
+            }
+            if self.promptId != nil {
+                map["promptId"] = self.promptId!
+            }
+            if self.resultImageUrl != nil {
+                map["resultImageUrl"] = self.resultImageUrl!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("createTime") {
+                self.createTime = dict["createTime"] as! String
+            }
+            if dict.keys.contains("id") {
+                self.id = dict["id"] as! String
+            }
+            if dict.keys.contains("jobStatus") {
+                self.jobStatus = dict["jobStatus"] as! String
+            }
+            if dict.keys.contains("jobTrainProgress") {
+                self.jobTrainProgress = dict["jobTrainProgress"] as! Double
+            }
+            if dict.keys.contains("modelId") {
+                self.modelId = dict["modelId"] as! String
+            }
+            if dict.keys.contains("promptId") {
+                self.promptId = dict["promptId"] as! String
+            }
+            if dict.keys.contains("resultImageUrl") {
+                self.resultImageUrl = dict["resultImageUrl"] as! [String]
+            }
+        }
+    }
+    public var data: PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody.Data?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["errMessage"] = self.errMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("data") {
+            var model = PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody.Data()
+            model.fromMap(dict["data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("errCode") {
+            self.errCode = dict["errCode"] as! String
+        }
+        if dict.keys.contains("errMessage") {
+            self.errMessage = dict["errMessage"] as! String
+        }
+        if dict.keys.contains("httpStatusCode") {
+            self.httpStatusCode = dict["httpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = PersonalizedTextToImageQueryPreModelInferenceJobInfoResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class Personalizedtxt2imgAddInferenceJobRequest : Tea.TeaModel {
     public var imageNumber: Int32?
 
