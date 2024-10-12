@@ -19456,6 +19456,324 @@ public class ListCacheReserveInstancesResponse : Tea.TeaModel {
     }
 }
 
+public class ListClientCertificatesRequest : Tea.TeaModel {
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
+    public var siteId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int64
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int64
+        }
+        if dict.keys.contains("SiteId") {
+            self.siteId = dict["SiteId"] as! Int64
+        }
+    }
+}
+
+public class ListClientCertificatesResponseBody : Tea.TeaModel {
+    public class Result : Tea.TeaModel {
+        public var CACertificateId: String?
+
+        public var commonName: String?
+
+        public var createTime: String?
+
+        public var id: String?
+
+        public var issuer: String?
+
+        public var name: String?
+
+        public var notAfter: String?
+
+        public var notBefore: String?
+
+        public var pubkeyAlgorithm: String?
+
+        public var SAN: String?
+
+        public var signatureAlgorithm: String?
+
+        public var status: String?
+
+        public var type: String?
+
+        public var updateTime: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.CACertificateId != nil {
+                map["CACertificateId"] = self.CACertificateId!
+            }
+            if self.commonName != nil {
+                map["CommonName"] = self.commonName!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.issuer != nil {
+                map["Issuer"] = self.issuer!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.notAfter != nil {
+                map["NotAfter"] = self.notAfter!
+            }
+            if self.notBefore != nil {
+                map["NotBefore"] = self.notBefore!
+            }
+            if self.pubkeyAlgorithm != nil {
+                map["PubkeyAlgorithm"] = self.pubkeyAlgorithm!
+            }
+            if self.SAN != nil {
+                map["SAN"] = self.SAN!
+            }
+            if self.signatureAlgorithm != nil {
+                map["SignatureAlgorithm"] = self.signatureAlgorithm!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            if self.updateTime != nil {
+                map["UpdateTime"] = self.updateTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CACertificateId") {
+                self.CACertificateId = dict["CACertificateId"] as! String
+            }
+            if dict.keys.contains("CommonName") {
+                self.commonName = dict["CommonName"] as! String
+            }
+            if dict.keys.contains("CreateTime") {
+                self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("Id") {
+                self.id = dict["Id"] as! String
+            }
+            if dict.keys.contains("Issuer") {
+                self.issuer = dict["Issuer"] as! String
+            }
+            if dict.keys.contains("Name") {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("NotAfter") {
+                self.notAfter = dict["NotAfter"] as! String
+            }
+            if dict.keys.contains("NotBefore") {
+                self.notBefore = dict["NotBefore"] as! String
+            }
+            if dict.keys.contains("PubkeyAlgorithm") {
+                self.pubkeyAlgorithm = dict["PubkeyAlgorithm"] as! String
+            }
+            if dict.keys.contains("SAN") {
+                self.SAN = dict["SAN"] as! String
+            }
+            if dict.keys.contains("SignatureAlgorithm") {
+                self.signatureAlgorithm = dict["SignatureAlgorithm"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+            if dict.keys.contains("UpdateTime") {
+                self.updateTime = dict["UpdateTime"] as! String
+            }
+        }
+    }
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
+    public var requestId: String?
+
+    public var result: [ListClientCertificatesResponseBody.Result]?
+
+    public var siteId: Int64?
+
+    public var siteName: String?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            var tmp : [Any] = []
+            for k in self.result! {
+                tmp.append(k.toMap())
+            }
+            map["Result"] = tmp
+        }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        if self.siteName != nil {
+            map["SiteName"] = self.siteName!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int64
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int64
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Result") {
+            var tmp : [ListClientCertificatesResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = ListClientCertificatesResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
+        }
+        if dict.keys.contains("SiteId") {
+            self.siteId = dict["SiteId"] as! Int64
+        }
+        if dict.keys.contains("SiteName") {
+            self.siteName = dict["SiteName"] as! String
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! Int64
+        }
+    }
+}
+
+public class ListClientCertificatesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListClientCertificatesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListClientCertificatesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListEdgeContainerAppRecordsRequest : Tea.TeaModel {
     public var appId: String?
 
