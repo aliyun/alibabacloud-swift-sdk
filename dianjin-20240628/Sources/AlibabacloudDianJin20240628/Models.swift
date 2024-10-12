@@ -9,6 +9,276 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class CreateAnnualDocSummaryTaskRequest : Tea.TeaModel {
+    public class DocInfos : Tea.TeaModel {
+        public var docId: String?
+
+        public var docYear: Int32?
+
+        public var endPage: Int32?
+
+        public var libraryId: String?
+
+        public var startPage: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.docId != nil {
+                map["docId"] = self.docId!
+            }
+            if self.docYear != nil {
+                map["docYear"] = self.docYear!
+            }
+            if self.endPage != nil {
+                map["endPage"] = self.endPage!
+            }
+            if self.libraryId != nil {
+                map["libraryId"] = self.libraryId!
+            }
+            if self.startPage != nil {
+                map["startPage"] = self.startPage!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("docId") {
+                self.docId = dict["docId"] as! String
+            }
+            if dict.keys.contains("docYear") {
+                self.docYear = dict["docYear"] as! Int32
+            }
+            if dict.keys.contains("endPage") {
+                self.endPage = dict["endPage"] as! Int32
+            }
+            if dict.keys.contains("libraryId") {
+                self.libraryId = dict["libraryId"] as! String
+            }
+            if dict.keys.contains("startPage") {
+                self.startPage = dict["startPage"] as! Int32
+            }
+        }
+    }
+    public var anaYears: [Int32]?
+
+    public var docInfos: [CreateAnnualDocSummaryTaskRequest.DocInfos]?
+
+    public var enableTable: Bool?
+
+    public var instruction: String?
+
+    public var modelId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.anaYears != nil {
+            map["anaYears"] = self.anaYears!
+        }
+        if self.docInfos != nil {
+            var tmp : [Any] = []
+            for k in self.docInfos! {
+                tmp.append(k.toMap())
+            }
+            map["docInfos"] = tmp
+        }
+        if self.enableTable != nil {
+            map["enableTable"] = self.enableTable!
+        }
+        if self.instruction != nil {
+            map["instruction"] = self.instruction!
+        }
+        if self.modelId != nil {
+            map["modelId"] = self.modelId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("anaYears") {
+            self.anaYears = dict["anaYears"] as! [Int32]
+        }
+        if dict.keys.contains("docInfos") {
+            var tmp : [CreateAnnualDocSummaryTaskRequest.DocInfos] = []
+            for v in dict["docInfos"] as! [Any] {
+                var model = CreateAnnualDocSummaryTaskRequest.DocInfos()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.docInfos = tmp
+        }
+        if dict.keys.contains("enableTable") {
+            self.enableTable = dict["enableTable"] as! Bool
+        }
+        if dict.keys.contains("instruction") {
+            self.instruction = dict["instruction"] as! String
+        }
+        if dict.keys.contains("modelId") {
+            self.modelId = dict["modelId"] as! String
+        }
+    }
+}
+
+public class CreateAnnualDocSummaryTaskResponseBody : Tea.TeaModel {
+    public var cost: Int64?
+
+    public var data: String?
+
+    public var dataType: String?
+
+    public var errCode: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var time: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cost != nil {
+            map["cost"] = self.cost!
+        }
+        if self.data != nil {
+            map["data"] = self.data!
+        }
+        if self.dataType != nil {
+            map["dataType"] = self.dataType!
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.time != nil {
+            map["time"] = self.time!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("cost") {
+            self.cost = dict["cost"] as! Int64
+        }
+        if dict.keys.contains("data") {
+            self.data = dict["data"] as! String
+        }
+        if dict.keys.contains("dataType") {
+            self.dataType = dict["dataType"] as! String
+        }
+        if dict.keys.contains("errCode") {
+            self.errCode = dict["errCode"] as! String
+        }
+        if dict.keys.contains("message") {
+            self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+        if dict.keys.contains("time") {
+            self.time = dict["time"] as! String
+        }
+    }
+}
+
+public class CreateAnnualDocSummaryTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateAnnualDocSummaryTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateAnnualDocSummaryTaskResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateDocsSummaryTaskRequest : Tea.TeaModel {
     public class DocInfos : Tea.TeaModel {
         public var docId: String?

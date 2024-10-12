@@ -28,6 +28,51 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAnnualDocSummaryTaskWithOptions(_ workspaceId: String, _ request: CreateAnnualDocSummaryTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAnnualDocSummaryTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.anaYears)) {
+            body["anaYears"] = request.anaYears ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.docInfos)) {
+            body["docInfos"] = request.docInfos ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.enableTable)) {
+            body["enableTable"] = request.enableTable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instruction)) {
+            body["instruction"] = request.instruction ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelId)) {
+            body["modelId"] = request.modelId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateAnnualDocSummaryTask",
+            "version": "2024-06-28",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/api/task/summary/doc/annual",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateAnnualDocSummaryTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAnnualDocSummaryTask(_ workspaceId: String, _ request: CreateAnnualDocSummaryTaskRequest) async throws -> CreateAnnualDocSummaryTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createAnnualDocSummaryTaskWithOptions(workspaceId as! String, request as! CreateAnnualDocSummaryTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createDocsSummaryTaskWithOptions(_ workspaceId: String, _ request: CreateDocsSummaryTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDocsSummaryTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
