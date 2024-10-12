@@ -613,6 +613,43 @@ public class EnrollAccountRequest : Tea.TeaModel {
             }
         }
     }
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var accountNamePrefix: String?
 
     public var accountUid: Int64?
@@ -630,6 +667,8 @@ public class EnrollAccountRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var resellAccountType: String?
+
+    public var tag: [EnrollAccountRequest.Tag]?
 
     public override init() {
         super.init()
@@ -676,6 +715,13 @@ public class EnrollAccountRequest : Tea.TeaModel {
         if self.resellAccountType != nil {
             map["ResellAccountType"] = self.resellAccountType!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
@@ -714,6 +760,184 @@ public class EnrollAccountRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResellAccountType") {
             self.resellAccountType = dict["ResellAccountType"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [EnrollAccountRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = EnrollAccountRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
+    }
+}
+
+public class EnrollAccountShrinkRequest : Tea.TeaModel {
+    public class BaselineItems : Tea.TeaModel {
+        public var config: String?
+
+        public var name: String?
+
+        public var skip: Bool?
+
+        public var version: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.config != nil {
+                map["Config"] = self.config!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.skip != nil {
+                map["Skip"] = self.skip!
+            }
+            if self.version != nil {
+                map["Version"] = self.version!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Config") {
+                self.config = dict["Config"] as! String
+            }
+            if dict.keys.contains("Name") {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("Skip") {
+                self.skip = dict["Skip"] as! Bool
+            }
+            if dict.keys.contains("Version") {
+                self.version = dict["Version"] as! String
+            }
+        }
+    }
+    public var accountNamePrefix: String?
+
+    public var accountUid: Int64?
+
+    public var baselineId: String?
+
+    public var baselineItems: [EnrollAccountShrinkRequest.BaselineItems]?
+
+    public var displayName: String?
+
+    public var folderId: String?
+
+    public var payerAccountUid: Int64?
+
+    public var regionId: String?
+
+    public var resellAccountType: String?
+
+    public var tagShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accountNamePrefix != nil {
+            map["AccountNamePrefix"] = self.accountNamePrefix!
+        }
+        if self.accountUid != nil {
+            map["AccountUid"] = self.accountUid!
+        }
+        if self.baselineId != nil {
+            map["BaselineId"] = self.baselineId!
+        }
+        if self.baselineItems != nil {
+            var tmp : [Any] = []
+            for k in self.baselineItems! {
+                tmp.append(k.toMap())
+            }
+            map["BaselineItems"] = tmp
+        }
+        if self.displayName != nil {
+            map["DisplayName"] = self.displayName!
+        }
+        if self.folderId != nil {
+            map["FolderId"] = self.folderId!
+        }
+        if self.payerAccountUid != nil {
+            map["PayerAccountUid"] = self.payerAccountUid!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resellAccountType != nil {
+            map["ResellAccountType"] = self.resellAccountType!
+        }
+        if self.tagShrink != nil {
+            map["Tag"] = self.tagShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccountNamePrefix") {
+            self.accountNamePrefix = dict["AccountNamePrefix"] as! String
+        }
+        if dict.keys.contains("AccountUid") {
+            self.accountUid = dict["AccountUid"] as! Int64
+        }
+        if dict.keys.contains("BaselineId") {
+            self.baselineId = dict["BaselineId"] as! String
+        }
+        if dict.keys.contains("BaselineItems") {
+            var tmp : [EnrollAccountShrinkRequest.BaselineItems] = []
+            for v in dict["BaselineItems"] as! [Any] {
+                var model = EnrollAccountShrinkRequest.BaselineItems()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.baselineItems = tmp
+        }
+        if dict.keys.contains("DisplayName") {
+            self.displayName = dict["DisplayName"] as! String
+        }
+        if dict.keys.contains("FolderId") {
+            self.folderId = dict["FolderId"] as! String
+        }
+        if dict.keys.contains("PayerAccountUid") {
+            self.payerAccountUid = dict["PayerAccountUid"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResellAccountType") {
+            self.resellAccountType = dict["ResellAccountType"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            self.tagShrink = dict["Tag"] as! String
         }
     }
 }
@@ -1234,6 +1458,43 @@ public class GetEnrolledAccountResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Tag : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("Value") {
+                    self.value = dict["Value"] as! String
+                }
+            }
+        }
         public var accountNamePrefix: String?
 
         public var accountUid: Int64?
@@ -1245,6 +1506,8 @@ public class GetEnrolledAccountResponseBody : Tea.TeaModel {
         public var folderId: String?
 
         public var payerAccountUid: Int64?
+
+        public var tag: [GetEnrolledAccountResponseBody.Inputs.Tag]?
 
         public override init() {
             super.init()
@@ -1282,6 +1545,13 @@ public class GetEnrolledAccountResponseBody : Tea.TeaModel {
             if self.payerAccountUid != nil {
                 map["PayerAccountUid"] = self.payerAccountUid!
             }
+            if self.tag != nil {
+                var tmp : [Any] = []
+                for k in self.tag! {
+                    tmp.append(k.toMap())
+                }
+                map["Tag"] = tmp
+            }
             return map
         }
 
@@ -1311,6 +1581,17 @@ public class GetEnrolledAccountResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("PayerAccountUid") {
                 self.payerAccountUid = dict["PayerAccountUid"] as! Int64
+            }
+            if dict.keys.contains("Tag") {
+                var tmp : [GetEnrolledAccountResponseBody.Inputs.Tag] = []
+                for v in dict["Tag"] as! [Any] {
+                    var model = GetEnrolledAccountResponseBody.Inputs.Tag()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tag = tmp
             }
         }
     }
@@ -3022,6 +3303,8 @@ public class ListEvaluationMetricDetailsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var complianceType: String?
+
         public var regionId: String?
 
         public var resourceClassification: String?
@@ -3050,6 +3333,9 @@ public class ListEvaluationMetricDetailsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.complianceType != nil {
+                map["ComplianceType"] = self.complianceType!
+            }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
@@ -3079,6 +3365,9 @@ public class ListEvaluationMetricDetailsResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ComplianceType") {
+                self.complianceType = dict["ComplianceType"] as! String
+            }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
             }
@@ -3567,6 +3856,8 @@ public class ListEvaluationResultsResponse : Tea.TeaModel {
 }
 
 public class ListEvaluationScoreHistoryRequest : Tea.TeaModel {
+    public var accountId: Int64?
+
     public var endDate: String?
 
     public var regionId: String?
@@ -3587,6 +3878,9 @@ public class ListEvaluationScoreHistoryRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accountId != nil {
+            map["AccountId"] = self.accountId!
+        }
         if self.endDate != nil {
             map["EndDate"] = self.endDate!
         }
@@ -3600,6 +3894,9 @@ public class ListEvaluationScoreHistoryRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccountId") {
+            self.accountId = dict["AccountId"] as! Int64
+        }
         if dict.keys.contains("EndDate") {
             self.endDate = dict["EndDate"] as! String
         }

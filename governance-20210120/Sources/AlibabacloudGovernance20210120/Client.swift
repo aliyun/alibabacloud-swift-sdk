@@ -139,8 +139,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func enrollAccountWithOptions(_ request: EnrollAccountRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnrollAccountResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func enrollAccountWithOptions(_ tmpReq: EnrollAccountRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnrollAccountResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: EnrollAccountShrinkRequest = EnrollAccountShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.tag)) {
+            request.tagShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tag, "Tag", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.accountNamePrefix)) {
             query["AccountNamePrefix"] = request.accountNamePrefix ?? "";
@@ -168,6 +173,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resellAccountType)) {
             query["ResellAccountType"] = request.resellAccountType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagShrink)) {
+            query["Tag"] = request.tagShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -496,6 +504,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listEvaluationScoreHistoryWithOptions(_ request: ListEvaluationScoreHistoryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListEvaluationScoreHistoryResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountId)) {
+            query["AccountId"] = request.accountId!;
+        }
         if (!TeaUtils.Client.isUnset(request.endDate)) {
             query["EndDate"] = request.endDate ?? "";
         }
