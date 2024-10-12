@@ -28583,7 +28583,46 @@ public class SubmitDocClusterTaskResponse : Tea.TeaModel {
 
 public class SubmitTopicSelectionPerspectiveAnalysisTaskRequest : Tea.TeaModel {
     public class Documents : Tea.TeaModel {
+        public class Comments : Tea.TeaModel {
+            public var text: String?
+
+            public var username: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.text != nil {
+                    map["Text"] = self.text!
+                }
+                if self.username != nil {
+                    map["Username"] = self.username!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Text") {
+                    self.text = dict["Text"] as! String
+                }
+                if dict.keys.contains("Username") {
+                    self.username = dict["Username"] as! String
+                }
+            }
+        }
         public var author: String?
+
+        public var comments: [SubmitTopicSelectionPerspectiveAnalysisTaskRequest.Documents.Comments]?
 
         public var content: String?
 
@@ -28614,6 +28653,13 @@ public class SubmitTopicSelectionPerspectiveAnalysisTaskRequest : Tea.TeaModel {
             if self.author != nil {
                 map["Author"] = self.author!
             }
+            if self.comments != nil {
+                var tmp : [Any] = []
+                for k in self.comments! {
+                    tmp.append(k.toMap())
+                }
+                map["Comments"] = tmp
+            }
             if self.content != nil {
                 map["Content"] = self.content!
             }
@@ -28638,6 +28684,17 @@ public class SubmitTopicSelectionPerspectiveAnalysisTaskRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Author") {
                 self.author = dict["Author"] as! String
+            }
+            if dict.keys.contains("Comments") {
+                var tmp : [SubmitTopicSelectionPerspectiveAnalysisTaskRequest.Documents.Comments] = []
+                for v in dict["Comments"] as! [Any] {
+                    var model = SubmitTopicSelectionPerspectiveAnalysisTaskRequest.Documents.Comments()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.comments = tmp
             }
             if dict.keys.contains("Content") {
                 self.content = dict["Content"] as! String
