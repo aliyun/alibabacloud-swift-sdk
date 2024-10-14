@@ -6091,6 +6091,8 @@ public class VoiceModerationResultResponseBody : Tea.TeaModel {
 
             public var originAlgoResult: [String: Any]?
 
+            public var riskLevel: String?
+
             public var riskTips: String?
 
             public var riskWords: String?
@@ -6134,6 +6136,9 @@ public class VoiceModerationResultResponseBody : Tea.TeaModel {
                 if self.originAlgoResult != nil {
                     map["OriginAlgoResult"] = self.originAlgoResult!
                 }
+                if self.riskLevel != nil {
+                    map["RiskLevel"] = self.riskLevel!
+                }
                 if self.riskTips != nil {
                     map["RiskTips"] = self.riskTips!
                 }
@@ -6174,6 +6179,9 @@ public class VoiceModerationResultResponseBody : Tea.TeaModel {
                 if dict.keys.contains("OriginAlgoResult") {
                     self.originAlgoResult = dict["OriginAlgoResult"] as! [String: Any]
                 }
+                if dict.keys.contains("RiskLevel") {
+                    self.riskLevel = dict["RiskLevel"] as! String
+                }
                 if dict.keys.contains("RiskTips") {
                     self.riskTips = dict["RiskTips"] as! String
                 }
@@ -6201,6 +6209,8 @@ public class VoiceModerationResultResponseBody : Tea.TeaModel {
 
         public var liveId: String?
 
+        public var riskLevel: String?
+
         public var sliceDetails: [VoiceModerationResultResponseBody.Data.SliceDetails]?
 
         public var taskId: String?
@@ -6227,6 +6237,9 @@ public class VoiceModerationResultResponseBody : Tea.TeaModel {
             if self.liveId != nil {
                 map["LiveId"] = self.liveId!
             }
+            if self.riskLevel != nil {
+                map["RiskLevel"] = self.riskLevel!
+            }
             if self.sliceDetails != nil {
                 var tmp : [Any] = []
                 for k in self.sliceDetails! {
@@ -6249,6 +6262,9 @@ public class VoiceModerationResultResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("LiveId") {
                 self.liveId = dict["LiveId"] as! String
+            }
+            if dict.keys.contains("RiskLevel") {
+                self.riskLevel = dict["RiskLevel"] as! String
             }
             if dict.keys.contains("SliceDetails") {
                 var tmp : [VoiceModerationResultResponseBody.Data.SliceDetails] = []
