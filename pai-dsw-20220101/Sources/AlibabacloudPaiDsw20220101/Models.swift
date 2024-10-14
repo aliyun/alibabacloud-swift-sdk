@@ -2634,6 +2634,36 @@ public class GetIdleInstanceCullerResponse : Tea.TeaModel {
     }
 }
 
+public class GetInstanceRequest : Tea.TeaModel {
+    public var token: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.token != nil {
+            map["Token"] = self.token!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Token") {
+            self.token = dict["Token"] as! String
+        }
+    }
+}
+
 public class GetInstanceResponseBody : Tea.TeaModel {
     public class Affinity : Tea.TeaModel {
         public class CPU : Tea.TeaModel {
@@ -3867,6 +3897,8 @@ public class GetInstanceEventsRequest : Tea.TeaModel {
 
     public var startTime: String?
 
+    public var token: String?
+
     public override init() {
         super.init()
     }
@@ -3890,6 +3922,9 @@ public class GetInstanceEventsRequest : Tea.TeaModel {
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
+        if self.token != nil {
+            map["Token"] = self.token!
+        }
         return map
     }
 
@@ -3902,6 +3937,9 @@ public class GetInstanceEventsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("StartTime") {
             self.startTime = dict["StartTime"] as! String
+        }
+        if dict.keys.contains("Token") {
+            self.token = dict["Token"] as! String
         }
     }
 }
@@ -4730,6 +4768,8 @@ public class GetLifecycleRequest : Tea.TeaModel {
 
     public var startTime: String?
 
+    public var token: String?
+
     public override init() {
         super.init()
     }
@@ -4759,6 +4799,9 @@ public class GetLifecycleRequest : Tea.TeaModel {
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
+        if self.token != nil {
+            map["Token"] = self.token!
+        }
         return map
     }
 
@@ -4777,6 +4820,9 @@ public class GetLifecycleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("StartTime") {
             self.startTime = dict["StartTime"] as! String
+        }
+        if dict.keys.contains("Token") {
+            self.token = dict["Token"] as! String
         }
     }
 }
