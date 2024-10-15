@@ -345,6 +345,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.itineraryId)) {
             query["itinerary_id"] = request.itineraryId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.middlePage)) {
+            query["middle_page"] = request.middlePage!;
+        }
         if (!TeaUtils.Client.isUnset(request.orderId)) {
             query["order_Id"] = request.orderId ?? "";
         }
@@ -356,6 +359,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.taobaoCallbackUrl)) {
             query["taobao_callback_url"] = request.taobaoCallbackUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.thirdpartApplyId)) {
+            query["thirdpart_apply_id"] = request.thirdpartApplyId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.travelerId)) {
             query["traveler_id"] = request.travelerId ?? "";
@@ -1965,6 +1971,116 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: CooperatorHotelBillSettlementQueryHeaders = CooperatorHotelBillSettlementQueryHeaders([:])
         return try await cooperatorHotelBillSettlementQueryWithOptions(request as! CooperatorHotelBillSettlementQueryRequest, headers as! CooperatorHotelBillSettlementQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cooperatorHotelEventPushWithOptions(_ request: CooperatorHotelEventPushRequest, _ headers: CooperatorHotelEventPushHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CooperatorHotelEventPushResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.changeOrderStatus)) {
+            body["change_order_status"] = request.changeOrderStatus!;
+        }
+        if (!TeaUtils.Client.isUnset(request.changeOrderStatusDesc)) {
+            body["change_order_status_desc"] = request.changeOrderStatusDesc ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cooperatorOrderId)) {
+            body["cooperator_order_id"] = request.cooperatorOrderId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.event)) {
+            body["event"] = request.event ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.eventDesc)) {
+            body["event_desc"] = request.eventDesc ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.eventTime)) {
+            body["event_time"] = request.eventTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderId)) {
+            body["order_id"] = request.orderId ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CooperatorHotelEventPush",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/coop-hotel/v1/orders/events",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CooperatorHotelEventPushResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cooperatorHotelEventPush(_ request: CooperatorHotelEventPushRequest) async throws -> CooperatorHotelEventPushResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: CooperatorHotelEventPushHeaders = CooperatorHotelEventPushHeaders([:])
+        return try await cooperatorHotelEventPushWithOptions(request as! CooperatorHotelEventPushRequest, headers as! CooperatorHotelEventPushHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cooperatorSyncPayStatusWithOptions(_ request: CooperatorSyncPayStatusRequest, _ headers: CooperatorSyncPayStatusHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CooperatorSyncPayStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cooperatorOrderId)) {
+            body["cooperator_order_id"] = request.cooperatorOrderId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cooperatorPayNo)) {
+            body["cooperator_pay_no"] = request.cooperatorPayNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderId)) {
+            body["order_id"] = request.orderId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.payStatus)) {
+            body["pay_status"] = request.payStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.payTime)) {
+            body["pay_time"] = request.payTime!;
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CooperatorSyncPayStatus",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/coop-pay/v1/cashiers/status",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CooperatorSyncPayStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cooperatorSyncPayStatus(_ request: CooperatorSyncPayStatusRequest) async throws -> CooperatorSyncPayStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: CooperatorSyncPayStatusHeaders = CooperatorSyncPayStatusHeaders([:])
+        return try await cooperatorSyncPayStatusWithOptions(request as! CooperatorSyncPayStatusRequest, headers as! CooperatorSyncPayStatusHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
