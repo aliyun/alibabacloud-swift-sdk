@@ -3385,6 +3385,75 @@ public class CreateAutoscalingConfigResponse : Tea.TeaModel {
 }
 
 public class CreateClusterRequest : Tea.TeaModel {
+    public class OperationPolicy : Tea.TeaModel {
+        public class ClusterAutoUpgrade : Tea.TeaModel {
+            public var channel: String?
+
+            public var enabled: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.channel != nil {
+                    map["channel"] = self.channel!
+                }
+                if self.enabled != nil {
+                    map["enabled"] = self.enabled!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("channel") {
+                    self.channel = dict["channel"] as! String
+                }
+                if dict.keys.contains("enabled") {
+                    self.enabled = dict["enabled"] as! Bool
+                }
+            }
+        }
+        public var clusterAutoUpgrade: CreateClusterRequest.OperationPolicy.ClusterAutoUpgrade?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.clusterAutoUpgrade?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clusterAutoUpgrade != nil {
+                map["cluster_auto_upgrade"] = self.clusterAutoUpgrade?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("cluster_auto_upgrade") {
+                var model = CreateClusterRequest.OperationPolicy.ClusterAutoUpgrade()
+                model.fromMap(dict["cluster_auto_upgrade"] as! [String: Any])
+                self.clusterAutoUpgrade = model
+            }
+        }
+    }
     public class WorkerDataDisks : Tea.TeaModel {
         public var category: String?
 
@@ -3508,6 +3577,8 @@ public class CreateClusterRequest : Tea.TeaModel {
 
     public var loginPassword: String?
 
+    public var maintenanceWindow: MaintenanceWindow?
+
     public var masterAutoRenew: Bool?
 
     public var masterAutoRenewPeriod: Int64?
@@ -3545,6 +3616,8 @@ public class CreateClusterRequest : Tea.TeaModel {
     public var nodepools: [Nodepool]?
 
     public var numOfNodes: Int64?
+
+    public var operationPolicy: CreateClusterRequest.OperationPolicy?
 
     public var osType: String?
 
@@ -3638,6 +3711,8 @@ public class CreateClusterRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.maintenanceWindow?.validate()
+        try self.operationPolicy?.validate()
         try self.runtime?.validate()
     }
 
@@ -3752,6 +3827,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         if self.loginPassword != nil {
             map["login_password"] = self.loginPassword!
         }
+        if self.maintenanceWindow != nil {
+            map["maintenance_window"] = self.maintenanceWindow?.toMap()
+        }
         if self.masterAutoRenew != nil {
             map["master_auto_renew"] = self.masterAutoRenew!
         }
@@ -3812,6 +3890,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if self.numOfNodes != nil {
             map["num_of_nodes"] = self.numOfNodes!
+        }
+        if self.operationPolicy != nil {
+            map["operation_policy"] = self.operationPolicy?.toMap()
         }
         if self.osType != nil {
             map["os_type"] = self.osType!
@@ -4065,6 +4146,11 @@ public class CreateClusterRequest : Tea.TeaModel {
         if dict.keys.contains("login_password") {
             self.loginPassword = dict["login_password"] as! String
         }
+        if dict.keys.contains("maintenance_window") {
+            var model = MaintenanceWindow()
+            model.fromMap(dict["maintenance_window"] as! [String: Any])
+            self.maintenanceWindow = model
+        }
         if dict.keys.contains("master_auto_renew") {
             self.masterAutoRenew = dict["master_auto_renew"] as! Bool
         }
@@ -4129,6 +4215,11 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("num_of_nodes") {
             self.numOfNodes = dict["num_of_nodes"] as! Int64
+        }
+        if dict.keys.contains("operation_policy") {
+            var model = CreateClusterRequest.OperationPolicy()
+            model.fromMap(dict["operation_policy"] as! [String: Any])
+            self.operationPolicy = model
         }
         if dict.keys.contains("os_type") {
             self.osType = dict["os_type"] as! String
@@ -9039,6 +9130,75 @@ public class DescribeClusterAttachScriptsResponse : Tea.TeaModel {
 }
 
 public class DescribeClusterDetailResponseBody : Tea.TeaModel {
+    public class OperationPolicy : Tea.TeaModel {
+        public class ClusterAutoUpgrade : Tea.TeaModel {
+            public var channel: String?
+
+            public var enabled: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.channel != nil {
+                    map["channel"] = self.channel!
+                }
+                if self.enabled != nil {
+                    map["enabled"] = self.enabled!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("channel") {
+                    self.channel = dict["channel"] as! String
+                }
+                if dict.keys.contains("enabled") {
+                    self.enabled = dict["enabled"] as! Bool
+                }
+            }
+        }
+        public var clusterAutoUpgrade: DescribeClusterDetailResponseBody.OperationPolicy.ClusterAutoUpgrade?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.clusterAutoUpgrade?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clusterAutoUpgrade != nil {
+                map["cluster_auto_upgrade"] = self.clusterAutoUpgrade?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("cluster_auto_upgrade") {
+                var model = DescribeClusterDetailResponseBody.OperationPolicy.ClusterAutoUpgrade()
+                model.fromMap(dict["cluster_auto_upgrade"] as! [String: Any])
+                self.clusterAutoUpgrade = model
+            }
+        }
+    }
     public var clusterId: String?
 
     public var clusterSpec: String?
@@ -9068,6 +9228,8 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
     public var networkMode: String?
 
     public var nextVersion: String?
+
+    public var operationPolicy: DescribeClusterDetailResponseBody.OperationPolicy?
 
     public var parameters: [String: String]?
 
@@ -9110,6 +9272,7 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.maintenanceWindow?.validate()
+        try self.operationPolicy?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -9158,6 +9321,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         }
         if self.nextVersion != nil {
             map["next_version"] = self.nextVersion!
+        }
+        if self.operationPolicy != nil {
+            map["operation_policy"] = self.operationPolicy?.toMap()
         }
         if self.parameters != nil {
             map["parameters"] = self.parameters!
@@ -9258,6 +9424,11 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("next_version") {
             self.nextVersion = dict["next_version"] as! String
+        }
+        if dict.keys.contains("operation_policy") {
+            var model = DescribeClusterDetailResponseBody.OperationPolicy()
+            model.fromMap(dict["operation_policy"] as! [String: Any])
+            self.operationPolicy = model
         }
         if dict.keys.contains("parameters") {
             self.parameters = dict["parameters"] as! [String: String]
@@ -14728,6 +14899,75 @@ public class DescribeClustersV1Request : Tea.TeaModel {
 
 public class DescribeClustersV1ResponseBody : Tea.TeaModel {
     public class Clusters : Tea.TeaModel {
+        public class OperationPolicy : Tea.TeaModel {
+            public class ClusterAutoUpgrade : Tea.TeaModel {
+                public var channel: String?
+
+                public var enabled: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.channel != nil {
+                        map["channel"] = self.channel!
+                    }
+                    if self.enabled != nil {
+                        map["enabled"] = self.enabled!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("channel") {
+                        self.channel = dict["channel"] as! String
+                    }
+                    if dict.keys.contains("enabled") {
+                        self.enabled = dict["enabled"] as! Bool
+                    }
+                }
+            }
+            public var clusterAutoUpgrade: DescribeClustersV1ResponseBody.Clusters.OperationPolicy.ClusterAutoUpgrade?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.clusterAutoUpgrade?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.clusterAutoUpgrade != nil {
+                    map["cluster_auto_upgrade"] = self.clusterAutoUpgrade?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("cluster_auto_upgrade") {
+                    var model = DescribeClustersV1ResponseBody.Clusters.OperationPolicy.ClusterAutoUpgrade()
+                    model.fromMap(dict["cluster_auto_upgrade"] as! [String: Any])
+                    self.clusterAutoUpgrade = model
+                }
+            }
+        }
         public var clusterId: String?
 
         public var clusterSpec: String?
@@ -14757,6 +14997,8 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
         public var networkMode: String?
 
         public var nextVersion: String?
+
+        public var operationPolicy: DescribeClustersV1ResponseBody.Clusters.OperationPolicy?
 
         public var privateZone: Bool?
 
@@ -14797,6 +15039,7 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.maintenanceWindow?.validate()
+            try self.operationPolicy?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -14845,6 +15088,9 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
             }
             if self.nextVersion != nil {
                 map["next_version"] = self.nextVersion!
+            }
+            if self.operationPolicy != nil {
+                map["operation_policy"] = self.operationPolicy?.toMap()
             }
             if self.privateZone != nil {
                 map["private_zone"] = self.privateZone!
@@ -14942,6 +15188,11 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("next_version") {
                 self.nextVersion = dict["next_version"] as! String
+            }
+            if dict.keys.contains("operation_policy") {
+                var model = DescribeClustersV1ResponseBody.Clusters.OperationPolicy()
+                model.fromMap(dict["operation_policy"] as! [String: Any])
+                self.operationPolicy = model
             }
             if dict.keys.contains("private_zone") {
                 self.privateZone = dict["private_zone"] as! Bool
