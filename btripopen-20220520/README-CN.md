@@ -17,7 +17,7 @@
 要使用 [Carthage](https://github.com/Carthage/Carthage) 将 `AlibabacloudBtripOpen20220520` 集成到你的 Xcode 项目中，需要在 `Cartfile` 中定义以下内容:
 
 ```ogdl
-github "alibabacloud-sdk-swift/btripopen-20220520" "4.4.0"
+github "alibabacloud-sdk-swift/btripopen-20220520" "4.4.1"
 ```
 
 ### Swift 包管理工具
@@ -26,7 +26,7 @@ github "alibabacloud-sdk-swift/btripopen-20220520" "4.4.0"
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/btripopen-20220520.git", from: "4.4.0")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/btripopen-20220520.git", from: "4.4.1")
 ]
 ```
 
