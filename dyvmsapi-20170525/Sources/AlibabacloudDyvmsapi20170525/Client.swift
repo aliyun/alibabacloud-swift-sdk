@@ -1120,6 +1120,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.calledNumber)) {
             query["CalledNumber"] = request.calledNumber ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.onlyPhone)) {
+            query["OnlyPhone"] = request.onlyPhone!;
+        }
         if (!TeaUtils.Client.isUnset(request.outId)) {
             query["OutId"] = request.outId ?? "";
         }
