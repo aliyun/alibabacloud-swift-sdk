@@ -4408,6 +4408,8 @@ public class CreateImageCacheRequest : Tea.TeaModel {
 
     public var insecureRegistry: String?
 
+    public var osType: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -4494,6 +4496,9 @@ public class CreateImageCacheRequest : Tea.TeaModel {
         }
         if self.insecureRegistry != nil {
             map["InsecureRegistry"] = self.insecureRegistry!
+        }
+        if self.osType != nil {
+            map["OsType"] = self.osType!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -4596,6 +4601,9 @@ public class CreateImageCacheRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InsecureRegistry") {
             self.insecureRegistry = dict["InsecureRegistry"] as! String
+        }
+        if dict.keys.contains("OsType") {
+            self.osType = dict["OsType"] as! String
         }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
@@ -12444,6 +12452,8 @@ public class DescribeContainerGroupsResponseBody : Tea.TeaModel {
 
         public var dnsConfig: DescribeContainerGroupsResponseBody.ContainerGroups.DnsConfig?
 
+        public var dnsPolicy: String?
+
         public var eciSecurityContext: DescribeContainerGroupsResponseBody.ContainerGroups.EciSecurityContext?
 
         public var eniInstanceId: String?
@@ -12549,6 +12559,9 @@ public class DescribeContainerGroupsResponseBody : Tea.TeaModel {
             }
             if self.dnsConfig != nil {
                 map["DnsConfig"] = self.dnsConfig?.toMap()
+            }
+            if self.dnsPolicy != nil {
+                map["DnsPolicy"] = self.dnsPolicy!
             }
             if self.eciSecurityContext != nil {
                 map["EciSecurityContext"] = self.eciSecurityContext?.toMap()
@@ -12700,6 +12713,9 @@ public class DescribeContainerGroupsResponseBody : Tea.TeaModel {
                 var model = DescribeContainerGroupsResponseBody.ContainerGroups.DnsConfig()
                 model.fromMap(dict["DnsConfig"] as! [String: Any])
                 self.dnsConfig = model
+            }
+            if dict.keys.contains("DnsPolicy") {
+                self.dnsPolicy = dict["DnsPolicy"] as! String
             }
             if dict.keys.contains("EciSecurityContext") {
                 var model = DescribeContainerGroupsResponseBody.ContainerGroups.EciSecurityContext()
@@ -15606,6 +15622,8 @@ public class DescribeRegionsResponseBody : Tea.TeaModel {
 
         public var regionId: String?
 
+        public var unavailableZones: [String]?
+
         public var zones: [String]?
 
         public override init() {
@@ -15631,6 +15649,9 @@ public class DescribeRegionsResponseBody : Tea.TeaModel {
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
+            if self.unavailableZones != nil {
+                map["UnavailableZones"] = self.unavailableZones!
+            }
             if self.zones != nil {
                 map["Zones"] = self.zones!
             }
@@ -15646,6 +15667,9 @@ public class DescribeRegionsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("UnavailableZones") {
+                self.unavailableZones = dict["UnavailableZones"] as! [String]
             }
             if dict.keys.contains("Zones") {
                 self.zones = dict["Zones"] as! [String]
