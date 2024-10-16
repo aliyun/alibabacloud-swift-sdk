@@ -1303,6 +1303,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.spotInstanceRemedy)) {
             query["SpotInstanceRemedy"] = request.spotInstanceRemedy!;
         }
+        if (!TeaUtils.Client.isUnset(request.stopInstanceTimeout)) {
+            query["StopInstanceTimeout"] = request.stopInstanceTimeout!;
+        }
         if (!TeaUtils.Client.isUnset(request.syncAlarmRuleToCms)) {
             query["SyncAlarmRuleToCms"] = request.syncAlarmRuleToCms!;
         }
@@ -4489,6 +4492,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.spotInstanceRemedy)) {
             query["SpotInstanceRemedy"] = request.spotInstanceRemedy!;
         }
+        if (!TeaUtils.Client.isUnset(request.stopInstanceTimeout)) {
+            query["StopInstanceTimeout"] = request.stopInstanceTimeout!;
+        }
         if (!TeaUtils.Client.isUnset(request.vSwitchIds)) {
             query["VSwitchIds"] = request.vSwitchIds ?? [];
         }
@@ -4835,6 +4841,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.scalingGroupId)) {
             query["ScalingGroupId"] = request.scalingGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.stopInstanceTimeout)) {
+            query["StopInstanceTimeout"] = request.stopInstanceTimeout!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

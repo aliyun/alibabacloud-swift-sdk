@@ -8480,6 +8480,8 @@ public class CreateScalingGroupRequest : Tea.TeaModel {
 
     public var spotInstanceRemedy: Bool?
 
+    public var stopInstanceTimeout: Int32?
+
     public var syncAlarmRuleToCms: Bool?
 
     public var tags: [CreateScalingGroupRequest.Tags]?
@@ -8647,6 +8649,9 @@ public class CreateScalingGroupRequest : Tea.TeaModel {
         }
         if self.spotInstanceRemedy != nil {
             map["SpotInstanceRemedy"] = self.spotInstanceRemedy!
+        }
+        if self.stopInstanceTimeout != nil {
+            map["StopInstanceTimeout"] = self.stopInstanceTimeout!
         }
         if self.syncAlarmRuleToCms != nil {
             map["SyncAlarmRuleToCms"] = self.syncAlarmRuleToCms!
@@ -8842,6 +8847,9 @@ public class CreateScalingGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SpotInstanceRemedy") {
             self.spotInstanceRemedy = dict["SpotInstanceRemedy"] as! Bool
+        }
+        if dict.keys.contains("StopInstanceTimeout") {
+            self.stopInstanceTimeout = dict["StopInstanceTimeout"] as! Int32
         }
         if dict.keys.contains("SyncAlarmRuleToCms") {
             self.syncAlarmRuleToCms = dict["SyncAlarmRuleToCms"] as! Bool
@@ -22061,6 +22069,8 @@ public class DescribeScalingGroupsResponseBody : Tea.TeaModel {
 
         public var standbyCapacity: Int32?
 
+        public var stopInstanceTimeout: Int32?
+
         public var stoppedCapacity: Int32?
 
         public var suspendedProcesses: [String]?
@@ -22267,6 +22277,9 @@ public class DescribeScalingGroupsResponseBody : Tea.TeaModel {
             }
             if self.standbyCapacity != nil {
                 map["StandbyCapacity"] = self.standbyCapacity!
+            }
+            if self.stopInstanceTimeout != nil {
+                map["StopInstanceTimeout"] = self.stopInstanceTimeout!
             }
             if self.stoppedCapacity != nil {
                 map["StoppedCapacity"] = self.stoppedCapacity!
@@ -22502,6 +22515,9 @@ public class DescribeScalingGroupsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("StandbyCapacity") {
                 self.standbyCapacity = dict["StandbyCapacity"] as! Int32
+            }
+            if dict.keys.contains("StopInstanceTimeout") {
+                self.stopInstanceTimeout = dict["StopInstanceTimeout"] as! Int32
             }
             if dict.keys.contains("StoppedCapacity") {
                 self.stoppedCapacity = dict["StoppedCapacity"] as! Int32
@@ -33771,6 +33787,8 @@ public class ModifyScalingGroupRequest : Tea.TeaModel {
 
     public var spotInstanceRemedy: Bool?
 
+    public var stopInstanceTimeout: Int32?
+
     public var vSwitchIds: [String]?
 
     public override init() {
@@ -33884,6 +33902,9 @@ public class ModifyScalingGroupRequest : Tea.TeaModel {
         if self.spotInstanceRemedy != nil {
             map["SpotInstanceRemedy"] = self.spotInstanceRemedy!
         }
+        if self.stopInstanceTimeout != nil {
+            map["StopInstanceTimeout"] = self.stopInstanceTimeout!
+        }
         if self.vSwitchIds != nil {
             map["VSwitchIds"] = self.vSwitchIds!
         }
@@ -33991,6 +34012,9 @@ public class ModifyScalingGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SpotInstanceRemedy") {
             self.spotInstanceRemedy = dict["SpotInstanceRemedy"] as! Bool
+        }
+        if dict.keys.contains("StopInstanceTimeout") {
+            self.stopInstanceTimeout = dict["StopInstanceTimeout"] as! Int32
         }
         if dict.keys.contains("VSwitchIds") {
             self.vSwitchIds = dict["VSwitchIds"] as! [String]
@@ -35196,6 +35220,8 @@ public class RemoveInstancesRequest : Tea.TeaModel {
 
     public var scalingGroupId: String?
 
+    public var stopInstanceTimeout: Int32?
+
     public override init() {
         super.init()
     }
@@ -35243,6 +35269,9 @@ public class RemoveInstancesRequest : Tea.TeaModel {
         if self.scalingGroupId != nil {
             map["ScalingGroupId"] = self.scalingGroupId!
         }
+        if self.stopInstanceTimeout != nil {
+            map["StopInstanceTimeout"] = self.stopInstanceTimeout!
+        }
         return map
     }
 
@@ -35279,6 +35308,9 @@ public class RemoveInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ScalingGroupId") {
             self.scalingGroupId = dict["ScalingGroupId"] as! String
+        }
+        if dict.keys.contains("StopInstanceTimeout") {
+            self.stopInstanceTimeout = dict["StopInstanceTimeout"] as! Int32
         }
     }
 }
