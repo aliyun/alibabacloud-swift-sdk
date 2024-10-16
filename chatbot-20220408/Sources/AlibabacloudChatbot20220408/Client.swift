@@ -492,6 +492,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateDocShrinkRequest = CreateDocShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.docMetadata)) {
+            request.docMetadataShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.docMetadata, "DocMetadata", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.tagIds)) {
             request.tagIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tagIds, "TagIds", "json")
         }
@@ -507,6 +510,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.content)) {
             query["Content"] = request.content ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.docMetadataShrink)) {
+            query["DocMetadata"] = request.docMetadataShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.endDate)) {
             query["EndDate"] = request.endDate ?? "";
@@ -2569,6 +2575,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listTongyiConversationLogsWithOptions(_ request: ListTongyiConversationLogsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTongyiConversationLogsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentKey)) {
+            query["AgentKey"] = request.agentKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.robotInstanceId)) {
+            query["RobotInstanceId"] = request.robotInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionId)) {
+            query["SessionId"] = request.sessionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListTongyiConversationLogs",
+            "version": "2022-04-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListTongyiConversationLogsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listTongyiConversationLogs(_ request: ListTongyiConversationLogsRequest) async throws -> ListTongyiConversationLogsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listTongyiConversationLogsWithOptions(request as! ListTongyiConversationLogsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listUserSayWithOptions(_ request: ListUserSayRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListUserSayResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3077,6 +3120,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpdateDocShrinkRequest = UpdateDocShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.docMetadata)) {
+            request.docMetadataShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.docMetadata, "DocMetadata", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.tagIds)) {
             request.tagIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tagIds, "TagIds", "json")
         }
@@ -3092,6 +3138,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.content)) {
             query["Content"] = request.content ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.docMetadataShrink)) {
+            query["DocMetadata"] = request.docMetadataShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.docName)) {
             query["DocName"] = request.docName ?? "";

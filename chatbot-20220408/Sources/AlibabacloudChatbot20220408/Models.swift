@@ -2692,6 +2692,108 @@ public class CreateDSEntityValueResponse : Tea.TeaModel {
 }
 
 public class CreateDocRequest : Tea.TeaModel {
+    public class DocMetadata : Tea.TeaModel {
+        public class MetaCellInfoDTOList : Tea.TeaModel {
+            public var fieldCode: String?
+
+            public var fieldName: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.fieldCode != nil {
+                    map["FieldCode"] = self.fieldCode!
+                }
+                if self.fieldName != nil {
+                    map["FieldName"] = self.fieldName!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("FieldCode") {
+                    self.fieldCode = dict["FieldCode"] as! String
+                }
+                if dict.keys.contains("FieldName") {
+                    self.fieldName = dict["FieldName"] as! String
+                }
+                if dict.keys.contains("Value") {
+                    self.value = dict["Value"] as! String
+                }
+            }
+        }
+        public var businessViewId: String?
+
+        public var businessViewName: String?
+
+        public var metaCellInfoDTOList: [CreateDocRequest.DocMetadata.MetaCellInfoDTOList]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.businessViewId != nil {
+                map["BusinessViewId"] = self.businessViewId!
+            }
+            if self.businessViewName != nil {
+                map["BusinessViewName"] = self.businessViewName!
+            }
+            if self.metaCellInfoDTOList != nil {
+                var tmp : [Any] = []
+                for k in self.metaCellInfoDTOList! {
+                    tmp.append(k.toMap())
+                }
+                map["MetaCellInfoDTOList"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BusinessViewId") {
+                self.businessViewId = dict["BusinessViewId"] as! String
+            }
+            if dict.keys.contains("BusinessViewName") {
+                self.businessViewName = dict["BusinessViewName"] as! String
+            }
+            if dict.keys.contains("MetaCellInfoDTOList") {
+                var tmp : [CreateDocRequest.DocMetadata.MetaCellInfoDTOList] = []
+                for v in dict["MetaCellInfoDTOList"] as! [Any] {
+                    var model = CreateDocRequest.DocMetadata.MetaCellInfoDTOList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.metaCellInfoDTOList = tmp
+            }
+        }
+    }
     public var agentKey: String?
 
     public var categoryId: Int64?
@@ -2699,6 +2801,8 @@ public class CreateDocRequest : Tea.TeaModel {
     public var config: String?
 
     public var content: String?
+
+    public var docMetadata: [CreateDocRequest.DocMetadata]?
 
     public var endDate: String?
 
@@ -2738,6 +2842,13 @@ public class CreateDocRequest : Tea.TeaModel {
         if self.content != nil {
             map["Content"] = self.content!
         }
+        if self.docMetadata != nil {
+            var tmp : [Any] = []
+            for k in self.docMetadata! {
+                tmp.append(k.toMap())
+            }
+            map["DocMetadata"] = tmp
+        }
         if self.endDate != nil {
             map["EndDate"] = self.endDate!
         }
@@ -2772,6 +2883,17 @@ public class CreateDocRequest : Tea.TeaModel {
         if dict.keys.contains("Content") {
             self.content = dict["Content"] as! String
         }
+        if dict.keys.contains("DocMetadata") {
+            var tmp : [CreateDocRequest.DocMetadata] = []
+            for v in dict["DocMetadata"] as! [Any] {
+                var model = CreateDocRequest.DocMetadata()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.docMetadata = tmp
+        }
         if dict.keys.contains("EndDate") {
             self.endDate = dict["EndDate"] as! String
         }
@@ -2801,6 +2923,8 @@ public class CreateDocShrinkRequest : Tea.TeaModel {
     public var config: String?
 
     public var content: String?
+
+    public var docMetadataShrink: String?
 
     public var endDate: String?
 
@@ -2840,6 +2964,9 @@ public class CreateDocShrinkRequest : Tea.TeaModel {
         if self.content != nil {
             map["Content"] = self.content!
         }
+        if self.docMetadataShrink != nil {
+            map["DocMetadata"] = self.docMetadataShrink!
+        }
         if self.endDate != nil {
             map["EndDate"] = self.endDate!
         }
@@ -2873,6 +3000,9 @@ public class CreateDocShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Content") {
             self.content = dict["Content"] as! String
+        }
+        if dict.keys.contains("DocMetadata") {
+            self.docMetadataShrink = dict["DocMetadata"] as! String
         }
         if dict.keys.contains("EndDate") {
             self.endDate = dict["EndDate"] as! String
@@ -7162,6 +7292,108 @@ public class DescribeDocResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class DocMetadata : Tea.TeaModel {
+        public class MetaCellInfoDTOList : Tea.TeaModel {
+            public var fieldCode: String?
+
+            public var fieldName: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.fieldCode != nil {
+                    map["FieldCode"] = self.fieldCode!
+                }
+                if self.fieldName != nil {
+                    map["FieldName"] = self.fieldName!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("FieldCode") {
+                    self.fieldCode = dict["FieldCode"] as! String
+                }
+                if dict.keys.contains("FieldName") {
+                    self.fieldName = dict["FieldName"] as! String
+                }
+                if dict.keys.contains("Value") {
+                    self.value = dict["Value"] as! String
+                }
+            }
+        }
+        public var businessViewId: String?
+
+        public var businessViewName: String?
+
+        public var metaCellInfoDTOList: [DescribeDocResponseBody.DocMetadata.MetaCellInfoDTOList]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.businessViewId != nil {
+                map["BusinessViewId"] = self.businessViewId!
+            }
+            if self.businessViewName != nil {
+                map["BusinessViewName"] = self.businessViewName!
+            }
+            if self.metaCellInfoDTOList != nil {
+                var tmp : [Any] = []
+                for k in self.metaCellInfoDTOList! {
+                    tmp.append(k.toMap())
+                }
+                map["MetaCellInfoDTOList"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BusinessViewId") {
+                self.businessViewId = dict["BusinessViewId"] as! String
+            }
+            if dict.keys.contains("BusinessViewName") {
+                self.businessViewName = dict["BusinessViewName"] as! String
+            }
+            if dict.keys.contains("MetaCellInfoDTOList") {
+                var tmp : [DescribeDocResponseBody.DocMetadata.MetaCellInfoDTOList] = []
+                for v in dict["MetaCellInfoDTOList"] as! [Any] {
+                    var model = DescribeDocResponseBody.DocMetadata.MetaCellInfoDTOList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.metaCellInfoDTOList = tmp
+            }
+        }
+    }
     public class DocTags : Tea.TeaModel {
         public var defaultTag: Bool?
 
@@ -7237,6 +7469,8 @@ public class DescribeDocResponseBody : Tea.TeaModel {
 
     public var docInfo: DescribeDocResponseBody.DocInfo?
 
+    public var docMetadata: [DescribeDocResponseBody.DocMetadata]?
+
     public var docName: String?
 
     public var docTags: [DescribeDocResponseBody.DocTags]?
@@ -7306,6 +7540,13 @@ public class DescribeDocResponseBody : Tea.TeaModel {
         }
         if self.docInfo != nil {
             map["DocInfo"] = self.docInfo?.toMap()
+        }
+        if self.docMetadata != nil {
+            var tmp : [Any] = []
+            for k in self.docMetadata! {
+                tmp.append(k.toMap())
+            }
+            map["DocMetadata"] = tmp
         }
         if self.docName != nil {
             map["DocName"] = self.docName!
@@ -7388,6 +7629,17 @@ public class DescribeDocResponseBody : Tea.TeaModel {
             var model = DescribeDocResponseBody.DocInfo()
             model.fromMap(dict["DocInfo"] as! [String: Any])
             self.docInfo = model
+        }
+        if dict.keys.contains("DocMetadata") {
+            var tmp : [DescribeDocResponseBody.DocMetadata] = []
+            for v in dict["DocMetadata"] as! [Any] {
+                var model = DescribeDocResponseBody.DocMetadata()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.docMetadata = tmp
         }
         if dict.keys.contains("DocName") {
             self.docName = dict["DocName"] as! String
@@ -13241,6 +13493,147 @@ public class ListTongyiChatHistorysResponse : Tea.TeaModel {
     }
 }
 
+public class ListTongyiConversationLogsRequest : Tea.TeaModel {
+    public var agentKey: String?
+
+    public var robotInstanceId: String?
+
+    public var sessionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.agentKey != nil {
+            map["AgentKey"] = self.agentKey!
+        }
+        if self.robotInstanceId != nil {
+            map["RobotInstanceId"] = self.robotInstanceId!
+        }
+        if self.sessionId != nil {
+            map["SessionId"] = self.sessionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AgentKey") {
+            self.agentKey = dict["AgentKey"] as! String
+        }
+        if dict.keys.contains("RobotInstanceId") {
+            self.robotInstanceId = dict["RobotInstanceId"] as! String
+        }
+        if dict.keys.contains("SessionId") {
+            self.sessionId = dict["SessionId"] as! String
+        }
+    }
+}
+
+public class ListTongyiConversationLogsResponseBody : Tea.TeaModel {
+    public var costTime: String?
+
+    public var datas: [[String: Any]]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.costTime != nil {
+            map["CostTime"] = self.costTime!
+        }
+        if self.datas != nil {
+            map["Datas"] = self.datas!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CostTime") {
+            self.costTime = dict["CostTime"] as! String
+        }
+        if dict.keys.contains("Datas") {
+            self.datas = dict["Datas"] as! [[String: Any]]
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ListTongyiConversationLogsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListTongyiConversationLogsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListTongyiConversationLogsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListUserSayRequest : Tea.TeaModel {
     public var agentKey: String?
 
@@ -16402,6 +16795,108 @@ public class UpdateDSEntityValueResponse : Tea.TeaModel {
 }
 
 public class UpdateDocRequest : Tea.TeaModel {
+    public class DocMetadata : Tea.TeaModel {
+        public class MetaCellInfoDTOList : Tea.TeaModel {
+            public var fieldCode: String?
+
+            public var fieldName: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.fieldCode != nil {
+                    map["FieldCode"] = self.fieldCode!
+                }
+                if self.fieldName != nil {
+                    map["FieldName"] = self.fieldName!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("FieldCode") {
+                    self.fieldCode = dict["FieldCode"] as! String
+                }
+                if dict.keys.contains("FieldName") {
+                    self.fieldName = dict["FieldName"] as! String
+                }
+                if dict.keys.contains("Value") {
+                    self.value = dict["Value"] as! String
+                }
+            }
+        }
+        public var businessViewId: String?
+
+        public var businessViewName: String?
+
+        public var metaCellInfoDTOList: [UpdateDocRequest.DocMetadata.MetaCellInfoDTOList]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.businessViewId != nil {
+                map["BusinessViewId"] = self.businessViewId!
+            }
+            if self.businessViewName != nil {
+                map["BusinessViewName"] = self.businessViewName!
+            }
+            if self.metaCellInfoDTOList != nil {
+                var tmp : [Any] = []
+                for k in self.metaCellInfoDTOList! {
+                    tmp.append(k.toMap())
+                }
+                map["MetaCellInfoDTOList"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BusinessViewId") {
+                self.businessViewId = dict["BusinessViewId"] as! String
+            }
+            if dict.keys.contains("BusinessViewName") {
+                self.businessViewName = dict["BusinessViewName"] as! String
+            }
+            if dict.keys.contains("MetaCellInfoDTOList") {
+                var tmp : [UpdateDocRequest.DocMetadata.MetaCellInfoDTOList] = []
+                for v in dict["MetaCellInfoDTOList"] as! [Any] {
+                    var model = UpdateDocRequest.DocMetadata.MetaCellInfoDTOList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.metaCellInfoDTOList = tmp
+            }
+        }
+    }
     public var agentKey: String?
 
     public var categoryId: Int64?
@@ -16409,6 +16904,8 @@ public class UpdateDocRequest : Tea.TeaModel {
     public var config: String?
 
     public var content: String?
+
+    public var docMetadata: [UpdateDocRequest.DocMetadata]?
 
     public var docName: String?
 
@@ -16450,6 +16947,13 @@ public class UpdateDocRequest : Tea.TeaModel {
         if self.content != nil {
             map["Content"] = self.content!
         }
+        if self.docMetadata != nil {
+            var tmp : [Any] = []
+            for k in self.docMetadata! {
+                tmp.append(k.toMap())
+            }
+            map["DocMetadata"] = tmp
+        }
         if self.docName != nil {
             map["DocName"] = self.docName!
         }
@@ -16487,6 +16991,17 @@ public class UpdateDocRequest : Tea.TeaModel {
         if dict.keys.contains("Content") {
             self.content = dict["Content"] as! String
         }
+        if dict.keys.contains("DocMetadata") {
+            var tmp : [UpdateDocRequest.DocMetadata] = []
+            for v in dict["DocMetadata"] as! [Any] {
+                var model = UpdateDocRequest.DocMetadata()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.docMetadata = tmp
+        }
         if dict.keys.contains("DocName") {
             self.docName = dict["DocName"] as! String
         }
@@ -16519,6 +17034,8 @@ public class UpdateDocShrinkRequest : Tea.TeaModel {
     public var config: String?
 
     public var content: String?
+
+    public var docMetadataShrink: String?
 
     public var docName: String?
 
@@ -16560,6 +17077,9 @@ public class UpdateDocShrinkRequest : Tea.TeaModel {
         if self.content != nil {
             map["Content"] = self.content!
         }
+        if self.docMetadataShrink != nil {
+            map["DocMetadata"] = self.docMetadataShrink!
+        }
         if self.docName != nil {
             map["DocName"] = self.docName!
         }
@@ -16596,6 +17116,9 @@ public class UpdateDocShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Content") {
             self.content = dict["Content"] as! String
+        }
+        if dict.keys.contains("DocMetadata") {
+            self.docMetadataShrink = dict["DocMetadata"] as! String
         }
         if dict.keys.contains("DocName") {
             self.docName = dict["DocName"] as! String
