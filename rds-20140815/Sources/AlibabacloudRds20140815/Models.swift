@@ -2329,6 +2329,8 @@ public class CloneDBInstanceRequest : Tea.TeaModel {
 
     public var DBInstanceClass: String?
 
+    public var DBInstanceDescription: String?
+
     public var DBInstanceId: String?
 
     public var DBInstanceStorage: Int32?
@@ -2413,6 +2415,9 @@ public class CloneDBInstanceRequest : Tea.TeaModel {
         }
         if self.DBInstanceClass != nil {
             map["DBInstanceClass"] = self.DBInstanceClass!
+        }
+        if self.DBInstanceDescription != nil {
+            map["DBInstanceDescription"] = self.DBInstanceDescription!
         }
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
@@ -2511,6 +2516,9 @@ public class CloneDBInstanceRequest : Tea.TeaModel {
         if dict.keys.contains("DBInstanceClass") {
             self.DBInstanceClass = dict["DBInstanceClass"] as! String
         }
+        if dict.keys.contains("DBInstanceDescription") {
+            self.DBInstanceDescription = dict["DBInstanceDescription"] as! String
+        }
         if dict.keys.contains("DBInstanceId") {
             self.DBInstanceId = dict["DBInstanceId"] as! String
         }
@@ -2602,6 +2610,8 @@ public class CloneDBInstanceShrinkRequest : Tea.TeaModel {
 
     public var DBInstanceClass: String?
 
+    public var DBInstanceDescription: String?
+
     public var DBInstanceId: String?
 
     public var DBInstanceStorage: Int32?
@@ -2685,6 +2695,9 @@ public class CloneDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if self.DBInstanceClass != nil {
             map["DBInstanceClass"] = self.DBInstanceClass!
+        }
+        if self.DBInstanceDescription != nil {
+            map["DBInstanceDescription"] = self.DBInstanceDescription!
         }
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
@@ -2782,6 +2795,9 @@ public class CloneDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DBInstanceClass") {
             self.DBInstanceClass = dict["DBInstanceClass"] as! String
+        }
+        if dict.keys.contains("DBInstanceDescription") {
+            self.DBInstanceDescription = dict["DBInstanceDescription"] as! String
         }
         if dict.keys.contains("DBInstanceId") {
             self.DBInstanceId = dict["DBInstanceId"] as! String
@@ -25161,6 +25177,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
             public var maxIOPS: Int32?
 
+            public var multipleTempUpgrade: Bool?
+
             public var PGBouncerEnabled: String?
 
             public var payType: String?
@@ -25390,6 +25408,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.maxIOPS != nil {
                     map["MaxIOPS"] = self.maxIOPS!
+                }
+                if self.multipleTempUpgrade != nil {
+                    map["MultipleTempUpgrade"] = self.multipleTempUpgrade!
                 }
                 if self.PGBouncerEnabled != nil {
                     map["PGBouncerEnabled"] = self.PGBouncerEnabled!
@@ -25634,6 +25655,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("MaxIOPS") {
                     self.maxIOPS = dict["MaxIOPS"] as! Int32
+                }
+                if dict.keys.contains("MultipleTempUpgrade") {
+                    self.multipleTempUpgrade = dict["MultipleTempUpgrade"] as! Bool
                 }
                 if dict.keys.contains("PGBouncerEnabled") {
                     self.PGBouncerEnabled = dict["PGBouncerEnabled"] as! String
@@ -34761,6 +34785,92 @@ public class DescribeDBProxyResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class DBProxyNodes : Tea.TeaModel {
+        public class DBProxyNodes : Tea.TeaModel {
+            public var cpuCores: String?
+
+            public var nodeId: String?
+
+            public var zoneId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cpuCores != nil {
+                    map["cpuCores"] = self.cpuCores!
+                }
+                if self.nodeId != nil {
+                    map["nodeId"] = self.nodeId!
+                }
+                if self.zoneId != nil {
+                    map["zoneId"] = self.zoneId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("cpuCores") {
+                    self.cpuCores = dict["cpuCores"] as! String
+                }
+                if dict.keys.contains("nodeId") {
+                    self.nodeId = dict["nodeId"] as! String
+                }
+                if dict.keys.contains("zoneId") {
+                    self.zoneId = dict["zoneId"] as! String
+                }
+            }
+        }
+        public var DBProxyNodes: [DescribeDBProxyResponseBody.DBProxyNodes.DBProxyNodes]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.DBProxyNodes != nil {
+                var tmp : [Any] = []
+                for k in self.DBProxyNodes! {
+                    tmp.append(k.toMap())
+                }
+                map["DBProxyNodes"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DBProxyNodes") {
+                var tmp : [DescribeDBProxyResponseBody.DBProxyNodes.DBProxyNodes] = []
+                for v in dict["DBProxyNodes"] as! [Any] {
+                    var model = DescribeDBProxyResponseBody.DBProxyNodes.DBProxyNodes()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.DBProxyNodes = tmp
+            }
+        }
+    }
     public class DbProxyEndpointItems : Tea.TeaModel {
         public class DbProxyEndpointItems : Tea.TeaModel {
             public var dbProxyEndpointAliases: String?
@@ -34875,6 +34985,10 @@ public class DescribeDBProxyResponseBody : Tea.TeaModel {
 
     public var DBProxyInstanceType: String?
 
+    public var DBProxyKindCode: String?
+
+    public var DBProxyNodes: DescribeDBProxyResponseBody.DBProxyNodes?
+
     public var DBProxyPersistentConnectionStatus: String?
 
     public var DBProxyServiceStatus: String?
@@ -34897,6 +35011,7 @@ public class DescribeDBProxyResponseBody : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.DBProxyAVZones?.validate()
         try self.DBProxyConnectStringItems?.validate()
+        try self.DBProxyNodes?.validate()
         try self.dbProxyEndpointItems?.validate()
     }
 
@@ -34931,6 +35046,12 @@ public class DescribeDBProxyResponseBody : Tea.TeaModel {
         }
         if self.DBProxyInstanceType != nil {
             map["DBProxyInstanceType"] = self.DBProxyInstanceType!
+        }
+        if self.DBProxyKindCode != nil {
+            map["DBProxyKindCode"] = self.DBProxyKindCode!
+        }
+        if self.DBProxyNodes != nil {
+            map["DBProxyNodes"] = self.DBProxyNodes?.toMap()
         }
         if self.DBProxyPersistentConnectionStatus != nil {
             map["DBProxyPersistentConnectionStatus"] = self.DBProxyPersistentConnectionStatus!
@@ -34984,6 +35105,14 @@ public class DescribeDBProxyResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("DBProxyInstanceType") {
             self.DBProxyInstanceType = dict["DBProxyInstanceType"] as! String
+        }
+        if dict.keys.contains("DBProxyKindCode") {
+            self.DBProxyKindCode = dict["DBProxyKindCode"] as! String
+        }
+        if dict.keys.contains("DBProxyNodes") {
+            var model = DescribeDBProxyResponseBody.DBProxyNodes()
+            model.fromMap(dict["DBProxyNodes"] as! [String: Any])
+            self.DBProxyNodes = model
         }
         if dict.keys.contains("DBProxyPersistentConnectionStatus") {
             self.DBProxyPersistentConnectionStatus = dict["DBProxyPersistentConnectionStatus"] as! String
@@ -35141,6 +35270,92 @@ public class DescribeDBProxyEndpointRequest : Tea.TeaModel {
 }
 
 public class DescribeDBProxyEndpointResponseBody : Tea.TeaModel {
+    public class DBProxyNodes : Tea.TeaModel {
+        public class DBProxyNodes : Tea.TeaModel {
+            public var cpuCores: String?
+
+            public var nodeId: String?
+
+            public var zoneId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cpuCores != nil {
+                    map["cpuCores"] = self.cpuCores!
+                }
+                if self.nodeId != nil {
+                    map["nodeId"] = self.nodeId!
+                }
+                if self.zoneId != nil {
+                    map["zoneId"] = self.zoneId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("cpuCores") {
+                    self.cpuCores = dict["cpuCores"] as! String
+                }
+                if dict.keys.contains("nodeId") {
+                    self.nodeId = dict["nodeId"] as! String
+                }
+                if dict.keys.contains("zoneId") {
+                    self.zoneId = dict["zoneId"] as! String
+                }
+            }
+        }
+        public var DBProxyNodes: [DescribeDBProxyEndpointResponseBody.DBProxyNodes.DBProxyNodes]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.DBProxyNodes != nil {
+                var tmp : [Any] = []
+                for k in self.DBProxyNodes! {
+                    tmp.append(k.toMap())
+                }
+                map["DBProxyNodes"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DBProxyNodes") {
+                var tmp : [DescribeDBProxyEndpointResponseBody.DBProxyNodes.DBProxyNodes] = []
+                for v in dict["DBProxyNodes"] as! [Any] {
+                    var model = DescribeDBProxyEndpointResponseBody.DBProxyNodes.DBProxyNodes()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.DBProxyNodes = tmp
+            }
+        }
+    }
     public class EndpointConnectItems : Tea.TeaModel {
         public class EndpointConnectItems : Tea.TeaModel {
             public var dbProxyEndpointConnectString: String?
@@ -35239,9 +35454,15 @@ public class DescribeDBProxyEndpointResponseBody : Tea.TeaModel {
 
     public var DBProxyFeatures: String?
 
+    public var DBProxyNodes: DescribeDBProxyEndpointResponseBody.DBProxyNodes?
+
     public var dbProxyEndpointAliases: String?
 
     public var dbProxyEndpointReadWriteMode: String?
+
+    public var dbProxyEndpointVswitchId: String?
+
+    public var dbProxyEndpointZoneId: String?
 
     public var endpointConnectItems: DescribeDBProxyEndpointResponseBody.EndpointConnectItems?
 
@@ -35263,6 +35484,7 @@ public class DescribeDBProxyEndpointResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.DBProxyNodes?.validate()
         try self.endpointConnectItems?.validate()
     }
 
@@ -35286,11 +35508,20 @@ public class DescribeDBProxyEndpointResponseBody : Tea.TeaModel {
         if self.DBProxyFeatures != nil {
             map["DBProxyFeatures"] = self.DBProxyFeatures!
         }
+        if self.DBProxyNodes != nil {
+            map["DBProxyNodes"] = self.DBProxyNodes?.toMap()
+        }
         if self.dbProxyEndpointAliases != nil {
             map["DbProxyEndpointAliases"] = self.dbProxyEndpointAliases!
         }
         if self.dbProxyEndpointReadWriteMode != nil {
             map["DbProxyEndpointReadWriteMode"] = self.dbProxyEndpointReadWriteMode!
+        }
+        if self.dbProxyEndpointVswitchId != nil {
+            map["DbProxyEndpointVswitchId"] = self.dbProxyEndpointVswitchId!
+        }
+        if self.dbProxyEndpointZoneId != nil {
+            map["DbProxyEndpointZoneId"] = self.dbProxyEndpointZoneId!
         }
         if self.endpointConnectItems != nil {
             map["EndpointConnectItems"] = self.endpointConnectItems?.toMap()
@@ -35329,11 +35560,22 @@ public class DescribeDBProxyEndpointResponseBody : Tea.TeaModel {
         if dict.keys.contains("DBProxyFeatures") {
             self.DBProxyFeatures = dict["DBProxyFeatures"] as! String
         }
+        if dict.keys.contains("DBProxyNodes") {
+            var model = DescribeDBProxyEndpointResponseBody.DBProxyNodes()
+            model.fromMap(dict["DBProxyNodes"] as! [String: Any])
+            self.DBProxyNodes = model
+        }
         if dict.keys.contains("DbProxyEndpointAliases") {
             self.dbProxyEndpointAliases = dict["DbProxyEndpointAliases"] as! String
         }
         if dict.keys.contains("DbProxyEndpointReadWriteMode") {
             self.dbProxyEndpointReadWriteMode = dict["DbProxyEndpointReadWriteMode"] as! String
+        }
+        if dict.keys.contains("DbProxyEndpointVswitchId") {
+            self.dbProxyEndpointVswitchId = dict["DbProxyEndpointVswitchId"] as! String
+        }
+        if dict.keys.contains("DbProxyEndpointZoneId") {
+            self.dbProxyEndpointZoneId = dict["DbProxyEndpointZoneId"] as! String
         }
         if dict.keys.contains("EndpointConnectItems") {
             var model = DescribeDBProxyEndpointResponseBody.EndpointConnectItems()
@@ -62139,6 +62381,8 @@ public class ListClassesRequest : Tea.TeaModel {
 
     public var DBInstanceId: String?
 
+    public var engine: String?
+
     public var orderType: String?
 
     public var ownerId: Int64?
@@ -62172,6 +62416,9 @@ public class ListClassesRequest : Tea.TeaModel {
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
+        if self.engine != nil {
+            map["Engine"] = self.engine!
+        }
         if self.orderType != nil {
             map["OrderType"] = self.orderType!
         }
@@ -62199,6 +62446,9 @@ public class ListClassesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DBInstanceId") {
             self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("Engine") {
+            self.engine = dict["Engine"] as! String
         }
         if dict.keys.contains("OrderType") {
             self.orderType = dict["OrderType"] as! String
@@ -62239,6 +62489,10 @@ public class ListClassesResponseBody : Tea.TeaModel {
         public var memoryClass: String?
 
         public var referencePrice: String?
+
+        public var category: String?
+
+        public var storageType: String?
 
         public override init() {
             super.init()
@@ -62284,6 +62538,12 @@ public class ListClassesResponseBody : Tea.TeaModel {
             if self.referencePrice != nil {
                 map["ReferencePrice"] = self.referencePrice!
             }
+            if self.category != nil {
+                map["category"] = self.category!
+            }
+            if self.storageType != nil {
+                map["storageType"] = self.storageType!
+            }
             return map
         }
 
@@ -62317,6 +62577,12 @@ public class ListClassesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ReferencePrice") {
                 self.referencePrice = dict["ReferencePrice"] as! String
+            }
+            if dict.keys.contains("category") {
+                self.category = dict["category"] as! String
+            }
+            if dict.keys.contains("storageType") {
+                self.storageType = dict["storageType"] as! String
             }
         }
     }
@@ -64560,6 +64826,8 @@ public class ModifyAccountMaskingPrivilegeRequest : Tea.TeaModel {
 
     public var privilege: String?
 
+    public var regionId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -64592,6 +64860,9 @@ public class ModifyAccountMaskingPrivilegeRequest : Tea.TeaModel {
         if self.privilege != nil {
             map["Privilege"] = self.privilege!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -64616,6 +64887,9 @@ public class ModifyAccountMaskingPrivilegeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Privilege") {
             self.privilege = dict["Privilege"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -70488,6 +70762,51 @@ public class ModifyDBNodeResponse : Tea.TeaModel {
 }
 
 public class ModifyDBProxyRequest : Tea.TeaModel {
+    public class DBProxyNodes : Tea.TeaModel {
+        public var cpuCores: String?
+
+        public var nodeCounts: String?
+
+        public var zoneId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cpuCores != nil {
+                map["cpuCores"] = self.cpuCores!
+            }
+            if self.nodeCounts != nil {
+                map["nodeCounts"] = self.nodeCounts!
+            }
+            if self.zoneId != nil {
+                map["zoneId"] = self.zoneId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("cpuCores") {
+                self.cpuCores = dict["cpuCores"] as! String
+            }
+            if dict.keys.contains("nodeCounts") {
+                self.nodeCounts = dict["nodeCounts"] as! String
+            }
+            if dict.keys.contains("zoneId") {
+                self.zoneId = dict["zoneId"] as! String
+            }
+        }
+    }
     public var configDBProxyService: String?
 
     public var DBInstanceId: String?
@@ -70497,6 +70816,8 @@ public class ModifyDBProxyRequest : Tea.TeaModel {
     public var DBProxyInstanceNum: String?
 
     public var DBProxyInstanceType: String?
+
+    public var DBProxyNodes: [ModifyDBProxyRequest.DBProxyNodes]?
 
     public var instanceNetworkType: String?
 
@@ -70545,6 +70866,13 @@ public class ModifyDBProxyRequest : Tea.TeaModel {
         if self.DBProxyInstanceType != nil {
             map["DBProxyInstanceType"] = self.DBProxyInstanceType!
         }
+        if self.DBProxyNodes != nil {
+            var tmp : [Any] = []
+            for k in self.DBProxyNodes! {
+                tmp.append(k.toMap())
+            }
+            map["DBProxyNodes"] = tmp
+        }
         if self.instanceNetworkType != nil {
             map["InstanceNetworkType"] = self.instanceNetworkType!
         }
@@ -70590,6 +70918,159 @@ public class ModifyDBProxyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DBProxyInstanceType") {
             self.DBProxyInstanceType = dict["DBProxyInstanceType"] as! String
+        }
+        if dict.keys.contains("DBProxyNodes") {
+            var tmp : [ModifyDBProxyRequest.DBProxyNodes] = []
+            for v in dict["DBProxyNodes"] as! [Any] {
+                var model = ModifyDBProxyRequest.DBProxyNodes()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.DBProxyNodes = tmp
+        }
+        if dict.keys.contains("InstanceNetworkType") {
+            self.instanceNetworkType = dict["InstanceNetworkType"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("PersistentConnectionStatus") {
+            self.persistentConnectionStatus = dict["PersistentConnectionStatus"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("VPCId") {
+            self.VPCId = dict["VPCId"] as! String
+        }
+        if dict.keys.contains("VSwitchId") {
+            self.vSwitchId = dict["VSwitchId"] as! String
+        }
+    }
+}
+
+public class ModifyDBProxyShrinkRequest : Tea.TeaModel {
+    public var configDBProxyService: String?
+
+    public var DBInstanceId: String?
+
+    public var DBProxyEngineType: String?
+
+    public var DBProxyInstanceNum: String?
+
+    public var DBProxyInstanceType: String?
+
+    public var DBProxyNodesShrink: String?
+
+    public var instanceNetworkType: String?
+
+    public var ownerId: Int64?
+
+    public var persistentConnectionStatus: String?
+
+    public var regionId: String?
+
+    public var resourceGroupId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var VPCId: String?
+
+    public var vSwitchId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configDBProxyService != nil {
+            map["ConfigDBProxyService"] = self.configDBProxyService!
+        }
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.DBProxyEngineType != nil {
+            map["DBProxyEngineType"] = self.DBProxyEngineType!
+        }
+        if self.DBProxyInstanceNum != nil {
+            map["DBProxyInstanceNum"] = self.DBProxyInstanceNum!
+        }
+        if self.DBProxyInstanceType != nil {
+            map["DBProxyInstanceType"] = self.DBProxyInstanceType!
+        }
+        if self.DBProxyNodesShrink != nil {
+            map["DBProxyNodes"] = self.DBProxyNodesShrink!
+        }
+        if self.instanceNetworkType != nil {
+            map["InstanceNetworkType"] = self.instanceNetworkType!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.persistentConnectionStatus != nil {
+            map["PersistentConnectionStatus"] = self.persistentConnectionStatus!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.VPCId != nil {
+            map["VPCId"] = self.VPCId!
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ConfigDBProxyService") {
+            self.configDBProxyService = dict["ConfigDBProxyService"] as! String
+        }
+        if dict.keys.contains("DBInstanceId") {
+            self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("DBProxyEngineType") {
+            self.DBProxyEngineType = dict["DBProxyEngineType"] as! String
+        }
+        if dict.keys.contains("DBProxyInstanceNum") {
+            self.DBProxyInstanceNum = dict["DBProxyInstanceNum"] as! String
+        }
+        if dict.keys.contains("DBProxyInstanceType") {
+            self.DBProxyInstanceType = dict["DBProxyInstanceType"] as! String
+        }
+        if dict.keys.contains("DBProxyNodes") {
+            self.DBProxyNodesShrink = dict["DBProxyNodes"] as! String
         }
         if dict.keys.contains("InstanceNetworkType") {
             self.instanceNetworkType = dict["InstanceNetworkType"] as! String
@@ -70717,6 +71198,10 @@ public class ModifyDBProxyEndpointRequest : Tea.TeaModel {
 
     public var dbEndpointType: String?
 
+    public var effectiveSpecificTime: String?
+
+    public var effectiveTime: String?
+
     public var ownerId: Int64?
 
     public var readOnlyInstanceDistributionType: String?
@@ -70730,6 +71215,8 @@ public class ModifyDBProxyEndpointRequest : Tea.TeaModel {
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
+
+    public var vSwitchId: String?
 
     public override init() {
         super.init()
@@ -70769,6 +71256,12 @@ public class ModifyDBProxyEndpointRequest : Tea.TeaModel {
         if self.dbEndpointType != nil {
             map["DbEndpointType"] = self.dbEndpointType!
         }
+        if self.effectiveSpecificTime != nil {
+            map["EffectiveSpecificTime"] = self.effectiveSpecificTime!
+        }
+        if self.effectiveTime != nil {
+            map["EffectiveTime"] = self.effectiveTime!
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -70789,6 +71282,9 @@ public class ModifyDBProxyEndpointRequest : Tea.TeaModel {
         }
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
         }
         return map
     }
@@ -70818,6 +71314,12 @@ public class ModifyDBProxyEndpointRequest : Tea.TeaModel {
         if dict.keys.contains("DbEndpointType") {
             self.dbEndpointType = dict["DbEndpointType"] as! String
         }
+        if dict.keys.contains("EffectiveSpecificTime") {
+            self.effectiveSpecificTime = dict["EffectiveSpecificTime"] as! String
+        }
+        if dict.keys.contains("EffectiveTime") {
+            self.effectiveTime = dict["EffectiveTime"] as! String
+        }
         if dict.keys.contains("OwnerId") {
             self.ownerId = dict["OwnerId"] as! Int64
         }
@@ -70838,6 +71340,9 @@ public class ModifyDBProxyEndpointRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("VSwitchId") {
+            self.vSwitchId = dict["VSwitchId"] as! String
         }
     }
 }
@@ -71095,6 +71600,88 @@ public class ModifyDBProxyEndpointAddressResponse : Tea.TeaModel {
 }
 
 public class ModifyDBProxyInstanceRequest : Tea.TeaModel {
+    public class DBProxyNodes : Tea.TeaModel {
+        public var cpuCores: String?
+
+        public var nodeCounts: String?
+
+        public var zoneId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cpuCores != nil {
+                map["cpuCores"] = self.cpuCores!
+            }
+            if self.nodeCounts != nil {
+                map["nodeCounts"] = self.nodeCounts!
+            }
+            if self.zoneId != nil {
+                map["zoneId"] = self.zoneId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("cpuCores") {
+                self.cpuCores = dict["cpuCores"] as! String
+            }
+            if dict.keys.contains("nodeCounts") {
+                self.nodeCounts = dict["nodeCounts"] as! String
+            }
+            if dict.keys.contains("zoneId") {
+                self.zoneId = dict["zoneId"] as! String
+            }
+        }
+    }
+    public class MigrateAZ : Tea.TeaModel {
+        public var dbProxyEndpointId: String?
+
+        public var destVSwitchId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dbProxyEndpointId != nil {
+                map["dbProxyEndpointId"] = self.dbProxyEndpointId!
+            }
+            if self.destVSwitchId != nil {
+                map["destVSwitchId"] = self.destVSwitchId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("dbProxyEndpointId") {
+                self.dbProxyEndpointId = dict["dbProxyEndpointId"] as! String
+            }
+            if dict.keys.contains("destVSwitchId") {
+                self.destVSwitchId = dict["destVSwitchId"] as! String
+            }
+        }
+    }
     public var DBInstanceId: String?
 
     public var DBProxyEngineType: String?
@@ -71103,9 +71690,13 @@ public class ModifyDBProxyInstanceRequest : Tea.TeaModel {
 
     public var DBProxyInstanceType: String?
 
+    public var DBProxyNodes: [ModifyDBProxyInstanceRequest.DBProxyNodes]?
+
     public var effectiveSpecificTime: String?
 
     public var effectiveTime: String?
+
+    public var migrateAZ: [ModifyDBProxyInstanceRequest.MigrateAZ]?
 
     public var ownerId: Int64?
 
@@ -71143,11 +71734,25 @@ public class ModifyDBProxyInstanceRequest : Tea.TeaModel {
         if self.DBProxyInstanceType != nil {
             map["DBProxyInstanceType"] = self.DBProxyInstanceType!
         }
+        if self.DBProxyNodes != nil {
+            var tmp : [Any] = []
+            for k in self.DBProxyNodes! {
+                tmp.append(k.toMap())
+            }
+            map["DBProxyNodes"] = tmp
+        }
         if self.effectiveSpecificTime != nil {
             map["EffectiveSpecificTime"] = self.effectiveSpecificTime!
         }
         if self.effectiveTime != nil {
             map["EffectiveTime"] = self.effectiveTime!
+        }
+        if self.migrateAZ != nil {
+            var tmp : [Any] = []
+            for k in self.migrateAZ! {
+                tmp.append(k.toMap())
+            }
+            map["MigrateAZ"] = tmp
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
@@ -71180,11 +71785,159 @@ public class ModifyDBProxyInstanceRequest : Tea.TeaModel {
         if dict.keys.contains("DBProxyInstanceType") {
             self.DBProxyInstanceType = dict["DBProxyInstanceType"] as! String
         }
+        if dict.keys.contains("DBProxyNodes") {
+            var tmp : [ModifyDBProxyInstanceRequest.DBProxyNodes] = []
+            for v in dict["DBProxyNodes"] as! [Any] {
+                var model = ModifyDBProxyInstanceRequest.DBProxyNodes()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.DBProxyNodes = tmp
+        }
         if dict.keys.contains("EffectiveSpecificTime") {
             self.effectiveSpecificTime = dict["EffectiveSpecificTime"] as! String
         }
         if dict.keys.contains("EffectiveTime") {
             self.effectiveTime = dict["EffectiveTime"] as! String
+        }
+        if dict.keys.contains("MigrateAZ") {
+            var tmp : [ModifyDBProxyInstanceRequest.MigrateAZ] = []
+            for v in dict["MigrateAZ"] as! [Any] {
+                var model = ModifyDBProxyInstanceRequest.MigrateAZ()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.migrateAZ = tmp
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("VSwitchIds") {
+            self.vSwitchIds = dict["VSwitchIds"] as! String
+        }
+    }
+}
+
+public class ModifyDBProxyInstanceShrinkRequest : Tea.TeaModel {
+    public var DBInstanceId: String?
+
+    public var DBProxyEngineType: String?
+
+    public var DBProxyInstanceNum: String?
+
+    public var DBProxyInstanceType: String?
+
+    public var DBProxyNodesShrink: String?
+
+    public var effectiveSpecificTime: String?
+
+    public var effectiveTime: String?
+
+    public var migrateAZShrink: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var vSwitchIds: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.DBProxyEngineType != nil {
+            map["DBProxyEngineType"] = self.DBProxyEngineType!
+        }
+        if self.DBProxyInstanceNum != nil {
+            map["DBProxyInstanceNum"] = self.DBProxyInstanceNum!
+        }
+        if self.DBProxyInstanceType != nil {
+            map["DBProxyInstanceType"] = self.DBProxyInstanceType!
+        }
+        if self.DBProxyNodesShrink != nil {
+            map["DBProxyNodes"] = self.DBProxyNodesShrink!
+        }
+        if self.effectiveSpecificTime != nil {
+            map["EffectiveSpecificTime"] = self.effectiveSpecificTime!
+        }
+        if self.effectiveTime != nil {
+            map["EffectiveTime"] = self.effectiveTime!
+        }
+        if self.migrateAZShrink != nil {
+            map["MigrateAZ"] = self.migrateAZShrink!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.vSwitchIds != nil {
+            map["VSwitchIds"] = self.vSwitchIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBInstanceId") {
+            self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("DBProxyEngineType") {
+            self.DBProxyEngineType = dict["DBProxyEngineType"] as! String
+        }
+        if dict.keys.contains("DBProxyInstanceNum") {
+            self.DBProxyInstanceNum = dict["DBProxyInstanceNum"] as! String
+        }
+        if dict.keys.contains("DBProxyInstanceType") {
+            self.DBProxyInstanceType = dict["DBProxyInstanceType"] as! String
+        }
+        if dict.keys.contains("DBProxyNodes") {
+            self.DBProxyNodesShrink = dict["DBProxyNodes"] as! String
+        }
+        if dict.keys.contains("EffectiveSpecificTime") {
+            self.effectiveSpecificTime = dict["EffectiveSpecificTime"] as! String
+        }
+        if dict.keys.contains("EffectiveTime") {
+            self.effectiveTime = dict["EffectiveTime"] as! String
+        }
+        if dict.keys.contains("MigrateAZ") {
+            self.migrateAZShrink = dict["MigrateAZ"] as! String
         }
         if dict.keys.contains("OwnerId") {
             self.ownerId = dict["OwnerId"] as! Int64
@@ -72936,6 +73689,8 @@ public class ModifyMaskingRulesRequest : Tea.TeaModel {
 
     public var ownerId: String?
 
+    public var regionId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -72974,6 +73729,9 @@ public class ModifyMaskingRulesRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -73005,6 +73763,9 @@ public class ModifyMaskingRulesRequest : Tea.TeaModel {
         if dict.keys.contains("OwnerId") {
             self.ownerId = dict["OwnerId"] as! String
         }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
         if dict.keys.contains("ResourceOwnerAccount") {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
         }
@@ -73032,6 +73793,8 @@ public class ModifyMaskingRulesShrinkRequest : Tea.TeaModel {
     public var maskingAlgo: String?
 
     public var ownerId: String?
+
+    public var regionId: String?
 
     public var resourceOwnerAccount: String?
 
@@ -73070,6 +73833,9 @@ public class ModifyMaskingRulesShrinkRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -73100,6 +73866,9 @@ public class ModifyMaskingRulesShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OwnerId") {
             self.ownerId = dict["OwnerId"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -81895,6 +82664,8 @@ public class SyncRCKeyPairRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var syncMode: Bool?
+
     public override init() {
         super.init()
     }
@@ -81915,6 +82686,9 @@ public class SyncRCKeyPairRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.syncMode != nil {
+            map["SyncMode"] = self.syncMode!
+        }
         return map
     }
 
@@ -81924,6 +82698,9 @@ public class SyncRCKeyPairRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("SyncMode") {
+            self.syncMode = dict["SyncMode"] as! Bool
         }
     }
 }
