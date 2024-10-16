@@ -52589,6 +52589,483 @@ public class RunApplicationActionResponse : Tea.TeaModel {
     }
 }
 
+public class RunClusterRequest : Tea.TeaModel {
+    public var applicationConfigs: [ApplicationConfig]?
+
+    public var applications: [Application]?
+
+    public var bootstrapScripts: [Script]?
+
+    public var clientToken: String?
+
+    public var clusterName: String?
+
+    public var clusterType: String?
+
+    public var deployMode: String?
+
+    public var description_: String?
+
+    public var nodeAttributes: NodeAttributes?
+
+    public var nodeGroups: [NodeGroupConfig]?
+
+    public var paymentType: String?
+
+    public var regionId: String?
+
+    public var releaseVersion: String?
+
+    public var resourceGroupId: String?
+
+    public var securityMode: String?
+
+    public var subscriptionConfig: SubscriptionConfig?
+
+    public var tags: [Tag]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.nodeAttributes?.validate()
+        try self.subscriptionConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationConfigs != nil {
+            var tmp : [Any] = []
+            for k in self.applicationConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["ApplicationConfigs"] = tmp
+        }
+        if self.applications != nil {
+            var tmp : [Any] = []
+            for k in self.applications! {
+                tmp.append(k.toMap())
+            }
+            map["Applications"] = tmp
+        }
+        if self.bootstrapScripts != nil {
+            var tmp : [Any] = []
+            for k in self.bootstrapScripts! {
+                tmp.append(k.toMap())
+            }
+            map["BootstrapScripts"] = tmp
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.clusterName != nil {
+            map["ClusterName"] = self.clusterName!
+        }
+        if self.clusterType != nil {
+            map["ClusterType"] = self.clusterType!
+        }
+        if self.deployMode != nil {
+            map["DeployMode"] = self.deployMode!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.nodeAttributes != nil {
+            map["NodeAttributes"] = self.nodeAttributes?.toMap()
+        }
+        if self.nodeGroups != nil {
+            var tmp : [Any] = []
+            for k in self.nodeGroups! {
+                tmp.append(k.toMap())
+            }
+            map["NodeGroups"] = tmp
+        }
+        if self.paymentType != nil {
+            map["PaymentType"] = self.paymentType!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.releaseVersion != nil {
+            map["ReleaseVersion"] = self.releaseVersion!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.securityMode != nil {
+            map["SecurityMode"] = self.securityMode!
+        }
+        if self.subscriptionConfig != nil {
+            map["SubscriptionConfig"] = self.subscriptionConfig?.toMap()
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ApplicationConfigs") {
+            var tmp : [ApplicationConfig] = []
+            for v in dict["ApplicationConfigs"] as! [Any] {
+                var model = ApplicationConfig()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.applicationConfigs = tmp
+        }
+        if dict.keys.contains("Applications") {
+            var tmp : [Application] = []
+            for v in dict["Applications"] as! [Any] {
+                var model = Application()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.applications = tmp
+        }
+        if dict.keys.contains("BootstrapScripts") {
+            var tmp : [Script] = []
+            for v in dict["BootstrapScripts"] as! [Any] {
+                var model = Script()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.bootstrapScripts = tmp
+        }
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("ClusterName") {
+            self.clusterName = dict["ClusterName"] as! String
+        }
+        if dict.keys.contains("ClusterType") {
+            self.clusterType = dict["ClusterType"] as! String
+        }
+        if dict.keys.contains("DeployMode") {
+            self.deployMode = dict["DeployMode"] as! String
+        }
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("NodeAttributes") {
+            var model = NodeAttributes()
+            model.fromMap(dict["NodeAttributes"] as! [String: Any])
+            self.nodeAttributes = model
+        }
+        if dict.keys.contains("NodeGroups") {
+            var tmp : [NodeGroupConfig] = []
+            for v in dict["NodeGroups"] as! [Any] {
+                var model = NodeGroupConfig()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.nodeGroups = tmp
+        }
+        if dict.keys.contains("PaymentType") {
+            self.paymentType = dict["PaymentType"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ReleaseVersion") {
+            self.releaseVersion = dict["ReleaseVersion"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("SecurityMode") {
+            self.securityMode = dict["SecurityMode"] as! String
+        }
+        if dict.keys.contains("SubscriptionConfig") {
+            var model = SubscriptionConfig()
+            model.fromMap(dict["SubscriptionConfig"] as! [String: Any])
+            self.subscriptionConfig = model
+        }
+        if dict.keys.contains("Tags") {
+            var tmp : [Tag] = []
+            for v in dict["Tags"] as! [Any] {
+                var model = Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tags = tmp
+        }
+    }
+}
+
+public class RunClusterShrinkRequest : Tea.TeaModel {
+    public var applicationConfigsShrink: String?
+
+    public var applicationsShrink: String?
+
+    public var bootstrapScriptsShrink: String?
+
+    public var clientToken: String?
+
+    public var clusterName: String?
+
+    public var clusterType: String?
+
+    public var deployMode: String?
+
+    public var description_: String?
+
+    public var nodeAttributesShrink: String?
+
+    public var nodeGroupsShrink: String?
+
+    public var paymentType: String?
+
+    public var regionId: String?
+
+    public var releaseVersion: String?
+
+    public var resourceGroupId: String?
+
+    public var securityMode: String?
+
+    public var subscriptionConfigShrink: String?
+
+    public var tagsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationConfigsShrink != nil {
+            map["ApplicationConfigs"] = self.applicationConfigsShrink!
+        }
+        if self.applicationsShrink != nil {
+            map["Applications"] = self.applicationsShrink!
+        }
+        if self.bootstrapScriptsShrink != nil {
+            map["BootstrapScripts"] = self.bootstrapScriptsShrink!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.clusterName != nil {
+            map["ClusterName"] = self.clusterName!
+        }
+        if self.clusterType != nil {
+            map["ClusterType"] = self.clusterType!
+        }
+        if self.deployMode != nil {
+            map["DeployMode"] = self.deployMode!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.nodeAttributesShrink != nil {
+            map["NodeAttributes"] = self.nodeAttributesShrink!
+        }
+        if self.nodeGroupsShrink != nil {
+            map["NodeGroups"] = self.nodeGroupsShrink!
+        }
+        if self.paymentType != nil {
+            map["PaymentType"] = self.paymentType!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.releaseVersion != nil {
+            map["ReleaseVersion"] = self.releaseVersion!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.securityMode != nil {
+            map["SecurityMode"] = self.securityMode!
+        }
+        if self.subscriptionConfigShrink != nil {
+            map["SubscriptionConfig"] = self.subscriptionConfigShrink!
+        }
+        if self.tagsShrink != nil {
+            map["Tags"] = self.tagsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ApplicationConfigs") {
+            self.applicationConfigsShrink = dict["ApplicationConfigs"] as! String
+        }
+        if dict.keys.contains("Applications") {
+            self.applicationsShrink = dict["Applications"] as! String
+        }
+        if dict.keys.contains("BootstrapScripts") {
+            self.bootstrapScriptsShrink = dict["BootstrapScripts"] as! String
+        }
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("ClusterName") {
+            self.clusterName = dict["ClusterName"] as! String
+        }
+        if dict.keys.contains("ClusterType") {
+            self.clusterType = dict["ClusterType"] as! String
+        }
+        if dict.keys.contains("DeployMode") {
+            self.deployMode = dict["DeployMode"] as! String
+        }
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("NodeAttributes") {
+            self.nodeAttributesShrink = dict["NodeAttributes"] as! String
+        }
+        if dict.keys.contains("NodeGroups") {
+            self.nodeGroupsShrink = dict["NodeGroups"] as! String
+        }
+        if dict.keys.contains("PaymentType") {
+            self.paymentType = dict["PaymentType"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ReleaseVersion") {
+            self.releaseVersion = dict["ReleaseVersion"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("SecurityMode") {
+            self.securityMode = dict["SecurityMode"] as! String
+        }
+        if dict.keys.contains("SubscriptionConfig") {
+            self.subscriptionConfigShrink = dict["SubscriptionConfig"] as! String
+        }
+        if dict.keys.contains("Tags") {
+            self.tagsShrink = dict["Tags"] as! String
+        }
+    }
+}
+
+public class RunClusterResponseBody : Tea.TeaModel {
+    public var clusterId: String?
+
+    public var operationId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.operationId != nil {
+            map["OperationId"] = self.operationId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClusterId") {
+            self.clusterId = dict["ClusterId"] as! String
+        }
+        if dict.keys.contains("OperationId") {
+            self.operationId = dict["OperationId"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class RunClusterResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RunClusterResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = RunClusterResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class TagResourcesRequest : Tea.TeaModel {
     public var regionId: String?
 

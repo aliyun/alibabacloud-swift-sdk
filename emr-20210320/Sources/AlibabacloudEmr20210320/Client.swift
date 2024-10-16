@@ -2792,6 +2792,110 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func runClusterWithOptions(_ tmpReq: RunClusterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RunClusterResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: RunClusterShrinkRequest = RunClusterShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.applicationConfigs)) {
+            request.applicationConfigsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.applicationConfigs, "ApplicationConfigs", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.applications)) {
+            request.applicationsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.applications, "Applications", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.bootstrapScripts)) {
+            request.bootstrapScriptsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.bootstrapScripts, "BootstrapScripts", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.nodeAttributes)) {
+            request.nodeAttributesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.nodeAttributes, "NodeAttributes", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.nodeGroups)) {
+            request.nodeGroupsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.nodeGroups, "NodeGroups", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.subscriptionConfig)) {
+            request.subscriptionConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.subscriptionConfig, "SubscriptionConfig", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tags)) {
+            request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "Tags", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applicationConfigsShrink)) {
+            body["ApplicationConfigs"] = request.applicationConfigsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.applicationsShrink)) {
+            body["Applications"] = request.applicationsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.bootstrapScriptsShrink)) {
+            body["BootstrapScripts"] = request.bootstrapScriptsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            body["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clusterName)) {
+            body["ClusterName"] = request.clusterName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clusterType)) {
+            body["ClusterType"] = request.clusterType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.deployMode)) {
+            body["DeployMode"] = request.deployMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeAttributesShrink)) {
+            body["NodeAttributes"] = request.nodeAttributesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeGroupsShrink)) {
+            body["NodeGroups"] = request.nodeGroupsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.paymentType)) {
+            body["PaymentType"] = request.paymentType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.releaseVersion)) {
+            body["ReleaseVersion"] = request.releaseVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            body["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.securityMode)) {
+            body["SecurityMode"] = request.securityMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.subscriptionConfigShrink)) {
+            body["SubscriptionConfig"] = request.subscriptionConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagsShrink)) {
+            body["Tags"] = request.tagsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RunCluster",
+            "version": "2021-03-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RunClusterResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func runCluster(_ request: RunClusterRequest) async throws -> RunClusterResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await runClusterWithOptions(request as! RunClusterRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func tagResourcesWithOptions(_ request: TagResourcesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> TagResourcesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
