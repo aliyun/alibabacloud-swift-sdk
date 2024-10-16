@@ -58,6 +58,8 @@ public class AndroidPayload : Tea.TeaModel {
 
     public var extra: [String: Any]?
 
+    public var message2ThirdChannel: Message2ThirdChannel?
+
     public override init() {
         super.init()
     }
@@ -69,6 +71,7 @@ public class AndroidPayload : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.body?.validate()
+        try self.message2ThirdChannel?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -81,6 +84,9 @@ public class AndroidPayload : Tea.TeaModel {
         }
         if self.extra != nil {
             map["extra"] = self.extra!
+        }
+        if self.message2ThirdChannel != nil {
+            map["message2ThirdChannel"] = self.message2ThirdChannel?.toMap()
         }
         return map
     }
@@ -96,6 +102,11 @@ public class AndroidPayload : Tea.TeaModel {
         }
         if dict.keys.contains("extra") {
             self.extra = dict["extra"] as! [String: Any]
+        }
+        if dict.keys.contains("message2ThirdChannel") {
+            var model = Message2ThirdChannel()
+            model.fromMap(dict["message2ThirdChannel"] as! [String: Any])
+            self.message2ThirdChannel = model
         }
     }
 }
@@ -470,6 +481,100 @@ public class IosPayload : Tea.TeaModel {
         }
         if dict.keys.contains("extra") {
             self.extra = dict["extra"] as! [String: Any]
+        }
+    }
+}
+
+public class Message2ThirdChannel : Tea.TeaModel {
+    public var setBadge: Int64?
+
+    public var addBadge: Int64?
+
+    public var bigBody: String?
+
+    public var bigTitle: String?
+
+    public var expandImage: String?
+
+    public var img: String?
+
+    public var sound: String?
+
+    public var text: String?
+
+    public var title: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.setBadge != nil {
+            map["SetBadge"] = self.setBadge!
+        }
+        if self.addBadge != nil {
+            map["addBadge"] = self.addBadge!
+        }
+        if self.bigBody != nil {
+            map["bigBody"] = self.bigBody!
+        }
+        if self.bigTitle != nil {
+            map["bigTitle"] = self.bigTitle!
+        }
+        if self.expandImage != nil {
+            map["expandImage"] = self.expandImage!
+        }
+        if self.img != nil {
+            map["img"] = self.img!
+        }
+        if self.sound != nil {
+            map["sound"] = self.sound!
+        }
+        if self.text != nil {
+            map["text"] = self.text!
+        }
+        if self.title != nil {
+            map["title"] = self.title!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("SetBadge") {
+            self.setBadge = dict["SetBadge"] as! Int64
+        }
+        if dict.keys.contains("addBadge") {
+            self.addBadge = dict["addBadge"] as! Int64
+        }
+        if dict.keys.contains("bigBody") {
+            self.bigBody = dict["bigBody"] as! String
+        }
+        if dict.keys.contains("bigTitle") {
+            self.bigTitle = dict["bigTitle"] as! String
+        }
+        if dict.keys.contains("expandImage") {
+            self.expandImage = dict["expandImage"] as! String
+        }
+        if dict.keys.contains("img") {
+            self.img = dict["img"] as! String
+        }
+        if dict.keys.contains("sound") {
+            self.sound = dict["sound"] as! String
+        }
+        if dict.keys.contains("text") {
+            self.text = dict["text"] as! String
+        }
+        if dict.keys.contains("title") {
+            self.title = dict["title"] as! String
         }
     }
 }
