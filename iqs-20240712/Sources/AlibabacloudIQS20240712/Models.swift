@@ -35,6 +35,44 @@ public class AgentBaseQuery : Tea.TeaModel {
     }
 }
 
+public class CommonAgentQuery : Tea.TeaModel {
+    public var query: String?
+
+    public var querySceneEnumCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.query != nil {
+            map["query"] = self.query!
+        }
+        if self.querySceneEnumCode != nil {
+            map["querySceneEnumCode"] = self.querySceneEnumCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("query") {
+            self.query = dict["query"] as! String
+        }
+        if dict.keys.contains("querySceneEnumCode") {
+            self.querySceneEnumCode = dict["querySceneEnumCode"] as! String
+        }
+    }
+}
+
 public class QueryResult : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Images : Tea.TeaModel {
@@ -300,12 +338,6 @@ public class QueryResult : Tea.TeaModel {
     }
     public var data: [QueryResult.Data]?
 
-    public var errorCode: String?
-
-    public var errorMessage: String?
-
-    public var success: Bool?
-
     public override init() {
         super.init()
     }
@@ -327,15 +359,6 @@ public class QueryResult : Tea.TeaModel {
             }
             map["data"] = tmp
         }
-        if self.errorCode != nil {
-            map["errorCode"] = self.errorCode!
-        }
-        if self.errorMessage != nil {
-            map["errorMessage"] = self.errorMessage!
-        }
-        if self.success != nil {
-            map["success"] = self.success!
-        }
         return map
     }
 
@@ -351,14 +374,87 @@ public class QueryResult : Tea.TeaModel {
             }
             self.data = tmp
         }
-        if dict.keys.contains("errorCode") {
-            self.errorCode = dict["errorCode"] as! String
+    }
+}
+
+public class CommonQueryBySceneRequest : Tea.TeaModel {
+    public var body: CommonAgentQuery?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
         }
-        if dict.keys.contains("errorMessage") {
-            self.errorMessage = dict["errorMessage"] as! String
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("body") {
+            var model = CommonAgentQuery()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
         }
-        if dict.keys.contains("success") {
-            self.success = dict["success"] as! Bool
+    }
+}
+
+public class CommonQueryBySceneResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryResult?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = QueryResult()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
         }
     }
 }
