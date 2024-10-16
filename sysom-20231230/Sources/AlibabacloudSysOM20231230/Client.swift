@@ -27,6 +27,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func authDiagnosisWithOptions(_ request: AuthDiagnosisRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AuthDiagnosisResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoCreateRole)) {
+            body["autoCreateRole"] = request.autoCreateRole!;
+        }
+        if (!TeaUtils.Client.isUnset(request.autoInstallAgent)) {
+            body["autoInstallAgent"] = request.autoInstallAgent!;
+        }
         if (!TeaUtils.Client.isUnset(request.instances)) {
             body["instances"] = request.instances ?? [];
         }
@@ -90,6 +96,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAbnormalEventsCountWithOptions(_ request: GetAbnormalEventsCountRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAbnormalEventsCountResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cluster)) {
+            query["cluster"] = request.cluster ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.end)) {
+            query["end"] = request.end!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instance)) {
+            query["instance"] = request.instance ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.namespace)) {
+            query["namespace"] = request.namespace ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pod)) {
+            query["pod"] = request.pod ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.start)) {
+            query["start"] = request.start!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetAbnormalEventsCount",
+            "version": "2023-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/openapi/cluster_health/range/abnormaly_events_count",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetAbnormalEventsCountResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAbnormalEventsCount(_ request: GetAbnormalEventsCountRequest) async throws -> GetAbnormalEventsCountResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getAbnormalEventsCountWithOptions(request as! GetAbnormalEventsCountRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getDiagnosisResultWithOptions(_ request: GetDiagnosisResultRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDiagnosisResultResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -120,6 +174,48 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getDiagnosisResultWithOptions(request as! GetDiagnosisResultRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getHealthPercentageWithOptions(_ request: GetHealthPercentageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetHealthPercentageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cluster)) {
+            query["cluster"] = request.cluster ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.end)) {
+            query["end"] = request.end!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instance)) {
+            query["instance"] = request.instance ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.start)) {
+            query["start"] = request.start!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetHealthPercentage",
+            "version": "2023-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/openapi/cluster_health/range/health_percentage",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetHealthPercentageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getHealthPercentage(_ request: GetHealthPercentageRequest) async throws -> GetHealthPercentageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getHealthPercentageWithOptions(request as! GetHealthPercentageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
