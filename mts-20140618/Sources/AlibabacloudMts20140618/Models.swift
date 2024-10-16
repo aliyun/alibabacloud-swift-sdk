@@ -30043,6 +30043,8 @@ public class QuerySmarttagJobResponseBody : Tea.TeaModel {
     }
     public var jobStatus: String?
 
+    public var message: String?
+
     public var requestId: String?
 
     public var results: QuerySmarttagJobResponseBody.Results?
@@ -30067,6 +30069,9 @@ public class QuerySmarttagJobResponseBody : Tea.TeaModel {
         if self.jobStatus != nil {
             map["JobStatus"] = self.jobStatus!
         }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -30082,6 +30087,9 @@ public class QuerySmarttagJobResponseBody : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("JobStatus") {
             self.jobStatus = dict["JobStatus"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
@@ -33558,6 +33566,8 @@ public class RegisterCustomFaceRequest : Tea.TeaModel {
 
     public var personId: String?
 
+    public var personName: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -33591,6 +33601,9 @@ public class RegisterCustomFaceRequest : Tea.TeaModel {
         if self.personId != nil {
             map["PersonId"] = self.personId!
         }
+        if self.personName != nil {
+            map["PersonName"] = self.personName!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -33615,6 +33628,9 @@ public class RegisterCustomFaceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PersonId") {
             self.personId = dict["PersonId"] as! String
+        }
+        if dict.keys.contains("PersonName") {
+            self.personName = dict["PersonName"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String

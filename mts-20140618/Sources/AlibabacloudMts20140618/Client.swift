@@ -3006,6 +3006,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.personId)) {
             query["PersonId"] = request.personId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.personName)) {
+            query["PersonName"] = request.personName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
         }
