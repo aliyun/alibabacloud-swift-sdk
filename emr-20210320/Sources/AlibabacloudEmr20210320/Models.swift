@@ -3809,6 +3809,52 @@ public class ListApiTemplatesDTO : Tea.TeaModel {
     }
 }
 
+public class ManagedScalingConstraints : Tea.TeaModel {
+    public var maxCapacity: Int32?
+
+    public var maxOnDemandCapacity: Int32?
+
+    public var minCapacity: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxCapacity != nil {
+            map["MaxCapacity"] = self.maxCapacity!
+        }
+        if self.maxOnDemandCapacity != nil {
+            map["MaxOnDemandCapacity"] = self.maxOnDemandCapacity!
+        }
+        if self.minCapacity != nil {
+            map["MinCapacity"] = self.minCapacity!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MaxCapacity") {
+            self.maxCapacity = dict["MaxCapacity"] as! Int32
+        }
+        if dict.keys.contains("MaxOnDemandCapacity") {
+            self.maxOnDemandCapacity = dict["MaxOnDemandCapacity"] as! Int32
+        }
+        if dict.keys.contains("MinCapacity") {
+            self.minCapacity = dict["MinCapacity"] as! Int32
+        }
+    }
+}
+
 public class MetaStoreConf : Tea.TeaModel {
     public var dbPassword: String?
 
@@ -6726,6 +6772,8 @@ public class ScalingRule : Tea.TeaModel {
 
     public var metricsTrigger: MetricsTrigger?
 
+    public var minAdjustmentValue: Int32?
+
     public var ruleName: String?
 
     public var timeTrigger: TimeTrigger?
@@ -6757,6 +6805,9 @@ public class ScalingRule : Tea.TeaModel {
         if self.metricsTrigger != nil {
             map["MetricsTrigger"] = self.metricsTrigger?.toMap()
         }
+        if self.minAdjustmentValue != nil {
+            map["MinAdjustmentValue"] = self.minAdjustmentValue!
+        }
         if self.ruleName != nil {
             map["RuleName"] = self.ruleName!
         }
@@ -6780,6 +6831,9 @@ public class ScalingRule : Tea.TeaModel {
             var model = MetricsTrigger()
             model.fromMap(dict["MetricsTrigger"] as! [String: Any])
             self.metricsTrigger = model
+        }
+        if dict.keys.contains("MinAdjustmentValue") {
+            self.minAdjustmentValue = dict["MinAdjustmentValue"] as! Int32
         }
         if dict.keys.contains("RuleName") {
             self.ruleName = dict["RuleName"] as! String
