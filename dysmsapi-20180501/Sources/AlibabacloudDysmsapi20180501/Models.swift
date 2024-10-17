@@ -6,6 +6,8 @@ import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
 public class BatchSendMessageToGlobeRequest : Tea.TeaModel {
+    public var channelId: String?
+
     public var from: String?
 
     public var message: String?
@@ -32,6 +34,9 @@ public class BatchSendMessageToGlobeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.channelId != nil {
+            map["ChannelId"] = self.channelId!
+        }
         if self.from != nil {
             map["From"] = self.from!
         }
@@ -54,6 +59,9 @@ public class BatchSendMessageToGlobeRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ChannelId") {
+            self.channelId = dict["ChannelId"] as! String
+        }
         if dict.keys.contains("From") {
             self.from = dict["From"] as! String
         }

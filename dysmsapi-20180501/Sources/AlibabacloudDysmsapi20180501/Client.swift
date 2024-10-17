@@ -35,6 +35,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func batchSendMessageToGlobeWithOptions(_ request: BatchSendMessageToGlobeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchSendMessageToGlobeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.channelId)) {
+            query["ChannelId"] = request.channelId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.from)) {
             query["From"] = request.from ?? "";
         }
