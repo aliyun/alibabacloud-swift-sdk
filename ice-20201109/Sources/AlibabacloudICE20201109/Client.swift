@@ -5719,6 +5719,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func searchMediaByAILabelWithOptions(_ request: SearchMediaByAILabelRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchMediaByAILabelResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.matchingMode)) {
+            query["MatchingMode"] = request.matchingMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.mediaId)) {
             query["MediaId"] = request.mediaId ?? "";
         }
