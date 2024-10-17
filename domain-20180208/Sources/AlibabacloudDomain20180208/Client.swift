@@ -671,6 +671,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryExchangeRateWithOptions(_ request: QueryExchangeRateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryExchangeRateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fromCurrency)) {
+            query["FromCurrency"] = request.fromCurrency ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.toCurrency)) {
+            query["ToCurrency"] = request.toCurrency ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryExchangeRate",
+            "version": "2018-02-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryExchangeRateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryExchangeRate(_ request: QueryExchangeRateRequest) async throws -> QueryExchangeRateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryExchangeRateWithOptions(request as! QueryExchangeRateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func queryPurchasedDomainsWithOptions(_ request: QueryPurchasedDomainsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryPurchasedDomainsResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]

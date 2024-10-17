@@ -3975,6 +3975,131 @@ public class QueryDomainTransferStatusResponse : Tea.TeaModel {
     }
 }
 
+public class QueryExchangeRateRequest : Tea.TeaModel {
+    public var fromCurrency: String?
+
+    public var toCurrency: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.fromCurrency != nil {
+            map["FromCurrency"] = self.fromCurrency!
+        }
+        if self.toCurrency != nil {
+            map["ToCurrency"] = self.toCurrency!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("FromCurrency") {
+            self.fromCurrency = dict["FromCurrency"] as! String
+        }
+        if dict.keys.contains("ToCurrency") {
+            self.toCurrency = dict["ToCurrency"] as! String
+        }
+    }
+}
+
+public class QueryExchangeRateResponseBody : Tea.TeaModel {
+    public var exchangeRate: Double?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.exchangeRate != nil {
+            map["ExchangeRate"] = self.exchangeRate!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ExchangeRate") {
+            self.exchangeRate = dict["ExchangeRate"] as! Double
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class QueryExchangeRateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryExchangeRateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = QueryExchangeRateResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class QueryPurchasedDomainsRequest : Tea.TeaModel {
     public var currentPage: Int32?
 
