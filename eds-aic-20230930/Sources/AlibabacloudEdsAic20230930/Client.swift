@@ -148,6 +148,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.acpSpecId)) {
             query["AcpSpecId"] = request.acpSpecId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.amount)) {
+            query["Amount"] = request.amount!;
+        }
         if (!TeaUtils.Client.isUnset(request.bizRegionId)) {
             query["BizRegionId"] = request.bizRegionId ?? "";
         }
@@ -400,6 +403,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.localDrive)) {
             body["LocalDrive"] = request.localDrive ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lockResolution)) {
+            body["LockResolution"] = request.lockResolution ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.netRedirectPolicyShrink)) {
             body["NetRedirectPolicy"] = request.netRedirectPolicyShrink ?? "";
@@ -665,11 +671,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.androidInstanceName)) {
             query["AndroidInstanceName"] = request.androidInstanceName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.chargeType)) {
+            query["ChargeType"] = request.chargeType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceGroupId)) {
             query["InstanceGroupId"] = request.instanceGroupId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.instanceGroupIds)) {
             query["InstanceGroupIds"] = request.instanceGroupIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceGroupName)) {
+            query["InstanceGroupName"] = request.instanceGroupName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.keyPairId)) {
             query["KeyPairId"] = request.keyPairId ?? "";
@@ -968,6 +980,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeSpecWithOptions(_ request: DescribeSpecRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeSpecResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizRegionId)) {
+            query["BizRegionId"] = request.bizRegionId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["MaxResults"] = request.maxResults!;
         }
@@ -1511,6 +1526,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.localDrive)) {
             body["LocalDrive"] = request.localDrive ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lockResolution)) {
+            body["LockResolution"] = request.lockResolution ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.netRedirectPolicyShrink)) {
             body["NetRedirectPolicy"] = request.netRedirectPolicyShrink ?? "";
