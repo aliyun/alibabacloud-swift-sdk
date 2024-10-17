@@ -1363,6 +1363,34 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeIdentifyTaskStatusWithOptions(_ request: DescribeIdentifyTaskStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeIdentifyTaskStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeIdentifyTaskStatus",
+            "version": "2019-01-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeIdentifyTaskStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeIdentifyTaskStatus(_ request: DescribeIdentifyTaskStatusRequest) async throws -> DescribeIdentifyTaskStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeIdentifyTaskStatusWithOptions(request as! DescribeIdentifyTaskStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeInstanceSourcesWithOptions(_ request: DescribeInstanceSourcesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeInstanceSourcesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

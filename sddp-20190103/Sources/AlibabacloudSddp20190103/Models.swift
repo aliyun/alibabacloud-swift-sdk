@@ -8487,6 +8487,163 @@ public class DescribeEventsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeIdentifyTaskStatusRequest : Tea.TeaModel {
+    public var id: Int64?
+
+    public var lang: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Id") {
+            self.id = dict["Id"] as! Int64
+        }
+        if dict.keys.contains("Lang") {
+            self.lang = dict["Lang"] as! String
+        }
+    }
+}
+
+public class DescribeIdentifyTaskStatusResponseBody : Tea.TeaModel {
+    public class Content : Tea.TeaModel {
+        public var status: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! Int32
+            }
+        }
+    }
+    public var content: DescribeIdentifyTaskStatusResponseBody.Content?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.content?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.content != nil {
+            map["Content"] = self.content?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Content") {
+            var model = DescribeIdentifyTaskStatusResponseBody.Content()
+            model.fromMap(dict["Content"] as! [String: Any])
+            self.content = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeIdentifyTaskStatusResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeIdentifyTaskStatusResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeIdentifyTaskStatusResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeInstanceSourcesRequest : Tea.TeaModel {
     public var auditStatus: Int32?
 
@@ -9110,6 +9267,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
         public var lastFinishTime: Int64?
 
+        public var memberAliUid: String?
+
         public var modelTags: [DescribeInstancesResponseBody.Items.ModelTags]?
 
         public var name: String?
@@ -9169,6 +9328,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             }
             if self.lastFinishTime != nil {
                 map["LastFinishTime"] = self.lastFinishTime!
+            }
+            if self.memberAliUid != nil {
+                map["MemberAliUid"] = self.memberAliUid!
             }
             if self.modelTags != nil {
                 var tmp : [Any] = []
@@ -9237,6 +9399,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("LastFinishTime") {
                 self.lastFinishTime = dict["LastFinishTime"] as! Int64
+            }
+            if dict.keys.contains("MemberAliUid") {
+                self.memberAliUid = dict["MemberAliUid"] as! String
             }
             if dict.keys.contains("ModelTags") {
                 var tmp : [DescribeInstancesResponseBody.Items.ModelTags] = []
@@ -9933,13 +10098,25 @@ public class DescribeOssObjectDetailV2ResponseBody : Tea.TeaModel {
 
         public var categoryName: String?
 
+        public var fileCategoryName: String?
+
+        public var id: String?
+
+        public var modelTagIds: String?
+
         public var name: String?
 
+        public var objectAcl: String?
+
         public var regionId: String?
+
+        public var riskLevelId: Int32?
 
         public var riskLevelName: String?
 
         public var ruleList: [DescribeOssObjectDetailV2ResponseBody.OssObjectDetail.RuleList]?
+
+        public var size: Int64?
 
         public override init() {
             super.init()
@@ -9961,11 +10138,26 @@ public class DescribeOssObjectDetailV2ResponseBody : Tea.TeaModel {
             if self.categoryName != nil {
                 map["CategoryName"] = self.categoryName!
             }
+            if self.fileCategoryName != nil {
+                map["FileCategoryName"] = self.fileCategoryName!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.modelTagIds != nil {
+                map["ModelTagIds"] = self.modelTagIds!
+            }
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.objectAcl != nil {
+                map["ObjectAcl"] = self.objectAcl!
+            }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
+            }
+            if self.riskLevelId != nil {
+                map["RiskLevelId"] = self.riskLevelId!
             }
             if self.riskLevelName != nil {
                 map["RiskLevelName"] = self.riskLevelName!
@@ -9977,6 +10169,9 @@ public class DescribeOssObjectDetailV2ResponseBody : Tea.TeaModel {
                 }
                 map["RuleList"] = tmp
             }
+            if self.size != nil {
+                map["Size"] = self.size!
+            }
             return map
         }
 
@@ -9987,11 +10182,26 @@ public class DescribeOssObjectDetailV2ResponseBody : Tea.TeaModel {
             if dict.keys.contains("CategoryName") {
                 self.categoryName = dict["CategoryName"] as! String
             }
+            if dict.keys.contains("FileCategoryName") {
+                self.fileCategoryName = dict["FileCategoryName"] as! String
+            }
+            if dict.keys.contains("Id") {
+                self.id = dict["Id"] as! String
+            }
+            if dict.keys.contains("ModelTagIds") {
+                self.modelTagIds = dict["ModelTagIds"] as! String
+            }
             if dict.keys.contains("Name") {
                 self.name = dict["Name"] as! String
             }
+            if dict.keys.contains("ObjectAcl") {
+                self.objectAcl = dict["ObjectAcl"] as! String
+            }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("RiskLevelId") {
+                self.riskLevelId = dict["RiskLevelId"] as! Int32
             }
             if dict.keys.contains("RiskLevelName") {
                 self.riskLevelName = dict["RiskLevelName"] as! String
@@ -10006,6 +10216,9 @@ public class DescribeOssObjectDetailV2ResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.ruleList = tmp
+            }
+            if dict.keys.contains("Size") {
+                self.size = dict["Size"] as! Int64
             }
         }
     }
