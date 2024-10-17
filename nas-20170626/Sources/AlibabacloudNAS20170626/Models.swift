@@ -12198,7 +12198,38 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class VswIds : Tea.TeaModel {
+                public var vswId: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.vswId != nil {
+                        map["VswId"] = self.vswId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("VswId") {
+                        self.vswId = dict["VswId"] as! [String]
+                    }
+                }
+            }
             public var accessPointCount: String?
+
+            public var autoSnapshotPolicyId: String?
 
             public var bandwidth: Int64?
 
@@ -12236,6 +12267,8 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
 
             public var protocolType: String?
 
+            public var quorumVswId: String?
+
             public var regionId: String?
 
             public var resourceGroupId: String?
@@ -12249,6 +12282,10 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
             public var tags: DescribeFileSystemsResponseBody.FileSystems.FileSystem.Tags?
 
             public var version: String?
+
+            public var vpcId: String?
+
+            public var vswIds: DescribeFileSystemsResponseBody.FileSystems.FileSystem.VswIds?
 
             public var zoneId: String?
 
@@ -12268,12 +12305,16 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
                 try self.packages?.validate()
                 try self.supportedFeatures?.validate()
                 try self.tags?.validate()
+                try self.vswIds?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
                 if self.accessPointCount != nil {
                     map["AccessPointCount"] = self.accessPointCount!
+                }
+                if self.autoSnapshotPolicyId != nil {
+                    map["AutoSnapshotPolicyId"] = self.autoSnapshotPolicyId!
                 }
                 if self.bandwidth != nil {
                     map["Bandwidth"] = self.bandwidth!
@@ -12329,6 +12370,9 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
                 if self.protocolType != nil {
                     map["ProtocolType"] = self.protocolType!
                 }
+                if self.quorumVswId != nil {
+                    map["QuorumVswId"] = self.quorumVswId!
+                }
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
                 }
@@ -12350,6 +12394,12 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
                 if self.version != nil {
                     map["Version"] = self.version!
                 }
+                if self.vpcId != nil {
+                    map["VpcId"] = self.vpcId!
+                }
+                if self.vswIds != nil {
+                    map["VswIds"] = self.vswIds?.toMap()
+                }
                 if self.zoneId != nil {
                     map["ZoneId"] = self.zoneId!
                 }
@@ -12359,6 +12409,9 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("AccessPointCount") {
                     self.accessPointCount = dict["AccessPointCount"] as! String
+                }
+                if dict.keys.contains("AutoSnapshotPolicyId") {
+                    self.autoSnapshotPolicyId = dict["AutoSnapshotPolicyId"] as! String
                 }
                 if dict.keys.contains("Bandwidth") {
                     self.bandwidth = dict["Bandwidth"] as! Int64
@@ -12422,6 +12475,9 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
                 if dict.keys.contains("ProtocolType") {
                     self.protocolType = dict["ProtocolType"] as! String
                 }
+                if dict.keys.contains("QuorumVswId") {
+                    self.quorumVswId = dict["QuorumVswId"] as! String
+                }
                 if dict.keys.contains("RegionId") {
                     self.regionId = dict["RegionId"] as! String
                 }
@@ -12446,6 +12502,14 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Version") {
                     self.version = dict["Version"] as! String
+                }
+                if dict.keys.contains("VpcId") {
+                    self.vpcId = dict["VpcId"] as! String
+                }
+                if dict.keys.contains("VswIds") {
+                    var model = DescribeFileSystemsResponseBody.FileSystems.FileSystem.VswIds()
+                    model.fromMap(dict["VswIds"] as! [String: Any])
+                    self.vswIds = model
                 }
                 if dict.keys.contains("ZoneId") {
                     self.zoneId = dict["ZoneId"] as! String
