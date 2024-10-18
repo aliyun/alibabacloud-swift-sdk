@@ -276,39 +276,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func cancelWorkflowWithOptions(_ workflowName: String, _ request: CancelWorkflowRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CancelWorkflowResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.action)) {
-            body["action"] = request.action ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "CancelWorkflow",
-            "version": "2015-12-15",
-            "protocol": "HTTPS",
-            "pathname": "/gs/workflow/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workflowName)),
-            "method": "PUT",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "none"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(CancelWorkflowResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func cancelWorkflow(_ workflowName: String, _ request: CancelWorkflowRequest) async throws -> CancelWorkflowResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await cancelWorkflowWithOptions(workflowName as! String, request as! CancelWorkflowRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func checkControlPlaneLogEnableWithOptions(_ ClusterId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CheckControlPlaneLogEnableResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -1484,33 +1451,6 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await deployPolicyInstanceWithOptions(clusterId as! String, policyName as! String, request as! DeployPolicyInstanceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func descirbeWorkflowWithOptions(_ workflowName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescirbeWorkflowResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DescirbeWorkflow",
-            "version": "2015-12-15",
-            "protocol": "HTTPS",
-            "pathname": "/gs/workflow/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workflowName)),
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DescirbeWorkflowResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func descirbeWorkflow(_ workflowName: String) async throws -> DescirbeWorkflowResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await descirbeWorkflowWithOptions(workflowName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2995,33 +2935,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeWorkflowsWithOptions(_ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeWorkflowsResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DescribeWorkflows",
-            "version": "2015-12-15",
-            "protocol": "HTTPS",
-            "pathname": "/gs/workflows",
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DescribeWorkflowsResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeWorkflows() async throws -> DescribeWorkflowsResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await describeWorkflowsWithOptions(headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func edgeClusterAddEdgeMachineWithOptions(_ clusterid: String, _ edgeMachineid: String, _ request: EdgeClusterAddEdgeMachineRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> EdgeClusterAddEdgeMachineResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -3718,6 +3631,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.systemEventsLogging)) {
             body["system_events_logging"] = request.systemEventsLogging!;
         }
+        if (!TeaUtils.Client.isUnset(request.vswitchIds)) {
+            body["vswitch_ids"] = request.vswitchIds ?? [];
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
@@ -4181,33 +4097,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func removeWorkflowWithOptions(_ workflowName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RemoveWorkflowResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "RemoveWorkflow",
-            "version": "2015-12-15",
-            "protocol": "HTTPS",
-            "pathname": "/gs/workflow/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workflowName)),
-            "method": "DELETE",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "none"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(RemoveWorkflowResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func removeWorkflow(_ workflowName: String) async throws -> RemoveWorkflowResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await removeWorkflowWithOptions(workflowName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func repairClusterNodePoolWithOptions(_ clusterId: String, _ nodepoolId: String, _ request: RepairClusterNodePoolRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RepairClusterNodePoolResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -4667,93 +4556,6 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await startAlertWithOptions(ClusterId as! String, request as! StartAlertRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func startWorkflowWithOptions(_ request: StartWorkflowRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StartWorkflowResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.mappingBamOutFilename)) {
-            body["mapping_bam_out_filename"] = request.mappingBamOutFilename ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.mappingBamOutPath)) {
-            body["mapping_bam_out_path"] = request.mappingBamOutPath ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.mappingBucketName)) {
-            body["mapping_bucket_name"] = request.mappingBucketName ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.mappingFastqFirstFilename)) {
-            body["mapping_fastq_first_filename"] = request.mappingFastqFirstFilename ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.mappingFastqPath)) {
-            body["mapping_fastq_path"] = request.mappingFastqPath ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.mappingFastqSecondFilename)) {
-            body["mapping_fastq_second_filename"] = request.mappingFastqSecondFilename ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.mappingIsMarkDup)) {
-            body["mapping_is_mark_dup"] = request.mappingIsMarkDup ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.mappingOssRegion)) {
-            body["mapping_oss_region"] = request.mappingOssRegion ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.mappingReferencePath)) {
-            body["mapping_reference_path"] = request.mappingReferencePath ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.service)) {
-            body["service"] = request.service ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.wgsBucketName)) {
-            body["wgs_bucket_name"] = request.wgsBucketName ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.wgsFastqFirstFilename)) {
-            body["wgs_fastq_first_filename"] = request.wgsFastqFirstFilename ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.wgsFastqPath)) {
-            body["wgs_fastq_path"] = request.wgsFastqPath ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.wgsFastqSecondFilename)) {
-            body["wgs_fastq_second_filename"] = request.wgsFastqSecondFilename ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.wgsOssRegion)) {
-            body["wgs_oss_region"] = request.wgsOssRegion ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.wgsReferencePath)) {
-            body["wgs_reference_path"] = request.wgsReferencePath ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.wgsVcfOutFilename)) {
-            body["wgs_vcf_out_filename"] = request.wgsVcfOutFilename ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.wgsVcfOutPath)) {
-            body["wgs_vcf_out_path"] = request.wgsVcfOutPath ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.workflowType)) {
-            body["workflow_type"] = request.workflowType ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "StartWorkflow",
-            "version": "2015-12-15",
-            "protocol": "HTTPS",
-            "pathname": "/gs/workflow",
-            "method": "POST",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(StartWorkflowResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func startWorkflow(_ request: StartWorkflowRequest) async throws -> StartWorkflowResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await startWorkflowWithOptions(request as! StartWorkflowRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

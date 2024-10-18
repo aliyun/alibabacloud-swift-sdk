@@ -2603,74 +2603,6 @@ public class CancelTaskResponse : Tea.TeaModel {
     }
 }
 
-public class CancelWorkflowRequest : Tea.TeaModel {
-    public var action: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.action != nil {
-            map["action"] = self.action!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("action") {
-            self.action = dict["action"] as! String
-        }
-    }
-}
-
-public class CancelWorkflowResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-    }
-}
-
 public class CheckControlPlaneLogEnableResponseBody : Tea.TeaModel {
     public var aliuid: String?
 
@@ -7899,165 +7831,6 @@ public class DeployPolicyInstanceResponse : Tea.TeaModel {
     }
 }
 
-public class DescirbeWorkflowResponseBody : Tea.TeaModel {
-    public var createTime: String?
-
-    public var duration: String?
-
-    public var finishTime: String?
-
-    public var inputDataSize: String?
-
-    public var jobName: String?
-
-    public var jobNamespace: String?
-
-    public var outputDataSize: String?
-
-    public var status: String?
-
-    public var totalBases: String?
-
-    public var totalReads: String?
-
-    public var userInputData: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.createTime != nil {
-            map["create_time"] = self.createTime!
-        }
-        if self.duration != nil {
-            map["duration"] = self.duration!
-        }
-        if self.finishTime != nil {
-            map["finish_time"] = self.finishTime!
-        }
-        if self.inputDataSize != nil {
-            map["input_data_size"] = self.inputDataSize!
-        }
-        if self.jobName != nil {
-            map["job_name"] = self.jobName!
-        }
-        if self.jobNamespace != nil {
-            map["job_namespace"] = self.jobNamespace!
-        }
-        if self.outputDataSize != nil {
-            map["output_data_size"] = self.outputDataSize!
-        }
-        if self.status != nil {
-            map["status"] = self.status!
-        }
-        if self.totalBases != nil {
-            map["total_bases"] = self.totalBases!
-        }
-        if self.totalReads != nil {
-            map["total_reads"] = self.totalReads!
-        }
-        if self.userInputData != nil {
-            map["user_input_data"] = self.userInputData!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("create_time") {
-            self.createTime = dict["create_time"] as! String
-        }
-        if dict.keys.contains("duration") {
-            self.duration = dict["duration"] as! String
-        }
-        if dict.keys.contains("finish_time") {
-            self.finishTime = dict["finish_time"] as! String
-        }
-        if dict.keys.contains("input_data_size") {
-            self.inputDataSize = dict["input_data_size"] as! String
-        }
-        if dict.keys.contains("job_name") {
-            self.jobName = dict["job_name"] as! String
-        }
-        if dict.keys.contains("job_namespace") {
-            self.jobNamespace = dict["job_namespace"] as! String
-        }
-        if dict.keys.contains("output_data_size") {
-            self.outputDataSize = dict["output_data_size"] as! String
-        }
-        if dict.keys.contains("status") {
-            self.status = dict["status"] as! String
-        }
-        if dict.keys.contains("total_bases") {
-            self.totalBases = dict["total_bases"] as! String
-        }
-        if dict.keys.contains("total_reads") {
-            self.totalReads = dict["total_reads"] as! String
-        }
-        if dict.keys.contains("user_input_data") {
-            self.userInputData = dict["user_input_data"] as! String
-        }
-    }
-}
-
-public class DescirbeWorkflowResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: DescirbeWorkflowResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") {
-            var model = DescirbeWorkflowResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
 public class DescribeAddonRequest : Tea.TeaModel {
     public var clusterId: String?
 
@@ -9199,11 +8972,15 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var clusterDomain: String?
+
     public var clusterId: String?
 
     public var clusterSpec: String?
 
     public var clusterType: String?
+
+    public var containerCidr: String?
 
     public var created: String?
 
@@ -9217,6 +8994,8 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
 
     public var initVersion: String?
 
+    public var ipStack: String?
+
     public var maintenanceWindow: MaintenanceWindow?
 
     public var masterUrl: String?
@@ -9229,6 +9008,8 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
 
     public var nextVersion: String?
 
+    public var nodeCidrMask: String?
+
     public var operationPolicy: DescribeClusterDetailResponseBody.OperationPolicy?
 
     public var parameters: [String: String]?
@@ -9237,11 +9018,15 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
 
     public var profile: String?
 
+    public var proxyMode: String?
+
     public var regionId: String?
 
     public var resourceGroupId: String?
 
     public var securityGroupId: String?
+
+    public var serviceCidr: String?
 
     public var size: Int64?
 
@@ -9251,11 +9036,15 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
 
     public var tags: [Tag]?
 
+    public var timezone: String?
+
     public var updated: String?
 
     public var vpcId: String?
 
     public var vswitchId: String?
+
+    public var vswitchIds: [String]?
 
     public var workerRamRoleName: String?
 
@@ -9277,6 +9066,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clusterDomain != nil {
+            map["cluster_domain"] = self.clusterDomain!
+        }
         if self.clusterId != nil {
             map["cluster_id"] = self.clusterId!
         }
@@ -9285,6 +9077,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         }
         if self.clusterType != nil {
             map["cluster_type"] = self.clusterType!
+        }
+        if self.containerCidr != nil {
+            map["container_cidr"] = self.containerCidr!
         }
         if self.created != nil {
             map["created"] = self.created!
@@ -9304,6 +9099,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         if self.initVersion != nil {
             map["init_version"] = self.initVersion!
         }
+        if self.ipStack != nil {
+            map["ip_stack"] = self.ipStack!
+        }
         if self.maintenanceWindow != nil {
             map["maintenance_window"] = self.maintenanceWindow?.toMap()
         }
@@ -9322,6 +9120,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         if self.nextVersion != nil {
             map["next_version"] = self.nextVersion!
         }
+        if self.nodeCidrMask != nil {
+            map["node_cidr_mask"] = self.nodeCidrMask!
+        }
         if self.operationPolicy != nil {
             map["operation_policy"] = self.operationPolicy?.toMap()
         }
@@ -9334,6 +9135,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         if self.profile != nil {
             map["profile"] = self.profile!
         }
+        if self.proxyMode != nil {
+            map["proxy_mode"] = self.proxyMode!
+        }
         if self.regionId != nil {
             map["region_id"] = self.regionId!
         }
@@ -9342,6 +9146,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         }
         if self.securityGroupId != nil {
             map["security_group_id"] = self.securityGroupId!
+        }
+        if self.serviceCidr != nil {
+            map["service_cidr"] = self.serviceCidr!
         }
         if self.size != nil {
             map["size"] = self.size!
@@ -9359,6 +9166,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
             }
             map["tags"] = tmp
         }
+        if self.timezone != nil {
+            map["timezone"] = self.timezone!
+        }
         if self.updated != nil {
             map["updated"] = self.updated!
         }
@@ -9367,6 +9177,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         }
         if self.vswitchId != nil {
             map["vswitch_id"] = self.vswitchId!
+        }
+        if self.vswitchIds != nil {
+            map["vswitch_ids"] = self.vswitchIds!
         }
         if self.workerRamRoleName != nil {
             map["worker_ram_role_name"] = self.workerRamRoleName!
@@ -9378,6 +9191,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("cluster_domain") {
+            self.clusterDomain = dict["cluster_domain"] as! String
+        }
         if dict.keys.contains("cluster_id") {
             self.clusterId = dict["cluster_id"] as! String
         }
@@ -9386,6 +9202,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("cluster_type") {
             self.clusterType = dict["cluster_type"] as! String
+        }
+        if dict.keys.contains("container_cidr") {
+            self.containerCidr = dict["container_cidr"] as! String
         }
         if dict.keys.contains("created") {
             self.created = dict["created"] as! String
@@ -9404,6 +9223,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("init_version") {
             self.initVersion = dict["init_version"] as! String
+        }
+        if dict.keys.contains("ip_stack") {
+            self.ipStack = dict["ip_stack"] as! String
         }
         if dict.keys.contains("maintenance_window") {
             var model = MaintenanceWindow()
@@ -9425,6 +9247,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         if dict.keys.contains("next_version") {
             self.nextVersion = dict["next_version"] as! String
         }
+        if dict.keys.contains("node_cidr_mask") {
+            self.nodeCidrMask = dict["node_cidr_mask"] as! String
+        }
         if dict.keys.contains("operation_policy") {
             var model = DescribeClusterDetailResponseBody.OperationPolicy()
             model.fromMap(dict["operation_policy"] as! [String: Any])
@@ -9439,6 +9264,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         if dict.keys.contains("profile") {
             self.profile = dict["profile"] as! String
         }
+        if dict.keys.contains("proxy_mode") {
+            self.proxyMode = dict["proxy_mode"] as! String
+        }
         if dict.keys.contains("region_id") {
             self.regionId = dict["region_id"] as! String
         }
@@ -9447,6 +9275,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("security_group_id") {
             self.securityGroupId = dict["security_group_id"] as! String
+        }
+        if dict.keys.contains("service_cidr") {
+            self.serviceCidr = dict["service_cidr"] as! String
         }
         if dict.keys.contains("size") {
             self.size = dict["size"] as! Int64
@@ -9468,6 +9299,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
             }
             self.tags = tmp
         }
+        if dict.keys.contains("timezone") {
+            self.timezone = dict["timezone"] as! String
+        }
         if dict.keys.contains("updated") {
             self.updated = dict["updated"] as! String
         }
@@ -9476,6 +9310,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("vswitch_id") {
             self.vswitchId = dict["vswitch_id"] as! String
+        }
+        if dict.keys.contains("vswitch_ids") {
+            self.vswitchIds = dict["vswitch_ids"] as! [String]
         }
         if dict.keys.contains("worker_ram_role_name") {
             self.workerRamRoleName = dict["worker_ram_role_name"] as! String
@@ -14968,11 +14805,15 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var clusterDomain: String?
+
         public var clusterId: String?
 
         public var clusterSpec: String?
 
         public var clusterType: String?
+
+        public var containerCidr: String?
 
         public var created: String?
 
@@ -14985,6 +14826,8 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
         public var externalLoadbalancerId: String?
 
         public var initVersion: String?
+
+        public var ipStack: String?
 
         public var maintenanceWindow: MaintenanceWindow?
 
@@ -15004,11 +14847,15 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
 
         public var profile: String?
 
+        public var proxyMode: String?
+
         public var regionId: String?
 
         public var resourceGroupId: String?
 
         public var securityGroupId: String?
+
+        public var serviceCidr: String?
 
         public var size: Int64?
 
@@ -15018,11 +14865,15 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
 
         public var tags: [Tag]?
 
+        public var timezone: String?
+
         public var updated: String?
 
         public var vpcId: String?
 
         public var vswitchId: String?
+
+        public var vswitchIds: [String]?
 
         public var workerRamRoleName: String?
 
@@ -15044,6 +14895,9 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.clusterDomain != nil {
+                map["cluster_domain"] = self.clusterDomain!
+            }
             if self.clusterId != nil {
                 map["cluster_id"] = self.clusterId!
             }
@@ -15052,6 +14906,9 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
             }
             if self.clusterType != nil {
                 map["cluster_type"] = self.clusterType!
+            }
+            if self.containerCidr != nil {
+                map["container_cidr"] = self.containerCidr!
             }
             if self.created != nil {
                 map["created"] = self.created!
@@ -15070,6 +14927,9 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
             }
             if self.initVersion != nil {
                 map["init_version"] = self.initVersion!
+            }
+            if self.ipStack != nil {
+                map["ip_stack"] = self.ipStack!
             }
             if self.maintenanceWindow != nil {
                 map["maintenance_window"] = self.maintenanceWindow?.toMap()
@@ -15098,6 +14958,9 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
             if self.profile != nil {
                 map["profile"] = self.profile!
             }
+            if self.proxyMode != nil {
+                map["proxy_mode"] = self.proxyMode!
+            }
             if self.regionId != nil {
                 map["region_id"] = self.regionId!
             }
@@ -15106,6 +14969,9 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
             }
             if self.securityGroupId != nil {
                 map["security_group_id"] = self.securityGroupId!
+            }
+            if self.serviceCidr != nil {
+                map["service_cidr"] = self.serviceCidr!
             }
             if self.size != nil {
                 map["size"] = self.size!
@@ -15123,6 +14989,9 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
                 }
                 map["tags"] = tmp
             }
+            if self.timezone != nil {
+                map["timezone"] = self.timezone!
+            }
             if self.updated != nil {
                 map["updated"] = self.updated!
             }
@@ -15131,6 +15000,9 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
             }
             if self.vswitchId != nil {
                 map["vswitch_id"] = self.vswitchId!
+            }
+            if self.vswitchIds != nil {
+                map["vswitch_ids"] = self.vswitchIds!
             }
             if self.workerRamRoleName != nil {
                 map["worker_ram_role_name"] = self.workerRamRoleName!
@@ -15142,6 +15014,9 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("cluster_domain") {
+                self.clusterDomain = dict["cluster_domain"] as! String
+            }
             if dict.keys.contains("cluster_id") {
                 self.clusterId = dict["cluster_id"] as! String
             }
@@ -15150,6 +15025,9 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("cluster_type") {
                 self.clusterType = dict["cluster_type"] as! String
+            }
+            if dict.keys.contains("container_cidr") {
+                self.containerCidr = dict["container_cidr"] as! String
             }
             if dict.keys.contains("created") {
                 self.created = dict["created"] as! String
@@ -15168,6 +15046,9 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("init_version") {
                 self.initVersion = dict["init_version"] as! String
+            }
+            if dict.keys.contains("ip_stack") {
+                self.ipStack = dict["ip_stack"] as! String
             }
             if dict.keys.contains("maintenance_window") {
                 var model = MaintenanceWindow()
@@ -15200,6 +15081,9 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
             if dict.keys.contains("profile") {
                 self.profile = dict["profile"] as! String
             }
+            if dict.keys.contains("proxy_mode") {
+                self.proxyMode = dict["proxy_mode"] as! String
+            }
             if dict.keys.contains("region_id") {
                 self.regionId = dict["region_id"] as! String
             }
@@ -15208,6 +15092,9 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("security_group_id") {
                 self.securityGroupId = dict["security_group_id"] as! String
+            }
+            if dict.keys.contains("service_cidr") {
+                self.serviceCidr = dict["service_cidr"] as! String
             }
             if dict.keys.contains("size") {
                 self.size = dict["size"] as! Int64
@@ -15229,6 +15116,9 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
                 }
                 self.tags = tmp
             }
+            if dict.keys.contains("timezone") {
+                self.timezone = dict["timezone"] as! String
+            }
             if dict.keys.contains("updated") {
                 self.updated = dict["updated"] as! String
             }
@@ -15237,6 +15127,9 @@ public class DescribeClustersV1ResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("vswitch_id") {
                 self.vswitchId = dict["vswitch_id"] as! String
+            }
+            if dict.keys.contains("vswitch_ids") {
+                self.vswitchIds = dict["vswitch_ids"] as! [String]
             }
             if dict.keys.contains("worker_ram_role_name") {
                 self.workerRamRoleName = dict["worker_ram_role_name"] as! String
@@ -20006,142 +19899,6 @@ public class DescribeUserQuotaResponse : Tea.TeaModel {
     }
 }
 
-public class DescribeWorkflowsResponseBody : Tea.TeaModel {
-    public class Jobs : Tea.TeaModel {
-        public var clusterId: String?
-
-        public var createTime: String?
-
-        public var jobName: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.clusterId != nil {
-                map["cluster_id"] = self.clusterId!
-            }
-            if self.createTime != nil {
-                map["create_time"] = self.createTime!
-            }
-            if self.jobName != nil {
-                map["job_name"] = self.jobName!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("cluster_id") {
-                self.clusterId = dict["cluster_id"] as! String
-            }
-            if dict.keys.contains("create_time") {
-                self.createTime = dict["create_time"] as! String
-            }
-            if dict.keys.contains("job_name") {
-                self.jobName = dict["job_name"] as! String
-            }
-        }
-    }
-    public var jobs: [DescribeWorkflowsResponseBody.Jobs]?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.jobs != nil {
-            var tmp : [Any] = []
-            for k in self.jobs! {
-                tmp.append(k.toMap())
-            }
-            map["jobs"] = tmp
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("jobs") {
-            var tmp : [DescribeWorkflowsResponseBody.Jobs] = []
-            for v in dict["jobs"] as! [Any] {
-                var model = DescribeWorkflowsResponseBody.Jobs()
-                if v != nil {
-                    model.fromMap(v as! [String: Any])
-                }
-                tmp.append(model)
-            }
-            self.jobs = tmp
-        }
-    }
-}
-
-public class DescribeWorkflowsResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: DescribeWorkflowsResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") {
-            var model = DescribeWorkflowsResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
 public class EdgeClusterAddEdgeMachineRequest : Tea.TeaModel {
     public var expired: Int64?
 
@@ -23729,6 +23486,8 @@ public class ModifyClusterRequest : Tea.TeaModel {
 
     public var systemEventsLogging: ModifyClusterRequest.SystemEventsLogging?
 
+    public var vswitchIds: [String]?
+
     public override init() {
         super.init()
     }
@@ -23789,6 +23548,9 @@ public class ModifyClusterRequest : Tea.TeaModel {
         if self.systemEventsLogging != nil {
             map["system_events_logging"] = self.systemEventsLogging?.toMap()
         }
+        if self.vswitchIds != nil {
+            map["vswitch_ids"] = self.vswitchIds!
+        }
         return map
     }
 
@@ -23842,6 +23604,9 @@ public class ModifyClusterRequest : Tea.TeaModel {
             var model = ModifyClusterRequest.SystemEventsLogging()
             model.fromMap(dict["system_events_logging"] as! [String: Any])
             self.systemEventsLogging = model
+        }
+        if dict.keys.contains("vswitch_ids") {
+            self.vswitchIds = dict["vswitch_ids"] as! [String]
         }
     }
 }
@@ -26292,44 +26057,6 @@ public class RemoveNodePoolNodesResponse : Tea.TeaModel {
     }
 }
 
-public class RemoveWorkflowResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-    }
-}
-
 public class RepairClusterNodePoolRequest : Tea.TeaModel {
     public class Operations : Tea.TeaModel {
         public var args: [String]?
@@ -27947,259 +27674,6 @@ public class StartAlertResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = StartAlertResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
-public class StartWorkflowRequest : Tea.TeaModel {
-    public var mappingBamOutFilename: String?
-
-    public var mappingBamOutPath: String?
-
-    public var mappingBucketName: String?
-
-    public var mappingFastqFirstFilename: String?
-
-    public var mappingFastqPath: String?
-
-    public var mappingFastqSecondFilename: String?
-
-    public var mappingIsMarkDup: String?
-
-    public var mappingOssRegion: String?
-
-    public var mappingReferencePath: String?
-
-    public var service: String?
-
-    public var wgsBucketName: String?
-
-    public var wgsFastqFirstFilename: String?
-
-    public var wgsFastqPath: String?
-
-    public var wgsFastqSecondFilename: String?
-
-    public var wgsOssRegion: String?
-
-    public var wgsReferencePath: String?
-
-    public var wgsVcfOutFilename: String?
-
-    public var wgsVcfOutPath: String?
-
-    public var workflowType: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.mappingBamOutFilename != nil {
-            map["mapping_bam_out_filename"] = self.mappingBamOutFilename!
-        }
-        if self.mappingBamOutPath != nil {
-            map["mapping_bam_out_path"] = self.mappingBamOutPath!
-        }
-        if self.mappingBucketName != nil {
-            map["mapping_bucket_name"] = self.mappingBucketName!
-        }
-        if self.mappingFastqFirstFilename != nil {
-            map["mapping_fastq_first_filename"] = self.mappingFastqFirstFilename!
-        }
-        if self.mappingFastqPath != nil {
-            map["mapping_fastq_path"] = self.mappingFastqPath!
-        }
-        if self.mappingFastqSecondFilename != nil {
-            map["mapping_fastq_second_filename"] = self.mappingFastqSecondFilename!
-        }
-        if self.mappingIsMarkDup != nil {
-            map["mapping_is_mark_dup"] = self.mappingIsMarkDup!
-        }
-        if self.mappingOssRegion != nil {
-            map["mapping_oss_region"] = self.mappingOssRegion!
-        }
-        if self.mappingReferencePath != nil {
-            map["mapping_reference_path"] = self.mappingReferencePath!
-        }
-        if self.service != nil {
-            map["service"] = self.service!
-        }
-        if self.wgsBucketName != nil {
-            map["wgs_bucket_name"] = self.wgsBucketName!
-        }
-        if self.wgsFastqFirstFilename != nil {
-            map["wgs_fastq_first_filename"] = self.wgsFastqFirstFilename!
-        }
-        if self.wgsFastqPath != nil {
-            map["wgs_fastq_path"] = self.wgsFastqPath!
-        }
-        if self.wgsFastqSecondFilename != nil {
-            map["wgs_fastq_second_filename"] = self.wgsFastqSecondFilename!
-        }
-        if self.wgsOssRegion != nil {
-            map["wgs_oss_region"] = self.wgsOssRegion!
-        }
-        if self.wgsReferencePath != nil {
-            map["wgs_reference_path"] = self.wgsReferencePath!
-        }
-        if self.wgsVcfOutFilename != nil {
-            map["wgs_vcf_out_filename"] = self.wgsVcfOutFilename!
-        }
-        if self.wgsVcfOutPath != nil {
-            map["wgs_vcf_out_path"] = self.wgsVcfOutPath!
-        }
-        if self.workflowType != nil {
-            map["workflow_type"] = self.workflowType!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("mapping_bam_out_filename") {
-            self.mappingBamOutFilename = dict["mapping_bam_out_filename"] as! String
-        }
-        if dict.keys.contains("mapping_bam_out_path") {
-            self.mappingBamOutPath = dict["mapping_bam_out_path"] as! String
-        }
-        if dict.keys.contains("mapping_bucket_name") {
-            self.mappingBucketName = dict["mapping_bucket_name"] as! String
-        }
-        if dict.keys.contains("mapping_fastq_first_filename") {
-            self.mappingFastqFirstFilename = dict["mapping_fastq_first_filename"] as! String
-        }
-        if dict.keys.contains("mapping_fastq_path") {
-            self.mappingFastqPath = dict["mapping_fastq_path"] as! String
-        }
-        if dict.keys.contains("mapping_fastq_second_filename") {
-            self.mappingFastqSecondFilename = dict["mapping_fastq_second_filename"] as! String
-        }
-        if dict.keys.contains("mapping_is_mark_dup") {
-            self.mappingIsMarkDup = dict["mapping_is_mark_dup"] as! String
-        }
-        if dict.keys.contains("mapping_oss_region") {
-            self.mappingOssRegion = dict["mapping_oss_region"] as! String
-        }
-        if dict.keys.contains("mapping_reference_path") {
-            self.mappingReferencePath = dict["mapping_reference_path"] as! String
-        }
-        if dict.keys.contains("service") {
-            self.service = dict["service"] as! String
-        }
-        if dict.keys.contains("wgs_bucket_name") {
-            self.wgsBucketName = dict["wgs_bucket_name"] as! String
-        }
-        if dict.keys.contains("wgs_fastq_first_filename") {
-            self.wgsFastqFirstFilename = dict["wgs_fastq_first_filename"] as! String
-        }
-        if dict.keys.contains("wgs_fastq_path") {
-            self.wgsFastqPath = dict["wgs_fastq_path"] as! String
-        }
-        if dict.keys.contains("wgs_fastq_second_filename") {
-            self.wgsFastqSecondFilename = dict["wgs_fastq_second_filename"] as! String
-        }
-        if dict.keys.contains("wgs_oss_region") {
-            self.wgsOssRegion = dict["wgs_oss_region"] as! String
-        }
-        if dict.keys.contains("wgs_reference_path") {
-            self.wgsReferencePath = dict["wgs_reference_path"] as! String
-        }
-        if dict.keys.contains("wgs_vcf_out_filename") {
-            self.wgsVcfOutFilename = dict["wgs_vcf_out_filename"] as! String
-        }
-        if dict.keys.contains("wgs_vcf_out_path") {
-            self.wgsVcfOutPath = dict["wgs_vcf_out_path"] as! String
-        }
-        if dict.keys.contains("workflow_type") {
-            self.workflowType = dict["workflow_type"] as! String
-        }
-    }
-}
-
-public class StartWorkflowResponseBody : Tea.TeaModel {
-    public var jobName: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.jobName != nil {
-            map["JobName"] = self.jobName!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("JobName") {
-            self.jobName = dict["JobName"] as! String
-        }
-    }
-}
-
-public class StartWorkflowResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: StartWorkflowResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") {
-            var model = StartWorkflowResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
