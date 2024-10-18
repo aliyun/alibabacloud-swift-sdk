@@ -2931,6 +2931,155 @@ public class ExportKeywordResponse : Tea.TeaModel {
     }
 }
 
+public class ExportOssCheckStatRequest : Tea.TeaModel {
+    public var byMonth: Bool?
+
+    public var endDate: String?
+
+    public var parentTaskId: String?
+
+    public var regionId: String?
+
+    public var startDate: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.byMonth != nil {
+            map["ByMonth"] = self.byMonth!
+        }
+        if self.endDate != nil {
+            map["EndDate"] = self.endDate!
+        }
+        if self.parentTaskId != nil {
+            map["ParentTaskId"] = self.parentTaskId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.startDate != nil {
+            map["StartDate"] = self.startDate!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ByMonth") {
+            self.byMonth = dict["ByMonth"] as! Bool
+        }
+        if dict.keys.contains("EndDate") {
+            self.endDate = dict["EndDate"] as! String
+        }
+        if dict.keys.contains("ParentTaskId") {
+            self.parentTaskId = dict["ParentTaskId"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("StartDate") {
+            self.startDate = dict["StartDate"] as! String
+        }
+    }
+}
+
+public class ExportOssCheckStatResponseBody : Tea.TeaModel {
+    public var data: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            self.data = dict["Data"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ExportOssCheckStatResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ExportOssCheckStatResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ExportOssCheckStatResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ExportResultRequest : Tea.TeaModel {
     public var currentPage: Int32?
 
@@ -3927,11 +4076,17 @@ public class GetBackupConfigResponseBody : Tea.TeaModel {
 
     public var enable: Bool?
 
+    public var enableBackup: Bool?
+
+    public var enableBackupVoice: Bool?
+
     public var expireSeconds: Int32?
 
     public var gmtModified: String?
 
     public var path: String?
+
+    public var pathVoice: String?
 
     public var region: String?
 
@@ -3966,6 +4121,12 @@ public class GetBackupConfigResponseBody : Tea.TeaModel {
         if self.enable != nil {
             map["Enable"] = self.enable!
         }
+        if self.enableBackup != nil {
+            map["EnableBackup"] = self.enableBackup!
+        }
+        if self.enableBackupVoice != nil {
+            map["EnableBackupVoice"] = self.enableBackupVoice!
+        }
         if self.expireSeconds != nil {
             map["ExpireSeconds"] = self.expireSeconds!
         }
@@ -3974,6 +4135,9 @@ public class GetBackupConfigResponseBody : Tea.TeaModel {
         }
         if self.path != nil {
             map["Path"] = self.path!
+        }
+        if self.pathVoice != nil {
+            map["PathVoice"] = self.pathVoice!
         }
         if self.region != nil {
             map["Region"] = self.region!
@@ -4003,6 +4167,12 @@ public class GetBackupConfigResponseBody : Tea.TeaModel {
         if dict.keys.contains("Enable") {
             self.enable = dict["Enable"] as! Bool
         }
+        if dict.keys.contains("EnableBackup") {
+            self.enableBackup = dict["EnableBackup"] as! Bool
+        }
+        if dict.keys.contains("EnableBackupVoice") {
+            self.enableBackupVoice = dict["EnableBackupVoice"] as! Bool
+        }
         if dict.keys.contains("ExpireSeconds") {
             self.expireSeconds = dict["ExpireSeconds"] as! Int32
         }
@@ -4011,6 +4181,9 @@ public class GetBackupConfigResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Path") {
             self.path = dict["Path"] as! String
+        }
+        if dict.keys.contains("PathVoice") {
+            self.pathVoice = dict["PathVoice"] as! String
         }
         if dict.keys.contains("Region") {
             self.region = dict["Region"] as! String
@@ -5657,6 +5830,244 @@ public class GetKeywordImportResultResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = GetKeywordImportResultResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetOssCheckStatRequest : Tea.TeaModel {
+    public var byMonth: Bool?
+
+    public var endDate: String?
+
+    public var parentTaskId: String?
+
+    public var regionId: String?
+
+    public var startDate: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.byMonth != nil {
+            map["ByMonth"] = self.byMonth!
+        }
+        if self.endDate != nil {
+            map["EndDate"] = self.endDate!
+        }
+        if self.parentTaskId != nil {
+            map["ParentTaskId"] = self.parentTaskId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.startDate != nil {
+            map["StartDate"] = self.startDate!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ByMonth") {
+            self.byMonth = dict["ByMonth"] as! Bool
+        }
+        if dict.keys.contains("EndDate") {
+            self.endDate = dict["EndDate"] as! String
+        }
+        if dict.keys.contains("ParentTaskId") {
+            self.parentTaskId = dict["ParentTaskId"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("StartDate") {
+            self.startDate = dict["StartDate"] as! String
+        }
+    }
+}
+
+public class GetOssCheckStatResponseBody : Tea.TeaModel {
+    public class BarChart : Tea.TeaModel {
+        public class Y : Tea.TeaModel {
+            public var data: [Int64]?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.data != nil {
+                    map["Data"] = self.data!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Data") {
+                    self.data = dict["Data"] as! [Int64]
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+            }
+        }
+        public var x: [String]?
+
+        public var y: [GetOssCheckStatResponseBody.BarChart.Y]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.x != nil {
+                map["X"] = self.x!
+            }
+            if self.y != nil {
+                var tmp : [Any] = []
+                for k in self.y! {
+                    tmp.append(k.toMap())
+                }
+                map["Y"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("X") {
+                self.x = dict["X"] as! [String]
+            }
+            if dict.keys.contains("Y") {
+                var tmp : [GetOssCheckStatResponseBody.BarChart.Y] = []
+                for v in dict["Y"] as! [Any] {
+                    var model = GetOssCheckStatResponseBody.BarChart.Y()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.y = tmp
+            }
+        }
+    }
+    public var barChart: GetOssCheckStatResponseBody.BarChart?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.barChart?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.barChart != nil {
+            map["BarChart"] = self.barChart?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BarChart") {
+            var model = GetOssCheckStatResponseBody.BarChart()
+            model.fromMap(dict["BarChart"] as! [String: Any])
+            self.barChart = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class GetOssCheckStatResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetOssCheckStatResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetOssCheckStatResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
