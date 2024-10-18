@@ -2822,7 +2822,7 @@ public class ListListenersRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
-    public var skip: Int64?
+    public var skip: Int32?
 
     public var tag: [ListListenersRequest.Tag]?
 
@@ -2879,7 +2879,7 @@ public class ListListenersRequest : Tea.TeaModel {
             self.nextToken = dict["NextToken"] as! String
         }
         if dict.keys.contains("Skip") {
-            self.skip = dict["Skip"] as! Int64
+            self.skip = dict["Skip"] as! Int32
         }
         if dict.keys.contains("Tag") {
             var tmp : [ListListenersRequest.Tag] = []
