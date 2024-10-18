@@ -4529,6 +4529,8 @@ public class CreateCloudGtmMonitorTemplateResponse : Tea.TeaModel {
 public class CreatePdnsAppKeyRequest : Tea.TeaModel {
     public var lang: String?
 
+    public var remark: String?
+
     public override init() {
         super.init()
     }
@@ -4546,12 +4548,18 @@ public class CreatePdnsAppKeyRequest : Tea.TeaModel {
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
+        if self.remark != nil {
+            map["Remark"] = self.remark!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Lang") {
             self.lang = dict["Lang"] as! String
+        }
+        if dict.keys.contains("Remark") {
+            self.remark = dict["Remark"] as! String
         }
     }
 }
@@ -30810,6 +30818,8 @@ public class DescribePdnsAppKeyResponseBody : Tea.TeaModel {
 
         public var createTimestamp: Int64?
 
+        public var remark: String?
+
         public var state: String?
 
         public override init() {
@@ -30838,6 +30848,9 @@ public class DescribePdnsAppKeyResponseBody : Tea.TeaModel {
             if self.createTimestamp != nil {
                 map["CreateTimestamp"] = self.createTimestamp!
             }
+            if self.remark != nil {
+                map["Remark"] = self.remark!
+            }
             if self.state != nil {
                 map["State"] = self.state!
             }
@@ -30856,6 +30869,9 @@ public class DescribePdnsAppKeyResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("CreateTimestamp") {
                 self.createTimestamp = dict["CreateTimestamp"] as! Int64
+            }
+            if dict.keys.contains("Remark") {
+                self.remark = dict["Remark"] as! String
             }
             if dict.keys.contains("State") {
                 self.state = dict["State"] as! String
@@ -30989,6 +31005,8 @@ public class DescribePdnsAppKeysResponseBody : Tea.TeaModel {
 
         public var createTimestamp: Int64?
 
+        public var remark: String?
+
         public var state: String?
 
         public override init() {
@@ -31014,6 +31032,9 @@ public class DescribePdnsAppKeysResponseBody : Tea.TeaModel {
             if self.createTimestamp != nil {
                 map["CreateTimestamp"] = self.createTimestamp!
             }
+            if self.remark != nil {
+                map["Remark"] = self.remark!
+            }
             if self.state != nil {
                 map["State"] = self.state!
             }
@@ -31029,6 +31050,9 @@ public class DescribePdnsAppKeysResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("CreateTimestamp") {
                 self.createTimestamp = dict["CreateTimestamp"] as! Int64
+            }
+            if dict.keys.contains("Remark") {
+                self.remark = dict["Remark"] as! String
             }
             if dict.keys.contains("State") {
                 self.state = dict["State"] as! String
@@ -31398,6 +31422,8 @@ public class DescribePdnsRequestStatisticRequest : Tea.TeaModel {
 
     public var subDomain: String?
 
+    public var type: String?
+
     public override init() {
         super.init()
     }
@@ -31427,6 +31453,9 @@ public class DescribePdnsRequestStatisticRequest : Tea.TeaModel {
         if self.subDomain != nil {
             map["SubDomain"] = self.subDomain!
         }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
         return map
     }
 
@@ -31445,6 +31474,9 @@ public class DescribePdnsRequestStatisticRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SubDomain") {
             self.subDomain = dict["SubDomain"] as! String
+        }
+        if dict.keys.contains("Type") {
+            self.type = dict["Type"] as! String
         }
     }
 }
