@@ -165,6 +165,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.email)) {
             query["Email"] = request.email ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.hmAppIdentifier)) {
+            query["HmAppIdentifier"] = request.hmAppIdentifier ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.hmPackageName)) {
+            query["HmPackageName"] = request.hmPackageName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.hmSignName)) {
+            query["HmSignName"] = request.hmSignName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ipWhiteList)) {
             query["IpWhiteList"] = request.ipWhiteList ?? "";
         }
