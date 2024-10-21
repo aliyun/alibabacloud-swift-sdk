@@ -16137,6 +16137,398 @@ public class DescribeEciScalingConfigurationsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeElasticStrengthRequest : Tea.TeaModel {
+    public var instanceTypes: [String]?
+
+    public var priorityStrategy: String?
+
+    public var regionId: String?
+
+    public var scalingGroupId: String?
+
+    public var scalingGroupIds: [String]?
+
+    public var systemDiskCategories: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceTypes != nil {
+            map["InstanceTypes"] = self.instanceTypes!
+        }
+        if self.priorityStrategy != nil {
+            map["PriorityStrategy"] = self.priorityStrategy!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.scalingGroupId != nil {
+            map["ScalingGroupId"] = self.scalingGroupId!
+        }
+        if self.scalingGroupIds != nil {
+            map["ScalingGroupIds"] = self.scalingGroupIds!
+        }
+        if self.systemDiskCategories != nil {
+            map["SystemDiskCategories"] = self.systemDiskCategories!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceTypes") {
+            self.instanceTypes = dict["InstanceTypes"] as! [String]
+        }
+        if dict.keys.contains("PriorityStrategy") {
+            self.priorityStrategy = dict["PriorityStrategy"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ScalingGroupId") {
+            self.scalingGroupId = dict["ScalingGroupId"] as! String
+        }
+        if dict.keys.contains("ScalingGroupIds") {
+            self.scalingGroupIds = dict["ScalingGroupIds"] as! [String]
+        }
+        if dict.keys.contains("SystemDiskCategories") {
+            self.systemDiskCategories = dict["SystemDiskCategories"] as! [String]
+        }
+    }
+}
+
+public class DescribeElasticStrengthResponseBody : Tea.TeaModel {
+    public class ElasticStrengthModels : Tea.TeaModel {
+        public class ResourcePools : Tea.TeaModel {
+            public var code: String?
+
+            public var instanceType: String?
+
+            public var msg: String?
+
+            public var strength: Double?
+
+            public var vSwitchIds: [String]?
+
+            public var zoneId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.code != nil {
+                    map["Code"] = self.code!
+                }
+                if self.instanceType != nil {
+                    map["InstanceType"] = self.instanceType!
+                }
+                if self.msg != nil {
+                    map["Msg"] = self.msg!
+                }
+                if self.strength != nil {
+                    map["Strength"] = self.strength!
+                }
+                if self.vSwitchIds != nil {
+                    map["VSwitchIds"] = self.vSwitchIds!
+                }
+                if self.zoneId != nil {
+                    map["ZoneId"] = self.zoneId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Code") {
+                    self.code = dict["Code"] as! String
+                }
+                if dict.keys.contains("InstanceType") {
+                    self.instanceType = dict["InstanceType"] as! String
+                }
+                if dict.keys.contains("Msg") {
+                    self.msg = dict["Msg"] as! String
+                }
+                if dict.keys.contains("Strength") {
+                    self.strength = dict["Strength"] as! Double
+                }
+                if dict.keys.contains("VSwitchIds") {
+                    self.vSwitchIds = dict["VSwitchIds"] as! [String]
+                }
+                if dict.keys.contains("ZoneId") {
+                    self.zoneId = dict["ZoneId"] as! String
+                }
+            }
+        }
+        public var resourcePools: [DescribeElasticStrengthResponseBody.ElasticStrengthModels.ResourcePools]?
+
+        public var scalingGroupId: String?
+
+        public var totalStrength: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.resourcePools != nil {
+                var tmp : [Any] = []
+                for k in self.resourcePools! {
+                    tmp.append(k.toMap())
+                }
+                map["ResourcePools"] = tmp
+            }
+            if self.scalingGroupId != nil {
+                map["ScalingGroupId"] = self.scalingGroupId!
+            }
+            if self.totalStrength != nil {
+                map["TotalStrength"] = self.totalStrength!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ResourcePools") {
+                var tmp : [DescribeElasticStrengthResponseBody.ElasticStrengthModels.ResourcePools] = []
+                for v in dict["ResourcePools"] as! [Any] {
+                    var model = DescribeElasticStrengthResponseBody.ElasticStrengthModels.ResourcePools()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.resourcePools = tmp
+            }
+            if dict.keys.contains("ScalingGroupId") {
+                self.scalingGroupId = dict["ScalingGroupId"] as! String
+            }
+            if dict.keys.contains("TotalStrength") {
+                self.totalStrength = dict["TotalStrength"] as! Double
+            }
+        }
+    }
+    public class ResourcePools : Tea.TeaModel {
+        public var code: String?
+
+        public var instanceType: String?
+
+        public var msg: String?
+
+        public var strength: Double?
+
+        public var vSwitchIds: [String]?
+
+        public var zoneId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.code != nil {
+                map["Code"] = self.code!
+            }
+            if self.instanceType != nil {
+                map["InstanceType"] = self.instanceType!
+            }
+            if self.msg != nil {
+                map["Msg"] = self.msg!
+            }
+            if self.strength != nil {
+                map["Strength"] = self.strength!
+            }
+            if self.vSwitchIds != nil {
+                map["VSwitchIds"] = self.vSwitchIds!
+            }
+            if self.zoneId != nil {
+                map["ZoneId"] = self.zoneId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Code") {
+                self.code = dict["Code"] as! String
+            }
+            if dict.keys.contains("InstanceType") {
+                self.instanceType = dict["InstanceType"] as! String
+            }
+            if dict.keys.contains("Msg") {
+                self.msg = dict["Msg"] as! String
+            }
+            if dict.keys.contains("Strength") {
+                self.strength = dict["Strength"] as! Double
+            }
+            if dict.keys.contains("VSwitchIds") {
+                self.vSwitchIds = dict["VSwitchIds"] as! [String]
+            }
+            if dict.keys.contains("ZoneId") {
+                self.zoneId = dict["ZoneId"] as! String
+            }
+        }
+    }
+    public var elasticStrengthModels: [DescribeElasticStrengthResponseBody.ElasticStrengthModels]?
+
+    public var requestId: String?
+
+    public var resourcePools: [DescribeElasticStrengthResponseBody.ResourcePools]?
+
+    public var totalStrength: Double?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.elasticStrengthModels != nil {
+            var tmp : [Any] = []
+            for k in self.elasticStrengthModels! {
+                tmp.append(k.toMap())
+            }
+            map["ElasticStrengthModels"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resourcePools != nil {
+            var tmp : [Any] = []
+            for k in self.resourcePools! {
+                tmp.append(k.toMap())
+            }
+            map["ResourcePools"] = tmp
+        }
+        if self.totalStrength != nil {
+            map["TotalStrength"] = self.totalStrength!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ElasticStrengthModels") {
+            var tmp : [DescribeElasticStrengthResponseBody.ElasticStrengthModels] = []
+            for v in dict["ElasticStrengthModels"] as! [Any] {
+                var model = DescribeElasticStrengthResponseBody.ElasticStrengthModels()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.elasticStrengthModels = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResourcePools") {
+            var tmp : [DescribeElasticStrengthResponseBody.ResourcePools] = []
+            for v in dict["ResourcePools"] as! [Any] {
+                var model = DescribeElasticStrengthResponseBody.ResourcePools()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.resourcePools = tmp
+        }
+        if dict.keys.contains("TotalStrength") {
+            self.totalStrength = dict["TotalStrength"] as! Double
+        }
+    }
+}
+
+public class DescribeElasticStrengthResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeElasticStrengthResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeElasticStrengthResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeInstanceRefreshesRequest : Tea.TeaModel {
     public var instanceRefreshTaskIds: [String]?
 

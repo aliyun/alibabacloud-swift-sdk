@@ -2120,6 +2120,34 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeElasticStrengthWithOptions(_ request: DescribeElasticStrengthRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeElasticStrengthResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeElasticStrength",
+            "version": "2022-02-22",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeElasticStrengthResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeElasticStrength(_ request: DescribeElasticStrengthRequest) async throws -> DescribeElasticStrengthResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeElasticStrengthWithOptions(request as! DescribeElasticStrengthRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeInstanceRefreshesWithOptions(_ request: DescribeInstanceRefreshesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeInstanceRefreshesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
