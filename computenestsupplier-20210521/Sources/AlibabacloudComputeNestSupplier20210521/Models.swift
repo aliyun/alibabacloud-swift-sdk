@@ -1145,6 +1145,43 @@ public class CreateServiceRequest : Tea.TeaModel {
                 }
             }
         }
+        public class Softwares : Tea.TeaModel {
+            public var name: String?
+
+            public var version: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.version != nil {
+                    map["Version"] = self.version!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("Version") {
+                    self.version = dict["Version"] as! String
+                }
+            }
+        }
         public var agreements: [CreateServiceRequest.ServiceInfo.Agreements]?
 
         public var image: String?
@@ -1156,6 +1193,8 @@ public class CreateServiceRequest : Tea.TeaModel {
         public var name: String?
 
         public var shortDescription: String?
+
+        public var softwares: [CreateServiceRequest.ServiceInfo.Softwares]?
 
         public override init() {
             super.init()
@@ -1193,6 +1232,13 @@ public class CreateServiceRequest : Tea.TeaModel {
             if self.shortDescription != nil {
                 map["ShortDescription"] = self.shortDescription!
             }
+            if self.softwares != nil {
+                var tmp : [Any] = []
+                for k in self.softwares! {
+                    tmp.append(k.toMap())
+                }
+                map["Softwares"] = tmp
+            }
             return map
         }
 
@@ -1222,6 +1268,17 @@ public class CreateServiceRequest : Tea.TeaModel {
             }
             if dict.keys.contains("ShortDescription") {
                 self.shortDescription = dict["ShortDescription"] as! String
+            }
+            if dict.keys.contains("Softwares") {
+                var tmp : [CreateServiceRequest.ServiceInfo.Softwares] = []
+                for v in dict["Softwares"] as! [Any] {
+                    var model = CreateServiceRequest.ServiceInfo.Softwares()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.softwares = tmp
             }
         }
     }
@@ -4143,6 +4200,43 @@ public class GetServiceResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Softwares : Tea.TeaModel {
+            public var name: String?
+
+            public var version: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.version != nil {
+                    map["Version"] = self.version!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("Version") {
+                    self.version = dict["Version"] as! String
+                }
+            }
+        }
         public var agreements: [GetServiceResponseBody.ServiceInfos.Agreements]?
 
         public var image: String?
@@ -4154,6 +4248,8 @@ public class GetServiceResponseBody : Tea.TeaModel {
         public var name: String?
 
         public var shortDescription: String?
+
+        public var softwares: [GetServiceResponseBody.ServiceInfos.Softwares]?
 
         public override init() {
             super.init()
@@ -4191,6 +4287,13 @@ public class GetServiceResponseBody : Tea.TeaModel {
             if self.shortDescription != nil {
                 map["ShortDescription"] = self.shortDescription!
             }
+            if self.softwares != nil {
+                var tmp : [Any] = []
+                for k in self.softwares! {
+                    tmp.append(k.toMap())
+                }
+                map["Softwares"] = tmp
+            }
             return map
         }
 
@@ -4220,6 +4323,17 @@ public class GetServiceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ShortDescription") {
                 self.shortDescription = dict["ShortDescription"] as! String
+            }
+            if dict.keys.contains("Softwares") {
+                var tmp : [GetServiceResponseBody.ServiceInfos.Softwares] = []
+                for v in dict["Softwares"] as! [Any] {
+                    var model = GetServiceResponseBody.ServiceInfos.Softwares()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.softwares = tmp
             }
         }
     }
@@ -12349,6 +12463,43 @@ public class UpdateServiceRequest : Tea.TeaModel {
                 }
             }
         }
+        public class Softwares : Tea.TeaModel {
+            public var name: String?
+
+            public var version: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.version != nil {
+                    map["Version"] = self.version!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("Version") {
+                    self.version = dict["Version"] as! String
+                }
+            }
+        }
         public var agreements: [UpdateServiceRequest.ServiceInfo.Agreements]?
 
         public var image: String?
@@ -12360,6 +12511,8 @@ public class UpdateServiceRequest : Tea.TeaModel {
         public var name: String?
 
         public var shortDescription: String?
+
+        public var softwares: [UpdateServiceRequest.ServiceInfo.Softwares]?
 
         public override init() {
             super.init()
@@ -12397,6 +12550,13 @@ public class UpdateServiceRequest : Tea.TeaModel {
             if self.shortDescription != nil {
                 map["ShortDescription"] = self.shortDescription!
             }
+            if self.softwares != nil {
+                var tmp : [Any] = []
+                for k in self.softwares! {
+                    tmp.append(k.toMap())
+                }
+                map["Softwares"] = tmp
+            }
             return map
         }
 
@@ -12426,6 +12586,17 @@ public class UpdateServiceRequest : Tea.TeaModel {
             }
             if dict.keys.contains("ShortDescription") {
                 self.shortDescription = dict["ShortDescription"] as! String
+            }
+            if dict.keys.contains("Softwares") {
+                var tmp : [UpdateServiceRequest.ServiceInfo.Softwares] = []
+                for v in dict["Softwares"] as! [Any] {
+                    var model = UpdateServiceRequest.ServiceInfo.Softwares()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.softwares = tmp
             }
         }
     }
@@ -12744,6 +12915,43 @@ public class UpdateServiceShrinkRequest : Tea.TeaModel {
                 }
             }
         }
+        public class Softwares : Tea.TeaModel {
+            public var name: String?
+
+            public var version: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.version != nil {
+                    map["Version"] = self.version!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("Version") {
+                    self.version = dict["Version"] as! String
+                }
+            }
+        }
         public var agreements: [UpdateServiceShrinkRequest.ServiceInfo.Agreements]?
 
         public var image: String?
@@ -12755,6 +12963,8 @@ public class UpdateServiceShrinkRequest : Tea.TeaModel {
         public var name: String?
 
         public var shortDescription: String?
+
+        public var softwares: [UpdateServiceShrinkRequest.ServiceInfo.Softwares]?
 
         public override init() {
             super.init()
@@ -12792,6 +13002,13 @@ public class UpdateServiceShrinkRequest : Tea.TeaModel {
             if self.shortDescription != nil {
                 map["ShortDescription"] = self.shortDescription!
             }
+            if self.softwares != nil {
+                var tmp : [Any] = []
+                for k in self.softwares! {
+                    tmp.append(k.toMap())
+                }
+                map["Softwares"] = tmp
+            }
             return map
         }
 
@@ -12821,6 +13038,17 @@ public class UpdateServiceShrinkRequest : Tea.TeaModel {
             }
             if dict.keys.contains("ShortDescription") {
                 self.shortDescription = dict["ShortDescription"] as! String
+            }
+            if dict.keys.contains("Softwares") {
+                var tmp : [UpdateServiceShrinkRequest.ServiceInfo.Softwares] = []
+                for v in dict["Softwares"] as! [Any] {
+                    var model = UpdateServiceShrinkRequest.ServiceInfo.Softwares()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.softwares = tmp
             }
         }
     }
