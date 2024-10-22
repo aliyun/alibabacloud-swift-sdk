@@ -2280,6 +2280,8 @@ public class DeleteImagesFromLibResponse : Tea.TeaModel {
 }
 
 public class DeleteKeywordRequest : Tea.TeaModel {
+    public var keywordIdList: String?
+
     public var keywordIds: String?
 
     public var libId: String?
@@ -2300,6 +2302,9 @@ public class DeleteKeywordRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.keywordIdList != nil {
+            map["KeywordIdList"] = self.keywordIdList!
+        }
         if self.keywordIds != nil {
             map["KeywordIds"] = self.keywordIds!
         }
@@ -2313,6 +2318,9 @@ public class DeleteKeywordRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("KeywordIdList") {
+            self.keywordIdList = dict["KeywordIdList"] as! String
+        }
         if dict.keys.contains("KeywordIds") {
             self.keywordIds = dict["KeywordIds"] as! String
         }

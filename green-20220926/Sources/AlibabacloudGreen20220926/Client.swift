@@ -551,6 +551,9 @@ open class Client : AlibabacloudOpenApi.Client {
             query["RegionId"] = request.regionId ?? "";
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.keywordIdList)) {
+            body["KeywordIdList"] = request.keywordIdList ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.keywordIds)) {
             body["KeywordIds"] = request.keywordIds ?? "";
         }
