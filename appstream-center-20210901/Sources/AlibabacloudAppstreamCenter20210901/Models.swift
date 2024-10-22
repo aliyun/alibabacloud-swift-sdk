@@ -1042,6 +1042,43 @@ public class AskSessionPackageRenewPriceResponse : Tea.TeaModel {
 }
 
 public class AuthorizeInstanceGroupRequest : Tea.TeaModel {
+    public class UserMeta : Tea.TeaModel {
+        public var adDomain: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.adDomain != nil {
+                map["AdDomain"] = self.adDomain!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AdDomain") {
+                self.adDomain = dict["AdDomain"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+        }
+    }
     public var appInstanceGroupId: String?
 
     public var authorizeUserIds: [String]?
@@ -1049,6 +1086,73 @@ public class AuthorizeInstanceGroupRequest : Tea.TeaModel {
     public var productType: String?
 
     public var unAuthorizeUserIds: [String]?
+
+    public var userMeta: AuthorizeInstanceGroupRequest.UserMeta?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.userMeta?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appInstanceGroupId != nil {
+            map["AppInstanceGroupId"] = self.appInstanceGroupId!
+        }
+        if self.authorizeUserIds != nil {
+            map["AuthorizeUserIds"] = self.authorizeUserIds!
+        }
+        if self.productType != nil {
+            map["ProductType"] = self.productType!
+        }
+        if self.unAuthorizeUserIds != nil {
+            map["UnAuthorizeUserIds"] = self.unAuthorizeUserIds!
+        }
+        if self.userMeta != nil {
+            map["UserMeta"] = self.userMeta?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppInstanceGroupId") {
+            self.appInstanceGroupId = dict["AppInstanceGroupId"] as! String
+        }
+        if dict.keys.contains("AuthorizeUserIds") {
+            self.authorizeUserIds = dict["AuthorizeUserIds"] as! [String]
+        }
+        if dict.keys.contains("ProductType") {
+            self.productType = dict["ProductType"] as! String
+        }
+        if dict.keys.contains("UnAuthorizeUserIds") {
+            self.unAuthorizeUserIds = dict["UnAuthorizeUserIds"] as! [String]
+        }
+        if dict.keys.contains("UserMeta") {
+            var model = AuthorizeInstanceGroupRequest.UserMeta()
+            model.fromMap(dict["UserMeta"] as! [String: Any])
+            self.userMeta = model
+        }
+    }
+}
+
+public class AuthorizeInstanceGroupShrinkRequest : Tea.TeaModel {
+    public var appInstanceGroupId: String?
+
+    public var authorizeUserIds: [String]?
+
+    public var productType: String?
+
+    public var unAuthorizeUserIds: [String]?
+
+    public var userMetaShrink: String?
 
     public override init() {
         super.init()
@@ -1076,6 +1180,9 @@ public class AuthorizeInstanceGroupRequest : Tea.TeaModel {
         if self.unAuthorizeUserIds != nil {
             map["UnAuthorizeUserIds"] = self.unAuthorizeUserIds!
         }
+        if self.userMetaShrink != nil {
+            map["UserMeta"] = self.userMetaShrink!
+        }
         return map
     }
 
@@ -1091,6 +1198,9 @@ public class AuthorizeInstanceGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("UnAuthorizeUserIds") {
             self.unAuthorizeUserIds = dict["UnAuthorizeUserIds"] as! [String]
+        }
+        if dict.keys.contains("UserMeta") {
+            self.userMetaShrink = dict["UserMeta"] as! String
         }
     }
 }
@@ -1789,9 +1899,13 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
 
         public var ipExpireMinutes: Int32?
 
+        public var officeSiteId: String?
+
         public var routes: [CreateAppInstanceGroupRequest.Network.Routes]?
 
         public var strategyType: String?
+
+        public var vSwitchIds: [String]?
 
         public override init() {
             super.init()
@@ -1817,6 +1931,9 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
             if self.ipExpireMinutes != nil {
                 map["IpExpireMinutes"] = self.ipExpireMinutes!
             }
+            if self.officeSiteId != nil {
+                map["OfficeSiteId"] = self.officeSiteId!
+            }
             if self.routes != nil {
                 var tmp : [Any] = []
                 for k in self.routes! {
@@ -1826,6 +1943,9 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
             }
             if self.strategyType != nil {
                 map["StrategyType"] = self.strategyType!
+            }
+            if self.vSwitchIds != nil {
+                map["VSwitchIds"] = self.vSwitchIds!
             }
             return map
         }
@@ -1845,6 +1965,9 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
             if dict.keys.contains("IpExpireMinutes") {
                 self.ipExpireMinutes = dict["IpExpireMinutes"] as! Int32
             }
+            if dict.keys.contains("OfficeSiteId") {
+                self.officeSiteId = dict["OfficeSiteId"] as! String
+            }
             if dict.keys.contains("Routes") {
                 var tmp : [CreateAppInstanceGroupRequest.Network.Routes] = []
                 for v in dict["Routes"] as! [Any] {
@@ -1858,6 +1981,9 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
             }
             if dict.keys.contains("StrategyType") {
                 self.strategyType = dict["StrategyType"] as! String
+            }
+            if dict.keys.contains("VSwitchIds") {
+                self.vSwitchIds = dict["VSwitchIds"] as! [String]
             }
         }
     }
@@ -4521,6 +4647,8 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
 
         public var nodePool: [GetAppInstanceGroupResponseBody.AppInstanceGroupModels.NodePool]?
 
+        public var officeSiteId: String?
+
         public var osType: String?
 
         public var otaInfo: GetAppInstanceGroupResponseBody.AppInstanceGroupModels.OtaInfo?
@@ -4621,6 +4749,9 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["NodePool"] = tmp
+            }
+            if self.officeSiteId != nil {
+                map["OfficeSiteId"] = self.officeSiteId!
             }
             if self.osType != nil {
                 map["OsType"] = self.osType!
@@ -4734,6 +4865,9 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.nodePool = tmp
+            }
+            if dict.keys.contains("OfficeSiteId") {
+                self.officeSiteId = dict["OfficeSiteId"] as! String
             }
             if dict.keys.contains("OsType") {
                 self.osType = dict["OsType"] as! String
@@ -7087,6 +7221,8 @@ public class ListAppInstanceGroupRequest : Tea.TeaModel {
 
     public var nodeInstanceType: String?
 
+    public var officeSiteId: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -7126,6 +7262,9 @@ public class ListAppInstanceGroupRequest : Tea.TeaModel {
         if self.nodeInstanceType != nil {
             map["NodeInstanceType"] = self.nodeInstanceType!
         }
+        if self.officeSiteId != nil {
+            map["OfficeSiteId"] = self.officeSiteId!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -7159,6 +7298,9 @@ public class ListAppInstanceGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("NodeInstanceType") {
             self.nodeInstanceType = dict["NodeInstanceType"] as! String
+        }
+        if dict.keys.contains("OfficeSiteId") {
+            self.officeSiteId = dict["OfficeSiteId"] as! String
         }
         if dict.keys.contains("PageNumber") {
             self.pageNumber = dict["PageNumber"] as! Int32
@@ -7601,6 +7743,8 @@ public class ListAppInstanceGroupResponseBody : Tea.TeaModel {
 
         public var nodePool: [ListAppInstanceGroupResponseBody.AppInstanceGroupModels.NodePool]?
 
+        public var officeSiteId: String?
+
         public var osType: String?
 
         public var otaInfo: ListAppInstanceGroupResponseBody.AppInstanceGroupModels.OtaInfo?
@@ -7695,6 +7839,9 @@ public class ListAppInstanceGroupResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["NodePool"] = tmp
+            }
+            if self.officeSiteId != nil {
+                map["OfficeSiteId"] = self.officeSiteId!
             }
             if self.osType != nil {
                 map["OsType"] = self.osType!
@@ -7802,6 +7949,9 @@ public class ListAppInstanceGroupResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.nodePool = tmp
+            }
+            if dict.keys.contains("OfficeSiteId") {
+                self.officeSiteId = dict["OfficeSiteId"] as! String
             }
             if dict.keys.contains("OsType") {
                 self.osType = dict["OsType"] as! String
@@ -8303,9 +8453,21 @@ public class ListAppInstancesResponse : Tea.TeaModel {
 public class ListNodeInstanceTypeRequest : Tea.TeaModel {
     public var bizRegionId: String?
 
+    public var cpu: Double?
+
+    public var gpu: Double?
+
+    public var gpuMemory: Int32?
+
     public var language: String?
 
+    public var memory: Int32?
+
     public var nodeInstanceType: String?
+
+    public var nodeInstanceTypeFamily: String?
+
+    public var orderBy: String?
 
     public var osType: String?
 
@@ -8314,6 +8476,8 @@ public class ListNodeInstanceTypeRequest : Tea.TeaModel {
     public var pageSize: Int32?
 
     public var productType: String?
+
+    public var sortType: String?
 
     public override init() {
         super.init()
@@ -8332,11 +8496,29 @@ public class ListNodeInstanceTypeRequest : Tea.TeaModel {
         if self.bizRegionId != nil {
             map["BizRegionId"] = self.bizRegionId!
         }
+        if self.cpu != nil {
+            map["Cpu"] = self.cpu!
+        }
+        if self.gpu != nil {
+            map["Gpu"] = self.gpu!
+        }
+        if self.gpuMemory != nil {
+            map["GpuMemory"] = self.gpuMemory!
+        }
         if self.language != nil {
             map["Language"] = self.language!
         }
+        if self.memory != nil {
+            map["Memory"] = self.memory!
+        }
         if self.nodeInstanceType != nil {
             map["NodeInstanceType"] = self.nodeInstanceType!
+        }
+        if self.nodeInstanceTypeFamily != nil {
+            map["NodeInstanceTypeFamily"] = self.nodeInstanceTypeFamily!
+        }
+        if self.orderBy != nil {
+            map["OrderBy"] = self.orderBy!
         }
         if self.osType != nil {
             map["OsType"] = self.osType!
@@ -8350,6 +8532,9 @@ public class ListNodeInstanceTypeRequest : Tea.TeaModel {
         if self.productType != nil {
             map["ProductType"] = self.productType!
         }
+        if self.sortType != nil {
+            map["SortType"] = self.sortType!
+        }
         return map
     }
 
@@ -8357,11 +8542,29 @@ public class ListNodeInstanceTypeRequest : Tea.TeaModel {
         if dict.keys.contains("BizRegionId") {
             self.bizRegionId = dict["BizRegionId"] as! String
         }
+        if dict.keys.contains("Cpu") {
+            self.cpu = dict["Cpu"] as! Double
+        }
+        if dict.keys.contains("Gpu") {
+            self.gpu = dict["Gpu"] as! Double
+        }
+        if dict.keys.contains("GpuMemory") {
+            self.gpuMemory = dict["GpuMemory"] as! Int32
+        }
         if dict.keys.contains("Language") {
             self.language = dict["Language"] as! String
         }
+        if dict.keys.contains("Memory") {
+            self.memory = dict["Memory"] as! Int32
+        }
         if dict.keys.contains("NodeInstanceType") {
             self.nodeInstanceType = dict["NodeInstanceType"] as! String
+        }
+        if dict.keys.contains("NodeInstanceTypeFamily") {
+            self.nodeInstanceTypeFamily = dict["NodeInstanceTypeFamily"] as! String
+        }
+        if dict.keys.contains("OrderBy") {
+            self.orderBy = dict["OrderBy"] as! String
         }
         if dict.keys.contains("OsType") {
             self.osType = dict["OsType"] as! String
@@ -8374,6 +8577,9 @@ public class ListNodeInstanceTypeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ProductType") {
             self.productType = dict["ProductType"] as! String
+        }
+        if dict.keys.contains("SortType") {
+            self.sortType = dict["SortType"] as! String
         }
     }
 }
