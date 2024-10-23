@@ -69382,6 +69382,8 @@ public class QueryGroupLiveInfoResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var staffId: String?
+
     public var startTime: Int64?
 
     public var subscribeCount: Int32?
@@ -69435,6 +69437,9 @@ public class QueryGroupLiveInfoResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
+        if self.staffId != nil {
+            map["staffId"] = self.staffId!
+        }
         if self.startTime != nil {
             map["startTime"] = self.startTime!
         }
@@ -69483,6 +69488,9 @@ public class QueryGroupLiveInfoResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("requestId") {
             self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("staffId") {
+            self.staffId = dict["staffId"] as! String
         }
         if dict.keys.contains("startTime") {
             self.startTime = dict["startTime"] as! Int64

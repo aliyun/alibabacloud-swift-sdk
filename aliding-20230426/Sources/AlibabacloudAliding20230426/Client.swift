@@ -9141,14 +9141,13 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
             request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
         }
-        var query: [String: Any] = [:]
+        var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.anchorUnionId)) {
-            query["AnchorUnionId"] = request.anchorUnionId ?? "";
+            body["AnchorUnionId"] = request.anchorUnionId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.liveUuid)) {
-            query["LiveUuid"] = request.liveUuid ?? "";
+            body["LiveUuid"] = request.liveUuid ?? "";
         }
-        var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
             body["TenantContext"] = request.tenantContextShrink ?? "";
         }
@@ -9161,7 +9160,6 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": realHeaders as! [String: String],
-            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -9169,7 +9167,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "version": "2023-04-26",
             "protocol": "HTTPS",
             "pathname": "/dingtalk/v1/ysp/queryGroupLiveInfo",
-            "method": "GET",
+            "method": "POST",
             "authType": "AK",
             "style": "ROA",
             "reqBodyType": "formData",
