@@ -17838,6 +17838,16 @@ public class DescribePolicyInstancesResponse : Tea.TeaModel {
 
         public var policyAction: String?
 
+        public var created: String?
+
+        public var updated: String?
+
+        public var resourceId: String?
+
+        public var totalViolations: Int64?
+
+        public var isDeleted: Int64?
+
         public override init() {
             super.init()
         }
@@ -17882,6 +17892,21 @@ public class DescribePolicyInstancesResponse : Tea.TeaModel {
             if self.policyAction != nil {
                 map["policy_action"] = self.policyAction!
             }
+            if self.created != nil {
+                map["Created"] = self.created!
+            }
+            if self.updated != nil {
+                map["Updated"] = self.updated!
+            }
+            if self.resourceId != nil {
+                map["resource_id"] = self.resourceId!
+            }
+            if self.totalViolations != nil {
+                map["total_violations"] = self.totalViolations!
+            }
+            if self.isDeleted != nil {
+                map["is_deleted"] = self.isDeleted!
+            }
             return map
         }
 
@@ -17915,6 +17940,21 @@ public class DescribePolicyInstancesResponse : Tea.TeaModel {
             }
             if dict.keys.contains("policy_action") {
                 self.policyAction = dict["policy_action"] as! String
+            }
+            if dict.keys.contains("Created") {
+                self.created = dict["Created"] as! String
+            }
+            if dict.keys.contains("Updated") {
+                self.updated = dict["Updated"] as! String
+            }
+            if dict.keys.contains("resource_id") {
+                self.resourceId = dict["resource_id"] as! String
+            }
+            if dict.keys.contains("total_violations") {
+                self.totalViolations = dict["total_violations"] as! Int64
+            }
+            if dict.keys.contains("is_deleted") {
+                self.isDeleted = dict["is_deleted"] as! Int64
             }
         }
     }
