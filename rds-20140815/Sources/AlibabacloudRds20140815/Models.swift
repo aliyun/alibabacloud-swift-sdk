@@ -1245,6 +1245,163 @@ public class CalculateDBInstanceWeightResponse : Tea.TeaModel {
     }
 }
 
+public class CancelActiveOperationTasksRequest : Tea.TeaModel {
+    public var ids: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var securityToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ids != nil {
+            map["Ids"] = self.ids!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Ids") {
+            self.ids = dict["Ids"] as! String
+        }
+        if dict.keys.contains("OwnerAccount") {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("SecurityToken") {
+            self.securityToken = dict["SecurityToken"] as! String
+        }
+    }
+}
+
+public class CancelActiveOperationTasksResponseBody : Tea.TeaModel {
+    public var ids: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ids != nil {
+            map["Ids"] = self.ids!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Ids") {
+            self.ids = dict["Ids"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CancelActiveOperationTasksResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CancelActiveOperationTasksResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CancelActiveOperationTasksResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CheckAccountNameAvailableRequest : Tea.TeaModel {
     public var accountName: String?
 
@@ -51245,6 +51402,8 @@ public class DescribeRCInstanceAttributeResponseBody : Tea.TeaModel {
 
     public var innerIpAddress: DescribeRCInstanceAttributeResponseBody.InnerIpAddress?
 
+    public var instanceChargeType: String?
+
     public var instanceId: String?
 
     public var instanceName: String?
@@ -51272,6 +51431,8 @@ public class DescribeRCInstanceAttributeResponseBody : Tea.TeaModel {
     public var regionId: String?
 
     public var requestId: String?
+
+    public var resourceGroupId: String?
 
     public var securityGroupIds: DescribeRCInstanceAttributeResponseBody.SecurityGroupIds?
 
@@ -51360,6 +51521,9 @@ public class DescribeRCInstanceAttributeResponseBody : Tea.TeaModel {
         if self.innerIpAddress != nil {
             map["InnerIpAddress"] = self.innerIpAddress?.toMap()
         }
+        if self.instanceChargeType != nil {
+            map["InstanceChargeType"] = self.instanceChargeType!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -51401,6 +51565,9 @@ public class DescribeRCInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
         }
         if self.securityGroupIds != nil {
             map["SecurityGroupIds"] = self.securityGroupIds?.toMap()
@@ -51486,6 +51653,9 @@ public class DescribeRCInstanceAttributeResponseBody : Tea.TeaModel {
             model.fromMap(dict["InnerIpAddress"] as! [String: Any])
             self.innerIpAddress = model
         }
+        if dict.keys.contains("InstanceChargeType") {
+            self.instanceChargeType = dict["InstanceChargeType"] as! String
+        }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
         }
@@ -51531,6 +51701,9 @@ public class DescribeRCInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("SecurityGroupIds") {
             var model = DescribeRCInstanceAttributeResponseBody.SecurityGroupIds()
@@ -51618,6 +51791,8 @@ public class DescribeRCInstancesRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var tag: String?
+
     public var vpcId: String?
 
     public override init() {
@@ -51646,6 +51821,9 @@ public class DescribeRCInstancesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.tag != nil {
+            map["Tag"] = self.tag!
+        }
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
         }
@@ -51665,6 +51843,9 @@ public class DescribeRCInstancesRequest : Tea.TeaModel {
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
         }
+        if dict.keys.contains("Tag") {
+            self.tag = dict["Tag"] as! String
+        }
         if dict.keys.contains("VpcId") {
             self.vpcId = dict["VpcId"] as! String
         }
@@ -51675,6 +51856,8 @@ public class DescribeRCInstancesResponseBody : Tea.TeaModel {
     public class RCInstances : Tea.TeaModel {
         public var clusterName: String?
 
+        public var createMode: String?
+
         public var dbType: String?
 
         public var description_: String?
@@ -51684,6 +51867,8 @@ public class DescribeRCInstancesResponseBody : Tea.TeaModel {
         public var hostIp: String?
 
         public var hostName: String?
+
+        public var instanceChargeType: String?
 
         public var instanceId: String?
 
@@ -51710,6 +51895,9 @@ public class DescribeRCInstancesResponseBody : Tea.TeaModel {
             if self.clusterName != nil {
                 map["ClusterName"] = self.clusterName!
             }
+            if self.createMode != nil {
+                map["CreateMode"] = self.createMode!
+            }
             if self.dbType != nil {
                 map["DbType"] = self.dbType!
             }
@@ -51724,6 +51912,9 @@ public class DescribeRCInstancesResponseBody : Tea.TeaModel {
             }
             if self.hostName != nil {
                 map["HostName"] = self.hostName!
+            }
+            if self.instanceChargeType != nil {
+                map["InstanceChargeType"] = self.instanceChargeType!
             }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
@@ -51744,6 +51935,9 @@ public class DescribeRCInstancesResponseBody : Tea.TeaModel {
             if dict.keys.contains("ClusterName") {
                 self.clusterName = dict["ClusterName"] as! String
             }
+            if dict.keys.contains("CreateMode") {
+                self.createMode = dict["CreateMode"] as! String
+            }
             if dict.keys.contains("DbType") {
                 self.dbType = dict["DbType"] as! String
             }
@@ -51758,6 +51952,9 @@ public class DescribeRCInstancesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("HostName") {
                 self.hostName = dict["HostName"] as! String
+            }
+            if dict.keys.contains("InstanceChargeType") {
+                self.instanceChargeType = dict["InstanceChargeType"] as! String
             }
             if dict.keys.contains("InstanceId") {
                 self.instanceId = dict["InstanceId"] as! String
@@ -69597,6 +69794,8 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
 
     public var payType: String?
 
+    public var readOnlyDBInstanceClass: String?
+
     public var resourceGroupId: String?
 
     public var resourceOwnerAccount: String?
@@ -69684,6 +69883,9 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
         }
         if self.payType != nil {
             map["PayType"] = self.payType!
+        }
+        if self.readOnlyDBInstanceClass != nil {
+            map["ReadOnlyDBInstanceClass"] = self.readOnlyDBInstanceClass!
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
@@ -69773,6 +69975,9 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
         if dict.keys.contains("PayType") {
             self.payType = dict["PayType"] as! String
         }
+        if dict.keys.contains("ReadOnlyDBInstanceClass") {
+            self.readOnlyDBInstanceClass = dict["ReadOnlyDBInstanceClass"] as! String
+        }
         if dict.keys.contains("ResourceGroupId") {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
@@ -69845,6 +70050,8 @@ public class ModifyDBInstanceSpecShrinkRequest : Tea.TeaModel {
     public var ownerId: Int64?
 
     public var payType: String?
+
+    public var readOnlyDBInstanceClass: String?
 
     public var resourceGroupId: String?
 
@@ -69933,6 +70140,9 @@ public class ModifyDBInstanceSpecShrinkRequest : Tea.TeaModel {
         if self.payType != nil {
             map["PayType"] = self.payType!
         }
+        if self.readOnlyDBInstanceClass != nil {
+            map["ReadOnlyDBInstanceClass"] = self.readOnlyDBInstanceClass!
+        }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
@@ -70020,6 +70230,9 @@ public class ModifyDBInstanceSpecShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PayType") {
             self.payType = dict["PayType"] as! String
+        }
+        if dict.keys.contains("ReadOnlyDBInstanceClass") {
+            self.readOnlyDBInstanceClass = dict["ReadOnlyDBInstanceClass"] as! String
         }
         if dict.keys.contains("ResourceGroupId") {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
@@ -80943,6 +81156,43 @@ public class RunRCInstancesRequest : Tea.TeaModel {
             }
         }
     }
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var amount: Int32?
 
     public var autoPay: Bool?
@@ -80951,6 +81201,8 @@ public class RunRCInstancesRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var createMode: String?
+
     public var dataDisk: [RunRCInstancesRequest.DataDisk]?
 
     public var deploymentSetId: String?
@@ -80958,6 +81210,8 @@ public class RunRCInstancesRequest : Tea.TeaModel {
     public var description_: String?
 
     public var dryRun: Bool?
+
+    public var hostName: String?
 
     public var imageId: String?
 
@@ -80983,11 +81237,15 @@ public class RunRCInstancesRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var securityEnhancementStrategy: String?
 
     public var securityGroupId: String?
 
     public var systemDisk: RunRCInstancesRequest.SystemDisk?
+
+    public var tag: [RunRCInstancesRequest.Tag]?
 
     public var vSwitchId: String?
 
@@ -81020,6 +81278,9 @@ public class RunRCInstancesRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.createMode != nil {
+            map["CreateMode"] = self.createMode!
+        }
         if self.dataDisk != nil {
             var tmp : [Any] = []
             for k in self.dataDisk! {
@@ -81035,6 +81296,9 @@ public class RunRCInstancesRequest : Tea.TeaModel {
         }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
+        }
+        if self.hostName != nil {
+            map["HostName"] = self.hostName!
         }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
@@ -81072,6 +81336,9 @@ public class RunRCInstancesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.securityEnhancementStrategy != nil {
             map["SecurityEnhancementStrategy"] = self.securityEnhancementStrategy!
         }
@@ -81080,6 +81347,13 @@ public class RunRCInstancesRequest : Tea.TeaModel {
         }
         if self.systemDisk != nil {
             map["SystemDisk"] = self.systemDisk?.toMap()
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
         }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
@@ -81103,6 +81377,9 @@ public class RunRCInstancesRequest : Tea.TeaModel {
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
         }
+        if dict.keys.contains("CreateMode") {
+            self.createMode = dict["CreateMode"] as! String
+        }
         if dict.keys.contains("DataDisk") {
             var tmp : [RunRCInstancesRequest.DataDisk] = []
             for v in dict["DataDisk"] as! [Any] {
@@ -81122,6 +81399,9 @@ public class RunRCInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DryRun") {
             self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("HostName") {
+            self.hostName = dict["HostName"] as! String
         }
         if dict.keys.contains("ImageId") {
             self.imageId = dict["ImageId"] as! String
@@ -81159,6 +81439,9 @@ public class RunRCInstancesRequest : Tea.TeaModel {
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
         }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
         if dict.keys.contains("SecurityEnhancementStrategy") {
             self.securityEnhancementStrategy = dict["SecurityEnhancementStrategy"] as! String
         }
@@ -81170,6 +81453,17 @@ public class RunRCInstancesRequest : Tea.TeaModel {
             model.fromMap(dict["SystemDisk"] as! [String: Any])
             self.systemDisk = model
         }
+        if dict.keys.contains("Tag") {
+            var tmp : [RunRCInstancesRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = RunRCInstancesRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
         if dict.keys.contains("VSwitchId") {
             self.vSwitchId = dict["VSwitchId"] as! String
         }
@@ -81180,6 +81474,43 @@ public class RunRCInstancesRequest : Tea.TeaModel {
 }
 
 public class RunRCInstancesShrinkRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var amount: Int32?
 
     public var autoPay: Bool?
@@ -81188,6 +81519,8 @@ public class RunRCInstancesShrinkRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var createMode: String?
+
     public var dataDiskShrink: String?
 
     public var deploymentSetId: String?
@@ -81195,6 +81528,8 @@ public class RunRCInstancesShrinkRequest : Tea.TeaModel {
     public var description_: String?
 
     public var dryRun: Bool?
+
+    public var hostName: String?
 
     public var imageId: String?
 
@@ -81220,11 +81555,15 @@ public class RunRCInstancesShrinkRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var securityEnhancementStrategy: String?
 
     public var securityGroupId: String?
 
     public var systemDiskShrink: String?
+
+    public var tag: [RunRCInstancesShrinkRequest.Tag]?
 
     public var vSwitchId: String?
 
@@ -81256,6 +81595,9 @@ public class RunRCInstancesShrinkRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.createMode != nil {
+            map["CreateMode"] = self.createMode!
+        }
         if self.dataDiskShrink != nil {
             map["DataDisk"] = self.dataDiskShrink!
         }
@@ -81267,6 +81609,9 @@ public class RunRCInstancesShrinkRequest : Tea.TeaModel {
         }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
+        }
+        if self.hostName != nil {
+            map["HostName"] = self.hostName!
         }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
@@ -81304,6 +81649,9 @@ public class RunRCInstancesShrinkRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.securityEnhancementStrategy != nil {
             map["SecurityEnhancementStrategy"] = self.securityEnhancementStrategy!
         }
@@ -81312,6 +81660,13 @@ public class RunRCInstancesShrinkRequest : Tea.TeaModel {
         }
         if self.systemDiskShrink != nil {
             map["SystemDisk"] = self.systemDiskShrink!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
         }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
@@ -81335,6 +81690,9 @@ public class RunRCInstancesShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
         }
+        if dict.keys.contains("CreateMode") {
+            self.createMode = dict["CreateMode"] as! String
+        }
         if dict.keys.contains("DataDisk") {
             self.dataDiskShrink = dict["DataDisk"] as! String
         }
@@ -81346,6 +81704,9 @@ public class RunRCInstancesShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DryRun") {
             self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("HostName") {
+            self.hostName = dict["HostName"] as! String
         }
         if dict.keys.contains("ImageId") {
             self.imageId = dict["ImageId"] as! String
@@ -81383,6 +81744,9 @@ public class RunRCInstancesShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
         }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
         if dict.keys.contains("SecurityEnhancementStrategy") {
             self.securityEnhancementStrategy = dict["SecurityEnhancementStrategy"] as! String
         }
@@ -81391,6 +81755,17 @@ public class RunRCInstancesShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SystemDisk") {
             self.systemDiskShrink = dict["SystemDisk"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [RunRCInstancesShrinkRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = RunRCInstancesShrinkRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
         if dict.keys.contains("VSwitchId") {
             self.vSwitchId = dict["VSwitchId"] as! String
