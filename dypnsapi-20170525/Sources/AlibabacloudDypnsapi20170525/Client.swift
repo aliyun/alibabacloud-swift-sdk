@@ -324,6 +324,18 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getAuthTokenWithOptions(_ request: GetAuthTokenRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAuthTokenResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizType)) {
+            query["BizType"] = request.bizType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.cmApiCode)) {
+            query["CmApiCode"] = request.cmApiCode!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ctApiCode)) {
+            query["CtApiCode"] = request.ctApiCode!;
+        }
+        if (!TeaUtils.Client.isUnset(request.cuApiCode)) {
+            query["CuApiCode"] = request.cuApiCode!;
+        }
         if (!TeaUtils.Client.isUnset(request.origin)) {
             query["Origin"] = request.origin ?? "";
         }
@@ -341,6 +353,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.url)) {
             query["Url"] = request.url ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

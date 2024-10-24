@@ -1215,6 +1215,14 @@ public class DescribeVerifySchemeResponse : Tea.TeaModel {
 }
 
 public class GetAuthTokenRequest : Tea.TeaModel {
+    public var bizType: Int32?
+
+    public var cmApiCode: Int32?
+
+    public var ctApiCode: Int32?
+
+    public var cuApiCode: Int32?
+
     public var origin: String?
 
     public var ownerId: Int64?
@@ -1226,6 +1234,8 @@ public class GetAuthTokenRequest : Tea.TeaModel {
     public var sceneCode: String?
 
     public var url: String?
+
+    public var version: String?
 
     public override init() {
         super.init()
@@ -1241,6 +1251,18 @@ public class GetAuthTokenRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bizType != nil {
+            map["BizType"] = self.bizType!
+        }
+        if self.cmApiCode != nil {
+            map["CmApiCode"] = self.cmApiCode!
+        }
+        if self.ctApiCode != nil {
+            map["CtApiCode"] = self.ctApiCode!
+        }
+        if self.cuApiCode != nil {
+            map["CuApiCode"] = self.cuApiCode!
+        }
         if self.origin != nil {
             map["Origin"] = self.origin!
         }
@@ -1259,10 +1281,25 @@ public class GetAuthTokenRequest : Tea.TeaModel {
         if self.url != nil {
             map["Url"] = self.url!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BizType") {
+            self.bizType = dict["BizType"] as! Int32
+        }
+        if dict.keys.contains("CmApiCode") {
+            self.cmApiCode = dict["CmApiCode"] as! Int32
+        }
+        if dict.keys.contains("CtApiCode") {
+            self.ctApiCode = dict["CtApiCode"] as! Int32
+        }
+        if dict.keys.contains("CuApiCode") {
+            self.cuApiCode = dict["CuApiCode"] as! Int32
+        }
         if dict.keys.contains("Origin") {
             self.origin = dict["Origin"] as! String
         }
@@ -1280,6 +1317,9 @@ public class GetAuthTokenRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Url") {
             self.url = dict["Url"] as! String
+        }
+        if dict.keys.contains("Version") {
+            self.version = dict["Version"] as! String
         }
     }
 }
