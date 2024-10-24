@@ -148,6 +148,8 @@ public class AddImageRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var imageType: String?
+
     public var imageVersion: String?
 
     public var name: String?
@@ -176,6 +178,9 @@ public class AddImageRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.imageType != nil {
+            map["ImageType"] = self.imageType!
+        }
         if self.imageVersion != nil {
             map["ImageVersion"] = self.imageVersion!
         }
@@ -197,6 +202,9 @@ public class AddImageRequest : Tea.TeaModel {
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
         }
+        if dict.keys.contains("ImageType") {
+            self.imageType = dict["ImageType"] as! String
+        }
         if dict.keys.contains("ImageVersion") {
             self.imageVersion = dict["ImageVersion"] as! String
         }
@@ -215,6 +223,8 @@ public class AddImageShrinkRequest : Tea.TeaModel {
     public var containerImageSpecShrink: String?
 
     public var description_: String?
+
+    public var imageType: String?
 
     public var imageVersion: String?
 
@@ -242,6 +252,9 @@ public class AddImageShrinkRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.imageType != nil {
+            map["ImageType"] = self.imageType!
+        }
         if self.imageVersion != nil {
             map["ImageVersion"] = self.imageVersion!
         }
@@ -260,6 +273,9 @@ public class AddImageShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("ImageType") {
+            self.imageType = dict["ImageType"] as! String
         }
         if dict.keys.contains("ImageVersion") {
             self.imageVersion = dict["ImageVersion"] as! String
@@ -371,6 +387,8 @@ public class AddImageResponse : Tea.TeaModel {
 public class CreateJobRequest : Tea.TeaModel {
     public class DeploymentPolicy : Tea.TeaModel {
         public class Network : Tea.TeaModel {
+            public var enableExternalIpAddress: Bool?
+
             public var vswitch: [String]?
 
             public override init() {
@@ -387,6 +405,9 @@ public class CreateJobRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.enableExternalIpAddress != nil {
+                    map["EnableExternalIpAddress"] = self.enableExternalIpAddress!
+                }
                 if self.vswitch != nil {
                     map["Vswitch"] = self.vswitch!
                 }
@@ -394,6 +415,9 @@ public class CreateJobRequest : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EnableExternalIpAddress") {
+                    self.enableExternalIpAddress = dict["EnableExternalIpAddress"] as! Bool
+                }
                 if dict.keys.contains("Vswitch") {
                     self.vswitch = dict["Vswitch"] as! [String]
                 }
@@ -2420,6 +2444,8 @@ public class GetJobResponseBody : Tea.TeaModel {
     public class JobInfo : Tea.TeaModel {
         public class DeploymentPolicy : Tea.TeaModel {
             public class Network : Tea.TeaModel {
+                public var enableExternalIpAddress: Bool?
+
                 public var vswitch: [String]?
 
                 public override init() {
@@ -2436,6 +2462,9 @@ public class GetJobResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.enableExternalIpAddress != nil {
+                        map["EnableExternalIpAddress"] = self.enableExternalIpAddress!
+                    }
                     if self.vswitch != nil {
                         map["Vswitch"] = self.vswitch!
                     }
@@ -2443,6 +2472,9 @@ public class GetJobResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("EnableExternalIpAddress") {
+                        self.enableExternalIpAddress = dict["EnableExternalIpAddress"] as! Bool
+                    }
                     if dict.keys.contains("Vswitch") {
                         self.vswitch = dict["Vswitch"] as! [String]
                     }
@@ -3155,6 +3187,8 @@ public class ListExecutorsRequest : Tea.TeaModel {
 
         public var jobName: String?
 
+        public var status: [String]?
+
         public var timeCreatedAfter: Int32?
 
         public var timeCreatedBefore: Int32?
@@ -3182,6 +3216,9 @@ public class ListExecutorsRequest : Tea.TeaModel {
             if self.jobName != nil {
                 map["JobName"] = self.jobName!
             }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
             if self.timeCreatedAfter != nil {
                 map["TimeCreatedAfter"] = self.timeCreatedAfter!
             }
@@ -3200,6 +3237,9 @@ public class ListExecutorsRequest : Tea.TeaModel {
             }
             if dict.keys.contains("JobName") {
                 self.jobName = dict["JobName"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! [String]
             }
             if dict.keys.contains("TimeCreatedAfter") {
                 self.timeCreatedAfter = dict["TimeCreatedAfter"] as! Int32
@@ -3305,6 +3345,100 @@ public class ListExecutorsShrinkRequest : Tea.TeaModel {
 
 public class ListExecutorsResponseBody : Tea.TeaModel {
     public class Executors : Tea.TeaModel {
+        public class Resource : Tea.TeaModel {
+            public class Disks : Tea.TeaModel {
+                public var size: Int32?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.size != nil {
+                        map["Size"] = self.size!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Size") {
+                        self.size = dict["Size"] as! Int32
+                    }
+                    if dict.keys.contains("Type") {
+                        self.type = dict["Type"] as! String
+                    }
+                }
+            }
+            public var cores: Double?
+
+            public var disks: [ListExecutorsResponseBody.Executors.Resource.Disks]?
+
+            public var memory: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cores != nil {
+                    map["Cores"] = self.cores!
+                }
+                if self.disks != nil {
+                    var tmp : [Any] = []
+                    for k in self.disks! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Disks"] = tmp
+                }
+                if self.memory != nil {
+                    map["Memory"] = self.memory!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Cores") {
+                    self.cores = dict["Cores"] as! Double
+                }
+                if dict.keys.contains("Disks") {
+                    var tmp : [ListExecutorsResponseBody.Executors.Resource.Disks] = []
+                    for v in dict["Disks"] as! [Any] {
+                        var model = ListExecutorsResponseBody.Executors.Resource.Disks()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.disks = tmp
+                }
+                if dict.keys.contains("Memory") {
+                    self.memory = dict["Memory"] as! Double
+                }
+            }
+        }
         public var arrayIndex: Int32?
 
         public var createTime: String?
@@ -3312,6 +3446,8 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
         public var endTime: String?
 
         public var executorId: String?
+
+        public var externalIpAddress: [String]?
 
         public var hostName: [String]?
 
@@ -3323,11 +3459,19 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
 
         public var jobName: String?
 
+        public var resource: ListExecutorsResponseBody.Executors.Resource?
+
+        public var resourceType: String?
+
         public var status: String?
 
         public var statusReason: String?
 
         public var taskName: String?
+
+        public var taskSustainable: Bool?
+
+        public var vswitchId: String?
 
         public override init() {
             super.init()
@@ -3339,6 +3483,7 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.resource?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -3355,6 +3500,9 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
             if self.executorId != nil {
                 map["ExecutorId"] = self.executorId!
             }
+            if self.externalIpAddress != nil {
+                map["ExternalIpAddress"] = self.externalIpAddress!
+            }
             if self.hostName != nil {
                 map["HostName"] = self.hostName!
             }
@@ -3370,6 +3518,12 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
             if self.jobName != nil {
                 map["JobName"] = self.jobName!
             }
+            if self.resource != nil {
+                map["Resource"] = self.resource?.toMap()
+            }
+            if self.resourceType != nil {
+                map["ResourceType"] = self.resourceType!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -3378,6 +3532,12 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
             }
             if self.taskName != nil {
                 map["TaskName"] = self.taskName!
+            }
+            if self.taskSustainable != nil {
+                map["TaskSustainable"] = self.taskSustainable!
+            }
+            if self.vswitchId != nil {
+                map["VswitchId"] = self.vswitchId!
             }
             return map
         }
@@ -3395,6 +3555,9 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
             if dict.keys.contains("ExecutorId") {
                 self.executorId = dict["ExecutorId"] as! String
             }
+            if dict.keys.contains("ExternalIpAddress") {
+                self.externalIpAddress = dict["ExternalIpAddress"] as! [String]
+            }
             if dict.keys.contains("HostName") {
                 self.hostName = dict["HostName"] as! [String]
             }
@@ -3410,6 +3573,14 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
             if dict.keys.contains("JobName") {
                 self.jobName = dict["JobName"] as! String
             }
+            if dict.keys.contains("Resource") {
+                var model = ListExecutorsResponseBody.Executors.Resource()
+                model.fromMap(dict["Resource"] as! [String: Any])
+                self.resource = model
+            }
+            if dict.keys.contains("ResourceType") {
+                self.resourceType = dict["ResourceType"] as! String
+            }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
             }
@@ -3418,6 +3589,12 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("TaskName") {
                 self.taskName = dict["TaskName"] as! String
+            }
+            if dict.keys.contains("TaskSustainable") {
+                self.taskSustainable = dict["TaskSustainable"] as! Bool
+            }
+            if dict.keys.contains("VswitchId") {
+                self.vswitchId = dict["VswitchId"] as! String
             }
         }
     }
@@ -4032,6 +4209,8 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
 
         public var executorId: String?
 
+        public var externalIpAddress: [String]?
+
         public var hostName: [String]?
 
         public var ipAddress: [String]?
@@ -4066,6 +4245,9 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
             if self.executorId != nil {
                 map["ExecutorId"] = self.executorId!
             }
+            if self.externalIpAddress != nil {
+                map["ExternalIpAddress"] = self.externalIpAddress!
+            }
             if self.hostName != nil {
                 map["HostName"] = self.hostName!
             }
@@ -4093,6 +4275,9 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ExecutorId") {
                 self.executorId = dict["ExecutorId"] as! String
+            }
+            if dict.keys.contains("ExternalIpAddress") {
+                self.externalIpAddress = dict["ExternalIpAddress"] as! [String]
             }
             if dict.keys.contains("HostName") {
                 self.hostName = dict["HostName"] as! [String]
@@ -4704,6 +4889,8 @@ public class ListJobsResponse : Tea.TeaModel {
 public class RemoveImageRequest : Tea.TeaModel {
     public var imageId: String?
 
+    public var imageType: String?
+
     public override init() {
         super.init()
     }
@@ -4721,12 +4908,18 @@ public class RemoveImageRequest : Tea.TeaModel {
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
         }
+        if self.imageType != nil {
+            map["ImageType"] = self.imageType!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ImageId") {
             self.imageId = dict["ImageId"] as! String
+        }
+        if dict.keys.contains("ImageType") {
+            self.imageType = dict["ImageType"] as! String
         }
     }
 }

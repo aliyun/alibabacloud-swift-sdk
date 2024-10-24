@@ -41,6 +41,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.imageType)) {
+            query["ImageType"] = request.imageType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.imageVersion)) {
             query["ImageVersion"] = request.imageVersion ?? "";
         }
@@ -512,6 +515,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.imageId)) {
             query["ImageId"] = request.imageId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageType)) {
+            query["ImageType"] = request.imageType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
