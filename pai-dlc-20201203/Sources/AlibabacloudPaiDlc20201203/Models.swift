@@ -2089,6 +2089,10 @@ public class JobItem : Tea.TeaModel {
             }
         }
     }
+    public var accessibility: String?
+
+    public var clusterId: String?
+
     public var codeSource: JobItem.CodeSource?
 
     public var credentialConfig: CredentialConfig?
@@ -2098,6 +2102,10 @@ public class JobItem : Tea.TeaModel {
     public var displayName: String?
 
     public var duration: Int64?
+
+    public var elasticSpec: JobElasticSpec?
+
+    public var enablePreemptibleJob: Bool?
 
     public var enabledDebugger: Bool?
 
@@ -2109,6 +2117,8 @@ public class JobItem : Tea.TeaModel {
 
     public var gmtFinishTime: String?
 
+    public var gmtModifiedTime: String?
+
     public var gmtRunningTime: String?
 
     public var gmtStoppedTime: String?
@@ -2117,11 +2127,21 @@ public class JobItem : Tea.TeaModel {
 
     public var gmtSuccessedTime: String?
 
+    public var isDeleted: Bool?
+
     public var jobId: String?
+
+    public var jobMaxRunningTimeMinutes: Int64?
 
     public var jobSpecs: [JobSpec]?
 
     public var jobType: String?
+
+    public var nodeCount: String?
+
+    public var nodeNames: [String]?
+
+    public var pods: [PodItem]?
 
     public var priority: Int32?
 
@@ -2129,19 +2149,35 @@ public class JobItem : Tea.TeaModel {
 
     public var reasonMessage: String?
 
+    public var requestCPU: Int64?
+
+    public var requestGPU: String?
+
+    public var requestMemory: String?
+
     public var resourceId: String?
 
     public var resourceLevel: String?
 
     public var resourceName: String?
 
+    public var resourceQuotaName: String?
+
     public var resourceType: String?
+
+    public var restartTimes: String?
 
     public var settings: JobSettings?
 
     public var status: String?
 
+    public var statusHistory: [StatusTransitionItem]?
+
     public var subStatus: String?
+
+    public var systemEnvs: [String: String]?
+
+    public var tenantId: String?
 
     public var thirdpartyLibDir: String?
 
@@ -2153,7 +2189,13 @@ public class JobItem : Tea.TeaModel {
 
     public var userId: String?
 
+    public var userScript: String?
+
+    public var userVpc: String?
+
     public var username: String?
+
+    public var workingDir: String?
 
     public var workspaceId: String?
 
@@ -2171,11 +2213,18 @@ public class JobItem : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.codeSource?.validate()
         try self.credentialConfig?.validate()
+        try self.elasticSpec?.validate()
         try self.settings?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessibility != nil {
+            map["Accessibility"] = self.accessibility!
+        }
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
         if self.codeSource != nil {
             map["CodeSource"] = self.codeSource?.toMap()
         }
@@ -2195,6 +2244,12 @@ public class JobItem : Tea.TeaModel {
         if self.duration != nil {
             map["Duration"] = self.duration!
         }
+        if self.elasticSpec != nil {
+            map["ElasticSpec"] = self.elasticSpec?.toMap()
+        }
+        if self.enablePreemptibleJob != nil {
+            map["EnablePreemptibleJob"] = self.enablePreemptibleJob!
+        }
         if self.enabledDebugger != nil {
             map["EnabledDebugger"] = self.enabledDebugger!
         }
@@ -2210,6 +2265,9 @@ public class JobItem : Tea.TeaModel {
         if self.gmtFinishTime != nil {
             map["GmtFinishTime"] = self.gmtFinishTime!
         }
+        if self.gmtModifiedTime != nil {
+            map["GmtModifiedTime"] = self.gmtModifiedTime!
+        }
         if self.gmtRunningTime != nil {
             map["GmtRunningTime"] = self.gmtRunningTime!
         }
@@ -2222,8 +2280,14 @@ public class JobItem : Tea.TeaModel {
         if self.gmtSuccessedTime != nil {
             map["GmtSuccessedTime"] = self.gmtSuccessedTime!
         }
+        if self.isDeleted != nil {
+            map["IsDeleted"] = self.isDeleted!
+        }
         if self.jobId != nil {
             map["JobId"] = self.jobId!
+        }
+        if self.jobMaxRunningTimeMinutes != nil {
+            map["JobMaxRunningTimeMinutes"] = self.jobMaxRunningTimeMinutes!
         }
         if self.jobSpecs != nil {
             var tmp : [Any] = []
@@ -2235,6 +2299,19 @@ public class JobItem : Tea.TeaModel {
         if self.jobType != nil {
             map["JobType"] = self.jobType!
         }
+        if self.nodeCount != nil {
+            map["NodeCount"] = self.nodeCount!
+        }
+        if self.nodeNames != nil {
+            map["NodeNames"] = self.nodeNames!
+        }
+        if self.pods != nil {
+            var tmp : [Any] = []
+            for k in self.pods! {
+                tmp.append(k.toMap())
+            }
+            map["Pods"] = tmp
+        }
         if self.priority != nil {
             map["Priority"] = self.priority!
         }
@@ -2243,6 +2320,15 @@ public class JobItem : Tea.TeaModel {
         }
         if self.reasonMessage != nil {
             map["ReasonMessage"] = self.reasonMessage!
+        }
+        if self.requestCPU != nil {
+            map["RequestCPU"] = self.requestCPU!
+        }
+        if self.requestGPU != nil {
+            map["RequestGPU"] = self.requestGPU!
+        }
+        if self.requestMemory != nil {
+            map["RequestMemory"] = self.requestMemory!
         }
         if self.resourceId != nil {
             map["ResourceId"] = self.resourceId!
@@ -2253,8 +2339,14 @@ public class JobItem : Tea.TeaModel {
         if self.resourceName != nil {
             map["ResourceName"] = self.resourceName!
         }
+        if self.resourceQuotaName != nil {
+            map["ResourceQuotaName"] = self.resourceQuotaName!
+        }
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
+        }
+        if self.restartTimes != nil {
+            map["RestartTimes"] = self.restartTimes!
         }
         if self.settings != nil {
             map["Settings"] = self.settings?.toMap()
@@ -2262,8 +2354,21 @@ public class JobItem : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.statusHistory != nil {
+            var tmp : [Any] = []
+            for k in self.statusHistory! {
+                tmp.append(k.toMap())
+            }
+            map["StatusHistory"] = tmp
+        }
         if self.subStatus != nil {
             map["SubStatus"] = self.subStatus!
+        }
+        if self.systemEnvs != nil {
+            map["SystemEnvs"] = self.systemEnvs!
+        }
+        if self.tenantId != nil {
+            map["TenantId"] = self.tenantId!
         }
         if self.thirdpartyLibDir != nil {
             map["ThirdpartyLibDir"] = self.thirdpartyLibDir!
@@ -2280,8 +2385,17 @@ public class JobItem : Tea.TeaModel {
         if self.userId != nil {
             map["UserId"] = self.userId!
         }
+        if self.userScript != nil {
+            map["UserScript"] = self.userScript!
+        }
+        if self.userVpc != nil {
+            map["UserVpc"] = self.userVpc!
+        }
         if self.username != nil {
             map["Username"] = self.username!
+        }
+        if self.workingDir != nil {
+            map["WorkingDir"] = self.workingDir!
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -2293,6 +2407,12 @@ public class JobItem : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Accessibility") {
+            self.accessibility = dict["Accessibility"] as! String
+        }
+        if dict.keys.contains("ClusterId") {
+            self.clusterId = dict["ClusterId"] as! String
+        }
         if dict.keys.contains("CodeSource") {
             var model = JobItem.CodeSource()
             model.fromMap(dict["CodeSource"] as! [String: Any])
@@ -2320,6 +2440,14 @@ public class JobItem : Tea.TeaModel {
         if dict.keys.contains("Duration") {
             self.duration = dict["Duration"] as! Int64
         }
+        if dict.keys.contains("ElasticSpec") {
+            var model = JobElasticSpec()
+            model.fromMap(dict["ElasticSpec"] as! [String: Any])
+            self.elasticSpec = model
+        }
+        if dict.keys.contains("EnablePreemptibleJob") {
+            self.enablePreemptibleJob = dict["EnablePreemptibleJob"] as! Bool
+        }
         if dict.keys.contains("EnabledDebugger") {
             self.enabledDebugger = dict["EnabledDebugger"] as! Bool
         }
@@ -2335,6 +2463,9 @@ public class JobItem : Tea.TeaModel {
         if dict.keys.contains("GmtFinishTime") {
             self.gmtFinishTime = dict["GmtFinishTime"] as! String
         }
+        if dict.keys.contains("GmtModifiedTime") {
+            self.gmtModifiedTime = dict["GmtModifiedTime"] as! String
+        }
         if dict.keys.contains("GmtRunningTime") {
             self.gmtRunningTime = dict["GmtRunningTime"] as! String
         }
@@ -2347,8 +2478,14 @@ public class JobItem : Tea.TeaModel {
         if dict.keys.contains("GmtSuccessedTime") {
             self.gmtSuccessedTime = dict["GmtSuccessedTime"] as! String
         }
+        if dict.keys.contains("IsDeleted") {
+            self.isDeleted = dict["IsDeleted"] as! Bool
+        }
         if dict.keys.contains("JobId") {
             self.jobId = dict["JobId"] as! String
+        }
+        if dict.keys.contains("JobMaxRunningTimeMinutes") {
+            self.jobMaxRunningTimeMinutes = dict["JobMaxRunningTimeMinutes"] as! Int64
         }
         if dict.keys.contains("JobSpecs") {
             var tmp : [JobSpec] = []
@@ -2364,6 +2501,23 @@ public class JobItem : Tea.TeaModel {
         if dict.keys.contains("JobType") {
             self.jobType = dict["JobType"] as! String
         }
+        if dict.keys.contains("NodeCount") {
+            self.nodeCount = dict["NodeCount"] as! String
+        }
+        if dict.keys.contains("NodeNames") {
+            self.nodeNames = dict["NodeNames"] as! [String]
+        }
+        if dict.keys.contains("Pods") {
+            var tmp : [PodItem] = []
+            for v in dict["Pods"] as! [Any] {
+                var model = PodItem()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.pods = tmp
+        }
         if dict.keys.contains("Priority") {
             self.priority = dict["Priority"] as! Int32
         }
@@ -2372,6 +2526,15 @@ public class JobItem : Tea.TeaModel {
         }
         if dict.keys.contains("ReasonMessage") {
             self.reasonMessage = dict["ReasonMessage"] as! String
+        }
+        if dict.keys.contains("RequestCPU") {
+            self.requestCPU = dict["RequestCPU"] as! Int64
+        }
+        if dict.keys.contains("RequestGPU") {
+            self.requestGPU = dict["RequestGPU"] as! String
+        }
+        if dict.keys.contains("RequestMemory") {
+            self.requestMemory = dict["RequestMemory"] as! String
         }
         if dict.keys.contains("ResourceId") {
             self.resourceId = dict["ResourceId"] as! String
@@ -2382,8 +2545,14 @@ public class JobItem : Tea.TeaModel {
         if dict.keys.contains("ResourceName") {
             self.resourceName = dict["ResourceName"] as! String
         }
+        if dict.keys.contains("ResourceQuotaName") {
+            self.resourceQuotaName = dict["ResourceQuotaName"] as! String
+        }
         if dict.keys.contains("ResourceType") {
             self.resourceType = dict["ResourceType"] as! String
+        }
+        if dict.keys.contains("RestartTimes") {
+            self.restartTimes = dict["RestartTimes"] as! String
         }
         if dict.keys.contains("Settings") {
             var model = JobSettings()
@@ -2393,8 +2562,25 @@ public class JobItem : Tea.TeaModel {
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! String
         }
+        if dict.keys.contains("StatusHistory") {
+            var tmp : [StatusTransitionItem] = []
+            for v in dict["StatusHistory"] as! [Any] {
+                var model = StatusTransitionItem()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.statusHistory = tmp
+        }
         if dict.keys.contains("SubStatus") {
             self.subStatus = dict["SubStatus"] as! String
+        }
+        if dict.keys.contains("SystemEnvs") {
+            self.systemEnvs = dict["SystemEnvs"] as! [String: String]
+        }
+        if dict.keys.contains("TenantId") {
+            self.tenantId = dict["TenantId"] as! String
         }
         if dict.keys.contains("ThirdpartyLibDir") {
             self.thirdpartyLibDir = dict["ThirdpartyLibDir"] as! String
@@ -2411,8 +2597,17 @@ public class JobItem : Tea.TeaModel {
         if dict.keys.contains("UserId") {
             self.userId = dict["UserId"] as! String
         }
+        if dict.keys.contains("UserScript") {
+            self.userScript = dict["UserScript"] as! String
+        }
+        if dict.keys.contains("UserVpc") {
+            self.userVpc = dict["UserVpc"] as! String
+        }
         if dict.keys.contains("Username") {
             self.username = dict["Username"] as! String
+        }
+        if dict.keys.contains("WorkingDir") {
+            self.workingDir = dict["WorkingDir"] as! String
         }
         if dict.keys.contains("WorkspaceId") {
             self.workspaceId = dict["WorkspaceId"] as! String
@@ -5771,6 +5966,8 @@ public class GetJobResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessibility: String?
+
     public var clusterId: String?
 
     public var codeSource: GetJobResponseBody.CodeSource?
@@ -5867,6 +6064,9 @@ public class GetJobResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessibility != nil {
+            map["Accessibility"] = self.accessibility!
+        }
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
@@ -6004,6 +6204,9 @@ public class GetJobResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Accessibility") {
+            self.accessibility = dict["Accessibility"] as! String
+        }
         if dict.keys.contains("ClusterId") {
             self.clusterId = dict["ClusterId"] as! String
         }
@@ -8928,6 +9131,8 @@ public class StopTensorboardResponse : Tea.TeaModel {
 }
 
 public class UpdateJobRequest : Tea.TeaModel {
+    public var accessibility: String?
+
     public var priority: Int32?
 
     public override init() {
@@ -8944,6 +9149,9 @@ public class UpdateJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessibility != nil {
+            map["Accessibility"] = self.accessibility!
+        }
         if self.priority != nil {
             map["Priority"] = self.priority!
         }
@@ -8951,6 +9159,9 @@ public class UpdateJobRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Accessibility") {
+            self.accessibility = dict["Accessibility"] as! String
+        }
         if dict.keys.contains("Priority") {
             self.priority = dict["Priority"] as! Int32
         }
@@ -9045,6 +9256,8 @@ public class UpdateJobResponse : Tea.TeaModel {
 }
 
 public class UpdateTensorboardRequest : Tea.TeaModel {
+    public var accessibility: String?
+
     public var maxRunningTimeMinutes: Int64?
 
     public var workspaceId: String?
@@ -9063,6 +9276,9 @@ public class UpdateTensorboardRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessibility != nil {
+            map["Accessibility"] = self.accessibility!
+        }
         if self.maxRunningTimeMinutes != nil {
             map["MaxRunningTimeMinutes"] = self.maxRunningTimeMinutes!
         }
@@ -9073,6 +9289,9 @@ public class UpdateTensorboardRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Accessibility") {
+            self.accessibility = dict["Accessibility"] as! String
+        }
         if dict.keys.contains("MaxRunningTimeMinutes") {
             self.maxRunningTimeMinutes = dict["MaxRunningTimeMinutes"] as! Int64
         }

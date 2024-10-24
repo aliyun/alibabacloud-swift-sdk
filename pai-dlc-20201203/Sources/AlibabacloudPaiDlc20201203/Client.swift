@@ -1080,6 +1080,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateJobWithOptions(_ JobId: String, _ request: UpdateJobRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateJobResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessibility)) {
+            body["Accessibility"] = request.accessibility ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.priority)) {
             body["Priority"] = request.priority!;
         }
@@ -1113,6 +1116,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateTensorboardWithOptions(_ TensorboardId: String, _ request: UpdateTensorboardRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateTensorboardResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessibility)) {
+            query["Accessibility"] = request.accessibility ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.maxRunningTimeMinutes)) {
             query["MaxRunningTimeMinutes"] = request.maxRunningTimeMinutes!;
         }
