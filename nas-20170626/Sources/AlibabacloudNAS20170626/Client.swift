@@ -1059,6 +1059,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.fileSystemPath)) {
             query["FileSystemPath"] = request.fileSystemPath ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.quota)) {
+            query["Quota"] = request.quota!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])

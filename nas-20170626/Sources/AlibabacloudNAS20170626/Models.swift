@@ -3567,6 +3567,43 @@ public class CreateFileSystemResponse : Tea.TeaModel {
 }
 
 public class CreateFilesetRequest : Tea.TeaModel {
+    public class Quota : Tea.TeaModel {
+        public var fileCountLimit: Int64?
+
+        public var sizeLimit: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fileCountLimit != nil {
+                map["FileCountLimit"] = self.fileCountLimit!
+            }
+            if self.sizeLimit != nil {
+                map["SizeLimit"] = self.sizeLimit!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("FileCountLimit") {
+                self.fileCountLimit = dict["FileCountLimit"] as! Int64
+            }
+            if dict.keys.contains("SizeLimit") {
+                self.sizeLimit = dict["SizeLimit"] as! Int64
+            }
+        }
+    }
     public var clientToken: String?
 
     public var deletionProtection: Bool?
@@ -3579,6 +3616,8 @@ public class CreateFilesetRequest : Tea.TeaModel {
 
     public var fileSystemPath: String?
 
+    public var quota: CreateFilesetRequest.Quota?
+
     public override init() {
         super.init()
     }
@@ -3589,6 +3628,7 @@ public class CreateFilesetRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.quota?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -3611,6 +3651,9 @@ public class CreateFilesetRequest : Tea.TeaModel {
         if self.fileSystemPath != nil {
             map["FileSystemPath"] = self.fileSystemPath!
         }
+        if self.quota != nil {
+            map["Quota"] = self.quota?.toMap()
+        }
         return map
     }
 
@@ -3632,6 +3675,11 @@ public class CreateFilesetRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FileSystemPath") {
             self.fileSystemPath = dict["FileSystemPath"] as! String
+        }
+        if dict.keys.contains("Quota") {
+            var model = CreateFilesetRequest.Quota()
+            model.fromMap(dict["Quota"] as! [String: Any])
+            self.quota = model
         }
     }
 }
@@ -12775,15 +12823,60 @@ public class DescribeFilesetsRequest : Tea.TeaModel {
 public class DescribeFilesetsResponseBody : Tea.TeaModel {
     public class Entries : Tea.TeaModel {
         public class Entrie : Tea.TeaModel {
+            public class Quota : Tea.TeaModel {
+                public var fileCountLimit: Int64?
+
+                public var sizeLimit: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.fileCountLimit != nil {
+                        map["FileCountLimit"] = self.fileCountLimit!
+                    }
+                    if self.sizeLimit != nil {
+                        map["SizeLimit"] = self.sizeLimit!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("FileCountLimit") {
+                        self.fileCountLimit = dict["FileCountLimit"] as! Int64
+                    }
+                    if dict.keys.contains("SizeLimit") {
+                        self.sizeLimit = dict["SizeLimit"] as! Int64
+                    }
+                }
+            }
             public var createTime: String?
 
             public var deletionProtection: Bool?
 
             public var description_: String?
 
+            public var fileCountUsage: Int64?
+
+            public var fileSystemId: String?
+
             public var fileSystemPath: String?
 
             public var fsetId: String?
+
+            public var quota: DescribeFilesetsResponseBody.Entries.Entrie.Quota?
+
+            public var spaceUsage: Int64?
 
             public var status: String?
 
@@ -12799,6 +12892,7 @@ public class DescribeFilesetsResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.quota?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -12812,11 +12906,23 @@ public class DescribeFilesetsResponseBody : Tea.TeaModel {
                 if self.description_ != nil {
                     map["Description"] = self.description_!
                 }
+                if self.fileCountUsage != nil {
+                    map["FileCountUsage"] = self.fileCountUsage!
+                }
+                if self.fileSystemId != nil {
+                    map["FileSystemId"] = self.fileSystemId!
+                }
                 if self.fileSystemPath != nil {
                     map["FileSystemPath"] = self.fileSystemPath!
                 }
                 if self.fsetId != nil {
                     map["FsetId"] = self.fsetId!
+                }
+                if self.quota != nil {
+                    map["Quota"] = self.quota?.toMap()
+                }
+                if self.spaceUsage != nil {
+                    map["SpaceUsage"] = self.spaceUsage!
                 }
                 if self.status != nil {
                     map["Status"] = self.status!
@@ -12837,11 +12943,25 @@ public class DescribeFilesetsResponseBody : Tea.TeaModel {
                 if dict.keys.contains("Description") {
                     self.description_ = dict["Description"] as! String
                 }
+                if dict.keys.contains("FileCountUsage") {
+                    self.fileCountUsage = dict["FileCountUsage"] as! Int64
+                }
+                if dict.keys.contains("FileSystemId") {
+                    self.fileSystemId = dict["FileSystemId"] as! String
+                }
                 if dict.keys.contains("FileSystemPath") {
                     self.fileSystemPath = dict["FileSystemPath"] as! String
                 }
                 if dict.keys.contains("FsetId") {
                     self.fsetId = dict["FsetId"] as! String
+                }
+                if dict.keys.contains("Quota") {
+                    var model = DescribeFilesetsResponseBody.Entries.Entrie.Quota()
+                    model.fromMap(dict["Quota"] as! [String: Any])
+                    self.quota = model
+                }
+                if dict.keys.contains("SpaceUsage") {
+                    self.spaceUsage = dict["SpaceUsage"] as! Int64
                 }
                 if dict.keys.contains("Status") {
                     self.status = dict["Status"] as! String
