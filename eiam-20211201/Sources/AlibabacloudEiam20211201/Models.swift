@@ -3100,6 +3100,123 @@ public class DeleteOrganizationalUnitResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteOrganizationalUnitChildrenRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var organizationalUnitId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.organizationalUnitId != nil {
+            map["OrganizationalUnitId"] = self.organizationalUnitId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("OrganizationalUnitId") {
+            self.organizationalUnitId = dict["OrganizationalUnitId"] as! String
+        }
+    }
+}
+
+public class DeleteOrganizationalUnitChildrenResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DeleteOrganizationalUnitChildrenResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteOrganizationalUnitChildrenResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteOrganizationalUnitChildrenResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DeleteUserRequest : Tea.TeaModel {
     public var instanceId: String?
 
@@ -5155,6 +5272,8 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
         public var applicationTemplateId: String?
 
+        public var applicationVisibility: [String]?
+
         public var authorizationType: String?
 
         public var clientId: String?
@@ -5207,6 +5326,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             }
             if self.applicationTemplateId != nil {
                 map["ApplicationTemplateId"] = self.applicationTemplateId!
+            }
+            if self.applicationVisibility != nil {
+                map["ApplicationVisibility"] = self.applicationVisibility!
             }
             if self.authorizationType != nil {
                 map["AuthorizationType"] = self.authorizationType!
@@ -5262,6 +5384,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ApplicationTemplateId") {
                 self.applicationTemplateId = dict["ApplicationTemplateId"] as! String
+            }
+            if dict.keys.contains("ApplicationVisibility") {
+                self.applicationVisibility = dict["ApplicationVisibility"] as! [String]
             }
             if dict.keys.contains("AuthorizationType") {
                 self.authorizationType = dict["AuthorizationType"] as! String
@@ -6548,6 +6673,8 @@ public class GetApplicationSsoConfigResponseBody : Tea.TeaModel {
 
             public var defaultRelayState: String?
 
+            public var idPEntityId: String?
+
             public var nameIdFormat: String?
 
             public var nameIdValueExpression: String?
@@ -6587,6 +6714,9 @@ public class GetApplicationSsoConfigResponseBody : Tea.TeaModel {
                 if self.defaultRelayState != nil {
                     map["DefaultRelayState"] = self.defaultRelayState!
                 }
+                if self.idPEntityId != nil {
+                    map["IdPEntityId"] = self.idPEntityId!
+                }
                 if self.nameIdFormat != nil {
                     map["NameIdFormat"] = self.nameIdFormat!
                 }
@@ -6625,6 +6755,9 @@ public class GetApplicationSsoConfigResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("DefaultRelayState") {
                     self.defaultRelayState = dict["DefaultRelayState"] as! String
+                }
+                if dict.keys.contains("IdPEntityId") {
+                    self.idPEntityId = dict["IdPEntityId"] as! String
                 }
                 if dict.keys.contains("NameIdFormat") {
                     self.nameIdFormat = dict["NameIdFormat"] as! String
@@ -21102,6 +21235,8 @@ public class SetApplicationSsoConfigRequest : Tea.TeaModel {
 
         public var defaultRelayState: String?
 
+        public var idPEntityId: String?
+
         public var nameIdFormat: String?
 
         public var nameIdValueExpression: String?
@@ -21141,6 +21276,9 @@ public class SetApplicationSsoConfigRequest : Tea.TeaModel {
             if self.defaultRelayState != nil {
                 map["DefaultRelayState"] = self.defaultRelayState!
             }
+            if self.idPEntityId != nil {
+                map["IdPEntityId"] = self.idPEntityId!
+            }
             if self.nameIdFormat != nil {
                 map["NameIdFormat"] = self.nameIdFormat!
             }
@@ -21179,6 +21317,9 @@ public class SetApplicationSsoConfigRequest : Tea.TeaModel {
             }
             if dict.keys.contains("DefaultRelayState") {
                 self.defaultRelayState = dict["DefaultRelayState"] as! String
+            }
+            if dict.keys.contains("IdPEntityId") {
+                self.idPEntityId = dict["IdPEntityId"] as! String
             }
             if dict.keys.contains("NameIdFormat") {
                 self.nameIdFormat = dict["NameIdFormat"] as! String
