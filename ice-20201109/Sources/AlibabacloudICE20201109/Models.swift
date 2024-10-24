@@ -12996,7 +12996,70 @@ public class GetCustomTemplateRequest : Tea.TeaModel {
 
 public class GetCustomTemplateResponseBody : Tea.TeaModel {
     public class CustomTemplate : Tea.TeaModel {
+        public class FrontendHint : Tea.TeaModel {
+            public class TranscodeTemplateHint : Tea.TeaModel {
+                public var bitrateControlType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.bitrateControlType != nil {
+                        map["BitrateControlType"] = self.bitrateControlType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("BitrateControlType") {
+                        self.bitrateControlType = dict["BitrateControlType"] as! String
+                    }
+                }
+            }
+            public var transcodeTemplateHint: GetCustomTemplateResponseBody.CustomTemplate.FrontendHint.TranscodeTemplateHint?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.transcodeTemplateHint?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.transcodeTemplateHint != nil {
+                    map["TranscodeTemplateHint"] = self.transcodeTemplateHint?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("TranscodeTemplateHint") {
+                    var model = GetCustomTemplateResponseBody.CustomTemplate.FrontendHint.TranscodeTemplateHint()
+                    model.fromMap(dict["TranscodeTemplateHint"] as! [String: Any])
+                    self.transcodeTemplateHint = model
+                }
+            }
+        }
         public var createTime: String?
+
+        public var frontendHint: GetCustomTemplateResponseBody.CustomTemplate.FrontendHint?
 
         public var isDefault: Bool?
 
@@ -13028,12 +13091,16 @@ public class GetCustomTemplateResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.frontendHint?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
+            }
+            if self.frontendHint != nil {
+                map["FrontendHint"] = self.frontendHint?.toMap()
             }
             if self.isDefault != nil {
                 map["IsDefault"] = self.isDefault!
@@ -13071,6 +13138,11 @@ public class GetCustomTemplateResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("CreateTime") {
                 self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("FrontendHint") {
+                var model = GetCustomTemplateResponseBody.CustomTemplate.FrontendHint()
+                model.fromMap(dict["FrontendHint"] as! [String: Any])
+                self.frontendHint = model
             }
             if dict.keys.contains("IsDefault") {
                 self.isDefault = dict["IsDefault"] as! Bool
@@ -30848,7 +30920,70 @@ public class ListCustomTemplatesRequest : Tea.TeaModel {
 
 public class ListCustomTemplatesResponseBody : Tea.TeaModel {
     public class CustomTemplateList : Tea.TeaModel {
+        public class FrontendHint : Tea.TeaModel {
+            public class TranscodeTemplateHint : Tea.TeaModel {
+                public var bitrateControlType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.bitrateControlType != nil {
+                        map["BitrateControlType"] = self.bitrateControlType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("BitrateControlType") {
+                        self.bitrateControlType = dict["BitrateControlType"] as! String
+                    }
+                }
+            }
+            public var transcodeTemplateHint: ListCustomTemplatesResponseBody.CustomTemplateList.FrontendHint.TranscodeTemplateHint?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.transcodeTemplateHint?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.transcodeTemplateHint != nil {
+                    map["TranscodeTemplateHint"] = self.transcodeTemplateHint?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("TranscodeTemplateHint") {
+                    var model = ListCustomTemplatesResponseBody.CustomTemplateList.FrontendHint.TranscodeTemplateHint()
+                    model.fromMap(dict["TranscodeTemplateHint"] as! [String: Any])
+                    self.transcodeTemplateHint = model
+                }
+            }
+        }
         public var createTime: String?
+
+        public var frontendHint: ListCustomTemplatesResponseBody.CustomTemplateList.FrontendHint?
 
         public var isDefault: Bool?
 
@@ -30880,12 +31015,16 @@ public class ListCustomTemplatesResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.frontendHint?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
+            }
+            if self.frontendHint != nil {
+                map["FrontendHint"] = self.frontendHint?.toMap()
             }
             if self.isDefault != nil {
                 map["IsDefault"] = self.isDefault!
@@ -30923,6 +31062,11 @@ public class ListCustomTemplatesResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("CreateTime") {
                 self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("FrontendHint") {
+                var model = ListCustomTemplatesResponseBody.CustomTemplateList.FrontendHint()
+                model.fromMap(dict["FrontendHint"] as! [String: Any])
+                self.frontendHint = model
             }
             if dict.keys.contains("IsDefault") {
                 self.isDefault = dict["IsDefault"] as! Bool
