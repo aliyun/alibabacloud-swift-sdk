@@ -1731,6 +1731,8 @@ public class MassPushRequest : Tea.TeaModel {
 
         public var androidNotificationNotifyId: Int32?
 
+        public var androidNotificationThreadId: String?
+
         public var androidNotificationVivoChannel: String?
 
         public var androidNotificationXiaomiChannel: String?
@@ -1946,6 +1948,9 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if self.androidNotificationNotifyId != nil {
                 map["AndroidNotificationNotifyId"] = self.androidNotificationNotifyId!
+            }
+            if self.androidNotificationThreadId != nil {
+                map["AndroidNotificationThreadId"] = self.androidNotificationThreadId!
             }
             if self.androidNotificationVivoChannel != nil {
                 map["AndroidNotificationVivoChannel"] = self.androidNotificationVivoChannel!
@@ -2217,6 +2222,9 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if dict.keys.contains("AndroidNotificationNotifyId") {
                 self.androidNotificationNotifyId = dict["AndroidNotificationNotifyId"] as! Int32
+            }
+            if dict.keys.contains("AndroidNotificationThreadId") {
+                self.androidNotificationThreadId = dict["AndroidNotificationThreadId"] as! String
             }
             if dict.keys.contains("AndroidNotificationVivoChannel") {
                 self.androidNotificationVivoChannel = dict["AndroidNotificationVivoChannel"] as! String
@@ -2632,6 +2640,8 @@ public class PushRequest : Tea.TeaModel {
 
     public var androidNotificationNotifyId: Int32?
 
+    public var androidNotificationThreadId: String?
+
     public var androidNotificationVivoChannel: String?
 
     public var androidNotificationXiaomiChannel: String?
@@ -2859,6 +2869,9 @@ public class PushRequest : Tea.TeaModel {
         }
         if self.androidNotificationNotifyId != nil {
             map["AndroidNotificationNotifyId"] = self.androidNotificationNotifyId!
+        }
+        if self.androidNotificationThreadId != nil {
+            map["AndroidNotificationThreadId"] = self.androidNotificationThreadId!
         }
         if self.androidNotificationVivoChannel != nil {
             map["AndroidNotificationVivoChannel"] = self.androidNotificationVivoChannel!
@@ -3148,6 +3161,9 @@ public class PushRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AndroidNotificationNotifyId") {
             self.androidNotificationNotifyId = dict["AndroidNotificationNotifyId"] as! Int32
+        }
+        if dict.keys.contains("AndroidNotificationThreadId") {
+            self.androidNotificationThreadId = dict["AndroidNotificationThreadId"] as! String
         }
         if dict.keys.contains("AndroidNotificationVivoChannel") {
             self.androidNotificationVivoChannel = dict["AndroidNotificationVivoChannel"] as! String

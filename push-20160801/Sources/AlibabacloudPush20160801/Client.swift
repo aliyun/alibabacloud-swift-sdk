@@ -567,6 +567,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.androidNotificationNotifyId)) {
             query["AndroidNotificationNotifyId"] = request.androidNotificationNotifyId!;
         }
+        if (!TeaUtils.Client.isUnset(request.androidNotificationThreadId)) {
+            query["AndroidNotificationThreadId"] = request.androidNotificationThreadId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.androidNotificationVivoChannel)) {
             query["AndroidNotificationVivoChannel"] = request.androidNotificationVivoChannel ?? "";
         }
