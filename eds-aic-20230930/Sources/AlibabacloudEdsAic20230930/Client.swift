@@ -218,6 +218,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceGroupSpec)) {
             query["InstanceGroupSpec"] = request.instanceGroupSpec ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.keyPairId)) {
+            query["KeyPairId"] = request.keyPairId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.numberOfInstances)) {
             query["NumberOfInstances"] = request.numberOfInstances!;
         }

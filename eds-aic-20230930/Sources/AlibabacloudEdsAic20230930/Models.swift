@@ -806,6 +806,8 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
 
     public var instanceGroupSpec: String?
 
+    public var keyPairId: String?
+
     public var numberOfInstances: Int32?
 
     public var officeSiteId: String?
@@ -862,6 +864,9 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
         if self.instanceGroupSpec != nil {
             map["InstanceGroupSpec"] = self.instanceGroupSpec!
         }
+        if self.keyPairId != nil {
+            map["KeyPairId"] = self.keyPairId!
+        }
         if self.numberOfInstances != nil {
             map["NumberOfInstances"] = self.numberOfInstances!
         }
@@ -913,6 +918,9 @@ public class CreateAndroidInstanceGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceGroupSpec") {
             self.instanceGroupSpec = dict["InstanceGroupSpec"] as! String
+        }
+        if dict.keys.contains("KeyPairId") {
+            self.keyPairId = dict["KeyPairId"] as! String
         }
         if dict.keys.contains("NumberOfInstances") {
             self.numberOfInstances = dict["NumberOfInstances"] as! Int32
