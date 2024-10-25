@@ -38133,6 +38133,8 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
 
             public var screenShot: Bool?
 
+            public var scrollEnd: Bool?
+
             public var strictMode: Bool?
 
             public var timeOut: Int64?
@@ -38293,6 +38295,9 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.screenShot != nil {
                     map["screen_shot"] = self.screenShot!
+                }
+                if self.scrollEnd != nil {
+                    map["scroll_end"] = self.scrollEnd!
                 }
                 if self.strictMode != nil {
                     map["strict_mode"] = self.strictMode!
@@ -38457,6 +38462,9 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("screen_shot") {
                     self.screenShot = dict["screen_shot"] as! Bool
+                }
+                if dict.keys.contains("scroll_end") {
+                    self.scrollEnd = dict["scroll_end"] as! Bool
                 }
                 if dict.keys.contains("strict_mode") {
                     self.strictMode = dict["strict_mode"] as! Bool
