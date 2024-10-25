@@ -4744,6 +4744,10 @@ public class ListServiceInstanceLogsRequest : Tea.TeaModel {
 
 public class ListServiceInstanceLogsResponseBody : Tea.TeaModel {
     public class ServiceInstancesLogs : Tea.TeaModel {
+        public var compliancePackType: String?
+
+        public var complianceRuleName: String?
+
         public var content: String?
 
         public var logType: String?
@@ -4772,6 +4776,12 @@ public class ListServiceInstanceLogsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.compliancePackType != nil {
+                map["CompliancePackType"] = self.compliancePackType!
+            }
+            if self.complianceRuleName != nil {
+                map["ComplianceRuleName"] = self.complianceRuleName!
+            }
             if self.content != nil {
                 map["Content"] = self.content!
             }
@@ -4797,6 +4807,12 @@ public class ListServiceInstanceLogsResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CompliancePackType") {
+                self.compliancePackType = dict["CompliancePackType"] as! String
+            }
+            if dict.keys.contains("ComplianceRuleName") {
+                self.complianceRuleName = dict["ComplianceRuleName"] as! String
+            }
             if dict.keys.contains("Content") {
                 self.content = dict["Content"] as! String
             }
@@ -4935,6 +4951,43 @@ public class ListServiceInstanceLogsResponse : Tea.TeaModel {
 }
 
 public class ListServiceInstanceResourcesRequest : Tea.TeaModel {
+    public class Filters : Tea.TeaModel {
+        public var name: String?
+
+        public var values: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.values != nil {
+                map["Values"] = self.values!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Name") {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("Values") {
+                self.values = dict["Values"] as! [String]
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -4976,6 +5029,8 @@ public class ListServiceInstanceResourcesRequest : Tea.TeaModel {
 
     public var expireTimeStart: String?
 
+    public var filters: [ListServiceInstanceResourcesRequest.Filters]?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -5011,6 +5066,13 @@ public class ListServiceInstanceResourcesRequest : Tea.TeaModel {
         }
         if self.expireTimeStart != nil {
             map["ExpireTimeStart"] = self.expireTimeStart!
+        }
+        if self.filters != nil {
+            var tmp : [Any] = []
+            for k in self.filters! {
+                tmp.append(k.toMap())
+            }
+            map["Filters"] = tmp
         }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
@@ -5049,6 +5111,17 @@ public class ListServiceInstanceResourcesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ExpireTimeStart") {
             self.expireTimeStart = dict["ExpireTimeStart"] as! String
+        }
+        if dict.keys.contains("Filters") {
+            var tmp : [ListServiceInstanceResourcesRequest.Filters] = []
+            for v in dict["Filters"] as! [Any] {
+                var model = ListServiceInstanceResourcesRequest.Filters()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.filters = tmp
         }
         if dict.keys.contains("MaxResults") {
             self.maxResults = dict["MaxResults"] as! Int32

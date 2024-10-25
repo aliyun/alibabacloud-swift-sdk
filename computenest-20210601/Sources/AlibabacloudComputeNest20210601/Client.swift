@@ -662,6 +662,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.expireTimeStart)) {
             query["ExpireTimeStart"] = request.expireTimeStart ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.filters)) {
+            query["Filters"] = request.filters ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["MaxResults"] = request.maxResults!;
         }
