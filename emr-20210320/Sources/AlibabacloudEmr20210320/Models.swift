@@ -10194,6 +10194,8 @@ public class GetAutoScalingActivityResponseBody : Tea.TeaModel {
 
         public var operationId: String?
 
+        public var policyType: String?
+
         public var ruleDetail: ScalingRule?
 
         public var ruleName: String?
@@ -10252,6 +10254,9 @@ public class GetAutoScalingActivityResponseBody : Tea.TeaModel {
             if self.operationId != nil {
                 map["OperationId"] = self.operationId!
             }
+            if self.policyType != nil {
+                map["PolicyType"] = self.policyType!
+            }
             if self.ruleDetail != nil {
                 map["RuleDetail"] = self.ruleDetail?.toMap()
             }
@@ -10305,6 +10310,9 @@ public class GetAutoScalingActivityResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("OperationId") {
                 self.operationId = dict["OperationId"] as! String
+            }
+            if dict.keys.contains("PolicyType") {
+                self.policyType = dict["PolicyType"] as! String
             }
             if dict.keys.contains("RuleDetail") {
                 var model = ScalingRule()
@@ -34296,6 +34304,8 @@ public class ListAutoScalingActivitiesRequest : Tea.TeaModel {
 
     public var scalingActivityType: String?
 
+    public var scalingPolicyType: String?
+
     public var scalingRuleName: String?
 
     public var startTime: Int64?
@@ -34338,6 +34348,9 @@ public class ListAutoScalingActivitiesRequest : Tea.TeaModel {
         if self.scalingActivityType != nil {
             map["ScalingActivityType"] = self.scalingActivityType!
         }
+        if self.scalingPolicyType != nil {
+            map["ScalingPolicyType"] = self.scalingPolicyType!
+        }
         if self.scalingRuleName != nil {
             map["ScalingRuleName"] = self.scalingRuleName!
         }
@@ -34372,6 +34385,9 @@ public class ListAutoScalingActivitiesRequest : Tea.TeaModel {
         if dict.keys.contains("ScalingActivityType") {
             self.scalingActivityType = dict["ScalingActivityType"] as! String
         }
+        if dict.keys.contains("ScalingPolicyType") {
+            self.scalingPolicyType = dict["ScalingPolicyType"] as! String
+        }
         if dict.keys.contains("ScalingRuleName") {
             self.scalingRuleName = dict["ScalingRuleName"] as! String
         }
@@ -34397,11 +34413,15 @@ public class ListAutoScalingActivitiesResponseBody : Tea.TeaModel {
 
         public var expectNum: Int32?
 
+        public var instanceTypeToNum: [String: Int32]?
+
         public var nodeGroupId: String?
 
         public var nodeGroupName: String?
 
         public var operationId: String?
+
+        public var policyType: String?
 
         public var ruleName: String?
 
@@ -34442,6 +34462,9 @@ public class ListAutoScalingActivitiesResponseBody : Tea.TeaModel {
             if self.expectNum != nil {
                 map["ExpectNum"] = self.expectNum!
             }
+            if self.instanceTypeToNum != nil {
+                map["InstanceTypeToNum"] = self.instanceTypeToNum!
+            }
             if self.nodeGroupId != nil {
                 map["NodeGroupId"] = self.nodeGroupId!
             }
@@ -34450,6 +34473,9 @@ public class ListAutoScalingActivitiesResponseBody : Tea.TeaModel {
             }
             if self.operationId != nil {
                 map["OperationId"] = self.operationId!
+            }
+            if self.policyType != nil {
+                map["PolicyType"] = self.policyType!
             }
             if self.ruleName != nil {
                 map["RuleName"] = self.ruleName!
@@ -34482,6 +34508,9 @@ public class ListAutoScalingActivitiesResponseBody : Tea.TeaModel {
             if dict.keys.contains("ExpectNum") {
                 self.expectNum = dict["ExpectNum"] as! Int32
             }
+            if dict.keys.contains("InstanceTypeToNum") {
+                self.instanceTypeToNum = dict["InstanceTypeToNum"] as! [String: Int32]
+            }
             if dict.keys.contains("NodeGroupId") {
                 self.nodeGroupId = dict["NodeGroupId"] as! String
             }
@@ -34490,6 +34519,9 @@ public class ListAutoScalingActivitiesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("OperationId") {
                 self.operationId = dict["OperationId"] as! String
+            }
+            if dict.keys.contains("PolicyType") {
+                self.policyType = dict["PolicyType"] as! String
             }
             if dict.keys.contains("RuleName") {
                 self.ruleName = dict["RuleName"] as! String

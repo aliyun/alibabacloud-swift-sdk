@@ -1540,6 +1540,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.scalingActivityType)) {
             query["ScalingActivityType"] = request.scalingActivityType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.scalingPolicyType)) {
+            query["ScalingPolicyType"] = request.scalingPolicyType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.scalingRuleName)) {
             query["ScalingRuleName"] = request.scalingRuleName ?? "";
         }
