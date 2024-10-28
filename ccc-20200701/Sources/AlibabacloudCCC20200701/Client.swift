@@ -757,6 +757,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.routingType)) {
             query["RoutingType"] = request.routingType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.skillGroupId)) {
+            query["SkillGroupId"] = request.skillGroupId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.strategyName)) {
             query["StrategyName"] = request.strategyName ?? "";
         }
@@ -3051,6 +3054,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getInstanceTrendingReport(_ request: GetInstanceTrendingReportRequest) async throws -> GetInstanceTrendingReportResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getInstanceTrendingReportWithOptions(request as! GetInstanceTrendingReportRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getIvrTrackingSummaryWithOptions(_ request: GetIvrTrackingSummaryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetIvrTrackingSummaryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.contactId)) {
+            query["ContactId"] = request.contactId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetIvrTrackingSummary",
+            "version": "2020-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetIvrTrackingSummaryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getIvrTrackingSummary(_ request: GetIvrTrackingSummaryRequest) async throws -> GetIvrTrackingSummaryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getIvrTrackingSummaryWithOptions(request as! GetIvrTrackingSummaryRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
