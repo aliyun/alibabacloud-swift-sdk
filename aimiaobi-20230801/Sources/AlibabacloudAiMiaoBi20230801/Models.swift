@@ -8665,11 +8665,15 @@ public class GetTopicSelectionPerspectiveAnalysisTaskResponseBody : Tea.TeaModel
                 public class News : Tea.TeaModel {
                     public var content: String?
 
+                    public var createTime: String?
+
                     public var docId: String?
 
                     public var docUuid: String?
 
                     public var imageUrls: [String]?
+
+                    public var pubTime: String?
 
                     public var source: String?
 
@@ -8700,6 +8704,9 @@ public class GetTopicSelectionPerspectiveAnalysisTaskResponseBody : Tea.TeaModel
                         if self.content != nil {
                             map["Content"] = self.content!
                         }
+                        if self.createTime != nil {
+                            map["CreateTime"] = self.createTime!
+                        }
                         if self.docId != nil {
                             map["DocId"] = self.docId!
                         }
@@ -8708,6 +8715,9 @@ public class GetTopicSelectionPerspectiveAnalysisTaskResponseBody : Tea.TeaModel
                         }
                         if self.imageUrls != nil {
                             map["ImageUrls"] = self.imageUrls!
+                        }
+                        if self.pubTime != nil {
+                            map["PubTime"] = self.pubTime!
                         }
                         if self.source != nil {
                             map["Source"] = self.source!
@@ -8734,6 +8744,9 @@ public class GetTopicSelectionPerspectiveAnalysisTaskResponseBody : Tea.TeaModel
                         if dict.keys.contains("Content") {
                             self.content = dict["Content"] as! String
                         }
+                        if dict.keys.contains("CreateTime") {
+                            self.createTime = dict["CreateTime"] as! String
+                        }
                         if dict.keys.contains("DocId") {
                             self.docId = dict["DocId"] as! String
                         }
@@ -8742,6 +8755,9 @@ public class GetTopicSelectionPerspectiveAnalysisTaskResponseBody : Tea.TeaModel
                         }
                         if dict.keys.contains("ImageUrls") {
                             self.imageUrls = dict["ImageUrls"] as! [String]
+                        }
+                        if dict.keys.contains("PubTime") {
+                            self.pubTime = dict["PubTime"] as! String
                         }
                         if dict.keys.contains("Source") {
                             self.source = dict["Source"] as! String
