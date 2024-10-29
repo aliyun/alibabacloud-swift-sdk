@@ -4445,6 +4445,8 @@ public class CreateADConnectorOfficeSiteRequest : Tea.TeaModel {
 
     public var subDomainName: String?
 
+    public var vSwitchId: [String]?
+
     public var verifyCode: String?
 
     public override init() {
@@ -4524,6 +4526,9 @@ public class CreateADConnectorOfficeSiteRequest : Tea.TeaModel {
         if self.subDomainName != nil {
             map["SubDomainName"] = self.subDomainName!
         }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
         if self.verifyCode != nil {
             map["VerifyCode"] = self.verifyCode!
         }
@@ -4593,6 +4598,9 @@ public class CreateADConnectorOfficeSiteRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SubDomainName") {
             self.subDomainName = dict["SubDomainName"] as! String
+        }
+        if dict.keys.contains("VSwitchId") {
+            self.vSwitchId = dict["VSwitchId"] as! [String]
         }
         if dict.keys.contains("VerifyCode") {
             self.verifyCode = dict["VerifyCode"] as! String
@@ -7096,6 +7104,99 @@ public class CreateDesktopsRequest : Tea.TeaModel {
             }
         }
     }
+    public class DesktopAttachment : Tea.TeaModel {
+        public var dataDiskCategory: String?
+
+        public var dataDiskPerLevel: String?
+
+        public var dataDiskSize: Int32?
+
+        public var defaultLanguage: String?
+
+        public var desktopType: String?
+
+        public var imageId: String?
+
+        public var systemDiskCategory: String?
+
+        public var systemDiskPerLevel: String?
+
+        public var systemDiskSize: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dataDiskCategory != nil {
+                map["DataDiskCategory"] = self.dataDiskCategory!
+            }
+            if self.dataDiskPerLevel != nil {
+                map["DataDiskPerLevel"] = self.dataDiskPerLevel!
+            }
+            if self.dataDiskSize != nil {
+                map["DataDiskSize"] = self.dataDiskSize!
+            }
+            if self.defaultLanguage != nil {
+                map["DefaultLanguage"] = self.defaultLanguage!
+            }
+            if self.desktopType != nil {
+                map["DesktopType"] = self.desktopType!
+            }
+            if self.imageId != nil {
+                map["ImageId"] = self.imageId!
+            }
+            if self.systemDiskCategory != nil {
+                map["SystemDiskCategory"] = self.systemDiskCategory!
+            }
+            if self.systemDiskPerLevel != nil {
+                map["SystemDiskPerLevel"] = self.systemDiskPerLevel!
+            }
+            if self.systemDiskSize != nil {
+                map["SystemDiskSize"] = self.systemDiskSize!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DataDiskCategory") {
+                self.dataDiskCategory = dict["DataDiskCategory"] as! String
+            }
+            if dict.keys.contains("DataDiskPerLevel") {
+                self.dataDiskPerLevel = dict["DataDiskPerLevel"] as! String
+            }
+            if dict.keys.contains("DataDiskSize") {
+                self.dataDiskSize = dict["DataDiskSize"] as! Int32
+            }
+            if dict.keys.contains("DefaultLanguage") {
+                self.defaultLanguage = dict["DefaultLanguage"] as! String
+            }
+            if dict.keys.contains("DesktopType") {
+                self.desktopType = dict["DesktopType"] as! String
+            }
+            if dict.keys.contains("ImageId") {
+                self.imageId = dict["ImageId"] as! String
+            }
+            if dict.keys.contains("SystemDiskCategory") {
+                self.systemDiskCategory = dict["SystemDiskCategory"] as! String
+            }
+            if dict.keys.contains("SystemDiskPerLevel") {
+                self.systemDiskPerLevel = dict["SystemDiskPerLevel"] as! String
+            }
+            if dict.keys.contains("SystemDiskSize") {
+                self.systemDiskSize = dict["SystemDiskSize"] as! Int32
+            }
+        }
+    }
     public class DesktopTimers : Tea.TeaModel {
         public var allowClientSetting: Bool?
 
@@ -7312,6 +7413,8 @@ public class CreateDesktopsRequest : Tea.TeaModel {
 
     public var chargeType: String?
 
+    public var desktopAttachment: CreateDesktopsRequest.DesktopAttachment?
+
     public var desktopMemberIp: String?
 
     public var desktopName: String?
@@ -7348,6 +7451,8 @@ public class CreateDesktopsRequest : Tea.TeaModel {
 
     public var tag: [CreateDesktopsRequest.Tag]?
 
+    public var timerGroupId: String?
+
     public var userAssignMode: String?
 
     public var userCommands: [CreateDesktopsRequest.UserCommands]?
@@ -7370,6 +7475,7 @@ public class CreateDesktopsRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.desktopAttachment?.validate()
         try self.monthDesktopSetting?.validate()
     }
 
@@ -7396,6 +7502,9 @@ public class CreateDesktopsRequest : Tea.TeaModel {
         }
         if self.chargeType != nil {
             map["ChargeType"] = self.chargeType!
+        }
+        if self.desktopAttachment != nil {
+            map["DesktopAttachment"] = self.desktopAttachment?.toMap()
         }
         if self.desktopMemberIp != nil {
             map["DesktopMemberIp"] = self.desktopMemberIp!
@@ -7459,6 +7568,9 @@ public class CreateDesktopsRequest : Tea.TeaModel {
             }
             map["Tag"] = tmp
         }
+        if self.timerGroupId != nil {
+            map["TimerGroupId"] = self.timerGroupId!
+        }
         if self.userAssignMode != nil {
             map["UserAssignMode"] = self.userAssignMode!
         }
@@ -7510,6 +7622,11 @@ public class CreateDesktopsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ChargeType") {
             self.chargeType = dict["ChargeType"] as! String
+        }
+        if dict.keys.contains("DesktopAttachment") {
+            var model = CreateDesktopsRequest.DesktopAttachment()
+            model.fromMap(dict["DesktopAttachment"] as! [String: Any])
+            self.desktopAttachment = model
         }
         if dict.keys.contains("DesktopMemberIp") {
             self.desktopMemberIp = dict["DesktopMemberIp"] as! String
@@ -7583,6 +7700,9 @@ public class CreateDesktopsRequest : Tea.TeaModel {
             }
             self.tag = tmp
         }
+        if dict.keys.contains("TimerGroupId") {
+            self.timerGroupId = dict["TimerGroupId"] as! String
+        }
         if dict.keys.contains("UserAssignMode") {
             self.userAssignMode = dict["UserAssignMode"] as! String
         }
@@ -7590,6 +7710,616 @@ public class CreateDesktopsRequest : Tea.TeaModel {
             var tmp : [CreateDesktopsRequest.UserCommands] = []
             for v in dict["UserCommands"] as! [Any] {
                 var model = CreateDesktopsRequest.UserCommands()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.userCommands = tmp
+        }
+        if dict.keys.contains("UserName") {
+            self.userName = dict["UserName"] as! String
+        }
+        if dict.keys.contains("VolumeEncryptionEnabled") {
+            self.volumeEncryptionEnabled = dict["VolumeEncryptionEnabled"] as! Bool
+        }
+        if dict.keys.contains("VolumeEncryptionKey") {
+            self.volumeEncryptionKey = dict["VolumeEncryptionKey"] as! String
+        }
+        if dict.keys.contains("VpcId") {
+            self.vpcId = dict["VpcId"] as! String
+        }
+    }
+}
+
+public class CreateDesktopsShrinkRequest : Tea.TeaModel {
+    public class BundleModels : Tea.TeaModel {
+        public var amount: Int32?
+
+        public var bundleId: String?
+
+        public var desktopName: String?
+
+        public var endUserIds: [String]?
+
+        public var hostname: String?
+
+        public var volumeEncryptionEnabled: Bool?
+
+        public var volumeEncryptionKey: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.amount != nil {
+                map["Amount"] = self.amount!
+            }
+            if self.bundleId != nil {
+                map["BundleId"] = self.bundleId!
+            }
+            if self.desktopName != nil {
+                map["DesktopName"] = self.desktopName!
+            }
+            if self.endUserIds != nil {
+                map["EndUserIds"] = self.endUserIds!
+            }
+            if self.hostname != nil {
+                map["Hostname"] = self.hostname!
+            }
+            if self.volumeEncryptionEnabled != nil {
+                map["VolumeEncryptionEnabled"] = self.volumeEncryptionEnabled!
+            }
+            if self.volumeEncryptionKey != nil {
+                map["VolumeEncryptionKey"] = self.volumeEncryptionKey!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Amount") {
+                self.amount = dict["Amount"] as! Int32
+            }
+            if dict.keys.contains("BundleId") {
+                self.bundleId = dict["BundleId"] as! String
+            }
+            if dict.keys.contains("DesktopName") {
+                self.desktopName = dict["DesktopName"] as! String
+            }
+            if dict.keys.contains("EndUserIds") {
+                self.endUserIds = dict["EndUserIds"] as! [String]
+            }
+            if dict.keys.contains("Hostname") {
+                self.hostname = dict["Hostname"] as! String
+            }
+            if dict.keys.contains("VolumeEncryptionEnabled") {
+                self.volumeEncryptionEnabled = dict["VolumeEncryptionEnabled"] as! Bool
+            }
+            if dict.keys.contains("VolumeEncryptionKey") {
+                self.volumeEncryptionKey = dict["VolumeEncryptionKey"] as! String
+            }
+        }
+    }
+    public class DesktopTimers : Tea.TeaModel {
+        public var allowClientSetting: Bool?
+
+        public var cronExpression: String?
+
+        public var enforce: Bool?
+
+        public var interval: Int32?
+
+        public var operationType: String?
+
+        public var resetType: String?
+
+        public var timerType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.allowClientSetting != nil {
+                map["AllowClientSetting"] = self.allowClientSetting!
+            }
+            if self.cronExpression != nil {
+                map["CronExpression"] = self.cronExpression!
+            }
+            if self.enforce != nil {
+                map["Enforce"] = self.enforce!
+            }
+            if self.interval != nil {
+                map["Interval"] = self.interval!
+            }
+            if self.operationType != nil {
+                map["OperationType"] = self.operationType!
+            }
+            if self.resetType != nil {
+                map["ResetType"] = self.resetType!
+            }
+            if self.timerType != nil {
+                map["TimerType"] = self.timerType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AllowClientSetting") {
+                self.allowClientSetting = dict["AllowClientSetting"] as! Bool
+            }
+            if dict.keys.contains("CronExpression") {
+                self.cronExpression = dict["CronExpression"] as! String
+            }
+            if dict.keys.contains("Enforce") {
+                self.enforce = dict["Enforce"] as! Bool
+            }
+            if dict.keys.contains("Interval") {
+                self.interval = dict["Interval"] as! Int32
+            }
+            if dict.keys.contains("OperationType") {
+                self.operationType = dict["OperationType"] as! String
+            }
+            if dict.keys.contains("ResetType") {
+                self.resetType = dict["ResetType"] as! String
+            }
+            if dict.keys.contains("TimerType") {
+                self.timerType = dict["TimerType"] as! String
+            }
+        }
+    }
+    public class MonthDesktopSetting : Tea.TeaModel {
+        public var buyerId: Int64?
+
+        public var desktopId: String?
+
+        public var useDuration: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.buyerId != nil {
+                map["BuyerId"] = self.buyerId!
+            }
+            if self.desktopId != nil {
+                map["DesktopId"] = self.desktopId!
+            }
+            if self.useDuration != nil {
+                map["UseDuration"] = self.useDuration!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BuyerId") {
+                self.buyerId = dict["BuyerId"] as! Int64
+            }
+            if dict.keys.contains("DesktopId") {
+                self.desktopId = dict["DesktopId"] as! String
+            }
+            if dict.keys.contains("UseDuration") {
+                self.useDuration = dict["UseDuration"] as! Int32
+            }
+        }
+    }
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
+    public class UserCommands : Tea.TeaModel {
+        public var content: String?
+
+        public var contentEncoding: String?
+
+        public var contentType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.content != nil {
+                map["Content"] = self.content!
+            }
+            if self.contentEncoding != nil {
+                map["ContentEncoding"] = self.contentEncoding!
+            }
+            if self.contentType != nil {
+                map["ContentType"] = self.contentType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Content") {
+                self.content = dict["Content"] as! String
+            }
+            if dict.keys.contains("ContentEncoding") {
+                self.contentEncoding = dict["ContentEncoding"] as! String
+            }
+            if dict.keys.contains("ContentType") {
+                self.contentType = dict["ContentType"] as! String
+            }
+        }
+    }
+    public var amount: Int32?
+
+    public var autoPay: Bool?
+
+    public var autoRenew: Bool?
+
+    public var bundleId: String?
+
+    public var bundleModels: [CreateDesktopsShrinkRequest.BundleModels]?
+
+    public var chargeType: String?
+
+    public var desktopAttachmentShrink: String?
+
+    public var desktopMemberIp: String?
+
+    public var desktopName: String?
+
+    public var desktopNameSuffix: Bool?
+
+    public var desktopTimers: [CreateDesktopsShrinkRequest.DesktopTimers]?
+
+    public var directoryId: String?
+
+    public var endUserId: [String]?
+
+    public var groupId: String?
+
+    public var hostname: String?
+
+    public var monthDesktopSetting: CreateDesktopsShrinkRequest.MonthDesktopSetting?
+
+    public var officeSiteId: String?
+
+    public var period: Int32?
+
+    public var periodUnit: String?
+
+    public var policyGroupId: String?
+
+    public var promotionId: String?
+
+    public var regionId: String?
+
+    public var resourceGroupId: String?
+
+    public var snapshotPolicyId: String?
+
+    public var tag: [CreateDesktopsShrinkRequest.Tag]?
+
+    public var timerGroupId: String?
+
+    public var userAssignMode: String?
+
+    public var userCommands: [CreateDesktopsShrinkRequest.UserCommands]?
+
+    public var userName: String?
+
+    public var volumeEncryptionEnabled: Bool?
+
+    public var volumeEncryptionKey: String?
+
+    public var vpcId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.monthDesktopSetting?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.amount != nil {
+            map["Amount"] = self.amount!
+        }
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
+        if self.autoRenew != nil {
+            map["AutoRenew"] = self.autoRenew!
+        }
+        if self.bundleId != nil {
+            map["BundleId"] = self.bundleId!
+        }
+        if self.bundleModels != nil {
+            var tmp : [Any] = []
+            for k in self.bundleModels! {
+                tmp.append(k.toMap())
+            }
+            map["BundleModels"] = tmp
+        }
+        if self.chargeType != nil {
+            map["ChargeType"] = self.chargeType!
+        }
+        if self.desktopAttachmentShrink != nil {
+            map["DesktopAttachment"] = self.desktopAttachmentShrink!
+        }
+        if self.desktopMemberIp != nil {
+            map["DesktopMemberIp"] = self.desktopMemberIp!
+        }
+        if self.desktopName != nil {
+            map["DesktopName"] = self.desktopName!
+        }
+        if self.desktopNameSuffix != nil {
+            map["DesktopNameSuffix"] = self.desktopNameSuffix!
+        }
+        if self.desktopTimers != nil {
+            var tmp : [Any] = []
+            for k in self.desktopTimers! {
+                tmp.append(k.toMap())
+            }
+            map["DesktopTimers"] = tmp
+        }
+        if self.directoryId != nil {
+            map["DirectoryId"] = self.directoryId!
+        }
+        if self.endUserId != nil {
+            map["EndUserId"] = self.endUserId!
+        }
+        if self.groupId != nil {
+            map["GroupId"] = self.groupId!
+        }
+        if self.hostname != nil {
+            map["Hostname"] = self.hostname!
+        }
+        if self.monthDesktopSetting != nil {
+            map["MonthDesktopSetting"] = self.monthDesktopSetting?.toMap()
+        }
+        if self.officeSiteId != nil {
+            map["OfficeSiteId"] = self.officeSiteId!
+        }
+        if self.period != nil {
+            map["Period"] = self.period!
+        }
+        if self.periodUnit != nil {
+            map["PeriodUnit"] = self.periodUnit!
+        }
+        if self.policyGroupId != nil {
+            map["PolicyGroupId"] = self.policyGroupId!
+        }
+        if self.promotionId != nil {
+            map["PromotionId"] = self.promotionId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.snapshotPolicyId != nil {
+            map["SnapshotPolicyId"] = self.snapshotPolicyId!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
+        if self.timerGroupId != nil {
+            map["TimerGroupId"] = self.timerGroupId!
+        }
+        if self.userAssignMode != nil {
+            map["UserAssignMode"] = self.userAssignMode!
+        }
+        if self.userCommands != nil {
+            var tmp : [Any] = []
+            for k in self.userCommands! {
+                tmp.append(k.toMap())
+            }
+            map["UserCommands"] = tmp
+        }
+        if self.userName != nil {
+            map["UserName"] = self.userName!
+        }
+        if self.volumeEncryptionEnabled != nil {
+            map["VolumeEncryptionEnabled"] = self.volumeEncryptionEnabled!
+        }
+        if self.volumeEncryptionKey != nil {
+            map["VolumeEncryptionKey"] = self.volumeEncryptionKey!
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Amount") {
+            self.amount = dict["Amount"] as! Int32
+        }
+        if dict.keys.contains("AutoPay") {
+            self.autoPay = dict["AutoPay"] as! Bool
+        }
+        if dict.keys.contains("AutoRenew") {
+            self.autoRenew = dict["AutoRenew"] as! Bool
+        }
+        if dict.keys.contains("BundleId") {
+            self.bundleId = dict["BundleId"] as! String
+        }
+        if dict.keys.contains("BundleModels") {
+            var tmp : [CreateDesktopsShrinkRequest.BundleModels] = []
+            for v in dict["BundleModels"] as! [Any] {
+                var model = CreateDesktopsShrinkRequest.BundleModels()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.bundleModels = tmp
+        }
+        if dict.keys.contains("ChargeType") {
+            self.chargeType = dict["ChargeType"] as! String
+        }
+        if dict.keys.contains("DesktopAttachment") {
+            self.desktopAttachmentShrink = dict["DesktopAttachment"] as! String
+        }
+        if dict.keys.contains("DesktopMemberIp") {
+            self.desktopMemberIp = dict["DesktopMemberIp"] as! String
+        }
+        if dict.keys.contains("DesktopName") {
+            self.desktopName = dict["DesktopName"] as! String
+        }
+        if dict.keys.contains("DesktopNameSuffix") {
+            self.desktopNameSuffix = dict["DesktopNameSuffix"] as! Bool
+        }
+        if dict.keys.contains("DesktopTimers") {
+            var tmp : [CreateDesktopsShrinkRequest.DesktopTimers] = []
+            for v in dict["DesktopTimers"] as! [Any] {
+                var model = CreateDesktopsShrinkRequest.DesktopTimers()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.desktopTimers = tmp
+        }
+        if dict.keys.contains("DirectoryId") {
+            self.directoryId = dict["DirectoryId"] as! String
+        }
+        if dict.keys.contains("EndUserId") {
+            self.endUserId = dict["EndUserId"] as! [String]
+        }
+        if dict.keys.contains("GroupId") {
+            self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("Hostname") {
+            self.hostname = dict["Hostname"] as! String
+        }
+        if dict.keys.contains("MonthDesktopSetting") {
+            var model = CreateDesktopsShrinkRequest.MonthDesktopSetting()
+            model.fromMap(dict["MonthDesktopSetting"] as! [String: Any])
+            self.monthDesktopSetting = model
+        }
+        if dict.keys.contains("OfficeSiteId") {
+            self.officeSiteId = dict["OfficeSiteId"] as! String
+        }
+        if dict.keys.contains("Period") {
+            self.period = dict["Period"] as! Int32
+        }
+        if dict.keys.contains("PeriodUnit") {
+            self.periodUnit = dict["PeriodUnit"] as! String
+        }
+        if dict.keys.contains("PolicyGroupId") {
+            self.policyGroupId = dict["PolicyGroupId"] as! String
+        }
+        if dict.keys.contains("PromotionId") {
+            self.promotionId = dict["PromotionId"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("SnapshotPolicyId") {
+            self.snapshotPolicyId = dict["SnapshotPolicyId"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [CreateDesktopsShrinkRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateDesktopsShrinkRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
+        if dict.keys.contains("TimerGroupId") {
+            self.timerGroupId = dict["TimerGroupId"] as! String
+        }
+        if dict.keys.contains("UserAssignMode") {
+            self.userAssignMode = dict["UserAssignMode"] as! String
+        }
+        if dict.keys.contains("UserCommands") {
+            var tmp : [CreateDesktopsShrinkRequest.UserCommands] = []
+            for v in dict["UserCommands"] as! [Any] {
+                var model = CreateDesktopsShrinkRequest.UserCommands()
                 if v != nil {
                     model.fromMap(v as! [String: Any])
                 }
@@ -17826,6 +18556,8 @@ public class DescribeDesktopTypesRequest : Tea.TeaModel {
 
     public var desktopTypeId: String?
 
+    public var desktopTypeIdList: [String]?
+
     public var gpuCount: Double?
 
     public var gpuDriverType: String?
@@ -17834,9 +18566,15 @@ public class DescribeDesktopTypesRequest : Tea.TeaModel {
 
     public var memorySize: Int32?
 
+    public var orderBy: String?
+
     public var orderType: String?
 
     public var regionId: String?
+
+    public var scope: String?
+
+    public var sortType: String?
 
     public override init() {
         super.init()
@@ -17867,6 +18605,9 @@ public class DescribeDesktopTypesRequest : Tea.TeaModel {
         if self.desktopTypeId != nil {
             map["DesktopTypeId"] = self.desktopTypeId!
         }
+        if self.desktopTypeIdList != nil {
+            map["DesktopTypeIdList"] = self.desktopTypeIdList!
+        }
         if self.gpuCount != nil {
             map["GpuCount"] = self.gpuCount!
         }
@@ -17879,11 +18620,20 @@ public class DescribeDesktopTypesRequest : Tea.TeaModel {
         if self.memorySize != nil {
             map["MemorySize"] = self.memorySize!
         }
+        if self.orderBy != nil {
+            map["OrderBy"] = self.orderBy!
+        }
         if self.orderType != nil {
             map["OrderType"] = self.orderType!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.scope != nil {
+            map["Scope"] = self.scope!
+        }
+        if self.sortType != nil {
+            map["SortType"] = self.sortType!
         }
         return map
     }
@@ -17904,6 +18654,9 @@ public class DescribeDesktopTypesRequest : Tea.TeaModel {
         if dict.keys.contains("DesktopTypeId") {
             self.desktopTypeId = dict["DesktopTypeId"] as! String
         }
+        if dict.keys.contains("DesktopTypeIdList") {
+            self.desktopTypeIdList = dict["DesktopTypeIdList"] as! [String]
+        }
         if dict.keys.contains("GpuCount") {
             self.gpuCount = dict["GpuCount"] as! Double
         }
@@ -17916,11 +18669,20 @@ public class DescribeDesktopTypesRequest : Tea.TeaModel {
         if dict.keys.contains("MemorySize") {
             self.memorySize = dict["MemorySize"] as! Int32
         }
+        if dict.keys.contains("OrderBy") {
+            self.orderBy = dict["OrderBy"] as! String
+        }
         if dict.keys.contains("OrderType") {
             self.orderType = dict["OrderType"] as! String
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("Scope") {
+            self.scope = dict["Scope"] as! String
+        }
+        if dict.keys.contains("SortType") {
+            self.sortType = dict["SortType"] as! String
         }
     }
 }
@@ -17942,6 +18704,10 @@ public class DescribeDesktopTypesResponseBody : Tea.TeaModel {
         public var instanceTypeFamily: String?
 
         public var memorySize: String?
+
+        public var scopes: [String]?
+
+        public var stockState: String?
 
         public var systemDiskSize: String?
 
@@ -17983,6 +18749,12 @@ public class DescribeDesktopTypesResponseBody : Tea.TeaModel {
             if self.memorySize != nil {
                 map["MemorySize"] = self.memorySize!
             }
+            if self.scopes != nil {
+                map["Scopes"] = self.scopes!
+            }
+            if self.stockState != nil {
+                map["StockState"] = self.stockState!
+            }
             if self.systemDiskSize != nil {
                 map["SystemDiskSize"] = self.systemDiskSize!
             }
@@ -18013,6 +18785,12 @@ public class DescribeDesktopTypesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("MemorySize") {
                 self.memorySize = dict["MemorySize"] as! String
+            }
+            if dict.keys.contains("Scopes") {
+                self.scopes = dict["Scopes"] as! [String]
+            }
+            if dict.keys.contains("StockState") {
+                self.stockState = dict["StockState"] as! String
             }
             if dict.keys.contains("SystemDiskSize") {
                 self.systemDiskSize = dict["SystemDiskSize"] as! String
@@ -18201,6 +18979,10 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
 
     public var osTypes: [String]?
 
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
     public var policyGroupId: String?
 
     public var protocolType: String?
@@ -18303,6 +19085,12 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
         }
         if self.osTypes != nil {
             map["OsTypes"] = self.osTypes!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
         }
         if self.policyGroupId != nil {
             map["PolicyGroupId"] = self.policyGroupId!
@@ -18411,6 +19199,12 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
         if dict.keys.contains("OsTypes") {
             self.osTypes = dict["OsTypes"] as! [String]
         }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
         if dict.keys.contains("PolicyGroupId") {
             self.policyGroupId = dict["PolicyGroupId"] as! String
         }
@@ -18455,6 +19249,8 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
 public class DescribeDesktopsResponseBody : Tea.TeaModel {
     public class Desktops : Tea.TeaModel {
         public class Disks : Tea.TeaModel {
+            public var diskCategory: String?
+
             public var diskId: String?
 
             public var diskSize: Int32?
@@ -18477,6 +19273,9 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.diskCategory != nil {
+                    map["DiskCategory"] = self.diskCategory!
+                }
                 if self.diskId != nil {
                     map["DiskId"] = self.diskId!
                 }
@@ -18493,6 +19292,9 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DiskCategory") {
+                    self.diskCategory = dict["DiskCategory"] as! String
+                }
                 if dict.keys.contains("DiskId") {
                     self.diskId = dict["DiskId"] as! String
                 }
@@ -19250,6 +20052,10 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
     public var requestId: String?
 
     public var totalCount: Int32?
@@ -19278,6 +20084,12 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -19301,6 +20113,12 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("NextToken") {
             self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
@@ -25049,6 +25867,43 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class ResourceAmounts : Tea.TeaModel {
+            public var amount: Int64?
+
+            public var resourceType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.amount != nil {
+                    map["amount"] = self.amount!
+                }
+                if self.resourceType != nil {
+                    map["resourceType"] = self.resourceType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("amount") {
+                    self.amount = dict["amount"] as! Int64
+                }
+                if dict.keys.contains("resourceType") {
+                    self.resourceType = dict["resourceType"] as! String
+                }
+            }
+        }
         public var ADConnectors: [DescribeOfficeSitesResponseBody.OfficeSites.ADConnectors]?
 
         public var adHostname: String?
@@ -25111,6 +25966,8 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
 
         public var networkPackageId: String?
 
+        public var nmVersion: String?
+
         public var officeSiteId: String?
 
         public var officeSiteType: String?
@@ -25124,6 +25981,8 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
         public var rdsLicenseDomainName: String?
 
         public var rdsLicenseStatus: String?
+
+        public var resourceAmounts: [DescribeOfficeSitesResponseBody.OfficeSites.ResourceAmounts]?
 
         public var securityProtection: String?
 
@@ -25142,6 +26001,8 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
         public var totalEdsCount: Int64?
 
         public var totalEdsCountForGroup: Int64?
+
+        public var totalResourceAmount: Int64?
 
         public var trustPassword: String?
 
@@ -25266,6 +26127,9 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             if self.networkPackageId != nil {
                 map["NetworkPackageId"] = self.networkPackageId!
             }
+            if self.nmVersion != nil {
+                map["NmVersion"] = self.nmVersion!
+            }
             if self.officeSiteId != nil {
                 map["OfficeSiteId"] = self.officeSiteId!
             }
@@ -25286,6 +26150,13 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             }
             if self.rdsLicenseStatus != nil {
                 map["RdsLicenseStatus"] = self.rdsLicenseStatus!
+            }
+            if self.resourceAmounts != nil {
+                var tmp : [Any] = []
+                for k in self.resourceAmounts! {
+                    tmp.append(k.toMap())
+                }
+                map["ResourceAmounts"] = tmp
             }
             if self.securityProtection != nil {
                 map["SecurityProtection"] = self.securityProtection!
@@ -25313,6 +26184,9 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             }
             if self.totalEdsCountForGroup != nil {
                 map["TotalEdsCountForGroup"] = self.totalEdsCountForGroup!
+            }
+            if self.totalResourceAmount != nil {
+                map["TotalResourceAmount"] = self.totalResourceAmount!
             }
             if self.trustPassword != nil {
                 map["TrustPassword"] = self.trustPassword!
@@ -25439,6 +26313,9 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             if dict.keys.contains("NetworkPackageId") {
                 self.networkPackageId = dict["NetworkPackageId"] as! String
             }
+            if dict.keys.contains("NmVersion") {
+                self.nmVersion = dict["NmVersion"] as! String
+            }
             if dict.keys.contains("OfficeSiteId") {
                 self.officeSiteId = dict["OfficeSiteId"] as! String
             }
@@ -25459,6 +26336,17 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RdsLicenseStatus") {
                 self.rdsLicenseStatus = dict["RdsLicenseStatus"] as! String
+            }
+            if dict.keys.contains("ResourceAmounts") {
+                var tmp : [DescribeOfficeSitesResponseBody.OfficeSites.ResourceAmounts] = []
+                for v in dict["ResourceAmounts"] as! [Any] {
+                    var model = DescribeOfficeSitesResponseBody.OfficeSites.ResourceAmounts()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.resourceAmounts = tmp
             }
             if dict.keys.contains("SecurityProtection") {
                 self.securityProtection = dict["SecurityProtection"] as! String
@@ -25486,6 +26374,9 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("TotalEdsCountForGroup") {
                 self.totalEdsCountForGroup = dict["TotalEdsCountForGroup"] as! Int64
+            }
+            if dict.keys.contains("TotalResourceAmount") {
+                self.totalResourceAmount = dict["TotalResourceAmount"] as! Int64
             }
             if dict.keys.contains("TrustPassword") {
                 self.trustPassword = dict["TrustPassword"] as! String
@@ -26217,6 +27108,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var remoteCoordinate: String?
 
+        public var resourceRegionId: String?
+
         public var scope: String?
 
         public var scopeValue: [String]?
@@ -26485,6 +27378,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if self.remoteCoordinate != nil {
                 map["RemoteCoordinate"] = self.remoteCoordinate!
+            }
+            if self.resourceRegionId != nil {
+                map["ResourceRegionId"] = self.resourceRegionId!
             }
             if self.scope != nil {
                 map["Scope"] = self.scope!
@@ -26805,6 +27701,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if dict.keys.contains("RemoteCoordinate") {
                 self.remoteCoordinate = dict["RemoteCoordinate"] as! String
             }
+            if dict.keys.contains("ResourceRegionId") {
+                self.resourceRegionId = dict["ResourceRegionId"] as! String
+            }
             if dict.keys.contains("Scope") {
                 self.scope = dict["Scope"] as! String
             }
@@ -27010,6 +27909,8 @@ public class DescribePriceRequest : Tea.TeaModel {
 
     public var bandwidth: Int32?
 
+    public var duration: Int32?
+
     public var groupDesktopCount: Int32?
 
     public var instanceType: String?
@@ -27051,6 +27952,9 @@ public class DescribePriceRequest : Tea.TeaModel {
         }
         if self.bandwidth != nil {
             map["Bandwidth"] = self.bandwidth!
+        }
+        if self.duration != nil {
+            map["Duration"] = self.duration!
         }
         if self.groupDesktopCount != nil {
             map["GroupDesktopCount"] = self.groupDesktopCount!
@@ -27094,6 +27998,9 @@ public class DescribePriceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Bandwidth") {
             self.bandwidth = dict["Bandwidth"] as! Int32
+        }
+        if dict.keys.contains("Duration") {
+            self.duration = dict["Duration"] as! Int32
         }
         if dict.keys.contains("GroupDesktopCount") {
             self.groupDesktopCount = dict["GroupDesktopCount"] as! Int32
