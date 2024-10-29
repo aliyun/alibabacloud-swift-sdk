@@ -2625,6 +2625,8 @@ public class JobSettings : Tea.TeaModel {
 
     public var caller: String?
 
+    public var disableEcsStockCheck: Bool?
+
     public var driver: String?
 
     public var enableErrorMonitoringInAIMaster: Bool?
@@ -2673,6 +2675,9 @@ public class JobSettings : Tea.TeaModel {
         }
         if self.caller != nil {
             map["Caller"] = self.caller!
+        }
+        if self.disableEcsStockCheck != nil {
+            map["DisableEcsStockCheck"] = self.disableEcsStockCheck!
         }
         if self.driver != nil {
             map["Driver"] = self.driver!
@@ -2725,6 +2730,9 @@ public class JobSettings : Tea.TeaModel {
         }
         if dict.keys.contains("Caller") {
             self.caller = dict["Caller"] as! String
+        }
+        if dict.keys.contains("DisableEcsStockCheck") {
+            self.disableEcsStockCheck = dict["DisableEcsStockCheck"] as! Bool
         }
         if dict.keys.contains("Driver") {
             self.driver = dict["Driver"] as! String
