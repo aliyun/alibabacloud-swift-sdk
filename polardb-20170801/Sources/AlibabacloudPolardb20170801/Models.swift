@@ -6888,6 +6888,8 @@ public class DescribeAITaskStatusRequest : Tea.TeaModel {
 }
 
 public class DescribeAITaskStatusResponseBody : Tea.TeaModel {
+    public var accountName: String?
+
     public var DBClusterId: String?
 
     public var requestId: String?
@@ -6910,6 +6912,9 @@ public class DescribeAITaskStatusResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accountName != nil {
+            map["AccountName"] = self.accountName!
+        }
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
@@ -6926,6 +6931,9 @@ public class DescribeAITaskStatusResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccountName") {
+            self.accountName = dict["AccountName"] as! String
+        }
         if dict.keys.contains("DBClusterId") {
             self.DBClusterId = dict["DBClusterId"] as! String
         }
