@@ -280,6 +280,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
         }
+        if (!TeaUtils.Client.isUnset(request.ipamPoolAllocationDescription)) {
+            query["IpamPoolAllocationDescription"] = request.ipamPoolAllocationDescription ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ipamPoolAllocationName)) {
+            query["IpamPoolAllocationName"] = request.ipamPoolAllocationName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ipamPoolId)) {
             query["IpamPoolId"] = request.ipamPoolId ?? "";
         }
@@ -482,9 +488,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteIpamPoolAllocationWithOptions(_ request: DeleteIpamPoolAllocationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteIpamPoolAllocationResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.cidr)) {
-            query["Cidr"] = request.cidr ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
@@ -493,9 +496,6 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ipamPoolAllocationId)) {
             query["IpamPoolAllocationId"] = request.ipamPoolAllocationId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.ipamPoolId)) {
-            query["IpamPoolId"] = request.ipamPoolId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
@@ -666,6 +666,52 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listIpamDiscoveredResourceWithOptions(_ request: ListIpamDiscoveredResourceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListIpamDiscoveredResourceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ipamResourceDiscoveryId)) {
+            query["IpamResourceDiscoveryId"] = request.ipamResourceDiscoveryId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceRegionId)) {
+            query["ResourceRegionId"] = request.resourceRegionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceType)) {
+            query["ResourceType"] = request.resourceType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListIpamDiscoveredResource",
+            "version": "2023-02-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListIpamDiscoveredResourceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listIpamDiscoveredResource(_ request: ListIpamDiscoveredResourceRequest) async throws -> ListIpamDiscoveredResourceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listIpamDiscoveredResourceWithOptions(request as! ListIpamDiscoveredResourceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listIpamPoolAllocationsWithOptions(_ request: ListIpamPoolAllocationsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListIpamPoolAllocationsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -674,6 +720,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ipamPoolAllocationIds)) {
             query["IpamPoolAllocationIds"] = request.ipamPoolAllocationIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.ipamPoolAllocationName)) {
+            query["IpamPoolAllocationName"] = request.ipamPoolAllocationName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ipamPoolId)) {
             query["IpamPoolId"] = request.ipamPoolId ?? "";
@@ -880,6 +929,70 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listIpamResourceCidrs(_ request: ListIpamResourceCidrsRequest) async throws -> ListIpamResourceCidrsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listIpamResourceCidrsWithOptions(request as! ListIpamResourceCidrsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listIpamResourceDiscoveriesWithOptions(_ request: ListIpamResourceDiscoveriesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListIpamResourceDiscoveriesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ipamResourceDiscoveryIds)) {
+            query["IpamResourceDiscoveryIds"] = request.ipamResourceDiscoveryIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.ipamResourceDiscoveryName)) {
+            query["IpamResourceDiscoveryName"] = request.ipamResourceDiscoveryName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tags)) {
+            query["Tags"] = request.tags ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["Type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListIpamResourceDiscoveries",
+            "version": "2023-02-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListIpamResourceDiscoveriesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listIpamResourceDiscoveries(_ request: ListIpamResourceDiscoveriesRequest) async throws -> ListIpamResourceDiscoveriesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listIpamResourceDiscoveriesWithOptions(request as! ListIpamResourceDiscoveriesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1356,6 +1469,52 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateIpamPool(_ request: UpdateIpamPoolRequest) async throws -> UpdateIpamPoolResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateIpamPoolWithOptions(request as! UpdateIpamPoolRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateIpamPoolAllocationWithOptions(_ request: UpdateIpamPoolAllocationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateIpamPoolAllocationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ipamPoolAllocationDescription)) {
+            query["IpamPoolAllocationDescription"] = request.ipamPoolAllocationDescription ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ipamPoolAllocationId)) {
+            query["IpamPoolAllocationId"] = request.ipamPoolAllocationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ipamPoolAllocationName)) {
+            query["IpamPoolAllocationName"] = request.ipamPoolAllocationName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateIpamPoolAllocation",
+            "version": "2023-02-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateIpamPoolAllocationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateIpamPoolAllocation(_ request: UpdateIpamPoolAllocationRequest) async throws -> UpdateIpamPoolAllocationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateIpamPoolAllocationWithOptions(request as! UpdateIpamPoolAllocationRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
