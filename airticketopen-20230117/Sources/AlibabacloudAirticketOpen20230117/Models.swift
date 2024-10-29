@@ -3604,6 +3604,8 @@ public class ChangeApplyRequest : Tea.TeaModel {
 
             public var arriveTime: Int64?
 
+            public var arriveTimeStr: String?
+
             public var codeShare: Bool?
 
             public var departureAirport: String?
@@ -3615,6 +3617,8 @@ public class ChangeApplyRequest : Tea.TeaModel {
             public var departureTerminal: String?
 
             public var departureTime: Int64?
+
+            public var departureTimeStr: String?
 
             public var marketingFlightNo: String?
 
@@ -3646,6 +3650,9 @@ public class ChangeApplyRequest : Tea.TeaModel {
                 if self.arriveTime != nil {
                     map["arrive_time"] = self.arriveTime!
                 }
+                if self.arriveTimeStr != nil {
+                    map["arrive_time_str"] = self.arriveTimeStr!
+                }
                 if self.codeShare != nil {
                     map["code_share"] = self.codeShare!
                 }
@@ -3663,6 +3670,9 @@ public class ChangeApplyRequest : Tea.TeaModel {
                 }
                 if self.departureTime != nil {
                     map["departure_time"] = self.departureTime!
+                }
+                if self.departureTimeStr != nil {
+                    map["departure_time_str"] = self.departureTimeStr!
                 }
                 if self.marketingFlightNo != nil {
                     map["marketing_flight_no"] = self.marketingFlightNo!
@@ -3686,6 +3696,9 @@ public class ChangeApplyRequest : Tea.TeaModel {
                 if dict.keys.contains("arrive_time") {
                     self.arriveTime = dict["arrive_time"] as! Int64
                 }
+                if dict.keys.contains("arrive_time_str") {
+                    self.arriveTimeStr = dict["arrive_time_str"] as! String
+                }
                 if dict.keys.contains("code_share") {
                     self.codeShare = dict["code_share"] as! Bool
                 }
@@ -3703,6 +3716,9 @@ public class ChangeApplyRequest : Tea.TeaModel {
                 }
                 if dict.keys.contains("departure_time") {
                     self.departureTime = dict["departure_time"] as! Int64
+                }
+                if dict.keys.contains("departure_time_str") {
+                    self.departureTimeStr = dict["departure_time_str"] as! String
                 }
                 if dict.keys.contains("marketing_flight_no") {
                     self.marketingFlightNo = dict["marketing_flight_no"] as! String
