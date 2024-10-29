@@ -213,8 +213,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.addresses)) {
             bodyFlat["Addresses"] = request.addresses ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.browserAccessStatus)) {
+            body["BrowserAccessStatus"] = request.browserAccessStatus ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.l7ProxyDomainAutomaticPrefix)) {
+            body["L7ProxyDomainAutomaticPrefix"] = request.l7ProxyDomainAutomaticPrefix ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.l7ProxyDomainCustom)) {
+            body["L7ProxyDomainCustom"] = request.l7ProxyDomainCustom ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             body["Name"] = request.name ?? "";
@@ -526,8 +535,15 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateWmEmbedTaskShrinkRequest = CreateWmEmbedTaskShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.csvControl)) {
+            request.csvControlShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.csvControl, "CsvControl", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.documentControl)) {
             request.documentControlShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.documentControl, "DocumentControl", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.csvControlShrink)) {
+            query["CsvControl"] = request.csvControlShrink ?? "";
         }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.documentControlShrink)) {
@@ -564,6 +580,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["WmType"] = request.wmType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -588,8 +605,17 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createWmExtractTaskWithOptions(_ request: CreateWmExtractTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateWmExtractTaskResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createWmExtractTaskWithOptions(_ tmpReq: CreateWmExtractTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateWmExtractTaskResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateWmExtractTaskShrinkRequest = CreateWmExtractTaskShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.csvControl)) {
+            request.csvControlShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.csvControl, "CsvControl", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.csvControlShrink)) {
+            query["CsvControl"] = request.csvControlShrink ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.documentIsCapture)) {
             body["DocumentIsCapture"] = request.documentIsCapture!;
@@ -613,6 +639,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["WmType"] = request.wmType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -2573,6 +2600,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.l7ProxyDomainAutomaticPrefix)) {
+            body["L7ProxyDomainAutomaticPrefix"] = request.l7ProxyDomainAutomaticPrefix ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.l7ProxyDomainCustom)) {
+            body["L7ProxyDomainCustom"] = request.l7ProxyDomainCustom ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.l7ProxyDomainPrivate)) {
+            body["L7ProxyDomainPrivate"] = request.l7ProxyDomainPrivate ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.modifyType)) {
             body["ModifyType"] = request.modifyType ?? "";

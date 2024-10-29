@@ -679,7 +679,13 @@ public class CreatePrivateAccessApplicationRequest : Tea.TeaModel {
     }
     public var addresses: [String]?
 
+    public var browserAccessStatus: String?
+
     public var description_: String?
+
+    public var l7ProxyDomainAutomaticPrefix: String?
+
+    public var l7ProxyDomainCustom: String?
 
     public var name: String?
 
@@ -708,8 +714,17 @@ public class CreatePrivateAccessApplicationRequest : Tea.TeaModel {
         if self.addresses != nil {
             map["Addresses"] = self.addresses!
         }
+        if self.browserAccessStatus != nil {
+            map["BrowserAccessStatus"] = self.browserAccessStatus!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.l7ProxyDomainAutomaticPrefix != nil {
+            map["L7ProxyDomainAutomaticPrefix"] = self.l7ProxyDomainAutomaticPrefix!
+        }
+        if self.l7ProxyDomainCustom != nil {
+            map["L7ProxyDomainCustom"] = self.l7ProxyDomainCustom!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -737,8 +752,17 @@ public class CreatePrivateAccessApplicationRequest : Tea.TeaModel {
         if dict.keys.contains("Addresses") {
             self.addresses = dict["Addresses"] as! [String]
         }
+        if dict.keys.contains("BrowserAccessStatus") {
+            self.browserAccessStatus = dict["BrowserAccessStatus"] as! String
+        }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("L7ProxyDomainAutomaticPrefix") {
+            self.l7ProxyDomainAutomaticPrefix = dict["L7ProxyDomainAutomaticPrefix"] as! String
+        }
+        if dict.keys.contains("L7ProxyDomainCustom") {
+            self.l7ProxyDomainCustom = dict["L7ProxyDomainCustom"] as! String
         }
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
@@ -2288,6 +2312,51 @@ public class CreateWmBaseImageResponse : Tea.TeaModel {
 }
 
 public class CreateWmEmbedTaskRequest : Tea.TeaModel {
+    public class CsvControl : Tea.TeaModel {
+        public var embedColumn: Int64?
+
+        public var embedPrecision: Int64?
+
+        public var method: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.embedColumn != nil {
+                map["EmbedColumn"] = self.embedColumn!
+            }
+            if self.embedPrecision != nil {
+                map["EmbedPrecision"] = self.embedPrecision!
+            }
+            if self.method != nil {
+                map["Method"] = self.method!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EmbedColumn") {
+                self.embedColumn = dict["EmbedColumn"] as! Int64
+            }
+            if dict.keys.contains("EmbedPrecision") {
+                self.embedPrecision = dict["EmbedPrecision"] as! Int64
+            }
+            if dict.keys.contains("Method") {
+                self.method = dict["Method"] as! String
+            }
+        }
+    }
     public class DocumentControl : Tea.TeaModel {
         public class BackgroundControl : Tea.TeaModel {
             public class BgInvisibleControl : Tea.TeaModel {
@@ -2525,6 +2594,8 @@ public class CreateWmEmbedTaskRequest : Tea.TeaModel {
             }
         }
     }
+    public var csvControl: CreateWmEmbedTaskRequest.CsvControl?
+
     public var documentControl: CreateWmEmbedTaskRequest.DocumentControl?
 
     public var fileUrl: String?
@@ -2557,11 +2628,15 @@ public class CreateWmEmbedTaskRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.csvControl?.validate()
         try self.documentControl?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.csvControl != nil {
+            map["CsvControl"] = self.csvControl?.toMap()
+        }
         if self.documentControl != nil {
             map["DocumentControl"] = self.documentControl?.toMap()
         }
@@ -2599,6 +2674,11 @@ public class CreateWmEmbedTaskRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CsvControl") {
+            var model = CreateWmEmbedTaskRequest.CsvControl()
+            model.fromMap(dict["CsvControl"] as! [String: Any])
+            self.csvControl = model
+        }
         if dict.keys.contains("DocumentControl") {
             var model = CreateWmEmbedTaskRequest.DocumentControl()
             model.fromMap(dict["DocumentControl"] as! [String: Any])
@@ -2638,6 +2718,8 @@ public class CreateWmEmbedTaskRequest : Tea.TeaModel {
 }
 
 public class CreateWmEmbedTaskShrinkRequest : Tea.TeaModel {
+    public var csvControlShrink: String?
+
     public var documentControlShrink: String?
 
     public var fileUrl: String?
@@ -2674,6 +2756,9 @@ public class CreateWmEmbedTaskShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.csvControlShrink != nil {
+            map["CsvControl"] = self.csvControlShrink!
+        }
         if self.documentControlShrink != nil {
             map["DocumentControl"] = self.documentControlShrink!
         }
@@ -2711,6 +2796,9 @@ public class CreateWmEmbedTaskShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CsvControl") {
+            self.csvControlShrink = dict["CsvControl"] as! String
+        }
         if dict.keys.contains("DocumentControl") {
             self.documentControlShrink = dict["DocumentControl"] as! String
         }
@@ -2867,6 +2955,142 @@ public class CreateWmEmbedTaskResponse : Tea.TeaModel {
 }
 
 public class CreateWmExtractTaskRequest : Tea.TeaModel {
+    public class CsvControl : Tea.TeaModel {
+        public var embedColumn: Int64?
+
+        public var embedPrecision: Int64?
+
+        public var method: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.embedColumn != nil {
+                map["EmbedColumn"] = self.embedColumn!
+            }
+            if self.embedPrecision != nil {
+                map["EmbedPrecision"] = self.embedPrecision!
+            }
+            if self.method != nil {
+                map["Method"] = self.method!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EmbedColumn") {
+                self.embedColumn = dict["EmbedColumn"] as! Int64
+            }
+            if dict.keys.contains("EmbedPrecision") {
+                self.embedPrecision = dict["EmbedPrecision"] as! Int64
+            }
+            if dict.keys.contains("Method") {
+                self.method = dict["Method"] as! String
+            }
+        }
+    }
+    public var csvControl: CreateWmExtractTaskRequest.CsvControl?
+
+    public var documentIsCapture: Bool?
+
+    public var fileUrl: String?
+
+    public var filename: String?
+
+    public var videoIsLong: Bool?
+
+    public var videoSpeed: String?
+
+    public var wmInfoSize: Int64?
+
+    public var wmType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.csvControl?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.csvControl != nil {
+            map["CsvControl"] = self.csvControl?.toMap()
+        }
+        if self.documentIsCapture != nil {
+            map["DocumentIsCapture"] = self.documentIsCapture!
+        }
+        if self.fileUrl != nil {
+            map["FileUrl"] = self.fileUrl!
+        }
+        if self.filename != nil {
+            map["Filename"] = self.filename!
+        }
+        if self.videoIsLong != nil {
+            map["VideoIsLong"] = self.videoIsLong!
+        }
+        if self.videoSpeed != nil {
+            map["VideoSpeed"] = self.videoSpeed!
+        }
+        if self.wmInfoSize != nil {
+            map["WmInfoSize"] = self.wmInfoSize!
+        }
+        if self.wmType != nil {
+            map["WmType"] = self.wmType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CsvControl") {
+            var model = CreateWmExtractTaskRequest.CsvControl()
+            model.fromMap(dict["CsvControl"] as! [String: Any])
+            self.csvControl = model
+        }
+        if dict.keys.contains("DocumentIsCapture") {
+            self.documentIsCapture = dict["DocumentIsCapture"] as! Bool
+        }
+        if dict.keys.contains("FileUrl") {
+            self.fileUrl = dict["FileUrl"] as! String
+        }
+        if dict.keys.contains("Filename") {
+            self.filename = dict["Filename"] as! String
+        }
+        if dict.keys.contains("VideoIsLong") {
+            self.videoIsLong = dict["VideoIsLong"] as! Bool
+        }
+        if dict.keys.contains("VideoSpeed") {
+            self.videoSpeed = dict["VideoSpeed"] as! String
+        }
+        if dict.keys.contains("WmInfoSize") {
+            self.wmInfoSize = dict["WmInfoSize"] as! Int64
+        }
+        if dict.keys.contains("WmType") {
+            self.wmType = dict["WmType"] as! String
+        }
+    }
+}
+
+public class CreateWmExtractTaskShrinkRequest : Tea.TeaModel {
+    public var csvControlShrink: String?
+
     public var documentIsCapture: Bool?
 
     public var fileUrl: String?
@@ -2895,6 +3119,9 @@ public class CreateWmExtractTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.csvControlShrink != nil {
+            map["CsvControl"] = self.csvControlShrink!
+        }
         if self.documentIsCapture != nil {
             map["DocumentIsCapture"] = self.documentIsCapture!
         }
@@ -2920,6 +3147,9 @@ public class CreateWmExtractTaskRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CsvControl") {
+            self.csvControlShrink = dict["CsvControl"] as! String
+        }
         if dict.keys.contains("DocumentIsCapture") {
             self.documentIsCapture = dict["DocumentIsCapture"] as! Bool
         }
@@ -5608,11 +5838,17 @@ public class GetPrivateAccessApplicationResponseBody : Tea.TeaModel {
 
         public var applicationId: String?
 
+        public var browserAccessStatus: String?
+
         public var connectorIds: [String]?
 
         public var createTime: String?
 
         public var description_: String?
+
+        public var l7ProxyDomainAutomatic: String?
+
+        public var l7ProxyDomainCustom: String?
 
         public var name: String?
 
@@ -5646,6 +5882,9 @@ public class GetPrivateAccessApplicationResponseBody : Tea.TeaModel {
             if self.applicationId != nil {
                 map["ApplicationId"] = self.applicationId!
             }
+            if self.browserAccessStatus != nil {
+                map["BrowserAccessStatus"] = self.browserAccessStatus!
+            }
             if self.connectorIds != nil {
                 map["ConnectorIds"] = self.connectorIds!
             }
@@ -5654,6 +5893,12 @@ public class GetPrivateAccessApplicationResponseBody : Tea.TeaModel {
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
+            }
+            if self.l7ProxyDomainAutomatic != nil {
+                map["L7ProxyDomainAutomatic"] = self.l7ProxyDomainAutomatic!
+            }
+            if self.l7ProxyDomainCustom != nil {
+                map["L7ProxyDomainCustom"] = self.l7ProxyDomainCustom!
             }
             if self.name != nil {
                 map["Name"] = self.name!
@@ -5687,6 +5932,9 @@ public class GetPrivateAccessApplicationResponseBody : Tea.TeaModel {
             if dict.keys.contains("ApplicationId") {
                 self.applicationId = dict["ApplicationId"] as! String
             }
+            if dict.keys.contains("BrowserAccessStatus") {
+                self.browserAccessStatus = dict["BrowserAccessStatus"] as! String
+            }
             if dict.keys.contains("ConnectorIds") {
                 self.connectorIds = dict["ConnectorIds"] as! [String]
             }
@@ -5695,6 +5943,12 @@ public class GetPrivateAccessApplicationResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Description") {
                 self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("L7ProxyDomainAutomatic") {
+                self.l7ProxyDomainAutomatic = dict["L7ProxyDomainAutomatic"] as! String
+            }
+            if dict.keys.contains("L7ProxyDomainCustom") {
+                self.l7ProxyDomainCustom = dict["L7ProxyDomainCustom"] as! String
             }
             if dict.keys.contains("Name") {
                 self.name = dict["Name"] as! String
@@ -11609,6 +11863,8 @@ public class ListPopTrafficStatisticsResponse : Tea.TeaModel {
 }
 
 public class ListPrivateAccessApplicationsRequest : Tea.TeaModel {
+    public var accessModes: String?
+
     public var address: String?
 
     public var applicationIds: [String]?
@@ -11641,6 +11897,9 @@ public class ListPrivateAccessApplicationsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessModes != nil {
+            map["AccessModes"] = self.accessModes!
+        }
         if self.address != nil {
             map["Address"] = self.address!
         }
@@ -11672,6 +11931,9 @@ public class ListPrivateAccessApplicationsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessModes") {
+            self.accessModes = dict["AccessModes"] as! String
+        }
         if dict.keys.contains("Address") {
             self.address = dict["Address"] as! String
         }
@@ -11745,11 +12007,17 @@ public class ListPrivateAccessApplicationsResponseBody : Tea.TeaModel {
 
         public var applicationId: String?
 
+        public var browserAccessStatus: String?
+
         public var connectorIds: [String]?
 
         public var createTime: String?
 
         public var description_: String?
+
+        public var l7ProxyDomainAutomatic: String?
+
+        public var l7ProxyDomainCustom: String?
 
         public var name: String?
 
@@ -11783,6 +12051,9 @@ public class ListPrivateAccessApplicationsResponseBody : Tea.TeaModel {
             if self.applicationId != nil {
                 map["ApplicationId"] = self.applicationId!
             }
+            if self.browserAccessStatus != nil {
+                map["BrowserAccessStatus"] = self.browserAccessStatus!
+            }
             if self.connectorIds != nil {
                 map["ConnectorIds"] = self.connectorIds!
             }
@@ -11791,6 +12062,12 @@ public class ListPrivateAccessApplicationsResponseBody : Tea.TeaModel {
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
+            }
+            if self.l7ProxyDomainAutomatic != nil {
+                map["L7ProxyDomainAutomatic"] = self.l7ProxyDomainAutomatic!
+            }
+            if self.l7ProxyDomainCustom != nil {
+                map["L7ProxyDomainCustom"] = self.l7ProxyDomainCustom!
             }
             if self.name != nil {
                 map["Name"] = self.name!
@@ -11824,6 +12101,9 @@ public class ListPrivateAccessApplicationsResponseBody : Tea.TeaModel {
             if dict.keys.contains("ApplicationId") {
                 self.applicationId = dict["ApplicationId"] as! String
             }
+            if dict.keys.contains("BrowserAccessStatus") {
+                self.browserAccessStatus = dict["BrowserAccessStatus"] as! String
+            }
             if dict.keys.contains("ConnectorIds") {
                 self.connectorIds = dict["ConnectorIds"] as! [String]
             }
@@ -11832,6 +12112,12 @@ public class ListPrivateAccessApplicationsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Description") {
                 self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("L7ProxyDomainAutomatic") {
+                self.l7ProxyDomainAutomatic = dict["L7ProxyDomainAutomatic"] as! String
+            }
+            if dict.keys.contains("L7ProxyDomainCustom") {
+                self.l7ProxyDomainCustom = dict["L7ProxyDomainCustom"] as! String
             }
             if dict.keys.contains("Name") {
                 self.name = dict["Name"] as! String
@@ -17812,6 +18098,12 @@ public class UpdatePrivateAccessApplicationRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var l7ProxyDomainAutomaticPrefix: String?
+
+    public var l7ProxyDomainCustom: String?
+
+    public var l7ProxyDomainPrivate: String?
+
     public var modifyType: String?
 
     public var portRanges: [UpdatePrivateAccessApplicationRequest.PortRanges]?
@@ -17845,6 +18137,15 @@ public class UpdatePrivateAccessApplicationRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.l7ProxyDomainAutomaticPrefix != nil {
+            map["L7ProxyDomainAutomaticPrefix"] = self.l7ProxyDomainAutomaticPrefix!
+        }
+        if self.l7ProxyDomainCustom != nil {
+            map["L7ProxyDomainCustom"] = self.l7ProxyDomainCustom!
+        }
+        if self.l7ProxyDomainPrivate != nil {
+            map["L7ProxyDomainPrivate"] = self.l7ProxyDomainPrivate!
+        }
         if self.modifyType != nil {
             map["ModifyType"] = self.modifyType!
         }
@@ -17876,6 +18177,15 @@ public class UpdatePrivateAccessApplicationRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("L7ProxyDomainAutomaticPrefix") {
+            self.l7ProxyDomainAutomaticPrefix = dict["L7ProxyDomainAutomaticPrefix"] as! String
+        }
+        if dict.keys.contains("L7ProxyDomainCustom") {
+            self.l7ProxyDomainCustom = dict["L7ProxyDomainCustom"] as! String
+        }
+        if dict.keys.contains("L7ProxyDomainPrivate") {
+            self.l7ProxyDomainPrivate = dict["L7ProxyDomainPrivate"] as! String
         }
         if dict.keys.contains("ModifyType") {
             self.modifyType = dict["ModifyType"] as! String
