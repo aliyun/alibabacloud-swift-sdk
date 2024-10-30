@@ -201,6 +201,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.accessibility)) {
             body["Accessibility"] = request.accessibility ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.dataCount)) {
+            body["DataCount"] = request.dataCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dataSize)) {
+            body["DataSize"] = request.dataSize!;
+        }
         if (!TeaUtils.Client.isUnset(request.dataSourceType)) {
             body["DataSourceType"] = request.dataSourceType ?? "";
         }
@@ -228,6 +234,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.providerType)) {
             body["ProviderType"] = request.providerType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.sourceDatasetId)) {
+            body["SourceDatasetId"] = request.sourceDatasetId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceDatasetVersion)) {
+            body["SourceDatasetVersion"] = request.sourceDatasetVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.sourceId)) {
             body["SourceId"] = request.sourceId ?? "";
         }
@@ -239,6 +251,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.userId)) {
             body["UserId"] = request.userId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.versionDescription)) {
+            body["VersionDescription"] = request.versionDescription ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.versionLabels)) {
+            body["VersionLabels"] = request.versionLabels ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";
@@ -300,6 +318,99 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await createDatasetLabelsWithOptions(DatasetId as! String, request as! CreateDatasetLabelsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDatasetVersionWithOptions(_ DatasetId: String, _ request: CreateDatasetVersionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDatasetVersionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dataCount)) {
+            body["DataCount"] = request.dataCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dataSize)) {
+            body["DataSize"] = request.dataSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dataSourceType)) {
+            body["DataSourceType"] = request.dataSourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.labels)) {
+            body["Labels"] = request.labels ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.options)) {
+            body["Options"] = request.options ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.property)) {
+            body["Property"] = request.property ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceId)) {
+            body["SourceId"] = request.sourceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceType)) {
+            body["SourceType"] = request.sourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uri)) {
+            body["Uri"] = request.uri ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateDatasetVersion",
+            "version": "2021-02-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/datasets/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(DatasetId)) + "/versions",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateDatasetVersionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDatasetVersion(_ DatasetId: String, _ request: CreateDatasetVersionRequest) async throws -> CreateDatasetVersionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createDatasetVersionWithOptions(DatasetId as! String, request as! CreateDatasetVersionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDatasetVersionLabelsWithOptions(_ DatasetId: String, _ VersionName: String, _ request: CreateDatasetVersionLabelsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDatasetVersionLabelsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.labels)) {
+            body["Labels"] = request.labels ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateDatasetVersionLabels",
+            "version": "2021-02-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/datasets/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(DatasetId)) + "/versions/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(VersionName)) + "/labels",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateDatasetVersionLabelsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDatasetVersionLabels(_ DatasetId: String, _ VersionName: String, _ request: CreateDatasetVersionLabelsRequest) async throws -> CreateDatasetVersionLabelsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createDatasetVersionLabelsWithOptions(DatasetId as! String, VersionName as! String, request as! CreateDatasetVersionLabelsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -840,6 +951,66 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDatasetVersionWithOptions(_ DatasetId: String, _ VersionName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDatasetVersionResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteDatasetVersion",
+            "version": "2021-02-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/datasets/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(DatasetId)) + "/versions/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(VersionName)),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteDatasetVersionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDatasetVersion(_ DatasetId: String, _ VersionName: String) async throws -> DeleteDatasetVersionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteDatasetVersionWithOptions(DatasetId as! String, VersionName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDatasetVersionLabelsWithOptions(_ DatasetId: String, _ VersionName: String, _ request: DeleteDatasetVersionLabelsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDatasetVersionLabelsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.keys)) {
+            query["Keys"] = request.keys ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteDatasetVersionLabels",
+            "version": "2021-02-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/datasets/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(DatasetId)) + "/versions/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(VersionName)) + "/labels",
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteDatasetVersionLabelsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDatasetVersionLabels(_ DatasetId: String, _ VersionName: String, _ request: DeleteDatasetVersionLabelsRequest) async throws -> DeleteDatasetVersionLabelsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteDatasetVersionLabelsWithOptions(DatasetId as! String, VersionName as! String, request as! DeleteDatasetVersionLabelsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteExperimentWithOptions(_ ExperimentId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteExperimentResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -1230,6 +1401,33 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDatasetVersionWithOptions(_ DatasetId: String, _ VersionName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDatasetVersionResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetDatasetVersion",
+            "version": "2021-02-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/datasets/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(DatasetId)) + "/versions/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(VersionName)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetDatasetVersionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDatasetVersion(_ DatasetId: String, _ VersionName: String) async throws -> GetDatasetVersionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getDatasetVersionWithOptions(DatasetId as! String, VersionName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getDefaultWorkspaceWithOptions(_ request: GetDefaultWorkspaceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDefaultWorkspaceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1575,6 +1773,66 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDatasetVersionsWithOptions(_ DatasetId: String, _ request: ListDatasetVersionsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDatasetVersionsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dataSourcesTypes)) {
+            query["DataSourcesTypes"] = request.dataSourcesTypes ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.labelKeys)) {
+            query["LabelKeys"] = request.labelKeys ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lableValues)) {
+            query["LableValues"] = request.lableValues ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.order)) {
+            query["Order"] = request.order ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.properties)) {
+            query["Properties"] = request.properties ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sortBy)) {
+            query["SortBy"] = request.sortBy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceId)) {
+            query["SourceId"] = request.sourceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceTypes)) {
+            query["SourceTypes"] = request.sourceTypes ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListDatasetVersions",
+            "version": "2021-02-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/datasets/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(DatasetId)) + "/versions",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListDatasetVersionsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listDatasetVersions(_ DatasetId: String, _ request: ListDatasetVersionsRequest) async throws -> ListDatasetVersionsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listDatasetVersionsWithOptions(DatasetId as! String, request as! ListDatasetVersionsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listDatasetsWithOptions(_ request: ListDatasetsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDatasetsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1604,6 +1862,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.provider)) {
             query["Provider"] = request.provider ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceDatasetId)) {
+            query["SourceDatasetId"] = request.sourceDatasetId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.sourceId)) {
             query["SourceId"] = request.sourceId ?? "";
@@ -2642,6 +2903,48 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateDatasetWithOptions(DatasetId as! String, request as! UpdateDatasetRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateDatasetVersionWithOptions(_ DatasetId: String, _ VersionName: String, _ request: UpdateDatasetVersionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateDatasetVersionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dataCount)) {
+            body["DataCount"] = request.dataCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dataSize)) {
+            body["DataSize"] = request.dataSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.options)) {
+            body["Options"] = request.options ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateDatasetVersion",
+            "version": "2021-02-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/datasets/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(DatasetId)) + "/versions/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(VersionName)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateDatasetVersionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateDatasetVersion(_ DatasetId: String, _ VersionName: String, _ request: UpdateDatasetVersionRequest) async throws -> UpdateDatasetVersionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateDatasetVersionWithOptions(DatasetId as! String, VersionName as! String, request as! UpdateDatasetVersionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
