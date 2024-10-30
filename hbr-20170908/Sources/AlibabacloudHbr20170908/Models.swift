@@ -18032,6 +18032,8 @@ public class DescribeVaultsResponseBody : Tea.TeaModel {
             public class BackupPlanStatistics : Tea.TeaModel {
                 public var archive: Int32?
 
+                public var commonFileSystem: Int32?
+
                 public var commonNas: Int32?
 
                 public var csg: Int32?
@@ -18074,6 +18076,9 @@ public class DescribeVaultsResponseBody : Tea.TeaModel {
                     var map = super.toMap()
                     if self.archive != nil {
                         map["Archive"] = self.archive!
+                    }
+                    if self.commonFileSystem != nil {
+                        map["CommonFileSystem"] = self.commonFileSystem!
                     }
                     if self.commonNas != nil {
                         map["CommonNas"] = self.commonNas!
@@ -18120,6 +18125,9 @@ public class DescribeVaultsResponseBody : Tea.TeaModel {
                 public override func fromMap(_ dict: [String: Any]) -> Void {
                     if dict.keys.contains("Archive") {
                         self.archive = dict["Archive"] as! Int32
+                    }
+                    if dict.keys.contains("CommonFileSystem") {
+                        self.commonFileSystem = dict["CommonFileSystem"] as! Int32
                     }
                     if dict.keys.contains("CommonNas") {
                         self.commonNas = dict["CommonNas"] as! Int32
