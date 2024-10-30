@@ -359,9 +359,13 @@ public class ChannelProperties : Tea.TeaModel {
 
     public var huaweiChannelImportance: String?
 
+    public var huaweiMessageUrgency: String?
+
     public var mainActivity: String?
 
     public var oppoChannelId: String?
+
+    public var useHuaweiMessage: String?
 
     public var vivoAddBadge: String?
 
@@ -395,11 +399,17 @@ public class ChannelProperties : Tea.TeaModel {
         if self.huaweiChannelImportance != nil {
             map["huaweiChannelImportance"] = self.huaweiChannelImportance!
         }
+        if self.huaweiMessageUrgency != nil {
+            map["huaweiMessageUrgency"] = self.huaweiMessageUrgency!
+        }
         if self.mainActivity != nil {
             map["mainActivity"] = self.mainActivity!
         }
         if self.oppoChannelId != nil {
             map["oppoChannelId"] = self.oppoChannelId!
+        }
+        if self.useHuaweiMessage != nil {
+            map["useHuaweiMessage"] = self.useHuaweiMessage!
         }
         if self.vivoAddBadge != nil {
             map["vivoAddBadge"] = self.vivoAddBadge!
@@ -426,11 +436,17 @@ public class ChannelProperties : Tea.TeaModel {
         if dict.keys.contains("huaweiChannelImportance") {
             self.huaweiChannelImportance = dict["huaweiChannelImportance"] as! String
         }
+        if dict.keys.contains("huaweiMessageUrgency") {
+            self.huaweiMessageUrgency = dict["huaweiMessageUrgency"] as! String
+        }
         if dict.keys.contains("mainActivity") {
             self.mainActivity = dict["mainActivity"] as! String
         }
         if dict.keys.contains("oppoChannelId") {
             self.oppoChannelId = dict["oppoChannelId"] as! String
+        }
+        if dict.keys.contains("useHuaweiMessage") {
+            self.useHuaweiMessage = dict["useHuaweiMessage"] as! String
         }
         if dict.keys.contains("vivoAddBadge") {
             self.vivoAddBadge = dict["vivoAddBadge"] as! String
@@ -1074,6 +1090,8 @@ public class SendByAliasRequest : Tea.TeaModel {
 
     public var thirdPartyId: String?
 
+    public var callbackParams: String?
+
     public override init() {
         super.init()
     }
@@ -1125,6 +1143,9 @@ public class SendByAliasRequest : Tea.TeaModel {
         if self.thirdPartyId != nil {
             map["ThirdPartyId"] = self.thirdPartyId!
         }
+        if self.callbackParams != nil {
+            map["callbackParams"] = self.callbackParams!
+        }
         return map
     }
 
@@ -1170,6 +1191,9 @@ public class SendByAliasRequest : Tea.TeaModel {
         if dict.keys.contains("ThirdPartyId") {
             self.thirdPartyId = dict["ThirdPartyId"] as! String
         }
+        if dict.keys.contains("callbackParams") {
+            self.callbackParams = dict["callbackParams"] as! String
+        }
     }
 }
 
@@ -1195,6 +1219,8 @@ public class SendByAliasShrinkRequest : Tea.TeaModel {
     public var receiptUrl: String?
 
     public var thirdPartyId: String?
+
+    public var callbackParams: String?
 
     public override init() {
         super.init()
@@ -1243,6 +1269,9 @@ public class SendByAliasShrinkRequest : Tea.TeaModel {
         if self.thirdPartyId != nil {
             map["ThirdPartyId"] = self.thirdPartyId!
         }
+        if self.callbackParams != nil {
+            map["callbackParams"] = self.callbackParams!
+        }
         return map
     }
 
@@ -1279,6 +1308,9 @@ public class SendByAliasShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ThirdPartyId") {
             self.thirdPartyId = dict["ThirdPartyId"] as! String
+        }
+        if dict.keys.contains("callbackParams") {
+            self.callbackParams = dict["callbackParams"] as! String
         }
     }
 }
@@ -1457,6 +1489,8 @@ public class SendByAliasFileIdRequest : Tea.TeaModel {
 
     public var thirdPartyId: String?
 
+    public var callbackParams: String?
+
     public override init() {
         super.init()
     }
@@ -1508,6 +1542,9 @@ public class SendByAliasFileIdRequest : Tea.TeaModel {
         if self.thirdPartyId != nil {
             map["ThirdPartyId"] = self.thirdPartyId!
         }
+        if self.callbackParams != nil {
+            map["callbackParams"] = self.callbackParams!
+        }
         return map
     }
 
@@ -1553,6 +1590,9 @@ public class SendByAliasFileIdRequest : Tea.TeaModel {
         if dict.keys.contains("ThirdPartyId") {
             self.thirdPartyId = dict["ThirdPartyId"] as! String
         }
+        if dict.keys.contains("callbackParams") {
+            self.callbackParams = dict["callbackParams"] as! String
+        }
     }
 }
 
@@ -1578,6 +1618,8 @@ public class SendByAliasFileIdShrinkRequest : Tea.TeaModel {
     public var receiptUrl: String?
 
     public var thirdPartyId: String?
+
+    public var callbackParams: String?
 
     public override init() {
         super.init()
@@ -1626,6 +1668,9 @@ public class SendByAliasFileIdShrinkRequest : Tea.TeaModel {
         if self.thirdPartyId != nil {
             map["ThirdPartyId"] = self.thirdPartyId!
         }
+        if self.callbackParams != nil {
+            map["callbackParams"] = self.callbackParams!
+        }
         return map
     }
 
@@ -1662,6 +1707,9 @@ public class SendByAliasFileIdShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ThirdPartyId") {
             self.thirdPartyId = dict["ThirdPartyId"] as! String
+        }
+        if dict.keys.contains("callbackParams") {
+            self.callbackParams = dict["callbackParams"] as! String
         }
     }
 }
@@ -1836,6 +1884,8 @@ public class SendByAppRequest : Tea.TeaModel {
 
     public var thirdPartyId: String?
 
+    public var callbackParams: String?
+
     public override init() {
         super.init()
     }
@@ -1881,6 +1931,9 @@ public class SendByAppRequest : Tea.TeaModel {
         if self.thirdPartyId != nil {
             map["ThirdPartyId"] = self.thirdPartyId!
         }
+        if self.callbackParams != nil {
+            map["callbackParams"] = self.callbackParams!
+        }
         return map
     }
 
@@ -1920,6 +1973,9 @@ public class SendByAppRequest : Tea.TeaModel {
         if dict.keys.contains("ThirdPartyId") {
             self.thirdPartyId = dict["ThirdPartyId"] as! String
         }
+        if dict.keys.contains("callbackParams") {
+            self.callbackParams = dict["callbackParams"] as! String
+        }
     }
 }
 
@@ -1941,6 +1997,8 @@ public class SendByAppShrinkRequest : Tea.TeaModel {
     public var receiptUrl: String?
 
     public var thirdPartyId: String?
+
+    public var callbackParams: String?
 
     public override init() {
         super.init()
@@ -1983,6 +2041,9 @@ public class SendByAppShrinkRequest : Tea.TeaModel {
         if self.thirdPartyId != nil {
             map["ThirdPartyId"] = self.thirdPartyId!
         }
+        if self.callbackParams != nil {
+            map["callbackParams"] = self.callbackParams!
+        }
         return map
     }
 
@@ -2013,6 +2074,9 @@ public class SendByAppShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ThirdPartyId") {
             self.thirdPartyId = dict["ThirdPartyId"] as! String
+        }
+        if dict.keys.contains("callbackParams") {
+            self.callbackParams = dict["callbackParams"] as! String
         }
     }
 }
@@ -2189,6 +2253,8 @@ public class SendByDeviceRequest : Tea.TeaModel {
 
     public var thirdPartyId: String?
 
+    public var callbackParams: String?
+
     public override init() {
         super.init()
     }
@@ -2237,6 +2303,9 @@ public class SendByDeviceRequest : Tea.TeaModel {
         if self.thirdPartyId != nil {
             map["ThirdPartyId"] = self.thirdPartyId!
         }
+        if self.callbackParams != nil {
+            map["callbackParams"] = self.callbackParams!
+        }
         return map
     }
 
@@ -2279,6 +2348,9 @@ public class SendByDeviceRequest : Tea.TeaModel {
         if dict.keys.contains("ThirdPartyId") {
             self.thirdPartyId = dict["ThirdPartyId"] as! String
         }
+        if dict.keys.contains("callbackParams") {
+            self.callbackParams = dict["callbackParams"] as! String
+        }
     }
 }
 
@@ -2302,6 +2374,8 @@ public class SendByDeviceShrinkRequest : Tea.TeaModel {
     public var receiptUrl: String?
 
     public var thirdPartyId: String?
+
+    public var callbackParams: String?
 
     public override init() {
         super.init()
@@ -2347,6 +2421,9 @@ public class SendByDeviceShrinkRequest : Tea.TeaModel {
         if self.thirdPartyId != nil {
             map["ThirdPartyId"] = self.thirdPartyId!
         }
+        if self.callbackParams != nil {
+            map["callbackParams"] = self.callbackParams!
+        }
         return map
     }
 
@@ -2380,6 +2457,9 @@ public class SendByDeviceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ThirdPartyId") {
             self.thirdPartyId = dict["ThirdPartyId"] as! String
+        }
+        if dict.keys.contains("callbackParams") {
+            self.callbackParams = dict["callbackParams"] as! String
         }
     }
 }
@@ -2556,6 +2636,8 @@ public class SendByDeviceFileIdRequest : Tea.TeaModel {
 
     public var thirdPartyId: String?
 
+    public var callbackParams: String?
+
     public override init() {
         super.init()
     }
@@ -2604,6 +2686,9 @@ public class SendByDeviceFileIdRequest : Tea.TeaModel {
         if self.thirdPartyId != nil {
             map["ThirdPartyId"] = self.thirdPartyId!
         }
+        if self.callbackParams != nil {
+            map["callbackParams"] = self.callbackParams!
+        }
         return map
     }
 
@@ -2646,6 +2731,9 @@ public class SendByDeviceFileIdRequest : Tea.TeaModel {
         if dict.keys.contains("ThirdPartyId") {
             self.thirdPartyId = dict["ThirdPartyId"] as! String
         }
+        if dict.keys.contains("callbackParams") {
+            self.callbackParams = dict["callbackParams"] as! String
+        }
     }
 }
 
@@ -2669,6 +2757,8 @@ public class SendByDeviceFileIdShrinkRequest : Tea.TeaModel {
     public var receiptUrl: String?
 
     public var thirdPartyId: String?
+
+    public var callbackParams: String?
 
     public override init() {
         super.init()
@@ -2714,6 +2804,9 @@ public class SendByDeviceFileIdShrinkRequest : Tea.TeaModel {
         if self.thirdPartyId != nil {
             map["ThirdPartyId"] = self.thirdPartyId!
         }
+        if self.callbackParams != nil {
+            map["callbackParams"] = self.callbackParams!
+        }
         return map
     }
 
@@ -2747,6 +2840,9 @@ public class SendByDeviceFileIdShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ThirdPartyId") {
             self.thirdPartyId = dict["ThirdPartyId"] as! String
+        }
+        if dict.keys.contains("callbackParams") {
+            self.callbackParams = dict["callbackParams"] as! String
         }
     }
 }
@@ -2923,6 +3019,8 @@ public class SendByFilterRequest : Tea.TeaModel {
 
     public var thirdPartyId: String?
 
+    public var callbackParams: String?
+
     public override init() {
         super.init()
     }
@@ -2971,6 +3069,9 @@ public class SendByFilterRequest : Tea.TeaModel {
         if self.thirdPartyId != nil {
             map["ThirdPartyId"] = self.thirdPartyId!
         }
+        if self.callbackParams != nil {
+            map["callbackParams"] = self.callbackParams!
+        }
         return map
     }
 
@@ -3013,6 +3114,9 @@ public class SendByFilterRequest : Tea.TeaModel {
         if dict.keys.contains("ThirdPartyId") {
             self.thirdPartyId = dict["ThirdPartyId"] as! String
         }
+        if dict.keys.contains("callbackParams") {
+            self.callbackParams = dict["callbackParams"] as! String
+        }
     }
 }
 
@@ -3036,6 +3140,8 @@ public class SendByFilterShrinkRequest : Tea.TeaModel {
     public var receiptUrl: String?
 
     public var thirdPartyId: String?
+
+    public var callbackParams: String?
 
     public override init() {
         super.init()
@@ -3081,6 +3187,9 @@ public class SendByFilterShrinkRequest : Tea.TeaModel {
         if self.thirdPartyId != nil {
             map["ThirdPartyId"] = self.thirdPartyId!
         }
+        if self.callbackParams != nil {
+            map["callbackParams"] = self.callbackParams!
+        }
         return map
     }
 
@@ -3114,6 +3223,9 @@ public class SendByFilterShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ThirdPartyId") {
             self.thirdPartyId = dict["ThirdPartyId"] as! String
+        }
+        if dict.keys.contains("callbackParams") {
+            self.callbackParams = dict["callbackParams"] as! String
         }
     }
 }

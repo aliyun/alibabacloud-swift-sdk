@@ -140,6 +140,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.thirdPartyId)) {
             body["ThirdPartyId"] = request.thirdPartyId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.callbackParams)) {
+            body["callbackParams"] = request.callbackParams ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
@@ -217,6 +220,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.thirdPartyId)) {
             body["ThirdPartyId"] = request.thirdPartyId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.callbackParams)) {
+            body["callbackParams"] = request.callbackParams ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
@@ -287,6 +293,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.thirdPartyId)) {
             body["ThirdPartyId"] = request.thirdPartyId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callbackParams)) {
+            body["callbackParams"] = request.callbackParams ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -362,6 +371,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.thirdPartyId)) {
             body["ThirdPartyId"] = request.thirdPartyId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.callbackParams)) {
+            body["callbackParams"] = request.callbackParams ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
@@ -436,6 +448,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.thirdPartyId)) {
             body["ThirdPartyId"] = request.thirdPartyId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.callbackParams)) {
+            body["callbackParams"] = request.callbackParams ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
@@ -509,6 +524,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.thirdPartyId)) {
             body["ThirdPartyId"] = request.thirdPartyId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callbackParams)) {
+            body["callbackParams"] = request.callbackParams ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
