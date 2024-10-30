@@ -22854,6 +22854,10 @@ public class DescribeSQLLogsV2ResponseBody : Tea.TeaModel {
 
         public var DBRole: String?
 
+        public var errorCode: String?
+
+        public var errorMsg: String?
+
         public var executeCost: Double?
 
         public var executeState: String?
@@ -22864,11 +22868,15 @@ public class DescribeSQLLogsV2ResponseBody : Tea.TeaModel {
 
         public var operationType: String?
 
+        public var queryId: String?
+
         public var returnRowCounts: Int64?
 
         public var SQLText: String?
 
         public var scanRowCounts: Int64?
+
+        public var sessionId: String?
 
         public var sourceIP: String?
 
@@ -22897,6 +22905,12 @@ public class DescribeSQLLogsV2ResponseBody : Tea.TeaModel {
             if self.DBRole != nil {
                 map["DBRole"] = self.DBRole!
             }
+            if self.errorCode != nil {
+                map["ErrorCode"] = self.errorCode!
+            }
+            if self.errorMsg != nil {
+                map["ErrorMsg"] = self.errorMsg!
+            }
             if self.executeCost != nil {
                 map["ExecuteCost"] = self.executeCost!
             }
@@ -22912,6 +22926,9 @@ public class DescribeSQLLogsV2ResponseBody : Tea.TeaModel {
             if self.operationType != nil {
                 map["OperationType"] = self.operationType!
             }
+            if self.queryId != nil {
+                map["QueryId"] = self.queryId!
+            }
             if self.returnRowCounts != nil {
                 map["ReturnRowCounts"] = self.returnRowCounts!
             }
@@ -22920,6 +22937,9 @@ public class DescribeSQLLogsV2ResponseBody : Tea.TeaModel {
             }
             if self.scanRowCounts != nil {
                 map["ScanRowCounts"] = self.scanRowCounts!
+            }
+            if self.sessionId != nil {
+                map["SessionId"] = self.sessionId!
             }
             if self.sourceIP != nil {
                 map["SourceIP"] = self.sourceIP!
@@ -22940,6 +22960,12 @@ public class DescribeSQLLogsV2ResponseBody : Tea.TeaModel {
             if dict.keys.contains("DBRole") {
                 self.DBRole = dict["DBRole"] as! String
             }
+            if dict.keys.contains("ErrorCode") {
+                self.errorCode = dict["ErrorCode"] as! String
+            }
+            if dict.keys.contains("ErrorMsg") {
+                self.errorMsg = dict["ErrorMsg"] as! String
+            }
             if dict.keys.contains("ExecuteCost") {
                 self.executeCost = dict["ExecuteCost"] as! Double
             }
@@ -22955,6 +22981,9 @@ public class DescribeSQLLogsV2ResponseBody : Tea.TeaModel {
             if dict.keys.contains("OperationType") {
                 self.operationType = dict["OperationType"] as! String
             }
+            if dict.keys.contains("QueryId") {
+                self.queryId = dict["QueryId"] as! String
+            }
             if dict.keys.contains("ReturnRowCounts") {
                 self.returnRowCounts = dict["ReturnRowCounts"] as! Int64
             }
@@ -22964,6 +22993,9 @@ public class DescribeSQLLogsV2ResponseBody : Tea.TeaModel {
             if dict.keys.contains("ScanRowCounts") {
                 self.scanRowCounts = dict["ScanRowCounts"] as! Int64
             }
+            if dict.keys.contains("SessionId") {
+                self.sessionId = dict["SessionId"] as! String
+            }
             if dict.keys.contains("SourceIP") {
                 self.sourceIP = dict["SourceIP"] as! String
             }
@@ -22972,6 +23004,8 @@ public class DescribeSQLLogsV2ResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var items: [DescribeSQLLogsV2ResponseBody.Items]?
 
     public var pageNumber: Int32?
@@ -22994,6 +23028,9 @@ public class DescribeSQLLogsV2ResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.items != nil {
             var tmp : [Any] = []
             for k in self.items! {
@@ -23014,6 +23051,9 @@ public class DescribeSQLLogsV2ResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Items") {
             var tmp : [DescribeSQLLogsV2ResponseBody.Items] = []
             for v in dict["Items"] as! [Any] {
@@ -26941,6 +26981,8 @@ public class GetUploadDocumentJobResponseBody : Tea.TeaModel {
 
         public var error: String?
 
+        public var errorCode: String?
+
         public var id: String?
 
         public var progress: Int32?
@@ -26972,6 +27014,9 @@ public class GetUploadDocumentJobResponseBody : Tea.TeaModel {
             if self.error != nil {
                 map["Error"] = self.error!
             }
+            if self.errorCode != nil {
+                map["ErrorCode"] = self.errorCode!
+            }
             if self.id != nil {
                 map["Id"] = self.id!
             }
@@ -26996,6 +27041,9 @@ public class GetUploadDocumentJobResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Error") {
                 self.error = dict["Error"] as! String
+            }
+            if dict.keys.contains("ErrorCode") {
+                self.errorCode = dict["ErrorCode"] as! String
             }
             if dict.keys.contains("Id") {
                 self.id = dict["Id"] as! String
@@ -32071,6 +32119,8 @@ public class ModifyAccountDescriptionRequest : Tea.TeaModel {
 
     public var accountName: String?
 
+    public var clientToken: String?
+
     public var DBInstanceId: String?
 
     public override init() {
@@ -32093,6 +32143,9 @@ public class ModifyAccountDescriptionRequest : Tea.TeaModel {
         if self.accountName != nil {
             map["AccountName"] = self.accountName!
         }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
@@ -32105,6 +32158,9 @@ public class ModifyAccountDescriptionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AccountName") {
             self.accountName = dict["AccountName"] as! String
+        }
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
         }
         if dict.keys.contains("DBInstanceId") {
             self.DBInstanceId = dict["DBInstanceId"] as! String
@@ -32506,6 +32562,8 @@ public class ModifyDBInstanceConfigResponse : Tea.TeaModel {
 }
 
 public class ModifyDBInstanceConnectionStringRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var connectionStringPrefix: String?
 
     public var currentConnectionString: String?
@@ -32528,6 +32586,9 @@ public class ModifyDBInstanceConnectionStringRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.connectionStringPrefix != nil {
             map["ConnectionStringPrefix"] = self.connectionStringPrefix!
         }
@@ -32544,6 +32605,9 @@ public class ModifyDBInstanceConnectionStringRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("ConnectionStringPrefix") {
             self.connectionStringPrefix = dict["ConnectionStringPrefix"] as! String
         }
