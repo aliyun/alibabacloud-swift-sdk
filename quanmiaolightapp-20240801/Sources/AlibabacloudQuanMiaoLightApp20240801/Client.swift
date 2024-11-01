@@ -144,6 +144,127 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func runHotTopicChatWithOptions(_ workspaceId: String, _ tmpReq: RunHotTopicChatRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RunHotTopicChatResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: RunHotTopicChatShrinkRequest = RunHotTopicChatShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.generateOptions)) {
+            request.generateOptionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.generateOptions, "generateOptions", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.hotTopics)) {
+            request.hotTopicsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.hotTopics, "hotTopics", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.stepForBroadcastContentConfig)) {
+            request.stepForBroadcastContentConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.stepForBroadcastContentConfig, "stepForBroadcastContentConfig", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.category)) {
+            body["category"] = request.category ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.generateOptionsShrink)) {
+            body["generateOptions"] = request.generateOptionsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.hotTopicVersion)) {
+            body["hotTopicVersion"] = request.hotTopicVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.hotTopicsShrink)) {
+            body["hotTopics"] = request.hotTopicsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageCount)) {
+            body["imageCount"] = request.imageCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.modelCustomPromptTemplate)) {
+            body["modelCustomPromptTemplate"] = request.modelCustomPromptTemplate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelId)) {
+            body["modelId"] = request.modelId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.originalSessionId)) {
+            body["originalSessionId"] = request.originalSessionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.prompt)) {
+            body["prompt"] = request.prompt ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.stepForBroadcastContentConfigShrink)) {
+            body["stepForBroadcastContentConfig"] = request.stepForBroadcastContentConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            body["taskId"] = request.taskId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RunHotTopicChat",
+            "version": "2024-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/quanmiao/lightapp/runHotTopicChat",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RunHotTopicChatResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func runHotTopicChat(_ workspaceId: String, _ request: RunHotTopicChatRequest) async throws -> RunHotTopicChatResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await runHotTopicChatWithOptions(workspaceId as! String, request as! RunHotTopicChatRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func runHotTopicSummaryWithOptions(_ workspaceId: String, _ tmpReq: RunHotTopicSummaryRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RunHotTopicSummaryResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: RunHotTopicSummaryShrinkRequest = RunHotTopicSummaryShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.stepForCustomSummaryStyleConfig)) {
+            request.stepForCustomSummaryStyleConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.stepForCustomSummaryStyleConfig, "stepForCustomSummaryStyleConfig", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.topicIds)) {
+            request.topicIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.topicIds, "topicIds", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.hotTopicVersion)) {
+            body["hotTopicVersion"] = request.hotTopicVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.stepForCustomSummaryStyleConfigShrink)) {
+            body["stepForCustomSummaryStyleConfig"] = request.stepForCustomSummaryStyleConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.topicIdsShrink)) {
+            body["topicIds"] = request.topicIdsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RunHotTopicSummary",
+            "version": "2024-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/quanmiao/lightapp/runHotTopicSummary",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RunHotTopicSummaryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func runHotTopicSummary(_ workspaceId: String, _ request: RunHotTopicSummaryRequest) async throws -> RunHotTopicSummaryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await runHotTopicSummaryWithOptions(workspaceId as! String, request as! RunHotTopicSummaryRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func runMarketingInformationExtractWithOptions(_ workspaceId: String, _ tmpReq: RunMarketingInformationExtractRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RunMarketingInformationExtractResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: RunMarketingInformationExtractShrinkRequest = RunMarketingInformationExtractShrinkRequest([:])
