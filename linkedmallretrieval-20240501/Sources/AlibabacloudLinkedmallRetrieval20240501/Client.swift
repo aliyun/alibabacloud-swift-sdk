@@ -24,42 +24,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func aISearchWithOptions(_ request: AISearchRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AISearchResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.card)) {
-            query["card"] = request.card ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.query)) {
-            query["query"] = request.query ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "AISearch",
-            "version": "2024-05-01",
-            "protocol": "HTTPS",
-            "pathname": "/linked-retrieval/linked-retrieval-entry/v1/linkedRetrieval/commands/aiSearch",
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(AISearchResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func aISearch(_ request: AISearchRequest) async throws -> AISearchResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await aISearchWithOptions(request as! AISearchRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func aISearchV2WithOptions(_ request: AISearchV2Request, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AISearchV2Response {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -96,5 +60,41 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await aISearchV2WithOptions(request as! AISearchV2Request, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func genericSearchWithOptions(_ request: GenericSearchRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GenericSearchResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.query)) {
+            query["query"] = request.query ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timeRange)) {
+            query["timeRange"] = request.timeRange ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GenericSearch",
+            "version": "2024-05-01",
+            "protocol": "HTTPS",
+            "pathname": "/linked-retrieval/linked-retrieval-entry/v2/linkedRetrieval/commands/genericSearch",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GenericSearchResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func genericSearch(_ request: GenericSearchRequest) async throws -> GenericSearchResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await genericSearchWithOptions(request as! GenericSearchRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 }
