@@ -2837,6 +2837,8 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
     public class ZoneMappings : Tea.TeaModel {
         public var allocationId: String?
 
+        public var eipType: String?
+
         public var intranetAddress: String?
 
         public var vSwitchId: String?
@@ -2860,6 +2862,9 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
             if self.allocationId != nil {
                 map["AllocationId"] = self.allocationId!
             }
+            if self.eipType != nil {
+                map["EipType"] = self.eipType!
+            }
             if self.intranetAddress != nil {
                 map["IntranetAddress"] = self.intranetAddress!
             }
@@ -2875,6 +2880,9 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("AllocationId") {
                 self.allocationId = dict["AllocationId"] as! String
+            }
+            if dict.keys.contains("EipType") {
+                self.eipType = dict["EipType"] as! String
             }
             if dict.keys.contains("IntranetAddress") {
                 self.intranetAddress = dict["IntranetAddress"] as! String
@@ -9547,6 +9555,8 @@ public class EnableLoadBalancerAccessLogRequest : Tea.TeaModel {
 }
 
 public class EnableLoadBalancerAccessLogResponseBody : Tea.TeaModel {
+    public var jobId: String?
+
     public var requestId: String?
 
     public override init() {
@@ -9563,6 +9573,9 @@ public class EnableLoadBalancerAccessLogResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -9570,6 +9583,9 @@ public class EnableLoadBalancerAccessLogResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("JobId") {
+            self.jobId = dict["JobId"] as! String
+        }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
@@ -23387,6 +23403,8 @@ public class UpdateLoadBalancerAddressTypeConfigRequest : Tea.TeaModel {
     public class ZoneMappings : Tea.TeaModel {
         public var allocationId: String?
 
+        public var eipType: String?
+
         public var vSwitchId: String?
 
         public var zoneId: String?
@@ -23408,6 +23426,9 @@ public class UpdateLoadBalancerAddressTypeConfigRequest : Tea.TeaModel {
             if self.allocationId != nil {
                 map["AllocationId"] = self.allocationId!
             }
+            if self.eipType != nil {
+                map["EipType"] = self.eipType!
+            }
             if self.vSwitchId != nil {
                 map["VSwitchId"] = self.vSwitchId!
             }
@@ -23420,6 +23441,9 @@ public class UpdateLoadBalancerAddressTypeConfigRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("AllocationId") {
                 self.allocationId = dict["AllocationId"] as! String
+            }
+            if dict.keys.contains("EipType") {
+                self.eipType = dict["EipType"] as! String
             }
             if dict.keys.contains("VSwitchId") {
                 self.vSwitchId = dict["VSwitchId"] as! String
@@ -23913,6 +23937,8 @@ public class UpdateLoadBalancerEditionResponse : Tea.TeaModel {
 
 public class UpdateLoadBalancerZonesRequest : Tea.TeaModel {
     public class ZoneMappings : Tea.TeaModel {
+        public var eipType: String?
+
         public var intranetAddress: String?
 
         public var vSwitchId: String?
@@ -23933,6 +23959,9 @@ public class UpdateLoadBalancerZonesRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.eipType != nil {
+                map["EipType"] = self.eipType!
+            }
             if self.intranetAddress != nil {
                 map["IntranetAddress"] = self.intranetAddress!
             }
@@ -23946,6 +23975,9 @@ public class UpdateLoadBalancerZonesRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EipType") {
+                self.eipType = dict["EipType"] as! String
+            }
             if dict.keys.contains("IntranetAddress") {
                 self.intranetAddress = dict["IntranetAddress"] as! String
             }
