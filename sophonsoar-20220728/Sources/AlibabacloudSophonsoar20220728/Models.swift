@@ -4396,6 +4396,8 @@ public class DescribePlaybooksRequest : Tea.TeaModel {
 
     public var pageSize: String?
 
+    public var paramTypes: String?
+
     public var playbookUuid: String?
 
     public var sort: String?
@@ -4440,6 +4442,9 @@ public class DescribePlaybooksRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.paramTypes != nil {
+            map["ParamTypes"] = self.paramTypes!
+        }
         if self.playbookUuid != nil {
             map["PlaybookUuid"] = self.playbookUuid!
         }
@@ -4476,6 +4481,9 @@ public class DescribePlaybooksRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") {
             self.pageSize = dict["PageSize"] as! String
+        }
+        if dict.keys.contains("ParamTypes") {
+            self.paramTypes = dict["ParamTypes"] as! String
         }
         if dict.keys.contains("PlaybookUuid") {
             self.playbookUuid = dict["PlaybookUuid"] as! String
@@ -4548,6 +4556,8 @@ public class DescribePlaybooksResponseBody : Tea.TeaModel {
 
         public var ownType: String?
 
+        public var paramType: String?
+
         public var playbookUuid: String?
 
         public override init() {
@@ -4582,6 +4592,9 @@ public class DescribePlaybooksResponseBody : Tea.TeaModel {
             if self.ownType != nil {
                 map["OwnType"] = self.ownType!
             }
+            if self.paramType != nil {
+                map["ParamType"] = self.paramType!
+            }
             if self.playbookUuid != nil {
                 map["PlaybookUuid"] = self.playbookUuid!
             }
@@ -4606,6 +4619,9 @@ public class DescribePlaybooksResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("OwnType") {
                 self.ownType = dict["OwnType"] as! String
+            }
+            if dict.keys.contains("ParamType") {
+                self.paramType = dict["ParamType"] as! String
             }
             if dict.keys.contains("PlaybookUuid") {
                 self.playbookUuid = dict["PlaybookUuid"] as! String
@@ -5345,6 +5361,8 @@ public class DescribeProcessTasksRequest : Tea.TeaModel {
 
     public var entityType: String?
 
+    public var entityUuid: String?
+
     public var orderField: String?
 
     public var pageNumber: String?
@@ -5397,6 +5415,9 @@ public class DescribeProcessTasksRequest : Tea.TeaModel {
         }
         if self.entityType != nil {
             map["EntityType"] = self.entityType!
+        }
+        if self.entityUuid != nil {
+            map["EntityUuid"] = self.entityUuid!
         }
         if self.orderField != nil {
             map["OrderField"] = self.orderField!
@@ -5455,6 +5476,9 @@ public class DescribeProcessTasksRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EntityType") {
             self.entityType = dict["EntityType"] as! String
+        }
+        if dict.keys.contains("EntityUuid") {
+            self.entityUuid = dict["EntityUuid"] as! String
         }
         if dict.keys.contains("OrderField") {
             self.orderField = dict["OrderField"] as! String
@@ -5557,6 +5581,8 @@ public class DescribeProcessTasksResponseBody : Tea.TeaModel {
 
         public var entityType: String?
 
+        public var entityUuid: String?
+
         public var errCode: String?
 
         public var errMsg: String?
@@ -5611,6 +5637,9 @@ public class DescribeProcessTasksResponseBody : Tea.TeaModel {
             }
             if self.entityType != nil {
                 map["EntityType"] = self.entityType!
+            }
+            if self.entityUuid != nil {
+                map["EntityUuid"] = self.entityUuid!
             }
             if self.errCode != nil {
                 map["ErrCode"] = self.errCode!
@@ -5672,6 +5701,9 @@ public class DescribeProcessTasksResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("EntityType") {
                 self.entityType = dict["EntityType"] as! String
+            }
+            if dict.keys.contains("EntityUuid") {
+                self.entityUuid = dict["EntityUuid"] as! String
             }
             if dict.keys.contains("ErrCode") {
                 self.errCode = dict["ErrCode"] as! String
