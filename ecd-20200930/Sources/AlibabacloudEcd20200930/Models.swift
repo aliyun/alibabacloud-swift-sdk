@@ -29570,6 +29570,8 @@ public class DescribeRegionsResponse : Tea.TeaModel {
 public class DescribeRenewalPriceRequest : Tea.TeaModel {
     public var instanceId: String?
 
+    public var instanceIds: [String]?
+
     public var period: Int32?
 
     public var periodUnit: String?
@@ -29595,6 +29597,9 @@ public class DescribeRenewalPriceRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
         if self.period != nil {
             map["Period"] = self.period!
         }
@@ -29613,6 +29618,9 @@ public class DescribeRenewalPriceRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIds = dict["InstanceIds"] as! [String]
         }
         if dict.keys.contains("Period") {
             self.period = dict["Period"] as! Int32
