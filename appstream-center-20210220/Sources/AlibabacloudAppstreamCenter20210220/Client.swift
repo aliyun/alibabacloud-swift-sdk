@@ -25,8 +25,17 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func findIdpListByLoginIdentifierWithOptions(_ request: FindIdpListByLoginIdentifierRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> FindIdpListByLoginIdentifierResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func findIdpListByLoginIdentifierWithOptions(_ tmpReq: FindIdpListByLoginIdentifierRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> FindIdpListByLoginIdentifierResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: FindIdpListByLoginIdentifierShrinkRequest = FindIdpListByLoginIdentifierShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.availableFeatures)) {
+            request.availableFeaturesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.availableFeatures, "AvailableFeatures", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.availableFeaturesShrink)) {
+            query["AvailableFeatures"] = request.availableFeaturesShrink ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientChannel)) {
             body["ClientChannel"] = request.clientChannel ?? "";
@@ -53,6 +62,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["Uuid"] = request.uuid ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -77,11 +87,19 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getLoginTokenWithOptions(_ request: GetLoginTokenRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetLoginTokenResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func getLoginTokenWithOptions(_ tmpReq: GetLoginTokenRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetLoginTokenResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetLoginTokenShrinkRequest = GetLoginTokenShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.availableFeatures)) {
+            request.availableFeaturesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.availableFeatures, "AvailableFeatures", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.authenticationCode)) {
             query["AuthenticationCode"] = request.authenticationCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.availableFeaturesShrink)) {
+            query["AvailableFeatures"] = request.availableFeaturesShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.clientId)) {
             query["ClientId"] = request.clientId ?? "";
@@ -133,6 +151,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.loginName)) {
             query["LoginName"] = request.loginName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mfaType)) {
+            query["MfaType"] = request.mfaType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.networkType)) {
             query["NetworkType"] = request.networkType ?? "";

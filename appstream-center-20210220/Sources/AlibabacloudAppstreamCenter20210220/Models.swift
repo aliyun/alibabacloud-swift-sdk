@@ -6,6 +6,8 @@ import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
 public class FindIdpListByLoginIdentifierRequest : Tea.TeaModel {
+    public var availableFeatures: [String: String]?
+
     public var clientChannel: String?
 
     public var clientId: String?
@@ -36,6 +38,9 @@ public class FindIdpListByLoginIdentifierRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.availableFeatures != nil {
+            map["AvailableFeatures"] = self.availableFeatures!
+        }
         if self.clientChannel != nil {
             map["ClientChannel"] = self.clientChannel!
         }
@@ -64,6 +69,103 @@ public class FindIdpListByLoginIdentifierRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AvailableFeatures") {
+            self.availableFeatures = dict["AvailableFeatures"] as! [String: String]
+        }
+        if dict.keys.contains("ClientChannel") {
+            self.clientChannel = dict["ClientChannel"] as! String
+        }
+        if dict.keys.contains("ClientId") {
+            self.clientId = dict["ClientId"] as! String
+        }
+        if dict.keys.contains("ClientIp") {
+            self.clientIp = dict["ClientIp"] as! String
+        }
+        if dict.keys.contains("ClientOS") {
+            self.clientOS = dict["ClientOS"] as! String
+        }
+        if dict.keys.contains("ClientVersion") {
+            self.clientVersion = dict["ClientVersion"] as! String
+        }
+        if dict.keys.contains("LoginIdentifier") {
+            self.loginIdentifier = dict["LoginIdentifier"] as! String
+        }
+        if dict.keys.contains("SupportTypes") {
+            self.supportTypes = dict["SupportTypes"] as! [String]
+        }
+        if dict.keys.contains("Uuid") {
+            self.uuid = dict["Uuid"] as! String
+        }
+    }
+}
+
+public class FindIdpListByLoginIdentifierShrinkRequest : Tea.TeaModel {
+    public var availableFeaturesShrink: String?
+
+    public var clientChannel: String?
+
+    public var clientId: String?
+
+    public var clientIp: String?
+
+    public var clientOS: String?
+
+    public var clientVersion: String?
+
+    public var loginIdentifier: String?
+
+    public var supportTypes: [String]?
+
+    public var uuid: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.availableFeaturesShrink != nil {
+            map["AvailableFeatures"] = self.availableFeaturesShrink!
+        }
+        if self.clientChannel != nil {
+            map["ClientChannel"] = self.clientChannel!
+        }
+        if self.clientId != nil {
+            map["ClientId"] = self.clientId!
+        }
+        if self.clientIp != nil {
+            map["ClientIp"] = self.clientIp!
+        }
+        if self.clientOS != nil {
+            map["ClientOS"] = self.clientOS!
+        }
+        if self.clientVersion != nil {
+            map["ClientVersion"] = self.clientVersion!
+        }
+        if self.loginIdentifier != nil {
+            map["LoginIdentifier"] = self.loginIdentifier!
+        }
+        if self.supportTypes != nil {
+            map["SupportTypes"] = self.supportTypes!
+        }
+        if self.uuid != nil {
+            map["Uuid"] = self.uuid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AvailableFeatures") {
+            self.availableFeaturesShrink = dict["AvailableFeatures"] as! String
+        }
         if dict.keys.contains("ClientChannel") {
             self.clientChannel = dict["ClientChannel"] as! String
         }
@@ -101,6 +203,8 @@ public class FindIdpListByLoginIdentifierResponseBody : Tea.TeaModel {
 
         public var idpName: String?
 
+        public var idpNameEN: String?
+
         public var idpProvider: String?
 
         public var jumpSwitch: String?
@@ -135,6 +239,9 @@ public class FindIdpListByLoginIdentifierResponseBody : Tea.TeaModel {
             if self.idpName != nil {
                 map["IdpName"] = self.idpName!
             }
+            if self.idpNameEN != nil {
+                map["IdpNameEN"] = self.idpNameEN!
+            }
             if self.idpProvider != nil {
                 map["IdpProvider"] = self.idpProvider!
             }
@@ -162,6 +269,9 @@ public class FindIdpListByLoginIdentifierResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("IdpName") {
                 self.idpName = dict["IdpName"] as! String
+            }
+            if dict.keys.contains("IdpNameEN") {
+                self.idpNameEN = dict["IdpNameEN"] as! String
             }
             if dict.keys.contains("IdpProvider") {
                 self.idpProvider = dict["IdpProvider"] as! String
@@ -414,6 +524,8 @@ public class FindIdpListByLoginIdentifierResponse : Tea.TeaModel {
 public class GetLoginTokenRequest : Tea.TeaModel {
     public var authenticationCode: String?
 
+    public var availableFeatures: [String: String]?
+
     public var clientId: String?
 
     public var clientOS: String?
@@ -447,6 +559,8 @@ public class GetLoginTokenRequest : Tea.TeaModel {
     public var loginIdentifier: String?
 
     public var loginName: String?
+
+    public var mfaType: String?
 
     public var networkType: String?
 
@@ -492,6 +606,9 @@ public class GetLoginTokenRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.authenticationCode != nil {
             map["AuthenticationCode"] = self.authenticationCode!
+        }
+        if self.availableFeatures != nil {
+            map["AvailableFeatures"] = self.availableFeatures!
         }
         if self.clientId != nil {
             map["ClientId"] = self.clientId!
@@ -544,6 +661,9 @@ public class GetLoginTokenRequest : Tea.TeaModel {
         if self.loginName != nil {
             map["LoginName"] = self.loginName!
         }
+        if self.mfaType != nil {
+            map["MfaType"] = self.mfaType!
+        }
         if self.networkType != nil {
             map["NetworkType"] = self.networkType!
         }
@@ -592,6 +712,9 @@ public class GetLoginTokenRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AuthenticationCode") {
             self.authenticationCode = dict["AuthenticationCode"] as! String
+        }
+        if dict.keys.contains("AvailableFeatures") {
+            self.availableFeatures = dict["AvailableFeatures"] as! [String: String]
         }
         if dict.keys.contains("ClientId") {
             self.clientId = dict["ClientId"] as! String
@@ -644,6 +767,303 @@ public class GetLoginTokenRequest : Tea.TeaModel {
         if dict.keys.contains("LoginName") {
             self.loginName = dict["LoginName"] as! String
         }
+        if dict.keys.contains("MfaType") {
+            self.mfaType = dict["MfaType"] as! String
+        }
+        if dict.keys.contains("NetworkType") {
+            self.networkType = dict["NetworkType"] as! String
+        }
+        if dict.keys.contains("NewPassword") {
+            self.newPassword = dict["NewPassword"] as! String
+        }
+        if dict.keys.contains("OfficeSiteId") {
+            self.officeSiteId = dict["OfficeSiteId"] as! String
+        }
+        if dict.keys.contains("OldPassword") {
+            self.oldPassword = dict["OldPassword"] as! String
+        }
+        if dict.keys.contains("Password") {
+            self.password = dict["Password"] as! String
+        }
+        if dict.keys.contains("Phone") {
+            self.phone = dict["Phone"] as! String
+        }
+        if dict.keys.contains("PhoneVerifyCode") {
+            self.phoneVerifyCode = dict["PhoneVerifyCode"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("SessionId") {
+            self.sessionId = dict["SessionId"] as! String
+        }
+        if dict.keys.contains("SsoExtendsCookies") {
+            self.ssoExtendsCookies = dict["SsoExtendsCookies"] as! String
+        }
+        if dict.keys.contains("SsoSessionToken") {
+            self.ssoSessionToken = dict["SsoSessionToken"] as! String
+        }
+        if dict.keys.contains("TokenCode") {
+            self.tokenCode = dict["TokenCode"] as! String
+        }
+        if dict.keys.contains("UmidToken") {
+            self.umidToken = dict["UmidToken"] as! String
+        }
+        if dict.keys.contains("Uuid") {
+            self.uuid = dict["Uuid"] as! String
+        }
+    }
+}
+
+public class GetLoginTokenShrinkRequest : Tea.TeaModel {
+    public var authenticationCode: String?
+
+    public var availableFeaturesShrink: String?
+
+    public var clientId: String?
+
+    public var clientOS: String?
+
+    public var clientType: String?
+
+    public var clientVersion: String?
+
+    public var currentStage: String?
+
+    public var directoryId: String?
+
+    public var encryptedFingerPrintData: String?
+
+    public var encryptedKey: String?
+
+    public var encryptedPassword: String?
+
+    public var endUserId: String?
+
+    public var fingerPrintData: String?
+
+    public var idpId: String?
+
+    public var imageUrl: String?
+
+    public var keepAlive: Bool?
+
+    public var keepAliveToken: String?
+
+    public var loginIdentifier: String?
+
+    public var loginName: String?
+
+    public var mfaType: String?
+
+    public var networkType: String?
+
+    public var newPassword: String?
+
+    public var officeSiteId: String?
+
+    public var oldPassword: String?
+
+    public var password: String?
+
+    public var phone: String?
+
+    public var phoneVerifyCode: String?
+
+    public var regionId: String?
+
+    public var sessionId: String?
+
+    public var ssoExtendsCookies: String?
+
+    public var ssoSessionToken: String?
+
+    public var tokenCode: String?
+
+    public var umidToken: String?
+
+    public var uuid: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authenticationCode != nil {
+            map["AuthenticationCode"] = self.authenticationCode!
+        }
+        if self.availableFeaturesShrink != nil {
+            map["AvailableFeatures"] = self.availableFeaturesShrink!
+        }
+        if self.clientId != nil {
+            map["ClientId"] = self.clientId!
+        }
+        if self.clientOS != nil {
+            map["ClientOS"] = self.clientOS!
+        }
+        if self.clientType != nil {
+            map["ClientType"] = self.clientType!
+        }
+        if self.clientVersion != nil {
+            map["ClientVersion"] = self.clientVersion!
+        }
+        if self.currentStage != nil {
+            map["CurrentStage"] = self.currentStage!
+        }
+        if self.directoryId != nil {
+            map["DirectoryId"] = self.directoryId!
+        }
+        if self.encryptedFingerPrintData != nil {
+            map["EncryptedFingerPrintData"] = self.encryptedFingerPrintData!
+        }
+        if self.encryptedKey != nil {
+            map["EncryptedKey"] = self.encryptedKey!
+        }
+        if self.encryptedPassword != nil {
+            map["EncryptedPassword"] = self.encryptedPassword!
+        }
+        if self.endUserId != nil {
+            map["EndUserId"] = self.endUserId!
+        }
+        if self.fingerPrintData != nil {
+            map["FingerPrintData"] = self.fingerPrintData!
+        }
+        if self.idpId != nil {
+            map["IdpId"] = self.idpId!
+        }
+        if self.imageUrl != nil {
+            map["ImageUrl"] = self.imageUrl!
+        }
+        if self.keepAlive != nil {
+            map["KeepAlive"] = self.keepAlive!
+        }
+        if self.keepAliveToken != nil {
+            map["KeepAliveToken"] = self.keepAliveToken!
+        }
+        if self.loginIdentifier != nil {
+            map["LoginIdentifier"] = self.loginIdentifier!
+        }
+        if self.loginName != nil {
+            map["LoginName"] = self.loginName!
+        }
+        if self.mfaType != nil {
+            map["MfaType"] = self.mfaType!
+        }
+        if self.networkType != nil {
+            map["NetworkType"] = self.networkType!
+        }
+        if self.newPassword != nil {
+            map["NewPassword"] = self.newPassword!
+        }
+        if self.officeSiteId != nil {
+            map["OfficeSiteId"] = self.officeSiteId!
+        }
+        if self.oldPassword != nil {
+            map["OldPassword"] = self.oldPassword!
+        }
+        if self.password != nil {
+            map["Password"] = self.password!
+        }
+        if self.phone != nil {
+            map["Phone"] = self.phone!
+        }
+        if self.phoneVerifyCode != nil {
+            map["PhoneVerifyCode"] = self.phoneVerifyCode!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.sessionId != nil {
+            map["SessionId"] = self.sessionId!
+        }
+        if self.ssoExtendsCookies != nil {
+            map["SsoExtendsCookies"] = self.ssoExtendsCookies!
+        }
+        if self.ssoSessionToken != nil {
+            map["SsoSessionToken"] = self.ssoSessionToken!
+        }
+        if self.tokenCode != nil {
+            map["TokenCode"] = self.tokenCode!
+        }
+        if self.umidToken != nil {
+            map["UmidToken"] = self.umidToken!
+        }
+        if self.uuid != nil {
+            map["Uuid"] = self.uuid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AuthenticationCode") {
+            self.authenticationCode = dict["AuthenticationCode"] as! String
+        }
+        if dict.keys.contains("AvailableFeatures") {
+            self.availableFeaturesShrink = dict["AvailableFeatures"] as! String
+        }
+        if dict.keys.contains("ClientId") {
+            self.clientId = dict["ClientId"] as! String
+        }
+        if dict.keys.contains("ClientOS") {
+            self.clientOS = dict["ClientOS"] as! String
+        }
+        if dict.keys.contains("ClientType") {
+            self.clientType = dict["ClientType"] as! String
+        }
+        if dict.keys.contains("ClientVersion") {
+            self.clientVersion = dict["ClientVersion"] as! String
+        }
+        if dict.keys.contains("CurrentStage") {
+            self.currentStage = dict["CurrentStage"] as! String
+        }
+        if dict.keys.contains("DirectoryId") {
+            self.directoryId = dict["DirectoryId"] as! String
+        }
+        if dict.keys.contains("EncryptedFingerPrintData") {
+            self.encryptedFingerPrintData = dict["EncryptedFingerPrintData"] as! String
+        }
+        if dict.keys.contains("EncryptedKey") {
+            self.encryptedKey = dict["EncryptedKey"] as! String
+        }
+        if dict.keys.contains("EncryptedPassword") {
+            self.encryptedPassword = dict["EncryptedPassword"] as! String
+        }
+        if dict.keys.contains("EndUserId") {
+            self.endUserId = dict["EndUserId"] as! String
+        }
+        if dict.keys.contains("FingerPrintData") {
+            self.fingerPrintData = dict["FingerPrintData"] as! String
+        }
+        if dict.keys.contains("IdpId") {
+            self.idpId = dict["IdpId"] as! String
+        }
+        if dict.keys.contains("ImageUrl") {
+            self.imageUrl = dict["ImageUrl"] as! String
+        }
+        if dict.keys.contains("KeepAlive") {
+            self.keepAlive = dict["KeepAlive"] as! Bool
+        }
+        if dict.keys.contains("KeepAliveToken") {
+            self.keepAliveToken = dict["KeepAliveToken"] as! String
+        }
+        if dict.keys.contains("LoginIdentifier") {
+            self.loginIdentifier = dict["LoginIdentifier"] as! String
+        }
+        if dict.keys.contains("LoginName") {
+            self.loginName = dict["LoginName"] as! String
+        }
+        if dict.keys.contains("MfaType") {
+            self.mfaType = dict["MfaType"] as! String
+        }
         if dict.keys.contains("NetworkType") {
             self.networkType = dict["NetworkType"] as! String
         }
@@ -690,6 +1110,43 @@ public class GetLoginTokenRequest : Tea.TeaModel {
 }
 
 public class GetLoginTokenResponseBody : Tea.TeaModel {
+    public class MfaTypeList : Tea.TeaModel {
+        public var name: String?
+
+        public var stage: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.stage != nil {
+                map["Stage"] = self.stage!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Name") {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("Stage") {
+                self.stage = dict["Stage"] as! String
+            }
+        }
+    }
     public class PasswordStrategy : Tea.TeaModel {
         public var tenantAlternativeChars: [String]?
 
@@ -837,6 +1294,8 @@ public class GetLoginTokenResponseBody : Tea.TeaModel {
 
     public var loginToken: String?
 
+    public var mfaTypeList: [GetLoginTokenResponseBody.MfaTypeList]?
+
     public var nextStage: String?
 
     public var officeSites: [String]?
@@ -916,6 +1375,13 @@ public class GetLoginTokenResponseBody : Tea.TeaModel {
         }
         if self.loginToken != nil {
             map["LoginToken"] = self.loginToken!
+        }
+        if self.mfaTypeList != nil {
+            var tmp : [Any] = []
+            for k in self.mfaTypeList! {
+                tmp.append(k.toMap())
+            }
+            map["MfaTypeList"] = tmp
         }
         if self.nextStage != nil {
             map["NextStage"] = self.nextStage!
@@ -1005,6 +1471,17 @@ public class GetLoginTokenResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("LoginToken") {
             self.loginToken = dict["LoginToken"] as! String
+        }
+        if dict.keys.contains("MfaTypeList") {
+            var tmp : [GetLoginTokenResponseBody.MfaTypeList] = []
+            for v in dict["MfaTypeList"] as! [Any] {
+                var model = GetLoginTokenResponseBody.MfaTypeList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.mfaTypeList = tmp
         }
         if dict.keys.contains("NextStage") {
             self.nextStage = dict["NextStage"] as! String
