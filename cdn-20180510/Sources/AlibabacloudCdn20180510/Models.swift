@@ -34291,6 +34291,8 @@ public class PushObjectCacheRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var queryHashkey: Bool?
+
     public var securityToken: String?
 
     public var withHeader: String?
@@ -34321,6 +34323,9 @@ public class PushObjectCacheRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.queryHashkey != nil {
+            map["QueryHashkey"] = self.queryHashkey!
+        }
         if self.securityToken != nil {
             map["SecurityToken"] = self.securityToken!
         }
@@ -34342,6 +34347,9 @@ public class PushObjectCacheRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OwnerId") {
             self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("QueryHashkey") {
+            self.queryHashkey = dict["QueryHashkey"] as! Bool
         }
         if dict.keys.contains("SecurityToken") {
             self.securityToken = dict["SecurityToken"] as! String

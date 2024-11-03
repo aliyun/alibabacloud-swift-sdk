@@ -5664,6 +5664,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }
+        if (!TeaUtils.Client.isUnset(request.queryHashkey)) {
+            query["QueryHashkey"] = request.queryHashkey!;
+        }
         if (!TeaUtils.Client.isUnset(request.securityToken)) {
             query["SecurityToken"] = request.securityToken ?? "";
         }
