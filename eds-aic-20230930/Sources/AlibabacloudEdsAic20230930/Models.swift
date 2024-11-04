@@ -8446,6 +8446,8 @@ public class ResetAndroidInstancesInGroupResponse : Tea.TeaModel {
 public class RunCommandRequest : Tea.TeaModel {
     public var commandContent: String?
 
+    public var contentEncoding: String?
+
     public var instanceIds: [String]?
 
     public var timeout: Int64?
@@ -8467,6 +8469,9 @@ public class RunCommandRequest : Tea.TeaModel {
         if self.commandContent != nil {
             map["CommandContent"] = self.commandContent!
         }
+        if self.contentEncoding != nil {
+            map["ContentEncoding"] = self.contentEncoding!
+        }
         if self.instanceIds != nil {
             map["InstanceIds"] = self.instanceIds!
         }
@@ -8479,6 +8484,9 @@ public class RunCommandRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("CommandContent") {
             self.commandContent = dict["CommandContent"] as! String
+        }
+        if dict.keys.contains("ContentEncoding") {
+            self.contentEncoding = dict["ContentEncoding"] as! String
         }
         if dict.keys.contains("InstanceIds") {
             self.instanceIds = dict["InstanceIds"] as! [String]
