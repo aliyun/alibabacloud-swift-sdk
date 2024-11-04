@@ -5354,6 +5354,196 @@ public class DescribePopApiVersionListResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeProcessTaskCountRequest : Tea.TeaModel {
+    public var entityUuidList: [String]?
+
+    public var lang: String?
+
+    public var roleFor: Int64?
+
+    public var roleType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.entityUuidList != nil {
+            map["EntityUuidList"] = self.entityUuidList!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.roleFor != nil {
+            map["RoleFor"] = self.roleFor!
+        }
+        if self.roleType != nil {
+            map["RoleType"] = self.roleType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EntityUuidList") {
+            self.entityUuidList = dict["EntityUuidList"] as! [String]
+        }
+        if dict.keys.contains("Lang") {
+            self.lang = dict["Lang"] as! String
+        }
+        if dict.keys.contains("RoleFor") {
+            self.roleFor = dict["RoleFor"] as! Int64
+        }
+        if dict.keys.contains("RoleType") {
+            self.roleType = dict["RoleType"] as! String
+        }
+    }
+}
+
+public class DescribeProcessTaskCountResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var count: Int64?
+
+        public var entityUuid: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.count != nil {
+                map["Count"] = self.count!
+            }
+            if self.entityUuid != nil {
+                map["EntityUuid"] = self.entityUuid!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Count") {
+                self.count = dict["Count"] as! Int64
+            }
+            if dict.keys.contains("EntityUuid") {
+                self.entityUuid = dict["EntityUuid"] as! String
+            }
+        }
+    }
+    public var data: [DescribeProcessTaskCountResponseBody.Data]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            var tmp : [DescribeProcessTaskCountResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = DescribeProcessTaskCountResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeProcessTaskCountResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeProcessTaskCountResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeProcessTaskCountResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeProcessTasksRequest : Tea.TeaModel {
     public var direction: String?
 
