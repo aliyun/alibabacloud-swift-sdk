@@ -11843,9 +11843,13 @@ public class GetLoadBalancerAttributeResponseBody : Tea.TeaModel {
 
             public var intranetAddressHcStatus: String?
 
+            public var ipv4LocalAddresses: [String]?
+
             public var ipv6Address: String?
 
             public var ipv6AddressHcStatus: String?
+
+            public var ipv6LocalAddresses: [String]?
 
             public override init() {
                 super.init()
@@ -11876,11 +11880,17 @@ public class GetLoadBalancerAttributeResponseBody : Tea.TeaModel {
                 if self.intranetAddressHcStatus != nil {
                     map["IntranetAddressHcStatus"] = self.intranetAddressHcStatus!
                 }
+                if self.ipv4LocalAddresses != nil {
+                    map["Ipv4LocalAddresses"] = self.ipv4LocalAddresses!
+                }
                 if self.ipv6Address != nil {
                     map["Ipv6Address"] = self.ipv6Address!
                 }
                 if self.ipv6AddressHcStatus != nil {
                     map["Ipv6AddressHcStatus"] = self.ipv6AddressHcStatus!
+                }
+                if self.ipv6LocalAddresses != nil {
+                    map["Ipv6LocalAddresses"] = self.ipv6LocalAddresses!
                 }
                 return map
             }
@@ -11901,11 +11911,17 @@ public class GetLoadBalancerAttributeResponseBody : Tea.TeaModel {
                 if dict.keys.contains("IntranetAddressHcStatus") {
                     self.intranetAddressHcStatus = dict["IntranetAddressHcStatus"] as! String
                 }
+                if dict.keys.contains("Ipv4LocalAddresses") {
+                    self.ipv4LocalAddresses = dict["Ipv4LocalAddresses"] as! [String]
+                }
                 if dict.keys.contains("Ipv6Address") {
                     self.ipv6Address = dict["Ipv6Address"] as! String
                 }
                 if dict.keys.contains("Ipv6AddressHcStatus") {
                     self.ipv6AddressHcStatus = dict["Ipv6AddressHcStatus"] as! String
+                }
+                if dict.keys.contains("Ipv6LocalAddresses") {
+                    self.ipv6LocalAddresses = dict["Ipv6LocalAddresses"] as! [String]
                 }
             }
         }
