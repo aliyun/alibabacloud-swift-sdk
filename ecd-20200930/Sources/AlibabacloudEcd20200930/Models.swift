@@ -39778,6 +39778,8 @@ public class ModifyCloudDrivePermissionRequest : Tea.TeaModel {
 
     public var downloadUploadEndUserIds: [String]?
 
+    public var noDownloadNoUploadEndUserIds: [String]?
+
     public var regionId: String?
 
     public override init() {
@@ -39803,6 +39805,9 @@ public class ModifyCloudDrivePermissionRequest : Tea.TeaModel {
         if self.downloadUploadEndUserIds != nil {
             map["DownloadUploadEndUserIds"] = self.downloadUploadEndUserIds!
         }
+        if self.noDownloadNoUploadEndUserIds != nil {
+            map["NoDownloadNoUploadEndUserIds"] = self.noDownloadNoUploadEndUserIds!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -39818,6 +39823,9 @@ public class ModifyCloudDrivePermissionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DownloadUploadEndUserIds") {
             self.downloadUploadEndUserIds = dict["DownloadUploadEndUserIds"] as! [String]
+        }
+        if dict.keys.contains("NoDownloadNoUploadEndUserIds") {
+            self.noDownloadNoUploadEndUserIds = dict["NoDownloadNoUploadEndUserIds"] as! [String]
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String

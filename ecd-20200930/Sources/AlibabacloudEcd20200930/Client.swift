@@ -7364,6 +7364,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.downloadUploadEndUserIds)) {
             query["DownloadUploadEndUserIds"] = request.downloadUploadEndUserIds ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.noDownloadNoUploadEndUserIds)) {
+            query["NoDownloadNoUploadEndUserIds"] = request.noDownloadNoUploadEndUserIds ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
