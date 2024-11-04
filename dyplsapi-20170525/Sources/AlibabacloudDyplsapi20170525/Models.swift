@@ -335,6 +335,219 @@ public class AddSecretBlacklistResponse : Tea.TeaModel {
     }
 }
 
+public class BindAXBCallRequest : Tea.TeaModel {
+    public var authId: String?
+
+    public var callerParentId: Int64?
+
+    public var customerPoolKey: String?
+
+    public var expiration: Int64?
+
+    public var ownerId: Int64?
+
+    public var reqId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var telA: String?
+
+    public var userData: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authId != nil {
+            map["AuthId"] = self.authId!
+        }
+        if self.callerParentId != nil {
+            map["CallerParentId"] = self.callerParentId!
+        }
+        if self.customerPoolKey != nil {
+            map["CustomerPoolKey"] = self.customerPoolKey!
+        }
+        if self.expiration != nil {
+            map["Expiration"] = self.expiration!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.reqId != nil {
+            map["ReqId"] = self.reqId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.telA != nil {
+            map["TelA"] = self.telA!
+        }
+        if self.userData != nil {
+            map["UserData"] = self.userData!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AuthId") {
+            self.authId = dict["AuthId"] as! String
+        }
+        if dict.keys.contains("CallerParentId") {
+            self.callerParentId = dict["CallerParentId"] as! Int64
+        }
+        if dict.keys.contains("CustomerPoolKey") {
+            self.customerPoolKey = dict["CustomerPoolKey"] as! String
+        }
+        if dict.keys.contains("Expiration") {
+            self.expiration = dict["Expiration"] as! Int64
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ReqId") {
+            self.reqId = dict["ReqId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("TelA") {
+            self.telA = dict["TelA"] as! String
+        }
+        if dict.keys.contains("UserData") {
+            self.userData = dict["UserData"] as! String
+        }
+    }
+}
+
+public class BindAXBCallResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var bindId: String?
+
+    public var code: String?
+
+    public var message: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.bindId != nil {
+            map["BindId"] = self.bindId!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
+        if dict.keys.contains("BindId") {
+            self.bindId = dict["BindId"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class BindAXBCallResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BindAXBCallResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = BindAXBCallResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class BindAxbRequest : Tea.TeaModel {
     public var ASRModelId: String?
 
@@ -992,6 +1205,8 @@ public class BindAxnRequest : Tea.TeaModel {
 
     public var expiration: String?
 
+    public var extend: String?
+
     public var isRecordingEnabled: Bool?
 
     public var noType: String?
@@ -1050,6 +1265,9 @@ public class BindAxnRequest : Tea.TeaModel {
         }
         if self.expiration != nil {
             map["Expiration"] = self.expiration!
+        }
+        if self.extend != nil {
+            map["Extend"] = self.extend!
         }
         if self.isRecordingEnabled != nil {
             map["IsRecordingEnabled"] = self.isRecordingEnabled!
@@ -1111,6 +1329,9 @@ public class BindAxnRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Expiration") {
             self.expiration = dict["Expiration"] as! String
+        }
+        if dict.keys.contains("Extend") {
+            self.extend = dict["Extend"] as! String
         }
         if dict.keys.contains("IsRecordingEnabled") {
             self.isRecordingEnabled = dict["IsRecordingEnabled"] as! Bool
@@ -2120,6 +2341,219 @@ public class BindBatchAxgResponse : Tea.TeaModel {
     }
 }
 
+public class BindXBRequest : Tea.TeaModel {
+    public var callerParentId: Int64?
+
+    public var customerPoolKey: String?
+
+    public var ownerId: Int64?
+
+    public var reqId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var telB: String?
+
+    public var telX: String?
+
+    public var userData: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.callerParentId != nil {
+            map["CallerParentId"] = self.callerParentId!
+        }
+        if self.customerPoolKey != nil {
+            map["CustomerPoolKey"] = self.customerPoolKey!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.reqId != nil {
+            map["ReqId"] = self.reqId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.telB != nil {
+            map["TelB"] = self.telB!
+        }
+        if self.telX != nil {
+            map["TelX"] = self.telX!
+        }
+        if self.userData != nil {
+            map["UserData"] = self.userData!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CallerParentId") {
+            self.callerParentId = dict["CallerParentId"] as! Int64
+        }
+        if dict.keys.contains("CustomerPoolKey") {
+            self.customerPoolKey = dict["CustomerPoolKey"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ReqId") {
+            self.reqId = dict["ReqId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("TelB") {
+            self.telB = dict["TelB"] as! String
+        }
+        if dict.keys.contains("TelX") {
+            self.telX = dict["TelX"] as! String
+        }
+        if dict.keys.contains("UserData") {
+            self.userData = dict["UserData"] as! String
+        }
+    }
+}
+
+public class BindXBResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var authId: String?
+
+    public var code: String?
+
+    public var message: String?
+
+    public var success: Bool?
+
+    public var telX: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.authId != nil {
+            map["AuthId"] = self.authId!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.telX != nil {
+            map["TelX"] = self.telX!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
+        if dict.keys.contains("AuthId") {
+            self.authId = dict["AuthId"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+        if dict.keys.contains("TelX") {
+            self.telX = dict["TelX"] as! String
+        }
+    }
+}
+
+public class BindXBResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BindXBResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = BindXBResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class BuySecretNoRequest : Tea.TeaModel {
     public var city: String?
 
@@ -2556,6 +2990,418 @@ public class CancelPickUpWaybillResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = CancelPickUpWaybillResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ConfigXRequest : Tea.TeaModel {
+    public class SequenceCalls : Tea.TeaModel {
+        public var sequenceCallNoPlayCode: String?
+
+        public var sequenceCalledNo: String?
+
+        public var sequenceCalledPlayCode: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.sequenceCallNoPlayCode != nil {
+                map["SequenceCallNoPlayCode"] = self.sequenceCallNoPlayCode!
+            }
+            if self.sequenceCalledNo != nil {
+                map["SequenceCalledNo"] = self.sequenceCalledNo!
+            }
+            if self.sequenceCalledPlayCode != nil {
+                map["SequenceCalledPlayCode"] = self.sequenceCalledPlayCode!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("SequenceCallNoPlayCode") {
+                self.sequenceCallNoPlayCode = dict["SequenceCallNoPlayCode"] as! String
+            }
+            if dict.keys.contains("SequenceCalledNo") {
+                self.sequenceCalledNo = dict["SequenceCalledNo"] as! String
+            }
+            if dict.keys.contains("SequenceCalledPlayCode") {
+                self.sequenceCalledPlayCode = dict["SequenceCalledPlayCode"] as! String
+            }
+        }
+    }
+    public var callAbility: String?
+
+    public var callerParentId: Int64?
+
+    public var customerPoolKey: String?
+
+    public var GNFlag: String?
+
+    public var ownerId: Int64?
+
+    public var reqId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var sequenceCalls: [ConfigXRequest.SequenceCalls]?
+
+    public var sequenceMode: String?
+
+    public var smsAbility: String?
+
+    public var smsSignMode: String?
+
+    public var telX: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.callAbility != nil {
+            map["CallAbility"] = self.callAbility!
+        }
+        if self.callerParentId != nil {
+            map["CallerParentId"] = self.callerParentId!
+        }
+        if self.customerPoolKey != nil {
+            map["CustomerPoolKey"] = self.customerPoolKey!
+        }
+        if self.GNFlag != nil {
+            map["GNFlag"] = self.GNFlag!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.reqId != nil {
+            map["ReqId"] = self.reqId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.sequenceCalls != nil {
+            var tmp : [Any] = []
+            for k in self.sequenceCalls! {
+                tmp.append(k.toMap())
+            }
+            map["SequenceCalls"] = tmp
+        }
+        if self.sequenceMode != nil {
+            map["SequenceMode"] = self.sequenceMode!
+        }
+        if self.smsAbility != nil {
+            map["SmsAbility"] = self.smsAbility!
+        }
+        if self.smsSignMode != nil {
+            map["SmsSignMode"] = self.smsSignMode!
+        }
+        if self.telX != nil {
+            map["TelX"] = self.telX!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CallAbility") {
+            self.callAbility = dict["CallAbility"] as! String
+        }
+        if dict.keys.contains("CallerParentId") {
+            self.callerParentId = dict["CallerParentId"] as! Int64
+        }
+        if dict.keys.contains("CustomerPoolKey") {
+            self.customerPoolKey = dict["CustomerPoolKey"] as! String
+        }
+        if dict.keys.contains("GNFlag") {
+            self.GNFlag = dict["GNFlag"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ReqId") {
+            self.reqId = dict["ReqId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("SequenceCalls") {
+            var tmp : [ConfigXRequest.SequenceCalls] = []
+            for v in dict["SequenceCalls"] as! [Any] {
+                var model = ConfigXRequest.SequenceCalls()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.sequenceCalls = tmp
+        }
+        if dict.keys.contains("SequenceMode") {
+            self.sequenceMode = dict["SequenceMode"] as! String
+        }
+        if dict.keys.contains("SmsAbility") {
+            self.smsAbility = dict["SmsAbility"] as! String
+        }
+        if dict.keys.contains("SmsSignMode") {
+            self.smsSignMode = dict["SmsSignMode"] as! String
+        }
+        if dict.keys.contains("TelX") {
+            self.telX = dict["TelX"] as! String
+        }
+    }
+}
+
+public class ConfigXShrinkRequest : Tea.TeaModel {
+    public var callAbility: String?
+
+    public var callerParentId: Int64?
+
+    public var customerPoolKey: String?
+
+    public var GNFlag: String?
+
+    public var ownerId: Int64?
+
+    public var reqId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var sequenceCallsShrink: String?
+
+    public var sequenceMode: String?
+
+    public var smsAbility: String?
+
+    public var smsSignMode: String?
+
+    public var telX: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.callAbility != nil {
+            map["CallAbility"] = self.callAbility!
+        }
+        if self.callerParentId != nil {
+            map["CallerParentId"] = self.callerParentId!
+        }
+        if self.customerPoolKey != nil {
+            map["CustomerPoolKey"] = self.customerPoolKey!
+        }
+        if self.GNFlag != nil {
+            map["GNFlag"] = self.GNFlag!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.reqId != nil {
+            map["ReqId"] = self.reqId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.sequenceCallsShrink != nil {
+            map["SequenceCalls"] = self.sequenceCallsShrink!
+        }
+        if self.sequenceMode != nil {
+            map["SequenceMode"] = self.sequenceMode!
+        }
+        if self.smsAbility != nil {
+            map["SmsAbility"] = self.smsAbility!
+        }
+        if self.smsSignMode != nil {
+            map["SmsSignMode"] = self.smsSignMode!
+        }
+        if self.telX != nil {
+            map["TelX"] = self.telX!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CallAbility") {
+            self.callAbility = dict["CallAbility"] as! String
+        }
+        if dict.keys.contains("CallerParentId") {
+            self.callerParentId = dict["CallerParentId"] as! Int64
+        }
+        if dict.keys.contains("CustomerPoolKey") {
+            self.customerPoolKey = dict["CustomerPoolKey"] as! String
+        }
+        if dict.keys.contains("GNFlag") {
+            self.GNFlag = dict["GNFlag"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ReqId") {
+            self.reqId = dict["ReqId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("SequenceCalls") {
+            self.sequenceCallsShrink = dict["SequenceCalls"] as! String
+        }
+        if dict.keys.contains("SequenceMode") {
+            self.sequenceMode = dict["SequenceMode"] as! String
+        }
+        if dict.keys.contains("SmsAbility") {
+            self.smsAbility = dict["SmsAbility"] as! String
+        }
+        if dict.keys.contains("SmsSignMode") {
+            self.smsSignMode = dict["SmsSignMode"] as! String
+        }
+        if dict.keys.contains("TelX") {
+            self.telX = dict["TelX"] as! String
+        }
+    }
+}
+
+public class ConfigXResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var message: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class ConfigXResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ConfigXResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ConfigXResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -4169,6 +5015,203 @@ public class CreatePickUpWaybillPreQueryResponse : Tea.TeaModel {
     }
 }
 
+public class CreateSmsSignRequest : Tea.TeaModel {
+    public var calledNo: String?
+
+    public var callerParentId: Int64?
+
+    public var callingNo: String?
+
+    public var customerPoolKey: String?
+
+    public var ownerId: Int64?
+
+    public var reqId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.calledNo != nil {
+            map["CalledNo"] = self.calledNo!
+        }
+        if self.callerParentId != nil {
+            map["CallerParentId"] = self.callerParentId!
+        }
+        if self.callingNo != nil {
+            map["CallingNo"] = self.callingNo!
+        }
+        if self.customerPoolKey != nil {
+            map["CustomerPoolKey"] = self.customerPoolKey!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.reqId != nil {
+            map["ReqId"] = self.reqId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CalledNo") {
+            self.calledNo = dict["CalledNo"] as! String
+        }
+        if dict.keys.contains("CallerParentId") {
+            self.callerParentId = dict["CallerParentId"] as! Int64
+        }
+        if dict.keys.contains("CallingNo") {
+            self.callingNo = dict["CallingNo"] as! String
+        }
+        if dict.keys.contains("CustomerPoolKey") {
+            self.customerPoolKey = dict["CustomerPoolKey"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ReqId") {
+            self.reqId = dict["ReqId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class CreateSmsSignResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var calledNoSign: String?
+
+    public var code: String?
+
+    public var message: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.calledNoSign != nil {
+            map["CalledNoSign"] = self.calledNoSign!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
+        if dict.keys.contains("CalledNoSign") {
+            self.calledNoSign = dict["CalledNoSign"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class CreateSmsSignResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateSmsSignResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateSmsSignResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DeleteAxgGroupRequest : Tea.TeaModel {
     public var groupId: Int64?
 
@@ -5024,6 +6067,1025 @@ public class GetTotalPublicUrlResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = GetTotalPublicUrlResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetXConfigRequest : Tea.TeaModel {
+    public var callerParentId: Int64?
+
+    public var customerPoolKey: String?
+
+    public var ownerId: Int64?
+
+    public var reqId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var telX: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.callerParentId != nil {
+            map["CallerParentId"] = self.callerParentId!
+        }
+        if self.customerPoolKey != nil {
+            map["CustomerPoolKey"] = self.customerPoolKey!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.reqId != nil {
+            map["ReqId"] = self.reqId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.telX != nil {
+            map["TelX"] = self.telX!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CallerParentId") {
+            self.callerParentId = dict["CallerParentId"] as! Int64
+        }
+        if dict.keys.contains("CustomerPoolKey") {
+            self.customerPoolKey = dict["CustomerPoolKey"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ReqId") {
+            self.reqId = dict["ReqId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("TelX") {
+            self.telX = dict["TelX"] as! String
+        }
+    }
+}
+
+public class GetXConfigResponseBody : Tea.TeaModel {
+    public class SequenceCalls : Tea.TeaModel {
+        public var sequenceCallNoPlayCode: String?
+
+        public var sequenceCalledNo: String?
+
+        public var sequenceCalledPlayCode: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.sequenceCallNoPlayCode != nil {
+                map["SequenceCallNoPlayCode"] = self.sequenceCallNoPlayCode!
+            }
+            if self.sequenceCalledNo != nil {
+                map["SequenceCalledNo"] = self.sequenceCalledNo!
+            }
+            if self.sequenceCalledPlayCode != nil {
+                map["SequenceCalledPlayCode"] = self.sequenceCalledPlayCode!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("SequenceCallNoPlayCode") {
+                self.sequenceCallNoPlayCode = dict["SequenceCallNoPlayCode"] as! String
+            }
+            if dict.keys.contains("SequenceCalledNo") {
+                self.sequenceCalledNo = dict["SequenceCalledNo"] as! String
+            }
+            if dict.keys.contains("SequenceCalledPlayCode") {
+                self.sequenceCalledPlayCode = dict["SequenceCalledPlayCode"] as! String
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var callAbility: String?
+
+    public var code: String?
+
+    public var GNFlag: String?
+
+    public var message: String?
+
+    public var sequenceCalls: [GetXConfigResponseBody.SequenceCalls]?
+
+    public var sequenceMode: String?
+
+    public var smsAbility: String?
+
+    public var smsSignMode: String?
+
+    public var success: Bool?
+
+    public var telX: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.callAbility != nil {
+            map["CallAbility"] = self.callAbility!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.GNFlag != nil {
+            map["GNFlag"] = self.GNFlag!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.sequenceCalls != nil {
+            var tmp : [Any] = []
+            for k in self.sequenceCalls! {
+                tmp.append(k.toMap())
+            }
+            map["SequenceCalls"] = tmp
+        }
+        if self.sequenceMode != nil {
+            map["SequenceMode"] = self.sequenceMode!
+        }
+        if self.smsAbility != nil {
+            map["SmsAbility"] = self.smsAbility!
+        }
+        if self.smsSignMode != nil {
+            map["SmsSignMode"] = self.smsSignMode!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.telX != nil {
+            map["TelX"] = self.telX!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
+        if dict.keys.contains("CallAbility") {
+            self.callAbility = dict["CallAbility"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("GNFlag") {
+            self.GNFlag = dict["GNFlag"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("SequenceCalls") {
+            var tmp : [GetXConfigResponseBody.SequenceCalls] = []
+            for v in dict["SequenceCalls"] as! [Any] {
+                var model = GetXConfigResponseBody.SequenceCalls()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.sequenceCalls = tmp
+        }
+        if dict.keys.contains("SequenceMode") {
+            self.sequenceMode = dict["SequenceMode"] as! String
+        }
+        if dict.keys.contains("SmsAbility") {
+            self.smsAbility = dict["SmsAbility"] as! String
+        }
+        if dict.keys.contains("SmsSignMode") {
+            self.smsSignMode = dict["SmsSignMode"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+        if dict.keys.contains("TelX") {
+            self.telX = dict["TelX"] as! String
+        }
+    }
+}
+
+public class GetXConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetXConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetXConfigResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetXDefaultConfigRequest : Tea.TeaModel {
+    public var callerParentId: Int64?
+
+    public var customerPoolKey: String?
+
+    public var ownerId: Int64?
+
+    public var reqId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var telX: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.callerParentId != nil {
+            map["CallerParentId"] = self.callerParentId!
+        }
+        if self.customerPoolKey != nil {
+            map["CustomerPoolKey"] = self.customerPoolKey!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.reqId != nil {
+            map["ReqId"] = self.reqId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.telX != nil {
+            map["TelX"] = self.telX!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CallerParentId") {
+            self.callerParentId = dict["CallerParentId"] as! Int64
+        }
+        if dict.keys.contains("CustomerPoolKey") {
+            self.customerPoolKey = dict["CustomerPoolKey"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ReqId") {
+            self.reqId = dict["ReqId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("TelX") {
+            self.telX = dict["TelX"] as! String
+        }
+    }
+}
+
+public class GetXDefaultConfigResponseBody : Tea.TeaModel {
+    public class ReachJson : Tea.TeaModel {
+        public var callDir: String?
+
+        public var callStatus: String?
+
+        public var receiveDir: String?
+
+        public var ruleId: String?
+
+        public var ruleName: String?
+
+        public var ruleType: String?
+
+        public var tempId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.callDir != nil {
+                map["CallDir"] = self.callDir!
+            }
+            if self.callStatus != nil {
+                map["CallStatus"] = self.callStatus!
+            }
+            if self.receiveDir != nil {
+                map["ReceiveDir"] = self.receiveDir!
+            }
+            if self.ruleId != nil {
+                map["RuleId"] = self.ruleId!
+            }
+            if self.ruleName != nil {
+                map["RuleName"] = self.ruleName!
+            }
+            if self.ruleType != nil {
+                map["RuleType"] = self.ruleType!
+            }
+            if self.tempId != nil {
+                map["TempId"] = self.tempId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CallDir") {
+                self.callDir = dict["CallDir"] as! String
+            }
+            if dict.keys.contains("CallStatus") {
+                self.callStatus = dict["CallStatus"] as! String
+            }
+            if dict.keys.contains("ReceiveDir") {
+                self.receiveDir = dict["ReceiveDir"] as! String
+            }
+            if dict.keys.contains("RuleId") {
+                self.ruleId = dict["RuleId"] as! String
+            }
+            if dict.keys.contains("RuleName") {
+                self.ruleName = dict["RuleName"] as! String
+            }
+            if dict.keys.contains("RuleType") {
+                self.ruleType = dict["RuleType"] as! String
+            }
+            if dict.keys.contains("TempId") {
+                self.tempId = dict["TempId"] as! String
+            }
+        }
+    }
+    public class SequenceCalls : Tea.TeaModel {
+        public var sequenceCallNoPlayCode: String?
+
+        public var sequenceCalledNo: String?
+
+        public var sequenceCalledPlayCode: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.sequenceCallNoPlayCode != nil {
+                map["SequenceCallNoPlayCode"] = self.sequenceCallNoPlayCode!
+            }
+            if self.sequenceCalledNo != nil {
+                map["SequenceCalledNo"] = self.sequenceCalledNo!
+            }
+            if self.sequenceCalledPlayCode != nil {
+                map["SequenceCalledPlayCode"] = self.sequenceCalledPlayCode!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("SequenceCallNoPlayCode") {
+                self.sequenceCallNoPlayCode = dict["SequenceCallNoPlayCode"] as! String
+            }
+            if dict.keys.contains("SequenceCalledNo") {
+                self.sequenceCalledNo = dict["SequenceCalledNo"] as! String
+            }
+            if dict.keys.contains("SequenceCalledPlayCode") {
+                self.sequenceCalledPlayCode = dict["SequenceCalledPlayCode"] as! String
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var callAbility: String?
+
+    public var code: String?
+
+    public var GNFlag: String?
+
+    public var message: String?
+
+    public var reachJson: [GetXDefaultConfigResponseBody.ReachJson]?
+
+    public var sequenceCalls: [GetXDefaultConfigResponseBody.SequenceCalls]?
+
+    public var sequenceEndTime: String?
+
+    public var sequenceStartTime: String?
+
+    public var smsAbility: String?
+
+    public var smsSignMode: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.callAbility != nil {
+            map["CallAbility"] = self.callAbility!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.GNFlag != nil {
+            map["GNFlag"] = self.GNFlag!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.reachJson != nil {
+            var tmp : [Any] = []
+            for k in self.reachJson! {
+                tmp.append(k.toMap())
+            }
+            map["ReachJson"] = tmp
+        }
+        if self.sequenceCalls != nil {
+            var tmp : [Any] = []
+            for k in self.sequenceCalls! {
+                tmp.append(k.toMap())
+            }
+            map["SequenceCalls"] = tmp
+        }
+        if self.sequenceEndTime != nil {
+            map["SequenceEndTime"] = self.sequenceEndTime!
+        }
+        if self.sequenceStartTime != nil {
+            map["SequenceStartTime"] = self.sequenceStartTime!
+        }
+        if self.smsAbility != nil {
+            map["SmsAbility"] = self.smsAbility!
+        }
+        if self.smsSignMode != nil {
+            map["SmsSignMode"] = self.smsSignMode!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
+        if dict.keys.contains("CallAbility") {
+            self.callAbility = dict["CallAbility"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("GNFlag") {
+            self.GNFlag = dict["GNFlag"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("ReachJson") {
+            var tmp : [GetXDefaultConfigResponseBody.ReachJson] = []
+            for v in dict["ReachJson"] as! [Any] {
+                var model = GetXDefaultConfigResponseBody.ReachJson()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.reachJson = tmp
+        }
+        if dict.keys.contains("SequenceCalls") {
+            var tmp : [GetXDefaultConfigResponseBody.SequenceCalls] = []
+            for v in dict["SequenceCalls"] as! [Any] {
+                var model = GetXDefaultConfigResponseBody.SequenceCalls()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.sequenceCalls = tmp
+        }
+        if dict.keys.contains("SequenceEndTime") {
+            self.sequenceEndTime = dict["SequenceEndTime"] as! String
+        }
+        if dict.keys.contains("SequenceStartTime") {
+            self.sequenceStartTime = dict["SequenceStartTime"] as! String
+        }
+        if dict.keys.contains("SmsAbility") {
+            self.smsAbility = dict["SmsAbility"] as! String
+        }
+        if dict.keys.contains("SmsSignMode") {
+            self.smsSignMode = dict["SmsSignMode"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class GetXDefaultConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetXDefaultConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetXDefaultConfigResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListXTelephonesRequest : Tea.TeaModel {
+    public var callerParentId: Int64?
+
+    public var customerPoolKey: String?
+
+    public var ownerId: Int64?
+
+    public var pageNo: Int64?
+
+    public var pageSize: Int64?
+
+    public var reqId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.callerParentId != nil {
+            map["CallerParentId"] = self.callerParentId!
+        }
+        if self.customerPoolKey != nil {
+            map["CustomerPoolKey"] = self.customerPoolKey!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.pageNo != nil {
+            map["PageNo"] = self.pageNo!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.reqId != nil {
+            map["ReqId"] = self.reqId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CallerParentId") {
+            self.callerParentId = dict["CallerParentId"] as! Int64
+        }
+        if dict.keys.contains("CustomerPoolKey") {
+            self.customerPoolKey = dict["CustomerPoolKey"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("PageNo") {
+            self.pageNo = dict["PageNo"] as! Int64
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int64
+        }
+        if dict.keys.contains("ReqId") {
+            self.reqId = dict["ReqId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class ListXTelephonesResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var authMsg: String?
+
+        public var bindTime: String?
+
+        public var buyTime: String?
+
+        public var customerPoolKey: String?
+
+        public var customerPoolName: String?
+
+        public var releaseTime: String?
+
+        public var smsStatus: String?
+
+        public var telephone: String?
+
+        public var telephoneStatus: String?
+
+        public var unbindTime: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.authMsg != nil {
+                map["AuthMsg"] = self.authMsg!
+            }
+            if self.bindTime != nil {
+                map["BindTime"] = self.bindTime!
+            }
+            if self.buyTime != nil {
+                map["BuyTime"] = self.buyTime!
+            }
+            if self.customerPoolKey != nil {
+                map["CustomerPoolKey"] = self.customerPoolKey!
+            }
+            if self.customerPoolName != nil {
+                map["CustomerPoolName"] = self.customerPoolName!
+            }
+            if self.releaseTime != nil {
+                map["ReleaseTime"] = self.releaseTime!
+            }
+            if self.smsStatus != nil {
+                map["SmsStatus"] = self.smsStatus!
+            }
+            if self.telephone != nil {
+                map["Telephone"] = self.telephone!
+            }
+            if self.telephoneStatus != nil {
+                map["TelephoneStatus"] = self.telephoneStatus!
+            }
+            if self.unbindTime != nil {
+                map["UnbindTime"] = self.unbindTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AuthMsg") {
+                self.authMsg = dict["AuthMsg"] as! String
+            }
+            if dict.keys.contains("BindTime") {
+                self.bindTime = dict["BindTime"] as! String
+            }
+            if dict.keys.contains("BuyTime") {
+                self.buyTime = dict["BuyTime"] as! String
+            }
+            if dict.keys.contains("CustomerPoolKey") {
+                self.customerPoolKey = dict["CustomerPoolKey"] as! String
+            }
+            if dict.keys.contains("CustomerPoolName") {
+                self.customerPoolName = dict["CustomerPoolName"] as! String
+            }
+            if dict.keys.contains("ReleaseTime") {
+                self.releaseTime = dict["ReleaseTime"] as! String
+            }
+            if dict.keys.contains("SmsStatus") {
+                self.smsStatus = dict["SmsStatus"] as! String
+            }
+            if dict.keys.contains("Telephone") {
+                self.telephone = dict["Telephone"] as! String
+            }
+            if dict.keys.contains("TelephoneStatus") {
+                self.telephoneStatus = dict["TelephoneStatus"] as! String
+            }
+            if dict.keys.contains("UnbindTime") {
+                self.unbindTime = dict["UnbindTime"] as! String
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: [ListXTelephonesResponseBody.Data]?
+
+    public var message: String?
+
+    public var pageNo: Int64?
+
+    public var pageSize: Int64?
+
+    public var success: Bool?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.pageNo != nil {
+            map["PageNo"] = self.pageNo!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var tmp : [ListXTelephonesResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = ListXTelephonesResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("PageNo") {
+            self.pageNo = dict["PageNo"] as! Int64
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int64
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! Int64
+        }
+    }
+}
+
+public class ListXTelephonesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListXTelephonesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListXTelephonesResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -6483,6 +8545,195 @@ public class QuerySecretNoRemainResponse : Tea.TeaModel {
     }
 }
 
+public class QuerySoundRecordRequest : Tea.TeaModel {
+    public var callId: String?
+
+    public var callerParentId: Int64?
+
+    public var customerPoolKey: String?
+
+    public var ownerId: Int64?
+
+    public var reqId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.callId != nil {
+            map["CallId"] = self.callId!
+        }
+        if self.callerParentId != nil {
+            map["CallerParentId"] = self.callerParentId!
+        }
+        if self.customerPoolKey != nil {
+            map["CustomerPoolKey"] = self.customerPoolKey!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.reqId != nil {
+            map["ReqId"] = self.reqId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CallId") {
+            self.callId = dict["CallId"] as! String
+        }
+        if dict.keys.contains("CallerParentId") {
+            self.callerParentId = dict["CallerParentId"] as! Int64
+        }
+        if dict.keys.contains("CustomerPoolKey") {
+            self.customerPoolKey = dict["CustomerPoolKey"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ReqId") {
+            self.reqId = dict["ReqId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class QuerySoundRecordResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var fileUrl: String?
+
+    public var message: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.fileUrl != nil {
+            map["FileUrl"] = self.fileUrl!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("FileUrl") {
+            self.fileUrl = dict["FileUrl"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class QuerySoundRecordResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QuerySoundRecordResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = QuerySoundRecordResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class QuerySubsIdRequest : Tea.TeaModel {
     public var ownerId: Int64?
 
@@ -7108,6 +9359,376 @@ public class ReleaseSecretNoResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ReleaseSecretNoResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UnBindAXBRequest : Tea.TeaModel {
+    public var bindId: String?
+
+    public var callerParentId: Int64?
+
+    public var customerPoolKey: String?
+
+    public var ownerId: Int64?
+
+    public var reqId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bindId != nil {
+            map["BindId"] = self.bindId!
+        }
+        if self.callerParentId != nil {
+            map["CallerParentId"] = self.callerParentId!
+        }
+        if self.customerPoolKey != nil {
+            map["CustomerPoolKey"] = self.customerPoolKey!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.reqId != nil {
+            map["ReqId"] = self.reqId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BindId") {
+            self.bindId = dict["BindId"] as! String
+        }
+        if dict.keys.contains("CallerParentId") {
+            self.callerParentId = dict["CallerParentId"] as! Int64
+        }
+        if dict.keys.contains("CustomerPoolKey") {
+            self.customerPoolKey = dict["CustomerPoolKey"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ReqId") {
+            self.reqId = dict["ReqId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class UnBindAXBResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var message: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class UnBindAXBResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UnBindAXBResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UnBindAXBResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UnBindXBRequest : Tea.TeaModel {
+    public var authId: String?
+
+    public var callerParentId: Int64?
+
+    public var customerPoolKey: String?
+
+    public var ownerId: Int64?
+
+    public var reqId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var telX: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authId != nil {
+            map["AuthId"] = self.authId!
+        }
+        if self.callerParentId != nil {
+            map["CallerParentId"] = self.callerParentId!
+        }
+        if self.customerPoolKey != nil {
+            map["CustomerPoolKey"] = self.customerPoolKey!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.reqId != nil {
+            map["ReqId"] = self.reqId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.telX != nil {
+            map["TelX"] = self.telX!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AuthId") {
+            self.authId = dict["AuthId"] as! String
+        }
+        if dict.keys.contains("CallerParentId") {
+            self.callerParentId = dict["CallerParentId"] as! Int64
+        }
+        if dict.keys.contains("CustomerPoolKey") {
+            self.customerPoolKey = dict["CustomerPoolKey"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ReqId") {
+            self.reqId = dict["ReqId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("TelX") {
+            self.telX = dict["TelX"] as! String
+        }
+    }
+}
+
+public class UnBindXBResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var message: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class UnBindXBResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UnBindXBResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UnBindXBResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
