@@ -3551,6 +3551,8 @@ public class CreateARMServerInstancesRequest : Tea.TeaModel {
 
     public var ensRegionId: String?
 
+    public var environmentVar: String?
+
     public var frequency: Int32?
 
     public var imageId: String?
@@ -3598,6 +3600,9 @@ public class CreateARMServerInstancesRequest : Tea.TeaModel {
         }
         if self.ensRegionId != nil {
             map["EnsRegionId"] = self.ensRegionId!
+        }
+        if self.environmentVar != nil {
+            map["EnvironmentVar"] = self.environmentVar!
         }
         if self.frequency != nil {
             map["Frequency"] = self.frequency!
@@ -3647,6 +3652,9 @@ public class CreateARMServerInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EnsRegionId") {
             self.ensRegionId = dict["EnsRegionId"] as! String
+        }
+        if dict.keys.contains("EnvironmentVar") {
+            self.environmentVar = dict["EnvironmentVar"] as! String
         }
         if dict.keys.contains("Frequency") {
             self.frequency = dict["Frequency"] as! Int32
