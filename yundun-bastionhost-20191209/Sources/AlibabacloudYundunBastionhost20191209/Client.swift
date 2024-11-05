@@ -64,6 +64,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func acceptOperationTicketWithOptions(_ request: AcceptOperationTicketRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AcceptOperationTicketResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.comment)) {
+            query["Comment"] = request.comment ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.effectCount)) {
             query["EffectCount"] = request.effectCount ?? "";
         }
@@ -2230,11 +2233,23 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.assetType)) {
             query["AssetType"] = request.assetType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.databaseSchema)) {
+            query["DatabaseSchema"] = request.databaseSchema ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.loginAttribute)) {
+            query["LoginAttribute"] = request.loginAttribute ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operationMode)) {
+            query["OperationMode"] = request.operationMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ssoClient)) {
+            query["SsoClient"] = request.ssoClient ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -5555,6 +5570,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func rejectOperationTicketWithOptions(_ request: RejectOperationTicketRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RejectOperationTicketResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.comment)) {
+            query["Comment"] = request.comment ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
