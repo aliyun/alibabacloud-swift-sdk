@@ -201,13 +201,25 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
 
         public var avatarId: String?
 
+        public var bailianAppParams: String?
+
+        public var enablePushToTalk: Bool?
+
         public var enableVoiceInterrupt: Bool?
 
         public var gracefulShutdown: Bool?
 
         public var greeting: String?
 
+        public var useVoiceprint: Bool?
+
+        public var userOfflineTimeout: Int32?
+
+        public var userOnlineTimeout: Int32?
+
         public var voiceId: String?
+
+        public var voiceprintId: String?
 
         public var volume: Int64?
 
@@ -231,6 +243,12 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             if self.avatarId != nil {
                 map["AvatarId"] = self.avatarId!
             }
+            if self.bailianAppParams != nil {
+                map["BailianAppParams"] = self.bailianAppParams!
+            }
+            if self.enablePushToTalk != nil {
+                map["EnablePushToTalk"] = self.enablePushToTalk!
+            }
             if self.enableVoiceInterrupt != nil {
                 map["EnableVoiceInterrupt"] = self.enableVoiceInterrupt!
             }
@@ -240,8 +258,20 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             if self.greeting != nil {
                 map["Greeting"] = self.greeting!
             }
+            if self.useVoiceprint != nil {
+                map["UseVoiceprint"] = self.useVoiceprint!
+            }
+            if self.userOfflineTimeout != nil {
+                map["UserOfflineTimeout"] = self.userOfflineTimeout!
+            }
+            if self.userOnlineTimeout != nil {
+                map["UserOnlineTimeout"] = self.userOnlineTimeout!
+            }
             if self.voiceId != nil {
                 map["VoiceId"] = self.voiceId!
+            }
+            if self.voiceprintId != nil {
+                map["VoiceprintId"] = self.voiceprintId!
             }
             if self.volume != nil {
                 map["Volume"] = self.volume!
@@ -256,6 +286,12 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             if dict.keys.contains("AvatarId") {
                 self.avatarId = dict["AvatarId"] as! String
             }
+            if dict.keys.contains("BailianAppParams") {
+                self.bailianAppParams = dict["BailianAppParams"] as! String
+            }
+            if dict.keys.contains("EnablePushToTalk") {
+                self.enablePushToTalk = dict["EnablePushToTalk"] as! Bool
+            }
             if dict.keys.contains("EnableVoiceInterrupt") {
                 self.enableVoiceInterrupt = dict["EnableVoiceInterrupt"] as! Bool
             }
@@ -265,8 +301,20 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             if dict.keys.contains("Greeting") {
                 self.greeting = dict["Greeting"] as! String
             }
+            if dict.keys.contains("UseVoiceprint") {
+                self.useVoiceprint = dict["UseVoiceprint"] as! Bool
+            }
+            if dict.keys.contains("UserOfflineTimeout") {
+                self.userOfflineTimeout = dict["UserOfflineTimeout"] as! Int32
+            }
+            if dict.keys.contains("UserOnlineTimeout") {
+                self.userOnlineTimeout = dict["UserOnlineTimeout"] as! Int32
+            }
             if dict.keys.contains("VoiceId") {
                 self.voiceId = dict["VoiceId"] as! String
+            }
+            if dict.keys.contains("VoiceprintId") {
+                self.voiceprintId = dict["VoiceprintId"] as! String
             }
             if dict.keys.contains("Volume") {
                 self.volume = dict["Volume"] as! Int64
@@ -276,7 +324,11 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
     public class VisionChat : Tea.TeaModel {
         public var asrMaxSilence: Int32?
 
+        public var bailianAppParams: String?
+
         public var enableIntelligentSegment: Bool?
+
+        public var enablePushToTalk: Bool?
 
         public var enableVoiceInterrupt: Bool?
 
@@ -284,7 +336,15 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
 
         public var greeting: String?
 
+        public var useVoiceprint: Bool?
+
+        public var userOfflineTimeout: Int32?
+
+        public var userOnlineTimeout: Int32?
+
         public var voiceId: String?
+
+        public var voiceprintId: String?
 
         public var volume: Int64?
 
@@ -305,8 +365,14 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             if self.asrMaxSilence != nil {
                 map["AsrMaxSilence"] = self.asrMaxSilence!
             }
+            if self.bailianAppParams != nil {
+                map["BailianAppParams"] = self.bailianAppParams!
+            }
             if self.enableIntelligentSegment != nil {
                 map["EnableIntelligentSegment"] = self.enableIntelligentSegment!
+            }
+            if self.enablePushToTalk != nil {
+                map["EnablePushToTalk"] = self.enablePushToTalk!
             }
             if self.enableVoiceInterrupt != nil {
                 map["EnableVoiceInterrupt"] = self.enableVoiceInterrupt!
@@ -317,8 +383,20 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             if self.greeting != nil {
                 map["Greeting"] = self.greeting!
             }
+            if self.useVoiceprint != nil {
+                map["UseVoiceprint"] = self.useVoiceprint!
+            }
+            if self.userOfflineTimeout != nil {
+                map["UserOfflineTimeout"] = self.userOfflineTimeout!
+            }
+            if self.userOnlineTimeout != nil {
+                map["UserOnlineTimeout"] = self.userOnlineTimeout!
+            }
             if self.voiceId != nil {
                 map["VoiceId"] = self.voiceId!
+            }
+            if self.voiceprintId != nil {
+                map["VoiceprintId"] = self.voiceprintId!
             }
             if self.volume != nil {
                 map["Volume"] = self.volume!
@@ -330,8 +408,14 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             if dict.keys.contains("AsrMaxSilence") {
                 self.asrMaxSilence = dict["AsrMaxSilence"] as! Int32
             }
+            if dict.keys.contains("BailianAppParams") {
+                self.bailianAppParams = dict["BailianAppParams"] as! String
+            }
             if dict.keys.contains("EnableIntelligentSegment") {
                 self.enableIntelligentSegment = dict["EnableIntelligentSegment"] as! Bool
+            }
+            if dict.keys.contains("EnablePushToTalk") {
+                self.enablePushToTalk = dict["EnablePushToTalk"] as! Bool
             }
             if dict.keys.contains("EnableVoiceInterrupt") {
                 self.enableVoiceInterrupt = dict["EnableVoiceInterrupt"] as! Bool
@@ -342,8 +426,20 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             if dict.keys.contains("Greeting") {
                 self.greeting = dict["Greeting"] as! String
             }
+            if dict.keys.contains("UseVoiceprint") {
+                self.useVoiceprint = dict["UseVoiceprint"] as! Bool
+            }
+            if dict.keys.contains("UserOfflineTimeout") {
+                self.userOfflineTimeout = dict["UserOfflineTimeout"] as! Int32
+            }
+            if dict.keys.contains("UserOnlineTimeout") {
+                self.userOnlineTimeout = dict["UserOnlineTimeout"] as! Int32
+            }
             if dict.keys.contains("VoiceId") {
                 self.voiceId = dict["VoiceId"] as! String
+            }
+            if dict.keys.contains("VoiceprintId") {
+                self.voiceprintId = dict["VoiceprintId"] as! String
             }
             if dict.keys.contains("Volume") {
                 self.volume = dict["Volume"] as! Int64
@@ -353,13 +449,25 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
     public class VoiceChat : Tea.TeaModel {
         public var asrMaxSilence: Int32?
 
+        public var bailianAppParams: String?
+
+        public var enablePushToTalk: Bool?
+
         public var enableVoiceInterrupt: Bool?
 
         public var gracefulShutdown: Bool?
 
         public var greeting: String?
 
+        public var useVoiceprint: Bool?
+
+        public var userOfflineTimeout: Int32?
+
+        public var userOnlineTimeout: Int32?
+
         public var voiceId: String?
+
+        public var voiceprintId: String?
 
         public var volume: Int64?
 
@@ -380,6 +488,12 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             if self.asrMaxSilence != nil {
                 map["AsrMaxSilence"] = self.asrMaxSilence!
             }
+            if self.bailianAppParams != nil {
+                map["BailianAppParams"] = self.bailianAppParams!
+            }
+            if self.enablePushToTalk != nil {
+                map["EnablePushToTalk"] = self.enablePushToTalk!
+            }
             if self.enableVoiceInterrupt != nil {
                 map["EnableVoiceInterrupt"] = self.enableVoiceInterrupt!
             }
@@ -389,8 +503,20 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             if self.greeting != nil {
                 map["Greeting"] = self.greeting!
             }
+            if self.useVoiceprint != nil {
+                map["UseVoiceprint"] = self.useVoiceprint!
+            }
+            if self.userOfflineTimeout != nil {
+                map["UserOfflineTimeout"] = self.userOfflineTimeout!
+            }
+            if self.userOnlineTimeout != nil {
+                map["UserOnlineTimeout"] = self.userOnlineTimeout!
+            }
             if self.voiceId != nil {
                 map["VoiceId"] = self.voiceId!
+            }
+            if self.voiceprintId != nil {
+                map["VoiceprintId"] = self.voiceprintId!
             }
             if self.volume != nil {
                 map["Volume"] = self.volume!
@@ -402,6 +528,12 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             if dict.keys.contains("AsrMaxSilence") {
                 self.asrMaxSilence = dict["AsrMaxSilence"] as! Int32
             }
+            if dict.keys.contains("BailianAppParams") {
+                self.bailianAppParams = dict["BailianAppParams"] as! String
+            }
+            if dict.keys.contains("EnablePushToTalk") {
+                self.enablePushToTalk = dict["EnablePushToTalk"] as! Bool
+            }
             if dict.keys.contains("EnableVoiceInterrupt") {
                 self.enableVoiceInterrupt = dict["EnableVoiceInterrupt"] as! Bool
             }
@@ -411,8 +543,20 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             if dict.keys.contains("Greeting") {
                 self.greeting = dict["Greeting"] as! String
             }
+            if dict.keys.contains("UseVoiceprint") {
+                self.useVoiceprint = dict["UseVoiceprint"] as! Bool
+            }
+            if dict.keys.contains("UserOfflineTimeout") {
+                self.userOfflineTimeout = dict["UserOfflineTimeout"] as! Int32
+            }
+            if dict.keys.contains("UserOnlineTimeout") {
+                self.userOnlineTimeout = dict["UserOnlineTimeout"] as! Int32
+            }
             if dict.keys.contains("VoiceId") {
                 self.voiceId = dict["VoiceId"] as! String
+            }
+            if dict.keys.contains("VoiceprintId") {
+                self.voiceprintId = dict["VoiceprintId"] as! String
             }
             if dict.keys.contains("Volume") {
                 self.volume = dict["Volume"] as! Int64
@@ -52680,11 +52824,21 @@ public class StartAIAgentInstanceResponse : Tea.TeaModel {
 
 public class StartRtcRobotInstanceRequest : Tea.TeaModel {
     public class Config : Tea.TeaModel {
+        public var asrMaxSilence: Int32?
+
         public var enableVoiceInterrupt: Bool?
 
         public var greeting: String?
 
+        public var useVoiceprint: Bool?
+
+        public var userOfflineTimeout: Int32?
+
+        public var userOnlineTimeout: Int32?
+
         public var voiceId: String?
+
+        public var voiceprintId: String?
 
         public override init() {
             super.init()
@@ -52700,27 +52854,57 @@ public class StartRtcRobotInstanceRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.asrMaxSilence != nil {
+                map["AsrMaxSilence"] = self.asrMaxSilence!
+            }
             if self.enableVoiceInterrupt != nil {
                 map["EnableVoiceInterrupt"] = self.enableVoiceInterrupt!
             }
             if self.greeting != nil {
                 map["Greeting"] = self.greeting!
             }
+            if self.useVoiceprint != nil {
+                map["UseVoiceprint"] = self.useVoiceprint!
+            }
+            if self.userOfflineTimeout != nil {
+                map["UserOfflineTimeout"] = self.userOfflineTimeout!
+            }
+            if self.userOnlineTimeout != nil {
+                map["UserOnlineTimeout"] = self.userOnlineTimeout!
+            }
             if self.voiceId != nil {
                 map["VoiceId"] = self.voiceId!
+            }
+            if self.voiceprintId != nil {
+                map["VoiceprintId"] = self.voiceprintId!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AsrMaxSilence") {
+                self.asrMaxSilence = dict["AsrMaxSilence"] as! Int32
+            }
             if dict.keys.contains("EnableVoiceInterrupt") {
                 self.enableVoiceInterrupt = dict["EnableVoiceInterrupt"] as! Bool
             }
             if dict.keys.contains("Greeting") {
                 self.greeting = dict["Greeting"] as! String
             }
+            if dict.keys.contains("UseVoiceprint") {
+                self.useVoiceprint = dict["UseVoiceprint"] as! Bool
+            }
+            if dict.keys.contains("UserOfflineTimeout") {
+                self.userOfflineTimeout = dict["UserOfflineTimeout"] as! Int32
+            }
+            if dict.keys.contains("UserOnlineTimeout") {
+                self.userOnlineTimeout = dict["UserOnlineTimeout"] as! Int32
+            }
             if dict.keys.contains("VoiceId") {
                 self.voiceId = dict["VoiceId"] as! String
+            }
+            if dict.keys.contains("VoiceprintId") {
+                self.voiceprintId = dict["VoiceprintId"] as! String
             }
         }
     }
@@ -55487,6 +55671,8 @@ public class SubmitIProductionJobRequest : Tea.TeaModel {
 
     public var jobParams: String?
 
+    public var modelId: String?
+
     public var name: String?
 
     public var output: SubmitIProductionJobRequest.Output?
@@ -55523,6 +55709,9 @@ public class SubmitIProductionJobRequest : Tea.TeaModel {
         if self.jobParams != nil {
             map["JobParams"] = self.jobParams!
         }
+        if self.modelId != nil {
+            map["ModelId"] = self.modelId!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -55553,6 +55742,9 @@ public class SubmitIProductionJobRequest : Tea.TeaModel {
         if dict.keys.contains("JobParams") {
             self.jobParams = dict["JobParams"] as! String
         }
+        if dict.keys.contains("ModelId") {
+            self.modelId = dict["ModelId"] as! String
+        }
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
         }
@@ -55581,6 +55773,8 @@ public class SubmitIProductionJobShrinkRequest : Tea.TeaModel {
     public var inputShrink: String?
 
     public var jobParams: String?
+
+    public var modelId: String?
 
     public var name: String?
 
@@ -55615,6 +55809,9 @@ public class SubmitIProductionJobShrinkRequest : Tea.TeaModel {
         if self.jobParams != nil {
             map["JobParams"] = self.jobParams!
         }
+        if self.modelId != nil {
+            map["ModelId"] = self.modelId!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -55642,6 +55839,9 @@ public class SubmitIProductionJobShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("JobParams") {
             self.jobParams = dict["JobParams"] as! String
+        }
+        if dict.keys.contains("ModelId") {
+            self.modelId = dict["ModelId"] as! String
         }
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
