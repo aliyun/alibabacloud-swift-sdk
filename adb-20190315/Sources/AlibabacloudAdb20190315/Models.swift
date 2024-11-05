@@ -10391,6 +10391,8 @@ public class DescribeDBClusterShardNumberRequest : Tea.TeaModel {
 }
 
 public class DescribeDBClusterShardNumberResponseBody : Tea.TeaModel {
+    public var availableShardNumbers: [Int32]?
+
     public var requestId: String?
 
     public var shardNumber: Int32?
@@ -10409,6 +10411,9 @@ public class DescribeDBClusterShardNumberResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.availableShardNumbers != nil {
+            map["AvailableShardNumbers"] = self.availableShardNumbers!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -10419,6 +10424,9 @@ public class DescribeDBClusterShardNumberResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AvailableShardNumbers") {
+            self.availableShardNumbers = dict["AvailableShardNumbers"] as! [Int32]
+        }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
