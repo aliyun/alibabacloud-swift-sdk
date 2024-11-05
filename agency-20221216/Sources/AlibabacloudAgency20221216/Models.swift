@@ -1978,7 +1978,11 @@ public class GetAccountInfoResponseBody : Tea.TeaModel {
 
             public var cid: Int64?
 
+            public var customerAccountType: Int32?
+
             public var customerBd: String?
+
+            public var customerEnterpriseCertified: Int32?
 
             public var delayAmount: String?
 
@@ -1989,6 +1993,8 @@ public class GetAccountInfoResponseBody : Tea.TeaModel {
             public var mobile: String?
 
             public var newBuyStatus: String?
+
+            public var registerCountryCode: String?
 
             public var remark: String?
 
@@ -2022,8 +2028,14 @@ public class GetAccountInfoResponseBody : Tea.TeaModel {
                 if self.cid != nil {
                     map["Cid"] = self.cid!
                 }
+                if self.customerAccountType != nil {
+                    map["CustomerAccountType"] = self.customerAccountType!
+                }
                 if self.customerBd != nil {
                     map["CustomerBd"] = self.customerBd!
+                }
+                if self.customerEnterpriseCertified != nil {
+                    map["CustomerEnterpriseCertified"] = self.customerEnterpriseCertified!
                 }
                 if self.delayAmount != nil {
                     map["DelayAmount"] = self.delayAmount!
@@ -2039,6 +2051,9 @@ public class GetAccountInfoResponseBody : Tea.TeaModel {
                 }
                 if self.newBuyStatus != nil {
                     map["NewBuyStatus"] = self.newBuyStatus!
+                }
+                if self.registerCountryCode != nil {
+                    map["RegisterCountryCode"] = self.registerCountryCode!
                 }
                 if self.remark != nil {
                     map["Remark"] = self.remark!
@@ -2065,8 +2080,14 @@ public class GetAccountInfoResponseBody : Tea.TeaModel {
                 if dict.keys.contains("Cid") {
                     self.cid = dict["Cid"] as! Int64
                 }
+                if dict.keys.contains("CustomerAccountType") {
+                    self.customerAccountType = dict["CustomerAccountType"] as! Int32
+                }
                 if dict.keys.contains("CustomerBd") {
                     self.customerBd = dict["CustomerBd"] as! String
+                }
+                if dict.keys.contains("CustomerEnterpriseCertified") {
+                    self.customerEnterpriseCertified = dict["CustomerEnterpriseCertified"] as! Int32
                 }
                 if dict.keys.contains("DelayAmount") {
                     self.delayAmount = dict["DelayAmount"] as! String
@@ -2082,6 +2103,9 @@ public class GetAccountInfoResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("NewBuyStatus") {
                     self.newBuyStatus = dict["NewBuyStatus"] as! String
+                }
+                if dict.keys.contains("RegisterCountryCode") {
+                    self.registerCountryCode = dict["RegisterCountryCode"] as! String
                 }
                 if dict.keys.contains("Remark") {
                     self.remark = dict["Remark"] as! String
