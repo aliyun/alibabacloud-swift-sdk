@@ -5719,9 +5719,13 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
     public var count: Int64?
 
+    public var hostNetwork: Bool?
+
     public var interconnectConfig: CreateClusterNodePoolRequest.InterconnectConfig?
 
     public var interconnectMode: String?
+
+    public var intranet: Bool?
 
     public var kubernetesConfig: CreateClusterNodePoolRequest.KubernetesConfig?
 
@@ -5765,11 +5769,17 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
         if self.count != nil {
             map["count"] = self.count!
         }
+        if self.hostNetwork != nil {
+            map["host_network"] = self.hostNetwork!
+        }
         if self.interconnectConfig != nil {
             map["interconnect_config"] = self.interconnectConfig?.toMap()
         }
         if self.interconnectMode != nil {
             map["interconnect_mode"] = self.interconnectMode!
+        }
+        if self.intranet != nil {
+            map["intranet"] = self.intranet!
         }
         if self.kubernetesConfig != nil {
             map["kubernetes_config"] = self.kubernetesConfig?.toMap()
@@ -5804,6 +5814,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
         if dict.keys.contains("count") {
             self.count = dict["count"] as! Int64
         }
+        if dict.keys.contains("host_network") {
+            self.hostNetwork = dict["host_network"] as! Bool
+        }
         if dict.keys.contains("interconnect_config") {
             var model = CreateClusterNodePoolRequest.InterconnectConfig()
             model.fromMap(dict["interconnect_config"] as! [String: Any])
@@ -5811,6 +5824,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
         }
         if dict.keys.contains("interconnect_mode") {
             self.interconnectMode = dict["interconnect_mode"] as! String
+        }
+        if dict.keys.contains("intranet") {
+            self.intranet = dict["intranet"] as! Bool
         }
         if dict.keys.contains("kubernetes_config") {
             var model = CreateClusterNodePoolRequest.KubernetesConfig()
@@ -11081,9 +11097,13 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
     }
     public var autoScaling: DescribeClusterNodePoolDetailResponseBody.AutoScaling?
 
+    public var hostNetwork: Bool?
+
     public var interconnectConfig: DescribeClusterNodePoolDetailResponseBody.InterconnectConfig?
 
     public var interconnectMode: String?
+
+    public var intranet: Bool?
 
     public var kubernetesConfig: DescribeClusterNodePoolDetailResponseBody.KubernetesConfig?
 
@@ -11127,11 +11147,17 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
         if self.autoScaling != nil {
             map["auto_scaling"] = self.autoScaling?.toMap()
         }
+        if self.hostNetwork != nil {
+            map["host_network"] = self.hostNetwork!
+        }
         if self.interconnectConfig != nil {
             map["interconnect_config"] = self.interconnectConfig?.toMap()
         }
         if self.interconnectMode != nil {
             map["interconnect_mode"] = self.interconnectMode!
+        }
+        if self.intranet != nil {
+            map["intranet"] = self.intranet!
         }
         if self.kubernetesConfig != nil {
             map["kubernetes_config"] = self.kubernetesConfig?.toMap()
@@ -11166,6 +11192,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             model.fromMap(dict["auto_scaling"] as! [String: Any])
             self.autoScaling = model
         }
+        if dict.keys.contains("host_network") {
+            self.hostNetwork = dict["host_network"] as! Bool
+        }
         if dict.keys.contains("interconnect_config") {
             var model = DescribeClusterNodePoolDetailResponseBody.InterconnectConfig()
             model.fromMap(dict["interconnect_config"] as! [String: Any])
@@ -11173,6 +11202,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("interconnect_mode") {
             self.interconnectMode = dict["interconnect_mode"] as! String
+        }
+        if dict.keys.contains("intranet") {
+            self.intranet = dict["intranet"] as! Bool
         }
         if dict.keys.contains("kubernetes_config") {
             var model = DescribeClusterNodePoolDetailResponseBody.KubernetesConfig()

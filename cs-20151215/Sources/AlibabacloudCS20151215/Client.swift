@@ -848,11 +848,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.count)) {
             body["count"] = request.count!;
         }
+        if (!TeaUtils.Client.isUnset(request.hostNetwork)) {
+            body["host_network"] = request.hostNetwork!;
+        }
         if (!TeaUtils.Client.isUnset(request.interconnectConfig)) {
             body["interconnect_config"] = request.interconnectConfig!;
         }
         if (!TeaUtils.Client.isUnset(request.interconnectMode)) {
             body["interconnect_mode"] = request.interconnectMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.intranet)) {
+            body["intranet"] = request.intranet!;
         }
         if (!TeaUtils.Client.isUnset(request.kubernetesConfig)) {
             body["kubernetes_config"] = request.kubernetesConfig!;
