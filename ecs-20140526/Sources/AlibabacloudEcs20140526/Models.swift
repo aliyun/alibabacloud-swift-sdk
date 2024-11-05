@@ -17178,6 +17178,8 @@ public class CreateNetworkInterfaceRequest : Tea.TeaModel {
 
     public var securityGroupIds: [String]?
 
+    public var sourceDestCheck: Bool?
+
     public var tag: [CreateNetworkInterfaceRequest.Tag]?
 
     public var txQueueSize: Int32?
@@ -17292,6 +17294,9 @@ public class CreateNetworkInterfaceRequest : Tea.TeaModel {
         }
         if self.securityGroupIds != nil {
             map["SecurityGroupIds"] = self.securityGroupIds!
+        }
+        if self.sourceDestCheck != nil {
+            map["SourceDestCheck"] = self.sourceDestCheck!
         }
         if self.tag != nil {
             var tmp : [Any] = []
@@ -17408,6 +17413,9 @@ public class CreateNetworkInterfaceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityGroupIds") {
             self.securityGroupIds = dict["SecurityGroupIds"] as! [String]
+        }
+        if dict.keys.contains("SourceDestCheck") {
+            self.sourceDestCheck = dict["SourceDestCheck"] as! Bool
         }
         if dict.keys.contains("Tag") {
             var tmp : [CreateNetworkInterfaceRequest.Tag] = []
@@ -17858,6 +17866,8 @@ public class CreateNetworkInterfaceResponseBody : Tea.TeaModel {
 
     public var serviceManaged: Bool?
 
+    public var sourceDestCheck: Bool?
+
     public var status: String?
 
     public var tags: CreateNetworkInterfaceResponseBody.Tags?
@@ -17935,6 +17945,9 @@ public class CreateNetworkInterfaceResponseBody : Tea.TeaModel {
         if self.serviceManaged != nil {
             map["ServiceManaged"] = self.serviceManaged!
         }
+        if self.sourceDestCheck != nil {
+            map["SourceDestCheck"] = self.sourceDestCheck!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -18011,6 +18024,9 @@ public class CreateNetworkInterfaceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("ServiceManaged") {
             self.serviceManaged = dict["ServiceManaged"] as! Bool
+        }
+        if dict.keys.contains("SourceDestCheck") {
+            self.sourceDestCheck = dict["SourceDestCheck"] as! Bool
         }
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! String
@@ -114575,6 +114591,8 @@ public class RunInstancesRequest : Tea.TeaModel {
 
         public var securityGroupIds: [String]?
 
+        public var sourceDestCheck: Bool?
+
         public var txQueueSize: Int32?
 
         public var vSwitchId: String?
@@ -114638,6 +114656,9 @@ public class RunInstancesRequest : Tea.TeaModel {
             if self.securityGroupIds != nil {
                 map["SecurityGroupIds"] = self.securityGroupIds!
             }
+            if self.sourceDestCheck != nil {
+                map["SourceDestCheck"] = self.sourceDestCheck!
+            }
             if self.txQueueSize != nil {
                 map["TxQueueSize"] = self.txQueueSize!
             }
@@ -114692,6 +114713,9 @@ public class RunInstancesRequest : Tea.TeaModel {
             }
             if dict.keys.contains("SecurityGroupIds") {
                 self.securityGroupIds = dict["SecurityGroupIds"] as! [String]
+            }
+            if dict.keys.contains("SourceDestCheck") {
+                self.sourceDestCheck = dict["SourceDestCheck"] as! Bool
             }
             if dict.keys.contains("TxQueueSize") {
                 self.txQueueSize = dict["TxQueueSize"] as! Int32

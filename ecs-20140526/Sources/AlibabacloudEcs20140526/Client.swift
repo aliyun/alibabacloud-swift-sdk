@@ -3889,6 +3889,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.securityGroupIds)) {
             query["SecurityGroupIds"] = request.securityGroupIds ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.sourceDestCheck)) {
+            query["SourceDestCheck"] = request.sourceDestCheck!;
+        }
         if (!TeaUtils.Client.isUnset(request.tag)) {
             query["Tag"] = request.tag ?? [];
         }
