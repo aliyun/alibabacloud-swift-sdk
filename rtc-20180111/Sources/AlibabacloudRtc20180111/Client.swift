@@ -109,6 +109,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAppLayoutWithOptions(_ tmpReq: CreateAppLayoutRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAppLayoutResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateAppLayoutShrinkRequest = CreateAppLayoutShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.layout)) {
+            request.layoutShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.layout, "Layout", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.layoutShrink)) {
+            query["Layout"] = request.layoutShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateAppLayout",
+            "version": "2018-01-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateAppLayoutResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAppLayout(_ request: CreateAppLayoutRequest) async throws -> CreateAppLayoutResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createAppLayoutWithOptions(request as! CreateAppLayoutRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createAppRecordTemplateWithOptions(_ tmpReq: CreateAppRecordTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAppRecordTemplateResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateAppRecordTemplateShrinkRequest = CreateAppRecordTemplateShrinkRequest([:])
@@ -337,6 +379,48 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createMPULayout(_ request: CreateMPULayoutRequest) async throws -> CreateMPULayoutResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await createMPULayoutWithOptions(request as! CreateMPULayoutRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteAppLayoutWithOptions(_ tmpReq: DeleteAppLayoutRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAppLayoutResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DeleteAppLayoutShrinkRequest = DeleteAppLayoutShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.layout)) {
+            request.layoutShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.layout, "Layout", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.layoutShrink)) {
+            query["Layout"] = request.layoutShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteAppLayout",
+            "version": "2018-01-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteAppLayoutResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteAppLayout(_ request: DeleteAppLayoutRequest) async throws -> DeleteAppLayoutResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteAppLayoutWithOptions(request as! DeleteAppLayoutRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2903,6 +2987,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyAppLayoutWithOptions(_ tmpReq: ModifyAppLayoutRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyAppLayoutResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ModifyAppLayoutShrinkRequest = ModifyAppLayoutShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.layout)) {
+            request.layoutShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.layout, "Layout", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.layoutShrink)) {
+            query["Layout"] = request.layoutShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyAppLayout",
+            "version": "2018-01-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyAppLayoutResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyAppLayout(_ request: ModifyAppLayoutRequest) async throws -> ModifyAppLayoutResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyAppLayoutWithOptions(request as! ModifyAppLayoutRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyAppLiveStreamStatusWithOptions(_ request: ModifyAppLiveStreamStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyAppLiveStreamStatusResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3262,6 +3388,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.appId)) {
             query["AppId"] = request.appId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.backgrounds)) {
+            query["Backgrounds"] = request.backgrounds ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.channelId)) {
             query["ChannelId"] = request.channelId ?? "";
         }
@@ -3276,6 +3405,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.panes)) {
             query["Panes"] = request.panes ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.regionColor)) {
+            query["RegionColor"] = request.regionColor!;
         }
         if (!TeaUtils.Client.isUnset(request.storageConfig)) {
             query["StorageConfig"] = request.storageConfig!;
@@ -3530,6 +3662,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.appId)) {
             query["AppId"] = request.appId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.backgrounds)) {
+            query["Backgrounds"] = request.backgrounds ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.channelId)) {
             query["ChannelId"] = request.channelId ?? "";
         }
@@ -3544,6 +3679,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.panes)) {
             query["Panes"] = request.panes ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.regionColor)) {
+            query["RegionColor"] = request.regionColor!;
         }
         if (!TeaUtils.Client.isUnset(request.taskId)) {
             query["TaskId"] = request.taskId ?? "";
@@ -3864,6 +4002,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.appId)) {
             query["AppId"] = request.appId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.backgrounds)) {
+            query["Backgrounds"] = request.backgrounds ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.channelId)) {
             query["ChannelId"] = request.channelId ?? "";
         }
@@ -4173,6 +4314,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.appId)) {
             query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.backgrounds)) {
+            query["Backgrounds"] = request.backgrounds ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.channelId)) {
             query["ChannelId"] = request.channelId ?? "";
