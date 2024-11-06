@@ -23271,6 +23271,276 @@ public class DescribeEnsRouteEntryListResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeEnsRouteTablesRequest : Tea.TeaModel {
+    public var ensRegionId: String?
+
+    public var networkId: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var routeTableId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ensRegionId != nil {
+            map["EnsRegionId"] = self.ensRegionId!
+        }
+        if self.networkId != nil {
+            map["NetworkId"] = self.networkId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.routeTableId != nil {
+            map["RouteTableId"] = self.routeTableId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EnsRegionId") {
+            self.ensRegionId = dict["EnsRegionId"] as! String
+        }
+        if dict.keys.contains("NetworkId") {
+            self.networkId = dict["NetworkId"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("RouteTableId") {
+            self.routeTableId = dict["RouteTableId"] as! String
+        }
+    }
+}
+
+public class DescribeEnsRouteTablesResponseBody : Tea.TeaModel {
+    public class RouteTables : Tea.TeaModel {
+        public var creationTime: String?
+
+        public var ensRegionId: String?
+
+        public var networkId: String?
+
+        public var routeTableId: String?
+
+        public var routeTableName: String?
+
+        public var status: String?
+
+        public var type: String?
+
+        public var vSwitchIds: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.creationTime != nil {
+                map["CreationTime"] = self.creationTime!
+            }
+            if self.ensRegionId != nil {
+                map["EnsRegionId"] = self.ensRegionId!
+            }
+            if self.networkId != nil {
+                map["NetworkId"] = self.networkId!
+            }
+            if self.routeTableId != nil {
+                map["RouteTableId"] = self.routeTableId!
+            }
+            if self.routeTableName != nil {
+                map["RouteTableName"] = self.routeTableName!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            if self.vSwitchIds != nil {
+                map["VSwitchIds"] = self.vSwitchIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CreationTime") {
+                self.creationTime = dict["CreationTime"] as! String
+            }
+            if dict.keys.contains("EnsRegionId") {
+                self.ensRegionId = dict["EnsRegionId"] as! String
+            }
+            if dict.keys.contains("NetworkId") {
+                self.networkId = dict["NetworkId"] as! String
+            }
+            if dict.keys.contains("RouteTableId") {
+                self.routeTableId = dict["RouteTableId"] as! String
+            }
+            if dict.keys.contains("RouteTableName") {
+                self.routeTableName = dict["RouteTableName"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+            if dict.keys.contains("VSwitchIds") {
+                self.vSwitchIds = dict["VSwitchIds"] as! [String]
+            }
+        }
+    }
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var routeTables: [DescribeEnsRouteTablesResponseBody.RouteTables]?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.routeTables != nil {
+            var tmp : [Any] = []
+            for k in self.routeTables! {
+                tmp.append(k.toMap())
+            }
+            map["RouteTables"] = tmp
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("RouteTables") {
+            var tmp : [DescribeEnsRouteTablesResponseBody.RouteTables] = []
+            for v in dict["RouteTables"] as! [Any] {
+                var model = DescribeEnsRouteTablesResponseBody.RouteTables()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.routeTables = tmp
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! Int32
+        }
+    }
+}
+
+public class DescribeEnsRouteTablesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeEnsRouteTablesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeEnsRouteTablesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeEnsSaleControlRequest : Tea.TeaModel {
     public var aliUidAccount: String?
 

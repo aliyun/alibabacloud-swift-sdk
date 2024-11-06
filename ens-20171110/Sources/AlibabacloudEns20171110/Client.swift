@@ -4369,6 +4369,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeEnsRouteTablesWithOptions(_ request: DescribeEnsRouteTablesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeEnsRouteTablesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ensRegionId)) {
+            query["EnsRegionId"] = request.ensRegionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.networkId)) {
+            query["NetworkId"] = request.networkId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.routeTableId)) {
+            query["RouteTableId"] = request.routeTableId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeEnsRouteTables",
+            "version": "2017-11-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeEnsRouteTablesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeEnsRouteTables(_ request: DescribeEnsRouteTablesRequest) async throws -> DescribeEnsRouteTablesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeEnsRouteTablesWithOptions(request as! DescribeEnsRouteTablesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeEnsSaleControlWithOptions(_ request: DescribeEnsSaleControlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeEnsSaleControlResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
