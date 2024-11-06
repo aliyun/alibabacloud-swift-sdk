@@ -8778,6 +8778,8 @@ public class GetPasswordExpirationConfigurationRequest : Tea.TeaModel {
 
 public class GetPasswordExpirationConfigurationResponseBody : Tea.TeaModel {
     public class PasswordExpirationConfiguration : Tea.TeaModel {
+        public var effectiveAuthenticationSourceIds: [String]?
+
         public var passwordExpirationAction: String?
 
         public var passwordExpirationNotificationChannels: [String]?
@@ -8806,6 +8808,9 @@ public class GetPasswordExpirationConfigurationResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.effectiveAuthenticationSourceIds != nil {
+                map["EffectiveAuthenticationSourceIds"] = self.effectiveAuthenticationSourceIds!
+            }
             if self.passwordExpirationAction != nil {
                 map["PasswordExpirationAction"] = self.passwordExpirationAction!
             }
@@ -8831,6 +8836,9 @@ public class GetPasswordExpirationConfigurationResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EffectiveAuthenticationSourceIds") {
+                self.effectiveAuthenticationSourceIds = dict["EffectiveAuthenticationSourceIds"] as! [String]
+            }
             if dict.keys.contains("PasswordExpirationAction") {
                 self.passwordExpirationAction = dict["PasswordExpirationAction"] as! String
             }
@@ -21904,6 +21912,8 @@ public class SetPasswordComplexityConfigurationResponse : Tea.TeaModel {
 }
 
 public class SetPasswordExpirationConfigurationRequest : Tea.TeaModel {
+    public var effectiveAuthenticationSourceIds: [String]?
+
     public var instanceId: String?
 
     public var passwordExpirationAction: String?
@@ -21934,6 +21944,9 @@ public class SetPasswordExpirationConfigurationRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.effectiveAuthenticationSourceIds != nil {
+            map["EffectiveAuthenticationSourceIds"] = self.effectiveAuthenticationSourceIds!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -21962,6 +21975,9 @@ public class SetPasswordExpirationConfigurationRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EffectiveAuthenticationSourceIds") {
+            self.effectiveAuthenticationSourceIds = dict["EffectiveAuthenticationSourceIds"] as! [String]
+        }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
         }

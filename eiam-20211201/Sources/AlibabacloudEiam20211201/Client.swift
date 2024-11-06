@@ -3662,6 +3662,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func setPasswordExpirationConfigurationWithOptions(_ request: SetPasswordExpirationConfigurationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetPasswordExpirationConfigurationResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.effectiveAuthenticationSourceIds)) {
+            query["EffectiveAuthenticationSourceIds"] = request.effectiveAuthenticationSourceIds ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
