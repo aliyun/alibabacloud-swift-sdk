@@ -98,6 +98,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func drivingDirectionNovaWithOptions(_ request: DrivingDirectionNovaRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DrivingDirectionNovaResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.carType)) {
+            query["carType"] = request.carType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.destinationLatitude)) {
             query["destinationLatitude"] = request.destinationLatitude ?? "";
         }
@@ -109,6 +112,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.originLongitude)) {
             query["originLongitude"] = request.originLongitude ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.plate)) {
+            query["plate"] = request.plate ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -527,6 +533,54 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await rgeoCodeWithOptions(request as! RgeoCodeRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func transitIntegratedDirectionWithOptions(_ request: TransitIntegratedDirectionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TransitIntegratedDirectionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.destinationCity)) {
+            query["destinationCity"] = request.destinationCity ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.destinationLatitude)) {
+            query["destinationLatitude"] = request.destinationLatitude ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.destinationLongitude)) {
+            query["destinationLongitude"] = request.destinationLongitude ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.originCity)) {
+            query["originCity"] = request.originCity ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.originLatitude)) {
+            query["originLatitude"] = request.originLatitude ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.originLongitude)) {
+            query["originLongitude"] = request.originLongitude ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TransitIntegratedDirection",
+            "version": "2024-07-12",
+            "protocol": "HTTPS",
+            "pathname": "/ipaas/v2/direction/transit/integrated",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TransitIntegratedDirectionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func transitIntegratedDirection(_ request: TransitIntegratedDirectionRequest) async throws -> TransitIntegratedDirectionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await transitIntegratedDirectionWithOptions(request as! TransitIntegratedDirectionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
