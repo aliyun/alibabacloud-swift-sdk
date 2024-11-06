@@ -315,11 +315,20 @@ open class Client : AlibabacloudOpenApi.Client {
     public func runMarketingInformationWritingWithOptions(_ workspaceId: String, _ request: RunMarketingInformationWritingRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RunMarketingInformationWritingResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.customLimitation)) {
+            body["customLimitation"] = request.customLimitation ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.customPrompt)) {
             body["customPrompt"] = request.customPrompt ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.inputExample)) {
+            body["inputExample"] = request.inputExample ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.modelId)) {
             body["modelId"] = request.modelId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outputExample)) {
+            body["outputExample"] = request.outputExample ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.sourceMaterial)) {
             body["sourceMaterial"] = request.sourceMaterial ?? "";

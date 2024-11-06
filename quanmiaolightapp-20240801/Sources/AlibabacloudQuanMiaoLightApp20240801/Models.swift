@@ -2936,9 +2936,15 @@ public class RunMarketingInformationExtractResponse : Tea.TeaModel {
 }
 
 public class RunMarketingInformationWritingRequest : Tea.TeaModel {
+    public var customLimitation: String?
+
     public var customPrompt: String?
 
+    public var inputExample: String?
+
     public var modelId: String?
+
+    public var outputExample: String?
 
     public var sourceMaterial: String?
 
@@ -2958,11 +2964,20 @@ public class RunMarketingInformationWritingRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.customLimitation != nil {
+            map["customLimitation"] = self.customLimitation!
+        }
         if self.customPrompt != nil {
             map["customPrompt"] = self.customPrompt!
         }
+        if self.inputExample != nil {
+            map["inputExample"] = self.inputExample!
+        }
         if self.modelId != nil {
             map["modelId"] = self.modelId!
+        }
+        if self.outputExample != nil {
+            map["outputExample"] = self.outputExample!
         }
         if self.sourceMaterial != nil {
             map["sourceMaterial"] = self.sourceMaterial!
@@ -2974,11 +2989,20 @@ public class RunMarketingInformationWritingRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("customLimitation") {
+            self.customLimitation = dict["customLimitation"] as! String
+        }
         if dict.keys.contains("customPrompt") {
             self.customPrompt = dict["customPrompt"] as! String
         }
+        if dict.keys.contains("inputExample") {
+            self.inputExample = dict["inputExample"] as! String
+        }
         if dict.keys.contains("modelId") {
             self.modelId = dict["modelId"] as! String
+        }
+        if dict.keys.contains("outputExample") {
+            self.outputExample = dict["outputExample"] as! String
         }
         if dict.keys.contains("sourceMaterial") {
             self.sourceMaterial = dict["sourceMaterial"] as! String
