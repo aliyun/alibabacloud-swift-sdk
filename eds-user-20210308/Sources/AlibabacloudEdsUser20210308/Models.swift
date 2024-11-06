@@ -242,6 +242,123 @@ public class BatchSetDesktopManagerResponse : Tea.TeaModel {
     }
 }
 
+public class ChangeUserPasswordRequest : Tea.TeaModel {
+    public var endUserId: String?
+
+    public var newPassword: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endUserId != nil {
+            map["EndUserId"] = self.endUserId!
+        }
+        if self.newPassword != nil {
+            map["NewPassword"] = self.newPassword!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EndUserId") {
+            self.endUserId = dict["EndUserId"] as! String
+        }
+        if dict.keys.contains("NewPassword") {
+            self.newPassword = dict["NewPassword"] as! String
+        }
+    }
+}
+
+public class ChangeUserPasswordResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ChangeUserPasswordResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ChangeUserPasswordResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ChangeUserPasswordResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CheckUsedPropertyRequest : Tea.TeaModel {
     public var propertyId: Int64?
 
@@ -3998,6 +4115,8 @@ public class LockMfaDeviceResponse : Tea.TeaModel {
 }
 
 public class LockUsersRequest : Tea.TeaModel {
+    public var logoutSession: Bool?
+
     public var users: [String]?
 
     public override init() {
@@ -4014,6 +4133,9 @@ public class LockUsersRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.logoutSession != nil {
+            map["LogoutSession"] = self.logoutSession!
+        }
         if self.users != nil {
             map["Users"] = self.users!
         }
@@ -4021,6 +4143,9 @@ public class LockUsersRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("LogoutSession") {
+            self.logoutSession = dict["LogoutSession"] as! Bool
+        }
         if dict.keys.contains("Users") {
             self.users = dict["Users"] as! [String]
         }
