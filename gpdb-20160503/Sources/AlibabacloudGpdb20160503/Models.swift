@@ -3945,6 +3945,315 @@ public class CreateNamespaceResponse : Tea.TeaModel {
     }
 }
 
+public class CreateRemoteADBDataSourceRequest : Tea.TeaModel {
+    public var dataSourceName: String?
+
+    public var localDBInstanceId: String?
+
+    public var localDatabase: String?
+
+    public var managerUserName: String?
+
+    public var managerUserPassword: String?
+
+    public var ownerId: Int64?
+
+    public var remoteDBInstanceId: String?
+
+    public var remoteDatabase: String?
+
+    public var userName: String?
+
+    public var userPassword: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataSourceName != nil {
+            map["DataSourceName"] = self.dataSourceName!
+        }
+        if self.localDBInstanceId != nil {
+            map["LocalDBInstanceId"] = self.localDBInstanceId!
+        }
+        if self.localDatabase != nil {
+            map["LocalDatabase"] = self.localDatabase!
+        }
+        if self.managerUserName != nil {
+            map["ManagerUserName"] = self.managerUserName!
+        }
+        if self.managerUserPassword != nil {
+            map["ManagerUserPassword"] = self.managerUserPassword!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.remoteDBInstanceId != nil {
+            map["RemoteDBInstanceId"] = self.remoteDBInstanceId!
+        }
+        if self.remoteDatabase != nil {
+            map["RemoteDatabase"] = self.remoteDatabase!
+        }
+        if self.userName != nil {
+            map["UserName"] = self.userName!
+        }
+        if self.userPassword != nil {
+            map["UserPassword"] = self.userPassword!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DataSourceName") {
+            self.dataSourceName = dict["DataSourceName"] as! String
+        }
+        if dict.keys.contains("LocalDBInstanceId") {
+            self.localDBInstanceId = dict["LocalDBInstanceId"] as! String
+        }
+        if dict.keys.contains("LocalDatabase") {
+            self.localDatabase = dict["LocalDatabase"] as! String
+        }
+        if dict.keys.contains("ManagerUserName") {
+            self.managerUserName = dict["ManagerUserName"] as! String
+        }
+        if dict.keys.contains("ManagerUserPassword") {
+            self.managerUserPassword = dict["ManagerUserPassword"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RemoteDBInstanceId") {
+            self.remoteDBInstanceId = dict["RemoteDBInstanceId"] as! String
+        }
+        if dict.keys.contains("RemoteDatabase") {
+            self.remoteDatabase = dict["RemoteDatabase"] as! String
+        }
+        if dict.keys.contains("UserName") {
+            self.userName = dict["UserName"] as! String
+        }
+        if dict.keys.contains("UserPassword") {
+            self.userPassword = dict["UserPassword"] as! String
+        }
+    }
+}
+
+public class CreateRemoteADBDataSourceResponseBody : Tea.TeaModel {
+    public class DataSourceItem : Tea.TeaModel {
+        public var dataSourceName: String?
+
+        public var description_: String?
+
+        public var id: Int64?
+
+        public var localDatabase: String?
+
+        public var localInstanceName: String?
+
+        public var managerUserName: String?
+
+        public var regionId: String?
+
+        public var remoteDatabase: String?
+
+        public var remoteInstanceName: String?
+
+        public var status: String?
+
+        public var userName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dataSourceName != nil {
+                map["DataSourceName"] = self.dataSourceName!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.localDatabase != nil {
+                map["LocalDatabase"] = self.localDatabase!
+            }
+            if self.localInstanceName != nil {
+                map["LocalInstanceName"] = self.localInstanceName!
+            }
+            if self.managerUserName != nil {
+                map["ManagerUserName"] = self.managerUserName!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.remoteDatabase != nil {
+                map["RemoteDatabase"] = self.remoteDatabase!
+            }
+            if self.remoteInstanceName != nil {
+                map["RemoteInstanceName"] = self.remoteInstanceName!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.userName != nil {
+                map["UserName"] = self.userName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DataSourceName") {
+                self.dataSourceName = dict["DataSourceName"] as! String
+            }
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("Id") {
+                self.id = dict["Id"] as! Int64
+            }
+            if dict.keys.contains("LocalDatabase") {
+                self.localDatabase = dict["LocalDatabase"] as! String
+            }
+            if dict.keys.contains("LocalInstanceName") {
+                self.localInstanceName = dict["LocalInstanceName"] as! String
+            }
+            if dict.keys.contains("ManagerUserName") {
+                self.managerUserName = dict["ManagerUserName"] as! String
+            }
+            if dict.keys.contains("RegionId") {
+                self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("RemoteDatabase") {
+                self.remoteDatabase = dict["RemoteDatabase"] as! String
+            }
+            if dict.keys.contains("RemoteInstanceName") {
+                self.remoteInstanceName = dict["RemoteInstanceName"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("UserName") {
+                self.userName = dict["UserName"] as! String
+            }
+        }
+    }
+    public var dataSourceItem: CreateRemoteADBDataSourceResponseBody.DataSourceItem?
+
+    public var requestId: String?
+
+    public var taskId: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.dataSourceItem?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataSourceItem != nil {
+            map["DataSourceItem"] = self.dataSourceItem?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DataSourceItem") {
+            var model = CreateRemoteADBDataSourceResponseBody.DataSourceItem()
+            model.fromMap(dict["DataSourceItem"] as! [String: Any])
+            self.dataSourceItem = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TaskId") {
+            self.taskId = dict["TaskId"] as! Int32
+        }
+    }
+}
+
+public class CreateRemoteADBDataSourceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateRemoteADBDataSourceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateRemoteADBDataSourceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateSampleDataRequest : Tea.TeaModel {
     public var DBInstanceId: String?
 
@@ -7325,6 +7634,139 @@ public class DeleteNamespaceResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DeleteNamespaceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DeleteRemoteADBDataSourceRequest : Tea.TeaModel {
+    public var dataSourceId: String?
+
+    public var localDBInstanceId: String?
+
+    public var ownerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataSourceId != nil {
+            map["DataSourceId"] = self.dataSourceId!
+        }
+        if self.localDBInstanceId != nil {
+            map["LocalDBInstanceId"] = self.localDBInstanceId!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DataSourceId") {
+            self.dataSourceId = dict["DataSourceId"] as! String
+        }
+        if dict.keys.contains("LocalDBInstanceId") {
+            self.localDBInstanceId = dict["LocalDBInstanceId"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+    }
+}
+
+public class DeleteRemoteADBDataSourceResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var taskId: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TaskId") {
+            self.taskId = dict["TaskId"] as! Int32
+        }
+    }
+}
+
+public class DeleteRemoteADBDataSourceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteRemoteADBDataSourceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteRemoteADBDataSourceResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -30113,6 +30555,300 @@ public class ListNamespacesResponse : Tea.TeaModel {
     }
 }
 
+public class ListRemoteADBDataSourcesRequest : Tea.TeaModel {
+    public var DBInstanceId: String?
+
+    public var dataSourceId: String?
+
+    public var ownerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.dataSourceId != nil {
+            map["DataSourceId"] = self.dataSourceId!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBInstanceId") {
+            self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("DataSourceId") {
+            self.dataSourceId = dict["DataSourceId"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+    }
+}
+
+public class ListRemoteADBDataSourcesResponseBody : Tea.TeaModel {
+    public class DataSourceItems : Tea.TeaModel {
+        public class RemoteDataSources : Tea.TeaModel {
+            public var dataSourceName: String?
+
+            public var description_: String?
+
+            public var id: Int64?
+
+            public var localDatabase: String?
+
+            public var localInstanceName: String?
+
+            public var managerUserName: String?
+
+            public var regionId: String?
+
+            public var remoteDatabase: String?
+
+            public var remoteInstanceName: String?
+
+            public var status: String?
+
+            public var userName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dataSourceName != nil {
+                    map["DataSourceName"] = self.dataSourceName!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.localDatabase != nil {
+                    map["LocalDatabase"] = self.localDatabase!
+                }
+                if self.localInstanceName != nil {
+                    map["LocalInstanceName"] = self.localInstanceName!
+                }
+                if self.managerUserName != nil {
+                    map["ManagerUserName"] = self.managerUserName!
+                }
+                if self.regionId != nil {
+                    map["RegionId"] = self.regionId!
+                }
+                if self.remoteDatabase != nil {
+                    map["RemoteDatabase"] = self.remoteDatabase!
+                }
+                if self.remoteInstanceName != nil {
+                    map["RemoteInstanceName"] = self.remoteInstanceName!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.userName != nil {
+                    map["UserName"] = self.userName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DataSourceName") {
+                    self.dataSourceName = dict["DataSourceName"] as! String
+                }
+                if dict.keys.contains("Description") {
+                    self.description_ = dict["Description"] as! String
+                }
+                if dict.keys.contains("Id") {
+                    self.id = dict["Id"] as! Int64
+                }
+                if dict.keys.contains("LocalDatabase") {
+                    self.localDatabase = dict["LocalDatabase"] as! String
+                }
+                if dict.keys.contains("LocalInstanceName") {
+                    self.localInstanceName = dict["LocalInstanceName"] as! String
+                }
+                if dict.keys.contains("ManagerUserName") {
+                    self.managerUserName = dict["ManagerUserName"] as! String
+                }
+                if dict.keys.contains("RegionId") {
+                    self.regionId = dict["RegionId"] as! String
+                }
+                if dict.keys.contains("RemoteDatabase") {
+                    self.remoteDatabase = dict["RemoteDatabase"] as! String
+                }
+                if dict.keys.contains("RemoteInstanceName") {
+                    self.remoteInstanceName = dict["RemoteInstanceName"] as! String
+                }
+                if dict.keys.contains("Status") {
+                    self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("UserName") {
+                    self.userName = dict["UserName"] as! String
+                }
+            }
+        }
+        public var remoteDataSources: [ListRemoteADBDataSourcesResponseBody.DataSourceItems.RemoteDataSources]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.remoteDataSources != nil {
+                var tmp : [Any] = []
+                for k in self.remoteDataSources! {
+                    tmp.append(k.toMap())
+                }
+                map["RemoteDataSources"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("RemoteDataSources") {
+                var tmp : [ListRemoteADBDataSourcesResponseBody.DataSourceItems.RemoteDataSources] = []
+                for v in dict["RemoteDataSources"] as! [Any] {
+                    var model = ListRemoteADBDataSourcesResponseBody.DataSourceItems.RemoteDataSources()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.remoteDataSources = tmp
+            }
+        }
+    }
+    public var dataSourceItems: ListRemoteADBDataSourcesResponseBody.DataSourceItems?
+
+    public var requestId: String?
+
+    public var taskId: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.dataSourceItems?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataSourceItems != nil {
+            map["DataSourceItems"] = self.dataSourceItems?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DataSourceItems") {
+            var model = ListRemoteADBDataSourcesResponseBody.DataSourceItems()
+            model.fromMap(dict["DataSourceItems"] as! [String: Any])
+            self.dataSourceItems = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TaskId") {
+            self.taskId = dict["TaskId"] as! Int32
+        }
+    }
+}
+
+public class ListRemoteADBDataSourcesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListRemoteADBDataSourcesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListRemoteADBDataSourcesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListSchemasRequest : Tea.TeaModel {
     public var DBInstanceId: String?
 
@@ -34539,6 +35275,283 @@ public class ModifyParametersResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ModifyParametersResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ModifyRemoteADBDataSourceRequest : Tea.TeaModel {
+    public var dataSourceId: String?
+
+    public var dataSourceName: String?
+
+    public var localDBInstanceId: String?
+
+    public var ownerId: Int64?
+
+    public var userName: String?
+
+    public var userPassword: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataSourceId != nil {
+            map["DataSourceId"] = self.dataSourceId!
+        }
+        if self.dataSourceName != nil {
+            map["DataSourceName"] = self.dataSourceName!
+        }
+        if self.localDBInstanceId != nil {
+            map["LocalDBInstanceId"] = self.localDBInstanceId!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.userName != nil {
+            map["UserName"] = self.userName!
+        }
+        if self.userPassword != nil {
+            map["UserPassword"] = self.userPassword!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DataSourceId") {
+            self.dataSourceId = dict["DataSourceId"] as! String
+        }
+        if dict.keys.contains("DataSourceName") {
+            self.dataSourceName = dict["DataSourceName"] as! String
+        }
+        if dict.keys.contains("LocalDBInstanceId") {
+            self.localDBInstanceId = dict["LocalDBInstanceId"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("UserName") {
+            self.userName = dict["UserName"] as! String
+        }
+        if dict.keys.contains("UserPassword") {
+            self.userPassword = dict["UserPassword"] as! String
+        }
+    }
+}
+
+public class ModifyRemoteADBDataSourceResponseBody : Tea.TeaModel {
+    public class DataSourceItem : Tea.TeaModel {
+        public var dataSourceName: String?
+
+        public var description_: String?
+
+        public var id: Int64?
+
+        public var localDatabase: String?
+
+        public var localInstanceName: String?
+
+        public var managerUserName: String?
+
+        public var regionId: String?
+
+        public var remoteDatabase: String?
+
+        public var remoteInstanceName: String?
+
+        public var status: String?
+
+        public var userName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dataSourceName != nil {
+                map["DataSourceName"] = self.dataSourceName!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.localDatabase != nil {
+                map["LocalDatabase"] = self.localDatabase!
+            }
+            if self.localInstanceName != nil {
+                map["LocalInstanceName"] = self.localInstanceName!
+            }
+            if self.managerUserName != nil {
+                map["ManagerUserName"] = self.managerUserName!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.remoteDatabase != nil {
+                map["RemoteDatabase"] = self.remoteDatabase!
+            }
+            if self.remoteInstanceName != nil {
+                map["RemoteInstanceName"] = self.remoteInstanceName!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.userName != nil {
+                map["UserName"] = self.userName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DataSourceName") {
+                self.dataSourceName = dict["DataSourceName"] as! String
+            }
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("Id") {
+                self.id = dict["Id"] as! Int64
+            }
+            if dict.keys.contains("LocalDatabase") {
+                self.localDatabase = dict["LocalDatabase"] as! String
+            }
+            if dict.keys.contains("LocalInstanceName") {
+                self.localInstanceName = dict["LocalInstanceName"] as! String
+            }
+            if dict.keys.contains("ManagerUserName") {
+                self.managerUserName = dict["ManagerUserName"] as! String
+            }
+            if dict.keys.contains("RegionId") {
+                self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("RemoteDatabase") {
+                self.remoteDatabase = dict["RemoteDatabase"] as! String
+            }
+            if dict.keys.contains("RemoteInstanceName") {
+                self.remoteInstanceName = dict["RemoteInstanceName"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("UserName") {
+                self.userName = dict["UserName"] as! String
+            }
+        }
+    }
+    public var dataSourceItem: ModifyRemoteADBDataSourceResponseBody.DataSourceItem?
+
+    public var requestId: String?
+
+    public var taskId: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.dataSourceItem?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataSourceItem != nil {
+            map["DataSourceItem"] = self.dataSourceItem?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DataSourceItem") {
+            var model = ModifyRemoteADBDataSourceResponseBody.DataSourceItem()
+            model.fromMap(dict["DataSourceItem"] as! [String: Any])
+            self.dataSourceItem = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TaskId") {
+            self.taskId = dict["TaskId"] as! Int32
+        }
+    }
+}
+
+public class ModifyRemoteADBDataSourceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyRemoteADBDataSourceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ModifyRemoteADBDataSourceResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
