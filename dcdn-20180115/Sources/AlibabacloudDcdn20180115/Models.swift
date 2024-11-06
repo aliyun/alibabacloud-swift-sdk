@@ -40698,6 +40698,139 @@ public class GetDcdnKvResponse : Tea.TeaModel {
     }
 }
 
+public class GetDcdnKvDetailRequest : Tea.TeaModel {
+    public var key: String?
+
+    public var namespace: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.key != nil {
+            map["Key"] = self.key!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Key") {
+            self.key = dict["Key"] as! String
+        }
+        if dict.keys.contains("Namespace") {
+            self.namespace = dict["Namespace"] as! String
+        }
+    }
+}
+
+public class GetDcdnKvDetailResponseBody : Tea.TeaModel {
+    public var expirationTtl: String?
+
+    public var requestId: String?
+
+    public var value: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.expirationTtl != nil {
+            map["ExpirationTtl"] = self.expirationTtl!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.value != nil {
+            map["Value"] = self.value!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ExpirationTtl") {
+            self.expirationTtl = dict["ExpirationTtl"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Value") {
+            self.value = dict["Value"] as! String
+        }
+    }
+}
+
+public class GetDcdnKvDetailResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetDcdnKvDetailResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetDcdnKvDetailResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class GetDcdnKvStatusRequest : Tea.TeaModel {
     public var key: String?
 
@@ -42114,6 +42247,8 @@ public class PreloadDcdnObjectCachesRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var queryHashkey: Bool?
+
     public var securityToken: String?
 
     public var withHeader: String?
@@ -42144,6 +42279,9 @@ public class PreloadDcdnObjectCachesRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.queryHashkey != nil {
+            map["QueryHashkey"] = self.queryHashkey!
+        }
         if self.securityToken != nil {
             map["SecurityToken"] = self.securityToken!
         }
@@ -42165,6 +42303,9 @@ public class PreloadDcdnObjectCachesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OwnerId") {
             self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("QueryHashkey") {
+            self.queryHashkey = dict["QueryHashkey"] as! Bool
         }
         if dict.keys.contains("SecurityToken") {
             self.securityToken = dict["SecurityToken"] as! String
