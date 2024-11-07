@@ -1522,6 +1522,75 @@ public class CreateIndexRequest : Tea.TeaModel {
             }
         }
     }
+    public class MetaExtractColumns : Tea.TeaModel {
+        public var desc: String?
+
+        public var enableLlm: Bool?
+
+        public var enableSearch: Bool?
+
+        public var key: String?
+
+        public var type: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.desc != nil {
+                map["Desc"] = self.desc!
+            }
+            if self.enableLlm != nil {
+                map["EnableLlm"] = self.enableLlm!
+            }
+            if self.enableSearch != nil {
+                map["EnableSearch"] = self.enableSearch!
+            }
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Desc") {
+                self.desc = dict["Desc"] as! String
+            }
+            if dict.keys.contains("EnableLlm") {
+                self.enableLlm = dict["EnableLlm"] as! Bool
+            }
+            if dict.keys.contains("EnableSearch") {
+                self.enableSearch = dict["EnableSearch"] as! Bool
+            }
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var categoryIds: [String]?
 
     public var chunkSize: Int32?
@@ -1555,6 +1624,8 @@ public class CreateIndexRequest : Tea.TeaModel {
     public var sourceType: String?
 
     public var structureType: String?
+
+    public var metaExtractColumns: [CreateIndexRequest.MetaExtractColumns]?
 
     public override init() {
         super.init()
@@ -1626,6 +1697,13 @@ public class CreateIndexRequest : Tea.TeaModel {
         if self.structureType != nil {
             map["StructureType"] = self.structureType!
         }
+        if self.metaExtractColumns != nil {
+            var tmp : [Any] = []
+            for k in self.metaExtractColumns! {
+                tmp.append(k.toMap())
+            }
+            map["metaExtractColumns"] = tmp
+        }
         return map
     }
 
@@ -1691,6 +1769,17 @@ public class CreateIndexRequest : Tea.TeaModel {
         if dict.keys.contains("StructureType") {
             self.structureType = dict["StructureType"] as! String
         }
+        if dict.keys.contains("metaExtractColumns") {
+            var tmp : [CreateIndexRequest.MetaExtractColumns] = []
+            for v in dict["metaExtractColumns"] as! [Any] {
+                var model = CreateIndexRequest.MetaExtractColumns()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.metaExtractColumns = tmp
+        }
     }
 }
 
@@ -1728,6 +1817,8 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
     public var sourceType: String?
 
     public var structureType: String?
+
+    public var metaExtractColumnsShrink: String?
 
     public override init() {
         super.init()
@@ -1794,6 +1885,9 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         if self.structureType != nil {
             map["StructureType"] = self.structureType!
         }
+        if self.metaExtractColumnsShrink != nil {
+            map["metaExtractColumns"] = self.metaExtractColumnsShrink!
+        }
         return map
     }
 
@@ -1848,6 +1942,9 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("StructureType") {
             self.structureType = dict["StructureType"] as! String
+        }
+        if dict.keys.contains("metaExtractColumns") {
+            self.metaExtractColumnsShrink = dict["metaExtractColumns"] as! String
         }
     }
 }

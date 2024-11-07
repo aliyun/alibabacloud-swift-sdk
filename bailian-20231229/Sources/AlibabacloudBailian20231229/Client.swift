@@ -212,6 +212,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.documentIds)) {
             request.documentIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.documentIds, "DocumentIds", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.metaExtractColumns)) {
+            request.metaExtractColumnsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.metaExtractColumns, "metaExtractColumns", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.categoryIdsShrink)) {
             query["CategoryIds"] = request.categoryIdsShrink ?? "";
@@ -263,6 +266,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.structureType)) {
             query["StructureType"] = request.structureType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.metaExtractColumnsShrink)) {
+            query["metaExtractColumns"] = request.metaExtractColumnsShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
