@@ -160,10 +160,16 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateArtifactShrinkRequest = CreateArtifactShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.artifactBuildProperty)) {
+            request.artifactBuildPropertyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.artifactBuildProperty, "ArtifactBuildProperty", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.artifactProperty)) {
             request.artifactPropertyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.artifactProperty, "ArtifactProperty", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.artifactBuildPropertyShrink)) {
+            query["ArtifactBuildProperty"] = request.artifactBuildPropertyShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.artifactId)) {
             query["ArtifactId"] = request.artifactId ?? "";
         }
@@ -1025,11 +1031,19 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listArtifactVersionsWithOptions(_ request: ListArtifactVersionsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListArtifactVersionsResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listArtifactVersionsWithOptions(_ tmpReq: ListArtifactVersionsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListArtifactVersionsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListArtifactVersionsShrinkRequest = ListArtifactVersionsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.filters)) {
+            request.filtersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.filters, "Filters", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.artifactId)) {
             query["ArtifactId"] = request.artifactId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filtersShrink)) {
+            query["Filters"] = request.filtersShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["MaxResults"] = request.maxResults!;
@@ -1102,30 +1116,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listArtifacts(_ request: ListArtifactsRequest) async throws -> ListArtifactsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listArtifactsWithOptions(request as! ListArtifactsRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listServiceCategoriesWithOptions(_ runtime: TeaUtils.RuntimeOptions) async throws -> ListServiceCategoriesResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ListServiceCategories",
-            "version": "2021-05-21",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ListServiceCategoriesResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listServiceCategories() async throws -> ListServiceCategoriesResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await listServiceCategoriesWithOptions(runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1690,10 +1680,16 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpdateArtifactShrinkRequest = UpdateArtifactShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.artifactBuildProperty)) {
+            request.artifactBuildPropertyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.artifactBuildProperty, "ArtifactBuildProperty", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.artifactProperty)) {
             request.artifactPropertyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.artifactProperty, "ArtifactProperty", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.artifactBuildPropertyShrink)) {
+            query["ArtifactBuildProperty"] = request.artifactBuildPropertyShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.artifactId)) {
             query["ArtifactId"] = request.artifactId ?? "";
         }
