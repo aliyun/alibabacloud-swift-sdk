@@ -4856,7 +4856,7 @@ public class DescribeAppRecordingFilesResponseBody : Tea.TeaModel {
 
         public var region: Int32?
 
-        public var startTs: Int32?
+        public var startTs: Int64?
 
         public var taskId: String?
 
@@ -4932,7 +4932,7 @@ public class DescribeAppRecordingFilesResponseBody : Tea.TeaModel {
                 self.region = dict["Region"] as! Int32
             }
             if dict.keys.contains("StartTs") {
-                self.startTs = dict["StartTs"] as! Int32
+                self.startTs = dict["StartTs"] as! Int64
             }
             if dict.keys.contains("TaskId") {
                 self.taskId = dict["TaskId"] as! String
