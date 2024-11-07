@@ -69380,6 +69380,8 @@ public class QueryGroupLiveInfoResponseBody : Tea.TeaModel {
 
     public var playbackDuration: Int64?
 
+    public var replayUrl: String?
+
     public var requestId: String?
 
     public var staffId: String?
@@ -69434,6 +69436,9 @@ public class QueryGroupLiveInfoResponseBody : Tea.TeaModel {
         if self.playbackDuration != nil {
             map["playbackDuration"] = self.playbackDuration!
         }
+        if self.replayUrl != nil {
+            map["replayUrl"] = self.replayUrl!
+        }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
@@ -69485,6 +69490,9 @@ public class QueryGroupLiveInfoResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("playbackDuration") {
             self.playbackDuration = dict["playbackDuration"] as! Int64
+        }
+        if dict.keys.contains("replayUrl") {
+            self.replayUrl = dict["replayUrl"] as! String
         }
         if dict.keys.contains("requestId") {
             self.requestId = dict["requestId"] as! String
