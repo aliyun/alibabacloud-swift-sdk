@@ -3703,6 +3703,8 @@ public class GetTemplateResponseBody : Tea.TeaModel {
 
             public var defaultValue: String?
 
+            public var options: String?
+
             public var variable: String?
 
             public override init() {
@@ -3728,6 +3730,9 @@ public class GetTemplateResponseBody : Tea.TeaModel {
                 if self.defaultValue != nil {
                     map["DefaultValue"] = self.defaultValue!
                 }
+                if self.options != nil {
+                    map["Options"] = self.options!
+                }
                 if self.variable != nil {
                     map["Variable"] = self.variable!
                 }
@@ -3743,6 +3748,9 @@ public class GetTemplateResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("DefaultValue") {
                     self.defaultValue = dict["DefaultValue"] as! String
+                }
+                if dict.keys.contains("Options") {
+                    self.options = dict["Options"] as! String
                 }
                 if dict.keys.contains("Variable") {
                     self.variable = dict["Variable"] as! String
