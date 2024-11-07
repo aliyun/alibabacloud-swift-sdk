@@ -3445,6 +3445,35 @@ public class ImageModerationResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class VlContent : Tea.TeaModel {
+                public var outputText: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.outputText != nil {
+                        map["OutputText"] = self.outputText!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("OutputText") {
+                        self.outputText = dict["OutputText"] as! String
+                    }
+                }
+            }
             public var customImage: [ImageModerationResponseBody.Data.Ext.CustomImage]?
 
             public var faceData: [ImageModerationResponseBody.Data.Ext.FaceData]?
@@ -3459,6 +3488,8 @@ public class ImageModerationResponseBody : Tea.TeaModel {
 
             public var textInImage: ImageModerationResponseBody.Data.Ext.TextInImage?
 
+            public var vlContent: ImageModerationResponseBody.Data.Ext.VlContent?
+
             public override init() {
                 super.init()
             }
@@ -3470,6 +3501,7 @@ public class ImageModerationResponseBody : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.textInImage?.validate()
+                try self.vlContent?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -3518,6 +3550,9 @@ public class ImageModerationResponseBody : Tea.TeaModel {
                 }
                 if self.textInImage != nil {
                     map["TextInImage"] = self.textInImage?.toMap()
+                }
+                if self.vlContent != nil {
+                    map["VlContent"] = self.vlContent?.toMap()
                 }
                 return map
             }
@@ -3593,6 +3628,11 @@ public class ImageModerationResponseBody : Tea.TeaModel {
                     var model = ImageModerationResponseBody.Data.Ext.TextInImage()
                     model.fromMap(dict["TextInImage"] as! [String: Any])
                     self.textInImage = model
+                }
+                if dict.keys.contains("VlContent") {
+                    var model = ImageModerationResponseBody.Data.Ext.VlContent()
+                    model.fromMap(dict["VlContent"] as! [String: Any])
+                    self.vlContent = model
                 }
             }
         }
