@@ -9665,6 +9665,8 @@ public class DescribeDBClusterPerformanceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var DBClusterId: String?
 
     public var endTime: String?
@@ -9689,6 +9691,9 @@ public class DescribeDBClusterPerformanceResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
@@ -9712,6 +9717,9 @@ public class DescribeDBClusterPerformanceResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("DBClusterId") {
             self.DBClusterId = dict["DBClusterId"] as! String
         }
