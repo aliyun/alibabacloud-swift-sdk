@@ -11901,6 +11901,8 @@ public class ListExecutionsResponse : Tea.TeaModel {
 public class ListGitRepositoriesRequest : Tea.TeaModel {
     public var clientToken: String?
 
+    public var orgId: String?
+
     public var orgName: String?
 
     public var owner: String?
@@ -11930,6 +11932,9 @@ public class ListGitRepositoriesRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.orgId != nil {
+            map["OrgId"] = self.orgId!
+        }
         if self.orgName != nil {
             map["OrgName"] = self.orgName!
         }
@@ -11954,6 +11959,9 @@ public class ListGitRepositoriesRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("OrgId") {
+            self.orgId = dict["OrgId"] as! String
         }
         if dict.keys.contains("OrgName") {
             self.orgName = dict["OrgName"] as! String
@@ -11986,6 +11994,8 @@ public class ListGitRepositoriesResponseBody : Tea.TeaModel {
 
         public var isPrivate: Bool?
 
+        public var repoId: Int64?
+
         public override init() {
             super.init()
         }
@@ -12012,6 +12022,9 @@ public class ListGitRepositoriesResponseBody : Tea.TeaModel {
             if self.isPrivate != nil {
                 map["IsPrivate"] = self.isPrivate!
             }
+            if self.repoId != nil {
+                map["RepoId"] = self.repoId!
+            }
             return map
         }
 
@@ -12027,6 +12040,9 @@ public class ListGitRepositoriesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("IsPrivate") {
                 self.isPrivate = dict["IsPrivate"] as! Bool
+            }
+            if dict.keys.contains("RepoId") {
+                self.repoId = dict["RepoId"] as! Int64
             }
         }
     }
@@ -18108,6 +18124,8 @@ public class ListTemplatesResponseBody : Tea.TeaModel {
 
         public var updatedDate: String?
 
+        public var versionName: String?
+
         public override init() {
             super.init()
         }
@@ -18185,6 +18203,9 @@ public class ListTemplatesResponseBody : Tea.TeaModel {
             if self.updatedDate != nil {
                 map["UpdatedDate"] = self.updatedDate!
             }
+            if self.versionName != nil {
+                map["VersionName"] = self.versionName!
+            }
             return map
         }
 
@@ -18251,6 +18272,9 @@ public class ListTemplatesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("UpdatedDate") {
                 self.updatedDate = dict["UpdatedDate"] as! String
+            }
+            if dict.keys.contains("VersionName") {
+                self.versionName = dict["VersionName"] as! String
             }
         }
     }

@@ -2012,6 +2012,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.orgId)) {
+            query["OrgId"] = request.orgId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.orgName)) {
             query["OrgName"] = request.orgName ?? "";
         }
