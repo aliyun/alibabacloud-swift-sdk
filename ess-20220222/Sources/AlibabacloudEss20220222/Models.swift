@@ -6064,6 +6064,10 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
 
     public var hpcClusterId: String?
 
+    public var httpEndpoint: String?
+
+    public var httpTokens: String?
+
     public var imageFamily: String?
 
     public var imageId: String?
@@ -6220,6 +6224,12 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
         }
         if self.hpcClusterId != nil {
             map["HpcClusterId"] = self.hpcClusterId!
+        }
+        if self.httpEndpoint != nil {
+            map["HttpEndpoint"] = self.httpEndpoint!
+        }
+        if self.httpTokens != nil {
+            map["HttpTokens"] = self.httpTokens!
         }
         if self.imageFamily != nil {
             map["ImageFamily"] = self.imageFamily!
@@ -6436,6 +6446,12 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
         }
         if dict.keys.contains("HpcClusterId") {
             self.hpcClusterId = dict["HpcClusterId"] as! String
+        }
+        if dict.keys.contains("HttpEndpoint") {
+            self.httpEndpoint = dict["HttpEndpoint"] as! String
+        }
+        if dict.keys.contains("HttpTokens") {
+            self.httpTokens = dict["HttpTokens"] as! String
         }
         if dict.keys.contains("ImageFamily") {
             self.imageFamily = dict["ImageFamily"] as! String
@@ -7340,6 +7356,10 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
 
     public var hpcClusterId: String?
 
+    public var httpEndpoint: String?
+
+    public var httpTokens: String?
+
     public var imageFamily: String?
 
     public var imageId: String?
@@ -7496,6 +7516,12 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
         }
         if self.hpcClusterId != nil {
             map["HpcClusterId"] = self.hpcClusterId!
+        }
+        if self.httpEndpoint != nil {
+            map["HttpEndpoint"] = self.httpEndpoint!
+        }
+        if self.httpTokens != nil {
+            map["HttpTokens"] = self.httpTokens!
         }
         if self.imageFamily != nil {
             map["ImageFamily"] = self.imageFamily!
@@ -7712,6 +7738,12 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("HpcClusterId") {
             self.hpcClusterId = dict["HpcClusterId"] as! String
+        }
+        if dict.keys.contains("HttpEndpoint") {
+            self.httpEndpoint = dict["HttpEndpoint"] as! String
+        }
+        if dict.keys.contains("HttpTokens") {
+            self.httpTokens = dict["HttpTokens"] as! String
         }
         if dict.keys.contains("ImageFamily") {
             self.imageFamily = dict["ImageFamily"] as! String
@@ -20026,6 +20058,10 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
 
         public var hpcClusterId: String?
 
+        public var httpEndpoint: String?
+
+        public var httpTokens: String?
+
         public var imageFamily: String?
 
         public var imageId: String?
@@ -20201,6 +20237,12 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
             }
             if self.hpcClusterId != nil {
                 map["HpcClusterId"] = self.hpcClusterId!
+            }
+            if self.httpEndpoint != nil {
+                map["HttpEndpoint"] = self.httpEndpoint!
+            }
+            if self.httpTokens != nil {
+                map["HttpTokens"] = self.httpTokens!
             }
             if self.imageFamily != nil {
                 map["ImageFamily"] = self.imageFamily!
@@ -20447,6 +20489,12 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("HpcClusterId") {
                 self.hpcClusterId = dict["HpcClusterId"] as! String
+            }
+            if dict.keys.contains("HttpEndpoint") {
+                self.httpEndpoint = dict["HttpEndpoint"] as! String
+            }
+            if dict.keys.contains("HttpTokens") {
+                self.httpTokens = dict["HttpTokens"] as! String
             }
             if dict.keys.contains("ImageFamily") {
                 self.imageFamily = dict["ImageFamily"] as! String
@@ -32223,6 +32271,10 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
 
     public var hpcClusterId: String?
 
+    public var httpEndpoint: String?
+
+    public var httpTokens: String?
+
     public var imageFamily: String?
 
     public var imageId: String?
@@ -32240,6 +32292,8 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
     public var instanceTypes: [String]?
 
     public var internetChargeType: String?
+
+    public var internetMaxBandwidthIn: Int32?
 
     public var internetMaxBandwidthOut: Int32?
 
@@ -32373,6 +32427,12 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
         if self.hpcClusterId != nil {
             map["HpcClusterId"] = self.hpcClusterId!
         }
+        if self.httpEndpoint != nil {
+            map["HttpEndpoint"] = self.httpEndpoint!
+        }
+        if self.httpTokens != nil {
+            map["HttpTokens"] = self.httpTokens!
+        }
         if self.imageFamily != nil {
             map["ImageFamily"] = self.imageFamily!
         }
@@ -32407,6 +32467,9 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
         }
         if self.internetChargeType != nil {
             map["InternetChargeType"] = self.internetChargeType!
+        }
+        if self.internetMaxBandwidthIn != nil {
+            map["InternetMaxBandwidthIn"] = self.internetMaxBandwidthIn!
         }
         if self.internetMaxBandwidthOut != nil {
             map["InternetMaxBandwidthOut"] = self.internetMaxBandwidthOut!
@@ -32580,6 +32643,12 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
         if dict.keys.contains("HpcClusterId") {
             self.hpcClusterId = dict["HpcClusterId"] as! String
         }
+        if dict.keys.contains("HttpEndpoint") {
+            self.httpEndpoint = dict["HttpEndpoint"] as! String
+        }
+        if dict.keys.contains("HttpTokens") {
+            self.httpTokens = dict["HttpTokens"] as! String
+        }
         if dict.keys.contains("ImageFamily") {
             self.imageFamily = dict["ImageFamily"] as! String
         }
@@ -32622,6 +32691,9 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InternetChargeType") {
             self.internetChargeType = dict["InternetChargeType"] as! String
+        }
+        if dict.keys.contains("InternetMaxBandwidthIn") {
+            self.internetMaxBandwidthIn = dict["InternetMaxBandwidthIn"] as! Int32
         }
         if dict.keys.contains("InternetMaxBandwidthOut") {
             self.internetMaxBandwidthOut = dict["InternetMaxBandwidthOut"] as! Int32
@@ -33475,6 +33547,10 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
 
     public var hpcClusterId: String?
 
+    public var httpEndpoint: String?
+
+    public var httpTokens: String?
+
     public var imageFamily: String?
 
     public var imageId: String?
@@ -33492,6 +33568,8 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
     public var instanceTypes: [String]?
 
     public var internetChargeType: String?
+
+    public var internetMaxBandwidthIn: Int32?
 
     public var internetMaxBandwidthOut: Int32?
 
@@ -33625,6 +33703,12 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
         if self.hpcClusterId != nil {
             map["HpcClusterId"] = self.hpcClusterId!
         }
+        if self.httpEndpoint != nil {
+            map["HttpEndpoint"] = self.httpEndpoint!
+        }
+        if self.httpTokens != nil {
+            map["HttpTokens"] = self.httpTokens!
+        }
         if self.imageFamily != nil {
             map["ImageFamily"] = self.imageFamily!
         }
@@ -33659,6 +33743,9 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
         }
         if self.internetChargeType != nil {
             map["InternetChargeType"] = self.internetChargeType!
+        }
+        if self.internetMaxBandwidthIn != nil {
+            map["InternetMaxBandwidthIn"] = self.internetMaxBandwidthIn!
         }
         if self.internetMaxBandwidthOut != nil {
             map["InternetMaxBandwidthOut"] = self.internetMaxBandwidthOut!
@@ -33832,6 +33919,12 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("HpcClusterId") {
             self.hpcClusterId = dict["HpcClusterId"] as! String
         }
+        if dict.keys.contains("HttpEndpoint") {
+            self.httpEndpoint = dict["HttpEndpoint"] as! String
+        }
+        if dict.keys.contains("HttpTokens") {
+            self.httpTokens = dict["HttpTokens"] as! String
+        }
         if dict.keys.contains("ImageFamily") {
             self.imageFamily = dict["ImageFamily"] as! String
         }
@@ -33874,6 +33967,9 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InternetChargeType") {
             self.internetChargeType = dict["InternetChargeType"] as! String
+        }
+        if dict.keys.contains("InternetMaxBandwidthIn") {
+            self.internetMaxBandwidthIn = dict["InternetMaxBandwidthIn"] as! Int32
         }
         if dict.keys.contains("InternetMaxBandwidthOut") {
             self.internetMaxBandwidthOut = dict["InternetMaxBandwidthOut"] as! Int32

@@ -1017,6 +1017,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.hpcClusterId)) {
             query["HpcClusterId"] = request.hpcClusterId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.httpEndpoint)) {
+            query["HttpEndpoint"] = request.httpEndpoint ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.httpTokens)) {
+            query["HttpTokens"] = request.httpTokens ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.imageFamily)) {
             query["ImageFamily"] = request.imageFamily ?? "";
         }
@@ -4267,6 +4273,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.hpcClusterId)) {
             query["HpcClusterId"] = request.hpcClusterId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.httpEndpoint)) {
+            query["HttpEndpoint"] = request.httpEndpoint ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.httpTokens)) {
+            query["HttpTokens"] = request.httpTokens ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.imageFamily)) {
             query["ImageFamily"] = request.imageFamily ?? "";
         }
@@ -4293,6 +4305,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.internetChargeType)) {
             query["InternetChargeType"] = request.internetChargeType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.internetMaxBandwidthIn)) {
+            query["InternetMaxBandwidthIn"] = request.internetMaxBandwidthIn!;
         }
         if (!TeaUtils.Client.isUnset(request.internetMaxBandwidthOut)) {
             query["InternetMaxBandwidthOut"] = request.internetMaxBandwidthOut!;
