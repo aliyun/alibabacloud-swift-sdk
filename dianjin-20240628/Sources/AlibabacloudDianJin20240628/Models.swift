@@ -8597,6 +8597,171 @@ public class ReIndexResponse : Tea.TeaModel {
     }
 }
 
+public class RebuildTaskRequest : Tea.TeaModel {
+    public var taskIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.taskIds != nil {
+            map["taskIds"] = self.taskIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("taskIds") {
+            self.taskIds = dict["taskIds"] as! [String]
+        }
+    }
+}
+
+public class RebuildTaskResponseBody : Tea.TeaModel {
+    public var cost: Int64?
+
+    public var data: [[String: Any]]?
+
+    public var dataType: String?
+
+    public var errCode: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var time: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cost != nil {
+            map["cost"] = self.cost!
+        }
+        if self.data != nil {
+            map["data"] = self.data!
+        }
+        if self.dataType != nil {
+            map["dataType"] = self.dataType!
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.time != nil {
+            map["time"] = self.time!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("cost") {
+            self.cost = dict["cost"] as! Int64
+        }
+        if dict.keys.contains("data") {
+            self.data = dict["data"] as! [[String: Any]]
+        }
+        if dict.keys.contains("dataType") {
+            self.dataType = dict["dataType"] as! String
+        }
+        if dict.keys.contains("errCode") {
+            self.errCode = dict["errCode"] as! String
+        }
+        if dict.keys.contains("message") {
+            self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+        if dict.keys.contains("time") {
+            self.time = dict["time"] as! String
+        }
+    }
+}
+
+public class RebuildTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RebuildTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = RebuildTaskResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class RecallDocumentRequest : Tea.TeaModel {
     public class Filters : Tea.TeaModel {
         public class And : Tea.TeaModel {
