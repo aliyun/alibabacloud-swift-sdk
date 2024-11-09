@@ -5001,8 +5001,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.resourceType)) {
             query["ResourceType"] = request.resourceType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.rootDiskCategory)) {
+            query["RootDiskCategory"] = request.rootDiskCategory ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.rootDiskSizeGib)) {
             query["RootDiskSizeGib"] = request.rootDiskSizeGib!;
+        }
+        if (!TeaUtils.Client.isUnset(request.userDiskCategory)) {
+            query["UserDiskCategory"] = request.userDiskCategory ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.userDiskSizeGib)) {
             query["UserDiskSizeGib"] = request.userDiskSizeGib!;
@@ -6543,6 +6549,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.filter)) {
             query["Filter"] = request.filter ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.includeAssignedUser)) {
+            query["IncludeAssignedUser"] = request.includeAssignedUser!;
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["MaxResults"] = request.maxResults!;
         }
@@ -6675,8 +6684,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listOfficeSiteUsersWithOptions(_ request: ListOfficeSiteUsersRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListOfficeSiteUsersResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.assignedInfo)) {
+            query["AssignedInfo"] = request.assignedInfo ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.filter)) {
             query["Filter"] = request.filter ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.includeAssignedUser)) {
+            query["IncludeAssignedUser"] = request.includeAssignedUser!;
         }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["MaxResults"] = request.maxResults!;
@@ -6692,6 +6707,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sortType)) {
+            query["SortType"] = request.sortType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -10026,6 +10044,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.systemDiskSize)) {
+            query["SystemDiskSize"] = request.systemDiskSize ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

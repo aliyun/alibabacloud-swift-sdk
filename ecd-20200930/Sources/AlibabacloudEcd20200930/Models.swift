@@ -18699,6 +18699,8 @@ public class DescribeDesktopTypesResponseBody : Tea.TeaModel {
 
         public var gpuCount: Double?
 
+        public var gpuMemory: Int32?
+
         public var gpuSpec: String?
 
         public var instanceTypeFamily: String?
@@ -18740,6 +18742,9 @@ public class DescribeDesktopTypesResponseBody : Tea.TeaModel {
             if self.gpuCount != nil {
                 map["GpuCount"] = self.gpuCount!
             }
+            if self.gpuMemory != nil {
+                map["GpuMemory"] = self.gpuMemory!
+            }
             if self.gpuSpec != nil {
                 map["GpuSpec"] = self.gpuSpec!
             }
@@ -18776,6 +18781,9 @@ public class DescribeDesktopTypesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("GpuCount") {
                 self.gpuCount = dict["GpuCount"] as! Double
+            }
+            if dict.keys.contains("GpuMemory") {
+                self.gpuMemory = dict["GpuMemory"] as! Int32
             }
             if dict.keys.contains("GpuSpec") {
                 self.gpuSpec = dict["GpuSpec"] as! String
@@ -27929,7 +27937,11 @@ public class DescribePriceRequest : Tea.TeaModel {
 
     public var resourceType: String?
 
+    public var rootDiskCategory: String?
+
     public var rootDiskSizeGib: Int32?
+
+    public var userDiskCategory: String?
 
     public var userDiskSizeGib: Int32?
 
@@ -27983,8 +27995,14 @@ public class DescribePriceRequest : Tea.TeaModel {
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
         }
+        if self.rootDiskCategory != nil {
+            map["RootDiskCategory"] = self.rootDiskCategory!
+        }
         if self.rootDiskSizeGib != nil {
             map["RootDiskSizeGib"] = self.rootDiskSizeGib!
+        }
+        if self.userDiskCategory != nil {
+            map["UserDiskCategory"] = self.userDiskCategory!
         }
         if self.userDiskSizeGib != nil {
             map["UserDiskSizeGib"] = self.userDiskSizeGib!
@@ -28029,8 +28047,14 @@ public class DescribePriceRequest : Tea.TeaModel {
         if dict.keys.contains("ResourceType") {
             self.resourceType = dict["ResourceType"] as! String
         }
+        if dict.keys.contains("RootDiskCategory") {
+            self.rootDiskCategory = dict["RootDiskCategory"] as! String
+        }
         if dict.keys.contains("RootDiskSizeGib") {
             self.rootDiskSizeGib = dict["RootDiskSizeGib"] as! Int32
+        }
+        if dict.keys.contains("UserDiskCategory") {
+            self.userDiskCategory = dict["UserDiskCategory"] as! String
         }
         if dict.keys.contains("UserDiskSizeGib") {
             self.userDiskSizeGib = dict["UserDiskSizeGib"] as! Int32
@@ -36520,6 +36544,8 @@ public class ListDirectoryUsersRequest : Tea.TeaModel {
 
     public var filter: String?
 
+    public var includeAssignedUser: Bool?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -36553,6 +36579,9 @@ public class ListDirectoryUsersRequest : Tea.TeaModel {
         if self.filter != nil {
             map["Filter"] = self.filter!
         }
+        if self.includeAssignedUser != nil {
+            map["IncludeAssignedUser"] = self.includeAssignedUser!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -36581,6 +36610,9 @@ public class ListDirectoryUsersRequest : Tea.TeaModel {
         if dict.keys.contains("Filter") {
             self.filter = dict["Filter"] as! String
         }
+        if dict.keys.contains("IncludeAssignedUser") {
+            self.includeAssignedUser = dict["IncludeAssignedUser"] as! Bool
+        }
         if dict.keys.contains("MaxResults") {
             self.maxResults = dict["MaxResults"] as! Int32
         }
@@ -36605,7 +36637,11 @@ public class ListDirectoryUsersResponseBody : Tea.TeaModel {
 
         public var displayName: String?
 
+        public var email: String?
+
         public var endUser: String?
+
+        public var phone: String?
 
         public override init() {
             super.init()
@@ -36627,8 +36663,14 @@ public class ListDirectoryUsersResponseBody : Tea.TeaModel {
             if self.displayName != nil {
                 map["DisplayName"] = self.displayName!
             }
+            if self.email != nil {
+                map["Email"] = self.email!
+            }
             if self.endUser != nil {
                 map["EndUser"] = self.endUser!
+            }
+            if self.phone != nil {
+                map["Phone"] = self.phone!
             }
             return map
         }
@@ -36640,8 +36682,14 @@ public class ListDirectoryUsersResponseBody : Tea.TeaModel {
             if dict.keys.contains("DisplayName") {
                 self.displayName = dict["DisplayName"] as! String
             }
+            if dict.keys.contains("Email") {
+                self.email = dict["Email"] as! String
+            }
             if dict.keys.contains("EndUser") {
                 self.endUser = dict["EndUser"] as! String
+            }
+            if dict.keys.contains("Phone") {
+                self.phone = dict["Phone"] as! String
             }
         }
     }
@@ -37215,7 +37263,11 @@ public class ListOfficeSiteOverviewResponse : Tea.TeaModel {
 }
 
 public class ListOfficeSiteUsersRequest : Tea.TeaModel {
+    public var assignedInfo: String?
+
     public var filter: String?
+
+    public var includeAssignedUser: Bool?
 
     public var maxResults: Int32?
 
@@ -37226,6 +37278,8 @@ public class ListOfficeSiteUsersRequest : Tea.TeaModel {
     public var officeSiteId: String?
 
     public var regionId: String?
+
+    public var sortType: String?
 
     public override init() {
         super.init()
@@ -37241,8 +37295,14 @@ public class ListOfficeSiteUsersRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.assignedInfo != nil {
+            map["AssignedInfo"] = self.assignedInfo!
+        }
         if self.filter != nil {
             map["Filter"] = self.filter!
+        }
+        if self.includeAssignedUser != nil {
+            map["IncludeAssignedUser"] = self.includeAssignedUser!
         }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
@@ -37259,12 +37319,21 @@ public class ListOfficeSiteUsersRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.sortType != nil {
+            map["SortType"] = self.sortType!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AssignedInfo") {
+            self.assignedInfo = dict["AssignedInfo"] as! String
+        }
         if dict.keys.contains("Filter") {
             self.filter = dict["Filter"] as! String
+        }
+        if dict.keys.contains("IncludeAssignedUser") {
+            self.includeAssignedUser = dict["IncludeAssignedUser"] as! Bool
         }
         if dict.keys.contains("MaxResults") {
             self.maxResults = dict["MaxResults"] as! Int32
@@ -37281,14 +37350,23 @@ public class ListOfficeSiteUsersRequest : Tea.TeaModel {
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
         }
+        if dict.keys.contains("SortType") {
+            self.sortType = dict["SortType"] as! String
+        }
     }
 }
 
 public class ListOfficeSiteUsersResponseBody : Tea.TeaModel {
     public class Users : Tea.TeaModel {
+        public var assignedDesktopNumber: Int32?
+
         public var displayName: String?
 
+        public var email: String?
+
         public var endUser: String?
+
+        public var phone: String?
 
         public override init() {
             super.init()
@@ -37304,21 +37382,39 @@ public class ListOfficeSiteUsersResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.assignedDesktopNumber != nil {
+                map["AssignedDesktopNumber"] = self.assignedDesktopNumber!
+            }
             if self.displayName != nil {
                 map["DisplayName"] = self.displayName!
             }
+            if self.email != nil {
+                map["Email"] = self.email!
+            }
             if self.endUser != nil {
                 map["EndUser"] = self.endUser!
+            }
+            if self.phone != nil {
+                map["Phone"] = self.phone!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AssignedDesktopNumber") {
+                self.assignedDesktopNumber = dict["AssignedDesktopNumber"] as! Int32
+            }
             if dict.keys.contains("DisplayName") {
                 self.displayName = dict["DisplayName"] as! String
             }
+            if dict.keys.contains("Email") {
+                self.email = dict["Email"] as! String
+            }
             if dict.keys.contains("EndUser") {
                 self.endUser = dict["EndUser"] as! String
+            }
+            if dict.keys.contains("Phone") {
+                self.phone = dict["Phone"] as! String
             }
         }
     }
@@ -50107,6 +50203,8 @@ public class UploadImageRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var systemDiskSize: String?
+
     public override init() {
         super.init()
     }
@@ -50154,6 +50252,9 @@ public class UploadImageRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.systemDiskSize != nil {
+            map["SystemDiskSize"] = self.systemDiskSize!
+        }
         return map
     }
 
@@ -50190,6 +50291,9 @@ public class UploadImageRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("SystemDiskSize") {
+            self.systemDiskSize = dict["SystemDiskSize"] as! String
         }
     }
 }
