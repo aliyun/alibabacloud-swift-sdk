@@ -1005,6 +1005,8 @@ public class DescribeGlobalDesktopsRequest : Tea.TeaModel {
 
     public var keyword: String?
 
+    public var language: String?
+
     public var loginRegionId: String?
 
     public var loginToken: String?
@@ -1063,6 +1065,9 @@ public class DescribeGlobalDesktopsRequest : Tea.TeaModel {
         }
         if self.keyword != nil {
             map["Keyword"] = self.keyword!
+        }
+        if self.language != nil {
+            map["Language"] = self.language!
         }
         if self.loginRegionId != nil {
             map["LoginRegionId"] = self.loginRegionId!
@@ -1124,6 +1129,9 @@ public class DescribeGlobalDesktopsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Keyword") {
             self.keyword = dict["Keyword"] as! String
+        }
+        if dict.keys.contains("Language") {
+            self.language = dict["Language"] as! String
         }
         if dict.keys.contains("LoginRegionId") {
             self.loginRegionId = dict["LoginRegionId"] as! String
@@ -1342,6 +1350,8 @@ public class DescribeGlobalDesktopsResponseBody : Tea.TeaModel {
 
             public var newAppVersion: String?
 
+            public var newDcdVersion: String?
+
             public var project: String?
 
             public var releaseNote: String?
@@ -1378,6 +1388,9 @@ public class DescribeGlobalDesktopsResponseBody : Tea.TeaModel {
                 if self.newAppVersion != nil {
                     map["NewAppVersion"] = self.newAppVersion!
                 }
+                if self.newDcdVersion != nil {
+                    map["NewDcdVersion"] = self.newDcdVersion!
+                }
                 if self.project != nil {
                     map["Project"] = self.project!
                 }
@@ -1408,6 +1421,9 @@ public class DescribeGlobalDesktopsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("NewAppVersion") {
                     self.newAppVersion = dict["NewAppVersion"] as! String
+                }
+                if dict.keys.contains("NewDcdVersion") {
+                    self.newDcdVersion = dict["NewDcdVersion"] as! String
                 }
                 if dict.keys.contains("Project") {
                     self.project = dict["Project"] as! String
@@ -1518,6 +1534,8 @@ public class DescribeGlobalDesktopsResponseBody : Tea.TeaModel {
         public var officeSiteId: String?
 
         public var os: String?
+
+        public var osDescription: String?
 
         public var osType: String?
 
@@ -1651,6 +1669,9 @@ public class DescribeGlobalDesktopsResponseBody : Tea.TeaModel {
             }
             if self.os != nil {
                 map["Os"] = self.os!
+            }
+            if self.osDescription != nil {
+                map["OsDescription"] = self.osDescription!
             }
             if self.osType != nil {
                 map["OsType"] = self.osType!
@@ -1802,6 +1823,9 @@ public class DescribeGlobalDesktopsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Os") {
                 self.os = dict["Os"] as! String
+            }
+            if dict.keys.contains("OsDescription") {
+                self.osDescription = dict["OsDescription"] as! String
             }
             if dict.keys.contains("OsType") {
                 self.osType = dict["OsType"] as! String
@@ -4860,6 +4884,8 @@ public class ResetPasswordResponse : Tea.TeaModel {
 public class ResetSnapshotRequest : Tea.TeaModel {
     public var clientId: String?
 
+    public var desktopId: String?
+
     public var loginToken: String?
 
     public var regionId: String?
@@ -4885,6 +4911,9 @@ public class ResetSnapshotRequest : Tea.TeaModel {
         if self.clientId != nil {
             map["ClientId"] = self.clientId!
         }
+        if self.desktopId != nil {
+            map["DesktopId"] = self.desktopId!
+        }
         if self.loginToken != nil {
             map["LoginToken"] = self.loginToken!
         }
@@ -4903,6 +4932,9 @@ public class ResetSnapshotRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ClientId") {
             self.clientId = dict["ClientId"] as! String
+        }
+        if dict.keys.contains("DesktopId") {
+            self.desktopId = dict["DesktopId"] as! String
         }
         if dict.keys.contains("LoginToken") {
             self.loginToken = dict["LoginToken"] as! String
