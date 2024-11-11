@@ -1426,6 +1426,43 @@ public class CreateReplicationJobResponse : Tea.TeaModel {
 }
 
 public class CreateWorkgroupRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var clientToken: String?
 
     public var description_: String?
@@ -1435,6 +1472,8 @@ public class CreateWorkgroupRequest : Tea.TeaModel {
     public var ownerId: Int64?
 
     public var resourceOwnerAccount: String?
+
+    public var tag: [CreateWorkgroupRequest.Tag]?
 
     public override init() {
         super.init()
@@ -1465,6 +1504,13 @@ public class CreateWorkgroupRequest : Tea.TeaModel {
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
@@ -1483,6 +1529,17 @@ public class CreateWorkgroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerAccount") {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [CreateWorkgroupRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateWorkgroupRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
     }
 }
@@ -5013,6 +5070,43 @@ public class DescribeSourceServersResponse : Tea.TeaModel {
 }
 
 public class DescribeWorkgroupsRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var name: String?
 
     public var ownerId: Int64?
@@ -5024,6 +5118,8 @@ public class DescribeWorkgroupsRequest : Tea.TeaModel {
     public var resourceOwnerAccount: String?
 
     public var status: String?
+
+    public var tag: [DescribeWorkgroupsRequest.Tag]?
 
     public var workgroupId: [String]?
 
@@ -5059,6 +5155,13 @@ public class DescribeWorkgroupsRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.workgroupId != nil {
             map["WorkgroupId"] = self.workgroupId!
         }
@@ -5084,6 +5187,17 @@ public class DescribeWorkgroupsRequest : Tea.TeaModel {
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! String
         }
+        if dict.keys.contains("Tag") {
+            var tmp : [DescribeWorkgroupsRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = DescribeWorkgroupsRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
         if dict.keys.contains("WorkgroupId") {
             self.workgroupId = dict["WorkgroupId"] as! [String]
         }
@@ -5093,6 +5207,84 @@ public class DescribeWorkgroupsRequest : Tea.TeaModel {
 public class DescribeWorkgroupsResponseBody : Tea.TeaModel {
     public class Workgroups : Tea.TeaModel {
         public class Workgroup : Tea.TeaModel {
+            public class Tags : Tea.TeaModel {
+                public class Tag : Tea.TeaModel {
+                    public var key: String?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.key != nil {
+                            map["Key"] = self.key!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Key") {
+                            self.key = dict["Key"] as! String
+                        }
+                        if dict.keys.contains("Value") {
+                            self.value = dict["Value"] as! String
+                        }
+                    }
+                }
+                public var tag: [DescribeWorkgroupsResponseBody.Workgroups.Workgroup.Tags.Tag]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.tag != nil {
+                        var tmp : [Any] = []
+                        for k in self.tag! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Tag"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Tag") {
+                        var tmp : [DescribeWorkgroupsResponseBody.Workgroups.Workgroup.Tags.Tag] = []
+                        for v in dict["Tag"] as! [Any] {
+                            var model = DescribeWorkgroupsResponseBody.Workgroups.Workgroup.Tags.Tag()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.tag = tmp
+                    }
+                }
+            }
             public class Warnings : Tea.TeaModel {
                 public class Warning : Tea.TeaModel {
                     public class SourceIds : Tea.TeaModel {
@@ -5209,6 +5401,8 @@ public class DescribeWorkgroupsResponseBody : Tea.TeaModel {
 
             public var status: String?
 
+            public var tags: DescribeWorkgroupsResponseBody.Workgroups.Workgroup.Tags?
+
             public var warnings: DescribeWorkgroupsResponseBody.Workgroups.Workgroup.Warnings?
 
             public var workgroupId: String?
@@ -5223,6 +5417,7 @@ public class DescribeWorkgroupsResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.tags?.validate()
                 try self.warnings?.validate()
             }
 
@@ -5236,6 +5431,9 @@ public class DescribeWorkgroupsResponseBody : Tea.TeaModel {
                 }
                 if self.status != nil {
                     map["Status"] = self.status!
+                }
+                if self.tags != nil {
+                    map["Tags"] = self.tags?.toMap()
                 }
                 if self.warnings != nil {
                     map["Warnings"] = self.warnings?.toMap()
@@ -5255,6 +5453,11 @@ public class DescribeWorkgroupsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Status") {
                     self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("Tags") {
+                    var model = DescribeWorkgroupsResponseBody.Workgroups.Workgroup.Tags()
+                    model.fromMap(dict["Tags"] as! [String: Any])
+                    self.tags = model
                 }
                 if dict.keys.contains("Warnings") {
                     var model = DescribeWorkgroupsResponseBody.Workgroups.Workgroup.Warnings()
