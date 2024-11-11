@@ -4841,6 +4841,51 @@ public class GetServiceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class ServiceDocumentInfos : Tea.TeaModel {
+        public var documentUrl: String?
+
+        public var locale: String?
+
+        public var templateName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.documentUrl != nil {
+                map["DocumentUrl"] = self.documentUrl!
+            }
+            if self.locale != nil {
+                map["Locale"] = self.locale!
+            }
+            if self.templateName != nil {
+                map["TemplateName"] = self.templateName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DocumentUrl") {
+                self.documentUrl = dict["DocumentUrl"] as! String
+            }
+            if dict.keys.contains("Locale") {
+                self.locale = dict["Locale"] as! String
+            }
+            if dict.keys.contains("TemplateName") {
+                self.templateName = dict["TemplateName"] as! String
+            }
+        }
+    }
     public class ServiceInfos : Tea.TeaModel {
         public class Agreements : Tea.TeaModel {
             public var name: String?
@@ -5208,6 +5253,8 @@ public class GetServiceResponseBody : Tea.TeaModel {
 
     public var serviceDocUrl: String?
 
+    public var serviceDocumentInfos: [GetServiceResponseBody.ServiceDocumentInfos]?
+
     public var serviceId: String?
 
     public var serviceInfos: [GetServiceResponseBody.ServiceInfos]?
@@ -5367,6 +5414,13 @@ public class GetServiceResponseBody : Tea.TeaModel {
         }
         if self.serviceDocUrl != nil {
             map["ServiceDocUrl"] = self.serviceDocUrl!
+        }
+        if self.serviceDocumentInfos != nil {
+            var tmp : [Any] = []
+            for k in self.serviceDocumentInfos! {
+                tmp.append(k.toMap())
+            }
+            map["ServiceDocumentInfos"] = tmp
         }
         if self.serviceId != nil {
             map["ServiceId"] = self.serviceId!
@@ -5551,6 +5605,17 @@ public class GetServiceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("ServiceDocUrl") {
             self.serviceDocUrl = dict["ServiceDocUrl"] as! String
+        }
+        if dict.keys.contains("ServiceDocumentInfos") {
+            var tmp : [GetServiceResponseBody.ServiceDocumentInfos] = []
+            for v in dict["ServiceDocumentInfos"] as! [Any] {
+                var model = GetServiceResponseBody.ServiceDocumentInfos()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.serviceDocumentInfos = tmp
         }
         if dict.keys.contains("ServiceId") {
             self.serviceId = dict["ServiceId"] as! String
