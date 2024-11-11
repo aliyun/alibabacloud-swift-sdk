@@ -16912,6 +16912,590 @@ public class CreateSubscribedCalendarResponse : Tea.TeaModel {
     }
 }
 
+public class CreateTicketHeaders : Tea.TeaModel {
+    public class AccountContext : Tea.TeaModel {
+        public var accountId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountId != nil {
+                map["accountId"] = self.accountId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("accountId") {
+                self.accountId = dict["accountId"] as! String
+            }
+        }
+    }
+    public var commonHeaders: [String: String]?
+
+    public var accountContext: CreateTicketHeaders.AccountContext?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.accountContext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.accountContext != nil {
+            map["AccountContext"] = self.accountContext?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("commonHeaders") {
+            self.commonHeaders = dict["commonHeaders"] as! [String: String]
+        }
+        if dict.keys.contains("AccountContext") {
+            var model = CreateTicketHeaders.AccountContext()
+            model.fromMap(dict["AccountContext"] as! [String: Any])
+            self.accountContext = model
+        }
+    }
+}
+
+public class CreateTicketShrinkHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var accountContextShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.accountContextShrink != nil {
+            map["AccountContext"] = self.accountContextShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("commonHeaders") {
+            self.commonHeaders = dict["commonHeaders"] as! [String: String]
+        }
+        if dict.keys.contains("AccountContext") {
+            self.accountContextShrink = dict["AccountContext"] as! String
+        }
+    }
+}
+
+public class CreateTicketRequest : Tea.TeaModel {
+    public class Notify : Tea.TeaModel {
+        public var groupNoticeReceiverUserIds: [String]?
+
+        public var noticeAllGroupMember: Bool?
+
+        public var workNoticeReceiverUserIds: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.groupNoticeReceiverUserIds != nil {
+                map["GroupNoticeReceiverUserIds"] = self.groupNoticeReceiverUserIds!
+            }
+            if self.noticeAllGroupMember != nil {
+                map["NoticeAllGroupMember"] = self.noticeAllGroupMember!
+            }
+            if self.workNoticeReceiverUserIds != nil {
+                map["WorkNoticeReceiverUserIds"] = self.workNoticeReceiverUserIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("GroupNoticeReceiverUserIds") {
+                self.groupNoticeReceiverUserIds = dict["GroupNoticeReceiverUserIds"] as! [String]
+            }
+            if dict.keys.contains("NoticeAllGroupMember") {
+                self.noticeAllGroupMember = dict["NoticeAllGroupMember"] as! Bool
+            }
+            if dict.keys.contains("WorkNoticeReceiverUserIds") {
+                self.workNoticeReceiverUserIds = dict["WorkNoticeReceiverUserIds"] as! [String]
+            }
+        }
+    }
+    public class SceneContext : Tea.TeaModel {
+        public class GroupMsgs : Tea.TeaModel {
+            public var anchor: Bool?
+
+            public var openMsgId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.anchor != nil {
+                    map["Anchor"] = self.anchor!
+                }
+                if self.openMsgId != nil {
+                    map["OpenMsgId"] = self.openMsgId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Anchor") {
+                    self.anchor = dict["Anchor"] as! Bool
+                }
+                if dict.keys.contains("OpenMsgId") {
+                    self.openMsgId = dict["OpenMsgId"] as! String
+                }
+            }
+        }
+        public var groupMsgs: [CreateTicketRequest.SceneContext.GroupMsgs]?
+
+        public var openConversationId: String?
+
+        public var relevantorUserIds: [String]?
+
+        public var topicId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.groupMsgs != nil {
+                var tmp : [Any] = []
+                for k in self.groupMsgs! {
+                    tmp.append(k.toMap())
+                }
+                map["GroupMsgs"] = tmp
+            }
+            if self.openConversationId != nil {
+                map["OpenConversationId"] = self.openConversationId!
+            }
+            if self.relevantorUserIds != nil {
+                map["RelevantorUserIds"] = self.relevantorUserIds!
+            }
+            if self.topicId != nil {
+                map["TopicId"] = self.topicId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("GroupMsgs") {
+                var tmp : [CreateTicketRequest.SceneContext.GroupMsgs] = []
+                for v in dict["GroupMsgs"] as! [Any] {
+                    var model = CreateTicketRequest.SceneContext.GroupMsgs()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.groupMsgs = tmp
+            }
+            if dict.keys.contains("OpenConversationId") {
+                self.openConversationId = dict["OpenConversationId"] as! String
+            }
+            if dict.keys.contains("RelevantorUserIds") {
+                self.relevantorUserIds = dict["RelevantorUserIds"] as! [String]
+            }
+            if dict.keys.contains("TopicId") {
+                self.topicId = dict["TopicId"] as! String
+            }
+        }
+    }
+    public class TenantContext : Tea.TeaModel {
+        public var tenantId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tenantId != nil {
+                map["tenantId"] = self.tenantId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("tenantId") {
+                self.tenantId = dict["tenantId"] as! String
+            }
+        }
+    }
+    public var customFields: String?
+
+    public var notify: CreateTicketRequest.Notify?
+
+    public var openTeamId: String?
+
+    public var openTemplateBizId: String?
+
+    public var processorUserIds: [String]?
+
+    public var scene: String?
+
+    public var sceneContext: CreateTicketRequest.SceneContext?
+
+    public var tenantContext: CreateTicketRequest.TenantContext?
+
+    public var title: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.notify?.validate()
+        try self.sceneContext?.validate()
+        try self.tenantContext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.customFields != nil {
+            map["CustomFields"] = self.customFields!
+        }
+        if self.notify != nil {
+            map["Notify"] = self.notify?.toMap()
+        }
+        if self.openTeamId != nil {
+            map["OpenTeamId"] = self.openTeamId!
+        }
+        if self.openTemplateBizId != nil {
+            map["OpenTemplateBizId"] = self.openTemplateBizId!
+        }
+        if self.processorUserIds != nil {
+            map["ProcessorUserIds"] = self.processorUserIds!
+        }
+        if self.scene != nil {
+            map["Scene"] = self.scene!
+        }
+        if self.sceneContext != nil {
+            map["SceneContext"] = self.sceneContext?.toMap()
+        }
+        if self.tenantContext != nil {
+            map["TenantContext"] = self.tenantContext?.toMap()
+        }
+        if self.title != nil {
+            map["Title"] = self.title!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CustomFields") {
+            self.customFields = dict["CustomFields"] as! String
+        }
+        if dict.keys.contains("Notify") {
+            var model = CreateTicketRequest.Notify()
+            model.fromMap(dict["Notify"] as! [String: Any])
+            self.notify = model
+        }
+        if dict.keys.contains("OpenTeamId") {
+            self.openTeamId = dict["OpenTeamId"] as! String
+        }
+        if dict.keys.contains("OpenTemplateBizId") {
+            self.openTemplateBizId = dict["OpenTemplateBizId"] as! String
+        }
+        if dict.keys.contains("ProcessorUserIds") {
+            self.processorUserIds = dict["ProcessorUserIds"] as! [String]
+        }
+        if dict.keys.contains("Scene") {
+            self.scene = dict["Scene"] as! String
+        }
+        if dict.keys.contains("SceneContext") {
+            var model = CreateTicketRequest.SceneContext()
+            model.fromMap(dict["SceneContext"] as! [String: Any])
+            self.sceneContext = model
+        }
+        if dict.keys.contains("TenantContext") {
+            var model = CreateTicketRequest.TenantContext()
+            model.fromMap(dict["TenantContext"] as! [String: Any])
+            self.tenantContext = model
+        }
+        if dict.keys.contains("Title") {
+            self.title = dict["Title"] as! String
+        }
+    }
+}
+
+public class CreateTicketShrinkRequest : Tea.TeaModel {
+    public var customFields: String?
+
+    public var notifyShrink: String?
+
+    public var openTeamId: String?
+
+    public var openTemplateBizId: String?
+
+    public var processorUserIdsShrink: String?
+
+    public var scene: String?
+
+    public var sceneContextShrink: String?
+
+    public var tenantContextShrink: String?
+
+    public var title: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.customFields != nil {
+            map["CustomFields"] = self.customFields!
+        }
+        if self.notifyShrink != nil {
+            map["Notify"] = self.notifyShrink!
+        }
+        if self.openTeamId != nil {
+            map["OpenTeamId"] = self.openTeamId!
+        }
+        if self.openTemplateBizId != nil {
+            map["OpenTemplateBizId"] = self.openTemplateBizId!
+        }
+        if self.processorUserIdsShrink != nil {
+            map["ProcessorUserIds"] = self.processorUserIdsShrink!
+        }
+        if self.scene != nil {
+            map["Scene"] = self.scene!
+        }
+        if self.sceneContextShrink != nil {
+            map["SceneContext"] = self.sceneContextShrink!
+        }
+        if self.tenantContextShrink != nil {
+            map["TenantContext"] = self.tenantContextShrink!
+        }
+        if self.title != nil {
+            map["Title"] = self.title!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CustomFields") {
+            self.customFields = dict["CustomFields"] as! String
+        }
+        if dict.keys.contains("Notify") {
+            self.notifyShrink = dict["Notify"] as! String
+        }
+        if dict.keys.contains("OpenTeamId") {
+            self.openTeamId = dict["OpenTeamId"] as! String
+        }
+        if dict.keys.contains("OpenTemplateBizId") {
+            self.openTemplateBizId = dict["OpenTemplateBizId"] as! String
+        }
+        if dict.keys.contains("ProcessorUserIds") {
+            self.processorUserIdsShrink = dict["ProcessorUserIds"] as! String
+        }
+        if dict.keys.contains("Scene") {
+            self.scene = dict["Scene"] as! String
+        }
+        if dict.keys.contains("SceneContext") {
+            self.sceneContextShrink = dict["SceneContext"] as! String
+        }
+        if dict.keys.contains("TenantContext") {
+            self.tenantContextShrink = dict["TenantContext"] as! String
+        }
+        if dict.keys.contains("Title") {
+            self.title = dict["Title"] as! String
+        }
+    }
+}
+
+public class CreateTicketResponseBody : Tea.TeaModel {
+    public var openTicketId: String?
+
+    public var requestId: String?
+
+    public var vendorRequestId: String?
+
+    public var vendorType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.openTicketId != nil {
+            map["openTicketId"] = self.openTicketId!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.vendorRequestId != nil {
+            map["vendorRequestId"] = self.vendorRequestId!
+        }
+        if self.vendorType != nil {
+            map["vendorType"] = self.vendorType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("openTicketId") {
+            self.openTicketId = dict["openTicketId"] as! String
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("vendorRequestId") {
+            self.vendorRequestId = dict["vendorRequestId"] as! String
+        }
+        if dict.keys.contains("vendorType") {
+            self.vendorType = dict["vendorType"] as! String
+        }
+    }
+}
+
+public class CreateTicketResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateTicketResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateTicketResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateTodoTaskHeaders : Tea.TeaModel {
     public class AccountContext : Tea.TeaModel {
         public var accountId: String?

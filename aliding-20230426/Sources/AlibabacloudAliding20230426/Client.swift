@@ -2593,6 +2593,89 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createTicketWithOptions(_ tmpReq: CreateTicketRequest, _ tmpHeader: CreateTicketHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateTicketResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateTicketShrinkRequest = CreateTicketShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: CreateTicketShrinkHeaders = CreateTicketShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.notify)) {
+            request.notifyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.notify, "Notify", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.processorUserIds)) {
+            request.processorUserIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.processorUserIds, "ProcessorUserIds", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.sceneContext)) {
+            request.sceneContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sceneContext, "SceneContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.customFields)) {
+            body["CustomFields"] = request.customFields ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.notifyShrink)) {
+            body["Notify"] = request.notifyShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.openTeamId)) {
+            body["OpenTeamId"] = request.openTeamId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.openTemplateBizId)) {
+            body["OpenTemplateBizId"] = request.openTemplateBizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.processorUserIdsShrink)) {
+            body["ProcessorUserIds"] = request.processorUserIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scene)) {
+            body["Scene"] = request.scene ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sceneContextShrink)) {
+            body["SceneContext"] = request.sceneContextShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.title)) {
+            body["Title"] = request.title ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateTicket",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/ticket/createTicket",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateTicketResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createTicket(_ request: CreateTicketRequest) async throws -> CreateTicketResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: CreateTicketHeaders = CreateTicketHeaders([:])
+        return try await createTicketWithOptions(request as! CreateTicketRequest, headers as! CreateTicketHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createTodoTaskWithOptions(_ tmpReq: CreateTodoTaskRequest, _ tmpHeader: CreateTodoTaskHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateTodoTaskResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateTodoTaskShrinkRequest = CreateTodoTaskShrinkRequest([:])
