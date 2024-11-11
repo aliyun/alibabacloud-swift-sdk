@@ -423,9 +423,48 @@ public class CreateJobRequest : Tea.TeaModel {
                 }
             }
         }
+        public class Tag : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("Value") {
+                    self.value = dict["Value"] as! String
+                }
+            }
+        }
         public var allocationSpec: String?
 
         public var network: CreateJobRequest.DeploymentPolicy.Network?
+
+        public var tag: [CreateJobRequest.DeploymentPolicy.Tag]?
 
         public override init() {
             super.init()
@@ -448,6 +487,13 @@ public class CreateJobRequest : Tea.TeaModel {
             if self.network != nil {
                 map["Network"] = self.network?.toMap()
             }
+            if self.tag != nil {
+                var tmp : [Any] = []
+                for k in self.tag! {
+                    tmp.append(k.toMap())
+                }
+                map["Tag"] = tmp
+            }
             return map
         }
 
@@ -459,6 +505,17 @@ public class CreateJobRequest : Tea.TeaModel {
                 var model = CreateJobRequest.DeploymentPolicy.Network()
                 model.fromMap(dict["Network"] as! [String: Any])
                 self.network = model
+            }
+            if dict.keys.contains("Tag") {
+                var tmp : [CreateJobRequest.DeploymentPolicy.Tag] = []
+                for v in dict["Tag"] as! [Any] {
+                    var model = CreateJobRequest.DeploymentPolicy.Tag()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tag = tmp
             }
         }
     }
@@ -3439,6 +3496,43 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Tags : Tea.TeaModel {
+            public var tagKey: String?
+
+            public var tagValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.tagKey != nil {
+                    map["TagKey"] = self.tagKey!
+                }
+                if self.tagValue != nil {
+                    map["TagValue"] = self.tagValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("TagKey") {
+                    self.tagKey = dict["TagKey"] as! String
+                }
+                if dict.keys.contains("TagValue") {
+                    self.tagValue = dict["TagValue"] as! String
+                }
+            }
+        }
         public var arrayIndex: Int32?
 
         public var createTime: String?
@@ -3463,9 +3557,13 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
 
         public var resourceType: String?
 
+        public var startTime: String?
+
         public var status: String?
 
         public var statusReason: String?
+
+        public var tags: [ListExecutorsResponseBody.Executors.Tags]?
 
         public var taskName: String?
 
@@ -3524,11 +3622,21 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
             if self.resourceType != nil {
                 map["ResourceType"] = self.resourceType!
             }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
             if self.statusReason != nil {
                 map["StatusReason"] = self.statusReason!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
             }
             if self.taskName != nil {
                 map["TaskName"] = self.taskName!
@@ -3581,11 +3689,25 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
             if dict.keys.contains("ResourceType") {
                 self.resourceType = dict["ResourceType"] as! String
             }
+            if dict.keys.contains("StartTime") {
+                self.startTime = dict["StartTime"] as! String
+            }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
             }
             if dict.keys.contains("StatusReason") {
                 self.statusReason = dict["StatusReason"] as! String
+            }
+            if dict.keys.contains("Tags") {
+                var tmp : [ListExecutorsResponseBody.Executors.Tags] = []
+                for v in dict["Tags"] as! [Any] {
+                    var model = ListExecutorsResponseBody.Executors.Tags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tags = tmp
             }
             if dict.keys.contains("TaskName") {
                 self.taskName = dict["TaskName"] as! String
@@ -4201,6 +4323,43 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
         }
     }
     public class Executors : Tea.TeaModel {
+        public class Tags : Tea.TeaModel {
+            public var tagKey: String?
+
+            public var tagValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.tagKey != nil {
+                    map["TagKey"] = self.tagKey!
+                }
+                if self.tagValue != nil {
+                    map["TagValue"] = self.tagValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("TagKey") {
+                    self.tagKey = dict["TagKey"] as! String
+                }
+                if dict.keys.contains("TagValue") {
+                    self.tagValue = dict["TagValue"] as! String
+                }
+            }
+        }
         public var arrayIndex: Int32?
 
         public var createTime: String?
@@ -4215,9 +4374,13 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
 
         public var ipAddress: [String]?
 
+        public var startTime: String?
+
         public var status: String?
 
         public var statusReason: String?
+
+        public var tags: [ListJobExecutorsResponseBody.Executors.Tags]?
 
         public override init() {
             super.init()
@@ -4254,11 +4417,21 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
             if self.ipAddress != nil {
                 map["IpAddress"] = self.ipAddress!
             }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
             if self.statusReason != nil {
                 map["StatusReason"] = self.statusReason!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
             }
             return map
         }
@@ -4285,11 +4458,25 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
             if dict.keys.contains("IpAddress") {
                 self.ipAddress = dict["IpAddress"] as! [String]
             }
+            if dict.keys.contains("StartTime") {
+                self.startTime = dict["StartTime"] as! String
+            }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
             }
             if dict.keys.contains("StatusReason") {
                 self.statusReason = dict["StatusReason"] as! String
+            }
+            if dict.keys.contains("Tags") {
+                var tmp : [ListJobExecutorsResponseBody.Executors.Tags] = []
+                for v in dict["Tags"] as! [Any] {
+                    var model = ListJobExecutorsResponseBody.Executors.Tags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tags = tmp
             }
         }
     }
@@ -4656,6 +4843,43 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
 
 public class ListJobsResponseBody : Tea.TeaModel {
     public class JobList : Tea.TeaModel {
+        public class Tags : Tea.TeaModel {
+            public var tagKey: String?
+
+            public var tagValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.tagKey != nil {
+                    map["TagKey"] = self.tagKey!
+                }
+                if self.tagValue != nil {
+                    map["TagValue"] = self.tagValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("TagKey") {
+                    self.tagKey = dict["TagKey"] as! String
+                }
+                if dict.keys.contains("TagValue") {
+                    self.tagValue = dict["TagValue"] as! String
+                }
+            }
+        }
         public var createTime: String?
 
         public var endTime: String?
@@ -4673,6 +4897,8 @@ public class ListJobsResponseBody : Tea.TeaModel {
         public var startTime: String?
 
         public var status: String?
+
+        public var tags: [ListJobsResponseBody.JobList.Tags]?
 
         public var taskCount: Int32?
 
@@ -4719,6 +4945,13 @@ public class ListJobsResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
             if self.taskCount != nil {
                 map["TaskCount"] = self.taskCount!
             }
@@ -4755,6 +4988,17 @@ public class ListJobsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("Tags") {
+                var tmp : [ListJobsResponseBody.JobList.Tags] = []
+                for v in dict["Tags"] as! [Any] {
+                    var model = ListJobsResponseBody.JobList.Tags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tags = tmp
             }
             if dict.keys.contains("TaskCount") {
                 self.taskCount = dict["TaskCount"] as! Int32
@@ -4886,6 +5130,309 @@ public class ListJobsResponse : Tea.TeaModel {
     }
 }
 
+public class ListTagResourcesRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
+    public var maxResult: Int32?
+
+    public var nextToken: String?
+
+    public var resourceId: [String]?
+
+    public var resourceType: String?
+
+    public var tag: [ListTagResourcesRequest.Tag]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResult != nil {
+            map["MaxResult"] = self.maxResult!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MaxResult") {
+            self.maxResult = dict["MaxResult"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("ResourceId") {
+            self.resourceId = dict["ResourceId"] as! [String]
+        }
+        if dict.keys.contains("ResourceType") {
+            self.resourceType = dict["ResourceType"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [ListTagResourcesRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = ListTagResourcesRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
+    }
+}
+
+public class ListTagResourcesResponseBody : Tea.TeaModel {
+    public class TagResources : Tea.TeaModel {
+        public class TagResource : Tea.TeaModel {
+            public var resourceId: String?
+
+            public var resourceType: String?
+
+            public var tagKey: String?
+
+            public var tagValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.resourceId != nil {
+                    map["ResourceId"] = self.resourceId!
+                }
+                if self.resourceType != nil {
+                    map["ResourceType"] = self.resourceType!
+                }
+                if self.tagKey != nil {
+                    map["TagKey"] = self.tagKey!
+                }
+                if self.tagValue != nil {
+                    map["TagValue"] = self.tagValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ResourceId") {
+                    self.resourceId = dict["ResourceId"] as! String
+                }
+                if dict.keys.contains("ResourceType") {
+                    self.resourceType = dict["ResourceType"] as! String
+                }
+                if dict.keys.contains("TagKey") {
+                    self.tagKey = dict["TagKey"] as! String
+                }
+                if dict.keys.contains("TagValue") {
+                    self.tagValue = dict["TagValue"] as! String
+                }
+            }
+        }
+        public var tagResource: [ListTagResourcesResponseBody.TagResources.TagResource]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tagResource != nil {
+                var tmp : [Any] = []
+                for k in self.tagResource! {
+                    tmp.append(k.toMap())
+                }
+                map["TagResource"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("TagResource") {
+                var tmp : [ListTagResourcesResponseBody.TagResources.TagResource] = []
+                for v in dict["TagResource"] as! [Any] {
+                    var model = ListTagResourcesResponseBody.TagResources.TagResource()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tagResource = tmp
+            }
+        }
+    }
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var tagResources: ListTagResourcesResponseBody.TagResources?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.tagResources?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.tagResources != nil {
+            map["TagResources"] = self.tagResources?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TagResources") {
+            var model = ListTagResourcesResponseBody.TagResources()
+            model.fromMap(dict["TagResources"] as! [String: Any])
+            self.tagResources = model
+        }
+    }
+}
+
+public class ListTagResourcesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListTagResourcesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListTagResourcesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class RemoveImageRequest : Tea.TeaModel {
     public var imageId: String?
 
@@ -5005,6 +5552,313 @@ public class RemoveImageResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = RemoveImageResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class TagResourcesRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
+    public var resourceId: [String]?
+
+    public var resourceType: String?
+
+    public var tag: [TagResourcesRequest.Tag]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ResourceId") {
+            self.resourceId = dict["ResourceId"] as! [String]
+        }
+        if dict.keys.contains("ResourceType") {
+            self.resourceType = dict["ResourceType"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [TagResourcesRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = TagResourcesRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
+    }
+}
+
+public class TagResourcesResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class TagResourcesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: TagResourcesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = TagResourcesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UnTagResourcesRequest : Tea.TeaModel {
+    public var all: Bool?
+
+    public var resourceId: [String]?
+
+    public var resourceType: String?
+
+    public var tagKey: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.all != nil {
+            map["All"] = self.all!
+        }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        if self.tagKey != nil {
+            map["TagKey"] = self.tagKey!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("All") {
+            self.all = dict["All"] as! Bool
+        }
+        if dict.keys.contains("ResourceId") {
+            self.resourceId = dict["ResourceId"] as! [String]
+        }
+        if dict.keys.contains("ResourceType") {
+            self.resourceType = dict["ResourceType"] as! String
+        }
+        if dict.keys.contains("TagKey") {
+            self.tagKey = dict["TagKey"] as! [String]
+        }
+    }
+}
+
+public class UnTagResourcesResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UnTagResourcesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UnTagResourcesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UnTagResourcesResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
