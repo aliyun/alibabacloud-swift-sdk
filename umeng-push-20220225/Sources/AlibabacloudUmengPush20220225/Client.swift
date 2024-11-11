@@ -97,6 +97,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.androidPayload)) {
             request.androidPayloadShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.androidPayload, "AndroidPayload", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.androidShortPayload)) {
+            request.androidShortPayloadShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.androidShortPayload, "AndroidShortPayload", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.channelProperties)) {
             request.channelPropertiesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.channelProperties, "ChannelProperties", "json")
         }
@@ -115,6 +118,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.androidPayloadShrink)) {
             body["AndroidPayload"] = request.androidPayloadShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.androidShortPayloadShrink)) {
+            body["AndroidShortPayload"] = request.androidShortPayloadShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.channelPropertiesShrink)) {
             body["ChannelProperties"] = request.channelPropertiesShrink ?? "";
@@ -177,6 +183,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.androidPayload)) {
             request.androidPayloadShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.androidPayload, "AndroidPayload", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.androidShortPayload)) {
+            request.androidShortPayloadShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.androidShortPayload, "AndroidShortPayload", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.channelProperties)) {
             request.channelPropertiesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.channelProperties, "ChannelProperties", "json")
         }
@@ -192,6 +201,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.androidPayloadShrink)) {
             body["AndroidPayload"] = request.androidPayloadShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.androidShortPayloadShrink)) {
+            body["AndroidShortPayload"] = request.androidShortPayloadShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.channelPropertiesShrink)) {
             body["ChannelProperties"] = request.channelPropertiesShrink ?? "";
@@ -257,6 +269,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.androidPayload)) {
             request.androidPayloadShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.androidPayload, "AndroidPayload", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.androidShortPayload)) {
+            request.androidShortPayloadShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.androidShortPayload, "AndroidShortPayload", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.channelProperties)) {
             request.channelPropertiesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.channelProperties, "ChannelProperties", "json")
         }
@@ -269,6 +284,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.androidPayloadShrink)) {
             body["AndroidPayload"] = request.androidPayloadShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.androidShortPayloadShrink)) {
+            body["AndroidShortPayload"] = request.androidShortPayloadShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.channelPropertiesShrink)) {
             body["ChannelProperties"] = request.channelPropertiesShrink ?? "";
@@ -331,6 +349,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.androidPayload)) {
             request.androidPayloadShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.androidPayload, "AndroidPayload", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.androidShortPayload)) {
+            request.androidShortPayloadShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.androidShortPayload, "AndroidShortPayload", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.channelProperties)) {
             request.channelPropertiesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.channelProperties, "ChannelProperties", "json")
         }
@@ -343,6 +364,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.androidPayloadShrink)) {
             body["AndroidPayload"] = request.androidPayloadShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.androidShortPayloadShrink)) {
+            body["AndroidShortPayload"] = request.androidShortPayloadShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.channelPropertiesShrink)) {
             body["ChannelProperties"] = request.channelPropertiesShrink ?? "";
@@ -408,6 +432,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.androidPayload)) {
             request.androidPayloadShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.androidPayload, "AndroidPayload", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.androidShortPayload)) {
+            request.androidShortPayloadShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.androidShortPayload, "AndroidShortPayload", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.channelProperties)) {
             request.channelPropertiesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.channelProperties, "ChannelProperties", "json")
         }
@@ -420,6 +447,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.androidPayloadShrink)) {
             body["AndroidPayload"] = request.androidPayloadShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.androidShortPayloadShrink)) {
+            body["AndroidShortPayload"] = request.androidShortPayloadShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.channelPropertiesShrink)) {
             body["ChannelProperties"] = request.channelPropertiesShrink ?? "";
@@ -497,6 +527,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.androidPayloadShrink)) {
             body["AndroidPayload"] = request.androidPayloadShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.androidShortPayload)) {
+            body["AndroidShortPayload"] = request.androidShortPayload!;
         }
         if (!TeaUtils.Client.isUnset(request.channelPropertiesShrink)) {
             body["ChannelProperties"] = request.channelPropertiesShrink ?? "";

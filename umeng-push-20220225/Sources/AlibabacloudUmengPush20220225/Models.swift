@@ -111,6 +111,76 @@ public class AndroidPayload : Tea.TeaModel {
     }
 }
 
+public class AndroidShortPayload : Tea.TeaModel {
+    public class Body : Tea.TeaModel {
+        public var custom: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.custom != nil {
+                map["custom"] = self.custom!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("custom") {
+                self.custom = dict["custom"] as! String
+            }
+        }
+    }
+    public var body: AndroidShortPayload.Body?
+
+    public var extra: [String: Any]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        if self.extra != nil {
+            map["extra"] = self.extra!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("body") {
+            var model = AndroidShortPayload.Body()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+        if dict.keys.contains("extra") {
+            self.extra = dict["extra"] as! [String: Any]
+        }
+    }
+}
+
 public class Aps : Tea.TeaModel {
     public var alert: Alert?
 
@@ -371,6 +441,8 @@ public class ChannelProperties : Tea.TeaModel {
 
     public var vivoCategory: String?
 
+    public var vivoPushMode: String?
+
     public var xiaomiChannelId: String?
 
     public override init() {
@@ -417,6 +489,9 @@ public class ChannelProperties : Tea.TeaModel {
         if self.vivoCategory != nil {
             map["vivoCategory"] = self.vivoCategory!
         }
+        if self.vivoPushMode != nil {
+            map["vivoPushMode"] = self.vivoPushMode!
+        }
         if self.xiaomiChannelId != nil {
             map["xiaomiChannelId"] = self.xiaomiChannelId!
         }
@@ -453,6 +528,9 @@ public class ChannelProperties : Tea.TeaModel {
         }
         if dict.keys.contains("vivoCategory") {
             self.vivoCategory = dict["vivoCategory"] as! String
+        }
+        if dict.keys.contains("vivoPushMode") {
+            self.vivoPushMode = dict["vivoPushMode"] as! String
         }
         if dict.keys.contains("xiaomiChannelId") {
             self.xiaomiChannelId = dict["xiaomiChannelId"] as! String
@@ -1074,6 +1152,8 @@ public class SendByAliasRequest : Tea.TeaModel {
 
     public var androidPayload: AndroidPayload?
 
+    public var androidShortPayload: AndroidShortPayload?
+
     public var channelProperties: ChannelProperties?
 
     public var description_: String?
@@ -1103,6 +1183,7 @@ public class SendByAliasRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.androidPayload?.validate()
+        try self.androidShortPayload?.validate()
         try self.channelProperties?.validate()
         try self.iosPayload?.validate()
         try self.policy?.validate()
@@ -1118,6 +1199,9 @@ public class SendByAliasRequest : Tea.TeaModel {
         }
         if self.androidPayload != nil {
             map["AndroidPayload"] = self.androidPayload?.toMap()
+        }
+        if self.androidShortPayload != nil {
+            map["AndroidShortPayload"] = self.androidShortPayload?.toMap()
         }
         if self.channelProperties != nil {
             map["ChannelProperties"] = self.channelProperties?.toMap()
@@ -1160,6 +1244,11 @@ public class SendByAliasRequest : Tea.TeaModel {
             var model = AndroidPayload()
             model.fromMap(dict["AndroidPayload"] as! [String: Any])
             self.androidPayload = model
+        }
+        if dict.keys.contains("AndroidShortPayload") {
+            var model = AndroidShortPayload()
+            model.fromMap(dict["AndroidShortPayload"] as! [String: Any])
+            self.androidShortPayload = model
         }
         if dict.keys.contains("ChannelProperties") {
             var model = ChannelProperties()
@@ -1204,6 +1293,8 @@ public class SendByAliasShrinkRequest : Tea.TeaModel {
 
     public var androidPayloadShrink: String?
 
+    public var androidShortPayloadShrink: String?
+
     public var channelPropertiesShrink: String?
 
     public var description_: String?
@@ -1245,6 +1336,9 @@ public class SendByAliasShrinkRequest : Tea.TeaModel {
         if self.androidPayloadShrink != nil {
             map["AndroidPayload"] = self.androidPayloadShrink!
         }
+        if self.androidShortPayloadShrink != nil {
+            map["AndroidShortPayload"] = self.androidShortPayloadShrink!
+        }
         if self.channelPropertiesShrink != nil {
             map["ChannelProperties"] = self.channelPropertiesShrink!
         }
@@ -1284,6 +1378,9 @@ public class SendByAliasShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AndroidPayload") {
             self.androidPayloadShrink = dict["AndroidPayload"] as! String
+        }
+        if dict.keys.contains("AndroidShortPayload") {
+            self.androidShortPayloadShrink = dict["AndroidShortPayload"] as! String
         }
         if dict.keys.contains("ChannelProperties") {
             self.channelPropertiesShrink = dict["ChannelProperties"] as! String
@@ -1471,6 +1568,8 @@ public class SendByAliasFileIdRequest : Tea.TeaModel {
 
     public var androidPayload: AndroidPayload?
 
+    public var androidShortPayload: AndroidShortPayload?
+
     public var channelProperties: ChannelProperties?
 
     public var description_: String?
@@ -1502,6 +1601,7 @@ public class SendByAliasFileIdRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.androidPayload?.validate()
+        try self.androidShortPayload?.validate()
         try self.channelProperties?.validate()
         try self.iosPayload?.validate()
         try self.policy?.validate()
@@ -1514,6 +1614,9 @@ public class SendByAliasFileIdRequest : Tea.TeaModel {
         }
         if self.androidPayload != nil {
             map["AndroidPayload"] = self.androidPayload?.toMap()
+        }
+        if self.androidShortPayload != nil {
+            map["AndroidShortPayload"] = self.androidShortPayload?.toMap()
         }
         if self.channelProperties != nil {
             map["ChannelProperties"] = self.channelProperties?.toMap()
@@ -1556,6 +1659,11 @@ public class SendByAliasFileIdRequest : Tea.TeaModel {
             var model = AndroidPayload()
             model.fromMap(dict["AndroidPayload"] as! [String: Any])
             self.androidPayload = model
+        }
+        if dict.keys.contains("AndroidShortPayload") {
+            var model = AndroidShortPayload()
+            model.fromMap(dict["AndroidShortPayload"] as! [String: Any])
+            self.androidShortPayload = model
         }
         if dict.keys.contains("ChannelProperties") {
             var model = ChannelProperties()
@@ -1601,6 +1709,8 @@ public class SendByAliasFileIdShrinkRequest : Tea.TeaModel {
 
     public var androidPayloadShrink: String?
 
+    public var androidShortPayloadShrink: String?
+
     public var channelPropertiesShrink: String?
 
     public var description_: String?
@@ -1641,6 +1751,9 @@ public class SendByAliasFileIdShrinkRequest : Tea.TeaModel {
         if self.androidPayloadShrink != nil {
             map["AndroidPayload"] = self.androidPayloadShrink!
         }
+        if self.androidShortPayloadShrink != nil {
+            map["AndroidShortPayload"] = self.androidShortPayloadShrink!
+        }
         if self.channelPropertiesShrink != nil {
             map["ChannelProperties"] = self.channelPropertiesShrink!
         }
@@ -1680,6 +1793,9 @@ public class SendByAliasFileIdShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AndroidPayload") {
             self.androidPayloadShrink = dict["AndroidPayload"] as! String
+        }
+        if dict.keys.contains("AndroidShortPayload") {
+            self.androidShortPayloadShrink = dict["AndroidShortPayload"] as! String
         }
         if dict.keys.contains("ChannelProperties") {
             self.channelPropertiesShrink = dict["ChannelProperties"] as! String
@@ -1868,6 +1984,8 @@ public class SendByAliasFileIdResponse : Tea.TeaModel {
 public class SendByAppRequest : Tea.TeaModel {
     public var androidPayload: AndroidPayload?
 
+    public var androidShortPayload: AndroidShortPayload?
+
     public var channelProperties: ChannelProperties?
 
     public var description_: String?
@@ -1897,6 +2015,7 @@ public class SendByAppRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.androidPayload?.validate()
+        try self.androidShortPayload?.validate()
         try self.channelProperties?.validate()
         try self.iosPayload?.validate()
         try self.policy?.validate()
@@ -1906,6 +2025,9 @@ public class SendByAppRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.androidPayload != nil {
             map["AndroidPayload"] = self.androidPayload?.toMap()
+        }
+        if self.androidShortPayload != nil {
+            map["AndroidShortPayload"] = self.androidShortPayload?.toMap()
         }
         if self.channelProperties != nil {
             map["ChannelProperties"] = self.channelProperties?.toMap()
@@ -1942,6 +2064,11 @@ public class SendByAppRequest : Tea.TeaModel {
             var model = AndroidPayload()
             model.fromMap(dict["AndroidPayload"] as! [String: Any])
             self.androidPayload = model
+        }
+        if dict.keys.contains("AndroidShortPayload") {
+            var model = AndroidShortPayload()
+            model.fromMap(dict["AndroidShortPayload"] as! [String: Any])
+            self.androidShortPayload = model
         }
         if dict.keys.contains("ChannelProperties") {
             var model = ChannelProperties()
@@ -1982,6 +2109,8 @@ public class SendByAppRequest : Tea.TeaModel {
 public class SendByAppShrinkRequest : Tea.TeaModel {
     public var androidPayloadShrink: String?
 
+    public var androidShortPayloadShrink: String?
+
     public var channelPropertiesShrink: String?
 
     public var description_: String?
@@ -2017,6 +2146,9 @@ public class SendByAppShrinkRequest : Tea.TeaModel {
         if self.androidPayloadShrink != nil {
             map["AndroidPayload"] = self.androidPayloadShrink!
         }
+        if self.androidShortPayloadShrink != nil {
+            map["AndroidShortPayload"] = self.androidShortPayloadShrink!
+        }
         if self.channelPropertiesShrink != nil {
             map["ChannelProperties"] = self.channelPropertiesShrink!
         }
@@ -2050,6 +2182,9 @@ public class SendByAppShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AndroidPayload") {
             self.androidPayloadShrink = dict["AndroidPayload"] as! String
+        }
+        if dict.keys.contains("AndroidShortPayload") {
+            self.androidShortPayloadShrink = dict["AndroidShortPayload"] as! String
         }
         if dict.keys.contains("ChannelProperties") {
             self.channelPropertiesShrink = dict["ChannelProperties"] as! String
@@ -2235,6 +2370,8 @@ public class SendByAppResponse : Tea.TeaModel {
 public class SendByDeviceRequest : Tea.TeaModel {
     public var androidPayload: AndroidPayload?
 
+    public var androidShortPayload: AndroidShortPayload?
+
     public var channelProperties: ChannelProperties?
 
     public var description_: String?
@@ -2266,6 +2403,7 @@ public class SendByDeviceRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.androidPayload?.validate()
+        try self.androidShortPayload?.validate()
         try self.channelProperties?.validate()
         try self.iosPayload?.validate()
         try self.policy?.validate()
@@ -2275,6 +2413,9 @@ public class SendByDeviceRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.androidPayload != nil {
             map["AndroidPayload"] = self.androidPayload?.toMap()
+        }
+        if self.androidShortPayload != nil {
+            map["AndroidShortPayload"] = self.androidShortPayload?.toMap()
         }
         if self.channelProperties != nil {
             map["ChannelProperties"] = self.channelProperties?.toMap()
@@ -2314,6 +2455,11 @@ public class SendByDeviceRequest : Tea.TeaModel {
             var model = AndroidPayload()
             model.fromMap(dict["AndroidPayload"] as! [String: Any])
             self.androidPayload = model
+        }
+        if dict.keys.contains("AndroidShortPayload") {
+            var model = AndroidShortPayload()
+            model.fromMap(dict["AndroidShortPayload"] as! [String: Any])
+            self.androidShortPayload = model
         }
         if dict.keys.contains("ChannelProperties") {
             var model = ChannelProperties()
@@ -2357,6 +2503,8 @@ public class SendByDeviceRequest : Tea.TeaModel {
 public class SendByDeviceShrinkRequest : Tea.TeaModel {
     public var androidPayloadShrink: String?
 
+    public var androidShortPayloadShrink: String?
+
     public var channelPropertiesShrink: String?
 
     public var description_: String?
@@ -2394,6 +2542,9 @@ public class SendByDeviceShrinkRequest : Tea.TeaModel {
         if self.androidPayloadShrink != nil {
             map["AndroidPayload"] = self.androidPayloadShrink!
         }
+        if self.androidShortPayloadShrink != nil {
+            map["AndroidShortPayload"] = self.androidShortPayloadShrink!
+        }
         if self.channelPropertiesShrink != nil {
             map["ChannelProperties"] = self.channelPropertiesShrink!
         }
@@ -2430,6 +2581,9 @@ public class SendByDeviceShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AndroidPayload") {
             self.androidPayloadShrink = dict["AndroidPayload"] as! String
+        }
+        if dict.keys.contains("AndroidShortPayload") {
+            self.androidShortPayloadShrink = dict["AndroidShortPayload"] as! String
         }
         if dict.keys.contains("ChannelProperties") {
             self.channelPropertiesShrink = dict["ChannelProperties"] as! String
@@ -2618,6 +2772,8 @@ public class SendByDeviceResponse : Tea.TeaModel {
 public class SendByDeviceFileIdRequest : Tea.TeaModel {
     public var androidPayload: AndroidPayload?
 
+    public var androidShortPayload: AndroidShortPayload?
+
     public var channelProperties: ChannelProperties?
 
     public var description_: String?
@@ -2649,6 +2805,7 @@ public class SendByDeviceFileIdRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.androidPayload?.validate()
+        try self.androidShortPayload?.validate()
         try self.channelProperties?.validate()
         try self.iosPayload?.validate()
         try self.policy?.validate()
@@ -2658,6 +2815,9 @@ public class SendByDeviceFileIdRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.androidPayload != nil {
             map["AndroidPayload"] = self.androidPayload?.toMap()
+        }
+        if self.androidShortPayload != nil {
+            map["AndroidShortPayload"] = self.androidShortPayload?.toMap()
         }
         if self.channelProperties != nil {
             map["ChannelProperties"] = self.channelProperties?.toMap()
@@ -2697,6 +2857,11 @@ public class SendByDeviceFileIdRequest : Tea.TeaModel {
             var model = AndroidPayload()
             model.fromMap(dict["AndroidPayload"] as! [String: Any])
             self.androidPayload = model
+        }
+        if dict.keys.contains("AndroidShortPayload") {
+            var model = AndroidShortPayload()
+            model.fromMap(dict["AndroidShortPayload"] as! [String: Any])
+            self.androidShortPayload = model
         }
         if dict.keys.contains("ChannelProperties") {
             var model = ChannelProperties()
@@ -2740,6 +2905,8 @@ public class SendByDeviceFileIdRequest : Tea.TeaModel {
 public class SendByDeviceFileIdShrinkRequest : Tea.TeaModel {
     public var androidPayloadShrink: String?
 
+    public var androidShortPayloadShrink: String?
+
     public var channelPropertiesShrink: String?
 
     public var description_: String?
@@ -2777,6 +2944,9 @@ public class SendByDeviceFileIdShrinkRequest : Tea.TeaModel {
         if self.androidPayloadShrink != nil {
             map["AndroidPayload"] = self.androidPayloadShrink!
         }
+        if self.androidShortPayloadShrink != nil {
+            map["AndroidShortPayload"] = self.androidShortPayloadShrink!
+        }
         if self.channelPropertiesShrink != nil {
             map["ChannelProperties"] = self.channelPropertiesShrink!
         }
@@ -2813,6 +2983,9 @@ public class SendByDeviceFileIdShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AndroidPayload") {
             self.androidPayloadShrink = dict["AndroidPayload"] as! String
+        }
+        if dict.keys.contains("AndroidShortPayload") {
+            self.androidShortPayloadShrink = dict["AndroidShortPayload"] as! String
         }
         if dict.keys.contains("ChannelProperties") {
             self.channelPropertiesShrink = dict["ChannelProperties"] as! String
@@ -3001,6 +3174,8 @@ public class SendByDeviceFileIdResponse : Tea.TeaModel {
 public class SendByFilterRequest : Tea.TeaModel {
     public var androidPayload: AndroidPayload?
 
+    public var androidShortPayload: AndroidShortPayload?
+
     public var channelProperties: ChannelProperties?
 
     public var description_: String?
@@ -3032,6 +3207,7 @@ public class SendByFilterRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.androidPayload?.validate()
+        try self.androidShortPayload?.validate()
         try self.channelProperties?.validate()
         try self.iosPayload?.validate()
         try self.policy?.validate()
@@ -3041,6 +3217,9 @@ public class SendByFilterRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.androidPayload != nil {
             map["AndroidPayload"] = self.androidPayload?.toMap()
+        }
+        if self.androidShortPayload != nil {
+            map["AndroidShortPayload"] = self.androidShortPayload?.toMap()
         }
         if self.channelProperties != nil {
             map["ChannelProperties"] = self.channelProperties?.toMap()
@@ -3080,6 +3259,11 @@ public class SendByFilterRequest : Tea.TeaModel {
             var model = AndroidPayload()
             model.fromMap(dict["AndroidPayload"] as! [String: Any])
             self.androidPayload = model
+        }
+        if dict.keys.contains("AndroidShortPayload") {
+            var model = AndroidShortPayload()
+            model.fromMap(dict["AndroidShortPayload"] as! [String: Any])
+            self.androidShortPayload = model
         }
         if dict.keys.contains("ChannelProperties") {
             var model = ChannelProperties()
@@ -3123,6 +3307,8 @@ public class SendByFilterRequest : Tea.TeaModel {
 public class SendByFilterShrinkRequest : Tea.TeaModel {
     public var androidPayloadShrink: String?
 
+    public var androidShortPayload: AndroidShortPayload?
+
     public var channelPropertiesShrink: String?
 
     public var description_: String?
@@ -3153,12 +3339,16 @@ public class SendByFilterShrinkRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.androidShortPayload?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.androidPayloadShrink != nil {
             map["AndroidPayload"] = self.androidPayloadShrink!
+        }
+        if self.androidShortPayload != nil {
+            map["AndroidShortPayload"] = self.androidShortPayload?.toMap()
         }
         if self.channelPropertiesShrink != nil {
             map["ChannelProperties"] = self.channelPropertiesShrink!
@@ -3196,6 +3386,11 @@ public class SendByFilterShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AndroidPayload") {
             self.androidPayloadShrink = dict["AndroidPayload"] as! String
+        }
+        if dict.keys.contains("AndroidShortPayload") {
+            var model = AndroidShortPayload()
+            model.fromMap(dict["AndroidShortPayload"] as! [String: Any])
+            self.androidShortPayload = model
         }
         if dict.keys.contains("ChannelProperties") {
             self.channelPropertiesShrink = dict["ChannelProperties"] as! String
