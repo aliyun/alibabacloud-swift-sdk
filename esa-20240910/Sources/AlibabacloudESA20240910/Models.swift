@@ -265,6 +265,8 @@ public class WafQuotaString : Tea.TeaModel {
 public class WafRuleConfig : Tea.TeaModel {
     public class Actions : Tea.TeaModel {
         public class Bypass : Tea.TeaModel {
+            public var customRules: [Int64]?
+
             public var regularRules: [Int64]?
 
             public var regularTypes: [String]?
@@ -287,6 +289,9 @@ public class WafRuleConfig : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.customRules != nil {
+                    map["CustomRules"] = self.customRules!
+                }
                 if self.regularRules != nil {
                     map["RegularRules"] = self.regularRules!
                 }
@@ -303,6 +308,9 @@ public class WafRuleConfig : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CustomRules") {
+                    self.customRules = dict["CustomRules"] as! [Int64]
+                }
                 if dict.keys.contains("RegularRules") {
                     self.regularRules = dict["RegularRules"] as! [Int64]
                 }
@@ -2262,6 +2270,67 @@ public class ActivateClientCertificateResponse : Tea.TeaModel {
 
 public class BatchCreateRecordsRequest : Tea.TeaModel {
     public class RecordList : Tea.TeaModel {
+        public class AuthConf : Tea.TeaModel {
+            public var accessKey: String?
+
+            public var authType: String?
+
+            public var region: String?
+
+            public var secretKey: String?
+
+            public var version: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.accessKey != nil {
+                    map["AccessKey"] = self.accessKey!
+                }
+                if self.authType != nil {
+                    map["AuthType"] = self.authType!
+                }
+                if self.region != nil {
+                    map["Region"] = self.region!
+                }
+                if self.secretKey != nil {
+                    map["SecretKey"] = self.secretKey!
+                }
+                if self.version != nil {
+                    map["Version"] = self.version!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AccessKey") {
+                    self.accessKey = dict["AccessKey"] as! String
+                }
+                if dict.keys.contains("AuthType") {
+                    self.authType = dict["AuthType"] as! String
+                }
+                if dict.keys.contains("Region") {
+                    self.region = dict["Region"] as! String
+                }
+                if dict.keys.contains("SecretKey") {
+                    self.secretKey = dict["SecretKey"] as! String
+                }
+                if dict.keys.contains("Version") {
+                    self.version = dict["Version"] as! String
+                }
+            }
+        }
         public class Data : Tea.TeaModel {
             public var algorithm: Int32?
 
@@ -2395,6 +2464,8 @@ public class BatchCreateRecordsRequest : Tea.TeaModel {
                 }
             }
         }
+        public var authConf: BatchCreateRecordsRequest.RecordList.AuthConf?
+
         public var bizName: String?
 
         public var data: BatchCreateRecordsRequest.RecordList.Data?
@@ -2419,11 +2490,15 @@ public class BatchCreateRecordsRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.authConf?.validate()
             try self.data?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.authConf != nil {
+                map["AuthConf"] = self.authConf?.toMap()
+            }
             if self.bizName != nil {
                 map["BizName"] = self.bizName!
             }
@@ -2449,6 +2524,11 @@ public class BatchCreateRecordsRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AuthConf") {
+                var model = BatchCreateRecordsRequest.RecordList.AuthConf()
+                model.fromMap(dict["AuthConf"] as! [String: Any])
+                self.authConf = model
+            }
             if dict.keys.contains("BizName") {
                 self.bizName = dict["BizName"] as! String
             }
@@ -17672,8 +17752,6 @@ public class GetEdgeContainerAppVersionResponseBody : Tea.TeaModel {
 
             public var postStart: String?
 
-            public var preStart: String?
-
             public var preStop: String?
 
             public var probeContent: GetEdgeContainerAppVersionResponseBody.Version.Containers.ProbeContent?
@@ -17724,9 +17802,6 @@ public class GetEdgeContainerAppVersionResponseBody : Tea.TeaModel {
                 if self.postStart != nil {
                     map["PostStart"] = self.postStart!
                 }
-                if self.preStart != nil {
-                    map["PreStart"] = self.preStart!
-                }
                 if self.preStop != nil {
                     map["PreStop"] = self.preStop!
                 }
@@ -17771,9 +17846,6 @@ public class GetEdgeContainerAppVersionResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("PostStart") {
                     self.postStart = dict["PostStart"] as! String
-                }
-                if dict.keys.contains("PreStart") {
-                    self.preStart = dict["PreStart"] as! String
                 }
                 if dict.keys.contains("PreStop") {
                     self.preStop = dict["PreStop"] as! String
@@ -25329,8 +25401,6 @@ public class ListEdgeContainerAppVersionsResponseBody : Tea.TeaModel {
 
             public var postStart: String?
 
-            public var preStart: String?
-
             public var preStop: String?
 
             public var probeContent: ListEdgeContainerAppVersionsResponseBody.Versions.Containers.ProbeContent?
@@ -25372,9 +25442,6 @@ public class ListEdgeContainerAppVersionsResponseBody : Tea.TeaModel {
                 if self.postStart != nil {
                     map["PostStart"] = self.postStart!
                 }
-                if self.preStart != nil {
-                    map["PreStart"] = self.preStart!
-                }
                 if self.preStop != nil {
                     map["PreStop"] = self.preStop!
                 }
@@ -25408,9 +25475,6 @@ public class ListEdgeContainerAppVersionsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("PostStart") {
                     self.postStart = dict["PostStart"] as! String
-                }
-                if dict.keys.contains("PreStart") {
-                    self.preStart = dict["PreStart"] as! String
                 }
                 if dict.keys.contains("PreStop") {
                     self.preStop = dict["PreStop"] as! String
@@ -31568,23 +31632,47 @@ public class ListUserRatePlanInstancesResponseBody : Tea.TeaModel {
         }
         public var billingMode: String?
 
+        public var botInstanceLevel: String?
+
         public var coverages: String?
 
         public var createTime: String?
 
+        public var crossborderTraffic: String?
+
+        public var ddosBurstableDomesticProtection: String?
+
+        public var ddosBurstableOverseasProtection: String?
+
+        public var ddosInstanceLevel: String?
+
         public var duration: Int32?
+
+        public var edgeRoutineRquest: String?
+
+        public var edgeWafRequest: String?
 
         public var expireTime: String?
 
         public var instanceId: String?
 
+        public var layer4Traffic: String?
+
+        public var layer4TrafficIntl: String?
+
         public var planName: String?
+
+        public var planTraffic: String?
 
         public var planType: String?
 
         public var siteQuota: String?
 
         public var sites: [ListUserRatePlanInstancesResponseBody.InstanceInfo.Sites]?
+
+        public var smartRoutingRequest: String?
+
+        public var staticRequest: String?
 
         public var status: String?
 
@@ -31605,14 +31693,35 @@ public class ListUserRatePlanInstancesResponseBody : Tea.TeaModel {
             if self.billingMode != nil {
                 map["BillingMode"] = self.billingMode!
             }
+            if self.botInstanceLevel != nil {
+                map["BotInstanceLevel"] = self.botInstanceLevel!
+            }
             if self.coverages != nil {
                 map["Coverages"] = self.coverages!
             }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
+            if self.crossborderTraffic != nil {
+                map["CrossborderTraffic"] = self.crossborderTraffic!
+            }
+            if self.ddosBurstableDomesticProtection != nil {
+                map["DdosBurstableDomesticProtection"] = self.ddosBurstableDomesticProtection!
+            }
+            if self.ddosBurstableOverseasProtection != nil {
+                map["DdosBurstableOverseasProtection"] = self.ddosBurstableOverseasProtection!
+            }
+            if self.ddosInstanceLevel != nil {
+                map["DdosInstanceLevel"] = self.ddosInstanceLevel!
+            }
             if self.duration != nil {
                 map["Duration"] = self.duration!
+            }
+            if self.edgeRoutineRquest != nil {
+                map["EdgeRoutineRquest"] = self.edgeRoutineRquest!
+            }
+            if self.edgeWafRequest != nil {
+                map["EdgeWafRequest"] = self.edgeWafRequest!
             }
             if self.expireTime != nil {
                 map["ExpireTime"] = self.expireTime!
@@ -31620,8 +31729,17 @@ public class ListUserRatePlanInstancesResponseBody : Tea.TeaModel {
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
+            if self.layer4Traffic != nil {
+                map["Layer4Traffic"] = self.layer4Traffic!
+            }
+            if self.layer4TrafficIntl != nil {
+                map["Layer4TrafficIntl"] = self.layer4TrafficIntl!
+            }
             if self.planName != nil {
                 map["PlanName"] = self.planName!
+            }
+            if self.planTraffic != nil {
+                map["PlanTraffic"] = self.planTraffic!
             }
             if self.planType != nil {
                 map["PlanType"] = self.planType!
@@ -31636,6 +31754,12 @@ public class ListUserRatePlanInstancesResponseBody : Tea.TeaModel {
                 }
                 map["Sites"] = tmp
             }
+            if self.smartRoutingRequest != nil {
+                map["SmartRoutingRequest"] = self.smartRoutingRequest!
+            }
+            if self.staticRequest != nil {
+                map["StaticRequest"] = self.staticRequest!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -31646,14 +31770,35 @@ public class ListUserRatePlanInstancesResponseBody : Tea.TeaModel {
             if dict.keys.contains("BillingMode") {
                 self.billingMode = dict["BillingMode"] as! String
             }
+            if dict.keys.contains("BotInstanceLevel") {
+                self.botInstanceLevel = dict["BotInstanceLevel"] as! String
+            }
             if dict.keys.contains("Coverages") {
                 self.coverages = dict["Coverages"] as! String
             }
             if dict.keys.contains("CreateTime") {
                 self.createTime = dict["CreateTime"] as! String
             }
+            if dict.keys.contains("CrossborderTraffic") {
+                self.crossborderTraffic = dict["CrossborderTraffic"] as! String
+            }
+            if dict.keys.contains("DdosBurstableDomesticProtection") {
+                self.ddosBurstableDomesticProtection = dict["DdosBurstableDomesticProtection"] as! String
+            }
+            if dict.keys.contains("DdosBurstableOverseasProtection") {
+                self.ddosBurstableOverseasProtection = dict["DdosBurstableOverseasProtection"] as! String
+            }
+            if dict.keys.contains("DdosInstanceLevel") {
+                self.ddosInstanceLevel = dict["DdosInstanceLevel"] as! String
+            }
             if dict.keys.contains("Duration") {
                 self.duration = dict["Duration"] as! Int32
+            }
+            if dict.keys.contains("EdgeRoutineRquest") {
+                self.edgeRoutineRquest = dict["EdgeRoutineRquest"] as! String
+            }
+            if dict.keys.contains("EdgeWafRequest") {
+                self.edgeWafRequest = dict["EdgeWafRequest"] as! String
             }
             if dict.keys.contains("ExpireTime") {
                 self.expireTime = dict["ExpireTime"] as! String
@@ -31661,8 +31806,17 @@ public class ListUserRatePlanInstancesResponseBody : Tea.TeaModel {
             if dict.keys.contains("InstanceId") {
                 self.instanceId = dict["InstanceId"] as! String
             }
+            if dict.keys.contains("Layer4Traffic") {
+                self.layer4Traffic = dict["Layer4Traffic"] as! String
+            }
+            if dict.keys.contains("Layer4TrafficIntl") {
+                self.layer4TrafficIntl = dict["Layer4TrafficIntl"] as! String
+            }
             if dict.keys.contains("PlanName") {
                 self.planName = dict["PlanName"] as! String
+            }
+            if dict.keys.contains("PlanTraffic") {
+                self.planTraffic = dict["PlanTraffic"] as! String
             }
             if dict.keys.contains("PlanType") {
                 self.planType = dict["PlanType"] as! String
@@ -31680,6 +31834,12 @@ public class ListUserRatePlanInstancesResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.sites = tmp
+            }
+            if dict.keys.contains("SmartRoutingRequest") {
+                self.smartRoutingRequest = dict["SmartRoutingRequest"] as! String
+            }
+            if dict.keys.contains("StaticRequest") {
+                self.staticRequest = dict["StaticRequest"] as! String
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
@@ -31822,8 +31982,6 @@ public class ListWafManagedRulesRequest : Tea.TeaModel {
 
         public var idNameLike: String?
 
-        public var protectionLevel: Int32?
-
         public var protectionLevels: [Int32]?
 
         public var status: String?
@@ -31848,9 +32006,6 @@ public class ListWafManagedRulesRequest : Tea.TeaModel {
             if self.idNameLike != nil {
                 map["IdNameLike"] = self.idNameLike!
             }
-            if self.protectionLevel != nil {
-                map["ProtectionLevel"] = self.protectionLevel!
-            }
             if self.protectionLevels != nil {
                 map["ProtectionLevels"] = self.protectionLevels!
             }
@@ -31866,9 +32021,6 @@ public class ListWafManagedRulesRequest : Tea.TeaModel {
             }
             if dict.keys.contains("IdNameLike") {
                 self.idNameLike = dict["IdNameLike"] as! String
-            }
-            if dict.keys.contains("ProtectionLevel") {
-                self.protectionLevel = dict["ProtectionLevel"] as! Int32
             }
             if dict.keys.contains("ProtectionLevels") {
                 self.protectionLevels = dict["ProtectionLevels"] as! [Int32]
@@ -31887,6 +32039,8 @@ public class ListWafManagedRulesRequest : Tea.TeaModel {
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
+
+    public var protectionLevel: Int32?
 
     public var queryArgs: ListWafManagedRulesRequest.QueryArgs?
 
@@ -31922,6 +32076,9 @@ public class ListWafManagedRulesRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.protectionLevel != nil {
+            map["ProtectionLevel"] = self.protectionLevel!
+        }
         if self.queryArgs != nil {
             map["QueryArgs"] = self.queryArgs?.toMap()
         }
@@ -31947,6 +32104,9 @@ public class ListWafManagedRulesRequest : Tea.TeaModel {
         if dict.keys.contains("PageSize") {
             self.pageSize = dict["PageSize"] as! Int32
         }
+        if dict.keys.contains("ProtectionLevel") {
+            self.protectionLevel = dict["ProtectionLevel"] as! Int32
+        }
         if dict.keys.contains("QueryArgs") {
             var model = ListWafManagedRulesRequest.QueryArgs()
             model.fromMap(dict["QueryArgs"] as! [String: Any])
@@ -31968,6 +32128,8 @@ public class ListWafManagedRulesShrinkRequest : Tea.TeaModel {
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
+
+    public var protectionLevel: Int32?
 
     public var queryArgsShrink: String?
 
@@ -32002,6 +32164,9 @@ public class ListWafManagedRulesShrinkRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.protectionLevel != nil {
+            map["ProtectionLevel"] = self.protectionLevel!
+        }
         if self.queryArgsShrink != nil {
             map["QueryArgs"] = self.queryArgsShrink!
         }
@@ -32026,6 +32191,9 @@ public class ListWafManagedRulesShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("ProtectionLevel") {
+            self.protectionLevel = dict["ProtectionLevel"] as! Int32
         }
         if dict.keys.contains("QueryArgs") {
             self.queryArgsShrink = dict["QueryArgs"] as! String
@@ -33434,6 +33602,8 @@ public class ListWafTemplateRulesRequest : Tea.TeaModel {
 
     public var queryArgs: ListWafTemplateRulesRequest.QueryArgs?
 
+    public var siteId: Int64?
+
     public override init() {
         super.init()
     }
@@ -33455,6 +33625,9 @@ public class ListWafTemplateRulesRequest : Tea.TeaModel {
         if self.queryArgs != nil {
             map["QueryArgs"] = self.queryArgs?.toMap()
         }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
         return map
     }
 
@@ -33467,6 +33640,9 @@ public class ListWafTemplateRulesRequest : Tea.TeaModel {
             model.fromMap(dict["QueryArgs"] as! [String: Any])
             self.queryArgs = model
         }
+        if dict.keys.contains("SiteId") {
+            self.siteId = dict["SiteId"] as! Int64
+        }
     }
 }
 
@@ -33474,6 +33650,8 @@ public class ListWafTemplateRulesShrinkRequest : Tea.TeaModel {
     public var phase: String?
 
     public var queryArgsShrink: String?
+
+    public var siteId: Int64?
 
     public override init() {
         super.init()
@@ -33495,6 +33673,9 @@ public class ListWafTemplateRulesShrinkRequest : Tea.TeaModel {
         if self.queryArgsShrink != nil {
             map["QueryArgs"] = self.queryArgsShrink!
         }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
         return map
     }
 
@@ -33504,6 +33685,9 @@ public class ListWafTemplateRulesShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("QueryArgs") {
             self.queryArgsShrink = dict["QueryArgs"] as! String
+        }
+        if dict.keys.contains("SiteId") {
+            self.siteId = dict["SiteId"] as! Int64
         }
     }
 }
@@ -37294,324 +37478,6 @@ public class StopScheduledPreloadExecutionResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = StopScheduledPreloadExecutionResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
-public class TransformExpressionToMatchRequest : Tea.TeaModel {
-    public var expression: String?
-
-    public var phase: String?
-
-    public var siteId: Int64?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.expression != nil {
-            map["Expression"] = self.expression!
-        }
-        if self.phase != nil {
-            map["Phase"] = self.phase!
-        }
-        if self.siteId != nil {
-            map["SiteId"] = self.siteId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Expression") {
-            self.expression = dict["Expression"] as! String
-        }
-        if dict.keys.contains("Phase") {
-            self.phase = dict["Phase"] as! String
-        }
-        if dict.keys.contains("SiteId") {
-            self.siteId = dict["SiteId"] as! Int64
-        }
-    }
-}
-
-public class TransformExpressionToMatchResponseBody : Tea.TeaModel {
-    public var match: WafRuleMatch?
-
-    public var requestId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.match?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.match != nil {
-            map["Match"] = self.match?.toMap()
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Match") {
-            var model = WafRuleMatch()
-            model.fromMap(dict["Match"] as! [String: Any])
-            self.match = model
-        }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
-        }
-    }
-}
-
-public class TransformExpressionToMatchResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: TransformExpressionToMatchResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") {
-            var model = TransformExpressionToMatchResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
-public class TransformMatchToExpressionRequest : Tea.TeaModel {
-    public var match: WafRuleMatch?
-
-    public var phase: String?
-
-    public var siteId: Int64?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.match?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.match != nil {
-            map["Match"] = self.match?.toMap()
-        }
-        if self.phase != nil {
-            map["Phase"] = self.phase!
-        }
-        if self.siteId != nil {
-            map["SiteId"] = self.siteId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Match") {
-            var model = WafRuleMatch()
-            model.fromMap(dict["Match"] as! [String: Any])
-            self.match = model
-        }
-        if dict.keys.contains("Phase") {
-            self.phase = dict["Phase"] as! String
-        }
-        if dict.keys.contains("SiteId") {
-            self.siteId = dict["SiteId"] as! Int64
-        }
-    }
-}
-
-public class TransformMatchToExpressionShrinkRequest : Tea.TeaModel {
-    public var matchShrink: String?
-
-    public var phase: String?
-
-    public var siteId: Int64?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.matchShrink != nil {
-            map["Match"] = self.matchShrink!
-        }
-        if self.phase != nil {
-            map["Phase"] = self.phase!
-        }
-        if self.siteId != nil {
-            map["SiteId"] = self.siteId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Match") {
-            self.matchShrink = dict["Match"] as! String
-        }
-        if dict.keys.contains("Phase") {
-            self.phase = dict["Phase"] as! String
-        }
-        if dict.keys.contains("SiteId") {
-            self.siteId = dict["SiteId"] as! Int64
-        }
-    }
-}
-
-public class TransformMatchToExpressionResponseBody : Tea.TeaModel {
-    public var expression: String?
-
-    public var requestId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.expression != nil {
-            map["Expression"] = self.expression!
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Expression") {
-            self.expression = dict["Expression"] as! String
-        }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
-        }
-    }
-}
-
-public class TransformMatchToExpressionResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: TransformMatchToExpressionResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") {
-            var model = TransformMatchToExpressionResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

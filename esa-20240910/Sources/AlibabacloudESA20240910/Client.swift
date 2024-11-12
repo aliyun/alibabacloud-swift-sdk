@@ -4866,6 +4866,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
         }
+        if (!TeaUtils.Client.isUnset(request.protectionLevel)) {
+            query["ProtectionLevel"] = request.protectionLevel!;
+        }
         if (!TeaUtils.Client.isUnset(request.queryArgsShrink)) {
             query["QueryArgs"] = request.queryArgsShrink ?? "";
         }
@@ -5046,6 +5049,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.queryArgsShrink)) {
             query["QueryArgs"] = request.queryArgsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.siteId)) {
+            query["SiteId"] = request.siteId!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -5844,89 +5850,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func stopScheduledPreloadExecution(_ request: StopScheduledPreloadExecutionRequest) async throws -> StopScheduledPreloadExecutionResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await stopScheduledPreloadExecutionWithOptions(request as! StopScheduledPreloadExecutionRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func transformExpressionToMatchWithOptions(_ request: TransformExpressionToMatchRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> TransformExpressionToMatchResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.siteId)) {
-            query["SiteId"] = request.siteId!;
-        }
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.expression)) {
-            body["Expression"] = request.expression ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.phase)) {
-            body["Phase"] = request.phase ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query),
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "TransformExpressionToMatch",
-            "version": "2024-09-10",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(TransformExpressionToMatchResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func transformExpressionToMatch(_ request: TransformExpressionToMatchRequest) async throws -> TransformExpressionToMatchResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await transformExpressionToMatchWithOptions(request as! TransformExpressionToMatchRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func transformMatchToExpressionWithOptions(_ tmpReq: TransformMatchToExpressionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> TransformMatchToExpressionResponse {
-        try TeaUtils.Client.validateModel(tmpReq)
-        var request: TransformMatchToExpressionShrinkRequest = TransformMatchToExpressionShrinkRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.match)) {
-            request.matchShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.match, "Match", "json")
-        }
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.siteId)) {
-            query["SiteId"] = request.siteId!;
-        }
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.matchShrink)) {
-            body["Match"] = request.matchShrink ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.phase)) {
-            body["Phase"] = request.phase ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query),
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "TransformMatchToExpression",
-            "version": "2024-09-10",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(TransformMatchToExpressionResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func transformMatchToExpression(_ request: TransformMatchToExpressionRequest) async throws -> TransformMatchToExpressionResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await transformMatchToExpressionWithOptions(request as! TransformMatchToExpressionRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
