@@ -5856,6 +5856,171 @@ public class DescribeAssetRiskListResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeAssetStatisticRequest : Tea.TeaModel {
+    public var lang: String?
+
+    public var sourceIp: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.sourceIp != nil {
+            map["SourceIp"] = self.sourceIp!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Lang") {
+            self.lang = dict["Lang"] as! String
+        }
+        if dict.keys.contains("SourceIp") {
+            self.sourceIp = dict["SourceIp"] as! String
+        }
+    }
+}
+
+public class DescribeAssetStatisticResponseBody : Tea.TeaModel {
+    public class ResourceSpecStatistic : Tea.TeaModel {
+        public var ipNumSpec: Int32?
+
+        public var ipNumUsed: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.ipNumSpec != nil {
+                map["IpNumSpec"] = self.ipNumSpec!
+            }
+            if self.ipNumUsed != nil {
+                map["IpNumUsed"] = self.ipNumUsed!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("IpNumSpec") {
+                self.ipNumSpec = dict["IpNumSpec"] as! Int32
+            }
+            if dict.keys.contains("IpNumUsed") {
+                self.ipNumUsed = dict["IpNumUsed"] as! Int32
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var resourceSpecStatistic: DescribeAssetStatisticResponseBody.ResourceSpecStatistic?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.resourceSpecStatistic?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resourceSpecStatistic != nil {
+            map["ResourceSpecStatistic"] = self.resourceSpecStatistic?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResourceSpecStatistic") {
+            var model = DescribeAssetStatisticResponseBody.ResourceSpecStatistic()
+            model.fromMap(dict["ResourceSpecStatistic"] as! [String: Any])
+            self.resourceSpecStatistic = model
+        }
+    }
+}
+
+public class DescribeAssetStatisticResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeAssetStatisticResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeAssetStatisticResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeCfwRiskLevelSummaryRequest : Tea.TeaModel {
     public var instanceType: String?
 
@@ -10786,6 +10951,8 @@ public class DescribeOutgoingDestinationIPResponseBody : Tea.TeaModel {
 
         public var applicationPortList: [DescribeOutgoingDestinationIPResponseBody.DstIPList.ApplicationPortList]?
 
+        public var assetCount: Int64?
+
         public var categoryClassId: String?
 
         public var categoryId: String?
@@ -10804,7 +10971,11 @@ public class DescribeOutgoingDestinationIPResponseBody : Tea.TeaModel {
 
         public var isMarkNormal: Bool?
 
+        public var locationName: String?
+
         public var outBytes: Int64?
+
+        public var privateAssetCount: Int64?
 
         public var ruleId: String?
 
@@ -10857,6 +11028,9 @@ public class DescribeOutgoingDestinationIPResponseBody : Tea.TeaModel {
                 }
                 map["ApplicationPortList"] = tmp
             }
+            if self.assetCount != nil {
+                map["AssetCount"] = self.assetCount!
+            }
             if self.categoryClassId != nil {
                 map["CategoryClassId"] = self.categoryClassId!
             }
@@ -10884,8 +11058,14 @@ public class DescribeOutgoingDestinationIPResponseBody : Tea.TeaModel {
             if self.isMarkNormal != nil {
                 map["IsMarkNormal"] = self.isMarkNormal!
             }
+            if self.locationName != nil {
+                map["LocationName"] = self.locationName!
+            }
             if self.outBytes != nil {
                 map["OutBytes"] = self.outBytes!
+            }
+            if self.privateAssetCount != nil {
+                map["PrivateAssetCount"] = self.privateAssetCount!
             }
             if self.ruleId != nil {
                 map["RuleId"] = self.ruleId!
@@ -10947,6 +11127,9 @@ public class DescribeOutgoingDestinationIPResponseBody : Tea.TeaModel {
                 }
                 self.applicationPortList = tmp
             }
+            if dict.keys.contains("AssetCount") {
+                self.assetCount = dict["AssetCount"] as! Int64
+            }
             if dict.keys.contains("CategoryClassId") {
                 self.categoryClassId = dict["CategoryClassId"] as! String
             }
@@ -10974,8 +11157,14 @@ public class DescribeOutgoingDestinationIPResponseBody : Tea.TeaModel {
             if dict.keys.contains("IsMarkNormal") {
                 self.isMarkNormal = dict["IsMarkNormal"] as! Bool
             }
+            if dict.keys.contains("LocationName") {
+                self.locationName = dict["LocationName"] as! String
+            }
             if dict.keys.contains("OutBytes") {
                 self.outBytes = dict["OutBytes"] as! Int64
+            }
+            if dict.keys.contains("PrivateAssetCount") {
+                self.privateAssetCount = dict["PrivateAssetCount"] as! Int64
             }
             if dict.keys.contains("RuleId") {
                 self.ruleId = dict["RuleId"] as! String
@@ -11297,6 +11486,10 @@ public class DescribeOutgoingDomainResponseBody : Tea.TeaModel {
 
         public var addressGroupUUID: String?
 
+        public var applicationNameList: [String]?
+
+        public var assetCount: Int64?
+
         public var business: String?
 
         public var categoryClassId: String?
@@ -11320,6 +11513,8 @@ public class DescribeOutgoingDomainResponseBody : Tea.TeaModel {
         public var organization: String?
 
         public var outBytes: Int64?
+
+        public var privateAssetCount: Int64?
 
         public var ruleId: String?
 
@@ -11364,6 +11559,12 @@ public class DescribeOutgoingDomainResponseBody : Tea.TeaModel {
             if self.addressGroupUUID != nil {
                 map["AddressGroupUUID"] = self.addressGroupUUID!
             }
+            if self.applicationNameList != nil {
+                map["ApplicationNameList"] = self.applicationNameList!
+            }
+            if self.assetCount != nil {
+                map["AssetCount"] = self.assetCount!
+            }
             if self.business != nil {
                 map["Business"] = self.business!
             }
@@ -11399,6 +11600,9 @@ public class DescribeOutgoingDomainResponseBody : Tea.TeaModel {
             }
             if self.outBytes != nil {
                 map["OutBytes"] = self.outBytes!
+            }
+            if self.privateAssetCount != nil {
+                map["PrivateAssetCount"] = self.privateAssetCount!
             }
             if self.ruleId != nil {
                 map["RuleId"] = self.ruleId!
@@ -11444,6 +11648,12 @@ public class DescribeOutgoingDomainResponseBody : Tea.TeaModel {
             if dict.keys.contains("AddressGroupUUID") {
                 self.addressGroupUUID = dict["AddressGroupUUID"] as! String
             }
+            if dict.keys.contains("ApplicationNameList") {
+                self.applicationNameList = dict["ApplicationNameList"] as! [String]
+            }
+            if dict.keys.contains("AssetCount") {
+                self.assetCount = dict["AssetCount"] as! Int64
+            }
             if dict.keys.contains("Business") {
                 self.business = dict["Business"] as! String
             }
@@ -11479,6 +11689,9 @@ public class DescribeOutgoingDomainResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("OutBytes") {
                 self.outBytes = dict["OutBytes"] as! Int64
+            }
+            if dict.keys.contains("PrivateAssetCount") {
+                self.privateAssetCount = dict["PrivateAssetCount"] as! Int64
             }
             if dict.keys.contains("RuleId") {
                 self.ruleId = dict["RuleId"] as! String
@@ -13448,6 +13661,12 @@ public class DescribeRiskEventPayloadResponseBody : Tea.TeaModel {
 
     public var dstVpcId: String?
 
+    public var hitContentType: Int32?
+
+    public var hitTo: Int32?
+
+    public var parsedContent: String?
+
     public var payload: String?
 
     public var payloadLen: Int32?
@@ -13489,6 +13708,15 @@ public class DescribeRiskEventPayloadResponseBody : Tea.TeaModel {
         if self.dstVpcId != nil {
             map["DstVpcId"] = self.dstVpcId!
         }
+        if self.hitContentType != nil {
+            map["HitContentType"] = self.hitContentType!
+        }
+        if self.hitTo != nil {
+            map["HitTo"] = self.hitTo!
+        }
+        if self.parsedContent != nil {
+            map["ParsedContent"] = self.parsedContent!
+        }
         if self.payload != nil {
             map["Payload"] = self.payload!
         }
@@ -13528,6 +13756,15 @@ public class DescribeRiskEventPayloadResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("DstVpcId") {
             self.dstVpcId = dict["DstVpcId"] as! String
+        }
+        if dict.keys.contains("HitContentType") {
+            self.hitContentType = dict["HitContentType"] as! Int32
+        }
+        if dict.keys.contains("HitTo") {
+            self.hitTo = dict["HitTo"] as! Int32
+        }
+        if dict.keys.contains("ParsedContent") {
+            self.parsedContent = dict["ParsedContent"] as! String
         }
         if dict.keys.contains("Payload") {
             self.payload = dict["Payload"] as! String
@@ -14826,6 +15063,8 @@ public class DescribeTrFirewallsV2ListResponseBody : Tea.TeaModel {
         public class ProtectedResource : Tea.TeaModel {
             public var count: Int32?
 
+            public var ecrList: [String]?
+
             public var peerTrList: [String]?
 
             public var vbrList: [String]?
@@ -14851,6 +15090,9 @@ public class DescribeTrFirewallsV2ListResponseBody : Tea.TeaModel {
                 if self.count != nil {
                     map["Count"] = self.count!
                 }
+                if self.ecrList != nil {
+                    map["EcrList"] = self.ecrList!
+                }
                 if self.peerTrList != nil {
                     map["PeerTrList"] = self.peerTrList!
                 }
@@ -14869,6 +15111,9 @@ public class DescribeTrFirewallsV2ListResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Count") {
                     self.count = dict["Count"] as! Int32
+                }
+                if dict.keys.contains("EcrList") {
+                    self.ecrList = dict["EcrList"] as! [String]
                 }
                 if dict.keys.contains("PeerTrList") {
                     self.peerTrList = dict["PeerTrList"] as! [String]
@@ -14887,6 +15132,8 @@ public class DescribeTrFirewallsV2ListResponseBody : Tea.TeaModel {
         public class UnprotectedResource : Tea.TeaModel {
             public var count: Int32?
 
+            public var ecrList: [String]?
+
             public var peerTrList: [String]?
 
             public var vbrList: [String]?
@@ -14912,6 +15159,9 @@ public class DescribeTrFirewallsV2ListResponseBody : Tea.TeaModel {
                 if self.count != nil {
                     map["Count"] = self.count!
                 }
+                if self.ecrList != nil {
+                    map["EcrList"] = self.ecrList!
+                }
                 if self.peerTrList != nil {
                     map["PeerTrList"] = self.peerTrList!
                 }
@@ -14931,6 +15181,9 @@ public class DescribeTrFirewallsV2ListResponseBody : Tea.TeaModel {
                 if dict.keys.contains("Count") {
                     self.count = dict["Count"] as! Int32
                 }
+                if dict.keys.contains("EcrList") {
+                    self.ecrList = dict["EcrList"] as! [String]
+                }
                 if dict.keys.contains("PeerTrList") {
                     self.peerTrList = dict["PeerTrList"] as! [String]
                 }
@@ -14948,6 +15201,8 @@ public class DescribeTrFirewallsV2ListResponseBody : Tea.TeaModel {
         public var cenId: String?
 
         public var cenName: String?
+
+        public var cloudFirewallVpcOrderType: String?
 
         public var firewallId: String?
 
@@ -14998,6 +15253,9 @@ public class DescribeTrFirewallsV2ListResponseBody : Tea.TeaModel {
             if self.cenName != nil {
                 map["CenName"] = self.cenName!
             }
+            if self.cloudFirewallVpcOrderType != nil {
+                map["CloudFirewallVpcOrderType"] = self.cloudFirewallVpcOrderType!
+            }
             if self.firewallId != nil {
                 map["FirewallId"] = self.firewallId!
             }
@@ -15046,6 +15304,9 @@ public class DescribeTrFirewallsV2ListResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("CenName") {
                 self.cenName = dict["CenName"] as! String
+            }
+            if dict.keys.contains("CloudFirewallVpcOrderType") {
+                self.cloudFirewallVpcOrderType = dict["CloudFirewallVpcOrderType"] as! String
             }
             if dict.keys.contains("FirewallId") {
                 self.firewallId = dict["FirewallId"] as! String
