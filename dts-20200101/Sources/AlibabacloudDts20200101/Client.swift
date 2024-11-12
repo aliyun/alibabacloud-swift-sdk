@@ -127,6 +127,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.destClientPassword)) {
             query["DestClientPassword"] = request.destClientPassword ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.destPrimaryVswId)) {
+            query["DestPrimaryVswId"] = request.destPrimaryVswId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.destSecondaryVswId)) {
+            query["DestSecondaryVswId"] = request.destSecondaryVswId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.destinationEndpointDataBaseName)) {
             query["DestinationEndpointDataBaseName"] = request.destinationEndpointDataBaseName ?? "";
         }
@@ -258,6 +264,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.srcClientPassword)) {
             query["SrcClientPassword"] = request.srcClientPassword ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.srcPrimaryVswId)) {
+            query["SrcPrimaryVswId"] = request.srcPrimaryVswId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.srcSecondaryVswId)) {
+            query["SrcSecondaryVswId"] = request.srcSecondaryVswId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.structureInitialization)) {
             query["StructureInitialization"] = request.structureInitialization!;
@@ -4739,6 +4751,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyDtsJobPasswordWithOptions(_ request: ModifyDtsJobPasswordRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDtsJobPasswordResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dtsInstanceId)) {
+            query["DtsInstanceId"] = request.dtsInstanceId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dtsJobId)) {
             query["DtsJobId"] = request.dtsJobId ?? "";
         }
@@ -4753,6 +4768,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.synchronizationDirection)) {
+            query["SynchronizationDirection"] = request.synchronizationDirection ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.userName)) {
             query["UserName"] = request.userName ?? "";
@@ -6229,6 +6247,21 @@ open class Client : AlibabacloudOpenApi.Client {
     public func whiteIpListWithOptions(_ request: WhiteIpListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> WhiteIpListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.destAliyunUid)) {
+            query["DestAliyunUid"] = request.destAliyunUid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.destPrimaryVswId)) {
+            query["DestPrimaryVswId"] = request.destPrimaryVswId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.destRoleName)) {
+            query["DestRoleName"] = request.destRoleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.destSecondaryVswId)) {
+            query["DestSecondaryVswId"] = request.destSecondaryVswId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.destVpcId)) {
+            query["DestVpcId"] = request.destVpcId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.destinationRegion)) {
             query["DestinationRegion"] = request.destinationRegion ?? "";
         }
@@ -6240,6 +6273,21 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.srcAliyunUid)) {
+            query["SrcAliyunUid"] = request.srcAliyunUid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.srcPrimaryVswId)) {
+            query["SrcPrimaryVswId"] = request.srcPrimaryVswId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.srcRoleName)) {
+            query["SrcRoleName"] = request.srcRoleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.srcSecondaryVswId)) {
+            query["SrcSecondaryVswId"] = request.srcSecondaryVswId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.srcVpcId)) {
+            query["SrcVpcId"] = request.srcVpcId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.type)) {
             query["Type"] = request.type ?? "";

@@ -38,6 +38,10 @@ public class ConfigureDtsJobRequest : Tea.TeaModel {
 
     public var destClientPassword: String?
 
+    public var destPrimaryVswId: String?
+
+    public var destSecondaryVswId: String?
+
     public var destinationEndpointDataBaseName: String?
 
     public var destinationEndpointEngineName: String?
@@ -128,6 +132,10 @@ public class ConfigureDtsJobRequest : Tea.TeaModel {
 
     public var srcClientPassword: String?
 
+    public var srcPrimaryVswId: String?
+
+    public var srcSecondaryVswId: String?
+
     public var structureInitialization: Bool?
 
     public var synchronizationDirection: String?
@@ -187,6 +195,12 @@ public class ConfigureDtsJobRequest : Tea.TeaModel {
         }
         if self.destClientPassword != nil {
             map["DestClientPassword"] = self.destClientPassword!
+        }
+        if self.destPrimaryVswId != nil {
+            map["DestPrimaryVswId"] = self.destPrimaryVswId!
+        }
+        if self.destSecondaryVswId != nil {
+            map["DestSecondaryVswId"] = self.destSecondaryVswId!
         }
         if self.destinationEndpointDataBaseName != nil {
             map["DestinationEndpointDataBaseName"] = self.destinationEndpointDataBaseName!
@@ -323,6 +337,12 @@ public class ConfigureDtsJobRequest : Tea.TeaModel {
         if self.srcClientPassword != nil {
             map["SrcClientPassword"] = self.srcClientPassword!
         }
+        if self.srcPrimaryVswId != nil {
+            map["SrcPrimaryVswId"] = self.srcPrimaryVswId!
+        }
+        if self.srcSecondaryVswId != nil {
+            map["SrcSecondaryVswId"] = self.srcSecondaryVswId!
+        }
         if self.structureInitialization != nil {
             map["StructureInitialization"] = self.structureInitialization!
         }
@@ -374,6 +394,12 @@ public class ConfigureDtsJobRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DestClientPassword") {
             self.destClientPassword = dict["DestClientPassword"] as! String
+        }
+        if dict.keys.contains("DestPrimaryVswId") {
+            self.destPrimaryVswId = dict["DestPrimaryVswId"] as! String
+        }
+        if dict.keys.contains("DestSecondaryVswId") {
+            self.destSecondaryVswId = dict["DestSecondaryVswId"] as! String
         }
         if dict.keys.contains("DestinationEndpointDataBaseName") {
             self.destinationEndpointDataBaseName = dict["DestinationEndpointDataBaseName"] as! String
@@ -510,6 +536,12 @@ public class ConfigureDtsJobRequest : Tea.TeaModel {
         if dict.keys.contains("SrcClientPassword") {
             self.srcClientPassword = dict["SrcClientPassword"] as! String
         }
+        if dict.keys.contains("SrcPrimaryVswId") {
+            self.srcPrimaryVswId = dict["SrcPrimaryVswId"] as! String
+        }
+        if dict.keys.contains("SrcSecondaryVswId") {
+            self.srcSecondaryVswId = dict["SrcSecondaryVswId"] as! String
+        }
         if dict.keys.contains("StructureInitialization") {
             self.structureInitialization = dict["StructureInitialization"] as! Bool
         }
@@ -547,6 +579,10 @@ public class ConfigureDtsJobAdvanceRequest : Tea.TeaModel {
     public var destClientKeyOssUrl: String?
 
     public var destClientPassword: String?
+
+    public var destPrimaryVswId: String?
+
+    public var destSecondaryVswId: String?
 
     public var destinationEndpointDataBaseName: String?
 
@@ -638,6 +674,10 @@ public class ConfigureDtsJobAdvanceRequest : Tea.TeaModel {
 
     public var srcClientPassword: String?
 
+    public var srcPrimaryVswId: String?
+
+    public var srcSecondaryVswId: String?
+
     public var structureInitialization: Bool?
 
     public var synchronizationDirection: String?
@@ -697,6 +737,12 @@ public class ConfigureDtsJobAdvanceRequest : Tea.TeaModel {
         }
         if self.destClientPassword != nil {
             map["DestClientPassword"] = self.destClientPassword!
+        }
+        if self.destPrimaryVswId != nil {
+            map["DestPrimaryVswId"] = self.destPrimaryVswId!
+        }
+        if self.destSecondaryVswId != nil {
+            map["DestSecondaryVswId"] = self.destSecondaryVswId!
         }
         if self.destinationEndpointDataBaseName != nil {
             map["DestinationEndpointDataBaseName"] = self.destinationEndpointDataBaseName!
@@ -833,6 +879,12 @@ public class ConfigureDtsJobAdvanceRequest : Tea.TeaModel {
         if self.srcClientPassword != nil {
             map["SrcClientPassword"] = self.srcClientPassword!
         }
+        if self.srcPrimaryVswId != nil {
+            map["SrcPrimaryVswId"] = self.srcPrimaryVswId!
+        }
+        if self.srcSecondaryVswId != nil {
+            map["SrcSecondaryVswId"] = self.srcSecondaryVswId!
+        }
         if self.structureInitialization != nil {
             map["StructureInitialization"] = self.structureInitialization!
         }
@@ -884,6 +936,12 @@ public class ConfigureDtsJobAdvanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DestClientPassword") {
             self.destClientPassword = dict["DestClientPassword"] as! String
+        }
+        if dict.keys.contains("DestPrimaryVswId") {
+            self.destPrimaryVswId = dict["DestPrimaryVswId"] as! String
+        }
+        if dict.keys.contains("DestSecondaryVswId") {
+            self.destSecondaryVswId = dict["DestSecondaryVswId"] as! String
         }
         if dict.keys.contains("DestinationEndpointDataBaseName") {
             self.destinationEndpointDataBaseName = dict["DestinationEndpointDataBaseName"] as! String
@@ -1019,6 +1077,12 @@ public class ConfigureDtsJobAdvanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SrcClientPassword") {
             self.srcClientPassword = dict["SrcClientPassword"] as! String
+        }
+        if dict.keys.contains("SrcPrimaryVswId") {
+            self.srcPrimaryVswId = dict["SrcPrimaryVswId"] as! String
+        }
+        if dict.keys.contains("SrcSecondaryVswId") {
+            self.srcSecondaryVswId = dict["SrcSecondaryVswId"] as! String
         }
         if dict.keys.contains("StructureInitialization") {
             self.structureInitialization = dict["StructureInitialization"] as! Bool
@@ -39730,6 +39794,8 @@ public class ModifyDtsJobNameResponse : Tea.TeaModel {
 }
 
 public class ModifyDtsJobPasswordRequest : Tea.TeaModel {
+    public var dtsInstanceId: String?
+
     public var dtsJobId: String?
 
     public var endpoint: String?
@@ -39739,6 +39805,8 @@ public class ModifyDtsJobPasswordRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var resourceGroupId: String?
+
+    public var synchronizationDirection: String?
 
     public var userName: String?
 
@@ -39758,6 +39826,9 @@ public class ModifyDtsJobPasswordRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dtsInstanceId != nil {
+            map["DtsInstanceId"] = self.dtsInstanceId!
+        }
         if self.dtsJobId != nil {
             map["DtsJobId"] = self.dtsJobId!
         }
@@ -39773,6 +39844,9 @@ public class ModifyDtsJobPasswordRequest : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
+        if self.synchronizationDirection != nil {
+            map["SynchronizationDirection"] = self.synchronizationDirection!
+        }
         if self.userName != nil {
             map["UserName"] = self.userName!
         }
@@ -39783,6 +39857,9 @@ public class ModifyDtsJobPasswordRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DtsInstanceId") {
+            self.dtsInstanceId = dict["DtsInstanceId"] as! String
+        }
         if dict.keys.contains("DtsJobId") {
             self.dtsJobId = dict["DtsJobId"] as! String
         }
@@ -39797,6 +39874,9 @@ public class ModifyDtsJobPasswordRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceGroupId") {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("SynchronizationDirection") {
+            self.synchronizationDirection = dict["SynchronizationDirection"] as! String
         }
         if dict.keys.contains("UserName") {
             self.userName = dict["UserName"] as! String
@@ -46137,6 +46217,16 @@ public class UpgradeTwoWayResponse : Tea.TeaModel {
 }
 
 public class WhiteIpListRequest : Tea.TeaModel {
+    public var destAliyunUid: String?
+
+    public var destPrimaryVswId: String?
+
+    public var destRoleName: String?
+
+    public var destSecondaryVswId: String?
+
+    public var destVpcId: String?
+
     public var destinationRegion: String?
 
     public var region: String?
@@ -46144,6 +46234,16 @@ public class WhiteIpListRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var resourceGroupId: String?
+
+    public var srcAliyunUid: String?
+
+    public var srcPrimaryVswId: String?
+
+    public var srcRoleName: String?
+
+    public var srcSecondaryVswId: String?
+
+    public var srcVpcId: String?
 
     public var type: String?
 
@@ -46163,6 +46263,21 @@ public class WhiteIpListRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.destAliyunUid != nil {
+            map["DestAliyunUid"] = self.destAliyunUid!
+        }
+        if self.destPrimaryVswId != nil {
+            map["DestPrimaryVswId"] = self.destPrimaryVswId!
+        }
+        if self.destRoleName != nil {
+            map["DestRoleName"] = self.destRoleName!
+        }
+        if self.destSecondaryVswId != nil {
+            map["DestSecondaryVswId"] = self.destSecondaryVswId!
+        }
+        if self.destVpcId != nil {
+            map["DestVpcId"] = self.destVpcId!
+        }
         if self.destinationRegion != nil {
             map["DestinationRegion"] = self.destinationRegion!
         }
@@ -46175,6 +46290,21 @@ public class WhiteIpListRequest : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
+        if self.srcAliyunUid != nil {
+            map["SrcAliyunUid"] = self.srcAliyunUid!
+        }
+        if self.srcPrimaryVswId != nil {
+            map["SrcPrimaryVswId"] = self.srcPrimaryVswId!
+        }
+        if self.srcRoleName != nil {
+            map["SrcRoleName"] = self.srcRoleName!
+        }
+        if self.srcSecondaryVswId != nil {
+            map["SrcSecondaryVswId"] = self.srcSecondaryVswId!
+        }
+        if self.srcVpcId != nil {
+            map["SrcVpcId"] = self.srcVpcId!
+        }
         if self.type != nil {
             map["Type"] = self.type!
         }
@@ -46185,6 +46315,21 @@ public class WhiteIpListRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DestAliyunUid") {
+            self.destAliyunUid = dict["DestAliyunUid"] as! String
+        }
+        if dict.keys.contains("DestPrimaryVswId") {
+            self.destPrimaryVswId = dict["DestPrimaryVswId"] as! String
+        }
+        if dict.keys.contains("DestRoleName") {
+            self.destRoleName = dict["DestRoleName"] as! String
+        }
+        if dict.keys.contains("DestSecondaryVswId") {
+            self.destSecondaryVswId = dict["DestSecondaryVswId"] as! String
+        }
+        if dict.keys.contains("DestVpcId") {
+            self.destVpcId = dict["DestVpcId"] as! String
+        }
         if dict.keys.contains("DestinationRegion") {
             self.destinationRegion = dict["DestinationRegion"] as! String
         }
@@ -46197,6 +46342,21 @@ public class WhiteIpListRequest : Tea.TeaModel {
         if dict.keys.contains("ResourceGroupId") {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
+        if dict.keys.contains("SrcAliyunUid") {
+            self.srcAliyunUid = dict["SrcAliyunUid"] as! String
+        }
+        if dict.keys.contains("SrcPrimaryVswId") {
+            self.srcPrimaryVswId = dict["SrcPrimaryVswId"] as! String
+        }
+        if dict.keys.contains("SrcRoleName") {
+            self.srcRoleName = dict["SrcRoleName"] as! String
+        }
+        if dict.keys.contains("SrcSecondaryVswId") {
+            self.srcSecondaryVswId = dict["SrcSecondaryVswId"] as! String
+        }
+        if dict.keys.contains("SrcVpcId") {
+            self.srcVpcId = dict["SrcVpcId"] as! String
+        }
         if dict.keys.contains("Type") {
             self.type = dict["Type"] as! String
         }
@@ -46207,6 +46367,8 @@ public class WhiteIpListRequest : Tea.TeaModel {
 }
 
 public class WhiteIpListResponseBody : Tea.TeaModel {
+    public var destIpList: String?
+
     public var dynamicCode: String?
 
     public var dynamicMessage: String?
@@ -46220,6 +46382,8 @@ public class WhiteIpListResponseBody : Tea.TeaModel {
     public var ipList: String?
 
     public var requestId: String?
+
+    public var srcIpList: String?
 
     public var success: Bool?
 
@@ -46237,6 +46401,9 @@ public class WhiteIpListResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.destIpList != nil {
+            map["DestIpList"] = self.destIpList!
+        }
         if self.dynamicCode != nil {
             map["DynamicCode"] = self.dynamicCode!
         }
@@ -46258,6 +46425,9 @@ public class WhiteIpListResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.srcIpList != nil {
+            map["SrcIpList"] = self.srcIpList!
+        }
         if self.success != nil {
             map["Success"] = self.success!
         }
@@ -46265,6 +46435,9 @@ public class WhiteIpListResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DestIpList") {
+            self.destIpList = dict["DestIpList"] as! String
+        }
         if dict.keys.contains("DynamicCode") {
             self.dynamicCode = dict["DynamicCode"] as! String
         }
@@ -46285,6 +46458,9 @@ public class WhiteIpListResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SrcIpList") {
+            self.srcIpList = dict["SrcIpList"] as! String
         }
         if dict.keys.contains("Success") {
             self.success = dict["Success"] as! Bool
