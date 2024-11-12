@@ -18586,6 +18586,8 @@ public class DescribePatternTypesRequest : Tea.TeaModel {
 
     public var vSwitchId: [String]?
 
+    public var zoneId: [String]?
+
     public override init() {
         super.init()
     }
@@ -18687,6 +18689,9 @@ public class DescribePatternTypesRequest : Tea.TeaModel {
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
         return map
     }
 
@@ -18777,6 +18782,9 @@ public class DescribePatternTypesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("VSwitchId") {
             self.vSwitchId = dict["VSwitchId"] as! [String]
+        }
+        if dict.keys.contains("ZoneId") {
+            self.zoneId = dict["ZoneId"] as! [String]
         }
     }
 }
