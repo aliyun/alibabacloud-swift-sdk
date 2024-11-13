@@ -433,7 +433,11 @@ public class ChannelProperties : Tea.TeaModel {
 
     public var mainActivity: String?
 
+    public var oppoCategory: String?
+
     public var oppoChannelId: String?
+
+    public var oppoNotifyLevel: String?
 
     public var useHuaweiMessage: String?
 
@@ -477,8 +481,14 @@ public class ChannelProperties : Tea.TeaModel {
         if self.mainActivity != nil {
             map["mainActivity"] = self.mainActivity!
         }
+        if self.oppoCategory != nil {
+            map["oppoCategory"] = self.oppoCategory!
+        }
         if self.oppoChannelId != nil {
             map["oppoChannelId"] = self.oppoChannelId!
+        }
+        if self.oppoNotifyLevel != nil {
+            map["oppoNotifyLevel"] = self.oppoNotifyLevel!
         }
         if self.useHuaweiMessage != nil {
             map["useHuaweiMessage"] = self.useHuaweiMessage!
@@ -517,8 +527,14 @@ public class ChannelProperties : Tea.TeaModel {
         if dict.keys.contains("mainActivity") {
             self.mainActivity = dict["mainActivity"] as! String
         }
+        if dict.keys.contains("oppoCategory") {
+            self.oppoCategory = dict["oppoCategory"] as! String
+        }
         if dict.keys.contains("oppoChannelId") {
             self.oppoChannelId = dict["oppoChannelId"] as! String
+        }
+        if dict.keys.contains("oppoNotifyLevel") {
+            self.oppoNotifyLevel = dict["oppoNotifyLevel"] as! String
         }
         if dict.keys.contains("useHuaweiMessage") {
             self.useHuaweiMessage = dict["useHuaweiMessage"] as! String
