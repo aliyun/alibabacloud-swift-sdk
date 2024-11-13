@@ -3098,6 +3098,99 @@ public class DescribeDdosOriginInstanceBillResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class MonthlySummaryList : Tea.TeaModel {
+        public var enableDays: Int32?
+
+        public var flowCn: Int64?
+
+        public var flowIntl: Int64?
+
+        public var ipCountCn: Int32?
+
+        public var ipCountIntl: Int32?
+
+        public var memberUid: String?
+
+        public var standardAssetsFlowCn: Int64?
+
+        public var standardAssetsFlowIntl: Int64?
+
+        public var uid: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enableDays != nil {
+                map["EnableDays"] = self.enableDays!
+            }
+            if self.flowCn != nil {
+                map["FlowCn"] = self.flowCn!
+            }
+            if self.flowIntl != nil {
+                map["FlowIntl"] = self.flowIntl!
+            }
+            if self.ipCountCn != nil {
+                map["IpCountCn"] = self.ipCountCn!
+            }
+            if self.ipCountIntl != nil {
+                map["IpCountIntl"] = self.ipCountIntl!
+            }
+            if self.memberUid != nil {
+                map["MemberUid"] = self.memberUid!
+            }
+            if self.standardAssetsFlowCn != nil {
+                map["StandardAssetsFlowCn"] = self.standardAssetsFlowCn!
+            }
+            if self.standardAssetsFlowIntl != nil {
+                map["StandardAssetsFlowIntl"] = self.standardAssetsFlowIntl!
+            }
+            if self.uid != nil {
+                map["Uid"] = self.uid!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EnableDays") {
+                self.enableDays = dict["EnableDays"] as! Int32
+            }
+            if dict.keys.contains("FlowCn") {
+                self.flowCn = dict["FlowCn"] as! Int64
+            }
+            if dict.keys.contains("FlowIntl") {
+                self.flowIntl = dict["FlowIntl"] as! Int64
+            }
+            if dict.keys.contains("IpCountCn") {
+                self.ipCountCn = dict["IpCountCn"] as! Int32
+            }
+            if dict.keys.contains("IpCountIntl") {
+                self.ipCountIntl = dict["IpCountIntl"] as! Int32
+            }
+            if dict.keys.contains("MemberUid") {
+                self.memberUid = dict["MemberUid"] as! String
+            }
+            if dict.keys.contains("StandardAssetsFlowCn") {
+                self.standardAssetsFlowCn = dict["StandardAssetsFlowCn"] as! Int64
+            }
+            if dict.keys.contains("StandardAssetsFlowIntl") {
+                self.standardAssetsFlowIntl = dict["StandardAssetsFlowIntl"] as! Int64
+            }
+            if dict.keys.contains("Uid") {
+                self.uid = dict["Uid"] as! String
+            }
+        }
+    }
     public class StandardAssetsFlowList : Tea.TeaModel {
         public var memberFlow: String?
 
@@ -3167,6 +3260,8 @@ public class DescribeDdosOriginInstanceBillResponseBody : Tea.TeaModel {
 
     public var ipInfo: String?
 
+    public var monthlySummaryList: [DescribeDdosOriginInstanceBillResponseBody.MonthlySummaryList]?
+
     public var requestId: String?
 
     public var standardAssetsFlowList: [DescribeDdosOriginInstanceBillResponseBody.StandardAssetsFlowList]?
@@ -3228,6 +3323,13 @@ public class DescribeDdosOriginInstanceBillResponseBody : Tea.TeaModel {
         }
         if self.ipInfo != nil {
             map["IpInfo"] = self.ipInfo!
+        }
+        if self.monthlySummaryList != nil {
+            var tmp : [Any] = []
+            for k in self.monthlySummaryList! {
+                tmp.append(k.toMap())
+            }
+            map["MonthlySummaryList"] = tmp
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -3300,6 +3402,17 @@ public class DescribeDdosOriginInstanceBillResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("IpInfo") {
             self.ipInfo = dict["IpInfo"] as! String
+        }
+        if dict.keys.contains("MonthlySummaryList") {
+            var tmp : [DescribeDdosOriginInstanceBillResponseBody.MonthlySummaryList] = []
+            for v in dict["MonthlySummaryList"] as! [Any] {
+                var model = DescribeDdosOriginInstanceBillResponseBody.MonthlySummaryList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.monthlySummaryList = tmp
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
