@@ -2537,9 +2537,48 @@ public class GetJobResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class Tags : Tea.TeaModel {
+                public var tagKey: String?
+
+                public var tagValue: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.tagKey != nil {
+                        map["TagKey"] = self.tagKey!
+                    }
+                    if self.tagValue != nil {
+                        map["TagValue"] = self.tagValue!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("TagKey") {
+                        self.tagKey = dict["TagKey"] as! String
+                    }
+                    if dict.keys.contains("TagValue") {
+                        self.tagValue = dict["TagValue"] as! String
+                    }
+                }
+            }
             public var allocationSpec: String?
 
             public var network: GetJobResponseBody.JobInfo.DeploymentPolicy.Network?
+
+            public var tags: [GetJobResponseBody.JobInfo.DeploymentPolicy.Tags]?
 
             public override init() {
                 super.init()
@@ -2562,6 +2601,13 @@ public class GetJobResponseBody : Tea.TeaModel {
                 if self.network != nil {
                     map["Network"] = self.network?.toMap()
                 }
+                if self.tags != nil {
+                    var tmp : [Any] = []
+                    for k in self.tags! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Tags"] = tmp
+                }
                 return map
             }
 
@@ -2573,6 +2619,17 @@ public class GetJobResponseBody : Tea.TeaModel {
                     var model = GetJobResponseBody.JobInfo.DeploymentPolicy.Network()
                     model.fromMap(dict["Network"] as! [String: Any])
                     self.network = model
+                }
+                if dict.keys.contains("Tags") {
+                    var tmp : [GetJobResponseBody.JobInfo.DeploymentPolicy.Tags] = []
+                    for v in dict["Tags"] as! [Any] {
+                        var model = GetJobResponseBody.JobInfo.DeploymentPolicy.Tags()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.tags = tmp
                 }
             }
         }
