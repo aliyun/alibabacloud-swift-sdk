@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudPush20160801` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/push-20160801" "1.0.9"
+github "alibabacloud-sdk-swift/push-20160801" "1.0.10"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudPush20160801` into your Xcode project using [Swift Pac
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/push-20160801.git", from: "1.0.9")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/push-20160801.git", from: "1.0.10")
 ]
 ```
 

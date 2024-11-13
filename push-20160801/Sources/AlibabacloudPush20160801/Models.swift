@@ -1713,6 +1713,10 @@ public class MassPushRequest : Tea.TeaModel {
 
         public var androidMessageHuaweiUrgency: String?
 
+        public var androidMessageOppoCategory: String?
+
+        public var androidMessageOppoNotifyLevel: Int32?
+
         public var androidMessageVivoCategory: String?
 
         public var androidMusic: String?
@@ -1921,6 +1925,12 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if self.androidMessageHuaweiUrgency != nil {
                 map["AndroidMessageHuaweiUrgency"] = self.androidMessageHuaweiUrgency!
+            }
+            if self.androidMessageOppoCategory != nil {
+                map["AndroidMessageOppoCategory"] = self.androidMessageOppoCategory!
+            }
+            if self.androidMessageOppoNotifyLevel != nil {
+                map["AndroidMessageOppoNotifyLevel"] = self.androidMessageOppoNotifyLevel!
             }
             if self.androidMessageVivoCategory != nil {
                 map["AndroidMessageVivoCategory"] = self.androidMessageVivoCategory!
@@ -2195,6 +2205,12 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if dict.keys.contains("AndroidMessageHuaweiUrgency") {
                 self.androidMessageHuaweiUrgency = dict["AndroidMessageHuaweiUrgency"] as! String
+            }
+            if dict.keys.contains("AndroidMessageOppoCategory") {
+                self.androidMessageOppoCategory = dict["AndroidMessageOppoCategory"] as! String
+            }
+            if dict.keys.contains("AndroidMessageOppoNotifyLevel") {
+                self.androidMessageOppoNotifyLevel = dict["AndroidMessageOppoNotifyLevel"] as! Int32
             }
             if dict.keys.contains("AndroidMessageVivoCategory") {
                 self.androidMessageVivoCategory = dict["AndroidMessageVivoCategory"] as! String
@@ -2622,6 +2638,10 @@ public class PushRequest : Tea.TeaModel {
 
     public var androidMessageHuaweiUrgency: String?
 
+    public var androidMessageOppoCategory: String?
+
+    public var androidMessageOppoNotifyLevel: Int32?
+
     public var androidMessageVivoCategory: String?
 
     public var androidMusic: String?
@@ -2842,6 +2862,12 @@ public class PushRequest : Tea.TeaModel {
         }
         if self.androidMessageHuaweiUrgency != nil {
             map["AndroidMessageHuaweiUrgency"] = self.androidMessageHuaweiUrgency!
+        }
+        if self.androidMessageOppoCategory != nil {
+            map["AndroidMessageOppoCategory"] = self.androidMessageOppoCategory!
+        }
+        if self.androidMessageOppoNotifyLevel != nil {
+            map["AndroidMessageOppoNotifyLevel"] = self.androidMessageOppoNotifyLevel!
         }
         if self.androidMessageVivoCategory != nil {
             map["AndroidMessageVivoCategory"] = self.androidMessageVivoCategory!
@@ -3134,6 +3160,12 @@ public class PushRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AndroidMessageHuaweiUrgency") {
             self.androidMessageHuaweiUrgency = dict["AndroidMessageHuaweiUrgency"] as! String
+        }
+        if dict.keys.contains("AndroidMessageOppoCategory") {
+            self.androidMessageOppoCategory = dict["AndroidMessageOppoCategory"] as! String
+        }
+        if dict.keys.contains("AndroidMessageOppoNotifyLevel") {
+            self.androidMessageOppoNotifyLevel = dict["AndroidMessageOppoNotifyLevel"] as! Int32
         }
         if dict.keys.contains("AndroidMessageVivoCategory") {
             self.androidMessageVivoCategory = dict["AndroidMessageVivoCategory"] as! String
