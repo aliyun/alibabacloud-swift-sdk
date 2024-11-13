@@ -5231,6 +5231,8 @@ public class DescribeAssetListRequest : Tea.TeaModel {
 
     public var newResourceTag: String?
 
+    public var outStatistic: String?
+
     public var pageSize: String?
 
     public var regionNo: String?
@@ -5238,6 +5240,8 @@ public class DescribeAssetListRequest : Tea.TeaModel {
     public var resourceType: String?
 
     public var searchItem: String?
+
+    public var sensitiveStatus: String?
 
     public var sgStatus: String?
 
@@ -5276,6 +5280,9 @@ public class DescribeAssetListRequest : Tea.TeaModel {
         if self.newResourceTag != nil {
             map["NewResourceTag"] = self.newResourceTag!
         }
+        if self.outStatistic != nil {
+            map["OutStatistic"] = self.outStatistic!
+        }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
@@ -5287,6 +5294,9 @@ public class DescribeAssetListRequest : Tea.TeaModel {
         }
         if self.searchItem != nil {
             map["SearchItem"] = self.searchItem!
+        }
+        if self.sensitiveStatus != nil {
+            map["SensitiveStatus"] = self.sensitiveStatus!
         }
         if self.sgStatus != nil {
             map["SgStatus"] = self.sgStatus!
@@ -5319,6 +5329,9 @@ public class DescribeAssetListRequest : Tea.TeaModel {
         if dict.keys.contains("NewResourceTag") {
             self.newResourceTag = dict["NewResourceTag"] as! String
         }
+        if dict.keys.contains("OutStatistic") {
+            self.outStatistic = dict["OutStatistic"] as! String
+        }
         if dict.keys.contains("PageSize") {
             self.pageSize = dict["PageSize"] as! String
         }
@@ -5330,6 +5343,9 @@ public class DescribeAssetListRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SearchItem") {
             self.searchItem = dict["SearchItem"] as! String
+        }
+        if dict.keys.contains("SensitiveStatus") {
+            self.sensitiveStatus = dict["SensitiveStatus"] as! String
         }
         if dict.keys.contains("SgStatus") {
             self.sgStatus = dict["SgStatus"] as! String
@@ -5362,6 +5378,8 @@ public class DescribeAssetListResponseBody : Tea.TeaModel {
 
         public var ipVersion: Int32?
 
+        public var last7DayOutTrafficBytes: Int64?
+
         public var memberUid: Int64?
 
         public var name: String?
@@ -5381,6 +5399,8 @@ public class DescribeAssetListResponseBody : Tea.TeaModel {
         public var resourceType: String?
 
         public var riskLevel: String?
+
+        public var sensitiveDataStatus: String?
 
         public var sgStatus: String?
 
@@ -5425,6 +5445,9 @@ public class DescribeAssetListResponseBody : Tea.TeaModel {
             if self.ipVersion != nil {
                 map["IpVersion"] = self.ipVersion!
             }
+            if self.last7DayOutTrafficBytes != nil {
+                map["Last7DayOutTrafficBytes"] = self.last7DayOutTrafficBytes!
+            }
             if self.memberUid != nil {
                 map["MemberUid"] = self.memberUid!
             }
@@ -5454,6 +5477,9 @@ public class DescribeAssetListResponseBody : Tea.TeaModel {
             }
             if self.riskLevel != nil {
                 map["RiskLevel"] = self.riskLevel!
+            }
+            if self.sensitiveDataStatus != nil {
+                map["SensitiveDataStatus"] = self.sensitiveDataStatus!
             }
             if self.sgStatus != nil {
                 map["SgStatus"] = self.sgStatus!
@@ -5492,6 +5518,9 @@ public class DescribeAssetListResponseBody : Tea.TeaModel {
             if dict.keys.contains("IpVersion") {
                 self.ipVersion = dict["IpVersion"] as! Int32
             }
+            if dict.keys.contains("Last7DayOutTrafficBytes") {
+                self.last7DayOutTrafficBytes = dict["Last7DayOutTrafficBytes"] as! Int64
+            }
             if dict.keys.contains("MemberUid") {
                 self.memberUid = dict["MemberUid"] as! Int64
             }
@@ -5521,6 +5550,9 @@ public class DescribeAssetListResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RiskLevel") {
                 self.riskLevel = dict["RiskLevel"] as! String
+            }
+            if dict.keys.contains("SensitiveDataStatus") {
+                self.sensitiveDataStatus = dict["SensitiveDataStatus"] as! String
             }
             if dict.keys.contains("SgStatus") {
                 self.sgStatus = dict["SgStatus"] as! String
@@ -5900,6 +5932,20 @@ public class DescribeAssetStatisticResponseBody : Tea.TeaModel {
 
         public var ipNumUsed: Int32?
 
+        public var isIpNumEnough: Int32?
+
+        public var isRegionNumEnough: Int32?
+
+        public var isSuggestUpdate: Int32?
+
+        public var regionNumSpec: Int32?
+
+        public var regionNumUsed: Int32?
+
+        public var sensitiveDataIpNumSpec: Int64?
+
+        public var sensitiveDataIpNumUsed: Int64?
+
         public override init() {
             super.init()
         }
@@ -5920,6 +5966,27 @@ public class DescribeAssetStatisticResponseBody : Tea.TeaModel {
             if self.ipNumUsed != nil {
                 map["IpNumUsed"] = self.ipNumUsed!
             }
+            if self.isIpNumEnough != nil {
+                map["IsIpNumEnough"] = self.isIpNumEnough!
+            }
+            if self.isRegionNumEnough != nil {
+                map["IsRegionNumEnough"] = self.isRegionNumEnough!
+            }
+            if self.isSuggestUpdate != nil {
+                map["IsSuggestUpdate"] = self.isSuggestUpdate!
+            }
+            if self.regionNumSpec != nil {
+                map["RegionNumSpec"] = self.regionNumSpec!
+            }
+            if self.regionNumUsed != nil {
+                map["RegionNumUsed"] = self.regionNumUsed!
+            }
+            if self.sensitiveDataIpNumSpec != nil {
+                map["SensitiveDataIpNumSpec"] = self.sensitiveDataIpNumSpec!
+            }
+            if self.sensitiveDataIpNumUsed != nil {
+                map["SensitiveDataIpNumUsed"] = self.sensitiveDataIpNumUsed!
+            }
             return map
         }
 
@@ -5929,6 +5996,27 @@ public class DescribeAssetStatisticResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("IpNumUsed") {
                 self.ipNumUsed = dict["IpNumUsed"] as! Int32
+            }
+            if dict.keys.contains("IsIpNumEnough") {
+                self.isIpNumEnough = dict["IsIpNumEnough"] as! Int32
+            }
+            if dict.keys.contains("IsRegionNumEnough") {
+                self.isRegionNumEnough = dict["IsRegionNumEnough"] as! Int32
+            }
+            if dict.keys.contains("IsSuggestUpdate") {
+                self.isSuggestUpdate = dict["IsSuggestUpdate"] as! Int32
+            }
+            if dict.keys.contains("RegionNumSpec") {
+                self.regionNumSpec = dict["RegionNumSpec"] as! Int32
+            }
+            if dict.keys.contains("RegionNumUsed") {
+                self.regionNumUsed = dict["RegionNumUsed"] as! Int32
+            }
+            if dict.keys.contains("SensitiveDataIpNumSpec") {
+                self.sensitiveDataIpNumSpec = dict["SensitiveDataIpNumSpec"] as! Int64
+            }
+            if dict.keys.contains("SensitiveDataIpNumUsed") {
+                self.sensitiveDataIpNumUsed = dict["SensitiveDataIpNumUsed"] as! Int64
             }
         }
     }
