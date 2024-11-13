@@ -12,7 +12,6 @@ open class Client : AlibabacloudOpenApi.Client {
         self._endpointRule = "regional"
         self._endpointMap = [
             "ap-northeast-2-pop": "hbr.aliyuncs.com",
-            "cn-beijing-finance-1": "hbr.aliyuncs.com",
             "cn-beijing-finance-pop": "hbr.aliyuncs.com",
             "cn-beijing-gov-1": "hbr.aliyuncs.com",
             "cn-beijing-nu16-b01": "hbr.aliyuncs.com",
@@ -36,7 +35,6 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-shenzhen-st4-d01": "hbr.aliyuncs.com",
             "cn-shenzhen-su18-b01": "hbr.aliyuncs.com",
             "cn-wuhan": "hbr.aliyuncs.com",
-            "cn-wulanchabu": "hbr.aliyuncs.com",
             "cn-yushanfang": "hbr.aliyuncs.com",
             "cn-zhangbei": "hbr.aliyuncs.com",
             "cn-zhangbei-na61-b01": "hbr.aliyuncs.com",

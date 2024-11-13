@@ -3425,6 +3425,8 @@ public class CreatePolicyBindingsRequest : Tea.TeaModel {
                 }
             }
             public class OssDetail : Tea.TeaModel {
+                public var ignoreArchiveObject: Bool?
+
                 public var inventoryCleanupPolicy: String?
 
                 public var inventoryId: String?
@@ -3443,6 +3445,9 @@ public class CreatePolicyBindingsRequest : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.ignoreArchiveObject != nil {
+                        map["IgnoreArchiveObject"] = self.ignoreArchiveObject!
+                    }
                     if self.inventoryCleanupPolicy != nil {
                         map["InventoryCleanupPolicy"] = self.inventoryCleanupPolicy!
                     }
@@ -3453,6 +3458,9 @@ public class CreatePolicyBindingsRequest : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("IgnoreArchiveObject") {
+                        self.ignoreArchiveObject = dict["IgnoreArchiveObject"] as! Bool
+                    }
                     if dict.keys.contains("InventoryCleanupPolicy") {
                         self.inventoryCleanupPolicy = dict["InventoryCleanupPolicy"] as! String
                     }
@@ -4079,6 +4087,8 @@ public class CreatePolicyV2Request : Tea.TeaModel {
 
         public var dataSourceFilters: [CreatePolicyV2Request.Rules.DataSourceFilters]?
 
+        public var immutable: Bool?
+
         public var keepLatestSnapshots: Int64?
 
         public var replicationRegionId: String?
@@ -4118,6 +4128,9 @@ public class CreatePolicyV2Request : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["DataSourceFilters"] = tmp
+            }
+            if self.immutable != nil {
+                map["Immutable"] = self.immutable!
             }
             if self.keepLatestSnapshots != nil {
                 map["KeepLatestSnapshots"] = self.keepLatestSnapshots!
@@ -4168,6 +4181,9 @@ public class CreatePolicyV2Request : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.dataSourceFilters = tmp
+            }
+            if dict.keys.contains("Immutable") {
+                self.immutable = dict["Immutable"] as! Bool
             }
             if dict.keys.contains("KeepLatestSnapshots") {
                 self.keepLatestSnapshots = dict["KeepLatestSnapshots"] as! Int64
@@ -14229,6 +14245,8 @@ public class DescribePoliciesV2ResponseBody : Tea.TeaModel {
 
             public var dataSourceFilters: [DescribePoliciesV2ResponseBody.Policies.Rules.DataSourceFilters]?
 
+            public var immutable: Bool?
+
             public var keepLatestSnapshots: Int64?
 
             public var replicationRegionId: String?
@@ -14273,6 +14291,9 @@ public class DescribePoliciesV2ResponseBody : Tea.TeaModel {
                         tmp.append(k.toMap())
                     }
                     map["DataSourceFilters"] = tmp
+                }
+                if self.immutable != nil {
+                    map["Immutable"] = self.immutable!
                 }
                 if self.keepLatestSnapshots != nil {
                     map["KeepLatestSnapshots"] = self.keepLatestSnapshots!
@@ -14329,6 +14350,9 @@ public class DescribePoliciesV2ResponseBody : Tea.TeaModel {
                         tmp.append(model)
                     }
                     self.dataSourceFilters = tmp
+                }
+                if dict.keys.contains("Immutable") {
+                    self.immutable = dict["Immutable"] as! Bool
                 }
                 if dict.keys.contains("KeepLatestSnapshots") {
                     self.keepLatestSnapshots = dict["KeepLatestSnapshots"] as! Int64
@@ -15002,6 +15026,8 @@ public class DescribePolicyBindingsResponseBody : Tea.TeaModel {
                 }
             }
             public class OssDetail : Tea.TeaModel {
+                public var ignoreArchiveObject: Bool?
+
                 public var inventoryCleanupPolicy: String?
 
                 public var inventoryId: String?
@@ -15020,6 +15046,9 @@ public class DescribePolicyBindingsResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.ignoreArchiveObject != nil {
+                        map["IgnoreArchiveObject"] = self.ignoreArchiveObject!
+                    }
                     if self.inventoryCleanupPolicy != nil {
                         map["InventoryCleanupPolicy"] = self.inventoryCleanupPolicy!
                     }
@@ -15030,6 +15059,9 @@ public class DescribePolicyBindingsResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("IgnoreArchiveObject") {
+                        self.ignoreArchiveObject = dict["IgnoreArchiveObject"] as! Bool
+                    }
                     if dict.keys.contains("InventoryCleanupPolicy") {
                         self.inventoryCleanupPolicy = dict["InventoryCleanupPolicy"] as! String
                     }
@@ -24024,6 +24056,8 @@ public class UpdatePolicyBindingRequest : Tea.TeaModel {
             }
         }
         public class OssDetail : Tea.TeaModel {
+            public var ignoreArchiveObject: Bool?
+
             public var inventoryCleanupPolicy: String?
 
             public var inventoryId: String?
@@ -24042,6 +24076,9 @@ public class UpdatePolicyBindingRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.ignoreArchiveObject != nil {
+                    map["IgnoreArchiveObject"] = self.ignoreArchiveObject!
+                }
                 if self.inventoryCleanupPolicy != nil {
                     map["InventoryCleanupPolicy"] = self.inventoryCleanupPolicy!
                 }
@@ -24052,6 +24089,9 @@ public class UpdatePolicyBindingRequest : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("IgnoreArchiveObject") {
+                    self.ignoreArchiveObject = dict["IgnoreArchiveObject"] as! Bool
+                }
                 if dict.keys.contains("InventoryCleanupPolicy") {
                     self.inventoryCleanupPolicy = dict["InventoryCleanupPolicy"] as! String
                 }
@@ -24660,6 +24700,8 @@ public class UpdatePolicyV2Request : Tea.TeaModel {
 
         public var dataSourceFilters: [UpdatePolicyV2Request.Rules.DataSourceFilters]?
 
+        public var immutable: Bool?
+
         public var keepLatestSnapshots: Int64?
 
         public var replicationRegionId: String?
@@ -24705,6 +24747,9 @@ public class UpdatePolicyV2Request : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["DataSourceFilters"] = tmp
+            }
+            if self.immutable != nil {
+                map["Immutable"] = self.immutable!
             }
             if self.keepLatestSnapshots != nil {
                 map["KeepLatestSnapshots"] = self.keepLatestSnapshots!
@@ -24761,6 +24806,9 @@ public class UpdatePolicyV2Request : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.dataSourceFilters = tmp
+            }
+            if dict.keys.contains("Immutable") {
+                self.immutable = dict["Immutable"] as! Bool
             }
             if dict.keys.contains("KeepLatestSnapshots") {
                 self.keepLatestSnapshots = dict["KeepLatestSnapshots"] as! Int64
