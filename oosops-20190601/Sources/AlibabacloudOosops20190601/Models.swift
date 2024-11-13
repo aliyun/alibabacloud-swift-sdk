@@ -952,6 +952,8 @@ public class CreatePublicTemplateRequest : Tea.TeaModel {
 
     public var templateName: String?
 
+    public var versionName: String?
+
     public override init() {
         super.init()
     }
@@ -987,6 +989,9 @@ public class CreatePublicTemplateRequest : Tea.TeaModel {
         if self.templateName != nil {
             map["TemplateName"] = self.templateName!
         }
+        if self.versionName != nil {
+            map["VersionName"] = self.versionName!
+        }
         return map
     }
 
@@ -1011,6 +1016,9 @@ public class CreatePublicTemplateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TemplateName") {
             self.templateName = dict["TemplateName"] as! String
+        }
+        if dict.keys.contains("VersionName") {
+            self.versionName = dict["VersionName"] as! String
         }
     }
 }
@@ -9656,6 +9664,8 @@ public class UpdatePublicTemplateRequest : Tea.TeaModel {
 
     public var templateName: String?
 
+    public var versionName: String?
+
     public override init() {
         super.init()
     }
@@ -9688,6 +9698,9 @@ public class UpdatePublicTemplateRequest : Tea.TeaModel {
         if self.templateName != nil {
             map["TemplateName"] = self.templateName!
         }
+        if self.versionName != nil {
+            map["VersionName"] = self.versionName!
+        }
         return map
     }
 
@@ -9709,6 +9722,9 @@ public class UpdatePublicTemplateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TemplateName") {
             self.templateName = dict["TemplateName"] as! String
+        }
+        if dict.keys.contains("VersionName") {
+            self.versionName = dict["VersionName"] as! String
         }
     }
 }
