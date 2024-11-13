@@ -34644,9 +34644,15 @@ public class GetConnectionTicketRequest : Tea.TeaModel {
 }
 
 public class GetConnectionTicketResponseBody : Tea.TeaModel {
+    public var desktopId: String?
+
     public var requestId: String?
 
+    public var taskCode: String?
+
     public var taskId: String?
+
+    public var taskMessage: String?
 
     public var taskStatus: String?
 
@@ -34666,11 +34672,20 @@ public class GetConnectionTicketResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.desktopId != nil {
+            map["DesktopId"] = self.desktopId!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.taskCode != nil {
+            map["TaskCode"] = self.taskCode!
+        }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
+        }
+        if self.taskMessage != nil {
+            map["TaskMessage"] = self.taskMessage!
         }
         if self.taskStatus != nil {
             map["TaskStatus"] = self.taskStatus!
@@ -34682,11 +34697,20 @@ public class GetConnectionTicketResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DesktopId") {
+            self.desktopId = dict["DesktopId"] as! String
+        }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
+        if dict.keys.contains("TaskCode") {
+            self.taskCode = dict["TaskCode"] as! String
+        }
         if dict.keys.contains("TaskId") {
             self.taskId = dict["TaskId"] as! String
+        }
+        if dict.keys.contains("TaskMessage") {
+            self.taskMessage = dict["TaskMessage"] as! String
         }
         if dict.keys.contains("TaskStatus") {
             self.taskStatus = dict["TaskStatus"] as! String
