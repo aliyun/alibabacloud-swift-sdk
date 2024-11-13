@@ -52923,6 +52923,10 @@ public class DescribeInstanceHistoryEventsRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var maxResults: Int64?
+
+    public var nextToken: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -52987,6 +52991,12 @@ public class DescribeInstanceHistoryEventsRequest : Tea.TeaModel {
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -53059,6 +53069,12 @@ public class DescribeInstanceHistoryEventsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int64
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
         }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
@@ -53618,6 +53634,8 @@ public class DescribeInstanceHistoryEventsResponseBody : Tea.TeaModel {
     }
     public var instanceSystemEventSet: DescribeInstanceHistoryEventsResponseBody.InstanceSystemEventSet?
 
+    public var nextToken: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -53644,6 +53662,9 @@ public class DescribeInstanceHistoryEventsResponseBody : Tea.TeaModel {
         if self.instanceSystemEventSet != nil {
             map["InstanceSystemEventSet"] = self.instanceSystemEventSet?.toMap()
         }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -53664,6 +53685,9 @@ public class DescribeInstanceHistoryEventsResponseBody : Tea.TeaModel {
             var model = DescribeInstanceHistoryEventsResponseBody.InstanceSystemEventSet()
             model.fromMap(dict["InstanceSystemEventSet"] as! [String: Any])
             self.instanceSystemEventSet = model
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
         }
         if dict.keys.contains("PageNumber") {
             self.pageNumber = dict["PageNumber"] as! Int32
