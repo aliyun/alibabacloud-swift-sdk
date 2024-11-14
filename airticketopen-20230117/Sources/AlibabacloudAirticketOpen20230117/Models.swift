@@ -8029,6 +8029,384 @@ public class ChangeDetailListOfOrderNumResponse : Tea.TeaModel {
     }
 }
 
+public class CollectFlightLowestPriceHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var xAcsAirticketAccessToken: String?
+
+    public var xAcsAirticketLanguage: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.xAcsAirticketAccessToken != nil {
+            map["x-acs-airticket-access-token"] = self.xAcsAirticketAccessToken!
+        }
+        if self.xAcsAirticketLanguage != nil {
+            map["x-acs-airticket-language"] = self.xAcsAirticketLanguage!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("commonHeaders") {
+            self.commonHeaders = dict["commonHeaders"] as! [String: String]
+        }
+        if dict.keys.contains("x-acs-airticket-access-token") {
+            self.xAcsAirticketAccessToken = dict["x-acs-airticket-access-token"] as! String
+        }
+        if dict.keys.contains("x-acs-airticket-language") {
+            self.xAcsAirticketLanguage = dict["x-acs-airticket-language"] as! String
+        }
+    }
+}
+
+public class CollectFlightLowestPriceRequest : Tea.TeaModel {
+    public class LowestPriceFlightList : Tea.TeaModel {
+        public class FlightNumberInfo : Tea.TeaModel {
+            public var departureFlightNumber: String?
+
+            public var returnFlightNumber: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.departureFlightNumber != nil {
+                    map["departure_flight_number"] = self.departureFlightNumber!
+                }
+                if self.returnFlightNumber != nil {
+                    map["return_flight_number"] = self.returnFlightNumber!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("departure_flight_number") {
+                    self.departureFlightNumber = dict["departure_flight_number"] as! String
+                }
+                if dict.keys.contains("return_flight_number") {
+                    self.returnFlightNumber = dict["return_flight_number"] as! String
+                }
+            }
+        }
+        public var arrivalCity: String?
+
+        public var departureCity: String?
+
+        public var departureDate: String?
+
+        public var flightNumberInfo: CollectFlightLowestPriceRequest.LowestPriceFlightList.FlightNumberInfo?
+
+        public var marketTotalPrice: Double?
+
+        public var requestId: String?
+
+        public var returnDate: String?
+
+        public var suezTotalPrice: Double?
+
+        public var tripType: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.flightNumberInfo?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.arrivalCity != nil {
+                map["arrival_city"] = self.arrivalCity!
+            }
+            if self.departureCity != nil {
+                map["departure_city"] = self.departureCity!
+            }
+            if self.departureDate != nil {
+                map["departure_date"] = self.departureDate!
+            }
+            if self.flightNumberInfo != nil {
+                map["flight_number_info"] = self.flightNumberInfo?.toMap()
+            }
+            if self.marketTotalPrice != nil {
+                map["market_total_price"] = self.marketTotalPrice!
+            }
+            if self.requestId != nil {
+                map["request_id"] = self.requestId!
+            }
+            if self.returnDate != nil {
+                map["return_date"] = self.returnDate!
+            }
+            if self.suezTotalPrice != nil {
+                map["suez_total_price"] = self.suezTotalPrice!
+            }
+            if self.tripType != nil {
+                map["trip_type"] = self.tripType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("arrival_city") {
+                self.arrivalCity = dict["arrival_city"] as! String
+            }
+            if dict.keys.contains("departure_city") {
+                self.departureCity = dict["departure_city"] as! String
+            }
+            if dict.keys.contains("departure_date") {
+                self.departureDate = dict["departure_date"] as! String
+            }
+            if dict.keys.contains("flight_number_info") {
+                var model = CollectFlightLowestPriceRequest.LowestPriceFlightList.FlightNumberInfo()
+                model.fromMap(dict["flight_number_info"] as! [String: Any])
+                self.flightNumberInfo = model
+            }
+            if dict.keys.contains("market_total_price") {
+                self.marketTotalPrice = dict["market_total_price"] as! Double
+            }
+            if dict.keys.contains("request_id") {
+                self.requestId = dict["request_id"] as! String
+            }
+            if dict.keys.contains("return_date") {
+                self.returnDate = dict["return_date"] as! String
+            }
+            if dict.keys.contains("suez_total_price") {
+                self.suezTotalPrice = dict["suez_total_price"] as! Double
+            }
+            if dict.keys.contains("trip_type") {
+                self.tripType = dict["trip_type"] as! Int32
+            }
+        }
+    }
+    public var lowestPriceFlightList: [CollectFlightLowestPriceRequest.LowestPriceFlightList]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.lowestPriceFlightList != nil {
+            var tmp : [Any] = []
+            for k in self.lowestPriceFlightList! {
+                tmp.append(k.toMap())
+            }
+            map["lowestPriceFlightList"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("lowestPriceFlightList") {
+            var tmp : [CollectFlightLowestPriceRequest.LowestPriceFlightList] = []
+            for v in dict["lowestPriceFlightList"] as! [Any] {
+                var model = CollectFlightLowestPriceRequest.LowestPriceFlightList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.lowestPriceFlightList = tmp
+        }
+    }
+}
+
+public class CollectFlightLowestPriceShrinkRequest : Tea.TeaModel {
+    public var lowestPriceFlightListShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.lowestPriceFlightListShrink != nil {
+            map["lowestPriceFlightList"] = self.lowestPriceFlightListShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("lowestPriceFlightList") {
+            self.lowestPriceFlightListShrink = dict["lowestPriceFlightList"] as! String
+        }
+    }
+}
+
+public class CollectFlightLowestPriceResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var data: [String: Any]?
+
+    public var errorCode: String?
+
+    public var errorData: Any?
+
+    public var errorMsg: String?
+
+    public var status: Int32?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.data != nil {
+            map["data"] = self.data!
+        }
+        if self.errorCode != nil {
+            map["error_code"] = self.errorCode!
+        }
+        if self.errorData != nil {
+            map["error_data"] = self.errorData!
+        }
+        if self.errorMsg != nil {
+            map["error_msg"] = self.errorMsg!
+        }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("data") {
+            self.data = dict["data"] as! [String: Any]
+        }
+        if dict.keys.contains("error_code") {
+            self.errorCode = dict["error_code"] as! String
+        }
+        if dict.keys.contains("error_data") {
+            self.errorData = dict["error_data"] as! Any
+        }
+        if dict.keys.contains("error_msg") {
+            self.errorMsg = dict["error_msg"] as! String
+        }
+        if dict.keys.contains("status") {
+            self.status = dict["status"] as! Int32
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class CollectFlightLowestPriceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CollectFlightLowestPriceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CollectFlightLowestPriceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class EnrichHeaders : Tea.TeaModel {
     public var commonHeaders: [String: String]?
 

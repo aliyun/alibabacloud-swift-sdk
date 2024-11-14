@@ -527,6 +527,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func collectFlightLowestPriceWithOptions(_ tmpReq: CollectFlightLowestPriceRequest, _ headers: CollectFlightLowestPriceHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CollectFlightLowestPriceResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CollectFlightLowestPriceShrinkRequest = CollectFlightLowestPriceShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.lowestPriceFlightList)) {
+            request.lowestPriceFlightListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.lowestPriceFlightList, "lowestPriceFlightList", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.lowestPriceFlightListShrink)) {
+            body["lowestPriceFlightList"] = request.lowestPriceFlightListShrink ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsAirticketAccessToken)) {
+            realHeaders["x-acs-airticket-access-token"] = TeaUtils.Client.toJSONString(headers.xAcsAirticketAccessToken);
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsAirticketLanguage)) {
+            realHeaders["x-acs-airticket-language"] = TeaUtils.Client.toJSONString(headers.xAcsAirticketLanguage);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CollectFlightLowestPrice",
+            "version": "2023-01-17",
+            "protocol": "HTTPS",
+            "pathname": "/airticket/v1/data-collect/flight-lowest-price",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CollectFlightLowestPriceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func collectFlightLowestPrice(_ request: CollectFlightLowestPriceRequest) async throws -> CollectFlightLowestPriceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: CollectFlightLowestPriceHeaders = CollectFlightLowestPriceHeaders([:])
+        return try await collectFlightLowestPriceWithOptions(request as! CollectFlightLowestPriceRequest, headers as! CollectFlightLowestPriceHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func enrichWithOptions(_ tmpReq: EnrichRequest, _ headers: EnrichHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnrichResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: EnrichShrinkRequest = EnrichShrinkRequest([:])
