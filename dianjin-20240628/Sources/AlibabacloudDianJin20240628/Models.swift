@@ -6382,6 +6382,8 @@ public class GetParseResultRequest : Tea.TeaModel {
 
     public var libraryId: String?
 
+    public var useUrlResult: Bool?
+
     public override init() {
         super.init()
     }
@@ -6402,6 +6404,9 @@ public class GetParseResultRequest : Tea.TeaModel {
         if self.libraryId != nil {
             map["libraryId"] = self.libraryId!
         }
+        if self.useUrlResult != nil {
+            map["useUrlResult"] = self.useUrlResult!
+        }
         return map
     }
 
@@ -6411,6 +6416,9 @@ public class GetParseResultRequest : Tea.TeaModel {
         }
         if dict.keys.contains("libraryId") {
             self.libraryId = dict["libraryId"] as! String
+        }
+        if dict.keys.contains("useUrlResult") {
+            self.useUrlResult = dict["useUrlResult"] as! Bool
         }
     }
 }
@@ -6424,6 +6432,8 @@ public class GetParseResultResponseBody : Tea.TeaModel {
         public var requestId: String?
 
         public var result: [String: Any]?
+
+        public var resultUrl: String?
 
         public var status: String?
 
@@ -6453,6 +6463,9 @@ public class GetParseResultResponseBody : Tea.TeaModel {
             if self.result != nil {
                 map["result"] = self.result!
             }
+            if self.resultUrl != nil {
+                map["resultUrl"] = self.resultUrl!
+            }
             if self.status != nil {
                 map["status"] = self.status!
             }
@@ -6471,6 +6484,9 @@ public class GetParseResultResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("result") {
                 self.result = dict["result"] as! [String: Any]
+            }
+            if dict.keys.contains("resultUrl") {
+                self.resultUrl = dict["resultUrl"] as! String
             }
             if dict.keys.contains("status") {
                 self.status = dict["status"] as! String
@@ -10171,6 +10187,8 @@ public class RecognizeIntentionRequest : Tea.TeaModel {
 
         public var intentionCode: String?
 
+        public var intentionScript: String?
+
         public override init() {
             super.init()
         }
@@ -10194,6 +10212,9 @@ public class RecognizeIntentionRequest : Tea.TeaModel {
             if self.intentionCode != nil {
                 map["intentionCode"] = self.intentionCode!
             }
+            if self.intentionScript != nil {
+                map["intentionScript"] = self.intentionScript!
+            }
             return map
         }
 
@@ -10206,6 +10227,9 @@ public class RecognizeIntentionRequest : Tea.TeaModel {
             }
             if dict.keys.contains("intentionCode") {
                 self.intentionCode = dict["intentionCode"] as! String
+            }
+            if dict.keys.contains("intentionScript") {
+                self.intentionScript = dict["intentionScript"] as! String
             }
         }
     }
@@ -10216,6 +10240,8 @@ public class RecognizeIntentionRequest : Tea.TeaModel {
 
         public var intentionCode: String?
 
+        public var intentionScript: String?
+
         public override init() {
             super.init()
         }
@@ -10239,6 +10265,9 @@ public class RecognizeIntentionRequest : Tea.TeaModel {
             if self.intentionCode != nil {
                 map["intentionCode"] = self.intentionCode!
             }
+            if self.intentionScript != nil {
+                map["intentionScript"] = self.intentionScript!
+            }
             return map
         }
 
@@ -10251,6 +10280,9 @@ public class RecognizeIntentionRequest : Tea.TeaModel {
             }
             if dict.keys.contains("intentionCode") {
                 self.intentionCode = dict["intentionCode"] as! String
+            }
+            if dict.keys.contains("intentionScript") {
+                self.intentionScript = dict["intentionScript"] as! String
             }
         }
     }
@@ -10261,6 +10293,8 @@ public class RecognizeIntentionRequest : Tea.TeaModel {
 
         public var intentionCode: String?
 
+        public var intentionScript: String?
+
         public override init() {
             super.init()
         }
@@ -10284,6 +10318,9 @@ public class RecognizeIntentionRequest : Tea.TeaModel {
             if self.intentionCode != nil {
                 map["intentionCode"] = self.intentionCode!
             }
+            if self.intentionScript != nil {
+                map["intentionScript"] = self.intentionScript!
+            }
             return map
         }
 
@@ -10296,6 +10333,9 @@ public class RecognizeIntentionRequest : Tea.TeaModel {
             }
             if dict.keys.contains("intentionCode") {
                 self.intentionCode = dict["intentionCode"] as! String
+            }
+            if dict.keys.contains("intentionScript") {
+                self.intentionScript = dict["intentionScript"] as! String
             }
         }
     }
@@ -10308,6 +10348,8 @@ public class RecognizeIntentionRequest : Tea.TeaModel {
     public var globalIntentionList: [RecognizeIntentionRequest.GlobalIntentionList]?
 
     public var hierarchicalIntentionList: [RecognizeIntentionRequest.HierarchicalIntentionList]?
+
+    public var intentionDomainCode: String?
 
     public var intentionList: [RecognizeIntentionRequest.IntentionList]?
 
@@ -10351,6 +10393,9 @@ public class RecognizeIntentionRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["hierarchicalIntentionList"] = tmp
+        }
+        if self.intentionDomainCode != nil {
+            map["intentionDomainCode"] = self.intentionDomainCode!
         }
         if self.intentionList != nil {
             var tmp : [Any] = []
@@ -10400,6 +10445,9 @@ public class RecognizeIntentionRequest : Tea.TeaModel {
             }
             self.hierarchicalIntentionList = tmp
         }
+        if dict.keys.contains("intentionDomainCode") {
+            self.intentionDomainCode = dict["intentionDomainCode"] as! String
+        }
         if dict.keys.contains("intentionList") {
             var tmp : [RecognizeIntentionRequest.IntentionList] = []
             for v in dict["intentionList"] as! [Any] {
@@ -10428,6 +10476,8 @@ public class RecognizeIntentionResponseBody : Tea.TeaModel {
 
         public var intentionName: String?
 
+        public var intentionScript: String?
+
         public var recommendIntention: String?
 
         public var recommendScript: String?
@@ -10455,6 +10505,9 @@ public class RecognizeIntentionResponseBody : Tea.TeaModel {
             if self.intentionName != nil {
                 map["intentionName"] = self.intentionName!
             }
+            if self.intentionScript != nil {
+                map["intentionScript"] = self.intentionScript!
+            }
             if self.recommendIntention != nil {
                 map["recommendIntention"] = self.recommendIntention!
             }
@@ -10473,6 +10526,9 @@ public class RecognizeIntentionResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("intentionName") {
                 self.intentionName = dict["intentionName"] as! String
+            }
+            if dict.keys.contains("intentionScript") {
+                self.intentionScript = dict["intentionScript"] as! String
             }
             if dict.keys.contains("recommendIntention") {
                 self.recommendIntention = dict["recommendIntention"] as! String
