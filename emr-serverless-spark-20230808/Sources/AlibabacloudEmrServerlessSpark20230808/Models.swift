@@ -2385,6 +2385,468 @@ public class GetJobRunResponse : Tea.TeaModel {
     }
 }
 
+public class GetSessionClusterRequest : Tea.TeaModel {
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("regionId") {
+            self.regionId = dict["regionId"] as! String
+        }
+    }
+}
+
+public class GetSessionClusterResponseBody : Tea.TeaModel {
+    public class SessionCluster : Tea.TeaModel {
+        public class ApplicationConfigs : Tea.TeaModel {
+            public var configFileName: String?
+
+            public var configItemKey: String?
+
+            public var configItemValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.configFileName != nil {
+                    map["configFileName"] = self.configFileName!
+                }
+                if self.configItemKey != nil {
+                    map["configItemKey"] = self.configItemKey!
+                }
+                if self.configItemValue != nil {
+                    map["configItemValue"] = self.configItemValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("configFileName") {
+                    self.configFileName = dict["configFileName"] as! String
+                }
+                if dict.keys.contains("configItemKey") {
+                    self.configItemKey = dict["configItemKey"] as! String
+                }
+                if dict.keys.contains("configItemValue") {
+                    self.configItemValue = dict["configItemValue"] as! String
+                }
+            }
+        }
+        public class AutoStartConfiguration : Tea.TeaModel {
+            public var enable: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enable != nil {
+                    map["enable"] = self.enable!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("enable") {
+                    self.enable = dict["enable"] as! Bool
+                }
+            }
+        }
+        public class AutoStopConfiguration : Tea.TeaModel {
+            public var enable: Bool?
+
+            public var idleTimeoutMinutes: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enable != nil {
+                    map["enable"] = self.enable!
+                }
+                if self.idleTimeoutMinutes != nil {
+                    map["idleTimeoutMinutes"] = self.idleTimeoutMinutes!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("enable") {
+                    self.enable = dict["enable"] as! Bool
+                }
+                if dict.keys.contains("idleTimeoutMinutes") {
+                    self.idleTimeoutMinutes = dict["idleTimeoutMinutes"] as! Int32
+                }
+            }
+        }
+        public class StateChangeReason : Tea.TeaModel {
+            public var code: String?
+
+            public var message: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.code != nil {
+                    map["code"] = self.code!
+                }
+                if self.message != nil {
+                    map["message"] = self.message!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("code") {
+                    self.code = dict["code"] as! String
+                }
+                if dict.keys.contains("message") {
+                    self.message = dict["message"] as! String
+                }
+            }
+        }
+        public var applicationConfigs: [GetSessionClusterResponseBody.SessionCluster.ApplicationConfigs]?
+
+        public var autoStartConfiguration: GetSessionClusterResponseBody.SessionCluster.AutoStartConfiguration?
+
+        public var autoStopConfiguration: GetSessionClusterResponseBody.SessionCluster.AutoStopConfiguration?
+
+        public var displayReleaseVersion: String?
+
+        public var domain: String?
+
+        public var draftId: String?
+
+        public var envId: String?
+
+        public var fusion: Bool?
+
+        public var kind: String?
+
+        public var name: String?
+
+        public var queueName: String?
+
+        public var releaseVersion: String?
+
+        public var sessionClusterId: String?
+
+        public var state: String?
+
+        public var stateChangeReason: GetSessionClusterResponseBody.SessionCluster.StateChangeReason?
+
+        public var userId: String?
+
+        public var userName: String?
+
+        public var webUI: String?
+
+        public var workspaceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.autoStartConfiguration?.validate()
+            try self.autoStopConfiguration?.validate()
+            try self.stateChangeReason?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.applicationConfigs != nil {
+                var tmp : [Any] = []
+                for k in self.applicationConfigs! {
+                    tmp.append(k.toMap())
+                }
+                map["applicationConfigs"] = tmp
+            }
+            if self.autoStartConfiguration != nil {
+                map["autoStartConfiguration"] = self.autoStartConfiguration?.toMap()
+            }
+            if self.autoStopConfiguration != nil {
+                map["autoStopConfiguration"] = self.autoStopConfiguration?.toMap()
+            }
+            if self.displayReleaseVersion != nil {
+                map["displayReleaseVersion"] = self.displayReleaseVersion!
+            }
+            if self.domain != nil {
+                map["domain"] = self.domain!
+            }
+            if self.draftId != nil {
+                map["draftId"] = self.draftId!
+            }
+            if self.envId != nil {
+                map["envId"] = self.envId!
+            }
+            if self.fusion != nil {
+                map["fusion"] = self.fusion!
+            }
+            if self.kind != nil {
+                map["kind"] = self.kind!
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.queueName != nil {
+                map["queueName"] = self.queueName!
+            }
+            if self.releaseVersion != nil {
+                map["releaseVersion"] = self.releaseVersion!
+            }
+            if self.sessionClusterId != nil {
+                map["sessionClusterId"] = self.sessionClusterId!
+            }
+            if self.state != nil {
+                map["state"] = self.state!
+            }
+            if self.stateChangeReason != nil {
+                map["stateChangeReason"] = self.stateChangeReason?.toMap()
+            }
+            if self.userId != nil {
+                map["userId"] = self.userId!
+            }
+            if self.userName != nil {
+                map["userName"] = self.userName!
+            }
+            if self.webUI != nil {
+                map["webUI"] = self.webUI!
+            }
+            if self.workspaceId != nil {
+                map["workspaceId"] = self.workspaceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("applicationConfigs") {
+                var tmp : [GetSessionClusterResponseBody.SessionCluster.ApplicationConfigs] = []
+                for v in dict["applicationConfigs"] as! [Any] {
+                    var model = GetSessionClusterResponseBody.SessionCluster.ApplicationConfigs()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.applicationConfigs = tmp
+            }
+            if dict.keys.contains("autoStartConfiguration") {
+                var model = GetSessionClusterResponseBody.SessionCluster.AutoStartConfiguration()
+                model.fromMap(dict["autoStartConfiguration"] as! [String: Any])
+                self.autoStartConfiguration = model
+            }
+            if dict.keys.contains("autoStopConfiguration") {
+                var model = GetSessionClusterResponseBody.SessionCluster.AutoStopConfiguration()
+                model.fromMap(dict["autoStopConfiguration"] as! [String: Any])
+                self.autoStopConfiguration = model
+            }
+            if dict.keys.contains("displayReleaseVersion") {
+                self.displayReleaseVersion = dict["displayReleaseVersion"] as! String
+            }
+            if dict.keys.contains("domain") {
+                self.domain = dict["domain"] as! String
+            }
+            if dict.keys.contains("draftId") {
+                self.draftId = dict["draftId"] as! String
+            }
+            if dict.keys.contains("envId") {
+                self.envId = dict["envId"] as! String
+            }
+            if dict.keys.contains("fusion") {
+                self.fusion = dict["fusion"] as! Bool
+            }
+            if dict.keys.contains("kind") {
+                self.kind = dict["kind"] as! String
+            }
+            if dict.keys.contains("name") {
+                self.name = dict["name"] as! String
+            }
+            if dict.keys.contains("queueName") {
+                self.queueName = dict["queueName"] as! String
+            }
+            if dict.keys.contains("releaseVersion") {
+                self.releaseVersion = dict["releaseVersion"] as! String
+            }
+            if dict.keys.contains("sessionClusterId") {
+                self.sessionClusterId = dict["sessionClusterId"] as! String
+            }
+            if dict.keys.contains("state") {
+                self.state = dict["state"] as! String
+            }
+            if dict.keys.contains("stateChangeReason") {
+                var model = GetSessionClusterResponseBody.SessionCluster.StateChangeReason()
+                model.fromMap(dict["stateChangeReason"] as! [String: Any])
+                self.stateChangeReason = model
+            }
+            if dict.keys.contains("userId") {
+                self.userId = dict["userId"] as! String
+            }
+            if dict.keys.contains("userName") {
+                self.userName = dict["userName"] as! String
+            }
+            if dict.keys.contains("webUI") {
+                self.webUI = dict["webUI"] as! String
+            }
+            if dict.keys.contains("workspaceId") {
+                self.workspaceId = dict["workspaceId"] as! String
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var sessionCluster: GetSessionClusterResponseBody.SessionCluster?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.sessionCluster?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.sessionCluster != nil {
+            map["sessionCluster"] = self.sessionCluster?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("sessionCluster") {
+            var model = GetSessionClusterResponseBody.SessionCluster()
+            model.fromMap(dict["sessionCluster"] as! [String: Any])
+            self.sessionCluster = model
+        }
+    }
+}
+
+public class GetSessionClusterResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetSessionClusterResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetSessionClusterResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class GetSqlStatementRequest : Tea.TeaModel {
     public var regionId: String?
 
