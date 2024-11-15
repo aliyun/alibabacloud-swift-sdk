@@ -6673,11 +6673,46 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class VSwitchIds : Tea.TeaModel {
+                public var vSwitchIds: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.vSwitchIds != nil {
+                        map["VSwitchIds"] = self.vSwitchIds!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("VSwitchIds") {
+                        self.vSwitchIds = dict["VSwitchIds"] as! [String]
+                    }
+                }
+            }
             public var allConfig: String?
+
+            public var autoCreateGroupEnable: Bool?
+
+            public var autoCreateTopicEnable: Bool?
 
             public var confluentConfig: GetInstanceListResponseBody.InstanceList.InstanceVO.ConfluentConfig?
 
             public var createTime: Int64?
+
+            public var defaultPartitionNum: Int32?
 
             public var deployType: Int32?
 
@@ -6749,6 +6784,8 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
 
             public var vSwitchId: String?
 
+            public var vSwitchIds: GetInstanceListResponseBody.InstanceList.InstanceVO.VSwitchIds?
+
             public var viewInstanceStatusCode: Int32?
 
             public var vpcId: String?
@@ -6768,6 +6805,7 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                 try self.confluentConfig?.validate()
                 try self.tags?.validate()
                 try self.upgradeServiceDetailInfo?.validate()
+                try self.vSwitchIds?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -6775,11 +6813,20 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                 if self.allConfig != nil {
                     map["AllConfig"] = self.allConfig!
                 }
+                if self.autoCreateGroupEnable != nil {
+                    map["AutoCreateGroupEnable"] = self.autoCreateGroupEnable!
+                }
+                if self.autoCreateTopicEnable != nil {
+                    map["AutoCreateTopicEnable"] = self.autoCreateTopicEnable!
+                }
                 if self.confluentConfig != nil {
                     map["ConfluentConfig"] = self.confluentConfig?.toMap()
                 }
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
+                }
+                if self.defaultPartitionNum != nil {
+                    map["DefaultPartitionNum"] = self.defaultPartitionNum!
                 }
                 if self.deployType != nil {
                     map["DeployType"] = self.deployType!
@@ -6886,6 +6933,9 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                 if self.vSwitchId != nil {
                     map["VSwitchId"] = self.vSwitchId!
                 }
+                if self.vSwitchIds != nil {
+                    map["VSwitchIds"] = self.vSwitchIds?.toMap()
+                }
                 if self.viewInstanceStatusCode != nil {
                     map["ViewInstanceStatusCode"] = self.viewInstanceStatusCode!
                 }
@@ -6902,6 +6952,12 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                 if dict.keys.contains("AllConfig") {
                     self.allConfig = dict["AllConfig"] as! String
                 }
+                if dict.keys.contains("AutoCreateGroupEnable") {
+                    self.autoCreateGroupEnable = dict["AutoCreateGroupEnable"] as! Bool
+                }
+                if dict.keys.contains("AutoCreateTopicEnable") {
+                    self.autoCreateTopicEnable = dict["AutoCreateTopicEnable"] as! Bool
+                }
                 if dict.keys.contains("ConfluentConfig") {
                     var model = GetInstanceListResponseBody.InstanceList.InstanceVO.ConfluentConfig()
                     model.fromMap(dict["ConfluentConfig"] as! [String: Any])
@@ -6909,6 +6965,9 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("CreateTime") {
                     self.createTime = dict["CreateTime"] as! Int64
+                }
+                if dict.keys.contains("DefaultPartitionNum") {
+                    self.defaultPartitionNum = dict["DefaultPartitionNum"] as! Int32
                 }
                 if dict.keys.contains("DeployType") {
                     self.deployType = dict["DeployType"] as! Int32
@@ -7018,6 +7077,11 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("VSwitchId") {
                     self.vSwitchId = dict["VSwitchId"] as! String
+                }
+                if dict.keys.contains("VSwitchIds") {
+                    var model = GetInstanceListResponseBody.InstanceList.InstanceVO.VSwitchIds()
+                    model.fromMap(dict["VSwitchIds"] as! [String: Any])
+                    self.vSwitchIds = model
                 }
                 if dict.keys.contains("ViewInstanceStatusCode") {
                     self.viewInstanceStatusCode = dict["ViewInstanceStatusCode"] as! Int32
@@ -7177,6 +7241,429 @@ public class GetInstanceListResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = GetInstanceListResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetKafkaClientIpRequest : Tea.TeaModel {
+    public var endTime: Int64?
+
+    public var group: String?
+
+    public var instanceId: String?
+
+    public var regionId: String?
+
+    public var startTime: Int64?
+
+    public var topic: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.group != nil {
+            map["Group"] = self.group!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.topic != nil {
+            map["Topic"] = self.topic!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EndTime") {
+            self.endTime = dict["EndTime"] as! Int64
+        }
+        if dict.keys.contains("Group") {
+            self.group = dict["Group"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("StartTime") {
+            self.startTime = dict["StartTime"] as! Int64
+        }
+        if dict.keys.contains("Topic") {
+            self.topic = dict["Topic"] as! String
+        }
+        if dict.keys.contains("Type") {
+            self.type = dict["Type"] as! String
+        }
+    }
+}
+
+public class GetKafkaClientIpResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Data : Tea.TeaModel {
+            public class Data : Tea.TeaModel {
+                public class Data : Tea.TeaModel {
+                    public class Data : Tea.TeaModel {
+                        public var ip: String?
+
+                        public var num: Int64?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.ip != nil {
+                                map["Ip"] = self.ip!
+                            }
+                            if self.num != nil {
+                                map["Num"] = self.num!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("Ip") {
+                                self.ip = dict["Ip"] as! String
+                            }
+                            if dict.keys.contains("Num") {
+                                self.num = dict["Num"] as! Int64
+                            }
+                        }
+                    }
+                    public var data: [GetKafkaClientIpResponseBody.Data.Data.Data.Data.Data]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.data != nil {
+                            var tmp : [Any] = []
+                            for k in self.data! {
+                                tmp.append(k.toMap())
+                            }
+                            map["Data"] = tmp
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Data") {
+                            var tmp : [GetKafkaClientIpResponseBody.Data.Data.Data.Data.Data] = []
+                            for v in dict["Data"] as! [Any] {
+                                var model = GetKafkaClientIpResponseBody.Data.Data.Data.Data.Data()
+                                if v != nil {
+                                    model.fromMap(v as! [String: Any])
+                                }
+                                tmp.append(model)
+                            }
+                            self.data = tmp
+                        }
+                    }
+                }
+                public var data: GetKafkaClientIpResponseBody.Data.Data.Data.Data?
+
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.data?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.data != nil {
+                        map["Data"] = self.data?.toMap()
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Data") {
+                        var model = GetKafkaClientIpResponseBody.Data.Data.Data.Data()
+                        model.fromMap(dict["Data"] as! [String: Any])
+                        self.data = model
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                }
+            }
+            public var data: [GetKafkaClientIpResponseBody.Data.Data.Data]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.data != nil {
+                    var tmp : [Any] = []
+                    for k in self.data! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Data"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Data") {
+                    var tmp : [GetKafkaClientIpResponseBody.Data.Data.Data] = []
+                    for v in dict["Data"] as! [Any] {
+                        var model = GetKafkaClientIpResponseBody.Data.Data.Data()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.data = tmp
+                }
+            }
+        }
+        public var alert: Bool?
+
+        public var data: GetKafkaClientIpResponseBody.Data.Data?
+
+        public var endDate: Int64?
+
+        public var searchTimeRange: Int32?
+
+        public var startDate: Int64?
+
+        public var timeLimitDay: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.data?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.alert != nil {
+                map["Alert"] = self.alert!
+            }
+            if self.data != nil {
+                map["Data"] = self.data?.toMap()
+            }
+            if self.endDate != nil {
+                map["EndDate"] = self.endDate!
+            }
+            if self.searchTimeRange != nil {
+                map["SearchTimeRange"] = self.searchTimeRange!
+            }
+            if self.startDate != nil {
+                map["StartDate"] = self.startDate!
+            }
+            if self.timeLimitDay != nil {
+                map["TimeLimitDay"] = self.timeLimitDay!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Alert") {
+                self.alert = dict["Alert"] as! Bool
+            }
+            if dict.keys.contains("Data") {
+                var model = GetKafkaClientIpResponseBody.Data.Data()
+                model.fromMap(dict["Data"] as! [String: Any])
+                self.data = model
+            }
+            if dict.keys.contains("EndDate") {
+                self.endDate = dict["EndDate"] as! Int64
+            }
+            if dict.keys.contains("SearchTimeRange") {
+                self.searchTimeRange = dict["SearchTimeRange"] as! Int32
+            }
+            if dict.keys.contains("StartDate") {
+                self.startDate = dict["StartDate"] as! Int64
+            }
+            if dict.keys.contains("TimeLimitDay") {
+                self.timeLimitDay = dict["TimeLimitDay"] as! Int32
+            }
+        }
+    }
+    public var code: Int64?
+
+    public var data: GetKafkaClientIpResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! Int64
+        }
+        if dict.keys.contains("Data") {
+            var model = GetKafkaClientIpResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class GetKafkaClientIpResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetKafkaClientIpResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetKafkaClientIpResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
