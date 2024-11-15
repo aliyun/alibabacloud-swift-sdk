@@ -90271,6 +90271,8 @@ public class ImportImageRequest : Tea.TeaModel {
 
     public var bootMode: String?
 
+    public var clientToken: String?
+
     public var description_: String?
 
     public var detectionStrategy: String?
@@ -90325,6 +90327,9 @@ public class ImportImageRequest : Tea.TeaModel {
         }
         if self.bootMode != nil {
             map["BootMode"] = self.bootMode!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
@@ -90394,6 +90399,9 @@ public class ImportImageRequest : Tea.TeaModel {
         }
         if dict.keys.contains("BootMode") {
             self.bootMode = dict["BootMode"] as! String
+        }
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
         }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
