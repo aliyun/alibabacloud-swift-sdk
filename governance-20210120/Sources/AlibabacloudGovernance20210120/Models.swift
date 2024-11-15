@@ -4080,6 +4080,8 @@ public class ListEvaluationScoreHistoryResponse : Tea.TeaModel {
 public class RunEvaluationRequest : Tea.TeaModel {
     public var accountId: Int64?
 
+    public var metricIds: [String]?
+
     public var regionId: String?
 
     public var scope: String?
@@ -4101,6 +4103,9 @@ public class RunEvaluationRequest : Tea.TeaModel {
         if self.accountId != nil {
             map["AccountId"] = self.accountId!
         }
+        if self.metricIds != nil {
+            map["MetricIds"] = self.metricIds!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -4113,6 +4118,63 @@ public class RunEvaluationRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AccountId") {
             self.accountId = dict["AccountId"] as! Int64
+        }
+        if dict.keys.contains("MetricIds") {
+            self.metricIds = dict["MetricIds"] as! [String]
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("Scope") {
+            self.scope = dict["Scope"] as! String
+        }
+    }
+}
+
+public class RunEvaluationShrinkRequest : Tea.TeaModel {
+    public var accountId: Int64?
+
+    public var metricIdsShrink: String?
+
+    public var regionId: String?
+
+    public var scope: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accountId != nil {
+            map["AccountId"] = self.accountId!
+        }
+        if self.metricIdsShrink != nil {
+            map["MetricIds"] = self.metricIdsShrink!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.scope != nil {
+            map["Scope"] = self.scope!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccountId") {
+            self.accountId = dict["AccountId"] as! Int64
+        }
+        if dict.keys.contains("MetricIds") {
+            self.metricIdsShrink = dict["MetricIds"] as! String
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
