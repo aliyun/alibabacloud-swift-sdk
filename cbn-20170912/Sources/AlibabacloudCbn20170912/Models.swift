@@ -3333,6 +3333,8 @@ public class CreateFlowlogRequest : Tea.TeaModel {
 
     public var interval: Int64?
 
+    public var logFormatString: String?
+
     public var logStoreName: String?
 
     public var ownerAccount: String?
@@ -3350,6 +3352,8 @@ public class CreateFlowlogRequest : Tea.TeaModel {
     public var tag: [CreateFlowlogRequest.Tag]?
 
     public var transitRouterAttachmentId: String?
+
+    public var transitRouterId: String?
 
     public override init() {
         super.init()
@@ -3379,6 +3383,9 @@ public class CreateFlowlogRequest : Tea.TeaModel {
         }
         if self.interval != nil {
             map["Interval"] = self.interval!
+        }
+        if self.logFormatString != nil {
+            map["LogFormatString"] = self.logFormatString!
         }
         if self.logStoreName != nil {
             map["LogStoreName"] = self.logStoreName!
@@ -3411,6 +3418,9 @@ public class CreateFlowlogRequest : Tea.TeaModel {
         if self.transitRouterAttachmentId != nil {
             map["TransitRouterAttachmentId"] = self.transitRouterAttachmentId!
         }
+        if self.transitRouterId != nil {
+            map["TransitRouterId"] = self.transitRouterId!
+        }
         return map
     }
 
@@ -3429,6 +3439,9 @@ public class CreateFlowlogRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Interval") {
             self.interval = dict["Interval"] as! Int64
+        }
+        if dict.keys.contains("LogFormatString") {
+            self.logFormatString = dict["LogFormatString"] as! String
         }
         if dict.keys.contains("LogStoreName") {
             self.logStoreName = dict["LogStoreName"] as! String
@@ -3464,6 +3477,9 @@ public class CreateFlowlogRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TransitRouterAttachmentId") {
             self.transitRouterAttachmentId = dict["TransitRouterAttachmentId"] as! String
+        }
+        if dict.keys.contains("TransitRouterId") {
+            self.transitRouterId = dict["TransitRouterId"] as! String
         }
     }
 }
@@ -17708,6 +17724,10 @@ public class DescribeFlowlogsRequest : Tea.TeaModel {
 
     public var flowLogName: String?
 
+    public var flowLogVersion: String?
+
+    public var interval: Int32?
+
     public var logStoreName: String?
 
     public var ownerAccount: String?
@@ -17731,6 +17751,8 @@ public class DescribeFlowlogsRequest : Tea.TeaModel {
     public var tag: [DescribeFlowlogsRequest.Tag]?
 
     public var transitRouterAttachmentId: String?
+
+    public var transitRouterId: String?
 
     public override init() {
         super.init()
@@ -17760,6 +17782,12 @@ public class DescribeFlowlogsRequest : Tea.TeaModel {
         }
         if self.flowLogName != nil {
             map["FlowLogName"] = self.flowLogName!
+        }
+        if self.flowLogVersion != nil {
+            map["FlowLogVersion"] = self.flowLogVersion!
+        }
+        if self.interval != nil {
+            map["Interval"] = self.interval!
         }
         if self.logStoreName != nil {
             map["LogStoreName"] = self.logStoreName!
@@ -17801,6 +17829,9 @@ public class DescribeFlowlogsRequest : Tea.TeaModel {
         if self.transitRouterAttachmentId != nil {
             map["TransitRouterAttachmentId"] = self.transitRouterAttachmentId!
         }
+        if self.transitRouterId != nil {
+            map["TransitRouterId"] = self.transitRouterId!
+        }
         return map
     }
 
@@ -17819,6 +17850,12 @@ public class DescribeFlowlogsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FlowLogName") {
             self.flowLogName = dict["FlowLogName"] as! String
+        }
+        if dict.keys.contains("FlowLogVersion") {
+            self.flowLogVersion = dict["FlowLogVersion"] as! String
+        }
+        if dict.keys.contains("Interval") {
+            self.interval = dict["Interval"] as! Int32
         }
         if dict.keys.contains("LogStoreName") {
             self.logStoreName = dict["LogStoreName"] as! String
@@ -17863,6 +17900,9 @@ public class DescribeFlowlogsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TransitRouterAttachmentId") {
             self.transitRouterAttachmentId = dict["TransitRouterAttachmentId"] as! String
+        }
+        if dict.keys.contains("TransitRouterId") {
+            self.transitRouterId = dict["TransitRouterId"] as! String
         }
     }
 }
@@ -32881,6 +32921,8 @@ public class ModifyFlowLogAttributeRequest : Tea.TeaModel {
 
     public var flowLogName: String?
 
+    public var interval: Int64?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -32920,6 +32962,9 @@ public class ModifyFlowLogAttributeRequest : Tea.TeaModel {
         if self.flowLogName != nil {
             map["FlowLogName"] = self.flowLogName!
         }
+        if self.interval != nil {
+            map["Interval"] = self.interval!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -32953,6 +32998,9 @@ public class ModifyFlowLogAttributeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FlowLogName") {
             self.flowLogName = dict["FlowLogName"] as! String
+        }
+        if dict.keys.contains("Interval") {
+            self.interval = dict["Interval"] as! Int64
         }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
