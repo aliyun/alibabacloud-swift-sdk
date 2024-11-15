@@ -6959,6 +6959,8 @@ public class RecognizeEduPaperOcrResponse : Tea.TeaModel {
 public class RecognizeEduPaperStructedRequest : Tea.TeaModel {
     public var needRotate: Bool?
 
+    public var outputOricoord: Bool?
+
     public var subject: String?
 
     public var url: String?
@@ -6982,6 +6984,9 @@ public class RecognizeEduPaperStructedRequest : Tea.TeaModel {
         if self.needRotate != nil {
             map["NeedRotate"] = self.needRotate!
         }
+        if self.outputOricoord != nil {
+            map["OutputOricoord"] = self.outputOricoord!
+        }
         if self.subject != nil {
             map["Subject"] = self.subject!
         }
@@ -6997,6 +7002,9 @@ public class RecognizeEduPaperStructedRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("NeedRotate") {
             self.needRotate = dict["NeedRotate"] as! Bool
+        }
+        if dict.keys.contains("OutputOricoord") {
+            self.outputOricoord = dict["OutputOricoord"] as! Bool
         }
         if dict.keys.contains("Subject") {
             self.subject = dict["Subject"] as! String
