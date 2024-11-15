@@ -688,6 +688,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeFaceGuardRiskWithOptions(_ request: DescribeFaceGuardRiskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeFaceGuardRiskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.deviceToken)) {
+            query["DeviceToken"] = request.deviceToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outerOrderNo)) {
+            query["OuterOrderNo"] = request.outerOrderNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productCode)) {
+            query["ProductCode"] = request.productCode ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeFaceGuardRisk",
+            "version": "2019-03-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeFaceGuardRiskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeFaceGuardRisk(_ request: DescribeFaceGuardRiskRequest) async throws -> DescribeFaceGuardRiskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeFaceGuardRiskWithOptions(request as! DescribeFaceGuardRiskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeFaceVerifyWithOptions(_ request: DescribeFaceVerifyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeFaceVerifyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

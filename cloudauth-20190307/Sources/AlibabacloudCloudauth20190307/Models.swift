@@ -3030,6 +3030,203 @@ public class DescribeDeviceInfoResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeFaceGuardRiskRequest : Tea.TeaModel {
+    public var bizId: String?
+
+    public var deviceToken: String?
+
+    public var outerOrderNo: String?
+
+    public var productCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bizId != nil {
+            map["BizId"] = self.bizId!
+        }
+        if self.deviceToken != nil {
+            map["DeviceToken"] = self.deviceToken!
+        }
+        if self.outerOrderNo != nil {
+            map["OuterOrderNo"] = self.outerOrderNo!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BizId") {
+            self.bizId = dict["BizId"] as! String
+        }
+        if dict.keys.contains("DeviceToken") {
+            self.deviceToken = dict["DeviceToken"] as! String
+        }
+        if dict.keys.contains("OuterOrderNo") {
+            self.outerOrderNo = dict["OuterOrderNo"] as! String
+        }
+        if dict.keys.contains("ProductCode") {
+            self.productCode = dict["ProductCode"] as! String
+        }
+    }
+}
+
+public class DescribeFaceGuardRiskResponseBody : Tea.TeaModel {
+    public class ResultObject : Tea.TeaModel {
+        public var riakTags: String?
+
+        public var riskExtends: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.riakTags != nil {
+                map["RiakTags"] = self.riakTags!
+            }
+            if self.riskExtends != nil {
+                map["RiskExtends"] = self.riskExtends!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("RiakTags") {
+                self.riakTags = dict["RiakTags"] as! String
+            }
+            if dict.keys.contains("RiskExtends") {
+                self.riskExtends = dict["RiskExtends"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var resultObject: DescribeFaceGuardRiskResponseBody.ResultObject?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.resultObject?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resultObject != nil {
+            map["ResultObject"] = self.resultObject?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResultObject") {
+            var model = DescribeFaceGuardRiskResponseBody.ResultObject()
+            model.fromMap(dict["ResultObject"] as! [String: Any])
+            self.resultObject = model
+        }
+    }
+}
+
+public class DescribeFaceGuardRiskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeFaceGuardRiskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeFaceGuardRiskResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeFaceVerifyRequest : Tea.TeaModel {
     public var certifyId: String?
 
