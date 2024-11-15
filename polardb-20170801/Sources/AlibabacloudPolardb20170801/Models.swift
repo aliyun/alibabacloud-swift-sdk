@@ -1938,6 +1938,8 @@ public class CreateDBClusterRequest : Tea.TeaModel {
 
     public var backupRetentionPolicyOnClusterDeletion: String?
 
+    public var burstingEnabled: String?
+
     public var clientToken: String?
 
     public var cloneDataPoint: String?
@@ -2063,6 +2065,9 @@ public class CreateDBClusterRequest : Tea.TeaModel {
         }
         if self.backupRetentionPolicyOnClusterDeletion != nil {
             map["BackupRetentionPolicyOnClusterDeletion"] = self.backupRetentionPolicyOnClusterDeletion!
+        }
+        if self.burstingEnabled != nil {
+            map["BurstingEnabled"] = self.burstingEnabled!
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
@@ -2233,6 +2238,9 @@ public class CreateDBClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("BackupRetentionPolicyOnClusterDeletion") {
             self.backupRetentionPolicyOnClusterDeletion = dict["BackupRetentionPolicyOnClusterDeletion"] as! String
+        }
+        if dict.keys.contains("BurstingEnabled") {
+            self.burstingEnabled = dict["BurstingEnabled"] as! String
         }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
@@ -9340,6 +9348,8 @@ public class DescribeBackupsResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var totalLevel2BackupSize: String?
+
     public var totalRecordCount: String?
 
     public override init() {
@@ -9369,6 +9379,9 @@ public class DescribeBackupsResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.totalLevel2BackupSize != nil {
+            map["TotalLevel2BackupSize"] = self.totalLevel2BackupSize!
+        }
         if self.totalRecordCount != nil {
             map["TotalRecordCount"] = self.totalRecordCount!
         }
@@ -9389,6 +9402,9 @@ public class DescribeBackupsResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalLevel2BackupSize") {
+            self.totalLevel2BackupSize = dict["TotalLevel2BackupSize"] as! String
         }
         if dict.keys.contains("TotalRecordCount") {
             self.totalRecordCount = dict["TotalRecordCount"] as! String
@@ -9746,6 +9762,8 @@ public class DescribeClassListResponseBody : Tea.TeaModel {
 
         public var cpu: String?
 
+        public var essdMaxStorageCapacity: String?
+
         public var maxConnections: String?
 
         public var maxIOPS: String?
@@ -9759,6 +9777,8 @@ public class DescribeClassListResponseBody : Tea.TeaModel {
         public var pl2MaxIOPS: String?
 
         public var pl3MaxIOPS: String?
+
+        public var polarStoreMaxStorageCapacity: String?
 
         public var psl4MaxIOPS: String?
 
@@ -9794,6 +9814,9 @@ public class DescribeClassListResponseBody : Tea.TeaModel {
             if self.cpu != nil {
                 map["Cpu"] = self.cpu!
             }
+            if self.essdMaxStorageCapacity != nil {
+                map["EssdMaxStorageCapacity"] = self.essdMaxStorageCapacity!
+            }
             if self.maxConnections != nil {
                 map["MaxConnections"] = self.maxConnections!
             }
@@ -9814,6 +9837,9 @@ public class DescribeClassListResponseBody : Tea.TeaModel {
             }
             if self.pl3MaxIOPS != nil {
                 map["Pl3MaxIOPS"] = self.pl3MaxIOPS!
+            }
+            if self.polarStoreMaxStorageCapacity != nil {
+                map["PolarStoreMaxStorageCapacity"] = self.polarStoreMaxStorageCapacity!
             }
             if self.psl4MaxIOPS != nil {
                 map["Psl4MaxIOPS"] = self.psl4MaxIOPS!
@@ -9843,6 +9869,9 @@ public class DescribeClassListResponseBody : Tea.TeaModel {
             if dict.keys.contains("Cpu") {
                 self.cpu = dict["Cpu"] as! String
             }
+            if dict.keys.contains("EssdMaxStorageCapacity") {
+                self.essdMaxStorageCapacity = dict["EssdMaxStorageCapacity"] as! String
+            }
             if dict.keys.contains("MaxConnections") {
                 self.maxConnections = dict["MaxConnections"] as! String
             }
@@ -9863,6 +9892,9 @@ public class DescribeClassListResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Pl3MaxIOPS") {
                 self.pl3MaxIOPS = dict["Pl3MaxIOPS"] as! String
+            }
+            if dict.keys.contains("PolarStoreMaxStorageCapacity") {
+                self.polarStoreMaxStorageCapacity = dict["PolarStoreMaxStorageCapacity"] as! String
             }
             if dict.keys.contains("Psl4MaxIOPS") {
                 self.psl4MaxIOPS = dict["Psl4MaxIOPS"] as! String
@@ -10391,6 +10423,8 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
 
         public var DBNodeClass: String?
 
+        public var DBNodeDescription: String?
+
         public var DBNodeId: String?
 
         public var DBNodeRole: String?
@@ -10456,6 +10490,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
             }
             if self.DBNodeClass != nil {
                 map["DBNodeClass"] = self.DBNodeClass!
+            }
+            if self.DBNodeDescription != nil {
+                map["DBNodeDescription"] = self.DBNodeDescription!
             }
             if self.DBNodeId != nil {
                 map["DBNodeId"] = self.DBNodeId!
@@ -10532,6 +10569,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("DBNodeClass") {
                 self.DBNodeClass = dict["DBNodeClass"] as! String
+            }
+            if dict.keys.contains("DBNodeDescription") {
+                self.DBNodeDescription = dict["DBNodeDescription"] as! String
             }
             if dict.keys.contains("DBNodeId") {
                 self.DBNodeId = dict["DBNodeId"] as! String
@@ -10641,6 +10681,8 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
     public var blktagTotal: Int64?
 
     public var blktagUsed: Int64?
+
+    public var burstingEnabled: String?
 
     public var category: String?
 
@@ -10784,6 +10826,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if self.blktagUsed != nil {
             map["BlktagUsed"] = self.blktagUsed!
+        }
+        if self.burstingEnabled != nil {
+            map["BurstingEnabled"] = self.burstingEnabled!
         }
         if self.category != nil {
             map["Category"] = self.category!
@@ -10982,6 +11027,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("BlktagUsed") {
             self.blktagUsed = dict["BlktagUsed"] as! Int64
+        }
+        if dict.keys.contains("BurstingEnabled") {
+            self.burstingEnabled = dict["BurstingEnabled"] as! String
         }
         if dict.keys.contains("Category") {
             self.category = dict["Category"] as! String
