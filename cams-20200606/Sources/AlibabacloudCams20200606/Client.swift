@@ -2507,6 +2507,66 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func triggerChatFlowWithOptions(_ tmpReq: TriggerChatFlowRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> TriggerChatFlowResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: TriggerChatFlowShrinkRequest = TriggerChatFlowShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.data)) {
+            request.dataShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.data, "Data", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.claimTimeMillis)) {
+            query["ClaimTimeMillis"] = request.claimTimeMillis!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dataShrink)) {
+            query["Data"] = request.dataShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.discardTimeMillis)) {
+            query["DiscardTimeMillis"] = request.discardTimeMillis!;
+        }
+        if (!TeaUtils.Client.isUnset(request.flowCode)) {
+            query["FlowCode"] = request.flowCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outId)) {
+            query["OutId"] = request.outId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.uuid)) {
+            query["Uuid"] = request.uuid ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TriggerChatFlow",
+            "version": "2020-06-06",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TriggerChatFlowResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func triggerChatFlow(_ request: TriggerChatFlowRequest) async throws -> TriggerChatFlowResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await triggerChatFlowWithOptions(request as! TriggerChatFlowRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateAccountWebhookWithOptions(_ request: UpdateAccountWebhookRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAccountWebhookResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

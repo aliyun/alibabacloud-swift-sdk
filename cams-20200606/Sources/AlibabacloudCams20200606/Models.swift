@@ -15971,6 +15971,313 @@ public class SubmitIsvCustomerTermsResponse : Tea.TeaModel {
     }
 }
 
+public class TriggerChatFlowRequest : Tea.TeaModel {
+    public var claimTimeMillis: Int64?
+
+    public var data: [String: Any]?
+
+    public var discardTimeMillis: Int64?
+
+    public var flowCode: String?
+
+    public var outId: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var uuid: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.claimTimeMillis != nil {
+            map["ClaimTimeMillis"] = self.claimTimeMillis!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.discardTimeMillis != nil {
+            map["DiscardTimeMillis"] = self.discardTimeMillis!
+        }
+        if self.flowCode != nil {
+            map["FlowCode"] = self.flowCode!
+        }
+        if self.outId != nil {
+            map["OutId"] = self.outId!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.uuid != nil {
+            map["Uuid"] = self.uuid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClaimTimeMillis") {
+            self.claimTimeMillis = dict["ClaimTimeMillis"] as! Int64
+        }
+        if dict.keys.contains("Data") {
+            self.data = dict["Data"] as! [String: Any]
+        }
+        if dict.keys.contains("DiscardTimeMillis") {
+            self.discardTimeMillis = dict["DiscardTimeMillis"] as! Int64
+        }
+        if dict.keys.contains("FlowCode") {
+            self.flowCode = dict["FlowCode"] as! String
+        }
+        if dict.keys.contains("OutId") {
+            self.outId = dict["OutId"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("Uuid") {
+            self.uuid = dict["Uuid"] as! String
+        }
+    }
+}
+
+public class TriggerChatFlowShrinkRequest : Tea.TeaModel {
+    public var claimTimeMillis: Int64?
+
+    public var dataShrink: String?
+
+    public var discardTimeMillis: Int64?
+
+    public var flowCode: String?
+
+    public var outId: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var uuid: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.claimTimeMillis != nil {
+            map["ClaimTimeMillis"] = self.claimTimeMillis!
+        }
+        if self.dataShrink != nil {
+            map["Data"] = self.dataShrink!
+        }
+        if self.discardTimeMillis != nil {
+            map["DiscardTimeMillis"] = self.discardTimeMillis!
+        }
+        if self.flowCode != nil {
+            map["FlowCode"] = self.flowCode!
+        }
+        if self.outId != nil {
+            map["OutId"] = self.outId!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.uuid != nil {
+            map["Uuid"] = self.uuid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClaimTimeMillis") {
+            self.claimTimeMillis = dict["ClaimTimeMillis"] as! Int64
+        }
+        if dict.keys.contains("Data") {
+            self.dataShrink = dict["Data"] as! String
+        }
+        if dict.keys.contains("DiscardTimeMillis") {
+            self.discardTimeMillis = dict["DiscardTimeMillis"] as! Int64
+        }
+        if dict.keys.contains("FlowCode") {
+            self.flowCode = dict["FlowCode"] as! String
+        }
+        if dict.keys.contains("OutId") {
+            self.outId = dict["OutId"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("Uuid") {
+            self.uuid = dict["Uuid"] as! String
+        }
+    }
+}
+
+public class TriggerChatFlowResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: [String: Any]?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            self.data = dict["Data"] as! [String: Any]
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class TriggerChatFlowResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: TriggerChatFlowResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = TriggerChatFlowResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class UpdateAccountWebhookRequest : Tea.TeaModel {
     public var custSpaceId: String?
 
