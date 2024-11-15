@@ -304,15 +304,21 @@ public class DemoCategory : Tea.TeaModel {
 }
 
 public class ForwardInfo : Tea.TeaModel {
+    public var accessType: [String]?
+
     public var containerName: String?
 
     public var eipAllocationId: String?
 
     public var enable: Bool?
 
-    public var natGatewayId: String?
+    public var externalPort: String?
 
-    public var port: String?
+    public var forwardPort: String?
+
+    public var name: String?
+
+    public var natGatewayId: String?
 
     public var SSHPublicKey: String?
 
@@ -330,6 +336,9 @@ public class ForwardInfo : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessType != nil {
+            map["AccessType"] = self.accessType!
+        }
         if self.containerName != nil {
             map["ContainerName"] = self.containerName!
         }
@@ -339,11 +348,17 @@ public class ForwardInfo : Tea.TeaModel {
         if self.enable != nil {
             map["Enable"] = self.enable!
         }
+        if self.externalPort != nil {
+            map["ExternalPort"] = self.externalPort!
+        }
+        if self.forwardPort != nil {
+            map["ForwardPort"] = self.forwardPort!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
         if self.natGatewayId != nil {
             map["NatGatewayId"] = self.natGatewayId!
-        }
-        if self.port != nil {
-            map["Port"] = self.port!
         }
         if self.SSHPublicKey != nil {
             map["SSHPublicKey"] = self.SSHPublicKey!
@@ -352,6 +367,9 @@ public class ForwardInfo : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessType") {
+            self.accessType = dict["AccessType"] as! [String]
+        }
         if dict.keys.contains("ContainerName") {
             self.containerName = dict["ContainerName"] as! String
         }
@@ -361,11 +379,17 @@ public class ForwardInfo : Tea.TeaModel {
         if dict.keys.contains("Enable") {
             self.enable = dict["Enable"] as! Bool
         }
+        if dict.keys.contains("ExternalPort") {
+            self.externalPort = dict["ExternalPort"] as! String
+        }
+        if dict.keys.contains("ForwardPort") {
+            self.forwardPort = dict["ForwardPort"] as! String
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
         if dict.keys.contains("NatGatewayId") {
             self.natGatewayId = dict["NatGatewayId"] as! String
-        }
-        if dict.keys.contains("Port") {
-            self.port = dict["Port"] as! String
         }
         if dict.keys.contains("SSHPublicKey") {
             self.SSHPublicKey = dict["SSHPublicKey"] as! String
@@ -507,6 +531,8 @@ public class ForwardInfoResponse : Tea.TeaModel {
             }
         }
     }
+    public var accessType: [String]?
+
     public var connectInfo: ForwardInfoResponse.ConnectInfo?
 
     public var containerName: String?
@@ -515,9 +541,13 @@ public class ForwardInfoResponse : Tea.TeaModel {
 
     public var enable: Bool?
 
-    public var natGatewayId: String?
+    public var externalPort: String?
 
-    public var port: String?
+    public var forwardPort: String?
+
+    public var name: String?
+
+    public var natGatewayId: String?
 
     public var SSHPublicKey: String?
 
@@ -536,6 +566,9 @@ public class ForwardInfoResponse : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessType != nil {
+            map["AccessType"] = self.accessType!
+        }
         if self.connectInfo != nil {
             map["ConnectInfo"] = self.connectInfo?.toMap()
         }
@@ -548,11 +581,17 @@ public class ForwardInfoResponse : Tea.TeaModel {
         if self.enable != nil {
             map["Enable"] = self.enable!
         }
+        if self.externalPort != nil {
+            map["ExternalPort"] = self.externalPort!
+        }
+        if self.forwardPort != nil {
+            map["ForwardPort"] = self.forwardPort!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
         if self.natGatewayId != nil {
             map["NatGatewayId"] = self.natGatewayId!
-        }
-        if self.port != nil {
-            map["Port"] = self.port!
         }
         if self.SSHPublicKey != nil {
             map["SSHPublicKey"] = self.SSHPublicKey!
@@ -561,6 +600,9 @@ public class ForwardInfoResponse : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessType") {
+            self.accessType = dict["AccessType"] as! [String]
+        }
         if dict.keys.contains("ConnectInfo") {
             var model = ForwardInfoResponse.ConnectInfo()
             model.fromMap(dict["ConnectInfo"] as! [String: Any])
@@ -575,11 +617,17 @@ public class ForwardInfoResponse : Tea.TeaModel {
         if dict.keys.contains("Enable") {
             self.enable = dict["Enable"] as! Bool
         }
+        if dict.keys.contains("ExternalPort") {
+            self.externalPort = dict["ExternalPort"] as! String
+        }
+        if dict.keys.contains("ForwardPort") {
+            self.forwardPort = dict["ForwardPort"] as! String
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
         if dict.keys.contains("NatGatewayId") {
             self.natGatewayId = dict["NatGatewayId"] as! String
-        }
-        if dict.keys.contains("Port") {
-            self.port = dict["Port"] as! String
         }
         if dict.keys.contains("SSHPublicKey") {
             self.SSHPublicKey = dict["SSHPublicKey"] as! String
