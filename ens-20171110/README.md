@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudEns20171110` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/ens-20171110" "4.2.0"
+github "alibabacloud-sdk-swift/ens-20171110" "4.3.0"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudEns20171110` into your Xcode project using [Swift Pack
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/ens-20171110.git", from: "4.2.0")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/ens-20171110.git", from: "4.3.0")
 ]
 ```
 
