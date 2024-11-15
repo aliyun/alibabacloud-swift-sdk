@@ -3847,6 +3847,8 @@ public class DescribeInstanceListResponseBody : Tea.TeaModel {
 
         public var coverageType: Int32?
 
+        public var debtStatus: Int64?
+
         public var expireTime: Int64?
 
         public var gmtCreate: Int64?
@@ -3893,6 +3895,9 @@ public class DescribeInstanceListResponseBody : Tea.TeaModel {
             if self.coverageType != nil {
                 map["CoverageType"] = self.coverageType!
             }
+            if self.debtStatus != nil {
+                map["DebtStatus"] = self.debtStatus!
+            }
             if self.expireTime != nil {
                 map["ExpireTime"] = self.expireTime!
             }
@@ -3937,6 +3942,9 @@ public class DescribeInstanceListResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("CoverageType") {
                 self.coverageType = dict["CoverageType"] as! Int32
+            }
+            if dict.keys.contains("DebtStatus") {
+                self.debtStatus = dict["DebtStatus"] as! Int64
             }
             if dict.keys.contains("ExpireTime") {
                 self.expireTime = dict["ExpireTime"] as! Int64
@@ -4895,6 +4903,8 @@ public class DescribeOpEntitiesRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var opAction: Int32?
+
     public var orderBy: String?
 
     public var orderDir: String?
@@ -4930,6 +4940,9 @@ public class DescribeOpEntitiesRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.opAction != nil {
+            map["OpAction"] = self.opAction!
+        }
         if self.orderBy != nil {
             map["OrderBy"] = self.orderBy!
         }
@@ -4960,6 +4973,9 @@ public class DescribeOpEntitiesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("OpAction") {
+            self.opAction = dict["OpAction"] as! Int32
         }
         if dict.keys.contains("OrderBy") {
             self.orderBy = dict["OrderBy"] as! String

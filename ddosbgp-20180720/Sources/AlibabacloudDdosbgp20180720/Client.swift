@@ -1025,6 +1025,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.opAction)) {
+            query["OpAction"] = request.opAction!;
+        }
         if (!TeaUtils.Client.isUnset(request.orderBy)) {
             query["OrderBy"] = request.orderBy ?? "";
         }
