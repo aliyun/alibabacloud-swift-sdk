@@ -441,6 +441,8 @@ public class ChannelProperties : Tea.TeaModel {
 
     public var useHuaweiMessage: String?
 
+    public var useHuaweiPlainMessage: String?
+
     public var vivoAddBadge: String?
 
     public var vivoCategory: String?
@@ -493,6 +495,9 @@ public class ChannelProperties : Tea.TeaModel {
         if self.useHuaweiMessage != nil {
             map["useHuaweiMessage"] = self.useHuaweiMessage!
         }
+        if self.useHuaweiPlainMessage != nil {
+            map["useHuaweiPlainMessage"] = self.useHuaweiPlainMessage!
+        }
         if self.vivoAddBadge != nil {
             map["vivoAddBadge"] = self.vivoAddBadge!
         }
@@ -538,6 +543,9 @@ public class ChannelProperties : Tea.TeaModel {
         }
         if dict.keys.contains("useHuaweiMessage") {
             self.useHuaweiMessage = dict["useHuaweiMessage"] as! String
+        }
+        if dict.keys.contains("useHuaweiPlainMessage") {
+            self.useHuaweiPlainMessage = dict["useHuaweiPlainMessage"] as! String
         }
         if dict.keys.contains("vivoAddBadge") {
             self.vivoAddBadge = dict["vivoAddBadge"] as! String
