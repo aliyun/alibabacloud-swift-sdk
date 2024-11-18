@@ -4053,6 +4053,8 @@ public class ListImagesResponseBody : Tea.TeaModel {
 
         public var name: String?
 
+        public var osTag: String?
+
         public var version: String?
 
         public override init() {
@@ -4087,6 +4089,9 @@ public class ListImagesResponseBody : Tea.TeaModel {
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.osTag != nil {
+                map["OsTag"] = self.osTag!
+            }
             if self.version != nil {
                 map["Version"] = self.version!
             }
@@ -4111,6 +4116,9 @@ public class ListImagesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Name") {
                 self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("OsTag") {
+                self.osTag = dict["OsTag"] as! String
             }
             if dict.keys.contains("Version") {
                 self.version = dict["Version"] as! String
