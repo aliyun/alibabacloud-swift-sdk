@@ -1929,6 +1929,308 @@ public class GetWarehouseDetailResponse : Tea.TeaModel {
     }
 }
 
+public class ListBackupDataRequest : Tea.TeaModel {
+    public var backupType: String?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.backupType != nil {
+            map["backupType"] = self.backupType!
+        }
+        if self.instanceId != nil {
+            map["instanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("backupType") {
+            self.backupType = dict["backupType"] as! String
+        }
+        if dict.keys.contains("instanceId") {
+            self.instanceId = dict["instanceId"] as! String
+        }
+    }
+}
+
+public class ListBackupDataResponseBody : Tea.TeaModel {
+    public class BackupDataList : Tea.TeaModel {
+        public var backupType: String?
+
+        public var coldDataSize: Int64?
+
+        public var dataDesc: String?
+
+        public var dataGran: String?
+
+        public var dataSize: Int64?
+
+        public var dataTime: String?
+
+        public var endTime: String?
+
+        public var id: Int64?
+
+        public var instanceId: String?
+
+        public var instanceName: String?
+
+        public var instanceRegion: String?
+
+        public var instanceType: String?
+
+        public var instanceZoneId: String?
+
+        public var snapshotRegion: String?
+
+        public var snapshotZoneId: String?
+
+        public var startTime: String?
+
+        public var status: String?
+
+        public var triggerType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.backupType != nil {
+                map["BackupType"] = self.backupType!
+            }
+            if self.coldDataSize != nil {
+                map["ColdDataSize"] = self.coldDataSize!
+            }
+            if self.dataDesc != nil {
+                map["DataDesc"] = self.dataDesc!
+            }
+            if self.dataGran != nil {
+                map["DataGran"] = self.dataGran!
+            }
+            if self.dataSize != nil {
+                map["DataSize"] = self.dataSize!
+            }
+            if self.dataTime != nil {
+                map["DataTime"] = self.dataTime!
+            }
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.instanceName != nil {
+                map["InstanceName"] = self.instanceName!
+            }
+            if self.instanceRegion != nil {
+                map["InstanceRegion"] = self.instanceRegion!
+            }
+            if self.instanceType != nil {
+                map["InstanceType"] = self.instanceType!
+            }
+            if self.instanceZoneId != nil {
+                map["InstanceZoneId"] = self.instanceZoneId!
+            }
+            if self.snapshotRegion != nil {
+                map["SnapshotRegion"] = self.snapshotRegion!
+            }
+            if self.snapshotZoneId != nil {
+                map["SnapshotZoneId"] = self.snapshotZoneId!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.triggerType != nil {
+                map["TriggerType"] = self.triggerType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BackupType") {
+                self.backupType = dict["BackupType"] as! String
+            }
+            if dict.keys.contains("ColdDataSize") {
+                self.coldDataSize = dict["ColdDataSize"] as! Int64
+            }
+            if dict.keys.contains("DataDesc") {
+                self.dataDesc = dict["DataDesc"] as! String
+            }
+            if dict.keys.contains("DataGran") {
+                self.dataGran = dict["DataGran"] as! String
+            }
+            if dict.keys.contains("DataSize") {
+                self.dataSize = dict["DataSize"] as! Int64
+            }
+            if dict.keys.contains("DataTime") {
+                self.dataTime = dict["DataTime"] as! String
+            }
+            if dict.keys.contains("EndTime") {
+                self.endTime = dict["EndTime"] as! String
+            }
+            if dict.keys.contains("Id") {
+                self.id = dict["Id"] as! Int64
+            }
+            if dict.keys.contains("InstanceId") {
+                self.instanceId = dict["InstanceId"] as! String
+            }
+            if dict.keys.contains("InstanceName") {
+                self.instanceName = dict["InstanceName"] as! String
+            }
+            if dict.keys.contains("InstanceRegion") {
+                self.instanceRegion = dict["InstanceRegion"] as! String
+            }
+            if dict.keys.contains("InstanceType") {
+                self.instanceType = dict["InstanceType"] as! String
+            }
+            if dict.keys.contains("InstanceZoneId") {
+                self.instanceZoneId = dict["InstanceZoneId"] as! String
+            }
+            if dict.keys.contains("SnapshotRegion") {
+                self.snapshotRegion = dict["SnapshotRegion"] as! String
+            }
+            if dict.keys.contains("SnapshotZoneId") {
+                self.snapshotZoneId = dict["SnapshotZoneId"] as! String
+            }
+            if dict.keys.contains("StartTime") {
+                self.startTime = dict["StartTime"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("TriggerType") {
+                self.triggerType = dict["TriggerType"] as! String
+            }
+        }
+    }
+    public var backupDataList: [ListBackupDataResponseBody.BackupDataList]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.backupDataList != nil {
+            var tmp : [Any] = []
+            for k in self.backupDataList! {
+                tmp.append(k.toMap())
+            }
+            map["BackupDataList"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BackupDataList") {
+            var tmp : [ListBackupDataResponseBody.BackupDataList] = []
+            for v in dict["BackupDataList"] as! [Any] {
+                var model = ListBackupDataResponseBody.BackupDataList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.backupDataList = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ListBackupDataResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListBackupDataResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListBackupDataResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListInstancesRequest : Tea.TeaModel {
     public class Tag : Tea.TeaModel {
         public var key: String?
