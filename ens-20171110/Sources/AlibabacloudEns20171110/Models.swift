@@ -8898,6 +8898,201 @@ public class CreateNetworkAclEntryResponse : Tea.TeaModel {
     }
 }
 
+public class CreateNetworkInterfaceRequest : Tea.TeaModel {
+    public var description_: String?
+
+    public var name: String?
+
+    public var securityGroupIds: [String]?
+
+    public var vSwitchId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.securityGroupIds != nil {
+            map["SecurityGroupIds"] = self.securityGroupIds!
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("SecurityGroupIds") {
+            self.securityGroupIds = dict["SecurityGroupIds"] as! [String]
+        }
+        if dict.keys.contains("VSwitchId") {
+            self.vSwitchId = dict["VSwitchId"] as! String
+        }
+    }
+}
+
+public class CreateNetworkInterfaceShrinkRequest : Tea.TeaModel {
+    public var description_: String?
+
+    public var name: String?
+
+    public var securityGroupIdsShrink: String?
+
+    public var vSwitchId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.securityGroupIdsShrink != nil {
+            map["SecurityGroupIds"] = self.securityGroupIdsShrink!
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("SecurityGroupIds") {
+            self.securityGroupIdsShrink = dict["SecurityGroupIds"] as! String
+        }
+        if dict.keys.contains("VSwitchId") {
+            self.vSwitchId = dict["VSwitchId"] as! String
+        }
+    }
+}
+
+public class CreateNetworkInterfaceResponseBody : Tea.TeaModel {
+    public var networkInterfaceIds: [String]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.networkInterfaceIds != nil {
+            map["NetworkInterfaceIds"] = self.networkInterfaceIds!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("NetworkInterfaceIds") {
+            self.networkInterfaceIds = dict["NetworkInterfaceIds"] as! [String]
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateNetworkInterfaceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateNetworkInterfaceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateNetworkInterfaceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateSDGRequest : Tea.TeaModel {
     public var description_: String?
 
@@ -12834,6 +13029,145 @@ public class DeleteNetworkAclEntryResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DeleteNetworkAclEntryResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DeleteNetworkInterfacesRequest : Tea.TeaModel {
+    public var networkInterfaceIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.networkInterfaceIds != nil {
+            map["NetworkInterfaceIds"] = self.networkInterfaceIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("NetworkInterfaceIds") {
+            self.networkInterfaceIds = dict["NetworkInterfaceIds"] as! [String]
+        }
+    }
+}
+
+public class DeleteNetworkInterfacesShrinkRequest : Tea.TeaModel {
+    public var networkInterfaceIdsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.networkInterfaceIdsShrink != nil {
+            map["NetworkInterfaceIds"] = self.networkInterfaceIdsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("NetworkInterfaceIds") {
+            self.networkInterfaceIdsShrink = dict["NetworkInterfaceIds"] as! String
+        }
+    }
+}
+
+public class DeleteNetworkInterfacesResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DeleteNetworkInterfacesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteNetworkInterfacesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteNetworkInterfacesResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -20329,6 +20663,10 @@ public class DescribeDisksResponseBody : Tea.TeaModel {
 
             public var creationTime: String?
 
+            public var deleteWithInstance: Bool?
+
+            public var description_: String?
+
             public var diskChargeType: String?
 
             public var diskId: String?
@@ -20376,6 +20714,12 @@ public class DescribeDisksResponseBody : Tea.TeaModel {
                 }
                 if self.creationTime != nil {
                     map["CreationTime"] = self.creationTime!
+                }
+                if self.deleteWithInstance != nil {
+                    map["DeleteWithInstance"] = self.deleteWithInstance!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
                 }
                 if self.diskChargeType != nil {
                     map["DiskChargeType"] = self.diskChargeType!
@@ -20428,6 +20772,12 @@ public class DescribeDisksResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("CreationTime") {
                     self.creationTime = dict["CreationTime"] as! String
+                }
+                if dict.keys.contains("DeleteWithInstance") {
+                    self.deleteWithInstance = dict["DeleteWithInstance"] as! Bool
+                }
+                if dict.keys.contains("Description") {
+                    self.description_ = dict["Description"] as! String
                 }
                 if dict.keys.contains("DiskChargeType") {
                     self.diskChargeType = dict["DiskChargeType"] as! String
