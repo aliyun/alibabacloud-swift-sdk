@@ -1122,6 +1122,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.maxRunningTimeMinutes)) {
             query["MaxRunningTimeMinutes"] = request.maxRunningTimeMinutes!;
         }
+        if (!TeaUtils.Client.isUnset(request.priority)) {
+            query["Priority"] = request.priority ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             query["WorkspaceId"] = request.workspaceId ?? "";
         }

@@ -4141,7 +4141,11 @@ public class StatusTransitionItem : Tea.TeaModel {
 public class Tensorboard : Tea.TeaModel {
     public var accessibility: String?
 
+    public var cpu: Int64?
+
     public var dataSourceId: String?
+
+    public var dataSourceType: String?
 
     public var displayName: String?
 
@@ -4154,6 +4158,12 @@ public class Tensorboard : Tea.TeaModel {
     public var gmtModifyTime: String?
 
     public var jobId: String?
+
+    public var maxRunningTimeMinutes: Int64?
+
+    public var memory: Int64?
+
+    public var options: String?
 
     public var priority: String?
 
@@ -4171,6 +4181,8 @@ public class Tensorboard : Tea.TeaModel {
 
     public var summaryPath: String?
 
+    public var summaryRelativePath: String?
+
     public var tensorboardDataSources: [TensorboardDataSourceSpec]?
 
     public var tensorboardId: String?
@@ -4179,9 +4191,13 @@ public class Tensorboard : Tea.TeaModel {
 
     public var tensorboardUrl: String?
 
+    public var token: String?
+
     public var userId: String?
 
     public var username: String?
+
+    public var workspaceid: String?
 
     public override init() {
         super.init()
@@ -4201,8 +4217,14 @@ public class Tensorboard : Tea.TeaModel {
         if self.accessibility != nil {
             map["Accessibility"] = self.accessibility!
         }
+        if self.cpu != nil {
+            map["Cpu"] = self.cpu!
+        }
         if self.dataSourceId != nil {
             map["DataSourceId"] = self.dataSourceId!
+        }
+        if self.dataSourceType != nil {
+            map["DataSourceType"] = self.dataSourceType!
         }
         if self.displayName != nil {
             map["DisplayName"] = self.displayName!
@@ -4221,6 +4243,15 @@ public class Tensorboard : Tea.TeaModel {
         }
         if self.jobId != nil {
             map["JobId"] = self.jobId!
+        }
+        if self.maxRunningTimeMinutes != nil {
+            map["MaxRunningTimeMinutes"] = self.maxRunningTimeMinutes!
+        }
+        if self.memory != nil {
+            map["Memory"] = self.memory!
+        }
+        if self.options != nil {
+            map["Options"] = self.options!
         }
         if self.priority != nil {
             map["Priority"] = self.priority!
@@ -4246,6 +4277,9 @@ public class Tensorboard : Tea.TeaModel {
         if self.summaryPath != nil {
             map["SummaryPath"] = self.summaryPath!
         }
+        if self.summaryRelativePath != nil {
+            map["SummaryRelativePath"] = self.summaryRelativePath!
+        }
         if self.tensorboardDataSources != nil {
             var tmp : [Any] = []
             for k in self.tensorboardDataSources! {
@@ -4262,11 +4296,17 @@ public class Tensorboard : Tea.TeaModel {
         if self.tensorboardUrl != nil {
             map["TensorboardUrl"] = self.tensorboardUrl!
         }
+        if self.token != nil {
+            map["Token"] = self.token!
+        }
         if self.userId != nil {
             map["UserId"] = self.userId!
         }
         if self.username != nil {
             map["Username"] = self.username!
+        }
+        if self.workspaceid != nil {
+            map["Workspaceid"] = self.workspaceid!
         }
         return map
     }
@@ -4275,8 +4315,14 @@ public class Tensorboard : Tea.TeaModel {
         if dict.keys.contains("Accessibility") {
             self.accessibility = dict["Accessibility"] as! String
         }
+        if dict.keys.contains("Cpu") {
+            self.cpu = dict["Cpu"] as! Int64
+        }
         if dict.keys.contains("DataSourceId") {
             self.dataSourceId = dict["DataSourceId"] as! String
+        }
+        if dict.keys.contains("DataSourceType") {
+            self.dataSourceType = dict["DataSourceType"] as! String
         }
         if dict.keys.contains("DisplayName") {
             self.displayName = dict["DisplayName"] as! String
@@ -4295,6 +4341,15 @@ public class Tensorboard : Tea.TeaModel {
         }
         if dict.keys.contains("JobId") {
             self.jobId = dict["JobId"] as! String
+        }
+        if dict.keys.contains("MaxRunningTimeMinutes") {
+            self.maxRunningTimeMinutes = dict["MaxRunningTimeMinutes"] as! Int64
+        }
+        if dict.keys.contains("Memory") {
+            self.memory = dict["Memory"] as! Int64
+        }
+        if dict.keys.contains("Options") {
+            self.options = dict["Options"] as! String
         }
         if dict.keys.contains("Priority") {
             self.priority = dict["Priority"] as! String
@@ -4320,6 +4375,9 @@ public class Tensorboard : Tea.TeaModel {
         if dict.keys.contains("SummaryPath") {
             self.summaryPath = dict["SummaryPath"] as! String
         }
+        if dict.keys.contains("SummaryRelativePath") {
+            self.summaryRelativePath = dict["SummaryRelativePath"] as! String
+        }
         if dict.keys.contains("TensorboardDataSources") {
             var tmp : [TensorboardDataSourceSpec] = []
             for v in dict["TensorboardDataSources"] as! [Any] {
@@ -4342,11 +4400,17 @@ public class Tensorboard : Tea.TeaModel {
         if dict.keys.contains("TensorboardUrl") {
             self.tensorboardUrl = dict["TensorboardUrl"] as! String
         }
+        if dict.keys.contains("Token") {
+            self.token = dict["Token"] as! String
+        }
         if dict.keys.contains("UserId") {
             self.userId = dict["UserId"] as! String
         }
         if dict.keys.contains("Username") {
             self.username = dict["Username"] as! String
+        }
+        if dict.keys.contains("Workspaceid") {
+            self.workspaceid = dict["Workspaceid"] as! String
         }
     }
 }
@@ -9268,6 +9332,8 @@ public class UpdateTensorboardRequest : Tea.TeaModel {
 
     public var maxRunningTimeMinutes: Int64?
 
+    public var priority: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -9290,6 +9356,9 @@ public class UpdateTensorboardRequest : Tea.TeaModel {
         if self.maxRunningTimeMinutes != nil {
             map["MaxRunningTimeMinutes"] = self.maxRunningTimeMinutes!
         }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -9302,6 +9371,9 @@ public class UpdateTensorboardRequest : Tea.TeaModel {
         }
         if dict.keys.contains("MaxRunningTimeMinutes") {
             self.maxRunningTimeMinutes = dict["MaxRunningTimeMinutes"] as! Int64
+        }
+        if dict.keys.contains("Priority") {
+            self.priority = dict["Priority"] as! String
         }
         if dict.keys.contains("WorkspaceId") {
             self.workspaceId = dict["WorkspaceId"] as! String
