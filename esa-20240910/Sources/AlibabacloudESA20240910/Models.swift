@@ -15444,142 +15444,6 @@ public class DescribeHttpDDoSAttackProtectionResponse : Tea.TeaModel {
     }
 }
 
-public class DescribeIPRangeListResponseBody : Tea.TeaModel {
-    public class Content : Tea.TeaModel {
-        public var cidr: String?
-
-        public var ipType: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.cidr != nil {
-                map["Cidr"] = self.cidr!
-            }
-            if self.ipType != nil {
-                map["IpType"] = self.ipType!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Cidr") {
-                self.cidr = dict["Cidr"] as! String
-            }
-            if dict.keys.contains("IpType") {
-                self.ipType = dict["IpType"] as! String
-            }
-        }
-    }
-    public var content: [DescribeIPRangeListResponseBody.Content]?
-
-    public var requestId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.content != nil {
-            var tmp : [Any] = []
-            for k in self.content! {
-                tmp.append(k.toMap())
-            }
-            map["Content"] = tmp
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Content") {
-            var tmp : [DescribeIPRangeListResponseBody.Content] = []
-            for v in dict["Content"] as! [Any] {
-                var model = DescribeIPRangeListResponseBody.Content()
-                if v != nil {
-                    model.fromMap(v as! [String: Any])
-                }
-                tmp.append(model)
-            }
-            self.content = tmp
-        }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
-        }
-    }
-}
-
-public class DescribeIPRangeListResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: DescribeIPRangeListResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") {
-            var model = DescribeIPRangeListResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
 public class DescribeKvAccountStatusResponseBody : Tea.TeaModel {
     public var requestId: String?
 
@@ -28665,7 +28529,7 @@ public class ListRecordsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
-    public var proxied: String?
+    public var proxied: Bool?
 
     public var recordMatchType: String?
 
@@ -28732,7 +28596,7 @@ public class ListRecordsRequest : Tea.TeaModel {
             self.pageSize = dict["PageSize"] as! Int32
         }
         if dict.keys.contains("Proxied") {
-            self.proxied = dict["Proxied"] as! String
+            self.proxied = dict["Proxied"] as! Bool
         }
         if dict.keys.contains("RecordMatchType") {
             self.recordMatchType = dict["RecordMatchType"] as! String
