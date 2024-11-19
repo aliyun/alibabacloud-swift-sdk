@@ -6954,6 +6954,8 @@ public class GetQualityCheckTaskResultResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var bizType: String?
+
             public var checkExplanation: String?
 
             public var checkPassed: String?
@@ -6976,6 +6978,8 @@ public class GetQualityCheckTaskResultResponseBody : Tea.TeaModel {
 
             public var ruleId: String?
 
+            public var ruleType: String?
+
             public override init() {
                 super.init()
             }
@@ -6990,6 +6994,9 @@ public class GetQualityCheckTaskResultResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.bizType != nil {
+                    map["bizType"] = self.bizType!
+                }
                 if self.checkExplanation != nil {
                     map["checkExplanation"] = self.checkExplanation!
                 }
@@ -7027,10 +7034,16 @@ public class GetQualityCheckTaskResultResponseBody : Tea.TeaModel {
                 if self.ruleId != nil {
                     map["ruleId"] = self.ruleId!
                 }
+                if self.ruleType != nil {
+                    map["ruleType"] = self.ruleType!
+                }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("bizType") {
+                    self.bizType = dict["bizType"] as! String
+                }
                 if dict.keys.contains("checkExplanation") {
                     self.checkExplanation = dict["checkExplanation"] as! String
                 }
@@ -7071,6 +7084,9 @@ public class GetQualityCheckTaskResultResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ruleId") {
                     self.ruleId = dict["ruleId"] as! String
+                }
+                if dict.keys.contains("ruleType") {
+                    self.ruleType = dict["ruleType"] as! String
                 }
             }
         }
