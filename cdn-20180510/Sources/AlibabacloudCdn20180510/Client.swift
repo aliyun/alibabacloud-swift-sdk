@@ -2595,6 +2595,34 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCustomDomainSampleRateWithOptions(_ request: DescribeCustomDomainSampleRateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCustomDomainSampleRateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeCustomDomainSampleRate",
+            "version": "2018-05-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeCustomDomainSampleRateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCustomDomainSampleRate(_ request: DescribeCustomDomainSampleRateRequest) async throws -> DescribeCustomDomainSampleRateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeCustomDomainSampleRateWithOptions(request as! DescribeCustomDomainSampleRateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeCustomLogConfigWithOptions(_ request: DescribeCustomLogConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCustomLogConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
@@ -5382,6 +5410,30 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listRealtimeLogDeliveryWithOptions(_ runtime: TeaUtils.RuntimeOptions) async throws -> ListRealtimeLogDeliveryResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListRealtimeLogDelivery",
+            "version": "2018-05-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListRealtimeLogDeliveryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listRealtimeLogDelivery() async throws -> ListRealtimeLogDeliveryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listRealtimeLogDeliveryWithOptions(runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listRealtimeLogDeliveryDomainsWithOptions(_ request: ListRealtimeLogDeliveryDomainsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListRealtimeLogDeliveryDomainsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
@@ -5661,6 +5713,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyCustomDomainSampleRateWithOptions(_ request: ModifyCustomDomainSampleRateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyCustomDomainSampleRateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseConfigID)) {
+            body["BaseConfigID"] = request.baseConfigID ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domainName)) {
+            body["DomainName"] = request.domainName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sampleRate)) {
+            body["SampleRate"] = request.sampleRate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sinkID)) {
+            body["SinkID"] = request.sinkID!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyCustomDomainSampleRate",
+            "version": "2018-05-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyCustomDomainSampleRateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyCustomDomainSampleRate(_ request: ModifyCustomDomainSampleRateRequest) async throws -> ModifyCustomDomainSampleRateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyCustomDomainSampleRateWithOptions(request as! ModifyCustomDomainSampleRateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyRealtimeLogDeliveryWithOptions(_ request: ModifyRealtimeLogDeliveryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyRealtimeLogDeliveryResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
@@ -5846,23 +5938,25 @@ open class Client : AlibabacloudOpenApi.Client {
     public func refreshObjectCachesWithOptions(_ request: RefreshObjectCachesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RefreshObjectCachesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.force)) {
-            query["Force"] = request.force!;
-        }
-        if (!TeaUtils.Client.isUnset(request.objectPath)) {
-            query["ObjectPath"] = request.objectPath ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.objectType)) {
-            query["ObjectType"] = request.objectType ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }
         if (!TeaUtils.Client.isUnset(request.securityToken)) {
             query["SecurityToken"] = request.securityToken ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.force)) {
+            body["Force"] = request.force!;
+        }
+        if (!TeaUtils.Client.isUnset(request.objectPath)) {
+            body["ObjectPath"] = request.objectPath ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.objectType)) {
+            body["ObjectType"] = request.objectType ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "RefreshObjectCaches",

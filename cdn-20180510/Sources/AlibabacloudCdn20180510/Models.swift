@@ -13435,6 +13435,204 @@ public class DescribeCertificateInfoByIDResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeCustomDomainSampleRateRequest : Tea.TeaModel {
+    public var domainName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.domainName != nil {
+            map["DomainName"] = self.domainName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DomainName") {
+            self.domainName = dict["DomainName"] as! String
+        }
+    }
+}
+
+public class DescribeCustomDomainSampleRateResponseBody : Tea.TeaModel {
+    public class Content : Tea.TeaModel {
+        public class DomainContent : Tea.TeaModel {
+            public var domainName: String?
+
+            public var sampleRate: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.domainName != nil {
+                    map["DomainName"] = self.domainName!
+                }
+                if self.sampleRate != nil {
+                    map["SampleRate"] = self.sampleRate!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DomainName") {
+                    self.domainName = dict["DomainName"] as! String
+                }
+                if dict.keys.contains("SampleRate") {
+                    self.sampleRate = dict["SampleRate"] as! Double
+                }
+            }
+        }
+        public var domainContent: [DescribeCustomDomainSampleRateResponseBody.Content.DomainContent]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.domainContent != nil {
+                var tmp : [Any] = []
+                for k in self.domainContent! {
+                    tmp.append(k.toMap())
+                }
+                map["DomainContent"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DomainContent") {
+                var tmp : [DescribeCustomDomainSampleRateResponseBody.Content.DomainContent] = []
+                for v in dict["DomainContent"] as! [Any] {
+                    var model = DescribeCustomDomainSampleRateResponseBody.Content.DomainContent()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.domainContent = tmp
+            }
+        }
+    }
+    public var content: DescribeCustomDomainSampleRateResponseBody.Content?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.content?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.content != nil {
+            map["Content"] = self.content?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Content") {
+            var model = DescribeCustomDomainSampleRateResponseBody.Content()
+            model.fromMap(dict["Content"] as! [String: Any])
+            self.content = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeCustomDomainSampleRateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeCustomDomainSampleRateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeCustomDomainSampleRateResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeCustomLogConfigRequest : Tea.TeaModel {
     public var configId: String?
 
@@ -33051,6 +33249,206 @@ public class ListFCTriggerResponse : Tea.TeaModel {
     }
 }
 
+public class ListRealtimeLogDeliveryResponseBody : Tea.TeaModel {
+    public class Content : Tea.TeaModel {
+        public class RealtimeLogDeliveryInfo : Tea.TeaModel {
+            public var dmId: Int32?
+
+            public var domain: String?
+
+            public var logstore: String?
+
+            public var project: String?
+
+            public var region: String?
+
+            public var status: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dmId != nil {
+                    map["DmId"] = self.dmId!
+                }
+                if self.domain != nil {
+                    map["Domain"] = self.domain!
+                }
+                if self.logstore != nil {
+                    map["Logstore"] = self.logstore!
+                }
+                if self.project != nil {
+                    map["Project"] = self.project!
+                }
+                if self.region != nil {
+                    map["Region"] = self.region!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DmId") {
+                    self.dmId = dict["DmId"] as! Int32
+                }
+                if dict.keys.contains("Domain") {
+                    self.domain = dict["Domain"] as! String
+                }
+                if dict.keys.contains("Logstore") {
+                    self.logstore = dict["Logstore"] as! String
+                }
+                if dict.keys.contains("Project") {
+                    self.project = dict["Project"] as! String
+                }
+                if dict.keys.contains("Region") {
+                    self.region = dict["Region"] as! String
+                }
+                if dict.keys.contains("Status") {
+                    self.status = dict["Status"] as! String
+                }
+            }
+        }
+        public var realtimeLogDeliveryInfo: [ListRealtimeLogDeliveryResponseBody.Content.RealtimeLogDeliveryInfo]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.realtimeLogDeliveryInfo != nil {
+                var tmp : [Any] = []
+                for k in self.realtimeLogDeliveryInfo! {
+                    tmp.append(k.toMap())
+                }
+                map["RealtimeLogDeliveryInfo"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("RealtimeLogDeliveryInfo") {
+                var tmp : [ListRealtimeLogDeliveryResponseBody.Content.RealtimeLogDeliveryInfo] = []
+                for v in dict["RealtimeLogDeliveryInfo"] as! [Any] {
+                    var model = ListRealtimeLogDeliveryResponseBody.Content.RealtimeLogDeliveryInfo()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.realtimeLogDeliveryInfo = tmp
+            }
+        }
+    }
+    public var content: ListRealtimeLogDeliveryResponseBody.Content?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.content?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.content != nil {
+            map["Content"] = self.content?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Content") {
+            var model = ListRealtimeLogDeliveryResponseBody.Content()
+            model.fromMap(dict["Content"] as! [String: Any])
+            self.content = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ListRealtimeLogDeliveryResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListRealtimeLogDeliveryResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListRealtimeLogDeliveryResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListRealtimeLogDeliveryDomainsRequest : Tea.TeaModel {
     public var logstore: String?
 
@@ -34397,6 +34795,139 @@ public class ModifyCdnServiceResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ModifyCdnServiceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ModifyCustomDomainSampleRateRequest : Tea.TeaModel {
+    public var baseConfigID: String?
+
+    public var domainName: String?
+
+    public var sampleRate: Double?
+
+    public var sinkID: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.baseConfigID != nil {
+            map["BaseConfigID"] = self.baseConfigID!
+        }
+        if self.domainName != nil {
+            map["DomainName"] = self.domainName!
+        }
+        if self.sampleRate != nil {
+            map["SampleRate"] = self.sampleRate!
+        }
+        if self.sinkID != nil {
+            map["SinkID"] = self.sinkID!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BaseConfigID") {
+            self.baseConfigID = dict["BaseConfigID"] as! String
+        }
+        if dict.keys.contains("DomainName") {
+            self.domainName = dict["DomainName"] as! String
+        }
+        if dict.keys.contains("SampleRate") {
+            self.sampleRate = dict["SampleRate"] as! Double
+        }
+        if dict.keys.contains("SinkID") {
+            self.sinkID = dict["SinkID"] as! Int64
+        }
+    }
+}
+
+public class ModifyCustomDomainSampleRateResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ModifyCustomDomainSampleRateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyCustomDomainSampleRateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ModifyCustomDomainSampleRateResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
