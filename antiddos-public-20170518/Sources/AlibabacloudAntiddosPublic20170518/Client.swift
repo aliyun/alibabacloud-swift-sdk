@@ -519,6 +519,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.bps)) {
             query["Bps"] = request.bps!;
         }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ddosRegionId)) {
             query["DdosRegionId"] = request.ddosRegionId ?? "";
         }
