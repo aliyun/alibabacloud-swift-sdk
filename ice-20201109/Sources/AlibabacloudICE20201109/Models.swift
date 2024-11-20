@@ -211,6 +211,8 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
 
         public var greeting: String?
 
+        public var maxIdleTime: Int32?
+
         public var useVoiceprint: Bool?
 
         public var userOfflineTimeout: Int32?
@@ -222,6 +224,8 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
         public var voiceprintId: String?
 
         public var volume: Int64?
+
+        public var workflowOverrideParams: String?
 
         public override init() {
             super.init()
@@ -258,6 +262,9 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             if self.greeting != nil {
                 map["Greeting"] = self.greeting!
             }
+            if self.maxIdleTime != nil {
+                map["MaxIdleTime"] = self.maxIdleTime!
+            }
             if self.useVoiceprint != nil {
                 map["UseVoiceprint"] = self.useVoiceprint!
             }
@@ -275,6 +282,9 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             }
             if self.volume != nil {
                 map["Volume"] = self.volume!
+            }
+            if self.workflowOverrideParams != nil {
+                map["WorkflowOverrideParams"] = self.workflowOverrideParams!
             }
             return map
         }
@@ -301,6 +311,9 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             if dict.keys.contains("Greeting") {
                 self.greeting = dict["Greeting"] as! String
             }
+            if dict.keys.contains("MaxIdleTime") {
+                self.maxIdleTime = dict["MaxIdleTime"] as! Int32
+            }
             if dict.keys.contains("UseVoiceprint") {
                 self.useVoiceprint = dict["UseVoiceprint"] as! Bool
             }
@@ -319,6 +332,9 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             if dict.keys.contains("Volume") {
                 self.volume = dict["Volume"] as! Int64
             }
+            if dict.keys.contains("WorkflowOverrideParams") {
+                self.workflowOverrideParams = dict["WorkflowOverrideParams"] as! String
+            }
         }
     }
     public class VisionChat : Tea.TeaModel {
@@ -336,6 +352,8 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
 
         public var greeting: String?
 
+        public var maxIdleTime: Int32?
+
         public var useVoiceprint: Bool?
 
         public var userOfflineTimeout: Int32?
@@ -347,6 +365,8 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
         public var voiceprintId: String?
 
         public var volume: Int64?
+
+        public var workflowOverrideParams: String?
 
         public override init() {
             super.init()
@@ -383,6 +403,9 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             if self.greeting != nil {
                 map["Greeting"] = self.greeting!
             }
+            if self.maxIdleTime != nil {
+                map["MaxIdleTime"] = self.maxIdleTime!
+            }
             if self.useVoiceprint != nil {
                 map["UseVoiceprint"] = self.useVoiceprint!
             }
@@ -400,6 +423,9 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             }
             if self.volume != nil {
                 map["Volume"] = self.volume!
+            }
+            if self.workflowOverrideParams != nil {
+                map["WorkflowOverrideParams"] = self.workflowOverrideParams!
             }
             return map
         }
@@ -426,6 +452,9 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             if dict.keys.contains("Greeting") {
                 self.greeting = dict["Greeting"] as! String
             }
+            if dict.keys.contains("MaxIdleTime") {
+                self.maxIdleTime = dict["MaxIdleTime"] as! Int32
+            }
             if dict.keys.contains("UseVoiceprint") {
                 self.useVoiceprint = dict["UseVoiceprint"] as! Bool
             }
@@ -444,10 +473,17 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             if dict.keys.contains("Volume") {
                 self.volume = dict["Volume"] as! Int64
             }
+            if dict.keys.contains("WorkflowOverrideParams") {
+                self.workflowOverrideParams = dict["WorkflowOverrideParams"] as! String
+            }
         }
     }
     public class VoiceChat : Tea.TeaModel {
         public var asrMaxSilence: Int32?
+
+        public var avatarUrl: String?
+
+        public var avatarUrlType: String?
 
         public var bailianAppParams: String?
 
@@ -458,6 +494,8 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
         public var gracefulShutdown: Bool?
 
         public var greeting: String?
+
+        public var maxIdleTime: Int32?
 
         public var useVoiceprint: Bool?
 
@@ -470,6 +508,8 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
         public var voiceprintId: String?
 
         public var volume: Int64?
+
+        public var workflowOverrideParams: String?
 
         public override init() {
             super.init()
@@ -488,6 +528,12 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             if self.asrMaxSilence != nil {
                 map["AsrMaxSilence"] = self.asrMaxSilence!
             }
+            if self.avatarUrl != nil {
+                map["AvatarUrl"] = self.avatarUrl!
+            }
+            if self.avatarUrlType != nil {
+                map["AvatarUrlType"] = self.avatarUrlType!
+            }
             if self.bailianAppParams != nil {
                 map["BailianAppParams"] = self.bailianAppParams!
             }
@@ -502,6 +548,9 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             }
             if self.greeting != nil {
                 map["Greeting"] = self.greeting!
+            }
+            if self.maxIdleTime != nil {
+                map["MaxIdleTime"] = self.maxIdleTime!
             }
             if self.useVoiceprint != nil {
                 map["UseVoiceprint"] = self.useVoiceprint!
@@ -521,12 +570,21 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             if self.volume != nil {
                 map["Volume"] = self.volume!
             }
+            if self.workflowOverrideParams != nil {
+                map["WorkflowOverrideParams"] = self.workflowOverrideParams!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("AsrMaxSilence") {
                 self.asrMaxSilence = dict["AsrMaxSilence"] as! Int32
+            }
+            if dict.keys.contains("AvatarUrl") {
+                self.avatarUrl = dict["AvatarUrl"] as! String
+            }
+            if dict.keys.contains("AvatarUrlType") {
+                self.avatarUrlType = dict["AvatarUrlType"] as! String
             }
             if dict.keys.contains("BailianAppParams") {
                 self.bailianAppParams = dict["BailianAppParams"] as! String
@@ -542,6 +600,9 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             }
             if dict.keys.contains("Greeting") {
                 self.greeting = dict["Greeting"] as! String
+            }
+            if dict.keys.contains("MaxIdleTime") {
+                self.maxIdleTime = dict["MaxIdleTime"] as! Int32
             }
             if dict.keys.contains("UseVoiceprint") {
                 self.useVoiceprint = dict["UseVoiceprint"] as! Bool
@@ -560,6 +621,9 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             }
             if dict.keys.contains("Volume") {
                 self.volume = dict["Volume"] as! Int64
+            }
+            if dict.keys.contains("WorkflowOverrideParams") {
+                self.workflowOverrideParams = dict["WorkflowOverrideParams"] as! String
             }
         }
     }
@@ -11393,6 +11457,8 @@ public class GenerateAIAgentCallRequest : Tea.TeaModel {
 
     public var templateConfig: AIAgentTemplateConfig?
 
+    public var userData: String?
+
     public var userId: String?
 
     public override init() {
@@ -11419,6 +11485,9 @@ public class GenerateAIAgentCallRequest : Tea.TeaModel {
         if self.templateConfig != nil {
             map["TemplateConfig"] = self.templateConfig?.toMap()
         }
+        if self.userData != nil {
+            map["UserData"] = self.userData!
+        }
         if self.userId != nil {
             map["UserId"] = self.userId!
         }
@@ -11437,6 +11506,9 @@ public class GenerateAIAgentCallRequest : Tea.TeaModel {
             model.fromMap(dict["TemplateConfig"] as! [String: Any])
             self.templateConfig = model
         }
+        if dict.keys.contains("UserData") {
+            self.userData = dict["UserData"] as! String
+        }
         if dict.keys.contains("UserId") {
             self.userId = dict["UserId"] as! String
         }
@@ -11449,6 +11521,8 @@ public class GenerateAIAgentCallShrinkRequest : Tea.TeaModel {
     public var expire: Int64?
 
     public var templateConfigShrink: String?
+
+    public var userData: String?
 
     public var userId: String?
 
@@ -11475,6 +11549,9 @@ public class GenerateAIAgentCallShrinkRequest : Tea.TeaModel {
         if self.templateConfigShrink != nil {
             map["TemplateConfig"] = self.templateConfigShrink!
         }
+        if self.userData != nil {
+            map["UserData"] = self.userData!
+        }
         if self.userId != nil {
             map["UserId"] = self.userId!
         }
@@ -11490,6 +11567,9 @@ public class GenerateAIAgentCallShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TemplateConfig") {
             self.templateConfigShrink = dict["TemplateConfig"] as! String
+        }
+        if dict.keys.contains("UserData") {
+            self.userData = dict["UserData"] as! String
         }
         if dict.keys.contains("UserId") {
             self.userId = dict["UserId"] as! String
@@ -52840,6 +52920,8 @@ public class StartRtcRobotInstanceRequest : Tea.TeaModel {
 
         public var voiceprintId: String?
 
+        public var volume: Int64?
+
         public override init() {
             super.init()
         }
@@ -52878,6 +52960,9 @@ public class StartRtcRobotInstanceRequest : Tea.TeaModel {
             if self.voiceprintId != nil {
                 map["VoiceprintId"] = self.voiceprintId!
             }
+            if self.volume != nil {
+                map["Volume"] = self.volume!
+            }
             return map
         }
 
@@ -52905,6 +52990,9 @@ public class StartRtcRobotInstanceRequest : Tea.TeaModel {
             }
             if dict.keys.contains("VoiceprintId") {
                 self.voiceprintId = dict["VoiceprintId"] as! String
+            }
+            if dict.keys.contains("Volume") {
+                self.volume = dict["Volume"] as! Int64
             }
         }
     }
