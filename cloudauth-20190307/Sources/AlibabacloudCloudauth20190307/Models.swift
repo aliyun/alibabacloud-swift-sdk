@@ -3086,9 +3086,11 @@ public class DescribeFaceGuardRiskRequest : Tea.TeaModel {
 
 public class DescribeFaceGuardRiskResponseBody : Tea.TeaModel {
     public class ResultObject : Tea.TeaModel {
-        public var riakTags: String?
+        public var certifyId: String?
 
         public var riskExtends: String?
+
+        public var riskTags: String?
 
         public override init() {
             super.init()
@@ -3104,21 +3106,27 @@ public class DescribeFaceGuardRiskResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.riakTags != nil {
-                map["RiakTags"] = self.riakTags!
+            if self.certifyId != nil {
+                map["CertifyId"] = self.certifyId!
             }
             if self.riskExtends != nil {
                 map["RiskExtends"] = self.riskExtends!
+            }
+            if self.riskTags != nil {
+                map["RiskTags"] = self.riskTags!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("RiakTags") {
-                self.riakTags = dict["RiakTags"] as! String
+            if dict.keys.contains("CertifyId") {
+                self.certifyId = dict["CertifyId"] as! String
             }
             if dict.keys.contains("RiskExtends") {
                 self.riskExtends = dict["RiskExtends"] as! String
+            }
+            if dict.keys.contains("RiskTags") {
+                self.riskTags = dict["RiskTags"] as! String
             }
         }
     }

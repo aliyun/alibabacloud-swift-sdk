@@ -1055,18 +1055,18 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func id2MetaVerifyWithOptions(_ request: Id2MetaVerifyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> Id2MetaVerifyResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
+        var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.identifyNum)) {
-            query["IdentifyNum"] = request.identifyNum ?? "";
+            body["IdentifyNum"] = request.identifyNum ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.paramType)) {
-            query["ParamType"] = request.paramType ?? "";
+            body["ParamType"] = request.paramType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.userName)) {
-            query["UserName"] = request.userName ?? "";
+            body["UserName"] = request.userName ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "Id2MetaVerify",
@@ -1348,21 +1348,21 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func mobile3MetaDetailVerifyWithOptions(_ request: Mobile3MetaDetailVerifyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> Mobile3MetaDetailVerifyResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
+        var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.identifyNum)) {
-            query["IdentifyNum"] = request.identifyNum ?? "";
+            body["IdentifyNum"] = request.identifyNum ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.mobile)) {
-            query["Mobile"] = request.mobile ?? "";
+            body["Mobile"] = request.mobile ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.paramType)) {
-            query["ParamType"] = request.paramType ?? "";
+            body["ParamType"] = request.paramType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.userName)) {
-            query["UserName"] = request.userName ?? "";
+            body["UserName"] = request.userName ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "Mobile3MetaDetailVerify",
@@ -1388,21 +1388,21 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func mobile3MetaSimpleVerifyWithOptions(_ request: Mobile3MetaSimpleVerifyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> Mobile3MetaSimpleVerifyResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
+        var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.identifyNum)) {
-            query["IdentifyNum"] = request.identifyNum ?? "";
+            body["IdentifyNum"] = request.identifyNum ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.mobile)) {
-            query["Mobile"] = request.mobile ?? "";
+            body["Mobile"] = request.mobile ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.paramType)) {
-            query["ParamType"] = request.paramType ?? "";
+            body["ParamType"] = request.paramType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.userName)) {
-            query["UserName"] = request.userName ?? "";
+            body["UserName"] = request.userName ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "Mobile3MetaSimpleVerify",
@@ -1428,15 +1428,15 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func mobileDetectWithOptions(_ request: MobileDetectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> MobileDetectResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
+        var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.mobiles)) {
-            query["Mobiles"] = request.mobiles ?? "";
+            body["Mobiles"] = request.mobiles ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.paramType)) {
-            query["ParamType"] = request.paramType ?? "";
+            body["ParamType"] = request.paramType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "MobileDetect",
@@ -1462,15 +1462,15 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func mobileOnlineStatusWithOptions(_ request: MobileOnlineStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> MobileOnlineStatusResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
+        var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.mobile)) {
-            query["Mobile"] = request.mobile ?? "";
+            body["Mobile"] = request.mobile ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.paramType)) {
-            query["ParamType"] = request.paramType ?? "";
+            body["ParamType"] = request.paramType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "MobileOnlineStatus",
@@ -1496,15 +1496,15 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func mobileOnlineTimeWithOptions(_ request: MobileOnlineTimeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> MobileOnlineTimeResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
+        var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.mobile)) {
-            query["Mobile"] = request.mobile ?? "";
+            body["Mobile"] = request.mobile ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.paramType)) {
-            query["ParamType"] = request.paramType ?? "";
+            body["ParamType"] = request.paramType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "MobileOnlineTime",
