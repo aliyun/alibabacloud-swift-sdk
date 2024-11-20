@@ -14958,11 +14958,15 @@ public class DescribeDDoSAllEventListResponseBody : Tea.TeaModel {
     public class DataList : Tea.TeaModel {
         public var bps: Int64?
 
+        public var coverage: String?
+
         public var cps: Int64?
 
         public var endTime: String?
 
         public var eventId: String?
+
+        public var eventResult: String?
 
         public var eventType: String?
 
@@ -14993,6 +14997,9 @@ public class DescribeDDoSAllEventListResponseBody : Tea.TeaModel {
             if self.bps != nil {
                 map["Bps"] = self.bps!
             }
+            if self.coverage != nil {
+                map["Coverage"] = self.coverage!
+            }
             if self.cps != nil {
                 map["Cps"] = self.cps!
             }
@@ -15001,6 +15008,9 @@ public class DescribeDDoSAllEventListResponseBody : Tea.TeaModel {
             }
             if self.eventId != nil {
                 map["EventId"] = self.eventId!
+            }
+            if self.eventResult != nil {
+                map["EventResult"] = self.eventResult!
             }
             if self.eventType != nil {
                 map["EventType"] = self.eventType!
@@ -15027,6 +15037,9 @@ public class DescribeDDoSAllEventListResponseBody : Tea.TeaModel {
             if dict.keys.contains("Bps") {
                 self.bps = dict["Bps"] as! Int64
             }
+            if dict.keys.contains("Coverage") {
+                self.coverage = dict["Coverage"] as! String
+            }
             if dict.keys.contains("Cps") {
                 self.cps = dict["Cps"] as! Int64
             }
@@ -15035,6 +15048,9 @@ public class DescribeDDoSAllEventListResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("EventId") {
                 self.eventId = dict["EventId"] as! String
+            }
+            if dict.keys.contains("EventResult") {
+                self.eventResult = dict["EventResult"] as! String
             }
             if dict.keys.contains("EventType") {
                 self.eventType = dict["EventType"] as! String
