@@ -489,6 +489,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             query["ResourceGroupId"] = request.resourceGroupId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.stackArn)) {
+            query["StackArn"] = request.stackArn ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.stackGroupName)) {
             query["StackGroupName"] = request.stackGroupName ?? "";
         }
@@ -2183,6 +2186,66 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getTemplateSummary(_ request: GetTemplateSummaryRequest) async throws -> GetTemplateSummaryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getTemplateSummaryWithOptions(request as! GetTemplateSummaryRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func importStacksToStackGroupWithOptions(_ tmpReq: ImportStacksToStackGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImportStacksToStackGroupResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ImportStacksToStackGroupShrinkRequest = ImportStacksToStackGroupShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.operationPreferences)) {
+            request.operationPreferencesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.operationPreferences, "OperationPreferences", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.resourceDirectoryFolderIds)) {
+            request.resourceDirectoryFolderIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.resourceDirectoryFolderIds, "ResourceDirectoryFolderIds", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.stackArns)) {
+            request.stackArnsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.stackArns, "StackArns", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operationDescription)) {
+            query["OperationDescription"] = request.operationDescription ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operationPreferencesShrink)) {
+            query["OperationPreferences"] = request.operationPreferencesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceDirectoryFolderIdsShrink)) {
+            query["ResourceDirectoryFolderIds"] = request.resourceDirectoryFolderIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.stackArnsShrink)) {
+            query["StackArns"] = request.stackArnsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.stackGroupName)) {
+            query["StackGroupName"] = request.stackGroupName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ImportStacksToStackGroup",
+            "version": "2019-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ImportStacksToStackGroupResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func importStacksToStackGroup(_ request: ImportStacksToStackGroupRequest) async throws -> ImportStacksToStackGroupResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await importStacksToStackGroupWithOptions(request as! ImportStacksToStackGroupRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

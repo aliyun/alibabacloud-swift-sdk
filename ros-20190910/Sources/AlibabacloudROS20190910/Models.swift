@@ -1873,6 +1873,8 @@ public class CreateStackGroupRequest : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
+    public var stackArn: String?
+
     public var stackGroupName: String?
 
     public var tags: [CreateStackGroupRequest.Tags]?
@@ -1933,6 +1935,9 @@ public class CreateStackGroupRequest : Tea.TeaModel {
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.stackArn != nil {
+            map["StackArn"] = self.stackArn!
         }
         if self.stackGroupName != nil {
             map["StackGroupName"] = self.stackGroupName!
@@ -1999,6 +2004,9 @@ public class CreateStackGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceGroupId") {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("StackArn") {
+            self.stackArn = dict["StackArn"] as! String
         }
         if dict.keys.contains("StackGroupName") {
             self.stackGroupName = dict["StackGroupName"] as! String
@@ -2124,6 +2132,8 @@ public class CreateStackGroupShrinkRequest : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
+    public var stackArn: String?
+
     public var stackGroupName: String?
 
     public var tags: [CreateStackGroupShrinkRequest.Tags]?
@@ -2183,6 +2193,9 @@ public class CreateStackGroupShrinkRequest : Tea.TeaModel {
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.stackArn != nil {
+            map["StackArn"] = self.stackArn!
         }
         if self.stackGroupName != nil {
             map["StackGroupName"] = self.stackGroupName!
@@ -2247,6 +2260,9 @@ public class CreateStackGroupShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceGroupId") {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("StackArn") {
+            self.stackArn = dict["StackArn"] as! String
         }
         if dict.keys.contains("StackGroupName") {
             self.stackGroupName = dict["StackGroupName"] as! String
@@ -14146,6 +14162,249 @@ public class GetTemplateSummaryResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = GetTemplateSummaryResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ImportStacksToStackGroupRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var operationDescription: String?
+
+    public var operationPreferences: [String: Any]?
+
+    public var regionId: String?
+
+    public var resourceDirectoryFolderIds: [String]?
+
+    public var stackArns: [String]?
+
+    public var stackGroupName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.operationDescription != nil {
+            map["OperationDescription"] = self.operationDescription!
+        }
+        if self.operationPreferences != nil {
+            map["OperationPreferences"] = self.operationPreferences!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceDirectoryFolderIds != nil {
+            map["ResourceDirectoryFolderIds"] = self.resourceDirectoryFolderIds!
+        }
+        if self.stackArns != nil {
+            map["StackArns"] = self.stackArns!
+        }
+        if self.stackGroupName != nil {
+            map["StackGroupName"] = self.stackGroupName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("OperationDescription") {
+            self.operationDescription = dict["OperationDescription"] as! String
+        }
+        if dict.keys.contains("OperationPreferences") {
+            self.operationPreferences = dict["OperationPreferences"] as! [String: Any]
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceDirectoryFolderIds") {
+            self.resourceDirectoryFolderIds = dict["ResourceDirectoryFolderIds"] as! [String]
+        }
+        if dict.keys.contains("StackArns") {
+            self.stackArns = dict["StackArns"] as! [String]
+        }
+        if dict.keys.contains("StackGroupName") {
+            self.stackGroupName = dict["StackGroupName"] as! String
+        }
+    }
+}
+
+public class ImportStacksToStackGroupShrinkRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var operationDescription: String?
+
+    public var operationPreferencesShrink: String?
+
+    public var regionId: String?
+
+    public var resourceDirectoryFolderIdsShrink: String?
+
+    public var stackArnsShrink: String?
+
+    public var stackGroupName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.operationDescription != nil {
+            map["OperationDescription"] = self.operationDescription!
+        }
+        if self.operationPreferencesShrink != nil {
+            map["OperationPreferences"] = self.operationPreferencesShrink!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceDirectoryFolderIdsShrink != nil {
+            map["ResourceDirectoryFolderIds"] = self.resourceDirectoryFolderIdsShrink!
+        }
+        if self.stackArnsShrink != nil {
+            map["StackArns"] = self.stackArnsShrink!
+        }
+        if self.stackGroupName != nil {
+            map["StackGroupName"] = self.stackGroupName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("OperationDescription") {
+            self.operationDescription = dict["OperationDescription"] as! String
+        }
+        if dict.keys.contains("OperationPreferences") {
+            self.operationPreferencesShrink = dict["OperationPreferences"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceDirectoryFolderIds") {
+            self.resourceDirectoryFolderIdsShrink = dict["ResourceDirectoryFolderIds"] as! String
+        }
+        if dict.keys.contains("StackArns") {
+            self.stackArnsShrink = dict["StackArns"] as! String
+        }
+        if dict.keys.contains("StackGroupName") {
+            self.stackGroupName = dict["StackGroupName"] as! String
+        }
+    }
+}
+
+public class ImportStacksToStackGroupResponseBody : Tea.TeaModel {
+    public var operationId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.operationId != nil {
+            map["OperationId"] = self.operationId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OperationId") {
+            self.operationId = dict["OperationId"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ImportStacksToStackGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ImportStacksToStackGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ImportStacksToStackGroupResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
