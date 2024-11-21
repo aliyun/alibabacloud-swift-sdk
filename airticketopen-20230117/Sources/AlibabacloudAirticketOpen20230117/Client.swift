@@ -531,12 +531,12 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CollectFlightLowestPriceShrinkRequest = CollectFlightLowestPriceShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.lowestPriceFlightList)) {
-            request.lowestPriceFlightListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.lowestPriceFlightList, "lowestPriceFlightList", "json")
+        if (!TeaUtils.Client.isUnset(tmpReq.lowestPriceFlightInfoList)) {
+            request.lowestPriceFlightInfoListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.lowestPriceFlightInfoList, "lowest_price_flight_info_list", "json")
         }
         var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.lowestPriceFlightListShrink)) {
-            body["lowestPriceFlightList"] = request.lowestPriceFlightListShrink ?? "";
+        if (!TeaUtils.Client.isUnset(request.lowestPriceFlightInfoListShrink)) {
+            body["lowest_price_flight_info_list"] = request.lowestPriceFlightInfoListShrink ?? "";
         }
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {

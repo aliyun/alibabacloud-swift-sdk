@@ -8076,57 +8076,24 @@ public class CollectFlightLowestPriceHeaders : Tea.TeaModel {
 }
 
 public class CollectFlightLowestPriceRequest : Tea.TeaModel {
-    public class LowestPriceFlightList : Tea.TeaModel {
-        public class FlightNumberInfo : Tea.TeaModel {
-            public var departureFlightNumber: String?
-
-            public var returnFlightNumber: String?
-
-            public override init() {
-                super.init()
-            }
-
-            public init(_ dict: [String: Any]) {
-                super.init()
-                self.fromMap(dict)
-            }
-
-            public override func validate() throws -> Void {
-            }
-
-            public override func toMap() -> [String : Any] {
-                var map = super.toMap()
-                if self.departureFlightNumber != nil {
-                    map["departure_flight_number"] = self.departureFlightNumber!
-                }
-                if self.returnFlightNumber != nil {
-                    map["return_flight_number"] = self.returnFlightNumber!
-                }
-                return map
-            }
-
-            public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("departure_flight_number") {
-                    self.departureFlightNumber = dict["departure_flight_number"] as! String
-                }
-                if dict.keys.contains("return_flight_number") {
-                    self.returnFlightNumber = dict["return_flight_number"] as! String
-                }
-            }
-        }
+    public class LowestPriceFlightInfoList : Tea.TeaModel {
         public var arrivalCity: String?
 
         public var departureCity: String?
 
         public var departureDate: String?
 
-        public var flightNumberInfo: CollectFlightLowestPriceRequest.LowestPriceFlightList.FlightNumberInfo?
+        public var departureFlightNumber: String?
 
         public var marketTotalPrice: Double?
 
         public var requestId: String?
 
         public var returnDate: String?
+
+        public var returnFlightNumber: String?
+
+        public var solutionId: String?
 
         public var suezTotalPrice: Double?
 
@@ -8142,7 +8109,6 @@ public class CollectFlightLowestPriceRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
-            try self.flightNumberInfo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -8156,8 +8122,8 @@ public class CollectFlightLowestPriceRequest : Tea.TeaModel {
             if self.departureDate != nil {
                 map["departure_date"] = self.departureDate!
             }
-            if self.flightNumberInfo != nil {
-                map["flight_number_info"] = self.flightNumberInfo?.toMap()
+            if self.departureFlightNumber != nil {
+                map["departure_flight_number"] = self.departureFlightNumber!
             }
             if self.marketTotalPrice != nil {
                 map["market_total_price"] = self.marketTotalPrice!
@@ -8167,6 +8133,12 @@ public class CollectFlightLowestPriceRequest : Tea.TeaModel {
             }
             if self.returnDate != nil {
                 map["return_date"] = self.returnDate!
+            }
+            if self.returnFlightNumber != nil {
+                map["return_flight_number"] = self.returnFlightNumber!
+            }
+            if self.solutionId != nil {
+                map["solution_id"] = self.solutionId!
             }
             if self.suezTotalPrice != nil {
                 map["suez_total_price"] = self.suezTotalPrice!
@@ -8187,10 +8159,8 @@ public class CollectFlightLowestPriceRequest : Tea.TeaModel {
             if dict.keys.contains("departure_date") {
                 self.departureDate = dict["departure_date"] as! String
             }
-            if dict.keys.contains("flight_number_info") {
-                var model = CollectFlightLowestPriceRequest.LowestPriceFlightList.FlightNumberInfo()
-                model.fromMap(dict["flight_number_info"] as! [String: Any])
-                self.flightNumberInfo = model
+            if dict.keys.contains("departure_flight_number") {
+                self.departureFlightNumber = dict["departure_flight_number"] as! String
             }
             if dict.keys.contains("market_total_price") {
                 self.marketTotalPrice = dict["market_total_price"] as! Double
@@ -8201,6 +8171,12 @@ public class CollectFlightLowestPriceRequest : Tea.TeaModel {
             if dict.keys.contains("return_date") {
                 self.returnDate = dict["return_date"] as! String
             }
+            if dict.keys.contains("return_flight_number") {
+                self.returnFlightNumber = dict["return_flight_number"] as! String
+            }
+            if dict.keys.contains("solution_id") {
+                self.solutionId = dict["solution_id"] as! String
+            }
             if dict.keys.contains("suez_total_price") {
                 self.suezTotalPrice = dict["suez_total_price"] as! Double
             }
@@ -8209,7 +8185,7 @@ public class CollectFlightLowestPriceRequest : Tea.TeaModel {
             }
         }
     }
-    public var lowestPriceFlightList: [CollectFlightLowestPriceRequest.LowestPriceFlightList]?
+    public var lowestPriceFlightInfoList: [CollectFlightLowestPriceRequest.LowestPriceFlightInfoList]?
 
     public override init() {
         super.init()
@@ -8225,33 +8201,33 @@ public class CollectFlightLowestPriceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.lowestPriceFlightList != nil {
+        if self.lowestPriceFlightInfoList != nil {
             var tmp : [Any] = []
-            for k in self.lowestPriceFlightList! {
+            for k in self.lowestPriceFlightInfoList! {
                 tmp.append(k.toMap())
             }
-            map["lowestPriceFlightList"] = tmp
+            map["lowest_price_flight_info_list"] = tmp
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("lowestPriceFlightList") {
-            var tmp : [CollectFlightLowestPriceRequest.LowestPriceFlightList] = []
-            for v in dict["lowestPriceFlightList"] as! [Any] {
-                var model = CollectFlightLowestPriceRequest.LowestPriceFlightList()
+        if dict.keys.contains("lowest_price_flight_info_list") {
+            var tmp : [CollectFlightLowestPriceRequest.LowestPriceFlightInfoList] = []
+            for v in dict["lowest_price_flight_info_list"] as! [Any] {
+                var model = CollectFlightLowestPriceRequest.LowestPriceFlightInfoList()
                 if v != nil {
                     model.fromMap(v as! [String: Any])
                 }
                 tmp.append(model)
             }
-            self.lowestPriceFlightList = tmp
+            self.lowestPriceFlightInfoList = tmp
         }
     }
 }
 
 public class CollectFlightLowestPriceShrinkRequest : Tea.TeaModel {
-    public var lowestPriceFlightListShrink: String?
+    public var lowestPriceFlightInfoListShrink: String?
 
     public override init() {
         super.init()
@@ -8267,15 +8243,15 @@ public class CollectFlightLowestPriceShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.lowestPriceFlightListShrink != nil {
-            map["lowestPriceFlightList"] = self.lowestPriceFlightListShrink!
+        if self.lowestPriceFlightInfoListShrink != nil {
+            map["lowest_price_flight_info_list"] = self.lowestPriceFlightInfoListShrink!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("lowestPriceFlightList") {
-            self.lowestPriceFlightListShrink = dict["lowestPriceFlightList"] as! String
+        if dict.keys.contains("lowest_price_flight_info_list") {
+            self.lowestPriceFlightInfoListShrink = dict["lowest_price_flight_info_list"] as! String
         }
     }
 }
