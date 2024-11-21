@@ -16360,6 +16360,169 @@ public class GetRegionalInstanceConfigResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class WarmNodeAmountRange : Tea.TeaModel {
+            public var maxAmount: Int32?
+
+            public var minAmount: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.maxAmount != nil {
+                    map["maxAmount"] = self.maxAmount!
+                }
+                if self.minAmount != nil {
+                    map["minAmount"] = self.minAmount!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("maxAmount") {
+                    self.maxAmount = dict["maxAmount"] as! Int32
+                }
+                if dict.keys.contains("minAmount") {
+                    self.minAmount = dict["minAmount"] as! Int32
+                }
+            }
+        }
+        public class WarmNodeDiskList : Tea.TeaModel {
+            public class SubClassificationConfines : Tea.TeaModel {
+                public var maxSize: Int32?
+
+                public var minSize: Int32?
+
+                public var performanceLevel: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.maxSize != nil {
+                        map["maxSize"] = self.maxSize!
+                    }
+                    if self.minSize != nil {
+                        map["minSize"] = self.minSize!
+                    }
+                    if self.performanceLevel != nil {
+                        map["performanceLevel"] = self.performanceLevel!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("maxSize") {
+                        self.maxSize = dict["maxSize"] as! Int32
+                    }
+                    if dict.keys.contains("minSize") {
+                        self.minSize = dict["minSize"] as! Int32
+                    }
+                    if dict.keys.contains("performanceLevel") {
+                        self.performanceLevel = dict["performanceLevel"] as! String
+                    }
+                }
+            }
+            public var diskType: String?
+
+            public var maxSize: Int32?
+
+            public var minSize: Int32?
+
+            public var scaleLimit: Int32?
+
+            public var subClassificationConfines: [GetRegionalInstanceConfigResponseBody.Result.WarmNodeDiskList.SubClassificationConfines]?
+
+            public var valueLimitSet: [Int32]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.diskType != nil {
+                    map["diskType"] = self.diskType!
+                }
+                if self.maxSize != nil {
+                    map["maxSize"] = self.maxSize!
+                }
+                if self.minSize != nil {
+                    map["minSize"] = self.minSize!
+                }
+                if self.scaleLimit != nil {
+                    map["scaleLimit"] = self.scaleLimit!
+                }
+                if self.subClassificationConfines != nil {
+                    var tmp : [Any] = []
+                    for k in self.subClassificationConfines! {
+                        tmp.append(k.toMap())
+                    }
+                    map["subClassificationConfines"] = tmp
+                }
+                if self.valueLimitSet != nil {
+                    map["valueLimitSet"] = self.valueLimitSet!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("diskType") {
+                    self.diskType = dict["diskType"] as! String
+                }
+                if dict.keys.contains("maxSize") {
+                    self.maxSize = dict["maxSize"] as! Int32
+                }
+                if dict.keys.contains("minSize") {
+                    self.minSize = dict["minSize"] as! Int32
+                }
+                if dict.keys.contains("scaleLimit") {
+                    self.scaleLimit = dict["scaleLimit"] as! Int32
+                }
+                if dict.keys.contains("subClassificationConfines") {
+                    var tmp : [GetRegionalInstanceConfigResponseBody.Result.WarmNodeDiskList.SubClassificationConfines] = []
+                    for v in dict["subClassificationConfines"] as! [Any] {
+                        var model = GetRegionalInstanceConfigResponseBody.Result.WarmNodeDiskList.SubClassificationConfines()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.subClassificationConfines = tmp
+                }
+                if dict.keys.contains("valueLimitSet") {
+                    self.valueLimitSet = dict["valueLimitSet"] as! [Int32]
+                }
+            }
+        }
         public var clientNodeAmountRange: GetRegionalInstanceConfigResponseBody.Result.ClientNodeAmountRange?
 
         public var clientNodeDiskList: [GetRegionalInstanceConfigResponseBody.Result.ClientNodeDiskList]?
@@ -16384,6 +16547,12 @@ public class GetRegionalInstanceConfigResponseBody : Tea.TeaModel {
 
         public var versions: [String]?
 
+        public var warmNodeAmountRange: GetRegionalInstanceConfigResponseBody.Result.WarmNodeAmountRange?
+
+        public var warmNodeDiskList: [GetRegionalInstanceConfigResponseBody.Result.WarmNodeDiskList]?
+
+        public var warmNodeSpecs: [String]?
+
         public override init() {
             super.init()
         }
@@ -16396,6 +16565,7 @@ public class GetRegionalInstanceConfigResponseBody : Tea.TeaModel {
         public override func validate() throws -> Void {
             try self.clientNodeAmountRange?.validate()
             try self.dataNodeAmountRange?.validate()
+            try self.warmNodeAmountRange?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -16451,6 +16621,19 @@ public class GetRegionalInstanceConfigResponseBody : Tea.TeaModel {
             }
             if self.versions != nil {
                 map["versions"] = self.versions!
+            }
+            if self.warmNodeAmountRange != nil {
+                map["warmNodeAmountRange"] = self.warmNodeAmountRange?.toMap()
+            }
+            if self.warmNodeDiskList != nil {
+                var tmp : [Any] = []
+                for k in self.warmNodeDiskList! {
+                    tmp.append(k.toMap())
+                }
+                map["warmNodeDiskList"] = tmp
+            }
+            if self.warmNodeSpecs != nil {
+                map["warmNodeSpecs"] = self.warmNodeSpecs!
             }
             return map
         }
@@ -16527,6 +16710,25 @@ public class GetRegionalInstanceConfigResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("versions") {
                 self.versions = dict["versions"] as! [String]
+            }
+            if dict.keys.contains("warmNodeAmountRange") {
+                var model = GetRegionalInstanceConfigResponseBody.Result.WarmNodeAmountRange()
+                model.fromMap(dict["warmNodeAmountRange"] as! [String: Any])
+                self.warmNodeAmountRange = model
+            }
+            if dict.keys.contains("warmNodeDiskList") {
+                var tmp : [GetRegionalInstanceConfigResponseBody.Result.WarmNodeDiskList] = []
+                for v in dict["warmNodeDiskList"] as! [Any] {
+                    var model = GetRegionalInstanceConfigResponseBody.Result.WarmNodeDiskList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.warmNodeDiskList = tmp
+            }
+            if dict.keys.contains("warmNodeSpecs") {
+                self.warmNodeSpecs = dict["warmNodeSpecs"] as! [String]
             }
         }
     }
@@ -43368,6 +43570,8 @@ public class UpdateXpackMonitorConfigResponse : Tea.TeaModel {
 
 public class UpgradeEngineVersionRequest : Tea.TeaModel {
     public class Plugins : Tea.TeaModel {
+        public var enable: String?
+
         public var fileVersion: String?
 
         public var name: String?
@@ -43388,6 +43592,9 @@ public class UpgradeEngineVersionRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.enable != nil {
+                map["enable"] = self.enable!
+            }
             if self.fileVersion != nil {
                 map["fileVersion"] = self.fileVersion!
             }
@@ -43401,6 +43608,9 @@ public class UpgradeEngineVersionRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("enable") {
+                self.enable = dict["enable"] as! String
+            }
             if dict.keys.contains("fileVersion") {
                 self.fileVersion = dict["fileVersion"] as! String
             }
