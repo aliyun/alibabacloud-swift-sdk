@@ -4197,7 +4197,7 @@ public class Tensorboard : Tea.TeaModel {
 
     public var username: String?
 
-    public var workspaceid: String?
+    public var workspaceId: String?
 
     public override init() {
         super.init()
@@ -4305,8 +4305,8 @@ public class Tensorboard : Tea.TeaModel {
         if self.username != nil {
             map["Username"] = self.username!
         }
-        if self.workspaceid != nil {
-            map["Workspaceid"] = self.workspaceid!
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
         }
         return map
     }
@@ -4409,8 +4409,8 @@ public class Tensorboard : Tea.TeaModel {
         if dict.keys.contains("Username") {
             self.username = dict["Username"] as! String
         }
-        if dict.keys.contains("Workspaceid") {
-            self.workspaceid = dict["Workspaceid"] as! String
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
         }
     }
 }
@@ -8108,6 +8108,8 @@ public class ListJobsRequest : Tea.TeaModel {
 
     public var order: String?
 
+    public var oversoldInfo: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -8174,6 +8176,9 @@ public class ListJobsRequest : Tea.TeaModel {
         }
         if self.order != nil {
             map["Order"] = self.order!
+        }
+        if self.oversoldInfo != nil {
+            map["OversoldInfo"] = self.oversoldInfo!
         }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
@@ -8245,6 +8250,9 @@ public class ListJobsRequest : Tea.TeaModel {
         if dict.keys.contains("Order") {
             self.order = dict["Order"] as! String
         }
+        if dict.keys.contains("OversoldInfo") {
+            self.oversoldInfo = dict["OversoldInfo"] as! String
+        }
         if dict.keys.contains("PageNumber") {
             self.pageNumber = dict["PageNumber"] as! Int32
         }
@@ -8305,6 +8313,8 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
     public var jobType: String?
 
     public var order: String?
+
+    public var oversoldInfo: String?
 
     public var pageNumber: Int32?
 
@@ -8372,6 +8382,9 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         }
         if self.order != nil {
             map["Order"] = self.order!
+        }
+        if self.oversoldInfo != nil {
+            map["OversoldInfo"] = self.oversoldInfo!
         }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
@@ -8442,6 +8455,9 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Order") {
             self.order = dict["Order"] as! String
+        }
+        if dict.keys.contains("OversoldInfo") {
+            self.oversoldInfo = dict["OversoldInfo"] as! String
         }
         if dict.keys.contains("PageNumber") {
             self.pageNumber = dict["PageNumber"] as! Int32
