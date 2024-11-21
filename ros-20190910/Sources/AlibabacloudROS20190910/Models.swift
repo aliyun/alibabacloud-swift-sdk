@@ -2459,6 +2459,8 @@ public class CreateStackInstancesRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var deploymentOptions: [String]?
+
     public var deploymentTargets: CreateStackInstancesRequest.DeploymentTargets?
 
     public var disableRollback: Bool?
@@ -2497,6 +2499,9 @@ public class CreateStackInstancesRequest : Tea.TeaModel {
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.deploymentOptions != nil {
+            map["DeploymentOptions"] = self.deploymentOptions!
         }
         if self.deploymentTargets != nil {
             map["DeploymentTargets"] = self.deploymentTargets?.toMap()
@@ -2538,6 +2543,9 @@ public class CreateStackInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DeploymentOptions") {
+            self.deploymentOptions = dict["DeploymentOptions"] as! [String]
         }
         if dict.keys.contains("DeploymentTargets") {
             var model = CreateStackInstancesRequest.DeploymentTargets()
@@ -2621,6 +2629,8 @@ public class CreateStackInstancesShrinkRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var deploymentOptions: [String]?
+
     public var deploymentTargetsShrink: String?
 
     public var disableRollback: Bool?
@@ -2658,6 +2668,9 @@ public class CreateStackInstancesShrinkRequest : Tea.TeaModel {
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.deploymentOptions != nil {
+            map["DeploymentOptions"] = self.deploymentOptions!
         }
         if self.deploymentTargetsShrink != nil {
             map["DeploymentTargets"] = self.deploymentTargetsShrink!
@@ -2699,6 +2712,9 @@ public class CreateStackInstancesShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DeploymentOptions") {
+            self.deploymentOptions = dict["DeploymentOptions"] as! [String]
         }
         if dict.keys.contains("DeploymentTargets") {
             self.deploymentTargetsShrink = dict["DeploymentTargets"] as! String
@@ -23830,6 +23846,8 @@ public class UpdateStackGroupRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var deploymentOptions: [String]?
+
     public var deploymentTargets: UpdateStackGroupRequest.DeploymentTargets?
 
     public var description_: String?
@@ -23888,6 +23906,9 @@ public class UpdateStackGroupRequest : Tea.TeaModel {
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.deploymentOptions != nil {
+            map["DeploymentOptions"] = self.deploymentOptions!
         }
         if self.deploymentTargets != nil {
             map["DeploymentTargets"] = self.deploymentTargets?.toMap()
@@ -23955,6 +23976,9 @@ public class UpdateStackGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DeploymentOptions") {
+            self.deploymentOptions = dict["DeploymentOptions"] as! [String]
         }
         if dict.keys.contains("DeploymentTargets") {
             var model = UpdateStackGroupRequest.DeploymentTargets()
@@ -24059,6 +24083,8 @@ public class UpdateStackGroupShrinkRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var deploymentOptions: [String]?
+
     public var deploymentTargetsShrink: String?
 
     public var description_: String?
@@ -24115,6 +24141,9 @@ public class UpdateStackGroupShrinkRequest : Tea.TeaModel {
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.deploymentOptions != nil {
+            map["DeploymentOptions"] = self.deploymentOptions!
         }
         if self.deploymentTargetsShrink != nil {
             map["DeploymentTargets"] = self.deploymentTargetsShrink!
@@ -24180,6 +24209,9 @@ public class UpdateStackGroupShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DeploymentOptions") {
+            self.deploymentOptions = dict["DeploymentOptions"] as! [String]
         }
         if dict.keys.contains("DeploymentTargets") {
             self.deploymentTargetsShrink = dict["DeploymentTargets"] as! String
