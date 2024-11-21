@@ -30644,6 +30644,59 @@ public class GetNacosConfigRequest : Tea.TeaModel {
 
 public class GetNacosConfigResponseBody : Tea.TeaModel {
     public class Configuration : Tea.TeaModel {
+        public class GrayVersions : Tea.TeaModel {
+            public var name: String?
+
+            public var priority: Int32?
+
+            public var rule: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.priority != nil {
+                    map["Priority"] = self.priority!
+                }
+                if self.rule != nil {
+                    map["Rule"] = self.rule!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("Priority") {
+                    self.priority = dict["Priority"] as! Int32
+                }
+                if dict.keys.contains("Rule") {
+                    self.rule = dict["Rule"] as! String
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+            }
+        }
         public var appName: String?
 
         public var betaIps: String?
@@ -30655,6 +30708,8 @@ public class GetNacosConfigResponseBody : Tea.TeaModel {
         public var desc: String?
 
         public var encryptedDataKey: String?
+
+        public var grayVersions: [GetNacosConfigResponseBody.Configuration.GrayVersions]?
 
         public var group: String?
 
@@ -30696,6 +30751,13 @@ public class GetNacosConfigResponseBody : Tea.TeaModel {
             if self.encryptedDataKey != nil {
                 map["EncryptedDataKey"] = self.encryptedDataKey!
             }
+            if self.grayVersions != nil {
+                var tmp : [Any] = []
+                for k in self.grayVersions! {
+                    tmp.append(k.toMap())
+                }
+                map["GrayVersions"] = tmp
+            }
             if self.group != nil {
                 map["Group"] = self.group!
             }
@@ -30729,6 +30791,17 @@ public class GetNacosConfigResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("EncryptedDataKey") {
                 self.encryptedDataKey = dict["EncryptedDataKey"] as! String
+            }
+            if dict.keys.contains("GrayVersions") {
+                var tmp : [GetNacosConfigResponseBody.Configuration.GrayVersions] = []
+                for v in dict["GrayVersions"] as! [Any] {
+                    var model = GetNacosConfigResponseBody.Configuration.GrayVersions()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.grayVersions = tmp
             }
             if dict.keys.contains("Group") {
                 self.group = dict["Group"] as! String
@@ -50560,9 +50633,64 @@ public class ListIsolationRulesResponse : Tea.TeaModel {
 }
 
 public class ListListenersByConfigRequest : Tea.TeaModel {
+    public class ExtGrayRules : Tea.TeaModel {
+        public var grayRule: String?
+
+        public var grayRuleName: String?
+
+        public var grayRulePriority: Int32?
+
+        public var grayRuleType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.grayRule != nil {
+                map["GrayRule"] = self.grayRule!
+            }
+            if self.grayRuleName != nil {
+                map["GrayRuleName"] = self.grayRuleName!
+            }
+            if self.grayRulePriority != nil {
+                map["GrayRulePriority"] = self.grayRulePriority!
+            }
+            if self.grayRuleType != nil {
+                map["GrayRuleType"] = self.grayRuleType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("GrayRule") {
+                self.grayRule = dict["GrayRule"] as! String
+            }
+            if dict.keys.contains("GrayRuleName") {
+                self.grayRuleName = dict["GrayRuleName"] as! String
+            }
+            if dict.keys.contains("GrayRulePriority") {
+                self.grayRulePriority = dict["GrayRulePriority"] as! Int32
+            }
+            if dict.keys.contains("GrayRuleType") {
+                self.grayRuleType = dict["GrayRuleType"] as! String
+            }
+        }
+    }
     public var acceptLanguage: String?
 
     public var dataId: String?
+
+    public var extGrayRules: [ListListenersByConfigRequest.ExtGrayRules]?
 
     public var group: String?
 
@@ -50592,6 +50720,13 @@ public class ListListenersByConfigRequest : Tea.TeaModel {
         if self.dataId != nil {
             map["DataId"] = self.dataId!
         }
+        if self.extGrayRules != nil {
+            var tmp : [Any] = []
+            for k in self.extGrayRules! {
+                tmp.append(k.toMap())
+            }
+            map["ExtGrayRules"] = tmp
+        }
         if self.group != nil {
             map["Group"] = self.group!
         }
@@ -50614,6 +50749,95 @@ public class ListListenersByConfigRequest : Tea.TeaModel {
         if dict.keys.contains("DataId") {
             self.dataId = dict["DataId"] as! String
         }
+        if dict.keys.contains("ExtGrayRules") {
+            var tmp : [ListListenersByConfigRequest.ExtGrayRules] = []
+            for v in dict["ExtGrayRules"] as! [Any] {
+                var model = ListListenersByConfigRequest.ExtGrayRules()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.extGrayRules = tmp
+        }
+        if dict.keys.contains("Group") {
+            self.group = dict["Group"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("NamespaceId") {
+            self.namespaceId = dict["NamespaceId"] as! String
+        }
+        if dict.keys.contains("RequestPars") {
+            self.requestPars = dict["RequestPars"] as! String
+        }
+    }
+}
+
+public class ListListenersByConfigShrinkRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var dataId: String?
+
+    public var extGrayRulesShrink: String?
+
+    public var group: String?
+
+    public var instanceId: String?
+
+    public var namespaceId: String?
+
+    public var requestPars: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.dataId != nil {
+            map["DataId"] = self.dataId!
+        }
+        if self.extGrayRulesShrink != nil {
+            map["ExtGrayRules"] = self.extGrayRulesShrink!
+        }
+        if self.group != nil {
+            map["Group"] = self.group!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.namespaceId != nil {
+            map["NamespaceId"] = self.namespaceId!
+        }
+        if self.requestPars != nil {
+            map["RequestPars"] = self.requestPars!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("DataId") {
+            self.dataId = dict["DataId"] as! String
+        }
+        if dict.keys.contains("ExtGrayRules") {
+            self.extGrayRulesShrink = dict["ExtGrayRules"] as! String
+        }
         if dict.keys.contains("Group") {
             self.group = dict["Group"] as! String
         }
@@ -50634,6 +50858,10 @@ public class ListListenersByConfigResponseBody : Tea.TeaModel {
         public var ip: String?
 
         public var labels: [String: String]?
+
+        public var matchRuleName: String?
+
+        public var matchRuleType: String?
 
         public var md5: String?
 
@@ -50661,6 +50889,12 @@ public class ListListenersByConfigResponseBody : Tea.TeaModel {
             if self.labels != nil {
                 map["Labels"] = self.labels!
             }
+            if self.matchRuleName != nil {
+                map["MatchRuleName"] = self.matchRuleName!
+            }
+            if self.matchRuleType != nil {
+                map["MatchRuleType"] = self.matchRuleType!
+            }
             if self.md5 != nil {
                 map["Md5"] = self.md5!
             }
@@ -50679,6 +50913,12 @@ public class ListListenersByConfigResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Labels") {
                 self.labels = dict["Labels"] as! [String: String]
+            }
+            if dict.keys.contains("MatchRuleName") {
+                self.matchRuleName = dict["MatchRuleName"] as! String
+            }
+            if dict.keys.contains("MatchRuleType") {
+                self.matchRuleType = dict["MatchRuleType"] as! String
             }
             if dict.keys.contains("Md5") {
                 self.md5 = dict["Md5"] as! String
@@ -72467,6 +72707,313 @@ public class UpdateGatewayRouteWafStatusResponse : Tea.TeaModel {
     }
 }
 
+public class UpdateGatewayServiceRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var gatewayId: Int64?
+
+    public var gatewayUniqueId: String?
+
+    public var id: String?
+
+    public var ipList: [String]?
+
+    public var name: String?
+
+    public var servicePort: String?
+
+    public var serviceProtocol: String?
+
+    public var tlsSetting: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.gatewayId != nil {
+            map["GatewayId"] = self.gatewayId!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.ipList != nil {
+            map["IpList"] = self.ipList!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.servicePort != nil {
+            map["ServicePort"] = self.servicePort!
+        }
+        if self.serviceProtocol != nil {
+            map["ServiceProtocol"] = self.serviceProtocol!
+        }
+        if self.tlsSetting != nil {
+            map["TlsSetting"] = self.tlsSetting!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("GatewayId") {
+            self.gatewayId = dict["GatewayId"] as! Int64
+        }
+        if dict.keys.contains("GatewayUniqueId") {
+            self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+        }
+        if dict.keys.contains("Id") {
+            self.id = dict["Id"] as! String
+        }
+        if dict.keys.contains("IpList") {
+            self.ipList = dict["IpList"] as! [String]
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("ServicePort") {
+            self.servicePort = dict["ServicePort"] as! String
+        }
+        if dict.keys.contains("ServiceProtocol") {
+            self.serviceProtocol = dict["ServiceProtocol"] as! String
+        }
+        if dict.keys.contains("TlsSetting") {
+            self.tlsSetting = dict["TlsSetting"] as! String
+        }
+    }
+}
+
+public class UpdateGatewayServiceShrinkRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var gatewayId: Int64?
+
+    public var gatewayUniqueId: String?
+
+    public var id: String?
+
+    public var ipListShrink: String?
+
+    public var name: String?
+
+    public var servicePort: String?
+
+    public var serviceProtocol: String?
+
+    public var tlsSetting: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.gatewayId != nil {
+            map["GatewayId"] = self.gatewayId!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.ipListShrink != nil {
+            map["IpList"] = self.ipListShrink!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.servicePort != nil {
+            map["ServicePort"] = self.servicePort!
+        }
+        if self.serviceProtocol != nil {
+            map["ServiceProtocol"] = self.serviceProtocol!
+        }
+        if self.tlsSetting != nil {
+            map["TlsSetting"] = self.tlsSetting!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("GatewayId") {
+            self.gatewayId = dict["GatewayId"] as! Int64
+        }
+        if dict.keys.contains("GatewayUniqueId") {
+            self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+        }
+        if dict.keys.contains("Id") {
+            self.id = dict["Id"] as! String
+        }
+        if dict.keys.contains("IpList") {
+            self.ipListShrink = dict["IpList"] as! String
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("ServicePort") {
+            self.servicePort = dict["ServicePort"] as! String
+        }
+        if dict.keys.contains("ServiceProtocol") {
+            self.serviceProtocol = dict["ServiceProtocol"] as! String
+        }
+        if dict.keys.contains("TlsSetting") {
+            self.tlsSetting = dict["TlsSetting"] as! String
+        }
+    }
+}
+
+public class UpdateGatewayServiceResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var data: Int64?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Data") {
+            self.data = dict["Data"] as! Int64
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class UpdateGatewayServiceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateGatewayServiceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateGatewayServiceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class UpdateGatewayServiceCheckRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
@@ -74952,6 +75499,10 @@ public class UpdateNacosGrayConfigRequest : Tea.TeaModel {
 
     public var grayRule: String?
 
+    public var grayRuleName: String?
+
+    public var grayRulePriority: Int32?
+
     public var grayType: String?
 
     public var group: String?
@@ -74959,6 +75510,8 @@ public class UpdateNacosGrayConfigRequest : Tea.TeaModel {
     public var instanceId: String?
 
     public var namespaceId: String?
+
+    public var opType: String?
 
     public var regionId: String?
 
@@ -74995,6 +75548,12 @@ public class UpdateNacosGrayConfigRequest : Tea.TeaModel {
         if self.grayRule != nil {
             map["GrayRule"] = self.grayRule!
         }
+        if self.grayRuleName != nil {
+            map["GrayRuleName"] = self.grayRuleName!
+        }
+        if self.grayRulePriority != nil {
+            map["GrayRulePriority"] = self.grayRulePriority!
+        }
         if self.grayType != nil {
             map["GrayType"] = self.grayType!
         }
@@ -75006,6 +75565,9 @@ public class UpdateNacosGrayConfigRequest : Tea.TeaModel {
         }
         if self.namespaceId != nil {
             map["NamespaceId"] = self.namespaceId!
+        }
+        if self.opType != nil {
+            map["OpType"] = self.opType!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -75035,6 +75597,12 @@ public class UpdateNacosGrayConfigRequest : Tea.TeaModel {
         if dict.keys.contains("GrayRule") {
             self.grayRule = dict["GrayRule"] as! String
         }
+        if dict.keys.contains("GrayRuleName") {
+            self.grayRuleName = dict["GrayRuleName"] as! String
+        }
+        if dict.keys.contains("GrayRulePriority") {
+            self.grayRulePriority = dict["GrayRulePriority"] as! Int32
+        }
         if dict.keys.contains("GrayType") {
             self.grayType = dict["GrayType"] as! String
         }
@@ -75046,6 +75614,9 @@ public class UpdateNacosGrayConfigRequest : Tea.TeaModel {
         }
         if dict.keys.contains("NamespaceId") {
             self.namespaceId = dict["NamespaceId"] as! String
+        }
+        if dict.keys.contains("OpType") {
+            self.opType = dict["OpType"] as! String
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String

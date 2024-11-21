@@ -1948,9 +1948,6 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.betaIps)) {
             query["BetaIps"] = request.betaIps ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.content)) {
-            query["Content"] = request.content ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.dataId)) {
             query["DataId"] = request.dataId ?? "";
         }
@@ -1972,8 +1969,13 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.type)) {
             query["Type"] = request.type ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.content)) {
+            body["Content"] = request.content ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "CreateNacosConfig",
@@ -6748,14 +6750,22 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listListenersByConfigWithOptions(_ request: ListListenersByConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListListenersByConfigResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listListenersByConfigWithOptions(_ tmpReq: ListListenersByConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListListenersByConfigResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListListenersByConfigShrinkRequest = ListListenersByConfigShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.extGrayRules)) {
+            request.extGrayRulesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.extGrayRules, "ExtGrayRules", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
             query["AcceptLanguage"] = request.acceptLanguage ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.dataId)) {
             query["DataId"] = request.dataId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extGrayRulesShrink)) {
+            query["ExtGrayRules"] = request.extGrayRulesShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.group)) {
             query["Group"] = request.group ?? "";
@@ -10067,6 +10077,66 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGatewayServiceWithOptions(_ tmpReq: UpdateGatewayServiceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateGatewayServiceResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateGatewayServiceShrinkRequest = UpdateGatewayServiceShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.ipList)) {
+            request.ipListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ipList, "IpList", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayId)) {
+            query["GatewayId"] = request.gatewayId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayUniqueId)) {
+            query["GatewayUniqueId"] = request.gatewayUniqueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.id)) {
+            query["Id"] = request.id ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ipListShrink)) {
+            query["IpList"] = request.ipListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.servicePort)) {
+            query["ServicePort"] = request.servicePort ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceProtocol)) {
+            query["ServiceProtocol"] = request.serviceProtocol ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tlsSetting)) {
+            query["TlsSetting"] = request.tlsSetting ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateGatewayService",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateGatewayServiceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGatewayService(_ request: UpdateGatewayServiceRequest) async throws -> UpdateGatewayServiceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateGatewayServiceWithOptions(request as! UpdateGatewayServiceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateGatewayServiceCheckWithOptions(_ tmpReq: UpdateGatewayServiceCheckRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateGatewayServiceCheckResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpdateGatewayServiceCheckShrinkRequest = UpdateGatewayServiceCheckShrinkRequest([:])
@@ -10538,9 +10608,6 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.betaIps)) {
             query["BetaIps"] = request.betaIps ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.content)) {
-            query["Content"] = request.content ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.dataId)) {
             query["DataId"] = request.dataId ?? "";
         }
@@ -10568,8 +10635,13 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.type)) {
             query["Type"] = request.type ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.content)) {
+            body["Content"] = request.content ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "UpdateNacosConfig",
@@ -10611,6 +10683,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.grayRule)) {
             query["GrayRule"] = request.grayRule ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.grayRuleName)) {
+            query["GrayRuleName"] = request.grayRuleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.grayRulePriority)) {
+            query["GrayRulePriority"] = request.grayRulePriority!;
+        }
         if (!TeaUtils.Client.isUnset(request.grayType)) {
             query["GrayType"] = request.grayType ?? "";
         }
@@ -10622,6 +10700,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.namespaceId)) {
             query["NamespaceId"] = request.namespaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.opType)) {
+            query["OpType"] = request.opType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
