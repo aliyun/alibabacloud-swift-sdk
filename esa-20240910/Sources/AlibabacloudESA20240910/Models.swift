@@ -7055,6 +7055,115 @@ public class CreateListResponse : Tea.TeaModel {
     }
 }
 
+public class CreateOriginProtectionRequest : Tea.TeaModel {
+    public var siteId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("SiteId") {
+            self.siteId = dict["SiteId"] as! Int64
+        }
+    }
+}
+
+public class CreateOriginProtectionResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateOriginProtectionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateOriginProtectionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateOriginProtectionResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreatePageRequest : Tea.TeaModel {
     public var content: String?
 
@@ -12704,6 +12813,115 @@ public class DeleteListResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DeleteListResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DeleteOriginProtectionRequest : Tea.TeaModel {
+    public var siteId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("SiteId") {
+            self.siteId = dict["SiteId"] as! Int64
+        }
+    }
+}
+
+public class DeleteOriginProtectionResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DeleteOriginProtectionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteOriginProtectionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteOriginProtectionResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -19389,6 +19607,419 @@ public class GetListResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = GetListResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetOriginProtectionRequest : Tea.TeaModel {
+    public var siteId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("SiteId") {
+            self.siteId = dict["SiteId"] as! Int64
+        }
+    }
+}
+
+public class GetOriginProtectionResponseBody : Tea.TeaModel {
+    public class CurrentIPWhitelist : Tea.TeaModel {
+        public var IPv4: [String]?
+
+        public var IPv6: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.IPv4 != nil {
+                map["IPv4"] = self.IPv4!
+            }
+            if self.IPv6 != nil {
+                map["IPv6"] = self.IPv6!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("IPv4") {
+                self.IPv4 = dict["IPv4"] as! [String]
+            }
+            if dict.keys.contains("IPv6") {
+                self.IPv6 = dict["IPv6"] as! [String]
+            }
+        }
+    }
+    public class DiffIPWhitelist : Tea.TeaModel {
+        public class AddedIPWhitelist : Tea.TeaModel {
+            public var IPv4: [String]?
+
+            public var IPv6: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.IPv4 != nil {
+                    map["IPv4"] = self.IPv4!
+                }
+                if self.IPv6 != nil {
+                    map["IPv6"] = self.IPv6!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("IPv4") {
+                    self.IPv4 = dict["IPv4"] as! [String]
+                }
+                if dict.keys.contains("IPv6") {
+                    self.IPv6 = dict["IPv6"] as! [String]
+                }
+            }
+        }
+        public class NoChangeIpWhitelist : Tea.TeaModel {
+            public var IPv4: [String]?
+
+            public var IPv6: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.IPv4 != nil {
+                    map["IPv4"] = self.IPv4!
+                }
+                if self.IPv6 != nil {
+                    map["IPv6"] = self.IPv6!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("IPv4") {
+                    self.IPv4 = dict["IPv4"] as! [String]
+                }
+                if dict.keys.contains("IPv6") {
+                    self.IPv6 = dict["IPv6"] as! [String]
+                }
+            }
+        }
+        public class RemovedIPWhitelist : Tea.TeaModel {
+            public var IPv4: [String]?
+
+            public var IPv6: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.IPv4 != nil {
+                    map["IPv4"] = self.IPv4!
+                }
+                if self.IPv6 != nil {
+                    map["IPv6"] = self.IPv6!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("IPv4") {
+                    self.IPv4 = dict["IPv4"] as! [String]
+                }
+                if dict.keys.contains("IPv6") {
+                    self.IPv6 = dict["IPv6"] as! [String]
+                }
+            }
+        }
+        public var addedIPWhitelist: GetOriginProtectionResponseBody.DiffIPWhitelist.AddedIPWhitelist?
+
+        public var noChangeIpWhitelist: GetOriginProtectionResponseBody.DiffIPWhitelist.NoChangeIpWhitelist?
+
+        public var removedIPWhitelist: GetOriginProtectionResponseBody.DiffIPWhitelist.RemovedIPWhitelist?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.addedIPWhitelist?.validate()
+            try self.noChangeIpWhitelist?.validate()
+            try self.removedIPWhitelist?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.addedIPWhitelist != nil {
+                map["AddedIPWhitelist"] = self.addedIPWhitelist?.toMap()
+            }
+            if self.noChangeIpWhitelist != nil {
+                map["NoChangeIpWhitelist"] = self.noChangeIpWhitelist?.toMap()
+            }
+            if self.removedIPWhitelist != nil {
+                map["RemovedIPWhitelist"] = self.removedIPWhitelist?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AddedIPWhitelist") {
+                var model = GetOriginProtectionResponseBody.DiffIPWhitelist.AddedIPWhitelist()
+                model.fromMap(dict["AddedIPWhitelist"] as! [String: Any])
+                self.addedIPWhitelist = model
+            }
+            if dict.keys.contains("NoChangeIpWhitelist") {
+                var model = GetOriginProtectionResponseBody.DiffIPWhitelist.NoChangeIpWhitelist()
+                model.fromMap(dict["NoChangeIpWhitelist"] as! [String: Any])
+                self.noChangeIpWhitelist = model
+            }
+            if dict.keys.contains("RemovedIPWhitelist") {
+                var model = GetOriginProtectionResponseBody.DiffIPWhitelist.RemovedIPWhitelist()
+                model.fromMap(dict["RemovedIPWhitelist"] as! [String: Any])
+                self.removedIPWhitelist = model
+            }
+        }
+    }
+    public class LatestIPWhitelist : Tea.TeaModel {
+        public var IPv4: [String]?
+
+        public var IPv6: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.IPv4 != nil {
+                map["IPv4"] = self.IPv4!
+            }
+            if self.IPv6 != nil {
+                map["IPv6"] = self.IPv6!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("IPv4") {
+                self.IPv4 = dict["IPv4"] as! [String]
+            }
+            if dict.keys.contains("IPv6") {
+                self.IPv6 = dict["IPv6"] as! [String]
+            }
+        }
+    }
+    public var currentIPWhitelist: GetOriginProtectionResponseBody.CurrentIPWhitelist?
+
+    public var diffIPWhitelist: GetOriginProtectionResponseBody.DiffIPWhitelist?
+
+    public var latestIPWhitelist: GetOriginProtectionResponseBody.LatestIPWhitelist?
+
+    public var needUpdate: Bool?
+
+    public var originConverge: String?
+
+    public var originProtection: String?
+
+    public var requestId: String?
+
+    public var siteId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.currentIPWhitelist?.validate()
+        try self.diffIPWhitelist?.validate()
+        try self.latestIPWhitelist?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.currentIPWhitelist != nil {
+            map["CurrentIPWhitelist"] = self.currentIPWhitelist?.toMap()
+        }
+        if self.diffIPWhitelist != nil {
+            map["DiffIPWhitelist"] = self.diffIPWhitelist?.toMap()
+        }
+        if self.latestIPWhitelist != nil {
+            map["LatestIPWhitelist"] = self.latestIPWhitelist?.toMap()
+        }
+        if self.needUpdate != nil {
+            map["NeedUpdate"] = self.needUpdate!
+        }
+        if self.originConverge != nil {
+            map["OriginConverge"] = self.originConverge!
+        }
+        if self.originProtection != nil {
+            map["OriginProtection"] = self.originProtection!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CurrentIPWhitelist") {
+            var model = GetOriginProtectionResponseBody.CurrentIPWhitelist()
+            model.fromMap(dict["CurrentIPWhitelist"] as! [String: Any])
+            self.currentIPWhitelist = model
+        }
+        if dict.keys.contains("DiffIPWhitelist") {
+            var model = GetOriginProtectionResponseBody.DiffIPWhitelist()
+            model.fromMap(dict["DiffIPWhitelist"] as! [String: Any])
+            self.diffIPWhitelist = model
+        }
+        if dict.keys.contains("LatestIPWhitelist") {
+            var model = GetOriginProtectionResponseBody.LatestIPWhitelist()
+            model.fromMap(dict["LatestIPWhitelist"] as! [String: Any])
+            self.latestIPWhitelist = model
+        }
+        if dict.keys.contains("NeedUpdate") {
+            self.needUpdate = dict["NeedUpdate"] as! Bool
+        }
+        if dict.keys.contains("OriginConverge") {
+            self.originConverge = dict["OriginConverge"] as! String
+        }
+        if dict.keys.contains("OriginProtection") {
+            self.originProtection = dict["OriginProtection"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SiteId") {
+            self.siteId = dict["SiteId"] as! Int64
+        }
+    }
+}
+
+public class GetOriginProtectionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetOriginProtectionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetOriginProtectionResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -38048,6 +38679,232 @@ public class UpdateListResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = UpdateListResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateOriginProtectionRequest : Tea.TeaModel {
+    public var originConverge: String?
+
+    public var siteId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.originConverge != nil {
+            map["OriginConverge"] = self.originConverge!
+        }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OriginConverge") {
+            self.originConverge = dict["OriginConverge"] as! String
+        }
+        if dict.keys.contains("SiteId") {
+            self.siteId = dict["SiteId"] as! Int64
+        }
+    }
+}
+
+public class UpdateOriginProtectionResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UpdateOriginProtectionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateOriginProtectionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateOriginProtectionResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateOriginProtectionIpWhiteListRequest : Tea.TeaModel {
+    public var siteId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("SiteId") {
+            self.siteId = dict["SiteId"] as! Int64
+        }
+    }
+}
+
+public class UpdateOriginProtectionIpWhiteListResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UpdateOriginProtectionIpWhiteListResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateOriginProtectionIpWhiteListResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateOriginProtectionIpWhiteListResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
