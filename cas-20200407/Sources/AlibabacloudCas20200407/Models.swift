@@ -3367,11 +3367,74 @@ public class GetUserCertificateDetailRequest : Tea.TeaModel {
 }
 
 public class GetUserCertificateDetailResponseBody : Tea.TeaModel {
+    public class CertChain : Tea.TeaModel {
+        public var commonName: String?
+
+        public var issuerCommonName: String?
+
+        public var notAfter: Int64?
+
+        public var notBefore: Int64?
+
+        public var remainDay: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.commonName != nil {
+                map["CommonName"] = self.commonName!
+            }
+            if self.issuerCommonName != nil {
+                map["IssuerCommonName"] = self.issuerCommonName!
+            }
+            if self.notAfter != nil {
+                map["NotAfter"] = self.notAfter!
+            }
+            if self.notBefore != nil {
+                map["NotBefore"] = self.notBefore!
+            }
+            if self.remainDay != nil {
+                map["RemainDay"] = self.remainDay!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CommonName") {
+                self.commonName = dict["CommonName"] as! String
+            }
+            if dict.keys.contains("IssuerCommonName") {
+                self.issuerCommonName = dict["IssuerCommonName"] as! String
+            }
+            if dict.keys.contains("NotAfter") {
+                self.notAfter = dict["NotAfter"] as! Int64
+            }
+            if dict.keys.contains("NotBefore") {
+                self.notBefore = dict["NotBefore"] as! Int64
+            }
+            if dict.keys.contains("RemainDay") {
+                self.remainDay = dict["RemainDay"] as! Int32
+            }
+        }
+    }
     public var algorithm: String?
 
     public var buyInAliyun: Bool?
 
     public var cert: String?
+
+    public var certChain: [GetUserCertificateDetailResponseBody.CertChain]?
 
     public var certIdentifier: String?
 
@@ -3445,6 +3508,13 @@ public class GetUserCertificateDetailResponseBody : Tea.TeaModel {
         }
         if self.cert != nil {
             map["Cert"] = self.cert!
+        }
+        if self.certChain != nil {
+            var tmp : [Any] = []
+            for k in self.certChain! {
+                tmp.append(k.toMap())
+            }
+            map["CertChain"] = tmp
         }
         if self.certIdentifier != nil {
             map["CertIdentifier"] = self.certIdentifier!
@@ -3533,6 +3603,17 @@ public class GetUserCertificateDetailResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Cert") {
             self.cert = dict["Cert"] as! String
+        }
+        if dict.keys.contains("CertChain") {
+            var tmp : [GetUserCertificateDetailResponseBody.CertChain] = []
+            for v in dict["CertChain"] as! [Any] {
+                var model = GetUserCertificateDetailResponseBody.CertChain()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.certChain = tmp
         }
         if dict.keys.contains("CertIdentifier") {
             self.certIdentifier = dict["CertIdentifier"] as! String
