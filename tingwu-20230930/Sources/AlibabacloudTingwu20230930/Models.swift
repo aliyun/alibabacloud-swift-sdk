@@ -7,6 +7,8 @@ import AlibabacloudEndpointUtil
 
 public class CreateTaskRequest : Tea.TeaModel {
     public class Input : Tea.TeaModel {
+        public var audioChannelMode: String?
+
         public var fileUrl: String?
 
         public var format: String?
@@ -41,6 +43,9 @@ public class CreateTaskRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.audioChannelMode != nil {
+                map["AudioChannelMode"] = self.audioChannelMode!
+            }
             if self.fileUrl != nil {
                 map["FileUrl"] = self.fileUrl!
             }
@@ -75,6 +80,9 @@ public class CreateTaskRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AudioChannelMode") {
+                self.audioChannelMode = dict["AudioChannelMode"] as! String
+            }
             if dict.keys.contains("FileUrl") {
                 self.fileUrl = dict["FileUrl"] as! String
             }
