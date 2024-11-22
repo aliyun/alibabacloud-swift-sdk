@@ -159,6 +159,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeResourcesWithOptions(_ request: DescribeResourcesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeResourcesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dataRedundancyType)) {
+            query["DataRedundancyType"] = request.dataRedundancyType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.failedRuleTemplate)) {
             query["FailedRuleTemplate"] = request.failedRuleTemplate ?? "";
         }
@@ -179,6 +182,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.sortOrder)) {
             query["SortOrder"] = request.sortOrder ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.storageClass)) {
+            query["StorageClass"] = request.storageClass ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],

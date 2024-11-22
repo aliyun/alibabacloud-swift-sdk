@@ -905,6 +905,8 @@ public class DescribeProductsResponse : Tea.TeaModel {
 }
 
 public class DescribeResourcesRequest : Tea.TeaModel {
+    public var dataRedundancyType: String?
+
     public var failedRuleTemplate: String?
 
     public var maxResults: Int32?
@@ -918,6 +920,8 @@ public class DescribeResourcesRequest : Tea.TeaModel {
     public var sortBy: String?
 
     public var sortOrder: String?
+
+    public var storageClass: String?
 
     public override init() {
         super.init()
@@ -933,6 +937,9 @@ public class DescribeResourcesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dataRedundancyType != nil {
+            map["DataRedundancyType"] = self.dataRedundancyType!
+        }
         if self.failedRuleTemplate != nil {
             map["FailedRuleTemplate"] = self.failedRuleTemplate!
         }
@@ -954,10 +961,16 @@ public class DescribeResourcesRequest : Tea.TeaModel {
         if self.sortOrder != nil {
             map["SortOrder"] = self.sortOrder!
         }
+        if self.storageClass != nil {
+            map["StorageClass"] = self.storageClass!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DataRedundancyType") {
+            self.dataRedundancyType = dict["DataRedundancyType"] as! String
+        }
         if dict.keys.contains("FailedRuleTemplate") {
             self.failedRuleTemplate = dict["FailedRuleTemplate"] as! String
         }
@@ -979,6 +992,9 @@ public class DescribeResourcesRequest : Tea.TeaModel {
         if dict.keys.contains("SortOrder") {
             self.sortOrder = dict["SortOrder"] as! String
         }
+        if dict.keys.contains("StorageClass") {
+            self.storageClass = dict["StorageClass"] as! String
+        }
     }
 }
 
@@ -992,6 +1008,8 @@ public class DescribeResourcesResponseBody : Tea.TeaModel {
             public var coldArchiveDataSize: Int64?
 
             public var createTime: Int64?
+
+            public var dataRedundancyType: String?
 
             public var enableCheck: Bool?
 
@@ -1018,6 +1036,8 @@ public class DescribeResourcesResponseBody : Tea.TeaModel {
             public var standardDataSize: Int64?
 
             public var status: String?
+
+            public var storageClass: String?
 
             public var totalDataSize: Int64?
 
@@ -1052,6 +1072,9 @@ public class DescribeResourcesResponseBody : Tea.TeaModel {
                 }
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
+                }
+                if self.dataRedundancyType != nil {
+                    map["DataRedundancyType"] = self.dataRedundancyType!
                 }
                 if self.enableCheck != nil {
                     map["EnableCheck"] = self.enableCheck!
@@ -1092,6 +1115,9 @@ public class DescribeResourcesResponseBody : Tea.TeaModel {
                 if self.status != nil {
                     map["Status"] = self.status!
                 }
+                if self.storageClass != nil {
+                    map["StorageClass"] = self.storageClass!
+                }
                 if self.totalDataSize != nil {
                     map["TotalDataSize"] = self.totalDataSize!
                 }
@@ -1119,6 +1145,9 @@ public class DescribeResourcesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("CreateTime") {
                     self.createTime = dict["CreateTime"] as! Int64
+                }
+                if dict.keys.contains("DataRedundancyType") {
+                    self.dataRedundancyType = dict["DataRedundancyType"] as! String
                 }
                 if dict.keys.contains("EnableCheck") {
                     self.enableCheck = dict["EnableCheck"] as! Bool
@@ -1158,6 +1187,9 @@ public class DescribeResourcesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Status") {
                     self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("StorageClass") {
+                    self.storageClass = dict["StorageClass"] as! String
                 }
                 if dict.keys.contains("TotalDataSize") {
                     self.totalDataSize = dict["TotalDataSize"] as! Int64
@@ -2218,6 +2250,8 @@ public class DescribeTopRiskyResourcesResponseBody : Tea.TeaModel {
 
             public var createTime: Int64?
 
+            public var dataRedundancyType: String?
+
             public var enableCheck: Bool?
 
             public var iaDataSize: Int64?
@@ -2243,6 +2277,8 @@ public class DescribeTopRiskyResourcesResponseBody : Tea.TeaModel {
             public var standardDataSize: Int64?
 
             public var status: String?
+
+            public var storageClass: String?
 
             public var totalDataSize: Int64?
 
@@ -2277,6 +2313,9 @@ public class DescribeTopRiskyResourcesResponseBody : Tea.TeaModel {
                 }
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
+                }
+                if self.dataRedundancyType != nil {
+                    map["DataRedundancyType"] = self.dataRedundancyType!
                 }
                 if self.enableCheck != nil {
                     map["EnableCheck"] = self.enableCheck!
@@ -2317,6 +2356,9 @@ public class DescribeTopRiskyResourcesResponseBody : Tea.TeaModel {
                 if self.status != nil {
                     map["Status"] = self.status!
                 }
+                if self.storageClass != nil {
+                    map["StorageClass"] = self.storageClass!
+                }
                 if self.totalDataSize != nil {
                     map["TotalDataSize"] = self.totalDataSize!
                 }
@@ -2344,6 +2386,9 @@ public class DescribeTopRiskyResourcesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("CreateTime") {
                     self.createTime = dict["CreateTime"] as! Int64
+                }
+                if dict.keys.contains("DataRedundancyType") {
+                    self.dataRedundancyType = dict["DataRedundancyType"] as! String
                 }
                 if dict.keys.contains("EnableCheck") {
                     self.enableCheck = dict["EnableCheck"] as! Bool
@@ -2383,6 +2428,9 @@ public class DescribeTopRiskyResourcesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Status") {
                     self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("StorageClass") {
+                    self.storageClass = dict["StorageClass"] as! String
                 }
                 if dict.keys.contains("TotalDataSize") {
                     self.totalDataSize = dict["TotalDataSize"] as! Int64
