@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudEnergyExpertExternal20220923` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/energyexpertexternal-20220923" "2.3.0"
+github "alibabacloud-sdk-swift/energyexpertexternal-20220923" "3.0.0"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudEnergyExpertExternal20220923` into your Xcode project 
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/energyexpertexternal-20220923.git", from: "2.3.0")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/energyexpertexternal-20220923.git", from: "3.0.0")
 ]
 ```
 
