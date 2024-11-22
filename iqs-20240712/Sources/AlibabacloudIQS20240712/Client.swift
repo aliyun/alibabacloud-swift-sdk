@@ -24,48 +24,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func bicyclingDirectionWithOptions(_ request: BicyclingDirectionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> BicyclingDirectionResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.destinationLatitude)) {
-            query["destinationLatitude"] = request.destinationLatitude ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.destinationLongitude)) {
-            query["destinationLongitude"] = request.destinationLongitude ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.originLatitude)) {
-            query["originLatitude"] = request.originLatitude ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.originLongitude)) {
-            query["originLongitude"] = request.originLongitude ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "BicyclingDirection",
-            "version": "2024-07-12",
-            "protocol": "HTTPS",
-            "pathname": "/ipaas/v1/direction/bicycling",
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(BicyclingDirectionResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func bicyclingDirection(_ request: BicyclingDirectionRequest) async throws -> BicyclingDirectionResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await bicyclingDirectionWithOptions(request as! BicyclingDirectionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func bicyclingDirectionNovaWithOptions(_ request: BicyclingDirectionNovaRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> BicyclingDirectionNovaResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -108,48 +66,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func circleTrafficStatusWithOptions(_ request: CircleTrafficStatusRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CircleTrafficStatusResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.latitude)) {
-            query["latitude"] = request.latitude ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.longitude)) {
-            query["longitude"] = request.longitude ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.radius)) {
-            query["radius"] = request.radius ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.roadLevel)) {
-            query["roadLevel"] = request.roadLevel ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "CircleTrafficStatus",
-            "version": "2024-07-12",
-            "protocol": "HTTPS",
-            "pathname": "/ipaas/v1/traffic/status/circle",
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(CircleTrafficStatusResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func circleTrafficStatus(_ request: CircleTrafficStatusRequest) async throws -> CircleTrafficStatusResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await circleTrafficStatusWithOptions(request as! CircleTrafficStatusRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func commonQueryBySceneWithOptions(_ request: CommonQueryBySceneRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CommonQueryBySceneResponse {
         try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
@@ -176,48 +92,6 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await commonQueryBySceneWithOptions(request as! CommonQueryBySceneRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func drivingDirectionWithOptions(_ request: DrivingDirectionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DrivingDirectionResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.destinationLatitude)) {
-            query["destinationLatitude"] = request.destinationLatitude ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.destinationLongitude)) {
-            query["destinationLongitude"] = request.destinationLongitude ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.originLatitude)) {
-            query["originLatitude"] = request.originLatitude ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.originLongitude)) {
-            query["originLongitude"] = request.originLongitude ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DrivingDirection",
-            "version": "2024-07-12",
-            "protocol": "HTTPS",
-            "pathname": "/ipaas/v1/direction/driving",
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DrivingDirectionResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func drivingDirection(_ request: DrivingDirectionRequest) async throws -> DrivingDirectionResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await drivingDirectionWithOptions(request as! DrivingDirectionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -389,57 +263,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func nearbySearchWithOptions(_ request: NearbySearchRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> NearbySearchResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.keywords)) {
-            query["keywords"] = request.keywords ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.latitude)) {
-            query["latitude"] = request.latitude ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.longitude)) {
-            query["longitude"] = request.longitude ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.page)) {
-            query["page"] = request.page!;
-        }
-        if (!TeaUtils.Client.isUnset(request.radius)) {
-            query["radius"] = request.radius!;
-        }
-        if (!TeaUtils.Client.isUnset(request.size)) {
-            query["size"] = request.size!;
-        }
-        if (!TeaUtils.Client.isUnset(request.types)) {
-            query["types"] = request.types ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "NearbySearch",
-            "version": "2024-07-12",
-            "protocol": "HTTPS",
-            "pathname": "/ipaas/v1/pois/nearby",
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(NearbySearchResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func nearbySearch(_ request: NearbySearchRequest) async throws -> NearbySearchResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await nearbySearchWithOptions(request as! NearbySearchRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func nearbySearchNovaWithOptions(_ request: NearbySearchNovaRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> NearbySearchNovaResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -491,51 +314,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func placeSearchWithOptions(_ request: PlaceSearchRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PlaceSearchResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.keywords)) {
-            query["keywords"] = request.keywords ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.page)) {
-            query["page"] = request.page!;
-        }
-        if (!TeaUtils.Client.isUnset(request.region)) {
-            query["region"] = request.region ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.size)) {
-            query["size"] = request.size!;
-        }
-        if (!TeaUtils.Client.isUnset(request.types)) {
-            query["types"] = request.types ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "PlaceSearch",
-            "version": "2024-07-12",
-            "protocol": "HTTPS",
-            "pathname": "/ipaas/v1/pois/place",
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(PlaceSearchResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func placeSearch(_ request: PlaceSearchRequest) async throws -> PlaceSearchResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await placeSearchWithOptions(request as! PlaceSearchRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func placeSearchNovaWithOptions(_ request: PlaceSearchNovaRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PlaceSearchNovaResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -581,138 +359,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func queryAttractionsWithOptions(_ request: QueryAttractionsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryAttractionsResponse {
-        try TeaUtils.Client.validateModel(request)
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "QueryAttractions",
-            "version": "2024-07-12",
-            "protocol": "HTTPS",
-            "pathname": "/amap-function-call-agent/iqs-agent-service/v1/nl/attractions",
-            "method": "POST",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(QueryAttractionsResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func queryAttractions(_ request: QueryAttractionsRequest) async throws -> QueryAttractionsResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await queryAttractionsWithOptions(request as! QueryAttractionsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func queryHotelsWithOptions(_ request: QueryHotelsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryHotelsResponse {
-        try TeaUtils.Client.validateModel(request)
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "QueryHotels",
-            "version": "2024-07-12",
-            "protocol": "HTTPS",
-            "pathname": "/amap-function-call-agent/iqs-agent-service/v1/nl/hotels",
-            "method": "POST",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(QueryHotelsResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func queryHotels(_ request: QueryHotelsRequest) async throws -> QueryHotelsResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await queryHotelsWithOptions(request as! QueryHotelsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func queryRestaurantsWithOptions(_ request: QueryRestaurantsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryRestaurantsResponse {
-        try TeaUtils.Client.validateModel(request)
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "QueryRestaurants",
-            "version": "2024-07-12",
-            "protocol": "HTTPS",
-            "pathname": "/amap-function-call-agent/iqs-agent-service/v1/nl/restaurants",
-            "method": "POST",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(QueryRestaurantsResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func queryRestaurants(_ request: QueryRestaurantsRequest) async throws -> QueryRestaurantsResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await queryRestaurantsWithOptions(request as! QueryRestaurantsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func rectangleTrafficStatusWithOptions(_ request: RectangleTrafficStatusRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RectangleTrafficStatusResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.lowerLeftLatitude)) {
-            query["lowerLeftLatitude"] = request.lowerLeftLatitude ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.lowerLeftLongitude)) {
-            query["lowerLeftLongitude"] = request.lowerLeftLongitude ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.roadLevel)) {
-            query["roadLevel"] = request.roadLevel ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.upperRightLatitude)) {
-            query["upperRightLatitude"] = request.upperRightLatitude ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.upperRightLongitude)) {
-            query["upperRightLongitude"] = request.upperRightLongitude ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "RectangleTrafficStatus",
-            "version": "2024-07-12",
-            "protocol": "HTTPS",
-            "pathname": "/ipaas/v1/traffic/status/rectangle",
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(RectangleTrafficStatusResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func rectangleTrafficStatus(_ request: RectangleTrafficStatusRequest) async throws -> RectangleTrafficStatusResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await rectangleTrafficStatusWithOptions(request as! RectangleTrafficStatusRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func rgeoCodeWithOptions(_ request: RgeoCodeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RgeoCodeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -746,45 +392,6 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await rgeoCodeWithOptions(request as! RgeoCodeRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func roadTrafficStatusWithOptions(_ request: RoadTrafficStatusRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RoadTrafficStatusResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.city)) {
-            query["city"] = request.city ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.roadLevel)) {
-            query["roadLevel"] = request.roadLevel ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.roadName)) {
-            query["roadName"] = request.roadName ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "RoadTrafficStatus",
-            "version": "2024-07-12",
-            "protocol": "HTTPS",
-            "pathname": "/ipaas/v1/traffic/status/road",
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(RoadTrafficStatusResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func roadTrafficStatus(_ request: RoadTrafficStatusRequest) async throws -> RoadTrafficStatusResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await roadTrafficStatusWithOptions(request as! RoadTrafficStatusRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -833,96 +440,6 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await transitIntegratedDirectionWithOptions(request as! TransitIntegratedDirectionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func transitIntegratedDirectionOldWithOptions(_ request: TransitIntegratedDirectionOldRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TransitIntegratedDirectionOldResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.destinationCity)) {
-            query["destinationCity"] = request.destinationCity ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.destinationLatitude)) {
-            query["destinationLatitude"] = request.destinationLatitude ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.destinationLongitude)) {
-            query["destinationLongitude"] = request.destinationLongitude ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.originCity)) {
-            query["originCity"] = request.originCity ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.originLatitude)) {
-            query["originLatitude"] = request.originLatitude ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.originLongitude)) {
-            query["originLongitude"] = request.originLongitude ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "TransitIntegratedDirectionOld",
-            "version": "2024-07-12",
-            "protocol": "HTTPS",
-            "pathname": "/ipaas/v1/direction/transit/integrated",
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(TransitIntegratedDirectionOldResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func transitIntegratedDirectionOld(_ request: TransitIntegratedDirectionOldRequest) async throws -> TransitIntegratedDirectionOldResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await transitIntegratedDirectionOldWithOptions(request as! TransitIntegratedDirectionOldRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func walkingDirectionWithOptions(_ request: WalkingDirectionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> WalkingDirectionResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.destinationLatitude)) {
-            query["destinationLatitude"] = request.destinationLatitude ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.destinationLongitude)) {
-            query["destinationLongitude"] = request.destinationLongitude ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.originLatitude)) {
-            query["originLatitude"] = request.originLatitude ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.originLongitude)) {
-            query["originLongitude"] = request.originLongitude ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "WalkingDirection",
-            "version": "2024-07-12",
-            "protocol": "HTTPS",
-            "pathname": "/ipaas/v1/direction/walking",
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(WalkingDirectionResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func walkingDirection(_ request: WalkingDirectionRequest) async throws -> WalkingDirectionResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await walkingDirectionWithOptions(request as! WalkingDirectionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
