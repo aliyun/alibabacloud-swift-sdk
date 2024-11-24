@@ -3053,6 +3053,43 @@ public class GetCloudDriveServiceMountTokenResponse : Tea.TeaModel {
 }
 
 public class GetConnectionTicketRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var clientId: String?
 
     public var clientOS: String?
@@ -3076,6 +3113,8 @@ public class GetConnectionTicketRequest : Tea.TeaModel {
     public var resourceOwnerId: Int64?
 
     public var sessionId: String?
+
+    public var tag: [GetConnectionTicketRequest.Tag]?
 
     public var taskId: String?
 
@@ -3131,6 +3170,13 @@ public class GetConnectionTicketRequest : Tea.TeaModel {
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
@@ -3176,6 +3222,17 @@ public class GetConnectionTicketRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SessionId") {
             self.sessionId = dict["SessionId"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [GetConnectionTicketRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = GetConnectionTicketRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
         if dict.keys.contains("TaskId") {
             self.taskId = dict["TaskId"] as! String
