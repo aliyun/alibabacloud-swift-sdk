@@ -665,9 +665,13 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var encryptedInstance: Bool?
+
     public var instanceName: String?
 
     public var instanceType: String?
+
+    public var kmsKeyId: String?
 
     public var maxConnections: Int32?
 
@@ -686,6 +690,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
     public var renewStatus: String?
 
     public var renewalDurationUnit: String?
+
+    public var resourceGroupId: String?
 
     public var serverlessChargeType: String?
 
@@ -720,11 +726,17 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.encryptedInstance != nil {
+            map["EncryptedInstance"] = self.encryptedInstance!
+        }
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
         if self.instanceType != nil {
             map["InstanceType"] = self.instanceType!
+        }
+        if self.kmsKeyId != nil {
+            map["KmsKeyId"] = self.kmsKeyId!
         }
         if self.maxConnections != nil {
             map["MaxConnections"] = self.maxConnections!
@@ -752,6 +764,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if self.renewalDurationUnit != nil {
             map["RenewalDurationUnit"] = self.renewalDurationUnit!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
         }
         if self.serverlessChargeType != nil {
             map["ServerlessChargeType"] = self.serverlessChargeType!
@@ -781,11 +796,17 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
         }
+        if dict.keys.contains("EncryptedInstance") {
+            self.encryptedInstance = dict["EncryptedInstance"] as! Bool
+        }
         if dict.keys.contains("InstanceName") {
             self.instanceName = dict["InstanceName"] as! String
         }
         if dict.keys.contains("InstanceType") {
             self.instanceType = dict["InstanceType"] as! String
+        }
+        if dict.keys.contains("KmsKeyId") {
+            self.kmsKeyId = dict["KmsKeyId"] as! String
         }
         if dict.keys.contains("MaxConnections") {
             self.maxConnections = dict["MaxConnections"] as! Int32
@@ -813,6 +834,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RenewalDurationUnit") {
             self.renewalDurationUnit = dict["RenewalDurationUnit"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ServerlessChargeType") {
             self.serverlessChargeType = dict["ServerlessChargeType"] as! String
@@ -1908,6 +1932,388 @@ public class DeleteVirtualHostResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DeleteVirtualHostResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetInstanceRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+    }
+}
+
+public class GetInstanceResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Tags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("Value") {
+                    self.value = dict["Value"] as! String
+                }
+            }
+        }
+        public var autoRenewInstance: Bool?
+
+        public var classicEndpoint: String?
+
+        public var encryptedInstance: Bool?
+
+        public var expireTime: Int64?
+
+        public var instanceId: String?
+
+        public var instanceName: String?
+
+        public var instanceType: String?
+
+        public var kmsKeyId: String?
+
+        public var maxConnections: Int32?
+
+        public var maxEipTps: Int32?
+
+        public var maxQueue: Int32?
+
+        public var maxTps: Int32?
+
+        public var maxVhost: Int32?
+
+        public var orderCreateTime: Int64?
+
+        public var orderType: String?
+
+        public var privateEndpoint: String?
+
+        public var publicEndpoint: String?
+
+        public var resourceGroupId: String?
+
+        public var status: String?
+
+        public var storageSize: Int32?
+
+        public var supportEIP: Bool?
+
+        public var supportTracing: Bool?
+
+        public var tags: [GetInstanceResponseBody.Data.Tags]?
+
+        public var tracingStorageTime: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.autoRenewInstance != nil {
+                map["AutoRenewInstance"] = self.autoRenewInstance!
+            }
+            if self.classicEndpoint != nil {
+                map["ClassicEndpoint"] = self.classicEndpoint!
+            }
+            if self.encryptedInstance != nil {
+                map["EncryptedInstance"] = self.encryptedInstance!
+            }
+            if self.expireTime != nil {
+                map["ExpireTime"] = self.expireTime!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.instanceName != nil {
+                map["InstanceName"] = self.instanceName!
+            }
+            if self.instanceType != nil {
+                map["InstanceType"] = self.instanceType!
+            }
+            if self.kmsKeyId != nil {
+                map["KmsKeyId"] = self.kmsKeyId!
+            }
+            if self.maxConnections != nil {
+                map["MaxConnections"] = self.maxConnections!
+            }
+            if self.maxEipTps != nil {
+                map["MaxEipTps"] = self.maxEipTps!
+            }
+            if self.maxQueue != nil {
+                map["MaxQueue"] = self.maxQueue!
+            }
+            if self.maxTps != nil {
+                map["MaxTps"] = self.maxTps!
+            }
+            if self.maxVhost != nil {
+                map["MaxVhost"] = self.maxVhost!
+            }
+            if self.orderCreateTime != nil {
+                map["OrderCreateTime"] = self.orderCreateTime!
+            }
+            if self.orderType != nil {
+                map["OrderType"] = self.orderType!
+            }
+            if self.privateEndpoint != nil {
+                map["PrivateEndpoint"] = self.privateEndpoint!
+            }
+            if self.publicEndpoint != nil {
+                map["PublicEndpoint"] = self.publicEndpoint!
+            }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.storageSize != nil {
+                map["StorageSize"] = self.storageSize!
+            }
+            if self.supportEIP != nil {
+                map["SupportEIP"] = self.supportEIP!
+            }
+            if self.supportTracing != nil {
+                map["SupportTracing"] = self.supportTracing!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
+            if self.tracingStorageTime != nil {
+                map["TracingStorageTime"] = self.tracingStorageTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AutoRenewInstance") {
+                self.autoRenewInstance = dict["AutoRenewInstance"] as! Bool
+            }
+            if dict.keys.contains("ClassicEndpoint") {
+                self.classicEndpoint = dict["ClassicEndpoint"] as! String
+            }
+            if dict.keys.contains("EncryptedInstance") {
+                self.encryptedInstance = dict["EncryptedInstance"] as! Bool
+            }
+            if dict.keys.contains("ExpireTime") {
+                self.expireTime = dict["ExpireTime"] as! Int64
+            }
+            if dict.keys.contains("InstanceId") {
+                self.instanceId = dict["InstanceId"] as! String
+            }
+            if dict.keys.contains("InstanceName") {
+                self.instanceName = dict["InstanceName"] as! String
+            }
+            if dict.keys.contains("InstanceType") {
+                self.instanceType = dict["InstanceType"] as! String
+            }
+            if dict.keys.contains("KmsKeyId") {
+                self.kmsKeyId = dict["KmsKeyId"] as! String
+            }
+            if dict.keys.contains("MaxConnections") {
+                self.maxConnections = dict["MaxConnections"] as! Int32
+            }
+            if dict.keys.contains("MaxEipTps") {
+                self.maxEipTps = dict["MaxEipTps"] as! Int32
+            }
+            if dict.keys.contains("MaxQueue") {
+                self.maxQueue = dict["MaxQueue"] as! Int32
+            }
+            if dict.keys.contains("MaxTps") {
+                self.maxTps = dict["MaxTps"] as! Int32
+            }
+            if dict.keys.contains("MaxVhost") {
+                self.maxVhost = dict["MaxVhost"] as! Int32
+            }
+            if dict.keys.contains("OrderCreateTime") {
+                self.orderCreateTime = dict["OrderCreateTime"] as! Int64
+            }
+            if dict.keys.contains("OrderType") {
+                self.orderType = dict["OrderType"] as! String
+            }
+            if dict.keys.contains("PrivateEndpoint") {
+                self.privateEndpoint = dict["PrivateEndpoint"] as! String
+            }
+            if dict.keys.contains("PublicEndpoint") {
+                self.publicEndpoint = dict["PublicEndpoint"] as! String
+            }
+            if dict.keys.contains("ResourceGroupId") {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("StorageSize") {
+                self.storageSize = dict["StorageSize"] as! Int32
+            }
+            if dict.keys.contains("SupportEIP") {
+                self.supportEIP = dict["SupportEIP"] as! Bool
+            }
+            if dict.keys.contains("SupportTracing") {
+                self.supportTracing = dict["SupportTracing"] as! Bool
+            }
+            if dict.keys.contains("Tags") {
+                var tmp : [GetInstanceResponseBody.Data.Tags] = []
+                for v in dict["Tags"] as! [Any] {
+                    var model = GetInstanceResponseBody.Data.Tags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tags = tmp
+            }
+            if dict.keys.contains("TracingStorageTime") {
+                self.tracingStorageTime = dict["TracingStorageTime"] as! Int32
+            }
+        }
+    }
+    public var data: GetInstanceResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            var model = GetInstanceResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class GetInstanceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetInstanceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetInstanceResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -3389,6 +3795,8 @@ public class ListInstancesRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var resourceGroupId: String?
+
     public override init() {
         super.init()
     }
@@ -3409,6 +3817,9 @@ public class ListInstancesRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         return map
     }
 
@@ -3418,6 +3829,9 @@ public class ListInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("NextToken") {
             self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
     }
 }
@@ -3466,6 +3880,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
             public var classicEndpoint: String?
 
+            public var encryptedInstance: Bool?
+
             public var expireTime: Int64?
 
             public var instanceId: String?
@@ -3473,6 +3889,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             public var instanceName: String?
 
             public var instanceType: String?
+
+            public var kmsKeyId: String?
 
             public var maxEipTps: Int32?
 
@@ -3489,6 +3907,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             public var privateEndpoint: String?
 
             public var publicEndpoint: String?
+
+            public var resourceGroupId: String?
 
             public var status: String?
 
@@ -3518,6 +3938,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 if self.classicEndpoint != nil {
                     map["ClassicEndpoint"] = self.classicEndpoint!
                 }
+                if self.encryptedInstance != nil {
+                    map["EncryptedInstance"] = self.encryptedInstance!
+                }
                 if self.expireTime != nil {
                     map["ExpireTime"] = self.expireTime!
                 }
@@ -3529,6 +3952,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 }
                 if self.instanceType != nil {
                     map["InstanceType"] = self.instanceType!
+                }
+                if self.kmsKeyId != nil {
+                    map["KmsKeyId"] = self.kmsKeyId!
                 }
                 if self.maxEipTps != nil {
                     map["MaxEipTps"] = self.maxEipTps!
@@ -3553,6 +3979,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 }
                 if self.publicEndpoint != nil {
                     map["PublicEndpoint"] = self.publicEndpoint!
+                }
+                if self.resourceGroupId != nil {
+                    map["ResourceGroupId"] = self.resourceGroupId!
                 }
                 if self.status != nil {
                     map["Status"] = self.status!
@@ -3580,6 +4009,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 if dict.keys.contains("ClassicEndpoint") {
                     self.classicEndpoint = dict["ClassicEndpoint"] as! String
                 }
+                if dict.keys.contains("EncryptedInstance") {
+                    self.encryptedInstance = dict["EncryptedInstance"] as! Bool
+                }
                 if dict.keys.contains("ExpireTime") {
                     self.expireTime = dict["ExpireTime"] as! Int64
                 }
@@ -3591,6 +4023,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("InstanceType") {
                     self.instanceType = dict["InstanceType"] as! String
+                }
+                if dict.keys.contains("KmsKeyId") {
+                    self.kmsKeyId = dict["KmsKeyId"] as! String
                 }
                 if dict.keys.contains("MaxEipTps") {
                     self.maxEipTps = dict["MaxEipTps"] as! Int32
@@ -3615,6 +4050,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("PublicEndpoint") {
                     self.publicEndpoint = dict["PublicEndpoint"] as! String
+                }
+                if dict.keys.contains("ResourceGroupId") {
+                    self.resourceGroupId = dict["ResourceGroupId"] as! String
                 }
                 if dict.keys.contains("Status") {
                     self.status = dict["Status"] as! String
@@ -4802,9 +5240,13 @@ public class ListVirtualHostsResponse : Tea.TeaModel {
 public class UpdateInstanceRequest : Tea.TeaModel {
     public var clientToken: String?
 
+    public var encryptedInstance: Bool?
+
     public var instanceId: String?
 
     public var instanceType: String?
+
+    public var kmsKeyId: String?
 
     public var maxConnections: Int32?
 
@@ -4843,11 +5285,17 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.encryptedInstance != nil {
+            map["EncryptedInstance"] = self.encryptedInstance!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
         if self.instanceType != nil {
             map["InstanceType"] = self.instanceType!
+        }
+        if self.kmsKeyId != nil {
+            map["KmsKeyId"] = self.kmsKeyId!
         }
         if self.maxConnections != nil {
             map["MaxConnections"] = self.maxConnections!
@@ -4886,11 +5334,17 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
         }
+        if dict.keys.contains("EncryptedInstance") {
+            self.encryptedInstance = dict["EncryptedInstance"] as! Bool
+        }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
         }
         if dict.keys.contains("InstanceType") {
             self.instanceType = dict["InstanceType"] as! String
+        }
+        if dict.keys.contains("KmsKeyId") {
+            self.kmsKeyId = dict["KmsKeyId"] as! String
         }
         if dict.keys.contains("MaxConnections") {
             self.maxConnections = dict["MaxConnections"] as! Int32
