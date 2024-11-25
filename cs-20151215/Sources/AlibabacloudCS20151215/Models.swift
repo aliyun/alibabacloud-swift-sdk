@@ -3317,6 +3317,219 @@ public class CreateAutoscalingConfigResponse : Tea.TeaModel {
 }
 
 public class CreateClusterRequest : Tea.TeaModel {
+    public class ControlPlaneConfig : Tea.TeaModel {
+        public var autoRenew: Bool?
+
+        public var autoRenewPeriod: Int64?
+
+        public var chargeType: String?
+
+        public var cloudMonitorFlags: Bool?
+
+        public var cpuPolicy: String?
+
+        public var deploymentsetId: String?
+
+        public var imageId: String?
+
+        public var imageType: String?
+
+        public var instanceTypes: [String]?
+
+        public var keyPair: String?
+
+        public var loginPassword: String?
+
+        public var nodePortRange: String?
+
+        public var period: Int64?
+
+        public var periodUnit: String?
+
+        public var runtime: String?
+
+        public var securityHardeningOs: Bool?
+
+        public var size: Int64?
+
+        public var socEnabled: Bool?
+
+        public var systemDiskBurstingEnabled: Bool?
+
+        public var systemDiskCategory: String?
+
+        public var systemDiskPerformanceLevel: String?
+
+        public var systemDiskProvisionedIops: Int64?
+
+        public var systemDiskSize: Int64?
+
+        public var systemDiskSnapshotPolicyId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.autoRenew != nil {
+                map["auto_renew"] = self.autoRenew!
+            }
+            if self.autoRenewPeriod != nil {
+                map["auto_renew_period"] = self.autoRenewPeriod!
+            }
+            if self.chargeType != nil {
+                map["charge_type"] = self.chargeType!
+            }
+            if self.cloudMonitorFlags != nil {
+                map["cloud_monitor_flags"] = self.cloudMonitorFlags!
+            }
+            if self.cpuPolicy != nil {
+                map["cpu_policy"] = self.cpuPolicy!
+            }
+            if self.deploymentsetId != nil {
+                map["deploymentset_id"] = self.deploymentsetId!
+            }
+            if self.imageId != nil {
+                map["image_id"] = self.imageId!
+            }
+            if self.imageType != nil {
+                map["image_type"] = self.imageType!
+            }
+            if self.instanceTypes != nil {
+                map["instance_types"] = self.instanceTypes!
+            }
+            if self.keyPair != nil {
+                map["key_pair"] = self.keyPair!
+            }
+            if self.loginPassword != nil {
+                map["login_password"] = self.loginPassword!
+            }
+            if self.nodePortRange != nil {
+                map["node_port_range"] = self.nodePortRange!
+            }
+            if self.period != nil {
+                map["period"] = self.period!
+            }
+            if self.periodUnit != nil {
+                map["period_unit"] = self.periodUnit!
+            }
+            if self.runtime != nil {
+                map["runtime"] = self.runtime!
+            }
+            if self.securityHardeningOs != nil {
+                map["security_hardening_os"] = self.securityHardeningOs!
+            }
+            if self.size != nil {
+                map["size"] = self.size!
+            }
+            if self.socEnabled != nil {
+                map["soc_enabled"] = self.socEnabled!
+            }
+            if self.systemDiskBurstingEnabled != nil {
+                map["system_disk_bursting_enabled"] = self.systemDiskBurstingEnabled!
+            }
+            if self.systemDiskCategory != nil {
+                map["system_disk_category"] = self.systemDiskCategory!
+            }
+            if self.systemDiskPerformanceLevel != nil {
+                map["system_disk_performance_level"] = self.systemDiskPerformanceLevel!
+            }
+            if self.systemDiskProvisionedIops != nil {
+                map["system_disk_provisioned_iops"] = self.systemDiskProvisionedIops!
+            }
+            if self.systemDiskSize != nil {
+                map["system_disk_size"] = self.systemDiskSize!
+            }
+            if self.systemDiskSnapshotPolicyId != nil {
+                map["system_disk_snapshot_policy_id"] = self.systemDiskSnapshotPolicyId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("auto_renew") {
+                self.autoRenew = dict["auto_renew"] as! Bool
+            }
+            if dict.keys.contains("auto_renew_period") {
+                self.autoRenewPeriod = dict["auto_renew_period"] as! Int64
+            }
+            if dict.keys.contains("charge_type") {
+                self.chargeType = dict["charge_type"] as! String
+            }
+            if dict.keys.contains("cloud_monitor_flags") {
+                self.cloudMonitorFlags = dict["cloud_monitor_flags"] as! Bool
+            }
+            if dict.keys.contains("cpu_policy") {
+                self.cpuPolicy = dict["cpu_policy"] as! String
+            }
+            if dict.keys.contains("deploymentset_id") {
+                self.deploymentsetId = dict["deploymentset_id"] as! String
+            }
+            if dict.keys.contains("image_id") {
+                self.imageId = dict["image_id"] as! String
+            }
+            if dict.keys.contains("image_type") {
+                self.imageType = dict["image_type"] as! String
+            }
+            if dict.keys.contains("instance_types") {
+                self.instanceTypes = dict["instance_types"] as! [String]
+            }
+            if dict.keys.contains("key_pair") {
+                self.keyPair = dict["key_pair"] as! String
+            }
+            if dict.keys.contains("login_password") {
+                self.loginPassword = dict["login_password"] as! String
+            }
+            if dict.keys.contains("node_port_range") {
+                self.nodePortRange = dict["node_port_range"] as! String
+            }
+            if dict.keys.contains("period") {
+                self.period = dict["period"] as! Int64
+            }
+            if dict.keys.contains("period_unit") {
+                self.periodUnit = dict["period_unit"] as! String
+            }
+            if dict.keys.contains("runtime") {
+                self.runtime = dict["runtime"] as! String
+            }
+            if dict.keys.contains("security_hardening_os") {
+                self.securityHardeningOs = dict["security_hardening_os"] as! Bool
+            }
+            if dict.keys.contains("size") {
+                self.size = dict["size"] as! Int64
+            }
+            if dict.keys.contains("soc_enabled") {
+                self.socEnabled = dict["soc_enabled"] as! Bool
+            }
+            if dict.keys.contains("system_disk_bursting_enabled") {
+                self.systemDiskBurstingEnabled = dict["system_disk_bursting_enabled"] as! Bool
+            }
+            if dict.keys.contains("system_disk_category") {
+                self.systemDiskCategory = dict["system_disk_category"] as! String
+            }
+            if dict.keys.contains("system_disk_performance_level") {
+                self.systemDiskPerformanceLevel = dict["system_disk_performance_level"] as! String
+            }
+            if dict.keys.contains("system_disk_provisioned_iops") {
+                self.systemDiskProvisionedIops = dict["system_disk_provisioned_iops"] as! Int64
+            }
+            if dict.keys.contains("system_disk_size") {
+                self.systemDiskSize = dict["system_disk_size"] as! Int64
+            }
+            if dict.keys.contains("system_disk_snapshot_policy_id") {
+                self.systemDiskSnapshotPolicyId = dict["system_disk_snapshot_policy_id"] as! String
+            }
+        }
+    }
     public class OperationPolicy : Tea.TeaModel {
         public class ClusterAutoUpgrade : Tea.TeaModel {
             public var channel: String?
@@ -3462,6 +3675,8 @@ public class CreateClusterRequest : Tea.TeaModel {
     public var clusterType: String?
 
     public var containerCidr: String?
+
+    public var controlPlaneConfig: CreateClusterRequest.ControlPlaneConfig?
 
     public var controlplaneLogComponents: [String]?
 
@@ -3643,6 +3858,7 @@ public class CreateClusterRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.controlPlaneConfig?.validate()
         try self.maintenanceWindow?.validate()
         try self.operationPolicy?.validate()
         try self.runtime?.validate()
@@ -3689,6 +3905,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if self.containerCidr != nil {
             map["container_cidr"] = self.containerCidr!
+        }
+        if self.controlPlaneConfig != nil {
+            map["control_plane_config"] = self.controlPlaneConfig?.toMap()
         }
         if self.controlplaneLogComponents != nil {
             map["controlplane_log_components"] = self.controlplaneLogComponents!
@@ -4008,6 +4227,11 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("container_cidr") {
             self.containerCidr = dict["container_cidr"] as! String
+        }
+        if dict.keys.contains("control_plane_config") {
+            var model = CreateClusterRequest.ControlPlaneConfig()
+            model.fromMap(dict["control_plane_config"] as! [String: Any])
+            self.controlPlaneConfig = model
         }
         if dict.keys.contains("controlplane_log_components") {
             self.controlplaneLogComponents = dict["controlplane_log_components"] as! [String]
@@ -8919,6 +9143,211 @@ public class DescribeClusterAttachScriptsResponse : Tea.TeaModel {
 }
 
 public class DescribeClusterDetailResponseBody : Tea.TeaModel {
+    public class ControlPlaneConfig : Tea.TeaModel {
+        public var autoRenew: Bool?
+
+        public var autoRenewPeriod: Int64?
+
+        public var chargeType: String?
+
+        public var cloudMonitorFlags: Bool?
+
+        public var cpuPolicy: String?
+
+        public var deploymentsetId: String?
+
+        public var imageId: String?
+
+        public var imageType: String?
+
+        public var instanceTypes: [String]?
+
+        public var keyPair: String?
+
+        public var nodePortRange: String?
+
+        public var period: Int64?
+
+        public var periodUnit: String?
+
+        public var runtime: String?
+
+        public var securityHardeningOs: Bool?
+
+        public var size: Int64?
+
+        public var socEnabled: Bool?
+
+        public var systemDiskBurstingEnabled: Bool?
+
+        public var systemDiskCategory: String?
+
+        public var systemDiskPerformanceLevel: String?
+
+        public var systemDiskProvisionedIops: Int64?
+
+        public var systemDiskSize: Int64?
+
+        public var systemDiskSnapshotPolicyId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.autoRenew != nil {
+                map["auto_renew"] = self.autoRenew!
+            }
+            if self.autoRenewPeriod != nil {
+                map["auto_renew_period"] = self.autoRenewPeriod!
+            }
+            if self.chargeType != nil {
+                map["charge_type"] = self.chargeType!
+            }
+            if self.cloudMonitorFlags != nil {
+                map["cloud_monitor_flags"] = self.cloudMonitorFlags!
+            }
+            if self.cpuPolicy != nil {
+                map["cpu_policy"] = self.cpuPolicy!
+            }
+            if self.deploymentsetId != nil {
+                map["deploymentset_id"] = self.deploymentsetId!
+            }
+            if self.imageId != nil {
+                map["image_id"] = self.imageId!
+            }
+            if self.imageType != nil {
+                map["image_type"] = self.imageType!
+            }
+            if self.instanceTypes != nil {
+                map["instance_types"] = self.instanceTypes!
+            }
+            if self.keyPair != nil {
+                map["key_pair"] = self.keyPair!
+            }
+            if self.nodePortRange != nil {
+                map["node_port_range"] = self.nodePortRange!
+            }
+            if self.period != nil {
+                map["period"] = self.period!
+            }
+            if self.periodUnit != nil {
+                map["period_unit"] = self.periodUnit!
+            }
+            if self.runtime != nil {
+                map["runtime"] = self.runtime!
+            }
+            if self.securityHardeningOs != nil {
+                map["security_hardening_os"] = self.securityHardeningOs!
+            }
+            if self.size != nil {
+                map["size"] = self.size!
+            }
+            if self.socEnabled != nil {
+                map["soc_enabled"] = self.socEnabled!
+            }
+            if self.systemDiskBurstingEnabled != nil {
+                map["system_disk_bursting_enabled"] = self.systemDiskBurstingEnabled!
+            }
+            if self.systemDiskCategory != nil {
+                map["system_disk_category"] = self.systemDiskCategory!
+            }
+            if self.systemDiskPerformanceLevel != nil {
+                map["system_disk_performance_level"] = self.systemDiskPerformanceLevel!
+            }
+            if self.systemDiskProvisionedIops != nil {
+                map["system_disk_provisioned_iops"] = self.systemDiskProvisionedIops!
+            }
+            if self.systemDiskSize != nil {
+                map["system_disk_size"] = self.systemDiskSize!
+            }
+            if self.systemDiskSnapshotPolicyId != nil {
+                map["system_disk_snapshot_policy_id"] = self.systemDiskSnapshotPolicyId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("auto_renew") {
+                self.autoRenew = dict["auto_renew"] as! Bool
+            }
+            if dict.keys.contains("auto_renew_period") {
+                self.autoRenewPeriod = dict["auto_renew_period"] as! Int64
+            }
+            if dict.keys.contains("charge_type") {
+                self.chargeType = dict["charge_type"] as! String
+            }
+            if dict.keys.contains("cloud_monitor_flags") {
+                self.cloudMonitorFlags = dict["cloud_monitor_flags"] as! Bool
+            }
+            if dict.keys.contains("cpu_policy") {
+                self.cpuPolicy = dict["cpu_policy"] as! String
+            }
+            if dict.keys.contains("deploymentset_id") {
+                self.deploymentsetId = dict["deploymentset_id"] as! String
+            }
+            if dict.keys.contains("image_id") {
+                self.imageId = dict["image_id"] as! String
+            }
+            if dict.keys.contains("image_type") {
+                self.imageType = dict["image_type"] as! String
+            }
+            if dict.keys.contains("instance_types") {
+                self.instanceTypes = dict["instance_types"] as! [String]
+            }
+            if dict.keys.contains("key_pair") {
+                self.keyPair = dict["key_pair"] as! String
+            }
+            if dict.keys.contains("node_port_range") {
+                self.nodePortRange = dict["node_port_range"] as! String
+            }
+            if dict.keys.contains("period") {
+                self.period = dict["period"] as! Int64
+            }
+            if dict.keys.contains("period_unit") {
+                self.periodUnit = dict["period_unit"] as! String
+            }
+            if dict.keys.contains("runtime") {
+                self.runtime = dict["runtime"] as! String
+            }
+            if dict.keys.contains("security_hardening_os") {
+                self.securityHardeningOs = dict["security_hardening_os"] as! Bool
+            }
+            if dict.keys.contains("size") {
+                self.size = dict["size"] as! Int64
+            }
+            if dict.keys.contains("soc_enabled") {
+                self.socEnabled = dict["soc_enabled"] as! Bool
+            }
+            if dict.keys.contains("system_disk_bursting_enabled") {
+                self.systemDiskBurstingEnabled = dict["system_disk_bursting_enabled"] as! Bool
+            }
+            if dict.keys.contains("system_disk_category") {
+                self.systemDiskCategory = dict["system_disk_category"] as! String
+            }
+            if dict.keys.contains("system_disk_performance_level") {
+                self.systemDiskPerformanceLevel = dict["system_disk_performance_level"] as! String
+            }
+            if dict.keys.contains("system_disk_provisioned_iops") {
+                self.systemDiskProvisionedIops = dict["system_disk_provisioned_iops"] as! Int64
+            }
+            if dict.keys.contains("system_disk_size") {
+                self.systemDiskSize = dict["system_disk_size"] as! Int64
+            }
+            if dict.keys.contains("system_disk_snapshot_policy_id") {
+                self.systemDiskSnapshotPolicyId = dict["system_disk_snapshot_policy_id"] as! String
+            }
+        }
+    }
     public class OperationPolicy : Tea.TeaModel {
         public class ClusterAutoUpgrade : Tea.TeaModel {
             public var channel: String?
@@ -8998,6 +9427,8 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
 
     public var containerCidr: String?
 
+    public var controlPlaneConfig: DescribeClusterDetailResponseBody.ControlPlaneConfig?
+
     public var created: String?
 
     public var currentVersion: String?
@@ -9076,6 +9507,7 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.controlPlaneConfig?.validate()
         try self.maintenanceWindow?.validate()
         try self.operationPolicy?.validate()
     }
@@ -9096,6 +9528,9 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         }
         if self.containerCidr != nil {
             map["container_cidr"] = self.containerCidr!
+        }
+        if self.controlPlaneConfig != nil {
+            map["control_plane_config"] = self.controlPlaneConfig?.toMap()
         }
         if self.created != nil {
             map["created"] = self.created!
@@ -9221,6 +9656,11 @@ public class DescribeClusterDetailResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("container_cidr") {
             self.containerCidr = dict["container_cidr"] as! String
+        }
+        if dict.keys.contains("control_plane_config") {
+            var model = DescribeClusterDetailResponseBody.ControlPlaneConfig()
+            model.fromMap(dict["control_plane_config"] as! [String: Any])
+            self.controlPlaneConfig = model
         }
         if dict.keys.contains("created") {
             self.created = dict["created"] as! String
@@ -24200,6 +24640,219 @@ public class ModifyClusterRequest : Tea.TeaModel {
             }
         }
     }
+    public class ControlPlaneConfig : Tea.TeaModel {
+        public var autoRenew: Bool?
+
+        public var autoRenewPeriod: Int64?
+
+        public var chargeType: String?
+
+        public var cloudMonitorFlags: Bool?
+
+        public var cpuPolicy: String?
+
+        public var deploymentsetId: String?
+
+        public var imageId: String?
+
+        public var imageType: String?
+
+        public var instanceTypes: [String]?
+
+        public var keyPair: String?
+
+        public var loginPassword: String?
+
+        public var nodePortRange: String?
+
+        public var period: Int64?
+
+        public var periodUnit: String?
+
+        public var runtime: String?
+
+        public var securityHardeningOs: Bool?
+
+        public var size: Int64?
+
+        public var socEnabled: Bool?
+
+        public var systemDiskBurstingEnabled: Bool?
+
+        public var systemDiskCategory: String?
+
+        public var systemDiskPerformanceLevel: String?
+
+        public var systemDiskProvisionedIops: Int64?
+
+        public var systemDiskSize: Int64?
+
+        public var systemDiskSnapshotPolicyId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.autoRenew != nil {
+                map["auto_renew"] = self.autoRenew!
+            }
+            if self.autoRenewPeriod != nil {
+                map["auto_renew_period"] = self.autoRenewPeriod!
+            }
+            if self.chargeType != nil {
+                map["charge_type"] = self.chargeType!
+            }
+            if self.cloudMonitorFlags != nil {
+                map["cloud_monitor_flags"] = self.cloudMonitorFlags!
+            }
+            if self.cpuPolicy != nil {
+                map["cpu_policy"] = self.cpuPolicy!
+            }
+            if self.deploymentsetId != nil {
+                map["deploymentset_id"] = self.deploymentsetId!
+            }
+            if self.imageId != nil {
+                map["image_id"] = self.imageId!
+            }
+            if self.imageType != nil {
+                map["image_type"] = self.imageType!
+            }
+            if self.instanceTypes != nil {
+                map["instance_types"] = self.instanceTypes!
+            }
+            if self.keyPair != nil {
+                map["key_pair"] = self.keyPair!
+            }
+            if self.loginPassword != nil {
+                map["login_password"] = self.loginPassword!
+            }
+            if self.nodePortRange != nil {
+                map["node_port_range"] = self.nodePortRange!
+            }
+            if self.period != nil {
+                map["period"] = self.period!
+            }
+            if self.periodUnit != nil {
+                map["period_unit"] = self.periodUnit!
+            }
+            if self.runtime != nil {
+                map["runtime"] = self.runtime!
+            }
+            if self.securityHardeningOs != nil {
+                map["security_hardening_os"] = self.securityHardeningOs!
+            }
+            if self.size != nil {
+                map["size"] = self.size!
+            }
+            if self.socEnabled != nil {
+                map["soc_enabled"] = self.socEnabled!
+            }
+            if self.systemDiskBurstingEnabled != nil {
+                map["system_disk_bursting_enabled"] = self.systemDiskBurstingEnabled!
+            }
+            if self.systemDiskCategory != nil {
+                map["system_disk_category"] = self.systemDiskCategory!
+            }
+            if self.systemDiskPerformanceLevel != nil {
+                map["system_disk_performance_level"] = self.systemDiskPerformanceLevel!
+            }
+            if self.systemDiskProvisionedIops != nil {
+                map["system_disk_provisioned_iops"] = self.systemDiskProvisionedIops!
+            }
+            if self.systemDiskSize != nil {
+                map["system_disk_size"] = self.systemDiskSize!
+            }
+            if self.systemDiskSnapshotPolicyId != nil {
+                map["system_disk_snapshot_policy_id"] = self.systemDiskSnapshotPolicyId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("auto_renew") {
+                self.autoRenew = dict["auto_renew"] as! Bool
+            }
+            if dict.keys.contains("auto_renew_period") {
+                self.autoRenewPeriod = dict["auto_renew_period"] as! Int64
+            }
+            if dict.keys.contains("charge_type") {
+                self.chargeType = dict["charge_type"] as! String
+            }
+            if dict.keys.contains("cloud_monitor_flags") {
+                self.cloudMonitorFlags = dict["cloud_monitor_flags"] as! Bool
+            }
+            if dict.keys.contains("cpu_policy") {
+                self.cpuPolicy = dict["cpu_policy"] as! String
+            }
+            if dict.keys.contains("deploymentset_id") {
+                self.deploymentsetId = dict["deploymentset_id"] as! String
+            }
+            if dict.keys.contains("image_id") {
+                self.imageId = dict["image_id"] as! String
+            }
+            if dict.keys.contains("image_type") {
+                self.imageType = dict["image_type"] as! String
+            }
+            if dict.keys.contains("instance_types") {
+                self.instanceTypes = dict["instance_types"] as! [String]
+            }
+            if dict.keys.contains("key_pair") {
+                self.keyPair = dict["key_pair"] as! String
+            }
+            if dict.keys.contains("login_password") {
+                self.loginPassword = dict["login_password"] as! String
+            }
+            if dict.keys.contains("node_port_range") {
+                self.nodePortRange = dict["node_port_range"] as! String
+            }
+            if dict.keys.contains("period") {
+                self.period = dict["period"] as! Int64
+            }
+            if dict.keys.contains("period_unit") {
+                self.periodUnit = dict["period_unit"] as! String
+            }
+            if dict.keys.contains("runtime") {
+                self.runtime = dict["runtime"] as! String
+            }
+            if dict.keys.contains("security_hardening_os") {
+                self.securityHardeningOs = dict["security_hardening_os"] as! Bool
+            }
+            if dict.keys.contains("size") {
+                self.size = dict["size"] as! Int64
+            }
+            if dict.keys.contains("soc_enabled") {
+                self.socEnabled = dict["soc_enabled"] as! Bool
+            }
+            if dict.keys.contains("system_disk_bursting_enabled") {
+                self.systemDiskBurstingEnabled = dict["system_disk_bursting_enabled"] as! Bool
+            }
+            if dict.keys.contains("system_disk_category") {
+                self.systemDiskCategory = dict["system_disk_category"] as! String
+            }
+            if dict.keys.contains("system_disk_performance_level") {
+                self.systemDiskPerformanceLevel = dict["system_disk_performance_level"] as! String
+            }
+            if dict.keys.contains("system_disk_provisioned_iops") {
+                self.systemDiskProvisionedIops = dict["system_disk_provisioned_iops"] as! Int64
+            }
+            if dict.keys.contains("system_disk_size") {
+                self.systemDiskSize = dict["system_disk_size"] as! Int64
+            }
+            if dict.keys.contains("system_disk_snapshot_policy_id") {
+                self.systemDiskSnapshotPolicyId = dict["system_disk_snapshot_policy_id"] as! String
+            }
+        }
+    }
     public class OperationPolicy : Tea.TeaModel {
         public class ClusterAutoUpgrade : Tea.TeaModel {
             public var channel: String?
@@ -24316,6 +24969,8 @@ public class ModifyClusterRequest : Tea.TeaModel {
 
     public var clusterName: String?
 
+    public var controlPlaneConfig: ModifyClusterRequest.ControlPlaneConfig?
+
     public var deletionProtection: Bool?
 
     public var enableRrsa: Bool?
@@ -24347,6 +25002,7 @@ public class ModifyClusterRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.apiServerCustomCertSans?.validate()
+        try self.controlPlaneConfig?.validate()
         try self.maintenanceWindow?.validate()
         try self.operationPolicy?.validate()
         try self.systemEventsLogging?.validate()
@@ -24368,6 +25024,9 @@ public class ModifyClusterRequest : Tea.TeaModel {
         }
         if self.clusterName != nil {
             map["cluster_name"] = self.clusterName!
+        }
+        if self.controlPlaneConfig != nil {
+            map["control_plane_config"] = self.controlPlaneConfig?.toMap()
         }
         if self.deletionProtection != nil {
             map["deletion_protection"] = self.deletionProtection!
@@ -24419,6 +25078,11 @@ public class ModifyClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("cluster_name") {
             self.clusterName = dict["cluster_name"] as! String
+        }
+        if dict.keys.contains("control_plane_config") {
+            var model = ModifyClusterRequest.ControlPlaneConfig()
+            model.fromMap(dict["control_plane_config"] as! [String: Any])
+            self.controlPlaneConfig = model
         }
         if dict.keys.contains("deletion_protection") {
             self.deletionProtection = dict["deletion_protection"] as! Bool
