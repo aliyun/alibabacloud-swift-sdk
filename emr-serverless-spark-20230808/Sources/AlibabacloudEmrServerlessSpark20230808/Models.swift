@@ -8,9 +8,13 @@ import AlibabacloudEndpointUtil
 public class Artifact : Tea.TeaModel {
     public var bizId: String?
 
+    public var catagoryBizId: String?
+
     public var creator: Int64?
 
     public var credential: Credential?
+
+    public var fullPath: [String]?
 
     public var gmtCreated: String?
 
@@ -40,11 +44,17 @@ public class Artifact : Tea.TeaModel {
         if self.bizId != nil {
             map["bizId"] = self.bizId!
         }
+        if self.catagoryBizId != nil {
+            map["catagoryBizId"] = self.catagoryBizId!
+        }
         if self.creator != nil {
             map["creator"] = self.creator!
         }
         if self.credential != nil {
             map["credential"] = self.credential?.toMap()
+        }
+        if self.fullPath != nil {
+            map["fullPath"] = self.fullPath!
         }
         if self.gmtCreated != nil {
             map["gmtCreated"] = self.gmtCreated!
@@ -68,6 +78,9 @@ public class Artifact : Tea.TeaModel {
         if dict.keys.contains("bizId") {
             self.bizId = dict["bizId"] as! String
         }
+        if dict.keys.contains("catagoryBizId") {
+            self.catagoryBizId = dict["catagoryBizId"] as! String
+        }
         if dict.keys.contains("creator") {
             self.creator = dict["creator"] as! Int64
         }
@@ -75,6 +88,9 @@ public class Artifact : Tea.TeaModel {
             var model = Credential()
             model.fromMap(dict["credential"] as! [String: Any])
             self.credential = model
+        }
+        if dict.keys.contains("fullPath") {
+            self.fullPath = dict["fullPath"] as! [String]
         }
         if dict.keys.contains("gmtCreated") {
             self.gmtCreated = dict["gmtCreated"] as! String
@@ -852,6 +868,91 @@ public class Tag : Tea.TeaModel {
 }
 
 public class Task : Tea.TeaModel {
+    public class Credential : Tea.TeaModel {
+        public var accessId: String?
+
+        public var accessUrl: String?
+
+        public var expire: Int64?
+
+        public var host: String?
+
+        public var path: String?
+
+        public var policy: String?
+
+        public var securityToken: String?
+
+        public var signature: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accessId != nil {
+                map["accessId"] = self.accessId!
+            }
+            if self.accessUrl != nil {
+                map["accessUrl"] = self.accessUrl!
+            }
+            if self.expire != nil {
+                map["expire"] = self.expire!
+            }
+            if self.host != nil {
+                map["host"] = self.host!
+            }
+            if self.path != nil {
+                map["path"] = self.path!
+            }
+            if self.policy != nil {
+                map["policy"] = self.policy!
+            }
+            if self.securityToken != nil {
+                map["securityToken"] = self.securityToken!
+            }
+            if self.signature != nil {
+                map["signature"] = self.signature!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("accessId") {
+                self.accessId = dict["accessId"] as! String
+            }
+            if dict.keys.contains("accessUrl") {
+                self.accessUrl = dict["accessUrl"] as! String
+            }
+            if dict.keys.contains("expire") {
+                self.expire = dict["expire"] as! Int64
+            }
+            if dict.keys.contains("host") {
+                self.host = dict["host"] as! String
+            }
+            if dict.keys.contains("path") {
+                self.path = dict["path"] as! String
+            }
+            if dict.keys.contains("policy") {
+                self.policy = dict["policy"] as! String
+            }
+            if dict.keys.contains("securityToken") {
+                self.securityToken = dict["securityToken"] as! String
+            }
+            if dict.keys.contains("signature") {
+                self.signature = dict["signature"] as! String
+            }
+        }
+    }
     public var archives: [String]?
 
     public var artifactUrl: String?
@@ -864,6 +965,8 @@ public class Task : Tea.TeaModel {
 
     public var creator: Int64?
 
+    public var credential: Task.Credential?
+
     public var defaultCatalogId: String?
 
     public var defaultDatabase: String?
@@ -873,6 +976,8 @@ public class Task : Tea.TeaModel {
     public var defaultSqlComputeId: String?
 
     public var deploymentId: String?
+
+    public var environmentId: String?
 
     public var extraArtifactIds: [String]?
 
@@ -940,6 +1045,7 @@ public class Task : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.credential?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -962,6 +1068,9 @@ public class Task : Tea.TeaModel {
         if self.creator != nil {
             map["creator"] = self.creator!
         }
+        if self.credential != nil {
+            map["credential"] = self.credential?.toMap()
+        }
         if self.defaultCatalogId != nil {
             map["defaultCatalogId"] = self.defaultCatalogId!
         }
@@ -976,6 +1085,9 @@ public class Task : Tea.TeaModel {
         }
         if self.deploymentId != nil {
             map["deploymentId"] = self.deploymentId!
+        }
+        if self.environmentId != nil {
+            map["environmentId"] = self.environmentId!
         }
         if self.extraArtifactIds != nil {
             map["extraArtifactIds"] = self.extraArtifactIds!
@@ -1087,6 +1199,11 @@ public class Task : Tea.TeaModel {
         if dict.keys.contains("creator") {
             self.creator = dict["creator"] as! Int64
         }
+        if dict.keys.contains("credential") {
+            var model = Task.Credential()
+            model.fromMap(dict["credential"] as! [String: Any])
+            self.credential = model
+        }
         if dict.keys.contains("defaultCatalogId") {
             self.defaultCatalogId = dict["defaultCatalogId"] as! String
         }
@@ -1101,6 +1218,9 @@ public class Task : Tea.TeaModel {
         }
         if dict.keys.contains("deploymentId") {
             self.deploymentId = dict["deploymentId"] as! String
+        }
+        if dict.keys.contains("environmentId") {
+            self.environmentId = dict["environmentId"] as! String
         }
         if dict.keys.contains("extraArtifactIds") {
             self.extraArtifactIds = dict["extraArtifactIds"] as! [String]
@@ -2108,6 +2228,8 @@ public class GetJobRunResponseBody : Tea.TeaModel {
 
         public var endTime: Int64?
 
+        public var environmentId: String?
+
         public var executionTimeoutSeconds: Int32?
 
         public var fusion: Bool?
@@ -2167,6 +2289,9 @@ public class GetJobRunResponseBody : Tea.TeaModel {
             }
             if self.endTime != nil {
                 map["endTime"] = self.endTime!
+            }
+            if self.environmentId != nil {
+                map["environmentId"] = self.environmentId!
             }
             if self.executionTimeoutSeconds != nil {
                 map["executionTimeoutSeconds"] = self.executionTimeoutSeconds!
@@ -2234,6 +2359,9 @@ public class GetJobRunResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("endTime") {
                 self.endTime = dict["endTime"] as! Int64
+            }
+            if dict.keys.contains("environmentId") {
+                self.environmentId = dict["environmentId"] as! String
             }
             if dict.keys.contains("executionTimeoutSeconds") {
                 self.executionTimeoutSeconds = dict["executionTimeoutSeconds"] as! Int32
@@ -2575,11 +2703,15 @@ public class GetSessionClusterResponseBody : Tea.TeaModel {
 
         public var domain: String?
 
+        public var domainInner: String?
+
         public var draftId: String?
 
         public var envId: String?
 
         public var fusion: Bool?
+
+        public var gmtCreate: Int64?
 
         public var kind: String?
 
@@ -2590,6 +2722,8 @@ public class GetSessionClusterResponseBody : Tea.TeaModel {
         public var releaseVersion: String?
 
         public var sessionClusterId: String?
+
+        public var startTime: Int64?
 
         public var state: String?
 
@@ -2639,6 +2773,9 @@ public class GetSessionClusterResponseBody : Tea.TeaModel {
             if self.domain != nil {
                 map["domain"] = self.domain!
             }
+            if self.domainInner != nil {
+                map["domainInner"] = self.domainInner!
+            }
             if self.draftId != nil {
                 map["draftId"] = self.draftId!
             }
@@ -2647,6 +2784,9 @@ public class GetSessionClusterResponseBody : Tea.TeaModel {
             }
             if self.fusion != nil {
                 map["fusion"] = self.fusion!
+            }
+            if self.gmtCreate != nil {
+                map["gmtCreate"] = self.gmtCreate!
             }
             if self.kind != nil {
                 map["kind"] = self.kind!
@@ -2662,6 +2802,9 @@ public class GetSessionClusterResponseBody : Tea.TeaModel {
             }
             if self.sessionClusterId != nil {
                 map["sessionClusterId"] = self.sessionClusterId!
+            }
+            if self.startTime != nil {
+                map["startTime"] = self.startTime!
             }
             if self.state != nil {
                 map["state"] = self.state!
@@ -2712,6 +2855,9 @@ public class GetSessionClusterResponseBody : Tea.TeaModel {
             if dict.keys.contains("domain") {
                 self.domain = dict["domain"] as! String
             }
+            if dict.keys.contains("domainInner") {
+                self.domainInner = dict["domainInner"] as! String
+            }
             if dict.keys.contains("draftId") {
                 self.draftId = dict["draftId"] as! String
             }
@@ -2720,6 +2866,9 @@ public class GetSessionClusterResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("fusion") {
                 self.fusion = dict["fusion"] as! Bool
+            }
+            if dict.keys.contains("gmtCreate") {
+                self.gmtCreate = dict["gmtCreate"] as! Int64
             }
             if dict.keys.contains("kind") {
                 self.kind = dict["kind"] as! String
@@ -2735,6 +2884,9 @@ public class GetSessionClusterResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("sessionClusterId") {
                 self.sessionClusterId = dict["sessionClusterId"] as! String
+            }
+            if dict.keys.contains("startTime") {
+                self.startTime = dict["startTime"] as! Int64
             }
             if dict.keys.contains("state") {
                 self.state = dict["state"] as! String
@@ -4703,9 +4855,13 @@ public class ListSessionClustersResponseBody : Tea.TeaModel {
 
         public var domain: String?
 
+        public var domainInner: String?
+
         public var draftId: String?
 
         public var fusion: Bool?
+
+        public var gmtCreate: Int64?
 
         public var kind: String?
 
@@ -4716,6 +4872,8 @@ public class ListSessionClustersResponseBody : Tea.TeaModel {
         public var releaseVersion: String?
 
         public var sessionClusterId: String?
+
+        public var startTime: Int64?
 
         public var state: String?
 
@@ -4765,11 +4923,17 @@ public class ListSessionClustersResponseBody : Tea.TeaModel {
             if self.domain != nil {
                 map["domain"] = self.domain!
             }
+            if self.domainInner != nil {
+                map["domainInner"] = self.domainInner!
+            }
             if self.draftId != nil {
                 map["draftId"] = self.draftId!
             }
             if self.fusion != nil {
                 map["fusion"] = self.fusion!
+            }
+            if self.gmtCreate != nil {
+                map["gmtCreate"] = self.gmtCreate!
             }
             if self.kind != nil {
                 map["kind"] = self.kind!
@@ -4785,6 +4949,9 @@ public class ListSessionClustersResponseBody : Tea.TeaModel {
             }
             if self.sessionClusterId != nil {
                 map["sessionClusterId"] = self.sessionClusterId!
+            }
+            if self.startTime != nil {
+                map["startTime"] = self.startTime!
             }
             if self.state != nil {
                 map["state"] = self.state!
@@ -4835,11 +5002,17 @@ public class ListSessionClustersResponseBody : Tea.TeaModel {
             if dict.keys.contains("domain") {
                 self.domain = dict["domain"] as! String
             }
+            if dict.keys.contains("domainInner") {
+                self.domainInner = dict["domainInner"] as! String
+            }
             if dict.keys.contains("draftId") {
                 self.draftId = dict["draftId"] as! String
             }
             if dict.keys.contains("fusion") {
                 self.fusion = dict["fusion"] as! Bool
+            }
+            if dict.keys.contains("gmtCreate") {
+                self.gmtCreate = dict["gmtCreate"] as! Int64
             }
             if dict.keys.contains("kind") {
                 self.kind = dict["kind"] as! String
@@ -4855,6 +5028,9 @@ public class ListSessionClustersResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("sessionClusterId") {
                 self.sessionClusterId = dict["sessionClusterId"] as! String
+            }
+            if dict.keys.contains("startTime") {
+                self.startTime = dict["startTime"] as! Int64
             }
             if dict.keys.contains("state") {
                 self.state = dict["state"] as! String
