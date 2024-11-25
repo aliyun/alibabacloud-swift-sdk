@@ -189,6 +189,8 @@ public class RunDataAnalysisResponseBody : Tea.TeaModel {
 
         public var evidence: String?
 
+        public var httpStatusCode: Int64?
+
         public var requestId: String?
 
         public var rewrite: String?
@@ -230,6 +232,9 @@ public class RunDataAnalysisResponseBody : Tea.TeaModel {
             if self.evidence != nil {
                 map["evidence"] = self.evidence!
             }
+            if self.httpStatusCode != nil {
+                map["httpStatusCode"] = self.httpStatusCode!
+            }
             if self.requestId != nil {
                 map["requestId"] = self.requestId!
             }
@@ -267,6 +272,9 @@ public class RunDataAnalysisResponseBody : Tea.TeaModel {
             if dict.keys.contains("evidence") {
                 self.evidence = dict["evidence"] as! String
             }
+            if dict.keys.contains("httpStatusCode") {
+                self.httpStatusCode = dict["httpStatusCode"] as! Int64
+            }
             if dict.keys.contains("requestId") {
                 self.requestId = dict["requestId"] as! String
             }
@@ -297,7 +305,13 @@ public class RunDataAnalysisResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var code: String?
+
     public var data: RunDataAnalysisResponseBody.Data?
+
+    public var httpStatusCode: Int64?
+
+    public var message: String?
 
     public override init() {
         super.init()
@@ -314,17 +328,35 @@ public class RunDataAnalysisResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
         if self.data != nil {
             map["data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") {
+            self.code = dict["code"] as! String
+        }
         if dict.keys.contains("data") {
             var model = RunDataAnalysisResponseBody.Data()
             model.fromMap(dict["data"] as! [String: Any])
             self.data = model
+        }
+        if dict.keys.contains("httpStatusCode") {
+            self.httpStatusCode = dict["httpStatusCode"] as! Int64
+        }
+        if dict.keys.contains("message") {
+            self.message = dict["message"] as! String
         }
     }
 }
