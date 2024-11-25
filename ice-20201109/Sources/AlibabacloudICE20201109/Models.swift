@@ -20437,6 +20437,8 @@ public class GetMediaProducingJobResponseBody : Tea.TeaModel {
 
         public var modifiedTime: String?
 
+        public var progress: Int32?
+
         public var projectId: String?
 
         public var status: String?
@@ -20495,6 +20497,9 @@ public class GetMediaProducingJobResponseBody : Tea.TeaModel {
             if self.modifiedTime != nil {
                 map["ModifiedTime"] = self.modifiedTime!
             }
+            if self.progress != nil {
+                map["Progress"] = self.progress!
+            }
             if self.projectId != nil {
                 map["ProjectId"] = self.projectId!
             }
@@ -20549,6 +20554,9 @@ public class GetMediaProducingJobResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ModifiedTime") {
                 self.modifiedTime = dict["ModifiedTime"] as! String
+            }
+            if dict.keys.contains("Progress") {
+                self.progress = dict["Progress"] as! Int32
             }
             if dict.keys.contains("ProjectId") {
                 self.projectId = dict["ProjectId"] as! String
