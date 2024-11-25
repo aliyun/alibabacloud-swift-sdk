@@ -19734,6 +19734,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dedicatedHostId)) {
             query["DedicatedHostId"] = request.dedicatedHostId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.migrationType)) {
+            query["MigrationType"] = request.migrationType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
         }

@@ -56492,7 +56492,15 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
                         }
                     }
                 }
+                public var core: Int32?
+
+                public var coreFactor: Int32?
+
+                public var hyperThreadingAdjustable: Bool?
+
                 public var supportedTopologyTypes: DescribeInstanceTypesResponseBody.InstanceTypes.InstanceType.CpuOptions.SupportedTopologyTypes?
+
+                public var threadsPerCore: Int32?
 
                 public override init() {
                     super.init()
@@ -56509,17 +56517,41 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.core != nil {
+                        map["Core"] = self.core!
+                    }
+                    if self.coreFactor != nil {
+                        map["CoreFactor"] = self.coreFactor!
+                    }
+                    if self.hyperThreadingAdjustable != nil {
+                        map["HyperThreadingAdjustable"] = self.hyperThreadingAdjustable!
+                    }
                     if self.supportedTopologyTypes != nil {
                         map["SupportedTopologyTypes"] = self.supportedTopologyTypes?.toMap()
+                    }
+                    if self.threadsPerCore != nil {
+                        map["ThreadsPerCore"] = self.threadsPerCore!
                     }
                     return map
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Core") {
+                        self.core = dict["Core"] as! Int32
+                    }
+                    if dict.keys.contains("CoreFactor") {
+                        self.coreFactor = dict["CoreFactor"] as! Int32
+                    }
+                    if dict.keys.contains("HyperThreadingAdjustable") {
+                        self.hyperThreadingAdjustable = dict["HyperThreadingAdjustable"] as! Bool
+                    }
                     if dict.keys.contains("SupportedTopologyTypes") {
                         var model = DescribeInstanceTypesResponseBody.InstanceTypes.InstanceType.CpuOptions.SupportedTopologyTypes()
                         model.fromMap(dict["SupportedTopologyTypes"] as! [String: Any])
                         self.supportedTopologyTypes = model
+                    }
+                    if dict.keys.contains("ThreadsPerCore") {
+                        self.threadsPerCore = dict["ThreadsPerCore"] as! Int32
                     }
                 }
             }
@@ -56711,6 +56743,8 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
 
             public var instanceTypeId: String?
 
+            public var jumboFrameSupport: Bool?
+
             public var localStorageAmount: Int32?
 
             public var localStorageCapacity: Int64?
@@ -56836,6 +56870,9 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
                 }
                 if self.instanceTypeId != nil {
                     map["InstanceTypeId"] = self.instanceTypeId!
+                }
+                if self.jumboFrameSupport != nil {
+                    map["JumboFrameSupport"] = self.jumboFrameSupport!
                 }
                 if self.localStorageAmount != nil {
                     map["LocalStorageAmount"] = self.localStorageAmount!
@@ -56967,6 +57004,9 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("InstanceTypeId") {
                     self.instanceTypeId = dict["InstanceTypeId"] as! String
+                }
+                if dict.keys.contains("JumboFrameSupport") {
+                    self.jumboFrameSupport = dict["JumboFrameSupport"] as! Bool
                 }
                 if dict.keys.contains("LocalStorageAmount") {
                     self.localStorageAmount = dict["LocalStorageAmount"] as! Int32
@@ -108827,6 +108867,8 @@ public class RecoverVirtualBorderRouterResponse : Tea.TeaModel {
 public class RedeployDedicatedHostRequest : Tea.TeaModel {
     public var dedicatedHostId: String?
 
+    public var migrationType: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -108854,6 +108896,9 @@ public class RedeployDedicatedHostRequest : Tea.TeaModel {
         if self.dedicatedHostId != nil {
             map["DedicatedHostId"] = self.dedicatedHostId!
         }
+        if self.migrationType != nil {
+            map["MigrationType"] = self.migrationType!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -108875,6 +108920,9 @@ public class RedeployDedicatedHostRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DedicatedHostId") {
             self.dedicatedHostId = dict["DedicatedHostId"] as! String
+        }
+        if dict.keys.contains("MigrationType") {
+            self.migrationType = dict["MigrationType"] as! String
         }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
