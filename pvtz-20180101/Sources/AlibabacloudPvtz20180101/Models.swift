@@ -2642,6 +2642,8 @@ public class DescribeChangeLogsResponseBody : Tea.TeaModel {
 
             public var creatorType: String?
 
+            public var creatorUserId: String?
+
             public var entityId: String?
 
             public var entityName: String?
@@ -2684,6 +2686,9 @@ public class DescribeChangeLogsResponseBody : Tea.TeaModel {
                 if self.creatorType != nil {
                     map["CreatorType"] = self.creatorType!
                 }
+                if self.creatorUserId != nil {
+                    map["CreatorUserId"] = self.creatorUserId!
+                }
                 if self.entityId != nil {
                     map["EntityId"] = self.entityId!
                 }
@@ -2723,6 +2728,9 @@ public class DescribeChangeLogsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("CreatorType") {
                     self.creatorType = dict["CreatorType"] as! String
+                }
+                if dict.keys.contains("CreatorUserId") {
+                    self.creatorUserId = dict["CreatorUserId"] as! String
                 }
                 if dict.keys.contains("EntityId") {
                     self.entityId = dict["EntityId"] as! String
