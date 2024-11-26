@@ -66,11 +66,11 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createDomainWithOptions(_ request: CreateDomainRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDomainResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.caCertIndentifier)) {
-            body["caCertIndentifier"] = request.caCertIndentifier ?? "";
+        if (!TeaUtils.Client.isUnset(request.caCertIdentifier)) {
+            body["caCertIdentifier"] = request.caCertIdentifier ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.certIndentifier)) {
-            body["certIndentifier"] = request.certIndentifier ?? "";
+        if (!TeaUtils.Client.isUnset(request.certIdentifier)) {
+            body["certIdentifier"] = request.certIdentifier ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.forceHttps)) {
             body["forceHttps"] = request.forceHttps!;
@@ -83,6 +83,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.protocol_)) {
             body["protocol"] = request.protocol_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            body["resourceGroupId"] = request.resourceGroupId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tlsMax)) {
             body["tlsMax"] = request.tlsMax ?? "";
@@ -132,6 +135,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.name)) {
             body["name"] = request.name ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            body["resourceGroupId"] = request.resourceGroupId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
@@ -159,137 +165,35 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createGatewayRouteWithOptions(_ gatewayId: String, _ request: CreateGatewayRouteRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateGatewayRouteResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.backendConfig)) {
-            body["backendConfig"] = request.backendConfig!;
-        }
-        if (!TeaUtils.Client.isUnset(request.description_)) {
-            body["description"] = request.description_ ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.domainConfig)) {
-            body["domainConfig"] = request.domainConfig!;
-        }
-        if (!TeaUtils.Client.isUnset(request.match)) {
-            body["match"] = request.match!;
-        }
-        if (!TeaUtils.Client.isUnset(request.name)) {
-            body["name"] = request.name ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "CreateGatewayRoute",
-            "version": "2024-03-27",
-            "protocol": "HTTPS",
-            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/http-routes",
-            "method": "POST",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(CreateGatewayRouteResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createGatewayRoute(_ gatewayId: String, _ request: CreateGatewayRouteRequest) async throws -> CreateGatewayRouteResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await createGatewayRouteWithOptions(gatewayId as! String, request as! CreateGatewayRouteRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createGatewayServiceWithOptions(_ gatewayId: String, _ request: CreateGatewayServiceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateGatewayServiceResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.gatewayServiceConfigs)) {
-            body["gatewayServiceConfigs"] = request.gatewayServiceConfigs ?? [];
-        }
-        if (!TeaUtils.Client.isUnset(request.sourceType)) {
-            body["sourceType"] = request.sourceType ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "CreateGatewayService",
-            "version": "2024-03-27",
-            "protocol": "HTTPS",
-            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/gateway-services",
-            "method": "POST",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(CreateGatewayServiceResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createGatewayService(_ gatewayId: String, _ request: CreateGatewayServiceRequest) async throws -> CreateGatewayServiceResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await createGatewayServiceWithOptions(gatewayId as! String, request as! CreateGatewayServiceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createGatewayServiceVersionWithOptions(_ gatewayId: String, _ gatewayServiceId: String, _ request: CreateGatewayServiceVersionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateGatewayServiceVersionResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.labels)) {
-            body["labels"] = request.labels ?? [];
-        }
-        if (!TeaUtils.Client.isUnset(request.name)) {
-            body["name"] = request.name ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "CreateGatewayServiceVersion",
-            "version": "2024-03-27",
-            "protocol": "HTTPS",
-            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/gateway-services/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayServiceId)) + "/service-versions",
-            "method": "POST",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(CreateGatewayServiceVersionResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createGatewayServiceVersion(_ gatewayId: String, _ gatewayServiceId: String, _ request: CreateGatewayServiceVersionRequest) async throws -> CreateGatewayServiceVersionResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await createGatewayServiceVersionWithOptions(gatewayId as! String, gatewayServiceId as! String, request as! CreateGatewayServiceVersionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createHttpApiWithOptions(_ request: CreateHttpApiRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateHttpApiResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aiProtocols)) {
+            body["aiProtocols"] = request.aiProtocols ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.basePath)) {
             body["basePath"] = request.basePath ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.deployConfigs)) {
+            body["deployConfigs"] = request.deployConfigs ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ingressConfig)) {
+            body["ingressConfig"] = request.ingressConfig!;
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             body["name"] = request.name ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.protocols)) {
             body["protocols"] = request.protocols ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            body["resourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["type"] = request.type ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.versionConfig)) {
             body["versionConfig"] = request.versionConfig!;
@@ -351,45 +255,6 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await createHttpApiOperationWithOptions(httpApiId as! String, request as! CreateHttpApiOperationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createServiceSourceWithOptions(_ gatewayId: String, _ request: CreateServiceSourceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateServiceSourceResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.k8sServiceSourceConfig)) {
-            body["k8sServiceSourceConfig"] = request.k8sServiceSourceConfig!;
-        }
-        if (!TeaUtils.Client.isUnset(request.nacosServiceSourceConfig)) {
-            body["nacosServiceSourceConfig"] = request.nacosServiceSourceConfig!;
-        }
-        if (!TeaUtils.Client.isUnset(request.type)) {
-            body["type"] = request.type ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "CreateServiceSource",
-            "version": "2024-03-27",
-            "protocol": "HTTPS",
-            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/service-sources",
-            "method": "POST",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(CreateServiceSourceResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createServiceSource(_ gatewayId: String, _ request: CreateServiceSourceRequest) async throws -> CreateServiceSourceResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await createServiceSourceWithOptions(gatewayId as! String, request as! CreateServiceSourceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -474,87 +339,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteGatewayRouteWithOptions(_ gatewayId: String, _ gatewayRouteId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteGatewayRouteResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DeleteGatewayRoute",
-            "version": "2024-03-27",
-            "protocol": "HTTPS",
-            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/http-routes/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayRouteId)),
-            "method": "DELETE",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DeleteGatewayRouteResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteGatewayRoute(_ gatewayId: String, _ gatewayRouteId: String) async throws -> DeleteGatewayRouteResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await deleteGatewayRouteWithOptions(gatewayId as! String, gatewayRouteId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteGatewayServiceWithOptions(_ gatewayId: String, _ gatewayServiceId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteGatewayServiceResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DeleteGatewayService",
-            "version": "2024-03-27",
-            "protocol": "HTTPS",
-            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/gateway-services/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayServiceId)),
-            "method": "DELETE",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DeleteGatewayServiceResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteGatewayService(_ gatewayId: String, _ gatewayServiceId: String) async throws -> DeleteGatewayServiceResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await deleteGatewayServiceWithOptions(gatewayId as! String, gatewayServiceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteGatewayServiceVersionWithOptions(_ gatewayId: String, _ gatewayServiceId: String, _ name: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteGatewayServiceVersionResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DeleteGatewayServiceVersion",
-            "version": "2024-03-27",
-            "protocol": "HTTPS",
-            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/gateway-services/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayServiceId)) + "/service-versions/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(name)),
-            "method": "DELETE",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DeleteGatewayServiceVersionResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteGatewayServiceVersion(_ gatewayId: String, _ gatewayServiceId: String, _ name: String) async throws -> DeleteGatewayServiceVersionResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await deleteGatewayServiceVersionWithOptions(gatewayId as! String, gatewayServiceId as! String, name as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteHttpApiWithOptions(_ httpApiId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteHttpApiResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -609,36 +393,15 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteServiceSourceWithOptions(_ gatewayId: String, _ serviceSourceId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteServiceSourceResponse {
+    public func getDomainWithOptions(_ domainId: String, _ request: GetDomainRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDomainResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.withStatistics)) {
+            query["withStatistics"] = request.withStatistics!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DeleteServiceSource",
-            "version": "2024-03-27",
-            "protocol": "HTTPS",
-            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/service-sources/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(serviceSourceId)),
-            "method": "DELETE",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DeleteServiceSourceResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteServiceSource(_ gatewayId: String, _ serviceSourceId: String) async throws -> DeleteServiceSourceResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await deleteServiceSourceWithOptions(gatewayId as! String, serviceSourceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getDomainWithOptions(_ domainId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDomainResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "GetDomain",
@@ -656,16 +419,25 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getDomain(_ domainId: String) async throws -> GetDomainResponse {
+    public func getDomain(_ domainId: String, _ request: GetDomainRequest) async throws -> GetDomainResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await getDomainWithOptions(domainId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await getDomainWithOptions(domainId as! String, request as! GetDomainRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getEnvironmentWithOptions(_ environmentId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetEnvironmentResponse {
+    public func getEnvironmentWithOptions(_ environmentId: String, _ request: GetEnvironmentRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetEnvironmentResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.withStatistics)) {
+            query["withStatistics"] = request.withStatistics!;
+        }
+        if (!TeaUtils.Client.isUnset(request.withVpcInfo)) {
+            query["withVpcInfo"] = request.withVpcInfo!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "GetEnvironment",
@@ -683,10 +455,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getEnvironment(_ environmentId: String) async throws -> GetEnvironmentResponse {
+    public func getEnvironment(_ environmentId: String, _ request: GetEnvironmentRequest) async throws -> GetEnvironmentResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await getEnvironmentWithOptions(environmentId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await getEnvironmentWithOptions(environmentId as! String, request as! GetEnvironmentRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -714,60 +486,6 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getGatewayWithOptions(gatewayId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getGatewayRouteWithOptions(_ gatewayId: String, _ gatewayRouteId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetGatewayRouteResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "GetGatewayRoute",
-            "version": "2024-03-27",
-            "protocol": "HTTPS",
-            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/http-routes/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayRouteId)),
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(GetGatewayRouteResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getGatewayRoute(_ gatewayId: String, _ gatewayRouteId: String) async throws -> GetGatewayRouteResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await getGatewayRouteWithOptions(gatewayId as! String, gatewayRouteId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getGatewayServiceWithOptions(_ gatewayId: String, _ gatewayServiceId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetGatewayServiceResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "GetGatewayService",
-            "version": "2024-03-27",
-            "protocol": "HTTPS",
-            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/gateway-services/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayServiceId)),
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(GetGatewayServiceResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getGatewayService(_ gatewayId: String, _ gatewayServiceId: String) async throws -> GetGatewayServiceResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await getGatewayServiceWithOptions(gatewayId as! String, gatewayServiceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -825,6 +543,33 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getHttpApiRouteWithOptions(_ httpApiId: String, _ routeId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetHttpApiRouteResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetHttpApiRoute",
+            "version": "2024-03-27",
+            "protocol": "HTTPS",
+            "pathname": "/v1/http-apis/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(httpApiId)) + "/routes/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(routeId)),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetHttpApiRouteResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getHttpApiRoute(_ httpApiId: String, _ routeId: String) async throws -> GetHttpApiRouteResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getHttpApiRouteWithOptions(httpApiId as! String, routeId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listDomainsWithOptions(_ request: ListDomainsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDomainsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -839,6 +584,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["resourceGroupId"] = request.resourceGroupId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -888,6 +636,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["pageSize"] = request.pageSize!;
         }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["resourceGroupId"] = request.resourceGroupId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -915,98 +666,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listGatewayRoutesWithOptions(_ gatewayId: String, _ request: ListGatewayRoutesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListGatewayRoutesResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.keyword)) {
-            query["keyword"] = request.keyword ?? "";
+    public func listGatewaysWithOptions(_ tmpReq: ListGatewaysRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListGatewaysResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListGatewaysShrinkRequest = ListGatewaysShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.tags)) {
+            request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "tags", "json")
         }
-        if (!TeaUtils.Client.isUnset(request.name)) {
-            query["name"] = request.name ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
-            query["pageNumber"] = request.pageNumber!;
-        }
-        if (!TeaUtils.Client.isUnset(request.pageSize)) {
-            query["pageSize"] = request.pageSize!;
-        }
-        if (!TeaUtils.Client.isUnset(request.path)) {
-            query["path"] = request.path ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.status)) {
-            query["status"] = request.status ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ListGatewayRoutes",
-            "version": "2024-03-27",
-            "protocol": "HTTPS",
-            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/http-routes",
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ListGatewayRoutesResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listGatewayRoutes(_ gatewayId: String, _ request: ListGatewayRoutesRequest) async throws -> ListGatewayRoutesResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await listGatewayRoutesWithOptions(gatewayId as! String, request as! ListGatewayRoutesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listGatewayServicesWithOptions(_ gatewayId: String, _ request: ListGatewayServicesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListGatewayServicesResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.name)) {
-            query["name"] = request.name ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
-            query["pageNumber"] = request.pageNumber!;
-        }
-        if (!TeaUtils.Client.isUnset(request.pageSize)) {
-            query["pageSize"] = request.pageSize!;
-        }
-        if (!TeaUtils.Client.isUnset(request.sourceType)) {
-            query["sourceType"] = request.sourceType ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ListGatewayServices",
-            "version": "2024-03-27",
-            "protocol": "HTTPS",
-            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/gateway-services",
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ListGatewayServicesResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listGatewayServices(_ gatewayId: String, _ request: ListGatewayServicesRequest) async throws -> ListGatewayServicesResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await listGatewayServicesWithOptions(gatewayId as! String, request as! ListGatewayServicesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listGatewaysWithOptions(_ request: ListGatewaysRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListGatewaysResponse {
-        try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.gatewayId)) {
             query["gatewayId"] = request.gatewayId ?? "";
@@ -1022,6 +688,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["resourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagsShrink)) {
+            query["tags"] = request.tagsShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -1053,6 +725,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listHttpApiOperationsWithOptions(_ httpApiId: String, _ request: ListHttpApiOperationsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListHttpApiOperationsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.consumerAuthorizationRuleId)) {
+            query["consumerAuthorizationRuleId"] = request.consumerAuthorizationRuleId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.method)) {
             query["method"] = request.method ?? "";
         }
@@ -1070,6 +745,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pathLike)) {
             query["pathLike"] = request.pathLike ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.withConsumerInEnvironmentId)) {
+            query["withConsumerInEnvironmentId"] = request.withConsumerInEnvironmentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.withConsumerInfoById)) {
+            query["withConsumerInfoById"] = request.withConsumerInfoById ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -1101,6 +782,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listHttpApisWithOptions(_ request: ListHttpApisRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListHttpApisResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.gatewayId)) {
+            query["gatewayId"] = request.gatewayId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.keyword)) {
             query["keyword"] = request.keyword ?? "";
         }
@@ -1113,8 +797,20 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["pageSize"] = request.pageSize!;
         }
-        if (!TeaUtils.Client.isUnset(request.publishedOnly)) {
-            query["publishedOnly"] = request.publishedOnly!;
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["resourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.types)) {
+            query["types"] = request.types ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.withAuthPolicyInEnvironmentId)) {
+            query["withAuthPolicyInEnvironmentId"] = request.withAuthPolicyInEnvironmentId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.withConsumerInfoById)) {
+            query["withConsumerInfoById"] = request.withConsumerInfoById ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.withEnvironmentInfo)) {
+            query["withEnvironmentInfo"] = request.withEnvironmentInfo!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -1140,135 +836,6 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listHttpApisWithOptions(request as! ListHttpApisRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func offlineGatewayRouteWithOptions(_ gatewayId: String, _ gatewayRouteId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> OfflineGatewayRouteResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "OfflineGatewayRoute",
-            "version": "2024-03-27",
-            "protocol": "HTTPS",
-            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/http-routes/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayRouteId)) + "/offline",
-            "method": "POST",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(OfflineGatewayRouteResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func offlineGatewayRoute(_ gatewayId: String, _ gatewayRouteId: String) async throws -> OfflineGatewayRouteResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await offlineGatewayRouteWithOptions(gatewayId as! String, gatewayRouteId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func offlineHttpApiWithOptions(_ httpApiId: String, _ request: OfflineHttpApiRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> OfflineHttpApiResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.environmentId)) {
-            body["environmentId"] = request.environmentId ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "OfflineHttpApi",
-            "version": "2024-03-27",
-            "protocol": "HTTPS",
-            "pathname": "/v1/http-apis/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(httpApiId)) + "/offline",
-            "method": "POST",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(OfflineHttpApiResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func offlineHttpApi(_ httpApiId: String, _ request: OfflineHttpApiRequest) async throws -> OfflineHttpApiResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await offlineHttpApiWithOptions(httpApiId as! String, request as! OfflineHttpApiRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func publishGatewayRouteWithOptions(_ gatewayId: String, _ gatewayRouteId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PublishGatewayRouteResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "PublishGatewayRoute",
-            "version": "2024-03-27",
-            "protocol": "HTTPS",
-            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/http-routes/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayRouteId)) + "/publish",
-            "method": "POST",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(PublishGatewayRouteResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func publishGatewayRoute(_ gatewayId: String, _ gatewayRouteId: String) async throws -> PublishGatewayRouteResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await publishGatewayRouteWithOptions(gatewayId as! String, gatewayRouteId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func publishHttpApiWithOptions(_ httpApiId: String, _ request: PublishHttpApiRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PublishHttpApiResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.allowOverwrite)) {
-            body["allowOverwrite"] = request.allowOverwrite!;
-        }
-        if (!TeaUtils.Client.isUnset(request.description_)) {
-            body["description"] = request.description_ ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.environment)) {
-            body["environment"] = request.environment!;
-        }
-        if (!TeaUtils.Client.isUnset(request.revisionId)) {
-            body["revisionId"] = request.revisionId ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "PublishHttpApi",
-            "version": "2024-03-27",
-            "protocol": "HTTPS",
-            "pathname": "/v1/http-apis/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(httpApiId)) + "/publish",
-            "method": "POST",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(PublishHttpApiResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func publishHttpApi(_ httpApiId: String, _ request: PublishHttpApiRequest) async throws -> PublishHttpApiResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await publishHttpApiWithOptions(httpApiId as! String, request as! PublishHttpApiRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1359,125 +926,23 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateGatewayRouteWithOptions(_ gatewayId: String, _ gatewayRouteId: String, _ request: UpdateGatewayRouteRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateGatewayRouteResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.backendConfig)) {
-            body["backendConfig"] = request.backendConfig!;
-        }
-        if (!TeaUtils.Client.isUnset(request.description_)) {
-            body["description"] = request.description_ ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.domainConfig)) {
-            body["domainConfig"] = request.domainConfig!;
-        }
-        if (!TeaUtils.Client.isUnset(request.match)) {
-            body["match"] = request.match!;
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "UpdateGatewayRoute",
-            "version": "2024-03-27",
-            "protocol": "HTTPS",
-            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/http-routes/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayRouteId)),
-            "method": "PUT",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(UpdateGatewayRouteResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateGatewayRoute(_ gatewayId: String, _ gatewayRouteId: String, _ request: UpdateGatewayRouteRequest) async throws -> UpdateGatewayRouteResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await updateGatewayRouteWithOptions(gatewayId as! String, gatewayRouteId as! String, request as! UpdateGatewayRouteRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateGatewayServiceWithOptions(_ gatewayId: String, _ gatewayServiceId: String, _ request: UpdateGatewayServiceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateGatewayServiceResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.addresses)) {
-            body["addresses"] = request.addresses ?? [];
-        }
-        if (!TeaUtils.Client.isUnset(request.port)) {
-            body["port"] = request.port!;
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "UpdateGatewayService",
-            "version": "2024-03-27",
-            "protocol": "HTTPS",
-            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/gateway-services/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayServiceId)),
-            "method": "PUT",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(UpdateGatewayServiceResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateGatewayService(_ gatewayId: String, _ gatewayServiceId: String, _ request: UpdateGatewayServiceRequest) async throws -> UpdateGatewayServiceResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await updateGatewayServiceWithOptions(gatewayId as! String, gatewayServiceId as! String, request as! UpdateGatewayServiceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateGatewayServiceVersionWithOptions(_ gatewayId: String, _ gatewayServiceId: String, _ name: String, _ request: UpdateGatewayServiceVersionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateGatewayServiceVersionResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.labels)) {
-            body["labels"] = request.labels ?? [];
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "UpdateGatewayServiceVersion",
-            "version": "2024-03-27",
-            "protocol": "HTTPS",
-            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/gateway-services/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayServiceId)) + "/service-versions/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(name)),
-            "method": "PUT",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(UpdateGatewayServiceVersionResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateGatewayServiceVersion(_ gatewayId: String, _ gatewayServiceId: String, _ name: String, _ request: UpdateGatewayServiceVersionRequest) async throws -> UpdateGatewayServiceVersionResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await updateGatewayServiceVersionWithOptions(gatewayId as! String, gatewayServiceId as! String, name as! String, request as! UpdateGatewayServiceVersionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateHttpApiWithOptions(_ httpApiId: String, _ request: UpdateHttpApiRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateHttpApiResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aiProtocols)) {
+            body["aiProtocols"] = request.aiProtocols ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.basePath)) {
             body["basePath"] = request.basePath ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.deployConfigs)) {
+            body["deployConfigs"] = request.deployConfigs ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ingressConfig)) {
+            body["ingressConfig"] = request.ingressConfig!;
         }
         if (!TeaUtils.Client.isUnset(request.protocols)) {
             body["protocols"] = request.protocols ?? [];
@@ -1542,38 +1007,5 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateHttpApiOperationWithOptions(httpApiId as! String, operationId as! String, request as! UpdateHttpApiOperationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateServiceSourceWithOptions(_ gatewayId: String, _ serviceSourceId: String, _ request: UpdateServiceSourceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateServiceSourceResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.k8sServiceSourceConfig)) {
-            body["k8sServiceSourceConfig"] = request.k8sServiceSourceConfig!;
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "UpdateServiceSource",
-            "version": "2024-03-27",
-            "protocol": "HTTPS",
-            "pathname": "/v1/gateways/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(gatewayId)) + "/service-sources/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(serviceSourceId)),
-            "method": "PUT",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(UpdateServiceSourceResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateServiceSource(_ gatewayId: String, _ serviceSourceId: String, _ request: UpdateServiceSourceRequest) async throws -> UpdateServiceSourceResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await updateServiceSourceWithOptions(gatewayId as! String, serviceSourceId as! String, request as! UpdateServiceSourceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 }
