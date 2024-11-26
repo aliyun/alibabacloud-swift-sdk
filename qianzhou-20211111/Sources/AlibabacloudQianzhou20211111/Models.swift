@@ -148,6 +148,43 @@ public class AICreateSessionMessageRequest : Tea.TeaModel {
 }
 
 public class AICreateSessionMessageResponseBody : Tea.TeaModel {
+    public class Reference : Tea.TeaModel {
+        public var title: String?
+
+        public var url: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.title != nil {
+                map["Title"] = self.title!
+            }
+            if self.url != nil {
+                map["Url"] = self.url!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Title") {
+                self.title = dict["Title"] as! String
+            }
+            if dict.keys.contains("Url") {
+                self.url = dict["Url"] as! String
+            }
+        }
+    }
     public var answer: String?
 
     public var code: Int64?
@@ -155,6 +192,8 @@ public class AICreateSessionMessageResponseBody : Tea.TeaModel {
     public var data: String?
 
     public var msg: String?
+
+    public var reference: [AICreateSessionMessageResponseBody.Reference]?
 
     public var requestId: String?
 
@@ -186,6 +225,13 @@ public class AICreateSessionMessageResponseBody : Tea.TeaModel {
         if self.msg != nil {
             map["msg"] = self.msg!
         }
+        if self.reference != nil {
+            var tmp : [Any] = []
+            for k in self.reference! {
+                tmp.append(k.toMap())
+            }
+            map["reference"] = tmp
+        }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
@@ -207,6 +253,17 @@ public class AICreateSessionMessageResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("msg") {
             self.msg = dict["msg"] as! String
+        }
+        if dict.keys.contains("reference") {
+            var tmp : [AICreateSessionMessageResponseBody.Reference] = []
+            for v in dict["reference"] as! [Any] {
+                var model = AICreateSessionMessageResponseBody.Reference()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.reference = tmp
         }
         if dict.keys.contains("requestId") {
             self.requestId = dict["requestId"] as! String
