@@ -445,6 +445,8 @@ public class AddShareReportResponse : Tea.TeaModel {
 }
 
 public class AddUserRequest : Tea.TeaModel {
+    public var accountId: String?
+
     public var accountName: String?
 
     public var adminUser: Bool?
@@ -471,6 +473,9 @@ public class AddUserRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accountId != nil {
+            map["AccountId"] = self.accountId!
+        }
         if self.accountName != nil {
             map["AccountName"] = self.accountName!
         }
@@ -493,6 +498,9 @@ public class AddUserRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccountId") {
+            self.accountId = dict["AccountId"] as! String
+        }
         if dict.keys.contains("AccountName") {
             self.accountName = dict["AccountName"] as! String
         }
@@ -21727,6 +21735,285 @@ public class SetDataLevelPermissionWhiteListResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = SetDataLevelPermissionWhiteListResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class SmartqQueryAbilityRequest : Tea.TeaModel {
+    public var cubeId: String?
+
+    public var userId: String?
+
+    public var userQuestion: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cubeId != nil {
+            map["CubeId"] = self.cubeId!
+        }
+        if self.userId != nil {
+            map["UserId"] = self.userId!
+        }
+        if self.userQuestion != nil {
+            map["UserQuestion"] = self.userQuestion!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CubeId") {
+            self.cubeId = dict["CubeId"] as! String
+        }
+        if dict.keys.contains("UserId") {
+            self.userId = dict["UserId"] as! String
+        }
+        if dict.keys.contains("UserQuestion") {
+            self.userQuestion = dict["UserQuestion"] as! String
+        }
+    }
+}
+
+public class SmartqQueryAbilityResponseBody : Tea.TeaModel {
+    public class Result : Tea.TeaModel {
+        public class MetaType : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("Value") {
+                    self.value = dict["Value"] as! String
+                }
+            }
+        }
+        public class Values : Tea.TeaModel {
+            public var row: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.row != nil {
+                    map["Row"] = self.row!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Row") {
+                    self.row = dict["Row"] as! [String]
+                }
+            }
+        }
+        public var chartType: String?
+
+        public var metaType: [SmartqQueryAbilityResponseBody.Result.MetaType]?
+
+        public var values: [SmartqQueryAbilityResponseBody.Result.Values]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.chartType != nil {
+                map["ChartType"] = self.chartType!
+            }
+            if self.metaType != nil {
+                var tmp : [Any] = []
+                for k in self.metaType! {
+                    tmp.append(k.toMap())
+                }
+                map["MetaType"] = tmp
+            }
+            if self.values != nil {
+                var tmp : [Any] = []
+                for k in self.values! {
+                    tmp.append(k.toMap())
+                }
+                map["Values"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ChartType") {
+                self.chartType = dict["ChartType"] as! String
+            }
+            if dict.keys.contains("MetaType") {
+                var tmp : [SmartqQueryAbilityResponseBody.Result.MetaType] = []
+                for v in dict["MetaType"] as! [Any] {
+                    var model = SmartqQueryAbilityResponseBody.Result.MetaType()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.metaType = tmp
+            }
+            if dict.keys.contains("Values") {
+                var tmp : [SmartqQueryAbilityResponseBody.Result.Values] = []
+                for v in dict["Values"] as! [Any] {
+                    var model = SmartqQueryAbilityResponseBody.Result.Values()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.values = tmp
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var result: SmartqQueryAbilityResponseBody.Result?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.result?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            map["Result"] = self.result?.toMap()
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Result") {
+            var model = SmartqQueryAbilityResponseBody.Result()
+            model.fromMap(dict["Result"] as! [String: Any])
+            self.result = model
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class SmartqQueryAbilityResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SmartqQueryAbilityResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = SmartqQueryAbilityResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

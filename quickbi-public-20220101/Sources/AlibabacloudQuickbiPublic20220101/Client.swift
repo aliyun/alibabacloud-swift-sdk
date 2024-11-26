@@ -144,6 +144,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func addUserWithOptions(_ request: AddUserRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddUserResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountId)) {
+            query["AccountId"] = request.accountId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.accountName)) {
             query["AccountName"] = request.accountName ?? "";
         }
@@ -3415,6 +3418,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func setDataLevelPermissionWhiteList(_ request: SetDataLevelPermissionWhiteListRequest) async throws -> SetDataLevelPermissionWhiteListResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await setDataLevelPermissionWhiteListWithOptions(request as! SetDataLevelPermissionWhiteListRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func smartqQueryAbilityWithOptions(_ request: SmartqQueryAbilityRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SmartqQueryAbilityResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cubeId)) {
+            query["CubeId"] = request.cubeId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            query["UserId"] = request.userId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userQuestion)) {
+            query["UserQuestion"] = request.userQuestion ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SmartqQueryAbility",
+            "version": "2022-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SmartqQueryAbilityResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func smartqQueryAbility(_ request: SmartqQueryAbilityRequest) async throws -> SmartqQueryAbilityResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await smartqQueryAbilityWithOptions(request as! SmartqQueryAbilityRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
