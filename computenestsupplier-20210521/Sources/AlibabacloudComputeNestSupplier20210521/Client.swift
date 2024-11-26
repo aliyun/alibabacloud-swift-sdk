@@ -1602,6 +1602,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func rollbackServiceInstanceWithOptions(_ request: RollbackServiceInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RollbackServiceInstanceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceInstanceId)) {
+            query["ServiceInstanceId"] = request.serviceInstanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RollbackServiceInstance",
+            "version": "2021-05-21",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RollbackServiceInstanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func rollbackServiceInstance(_ request: RollbackServiceInstanceRequest) async throws -> RollbackServiceInstanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await rollbackServiceInstanceWithOptions(request as! RollbackServiceInstanceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func startServiceInstanceWithOptions(_ request: StartServiceInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StartServiceInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
