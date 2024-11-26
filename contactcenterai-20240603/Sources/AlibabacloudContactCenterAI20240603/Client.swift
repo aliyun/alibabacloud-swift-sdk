@@ -54,6 +54,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.stream)) {
             body["stream"] = request.stream!;
         }
+        if (!TeaUtils.Client.isUnset(request.timeConstraintList)) {
+            body["timeConstraintList"] = request.timeConstraintList ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.userProfiles)) {
             body["userProfiles"] = request.userProfiles ?? [];
         }
@@ -84,57 +87,27 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createConversationAnalysisTaskWithOptions(_ workspaceId: String, _ appId: String, _ request: CreateConversationAnalysisTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateConversationAnalysisTaskResponse {
+    public func analyzeImageWithOptions(_ workspaceId: String, _ appId: String, _ request: AnalyzeImageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AnalyzeImageResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.autoSplit)) {
-            body["autoSplit"] = request.autoSplit!;
-        }
-        if (!TeaUtils.Client.isUnset(request.clientChannel)) {
-            body["clientChannel"] = request.clientChannel!;
-        }
-        if (!TeaUtils.Client.isUnset(request.examples)) {
-            body["examples"] = request.examples!;
-        }
-        if (!TeaUtils.Client.isUnset(request.fields)) {
-            body["fields"] = request.fields ?? [];
-        }
-        if (!TeaUtils.Client.isUnset(request.fileName)) {
-            body["fileName"] = request.fileName ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.modelCode)) {
-            body["modelCode"] = request.modelCode ?? "";
+        if (!TeaUtils.Client.isUnset(request.imageUrls)) {
+            body["imageUrls"] = request.imageUrls ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.resultTypes)) {
             body["resultTypes"] = request.resultTypes ?? [];
         }
-        if (!TeaUtils.Client.isUnset(request.sceneName)) {
-            body["sceneName"] = request.sceneName ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.serviceChannel)) {
-            body["serviceChannel"] = request.serviceChannel!;
-        }
-        if (!TeaUtils.Client.isUnset(request.serviceChannelKeywords)) {
-            body["serviceChannelKeywords"] = request.serviceChannelKeywords ?? [];
-        }
-        if (!TeaUtils.Client.isUnset(request.serviceInspection)) {
-            body["serviceInspection"] = request.serviceInspection!;
-        }
-        if (!TeaUtils.Client.isUnset(request.templateIds)) {
-            body["templateIds"] = request.templateIds ?? [];
-        }
-        if (!TeaUtils.Client.isUnset(request.voiceFileUrl)) {
-            body["voiceFileUrl"] = request.voiceFileUrl ?? "";
+        if (!TeaUtils.Client.isUnset(request.stream)) {
+            body["stream"] = request.stream!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "CreateConversationAnalysisTask",
+            "action": "AnalyzeImage",
             "version": "2024-06-03",
             "protocol": "HTTPS",
-            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/ccai/app/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(appId)) + "/createConversationAnalysisTask",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/ccai/app/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(appId)) + "/analyzeImage",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -142,14 +115,14 @@ open class Client : AlibabacloudOpenApi.Client {
             "bodyType": "json"
         ])
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(CreateConversationAnalysisTaskResponse(), tmp)
+        return Tea.TeaConverter.fromMap(AnalyzeImageResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createConversationAnalysisTask(_ workspaceId: String, _ appId: String, _ request: CreateConversationAnalysisTaskRequest) async throws -> CreateConversationAnalysisTaskResponse {
+    public func analyzeImage(_ workspaceId: String, _ appId: String, _ request: AnalyzeImageRequest) async throws -> AnalyzeImageResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await createConversationAnalysisTaskWithOptions(workspaceId as! String, appId as! String, request as! CreateConversationAnalysisTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await analyzeImageWithOptions(workspaceId as! String, appId as! String, request as! AnalyzeImageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
