@@ -1242,8 +1242,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public func onsTraceGetResultWithOptions(_ request: OnsTraceGetResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> OnsTraceGetResultResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.queryId)) {
             query["QueryId"] = request.queryId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.topic)) {
+            query["Topic"] = request.topic ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
