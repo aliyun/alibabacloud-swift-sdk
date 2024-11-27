@@ -2369,6 +2369,314 @@ public class AttachEnsInstancesResponse : Tea.TeaModel {
     }
 }
 
+public class AttachInstanceSDGRequest : Tea.TeaModel {
+    public var instanceIds: [String]?
+
+    public var SDGId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        if self.SDGId != nil {
+            map["SDGId"] = self.SDGId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIds = dict["InstanceIds"] as! [String]
+        }
+        if dict.keys.contains("SDGId") {
+            self.SDGId = dict["SDGId"] as! String
+        }
+    }
+}
+
+public class AttachInstanceSDGShrinkRequest : Tea.TeaModel {
+    public var instanceIdsShrink: String?
+
+    public var SDGId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceIdsShrink != nil {
+            map["InstanceIds"] = self.instanceIdsShrink!
+        }
+        if self.SDGId != nil {
+            map["SDGId"] = self.SDGId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIdsShrink = dict["InstanceIds"] as! String
+        }
+        if dict.keys.contains("SDGId") {
+            self.SDGId = dict["SDGId"] as! String
+        }
+    }
+}
+
+public class AttachInstanceSDGResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Result : Tea.TeaModel {
+            public class FailedItems : Tea.TeaModel {
+                public var errMessage: String?
+
+                public var instanceId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.errMessage != nil {
+                        map["ErrMessage"] = self.errMessage!
+                    }
+                    if self.instanceId != nil {
+                        map["InstanceId"] = self.instanceId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ErrMessage") {
+                        self.errMessage = dict["ErrMessage"] as! String
+                    }
+                    if dict.keys.contains("InstanceId") {
+                        self.instanceId = dict["InstanceId"] as! String
+                    }
+                }
+            }
+            public var failedCount: Int64?
+
+            public var failedItems: [AttachInstanceSDGResponseBody.Data.Result.FailedItems]?
+
+            public var successCount: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.failedCount != nil {
+                    map["FailedCount"] = self.failedCount!
+                }
+                if self.failedItems != nil {
+                    var tmp : [Any] = []
+                    for k in self.failedItems! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FailedItems"] = tmp
+                }
+                if self.successCount != nil {
+                    map["SuccessCount"] = self.successCount!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("FailedCount") {
+                    self.failedCount = dict["FailedCount"] as! Int64
+                }
+                if dict.keys.contains("FailedItems") {
+                    var tmp : [AttachInstanceSDGResponseBody.Data.Result.FailedItems] = []
+                    for v in dict["FailedItems"] as! [Any] {
+                        var model = AttachInstanceSDGResponseBody.Data.Result.FailedItems()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.failedItems = tmp
+                }
+                if dict.keys.contains("SuccessCount") {
+                    self.successCount = dict["SuccessCount"] as! Int64
+                }
+            }
+        }
+        public var message: String?
+
+        public var result: AttachInstanceSDGResponseBody.Data.Result?
+
+        public var success: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.result?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.message != nil {
+                map["Message"] = self.message!
+            }
+            if self.result != nil {
+                map["Result"] = self.result?.toMap()
+            }
+            if self.success != nil {
+                map["Success"] = self.success!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Message") {
+                self.message = dict["Message"] as! String
+            }
+            if dict.keys.contains("Result") {
+                var model = AttachInstanceSDGResponseBody.Data.Result()
+                model.fromMap(dict["Result"] as! [String: Any])
+                self.result = model
+            }
+            if dict.keys.contains("Success") {
+                self.success = dict["Success"] as! Bool
+            }
+        }
+    }
+    public var data: AttachInstanceSDGResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            var model = AttachInstanceSDGResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class AttachInstanceSDGResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AttachInstanceSDGResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = AttachInstanceSDGResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class AttachNetworkInterfaceRequest : Tea.TeaModel {
     public var instanceId: String?
 
@@ -30579,6 +30887,330 @@ public class DescribeInstanceMonitorDataResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeInstanceSDGStatusRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var SDGIds: [String]?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.SDGIds != nil {
+            map["SDGIds"] = self.SDGIds!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SDGIds") {
+            self.SDGIds = dict["SDGIds"] as! [String]
+        }
+        if dict.keys.contains("Status") {
+            self.status = dict["Status"] as! String
+        }
+    }
+}
+
+public class DescribeInstanceSDGStatusShrinkRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var SDGIdsShrink: String?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.SDGIdsShrink != nil {
+            map["SDGIds"] = self.SDGIdsShrink!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SDGIds") {
+            self.SDGIdsShrink = dict["SDGIds"] as! String
+        }
+        if dict.keys.contains("Status") {
+            self.status = dict["Status"] as! String
+        }
+    }
+}
+
+public class DescribeInstanceSDGStatusResponseBody : Tea.TeaModel {
+    public class DeploymentStatus : Tea.TeaModel {
+        public var ensRegionId: String?
+
+        public var instanceId: String?
+
+        public var mountType: String?
+
+        public var phase: String?
+
+        public var SDGId: String?
+
+        public var status: String?
+
+        public var updateTime: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.ensRegionId != nil {
+                map["EnsRegionId"] = self.ensRegionId!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.mountType != nil {
+                map["MountType"] = self.mountType!
+            }
+            if self.phase != nil {
+                map["Phase"] = self.phase!
+            }
+            if self.SDGId != nil {
+                map["SDGId"] = self.SDGId!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.updateTime != nil {
+                map["UpdateTime"] = self.updateTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EnsRegionId") {
+                self.ensRegionId = dict["EnsRegionId"] as! String
+            }
+            if dict.keys.contains("InstanceId") {
+                self.instanceId = dict["InstanceId"] as! String
+            }
+            if dict.keys.contains("MountType") {
+                self.mountType = dict["MountType"] as! String
+            }
+            if dict.keys.contains("Phase") {
+                self.phase = dict["Phase"] as! String
+            }
+            if dict.keys.contains("SDGId") {
+                self.SDGId = dict["SDGId"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("UpdateTime") {
+                self.updateTime = dict["UpdateTime"] as! String
+            }
+        }
+    }
+    public var deploymentStatus: [DescribeInstanceSDGStatusResponseBody.DeploymentStatus]?
+
+    public var pageNumber: Int64?
+
+    public var pageSize: String?
+
+    public var requestId: String?
+
+    public var totalCount: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.deploymentStatus != nil {
+            var tmp : [Any] = []
+            for k in self.deploymentStatus! {
+                tmp.append(k.toMap())
+            }
+            map["DeploymentStatus"] = tmp
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DeploymentStatus") {
+            var tmp : [DescribeInstanceSDGStatusResponseBody.DeploymentStatus] = []
+            for v in dict["DeploymentStatus"] as! [Any] {
+                var model = DescribeInstanceSDGStatusResponseBody.DeploymentStatus()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.deploymentStatus = tmp
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int64
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! String
+        }
+    }
+}
+
+public class DescribeInstanceSDGStatusResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeInstanceSDGStatusResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeInstanceSDGStatusResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeInstanceSpecResponseBody : Tea.TeaModel {
     public class InstanceSpecs : Tea.TeaModel {
         public class InstanceSpec : Tea.TeaModel {
@@ -49415,6 +50047,314 @@ public class DetachDiskResponse : Tea.TeaModel {
     }
 }
 
+public class DetachInstanceSDGRequest : Tea.TeaModel {
+    public var instanceIds: [String]?
+
+    public var SDGId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        if self.SDGId != nil {
+            map["SDGId"] = self.SDGId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIds = dict["InstanceIds"] as! [String]
+        }
+        if dict.keys.contains("SDGId") {
+            self.SDGId = dict["SDGId"] as! String
+        }
+    }
+}
+
+public class DetachInstanceSDGShrinkRequest : Tea.TeaModel {
+    public var instanceIdsShrink: String?
+
+    public var SDGId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceIdsShrink != nil {
+            map["InstanceIds"] = self.instanceIdsShrink!
+        }
+        if self.SDGId != nil {
+            map["SDGId"] = self.SDGId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIdsShrink = dict["InstanceIds"] as! String
+        }
+        if dict.keys.contains("SDGId") {
+            self.SDGId = dict["SDGId"] as! String
+        }
+    }
+}
+
+public class DetachInstanceSDGResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Result : Tea.TeaModel {
+            public class FailedItems : Tea.TeaModel {
+                public var errMessage: String?
+
+                public var instanceId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.errMessage != nil {
+                        map["ErrMessage"] = self.errMessage!
+                    }
+                    if self.instanceId != nil {
+                        map["InstanceId"] = self.instanceId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ErrMessage") {
+                        self.errMessage = dict["ErrMessage"] as! String
+                    }
+                    if dict.keys.contains("InstanceId") {
+                        self.instanceId = dict["InstanceId"] as! String
+                    }
+                }
+            }
+            public var failedCount: Int64?
+
+            public var failedItems: [DetachInstanceSDGResponseBody.Data.Result.FailedItems]?
+
+            public var successCount: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.failedCount != nil {
+                    map["FailedCount"] = self.failedCount!
+                }
+                if self.failedItems != nil {
+                    var tmp : [Any] = []
+                    for k in self.failedItems! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FailedItems"] = tmp
+                }
+                if self.successCount != nil {
+                    map["SuccessCount"] = self.successCount!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("FailedCount") {
+                    self.failedCount = dict["FailedCount"] as! Int64
+                }
+                if dict.keys.contains("FailedItems") {
+                    var tmp : [DetachInstanceSDGResponseBody.Data.Result.FailedItems] = []
+                    for v in dict["FailedItems"] as! [Any] {
+                        var model = DetachInstanceSDGResponseBody.Data.Result.FailedItems()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.failedItems = tmp
+                }
+                if dict.keys.contains("SuccessCount") {
+                    self.successCount = dict["SuccessCount"] as! String
+                }
+            }
+        }
+        public var message: String?
+
+        public var result: DetachInstanceSDGResponseBody.Data.Result?
+
+        public var success: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.result?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.message != nil {
+                map["Message"] = self.message!
+            }
+            if self.result != nil {
+                map["Result"] = self.result?.toMap()
+            }
+            if self.success != nil {
+                map["Success"] = self.success!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Message") {
+                self.message = dict["Message"] as! String
+            }
+            if dict.keys.contains("Result") {
+                var model = DetachInstanceSDGResponseBody.Data.Result()
+                model.fromMap(dict["Result"] as! [String: Any])
+                self.result = model
+            }
+            if dict.keys.contains("Success") {
+                self.success = dict["Success"] as! Bool
+            }
+        }
+    }
+    public var data: DetachInstanceSDGResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            var model = DetachInstanceSDGResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DetachInstanceSDGResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DetachInstanceSDGResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DetachInstanceSDGResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DetachNetworkInterfaceRequest : Tea.TeaModel {
     public var networkInterfaceId: String?
 
@@ -55576,6 +56516,314 @@ public class ModifyVSwitchAttributeResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ModifyVSwitchAttributeResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class MountInstanceSDGRequest : Tea.TeaModel {
+    public var instanceIds: [String]?
+
+    public var SDGId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        if self.SDGId != nil {
+            map["SDGId"] = self.SDGId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIds = dict["InstanceIds"] as! [String]
+        }
+        if dict.keys.contains("SDGId") {
+            self.SDGId = dict["SDGId"] as! String
+        }
+    }
+}
+
+public class MountInstanceSDGShrinkRequest : Tea.TeaModel {
+    public var instanceIdsShrink: String?
+
+    public var SDGId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceIdsShrink != nil {
+            map["InstanceIds"] = self.instanceIdsShrink!
+        }
+        if self.SDGId != nil {
+            map["SDGId"] = self.SDGId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIdsShrink = dict["InstanceIds"] as! String
+        }
+        if dict.keys.contains("SDGId") {
+            self.SDGId = dict["SDGId"] as! String
+        }
+    }
+}
+
+public class MountInstanceSDGResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Result : Tea.TeaModel {
+            public class FailedItems : Tea.TeaModel {
+                public var errMessage: String?
+
+                public var instanceId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.errMessage != nil {
+                        map["ErrMessage"] = self.errMessage!
+                    }
+                    if self.instanceId != nil {
+                        map["InstanceId"] = self.instanceId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ErrMessage") {
+                        self.errMessage = dict["ErrMessage"] as! String
+                    }
+                    if dict.keys.contains("InstanceId") {
+                        self.instanceId = dict["InstanceId"] as! String
+                    }
+                }
+            }
+            public var failedCount: Int64?
+
+            public var failedItems: [MountInstanceSDGResponseBody.Data.Result.FailedItems]?
+
+            public var successCount: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.failedCount != nil {
+                    map["FailedCount"] = self.failedCount!
+                }
+                if self.failedItems != nil {
+                    var tmp : [Any] = []
+                    for k in self.failedItems! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FailedItems"] = tmp
+                }
+                if self.successCount != nil {
+                    map["SuccessCount"] = self.successCount!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("FailedCount") {
+                    self.failedCount = dict["FailedCount"] as! Int64
+                }
+                if dict.keys.contains("FailedItems") {
+                    var tmp : [MountInstanceSDGResponseBody.Data.Result.FailedItems] = []
+                    for v in dict["FailedItems"] as! [Any] {
+                        var model = MountInstanceSDGResponseBody.Data.Result.FailedItems()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.failedItems = tmp
+                }
+                if dict.keys.contains("SuccessCount") {
+                    self.successCount = dict["SuccessCount"] as! Int64
+                }
+            }
+        }
+        public var message: String?
+
+        public var result: MountInstanceSDGResponseBody.Data.Result?
+
+        public var success: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.result?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.message != nil {
+                map["Message"] = self.message!
+            }
+            if self.result != nil {
+                map["Result"] = self.result?.toMap()
+            }
+            if self.success != nil {
+                map["Success"] = self.success!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Message") {
+                self.message = dict["Message"] as! String
+            }
+            if dict.keys.contains("Result") {
+                var model = MountInstanceSDGResponseBody.Data.Result()
+                model.fromMap(dict["Result"] as! [String: Any])
+                self.result = model
+            }
+            if dict.keys.contains("Success") {
+                self.success = dict["Success"] as! Bool
+            }
+        }
+    }
+    public var data: MountInstanceSDGResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            var model = MountInstanceSDGResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class MountInstanceSDGResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: MountInstanceSDGResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = MountInstanceSDGResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -66120,6 +67368,314 @@ public class UnloadRegionSDGResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = UnloadRegionSDGResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UnmountInstanceSDGRequest : Tea.TeaModel {
+    public var instanceIds: [String]?
+
+    public var SDGId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        if self.SDGId != nil {
+            map["SDGId"] = self.SDGId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIds = dict["InstanceIds"] as! [String]
+        }
+        if dict.keys.contains("SDGId") {
+            self.SDGId = dict["SDGId"] as! String
+        }
+    }
+}
+
+public class UnmountInstanceSDGShrinkRequest : Tea.TeaModel {
+    public var instanceIdsShrink: String?
+
+    public var SDGId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceIdsShrink != nil {
+            map["InstanceIds"] = self.instanceIdsShrink!
+        }
+        if self.SDGId != nil {
+            map["SDGId"] = self.SDGId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIdsShrink = dict["InstanceIds"] as! String
+        }
+        if dict.keys.contains("SDGId") {
+            self.SDGId = dict["SDGId"] as! String
+        }
+    }
+}
+
+public class UnmountInstanceSDGResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Result : Tea.TeaModel {
+            public class FailedItems : Tea.TeaModel {
+                public var errMessage: String?
+
+                public var instanceId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.errMessage != nil {
+                        map["ErrMessage"] = self.errMessage!
+                    }
+                    if self.instanceId != nil {
+                        map["InstanceId"] = self.instanceId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ErrMessage") {
+                        self.errMessage = dict["ErrMessage"] as! String
+                    }
+                    if dict.keys.contains("InstanceId") {
+                        self.instanceId = dict["InstanceId"] as! String
+                    }
+                }
+            }
+            public var failedCount: Int64?
+
+            public var failedItems: [UnmountInstanceSDGResponseBody.Data.Result.FailedItems]?
+
+            public var successCount: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.failedCount != nil {
+                    map["FailedCount"] = self.failedCount!
+                }
+                if self.failedItems != nil {
+                    var tmp : [Any] = []
+                    for k in self.failedItems! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FailedItems"] = tmp
+                }
+                if self.successCount != nil {
+                    map["SuccessCount"] = self.successCount!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("FailedCount") {
+                    self.failedCount = dict["FailedCount"] as! Int64
+                }
+                if dict.keys.contains("FailedItems") {
+                    var tmp : [UnmountInstanceSDGResponseBody.Data.Result.FailedItems] = []
+                    for v in dict["FailedItems"] as! [Any] {
+                        var model = UnmountInstanceSDGResponseBody.Data.Result.FailedItems()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.failedItems = tmp
+                }
+                if dict.keys.contains("SuccessCount") {
+                    self.successCount = dict["SuccessCount"] as! Int64
+                }
+            }
+        }
+        public var message: String?
+
+        public var result: UnmountInstanceSDGResponseBody.Data.Result?
+
+        public var success: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.result?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.message != nil {
+                map["Message"] = self.message!
+            }
+            if self.result != nil {
+                map["Result"] = self.result?.toMap()
+            }
+            if self.success != nil {
+                map["Success"] = self.success!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Message") {
+                self.message = dict["Message"] as! String
+            }
+            if dict.keys.contains("Result") {
+                var model = UnmountInstanceSDGResponseBody.Data.Result()
+                model.fromMap(dict["Result"] as! [String: Any])
+                self.result = model
+            }
+            if dict.keys.contains("Success") {
+                self.success = dict["Success"] as! Bool
+            }
+        }
+    }
+    public var data: UnmountInstanceSDGResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            var model = UnmountInstanceSDGResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UnmountInstanceSDGResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UnmountInstanceSDGResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UnmountInstanceSDGResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
