@@ -36835,6 +36835,8 @@ public class DescribeDBProxyEndpointResponseBody : Tea.TeaModel {
 
     public var DBProxyEndpointId: String?
 
+    public var DBProxyEndpointMinSlaveCount: String?
+
     public var DBProxyEngineType: String?
 
     public var DBProxyFeatures: String?
@@ -36887,6 +36889,9 @@ public class DescribeDBProxyEndpointResponseBody : Tea.TeaModel {
         if self.DBProxyEndpointId != nil {
             map["DBProxyEndpointId"] = self.DBProxyEndpointId!
         }
+        if self.DBProxyEndpointMinSlaveCount != nil {
+            map["DBProxyEndpointMinSlaveCount"] = self.DBProxyEndpointMinSlaveCount!
+        }
         if self.DBProxyEngineType != nil {
             map["DBProxyEngineType"] = self.DBProxyEngineType!
         }
@@ -36938,6 +36943,9 @@ public class DescribeDBProxyEndpointResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("DBProxyEndpointId") {
             self.DBProxyEndpointId = dict["DBProxyEndpointId"] as! String
+        }
+        if dict.keys.contains("DBProxyEndpointMinSlaveCount") {
+            self.DBProxyEndpointMinSlaveCount = dict["DBProxyEndpointMinSlaveCount"] as! String
         }
         if dict.keys.contains("DBProxyEngineType") {
             self.DBProxyEngineType = dict["DBProxyEngineType"] as! String
@@ -53868,6 +53876,8 @@ public class DescribeRCInstanceAttributeResponseBody : Tea.TeaModel {
 
     public var serialNumber: String?
 
+    public var spotStrategy: String?
+
     public var status: String?
 
     public var stoppedMode: String?
@@ -54007,6 +54017,9 @@ public class DescribeRCInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if self.serialNumber != nil {
             map["SerialNumber"] = self.serialNumber!
+        }
+        if self.spotStrategy != nil {
+            map["SpotStrategy"] = self.spotStrategy!
         }
         if self.status != nil {
             map["Status"] = self.status!
@@ -54148,6 +54161,9 @@ public class DescribeRCInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("SerialNumber") {
             self.serialNumber = dict["SerialNumber"] as! String
+        }
+        if dict.keys.contains("SpotStrategy") {
+            self.spotStrategy = dict["SpotStrategy"] as! String
         }
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! String
@@ -54496,6 +54512,8 @@ public class DescribeRCInstancesResponseBody : Tea.TeaModel {
 
         public var regionId: String?
 
+        public var spotStrategy: String?
+
         public var status: String?
 
         public var tagResources: [DescribeRCInstancesResponseBody.RCInstances.TagResources]?
@@ -54548,6 +54566,9 @@ public class DescribeRCInstancesResponseBody : Tea.TeaModel {
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
+            if self.spotStrategy != nil {
+                map["SpotStrategy"] = self.spotStrategy!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -54597,6 +54618,9 @@ public class DescribeRCInstancesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("SpotStrategy") {
+                self.spotStrategy = dict["SpotStrategy"] as! String
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
@@ -74586,6 +74610,8 @@ public class ModifyDBProxyEndpointRequest : Tea.TeaModel {
 
     public var dbEndpointAliases: String?
 
+    public var dbEndpointMinSlaveCount: String?
+
     public var dbEndpointOperator: String?
 
     public var dbEndpointReadWriteMode: String?
@@ -74640,6 +74666,9 @@ public class ModifyDBProxyEndpointRequest : Tea.TeaModel {
         }
         if self.dbEndpointAliases != nil {
             map["DbEndpointAliases"] = self.dbEndpointAliases!
+        }
+        if self.dbEndpointMinSlaveCount != nil {
+            map["DbEndpointMinSlaveCount"] = self.dbEndpointMinSlaveCount!
         }
         if self.dbEndpointOperator != nil {
             map["DbEndpointOperator"] = self.dbEndpointOperator!
@@ -74698,6 +74727,9 @@ public class ModifyDBProxyEndpointRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DbEndpointAliases") {
             self.dbEndpointAliases = dict["DbEndpointAliases"] as! String
+        }
+        if dict.keys.contains("DbEndpointMinSlaveCount") {
+            self.dbEndpointMinSlaveCount = dict["DbEndpointMinSlaveCount"] as! String
         }
         if dict.keys.contains("DbEndpointOperator") {
             self.dbEndpointOperator = dict["DbEndpointOperator"] as! String
@@ -84996,6 +85028,8 @@ public class RunRCInstancesRequest : Tea.TeaModel {
 
     public var securityGroupId: String?
 
+    public var spotStrategy: String?
+
     public var systemDisk: RunRCInstancesRequest.SystemDisk?
 
     public var tag: [RunRCInstancesRequest.Tag]?
@@ -85097,6 +85131,9 @@ public class RunRCInstancesRequest : Tea.TeaModel {
         }
         if self.securityGroupId != nil {
             map["SecurityGroupId"] = self.securityGroupId!
+        }
+        if self.spotStrategy != nil {
+            map["SpotStrategy"] = self.spotStrategy!
         }
         if self.systemDisk != nil {
             map["SystemDisk"] = self.systemDisk?.toMap()
@@ -85200,6 +85237,9 @@ public class RunRCInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityGroupId") {
             self.securityGroupId = dict["SecurityGroupId"] as! String
+        }
+        if dict.keys.contains("SpotStrategy") {
+            self.spotStrategy = dict["SpotStrategy"] as! String
         }
         if dict.keys.contains("SystemDisk") {
             var model = RunRCInstancesRequest.SystemDisk()
@@ -85314,6 +85354,8 @@ public class RunRCInstancesShrinkRequest : Tea.TeaModel {
 
     public var securityGroupId: String?
 
+    public var spotStrategy: String?
+
     public var systemDiskShrink: String?
 
     public var tag: [RunRCInstancesShrinkRequest.Tag]?
@@ -85411,6 +85453,9 @@ public class RunRCInstancesShrinkRequest : Tea.TeaModel {
         if self.securityGroupId != nil {
             map["SecurityGroupId"] = self.securityGroupId!
         }
+        if self.spotStrategy != nil {
+            map["SpotStrategy"] = self.spotStrategy!
+        }
         if self.systemDiskShrink != nil {
             map["SystemDisk"] = self.systemDiskShrink!
         }
@@ -85505,6 +85550,9 @@ public class RunRCInstancesShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityGroupId") {
             self.securityGroupId = dict["SecurityGroupId"] as! String
+        }
+        if dict.keys.contains("SpotStrategy") {
+            self.spotStrategy = dict["SpotStrategy"] as! String
         }
         if dict.keys.contains("SystemDisk") {
             self.systemDiskShrink = dict["SystemDisk"] as! String
