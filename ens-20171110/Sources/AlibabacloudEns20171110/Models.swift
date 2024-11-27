@@ -44405,6 +44405,8 @@ public class DescribeSDGDeploymentStatusResponseBody : Tea.TeaModel {
 
         public var mountType: String?
 
+        public var phase: String?
+
         public var regionId: String?
 
         public var status: String?
@@ -44431,6 +44433,9 @@ public class DescribeSDGDeploymentStatusResponseBody : Tea.TeaModel {
             if self.mountType != nil {
                 map["MountType"] = self.mountType!
             }
+            if self.phase != nil {
+                map["Phase"] = self.phase!
+            }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
@@ -44449,6 +44454,9 @@ public class DescribeSDGDeploymentStatusResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("MountType") {
                 self.mountType = dict["MountType"] as! String
+            }
+            if dict.keys.contains("Phase") {
+                self.phase = dict["Phase"] as! String
             }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
@@ -47173,6 +47181,8 @@ public class DescribeSnapshotsRequest : Tea.TeaModel {
 
     public var ensRegionId: String?
 
+    public var ensRegionIds: String?
+
     public var instanceId: String?
 
     public var pageNumber: Int32?
@@ -47180,6 +47190,8 @@ public class DescribeSnapshotsRequest : Tea.TeaModel {
     public var pageSize: Int32?
 
     public var snapshotId: String?
+
+    public var snapshotName: String?
 
     public override init() {
         super.init()
@@ -47201,6 +47213,9 @@ public class DescribeSnapshotsRequest : Tea.TeaModel {
         if self.ensRegionId != nil {
             map["EnsRegionId"] = self.ensRegionId!
         }
+        if self.ensRegionIds != nil {
+            map["EnsRegionIds"] = self.ensRegionIds!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -47213,6 +47228,9 @@ public class DescribeSnapshotsRequest : Tea.TeaModel {
         if self.snapshotId != nil {
             map["SnapshotId"] = self.snapshotId!
         }
+        if self.snapshotName != nil {
+            map["SnapshotName"] = self.snapshotName!
+        }
         return map
     }
 
@@ -47222,6 +47240,9 @@ public class DescribeSnapshotsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EnsRegionId") {
             self.ensRegionId = dict["EnsRegionId"] as! String
+        }
+        if dict.keys.contains("EnsRegionIds") {
+            self.ensRegionIds = dict["EnsRegionIds"] as! String
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
@@ -47234,6 +47255,9 @@ public class DescribeSnapshotsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SnapshotId") {
             self.snapshotId = dict["SnapshotId"] as! String
+        }
+        if dict.keys.contains("SnapshotName") {
+            self.snapshotName = dict["SnapshotName"] as! String
         }
     }
 }
