@@ -269,11 +269,11 @@ open class Client : AlibabacloudOpenApi.Client {
     public func imageBatchModerationWithOptions(_ request: ImageBatchModerationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImageBatchModerationResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.service)) {
+            query["Service"] = request.service ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.serviceParameters)) {
             query["ServiceParameters"] = request.serviceParameters ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.services)) {
-            query["Services"] = request.services ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

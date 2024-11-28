@@ -2294,9 +2294,9 @@ public class ImageAsyncModerationResponse : Tea.TeaModel {
 }
 
 public class ImageBatchModerationRequest : Tea.TeaModel {
-    public var serviceParameters: String?
+    public var service: String?
 
-    public var services: String?
+    public var serviceParameters: String?
 
     public override init() {
         super.init()
@@ -2312,21 +2312,21 @@ public class ImageBatchModerationRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.service != nil {
+            map["Service"] = self.service!
+        }
         if self.serviceParameters != nil {
             map["ServiceParameters"] = self.serviceParameters!
-        }
-        if self.services != nil {
-            map["Services"] = self.services!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Service") {
+            self.service = dict["Service"] as! String
+        }
         if dict.keys.contains("ServiceParameters") {
             self.serviceParameters = dict["ServiceParameters"] as! String
-        }
-        if dict.keys.contains("Services") {
-            self.services = dict["Services"] as! String
         }
     }
 }
