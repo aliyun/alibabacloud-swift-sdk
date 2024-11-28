@@ -29532,6 +29532,8 @@ public class GetVideoInfoResponseBody : Tea.TeaModel {
 
         public var title: String?
 
+        public var userData: String?
+
         public var videoId: String?
 
         public override init() {
@@ -29615,6 +29617,9 @@ public class GetVideoInfoResponseBody : Tea.TeaModel {
             if self.title != nil {
                 map["Title"] = self.title!
             }
+            if self.userData != nil {
+                map["UserData"] = self.userData!
+            }
             if self.videoId != nil {
                 map["VideoId"] = self.videoId!
             }
@@ -29689,6 +29694,9 @@ public class GetVideoInfoResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Title") {
                 self.title = dict["Title"] as! String
+            }
+            if dict.keys.contains("UserData") {
+                self.userData = dict["UserData"] as! String
             }
             if dict.keys.contains("VideoId") {
                 self.videoId = dict["VideoId"] as! String
@@ -29854,6 +29862,8 @@ public class GetVideoInfosResponseBody : Tea.TeaModel {
 
         public var title: String?
 
+        public var userData: String?
+
         public var videoId: String?
 
         public override init() {
@@ -29927,6 +29937,9 @@ public class GetVideoInfosResponseBody : Tea.TeaModel {
             if self.title != nil {
                 map["Title"] = self.title!
             }
+            if self.userData != nil {
+                map["UserData"] = self.userData!
+            }
             if self.videoId != nil {
                 map["VideoId"] = self.videoId!
             }
@@ -29990,6 +30003,9 @@ public class GetVideoInfosResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Title") {
                 self.title = dict["Title"] as! String
+            }
+            if dict.keys.contains("UserData") {
+                self.userData = dict["UserData"] as! String
             }
             if dict.keys.contains("VideoId") {
                 self.videoId = dict["VideoId"] as! String
@@ -40590,6 +40606,8 @@ public class SubmitTranscodeJobsRequest : Tea.TeaModel {
 
     public var priority: String?
 
+    public var sessionId: String?
+
     public var templateGroupId: String?
 
     public var userData: String?
@@ -40622,6 +40640,9 @@ public class SubmitTranscodeJobsRequest : Tea.TeaModel {
         if self.priority != nil {
             map["Priority"] = self.priority!
         }
+        if self.sessionId != nil {
+            map["SessionId"] = self.sessionId!
+        }
         if self.templateGroupId != nil {
             map["TemplateGroupId"] = self.templateGroupId!
         }
@@ -40646,6 +40667,9 @@ public class SubmitTranscodeJobsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Priority") {
             self.priority = dict["Priority"] as! String
+        }
+        if dict.keys.contains("SessionId") {
+            self.sessionId = dict["SessionId"] as! String
         }
         if dict.keys.contains("TemplateGroupId") {
             self.templateGroupId = dict["TemplateGroupId"] as! String
@@ -42196,6 +42220,8 @@ public class UpdateVideoInfoRequest : Tea.TeaModel {
 
     public var title: String?
 
+    public var userData: String?
+
     public var videoId: String?
 
     public override init() {
@@ -42227,6 +42253,9 @@ public class UpdateVideoInfoRequest : Tea.TeaModel {
         if self.title != nil {
             map["Title"] = self.title!
         }
+        if self.userData != nil {
+            map["UserData"] = self.userData!
+        }
         if self.videoId != nil {
             map["VideoId"] = self.videoId!
         }
@@ -42248,6 +42277,9 @@ public class UpdateVideoInfoRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Title") {
             self.title = dict["Title"] as! String
+        }
+        if dict.keys.contains("UserData") {
+            self.userData = dict["UserData"] as! String
         }
         if dict.keys.contains("VideoId") {
             self.videoId = dict["VideoId"] as! String
