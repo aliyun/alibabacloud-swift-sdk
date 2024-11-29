@@ -53912,6 +53912,8 @@ public class ListServiceSourceResponseBody : Tea.TeaModel {
 
         public var ingressOptions: ListServiceSourceResponseBody.Data.IngressOptions?
 
+        public var invalid: Bool?
+
         public var name: String?
 
         public var pathList: [String]?
@@ -53964,6 +53966,9 @@ public class ListServiceSourceResponseBody : Tea.TeaModel {
             if self.ingressOptions != nil {
                 map["IngressOptions"] = self.ingressOptions?.toMap()
             }
+            if self.invalid != nil {
+                map["Invalid"] = self.invalid!
+            }
             if self.name != nil {
                 map["Name"] = self.name!
             }
@@ -54011,6 +54016,9 @@ public class ListServiceSourceResponseBody : Tea.TeaModel {
                 var model = ListServiceSourceResponseBody.Data.IngressOptions()
                 model.fromMap(dict["IngressOptions"] as! [String: Any])
                 self.ingressOptions = model
+            }
+            if dict.keys.contains("Invalid") {
+                self.invalid = dict["Invalid"] as! Bool
             }
             if dict.keys.contains("Name") {
                 self.name = dict["Name"] as! String
