@@ -4312,6 +4312,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceTypeFamily)) {
             query["InstanceTypeFamily"] = request.instanceTypeFamily ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.instanceTypeFamilyGroup)) {
+            query["InstanceTypeFamilyGroup"] = request.instanceTypeFamilyGroup ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.offeringType)) {
             query["OfferingType"] = request.offeringType ?? "";
         }
@@ -12377,6 +12380,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeSavingsPlanEstimationWithOptions(_ request: DescribeSavingsPlanEstimationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeSavingsPlanEstimationResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.estimationResource)) {
+            query["EstimationResource"] = request.estimationResource ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceTypeScope)) {
+            query["InstanceTypeScope"] = request.instanceTypeScope ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.offeringType)) {
             query["OfferingType"] = request.offeringType ?? "";
         }
@@ -12428,6 +12437,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.instanceTypeFamily)) {
             query["InstanceTypeFamily"] = request.instanceTypeFamily ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceTypeFamilyGroup)) {
+            query["InstanceTypeFamilyGroup"] = request.instanceTypeFamilyGroup ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.offeringType)) {
             query["OfferingType"] = request.offeringType ?? "";

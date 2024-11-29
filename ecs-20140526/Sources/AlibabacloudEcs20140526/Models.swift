@@ -7221,6 +7221,8 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
 
         public var excludedInstanceTypes: [String]?
 
+        public var imageId: String?
+
         public var instanceFamilyLevel: String?
 
         public var instanceType: String?
@@ -7263,6 +7265,9 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
             if self.excludedInstanceTypes != nil {
                 map["ExcludedInstanceTypes"] = self.excludedInstanceTypes!
             }
+            if self.imageId != nil {
+                map["ImageId"] = self.imageId!
+            }
             if self.instanceFamilyLevel != nil {
                 map["InstanceFamilyLevel"] = self.instanceFamilyLevel!
             }
@@ -7302,6 +7307,9 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
             }
             if dict.keys.contains("ExcludedInstanceTypes") {
                 self.excludedInstanceTypes = dict["ExcludedInstanceTypes"] as! [String]
+            }
+            if dict.keys.contains("ImageId") {
+                self.imageId = dict["ImageId"] as! String
             }
             if dict.keys.contains("InstanceFamilyLevel") {
                 self.instanceFamilyLevel = dict["InstanceFamilyLevel"] as! String
@@ -8394,6 +8402,8 @@ public class CreateAutoProvisioningGroupShrinkRequest : Tea.TeaModel {
 
         public var excludedInstanceTypes: [String]?
 
+        public var imageId: String?
+
         public var instanceFamilyLevel: String?
 
         public var instanceType: String?
@@ -8436,6 +8446,9 @@ public class CreateAutoProvisioningGroupShrinkRequest : Tea.TeaModel {
             if self.excludedInstanceTypes != nil {
                 map["ExcludedInstanceTypes"] = self.excludedInstanceTypes!
             }
+            if self.imageId != nil {
+                map["ImageId"] = self.imageId!
+            }
             if self.instanceFamilyLevel != nil {
                 map["InstanceFamilyLevel"] = self.instanceFamilyLevel!
             }
@@ -8475,6 +8488,9 @@ public class CreateAutoProvisioningGroupShrinkRequest : Tea.TeaModel {
             }
             if dict.keys.contains("ExcludedInstanceTypes") {
                 self.excludedInstanceTypes = dict["ExcludedInstanceTypes"] as! [String]
+            }
+            if dict.keys.contains("ImageId") {
+                self.imageId = dict["ImageId"] as! String
             }
             if dict.keys.contains("InstanceFamilyLevel") {
                 self.instanceFamilyLevel = dict["InstanceFamilyLevel"] as! String
@@ -19406,6 +19422,8 @@ public class CreateSavingsPlanRequest : Tea.TeaModel {
 
     public var instanceTypeFamily: String?
 
+    public var instanceTypeFamilyGroup: String?
+
     public var offeringType: String?
 
     public var period: String?
@@ -19441,6 +19459,9 @@ public class CreateSavingsPlanRequest : Tea.TeaModel {
         if self.instanceTypeFamily != nil {
             map["InstanceTypeFamily"] = self.instanceTypeFamily!
         }
+        if self.instanceTypeFamilyGroup != nil {
+            map["InstanceTypeFamilyGroup"] = self.instanceTypeFamilyGroup!
+        }
         if self.offeringType != nil {
             map["OfferingType"] = self.offeringType!
         }
@@ -19471,6 +19492,9 @@ public class CreateSavingsPlanRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceTypeFamily") {
             self.instanceTypeFamily = dict["InstanceTypeFamily"] as! String
+        }
+        if dict.keys.contains("InstanceTypeFamilyGroup") {
+            self.instanceTypeFamilyGroup = dict["InstanceTypeFamilyGroup"] as! String
         }
         if dict.keys.contains("OfferingType") {
             self.offeringType = dict["OfferingType"] as! String
@@ -75568,6 +75592,10 @@ public class DescribeRouterInterfacesResponse : Tea.TeaModel {
 }
 
 public class DescribeSavingsPlanEstimationRequest : Tea.TeaModel {
+    public var estimationResource: String?
+
+    public var instanceTypeScope: String?
+
     public var offeringType: String?
 
     public var period: String?
@@ -75594,6 +75622,12 @@ public class DescribeSavingsPlanEstimationRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.estimationResource != nil {
+            map["EstimationResource"] = self.estimationResource!
+        }
+        if self.instanceTypeScope != nil {
+            map["InstanceTypeScope"] = self.instanceTypeScope!
+        }
         if self.offeringType != nil {
             map["OfferingType"] = self.offeringType!
         }
@@ -75616,6 +75650,12 @@ public class DescribeSavingsPlanEstimationRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EstimationResource") {
+            self.estimationResource = dict["EstimationResource"] as! String
+        }
+        if dict.keys.contains("InstanceTypeScope") {
+            self.instanceTypeScope = dict["InstanceTypeScope"] as! String
+        }
         if dict.keys.contains("OfferingType") {
             self.offeringType = dict["OfferingType"] as! String
         }
@@ -75643,6 +75683,8 @@ public class DescribeSavingsPlanEstimationResponseBody : Tea.TeaModel {
     public var currency: String?
 
     public var instanceTypeFamily: String?
+
+    public var instanceTypeFamilyGroup: String?
 
     public var offeringType: String?
 
@@ -75679,6 +75721,9 @@ public class DescribeSavingsPlanEstimationResponseBody : Tea.TeaModel {
         if self.instanceTypeFamily != nil {
             map["InstanceTypeFamily"] = self.instanceTypeFamily!
         }
+        if self.instanceTypeFamilyGroup != nil {
+            map["InstanceTypeFamilyGroup"] = self.instanceTypeFamilyGroup!
+        }
         if self.offeringType != nil {
             map["OfferingType"] = self.offeringType!
         }
@@ -75709,6 +75754,9 @@ public class DescribeSavingsPlanEstimationResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceTypeFamily") {
             self.instanceTypeFamily = dict["InstanceTypeFamily"] as! String
+        }
+        if dict.keys.contains("InstanceTypeFamilyGroup") {
+            self.instanceTypeFamilyGroup = dict["InstanceTypeFamilyGroup"] as! String
         }
         if dict.keys.contains("OfferingType") {
             self.offeringType = dict["OfferingType"] as! String
@@ -75785,6 +75833,8 @@ public class DescribeSavingsPlanPriceRequest : Tea.TeaModel {
 
     public var instanceTypeFamily: String?
 
+    public var instanceTypeFamilyGroup: String?
+
     public var offeringType: String?
 
     public var period: Int32?
@@ -75817,6 +75867,9 @@ public class DescribeSavingsPlanPriceRequest : Tea.TeaModel {
         if self.instanceTypeFamily != nil {
             map["InstanceTypeFamily"] = self.instanceTypeFamily!
         }
+        if self.instanceTypeFamilyGroup != nil {
+            map["InstanceTypeFamilyGroup"] = self.instanceTypeFamilyGroup!
+        }
         if self.offeringType != nil {
             map["OfferingType"] = self.offeringType!
         }
@@ -75844,6 +75897,9 @@ public class DescribeSavingsPlanPriceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceTypeFamily") {
             self.instanceTypeFamily = dict["InstanceTypeFamily"] as! String
+        }
+        if dict.keys.contains("InstanceTypeFamilyGroup") {
+            self.instanceTypeFamilyGroup = dict["InstanceTypeFamilyGroup"] as! String
         }
         if dict.keys.contains("OfferingType") {
             self.offeringType = dict["OfferingType"] as! String
