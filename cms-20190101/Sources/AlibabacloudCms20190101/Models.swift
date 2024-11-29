@@ -38095,6 +38095,10 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
 
             public var header: String?
 
+            public var hostBinding: String?
+
+            public var hostBindingType: Int32?
+
             public var httpMethod: String?
 
             public var ipNetwork: String?
@@ -38238,6 +38242,12 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.header != nil {
                     map["header"] = self.header!
+                }
+                if self.hostBinding != nil {
+                    map["host_binding"] = self.hostBinding!
+                }
+                if self.hostBindingType != nil {
+                    map["host_binding_type"] = self.hostBindingType!
                 }
                 if self.httpMethod != nil {
                     map["http_method"] = self.httpMethod!
@@ -38403,6 +38413,12 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("header") {
                     self.header = dict["header"] as! String
+                }
+                if dict.keys.contains("host_binding") {
+                    self.hostBinding = dict["host_binding"] as! String
+                }
+                if dict.keys.contains("host_binding_type") {
+                    self.hostBindingType = dict["host_binding_type"] as! Int32
                 }
                 if dict.keys.contains("http_method") {
                     self.httpMethod = dict["http_method"] as! String
