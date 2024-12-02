@@ -6622,9 +6622,13 @@ public class QueryModifyInstancePriceRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var promotionCode: String?
+
     public var region: String?
 
     public var resourceSpec: QueryModifyInstancePriceRequest.ResourceSpec?
+
+    public var usePromotionCode: Bool?
 
     public override init() {
         super.init()
@@ -6657,11 +6661,17 @@ public class QueryModifyInstancePriceRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.promotionCode != nil {
+            map["PromotionCode"] = self.promotionCode!
+        }
         if self.region != nil {
             map["Region"] = self.region!
         }
         if self.resourceSpec != nil {
             map["ResourceSpec"] = self.resourceSpec?.toMap()
+        }
+        if self.usePromotionCode != nil {
+            map["UsePromotionCode"] = self.usePromotionCode!
         }
         return map
     }
@@ -6684,6 +6694,9 @@ public class QueryModifyInstancePriceRequest : Tea.TeaModel {
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
         }
+        if dict.keys.contains("PromotionCode") {
+            self.promotionCode = dict["PromotionCode"] as! String
+        }
         if dict.keys.contains("Region") {
             self.region = dict["Region"] as! String
         }
@@ -6691,6 +6704,9 @@ public class QueryModifyInstancePriceRequest : Tea.TeaModel {
             var model = QueryModifyInstancePriceRequest.ResourceSpec()
             model.fromMap(dict["ResourceSpec"] as! [String: Any])
             self.resourceSpec = model
+        }
+        if dict.keys.contains("UsePromotionCode") {
+            self.usePromotionCode = dict["UsePromotionCode"] as! Bool
         }
     }
 }
@@ -6706,9 +6722,13 @@ public class QueryModifyInstancePriceShrinkRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var promotionCode: String?
+
     public var region: String?
 
     public var resourceSpecShrink: String?
+
+    public var usePromotionCode: Bool?
 
     public override init() {
         super.init()
@@ -6739,11 +6759,17 @@ public class QueryModifyInstancePriceShrinkRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.promotionCode != nil {
+            map["PromotionCode"] = self.promotionCode!
+        }
         if self.region != nil {
             map["Region"] = self.region!
         }
         if self.resourceSpecShrink != nil {
             map["ResourceSpec"] = self.resourceSpecShrink!
+        }
+        if self.usePromotionCode != nil {
+            map["UsePromotionCode"] = self.usePromotionCode!
         }
         return map
     }
@@ -6764,11 +6790,17 @@ public class QueryModifyInstancePriceShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
         }
+        if dict.keys.contains("PromotionCode") {
+            self.promotionCode = dict["PromotionCode"] as! String
+        }
         if dict.keys.contains("Region") {
             self.region = dict["Region"] as! String
         }
         if dict.keys.contains("ResourceSpec") {
             self.resourceSpecShrink = dict["ResourceSpec"] as! String
+        }
+        if dict.keys.contains("UsePromotionCode") {
+            self.usePromotionCode = dict["UsePromotionCode"] as! Bool
         }
     }
 }
