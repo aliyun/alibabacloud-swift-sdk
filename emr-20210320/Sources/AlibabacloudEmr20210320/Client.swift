@@ -132,6 +132,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clusterType)) {
             query["ClusterType"] = request.clusterType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.deletionProtection)) {
+            query["DeletionProtection"] = request.deletionProtection!;
+        }
         if (!TeaUtils.Client.isUnset(request.deployMode)) {
             query["DeployMode"] = request.deployMode ?? "";
         }
@@ -270,6 +273,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func decreaseNodesWithOptions(_ request: DecreaseNodesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DecreaseNodesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.batchInterval)) {
+            query["BatchInterval"] = request.batchInterval!;
+        }
+        if (!TeaUtils.Client.isUnset(request.batchSize)) {
+            query["BatchSize"] = request.batchSize!;
+        }
         if (!TeaUtils.Client.isUnset(request.clusterId)) {
             query["ClusterId"] = request.clusterId ?? "";
         }
@@ -2842,6 +2851,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.clusterType)) {
             body["ClusterType"] = request.clusterType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.deletionProtection)) {
+            body["DeletionProtection"] = request.deletionProtection!;
         }
         if (!TeaUtils.Client.isUnset(request.deployMode)) {
             body["DeployMode"] = request.deployMode ?? "";

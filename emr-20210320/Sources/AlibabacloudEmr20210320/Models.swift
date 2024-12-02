@@ -1710,6 +1710,8 @@ public class Cluster : Tea.TeaModel {
 
     public var createTime: Int64?
 
+    public var deletionProtection: Bool?
+
     public var deployMode: String?
 
     public var description_: String?
@@ -1771,6 +1773,9 @@ public class Cluster : Tea.TeaModel {
         }
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
+        }
+        if self.deletionProtection != nil {
+            map["DeletionProtection"] = self.deletionProtection!
         }
         if self.deployMode != nil {
             map["DeployMode"] = self.deployMode!
@@ -1839,6 +1844,9 @@ public class Cluster : Tea.TeaModel {
         }
         if dict.keys.contains("CreateTime") {
             self.createTime = dict["CreateTime"] as! Int64
+        }
+        if dict.keys.contains("DeletionProtection") {
+            self.deletionProtection = dict["DeletionProtection"] as! Bool
         }
         if dict.keys.contains("DeployMode") {
             self.deployMode = dict["DeployMode"] as! String
@@ -2032,6 +2040,8 @@ public class ClusterSummary : Tea.TeaModel {
 
     public var createTime: Int64?
 
+    public var deletionProtection: Bool?
+
     public var description_: String?
 
     public var emrDefaultRole: String?
@@ -2081,6 +2091,9 @@ public class ClusterSummary : Tea.TeaModel {
         }
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
+        }
+        if self.deletionProtection != nil {
+            map["DeletionProtection"] = self.deletionProtection!
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
@@ -2134,6 +2147,9 @@ public class ClusterSummary : Tea.TeaModel {
         }
         if dict.keys.contains("CreateTime") {
             self.createTime = dict["CreateTime"] as! Int64
+        }
+        if dict.keys.contains("DeletionProtection") {
+            self.deletionProtection = dict["DeletionProtection"] as! Bool
         }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
@@ -4176,6 +4192,10 @@ public class Node : Tea.TeaModel {
 }
 
 public class NodeAttributes : Tea.TeaModel {
+    public var dataDiskEncrypted: Bool?
+
+    public var dataDiskKMSKeyId: String?
+
     public var keyPairName: String?
 
     public var masterRootPassword: String?
@@ -4183,6 +4203,10 @@ public class NodeAttributes : Tea.TeaModel {
     public var ramRole: String?
 
     public var securityGroupId: String?
+
+    public var systemDiskEncrypted: Bool?
+
+    public var systemDiskKMSKeyId: String?
 
     public var vpcId: String?
 
@@ -4202,6 +4226,12 @@ public class NodeAttributes : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dataDiskEncrypted != nil {
+            map["DataDiskEncrypted"] = self.dataDiskEncrypted!
+        }
+        if self.dataDiskKMSKeyId != nil {
+            map["DataDiskKMSKeyId"] = self.dataDiskKMSKeyId!
+        }
         if self.keyPairName != nil {
             map["KeyPairName"] = self.keyPairName!
         }
@@ -4214,6 +4244,12 @@ public class NodeAttributes : Tea.TeaModel {
         if self.securityGroupId != nil {
             map["SecurityGroupId"] = self.securityGroupId!
         }
+        if self.systemDiskEncrypted != nil {
+            map["SystemDiskEncrypted"] = self.systemDiskEncrypted!
+        }
+        if self.systemDiskKMSKeyId != nil {
+            map["SystemDiskKMSKeyId"] = self.systemDiskKMSKeyId!
+        }
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
         }
@@ -4224,6 +4260,12 @@ public class NodeAttributes : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DataDiskEncrypted") {
+            self.dataDiskEncrypted = dict["DataDiskEncrypted"] as! Bool
+        }
+        if dict.keys.contains("DataDiskKMSKeyId") {
+            self.dataDiskKMSKeyId = dict["DataDiskKMSKeyId"] as! String
+        }
         if dict.keys.contains("KeyPairName") {
             self.keyPairName = dict["KeyPairName"] as! String
         }
@@ -4235,6 +4277,12 @@ public class NodeAttributes : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityGroupId") {
             self.securityGroupId = dict["SecurityGroupId"] as! String
+        }
+        if dict.keys.contains("SystemDiskEncrypted") {
+            self.systemDiskEncrypted = dict["SystemDiskEncrypted"] as! Bool
+        }
+        if dict.keys.contains("SystemDiskKMSKeyId") {
+            self.systemDiskKMSKeyId = dict["SystemDiskKMSKeyId"] as! String
         }
         if dict.keys.contains("VpcId") {
             self.vpcId = dict["VpcId"] as! String
@@ -4324,6 +4372,8 @@ public class NodeGroup : Tea.TeaModel {
 
     public var paymentType: String?
 
+    public var privatePoolOptions: PrivatePoolOptions?
+
     public var runningNodeCount: Int32?
 
     public var spotBidPrices: [SpotBidPrice]?
@@ -4355,6 +4405,7 @@ public class NodeGroup : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.costOptimizedConfig?.validate()
+        try self.privatePoolOptions?.validate()
         try self.stateChangeReason?.validate()
         try self.systemDisk?.validate()
     }
@@ -4400,6 +4451,9 @@ public class NodeGroup : Tea.TeaModel {
         }
         if self.paymentType != nil {
             map["PaymentType"] = self.paymentType!
+        }
+        if self.privatePoolOptions != nil {
+            map["PrivatePoolOptions"] = self.privatePoolOptions?.toMap()
         }
         if self.runningNodeCount != nil {
             map["RunningNodeCount"] = self.runningNodeCount!
@@ -4485,6 +4539,11 @@ public class NodeGroup : Tea.TeaModel {
         if dict.keys.contains("PaymentType") {
             self.paymentType = dict["PaymentType"] as! String
         }
+        if dict.keys.contains("PrivatePoolOptions") {
+            var model = PrivatePoolOptions()
+            model.fromMap(dict["PrivatePoolOptions"] as! [String: Any])
+            self.privatePoolOptions = model
+        }
         if dict.keys.contains("RunningNodeCount") {
             self.runningNodeCount = dict["RunningNodeCount"] as! Int32
         }
@@ -4557,6 +4616,8 @@ public class NodeGroupConfig : Tea.TeaModel {
 
     public var paymentType: String?
 
+    public var privatePoolOptions: PrivatePoolOptions?
+
     public var spotBidPrices: [SpotBidPrice]?
 
     public var spotInstanceRemedy: Bool?
@@ -4583,6 +4644,7 @@ public class NodeGroupConfig : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.autoScalingPolicy?.validate()
         try self.costOptimizedConfig?.validate()
+        try self.privatePoolOptions?.validate()
         try self.subscriptionConfig?.validate()
         try self.systemDisk?.validate()
     }
@@ -4631,6 +4693,9 @@ public class NodeGroupConfig : Tea.TeaModel {
         }
         if self.paymentType != nil {
             map["PaymentType"] = self.paymentType!
+        }
+        if self.privatePoolOptions != nil {
+            map["PrivatePoolOptions"] = self.privatePoolOptions?.toMap()
         }
         if self.spotBidPrices != nil {
             var tmp : [Any] = []
@@ -4711,6 +4776,11 @@ public class NodeGroupConfig : Tea.TeaModel {
         }
         if dict.keys.contains("PaymentType") {
             self.paymentType = dict["PaymentType"] as! String
+        }
+        if dict.keys.contains("PrivatePoolOptions") {
+            var model = PrivatePoolOptions()
+            model.fromMap(dict["PrivatePoolOptions"] as! [String: Any])
+            self.privatePoolOptions = model
         }
         if dict.keys.contains("SpotBidPrices") {
             var tmp : [SpotBidPrice] = []
@@ -5566,6 +5636,44 @@ public class PriceInfo : Tea.TeaModel {
         }
         if dict.keys.contains("TradePrice") {
             self.tradePrice = dict["TradePrice"] as! String
+        }
+    }
+}
+
+public class PrivatePoolOptions : Tea.TeaModel {
+    public var matchCriteria: String?
+
+    public var privatePoolIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.matchCriteria != nil {
+            map["MatchCriteria"] = self.matchCriteria!
+        }
+        if self.privatePoolIds != nil {
+            map["PrivatePoolIds"] = self.privatePoolIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MatchCriteria") {
+            self.matchCriteria = dict["MatchCriteria"] as! String
+        }
+        if dict.keys.contains("PrivatePoolIds") {
+            self.privatePoolIds = dict["PrivatePoolIds"] as! [String]
         }
     }
 }
@@ -8446,6 +8554,8 @@ public class CreateClusterRequest : Tea.TeaModel {
 
     public var clusterType: String?
 
+    public var deletionProtection: Bool?
+
     public var deployMode: String?
 
     public var description_: String?
@@ -8513,6 +8623,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if self.clusterType != nil {
             map["ClusterType"] = self.clusterType!
+        }
+        if self.deletionProtection != nil {
+            map["DeletionProtection"] = self.deletionProtection!
         }
         if self.deployMode != nil {
             map["DeployMode"] = self.deployMode!
@@ -8600,6 +8713,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ClusterType") {
             self.clusterType = dict["ClusterType"] as! String
+        }
+        if dict.keys.contains("DeletionProtection") {
+            self.deletionProtection = dict["DeletionProtection"] as! Bool
         }
         if dict.keys.contains("DeployMode") {
             self.deployMode = dict["DeployMode"] as! String
@@ -9042,6 +9158,10 @@ public class CreateScriptResponse : Tea.TeaModel {
 }
 
 public class DecreaseNodesRequest : Tea.TeaModel {
+    public var batchInterval: Int32?
+
+    public var batchSize: Int32?
+
     public var clusterId: String?
 
     public var decreaseNodeCount: Int32?
@@ -9066,6 +9186,12 @@ public class DecreaseNodesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.batchInterval != nil {
+            map["BatchInterval"] = self.batchInterval!
+        }
+        if self.batchSize != nil {
+            map["BatchSize"] = self.batchSize!
+        }
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
@@ -9085,6 +9211,12 @@ public class DecreaseNodesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BatchInterval") {
+            self.batchInterval = dict["BatchInterval"] as! Int32
+        }
+        if dict.keys.contains("BatchSize") {
+            self.batchSize = dict["BatchSize"] as! Int32
+        }
         if dict.keys.contains("ClusterId") {
             self.clusterId = dict["ClusterId"] as! String
         }
@@ -10920,6 +11052,8 @@ public class GetClusterCloneMetaResponseBody : Tea.TeaModel {
             public class Constraints : Tea.TeaModel {
                 public var maxCapacity: Int32?
 
+                public var maxOnDemandCapacity: Int32?
+
                 public var minCapacity: Int32?
 
                 public override init() {
@@ -10939,6 +11073,9 @@ public class GetClusterCloneMetaResponseBody : Tea.TeaModel {
                     if self.maxCapacity != nil {
                         map["MaxCapacity"] = self.maxCapacity!
                     }
+                    if self.maxOnDemandCapacity != nil {
+                        map["MaxOnDemandCapacity"] = self.maxOnDemandCapacity!
+                    }
                     if self.minCapacity != nil {
                         map["MinCapacity"] = self.minCapacity!
                     }
@@ -10948,6 +11085,9 @@ public class GetClusterCloneMetaResponseBody : Tea.TeaModel {
                 public override func fromMap(_ dict: [String: Any]) -> Void {
                     if dict.keys.contains("MaxCapacity") {
                         self.maxCapacity = dict["MaxCapacity"] as! Int32
+                    }
+                    if dict.keys.contains("MaxOnDemandCapacity") {
+                        self.maxOnDemandCapacity = dict["MaxOnDemandCapacity"] as! Int32
                     }
                     if dict.keys.contains("MinCapacity") {
                         self.minCapacity = dict["MinCapacity"] as! Int32
@@ -11037,6 +11177,8 @@ public class GetClusterCloneMetaResponseBody : Tea.TeaModel {
 
             public var scalingPolicyId: String?
 
+            public var scalingPolicyType: String?
+
             public var scalingRules: [GetClusterCloneMetaResponseBody.ClusterCloneMeta.ScalingPolicies.ScalingRules]?
 
             public override init() {
@@ -11066,6 +11208,9 @@ public class GetClusterCloneMetaResponseBody : Tea.TeaModel {
                 if self.scalingPolicyId != nil {
                     map["ScalingPolicyId"] = self.scalingPolicyId!
                 }
+                if self.scalingPolicyType != nil {
+                    map["ScalingPolicyType"] = self.scalingPolicyType!
+                }
                 if self.scalingRules != nil {
                     var tmp : [Any] = []
                     for k in self.scalingRules! {
@@ -11090,6 +11235,9 @@ public class GetClusterCloneMetaResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ScalingPolicyId") {
                     self.scalingPolicyId = dict["ScalingPolicyId"] as! String
+                }
+                if dict.keys.contains("ScalingPolicyType") {
+                    self.scalingPolicyType = dict["ScalingPolicyType"] as! String
                 }
                 if dict.keys.contains("ScalingRules") {
                     var tmp : [GetClusterCloneMetaResponseBody.ClusterCloneMeta.ScalingPolicies.ScalingRules] = []
@@ -11117,6 +11265,8 @@ public class GetClusterCloneMetaResponseBody : Tea.TeaModel {
         public var clusterState: String?
 
         public var clusterType: String?
+
+        public var deletionProtection: Bool?
 
         public var deployMode: String?
 
@@ -11192,6 +11342,9 @@ public class GetClusterCloneMetaResponseBody : Tea.TeaModel {
             }
             if self.clusterType != nil {
                 map["ClusterType"] = self.clusterType!
+            }
+            if self.deletionProtection != nil {
+                map["DeletionProtection"] = self.deletionProtection!
             }
             if self.deployMode != nil {
                 map["DeployMode"] = self.deployMode!
@@ -11292,6 +11445,9 @@ public class GetClusterCloneMetaResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ClusterType") {
                 self.clusterType = dict["ClusterType"] as! String
+            }
+            if dict.keys.contains("DeletionProtection") {
+                self.deletionProtection = dict["DeletionProtection"] as! Bool
             }
             if dict.keys.contains("DeployMode") {
                 self.deployMode = dict["DeployMode"] as! String
@@ -52634,6 +52790,8 @@ public class RunClusterRequest : Tea.TeaModel {
 
     public var clusterType: String?
 
+    public var deletionProtection: Bool?
+
     public var deployMode: String?
 
     public var description_: String?
@@ -52701,6 +52859,9 @@ public class RunClusterRequest : Tea.TeaModel {
         }
         if self.clusterType != nil {
             map["ClusterType"] = self.clusterType!
+        }
+        if self.deletionProtection != nil {
+            map["DeletionProtection"] = self.deletionProtection!
         }
         if self.deployMode != nil {
             map["DeployMode"] = self.deployMode!
@@ -52789,6 +52950,9 @@ public class RunClusterRequest : Tea.TeaModel {
         if dict.keys.contains("ClusterType") {
             self.clusterType = dict["ClusterType"] as! String
         }
+        if dict.keys.contains("DeletionProtection") {
+            self.deletionProtection = dict["DeletionProtection"] as! Bool
+        }
         if dict.keys.contains("DeployMode") {
             self.deployMode = dict["DeployMode"] as! String
         }
@@ -52858,6 +53022,8 @@ public class RunClusterShrinkRequest : Tea.TeaModel {
 
     public var clusterType: String?
 
+    public var deletionProtection: Bool?
+
     public var deployMode: String?
 
     public var description_: String?
@@ -52911,6 +53077,9 @@ public class RunClusterShrinkRequest : Tea.TeaModel {
         }
         if self.clusterType != nil {
             map["ClusterType"] = self.clusterType!
+        }
+        if self.deletionProtection != nil {
+            map["DeletionProtection"] = self.deletionProtection!
         }
         if self.deployMode != nil {
             map["DeployMode"] = self.deployMode!
@@ -52966,6 +53135,9 @@ public class RunClusterShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ClusterType") {
             self.clusterType = dict["ClusterType"] as! String
+        }
+        if dict.keys.contains("DeletionProtection") {
+            self.deletionProtection = dict["DeletionProtection"] as! Bool
         }
         if dict.keys.contains("DeployMode") {
             self.deployMode = dict["DeployMode"] as! String
