@@ -670,6 +670,8 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
 
         public var clusterName: String?
 
+        public var enableHa: Bool?
+
         public var expireTime: Int64?
 
         public var instanceId: String?
@@ -739,6 +741,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
             }
             if self.clusterName != nil {
                 map["ClusterName"] = self.clusterName!
+            }
+            if self.enableHa != nil {
+                map["EnableHa"] = self.enableHa!
             }
             if self.expireTime != nil {
                 map["ExpireTime"] = self.expireTime!
@@ -817,6 +822,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ClusterName") {
                 self.clusterName = dict["ClusterName"] as! String
+            }
+            if dict.keys.contains("EnableHa") {
+                self.enableHa = dict["EnableHa"] as! Bool
             }
             if dict.keys.contains("ExpireTime") {
                 self.expireTime = dict["ExpireTime"] as! Int64
