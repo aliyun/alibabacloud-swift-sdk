@@ -170,6 +170,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.artifactBuildPropertyShrink)) {
             query["ArtifactBuildProperty"] = request.artifactBuildPropertyShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.artifactBuildType)) {
+            query["ArtifactBuildType"] = request.artifactBuildType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.artifactId)) {
             query["ArtifactId"] = request.artifactId ?? "";
         }

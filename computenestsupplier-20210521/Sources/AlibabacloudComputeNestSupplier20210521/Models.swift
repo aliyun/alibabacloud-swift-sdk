@@ -551,11 +551,109 @@ public class ContinueDeployServiceInstanceResponse : Tea.TeaModel {
 
 public class CreateArtifactRequest : Tea.TeaModel {
     public class ArtifactBuildProperty : Tea.TeaModel {
+        public class BuildArgs : Tea.TeaModel {
+            public var argumentName: String?
+
+            public var argumentValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.argumentName != nil {
+                    map["ArgumentName"] = self.argumentName!
+                }
+                if self.argumentValue != nil {
+                    map["ArgumentValue"] = self.argumentValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ArgumentName") {
+                    self.argumentName = dict["ArgumentName"] as! String
+                }
+                if dict.keys.contains("ArgumentValue") {
+                    self.argumentValue = dict["ArgumentValue"] as! String
+                }
+            }
+        }
+        public class CodeRepo : Tea.TeaModel {
+            public var branch: String?
+
+            public var owner: String?
+
+            public var platform: String?
+
+            public var repoName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.branch != nil {
+                    map["Branch"] = self.branch!
+                }
+                if self.owner != nil {
+                    map["Owner"] = self.owner!
+                }
+                if self.platform != nil {
+                    map["Platform"] = self.platform!
+                }
+                if self.repoName != nil {
+                    map["RepoName"] = self.repoName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Branch") {
+                    self.branch = dict["Branch"] as! String
+                }
+                if dict.keys.contains("Owner") {
+                    self.owner = dict["Owner"] as! String
+                }
+                if dict.keys.contains("Platform") {
+                    self.platform = dict["Platform"] as! String
+                }
+                if dict.keys.contains("RepoName") {
+                    self.repoName = dict["RepoName"] as! String
+                }
+            }
+        }
+        public var buildArgs: [CreateArtifactRequest.ArtifactBuildProperty.BuildArgs]?
+
+        public var codeRepo: CreateArtifactRequest.ArtifactBuildProperty.CodeRepo?
+
         public var commandContent: String?
 
         public var commandType: String?
 
+        public var dockerfilePath: String?
+
         public var regionId: String?
+
+        public var sourceContainerImage: String?
 
         public var sourceImageId: String?
 
@@ -569,18 +667,35 @@ public class CreateArtifactRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.codeRepo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.buildArgs != nil {
+                var tmp : [Any] = []
+                for k in self.buildArgs! {
+                    tmp.append(k.toMap())
+                }
+                map["BuildArgs"] = tmp
+            }
+            if self.codeRepo != nil {
+                map["CodeRepo"] = self.codeRepo?.toMap()
+            }
             if self.commandContent != nil {
                 map["CommandContent"] = self.commandContent!
             }
             if self.commandType != nil {
                 map["CommandType"] = self.commandType!
             }
+            if self.dockerfilePath != nil {
+                map["DockerfilePath"] = self.dockerfilePath!
+            }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
+            }
+            if self.sourceContainerImage != nil {
+                map["SourceContainerImage"] = self.sourceContainerImage!
             }
             if self.sourceImageId != nil {
                 map["SourceImageId"] = self.sourceImageId!
@@ -589,14 +704,36 @@ public class CreateArtifactRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BuildArgs") {
+                var tmp : [CreateArtifactRequest.ArtifactBuildProperty.BuildArgs] = []
+                for v in dict["BuildArgs"] as! [Any] {
+                    var model = CreateArtifactRequest.ArtifactBuildProperty.BuildArgs()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.buildArgs = tmp
+            }
+            if dict.keys.contains("CodeRepo") {
+                var model = CreateArtifactRequest.ArtifactBuildProperty.CodeRepo()
+                model.fromMap(dict["CodeRepo"] as! [String: Any])
+                self.codeRepo = model
+            }
             if dict.keys.contains("CommandContent") {
                 self.commandContent = dict["CommandContent"] as! String
             }
             if dict.keys.contains("CommandType") {
                 self.commandType = dict["CommandType"] as! String
             }
+            if dict.keys.contains("DockerfilePath") {
+                self.dockerfilePath = dict["DockerfilePath"] as! String
+            }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("SourceContainerImage") {
+                self.sourceContainerImage = dict["SourceContainerImage"] as! String
             }
             if dict.keys.contains("SourceImageId") {
                 self.sourceImageId = dict["SourceImageId"] as! String
@@ -751,6 +888,8 @@ public class CreateArtifactRequest : Tea.TeaModel {
     }
     public var artifactBuildProperty: CreateArtifactRequest.ArtifactBuildProperty?
 
+    public var artifactBuildType: String?
+
     public var artifactId: String?
 
     public var artifactProperty: CreateArtifactRequest.ArtifactProperty?
@@ -787,6 +926,9 @@ public class CreateArtifactRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.artifactBuildProperty != nil {
             map["ArtifactBuildProperty"] = self.artifactBuildProperty?.toMap()
+        }
+        if self.artifactBuildType != nil {
+            map["ArtifactBuildType"] = self.artifactBuildType!
         }
         if self.artifactId != nil {
             map["ArtifactId"] = self.artifactId!
@@ -827,6 +969,9 @@ public class CreateArtifactRequest : Tea.TeaModel {
             var model = CreateArtifactRequest.ArtifactBuildProperty()
             model.fromMap(dict["ArtifactBuildProperty"] as! [String: Any])
             self.artifactBuildProperty = model
+        }
+        if dict.keys.contains("ArtifactBuildType") {
+            self.artifactBuildType = dict["ArtifactBuildType"] as! String
         }
         if dict.keys.contains("ArtifactId") {
             self.artifactId = dict["ArtifactId"] as! String
@@ -908,6 +1053,8 @@ public class CreateArtifactShrinkRequest : Tea.TeaModel {
     }
     public var artifactBuildPropertyShrink: String?
 
+    public var artifactBuildType: String?
+
     public var artifactId: String?
 
     public var artifactPropertyShrink: String?
@@ -942,6 +1089,9 @@ public class CreateArtifactShrinkRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.artifactBuildPropertyShrink != nil {
             map["ArtifactBuildProperty"] = self.artifactBuildPropertyShrink!
+        }
+        if self.artifactBuildType != nil {
+            map["ArtifactBuildType"] = self.artifactBuildType!
         }
         if self.artifactId != nil {
             map["ArtifactId"] = self.artifactId!
@@ -980,6 +1130,9 @@ public class CreateArtifactShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ArtifactBuildProperty") {
             self.artifactBuildPropertyShrink = dict["ArtifactBuildProperty"] as! String
+        }
+        if dict.keys.contains("ArtifactBuildType") {
+            self.artifactBuildType = dict["ArtifactBuildType"] as! String
         }
         if dict.keys.contains("ArtifactId") {
             self.artifactId = dict["ArtifactId"] as! String
@@ -1021,6 +1174,8 @@ public class CreateArtifactShrinkRequest : Tea.TeaModel {
 
 public class CreateArtifactResponseBody : Tea.TeaModel {
     public var artifactBuildProperty: String?
+
+    public var artifactBuildType: String?
 
     public var artifactId: String?
 
@@ -1064,6 +1219,9 @@ public class CreateArtifactResponseBody : Tea.TeaModel {
         var map = super.toMap()
         if self.artifactBuildProperty != nil {
             map["ArtifactBuildProperty"] = self.artifactBuildProperty!
+        }
+        if self.artifactBuildType != nil {
+            map["ArtifactBuildType"] = self.artifactBuildType!
         }
         if self.artifactId != nil {
             map["ArtifactId"] = self.artifactId!
@@ -1110,6 +1268,9 @@ public class CreateArtifactResponseBody : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ArtifactBuildProperty") {
             self.artifactBuildProperty = dict["ArtifactBuildProperty"] as! String
+        }
+        if dict.keys.contains("ArtifactBuildType") {
+            self.artifactBuildType = dict["ArtifactBuildType"] as! String
         }
         if dict.keys.contains("ArtifactId") {
             self.artifactId = dict["ArtifactId"] as! String
@@ -3594,6 +3755,8 @@ public class GetArtifactResponseBody : Tea.TeaModel {
     }
     public var artifactBuildProperty: String?
 
+    public var artifactBuildType: String?
+
     public var artifactId: String?
 
     public var artifactProperty: String?
@@ -3642,6 +3805,9 @@ public class GetArtifactResponseBody : Tea.TeaModel {
         var map = super.toMap()
         if self.artifactBuildProperty != nil {
             map["ArtifactBuildProperty"] = self.artifactBuildProperty!
+        }
+        if self.artifactBuildType != nil {
+            map["ArtifactBuildType"] = self.artifactBuildType!
         }
         if self.artifactId != nil {
             map["ArtifactId"] = self.artifactId!
@@ -3701,6 +3867,9 @@ public class GetArtifactResponseBody : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ArtifactBuildProperty") {
             self.artifactBuildProperty = dict["ArtifactBuildProperty"] as! String
+        }
+        if dict.keys.contains("ArtifactBuildType") {
+            self.artifactBuildType = dict["ArtifactBuildType"] as! String
         }
         if dict.keys.contains("ArtifactId") {
             self.artifactId = dict["ArtifactId"] as! String
@@ -8431,6 +8600,8 @@ public class ListArtifactVersionsResponseBody : Tea.TeaModel {
     public class Artifacts : Tea.TeaModel {
         public var artifactBuildProperty: String?
 
+        public var artifactBuildType: String?
+
         public var artifactId: String?
 
         public var artifactProperty: String?
@@ -8475,6 +8646,9 @@ public class ListArtifactVersionsResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.artifactBuildProperty != nil {
                 map["ArtifactBuildProperty"] = self.artifactBuildProperty!
+            }
+            if self.artifactBuildType != nil {
+                map["ArtifactBuildType"] = self.artifactBuildType!
             }
             if self.artifactId != nil {
                 map["ArtifactId"] = self.artifactId!
@@ -8524,6 +8698,9 @@ public class ListArtifactVersionsResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("ArtifactBuildProperty") {
                 self.artifactBuildProperty = dict["ArtifactBuildProperty"] as! String
+            }
+            if dict.keys.contains("ArtifactBuildType") {
+                self.artifactBuildType = dict["ArtifactBuildType"] as! String
             }
             if dict.keys.contains("ArtifactId") {
                 self.artifactId = dict["ArtifactId"] as! String
@@ -12751,11 +12928,109 @@ public class StopServiceInstanceResponse : Tea.TeaModel {
 
 public class UpdateArtifactRequest : Tea.TeaModel {
     public class ArtifactBuildProperty : Tea.TeaModel {
+        public class BuildArgs : Tea.TeaModel {
+            public var argumentName: String?
+
+            public var argumentValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.argumentName != nil {
+                    map["ArgumentName"] = self.argumentName!
+                }
+                if self.argumentValue != nil {
+                    map["ArgumentValue"] = self.argumentValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ArgumentName") {
+                    self.argumentName = dict["ArgumentName"] as! String
+                }
+                if dict.keys.contains("ArgumentValue") {
+                    self.argumentValue = dict["ArgumentValue"] as! String
+                }
+            }
+        }
+        public class CodeRepo : Tea.TeaModel {
+            public var branch: String?
+
+            public var owner: String?
+
+            public var platform: String?
+
+            public var repoName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.branch != nil {
+                    map["Branch"] = self.branch!
+                }
+                if self.owner != nil {
+                    map["Owner"] = self.owner!
+                }
+                if self.platform != nil {
+                    map["Platform"] = self.platform!
+                }
+                if self.repoName != nil {
+                    map["RepoName"] = self.repoName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Branch") {
+                    self.branch = dict["Branch"] as! String
+                }
+                if dict.keys.contains("Owner") {
+                    self.owner = dict["Owner"] as! String
+                }
+                if dict.keys.contains("Platform") {
+                    self.platform = dict["Platform"] as! String
+                }
+                if dict.keys.contains("RepoName") {
+                    self.repoName = dict["RepoName"] as! String
+                }
+            }
+        }
+        public var buildArgs: [UpdateArtifactRequest.ArtifactBuildProperty.BuildArgs]?
+
+        public var codeRepo: UpdateArtifactRequest.ArtifactBuildProperty.CodeRepo?
+
         public var commandContent: String?
 
         public var commandType: String?
 
+        public var dockerfilePath: String?
+
         public var regionId: String?
+
+        public var sourceContainerImage: String?
 
         public var sourceImageId: String?
 
@@ -12769,18 +13044,35 @@ public class UpdateArtifactRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.codeRepo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.buildArgs != nil {
+                var tmp : [Any] = []
+                for k in self.buildArgs! {
+                    tmp.append(k.toMap())
+                }
+                map["BuildArgs"] = tmp
+            }
+            if self.codeRepo != nil {
+                map["CodeRepo"] = self.codeRepo?.toMap()
+            }
             if self.commandContent != nil {
                 map["CommandContent"] = self.commandContent!
             }
             if self.commandType != nil {
                 map["CommandType"] = self.commandType!
             }
+            if self.dockerfilePath != nil {
+                map["DockerfilePath"] = self.dockerfilePath!
+            }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
+            }
+            if self.sourceContainerImage != nil {
+                map["SourceContainerImage"] = self.sourceContainerImage!
             }
             if self.sourceImageId != nil {
                 map["SourceImageId"] = self.sourceImageId!
@@ -12789,14 +13081,36 @@ public class UpdateArtifactRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BuildArgs") {
+                var tmp : [UpdateArtifactRequest.ArtifactBuildProperty.BuildArgs] = []
+                for v in dict["BuildArgs"] as! [Any] {
+                    var model = UpdateArtifactRequest.ArtifactBuildProperty.BuildArgs()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.buildArgs = tmp
+            }
+            if dict.keys.contains("CodeRepo") {
+                var model = UpdateArtifactRequest.ArtifactBuildProperty.CodeRepo()
+                model.fromMap(dict["CodeRepo"] as! [String: Any])
+                self.codeRepo = model
+            }
             if dict.keys.contains("CommandContent") {
                 self.commandContent = dict["CommandContent"] as! String
             }
             if dict.keys.contains("CommandType") {
                 self.commandType = dict["CommandType"] as! String
             }
+            if dict.keys.contains("DockerfilePath") {
+                self.dockerfilePath = dict["DockerfilePath"] as! String
+            }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("SourceContainerImage") {
+                self.sourceContainerImage = dict["SourceContainerImage"] as! String
             }
             if dict.keys.contains("SourceImageId") {
                 self.sourceImageId = dict["SourceImageId"] as! String
@@ -13060,6 +13374,8 @@ public class UpdateArtifactShrinkRequest : Tea.TeaModel {
 public class UpdateArtifactResponseBody : Tea.TeaModel {
     public var artifactBuildProperty: String?
 
+    public var artifactBuildType: String?
+
     public var artifactId: String?
 
     public var artifactProperty: String?
@@ -13075,6 +13391,8 @@ public class UpdateArtifactResponseBody : Tea.TeaModel {
     public var requestId: String?
 
     public var status: String?
+
+    public var statusDetail: String?
 
     public var supportRegionIds: String?
 
@@ -13096,6 +13414,9 @@ public class UpdateArtifactResponseBody : Tea.TeaModel {
         var map = super.toMap()
         if self.artifactBuildProperty != nil {
             map["ArtifactBuildProperty"] = self.artifactBuildProperty!
+        }
+        if self.artifactBuildType != nil {
+            map["ArtifactBuildType"] = self.artifactBuildType!
         }
         if self.artifactId != nil {
             map["ArtifactId"] = self.artifactId!
@@ -13121,6 +13442,9 @@ public class UpdateArtifactResponseBody : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.statusDetail != nil {
+            map["StatusDetail"] = self.statusDetail!
+        }
         if self.supportRegionIds != nil {
             map["SupportRegionIds"] = self.supportRegionIds!
         }
@@ -13133,6 +13457,9 @@ public class UpdateArtifactResponseBody : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ArtifactBuildProperty") {
             self.artifactBuildProperty = dict["ArtifactBuildProperty"] as! String
+        }
+        if dict.keys.contains("ArtifactBuildType") {
+            self.artifactBuildType = dict["ArtifactBuildType"] as! String
         }
         if dict.keys.contains("ArtifactId") {
             self.artifactId = dict["ArtifactId"] as! String
@@ -13157,6 +13484,9 @@ public class UpdateArtifactResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("StatusDetail") {
+            self.statusDetail = dict["StatusDetail"] as! String
         }
         if dict.keys.contains("SupportRegionIds") {
             self.supportRegionIds = dict["SupportRegionIds"] as! String
