@@ -15072,6 +15072,8 @@ public class DescribeCloudDriveGroupsResponseBody : Tea.TeaModel {
 
         public var orgId: String?
 
+        public var recycleBinSize: String?
+
         public var status: String?
 
         public var totalSize: Int64?
@@ -15120,6 +15122,9 @@ public class DescribeCloudDriveGroupsResponseBody : Tea.TeaModel {
             if self.orgId != nil {
                 map["OrgId"] = self.orgId!
             }
+            if self.recycleBinSize != nil {
+                map["RecycleBinSize"] = self.recycleBinSize!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -15164,6 +15169,9 @@ public class DescribeCloudDriveGroupsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("OrgId") {
                 self.orgId = dict["OrgId"] as! String
+            }
+            if dict.keys.contains("RecycleBinSize") {
+                self.recycleBinSize = dict["RecycleBinSize"] as! String
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
