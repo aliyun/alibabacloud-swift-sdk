@@ -16630,7 +16630,17 @@ public class DescribeEciScalingConfigurationsResponse : Tea.TeaModel {
 }
 
 public class DescribeElasticStrengthRequest : Tea.TeaModel {
+    public var dataDiskCategories: [String]?
+
+    public var imageFamily: String?
+
+    public var imageId: String?
+
+    public var imageName: String?
+
     public var instanceTypes: [String]?
+
+    public var ipv6AddressCount: Int32?
 
     public var priorityStrategy: String?
 
@@ -16640,7 +16650,11 @@ public class DescribeElasticStrengthRequest : Tea.TeaModel {
 
     public var scalingGroupIds: [String]?
 
+    public var spotStrategy: String?
+
     public var systemDiskCategories: [String]?
+
+    public var vSwitchIds: [String]?
 
     public override init() {
         super.init()
@@ -16656,8 +16670,23 @@ public class DescribeElasticStrengthRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dataDiskCategories != nil {
+            map["DataDiskCategories"] = self.dataDiskCategories!
+        }
+        if self.imageFamily != nil {
+            map["ImageFamily"] = self.imageFamily!
+        }
+        if self.imageId != nil {
+            map["ImageId"] = self.imageId!
+        }
+        if self.imageName != nil {
+            map["ImageName"] = self.imageName!
+        }
         if self.instanceTypes != nil {
             map["InstanceTypes"] = self.instanceTypes!
+        }
+        if self.ipv6AddressCount != nil {
+            map["Ipv6AddressCount"] = self.ipv6AddressCount!
         }
         if self.priorityStrategy != nil {
             map["PriorityStrategy"] = self.priorityStrategy!
@@ -16671,15 +16700,36 @@ public class DescribeElasticStrengthRequest : Tea.TeaModel {
         if self.scalingGroupIds != nil {
             map["ScalingGroupIds"] = self.scalingGroupIds!
         }
+        if self.spotStrategy != nil {
+            map["SpotStrategy"] = self.spotStrategy!
+        }
         if self.systemDiskCategories != nil {
             map["SystemDiskCategories"] = self.systemDiskCategories!
+        }
+        if self.vSwitchIds != nil {
+            map["VSwitchIds"] = self.vSwitchIds!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DataDiskCategories") {
+            self.dataDiskCategories = dict["DataDiskCategories"] as! [String]
+        }
+        if dict.keys.contains("ImageFamily") {
+            self.imageFamily = dict["ImageFamily"] as! String
+        }
+        if dict.keys.contains("ImageId") {
+            self.imageId = dict["ImageId"] as! String
+        }
+        if dict.keys.contains("ImageName") {
+            self.imageName = dict["ImageName"] as! String
+        }
         if dict.keys.contains("InstanceTypes") {
             self.instanceTypes = dict["InstanceTypes"] as! [String]
+        }
+        if dict.keys.contains("Ipv6AddressCount") {
+            self.ipv6AddressCount = dict["Ipv6AddressCount"] as! Int32
         }
         if dict.keys.contains("PriorityStrategy") {
             self.priorityStrategy = dict["PriorityStrategy"] as! String
@@ -16693,8 +16743,14 @@ public class DescribeElasticStrengthRequest : Tea.TeaModel {
         if dict.keys.contains("ScalingGroupIds") {
             self.scalingGroupIds = dict["ScalingGroupIds"] as! [String]
         }
+        if dict.keys.contains("SpotStrategy") {
+            self.spotStrategy = dict["SpotStrategy"] as! String
+        }
         if dict.keys.contains("SystemDiskCategories") {
             self.systemDiskCategories = dict["SystemDiskCategories"] as! [String]
+        }
+        if dict.keys.contains("VSwitchIds") {
+            self.vSwitchIds = dict["VSwitchIds"] as! [String]
         }
     }
 }
