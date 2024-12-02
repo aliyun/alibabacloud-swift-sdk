@@ -51828,6 +51828,8 @@ public class DescribeRCClusterNodesResponse : Tea.TeaModel {
 public class DescribeRCClustersRequest : Tea.TeaModel {
     public var regionId: String?
 
+    public var vpcId: String?
+
     public override init() {
         super.init()
     }
@@ -51845,6 +51847,9 @@ public class DescribeRCClustersRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
         return map
     }
 
@@ -51852,16 +51857,23 @@ public class DescribeRCClustersRequest : Tea.TeaModel {
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
         }
+        if dict.keys.contains("VpcId") {
+            self.vpcId = dict["VpcId"] as! String
+        }
     }
 }
 
 public class DescribeRCClustersResponseBody : Tea.TeaModel {
     public class Clusters : Tea.TeaModel {
+        public var clusterId: String?
+
         public var clusterName: String?
 
         public var createTime: String?
 
         public var status: String?
+
+        public var vpcId: String?
 
         public override init() {
             super.init()
@@ -51877,6 +51889,9 @@ public class DescribeRCClustersResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.clusterId != nil {
+                map["ClusterId"] = self.clusterId!
+            }
             if self.clusterName != nil {
                 map["ClusterName"] = self.clusterName!
             }
@@ -51886,10 +51901,16 @@ public class DescribeRCClustersResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.vpcId != nil {
+                map["VpcId"] = self.vpcId!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ClusterId") {
+                self.clusterId = dict["ClusterId"] as! String
+            }
             if dict.keys.contains("ClusterName") {
                 self.clusterName = dict["ClusterName"] as! String
             }
@@ -51898,6 +51919,9 @@ public class DescribeRCClustersResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("VpcId") {
+                self.vpcId = dict["VpcId"] as! String
             }
         }
     }
