@@ -2032,6 +2032,8 @@ public class CreateDBClusterRequest : Tea.TeaModel {
 
     public var tag: [CreateDBClusterRequest.Tag]?
 
+    public var targetMinorVersion: String?
+
     public var usedTime: String?
 
     public var VPCId: String?
@@ -2211,6 +2213,9 @@ public class CreateDBClusterRequest : Tea.TeaModel {
             }
             map["Tag"] = tmp
         }
+        if self.targetMinorVersion != nil {
+            map["TargetMinorVersion"] = self.targetMinorVersion!
+        }
         if self.usedTime != nil {
             map["UsedTime"] = self.usedTime!
         }
@@ -2387,6 +2392,9 @@ public class CreateDBClusterRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.tag = tmp
+        }
+        if dict.keys.contains("TargetMinorVersion") {
+            self.targetMinorVersion = dict["TargetMinorVersion"] as! String
         }
         if dict.keys.contains("UsedTime") {
             self.usedTime = dict["UsedTime"] as! String

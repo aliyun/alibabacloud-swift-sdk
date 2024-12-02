@@ -768,6 +768,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.tag)) {
             query["Tag"] = request.tag ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.targetMinorVersion)) {
+            query["TargetMinorVersion"] = request.targetMinorVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.usedTime)) {
             query["UsedTime"] = request.usedTime ?? "";
         }
