@@ -9819,6 +9819,8 @@ public class CreateSnapshotResponse : Tea.TeaModel {
 public class CreateSnatEntryRequest : Tea.TeaModel {
     public var idleTimeout: Int32?
 
+    public var ispAffinity: Bool?
+
     public var natGatewayId: String?
 
     public var snatEntryName: String?
@@ -9850,6 +9852,9 @@ public class CreateSnatEntryRequest : Tea.TeaModel {
         if self.idleTimeout != nil {
             map["IdleTimeout"] = self.idleTimeout!
         }
+        if self.ispAffinity != nil {
+            map["IspAffinity"] = self.ispAffinity!
+        }
         if self.natGatewayId != nil {
             map["NatGatewayId"] = self.natGatewayId!
         }
@@ -9877,6 +9882,9 @@ public class CreateSnatEntryRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("IdleTimeout") {
             self.idleTimeout = dict["IdleTimeout"] as! Int32
+        }
+        if dict.keys.contains("IspAffinity") {
+            self.ispAffinity = dict["IspAffinity"] as! Bool
         }
         if dict.keys.contains("NatGatewayId") {
             self.natGatewayId = dict["NatGatewayId"] as! String
@@ -31814,6 +31822,8 @@ public class DescribeInstancesRequest : Tea.TeaModel {
 
     public var securityGroupId: String?
 
+    public var serviceStatus: [String]?
+
     public var status: String?
 
     public var tags: [DescribeInstancesRequest.Tags]?
@@ -31882,6 +31892,9 @@ public class DescribeInstancesRequest : Tea.TeaModel {
         if self.securityGroupId != nil {
             map["SecurityGroupId"] = self.securityGroupId!
         }
+        if self.serviceStatus != nil {
+            map["ServiceStatus"] = self.serviceStatus!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -31947,6 +31960,9 @@ public class DescribeInstancesRequest : Tea.TeaModel {
         if dict.keys.contains("SecurityGroupId") {
             self.securityGroupId = dict["SecurityGroupId"] as! String
         }
+        if dict.keys.contains("ServiceStatus") {
+            self.serviceStatus = dict["ServiceStatus"] as! [String]
+        }
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! String
         }
@@ -31999,6 +32015,8 @@ public class DescribeInstancesShrinkRequest : Tea.TeaModel {
     public var searchKey: String?
 
     public var securityGroupId: String?
+
+    public var serviceStatusShrink: String?
 
     public var status: String?
 
@@ -32068,6 +32086,9 @@ public class DescribeInstancesShrinkRequest : Tea.TeaModel {
         if self.securityGroupId != nil {
             map["SecurityGroupId"] = self.securityGroupId!
         }
+        if self.serviceStatusShrink != nil {
+            map["ServiceStatus"] = self.serviceStatusShrink!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -32128,6 +32149,9 @@ public class DescribeInstancesShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityGroupId") {
             self.securityGroupId = dict["SecurityGroupId"] as! String
+        }
+        if dict.keys.contains("ServiceStatus") {
+            self.serviceStatusShrink = dict["ServiceStatus"] as! String
         }
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! String
@@ -33123,6 +33147,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
             public var securityGroupIds: DescribeInstancesResponseBody.Instances.Instance.SecurityGroupIds?
 
+            public var serviceStatus: String?
+
             public var specName: String?
 
             public var spotStrategy: String?
@@ -33231,6 +33257,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 }
                 if self.securityGroupIds != nil {
                     map["SecurityGroupIds"] = self.securityGroupIds?.toMap()
+                }
+                if self.serviceStatus != nil {
+                    map["ServiceStatus"] = self.serviceStatus!
                 }
                 if self.specName != nil {
                     map["SpecName"] = self.specName!
@@ -33341,6 +33370,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                     var model = DescribeInstancesResponseBody.Instances.Instance.SecurityGroupIds()
                     model.fromMap(dict["SecurityGroupIds"] as! [String: Any])
                     self.securityGroupIds = model
+                }
+                if dict.keys.contains("ServiceStatus") {
+                    self.serviceStatus = dict["ServiceStatus"] as! String
                 }
                 if dict.keys.contains("SpecName") {
                     self.specName = dict["SpecName"] as! String
@@ -48216,6 +48248,8 @@ public class DescribeSnatAttributeResponseBody : Tea.TeaModel {
 
     public var idleTimeout: Int32?
 
+    public var ispAffinity: Bool?
+
     public var natGatewayId: String?
 
     public var requestId: String?
@@ -48260,6 +48294,9 @@ public class DescribeSnatAttributeResponseBody : Tea.TeaModel {
         }
         if self.idleTimeout != nil {
             map["IdleTimeout"] = self.idleTimeout!
+        }
+        if self.ispAffinity != nil {
+            map["IspAffinity"] = self.ispAffinity!
         }
         if self.natGatewayId != nil {
             map["NatGatewayId"] = self.natGatewayId!
@@ -48310,6 +48347,9 @@ public class DescribeSnatAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("IdleTimeout") {
             self.idleTimeout = dict["IdleTimeout"] as! Int32
+        }
+        if dict.keys.contains("IspAffinity") {
+            self.ispAffinity = dict["IspAffinity"] as! Bool
         }
         if dict.keys.contains("NatGatewayId") {
             self.natGatewayId = dict["NatGatewayId"] as! String
@@ -48486,6 +48526,8 @@ public class DescribeSnatTableEntriesResponseBody : Tea.TeaModel {
     public class SnatTableEntries : Tea.TeaModel {
         public var idleTimeout: Int32?
 
+        public var ispAffinity: Bool?
+
         public var natGatewayId: String?
 
         public var snatEntryId: String?
@@ -48519,6 +48561,9 @@ public class DescribeSnatTableEntriesResponseBody : Tea.TeaModel {
             if self.idleTimeout != nil {
                 map["IdleTimeout"] = self.idleTimeout!
             }
+            if self.ispAffinity != nil {
+                map["IspAffinity"] = self.ispAffinity!
+            }
             if self.natGatewayId != nil {
                 map["NatGatewayId"] = self.natGatewayId!
             }
@@ -48549,6 +48594,9 @@ public class DescribeSnatTableEntriesResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("IdleTimeout") {
                 self.idleTimeout = dict["IdleTimeout"] as! Int32
+            }
+            if dict.keys.contains("IspAffinity") {
+                self.ispAffinity = dict["IspAffinity"] as! Bool
             }
             if dict.keys.contains("NatGatewayId") {
                 self.natGatewayId = dict["NatGatewayId"] as! String
@@ -56391,6 +56439,131 @@ public class ModifySnapshotAttributeResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ModifySnapshotAttributeResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ModifySnatEntryRequest : Tea.TeaModel {
+    public var ispAffinity: Bool?
+
+    public var snatEntryId: String?
+
+    public var snatEntryName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ispAffinity != nil {
+            map["IspAffinity"] = self.ispAffinity!
+        }
+        if self.snatEntryId != nil {
+            map["SnatEntryId"] = self.snatEntryId!
+        }
+        if self.snatEntryName != nil {
+            map["SnatEntryName"] = self.snatEntryName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("IspAffinity") {
+            self.ispAffinity = dict["IspAffinity"] as! Bool
+        }
+        if dict.keys.contains("SnatEntryId") {
+            self.snatEntryId = dict["SnatEntryId"] as! String
+        }
+        if dict.keys.contains("SnatEntryName") {
+            self.snatEntryName = dict["SnatEntryName"] as! String
+        }
+    }
+}
+
+public class ModifySnatEntryResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ModifySnatEntryResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifySnatEntryResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ModifySnatEntryResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

@@ -2212,6 +2212,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.idleTimeout)) {
             query["IdleTimeout"] = request.idleTimeout!;
         }
+        if (!TeaUtils.Client.isUnset(request.ispAffinity)) {
+            query["IspAffinity"] = request.ispAffinity!;
+        }
         if (!TeaUtils.Client.isUnset(request.natGatewayId)) {
             query["NatGatewayId"] = request.natGatewayId ?? "";
         }
@@ -5451,6 +5454,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: DescribeInstancesShrinkRequest = DescribeInstancesShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.serviceStatus)) {
+            request.serviceStatusShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.serviceStatus, "ServiceStatus", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.tags)) {
             request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "Tags", "json")
         }
@@ -5502,6 +5508,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.securityGroupId)) {
             query["SecurityGroupId"] = request.securityGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceStatusShrink)) {
+            query["ServiceStatus"] = request.serviceStatusShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["Status"] = request.status ?? "";
@@ -8501,6 +8510,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifySnapshotAttribute(_ request: ModifySnapshotAttributeRequest) async throws -> ModifySnapshotAttributeResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifySnapshotAttributeWithOptions(request as! ModifySnapshotAttributeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifySnatEntryWithOptions(_ request: ModifySnatEntryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifySnatEntryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ispAffinity)) {
+            query["IspAffinity"] = request.ispAffinity!;
+        }
+        if (!TeaUtils.Client.isUnset(request.snatEntryId)) {
+            query["SnatEntryId"] = request.snatEntryId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.snatEntryName)) {
+            query["SnatEntryName"] = request.snatEntryName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifySnatEntry",
+            "version": "2017-11-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifySnatEntryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifySnatEntry(_ request: ModifySnatEntryRequest) async throws -> ModifySnatEntryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifySnatEntryWithOptions(request as! ModifySnatEntryRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
