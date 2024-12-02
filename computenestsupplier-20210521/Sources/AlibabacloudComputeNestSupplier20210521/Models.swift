@@ -5201,15 +5201,11 @@ public class GetServiceResponseBody : Tea.TeaModel {
 
     public var commodity: GetServiceResponseBody.Commodity?
 
-    public var commodityCode: String?
-
     public var complianceMetadata: GetServiceResponseBody.ComplianceMetadata?
 
     public var createTime: String?
 
     public var crossRegionConnectionStatus: String?
-
-    public var defaultLicenseDays: Int64?
 
     public var deployMetadata: String?
 
@@ -5228,8 +5224,6 @@ public class GetServiceResponseBody : Tea.TeaModel {
     public var operationMetadata: String?
 
     public var payFromType: String?
-
-    public var payType: String?
 
     public var permission: String?
 
@@ -5250,8 +5244,6 @@ public class GetServiceResponseBody : Tea.TeaModel {
     public var serviceAuditDocumentUrl: String?
 
     public var serviceDiscoverable: String?
-
-    public var serviceDocUrl: String?
 
     public var serviceDocumentInfos: [GetServiceResponseBody.ServiceDocumentInfos]?
 
@@ -5337,9 +5329,6 @@ public class GetServiceResponseBody : Tea.TeaModel {
         if self.commodity != nil {
             map["Commodity"] = self.commodity?.toMap()
         }
-        if self.commodityCode != nil {
-            map["CommodityCode"] = self.commodityCode!
-        }
         if self.complianceMetadata != nil {
             map["ComplianceMetadata"] = self.complianceMetadata?.toMap()
         }
@@ -5348,9 +5337,6 @@ public class GetServiceResponseBody : Tea.TeaModel {
         }
         if self.crossRegionConnectionStatus != nil {
             map["CrossRegionConnectionStatus"] = self.crossRegionConnectionStatus!
-        }
-        if self.defaultLicenseDays != nil {
-            map["DefaultLicenseDays"] = self.defaultLicenseDays!
         }
         if self.deployMetadata != nil {
             map["DeployMetadata"] = self.deployMetadata!
@@ -5378,9 +5364,6 @@ public class GetServiceResponseBody : Tea.TeaModel {
         }
         if self.payFromType != nil {
             map["PayFromType"] = self.payFromType!
-        }
-        if self.payType != nil {
-            map["PayType"] = self.payType!
         }
         if self.permission != nil {
             map["Permission"] = self.permission!
@@ -5411,9 +5394,6 @@ public class GetServiceResponseBody : Tea.TeaModel {
         }
         if self.serviceDiscoverable != nil {
             map["ServiceDiscoverable"] = self.serviceDiscoverable!
-        }
-        if self.serviceDocUrl != nil {
-            map["ServiceDocUrl"] = self.serviceDocUrl!
         }
         if self.serviceDocumentInfos != nil {
             var tmp : [Any] = []
@@ -5526,9 +5506,6 @@ public class GetServiceResponseBody : Tea.TeaModel {
             model.fromMap(dict["Commodity"] as! [String: Any])
             self.commodity = model
         }
-        if dict.keys.contains("CommodityCode") {
-            self.commodityCode = dict["CommodityCode"] as! String
-        }
         if dict.keys.contains("ComplianceMetadata") {
             var model = GetServiceResponseBody.ComplianceMetadata()
             model.fromMap(dict["ComplianceMetadata"] as! [String: Any])
@@ -5539,9 +5516,6 @@ public class GetServiceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("CrossRegionConnectionStatus") {
             self.crossRegionConnectionStatus = dict["CrossRegionConnectionStatus"] as! String
-        }
-        if dict.keys.contains("DefaultLicenseDays") {
-            self.defaultLicenseDays = dict["DefaultLicenseDays"] as! Int64
         }
         if dict.keys.contains("DeployMetadata") {
             self.deployMetadata = dict["DeployMetadata"] as! String
@@ -5569,9 +5543,6 @@ public class GetServiceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("PayFromType") {
             self.payFromType = dict["PayFromType"] as! String
-        }
-        if dict.keys.contains("PayType") {
-            self.payType = dict["PayType"] as! String
         }
         if dict.keys.contains("Permission") {
             self.permission = dict["Permission"] as! String
@@ -5602,9 +5573,6 @@ public class GetServiceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("ServiceDiscoverable") {
             self.serviceDiscoverable = dict["ServiceDiscoverable"] as! String
-        }
-        if dict.keys.contains("ServiceDocUrl") {
-            self.serviceDocUrl = dict["ServiceDocUrl"] as! String
         }
         if dict.keys.contains("ServiceDocumentInfos") {
             var tmp : [GetServiceResponseBody.ServiceDocumentInfos] = []
@@ -6442,6 +6410,43 @@ public class GetServiceInstanceResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class UpgradableServiceInfos : Tea.TeaModel {
+            public var version: String?
+
+            public var versionName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.version != nil {
+                    map["Version"] = self.version!
+                }
+                if self.versionName != nil {
+                    map["VersionName"] = self.versionName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Version") {
+                    self.version = dict["Version"] as! String
+                }
+                if dict.keys.contains("VersionName") {
+                    self.versionName = dict["VersionName"] as! String
+                }
+            }
+        }
         public var deployMetadata: String?
 
         public var deployType: String?
@@ -6463,6 +6468,8 @@ public class GetServiceInstanceResponseBody : Tea.TeaModel {
         public var supplierName: String?
 
         public var supplierUrl: String?
+
+        public var upgradableServiceInfos: [GetServiceInstanceResponseBody.Service.UpgradableServiceInfos]?
 
         public var upgradableServiceVersions: [String]?
 
@@ -6521,6 +6528,13 @@ public class GetServiceInstanceResponseBody : Tea.TeaModel {
             if self.supplierUrl != nil {
                 map["SupplierUrl"] = self.supplierUrl!
             }
+            if self.upgradableServiceInfos != nil {
+                var tmp : [Any] = []
+                for k in self.upgradableServiceInfos! {
+                    tmp.append(k.toMap())
+                }
+                map["UpgradableServiceInfos"] = tmp
+            }
             if self.upgradableServiceVersions != nil {
                 map["UpgradableServiceVersions"] = self.upgradableServiceVersions!
             }
@@ -6574,6 +6588,17 @@ public class GetServiceInstanceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SupplierUrl") {
                 self.supplierUrl = dict["SupplierUrl"] as! String
+            }
+            if dict.keys.contains("UpgradableServiceInfos") {
+                var tmp : [GetServiceInstanceResponseBody.Service.UpgradableServiceInfos] = []
+                for v in dict["UpgradableServiceInfos"] as! [Any] {
+                    var model = GetServiceInstanceResponseBody.Service.UpgradableServiceInfos()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.upgradableServiceInfos = tmp
             }
             if dict.keys.contains("UpgradableServiceVersions") {
                 self.upgradableServiceVersions = dict["UpgradableServiceVersions"] as! [String]
