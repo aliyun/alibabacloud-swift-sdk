@@ -2977,11 +2977,50 @@ public class ConfigInstanceSecurityGroupsResponse : Tea.TeaModel {
 }
 
 public class ConfigInstanceWhiteListRequest : Tea.TeaModel {
+    public class WhiteListPolicies : Tea.TeaModel {
+        public var description_: String?
+
+        public var entry: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.entry != nil {
+                map["Entry"] = self.entry!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("Entry") {
+                self.entry = dict["Entry"] as! String
+            }
+        }
+    }
     public var instanceId: String?
 
     public var regionId: String?
 
     public var whiteList: [String]?
+
+    public var whiteListPolicies: [ConfigInstanceWhiteListRequest.WhiteListPolicies]?
 
     public override init() {
         super.init()
@@ -3006,6 +3045,13 @@ public class ConfigInstanceWhiteListRequest : Tea.TeaModel {
         if self.whiteList != nil {
             map["WhiteList"] = self.whiteList!
         }
+        if self.whiteListPolicies != nil {
+            var tmp : [Any] = []
+            for k in self.whiteListPolicies! {
+                tmp.append(k.toMap())
+            }
+            map["WhiteListPolicies"] = tmp
+        }
         return map
     }
 
@@ -3018,6 +3064,17 @@ public class ConfigInstanceWhiteListRequest : Tea.TeaModel {
         }
         if dict.keys.contains("WhiteList") {
             self.whiteList = dict["WhiteList"] as! [String]
+        }
+        if dict.keys.contains("WhiteListPolicies") {
+            var tmp : [ConfigInstanceWhiteListRequest.WhiteListPolicies] = []
+            for v in dict["WhiteListPolicies"] as! [Any] {
+                var model = ConfigInstanceWhiteListRequest.WhiteListPolicies()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.whiteListPolicies = tmp
         }
     }
 }
@@ -7336,6 +7393,45 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class WhiteListPolicies : Tea.TeaModel {
+            public var description_: String?
+
+            public var entry: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.entry != nil {
+                    map["Entry"] = self.entry!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Description") {
+                    self.description_ = dict["Description"] as! String
+                }
+                if dict.keys.contains("Entry") {
+                    self.entry = dict["Entry"] as! String
+                }
+            }
+        }
+        public var appOperationModule: String?
+
         public var authorizedSecurityGroups: [String]?
 
         public var bandwidth: String?
@@ -7350,6 +7446,10 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
 
         public var expireTime: Int64?
 
+        public var HSMModule: String?
+
+        public var IDaaSModule: String?
+
         public var instanceId: String?
 
         public var instanceStatus: String?
@@ -7357,6 +7457,8 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
         public var internetEndpoint: String?
 
         public var intranetEndpoint: String?
+
+        public var kmsSecretModule: String?
 
         public var licenseCode: String?
 
@@ -7378,11 +7480,19 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
 
         public var publicWhiteList: [String]?
 
+        public var RDModule: String?
+
         public var regionId: String?
 
         public var resourceGroupId: String?
 
+        public var routerRules: [String]?
+
+        public var scriptDeliverModule: String?
+
         public var securityGroupIds: [String]?
+
+        public var slaveVswitchId: String?
 
         public var startTime: Int64?
 
@@ -7393,6 +7503,8 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
         public var vswitchId: String?
 
         public var webTerminalModule: String?
+
+        public var whiteListPolicies: [DescribeInstanceAttributeResponseBody.InstanceAttribute.WhiteListPolicies]?
 
         public override init() {
             super.init()
@@ -7408,6 +7520,9 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.appOperationModule != nil {
+                map["AppOperationModule"] = self.appOperationModule!
+            }
             if self.authorizedSecurityGroups != nil {
                 map["AuthorizedSecurityGroups"] = self.authorizedSecurityGroups!
             }
@@ -7429,6 +7544,12 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
             if self.expireTime != nil {
                 map["ExpireTime"] = self.expireTime!
             }
+            if self.HSMModule != nil {
+                map["HSMModule"] = self.HSMModule!
+            }
+            if self.IDaaSModule != nil {
+                map["IDaaSModule"] = self.IDaaSModule!
+            }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
@@ -7440,6 +7561,9 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if self.intranetEndpoint != nil {
                 map["IntranetEndpoint"] = self.intranetEndpoint!
+            }
+            if self.kmsSecretModule != nil {
+                map["KmsSecretModule"] = self.kmsSecretModule!
             }
             if self.licenseCode != nil {
                 map["LicenseCode"] = self.licenseCode!
@@ -7475,14 +7599,26 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
             if self.publicWhiteList != nil {
                 map["PublicWhiteList"] = self.publicWhiteList!
             }
+            if self.RDModule != nil {
+                map["RDModule"] = self.RDModule!
+            }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
             if self.resourceGroupId != nil {
                 map["ResourceGroupId"] = self.resourceGroupId!
             }
+            if self.routerRules != nil {
+                map["RouterRules"] = self.routerRules!
+            }
+            if self.scriptDeliverModule != nil {
+                map["ScriptDeliverModule"] = self.scriptDeliverModule!
+            }
             if self.securityGroupIds != nil {
                 map["SecurityGroupIds"] = self.securityGroupIds!
+            }
+            if self.slaveVswitchId != nil {
+                map["SlaveVswitchId"] = self.slaveVswitchId!
             }
             if self.startTime != nil {
                 map["StartTime"] = self.startTime!
@@ -7499,10 +7635,20 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
             if self.webTerminalModule != nil {
                 map["WebTerminalModule"] = self.webTerminalModule!
             }
+            if self.whiteListPolicies != nil {
+                var tmp : [Any] = []
+                for k in self.whiteListPolicies! {
+                    tmp.append(k.toMap())
+                }
+                map["WhiteListPolicies"] = tmp
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AppOperationModule") {
+                self.appOperationModule = dict["AppOperationModule"] as! String
+            }
             if dict.keys.contains("AuthorizedSecurityGroups") {
                 self.authorizedSecurityGroups = dict["AuthorizedSecurityGroups"] as! [String]
             }
@@ -7524,6 +7670,12 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
             if dict.keys.contains("ExpireTime") {
                 self.expireTime = dict["ExpireTime"] as! Int64
             }
+            if dict.keys.contains("HSMModule") {
+                self.HSMModule = dict["HSMModule"] as! String
+            }
+            if dict.keys.contains("IDaaSModule") {
+                self.IDaaSModule = dict["IDaaSModule"] as! String
+            }
             if dict.keys.contains("InstanceId") {
                 self.instanceId = dict["InstanceId"] as! String
             }
@@ -7535,6 +7687,9 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("IntranetEndpoint") {
                 self.intranetEndpoint = dict["IntranetEndpoint"] as! String
+            }
+            if dict.keys.contains("KmsSecretModule") {
+                self.kmsSecretModule = dict["KmsSecretModule"] as! String
             }
             if dict.keys.contains("LicenseCode") {
                 self.licenseCode = dict["LicenseCode"] as! String
@@ -7574,14 +7729,26 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
             if dict.keys.contains("PublicWhiteList") {
                 self.publicWhiteList = dict["PublicWhiteList"] as! [String]
             }
+            if dict.keys.contains("RDModule") {
+                self.RDModule = dict["RDModule"] as! String
+            }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
             }
             if dict.keys.contains("ResourceGroupId") {
                 self.resourceGroupId = dict["ResourceGroupId"] as! String
             }
+            if dict.keys.contains("RouterRules") {
+                self.routerRules = dict["RouterRules"] as! [String]
+            }
+            if dict.keys.contains("ScriptDeliverModule") {
+                self.scriptDeliverModule = dict["ScriptDeliverModule"] as! String
+            }
             if dict.keys.contains("SecurityGroupIds") {
                 self.securityGroupIds = dict["SecurityGroupIds"] as! [String]
+            }
+            if dict.keys.contains("SlaveVswitchId") {
+                self.slaveVswitchId = dict["SlaveVswitchId"] as! String
             }
             if dict.keys.contains("StartTime") {
                 self.startTime = dict["StartTime"] as! Int64
@@ -7597,6 +7764,17 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("WebTerminalModule") {
                 self.webTerminalModule = dict["WebTerminalModule"] as! String
+            }
+            if dict.keys.contains("WhiteListPolicies") {
+                var tmp : [DescribeInstanceAttributeResponseBody.InstanceAttribute.WhiteListPolicies] = []
+                for v in dict["WhiteListPolicies"] as! [Any] {
+                    var model = DescribeInstanceAttributeResponseBody.InstanceAttribute.WhiteListPolicies()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.whiteListPolicies = tmp
             }
         }
     }
@@ -7818,6 +7996,8 @@ public class DescribeInstancesRequest : Tea.TeaModel {
 
 public class DescribeInstancesResponseBody : Tea.TeaModel {
     public class Instances : Tea.TeaModel {
+        public var bandWidth: Int64?
+
         public var description_: String?
 
         public var expireTime: Int64?
@@ -7844,6 +8024,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
         public var resourceGroupId: String?
 
+        public var slaveVswitchId: String?
+
         public var startTime: Int64?
 
         public var vpcId: String?
@@ -7864,6 +8046,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.bandWidth != nil {
+                map["BandWidth"] = self.bandWidth!
+            }
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
@@ -7903,6 +8088,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             if self.resourceGroupId != nil {
                 map["ResourceGroupId"] = self.resourceGroupId!
             }
+            if self.slaveVswitchId != nil {
+                map["SlaveVswitchId"] = self.slaveVswitchId!
+            }
             if self.startTime != nil {
                 map["StartTime"] = self.startTime!
             }
@@ -7916,6 +8104,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BandWidth") {
+                self.bandWidth = dict["BandWidth"] as! Int64
+            }
             if dict.keys.contains("Description") {
                 self.description_ = dict["Description"] as! String
             }
@@ -7954,6 +8145,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ResourceGroupId") {
                 self.resourceGroupId = dict["ResourceGroupId"] as! String
+            }
+            if dict.keys.contains("SlaveVswitchId") {
+                self.slaveVswitchId = dict["SlaveVswitchId"] as! String
             }
             if dict.keys.contains("StartTime") {
                 self.startTime = dict["StartTime"] as! Int64
@@ -23158,6 +23352,8 @@ public class ListTagKeysRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var resourceType: String?
 
     public override init() {
@@ -23183,6 +23379,9 @@ public class ListTagKeysRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
         }
@@ -23198,6 +23397,9 @@ public class ListTagKeysRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceType") {
             self.resourceType = dict["ResourceType"] as! String
@@ -23407,6 +23609,8 @@ public class ListTagResourcesRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var resourceId: [String]?
 
     public var resourceType: String?
@@ -23433,6 +23637,9 @@ public class ListTagResourcesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceId != nil {
             map["ResourceId"] = self.resourceId!
         }
@@ -23455,6 +23662,9 @@ public class ListTagResourcesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceId") {
             self.resourceId = dict["ResourceId"] as! [String]
@@ -31505,11 +31715,17 @@ public class SetPolicyUserScopeResponse : Tea.TeaModel {
 }
 
 public class StartInstanceRequest : Tea.TeaModel {
+    public var clientSecurityGroupIds: [String]?
+
+    public var enablePortalPrivateAccess: Bool?
+
     public var instanceId: String?
 
     public var regionId: String?
 
     public var securityGroupIds: [String]?
+
+    public var slaveVswitchId: String?
 
     public var vswitchId: String?
 
@@ -31527,6 +31743,12 @@ public class StartInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientSecurityGroupIds != nil {
+            map["ClientSecurityGroupIds"] = self.clientSecurityGroupIds!
+        }
+        if self.enablePortalPrivateAccess != nil {
+            map["EnablePortalPrivateAccess"] = self.enablePortalPrivateAccess!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -31536,6 +31758,9 @@ public class StartInstanceRequest : Tea.TeaModel {
         if self.securityGroupIds != nil {
             map["SecurityGroupIds"] = self.securityGroupIds!
         }
+        if self.slaveVswitchId != nil {
+            map["SlaveVswitchId"] = self.slaveVswitchId!
+        }
         if self.vswitchId != nil {
             map["VswitchId"] = self.vswitchId!
         }
@@ -31543,6 +31768,12 @@ public class StartInstanceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientSecurityGroupIds") {
+            self.clientSecurityGroupIds = dict["ClientSecurityGroupIds"] as! [String]
+        }
+        if dict.keys.contains("EnablePortalPrivateAccess") {
+            self.enablePortalPrivateAccess = dict["EnablePortalPrivateAccess"] as! Bool
+        }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
         }
@@ -31551,6 +31782,9 @@ public class StartInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityGroupIds") {
             self.securityGroupIds = dict["SecurityGroupIds"] as! [String]
+        }
+        if dict.keys.contains("SlaveVswitchId") {
+            self.slaveVswitchId = dict["SlaveVswitchId"] as! String
         }
         if dict.keys.contains("VswitchId") {
             self.vswitchId = dict["VswitchId"] as! String

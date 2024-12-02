@@ -562,6 +562,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.whiteList)) {
             query["WhiteList"] = request.whiteList ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.whiteListPolicies)) {
+            query["WhiteListPolicies"] = request.whiteListPolicies ?? [];
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -4385,6 +4388,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.resourceType)) {
             query["ResourceType"] = request.resourceType ?? "";
         }
@@ -4421,6 +4427,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceId)) {
             query["ResourceId"] = request.resourceId ?? [];
@@ -6287,6 +6296,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func startInstanceWithOptions(_ request: StartInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StartInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientSecurityGroupIds)) {
+            query["ClientSecurityGroupIds"] = request.clientSecurityGroupIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.enablePortalPrivateAccess)) {
+            query["EnablePortalPrivateAccess"] = request.enablePortalPrivateAccess!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
@@ -6295,6 +6310,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.securityGroupIds)) {
             query["SecurityGroupIds"] = request.securityGroupIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.slaveVswitchId)) {
+            query["SlaveVswitchId"] = request.slaveVswitchId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.vswitchId)) {
             query["VswitchId"] = request.vswitchId ?? "";
