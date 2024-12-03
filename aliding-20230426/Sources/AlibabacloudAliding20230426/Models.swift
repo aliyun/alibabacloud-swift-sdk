@@ -15374,6 +15374,8 @@ public class CreatePersonalTodoTaskRequest : Tea.TeaModel {
 
     public var participantIds: [String]?
 
+    public var reminderTimeStamp: Int64?
+
     public var subject: String?
 
     public var tenantContext: CreatePersonalTodoTaskRequest.TenantContext?
@@ -15409,6 +15411,9 @@ public class CreatePersonalTodoTaskRequest : Tea.TeaModel {
         if self.participantIds != nil {
             map["ParticipantIds"] = self.participantIds!
         }
+        if self.reminderTimeStamp != nil {
+            map["ReminderTimeStamp"] = self.reminderTimeStamp!
+        }
         if self.subject != nil {
             map["Subject"] = self.subject!
         }
@@ -15436,6 +15441,9 @@ public class CreatePersonalTodoTaskRequest : Tea.TeaModel {
         if dict.keys.contains("ParticipantIds") {
             self.participantIds = dict["ParticipantIds"] as! [String]
         }
+        if dict.keys.contains("ReminderTimeStamp") {
+            self.reminderTimeStamp = dict["ReminderTimeStamp"] as! Int64
+        }
         if dict.keys.contains("Subject") {
             self.subject = dict["Subject"] as! String
         }
@@ -15457,6 +15465,8 @@ public class CreatePersonalTodoTaskShrinkRequest : Tea.TeaModel {
     public var notifyConfigsShrink: String?
 
     public var participantIdsShrink: String?
+
+    public var reminderTimeStamp: Int64?
 
     public var subject: String?
 
@@ -15491,6 +15501,9 @@ public class CreatePersonalTodoTaskShrinkRequest : Tea.TeaModel {
         if self.participantIdsShrink != nil {
             map["ParticipantIds"] = self.participantIdsShrink!
         }
+        if self.reminderTimeStamp != nil {
+            map["ReminderTimeStamp"] = self.reminderTimeStamp!
+        }
         if self.subject != nil {
             map["Subject"] = self.subject!
         }
@@ -15515,6 +15528,9 @@ public class CreatePersonalTodoTaskShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ParticipantIds") {
             self.participantIdsShrink = dict["ParticipantIds"] as! String
+        }
+        if dict.keys.contains("ReminderTimeStamp") {
+            self.reminderTimeStamp = dict["ReminderTimeStamp"] as! Int64
         }
         if dict.keys.contains("Subject") {
             self.subject = dict["Subject"] as! String

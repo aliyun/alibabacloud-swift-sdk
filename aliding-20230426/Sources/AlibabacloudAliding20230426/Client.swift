@@ -2132,6 +2132,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.participantIdsShrink)) {
             body["ParticipantIds"] = request.participantIdsShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.reminderTimeStamp)) {
+            body["ReminderTimeStamp"] = request.reminderTimeStamp!;
+        }
         if (!TeaUtils.Client.isUnset(request.subject)) {
             body["Subject"] = request.subject ?? "";
         }
