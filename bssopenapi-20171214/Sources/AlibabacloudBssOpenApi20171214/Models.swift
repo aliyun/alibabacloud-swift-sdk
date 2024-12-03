@@ -2181,6 +2181,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public var period: Int32?
 
+    public var pricingCycle: Int64?
+
     public var productCode: String?
 
     public var productType: String?
@@ -2224,6 +2226,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if self.period != nil {
             map["Period"] = self.period!
         }
+        if self.pricingCycle != nil {
+            map["PricingCycle"] = self.pricingCycle!
+        }
         if self.productCode != nil {
             map["ProductCode"] = self.productCode!
         }
@@ -2265,6 +2270,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Period") {
             self.period = dict["Period"] as! Int32
+        }
+        if dict.keys.contains("PricingCycle") {
+            self.pricingCycle = dict["PricingCycle"] as! Int64
         }
         if dict.keys.contains("ProductCode") {
             self.productCode = dict["ProductCode"] as! String

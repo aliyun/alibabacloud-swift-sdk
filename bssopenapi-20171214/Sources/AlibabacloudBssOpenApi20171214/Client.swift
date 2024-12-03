@@ -519,6 +519,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.period)) {
             query["Period"] = request.period!;
         }
+        if (!TeaUtils.Client.isUnset(request.pricingCycle)) {
+            query["PricingCycle"] = request.pricingCycle!;
+        }
         if (!TeaUtils.Client.isUnset(request.productCode)) {
             query["ProductCode"] = request.productCode ?? "";
         }
