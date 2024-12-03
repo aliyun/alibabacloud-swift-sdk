@@ -5083,6 +5083,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public var ioAccelerationEnabled: String?
 
+    public var optimizedWrites: String?
+
     public var payType: String?
 
     public var period: String?
@@ -5246,6 +5248,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if self.ioAccelerationEnabled != nil {
             map["IoAccelerationEnabled"] = self.ioAccelerationEnabled!
+        }
+        if self.optimizedWrites != nil {
+            map["OptimizedWrites"] = self.optimizedWrites!
         }
         if self.payType != nil {
             map["PayType"] = self.payType!
@@ -5431,6 +5436,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("IoAccelerationEnabled") {
             self.ioAccelerationEnabled = dict["IoAccelerationEnabled"] as! String
+        }
+        if dict.keys.contains("OptimizedWrites") {
+            self.optimizedWrites = dict["OptimizedWrites"] as! String
         }
         if dict.keys.contains("PayType") {
             self.payType = dict["PayType"] as! String
@@ -5629,6 +5637,8 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
 
     public var ioAccelerationEnabled: String?
 
+    public var optimizedWrites: String?
+
     public var payType: String?
 
     public var period: String?
@@ -5791,6 +5801,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if self.ioAccelerationEnabled != nil {
             map["IoAccelerationEnabled"] = self.ioAccelerationEnabled!
+        }
+        if self.optimizedWrites != nil {
+            map["OptimizedWrites"] = self.optimizedWrites!
         }
         if self.payType != nil {
             map["PayType"] = self.payType!
@@ -5976,6 +5989,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("IoAccelerationEnabled") {
             self.ioAccelerationEnabled = dict["IoAccelerationEnabled"] as! String
+        }
+        if dict.keys.contains("OptimizedWrites") {
+            self.optimizedWrites = dict["OptimizedWrites"] as! String
         }
         if dict.keys.contains("PayType") {
             self.payType = dict["PayType"] as! String
@@ -26556,6 +26572,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
             public var multipleTempUpgrade: Bool?
 
+            public var optimizedWritesInfo: String?
+
             public var PGBouncerEnabled: String?
 
             public var payType: String?
@@ -26788,6 +26806,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.multipleTempUpgrade != nil {
                     map["MultipleTempUpgrade"] = self.multipleTempUpgrade!
+                }
+                if self.optimizedWritesInfo != nil {
+                    map["OptimizedWritesInfo"] = self.optimizedWritesInfo!
                 }
                 if self.PGBouncerEnabled != nil {
                     map["PGBouncerEnabled"] = self.PGBouncerEnabled!
@@ -27035,6 +27056,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("MultipleTempUpgrade") {
                     self.multipleTempUpgrade = dict["MultipleTempUpgrade"] as! Bool
+                }
+                if dict.keys.contains("OptimizedWritesInfo") {
+                    self.optimizedWritesInfo = dict["OptimizedWritesInfo"] as! String
                 }
                 if dict.keys.contains("PGBouncerEnabled") {
                     self.PGBouncerEnabled = dict["PGBouncerEnabled"] as! String
@@ -73001,6 +73025,8 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
 
     public var ioAccelerationEnabled: String?
 
+    public var optimizedWrites: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -73089,6 +73115,9 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
         }
         if self.ioAccelerationEnabled != nil {
             map["IoAccelerationEnabled"] = self.ioAccelerationEnabled!
+        }
+        if self.optimizedWrites != nil {
+            map["OptimizedWrites"] = self.optimizedWrites!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -73184,6 +73213,9 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
         if dict.keys.contains("IoAccelerationEnabled") {
             self.ioAccelerationEnabled = dict["IoAccelerationEnabled"] as! String
         }
+        if dict.keys.contains("OptimizedWrites") {
+            self.optimizedWrites = dict["OptimizedWrites"] as! String
+        }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
         }
@@ -73265,6 +73297,8 @@ public class ModifyDBInstanceSpecShrinkRequest : Tea.TeaModel {
     public var engineVersion: String?
 
     public var ioAccelerationEnabled: String?
+
+    public var optimizedWrites: String?
 
     public var ownerAccount: String?
 
@@ -73353,6 +73387,9 @@ public class ModifyDBInstanceSpecShrinkRequest : Tea.TeaModel {
         }
         if self.ioAccelerationEnabled != nil {
             map["IoAccelerationEnabled"] = self.ioAccelerationEnabled!
+        }
+        if self.optimizedWrites != nil {
+            map["OptimizedWrites"] = self.optimizedWrites!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -73447,6 +73484,9 @@ public class ModifyDBInstanceSpecShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("IoAccelerationEnabled") {
             self.ioAccelerationEnabled = dict["IoAccelerationEnabled"] as! String
+        }
+        if dict.keys.contains("OptimizedWrites") {
+            self.optimizedWrites = dict["OptimizedWrites"] as! String
         }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
