@@ -10081,12 +10081,18 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpdateGatewayServiceShrinkRequest = UpdateGatewayServiceShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.dnsServerList)) {
+            request.dnsServerListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dnsServerList, "DnsServerList", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.ipList)) {
             request.ipListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ipList, "IpList", "json")
         }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
             query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dnsServerListShrink)) {
+            query["DnsServerList"] = request.dnsServerListShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.gatewayId)) {
             query["GatewayId"] = request.gatewayId!;

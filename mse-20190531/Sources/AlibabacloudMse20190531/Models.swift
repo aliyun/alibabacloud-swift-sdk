@@ -28558,6 +28558,8 @@ public class GetGatewayServiceDetailResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var dnsServerList: [String]?
+
         public var gatewayId: Int64?
 
         public var gatewayTrafficPolicy: TrafficPolicy?
@@ -28621,6 +28623,9 @@ public class GetGatewayServiceDetailResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.dnsServerList != nil {
+                map["DnsServerList"] = self.dnsServerList!
+            }
             if self.gatewayId != nil {
                 map["GatewayId"] = self.gatewayId!
             }
@@ -28713,6 +28718,9 @@ public class GetGatewayServiceDetailResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DnsServerList") {
+                self.dnsServerList = dict["DnsServerList"] as! [String]
+            }
             if dict.keys.contains("GatewayId") {
                 self.gatewayId = dict["GatewayId"] as! Int64
             }
@@ -31592,6 +31600,8 @@ public class GetPluginConfigResponseBody : Tea.TeaModel {
 
         public var summary: String?
 
+        public var summaryEn: String?
+
         public var type: Int32?
 
         public var version: String?
@@ -31675,6 +31685,9 @@ public class GetPluginConfigResponseBody : Tea.TeaModel {
             if self.summary != nil {
                 map["Summary"] = self.summary!
             }
+            if self.summaryEn != nil {
+                map["SummaryEn"] = self.summaryEn!
+            }
             if self.type != nil {
                 map["Type"] = self.type!
             }
@@ -31755,6 +31768,9 @@ public class GetPluginConfigResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Summary") {
                 self.summary = dict["Summary"] as! String
+            }
+            if dict.keys.contains("SummaryEn") {
+                self.summaryEn = dict["SummaryEn"] as! String
             }
             if dict.keys.contains("Type") {
                 self.type = dict["Type"] as! Int32
@@ -32005,6 +32021,8 @@ public class GetPluginsResponseBody : Tea.TeaModel {
 
         public var summary: String?
 
+        public var summaryEn: String?
+
         public var version: String?
 
         public var wasmFile: String?
@@ -32064,6 +32082,9 @@ public class GetPluginsResponseBody : Tea.TeaModel {
             if self.summary != nil {
                 map["Summary"] = self.summary!
             }
+            if self.summaryEn != nil {
+                map["SummaryEn"] = self.summaryEn!
+            }
             if self.version != nil {
                 map["Version"] = self.version!
             }
@@ -32115,6 +32136,9 @@ public class GetPluginsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Summary") {
                 self.summary = dict["Summary"] as! String
+            }
+            if dict.keys.contains("SummaryEn") {
+                self.summaryEn = dict["SummaryEn"] as! String
             }
             if dict.keys.contains("Version") {
                 self.version = dict["Version"] as! String
@@ -34598,6 +34622,8 @@ public class ImportNacosConfigResponse : Tea.TeaModel {
 
 public class ImportServicesRequest : Tea.TeaModel {
     public class ServiceList : Tea.TeaModel {
+        public var dnsServerList: [String]?
+
         public var groupName: String?
 
         public var ips: [String]?
@@ -34624,6 +34650,9 @@ public class ImportServicesRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.dnsServerList != nil {
+                map["DnsServerList"] = self.dnsServerList!
+            }
             if self.groupName != nil {
                 map["GroupName"] = self.groupName!
             }
@@ -34646,6 +34675,9 @@ public class ImportServicesRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DnsServerList") {
+                self.dnsServerList = dict["DnsServerList"] as! [String]
+            }
             if dict.keys.contains("GroupName") {
                 self.groupName = dict["GroupName"] as! String
             }
@@ -49017,6 +49049,8 @@ public class ListGatewayServiceResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var dnsServerList: [String]?
+
             public var gatewayId: Int64?
 
             public var gatewayTrafficPolicy: ListGatewayServiceResponseBody.Data.Result.GatewayTrafficPolicy?
@@ -49081,6 +49115,9 @@ public class ListGatewayServiceResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.dnsServerList != nil {
+                    map["DnsServerList"] = self.dnsServerList!
+                }
                 if self.gatewayId != nil {
                     map["GatewayId"] = self.gatewayId!
                 }
@@ -49161,6 +49198,9 @@ public class ListGatewayServiceResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DnsServerList") {
+                    self.dnsServerList = dict["DnsServerList"] as! [String]
+                }
                 if dict.keys.contains("GatewayId") {
                     self.gatewayId = dict["GatewayId"] as! Int64
                 }
@@ -72718,6 +72758,8 @@ public class UpdateGatewayRouteWafStatusResponse : Tea.TeaModel {
 public class UpdateGatewayServiceRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
+    public var dnsServerList: [String]?
+
     public var gatewayId: Int64?
 
     public var gatewayUniqueId: String?
@@ -72751,6 +72793,9 @@ public class UpdateGatewayServiceRequest : Tea.TeaModel {
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
         }
+        if self.dnsServerList != nil {
+            map["DnsServerList"] = self.dnsServerList!
+        }
         if self.gatewayId != nil {
             map["GatewayId"] = self.gatewayId!
         }
@@ -72782,6 +72827,9 @@ public class UpdateGatewayServiceRequest : Tea.TeaModel {
         if dict.keys.contains("AcceptLanguage") {
             self.acceptLanguage = dict["AcceptLanguage"] as! String
         }
+        if dict.keys.contains("DnsServerList") {
+            self.dnsServerList = dict["DnsServerList"] as! [String]
+        }
         if dict.keys.contains("GatewayId") {
             self.gatewayId = dict["GatewayId"] as! Int64
         }
@@ -72811,6 +72859,8 @@ public class UpdateGatewayServiceRequest : Tea.TeaModel {
 
 public class UpdateGatewayServiceShrinkRequest : Tea.TeaModel {
     public var acceptLanguage: String?
+
+    public var dnsServerListShrink: String?
 
     public var gatewayId: Int64?
 
@@ -72845,6 +72895,9 @@ public class UpdateGatewayServiceShrinkRequest : Tea.TeaModel {
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
         }
+        if self.dnsServerListShrink != nil {
+            map["DnsServerList"] = self.dnsServerListShrink!
+        }
         if self.gatewayId != nil {
             map["GatewayId"] = self.gatewayId!
         }
@@ -72875,6 +72928,9 @@ public class UpdateGatewayServiceShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AcceptLanguage") {
             self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("DnsServerList") {
+            self.dnsServerListShrink = dict["DnsServerList"] as! String
         }
         if dict.keys.contains("GatewayId") {
             self.gatewayId = dict["GatewayId"] as! Int64
