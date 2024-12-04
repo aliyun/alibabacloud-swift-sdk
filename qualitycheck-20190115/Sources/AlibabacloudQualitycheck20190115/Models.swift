@@ -11442,6 +11442,8 @@ public class GetResultResponseBody : Tea.TeaModel {
 
                     public var schemeVersion: Int64?
 
+                    public var score: Int32?
+
                     public var type: String?
 
                     public override init() {
@@ -11481,6 +11483,9 @@ public class GetResultResponseBody : Tea.TeaModel {
                         if self.schemeVersion != nil {
                             map["SchemeVersion"] = self.schemeVersion!
                         }
+                        if self.score != nil {
+                            map["Score"] = self.score!
+                        }
                         if self.type != nil {
                             map["Type"] = self.type!
                         }
@@ -11512,6 +11517,9 @@ public class GetResultResponseBody : Tea.TeaModel {
                         }
                         if dict.keys.contains("SchemeVersion") {
                             self.schemeVersion = dict["SchemeVersion"] as! Int64
+                        }
+                        if dict.keys.contains("Score") {
+                            self.score = dict["Score"] as! Int32
                         }
                         if dict.keys.contains("Type") {
                             self.type = dict["Type"] as! String
@@ -12364,6 +12372,8 @@ public class GetResultResponseBody : Tea.TeaModel {
 
             public var taskName: String?
 
+            public var vid: String?
+
             public override init() {
                 super.init()
             }
@@ -12465,6 +12475,9 @@ public class GetResultResponseBody : Tea.TeaModel {
                 if self.taskName != nil {
                     map["TaskName"] = self.taskName!
                 }
+                if self.vid != nil {
+                    map["Vid"] = self.vid!
+                }
                 return map
             }
 
@@ -12564,6 +12577,9 @@ public class GetResultResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("TaskName") {
                     self.taskName = dict["TaskName"] as! String
+                }
+                if dict.keys.contains("Vid") {
+                    self.vid = dict["Vid"] as! String
                 }
             }
         }
@@ -12798,6 +12814,8 @@ public class GetResultToReviewResponseBody : Tea.TeaModel {
 
                 public var beginTime: String?
 
+                public var beginTimeMs: Int64?
+
                 public var emotionValue: Int32?
 
                 public var end: Int64?
@@ -12834,6 +12852,9 @@ public class GetResultToReviewResponseBody : Tea.TeaModel {
                     if self.beginTime != nil {
                         map["BeginTime"] = self.beginTime!
                     }
+                    if self.beginTimeMs != nil {
+                        map["BeginTimeMs"] = self.beginTimeMs!
+                    }
                     if self.emotionValue != nil {
                         map["EmotionValue"] = self.emotionValue!
                     }
@@ -12867,6 +12888,9 @@ public class GetResultToReviewResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("BeginTime") {
                         self.beginTime = dict["BeginTime"] as! String
+                    }
+                    if dict.keys.contains("BeginTimeMs") {
+                        self.beginTimeMs = dict["BeginTimeMs"] as! Int64
                     }
                     if dict.keys.contains("EmotionValue") {
                         self.emotionValue = dict["EmotionValue"] as! Int32
