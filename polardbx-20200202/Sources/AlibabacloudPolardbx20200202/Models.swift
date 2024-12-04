@@ -1471,6 +1471,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public var engineVersion: String?
 
+    public var extraParams: [String: String]?
+
     public var isColumnarReadDBInstance: Bool?
 
     public var isReadDBInstance: Bool?
@@ -1548,6 +1550,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if self.engineVersion != nil {
             map["EngineVersion"] = self.engineVersion!
+        }
+        if self.extraParams != nil {
+            map["ExtraParams"] = self.extraParams!
         }
         if self.isColumnarReadDBInstance != nil {
             map["IsColumnarReadDBInstance"] = self.isColumnarReadDBInstance!
@@ -1633,6 +1638,255 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EngineVersion") {
             self.engineVersion = dict["EngineVersion"] as! String
+        }
+        if dict.keys.contains("ExtraParams") {
+            self.extraParams = dict["ExtraParams"] as! [String: String]
+        }
+        if dict.keys.contains("IsColumnarReadDBInstance") {
+            self.isColumnarReadDBInstance = dict["IsColumnarReadDBInstance"] as! Bool
+        }
+        if dict.keys.contains("IsReadDBInstance") {
+            self.isReadDBInstance = dict["IsReadDBInstance"] as! Bool
+        }
+        if dict.keys.contains("NetworkType") {
+            self.networkType = dict["NetworkType"] as! String
+        }
+        if dict.keys.contains("PayType") {
+            self.payType = dict["PayType"] as! String
+        }
+        if dict.keys.contains("Period") {
+            self.period = dict["Period"] as! String
+        }
+        if dict.keys.contains("PrimaryDBInstanceName") {
+            self.primaryDBInstanceName = dict["PrimaryDBInstanceName"] as! String
+        }
+        if dict.keys.contains("PrimaryZone") {
+            self.primaryZone = dict["PrimaryZone"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("SecondaryZone") {
+            self.secondaryZone = dict["SecondaryZone"] as! String
+        }
+        if dict.keys.contains("Series") {
+            self.series = dict["Series"] as! String
+        }
+        if dict.keys.contains("TertiaryZone") {
+            self.tertiaryZone = dict["TertiaryZone"] as! String
+        }
+        if dict.keys.contains("TopologyType") {
+            self.topologyType = dict["TopologyType"] as! String
+        }
+        if dict.keys.contains("UsedTime") {
+            self.usedTime = dict["UsedTime"] as! Int32
+        }
+        if dict.keys.contains("VPCId") {
+            self.VPCId = dict["VPCId"] as! String
+        }
+        if dict.keys.contains("VSwitchId") {
+            self.vSwitchId = dict["VSwitchId"] as! String
+        }
+        if dict.keys.contains("ZoneId") {
+            self.zoneId = dict["ZoneId"] as! String
+        }
+    }
+}
+
+public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
+    public var autoRenew: Bool?
+
+    public var CNNodeCount: String?
+
+    public var clientToken: String?
+
+    public var cnClass: String?
+
+    public var DBNodeClass: String?
+
+    public var DBNodeCount: Int32?
+
+    public var DNNodeCount: String?
+
+    public var dnClass: String?
+
+    public var dnStorageSpace: String?
+
+    public var engineVersion: String?
+
+    public var extraParamsShrink: String?
+
+    public var isColumnarReadDBInstance: Bool?
+
+    public var isReadDBInstance: Bool?
+
+    public var networkType: String?
+
+    public var payType: String?
+
+    public var period: String?
+
+    public var primaryDBInstanceName: String?
+
+    public var primaryZone: String?
+
+    public var regionId: String?
+
+    public var resourceGroupId: String?
+
+    public var secondaryZone: String?
+
+    public var series: String?
+
+    public var tertiaryZone: String?
+
+    public var topologyType: String?
+
+    public var usedTime: Int32?
+
+    public var VPCId: String?
+
+    public var vSwitchId: String?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoRenew != nil {
+            map["AutoRenew"] = self.autoRenew!
+        }
+        if self.CNNodeCount != nil {
+            map["CNNodeCount"] = self.CNNodeCount!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.cnClass != nil {
+            map["CnClass"] = self.cnClass!
+        }
+        if self.DBNodeClass != nil {
+            map["DBNodeClass"] = self.DBNodeClass!
+        }
+        if self.DBNodeCount != nil {
+            map["DBNodeCount"] = self.DBNodeCount!
+        }
+        if self.DNNodeCount != nil {
+            map["DNNodeCount"] = self.DNNodeCount!
+        }
+        if self.dnClass != nil {
+            map["DnClass"] = self.dnClass!
+        }
+        if self.dnStorageSpace != nil {
+            map["DnStorageSpace"] = self.dnStorageSpace!
+        }
+        if self.engineVersion != nil {
+            map["EngineVersion"] = self.engineVersion!
+        }
+        if self.extraParamsShrink != nil {
+            map["ExtraParams"] = self.extraParamsShrink!
+        }
+        if self.isColumnarReadDBInstance != nil {
+            map["IsColumnarReadDBInstance"] = self.isColumnarReadDBInstance!
+        }
+        if self.isReadDBInstance != nil {
+            map["IsReadDBInstance"] = self.isReadDBInstance!
+        }
+        if self.networkType != nil {
+            map["NetworkType"] = self.networkType!
+        }
+        if self.payType != nil {
+            map["PayType"] = self.payType!
+        }
+        if self.period != nil {
+            map["Period"] = self.period!
+        }
+        if self.primaryDBInstanceName != nil {
+            map["PrimaryDBInstanceName"] = self.primaryDBInstanceName!
+        }
+        if self.primaryZone != nil {
+            map["PrimaryZone"] = self.primaryZone!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.secondaryZone != nil {
+            map["SecondaryZone"] = self.secondaryZone!
+        }
+        if self.series != nil {
+            map["Series"] = self.series!
+        }
+        if self.tertiaryZone != nil {
+            map["TertiaryZone"] = self.tertiaryZone!
+        }
+        if self.topologyType != nil {
+            map["TopologyType"] = self.topologyType!
+        }
+        if self.usedTime != nil {
+            map["UsedTime"] = self.usedTime!
+        }
+        if self.VPCId != nil {
+            map["VPCId"] = self.VPCId!
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AutoRenew") {
+            self.autoRenew = dict["AutoRenew"] as! Bool
+        }
+        if dict.keys.contains("CNNodeCount") {
+            self.CNNodeCount = dict["CNNodeCount"] as! String
+        }
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("CnClass") {
+            self.cnClass = dict["CnClass"] as! String
+        }
+        if dict.keys.contains("DBNodeClass") {
+            self.DBNodeClass = dict["DBNodeClass"] as! String
+        }
+        if dict.keys.contains("DBNodeCount") {
+            self.DBNodeCount = dict["DBNodeCount"] as! Int32
+        }
+        if dict.keys.contains("DNNodeCount") {
+            self.DNNodeCount = dict["DNNodeCount"] as! String
+        }
+        if dict.keys.contains("DnClass") {
+            self.dnClass = dict["DnClass"] as! String
+        }
+        if dict.keys.contains("DnStorageSpace") {
+            self.dnStorageSpace = dict["DnStorageSpace"] as! String
+        }
+        if dict.keys.contains("EngineVersion") {
+            self.engineVersion = dict["EngineVersion"] as! String
+        }
+        if dict.keys.contains("ExtraParams") {
+            self.extraParamsShrink = dict["ExtraParams"] as! String
         }
         if dict.keys.contains("IsColumnarReadDBInstance") {
             self.isColumnarReadDBInstance = dict["IsColumnarReadDBInstance"] as! Bool
@@ -6971,6 +7225,8 @@ public class DescribeDBInstanceTopologyRequest : Tea.TeaModel {
 
     public var endTime: String?
 
+    public var minuteSimple: Bool?
+
     public var regionId: String?
 
     public var startTime: String?
@@ -6995,6 +7251,9 @@ public class DescribeDBInstanceTopologyRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.minuteSimple != nil {
+            map["MinuteSimple"] = self.minuteSimple!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -7010,6 +7269,9 @@ public class DescribeDBInstanceTopologyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EndTime") {
             self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("MinuteSimple") {
+            self.minuteSimple = dict["MinuteSimple"] as! Bool
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
@@ -8448,6 +8710,8 @@ public class DescribeDBInstanceViaEndpointResponse : Tea.TeaModel {
 }
 
 public class DescribeDBInstancesRequest : Tea.TeaModel {
+    public var dbVersion: String?
+
     public var instanceId: String?
 
     public var mustHasCdc: Bool?
@@ -8478,6 +8742,9 @@ public class DescribeDBInstancesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dbVersion != nil {
+            map["DbVersion"] = self.dbVersion!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -8506,6 +8773,9 @@ public class DescribeDBInstancesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DbVersion") {
+            self.dbVersion = dict["DbVersion"] as! String
+        }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
         }
@@ -10329,8 +10599,143 @@ public class DescribeEventsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeOpenBackupSetRequest : Tea.TeaModel {
+    public var DBInstanceName: String?
+
+    public var regionId: String?
+
+    public var restoreTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceName != nil {
+            map["DBInstanceName"] = self.DBInstanceName!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.restoreTime != nil {
+            map["RestoreTime"] = self.restoreTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBInstanceName") {
+            self.DBInstanceName = dict["DBInstanceName"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("RestoreTime") {
+            self.restoreTime = dict["RestoreTime"] as! String
+        }
+    }
+}
+
+public class DescribeOpenBackupSetResponseBody : Tea.TeaModel {
+    public var data: Any?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            self.data = dict["Data"] as! Any
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeOpenBackupSetResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeOpenBackupSetResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeOpenBackupSetResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeParameterTemplatesRequest : Tea.TeaModel {
     public var DBInstanceId: String?
+
+    public var engineVersion: String?
 
     public var paramLevel: String?
 
@@ -10353,6 +10758,9 @@ public class DescribeParameterTemplatesRequest : Tea.TeaModel {
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
+        if self.engineVersion != nil {
+            map["EngineVersion"] = self.engineVersion!
+        }
         if self.paramLevel != nil {
             map["ParamLevel"] = self.paramLevel!
         }
@@ -10365,6 +10773,9 @@ public class DescribeParameterTemplatesRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DBInstanceId") {
             self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("EngineVersion") {
+            self.engineVersion = dict["EngineVersion"] as! String
         }
         if dict.keys.contains("ParamLevel") {
             self.paramLevel = dict["ParamLevel"] as! String
@@ -10739,6 +11150,8 @@ public class DescribeParametersResponseBody : Tea.TeaModel {
         }
         public var configParameters: [DescribeParametersResponseBody.Data.ConfigParameters]?
 
+        public var DBInstanceId: String?
+
         public var engine: String?
 
         public var engineVersion: String?
@@ -10765,6 +11178,9 @@ public class DescribeParametersResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["ConfigParameters"] = tmp
+            }
+            if self.DBInstanceId != nil {
+                map["DBInstanceId"] = self.DBInstanceId!
             }
             if self.engine != nil {
                 map["Engine"] = self.engine!
@@ -10793,6 +11209,9 @@ public class DescribeParametersResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.configParameters = tmp
+            }
+            if dict.keys.contains("DBInstanceId") {
+                self.DBInstanceId = dict["DBInstanceId"] as! String
             }
             if dict.keys.contains("Engine") {
                 self.engine = dict["Engine"] as! String
@@ -14336,6 +14755,8 @@ public class ModifyParameterRequest : Tea.TeaModel {
 
     public var paramLevel: String?
 
+    public var parameterGroupId: String?
+
     public var parameters: String?
 
     public var regionId: String?
@@ -14363,6 +14784,9 @@ public class ModifyParameterRequest : Tea.TeaModel {
         if self.paramLevel != nil {
             map["ParamLevel"] = self.paramLevel!
         }
+        if self.parameterGroupId != nil {
+            map["ParameterGroupId"] = self.parameterGroupId!
+        }
         if self.parameters != nil {
             map["Parameters"] = self.parameters!
         }
@@ -14381,6 +14805,9 @@ public class ModifyParameterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ParamLevel") {
             self.paramLevel = dict["ParamLevel"] as! String
+        }
+        if dict.keys.contains("ParameterGroupId") {
+            self.parameterGroupId = dict["ParameterGroupId"] as! String
         }
         if dict.keys.contains("Parameters") {
             self.parameters = dict["Parameters"] as! String
@@ -14749,15 +15176,7 @@ public class ReleaseInstancePublicConnectionRequest : Tea.TeaModel {
 
     public var DBInstanceName: String?
 
-    public var ownerAccount: String?
-
-    public var ownerId: Int64?
-
     public var regionId: String?
-
-    public var resourceOwnerAccount: String?
-
-    public var resourceOwnerId: Int64?
 
     public override init() {
         super.init()
@@ -14779,20 +15198,8 @@ public class ReleaseInstancePublicConnectionRequest : Tea.TeaModel {
         if self.DBInstanceName != nil {
             map["DBInstanceName"] = self.DBInstanceName!
         }
-        if self.ownerAccount != nil {
-            map["OwnerAccount"] = self.ownerAccount!
-        }
-        if self.ownerId != nil {
-            map["OwnerId"] = self.ownerId!
-        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
-        }
-        if self.resourceOwnerAccount != nil {
-            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
-        }
-        if self.resourceOwnerId != nil {
-            map["ResourceOwnerId"] = self.resourceOwnerId!
         }
         return map
     }
@@ -14804,20 +15211,8 @@ public class ReleaseInstancePublicConnectionRequest : Tea.TeaModel {
         if dict.keys.contains("DBInstanceName") {
             self.DBInstanceName = dict["DBInstanceName"] as! String
         }
-        if dict.keys.contains("OwnerAccount") {
-            self.ownerAccount = dict["OwnerAccount"] as! String
-        }
-        if dict.keys.contains("OwnerId") {
-            self.ownerId = dict["OwnerId"] as! Int64
-        }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
-        }
-        if dict.keys.contains("ResourceOwnerAccount") {
-            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
-        }
-        if dict.keys.contains("ResourceOwnerId") {
-            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
         }
     }
 }
