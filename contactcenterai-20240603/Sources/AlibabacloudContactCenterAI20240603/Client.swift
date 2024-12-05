@@ -51,6 +51,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.serviceInspection)) {
             body["serviceInspection"] = request.serviceInspection!;
         }
+        if (!TeaUtils.Client.isUnset(request.sourceCallerUid)) {
+            body["sourceCallerUid"] = request.sourceCallerUid ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.stream)) {
             body["stream"] = request.stream!;
         }
@@ -183,9 +186,17 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getTaskResultWithOptions(_ request: GetTaskResultRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetTaskResultResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func getTaskResultWithOptions(_ tmpReq: GetTaskResultRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetTaskResultResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetTaskResultShrinkRequest = GetTaskResultShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.requiredFieldList)) {
+            request.requiredFieldListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.requiredFieldList, "requiredFieldList", "simple")
+        }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.requiredFieldListShrink)) {
+            query["requiredFieldList"] = request.requiredFieldListShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.taskId)) {
             query["taskId"] = request.taskId ?? "";
         }

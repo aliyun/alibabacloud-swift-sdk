@@ -472,6 +472,8 @@ public class AnalyzeConversationRequest : Tea.TeaModel {
 
     public var serviceInspection: AnalyzeConversationRequest.ServiceInspection?
 
+    public var sourceCallerUid: String?
+
     public var stream: Bool?
 
     public var timeConstraintList: [String]?
@@ -529,6 +531,9 @@ public class AnalyzeConversationRequest : Tea.TeaModel {
         }
         if self.serviceInspection != nil {
             map["serviceInspection"] = self.serviceInspection?.toMap()
+        }
+        if self.sourceCallerUid != nil {
+            map["sourceCallerUid"] = self.sourceCallerUid!
         }
         if self.stream != nil {
             map["stream"] = self.stream!
@@ -598,6 +603,9 @@ public class AnalyzeConversationRequest : Tea.TeaModel {
             var model = AnalyzeConversationRequest.ServiceInspection()
             model.fromMap(dict["serviceInspection"] as! [String: Any])
             self.serviceInspection = model
+        }
+        if dict.keys.contains("sourceCallerUid") {
+            self.sourceCallerUid = dict["sourceCallerUid"] as! String
         }
         if dict.keys.contains("stream") {
             self.stream = dict["stream"] as! Bool
@@ -1618,6 +1626,8 @@ public class CreateTaskResponse : Tea.TeaModel {
 }
 
 public class GetTaskResultRequest : Tea.TeaModel {
+    public var requiredFieldList: [String]?
+
     public var taskId: String?
 
     public override init() {
@@ -1634,6 +1644,9 @@ public class GetTaskResultRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.requiredFieldList != nil {
+            map["requiredFieldList"] = self.requiredFieldList!
+        }
         if self.taskId != nil {
             map["taskId"] = self.taskId!
         }
@@ -1641,6 +1654,47 @@ public class GetTaskResultRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("requiredFieldList") {
+            self.requiredFieldList = dict["requiredFieldList"] as! [String]
+        }
+        if dict.keys.contains("taskId") {
+            self.taskId = dict["taskId"] as! String
+        }
+    }
+}
+
+public class GetTaskResultShrinkRequest : Tea.TeaModel {
+    public var requiredFieldListShrink: String?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requiredFieldListShrink != nil {
+            map["requiredFieldList"] = self.requiredFieldListShrink!
+        }
+        if self.taskId != nil {
+            map["taskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("requiredFieldList") {
+            self.requiredFieldListShrink = dict["requiredFieldList"] as! String
+        }
         if dict.keys.contains("taskId") {
             self.taskId = dict["taskId"] as! String
         }
@@ -1649,6 +1703,79 @@ public class GetTaskResultRequest : Tea.TeaModel {
 
 public class GetTaskResultResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class AsrResult : Tea.TeaModel {
+            public var begin: Int64?
+
+            public var emotionValue: Int32?
+
+            public var end: Int64?
+
+            public var role: String?
+
+            public var speechRate: Int32?
+
+            public var words: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.begin != nil {
+                    map["begin"] = self.begin!
+                }
+                if self.emotionValue != nil {
+                    map["emotionValue"] = self.emotionValue!
+                }
+                if self.end != nil {
+                    map["end"] = self.end!
+                }
+                if self.role != nil {
+                    map["role"] = self.role!
+                }
+                if self.speechRate != nil {
+                    map["speechRate"] = self.speechRate!
+                }
+                if self.words != nil {
+                    map["words"] = self.words!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("begin") {
+                    self.begin = dict["begin"] as! Int64
+                }
+                if dict.keys.contains("emotionValue") {
+                    self.emotionValue = dict["emotionValue"] as! Int32
+                }
+                if dict.keys.contains("end") {
+                    self.end = dict["end"] as! Int64
+                }
+                if dict.keys.contains("role") {
+                    self.role = dict["role"] as! String
+                }
+                if dict.keys.contains("speechRate") {
+                    self.speechRate = dict["speechRate"] as! Int32
+                }
+                if dict.keys.contains("words") {
+                    self.words = dict["words"] as! String
+                }
+            }
+        }
+        public var asrResult: [GetTaskResultResponseBody.Data.AsrResult]?
+
+        public var taskErrorMessage: String?
+
         public var taskId: String?
 
         public var taskStatus: String?
@@ -1669,6 +1796,16 @@ public class GetTaskResultResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.asrResult != nil {
+                var tmp : [Any] = []
+                for k in self.asrResult! {
+                    tmp.append(k.toMap())
+                }
+                map["asrResult"] = tmp
+            }
+            if self.taskErrorMessage != nil {
+                map["taskErrorMessage"] = self.taskErrorMessage!
+            }
             if self.taskId != nil {
                 map["taskId"] = self.taskId!
             }
@@ -1682,6 +1819,20 @@ public class GetTaskResultResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("asrResult") {
+                var tmp : [GetTaskResultResponseBody.Data.AsrResult] = []
+                for v in dict["asrResult"] as! [Any] {
+                    var model = GetTaskResultResponseBody.Data.AsrResult()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.asrResult = tmp
+            }
+            if dict.keys.contains("taskErrorMessage") {
+                self.taskErrorMessage = dict["taskErrorMessage"] as! String
+            }
             if dict.keys.contains("taskId") {
                 self.taskId = dict["taskId"] as! String
             }
