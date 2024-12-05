@@ -10033,6 +10033,356 @@ public class GetPropertiesResponse : Tea.TeaModel {
     }
 }
 
+public class GetSmartClipTaskRequest : Tea.TeaModel {
+    public var taskId: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("TaskId") {
+            self.taskId = dict["TaskId"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
+        }
+    }
+}
+
+public class GetSmartClipTaskResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class SubJobs : Tea.TeaModel {
+            public class FileAttr : Tea.TeaModel {
+                public var duration: Double?
+
+                public var fileLength: String?
+
+                public var fileName: String?
+
+                public var height: Int32?
+
+                public var tmpUrl: String?
+
+                public var width: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.duration != nil {
+                        map["Duration"] = self.duration!
+                    }
+                    if self.fileLength != nil {
+                        map["FileLength"] = self.fileLength!
+                    }
+                    if self.fileName != nil {
+                        map["FileName"] = self.fileName!
+                    }
+                    if self.height != nil {
+                        map["Height"] = self.height!
+                    }
+                    if self.tmpUrl != nil {
+                        map["TmpUrl"] = self.tmpUrl!
+                    }
+                    if self.width != nil {
+                        map["Width"] = self.width!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Duration") {
+                        self.duration = dict["Duration"] as! Double
+                    }
+                    if dict.keys.contains("FileLength") {
+                        self.fileLength = dict["FileLength"] as! String
+                    }
+                    if dict.keys.contains("FileName") {
+                        self.fileName = dict["FileName"] as! String
+                    }
+                    if dict.keys.contains("Height") {
+                        self.height = dict["Height"] as! Int32
+                    }
+                    if dict.keys.contains("TmpUrl") {
+                        self.tmpUrl = dict["TmpUrl"] as! String
+                    }
+                    if dict.keys.contains("Width") {
+                        self.width = dict["Width"] as! Int32
+                    }
+                }
+            }
+            public var errorMessage: String?
+
+            public var fileAttr: GetSmartClipTaskResponseBody.Data.SubJobs.FileAttr?
+
+            public var fileKey: String?
+
+            public var status: String?
+
+            public var subJobId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.fileAttr?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.errorMessage != nil {
+                    map["ErrorMessage"] = self.errorMessage!
+                }
+                if self.fileAttr != nil {
+                    map["FileAttr"] = self.fileAttr?.toMap()
+                }
+                if self.fileKey != nil {
+                    map["FileKey"] = self.fileKey!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.subJobId != nil {
+                    map["SubJobId"] = self.subJobId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ErrorMessage") {
+                    self.errorMessage = dict["ErrorMessage"] as! String
+                }
+                if dict.keys.contains("FileAttr") {
+                    var model = GetSmartClipTaskResponseBody.Data.SubJobs.FileAttr()
+                    model.fromMap(dict["FileAttr"] as! [String: Any])
+                    self.fileAttr = model
+                }
+                if dict.keys.contains("FileKey") {
+                    self.fileKey = dict["FileKey"] as! String
+                }
+                if dict.keys.contains("Status") {
+                    self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("SubJobId") {
+                    self.subJobId = dict["SubJobId"] as! String
+                }
+            }
+        }
+        public var errorMessage: String?
+
+        public var status: String?
+
+        public var subJobs: [GetSmartClipTaskResponseBody.Data.SubJobs]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.errorMessage != nil {
+                map["ErrorMessage"] = self.errorMessage!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.subJobs != nil {
+                var tmp : [Any] = []
+                for k in self.subJobs! {
+                    tmp.append(k.toMap())
+                }
+                map["SubJobs"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ErrorMessage") {
+                self.errorMessage = dict["ErrorMessage"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("SubJobs") {
+                var tmp : [GetSmartClipTaskResponseBody.Data.SubJobs] = []
+                for v in dict["SubJobs"] as! [Any] {
+                    var model = GetSmartClipTaskResponseBody.Data.SubJobs()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.subJobs = tmp
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: GetSmartClipTaskResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = GetSmartClipTaskResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class GetSmartClipTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetSmartClipTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetSmartClipTaskResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class GetTopicByIdRequest : Tea.TeaModel {
     public var agentKey: String?
 
@@ -32010,6 +32360,708 @@ public class SubmitEnterpriseVocAnalysisTaskResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = SubmitEnterpriseVocAnalysisTaskResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class SubmitSmartClipTaskRequest : Tea.TeaModel {
+    public class EditingConfig : Tea.TeaModel {
+        public class TitleConfig : Tea.TeaModel {
+            public var alignment: String?
+
+            public var timelineIn: Double?
+
+            public var timelineOut: Double?
+
+            public var x: Double?
+
+            public var y: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.alignment != nil {
+                    map["Alignment"] = self.alignment!
+                }
+                if self.timelineIn != nil {
+                    map["TimelineIn"] = self.timelineIn!
+                }
+                if self.timelineOut != nil {
+                    map["TimelineOut"] = self.timelineOut!
+                }
+                if self.x != nil {
+                    map["X"] = self.x!
+                }
+                if self.y != nil {
+                    map["Y"] = self.y!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Alignment") {
+                    self.alignment = dict["Alignment"] as! String
+                }
+                if dict.keys.contains("TimelineIn") {
+                    self.timelineIn = dict["TimelineIn"] as! Double
+                }
+                if dict.keys.contains("TimelineOut") {
+                    self.timelineOut = dict["TimelineOut"] as! Double
+                }
+                if dict.keys.contains("X") {
+                    self.x = dict["X"] as! Double
+                }
+                if dict.keys.contains("Y") {
+                    self.y = dict["Y"] as! Double
+                }
+            }
+        }
+        public var titleConfig: SubmitSmartClipTaskRequest.EditingConfig.TitleConfig?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.titleConfig?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.titleConfig != nil {
+                map["TitleConfig"] = self.titleConfig?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("TitleConfig") {
+                var model = SubmitSmartClipTaskRequest.EditingConfig.TitleConfig()
+                model.fromMap(dict["TitleConfig"] as! [String: Any])
+                self.titleConfig = model
+            }
+        }
+    }
+    public class InputConfig : Tea.TeaModel {
+        public class BackgroundMusics : Tea.TeaModel {
+            public var id: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Id") {
+                    self.id = dict["Id"] as! String
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+            }
+        }
+        public class Stickers : Tea.TeaModel {
+            public class StickerId : Tea.TeaModel {
+                public var id: String?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Id") {
+                        self.id = dict["Id"] as! String
+                    }
+                    if dict.keys.contains("Type") {
+                        self.type = dict["Type"] as! String
+                    }
+                }
+            }
+            public var height: Double?
+
+            public var stickerId: SubmitSmartClipTaskRequest.InputConfig.Stickers.StickerId?
+
+            public var width: Double?
+
+            public var x: Double?
+
+            public var y: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.stickerId?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.height != nil {
+                    map["Height"] = self.height!
+                }
+                if self.stickerId != nil {
+                    map["StickerId"] = self.stickerId?.toMap()
+                }
+                if self.width != nil {
+                    map["Width"] = self.width!
+                }
+                if self.x != nil {
+                    map["X"] = self.x!
+                }
+                if self.y != nil {
+                    map["Y"] = self.y!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Height") {
+                    self.height = dict["Height"] as! Double
+                }
+                if dict.keys.contains("StickerId") {
+                    var model = SubmitSmartClipTaskRequest.InputConfig.Stickers.StickerId()
+                    model.fromMap(dict["StickerId"] as! [String: Any])
+                    self.stickerId = model
+                }
+                if dict.keys.contains("Width") {
+                    self.width = dict["Width"] as! Double
+                }
+                if dict.keys.contains("X") {
+                    self.x = dict["X"] as! Double
+                }
+                if dict.keys.contains("Y") {
+                    self.y = dict["Y"] as! Double
+                }
+            }
+        }
+        public class VideoIds : Tea.TeaModel {
+            public var id: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Id") {
+                    self.id = dict["Id"] as! String
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+            }
+        }
+        public var backgroundMusics: [SubmitSmartClipTaskRequest.InputConfig.BackgroundMusics]?
+
+        public var speechTexts: [String]?
+
+        public var stickers: [SubmitSmartClipTaskRequest.InputConfig.Stickers]?
+
+        public var titles: [String]?
+
+        public var videoIds: [SubmitSmartClipTaskRequest.InputConfig.VideoIds]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.backgroundMusics != nil {
+                var tmp : [Any] = []
+                for k in self.backgroundMusics! {
+                    tmp.append(k.toMap())
+                }
+                map["BackgroundMusics"] = tmp
+            }
+            if self.speechTexts != nil {
+                map["SpeechTexts"] = self.speechTexts!
+            }
+            if self.stickers != nil {
+                var tmp : [Any] = []
+                for k in self.stickers! {
+                    tmp.append(k.toMap())
+                }
+                map["Stickers"] = tmp
+            }
+            if self.titles != nil {
+                map["Titles"] = self.titles!
+            }
+            if self.videoIds != nil {
+                var tmp : [Any] = []
+                for k in self.videoIds! {
+                    tmp.append(k.toMap())
+                }
+                map["VideoIds"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BackgroundMusics") {
+                var tmp : [SubmitSmartClipTaskRequest.InputConfig.BackgroundMusics] = []
+                for v in dict["BackgroundMusics"] as! [Any] {
+                    var model = SubmitSmartClipTaskRequest.InputConfig.BackgroundMusics()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.backgroundMusics = tmp
+            }
+            if dict.keys.contains("SpeechTexts") {
+                self.speechTexts = dict["SpeechTexts"] as! [String]
+            }
+            if dict.keys.contains("Stickers") {
+                var tmp : [SubmitSmartClipTaskRequest.InputConfig.Stickers] = []
+                for v in dict["Stickers"] as! [Any] {
+                    var model = SubmitSmartClipTaskRequest.InputConfig.Stickers()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.stickers = tmp
+            }
+            if dict.keys.contains("Titles") {
+                self.titles = dict["Titles"] as! [String]
+            }
+            if dict.keys.contains("VideoIds") {
+                var tmp : [SubmitSmartClipTaskRequest.InputConfig.VideoIds] = []
+                for v in dict["VideoIds"] as! [Any] {
+                    var model = SubmitSmartClipTaskRequest.InputConfig.VideoIds()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.videoIds = tmp
+            }
+        }
+    }
+    public class OutputConfig : Tea.TeaModel {
+        public var count: Int32?
+
+        public var fileName: String?
+
+        public var height: Int32?
+
+        public var maxDuration: Int32?
+
+        public var saveToGeneratedContent: Bool?
+
+        public var width: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.count != nil {
+                map["Count"] = self.count!
+            }
+            if self.fileName != nil {
+                map["FileName"] = self.fileName!
+            }
+            if self.height != nil {
+                map["Height"] = self.height!
+            }
+            if self.maxDuration != nil {
+                map["MaxDuration"] = self.maxDuration!
+            }
+            if self.saveToGeneratedContent != nil {
+                map["SaveToGeneratedContent"] = self.saveToGeneratedContent!
+            }
+            if self.width != nil {
+                map["Width"] = self.width!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Count") {
+                self.count = dict["Count"] as! Int32
+            }
+            if dict.keys.contains("FileName") {
+                self.fileName = dict["FileName"] as! String
+            }
+            if dict.keys.contains("Height") {
+                self.height = dict["Height"] as! Int32
+            }
+            if dict.keys.contains("MaxDuration") {
+                self.maxDuration = dict["MaxDuration"] as! Int32
+            }
+            if dict.keys.contains("SaveToGeneratedContent") {
+                self.saveToGeneratedContent = dict["SaveToGeneratedContent"] as! Bool
+            }
+            if dict.keys.contains("Width") {
+                self.width = dict["Width"] as! Int32
+            }
+        }
+    }
+    public var editingConfig: SubmitSmartClipTaskRequest.EditingConfig?
+
+    public var inputConfig: SubmitSmartClipTaskRequest.InputConfig?
+
+    public var outputConfig: SubmitSmartClipTaskRequest.OutputConfig?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.editingConfig?.validate()
+        try self.inputConfig?.validate()
+        try self.outputConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.editingConfig != nil {
+            map["EditingConfig"] = self.editingConfig?.toMap()
+        }
+        if self.inputConfig != nil {
+            map["InputConfig"] = self.inputConfig?.toMap()
+        }
+        if self.outputConfig != nil {
+            map["OutputConfig"] = self.outputConfig?.toMap()
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EditingConfig") {
+            var model = SubmitSmartClipTaskRequest.EditingConfig()
+            model.fromMap(dict["EditingConfig"] as! [String: Any])
+            self.editingConfig = model
+        }
+        if dict.keys.contains("InputConfig") {
+            var model = SubmitSmartClipTaskRequest.InputConfig()
+            model.fromMap(dict["InputConfig"] as! [String: Any])
+            self.inputConfig = model
+        }
+        if dict.keys.contains("OutputConfig") {
+            var model = SubmitSmartClipTaskRequest.OutputConfig()
+            model.fromMap(dict["OutputConfig"] as! [String: Any])
+            self.outputConfig = model
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
+        }
+    }
+}
+
+public class SubmitSmartClipTaskShrinkRequest : Tea.TeaModel {
+    public var editingConfigShrink: String?
+
+    public var inputConfigShrink: String?
+
+    public var outputConfigShrink: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.editingConfigShrink != nil {
+            map["EditingConfig"] = self.editingConfigShrink!
+        }
+        if self.inputConfigShrink != nil {
+            map["InputConfig"] = self.inputConfigShrink!
+        }
+        if self.outputConfigShrink != nil {
+            map["OutputConfig"] = self.outputConfigShrink!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EditingConfig") {
+            self.editingConfigShrink = dict["EditingConfig"] as! String
+        }
+        if dict.keys.contains("InputConfig") {
+            self.inputConfigShrink = dict["InputConfig"] as! String
+        }
+        if dict.keys.contains("OutputConfig") {
+            self.outputConfigShrink = dict["OutputConfig"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
+        }
+    }
+}
+
+public class SubmitSmartClipTaskResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var taskId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("TaskId") {
+                self.taskId = dict["TaskId"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: SubmitSmartClipTaskResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = SubmitSmartClipTaskResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class SubmitSmartClipTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SubmitSmartClipTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = SubmitSmartClipTaskResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
