@@ -440,6 +440,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.scaleUpFromZero)) {
             body["scale_up_from_zero"] = request.scaleUpFromZero!;
         }
+        if (!TeaUtils.Client.isUnset(request.scalerType)) {
+            body["scaler_type"] = request.scalerType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.scanInterval)) {
             body["scan_interval"] = request.scanInterval ?? "";
         }
@@ -468,7 +471,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "authType": "AK",
             "style": "ROA",
             "reqBodyType": "json",
-            "bodyType": "none"
+            "bodyType": "json"
         ])
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
         return Tea.TeaConverter.fromMap(CreateAutoscalingConfigResponse(), tmp)

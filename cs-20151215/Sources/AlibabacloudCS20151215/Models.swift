@@ -3163,6 +3163,8 @@ public class CreateAutoscalingConfigRequest : Tea.TeaModel {
 
     public var scaleUpFromZero: Bool?
 
+    public var scalerType: String?
+
     public var scanInterval: String?
 
     public var skipNodesWithLocalStorage: Bool?
@@ -3214,6 +3216,9 @@ public class CreateAutoscalingConfigRequest : Tea.TeaModel {
         if self.scaleUpFromZero != nil {
             map["scale_up_from_zero"] = self.scaleUpFromZero!
         }
+        if self.scalerType != nil {
+            map["scaler_type"] = self.scalerType!
+        }
         if self.scanInterval != nil {
             map["scan_interval"] = self.scanInterval!
         }
@@ -3260,6 +3265,9 @@ public class CreateAutoscalingConfigRequest : Tea.TeaModel {
         if dict.keys.contains("scale_up_from_zero") {
             self.scaleUpFromZero = dict["scale_up_from_zero"] as! Bool
         }
+        if dict.keys.contains("scaler_type") {
+            self.scalerType = dict["scaler_type"] as! String
+        }
         if dict.keys.contains("scan_interval") {
             self.scanInterval = dict["scan_interval"] as! String
         }
@@ -3278,10 +3286,12 @@ public class CreateAutoscalingConfigRequest : Tea.TeaModel {
     }
 }
 
-public class CreateAutoscalingConfigResponse : Tea.TeaModel {
-    public var headers: [String: String]?
+public class CreateAutoscalingConfigResponseBody : Tea.TeaModel {
+    public var clusterId: String?
 
-    public var statusCode: Int32?
+    public var requestId: String?
+
+    public var taskId: String?
 
     public override init() {
         super.init()
@@ -3297,11 +3307,61 @@ public class CreateAutoscalingConfigResponse : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clusterId != nil {
+            map["cluster_id"] = self.clusterId!
+        }
+        if self.requestId != nil {
+            map["request_id"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["task_id"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("cluster_id") {
+            self.clusterId = dict["cluster_id"] as! String
+        }
+        if dict.keys.contains("request_id") {
+            self.requestId = dict["request_id"] as! String
+        }
+        if dict.keys.contains("task_id") {
+            self.taskId = dict["task_id"] as! String
+        }
+    }
+}
+
+public class CreateAutoscalingConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateAutoscalingConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
         if self.headers != nil {
             map["headers"] = self.headers!
         }
         if self.statusCode != nil {
             map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
         }
         return map
     }
@@ -3312,6 +3372,11 @@ public class CreateAutoscalingConfigResponse : Tea.TeaModel {
         }
         if dict.keys.contains("statusCode") {
             self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateAutoscalingConfigResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
         }
     }
 }
