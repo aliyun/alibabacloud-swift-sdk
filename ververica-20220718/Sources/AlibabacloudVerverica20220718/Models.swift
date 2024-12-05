@@ -2735,6 +2735,10 @@ public class JobStatus : Tea.TeaModel {
 
     public var failure: JobFailure?
 
+    public var healthScore: Int32?
+
+    public var riskLevel: String?
+
     public var running: JobStatusRunning?
 
     public override init() {
@@ -2759,6 +2763,12 @@ public class JobStatus : Tea.TeaModel {
         if self.failure != nil {
             map["failure"] = self.failure?.toMap()
         }
+        if self.healthScore != nil {
+            map["healthScore"] = self.healthScore!
+        }
+        if self.riskLevel != nil {
+            map["riskLevel"] = self.riskLevel!
+        }
         if self.running != nil {
             map["running"] = self.running?.toMap()
         }
@@ -2773,6 +2783,12 @@ public class JobStatus : Tea.TeaModel {
             var model = JobFailure()
             model.fromMap(dict["failure"] as! [String: Any])
             self.failure = model
+        }
+        if dict.keys.contains("healthScore") {
+            self.healthScore = dict["healthScore"] as! Int32
+        }
+        if dict.keys.contains("riskLevel") {
+            self.riskLevel = dict["riskLevel"] as! String
         }
         if dict.keys.contains("running") {
             var model = JobStatusRunning()
