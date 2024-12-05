@@ -102,48 +102,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func runCommentGenerationWithOptions(_ workspaceId: String, _ request: RunCommentGenerationRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RunCommentGenerationResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.length)) {
-            body["length"] = request.length ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.numComments)) {
-            body["numComments"] = request.numComments ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.sourceMaterial)) {
-            body["sourceMaterial"] = request.sourceMaterial ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.style)) {
-            body["style"] = request.style ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "RunCommentGeneration",
-            "version": "2024-08-01",
-            "protocol": "HTTPS",
-            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/quanmiao/lightapp/runCommentGeneration",
-            "method": "POST",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(RunCommentGenerationResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func runCommentGeneration(_ workspaceId: String, _ request: RunCommentGenerationRequest) async throws -> RunCommentGenerationResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await runCommentGenerationWithOptions(workspaceId as! String, request as! RunCommentGenerationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func runHotTopicChatWithOptions(_ workspaceId: String, _ tmpReq: RunHotTopicChatRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RunHotTopicChatResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: RunHotTopicChatShrinkRequest = RunHotTopicChatShrinkRequest([:])
