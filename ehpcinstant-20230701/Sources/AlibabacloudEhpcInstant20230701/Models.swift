@@ -2140,9 +2140,15 @@ public class GetImageResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var architecture: String?
+
             public var isACREnterprise: Bool?
 
             public var isACRRegistry: Bool?
+
+            public var osTag: String?
+
+            public var platform: String?
 
             public var registryCredential: GetImageResponseBody.Image.ContainerImageSpec.RegistryCredential?
 
@@ -2165,11 +2171,20 @@ public class GetImageResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.architecture != nil {
+                    map["Architecture"] = self.architecture!
+                }
                 if self.isACREnterprise != nil {
                     map["IsACREnterprise"] = self.isACREnterprise!
                 }
                 if self.isACRRegistry != nil {
                     map["IsACRRegistry"] = self.isACRRegistry!
+                }
+                if self.osTag != nil {
+                    map["OsTag"] = self.osTag!
+                }
+                if self.platform != nil {
+                    map["Platform"] = self.platform!
                 }
                 if self.registryCredential != nil {
                     map["RegistryCredential"] = self.registryCredential?.toMap()
@@ -2184,11 +2199,20 @@ public class GetImageResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Architecture") {
+                    self.architecture = dict["Architecture"] as! String
+                }
                 if dict.keys.contains("IsACREnterprise") {
                     self.isACREnterprise = dict["IsACREnterprise"] as! Bool
                 }
                 if dict.keys.contains("IsACRRegistry") {
                     self.isACRRegistry = dict["IsACRRegistry"] as! Bool
+                }
+                if dict.keys.contains("OsTag") {
+                    self.osTag = dict["OsTag"] as! String
+                }
+                if dict.keys.contains("Platform") {
+                    self.platform = dict["Platform"] as! String
                 }
                 if dict.keys.contains("RegistryCredential") {
                     var model = GetImageResponseBody.Image.ContainerImageSpec.RegistryCredential()
@@ -2200,6 +2224,51 @@ public class GetImageResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("RegistryUrl") {
                     self.registryUrl = dict["RegistryUrl"] as! String
+                }
+            }
+        }
+        public class DocumentInfo : Tea.TeaModel {
+            public var document: String?
+
+            public var documentId: String?
+
+            public var encodingMode: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.document != nil {
+                    map["Document"] = self.document!
+                }
+                if self.documentId != nil {
+                    map["DocumentId"] = self.documentId!
+                }
+                if self.encodingMode != nil {
+                    map["EncodingMode"] = self.encodingMode!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Document") {
+                    self.document = dict["Document"] as! String
+                }
+                if dict.keys.contains("DocumentId") {
+                    self.documentId = dict["DocumentId"] as! String
+                }
+                if dict.keys.contains("EncodingMode") {
+                    self.encodingMode = dict["EncodingMode"] as! String
                 }
             }
         }
@@ -2264,6 +2333,8 @@ public class GetImageResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var documentInfo: GetImageResponseBody.Image.DocumentInfo?
+
         public var imageType: String?
 
         public var name: String?
@@ -2287,6 +2358,7 @@ public class GetImageResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.containerImageSpec?.validate()
+            try self.documentInfo?.validate()
             try self.VMImageSpec?.validate()
         }
 
@@ -2303,6 +2375,9 @@ public class GetImageResponseBody : Tea.TeaModel {
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
+            }
+            if self.documentInfo != nil {
+                map["DocumentInfo"] = self.documentInfo?.toMap()
             }
             if self.imageType != nil {
                 map["ImageType"] = self.imageType!
@@ -2339,6 +2414,11 @@ public class GetImageResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Description") {
                 self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("DocumentInfo") {
+                var model = GetImageResponseBody.Image.DocumentInfo()
+                model.fromMap(dict["DocumentInfo"] as! [String: Any])
+                self.documentInfo = model
             }
             if dict.keys.contains("ImageType") {
                 self.imageType = dict["ImageType"] as! String
@@ -3908,6 +3988,8 @@ public class ListImagesRequest : Tea.TeaModel {
 
     public var imageType: String?
 
+    public var mode: String?
+
     public var pageNumber: Int64?
 
     public var pageSize: Int64?
@@ -3938,6 +4020,9 @@ public class ListImagesRequest : Tea.TeaModel {
         if self.imageType != nil {
             map["ImageType"] = self.imageType!
         }
+        if self.mode != nil {
+            map["Mode"] = self.mode!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -3960,6 +4045,9 @@ public class ListImagesRequest : Tea.TeaModel {
         if dict.keys.contains("ImageType") {
             self.imageType = dict["ImageType"] as! String
         }
+        if dict.keys.contains("Mode") {
+            self.mode = dict["Mode"] as! String
+        }
         if dict.keys.contains("PageNumber") {
             self.pageNumber = dict["PageNumber"] as! Int64
         }
@@ -3977,6 +4065,8 @@ public class ListImagesShrinkRequest : Tea.TeaModel {
     public var imageNamesShrink: String?
 
     public var imageType: String?
+
+    public var mode: String?
 
     public var pageNumber: Int64?
 
@@ -4008,6 +4098,9 @@ public class ListImagesShrinkRequest : Tea.TeaModel {
         if self.imageType != nil {
             map["ImageType"] = self.imageType!
         }
+        if self.mode != nil {
+            map["Mode"] = self.mode!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -4030,6 +4123,9 @@ public class ListImagesShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("ImageType") {
             self.imageType = dict["ImageType"] as! String
         }
+        if dict.keys.contains("Mode") {
+            self.mode = dict["Mode"] as! String
+        }
         if dict.keys.contains("PageNumber") {
             self.pageNumber = dict["PageNumber"] as! Int64
         }
@@ -4047,6 +4143,8 @@ public class ListImagesResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var documentId: Int32?
+
         public var imageId: String?
 
         public var imageType: String?
@@ -4054,6 +4152,8 @@ public class ListImagesResponseBody : Tea.TeaModel {
         public var name: String?
 
         public var osTag: String?
+
+        public var updateTime: String?
 
         public var version: String?
 
@@ -4080,6 +4180,9 @@ public class ListImagesResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.documentId != nil {
+                map["DocumentId"] = self.documentId!
+            }
             if self.imageId != nil {
                 map["ImageId"] = self.imageId!
             }
@@ -4091,6 +4194,9 @@ public class ListImagesResponseBody : Tea.TeaModel {
             }
             if self.osTag != nil {
                 map["OsTag"] = self.osTag!
+            }
+            if self.updateTime != nil {
+                map["UpdateTime"] = self.updateTime!
             }
             if self.version != nil {
                 map["Version"] = self.version!
@@ -4108,6 +4214,9 @@ public class ListImagesResponseBody : Tea.TeaModel {
             if dict.keys.contains("Description") {
                 self.description_ = dict["Description"] as! String
             }
+            if dict.keys.contains("DocumentId") {
+                self.documentId = dict["DocumentId"] as! Int32
+            }
             if dict.keys.contains("ImageId") {
                 self.imageId = dict["ImageId"] as! String
             }
@@ -4119,6 +4228,9 @@ public class ListImagesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("OsTag") {
                 self.osTag = dict["OsTag"] as! String
+            }
+            if dict.keys.contains("UpdateTime") {
+                self.updateTime = dict["UpdateTime"] as! String
             }
             if dict.keys.contains("Version") {
                 self.version = dict["Version"] as! String
