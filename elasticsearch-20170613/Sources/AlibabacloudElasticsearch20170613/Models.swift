@@ -15652,6 +15652,8 @@ public class GetRegionConfigurationResponseBody : Tea.TeaModel {
 
         public var kibanaNodeProperties: GetRegionConfigurationResponseBody.Result.KibanaNodeProperties?
 
+        public var logstashZones: [String]?
+
         public var masterDiskList: [GetRegionConfigurationResponseBody.Result.MasterDiskList]?
 
         public var masterSpec: [String]?
@@ -15735,6 +15737,9 @@ public class GetRegionConfigurationResponseBody : Tea.TeaModel {
             }
             if self.kibanaNodeProperties != nil {
                 map["kibanaNodeProperties"] = self.kibanaNodeProperties?.toMap()
+            }
+            if self.logstashZones != nil {
+                map["logstashZones"] = self.logstashZones!
             }
             if self.masterDiskList != nil {
                 var tmp : [Any] = []
@@ -15843,6 +15848,9 @@ public class GetRegionConfigurationResponseBody : Tea.TeaModel {
                 var model = GetRegionConfigurationResponseBody.Result.KibanaNodeProperties()
                 model.fromMap(dict["kibanaNodeProperties"] as! [String: Any])
                 self.kibanaNodeProperties = model
+            }
+            if dict.keys.contains("logstashZones") {
+                self.logstashZones = dict["logstashZones"] as! [String]
             }
             if dict.keys.contains("masterDiskList") {
                 var tmp : [GetRegionConfigurationResponseBody.Result.MasterDiskList] = []
