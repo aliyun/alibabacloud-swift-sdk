@@ -1100,6 +1100,8 @@ public class EcsSpec : Tea.TeaModel {
 
     public var gpu: Int32?
 
+    public var gpuMemory: Int32?
+
     public var gpuType: String?
 
     public var instanceType: String?
@@ -1144,6 +1146,9 @@ public class EcsSpec : Tea.TeaModel {
         if self.gpu != nil {
             map["Gpu"] = self.gpu!
         }
+        if self.gpuMemory != nil {
+            map["GpuMemory"] = self.gpuMemory!
+        }
         if self.gpuType != nil {
             map["GpuType"] = self.gpuType!
         }
@@ -1186,6 +1191,9 @@ public class EcsSpec : Tea.TeaModel {
         }
         if dict.keys.contains("Gpu") {
             self.gpu = dict["Gpu"] as! Int32
+        }
+        if dict.keys.contains("GpuMemory") {
+            self.gpuMemory = dict["GpuMemory"] as! Int32
         }
         if dict.keys.contains("GpuType") {
             self.gpuType = dict["GpuType"] as! String
