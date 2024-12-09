@@ -7725,6 +7725,8 @@ public class GetUserSsoSettingsResponseBody : Tea.TeaModel {
 
         public var ssoEnabled: Bool?
 
+        public var ssoLoginWithDomain: Bool?
+
         public override init() {
             super.init()
         }
@@ -7748,6 +7750,9 @@ public class GetUserSsoSettingsResponseBody : Tea.TeaModel {
             if self.ssoEnabled != nil {
                 map["SsoEnabled"] = self.ssoEnabled!
             }
+            if self.ssoLoginWithDomain != nil {
+                map["SsoLoginWithDomain"] = self.ssoLoginWithDomain!
+            }
             return map
         }
 
@@ -7760,6 +7765,9 @@ public class GetUserSsoSettingsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SsoEnabled") {
                 self.ssoEnabled = dict["SsoEnabled"] as! Bool
+            }
+            if dict.keys.contains("SsoLoginWithDomain") {
+                self.ssoLoginWithDomain = dict["SsoLoginWithDomain"] as! Bool
             }
         }
     }
@@ -13281,6 +13289,8 @@ public class SetUserSsoSettingsRequest : Tea.TeaModel {
 
     public var ssoEnabled: Bool?
 
+    public var ssoLoginWithDomain: Bool?
+
     public override init() {
         super.init()
     }
@@ -13304,6 +13314,9 @@ public class SetUserSsoSettingsRequest : Tea.TeaModel {
         if self.ssoEnabled != nil {
             map["SsoEnabled"] = self.ssoEnabled!
         }
+        if self.ssoLoginWithDomain != nil {
+            map["SsoLoginWithDomain"] = self.ssoLoginWithDomain!
+        }
         return map
     }
 
@@ -13317,6 +13330,9 @@ public class SetUserSsoSettingsRequest : Tea.TeaModel {
         if dict.keys.contains("SsoEnabled") {
             self.ssoEnabled = dict["SsoEnabled"] as! Bool
         }
+        if dict.keys.contains("SsoLoginWithDomain") {
+            self.ssoLoginWithDomain = dict["SsoLoginWithDomain"] as! Bool
+        }
     }
 }
 
@@ -13327,6 +13343,8 @@ public class SetUserSsoSettingsResponseBody : Tea.TeaModel {
         public var metadataDocument: String?
 
         public var ssoEnabled: Bool?
+
+        public var ssoLoginWithDomain: Bool?
 
         public override init() {
             super.init()
@@ -13351,6 +13369,9 @@ public class SetUserSsoSettingsResponseBody : Tea.TeaModel {
             if self.ssoEnabled != nil {
                 map["SsoEnabled"] = self.ssoEnabled!
             }
+            if self.ssoLoginWithDomain != nil {
+                map["SsoLoginWithDomain"] = self.ssoLoginWithDomain!
+            }
             return map
         }
 
@@ -13363,6 +13384,9 @@ public class SetUserSsoSettingsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SsoEnabled") {
                 self.ssoEnabled = dict["SsoEnabled"] as! Bool
+            }
+            if dict.keys.contains("SsoLoginWithDomain") {
+                self.ssoLoginWithDomain = dict["SsoLoginWithDomain"] as! Bool
             }
         }
     }

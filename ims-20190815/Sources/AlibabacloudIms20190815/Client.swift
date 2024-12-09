@@ -2143,6 +2143,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ssoEnabled)) {
             query["SsoEnabled"] = request.ssoEnabled!;
         }
+        if (!TeaUtils.Client.isUnset(request.ssoLoginWithDomain)) {
+            query["SsoLoginWithDomain"] = request.ssoLoginWithDomain!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
