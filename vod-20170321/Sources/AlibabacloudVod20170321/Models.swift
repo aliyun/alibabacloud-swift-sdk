@@ -27688,6 +27688,8 @@ public class GetPlayInfoResponseBody : Tea.TeaModel {
 
             public var bitrate: String?
 
+            public var codecName: String?
+
             public var creationTime: String?
 
             public var definition: String?
@@ -27751,6 +27753,9 @@ public class GetPlayInfoResponseBody : Tea.TeaModel {
                 }
                 if self.bitrate != nil {
                     map["Bitrate"] = self.bitrate!
+                }
+                if self.codecName != nil {
+                    map["CodecName"] = self.codecName!
                 }
                 if self.creationTime != nil {
                     map["CreationTime"] = self.creationTime!
@@ -27827,6 +27832,9 @@ public class GetPlayInfoResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Bitrate") {
                     self.bitrate = dict["Bitrate"] as! String
+                }
+                if dict.keys.contains("CodecName") {
+                    self.codecName = dict["CodecName"] as! String
                 }
                 if dict.keys.contains("CreationTime") {
                     self.creationTime = dict["CreationTime"] as! String
