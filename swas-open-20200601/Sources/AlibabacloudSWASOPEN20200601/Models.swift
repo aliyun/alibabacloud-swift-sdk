@@ -14204,6 +14204,8 @@ public class ListPlansResponseBody : Tea.TeaModel {
 
         public var planId: String?
 
+        public var planType: String?
+
         public var supportPlatform: String?
 
         public override init() {
@@ -14247,6 +14249,9 @@ public class ListPlansResponseBody : Tea.TeaModel {
             if self.planId != nil {
                 map["PlanId"] = self.planId!
             }
+            if self.planType != nil {
+                map["PlanType"] = self.planType!
+            }
             if self.supportPlatform != nil {
                 map["SupportPlatform"] = self.supportPlatform!
             }
@@ -14280,6 +14285,9 @@ public class ListPlansResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("PlanId") {
                 self.planId = dict["PlanId"] as! String
+            }
+            if dict.keys.contains("PlanType") {
+                self.planType = dict["PlanType"] as! String
             }
             if dict.keys.contains("SupportPlatform") {
                 self.supportPlatform = dict["SupportPlatform"] as! String
