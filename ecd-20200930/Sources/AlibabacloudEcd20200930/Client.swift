@@ -3858,6 +3858,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.endUserId)) {
             query["EndUserId"] = request.endUserId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.endUserIdFilter)) {
+            query["EndUserIdFilter"] = request.endUserIdFilter ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.officeSiteId)) {
             query["OfficeSiteId"] = request.officeSiteId ?? "";
         }

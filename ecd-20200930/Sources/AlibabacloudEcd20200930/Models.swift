@@ -18166,6 +18166,8 @@ public class DescribeDesktopSessionsRequest : Tea.TeaModel {
 
     public var endUserId: String?
 
+    public var endUserIdFilter: String?
+
     public var officeSiteId: String?
 
     public var pageNumber: Int32?
@@ -18209,6 +18211,9 @@ public class DescribeDesktopSessionsRequest : Tea.TeaModel {
         if self.endUserId != nil {
             map["EndUserId"] = self.endUserId!
         }
+        if self.endUserIdFilter != nil {
+            map["EndUserIdFilter"] = self.endUserIdFilter!
+        }
         if self.officeSiteId != nil {
             map["OfficeSiteId"] = self.officeSiteId!
         }
@@ -18248,6 +18253,9 @@ public class DescribeDesktopSessionsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EndUserId") {
             self.endUserId = dict["EndUserId"] as! String
+        }
+        if dict.keys.contains("EndUserIdFilter") {
+            self.endUserIdFilter = dict["EndUserIdFilter"] as! String
         }
         if dict.keys.contains("OfficeSiteId") {
             self.officeSiteId = dict["OfficeSiteId"] as! String
@@ -25942,6 +25950,8 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
 
         public var customAccessPoint: String?
 
+        public var customDnsAddress: [String]?
+
         public var customSecurityGroupId: String?
 
         public var desktopAccessType: String?
@@ -26078,6 +26088,9 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             }
             if self.customAccessPoint != nil {
                 map["CustomAccessPoint"] = self.customAccessPoint!
+            }
+            if self.customDnsAddress != nil {
+                map["CustomDnsAddress"] = self.customDnsAddress!
             }
             if self.customSecurityGroupId != nil {
                 map["CustomSecurityGroupId"] = self.customSecurityGroupId!
@@ -26260,6 +26273,9 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("CustomAccessPoint") {
                 self.customAccessPoint = dict["CustomAccessPoint"] as! String
+            }
+            if dict.keys.contains("CustomDnsAddress") {
+                self.customDnsAddress = dict["CustomDnsAddress"] as! [String]
             }
             if dict.keys.contains("CustomSecurityGroupId") {
                 self.customSecurityGroupId = dict["CustomSecurityGroupId"] as! String
