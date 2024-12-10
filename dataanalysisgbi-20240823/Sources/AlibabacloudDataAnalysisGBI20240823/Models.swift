@@ -332,6 +332,8 @@ public class CreateVirtualDatasourceInstanceRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var type: Int32?
+
     public var workspaceId: String?
 
     public override init() {
@@ -354,6 +356,9 @@ public class CreateVirtualDatasourceInstanceRequest : Tea.TeaModel {
         if self.name != nil {
             map["name"] = self.name!
         }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
         if self.workspaceId != nil {
             map["workspaceId"] = self.workspaceId!
         }
@@ -366,6 +371,9 @@ public class CreateVirtualDatasourceInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("name") {
             self.name = dict["name"] as! String
+        }
+        if dict.keys.contains("type") {
+            self.type = dict["type"] as! Int32
         }
         if dict.keys.contains("workspaceId") {
             self.workspaceId = dict["workspaceId"] as! String
@@ -1522,6 +1530,8 @@ public class UpdateVirtualDatasourceInstanceRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var type: Int32?
+
     public var vdbId: String?
 
     public var workspaceId: String?
@@ -1546,6 +1556,9 @@ public class UpdateVirtualDatasourceInstanceRequest : Tea.TeaModel {
         if self.name != nil {
             map["name"] = self.name!
         }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
         if self.vdbId != nil {
             map["vdbId"] = self.vdbId!
         }
@@ -1561,6 +1574,9 @@ public class UpdateVirtualDatasourceInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("name") {
             self.name = dict["name"] as! String
+        }
+        if dict.keys.contains("type") {
+            self.type = dict["type"] as! Int32
         }
         if dict.keys.contains("vdbId") {
             self.vdbId = dict["vdbId"] as! String
