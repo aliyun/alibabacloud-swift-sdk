@@ -224,6 +224,43 @@ public class CancelOrderRequestResponse : Tea.TeaModel {
 }
 
 public class CreateCertificateForPackageRequestRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var companyName: String?
 
     public var csr: String?
@@ -235,6 +272,8 @@ public class CreateCertificateForPackageRequestRequest : Tea.TeaModel {
     public var phone: String?
 
     public var productCode: String?
+
+    public var tags: [CreateCertificateForPackageRequestRequest.Tags]?
 
     public var username: String?
 
@@ -272,6 +311,13 @@ public class CreateCertificateForPackageRequestRequest : Tea.TeaModel {
         if self.productCode != nil {
             map["ProductCode"] = self.productCode!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         if self.username != nil {
             map["Username"] = self.username!
         }
@@ -299,6 +345,17 @@ public class CreateCertificateForPackageRequestRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ProductCode") {
             self.productCode = dict["ProductCode"] as! String
+        }
+        if dict.keys.contains("Tags") {
+            var tmp : [CreateCertificateForPackageRequestRequest.Tags] = []
+            for v in dict["Tags"] as! [Any] {
+                var model = CreateCertificateForPackageRequestRequest.Tags()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tags = tmp
         }
         if dict.keys.contains("Username") {
             self.username = dict["Username"] as! String
@@ -397,6 +454,43 @@ public class CreateCertificateForPackageRequestResponse : Tea.TeaModel {
 }
 
 public class CreateCertificateRequestRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var domain: String?
 
     public var email: String?
@@ -404,6 +498,8 @@ public class CreateCertificateRequestRequest : Tea.TeaModel {
     public var phone: String?
 
     public var productCode: String?
+
+    public var tags: [CreateCertificateRequestRequest.Tags]?
 
     public var username: String?
 
@@ -435,6 +531,13 @@ public class CreateCertificateRequestRequest : Tea.TeaModel {
         if self.productCode != nil {
             map["ProductCode"] = self.productCode!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         if self.username != nil {
             map["Username"] = self.username!
         }
@@ -456,6 +559,17 @@ public class CreateCertificateRequestRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ProductCode") {
             self.productCode = dict["ProductCode"] as! String
+        }
+        if dict.keys.contains("Tags") {
+            var tmp : [CreateCertificateRequestRequest.Tags] = []
+            for v in dict["Tags"] as! [Any] {
+                var model = CreateCertificateRequestRequest.Tags()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tags = tmp
         }
         if dict.keys.contains("Username") {
             self.username = dict["Username"] as! String
@@ -554,6 +668,43 @@ public class CreateCertificateRequestResponse : Tea.TeaModel {
 }
 
 public class CreateCertificateWithCsrRequestRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var csr: String?
 
     public var email: String?
@@ -561,6 +712,8 @@ public class CreateCertificateWithCsrRequestRequest : Tea.TeaModel {
     public var phone: String?
 
     public var productCode: String?
+
+    public var tags: [CreateCertificateWithCsrRequestRequest.Tags]?
 
     public var username: String?
 
@@ -592,6 +745,13 @@ public class CreateCertificateWithCsrRequestRequest : Tea.TeaModel {
         if self.productCode != nil {
             map["ProductCode"] = self.productCode!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         if self.username != nil {
             map["Username"] = self.username!
         }
@@ -613,6 +773,17 @@ public class CreateCertificateWithCsrRequestRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ProductCode") {
             self.productCode = dict["ProductCode"] as! String
+        }
+        if dict.keys.contains("Tags") {
+            var tmp : [CreateCertificateWithCsrRequestRequest.Tags] = []
+            for v in dict["Tags"] as! [Any] {
+                var model = CreateCertificateWithCsrRequestRequest.Tags()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tags = tmp
         }
         if dict.keys.contains("Username") {
             self.username = dict["Username"] as! String
@@ -7524,9 +7695,48 @@ public class MoveResourceGroupResponse : Tea.TeaModel {
 }
 
 public class RenewCertificateOrderForPackageRequestRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var csr: String?
 
     public var orderId: Int64?
+
+    public var tags: [RenewCertificateOrderForPackageRequestRequest.Tags]?
 
     public override init() {
         super.init()
@@ -7548,6 +7758,13 @@ public class RenewCertificateOrderForPackageRequestRequest : Tea.TeaModel {
         if self.orderId != nil {
             map["OrderId"] = self.orderId!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         return map
     }
 
@@ -7557,6 +7774,17 @@ public class RenewCertificateOrderForPackageRequestRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OrderId") {
             self.orderId = dict["OrderId"] as! Int64
+        }
+        if dict.keys.contains("Tags") {
+            var tmp : [RenewCertificateOrderForPackageRequestRequest.Tags] = []
+            for v in dict["Tags"] as! [Any] {
+                var model = RenewCertificateOrderForPackageRequestRequest.Tags()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tags = tmp
         }
     }
 }
@@ -8447,6 +8675,43 @@ public class UploadCsrResponse : Tea.TeaModel {
 }
 
 public class UploadUserCertificateRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var cert: String?
 
     public var encryptCert: String?
@@ -8462,6 +8727,8 @@ public class UploadUserCertificateRequest : Tea.TeaModel {
     public var signCert: String?
 
     public var signPrivateKey: String?
+
+    public var tags: [UploadUserCertificateRequest.Tags]?
 
     public override init() {
         super.init()
@@ -8501,6 +8768,13 @@ public class UploadUserCertificateRequest : Tea.TeaModel {
         if self.signPrivateKey != nil {
             map["SignPrivateKey"] = self.signPrivateKey!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         return map
     }
 
@@ -8528,6 +8802,17 @@ public class UploadUserCertificateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SignPrivateKey") {
             self.signPrivateKey = dict["SignPrivateKey"] as! String
+        }
+        if dict.keys.contains("Tags") {
+            var tmp : [UploadUserCertificateRequest.Tags] = []
+            for v in dict["Tags"] as! [Any] {
+                var model = UploadUserCertificateRequest.Tags()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tags = tmp
         }
     }
 }
