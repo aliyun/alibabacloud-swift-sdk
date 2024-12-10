@@ -253,6 +253,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.messageId)) {
             query["MessageId"] = request.messageId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.to)) {
+            query["To"] = request.to ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])

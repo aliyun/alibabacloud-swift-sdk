@@ -1101,6 +1101,8 @@ public class SmsConversionRequest : Tea.TeaModel {
 
     public var messageId: String?
 
+    public var to: String?
+
     public override init() {
         super.init()
     }
@@ -1124,6 +1126,9 @@ public class SmsConversionRequest : Tea.TeaModel {
         if self.messageId != nil {
             map["MessageId"] = self.messageId!
         }
+        if self.to != nil {
+            map["To"] = self.to!
+        }
         return map
     }
 
@@ -1136,6 +1141,9 @@ public class SmsConversionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("MessageId") {
             self.messageId = dict["MessageId"] as! String
+        }
+        if dict.keys.contains("To") {
+            self.to = dict["To"] as! String
         }
     }
 }
