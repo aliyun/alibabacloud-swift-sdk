@@ -281,9 +281,6 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.officeSiteId)) {
             query["OfficeSiteId"] = request.officeSiteId ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.profileRegion)) {
-            query["ProfileRegion"] = request.profileRegion ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.sessionId)) {
             query["SessionId"] = request.sessionId ?? "";
         }

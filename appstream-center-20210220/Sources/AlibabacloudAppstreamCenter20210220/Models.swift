@@ -1514,8 +1514,6 @@ public class RefreshLoginTokenRequest : Tea.TeaModel {
 
     public var officeSiteId: String?
 
-    public var profileRegion: String?
-
     public var sessionId: String?
 
     public var uuid: String?
@@ -1552,9 +1550,6 @@ public class RefreshLoginTokenRequest : Tea.TeaModel {
         if self.officeSiteId != nil {
             map["OfficeSiteId"] = self.officeSiteId!
         }
-        if self.profileRegion != nil {
-            map["ProfileRegion"] = self.profileRegion!
-        }
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
         }
@@ -1582,9 +1577,6 @@ public class RefreshLoginTokenRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OfficeSiteId") {
             self.officeSiteId = dict["OfficeSiteId"] as! String
-        }
-        if dict.keys.contains("ProfileRegion") {
-            self.profileRegion = dict["ProfileRegion"] as! String
         }
         if dict.keys.contains("SessionId") {
             self.sessionId = dict["SessionId"] as! String
