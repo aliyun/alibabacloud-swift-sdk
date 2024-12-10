@@ -9294,6 +9294,92 @@ public class DescribeBackupPlansRequest : Tea.TeaModel {
 public class DescribeBackupPlansResponseBody : Tea.TeaModel {
     public class BackupPlans : Tea.TeaModel {
         public class BackupPlan : Tea.TeaModel {
+            public class HitTags : Tea.TeaModel {
+                public class HitTag : Tea.TeaModel {
+                    public var key: String?
+
+                    public var operator_: String?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.key != nil {
+                            map["Key"] = self.key!
+                        }
+                        if self.operator_ != nil {
+                            map["Operator"] = self.operator_!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Key") {
+                            self.key = dict["Key"] as! String
+                        }
+                        if dict.keys.contains("Operator") {
+                            self.operator_ = dict["Operator"] as! String
+                        }
+                        if dict.keys.contains("Value") {
+                            self.value = dict["Value"] as! String
+                        }
+                    }
+                }
+                public var hitTag: [DescribeBackupPlansResponseBody.BackupPlans.BackupPlan.HitTags.HitTag]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.hitTag != nil {
+                        var tmp : [Any] = []
+                        for k in self.hitTag! {
+                            tmp.append(k.toMap())
+                        }
+                        map["HitTag"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("HitTag") {
+                        var tmp : [DescribeBackupPlansResponseBody.BackupPlans.BackupPlan.HitTags.HitTag] = []
+                        for v in dict["HitTag"] as! [Any] {
+                            var model = DescribeBackupPlansResponseBody.BackupPlans.BackupPlan.HitTags.HitTag()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.hitTag = tmp
+                    }
+                }
+            }
             public class OtsDetail : Tea.TeaModel {
                 public class TableNames : Tea.TeaModel {
                     public var tableName: [String]?
@@ -9671,6 +9757,8 @@ public class DescribeBackupPlansResponseBody : Tea.TeaModel {
 
             public var createTime: Int64?
 
+            public var createdByTag: Bool?
+
             public var createdTime: Int64?
 
             public var crossAccountRoleName: String?
@@ -9694,6 +9782,8 @@ public class DescribeBackupPlansResponseBody : Tea.TeaModel {
             public var exclude: String?
 
             public var fileSystemId: String?
+
+            public var hitTags: DescribeBackupPlansResponseBody.BackupPlans.BackupPlan.HitTags?
 
             public var include: String?
 
@@ -9747,6 +9837,7 @@ public class DescribeBackupPlansResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.hitTags?.validate()
                 try self.otsDetail?.validate()
                 try self.paths?.validate()
                 try self.resources?.validate()
@@ -9776,6 +9867,9 @@ public class DescribeBackupPlansResponseBody : Tea.TeaModel {
                 }
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
+                }
+                if self.createdByTag != nil {
+                    map["CreatedByTag"] = self.createdByTag!
                 }
                 if self.createdTime != nil {
                     map["CreatedTime"] = self.createdTime!
@@ -9812,6 +9906,9 @@ public class DescribeBackupPlansResponseBody : Tea.TeaModel {
                 }
                 if self.fileSystemId != nil {
                     map["FileSystemId"] = self.fileSystemId!
+                }
+                if self.hitTags != nil {
+                    map["HitTags"] = self.hitTags?.toMap()
                 }
                 if self.include != nil {
                     map["Include"] = self.include!
@@ -9901,6 +9998,9 @@ public class DescribeBackupPlansResponseBody : Tea.TeaModel {
                 if dict.keys.contains("CreateTime") {
                     self.createTime = dict["CreateTime"] as! Int64
                 }
+                if dict.keys.contains("CreatedByTag") {
+                    self.createdByTag = dict["CreatedByTag"] as! Bool
+                }
                 if dict.keys.contains("CreatedTime") {
                     self.createdTime = dict["CreatedTime"] as! Int64
                 }
@@ -9936,6 +10036,11 @@ public class DescribeBackupPlansResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("FileSystemId") {
                     self.fileSystemId = dict["FileSystemId"] as! String
+                }
+                if dict.keys.contains("HitTags") {
+                    var model = DescribeBackupPlansResponseBody.BackupPlans.BackupPlan.HitTags()
+                    model.fromMap(dict["HitTags"] as! [String: Any])
+                    self.hitTags = model
                 }
                 if dict.keys.contains("Include") {
                     self.include = dict["Include"] as! String
