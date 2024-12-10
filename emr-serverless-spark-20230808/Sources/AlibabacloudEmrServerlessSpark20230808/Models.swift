@@ -485,6 +485,108 @@ public class JobDriver : Tea.TeaModel {
     }
 }
 
+public class KerberosConf : Tea.TeaModel {
+    public var creator: String?
+
+    public var enabled: Bool?
+
+    public var gmtCreated: String?
+
+    public var gmtModified: String?
+
+    public var kerberosConfId: String?
+
+    public var keytabs: [String]?
+
+    public var krb5Conf: String?
+
+    public var name: String?
+
+    public var networkServiceId: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.creator != nil {
+            map["creator"] = self.creator!
+        }
+        if self.enabled != nil {
+            map["enabled"] = self.enabled!
+        }
+        if self.gmtCreated != nil {
+            map["gmtCreated"] = self.gmtCreated!
+        }
+        if self.gmtModified != nil {
+            map["gmtModified"] = self.gmtModified!
+        }
+        if self.kerberosConfId != nil {
+            map["kerberosConfId"] = self.kerberosConfId!
+        }
+        if self.keytabs != nil {
+            map["keytabs"] = self.keytabs!
+        }
+        if self.krb5Conf != nil {
+            map["krb5Conf"] = self.krb5Conf!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.networkServiceId != nil {
+            map["networkServiceId"] = self.networkServiceId!
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("creator") {
+            self.creator = dict["creator"] as! String
+        }
+        if dict.keys.contains("enabled") {
+            self.enabled = dict["enabled"] as! Bool
+        }
+        if dict.keys.contains("gmtCreated") {
+            self.gmtCreated = dict["gmtCreated"] as! String
+        }
+        if dict.keys.contains("gmtModified") {
+            self.gmtModified = dict["gmtModified"] as! String
+        }
+        if dict.keys.contains("kerberosConfId") {
+            self.kerberosConfId = dict["kerberosConfId"] as! String
+        }
+        if dict.keys.contains("keytabs") {
+            self.keytabs = dict["keytabs"] as! [String]
+        }
+        if dict.keys.contains("krb5Conf") {
+            self.krb5Conf = dict["krb5Conf"] as! String
+        }
+        if dict.keys.contains("name") {
+            self.name = dict["name"] as! String
+        }
+        if dict.keys.contains("networkServiceId") {
+            self.networkServiceId = dict["networkServiceId"] as! String
+        }
+        if dict.keys.contains("workspaceId") {
+            self.workspaceId = dict["workspaceId"] as! String
+        }
+    }
+}
+
 public class PrincipalAction : Tea.TeaModel {
     public var actionArn: String?
 
@@ -3973,6 +4075,8 @@ public class ListJobRunsResponseBody : Tea.TeaModel {
 
         public var creator: String?
 
+        public var cuHours: Int64?
+
         public var displayReleaseVersion: String?
 
         public var endTime: Int64?
@@ -3987,6 +4091,8 @@ public class ListJobRunsResponseBody : Tea.TeaModel {
 
         public var log: RunLog?
 
+        public var mbSeconds: Int64?
+
         public var name: String?
 
         public var releaseVersion: String?
@@ -3998,6 +4104,8 @@ public class ListJobRunsResponseBody : Tea.TeaModel {
         public var submitTime: Int64?
 
         public var tags: [Tag]?
+
+        public var vcoreSeconds: Int64?
 
         public var webUI: String?
 
@@ -4030,6 +4138,9 @@ public class ListJobRunsResponseBody : Tea.TeaModel {
             if self.creator != nil {
                 map["creator"] = self.creator!
             }
+            if self.cuHours != nil {
+                map["cuHours"] = self.cuHours!
+            }
             if self.displayReleaseVersion != nil {
                 map["displayReleaseVersion"] = self.displayReleaseVersion!
             }
@@ -4050,6 +4161,9 @@ public class ListJobRunsResponseBody : Tea.TeaModel {
             }
             if self.log != nil {
                 map["log"] = self.log?.toMap()
+            }
+            if self.mbSeconds != nil {
+                map["mbSeconds"] = self.mbSeconds!
             }
             if self.name != nil {
                 map["name"] = self.name!
@@ -4073,6 +4187,9 @@ public class ListJobRunsResponseBody : Tea.TeaModel {
                 }
                 map["tags"] = tmp
             }
+            if self.vcoreSeconds != nil {
+                map["vcoreSeconds"] = self.vcoreSeconds!
+            }
             if self.webUI != nil {
                 map["webUI"] = self.webUI!
             }
@@ -4093,6 +4210,9 @@ public class ListJobRunsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("creator") {
                 self.creator = dict["creator"] as! String
+            }
+            if dict.keys.contains("cuHours") {
+                self.cuHours = dict["cuHours"] as! Int64
             }
             if dict.keys.contains("displayReleaseVersion") {
                 self.displayReleaseVersion = dict["displayReleaseVersion"] as! String
@@ -4118,6 +4238,9 @@ public class ListJobRunsResponseBody : Tea.TeaModel {
                 var model = RunLog()
                 model.fromMap(dict["log"] as! [String: Any])
                 self.log = model
+            }
+            if dict.keys.contains("mbSeconds") {
+                self.mbSeconds = dict["mbSeconds"] as! Int64
             }
             if dict.keys.contains("name") {
                 self.name = dict["name"] as! String
@@ -4146,6 +4269,9 @@ public class ListJobRunsResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.tags = tmp
+            }
+            if dict.keys.contains("vcoreSeconds") {
+                self.vcoreSeconds = dict["vcoreSeconds"] as! Int64
             }
             if dict.keys.contains("webUI") {
                 self.webUI = dict["webUI"] as! String
