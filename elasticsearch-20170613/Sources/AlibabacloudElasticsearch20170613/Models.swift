@@ -25599,6 +25599,8 @@ public class ListInstanceResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var domain: String?
+
         public var elasticDataNodeConfiguration: ListInstanceResponseBody.Result.ElasticDataNodeConfiguration?
 
         public var endTime: Int64?
@@ -25682,6 +25684,9 @@ public class ListInstanceResponseBody : Tea.TeaModel {
             }
             if self.description_ != nil {
                 map["description"] = self.description_!
+            }
+            if self.domain != nil {
+                map["domain"] = self.domain!
             }
             if self.elasticDataNodeConfiguration != nil {
                 map["elasticDataNodeConfiguration"] = self.elasticDataNodeConfiguration?.toMap()
@@ -25779,6 +25784,9 @@ public class ListInstanceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("description") {
                 self.description_ = dict["description"] as! String
+            }
+            if dict.keys.contains("domain") {
+                self.domain = dict["domain"] as! String
             }
             if dict.keys.contains("elasticDataNodeConfiguration") {
                 var model = ListInstanceResponseBody.Result.ElasticDataNodeConfiguration()
