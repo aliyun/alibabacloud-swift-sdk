@@ -4544,6 +4544,8 @@ public class CreateEciScalingConfigurationRequest : Tea.TeaModel {
 
     public var ephemeralStorage: Int32?
 
+    public var gpuDriverVersion: String?
+
     public var hostAliases: [CreateEciScalingConfigurationRequest.HostAliases]?
 
     public var hostName: String?
@@ -4690,6 +4692,9 @@ public class CreateEciScalingConfigurationRequest : Tea.TeaModel {
         }
         if self.ephemeralStorage != nil {
             map["EphemeralStorage"] = self.ephemeralStorage!
+        }
+        if self.gpuDriverVersion != nil {
+            map["GpuDriverVersion"] = self.gpuDriverVersion!
         }
         if self.hostAliases != nil {
             var tmp : [Any] = []
@@ -4889,6 +4894,9 @@ public class CreateEciScalingConfigurationRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EphemeralStorage") {
             self.ephemeralStorage = dict["EphemeralStorage"] as! Int32
+        }
+        if dict.keys.contains("GpuDriverVersion") {
+            self.gpuDriverVersion = dict["GpuDriverVersion"] as! String
         }
         if dict.keys.contains("HostAliases") {
             var tmp : [CreateEciScalingConfigurationRequest.HostAliases] = []
@@ -8169,6 +8177,59 @@ public class CreateScalingGroupRequest : Tea.TeaModel {
             }
         }
     }
+    public class CapacityOptions : Tea.TeaModel {
+        public var compensateWithOnDemand: Bool?
+
+        public var onDemandBaseCapacity: Int32?
+
+        public var onDemandPercentageAboveBaseCapacity: Int32?
+
+        public var spotAutoReplaceOnDemand: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.compensateWithOnDemand != nil {
+                map["CompensateWithOnDemand"] = self.compensateWithOnDemand!
+            }
+            if self.onDemandBaseCapacity != nil {
+                map["OnDemandBaseCapacity"] = self.onDemandBaseCapacity!
+            }
+            if self.onDemandPercentageAboveBaseCapacity != nil {
+                map["OnDemandPercentageAboveBaseCapacity"] = self.onDemandPercentageAboveBaseCapacity!
+            }
+            if self.spotAutoReplaceOnDemand != nil {
+                map["SpotAutoReplaceOnDemand"] = self.spotAutoReplaceOnDemand!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CompensateWithOnDemand") {
+                self.compensateWithOnDemand = dict["CompensateWithOnDemand"] as! Bool
+            }
+            if dict.keys.contains("OnDemandBaseCapacity") {
+                self.onDemandBaseCapacity = dict["OnDemandBaseCapacity"] as! Int32
+            }
+            if dict.keys.contains("OnDemandPercentageAboveBaseCapacity") {
+                self.onDemandPercentageAboveBaseCapacity = dict["OnDemandPercentageAboveBaseCapacity"] as! Int32
+            }
+            if dict.keys.contains("SpotAutoReplaceOnDemand") {
+                self.spotAutoReplaceOnDemand = dict["SpotAutoReplaceOnDemand"] as! Bool
+            }
+        }
+    }
     public class DBInstances : Tea.TeaModel {
         public var attachMode: String?
 
@@ -8563,6 +8624,8 @@ public class CreateScalingGroupRequest : Tea.TeaModel {
 
     public var azBalance: Bool?
 
+    public var capacityOptions: CreateScalingGroupRequest.CapacityOptions?
+
     public var clientToken: String?
 
     public var compensateWithOnDemand: Bool?
@@ -8659,6 +8722,7 @@ public class CreateScalingGroupRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.capacityOptions?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -8675,6 +8739,9 @@ public class CreateScalingGroupRequest : Tea.TeaModel {
         }
         if self.azBalance != nil {
             map["AzBalance"] = self.azBalance!
+        }
+        if self.capacityOptions != nil {
+            map["CapacityOptions"] = self.capacityOptions?.toMap()
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
@@ -8853,6 +8920,11 @@ public class CreateScalingGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AzBalance") {
             self.azBalance = dict["AzBalance"] as! Bool
+        }
+        if dict.keys.contains("CapacityOptions") {
+            var model = CreateScalingGroupRequest.CapacityOptions()
+            model.fromMap(dict["CapacityOptions"] as! [String: Any])
+            self.capacityOptions = model
         }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
@@ -16017,6 +16089,8 @@ public class DescribeEciScalingConfigurationsResponseBody : Tea.TeaModel {
 
         public var ephemeralStorage: Int32?
 
+        public var gpuDriverVersion: String?
+
         public var hostAliases: [DescribeEciScalingConfigurationsResponseBody.ScalingConfigurations.HostAliases]?
 
         public var hostName: String?
@@ -16167,6 +16241,9 @@ public class DescribeEciScalingConfigurationsResponseBody : Tea.TeaModel {
             }
             if self.ephemeralStorage != nil {
                 map["EphemeralStorage"] = self.ephemeralStorage!
+            }
+            if self.gpuDriverVersion != nil {
+                map["GpuDriverVersion"] = self.gpuDriverVersion!
             }
             if self.hostAliases != nil {
                 var tmp : [Any] = []
@@ -16372,6 +16449,9 @@ public class DescribeEciScalingConfigurationsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("EphemeralStorage") {
                 self.ephemeralStorage = dict["EphemeralStorage"] as! Int32
+            }
+            if dict.keys.contains("GpuDriverVersion") {
+                self.gpuDriverVersion = dict["GpuDriverVersion"] as! String
             }
             if dict.keys.contains("HostAliases") {
                 var tmp : [DescribeEciScalingConfigurationsResponseBody.ScalingConfigurations.HostAliases] = []
@@ -17228,6 +17308,8 @@ public class DescribeInstanceRefreshesResponseBody : Tea.TeaModel {
 
         public var scalingGroupId: String?
 
+        public var skipMatching: Bool?
+
         public var startTime: String?
 
         public var status: String?
@@ -17276,6 +17358,9 @@ public class DescribeInstanceRefreshesResponseBody : Tea.TeaModel {
             if self.scalingGroupId != nil {
                 map["ScalingGroupId"] = self.scalingGroupId!
             }
+            if self.skipMatching != nil {
+                map["SkipMatching"] = self.skipMatching!
+            }
             if self.startTime != nil {
                 map["StartTime"] = self.startTime!
             }
@@ -17317,6 +17402,9 @@ public class DescribeInstanceRefreshesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ScalingGroupId") {
                 self.scalingGroupId = dict["ScalingGroupId"] as! String
+            }
+            if dict.keys.contains("SkipMatching") {
+                self.skipMatching = dict["SkipMatching"] as! Bool
             }
             if dict.keys.contains("StartTime") {
                 self.startTime = dict["StartTime"] as! String
@@ -22802,6 +22890,59 @@ public class DescribeScalingGroupsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class CapacityOptions : Tea.TeaModel {
+            public var compensateWithOnDemand: Bool?
+
+            public var onDemandBaseCapacity: Int32?
+
+            public var onDemandPercentageAboveBaseCapacity: Int32?
+
+            public var spotAutoReplaceOnDemand: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.compensateWithOnDemand != nil {
+                    map["CompensateWithOnDemand"] = self.compensateWithOnDemand!
+                }
+                if self.onDemandBaseCapacity != nil {
+                    map["OnDemandBaseCapacity"] = self.onDemandBaseCapacity!
+                }
+                if self.onDemandPercentageAboveBaseCapacity != nil {
+                    map["OnDemandPercentageAboveBaseCapacity"] = self.onDemandPercentageAboveBaseCapacity!
+                }
+                if self.spotAutoReplaceOnDemand != nil {
+                    map["SpotAutoReplaceOnDemand"] = self.spotAutoReplaceOnDemand!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CompensateWithOnDemand") {
+                    self.compensateWithOnDemand = dict["CompensateWithOnDemand"] as! Bool
+                }
+                if dict.keys.contains("OnDemandBaseCapacity") {
+                    self.onDemandBaseCapacity = dict["OnDemandBaseCapacity"] as! Int32
+                }
+                if dict.keys.contains("OnDemandPercentageAboveBaseCapacity") {
+                    self.onDemandPercentageAboveBaseCapacity = dict["OnDemandPercentageAboveBaseCapacity"] as! Int32
+                }
+                if dict.keys.contains("SpotAutoReplaceOnDemand") {
+                    self.spotAutoReplaceOnDemand = dict["SpotAutoReplaceOnDemand"] as! Bool
+                }
+            }
+        }
         public class DBInstances : Tea.TeaModel {
             public var DBInstanceId: String?
 
@@ -23131,6 +23272,8 @@ public class DescribeScalingGroupsResponseBody : Tea.TeaModel {
 
         public var azBalance: Bool?
 
+        public var capacityOptions: DescribeScalingGroupsResponseBody.ScalingGroups.CapacityOptions?
+
         public var compensateWithOnDemand: Bool?
 
         public var creationTime: String?
@@ -23255,6 +23398,7 @@ public class DescribeScalingGroupsResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.capacityOptions?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -23277,6 +23421,9 @@ public class DescribeScalingGroupsResponseBody : Tea.TeaModel {
             }
             if self.azBalance != nil {
                 map["AzBalance"] = self.azBalance!
+            }
+            if self.capacityOptions != nil {
+                map["CapacityOptions"] = self.capacityOptions?.toMap()
             }
             if self.compensateWithOnDemand != nil {
                 map["CompensateWithOnDemand"] = self.compensateWithOnDemand!
@@ -23499,6 +23646,11 @@ public class DescribeScalingGroupsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("AzBalance") {
                 self.azBalance = dict["AzBalance"] as! Bool
+            }
+            if dict.keys.contains("CapacityOptions") {
+                var model = DescribeScalingGroupsResponseBody.ScalingGroups.CapacityOptions()
+                model.fromMap(dict["CapacityOptions"] as! [String: Any])
+                self.capacityOptions = model
             }
             if dict.keys.contains("CompensateWithOnDemand") {
                 self.compensateWithOnDemand = dict["CompensateWithOnDemand"] as! Bool
@@ -31179,6 +31331,8 @@ public class ModifyEciScalingConfigurationRequest : Tea.TeaModel {
 
     public var ephemeralStorage: Int32?
 
+    public var gpuDriverVersion: String?
+
     public var hostAliases: [ModifyEciScalingConfigurationRequest.HostAliases]?
 
     public var hostName: String?
@@ -31328,6 +31482,9 @@ public class ModifyEciScalingConfigurationRequest : Tea.TeaModel {
         }
         if self.ephemeralStorage != nil {
             map["EphemeralStorage"] = self.ephemeralStorage!
+        }
+        if self.gpuDriverVersion != nil {
+            map["GpuDriverVersion"] = self.gpuDriverVersion!
         }
         if self.hostAliases != nil {
             var tmp : [Any] = []
@@ -31530,6 +31687,9 @@ public class ModifyEciScalingConfigurationRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EphemeralStorage") {
             self.ephemeralStorage = dict["EphemeralStorage"] as! Int32
+        }
+        if dict.keys.contains("GpuDriverVersion") {
+            self.gpuDriverVersion = dict["GpuDriverVersion"] as! String
         }
         if dict.keys.contains("HostAliases") {
             var tmp : [ModifyEciScalingConfigurationRequest.HostAliases] = []
@@ -34882,6 +35042,59 @@ public class ModifyScalingConfigurationResponse : Tea.TeaModel {
 }
 
 public class ModifyScalingGroupRequest : Tea.TeaModel {
+    public class CapacityOptions : Tea.TeaModel {
+        public var compensateWithOnDemand: Bool?
+
+        public var onDemandBaseCapacity: Int32?
+
+        public var onDemandPercentageAboveBaseCapacity: Int32?
+
+        public var spotAutoReplaceOnDemand: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.compensateWithOnDemand != nil {
+                map["CompensateWithOnDemand"] = self.compensateWithOnDemand!
+            }
+            if self.onDemandBaseCapacity != nil {
+                map["OnDemandBaseCapacity"] = self.onDemandBaseCapacity!
+            }
+            if self.onDemandPercentageAboveBaseCapacity != nil {
+                map["OnDemandPercentageAboveBaseCapacity"] = self.onDemandPercentageAboveBaseCapacity!
+            }
+            if self.spotAutoReplaceOnDemand != nil {
+                map["SpotAutoReplaceOnDemand"] = self.spotAutoReplaceOnDemand!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CompensateWithOnDemand") {
+                self.compensateWithOnDemand = dict["CompensateWithOnDemand"] as! Bool
+            }
+            if dict.keys.contains("OnDemandBaseCapacity") {
+                self.onDemandBaseCapacity = dict["OnDemandBaseCapacity"] as! Int32
+            }
+            if dict.keys.contains("OnDemandPercentageAboveBaseCapacity") {
+                self.onDemandPercentageAboveBaseCapacity = dict["OnDemandPercentageAboveBaseCapacity"] as! Int32
+            }
+            if dict.keys.contains("SpotAutoReplaceOnDemand") {
+                self.spotAutoReplaceOnDemand = dict["SpotAutoReplaceOnDemand"] as! Bool
+            }
+        }
+    }
     public class LaunchTemplateOverrides : Tea.TeaModel {
         public var instanceType: String?
 
@@ -34932,6 +35145,8 @@ public class ModifyScalingGroupRequest : Tea.TeaModel {
     public var allocationStrategy: String?
 
     public var azBalance: Bool?
+
+    public var capacityOptions: ModifyScalingGroupRequest.CapacityOptions?
 
     public var compensateWithOnDemand: Bool?
 
@@ -35003,6 +35218,7 @@ public class ModifyScalingGroupRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.capacityOptions?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -35015,6 +35231,9 @@ public class ModifyScalingGroupRequest : Tea.TeaModel {
         }
         if self.azBalance != nil {
             map["AzBalance"] = self.azBalance!
+        }
+        if self.capacityOptions != nil {
+            map["CapacityOptions"] = self.capacityOptions?.toMap()
         }
         if self.compensateWithOnDemand != nil {
             map["CompensateWithOnDemand"] = self.compensateWithOnDemand!
@@ -35122,6 +35341,11 @@ public class ModifyScalingGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AzBalance") {
             self.azBalance = dict["AzBalance"] as! Bool
+        }
+        if dict.keys.contains("CapacityOptions") {
+            var model = ModifyScalingGroupRequest.CapacityOptions()
+            model.fromMap(dict["CapacityOptions"] as! [String: Any])
+            self.capacityOptions = model
         }
         if dict.keys.contains("CompensateWithOnDemand") {
             self.compensateWithOnDemand = dict["CompensateWithOnDemand"] as! Bool
@@ -38037,6 +38261,8 @@ public class StartInstanceRefreshRequest : Tea.TeaModel {
 
     public var scalingGroupId: String?
 
+    public var skipMatching: Bool?
+
     public override init() {
         super.init()
     }
@@ -38076,6 +38302,9 @@ public class StartInstanceRefreshRequest : Tea.TeaModel {
         if self.scalingGroupId != nil {
             map["ScalingGroupId"] = self.scalingGroupId!
         }
+        if self.skipMatching != nil {
+            map["SkipMatching"] = self.skipMatching!
+        }
         return map
     }
 
@@ -38105,6 +38334,9 @@ public class StartInstanceRefreshRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ScalingGroupId") {
             self.scalingGroupId = dict["ScalingGroupId"] as! String
+        }
+        if dict.keys.contains("SkipMatching") {
+            self.skipMatching = dict["SkipMatching"] as! Bool
         }
     }
 }
