@@ -6808,6 +6808,8 @@ public class DescribeGatewayResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var SSLRedirectionEnabled: Bool?
+
     public var status: String?
 
     public var updateTime: String?
@@ -6862,6 +6864,9 @@ public class DescribeGatewayResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.SSLRedirectionEnabled != nil {
+            map["SSLRedirectionEnabled"] = self.SSLRedirectionEnabled!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -6907,6 +6912,9 @@ public class DescribeGatewayResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SSLRedirectionEnabled") {
+            self.SSLRedirectionEnabled = dict["SSLRedirectionEnabled"] as! Bool
         }
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! String
@@ -7020,13 +7028,21 @@ public class DescribeResourceResponseBody : Tea.TeaModel {
 
     public var cpuCount: Int32?
 
+    public var cpuUsed: Int32?
+
     public var createTime: String?
 
     public var extraData: String?
 
     public var gpuCount: Int32?
 
+    public var gpuUsed: Double?
+
     public var instanceCount: Int32?
+
+    public var memory: Int32?
+
+    public var memoryUsed: Int32?
 
     public var message: String?
 
@@ -7068,6 +7084,9 @@ public class DescribeResourceResponseBody : Tea.TeaModel {
         if self.cpuCount != nil {
             map["CpuCount"] = self.cpuCount!
         }
+        if self.cpuUsed != nil {
+            map["CpuUsed"] = self.cpuUsed!
+        }
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
         }
@@ -7077,8 +7096,17 @@ public class DescribeResourceResponseBody : Tea.TeaModel {
         if self.gpuCount != nil {
             map["GpuCount"] = self.gpuCount!
         }
+        if self.gpuUsed != nil {
+            map["GpuUsed"] = self.gpuUsed!
+        }
         if self.instanceCount != nil {
             map["InstanceCount"] = self.instanceCount!
+        }
+        if self.memory != nil {
+            map["Memory"] = self.memory!
+        }
+        if self.memoryUsed != nil {
+            map["MemoryUsed"] = self.memoryUsed!
         }
         if self.message != nil {
             map["Message"] = self.message!
@@ -7120,6 +7148,9 @@ public class DescribeResourceResponseBody : Tea.TeaModel {
         if dict.keys.contains("CpuCount") {
             self.cpuCount = dict["CpuCount"] as! Int32
         }
+        if dict.keys.contains("CpuUsed") {
+            self.cpuUsed = dict["CpuUsed"] as! Int32
+        }
         if dict.keys.contains("CreateTime") {
             self.createTime = dict["CreateTime"] as! String
         }
@@ -7129,8 +7160,17 @@ public class DescribeResourceResponseBody : Tea.TeaModel {
         if dict.keys.contains("GpuCount") {
             self.gpuCount = dict["GpuCount"] as! Int32
         }
+        if dict.keys.contains("GpuUsed") {
+            self.gpuUsed = dict["GpuUsed"] as! Double
+        }
         if dict.keys.contains("InstanceCount") {
             self.instanceCount = dict["InstanceCount"] as! Int32
+        }
+        if dict.keys.contains("Memory") {
+            self.memory = dict["Memory"] as! Int32
+        }
+        if dict.keys.contains("MemoryUsed") {
+            self.memoryUsed = dict["MemoryUsed"] as! Int32
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
@@ -10136,6 +10176,8 @@ public class ListGatewayResponseBody : Tea.TeaModel {
 
         public var replicas: Int32?
 
+        public var SSLRedirectionEnabled: Bool?
+
         public var status: String?
 
         public var updateTime: String?
@@ -10184,6 +10226,9 @@ public class ListGatewayResponseBody : Tea.TeaModel {
             if self.replicas != nil {
                 map["Replicas"] = self.replicas!
             }
+            if self.SSLRedirectionEnabled != nil {
+                map["SSLRedirectionEnabled"] = self.SSLRedirectionEnabled!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -10223,6 +10268,9 @@ public class ListGatewayResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Replicas") {
                 self.replicas = dict["Replicas"] as! Int32
+            }
+            if dict.keys.contains("SSLRedirectionEnabled") {
+                self.SSLRedirectionEnabled = dict["SSLRedirectionEnabled"] as! Bool
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
@@ -10891,6 +10939,93 @@ public class ListGatewayIntranetLinkedVpcPeerResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ListGatewayIntranetLinkedVpcPeerResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListGatewayIntranetSupportedZoneResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var zones: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.zones != nil {
+            map["Zones"] = self.zones!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Zones") {
+            self.zones = dict["Zones"] as! [String]
+        }
+    }
+}
+
+public class ListGatewayIntranetSupportedZoneResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListGatewayIntranetSupportedZoneResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListGatewayIntranetSupportedZoneResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -14131,6 +14266,8 @@ public class UpdateGatewayRequest : Tea.TeaModel {
 
     public var enableIntranet: Bool?
 
+    public var enableSSLRedirection: Bool?
+
     public var instanceType: String?
 
     public var isDefault: Bool?
@@ -14159,6 +14296,9 @@ public class UpdateGatewayRequest : Tea.TeaModel {
         if self.enableIntranet != nil {
             map["EnableIntranet"] = self.enableIntranet!
         }
+        if self.enableSSLRedirection != nil {
+            map["EnableSSLRedirection"] = self.enableSSLRedirection!
+        }
         if self.instanceType != nil {
             map["InstanceType"] = self.instanceType!
         }
@@ -14180,6 +14320,9 @@ public class UpdateGatewayRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EnableIntranet") {
             self.enableIntranet = dict["EnableIntranet"] as! Bool
+        }
+        if dict.keys.contains("EnableSSLRedirection") {
+            self.enableSSLRedirection = dict["EnableSSLRedirection"] as! Bool
         }
         if dict.keys.contains("InstanceType") {
             self.instanceType = dict["InstanceType"] as! String
