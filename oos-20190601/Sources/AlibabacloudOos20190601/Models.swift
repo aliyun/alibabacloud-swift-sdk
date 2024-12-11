@@ -715,6 +715,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
     }
     public var alarmConfig: CreateApplicationRequest.AlarmConfig?
 
+    public var applicationSource: String?
+
     public var clientToken: String?
 
     public var description_: String?
@@ -747,6 +749,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if self.alarmConfig != nil {
             map["AlarmConfig"] = self.alarmConfig?.toMap()
         }
+        if self.applicationSource != nil {
+            map["ApplicationSource"] = self.applicationSource!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -777,6 +782,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
             model.fromMap(dict["AlarmConfig"] as! [String: Any])
             self.alarmConfig = model
         }
+        if dict.keys.contains("ApplicationSource") {
+            self.applicationSource = dict["ApplicationSource"] as! String
+        }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
         }
@@ -803,6 +811,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
 public class CreateApplicationShrinkRequest : Tea.TeaModel {
     public var alarmConfigShrink: String?
+
+    public var applicationSource: String?
 
     public var clientToken: String?
 
@@ -835,6 +845,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         if self.alarmConfigShrink != nil {
             map["AlarmConfig"] = self.alarmConfigShrink!
         }
+        if self.applicationSource != nil {
+            map["ApplicationSource"] = self.applicationSource!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -862,6 +875,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AlarmConfig") {
             self.alarmConfigShrink = dict["AlarmConfig"] as! String
+        }
+        if dict.keys.contains("ApplicationSource") {
+            self.applicationSource = dict["ApplicationSource"] as! String
         }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
@@ -6289,6 +6305,8 @@ public class GetApplicationGroupResponseBody : Tea.TeaModel {
     public class ApplicationGroup : Tea.TeaModel {
         public var applicationName: String?
 
+        public var applicationSource: String?
+
         public var cmsGroupId: String?
 
         public var createDate: String?
@@ -6333,6 +6351,9 @@ public class GetApplicationGroupResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.applicationName != nil {
                 map["ApplicationName"] = self.applicationName!
+            }
+            if self.applicationSource != nil {
+                map["ApplicationSource"] = self.applicationSource!
             }
             if self.cmsGroupId != nil {
                 map["CmsGroupId"] = self.cmsGroupId!
@@ -6382,6 +6403,9 @@ public class GetApplicationGroupResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("ApplicationName") {
                 self.applicationName = dict["ApplicationName"] as! String
+            }
+            if dict.keys.contains("ApplicationSource") {
+                self.applicationSource = dict["ApplicationSource"] as! String
             }
             if dict.keys.contains("CmsGroupId") {
                 self.cmsGroupId = dict["CmsGroupId"] as! String
@@ -9922,6 +9946,163 @@ public class GetTemplateResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = GetTemplateResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetTemplateParameterConstraintsRequest : Tea.TeaModel {
+    public var parameters: String?
+
+    public var regionId: String?
+
+    public var templateContent: String?
+
+    public var templateName: String?
+
+    public var templateURL: String?
+
+    public var templateVersion: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.parameters != nil {
+            map["Parameters"] = self.parameters!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.templateContent != nil {
+            map["TemplateContent"] = self.templateContent!
+        }
+        if self.templateName != nil {
+            map["TemplateName"] = self.templateName!
+        }
+        if self.templateURL != nil {
+            map["TemplateURL"] = self.templateURL!
+        }
+        if self.templateVersion != nil {
+            map["TemplateVersion"] = self.templateVersion!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Parameters") {
+            self.parameters = dict["Parameters"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("TemplateContent") {
+            self.templateContent = dict["TemplateContent"] as! String
+        }
+        if dict.keys.contains("TemplateName") {
+            self.templateName = dict["TemplateName"] as! String
+        }
+        if dict.keys.contains("TemplateURL") {
+            self.templateURL = dict["TemplateURL"] as! String
+        }
+        if dict.keys.contains("TemplateVersion") {
+            self.templateVersion = dict["TemplateVersion"] as! String
+        }
+    }
+}
+
+public class GetTemplateParameterConstraintsResponseBody : Tea.TeaModel {
+    public var parameterConstraints: [String: Any]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.parameterConstraints != nil {
+            map["ParameterConstraints"] = self.parameterConstraints!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ParameterConstraints") {
+            self.parameterConstraints = dict["ParameterConstraints"] as! [String: Any]
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class GetTemplateParameterConstraintsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetTemplateParameterConstraintsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetTemplateParameterConstraintsResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
