@@ -87,11 +87,19 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getLoginTokenWithOptions(_ request: GetLoginTokenRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetLoginTokenResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func getLoginTokenWithOptions(_ tmpReq: GetLoginTokenRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetLoginTokenResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetLoginTokenShrinkRequest = GetLoginTokenShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.availableFeatures)) {
+            request.availableFeaturesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.availableFeatures, "AvailableFeatures", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.authenticationCode)) {
             query["AuthenticationCode"] = request.authenticationCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.availableFeaturesShrink)) {
+            query["AvailableFeatures"] = request.availableFeaturesShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.clientId)) {
             query["ClientId"] = request.clientId ?? "";
@@ -280,6 +288,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.officeSiteId)) {
             query["OfficeSiteId"] = request.officeSiteId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.profileRegion)) {
+            query["ProfileRegion"] = request.profileRegion ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.sessionId)) {
             query["SessionId"] = request.sessionId ?? "";
