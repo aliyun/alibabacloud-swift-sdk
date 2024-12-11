@@ -41388,6 +41388,10 @@ public class ListDataLakeDatabaseRequest : Tea.TeaModel {
 
     public var dataRegion: String?
 
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
     public var searchKey: String?
 
     public var tid: Int64?
@@ -41412,6 +41416,12 @@ public class ListDataLakeDatabaseRequest : Tea.TeaModel {
         if self.dataRegion != nil {
             map["DataRegion"] = self.dataRegion!
         }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
         if self.searchKey != nil {
             map["SearchKey"] = self.searchKey!
         }
@@ -41427,6 +41437,12 @@ public class ListDataLakeDatabaseRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DataRegion") {
             self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
         }
         if dict.keys.contains("SearchKey") {
             self.searchKey = dict["SearchKey"] as! String
@@ -41485,6 +41501,10 @@ public class ListDataLakeDatabaseResponseBody : Tea.TeaModel {
 
     public var errorMessage: String?
 
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
     public var requestId: String?
 
     public var success: Bool?
@@ -41513,6 +41533,12 @@ public class ListDataLakeDatabaseResponseBody : Tea.TeaModel {
         if self.errorMessage != nil {
             map["ErrorMessage"] = self.errorMessage!
         }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -41533,6 +41559,12 @@ public class ListDataLakeDatabaseResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("ErrorMessage") {
             self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
