@@ -894,6 +894,51 @@ public class ListHotTopicSummariesResponse : Tea.TeaModel {
 }
 
 public class RunHotTopicChatRequest : Tea.TeaModel {
+    public class Messages : Tea.TeaModel {
+        public var content: String?
+
+        public var createTime: String?
+
+        public var role: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.content != nil {
+                map["content"] = self.content!
+            }
+            if self.createTime != nil {
+                map["createTime"] = self.createTime!
+            }
+            if self.role != nil {
+                map["role"] = self.role!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("content") {
+                self.content = dict["content"] as! String
+            }
+            if dict.keys.contains("createTime") {
+                self.createTime = dict["createTime"] as! String
+            }
+            if dict.keys.contains("role") {
+                self.role = dict["role"] as! String
+            }
+        }
+    }
     public class StepForBroadcastContentConfig : Tea.TeaModel {
         public class CustomHotValueWeights : Tea.TeaModel {
             public var dimension: String?
@@ -998,6 +1043,8 @@ public class RunHotTopicChatRequest : Tea.TeaModel {
 
     public var imageCount: Int32?
 
+    public var messages: [RunHotTopicChatRequest.Messages]?
+
     public var modelCustomPromptTemplate: String?
 
     public var modelId: String?
@@ -1040,6 +1087,13 @@ public class RunHotTopicChatRequest : Tea.TeaModel {
         if self.imageCount != nil {
             map["imageCount"] = self.imageCount!
         }
+        if self.messages != nil {
+            var tmp : [Any] = []
+            for k in self.messages! {
+                tmp.append(k.toMap())
+            }
+            map["messages"] = tmp
+        }
         if self.modelCustomPromptTemplate != nil {
             map["modelCustomPromptTemplate"] = self.modelCustomPromptTemplate!
         }
@@ -1077,6 +1131,17 @@ public class RunHotTopicChatRequest : Tea.TeaModel {
         if dict.keys.contains("imageCount") {
             self.imageCount = dict["imageCount"] as! Int32
         }
+        if dict.keys.contains("messages") {
+            var tmp : [RunHotTopicChatRequest.Messages] = []
+            for v in dict["messages"] as! [Any] {
+                var model = RunHotTopicChatRequest.Messages()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.messages = tmp
+        }
         if dict.keys.contains("modelCustomPromptTemplate") {
             self.modelCustomPromptTemplate = dict["modelCustomPromptTemplate"] as! String
         }
@@ -1110,6 +1175,8 @@ public class RunHotTopicChatShrinkRequest : Tea.TeaModel {
     public var hotTopicsShrink: String?
 
     public var imageCount: Int32?
+
+    public var messagesShrink: String?
 
     public var modelCustomPromptTemplate: String?
 
@@ -1152,6 +1219,9 @@ public class RunHotTopicChatShrinkRequest : Tea.TeaModel {
         if self.imageCount != nil {
             map["imageCount"] = self.imageCount!
         }
+        if self.messagesShrink != nil {
+            map["messages"] = self.messagesShrink!
+        }
         if self.modelCustomPromptTemplate != nil {
             map["modelCustomPromptTemplate"] = self.modelCustomPromptTemplate!
         }
@@ -1188,6 +1258,9 @@ public class RunHotTopicChatShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("imageCount") {
             self.imageCount = dict["imageCount"] as! Int32
+        }
+        if dict.keys.contains("messages") {
+            self.messagesShrink = dict["messages"] as! String
         }
         if dict.keys.contains("modelCustomPromptTemplate") {
             self.modelCustomPromptTemplate = dict["modelCustomPromptTemplate"] as! String

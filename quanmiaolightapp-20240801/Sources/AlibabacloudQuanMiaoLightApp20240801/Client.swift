@@ -112,6 +112,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.hotTopics)) {
             request.hotTopicsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.hotTopics, "hotTopics", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.messages)) {
+            request.messagesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.messages, "messages", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.stepForBroadcastContentConfig)) {
             request.stepForBroadcastContentConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.stepForBroadcastContentConfig, "stepForBroadcastContentConfig", "json")
         }
@@ -130,6 +133,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.imageCount)) {
             body["imageCount"] = request.imageCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.messagesShrink)) {
+            body["messages"] = request.messagesShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.modelCustomPromptTemplate)) {
             body["modelCustomPromptTemplate"] = request.modelCustomPromptTemplate ?? "";
