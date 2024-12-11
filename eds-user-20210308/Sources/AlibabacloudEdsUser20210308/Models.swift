@@ -51,6 +51,309 @@ public class GroupResources : Tea.TeaModel {
     }
 }
 
+public class ThirdApp : Tea.TeaModel {
+    public class OidcSsoConfig : Tea.TeaModel {
+        public class Endpoints : Tea.TeaModel {
+            public var authorizationEndpoint: String?
+
+            public var discoveryEndpoint: String?
+
+            public var guestAuthorizationEndpoint: String?
+
+            public var issuer: String?
+
+            public var jwksEndpoint: String?
+
+            public var logoutEndpoint: String?
+
+            public var revokeEndpoint: String?
+
+            public var tokenEndpoint: String?
+
+            public var userinfoEndpoint: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.authorizationEndpoint != nil {
+                    map["AuthorizationEndpoint"] = self.authorizationEndpoint!
+                }
+                if self.discoveryEndpoint != nil {
+                    map["DiscoveryEndpoint"] = self.discoveryEndpoint!
+                }
+                if self.guestAuthorizationEndpoint != nil {
+                    map["GuestAuthorizationEndpoint"] = self.guestAuthorizationEndpoint!
+                }
+                if self.issuer != nil {
+                    map["Issuer"] = self.issuer!
+                }
+                if self.jwksEndpoint != nil {
+                    map["JwksEndpoint"] = self.jwksEndpoint!
+                }
+                if self.logoutEndpoint != nil {
+                    map["LogoutEndpoint"] = self.logoutEndpoint!
+                }
+                if self.revokeEndpoint != nil {
+                    map["RevokeEndpoint"] = self.revokeEndpoint!
+                }
+                if self.tokenEndpoint != nil {
+                    map["TokenEndpoint"] = self.tokenEndpoint!
+                }
+                if self.userinfoEndpoint != nil {
+                    map["UserinfoEndpoint"] = self.userinfoEndpoint!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AuthorizationEndpoint") {
+                    self.authorizationEndpoint = dict["AuthorizationEndpoint"] as! String
+                }
+                if dict.keys.contains("DiscoveryEndpoint") {
+                    self.discoveryEndpoint = dict["DiscoveryEndpoint"] as! String
+                }
+                if dict.keys.contains("GuestAuthorizationEndpoint") {
+                    self.guestAuthorizationEndpoint = dict["GuestAuthorizationEndpoint"] as! String
+                }
+                if dict.keys.contains("Issuer") {
+                    self.issuer = dict["Issuer"] as! String
+                }
+                if dict.keys.contains("JwksEndpoint") {
+                    self.jwksEndpoint = dict["JwksEndpoint"] as! String
+                }
+                if dict.keys.contains("LogoutEndpoint") {
+                    self.logoutEndpoint = dict["LogoutEndpoint"] as! String
+                }
+                if dict.keys.contains("RevokeEndpoint") {
+                    self.revokeEndpoint = dict["RevokeEndpoint"] as! String
+                }
+                if dict.keys.contains("TokenEndpoint") {
+                    self.tokenEndpoint = dict["TokenEndpoint"] as! String
+                }
+                if dict.keys.contains("UserinfoEndpoint") {
+                    self.userinfoEndpoint = dict["UserinfoEndpoint"] as! String
+                }
+            }
+        }
+        public var accessTokenEffectiveTime: Int32?
+
+        public var codeEffectiveTime: Int32?
+
+        public var enableAuthLogin: Bool?
+
+        public var endpoints: ThirdApp.OidcSsoConfig.Endpoints?
+
+        public var grantScopes: [String]?
+
+        public var grantTypes: [String]?
+
+        public var idTokenAlgorithmType: Int32?
+
+        public var idTokenEffectiveTime: Int32?
+
+        public var redirectUris: [String]?
+
+        public var refreshTokenEffective: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.endpoints?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accessTokenEffectiveTime != nil {
+                map["AccessTokenEffectiveTime"] = self.accessTokenEffectiveTime!
+            }
+            if self.codeEffectiveTime != nil {
+                map["CodeEffectiveTime"] = self.codeEffectiveTime!
+            }
+            if self.enableAuthLogin != nil {
+                map["EnableAuthLogin"] = self.enableAuthLogin!
+            }
+            if self.endpoints != nil {
+                map["Endpoints"] = self.endpoints?.toMap()
+            }
+            if self.grantScopes != nil {
+                map["GrantScopes"] = self.grantScopes!
+            }
+            if self.grantTypes != nil {
+                map["GrantTypes"] = self.grantTypes!
+            }
+            if self.idTokenAlgorithmType != nil {
+                map["IdTokenAlgorithmType"] = self.idTokenAlgorithmType!
+            }
+            if self.idTokenEffectiveTime != nil {
+                map["IdTokenEffectiveTime"] = self.idTokenEffectiveTime!
+            }
+            if self.redirectUris != nil {
+                map["RedirectUris"] = self.redirectUris!
+            }
+            if self.refreshTokenEffective != nil {
+                map["RefreshTokenEffective"] = self.refreshTokenEffective!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AccessTokenEffectiveTime") {
+                self.accessTokenEffectiveTime = dict["AccessTokenEffectiveTime"] as! Int32
+            }
+            if dict.keys.contains("CodeEffectiveTime") {
+                self.codeEffectiveTime = dict["CodeEffectiveTime"] as! Int32
+            }
+            if dict.keys.contains("EnableAuthLogin") {
+                self.enableAuthLogin = dict["EnableAuthLogin"] as! Bool
+            }
+            if dict.keys.contains("Endpoints") {
+                var model = ThirdApp.OidcSsoConfig.Endpoints()
+                model.fromMap(dict["Endpoints"] as! [String: Any])
+                self.endpoints = model
+            }
+            if dict.keys.contains("GrantScopes") {
+                self.grantScopes = dict["GrantScopes"] as! [String]
+            }
+            if dict.keys.contains("GrantTypes") {
+                self.grantTypes = dict["GrantTypes"] as! [String]
+            }
+            if dict.keys.contains("IdTokenAlgorithmType") {
+                self.idTokenAlgorithmType = dict["IdTokenAlgorithmType"] as! Int32
+            }
+            if dict.keys.contains("IdTokenEffectiveTime") {
+                self.idTokenEffectiveTime = dict["IdTokenEffectiveTime"] as! Int32
+            }
+            if dict.keys.contains("RedirectUris") {
+                self.redirectUris = dict["RedirectUris"] as! [String]
+            }
+            if dict.keys.contains("RefreshTokenEffective") {
+                self.refreshTokenEffective = dict["RefreshTokenEffective"] as! Int32
+            }
+        }
+    }
+    public class Secrets : Tea.TeaModel {
+        public var enable: Bool?
+
+        public var secret: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enable != nil {
+                map["Enable"] = self.enable!
+            }
+            if self.secret != nil {
+                map["Secret"] = self.secret!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Enable") {
+                self.enable = dict["Enable"] as! Bool
+            }
+            if dict.keys.contains("Secret") {
+                self.secret = dict["Secret"] as! String
+            }
+        }
+    }
+    public var appKey: String?
+
+    public var name: String?
+
+    public var oidcSsoConfig: ThirdApp.OidcSsoConfig?
+
+    public var secrets: [ThirdApp.Secrets]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.oidcSsoConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appKey != nil {
+            map["AppKey"] = self.appKey!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.oidcSsoConfig != nil {
+            map["OidcSsoConfig"] = self.oidcSsoConfig?.toMap()
+        }
+        if self.secrets != nil {
+            var tmp : [Any] = []
+            for k in self.secrets! {
+                tmp.append(k.toMap())
+            }
+            map["Secrets"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppKey") {
+            self.appKey = dict["AppKey"] as! String
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("OidcSsoConfig") {
+            var model = ThirdApp.OidcSsoConfig()
+            model.fromMap(dict["OidcSsoConfig"] as! [String: Any])
+            self.oidcSsoConfig = model
+        }
+        if dict.keys.contains("Secrets") {
+            var tmp : [ThirdApp.Secrets] = []
+            for v in dict["Secrets"] as! [Any] {
+                var model = ThirdApp.Secrets()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.secrets = tmp
+        }
+    }
+}
+
 public class WaIdPermissions : Tea.TeaModel {
     public var code: String?
 
@@ -2695,6 +2998,8 @@ public class FilterUsersRequest : Tea.TeaModel {
 
     public var includeDesktopGroupCount: Bool?
 
+    public var isQueryAllSubOrgs: Bool?
+
     public var maxResults: Int64?
 
     public var nextToken: String?
@@ -2737,6 +3042,9 @@ public class FilterUsersRequest : Tea.TeaModel {
         }
         if self.includeDesktopGroupCount != nil {
             map["IncludeDesktopGroupCount"] = self.includeDesktopGroupCount!
+        }
+        if self.isQueryAllSubOrgs != nil {
+            map["IsQueryAllSubOrgs"] = self.isQueryAllSubOrgs!
         }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
@@ -2785,6 +3093,9 @@ public class FilterUsersRequest : Tea.TeaModel {
         }
         if dict.keys.contains("IncludeDesktopGroupCount") {
             self.includeDesktopGroupCount = dict["IncludeDesktopGroupCount"] as! Bool
+        }
+        if dict.keys.contains("IsQueryAllSubOrgs") {
+            self.isQueryAllSubOrgs = dict["IsQueryAllSubOrgs"] as! Bool
         }
         if dict.keys.contains("MaxResults") {
             self.maxResults = dict["MaxResults"] as! Int64
@@ -2914,6 +3225,8 @@ public class FilterUsersShrinkRequest : Tea.TeaModel {
 
     public var includeDesktopGroupCount: Bool?
 
+    public var isQueryAllSubOrgs: Bool?
+
     public var maxResults: Int64?
 
     public var nextToken: String?
@@ -2955,6 +3268,9 @@ public class FilterUsersShrinkRequest : Tea.TeaModel {
         }
         if self.includeDesktopGroupCount != nil {
             map["IncludeDesktopGroupCount"] = self.includeDesktopGroupCount!
+        }
+        if self.isQueryAllSubOrgs != nil {
+            map["IsQueryAllSubOrgs"] = self.isQueryAllSubOrgs!
         }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
@@ -3003,6 +3319,9 @@ public class FilterUsersShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("IncludeDesktopGroupCount") {
             self.includeDesktopGroupCount = dict["IncludeDesktopGroupCount"] as! Bool
+        }
+        if dict.keys.contains("IsQueryAllSubOrgs") {
+            self.isQueryAllSubOrgs = dict["IsQueryAllSubOrgs"] as! Bool
         }
         if dict.keys.contains("MaxResults") {
             self.maxResults = dict["MaxResults"] as! Int64

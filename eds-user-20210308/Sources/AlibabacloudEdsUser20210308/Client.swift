@@ -448,6 +448,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.includeDesktopGroupCount)) {
             query["IncludeDesktopGroupCount"] = request.includeDesktopGroupCount!;
         }
+        if (!TeaUtils.Client.isUnset(request.isQueryAllSubOrgs)) {
+            query["IsQueryAllSubOrgs"] = request.isQueryAllSubOrgs!;
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["MaxResults"] = request.maxResults!;
         }
