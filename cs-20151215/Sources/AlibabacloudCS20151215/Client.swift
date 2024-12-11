@@ -2071,6 +2071,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.privateIpAddress)) {
             query["PrivateIpAddress"] = request.privateIpAddress!;
         }
+        if (!TeaUtils.Client.isUnset(request.temporaryDurationMinutes)) {
+            query["TemporaryDurationMinutes"] = request.temporaryDurationMinutes!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

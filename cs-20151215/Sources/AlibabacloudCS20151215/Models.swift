@@ -272,11 +272,91 @@ public class InstancePatterns : Tea.TeaModel {
 }
 
 public class KubeletConfig : Tea.TeaModel {
+    public class ReservedMemory : Tea.TeaModel {
+        public var limits: [String: Any]?
+
+        public var numaNode: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.limits != nil {
+                map["limits"] = self.limits!
+            }
+            if self.numaNode != nil {
+                map["numaNode"] = self.numaNode!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("limits") {
+                self.limits = dict["limits"] as! [String: Any]
+            }
+            if dict.keys.contains("numaNode") {
+                self.numaNode = dict["numaNode"] as! Int32
+            }
+        }
+    }
+    public class Tracing : Tea.TeaModel {
+        public var endpoint: String?
+
+        public var samplingRatePerMillion: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.endpoint != nil {
+                map["endpoint"] = self.endpoint!
+            }
+            if self.samplingRatePerMillion != nil {
+                map["samplingRatePerMillion"] = self.samplingRatePerMillion!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("endpoint") {
+                self.endpoint = dict["endpoint"] as! String
+            }
+            if dict.keys.contains("samplingRatePerMillion") {
+                self.samplingRatePerMillion = dict["samplingRatePerMillion"] as! Int32
+            }
+        }
+    }
     public var allowedUnsafeSysctls: [String]?
+
+    public var clusterDNS: [String]?
 
     public var containerLogMaxFiles: Int64?
 
     public var containerLogMaxSize: String?
+
+    public var cpuCFSQuota: Bool?
+
+    public var cpuCFSQuotaPeriod: String?
 
     public var cpuManagerPolicy: String?
 
@@ -292,6 +372,10 @@ public class KubeletConfig : Tea.TeaModel {
 
     public var featureGates: [String: Any]?
 
+    public var imageGCHighThresholdPercent: Int32?
+
+    public var imageGCLowThresholdPercent: Int32?
+
     public var kubeAPIBurst: Int64?
 
     public var kubeAPIQPS: Int64?
@@ -300,15 +384,25 @@ public class KubeletConfig : Tea.TeaModel {
 
     public var maxPods: Int64?
 
+    public var memoryManagerPolicy: String?
+
+    public var podPidsLimit: Int64?
+
     public var readOnlyPort: Int64?
 
     public var registryBurst: Int64?
 
     public var registryPullQPS: Int64?
 
+    public var reservedMemory: [KubeletConfig.ReservedMemory]?
+
     public var serializeImagePulls: Bool?
 
     public var systemReserved: [String: Any]?
+
+    public var topologyManagerPolicy: String?
+
+    public var tracing: KubeletConfig.Tracing?
 
     public override init() {
         super.init()
@@ -320,6 +414,7 @@ public class KubeletConfig : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.tracing?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -327,11 +422,20 @@ public class KubeletConfig : Tea.TeaModel {
         if self.allowedUnsafeSysctls != nil {
             map["allowedUnsafeSysctls"] = self.allowedUnsafeSysctls!
         }
+        if self.clusterDNS != nil {
+            map["clusterDNS"] = self.clusterDNS!
+        }
         if self.containerLogMaxFiles != nil {
             map["containerLogMaxFiles"] = self.containerLogMaxFiles!
         }
         if self.containerLogMaxSize != nil {
             map["containerLogMaxSize"] = self.containerLogMaxSize!
+        }
+        if self.cpuCFSQuota != nil {
+            map["cpuCFSQuota"] = self.cpuCFSQuota!
+        }
+        if self.cpuCFSQuotaPeriod != nil {
+            map["cpuCFSQuotaPeriod"] = self.cpuCFSQuotaPeriod!
         }
         if self.cpuManagerPolicy != nil {
             map["cpuManagerPolicy"] = self.cpuManagerPolicy!
@@ -354,6 +458,12 @@ public class KubeletConfig : Tea.TeaModel {
         if self.featureGates != nil {
             map["featureGates"] = self.featureGates!
         }
+        if self.imageGCHighThresholdPercent != nil {
+            map["imageGCHighThresholdPercent"] = self.imageGCHighThresholdPercent!
+        }
+        if self.imageGCLowThresholdPercent != nil {
+            map["imageGCLowThresholdPercent"] = self.imageGCLowThresholdPercent!
+        }
         if self.kubeAPIBurst != nil {
             map["kubeAPIBurst"] = self.kubeAPIBurst!
         }
@@ -366,6 +476,12 @@ public class KubeletConfig : Tea.TeaModel {
         if self.maxPods != nil {
             map["maxPods"] = self.maxPods!
         }
+        if self.memoryManagerPolicy != nil {
+            map["memoryManagerPolicy"] = self.memoryManagerPolicy!
+        }
+        if self.podPidsLimit != nil {
+            map["podPidsLimit"] = self.podPidsLimit!
+        }
         if self.readOnlyPort != nil {
             map["readOnlyPort"] = self.readOnlyPort!
         }
@@ -375,11 +491,24 @@ public class KubeletConfig : Tea.TeaModel {
         if self.registryPullQPS != nil {
             map["registryPullQPS"] = self.registryPullQPS!
         }
+        if self.reservedMemory != nil {
+            var tmp : [Any] = []
+            for k in self.reservedMemory! {
+                tmp.append(k.toMap())
+            }
+            map["reservedMemory"] = tmp
+        }
         if self.serializeImagePulls != nil {
             map["serializeImagePulls"] = self.serializeImagePulls!
         }
         if self.systemReserved != nil {
             map["systemReserved"] = self.systemReserved!
+        }
+        if self.topologyManagerPolicy != nil {
+            map["topologyManagerPolicy"] = self.topologyManagerPolicy!
+        }
+        if self.tracing != nil {
+            map["tracing"] = self.tracing?.toMap()
         }
         return map
     }
@@ -388,11 +517,20 @@ public class KubeletConfig : Tea.TeaModel {
         if dict.keys.contains("allowedUnsafeSysctls") {
             self.allowedUnsafeSysctls = dict["allowedUnsafeSysctls"] as! [String]
         }
+        if dict.keys.contains("clusterDNS") {
+            self.clusterDNS = dict["clusterDNS"] as! [String]
+        }
         if dict.keys.contains("containerLogMaxFiles") {
             self.containerLogMaxFiles = dict["containerLogMaxFiles"] as! Int64
         }
         if dict.keys.contains("containerLogMaxSize") {
             self.containerLogMaxSize = dict["containerLogMaxSize"] as! String
+        }
+        if dict.keys.contains("cpuCFSQuota") {
+            self.cpuCFSQuota = dict["cpuCFSQuota"] as! Bool
+        }
+        if dict.keys.contains("cpuCFSQuotaPeriod") {
+            self.cpuCFSQuotaPeriod = dict["cpuCFSQuotaPeriod"] as! String
         }
         if dict.keys.contains("cpuManagerPolicy") {
             self.cpuManagerPolicy = dict["cpuManagerPolicy"] as! String
@@ -415,6 +553,12 @@ public class KubeletConfig : Tea.TeaModel {
         if dict.keys.contains("featureGates") {
             self.featureGates = dict["featureGates"] as! [String: Any]
         }
+        if dict.keys.contains("imageGCHighThresholdPercent") {
+            self.imageGCHighThresholdPercent = dict["imageGCHighThresholdPercent"] as! Int32
+        }
+        if dict.keys.contains("imageGCLowThresholdPercent") {
+            self.imageGCLowThresholdPercent = dict["imageGCLowThresholdPercent"] as! Int32
+        }
         if dict.keys.contains("kubeAPIBurst") {
             self.kubeAPIBurst = dict["kubeAPIBurst"] as! Int64
         }
@@ -427,6 +571,12 @@ public class KubeletConfig : Tea.TeaModel {
         if dict.keys.contains("maxPods") {
             self.maxPods = dict["maxPods"] as! Int64
         }
+        if dict.keys.contains("memoryManagerPolicy") {
+            self.memoryManagerPolicy = dict["memoryManagerPolicy"] as! String
+        }
+        if dict.keys.contains("podPidsLimit") {
+            self.podPidsLimit = dict["podPidsLimit"] as! Int64
+        }
         if dict.keys.contains("readOnlyPort") {
             self.readOnlyPort = dict["readOnlyPort"] as! Int64
         }
@@ -436,11 +586,30 @@ public class KubeletConfig : Tea.TeaModel {
         if dict.keys.contains("registryPullQPS") {
             self.registryPullQPS = dict["registryPullQPS"] as! Int64
         }
+        if dict.keys.contains("reservedMemory") {
+            var tmp : [KubeletConfig.ReservedMemory] = []
+            for v in dict["reservedMemory"] as! [Any] {
+                var model = KubeletConfig.ReservedMemory()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.reservedMemory = tmp
+        }
         if dict.keys.contains("serializeImagePulls") {
             self.serializeImagePulls = dict["serializeImagePulls"] as! Bool
         }
         if dict.keys.contains("systemReserved") {
             self.systemReserved = dict["systemReserved"] as! [String: Any]
+        }
+        if dict.keys.contains("topologyManagerPolicy") {
+            self.topologyManagerPolicy = dict["topologyManagerPolicy"] as! String
+        }
+        if dict.keys.contains("tracing") {
+            var model = KubeletConfig.Tracing()
+            model.fromMap(dict["tracing"] as! [String: Any])
+            self.tracing = model
         }
     }
 }
@@ -14497,6 +14666,8 @@ public class DescribeClusterUserKubeconfigResponse : Tea.TeaModel {
 public class DescribeClusterV2UserKubeconfigRequest : Tea.TeaModel {
     public var privateIpAddress: Bool?
 
+    public var temporaryDurationMinutes: Int64?
+
     public override init() {
         super.init()
     }
@@ -14514,12 +14685,18 @@ public class DescribeClusterV2UserKubeconfigRequest : Tea.TeaModel {
         if self.privateIpAddress != nil {
             map["PrivateIpAddress"] = self.privateIpAddress!
         }
+        if self.temporaryDurationMinutes != nil {
+            map["TemporaryDurationMinutes"] = self.temporaryDurationMinutes!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("PrivateIpAddress") {
             self.privateIpAddress = dict["PrivateIpAddress"] as! Bool
+        }
+        if dict.keys.contains("TemporaryDurationMinutes") {
+            self.temporaryDurationMinutes = dict["TemporaryDurationMinutes"] as! Int64
         }
     }
 }
