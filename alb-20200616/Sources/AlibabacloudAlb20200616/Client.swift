@@ -685,11 +685,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.listenerId)) {
             query["ListenerId"] = request.listenerId ?? "";
         }
+        var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.rules)) {
-            query["Rules"] = request.rules ?? [];
+            bodyFlat["Rules"] = request.rules ?? [];
         }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "CreateRules",
@@ -770,6 +774,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.connectionDrainConfig)) {
             query["ConnectionDrainConfig"] = request.connectionDrainConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.crossZoneEnabled)) {
+            query["CrossZoneEnabled"] = request.crossZoneEnabled!;
         }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
@@ -3429,11 +3436,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
         }
+        var body: [String: Any] = [:]
+        var bodyFlat: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.rules)) {
-            query["Rules"] = request.rules ?? [];
+            bodyFlat["Rules"] = request.rules ?? [];
         }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "UpdateRulesAttribute",
@@ -3511,6 +3522,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.connectionDrainConfig)) {
             query["ConnectionDrainConfig"] = request.connectionDrainConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.crossZoneEnabled)) {
+            query["CrossZoneEnabled"] = request.crossZoneEnabled!;
         }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;

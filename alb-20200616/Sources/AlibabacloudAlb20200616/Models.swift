@@ -6724,6 +6724,8 @@ public class CreateServerGroupRequest : Tea.TeaModel {
 
     public var connectionDrainConfig: CreateServerGroupRequest.ConnectionDrainConfig?
 
+    public var crossZoneEnabled: Bool?
+
     public var dryRun: Bool?
 
     public var healthCheckConfig: CreateServerGroupRequest.HealthCheckConfig?
@@ -6776,6 +6778,9 @@ public class CreateServerGroupRequest : Tea.TeaModel {
         }
         if self.connectionDrainConfig != nil {
             map["ConnectionDrainConfig"] = self.connectionDrainConfig?.toMap()
+        }
+        if self.crossZoneEnabled != nil {
+            map["CrossZoneEnabled"] = self.crossZoneEnabled!
         }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
@@ -6834,6 +6839,9 @@ public class CreateServerGroupRequest : Tea.TeaModel {
             var model = CreateServerGroupRequest.ConnectionDrainConfig()
             model.fromMap(dict["ConnectionDrainConfig"] as! [String: Any])
             self.connectionDrainConfig = model
+        }
+        if dict.keys.contains("CrossZoneEnabled") {
+            self.crossZoneEnabled = dict["CrossZoneEnabled"] as! Bool
         }
         if dict.keys.contains("DryRun") {
             self.dryRun = dict["DryRun"] as! Bool
@@ -18974,6 +18982,8 @@ public class ListServerGroupsResponseBody : Tea.TeaModel {
 
         public var createTime: String?
 
+        public var crossZoneEnabled: Bool?
+
         public var healthCheckConfig: ListServerGroupsResponseBody.ServerGroups.HealthCheckConfig?
 
         public var ipv6Enabled: Bool?
@@ -19037,6 +19047,9 @@ public class ListServerGroupsResponseBody : Tea.TeaModel {
             }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
+            }
+            if self.crossZoneEnabled != nil {
+                map["CrossZoneEnabled"] = self.crossZoneEnabled!
             }
             if self.healthCheckConfig != nil {
                 map["HealthCheckConfig"] = self.healthCheckConfig?.toMap()
@@ -19110,6 +19123,9 @@ public class ListServerGroupsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("CreateTime") {
                 self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("CrossZoneEnabled") {
+                self.crossZoneEnabled = dict["CrossZoneEnabled"] as! Bool
             }
             if dict.keys.contains("HealthCheckConfig") {
                 var model = ListServerGroupsResponseBody.ServerGroups.HealthCheckConfig()
@@ -27463,6 +27479,8 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
 
     public var connectionDrainConfig: UpdateServerGroupAttributeRequest.ConnectionDrainConfig?
 
+    public var crossZoneEnabled: Bool?
+
     public var dryRun: Bool?
 
     public var healthCheckConfig: UpdateServerGroupAttributeRequest.HealthCheckConfig?
@@ -27508,6 +27526,9 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
         if self.connectionDrainConfig != nil {
             map["ConnectionDrainConfig"] = self.connectionDrainConfig?.toMap()
         }
+        if self.crossZoneEnabled != nil {
+            map["CrossZoneEnabled"] = self.crossZoneEnabled!
+        }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
@@ -27549,6 +27570,9 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
             var model = UpdateServerGroupAttributeRequest.ConnectionDrainConfig()
             model.fromMap(dict["ConnectionDrainConfig"] as! [String: Any])
             self.connectionDrainConfig = model
+        }
+        if dict.keys.contains("CrossZoneEnabled") {
+            self.crossZoneEnabled = dict["CrossZoneEnabled"] as! Bool
         }
         if dict.keys.contains("DryRun") {
             self.dryRun = dict["DryRun"] as! Bool
