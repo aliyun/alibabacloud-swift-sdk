@@ -23027,10 +23027,12 @@ public class InstallClusterAddonsRequest : Tea.TeaModel {
     }
 }
 
-public class InstallClusterAddonsResponse : Tea.TeaModel {
-    public var headers: [String: String]?
+public class InstallClusterAddonsResponseBody : Tea.TeaModel {
+    public var clusterId: String?
 
-    public var statusCode: Int32?
+    public var requestId: String?
+
+    public var taskId: String?
 
     public override init() {
         super.init()
@@ -23046,11 +23048,61 @@ public class InstallClusterAddonsResponse : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clusterId != nil {
+            map["cluster_id"] = self.clusterId!
+        }
+        if self.requestId != nil {
+            map["request_id"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["task_id"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("cluster_id") {
+            self.clusterId = dict["cluster_id"] as! String
+        }
+        if dict.keys.contains("request_id") {
+            self.requestId = dict["request_id"] as! String
+        }
+        if dict.keys.contains("task_id") {
+            self.taskId = dict["task_id"] as! String
+        }
+    }
+}
+
+public class InstallClusterAddonsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: InstallClusterAddonsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
         if self.headers != nil {
             map["headers"] = self.headers!
         }
         if self.statusCode != nil {
             map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
         }
         return map
     }
@@ -23061,6 +23113,11 @@ public class InstallClusterAddonsResponse : Tea.TeaModel {
         }
         if dict.keys.contains("statusCode") {
             self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = InstallClusterAddonsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
         }
     }
 }
@@ -29862,10 +29919,12 @@ public class UnInstallClusterAddonsRequest : Tea.TeaModel {
     }
 }
 
-public class UnInstallClusterAddonsResponse : Tea.TeaModel {
-    public var headers: [String: String]?
+public class UnInstallClusterAddonsResponseBody : Tea.TeaModel {
+    public var clusterId: String?
 
-    public var statusCode: Int32?
+    public var requestId: String?
+
+    public var taskId: String?
 
     public override init() {
         super.init()
@@ -29881,11 +29940,61 @@ public class UnInstallClusterAddonsResponse : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clusterId != nil {
+            map["cluster_id"] = self.clusterId!
+        }
+        if self.requestId != nil {
+            map["request_id"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["task_id"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("cluster_id") {
+            self.clusterId = dict["cluster_id"] as! String
+        }
+        if dict.keys.contains("request_id") {
+            self.requestId = dict["request_id"] as! String
+        }
+        if dict.keys.contains("task_id") {
+            self.taskId = dict["task_id"] as! String
+        }
+    }
+}
+
+public class UnInstallClusterAddonsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UnInstallClusterAddonsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
         if self.headers != nil {
             map["headers"] = self.headers!
         }
         if self.statusCode != nil {
             map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
         }
         return map
     }
@@ -29896,6 +30005,11 @@ public class UnInstallClusterAddonsResponse : Tea.TeaModel {
         }
         if dict.keys.contains("statusCode") {
             self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UnInstallClusterAddonsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
         }
     }
 }

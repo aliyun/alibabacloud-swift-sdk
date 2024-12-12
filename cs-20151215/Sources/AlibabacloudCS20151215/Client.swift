@@ -3369,7 +3369,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "authType": "AK",
             "style": "ROA",
             "reqBodyType": "json",
-            "bodyType": "none"
+            "bodyType": "json"
         ])
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
         return Tea.TeaConverter.fromMap(InstallClusterAddonsResponse(), tmp)
@@ -4787,7 +4787,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "authType": "AK",
             "style": "ROA",
             "reqBodyType": "json",
-            "bodyType": "none"
+            "bodyType": "json"
         ])
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
         return Tea.TeaConverter.fromMap(UnInstallClusterAddonsResponse(), tmp)
