@@ -13940,6 +13940,8 @@ public class ModifyDBInstanceClassRequest : Tea.TeaModel {
 
     public var dnClass: String?
 
+    public var dnStorageSpace: String?
+
     public var regionId: String?
 
     public var specifiedDNScale: Bool?
@@ -13978,6 +13980,9 @@ public class ModifyDBInstanceClassRequest : Tea.TeaModel {
         if self.dnClass != nil {
             map["DnClass"] = self.dnClass!
         }
+        if self.dnStorageSpace != nil {
+            map["DnStorageSpace"] = self.dnStorageSpace!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -14011,6 +14016,9 @@ public class ModifyDBInstanceClassRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DnClass") {
             self.dnClass = dict["DnClass"] as! String
+        }
+        if dict.keys.contains("DnStorageSpace") {
+            self.dnStorageSpace = dict["DnStorageSpace"] as! String
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String

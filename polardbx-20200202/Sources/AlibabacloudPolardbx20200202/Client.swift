@@ -2237,6 +2237,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dnClass)) {
             query["DnClass"] = request.dnClass ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.dnStorageSpace)) {
+            query["DnStorageSpace"] = request.dnStorageSpace ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
