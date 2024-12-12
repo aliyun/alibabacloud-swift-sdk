@@ -472,6 +472,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.metadata)) {
             query["Metadata"] = request.metadata ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.metadataIndices)) {
+            query["MetadataIndices"] = request.metadataIndices ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.metrics)) {
             query["Metrics"] = request.metrics ?? "";
         }
@@ -799,6 +802,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.metadata)) {
             query["Metadata"] = request.metadata ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.metadataIndices)) {
+            query["MetadataIndices"] = request.metadataIndices ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.metrics)) {
             query["Metrics"] = request.metrics ?? "";
@@ -8149,6 +8155,56 @@ open class Client : AlibabacloudOpenApi.Client {
     public func tagResources(_ request: TagResourcesRequest) async throws -> TagResourcesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await tagResourcesWithOptions(request as! TagResourcesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func textEmbeddingWithOptions(_ tmpReq: TextEmbeddingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> TextEmbeddingResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: TextEmbeddingShrinkRequest = TextEmbeddingShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.input)) {
+            request.inputShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.input, "Input", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
+            query["DBInstanceId"] = request.DBInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.inputShrink)) {
+            body["Input"] = request.inputShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.model)) {
+            body["Model"] = request.model ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TextEmbedding",
+            "version": "2016-05-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TextEmbeddingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func textEmbedding(_ request: TextEmbeddingRequest) async throws -> TextEmbeddingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await textEmbeddingWithOptions(request as! TextEmbeddingRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

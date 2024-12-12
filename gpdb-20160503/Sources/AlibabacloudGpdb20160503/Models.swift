@@ -1761,6 +1761,8 @@ public class CreateCollectionRequest : Tea.TeaModel {
 
     public var metadata: String?
 
+    public var metadataIndices: String?
+
     public var metrics: String?
 
     public var namespace: String?
@@ -1816,6 +1818,9 @@ public class CreateCollectionRequest : Tea.TeaModel {
         if self.metadata != nil {
             map["Metadata"] = self.metadata!
         }
+        if self.metadataIndices != nil {
+            map["MetadataIndices"] = self.metadataIndices!
+        }
         if self.metrics != nil {
             map["Metrics"] = self.metrics!
         }
@@ -1867,6 +1872,9 @@ public class CreateCollectionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Metadata") {
             self.metadata = dict["Metadata"] as! String
+        }
+        if dict.keys.contains("MetadataIndices") {
+            self.metadataIndices = dict["MetadataIndices"] as! String
         }
         if dict.keys.contains("Metrics") {
             self.metrics = dict["Metrics"] as! String
@@ -2870,6 +2878,8 @@ public class CreateDocumentCollectionRequest : Tea.TeaModel {
 
     public var metadata: String?
 
+    public var metadataIndices: String?
+
     public var metrics: String?
 
     public var namespace: String?
@@ -2923,6 +2933,9 @@ public class CreateDocumentCollectionRequest : Tea.TeaModel {
         if self.metadata != nil {
             map["Metadata"] = self.metadata!
         }
+        if self.metadataIndices != nil {
+            map["MetadataIndices"] = self.metadataIndices!
+        }
         if self.metrics != nil {
             map["Metrics"] = self.metrics!
         }
@@ -2971,6 +2984,9 @@ public class CreateDocumentCollectionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Metadata") {
             self.metadata = dict["Metadata"] as! String
+        }
+        if dict.keys.contains("MetadataIndices") {
+            self.metadataIndices = dict["MetadataIndices"] as! String
         }
         if dict.keys.contains("Metrics") {
             self.metrics = dict["Metrics"] as! String
@@ -40616,6 +40632,354 @@ public class TagResourcesResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = TagResourcesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class TextEmbeddingRequest : Tea.TeaModel {
+    public var DBInstanceId: String?
+
+    public var input: [String]?
+
+    public var model: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.input != nil {
+            map["Input"] = self.input!
+        }
+        if self.model != nil {
+            map["Model"] = self.model!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBInstanceId") {
+            self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("Input") {
+            self.input = dict["Input"] as! [String]
+        }
+        if dict.keys.contains("Model") {
+            self.model = dict["Model"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class TextEmbeddingShrinkRequest : Tea.TeaModel {
+    public var DBInstanceId: String?
+
+    public var inputShrink: String?
+
+    public var model: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.inputShrink != nil {
+            map["Input"] = self.inputShrink!
+        }
+        if self.model != nil {
+            map["Model"] = self.model!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBInstanceId") {
+            self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("Input") {
+            self.inputShrink = dict["Input"] as! String
+        }
+        if dict.keys.contains("Model") {
+            self.model = dict["Model"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class TextEmbeddingResponseBody : Tea.TeaModel {
+    public class Results : Tea.TeaModel {
+        public class Results : Tea.TeaModel {
+            public class Embedding : Tea.TeaModel {
+                public var embedding: [Double]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.embedding != nil {
+                        map["Embedding"] = self.embedding!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Embedding") {
+                        self.embedding = dict["Embedding"] as! [Double]
+                    }
+                }
+            }
+            public var embedding: TextEmbeddingResponseBody.Results.Results.Embedding?
+
+            public var index: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.embedding?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.embedding != nil {
+                    map["Embedding"] = self.embedding?.toMap()
+                }
+                if self.index != nil {
+                    map["Index"] = self.index!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Embedding") {
+                    var model = TextEmbeddingResponseBody.Results.Results.Embedding()
+                    model.fromMap(dict["Embedding"] as! [String: Any])
+                    self.embedding = model
+                }
+                if dict.keys.contains("Index") {
+                    self.index = dict["Index"] as! Int32
+                }
+            }
+        }
+        public var results: [TextEmbeddingResponseBody.Results.Results]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.results != nil {
+                var tmp : [Any] = []
+                for k in self.results! {
+                    tmp.append(k.toMap())
+                }
+                map["Results"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Results") {
+                var tmp : [TextEmbeddingResponseBody.Results.Results] = []
+                for v in dict["Results"] as! [Any] {
+                    var model = TextEmbeddingResponseBody.Results.Results()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.results = tmp
+            }
+        }
+    }
+    public var message: String?
+
+    public var requestId: String?
+
+    public var results: TextEmbeddingResponseBody.Results?
+
+    public var status: String?
+
+    public var textTokens: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.results?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.results != nil {
+            map["Results"] = self.results?.toMap()
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.textTokens != nil {
+            map["TextTokens"] = self.textTokens!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Results") {
+            var model = TextEmbeddingResponseBody.Results()
+            model.fromMap(dict["Results"] as! [String: Any])
+            self.results = model
+        }
+        if dict.keys.contains("Status") {
+            self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("TextTokens") {
+            self.textTokens = dict["TextTokens"] as! Int32
+        }
+    }
+}
+
+public class TextEmbeddingResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: TextEmbeddingResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = TextEmbeddingResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
