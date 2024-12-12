@@ -3863,6 +3863,8 @@ public class DescribeInstanceListResponseBody : Tea.TeaModel {
 
         public var remark: String?
 
+        public var resourceGroupId: String?
+
         public var status: String?
 
         public override init() {
@@ -3919,6 +3921,9 @@ public class DescribeInstanceListResponseBody : Tea.TeaModel {
             if self.remark != nil {
                 map["Remark"] = self.remark!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -3966,6 +3971,9 @@ public class DescribeInstanceListResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Remark") {
                 self.remark = dict["Remark"] as! String
+            }
+            if dict.keys.contains("ResourceGroupId") {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
