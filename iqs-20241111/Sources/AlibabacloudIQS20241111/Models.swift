@@ -96,6 +96,8 @@ public class GenericSearchResult : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var sceneItems: [SceneItem]?
+
     public var searchInformation: SearchInformation?
 
     public var weiboItems: [WeiboItem]?
@@ -125,6 +127,13 @@ public class GenericSearchResult : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
+        if self.sceneItems != nil {
+            var tmp : [Any] = []
+            for k in self.sceneItems! {
+                tmp.append(k.toMap())
+            }
+            map["sceneItems"] = tmp
+        }
         if self.searchInformation != nil {
             map["searchInformation"] = self.searchInformation?.toMap()
         }
@@ -152,6 +161,17 @@ public class GenericSearchResult : Tea.TeaModel {
         }
         if dict.keys.contains("requestId") {
             self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("sceneItems") {
+            var tmp : [SceneItem] = []
+            for v in dict["sceneItems"] as! [Any] {
+                var model = SceneItem()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.sceneItems = tmp
         }
         if dict.keys.contains("searchInformation") {
             var model = SearchInformation()
@@ -218,10 +238,52 @@ public class IncludeImage : Tea.TeaModel {
     }
 }
 
+public class SceneItem : Tea.TeaModel {
+    public var detail: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.detail != nil {
+            map["detail"] = self.detail!
+        }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("detail") {
+            self.detail = dict["detail"] as! String
+        }
+        if dict.keys.contains("type") {
+            self.type = dict["type"] as! String
+        }
+    }
+}
+
 public class ScorePageItem : Tea.TeaModel {
     public var cardType: String?
 
     public var displayLink: String?
+
+    public var hostLogo: String?
+
+    public var hostname: String?
 
     public var htmlSnippet: String?
 
@@ -240,6 +302,8 @@ public class ScorePageItem : Tea.TeaModel {
     public var publishTime: Int64?
 
     public var score: Double?
+
+    public var siteLabel: String?
 
     public var title: String?
 
@@ -262,6 +326,12 @@ public class ScorePageItem : Tea.TeaModel {
         }
         if self.displayLink != nil {
             map["displayLink"] = self.displayLink!
+        }
+        if self.hostLogo != nil {
+            map["hostLogo"] = self.hostLogo!
+        }
+        if self.hostname != nil {
+            map["hostname"] = self.hostname!
         }
         if self.htmlSnippet != nil {
             map["htmlSnippet"] = self.htmlSnippet!
@@ -294,6 +364,9 @@ public class ScorePageItem : Tea.TeaModel {
         if self.score != nil {
             map["score"] = self.score!
         }
+        if self.siteLabel != nil {
+            map["siteLabel"] = self.siteLabel!
+        }
         if self.title != nil {
             map["title"] = self.title!
         }
@@ -306,6 +379,12 @@ public class ScorePageItem : Tea.TeaModel {
         }
         if dict.keys.contains("displayLink") {
             self.displayLink = dict["displayLink"] as! String
+        }
+        if dict.keys.contains("hostLogo") {
+            self.hostLogo = dict["hostLogo"] as! String
+        }
+        if dict.keys.contains("hostname") {
+            self.hostname = dict["hostname"] as! String
         }
         if dict.keys.contains("htmlSnippet") {
             self.htmlSnippet = dict["htmlSnippet"] as! String
@@ -341,6 +420,9 @@ public class ScorePageItem : Tea.TeaModel {
         }
         if dict.keys.contains("score") {
             self.score = dict["score"] as! Double
+        }
+        if dict.keys.contains("siteLabel") {
+            self.siteLabel = dict["siteLabel"] as! String
         }
         if dict.keys.contains("title") {
             self.title = dict["title"] as! String
