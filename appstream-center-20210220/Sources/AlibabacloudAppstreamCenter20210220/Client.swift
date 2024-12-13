@@ -36,15 +36,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.availableFeaturesShrink)) {
             query["AvailableFeatures"] = request.availableFeaturesShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.clientIp)) {
+            query["ClientIp"] = request.clientIp ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientChannel)) {
             body["ClientChannel"] = request.clientChannel ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.clientId)) {
             body["ClientId"] = request.clientId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.clientIp)) {
-            body["ClientIp"] = request.clientIp ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.clientOS)) {
             body["ClientOS"] = request.clientOS ?? "";
