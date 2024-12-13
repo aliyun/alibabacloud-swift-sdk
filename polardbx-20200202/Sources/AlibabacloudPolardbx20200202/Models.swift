@@ -5987,6 +5987,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
         public var port: String?
 
+        public var primaryInstanceId: String?
+
         public var primaryZone: String?
 
         public var readDBInstances: [String]?
@@ -6156,6 +6158,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if self.port != nil {
                 map["Port"] = self.port!
+            }
+            if self.primaryInstanceId != nil {
+                map["PrimaryInstanceId"] = self.primaryInstanceId!
             }
             if self.primaryZone != nil {
                 map["PrimaryZone"] = self.primaryZone!
@@ -6350,6 +6355,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Port") {
                 self.port = dict["Port"] as! String
+            }
+            if dict.keys.contains("PrimaryInstanceId") {
+                self.primaryInstanceId = dict["PrimaryInstanceId"] as! String
             }
             if dict.keys.contains("PrimaryZone") {
                 self.primaryZone = dict["PrimaryZone"] as! String
@@ -8949,6 +8957,8 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
 
         public var payType: String?
 
+        public var primaryInstanceId: String?
+
         public var primaryZone: String?
 
         public var readDBInstances: [String]?
@@ -9081,6 +9091,9 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
             }
             if self.payType != nil {
                 map["PayType"] = self.payType!
+            }
+            if self.primaryInstanceId != nil {
+                map["PrimaryInstanceId"] = self.primaryInstanceId!
             }
             if self.primaryZone != nil {
                 map["PrimaryZone"] = self.primaryZone!
@@ -9229,6 +9242,9 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("PayType") {
                 self.payType = dict["PayType"] as! String
+            }
+            if dict.keys.contains("PrimaryInstanceId") {
+                self.primaryInstanceId = dict["PrimaryInstanceId"] as! String
             }
             if dict.keys.contains("PrimaryZone") {
                 self.primaryZone = dict["PrimaryZone"] as! String
