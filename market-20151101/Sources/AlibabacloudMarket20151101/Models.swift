@@ -3848,7 +3848,7 @@ public class DescribeOrderForIsvResponseBody : Tea.TeaModel {
 
     public var aliUid: Int64?
 
-    public var components: [String: Any]?
+    public var components: Any?
 
     public var couponPrice: Double?
 
@@ -3969,7 +3969,7 @@ public class DescribeOrderForIsvResponseBody : Tea.TeaModel {
             self.aliUid = dict["AliUid"] as! Int64
         }
         if dict.keys.contains("Components") {
-            self.components = dict["Components"] as! [String: Any]
+            self.components = dict["Components"] as! Any
         }
         if dict.keys.contains("CouponPrice") {
             self.couponPrice = dict["CouponPrice"] as! Double
