@@ -32679,6 +32679,12 @@ public class DescribeVerifyContentResponse : Tea.TeaModel {
 public class DisableRealtimeLogDeliveryRequest : Tea.TeaModel {
     public var domain: String?
 
+    public var logstore: String?
+
+    public var project: String?
+
+    public var region: String?
+
     public override init() {
         super.init()
     }
@@ -32696,12 +32702,30 @@ public class DisableRealtimeLogDeliveryRequest : Tea.TeaModel {
         if self.domain != nil {
             map["Domain"] = self.domain!
         }
+        if self.logstore != nil {
+            map["Logstore"] = self.logstore!
+        }
+        if self.project != nil {
+            map["Project"] = self.project!
+        }
+        if self.region != nil {
+            map["Region"] = self.region!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Domain") {
             self.domain = dict["Domain"] as! String
+        }
+        if dict.keys.contains("Logstore") {
+            self.logstore = dict["Logstore"] as! String
+        }
+        if dict.keys.contains("Project") {
+            self.project = dict["Project"] as! String
+        }
+        if dict.keys.contains("Region") {
+            self.region = dict["Region"] as! String
         }
     }
 }
@@ -32788,6 +32812,12 @@ public class DisableRealtimeLogDeliveryResponse : Tea.TeaModel {
 public class EnableRealtimeLogDeliveryRequest : Tea.TeaModel {
     public var domain: String?
 
+    public var logstore: String?
+
+    public var project: String?
+
+    public var region: String?
+
     public override init() {
         super.init()
     }
@@ -32805,12 +32835,30 @@ public class EnableRealtimeLogDeliveryRequest : Tea.TeaModel {
         if self.domain != nil {
             map["Domain"] = self.domain!
         }
+        if self.logstore != nil {
+            map["Logstore"] = self.logstore!
+        }
+        if self.project != nil {
+            map["Project"] = self.project!
+        }
+        if self.region != nil {
+            map["Region"] = self.region!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Domain") {
             self.domain = dict["Domain"] as! String
+        }
+        if dict.keys.contains("Logstore") {
+            self.logstore = dict["Logstore"] as! String
+        }
+        if dict.keys.contains("Project") {
+            self.project = dict["Project"] as! String
+        }
+        if dict.keys.contains("Region") {
+            self.region = dict["Region"] as! String
         }
     }
 }
