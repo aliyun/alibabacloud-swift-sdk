@@ -22108,6 +22108,36 @@ public class GetClusterCheckResponse : Tea.TeaModel {
     }
 }
 
+public class GetClusterDiagnosisCheckItemsRequest : Tea.TeaModel {
+    public var language: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.language != nil {
+            map["language"] = self.language!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("language") {
+            self.language = dict["language"] as! String
+        }
+    }
+}
+
 public class GetClusterDiagnosisCheckItemsResponseBody : Tea.TeaModel {
     public class CheckItems : Tea.TeaModel {
         public var desc: String?
@@ -22304,6 +22334,36 @@ public class GetClusterDiagnosisCheckItemsResponse : Tea.TeaModel {
             var model = GetClusterDiagnosisCheckItemsResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
+        }
+    }
+}
+
+public class GetClusterDiagnosisResultRequest : Tea.TeaModel {
+    public var language: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.language != nil {
+            map["language"] = self.language!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("language") {
+            self.language = dict["language"] as! String
         }
     }
 }
