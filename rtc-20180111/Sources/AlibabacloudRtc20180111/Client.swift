@@ -1650,6 +1650,39 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCloudNotesWithOptions(_ tmpReq: DescribeCloudNotesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCloudNotesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DescribeCloudNotesShrinkRequest = DescribeCloudNotesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.taskIds)) {
+            request.taskIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.taskIds, "TaskIds", "json")
+        }
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeCloudNotes",
+            "version": "2018-01-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeCloudNotesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeCloudNotes(_ request: DescribeCloudNotesRequest) async throws -> DescribeCloudNotesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeCloudNotesWithOptions(request as! DescribeCloudNotesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeEndPointEventListWithOptions(_ request: DescribeEndPointEventListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeEndPointEventListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3382,8 +3415,97 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func startCloudRecordWithOptions(_ request: StartCloudRecordRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StartCloudRecordResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func startCloudNoteWithOptions(_ tmpReq: StartCloudNoteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StartCloudNoteResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: StartCloudNoteShrinkRequest = StartCloudNoteShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.autoChapters)) {
+            request.autoChaptersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.autoChapters, "AutoChapters", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.customPrompt)) {
+            request.customPromptShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.customPrompt, "CustomPrompt", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.meetingAssistance)) {
+            request.meetingAssistanceShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.meetingAssistance, "MeetingAssistance", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.serviceInspection)) {
+            request.serviceInspectionShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.serviceInspection, "ServiceInspection", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.summarization)) {
+            request.summarizationShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.summarization, "Summarization", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.textPolish)) {
+            request.textPolishShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.textPolish, "TextPolish", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.autoChaptersShrink)) {
+            query["AutoChapters"] = request.autoChaptersShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.channelId)) {
+            query["ChannelId"] = request.channelId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customPromptShrink)) {
+            query["CustomPrompt"] = request.customPromptShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.languageHints)) {
+            query["LanguageHints"] = request.languageHints ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.meetingAssistanceShrink)) {
+            query["MeetingAssistance"] = request.meetingAssistanceShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceInspectionShrink)) {
+            query["ServiceInspection"] = request.serviceInspectionShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceLanguage)) {
+            query["SourceLanguage"] = request.sourceLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.storageConfig)) {
+            query["StorageConfig"] = request.storageConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.summarizationShrink)) {
+            query["Summarization"] = request.summarizationShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            query["TaskId"] = request.taskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.textPolishShrink)) {
+            query["TextPolish"] = request.textPolishShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StartCloudNote",
+            "version": "2018-01-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StartCloudNoteResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startCloudNote(_ request: StartCloudNoteRequest) async throws -> StartCloudNoteResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await startCloudNoteWithOptions(request as! StartCloudNoteRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startCloudRecordWithOptions(_ tmpReq: StartCloudRecordRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StartCloudRecordResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: StartCloudRecordShrinkRequest = StartCloudRecordShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.layoutSpecifiedUsers)) {
+            request.layoutSpecifiedUsersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.layoutSpecifiedUsers, "LayoutSpecifiedUsers", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.appId)) {
             query["AppId"] = request.appId ?? "";
@@ -3402,6 +3524,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.images)) {
             query["Images"] = request.images ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.layoutSpecifiedUsersShrink)) {
+            query["LayoutSpecifiedUsers"] = request.layoutSpecifiedUsersShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.panes)) {
             query["Panes"] = request.panes ?? [];
@@ -3656,8 +3781,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func startStreamingOutWithOptions(_ request: StartStreamingOutRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StartStreamingOutResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func startStreamingOutWithOptions(_ tmpReq: StartStreamingOutRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StartStreamingOutResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: StartStreamingOutShrinkRequest = StartStreamingOutShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.layoutSpecifiedUsers)) {
+            request.layoutSpecifiedUsersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.layoutSpecifiedUsers, "LayoutSpecifiedUsers", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.appId)) {
             query["AppId"] = request.appId ?? "";
@@ -3676,6 +3806,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.images)) {
             query["Images"] = request.images ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.layoutSpecifiedUsersShrink)) {
+            query["LayoutSpecifiedUsers"] = request.layoutSpecifiedUsersShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.panes)) {
             query["Panes"] = request.panes ?? [];
@@ -3790,6 +3923,46 @@ open class Client : AlibabacloudOpenApi.Client {
     public func stopChannel(_ request: StopChannelRequest) async throws -> StopChannelResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await stopChannelWithOptions(request as! StopChannelRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopCloudNoteWithOptions(_ request: StopCloudNoteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StopCloudNoteResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.channelId)) {
+            query["ChannelId"] = request.channelId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            query["TaskId"] = request.taskId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StopCloudNote",
+            "version": "2018-01-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StopCloudNoteResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopCloudNote(_ request: StopCloudNoteRequest) async throws -> StopCloudNoteResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await stopCloudNoteWithOptions(request as! StopCloudNoteRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3996,8 +4169,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateCloudRecordWithOptions(_ request: UpdateCloudRecordRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCloudRecordResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func updateCloudRecordWithOptions(_ tmpReq: UpdateCloudRecordRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCloudRecordResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateCloudRecordShrinkRequest = UpdateCloudRecordShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.layoutSpecifiedUsers)) {
+            request.layoutSpecifiedUsersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.layoutSpecifiedUsers, "LayoutSpecifiedUsers", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.appId)) {
             query["AppId"] = request.appId ?? "";
@@ -4013,6 +4191,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.images)) {
             query["Images"] = request.images ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.layoutSpecifiedUsersShrink)) {
+            query["LayoutSpecifiedUsers"] = request.layoutSpecifiedUsersShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.panes)) {
             query["Panes"] = request.panes ?? [];
@@ -4309,8 +4490,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateStreamingOutWithOptions(_ request: UpdateStreamingOutRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateStreamingOutResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func updateStreamingOutWithOptions(_ tmpReq: UpdateStreamingOutRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateStreamingOutResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateStreamingOutShrinkRequest = UpdateStreamingOutShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.layoutSpecifiedUsers)) {
+            request.layoutSpecifiedUsersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.layoutSpecifiedUsers, "LayoutSpecifiedUsers", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.appId)) {
             query["AppId"] = request.appId ?? "";
@@ -4326,6 +4512,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.images)) {
             query["Images"] = request.images ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.layoutSpecifiedUsersShrink)) {
+            query["LayoutSpecifiedUsers"] = request.layoutSpecifiedUsersShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.panes)) {
             query["Panes"] = request.panes ?? [];
