@@ -29099,6 +29099,8 @@ public class RunWritingResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var end: Bool?
+
     public var header: RunWritingResponseBody.Header?
 
     public var payload: RunWritingResponseBody.Payload?
@@ -29121,6 +29123,9 @@ public class RunWritingResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.end != nil {
+            map["End"] = self.end!
+        }
         if self.header != nil {
             map["Header"] = self.header?.toMap()
         }
@@ -29134,6 +29139,9 @@ public class RunWritingResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("End") {
+            self.end = dict["End"] as! Bool
+        }
         if dict.keys.contains("Header") {
             var model = RunWritingResponseBody.Header()
             model.fromMap(dict["Header"] as! [String: Any])
