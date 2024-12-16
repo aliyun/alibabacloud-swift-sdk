@@ -2852,6 +2852,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.diskDeviceMapping)) {
             query["DiskDeviceMapping"] = request.diskDeviceMapping ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.features)) {
+            query["Features"] = request.features!;
+        }
         if (!TeaUtils.Client.isUnset(request.imageFamily)) {
             query["ImageFamily"] = request.imageFamily ?? "";
         }

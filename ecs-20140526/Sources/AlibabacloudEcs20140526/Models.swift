@@ -12567,6 +12567,35 @@ public class CreateImageRequest : Tea.TeaModel {
             }
         }
     }
+    public class Features : Tea.TeaModel {
+        public var imdsSupport: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.imdsSupport != nil {
+                map["ImdsSupport"] = self.imdsSupport!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ImdsSupport") {
+                self.imdsSupport = dict["ImdsSupport"] as! String
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -12616,6 +12645,8 @@ public class CreateImageRequest : Tea.TeaModel {
 
     public var diskDeviceMapping: [CreateImageRequest.DiskDeviceMapping]?
 
+    public var features: CreateImageRequest.Features?
+
     public var imageFamily: String?
 
     public var imageName: String?
@@ -12652,6 +12683,7 @@ public class CreateImageRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.features?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -12677,6 +12709,9 @@ public class CreateImageRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["DiskDeviceMapping"] = tmp
+        }
+        if self.features != nil {
+            map["Features"] = self.features?.toMap()
         }
         if self.imageFamily != nil {
             map["ImageFamily"] = self.imageFamily!
@@ -12750,6 +12785,11 @@ public class CreateImageRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.diskDeviceMapping = tmp
+        }
+        if dict.keys.contains("Features") {
+            var model = CreateImageRequest.Features()
+            model.fromMap(dict["Features"] as! [String: Any])
+            self.features = model
         }
         if dict.keys.contains("ImageFamily") {
             self.imageFamily = dict["ImageFamily"] as! String
@@ -50785,6 +50825,8 @@ public class DescribeImagesResponseBody : Tea.TeaModel {
                 public class DiskDeviceMapping : Tea.TeaModel {
                     public var device: String?
 
+                    public var encrypted: String?
+
                     public var format: String?
 
                     public var importOSSBucket: String?
@@ -50818,6 +50860,9 @@ public class DescribeImagesResponseBody : Tea.TeaModel {
                         if self.device != nil {
                             map["Device"] = self.device!
                         }
+                        if self.encrypted != nil {
+                            map["Encrypted"] = self.encrypted!
+                        }
                         if self.format != nil {
                             map["Format"] = self.format!
                         }
@@ -50848,6 +50893,9 @@ public class DescribeImagesResponseBody : Tea.TeaModel {
                     public override func fromMap(_ dict: [String: Any]) -> Void {
                         if dict.keys.contains("Device") {
                             self.device = dict["Device"] as! String
+                        }
+                        if dict.keys.contains("Encrypted") {
+                            self.encrypted = dict["Encrypted"] as! String
                         }
                         if dict.keys.contains("Format") {
                             self.format = dict["Format"] as! String
@@ -50916,6 +50964,8 @@ public class DescribeImagesResponseBody : Tea.TeaModel {
                 }
             }
             public class Features : Tea.TeaModel {
+                public var imdsSupport: String?
+
                 public var nvmeSupport: String?
 
                 public override init() {
@@ -50932,6 +50982,9 @@ public class DescribeImagesResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.imdsSupport != nil {
+                        map["ImdsSupport"] = self.imdsSupport!
+                    }
                     if self.nvmeSupport != nil {
                         map["NvmeSupport"] = self.nvmeSupport!
                     }
@@ -50939,6 +50992,9 @@ public class DescribeImagesResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ImdsSupport") {
+                        self.imdsSupport = dict["ImdsSupport"] as! String
+                    }
                     if dict.keys.contains("NvmeSupport") {
                         self.nvmeSupport = dict["NvmeSupport"] as! String
                     }
@@ -57836,6 +57892,35 @@ public class DescribeInstancesRequest : Tea.TeaModel {
 public class DescribeInstancesResponseBody : Tea.TeaModel {
     public class Instances : Tea.TeaModel {
         public class Instance : Tea.TeaModel {
+            public class AdditionalInfo : Tea.TeaModel {
+                public var enableHighDensityMode: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.enableHighDensityMode != nil {
+                        map["EnableHighDensityMode"] = self.enableHighDensityMode!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("EnableHighDensityMode") {
+                        self.enableHighDensityMode = dict["EnableHighDensityMode"] as! Bool
+                    }
+                }
+            }
             public class CpuOptions : Tea.TeaModel {
                 public var coreCount: Int32?
 
@@ -59032,6 +59117,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var additionalInfo: DescribeInstancesResponseBody.Instances.Instance.AdditionalInfo?
+
             public var autoReleaseTime: String?
 
             public var clusterId: String?
@@ -59172,6 +59259,7 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.additionalInfo?.validate()
                 try self.cpuOptions?.validate()
                 try self.dedicatedHostAttribute?.validate()
                 try self.dedicatedInstanceAttribute?.validate()
@@ -59193,6 +59281,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.additionalInfo != nil {
+                    map["AdditionalInfo"] = self.additionalInfo?.toMap()
+                }
                 if self.autoReleaseTime != nil {
                     map["AutoReleaseTime"] = self.autoReleaseTime!
                 }
@@ -59392,6 +59483,11 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AdditionalInfo") {
+                    var model = DescribeInstancesResponseBody.Instances.Instance.AdditionalInfo()
+                    model.fromMap(dict["AdditionalInfo"] as! [String: Any])
+                    self.additionalInfo = model
+                }
                 if dict.keys.contains("AutoReleaseTime") {
                     self.autoReleaseTime = dict["AutoReleaseTime"] as! String
                 }
@@ -90298,6 +90394,8 @@ public class ImportImageRequest : Tea.TeaModel {
         }
     }
     public class Features : Tea.TeaModel {
+        public var imdsSupport: String?
+
         public var nvmeSupport: String?
 
         public override init() {
@@ -90314,6 +90412,9 @@ public class ImportImageRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.imdsSupport != nil {
+                map["ImdsSupport"] = self.imdsSupport!
+            }
             if self.nvmeSupport != nil {
                 map["NvmeSupport"] = self.nvmeSupport!
             }
@@ -90321,6 +90422,9 @@ public class ImportImageRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ImdsSupport") {
+                self.imdsSupport = dict["ImdsSupport"] as! String
+            }
             if dict.keys.contains("NvmeSupport") {
                 self.nvmeSupport = dict["NvmeSupport"] as! String
             }
@@ -98330,6 +98434,8 @@ public class ModifyHpcClusterAttributeResponse : Tea.TeaModel {
 
 public class ModifyImageAttributeRequest : Tea.TeaModel {
     public class Features : Tea.TeaModel {
+        public var imdsSupport: String?
+
         public var nvmeSupport: String?
 
         public override init() {
@@ -98346,6 +98452,9 @@ public class ModifyImageAttributeRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.imdsSupport != nil {
+                map["ImdsSupport"] = self.imdsSupport!
+            }
             if self.nvmeSupport != nil {
                 map["NvmeSupport"] = self.nvmeSupport!
             }
@@ -98353,6 +98462,9 @@ public class ModifyImageAttributeRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ImdsSupport") {
+                self.imdsSupport = dict["ImdsSupport"] as! String
+            }
             if dict.keys.contains("NvmeSupport") {
                 self.nvmeSupport = dict["NvmeSupport"] as! String
             }
