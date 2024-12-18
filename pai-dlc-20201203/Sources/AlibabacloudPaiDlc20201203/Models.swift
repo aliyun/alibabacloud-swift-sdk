@@ -2097,6 +2097,67 @@ public class JobItem : Tea.TeaModel {
             }
         }
     }
+    public class UserVpc : Tea.TeaModel {
+        public var defaultRoute: String?
+
+        public var extendedCidrs: [String]?
+
+        public var securityGroupId: String?
+
+        public var switchId: String?
+
+        public var vpcId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.defaultRoute != nil {
+                map["DefaultRoute"] = self.defaultRoute!
+            }
+            if self.extendedCidrs != nil {
+                map["ExtendedCidrs"] = self.extendedCidrs!
+            }
+            if self.securityGroupId != nil {
+                map["SecurityGroupId"] = self.securityGroupId!
+            }
+            if self.switchId != nil {
+                map["SwitchId"] = self.switchId!
+            }
+            if self.vpcId != nil {
+                map["VpcId"] = self.vpcId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DefaultRoute") {
+                self.defaultRoute = dict["DefaultRoute"] as! String
+            }
+            if dict.keys.contains("ExtendedCidrs") {
+                self.extendedCidrs = dict["ExtendedCidrs"] as! [String]
+            }
+            if dict.keys.contains("SecurityGroupId") {
+                self.securityGroupId = dict["SecurityGroupId"] as! String
+            }
+            if dict.keys.contains("SwitchId") {
+                self.switchId = dict["SwitchId"] as! String
+            }
+            if dict.keys.contains("VpcId") {
+                self.vpcId = dict["VpcId"] as! String
+            }
+        }
+    }
     public var accessibility: String?
 
     public var clusterId: String?
@@ -2199,7 +2260,7 @@ public class JobItem : Tea.TeaModel {
 
     public var userScript: String?
 
-    public var userVpc: String?
+    public var userVpc: JobItem.UserVpc?
 
     public var username: String?
 
@@ -2223,6 +2284,7 @@ public class JobItem : Tea.TeaModel {
         try self.credentialConfig?.validate()
         try self.elasticSpec?.validate()
         try self.settings?.validate()
+        try self.userVpc?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -2397,7 +2459,7 @@ public class JobItem : Tea.TeaModel {
             map["UserScript"] = self.userScript!
         }
         if self.userVpc != nil {
-            map["UserVpc"] = self.userVpc!
+            map["UserVpc"] = self.userVpc?.toMap()
         }
         if self.username != nil {
             map["Username"] = self.username!
@@ -2609,7 +2671,9 @@ public class JobItem : Tea.TeaModel {
             self.userScript = dict["UserScript"] as! String
         }
         if dict.keys.contains("UserVpc") {
-            self.userVpc = dict["UserVpc"] as! String
+            var model = JobItem.UserVpc()
+            model.fromMap(dict["UserVpc"] as! [String: Any])
+            self.userVpc = model
         }
         if dict.keys.contains("Username") {
             self.username = dict["Username"] as! String
@@ -4049,6 +4113,8 @@ public class SmartCache : Tea.TeaModel {
 public class SpotSpec : Tea.TeaModel {
     public var spotDiscountLimit: Double?
 
+    public var spotPriceLimit: Double?
+
     public var spotStrategy: String?
 
     public override init() {
@@ -4068,6 +4134,9 @@ public class SpotSpec : Tea.TeaModel {
         if self.spotDiscountLimit != nil {
             map["SpotDiscountLimit"] = self.spotDiscountLimit!
         }
+        if self.spotPriceLimit != nil {
+            map["SpotPriceLimit"] = self.spotPriceLimit!
+        }
         if self.spotStrategy != nil {
             map["SpotStrategy"] = self.spotStrategy!
         }
@@ -4077,6 +4146,9 @@ public class SpotSpec : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("SpotDiscountLimit") {
             self.spotDiscountLimit = dict["SpotDiscountLimit"] as! Double
+        }
+        if dict.keys.contains("SpotPriceLimit") {
+            self.spotPriceLimit = dict["SpotPriceLimit"] as! Double
         }
         if dict.keys.contains("SpotStrategy") {
             self.spotStrategy = dict["SpotStrategy"] as! String
@@ -4753,6 +4825,8 @@ public class CreateJobRequest : Tea.TeaModel {
     public class DataSources : Tea.TeaModel {
         public var dataSourceId: String?
 
+        public var dataSourceVersion: String?
+
         public var mountPath: String?
 
         public var options: String?
@@ -4776,6 +4850,9 @@ public class CreateJobRequest : Tea.TeaModel {
             if self.dataSourceId != nil {
                 map["DataSourceId"] = self.dataSourceId!
             }
+            if self.dataSourceVersion != nil {
+                map["DataSourceVersion"] = self.dataSourceVersion!
+            }
             if self.mountPath != nil {
                 map["MountPath"] = self.mountPath!
             }
@@ -4791,6 +4868,9 @@ public class CreateJobRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("DataSourceId") {
                 self.dataSourceId = dict["DataSourceId"] as! String
+            }
+            if dict.keys.contains("DataSourceVersion") {
+                self.dataSourceVersion = dict["DataSourceVersion"] as! String
             }
             if dict.keys.contains("MountPath") {
                 self.mountPath = dict["MountPath"] as! String
@@ -6046,6 +6126,67 @@ public class GetJobResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class UserVpc : Tea.TeaModel {
+        public var defaultRoute: String?
+
+        public var extendedCidrs: [String]?
+
+        public var securityGroupId: String?
+
+        public var switchId: String?
+
+        public var vpcId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.defaultRoute != nil {
+                map["DefaultRoute"] = self.defaultRoute!
+            }
+            if self.extendedCidrs != nil {
+                map["ExtendedCidrs"] = self.extendedCidrs!
+            }
+            if self.securityGroupId != nil {
+                map["SecurityGroupId"] = self.securityGroupId!
+            }
+            if self.switchId != nil {
+                map["SwitchId"] = self.switchId!
+            }
+            if self.vpcId != nil {
+                map["VpcId"] = self.vpcId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DefaultRoute") {
+                self.defaultRoute = dict["DefaultRoute"] as! String
+            }
+            if dict.keys.contains("ExtendedCidrs") {
+                self.extendedCidrs = dict["ExtendedCidrs"] as! [String]
+            }
+            if dict.keys.contains("SecurityGroupId") {
+                self.securityGroupId = dict["SecurityGroupId"] as! String
+            }
+            if dict.keys.contains("SwitchId") {
+                self.switchId = dict["SwitchId"] as! String
+            }
+            if dict.keys.contains("VpcId") {
+                self.vpcId = dict["VpcId"] as! String
+            }
+        }
+    }
     public var accessibility: String?
 
     public var clusterId: String?
@@ -6122,6 +6263,8 @@ public class GetJobResponseBody : Tea.TeaModel {
 
     public var userId: String?
 
+    public var userVpc: GetJobResponseBody.UserVpc?
+
     public var workspaceId: String?
 
     public var workspaceName: String?
@@ -6140,6 +6283,7 @@ public class GetJobResponseBody : Tea.TeaModel {
         try self.credentialConfig?.validate()
         try self.elasticSpec?.validate()
         try self.settings?.validate()
+        try self.userVpc?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -6273,6 +6417,9 @@ public class GetJobResponseBody : Tea.TeaModel {
         }
         if self.userId != nil {
             map["UserId"] = self.userId!
+        }
+        if self.userVpc != nil {
+            map["UserVpc"] = self.userVpc?.toMap()
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -6437,6 +6584,11 @@ public class GetJobResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("UserId") {
             self.userId = dict["UserId"] as! String
+        }
+        if dict.keys.contains("UserVpc") {
+            var model = GetJobResponseBody.UserVpc()
+            model.fromMap(dict["UserVpc"] as! [String: Any])
+            self.userVpc = model
         }
         if dict.keys.contains("WorkspaceId") {
             self.workspaceId = dict["WorkspaceId"] as! String
