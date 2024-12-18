@@ -143,6 +143,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.nodeGroupsShrink)) {
             body["NodeGroups"] = request.nodeGroupsShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.openEniJumboFrame)) {
+            body["OpenEniJumboFrame"] = request.openEniJumboFrame!;
+        }
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             body["ResourceGroupId"] = request.resourceGroupId ?? "";
         }
