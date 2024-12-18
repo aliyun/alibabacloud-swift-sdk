@@ -339,33 +339,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createModelFeatureTrainingSetFGTableWithOptions(_ InstanceId: String, _ ModelFeatureId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateModelFeatureTrainingSetFGTableResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "CreateModelFeatureTrainingSetFGTable",
-            "version": "2023-06-21",
-            "protocol": "HTTPS",
-            "pathname": "/api/v1/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/modelfeatures/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ModelFeatureId)) + "/trainingsetfgtable",
-            "method": "POST",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(CreateModelFeatureTrainingSetFGTableResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createModelFeatureTrainingSetFGTable(_ InstanceId: String, _ ModelFeatureId: String) async throws -> CreateModelFeatureTrainingSetFGTableResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await createModelFeatureTrainingSetFGTableWithOptions(InstanceId as! String, ModelFeatureId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createProjectWithOptions(_ InstanceId: String, _ request: CreateProjectRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateProjectResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -606,39 +579,6 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await deleteProjectWithOptions(InstanceId as! String, ProjectId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func exportModelFeatureTrainingSetFGTableWithOptions(_ InstanceId: String, _ ModelFeatureId: String, _ request: ExportModelFeatureTrainingSetFGTableRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ExportModelFeatureTrainingSetFGTableResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.trainingSetFgConfig)) {
-            body["TrainingSetFgConfig"] = request.trainingSetFgConfig!;
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ExportModelFeatureTrainingSetFGTable",
-            "version": "2023-06-21",
-            "protocol": "HTTPS",
-            "pathname": "/api/v1/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/modelfeatures/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ModelFeatureId)) + "/action/exporttrainingsetfgtable",
-            "method": "POST",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ExportModelFeatureTrainingSetFGTableResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func exportModelFeatureTrainingSetFGTable(_ InstanceId: String, _ ModelFeatureId: String, _ request: ExportModelFeatureTrainingSetFGTableRequest) async throws -> ExportModelFeatureTrainingSetFGTableResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await exportModelFeatureTrainingSetFGTableWithOptions(InstanceId as! String, ModelFeatureId as! String, request as! ExportModelFeatureTrainingSetFGTableRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1847,6 +1787,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.features)) {
             body["Features"] = request.features ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.labelPriorityLevel)) {
+            body["LabelPriorityLevel"] = request.labelPriorityLevel!;
+        }
         if (!TeaUtils.Client.isUnset(request.labelTableId)) {
             body["LabelTableId"] = request.labelTableId ?? "";
         }
@@ -1919,39 +1862,6 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateModelFeatureFGFeatureWithOptions(InstanceId as! String, ModelFeatureId as! String, request as! UpdateModelFeatureFGFeatureRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateModelFeatureFGInfoWithOptions(_ InstanceId: String, _ ModelFeatureId: String, _ request: UpdateModelFeatureFGInfoRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateModelFeatureFGInfoResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.content)) {
-            body["Content"] = request.content ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "UpdateModelFeatureFGInfo",
-            "version": "2023-06-21",
-            "protocol": "HTTPS",
-            "pathname": "/api/v1/instances/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId)) + "/modelfeatures/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ModelFeatureId)) + "/fginfo",
-            "method": "PUT",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(UpdateModelFeatureFGInfoResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateModelFeatureFGInfo(_ InstanceId: String, _ ModelFeatureId: String, _ request: UpdateModelFeatureFGInfoRequest) async throws -> UpdateModelFeatureFGInfoResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await updateModelFeatureFGInfoWithOptions(InstanceId as! String, ModelFeatureId as! String, request as! UpdateModelFeatureFGInfoRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
