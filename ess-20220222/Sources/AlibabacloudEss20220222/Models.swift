@@ -16838,11 +16838,68 @@ public class DescribeElasticStrengthRequest : Tea.TeaModel {
 public class DescribeElasticStrengthResponseBody : Tea.TeaModel {
     public class ElasticStrengthModels : Tea.TeaModel {
         public class ResourcePools : Tea.TeaModel {
+            public class InventoryHealth : Tea.TeaModel {
+                public var adequacyScore: Int32?
+
+                public var healthScore: Int32?
+
+                public var hotScore: Int32?
+
+                public var supplyScore: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.adequacyScore != nil {
+                        map["AdequacyScore"] = self.adequacyScore!
+                    }
+                    if self.healthScore != nil {
+                        map["HealthScore"] = self.healthScore!
+                    }
+                    if self.hotScore != nil {
+                        map["HotScore"] = self.hotScore!
+                    }
+                    if self.supplyScore != nil {
+                        map["SupplyScore"] = self.supplyScore!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AdequacyScore") {
+                        self.adequacyScore = dict["AdequacyScore"] as! Int32
+                    }
+                    if dict.keys.contains("HealthScore") {
+                        self.healthScore = dict["HealthScore"] as! Int32
+                    }
+                    if dict.keys.contains("HotScore") {
+                        self.hotScore = dict["HotScore"] as! Int32
+                    }
+                    if dict.keys.contains("SupplyScore") {
+                        self.supplyScore = dict["SupplyScore"] as! Int32
+                    }
+                }
+            }
             public var code: String?
 
             public var instanceType: String?
 
+            public var inventoryHealth: DescribeElasticStrengthResponseBody.ElasticStrengthModels.ResourcePools.InventoryHealth?
+
             public var msg: String?
+
+            public var status: String?
 
             public var strength: Double?
 
@@ -16860,6 +16917,7 @@ public class DescribeElasticStrengthResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.inventoryHealth?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -16870,8 +16928,14 @@ public class DescribeElasticStrengthResponseBody : Tea.TeaModel {
                 if self.instanceType != nil {
                     map["InstanceType"] = self.instanceType!
                 }
+                if self.inventoryHealth != nil {
+                    map["InventoryHealth"] = self.inventoryHealth?.toMap()
+                }
                 if self.msg != nil {
                     map["Msg"] = self.msg!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
                 }
                 if self.strength != nil {
                     map["Strength"] = self.strength!
@@ -16892,8 +16956,16 @@ public class DescribeElasticStrengthResponseBody : Tea.TeaModel {
                 if dict.keys.contains("InstanceType") {
                     self.instanceType = dict["InstanceType"] as! String
                 }
+                if dict.keys.contains("InventoryHealth") {
+                    var model = DescribeElasticStrengthResponseBody.ElasticStrengthModels.ResourcePools.InventoryHealth()
+                    model.fromMap(dict["InventoryHealth"] as! [String: Any])
+                    self.inventoryHealth = model
+                }
                 if dict.keys.contains("Msg") {
                     self.msg = dict["Msg"] as! String
+                }
+                if dict.keys.contains("Status") {
+                    self.status = dict["Status"] as! String
                 }
                 if dict.keys.contains("Strength") {
                     self.strength = dict["Strength"] as! Double
@@ -16906,6 +16978,8 @@ public class DescribeElasticStrengthResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var elasticStrength: String?
+
         public var resourcePools: [DescribeElasticStrengthResponseBody.ElasticStrengthModels.ResourcePools]?
 
         public var scalingGroupId: String?
@@ -16926,6 +17000,9 @@ public class DescribeElasticStrengthResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.elasticStrength != nil {
+                map["ElasticStrength"] = self.elasticStrength!
+            }
             if self.resourcePools != nil {
                 var tmp : [Any] = []
                 for k in self.resourcePools! {
@@ -16943,6 +17020,9 @@ public class DescribeElasticStrengthResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ElasticStrength") {
+                self.elasticStrength = dict["ElasticStrength"] as! String
+            }
             if dict.keys.contains("ResourcePools") {
                 var tmp : [DescribeElasticStrengthResponseBody.ElasticStrengthModels.ResourcePools] = []
                 for v in dict["ResourcePools"] as! [Any] {
@@ -36087,6 +36167,8 @@ public class ModifyScheduledTaskRequest : Tea.TeaModel {
 
     public var recurrenceValue: String?
 
+    public var regionId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -36148,6 +36230,9 @@ public class ModifyScheduledTaskRequest : Tea.TeaModel {
         if self.recurrenceValue != nil {
             map["RecurrenceValue"] = self.recurrenceValue!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -36205,6 +36290,9 @@ public class ModifyScheduledTaskRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RecurrenceValue") {
             self.recurrenceValue = dict["RecurrenceValue"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
