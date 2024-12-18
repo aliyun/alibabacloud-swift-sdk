@@ -5,6 +5,104 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class Rule : Tea.TeaModel {
+    public var combinator: String?
+
+    public var id: String?
+
+    public var name: String?
+
+    public var operator_: String?
+
+    public var ruleSubType: String?
+
+    public var ruleType: String?
+
+    public var rules: [Rule]?
+
+    public var values: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.combinator != nil {
+            map["Combinator"] = self.combinator!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.operator_ != nil {
+            map["Operator"] = self.operator_!
+        }
+        if self.ruleSubType != nil {
+            map["RuleSubType"] = self.ruleSubType!
+        }
+        if self.ruleType != nil {
+            map["RuleType"] = self.ruleType!
+        }
+        if self.rules != nil {
+            var tmp : [Any] = []
+            for k in self.rules! {
+                tmp.append(k.toMap())
+            }
+            map["Rules"] = tmp
+        }
+        if self.values != nil {
+            map["Values"] = self.values!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Combinator") {
+            self.combinator = dict["Combinator"] as! String
+        }
+        if dict.keys.contains("Id") {
+            self.id = dict["Id"] as! String
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("Operator") {
+            self.operator_ = dict["Operator"] as! String
+        }
+        if dict.keys.contains("RuleSubType") {
+            self.ruleSubType = dict["RuleSubType"] as! String
+        }
+        if dict.keys.contains("RuleType") {
+            self.ruleType = dict["RuleType"] as! String
+        }
+        if dict.keys.contains("Rules") {
+            var tmp : [Rule] = []
+            for v in dict["Rules"] as! [Any] {
+                var model = Rule()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.rules = tmp
+        }
+        if dict.keys.contains("Values") {
+            self.values = dict["Values"] as! [String]
+        }
+    }
+}
+
 public class AttachApplication2ConnectorRequest : Tea.TeaModel {
     public var applicationIds: [String]?
 
@@ -6756,6 +6854,43 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class NetInterfaceInfo : Tea.TeaModel {
+            public var mac: String?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.mac != nil {
+                    map["Mac"] = self.mac!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Mac") {
+                    self.mac = dict["Mac"] as! String
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+            }
+        }
         public var appStatus: String?
 
         public var appVersion: String?
@@ -6795,6 +6930,8 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
         public var memory: String?
 
         public var nacStatus: String?
+
+        public var netInterfaceInfo: [GetUserDeviceResponseBody.Device.NetInterfaceInfo]?
 
         public var paStatus: String?
 
@@ -6886,6 +7023,13 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
             if self.nacStatus != nil {
                 map["NacStatus"] = self.nacStatus!
             }
+            if self.netInterfaceInfo != nil {
+                var tmp : [Any] = []
+                for k in self.netInterfaceInfo! {
+                    tmp.append(k.toMap())
+                }
+                map["NetInterfaceInfo"] = tmp
+            }
             if self.paStatus != nil {
                 map["PaStatus"] = self.paStatus!
             }
@@ -6975,6 +7119,17 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("NacStatus") {
                 self.nacStatus = dict["NacStatus"] as! String
+            }
+            if dict.keys.contains("NetInterfaceInfo") {
+                var tmp : [GetUserDeviceResponseBody.Device.NetInterfaceInfo] = []
+                for v in dict["NetInterfaceInfo"] as! [Any] {
+                    var model = GetUserDeviceResponseBody.Device.NetInterfaceInfo()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.netInterfaceInfo = tmp
             }
             if dict.keys.contains("PaStatus") {
                 self.paStatus = dict["PaStatus"] as! String
@@ -15411,6 +15566,43 @@ public class ListUserDevicesRequest : Tea.TeaModel {
 
 public class ListUserDevicesResponseBody : Tea.TeaModel {
     public class Devices : Tea.TeaModel {
+        public class NetInterfaceInfo : Tea.TeaModel {
+            public var mac: String?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.mac != nil {
+                    map["Mac"] = self.mac!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Mac") {
+                    self.mac = dict["Mac"] as! String
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+            }
+        }
         public var appStatus: String?
 
         public var appVersion: String?
@@ -15448,6 +15640,8 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
         public var memory: String?
 
         public var nacStatus: String?
+
+        public var netInterfaceInfo: [ListUserDevicesResponseBody.Devices.NetInterfaceInfo]?
 
         public var paStatus: String?
 
@@ -15532,6 +15726,13 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
             if self.nacStatus != nil {
                 map["NacStatus"] = self.nacStatus!
             }
+            if self.netInterfaceInfo != nil {
+                var tmp : [Any] = []
+                for k in self.netInterfaceInfo! {
+                    tmp.append(k.toMap())
+                }
+                map["NetInterfaceInfo"] = tmp
+            }
             if self.paStatus != nil {
                 map["PaStatus"] = self.paStatus!
             }
@@ -15610,6 +15811,17 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("NacStatus") {
                 self.nacStatus = dict["NacStatus"] as! String
+            }
+            if dict.keys.contains("NetInterfaceInfo") {
+                var tmp : [ListUserDevicesResponseBody.Devices.NetInterfaceInfo] = []
+                for v in dict["NetInterfaceInfo"] as! [Any] {
+                    var model = ListUserDevicesResponseBody.Devices.NetInterfaceInfo()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.netInterfaceInfo = tmp
             }
             if dict.keys.contains("PaStatus") {
                 self.paStatus = dict["PaStatus"] as! String
@@ -19828,6 +20040,43 @@ public class UpdateUserDevicesSharingStatusRequest : Tea.TeaModel {
 
 public class UpdateUserDevicesSharingStatusResponseBody : Tea.TeaModel {
     public class Devices : Tea.TeaModel {
+        public class NetInterfaceInfo : Tea.TeaModel {
+            public var mac: String?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.mac != nil {
+                    map["Mac"] = self.mac!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Mac") {
+                    self.mac = dict["Mac"] as! String
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+            }
+        }
         public var appStatus: String?
 
         public var appVersion: String?
@@ -19865,6 +20114,8 @@ public class UpdateUserDevicesSharingStatusResponseBody : Tea.TeaModel {
         public var memory: String?
 
         public var nacStatus: String?
+
+        public var netInterfaceInfo: [UpdateUserDevicesSharingStatusResponseBody.Devices.NetInterfaceInfo]?
 
         public var paStatus: String?
 
@@ -19949,6 +20200,13 @@ public class UpdateUserDevicesSharingStatusResponseBody : Tea.TeaModel {
             if self.nacStatus != nil {
                 map["NacStatus"] = self.nacStatus!
             }
+            if self.netInterfaceInfo != nil {
+                var tmp : [Any] = []
+                for k in self.netInterfaceInfo! {
+                    tmp.append(k.toMap())
+                }
+                map["NetInterfaceInfo"] = tmp
+            }
             if self.paStatus != nil {
                 map["PaStatus"] = self.paStatus!
             }
@@ -20027,6 +20285,17 @@ public class UpdateUserDevicesSharingStatusResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("NacStatus") {
                 self.nacStatus = dict["NacStatus"] as! String
+            }
+            if dict.keys.contains("NetInterfaceInfo") {
+                var tmp : [UpdateUserDevicesSharingStatusResponseBody.Devices.NetInterfaceInfo] = []
+                for v in dict["NetInterfaceInfo"] as! [Any] {
+                    var model = UpdateUserDevicesSharingStatusResponseBody.Devices.NetInterfaceInfo()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.netInterfaceInfo = tmp
             }
             if dict.keys.contains("PaStatus") {
                 self.paStatus = dict["PaStatus"] as! String
@@ -20186,6 +20455,43 @@ public class UpdateUserDevicesStatusRequest : Tea.TeaModel {
 
 public class UpdateUserDevicesStatusResponseBody : Tea.TeaModel {
     public class Devices : Tea.TeaModel {
+        public class NetInterfaceInfo : Tea.TeaModel {
+            public var mac: String?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.mac != nil {
+                    map["Mac"] = self.mac!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Mac") {
+                    self.mac = dict["Mac"] as! String
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+            }
+        }
         public var appStatus: String?
 
         public var appVersion: String?
@@ -20223,6 +20529,8 @@ public class UpdateUserDevicesStatusResponseBody : Tea.TeaModel {
         public var memory: String?
 
         public var nacStatus: String?
+
+        public var netInterfaceInfo: [UpdateUserDevicesStatusResponseBody.Devices.NetInterfaceInfo]?
 
         public var paStatus: String?
 
@@ -20307,6 +20615,13 @@ public class UpdateUserDevicesStatusResponseBody : Tea.TeaModel {
             if self.nacStatus != nil {
                 map["NacStatus"] = self.nacStatus!
             }
+            if self.netInterfaceInfo != nil {
+                var tmp : [Any] = []
+                for k in self.netInterfaceInfo! {
+                    tmp.append(k.toMap())
+                }
+                map["NetInterfaceInfo"] = tmp
+            }
             if self.paStatus != nil {
                 map["PaStatus"] = self.paStatus!
             }
@@ -20385,6 +20700,17 @@ public class UpdateUserDevicesStatusResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("NacStatus") {
                 self.nacStatus = dict["NacStatus"] as! String
+            }
+            if dict.keys.contains("NetInterfaceInfo") {
+                var tmp : [UpdateUserDevicesStatusResponseBody.Devices.NetInterfaceInfo] = []
+                for v in dict["NetInterfaceInfo"] as! [Any] {
+                    var model = UpdateUserDevicesStatusResponseBody.Devices.NetInterfaceInfo()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.netInterfaceInfo = tmp
             }
             if dict.keys.contains("PaStatus") {
                 self.paStatus = dict["PaStatus"] as! String
