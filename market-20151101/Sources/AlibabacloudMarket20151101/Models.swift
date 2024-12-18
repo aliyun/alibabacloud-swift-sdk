@@ -2523,6 +2523,12 @@ public class DescribeInstanceForIsvResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var activeAddress: String?
+
+    public var appJson: String?
+
+    public var autoRenewal: String?
+
     public var beganOn: Int64?
 
     public var componentJson: String?
@@ -2533,9 +2539,15 @@ public class DescribeInstanceForIsvResponseBody : Tea.TeaModel {
 
     public var extendJson: String?
 
+    public var hostJson: String?
+
+    public var imageJson: String?
+
     public var instanceId: Int64?
 
     public var isTrial: Bool?
+
+    public var licenseCode: String?
 
     public var orderId: Int64?
 
@@ -2570,6 +2582,15 @@ public class DescribeInstanceForIsvResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.activeAddress != nil {
+            map["ActiveAddress"] = self.activeAddress!
+        }
+        if self.appJson != nil {
+            map["AppJson"] = self.appJson!
+        }
+        if self.autoRenewal != nil {
+            map["AutoRenewal"] = self.autoRenewal!
+        }
         if self.beganOn != nil {
             map["BeganOn"] = self.beganOn!
         }
@@ -2585,11 +2606,20 @@ public class DescribeInstanceForIsvResponseBody : Tea.TeaModel {
         if self.extendJson != nil {
             map["ExtendJson"] = self.extendJson!
         }
+        if self.hostJson != nil {
+            map["HostJson"] = self.hostJson!
+        }
+        if self.imageJson != nil {
+            map["ImageJson"] = self.imageJson!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
         if self.isTrial != nil {
             map["IsTrial"] = self.isTrial!
+        }
+        if self.licenseCode != nil {
+            map["LicenseCode"] = self.licenseCode!
         }
         if self.orderId != nil {
             map["OrderId"] = self.orderId!
@@ -2622,6 +2652,15 @@ public class DescribeInstanceForIsvResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ActiveAddress") {
+            self.activeAddress = dict["ActiveAddress"] as! String
+        }
+        if dict.keys.contains("AppJson") {
+            self.appJson = dict["AppJson"] as! String
+        }
+        if dict.keys.contains("AutoRenewal") {
+            self.autoRenewal = dict["AutoRenewal"] as! String
+        }
         if dict.keys.contains("BeganOn") {
             self.beganOn = dict["BeganOn"] as! Int64
         }
@@ -2637,11 +2676,20 @@ public class DescribeInstanceForIsvResponseBody : Tea.TeaModel {
         if dict.keys.contains("ExtendJson") {
             self.extendJson = dict["ExtendJson"] as! String
         }
+        if dict.keys.contains("HostJson") {
+            self.hostJson = dict["HostJson"] as! String
+        }
+        if dict.keys.contains("ImageJson") {
+            self.imageJson = dict["ImageJson"] as! String
+        }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! Int64
         }
         if dict.keys.contains("IsTrial") {
             self.isTrial = dict["IsTrial"] as! Bool
+        }
+        if dict.keys.contains("LicenseCode") {
+            self.licenseCode = dict["LicenseCode"] as! String
         }
         if dict.keys.contains("OrderId") {
             self.orderId = dict["OrderId"] as! Int64
