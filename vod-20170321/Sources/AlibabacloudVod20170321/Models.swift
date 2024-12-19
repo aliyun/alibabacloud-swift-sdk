@@ -2230,6 +2230,886 @@ public class AttachAppPolicyToIdentityResponse : Tea.TeaModel {
     }
 }
 
+public class BatchGetMediaInfosRequest : Tea.TeaModel {
+    public var mediaIds: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.mediaIds != nil {
+            map["MediaIds"] = self.mediaIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MediaIds") {
+            self.mediaIds = dict["MediaIds"] as! String
+        }
+    }
+}
+
+public class BatchGetMediaInfosResponseBody : Tea.TeaModel {
+    public class MediaInfos : Tea.TeaModel {
+        public class MediaInfo : Tea.TeaModel {
+            public var appId: String?
+
+            public var cateId: Int64?
+
+            public var cateName: String?
+
+            public var coverURL: String?
+
+            public var creationTime: String?
+
+            public var description_: String?
+
+            public var downloadSwitch: String?
+
+            public var mediaId: String?
+
+            public var modificationTime: String?
+
+            public var restoreExpiration: String?
+
+            public var restoreStatus: String?
+
+            public var snapshots: [String]?
+
+            public var status: String?
+
+            public var storageClass: String?
+
+            public var storageLocation: String?
+
+            public var tags: String?
+
+            public var templateGroupId: String?
+
+            public var title: String?
+
+            public var userData: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.appId != nil {
+                    map["AppId"] = self.appId!
+                }
+                if self.cateId != nil {
+                    map["CateId"] = self.cateId!
+                }
+                if self.cateName != nil {
+                    map["CateName"] = self.cateName!
+                }
+                if self.coverURL != nil {
+                    map["CoverURL"] = self.coverURL!
+                }
+                if self.creationTime != nil {
+                    map["CreationTime"] = self.creationTime!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.downloadSwitch != nil {
+                    map["DownloadSwitch"] = self.downloadSwitch!
+                }
+                if self.mediaId != nil {
+                    map["MediaId"] = self.mediaId!
+                }
+                if self.modificationTime != nil {
+                    map["ModificationTime"] = self.modificationTime!
+                }
+                if self.restoreExpiration != nil {
+                    map["RestoreExpiration"] = self.restoreExpiration!
+                }
+                if self.restoreStatus != nil {
+                    map["RestoreStatus"] = self.restoreStatus!
+                }
+                if self.snapshots != nil {
+                    map["Snapshots"] = self.snapshots!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.storageClass != nil {
+                    map["StorageClass"] = self.storageClass!
+                }
+                if self.storageLocation != nil {
+                    map["StorageLocation"] = self.storageLocation!
+                }
+                if self.tags != nil {
+                    map["Tags"] = self.tags!
+                }
+                if self.templateGroupId != nil {
+                    map["TemplateGroupId"] = self.templateGroupId!
+                }
+                if self.title != nil {
+                    map["Title"] = self.title!
+                }
+                if self.userData != nil {
+                    map["UserData"] = self.userData!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AppId") {
+                    self.appId = dict["AppId"] as! String
+                }
+                if dict.keys.contains("CateId") {
+                    self.cateId = dict["CateId"] as! Int64
+                }
+                if dict.keys.contains("CateName") {
+                    self.cateName = dict["CateName"] as! String
+                }
+                if dict.keys.contains("CoverURL") {
+                    self.coverURL = dict["CoverURL"] as! String
+                }
+                if dict.keys.contains("CreationTime") {
+                    self.creationTime = dict["CreationTime"] as! String
+                }
+                if dict.keys.contains("Description") {
+                    self.description_ = dict["Description"] as! String
+                }
+                if dict.keys.contains("DownloadSwitch") {
+                    self.downloadSwitch = dict["DownloadSwitch"] as! String
+                }
+                if dict.keys.contains("MediaId") {
+                    self.mediaId = dict["MediaId"] as! String
+                }
+                if dict.keys.contains("ModificationTime") {
+                    self.modificationTime = dict["ModificationTime"] as! String
+                }
+                if dict.keys.contains("RestoreExpiration") {
+                    self.restoreExpiration = dict["RestoreExpiration"] as! String
+                }
+                if dict.keys.contains("RestoreStatus") {
+                    self.restoreStatus = dict["RestoreStatus"] as! String
+                }
+                if dict.keys.contains("Snapshots") {
+                    self.snapshots = dict["Snapshots"] as! [String]
+                }
+                if dict.keys.contains("Status") {
+                    self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("StorageClass") {
+                    self.storageClass = dict["StorageClass"] as! String
+                }
+                if dict.keys.contains("StorageLocation") {
+                    self.storageLocation = dict["StorageLocation"] as! String
+                }
+                if dict.keys.contains("Tags") {
+                    self.tags = dict["Tags"] as! String
+                }
+                if dict.keys.contains("TemplateGroupId") {
+                    self.templateGroupId = dict["TemplateGroupId"] as! String
+                }
+                if dict.keys.contains("Title") {
+                    self.title = dict["Title"] as! String
+                }
+                if dict.keys.contains("UserData") {
+                    self.userData = dict["UserData"] as! String
+                }
+            }
+        }
+        public class MezzanineInfo : Tea.TeaModel {
+            public class AudioStreamList : Tea.TeaModel {
+                public var bitrate: String?
+
+                public var channelLayout: String?
+
+                public var channels: String?
+
+                public var codecLongName: String?
+
+                public var codecName: String?
+
+                public var codecTag: String?
+
+                public var codecTagString: String?
+
+                public var codecTimeBase: String?
+
+                public var duration: String?
+
+                public var index: String?
+
+                public var lang: String?
+
+                public var numFrames: String?
+
+                public var sampleFmt: String?
+
+                public var sampleRate: String?
+
+                public var startTime: String?
+
+                public var timebase: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.bitrate != nil {
+                        map["Bitrate"] = self.bitrate!
+                    }
+                    if self.channelLayout != nil {
+                        map["ChannelLayout"] = self.channelLayout!
+                    }
+                    if self.channels != nil {
+                        map["Channels"] = self.channels!
+                    }
+                    if self.codecLongName != nil {
+                        map["CodecLongName"] = self.codecLongName!
+                    }
+                    if self.codecName != nil {
+                        map["CodecName"] = self.codecName!
+                    }
+                    if self.codecTag != nil {
+                        map["CodecTag"] = self.codecTag!
+                    }
+                    if self.codecTagString != nil {
+                        map["CodecTagString"] = self.codecTagString!
+                    }
+                    if self.codecTimeBase != nil {
+                        map["CodecTimeBase"] = self.codecTimeBase!
+                    }
+                    if self.duration != nil {
+                        map["Duration"] = self.duration!
+                    }
+                    if self.index != nil {
+                        map["Index"] = self.index!
+                    }
+                    if self.lang != nil {
+                        map["Lang"] = self.lang!
+                    }
+                    if self.numFrames != nil {
+                        map["NumFrames"] = self.numFrames!
+                    }
+                    if self.sampleFmt != nil {
+                        map["SampleFmt"] = self.sampleFmt!
+                    }
+                    if self.sampleRate != nil {
+                        map["SampleRate"] = self.sampleRate!
+                    }
+                    if self.startTime != nil {
+                        map["StartTime"] = self.startTime!
+                    }
+                    if self.timebase != nil {
+                        map["Timebase"] = self.timebase!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Bitrate") {
+                        self.bitrate = dict["Bitrate"] as! String
+                    }
+                    if dict.keys.contains("ChannelLayout") {
+                        self.channelLayout = dict["ChannelLayout"] as! String
+                    }
+                    if dict.keys.contains("Channels") {
+                        self.channels = dict["Channels"] as! String
+                    }
+                    if dict.keys.contains("CodecLongName") {
+                        self.codecLongName = dict["CodecLongName"] as! String
+                    }
+                    if dict.keys.contains("CodecName") {
+                        self.codecName = dict["CodecName"] as! String
+                    }
+                    if dict.keys.contains("CodecTag") {
+                        self.codecTag = dict["CodecTag"] as! String
+                    }
+                    if dict.keys.contains("CodecTagString") {
+                        self.codecTagString = dict["CodecTagString"] as! String
+                    }
+                    if dict.keys.contains("CodecTimeBase") {
+                        self.codecTimeBase = dict["CodecTimeBase"] as! String
+                    }
+                    if dict.keys.contains("Duration") {
+                        self.duration = dict["Duration"] as! String
+                    }
+                    if dict.keys.contains("Index") {
+                        self.index = dict["Index"] as! String
+                    }
+                    if dict.keys.contains("Lang") {
+                        self.lang = dict["Lang"] as! String
+                    }
+                    if dict.keys.contains("NumFrames") {
+                        self.numFrames = dict["NumFrames"] as! String
+                    }
+                    if dict.keys.contains("SampleFmt") {
+                        self.sampleFmt = dict["SampleFmt"] as! String
+                    }
+                    if dict.keys.contains("SampleRate") {
+                        self.sampleRate = dict["SampleRate"] as! String
+                    }
+                    if dict.keys.contains("StartTime") {
+                        self.startTime = dict["StartTime"] as! String
+                    }
+                    if dict.keys.contains("Timebase") {
+                        self.timebase = dict["Timebase"] as! String
+                    }
+                }
+            }
+            public class VideoStreamList : Tea.TeaModel {
+                public var avgFPS: String?
+
+                public var bitrate: String?
+
+                public var codecLongName: String?
+
+                public var codecName: String?
+
+                public var codecTag: String?
+
+                public var codecTagString: String?
+
+                public var codecTimeBase: String?
+
+                public var dar: String?
+
+                public var duration: String?
+
+                public var fps: String?
+
+                public var HDRType: String?
+
+                public var hasBFrames: String?
+
+                public var height: String?
+
+                public var index: String?
+
+                public var lang: String?
+
+                public var level: String?
+
+                public var numFrames: String?
+
+                public var pixFmt: String?
+
+                public var profile: String?
+
+                public var rotate: String?
+
+                public var sar: String?
+
+                public var startTime: String?
+
+                public var timebase: String?
+
+                public var width: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.avgFPS != nil {
+                        map["AvgFPS"] = self.avgFPS!
+                    }
+                    if self.bitrate != nil {
+                        map["Bitrate"] = self.bitrate!
+                    }
+                    if self.codecLongName != nil {
+                        map["CodecLongName"] = self.codecLongName!
+                    }
+                    if self.codecName != nil {
+                        map["CodecName"] = self.codecName!
+                    }
+                    if self.codecTag != nil {
+                        map["CodecTag"] = self.codecTag!
+                    }
+                    if self.codecTagString != nil {
+                        map["CodecTagString"] = self.codecTagString!
+                    }
+                    if self.codecTimeBase != nil {
+                        map["CodecTimeBase"] = self.codecTimeBase!
+                    }
+                    if self.dar != nil {
+                        map["Dar"] = self.dar!
+                    }
+                    if self.duration != nil {
+                        map["Duration"] = self.duration!
+                    }
+                    if self.fps != nil {
+                        map["Fps"] = self.fps!
+                    }
+                    if self.HDRType != nil {
+                        map["HDRType"] = self.HDRType!
+                    }
+                    if self.hasBFrames != nil {
+                        map["HasBFrames"] = self.hasBFrames!
+                    }
+                    if self.height != nil {
+                        map["Height"] = self.height!
+                    }
+                    if self.index != nil {
+                        map["Index"] = self.index!
+                    }
+                    if self.lang != nil {
+                        map["Lang"] = self.lang!
+                    }
+                    if self.level != nil {
+                        map["Level"] = self.level!
+                    }
+                    if self.numFrames != nil {
+                        map["NumFrames"] = self.numFrames!
+                    }
+                    if self.pixFmt != nil {
+                        map["PixFmt"] = self.pixFmt!
+                    }
+                    if self.profile != nil {
+                        map["Profile"] = self.profile!
+                    }
+                    if self.rotate != nil {
+                        map["Rotate"] = self.rotate!
+                    }
+                    if self.sar != nil {
+                        map["Sar"] = self.sar!
+                    }
+                    if self.startTime != nil {
+                        map["StartTime"] = self.startTime!
+                    }
+                    if self.timebase != nil {
+                        map["Timebase"] = self.timebase!
+                    }
+                    if self.width != nil {
+                        map["Width"] = self.width!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AvgFPS") {
+                        self.avgFPS = dict["AvgFPS"] as! String
+                    }
+                    if dict.keys.contains("Bitrate") {
+                        self.bitrate = dict["Bitrate"] as! String
+                    }
+                    if dict.keys.contains("CodecLongName") {
+                        self.codecLongName = dict["CodecLongName"] as! String
+                    }
+                    if dict.keys.contains("CodecName") {
+                        self.codecName = dict["CodecName"] as! String
+                    }
+                    if dict.keys.contains("CodecTag") {
+                        self.codecTag = dict["CodecTag"] as! String
+                    }
+                    if dict.keys.contains("CodecTagString") {
+                        self.codecTagString = dict["CodecTagString"] as! String
+                    }
+                    if dict.keys.contains("CodecTimeBase") {
+                        self.codecTimeBase = dict["CodecTimeBase"] as! String
+                    }
+                    if dict.keys.contains("Dar") {
+                        self.dar = dict["Dar"] as! String
+                    }
+                    if dict.keys.contains("Duration") {
+                        self.duration = dict["Duration"] as! String
+                    }
+                    if dict.keys.contains("Fps") {
+                        self.fps = dict["Fps"] as! String
+                    }
+                    if dict.keys.contains("HDRType") {
+                        self.HDRType = dict["HDRType"] as! String
+                    }
+                    if dict.keys.contains("HasBFrames") {
+                        self.hasBFrames = dict["HasBFrames"] as! String
+                    }
+                    if dict.keys.contains("Height") {
+                        self.height = dict["Height"] as! String
+                    }
+                    if dict.keys.contains("Index") {
+                        self.index = dict["Index"] as! String
+                    }
+                    if dict.keys.contains("Lang") {
+                        self.lang = dict["Lang"] as! String
+                    }
+                    if dict.keys.contains("Level") {
+                        self.level = dict["Level"] as! String
+                    }
+                    if dict.keys.contains("NumFrames") {
+                        self.numFrames = dict["NumFrames"] as! String
+                    }
+                    if dict.keys.contains("PixFmt") {
+                        self.pixFmt = dict["PixFmt"] as! String
+                    }
+                    if dict.keys.contains("Profile") {
+                        self.profile = dict["Profile"] as! String
+                    }
+                    if dict.keys.contains("Rotate") {
+                        self.rotate = dict["Rotate"] as! String
+                    }
+                    if dict.keys.contains("Sar") {
+                        self.sar = dict["Sar"] as! String
+                    }
+                    if dict.keys.contains("StartTime") {
+                        self.startTime = dict["StartTime"] as! String
+                    }
+                    if dict.keys.contains("Timebase") {
+                        self.timebase = dict["Timebase"] as! String
+                    }
+                    if dict.keys.contains("Width") {
+                        self.width = dict["Width"] as! String
+                    }
+                }
+            }
+            public var audioStreamList: [BatchGetMediaInfosResponseBody.MediaInfos.MezzanineInfo.AudioStreamList]?
+
+            public var bitrate: String?
+
+            public var creationTime: String?
+
+            public var duration: String?
+
+            public var fileName: String?
+
+            public var fileURL: String?
+
+            public var fps: String?
+
+            public var height: Int64?
+
+            public var mediaId: String?
+
+            public var size: Int64?
+
+            public var status: String?
+
+            public var videoStreamList: [BatchGetMediaInfosResponseBody.MediaInfos.MezzanineInfo.VideoStreamList]?
+
+            public var width: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.audioStreamList != nil {
+                    var tmp : [Any] = []
+                    for k in self.audioStreamList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["AudioStreamList"] = tmp
+                }
+                if self.bitrate != nil {
+                    map["Bitrate"] = self.bitrate!
+                }
+                if self.creationTime != nil {
+                    map["CreationTime"] = self.creationTime!
+                }
+                if self.duration != nil {
+                    map["Duration"] = self.duration!
+                }
+                if self.fileName != nil {
+                    map["FileName"] = self.fileName!
+                }
+                if self.fileURL != nil {
+                    map["FileURL"] = self.fileURL!
+                }
+                if self.fps != nil {
+                    map["Fps"] = self.fps!
+                }
+                if self.height != nil {
+                    map["Height"] = self.height!
+                }
+                if self.mediaId != nil {
+                    map["MediaId"] = self.mediaId!
+                }
+                if self.size != nil {
+                    map["Size"] = self.size!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.videoStreamList != nil {
+                    var tmp : [Any] = []
+                    for k in self.videoStreamList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["VideoStreamList"] = tmp
+                }
+                if self.width != nil {
+                    map["Width"] = self.width!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AudioStreamList") {
+                    var tmp : [BatchGetMediaInfosResponseBody.MediaInfos.MezzanineInfo.AudioStreamList] = []
+                    for v in dict["AudioStreamList"] as! [Any] {
+                        var model = BatchGetMediaInfosResponseBody.MediaInfos.MezzanineInfo.AudioStreamList()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.audioStreamList = tmp
+                }
+                if dict.keys.contains("Bitrate") {
+                    self.bitrate = dict["Bitrate"] as! String
+                }
+                if dict.keys.contains("CreationTime") {
+                    self.creationTime = dict["CreationTime"] as! String
+                }
+                if dict.keys.contains("Duration") {
+                    self.duration = dict["Duration"] as! String
+                }
+                if dict.keys.contains("FileName") {
+                    self.fileName = dict["FileName"] as! String
+                }
+                if dict.keys.contains("FileURL") {
+                    self.fileURL = dict["FileURL"] as! String
+                }
+                if dict.keys.contains("Fps") {
+                    self.fps = dict["Fps"] as! String
+                }
+                if dict.keys.contains("Height") {
+                    self.height = dict["Height"] as! Int64
+                }
+                if dict.keys.contains("MediaId") {
+                    self.mediaId = dict["MediaId"] as! String
+                }
+                if dict.keys.contains("Size") {
+                    self.size = dict["Size"] as! Int64
+                }
+                if dict.keys.contains("Status") {
+                    self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("VideoStreamList") {
+                    var tmp : [BatchGetMediaInfosResponseBody.MediaInfos.MezzanineInfo.VideoStreamList] = []
+                    for v in dict["VideoStreamList"] as! [Any] {
+                        var model = BatchGetMediaInfosResponseBody.MediaInfos.MezzanineInfo.VideoStreamList()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.videoStreamList = tmp
+                }
+                if dict.keys.contains("Width") {
+                    self.width = dict["Width"] as! Int64
+                }
+            }
+        }
+        public var mediaId: String?
+
+        public var mediaInfo: BatchGetMediaInfosResponseBody.MediaInfos.MediaInfo?
+
+        public var mezzanineInfo: BatchGetMediaInfosResponseBody.MediaInfos.MezzanineInfo?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.mediaInfo?.validate()
+            try self.mezzanineInfo?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.mediaId != nil {
+                map["MediaId"] = self.mediaId!
+            }
+            if self.mediaInfo != nil {
+                map["MediaInfo"] = self.mediaInfo?.toMap()
+            }
+            if self.mezzanineInfo != nil {
+                map["MezzanineInfo"] = self.mezzanineInfo?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("MediaId") {
+                self.mediaId = dict["MediaId"] as! String
+            }
+            if dict.keys.contains("MediaInfo") {
+                var model = BatchGetMediaInfosResponseBody.MediaInfos.MediaInfo()
+                model.fromMap(dict["MediaInfo"] as! [String: Any])
+                self.mediaInfo = model
+            }
+            if dict.keys.contains("MezzanineInfo") {
+                var model = BatchGetMediaInfosResponseBody.MediaInfos.MezzanineInfo()
+                model.fromMap(dict["MezzanineInfo"] as! [String: Any])
+                self.mezzanineInfo = model
+            }
+        }
+    }
+    public var forbiddenMediaIds: [String]?
+
+    public var mediaInfos: [BatchGetMediaInfosResponseBody.MediaInfos]?
+
+    public var nonExistMediaIds: [String]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.forbiddenMediaIds != nil {
+            map["ForbiddenMediaIds"] = self.forbiddenMediaIds!
+        }
+        if self.mediaInfos != nil {
+            var tmp : [Any] = []
+            for k in self.mediaInfos! {
+                tmp.append(k.toMap())
+            }
+            map["MediaInfos"] = tmp
+        }
+        if self.nonExistMediaIds != nil {
+            map["NonExistMediaIds"] = self.nonExistMediaIds!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ForbiddenMediaIds") {
+            self.forbiddenMediaIds = dict["ForbiddenMediaIds"] as! [String]
+        }
+        if dict.keys.contains("MediaInfos") {
+            var tmp : [BatchGetMediaInfosResponseBody.MediaInfos] = []
+            for v in dict["MediaInfos"] as! [Any] {
+                var model = BatchGetMediaInfosResponseBody.MediaInfos()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.mediaInfos = tmp
+        }
+        if dict.keys.contains("NonExistMediaIds") {
+            self.nonExistMediaIds = dict["NonExistMediaIds"] as! [String]
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class BatchGetMediaInfosResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BatchGetMediaInfosResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = BatchGetMediaInfosResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class BatchSetVodDomainConfigsRequest : Tea.TeaModel {
     public var domainNames: String?
 
@@ -6318,6 +7198,212 @@ public class DeleteWatermarkResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DeleteWatermarkResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeMediaDistributionRequest : Tea.TeaModel {
+    public var endTime: String?
+
+    public var interval: String?
+
+    public var startTime: String?
+
+    public var storageClass: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.interval != nil {
+            map["Interval"] = self.interval!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.storageClass != nil {
+            map["StorageClass"] = self.storageClass!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EndTime") {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("Interval") {
+            self.interval = dict["Interval"] as! String
+        }
+        if dict.keys.contains("StartTime") {
+            self.startTime = dict["StartTime"] as! String
+        }
+        if dict.keys.contains("StorageClass") {
+            self.storageClass = dict["StorageClass"] as! String
+        }
+    }
+}
+
+public class DescribeMediaDistributionResponseBody : Tea.TeaModel {
+    public class MediaDistributionList : Tea.TeaModel {
+        public var count: Int64?
+
+        public var endTime: String?
+
+        public var startTime: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.count != nil {
+                map["Count"] = self.count!
+            }
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Count") {
+                self.count = dict["Count"] as! Int64
+            }
+            if dict.keys.contains("EndTime") {
+                self.endTime = dict["EndTime"] as! String
+            }
+            if dict.keys.contains("StartTime") {
+                self.startTime = dict["StartTime"] as! String
+            }
+        }
+    }
+    public var mediaDistributionList: [DescribeMediaDistributionResponseBody.MediaDistributionList]?
+
+    public var requestId: String?
+
+    public var total: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.mediaDistributionList != nil {
+            var tmp : [Any] = []
+            for k in self.mediaDistributionList! {
+                tmp.append(k.toMap())
+            }
+            map["MediaDistributionList"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.total != nil {
+            map["Total"] = self.total!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MediaDistributionList") {
+            var tmp : [DescribeMediaDistributionResponseBody.MediaDistributionList] = []
+            for v in dict["MediaDistributionList"] as! [Any] {
+                var model = DescribeMediaDistributionResponseBody.MediaDistributionList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.mediaDistributionList = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Total") {
+            self.total = dict["Total"] as! Int64
+        }
+    }
+}
+
+public class DescribeMediaDistributionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeMediaDistributionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeMediaDistributionResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -44143,6 +45229,8 @@ public class UploadStreamByURLRequest : Tea.TeaModel {
 
     public var streamURL: String?
 
+    public var uploadMetadata: String?
+
     public var userData: String?
 
     public override init() {
@@ -44174,6 +45262,9 @@ public class UploadStreamByURLRequest : Tea.TeaModel {
         if self.streamURL != nil {
             map["StreamURL"] = self.streamURL!
         }
+        if self.uploadMetadata != nil {
+            map["UploadMetadata"] = self.uploadMetadata!
+        }
         if self.userData != nil {
             map["UserData"] = self.userData!
         }
@@ -44195,6 +45286,9 @@ public class UploadStreamByURLRequest : Tea.TeaModel {
         }
         if dict.keys.contains("StreamURL") {
             self.streamURL = dict["StreamURL"] as! String
+        }
+        if dict.keys.contains("UploadMetadata") {
+            self.uploadMetadata = dict["UploadMetadata"] as! String
         }
         if dict.keys.contains("UserData") {
             self.userData = dict["UserData"] as! String
