@@ -4802,11 +4802,15 @@ public class GetAccountSummaryResponseBody : Tea.TeaModel {
 
         public var attachedSystemPoliciesPerUserQuota: Int32?
 
+        public var conditionsPerAKPolicyQuota: Int32?
+
         public var groups: Int32?
 
         public var groupsPerUserQuota: Int32?
 
         public var groupsQuota: Int32?
+
+        public var IPItemsPerAKPolicyQuota: Int32?
 
         public var MFADevices: Int32?
 
@@ -4865,6 +4869,9 @@ public class GetAccountSummaryResponseBody : Tea.TeaModel {
             if self.attachedSystemPoliciesPerUserQuota != nil {
                 map["AttachedSystemPoliciesPerUserQuota"] = self.attachedSystemPoliciesPerUserQuota!
             }
+            if self.conditionsPerAKPolicyQuota != nil {
+                map["ConditionsPerAKPolicyQuota"] = self.conditionsPerAKPolicyQuota!
+            }
             if self.groups != nil {
                 map["Groups"] = self.groups!
             }
@@ -4873,6 +4880,9 @@ public class GetAccountSummaryResponseBody : Tea.TeaModel {
             }
             if self.groupsQuota != nil {
                 map["GroupsQuota"] = self.groupsQuota!
+            }
+            if self.IPItemsPerAKPolicyQuota != nil {
+                map["IPItemsPerAKPolicyQuota"] = self.IPItemsPerAKPolicyQuota!
             }
             if self.MFADevices != nil {
                 map["MFADevices"] = self.MFADevices!
@@ -4932,6 +4942,9 @@ public class GetAccountSummaryResponseBody : Tea.TeaModel {
             if dict.keys.contains("AttachedSystemPoliciesPerUserQuota") {
                 self.attachedSystemPoliciesPerUserQuota = dict["AttachedSystemPoliciesPerUserQuota"] as! Int32
             }
+            if dict.keys.contains("ConditionsPerAKPolicyQuota") {
+                self.conditionsPerAKPolicyQuota = dict["ConditionsPerAKPolicyQuota"] as! Int32
+            }
             if dict.keys.contains("Groups") {
                 self.groups = dict["Groups"] as! Int32
             }
@@ -4940,6 +4953,9 @@ public class GetAccountSummaryResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("GroupsQuota") {
                 self.groupsQuota = dict["GroupsQuota"] as! Int32
+            }
+            if dict.keys.contains("IPItemsPerAKPolicyQuota") {
+                self.IPItemsPerAKPolicyQuota = dict["IPItemsPerAKPolicyQuota"] as! Int32
             }
             if dict.keys.contains("MFADevices") {
                 self.MFADevices = dict["MFADevices"] as! Int32
@@ -6101,6 +6117,8 @@ public class GetLoginProfileRequest : Tea.TeaModel {
 
 public class GetLoginProfileResponseBody : Tea.TeaModel {
     public class LoginProfile : Tea.TeaModel {
+        public var autoDisableLoginStatus: String?
+
         public var lastLoginTime: String?
 
         public var MFABindRequired: Bool?
@@ -6127,6 +6145,9 @@ public class GetLoginProfileResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.autoDisableLoginStatus != nil {
+                map["AutoDisableLoginStatus"] = self.autoDisableLoginStatus!
+            }
             if self.lastLoginTime != nil {
                 map["LastLoginTime"] = self.lastLoginTime!
             }
@@ -6149,6 +6170,9 @@ public class GetLoginProfileResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AutoDisableLoginStatus") {
+                self.autoDisableLoginStatus = dict["AutoDisableLoginStatus"] as! String
+            }
             if dict.keys.contains("LastLoginTime") {
                 self.lastLoginTime = dict["LastLoginTime"] as! String
             }
@@ -7004,6 +7028,43 @@ public class GetSecurityPreferenceResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class MaxIdleDays : Tea.TeaModel {
+            public var maxIdleDaysForAccessKeys: Int32?
+
+            public var maxIdleDaysForUsers: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.maxIdleDaysForAccessKeys != nil {
+                    map["MaxIdleDaysForAccessKeys"] = self.maxIdleDaysForAccessKeys!
+                }
+                if self.maxIdleDaysForUsers != nil {
+                    map["MaxIdleDaysForUsers"] = self.maxIdleDaysForUsers!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("MaxIdleDaysForAccessKeys") {
+                    self.maxIdleDaysForAccessKeys = dict["MaxIdleDaysForAccessKeys"] as! Int32
+                }
+                if dict.keys.contains("MaxIdleDaysForUsers") {
+                    self.maxIdleDaysForUsers = dict["MaxIdleDaysForUsers"] as! Int32
+                }
+            }
+        }
         public class PersonalInfoPreference : Tea.TeaModel {
             public var allowUserToManagePersonalDingTalk: Bool?
 
@@ -7068,6 +7129,8 @@ public class GetSecurityPreferenceResponseBody : Tea.TeaModel {
 
         public var MFAPreference: GetSecurityPreferenceResponseBody.SecurityPreference.MFAPreference?
 
+        public var maxIdleDays: GetSecurityPreferenceResponseBody.SecurityPreference.MaxIdleDays?
+
         public var personalInfoPreference: GetSecurityPreferenceResponseBody.SecurityPreference.PersonalInfoPreference?
 
         public var verificationPreference: GetSecurityPreferenceResponseBody.SecurityPreference.VerificationPreference?
@@ -7085,6 +7148,7 @@ public class GetSecurityPreferenceResponseBody : Tea.TeaModel {
             try self.accessKeyPreference?.validate()
             try self.loginProfilePreference?.validate()
             try self.MFAPreference?.validate()
+            try self.maxIdleDays?.validate()
             try self.personalInfoPreference?.validate()
             try self.verificationPreference?.validate()
         }
@@ -7099,6 +7163,9 @@ public class GetSecurityPreferenceResponseBody : Tea.TeaModel {
             }
             if self.MFAPreference != nil {
                 map["MFAPreference"] = self.MFAPreference?.toMap()
+            }
+            if self.maxIdleDays != nil {
+                map["MaxIdleDays"] = self.maxIdleDays?.toMap()
             }
             if self.personalInfoPreference != nil {
                 map["PersonalInfoPreference"] = self.personalInfoPreference?.toMap()
@@ -7124,6 +7191,11 @@ public class GetSecurityPreferenceResponseBody : Tea.TeaModel {
                 var model = GetSecurityPreferenceResponseBody.SecurityPreference.MFAPreference()
                 model.fromMap(dict["MFAPreference"] as! [String: Any])
                 self.MFAPreference = model
+            }
+            if dict.keys.contains("MaxIdleDays") {
+                var model = GetSecurityPreferenceResponseBody.SecurityPreference.MaxIdleDays()
+                model.fromMap(dict["MaxIdleDays"] as! [String: Any])
+                self.maxIdleDays = model
             }
             if dict.keys.contains("PersonalInfoPreference") {
                 var model = GetSecurityPreferenceResponseBody.SecurityPreference.PersonalInfoPreference()
@@ -13060,6 +13132,43 @@ public class SetSecurityPreferenceResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class MaxIdleDays : Tea.TeaModel {
+            public var maxIdleDaysForAccessKeys: Int32?
+
+            public var maxIdleDaysForUsers: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.maxIdleDaysForAccessKeys != nil {
+                    map["MaxIdleDaysForAccessKeys"] = self.maxIdleDaysForAccessKeys!
+                }
+                if self.maxIdleDaysForUsers != nil {
+                    map["MaxIdleDaysForUsers"] = self.maxIdleDaysForUsers!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("MaxIdleDaysForAccessKeys") {
+                    self.maxIdleDaysForAccessKeys = dict["MaxIdleDaysForAccessKeys"] as! Int32
+                }
+                if dict.keys.contains("MaxIdleDaysForUsers") {
+                    self.maxIdleDaysForUsers = dict["MaxIdleDaysForUsers"] as! Int32
+                }
+            }
+        }
         public class PersonalInfoPreference : Tea.TeaModel {
             public var allowUserToManagePersonalDingTalk: Bool?
 
@@ -13124,6 +13233,8 @@ public class SetSecurityPreferenceResponseBody : Tea.TeaModel {
 
         public var MFAPreference: SetSecurityPreferenceResponseBody.SecurityPreference.MFAPreference?
 
+        public var maxIdleDays: SetSecurityPreferenceResponseBody.SecurityPreference.MaxIdleDays?
+
         public var personalInfoPreference: SetSecurityPreferenceResponseBody.SecurityPreference.PersonalInfoPreference?
 
         public var verificationPreference: SetSecurityPreferenceResponseBody.SecurityPreference.VerificationPreference?
@@ -13141,6 +13252,7 @@ public class SetSecurityPreferenceResponseBody : Tea.TeaModel {
             try self.accessKeyPreference?.validate()
             try self.loginProfilePreference?.validate()
             try self.MFAPreference?.validate()
+            try self.maxIdleDays?.validate()
             try self.personalInfoPreference?.validate()
             try self.verificationPreference?.validate()
         }
@@ -13155,6 +13267,9 @@ public class SetSecurityPreferenceResponseBody : Tea.TeaModel {
             }
             if self.MFAPreference != nil {
                 map["MFAPreference"] = self.MFAPreference?.toMap()
+            }
+            if self.maxIdleDays != nil {
+                map["MaxIdleDays"] = self.maxIdleDays?.toMap()
             }
             if self.personalInfoPreference != nil {
                 map["PersonalInfoPreference"] = self.personalInfoPreference?.toMap()
@@ -13180,6 +13295,11 @@ public class SetSecurityPreferenceResponseBody : Tea.TeaModel {
                 var model = SetSecurityPreferenceResponseBody.SecurityPreference.MFAPreference()
                 model.fromMap(dict["MFAPreference"] as! [String: Any])
                 self.MFAPreference = model
+            }
+            if dict.keys.contains("MaxIdleDays") {
+                var model = SetSecurityPreferenceResponseBody.SecurityPreference.MaxIdleDays()
+                model.fromMap(dict["MaxIdleDays"] as! [String: Any])
+                self.maxIdleDays = model
             }
             if dict.keys.contains("PersonalInfoPreference") {
                 var model = SetSecurityPreferenceResponseBody.SecurityPreference.PersonalInfoPreference()
@@ -14815,6 +14935,8 @@ public class UpdateLoginProfileRequest : Tea.TeaModel {
 
 public class UpdateLoginProfileResponseBody : Tea.TeaModel {
     public class LoginProfile : Tea.TeaModel {
+        public var autoDisableLoginStatus: String?
+
         public var MFABindRequired: Bool?
 
         public var passwordResetRequired: Bool?
@@ -14839,6 +14961,9 @@ public class UpdateLoginProfileResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.autoDisableLoginStatus != nil {
+                map["AutoDisableLoginStatus"] = self.autoDisableLoginStatus!
+            }
             if self.MFABindRequired != nil {
                 map["MFABindRequired"] = self.MFABindRequired!
             }
@@ -14858,6 +14983,9 @@ public class UpdateLoginProfileResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AutoDisableLoginStatus") {
+                self.autoDisableLoginStatus = dict["AutoDisableLoginStatus"] as! String
+            }
             if dict.keys.contains("MFABindRequired") {
                 self.MFABindRequired = dict["MFABindRequired"] as! Bool
             }
