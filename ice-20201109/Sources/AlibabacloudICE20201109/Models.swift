@@ -23023,6 +23023,8 @@ public class GetSmartHandleJobResponseBody : Tea.TeaModel {
 
         public var mediaId: String?
 
+        public var mediaUrl: String?
+
         public var usage: String?
 
         public override init() {
@@ -23045,6 +23047,9 @@ public class GetSmartHandleJobResponseBody : Tea.TeaModel {
             if self.mediaId != nil {
                 map["MediaId"] = self.mediaId!
             }
+            if self.mediaUrl != nil {
+                map["MediaUrl"] = self.mediaUrl!
+            }
             if self.usage != nil {
                 map["Usage"] = self.usage!
             }
@@ -23057,6 +23062,9 @@ public class GetSmartHandleJobResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("MediaId") {
                 self.mediaId = dict["MediaId"] as! String
+            }
+            if dict.keys.contains("MediaUrl") {
+                self.mediaUrl = dict["MediaUrl"] as! String
             }
             if dict.keys.contains("Usage") {
                 self.usage = dict["Usage"] as! String
