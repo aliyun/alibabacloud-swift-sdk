@@ -25052,6 +25052,43 @@ public class DescribeNASFileSystemsRequest : Tea.TeaModel {
 
 public class DescribeNASFileSystemsResponseBody : Tea.TeaModel {
     public class FileSystems : Tea.TeaModel {
+        public class AppInstanceGroups : Tea.TeaModel {
+            public var appInstanceGroupId: String?
+
+            public var appInstanceGroupName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.appInstanceGroupId != nil {
+                    map["AppInstanceGroupId"] = self.appInstanceGroupId!
+                }
+                if self.appInstanceGroupName != nil {
+                    map["AppInstanceGroupName"] = self.appInstanceGroupName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AppInstanceGroupId") {
+                    self.appInstanceGroupId = dict["AppInstanceGroupId"] as! String
+                }
+                if dict.keys.contains("AppInstanceGroupName") {
+                    self.appInstanceGroupName = dict["AppInstanceGroupName"] as! String
+                }
+            }
+        }
         public class DesktopGroups : Tea.TeaModel {
             public var desktopGroupId: String?
 
@@ -25089,6 +25126,47 @@ public class DescribeNASFileSystemsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class OfficeSites : Tea.TeaModel {
+            public var officeSiteId: String?
+
+            public var officeSiteName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.officeSiteId != nil {
+                    map["OfficeSiteId"] = self.officeSiteId!
+                }
+                if self.officeSiteName != nil {
+                    map["OfficeSiteName"] = self.officeSiteName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("OfficeSiteId") {
+                    self.officeSiteId = dict["OfficeSiteId"] as! String
+                }
+                if dict.keys.contains("OfficeSiteName") {
+                    self.officeSiteName = dict["OfficeSiteName"] as! String
+                }
+            }
+        }
+        public var allowOperateUserDrive: Bool?
+
+        public var appInstanceGroups: [DescribeNASFileSystemsResponseBody.FileSystems.AppInstanceGroups]?
+
         public var capacity: Int64?
 
         public var createTime: String?
@@ -25117,9 +25195,13 @@ public class DescribeNASFileSystemsResponseBody : Tea.TeaModel {
 
         public var officeSiteName: String?
 
+        public var officeSites: [DescribeNASFileSystemsResponseBody.FileSystems.OfficeSites]?
+
         public var profileCompatible: Bool?
 
         public var regionId: String?
+
+        public var scene: String?
 
         public var storageType: String?
 
@@ -25141,6 +25223,16 @@ public class DescribeNASFileSystemsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.allowOperateUserDrive != nil {
+                map["AllowOperateUserDrive"] = self.allowOperateUserDrive!
+            }
+            if self.appInstanceGroups != nil {
+                var tmp : [Any] = []
+                for k in self.appInstanceGroups! {
+                    tmp.append(k.toMap())
+                }
+                map["AppInstanceGroups"] = tmp
+            }
             if self.capacity != nil {
                 map["Capacity"] = self.capacity!
             }
@@ -25187,11 +25279,21 @@ public class DescribeNASFileSystemsResponseBody : Tea.TeaModel {
             if self.officeSiteName != nil {
                 map["OfficeSiteName"] = self.officeSiteName!
             }
+            if self.officeSites != nil {
+                var tmp : [Any] = []
+                for k in self.officeSites! {
+                    tmp.append(k.toMap())
+                }
+                map["OfficeSites"] = tmp
+            }
             if self.profileCompatible != nil {
                 map["ProfileCompatible"] = self.profileCompatible!
             }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
+            }
+            if self.scene != nil {
+                map["Scene"] = self.scene!
             }
             if self.storageType != nil {
                 map["StorageType"] = self.storageType!
@@ -25206,6 +25308,20 @@ public class DescribeNASFileSystemsResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AllowOperateUserDrive") {
+                self.allowOperateUserDrive = dict["AllowOperateUserDrive"] as! Bool
+            }
+            if dict.keys.contains("AppInstanceGroups") {
+                var tmp : [DescribeNASFileSystemsResponseBody.FileSystems.AppInstanceGroups] = []
+                for v in dict["AppInstanceGroups"] as! [Any] {
+                    var model = DescribeNASFileSystemsResponseBody.FileSystems.AppInstanceGroups()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.appInstanceGroups = tmp
+            }
             if dict.keys.contains("Capacity") {
                 self.capacity = dict["Capacity"] as! Int64
             }
@@ -25256,11 +25372,25 @@ public class DescribeNASFileSystemsResponseBody : Tea.TeaModel {
             if dict.keys.contains("OfficeSiteName") {
                 self.officeSiteName = dict["OfficeSiteName"] as! String
             }
+            if dict.keys.contains("OfficeSites") {
+                var tmp : [DescribeNASFileSystemsResponseBody.FileSystems.OfficeSites] = []
+                for v in dict["OfficeSites"] as! [Any] {
+                    var model = DescribeNASFileSystemsResponseBody.FileSystems.OfficeSites()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.officeSites = tmp
+            }
             if dict.keys.contains("ProfileCompatible") {
                 self.profileCompatible = dict["ProfileCompatible"] as! Bool
             }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("Scene") {
+                self.scene = dict["Scene"] as! String
             }
             if dict.keys.contains("StorageType") {
                 self.storageType = dict["StorageType"] as! String
@@ -27054,6 +27184,10 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var cpuSingleRateLimit: Int32?
 
+        public var desktopCount: Int32?
+
+        public var desktopGroupCount: Int32?
+
         public var deviceRedirects: [DescribePolicyGroupsResponseBody.DescribePolicyGroups.DeviceRedirects]?
 
         public var deviceRules: [DescribePolicyGroupsResponseBody.DescribePolicyGroups.DeviceRules]?
@@ -27095,6 +27229,10 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
         public var memorySampleDuration: Int32?
 
         public var memorySingleRateLimit: Int32?
+
+        public var mobileRestart: String?
+
+        public var mobileShutdown: String?
 
         public var name: String?
 
@@ -27140,6 +27278,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var remoteCoordinate: String?
 
+        public var resourceGroupCount: Int32?
+
         public var resourceRegionId: String?
 
         public var scope: String?
@@ -27147,6 +27287,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
         public var scopeValue: [String]?
 
         public var smoothEnhancement: String?
+
+        public var statusMonitor: String?
 
         public var streamingMode: String?
 
@@ -27266,6 +27408,12 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if self.cpuSingleRateLimit != nil {
                 map["CpuSingleRateLimit"] = self.cpuSingleRateLimit!
             }
+            if self.desktopCount != nil {
+                map["DesktopCount"] = self.desktopCount!
+            }
+            if self.desktopGroupCount != nil {
+                map["DesktopGroupCount"] = self.desktopGroupCount!
+            }
             if self.deviceRedirects != nil {
                 var tmp : [Any] = []
                 for k in self.deviceRedirects! {
@@ -27341,6 +27489,12 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if self.memorySingleRateLimit != nil {
                 map["MemorySingleRateLimit"] = self.memorySingleRateLimit!
             }
+            if self.mobileRestart != nil {
+                map["MobileRestart"] = self.mobileRestart!
+            }
+            if self.mobileShutdown != nil {
+                map["MobileShutdown"] = self.mobileShutdown!
+            }
             if self.name != nil {
                 map["Name"] = self.name!
             }
@@ -27411,6 +27565,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if self.remoteCoordinate != nil {
                 map["RemoteCoordinate"] = self.remoteCoordinate!
             }
+            if self.resourceGroupCount != nil {
+                map["ResourceGroupCount"] = self.resourceGroupCount!
+            }
             if self.resourceRegionId != nil {
                 map["ResourceRegionId"] = self.resourceRegionId!
             }
@@ -27422,6 +27579,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if self.smoothEnhancement != nil {
                 map["SmoothEnhancement"] = self.smoothEnhancement!
+            }
+            if self.statusMonitor != nil {
+                map["StatusMonitor"] = self.statusMonitor!
             }
             if self.streamingMode != nil {
                 map["StreamingMode"] = self.streamingMode!
@@ -27572,6 +27732,12 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if dict.keys.contains("CpuSingleRateLimit") {
                 self.cpuSingleRateLimit = dict["CpuSingleRateLimit"] as! Int32
             }
+            if dict.keys.contains("DesktopCount") {
+                self.desktopCount = dict["DesktopCount"] as! Int32
+            }
+            if dict.keys.contains("DesktopGroupCount") {
+                self.desktopGroupCount = dict["DesktopGroupCount"] as! Int32
+            }
             if dict.keys.contains("DeviceRedirects") {
                 var tmp : [DescribePolicyGroupsResponseBody.DescribePolicyGroups.DeviceRedirects] = []
                 for v in dict["DeviceRedirects"] as! [Any] {
@@ -27659,6 +27825,12 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if dict.keys.contains("MemorySingleRateLimit") {
                 self.memorySingleRateLimit = dict["MemorySingleRateLimit"] as! Int32
             }
+            if dict.keys.contains("MobileRestart") {
+                self.mobileRestart = dict["MobileRestart"] as! String
+            }
+            if dict.keys.contains("MobileShutdown") {
+                self.mobileShutdown = dict["MobileShutdown"] as! String
+            }
             if dict.keys.contains("Name") {
                 self.name = dict["Name"] as! String
             }
@@ -27733,6 +27905,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if dict.keys.contains("RemoteCoordinate") {
                 self.remoteCoordinate = dict["RemoteCoordinate"] as! String
             }
+            if dict.keys.contains("ResourceGroupCount") {
+                self.resourceGroupCount = dict["ResourceGroupCount"] as! Int32
+            }
             if dict.keys.contains("ResourceRegionId") {
                 self.resourceRegionId = dict["ResourceRegionId"] as! String
             }
@@ -27744,6 +27919,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SmoothEnhancement") {
                 self.smoothEnhancement = dict["SmoothEnhancement"] as! String
+            }
+            if dict.keys.contains("StatusMonitor") {
+                self.statusMonitor = dict["StatusMonitor"] as! String
             }
             if dict.keys.contains("StreamingMode") {
                 self.streamingMode = dict["StreamingMode"] as! String
