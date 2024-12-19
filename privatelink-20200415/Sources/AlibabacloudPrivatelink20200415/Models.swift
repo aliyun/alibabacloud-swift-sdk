@@ -161,6 +161,8 @@ public class AddZoneToVpcEndpointRequest : Tea.TeaModel {
 
     public var endpointId: String?
 
+    public var ipv6Address: String?
+
     public var regionId: String?
 
     public var vSwitchId: String?
@@ -192,6 +194,9 @@ public class AddZoneToVpcEndpointRequest : Tea.TeaModel {
         if self.endpointId != nil {
             map["EndpointId"] = self.endpointId!
         }
+        if self.ipv6Address != nil {
+            map["Ipv6Address"] = self.ipv6Address!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -216,6 +221,9 @@ public class AddZoneToVpcEndpointRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EndpointId") {
             self.endpointId = dict["EndpointId"] as! String
+        }
+        if dict.keys.contains("Ipv6Address") {
+            self.ipv6Address = dict["Ipv6Address"] as! String
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
@@ -860,6 +868,8 @@ public class CreateVpcEndpointRequest : Tea.TeaModel {
         }
     }
     public class Zone : Tea.TeaModel {
+        public var ipv6Address: String?
+
         public var vSwitchId: String?
 
         public var zoneId: String?
@@ -880,6 +890,9 @@ public class CreateVpcEndpointRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.ipv6Address != nil {
+                map["Ipv6Address"] = self.ipv6Address!
+            }
             if self.vSwitchId != nil {
                 map["VSwitchId"] = self.vSwitchId!
             }
@@ -893,6 +906,9 @@ public class CreateVpcEndpointRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Ipv6Address") {
+                self.ipv6Address = dict["Ipv6Address"] as! String
+            }
             if dict.keys.contains("VSwitchId") {
                 self.vSwitchId = dict["VSwitchId"] as! String
             }
@@ -904,6 +920,8 @@ public class CreateVpcEndpointRequest : Tea.TeaModel {
             }
         }
     }
+    public var addressIpVersion: String?
+
     public var clientToken: String?
 
     public var dryRun: Bool?
@@ -950,6 +968,9 @@ public class CreateVpcEndpointRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.addressIpVersion != nil {
+            map["AddressIpVersion"] = self.addressIpVersion!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -1010,6 +1031,9 @@ public class CreateVpcEndpointRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AddressIpVersion") {
+            self.addressIpVersion = dict["AddressIpVersion"] as! String
+        }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
         }
@@ -1078,6 +1102,8 @@ public class CreateVpcEndpointRequest : Tea.TeaModel {
 }
 
 public class CreateVpcEndpointResponseBody : Tea.TeaModel {
+    public var addressIpVersion: String?
+
     public var bandwidth: Int64?
 
     public var connectionStatus: String?
@@ -1118,6 +1144,9 @@ public class CreateVpcEndpointResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.addressIpVersion != nil {
+            map["AddressIpVersion"] = self.addressIpVersion!
+        }
         if self.bandwidth != nil {
             map["Bandwidth"] = self.bandwidth!
         }
@@ -1161,6 +1190,9 @@ public class CreateVpcEndpointResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AddressIpVersion") {
+            self.addressIpVersion = dict["AddressIpVersion"] as! String
+        }
         if dict.keys.contains("Bandwidth") {
             self.bandwidth = dict["Bandwidth"] as! Int64
         }
@@ -1335,6 +1367,8 @@ public class CreateVpcEndpointServiceRequest : Tea.TeaModel {
             }
         }
     }
+    public var addressIpVersion: String?
+
     public var autoAcceptEnabled: Bool?
 
     public var clientToken: String?
@@ -1373,6 +1407,9 @@ public class CreateVpcEndpointServiceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.addressIpVersion != nil {
+            map["AddressIpVersion"] = self.addressIpVersion!
+        }
         if self.autoAcceptEnabled != nil {
             map["AutoAcceptEnabled"] = self.autoAcceptEnabled!
         }
@@ -1421,6 +1458,9 @@ public class CreateVpcEndpointServiceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AddressIpVersion") {
+            self.addressIpVersion = dict["AddressIpVersion"] as! String
+        }
         if dict.keys.contains("AutoAcceptEnabled") {
             self.autoAcceptEnabled = dict["AutoAcceptEnabled"] as! Bool
         }
@@ -1477,6 +1517,8 @@ public class CreateVpcEndpointServiceRequest : Tea.TeaModel {
 }
 
 public class CreateVpcEndpointServiceResponseBody : Tea.TeaModel {
+    public var addressIpVersion: String?
+
     public var autoAcceptEnabled: Bool?
 
     public var createTime: String?
@@ -1515,6 +1557,9 @@ public class CreateVpcEndpointServiceResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.addressIpVersion != nil {
+            map["AddressIpVersion"] = self.addressIpVersion!
+        }
         if self.autoAcceptEnabled != nil {
             map["AutoAcceptEnabled"] = self.autoAcceptEnabled!
         }
@@ -1555,6 +1600,9 @@ public class CreateVpcEndpointServiceResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AddressIpVersion") {
+            self.addressIpVersion = dict["AddressIpVersion"] as! String
+        }
         if dict.keys.contains("AutoAcceptEnabled") {
             self.autoAcceptEnabled = dict["AutoAcceptEnabled"] as! Bool
         }
@@ -1912,6 +1960,8 @@ public class DeleteVpcEndpointServiceResponse : Tea.TeaModel {
 public class DescribeRegionsRequest : Tea.TeaModel {
     public var regionId: String?
 
+    public var serviceResourceType: String?
+
     public override init() {
         super.init()
     }
@@ -1929,6 +1979,9 @@ public class DescribeRegionsRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.serviceResourceType != nil {
+            map["ServiceResourceType"] = self.serviceResourceType!
+        }
         return map
     }
 
@@ -1936,17 +1989,51 @@ public class DescribeRegionsRequest : Tea.TeaModel {
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
         }
+        if dict.keys.contains("ServiceResourceType") {
+            self.serviceResourceType = dict["ServiceResourceType"] as! String
+        }
     }
 }
 
 public class DescribeRegionsResponseBody : Tea.TeaModel {
     public class Regions : Tea.TeaModel {
         public class Region : Tea.TeaModel {
+            public class ServiceResourceTypes : Tea.TeaModel {
+                public var serviceResourceType: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.serviceResourceType != nil {
+                        map["ServiceResourceType"] = self.serviceResourceType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ServiceResourceType") {
+                        self.serviceResourceType = dict["ServiceResourceType"] as! [String]
+                    }
+                }
+            }
             public var localName: String?
 
             public var regionEndpoint: String?
 
             public var regionId: String?
+
+            public var serviceResourceTypes: DescribeRegionsResponseBody.Regions.Region.ServiceResourceTypes?
 
             public override init() {
                 super.init()
@@ -1958,6 +2045,7 @@ public class DescribeRegionsResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.serviceResourceTypes?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -1971,6 +2059,9 @@ public class DescribeRegionsResponseBody : Tea.TeaModel {
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
                 }
+                if self.serviceResourceTypes != nil {
+                    map["ServiceResourceTypes"] = self.serviceResourceTypes?.toMap()
+                }
                 return map
             }
 
@@ -1983,6 +2074,11 @@ public class DescribeRegionsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("RegionId") {
                     self.regionId = dict["RegionId"] as! String
+                }
+                if dict.keys.contains("ServiceResourceTypes") {
+                    var model = DescribeRegionsResponseBody.Regions.Region.ServiceResourceTypes()
+                    model.fromMap(dict["ServiceResourceTypes"] as! [String: Any])
+                    self.serviceResourceTypes = model
                 }
             }
         }
@@ -2118,6 +2214,8 @@ public class DescribeRegionsResponse : Tea.TeaModel {
 public class DescribeZonesRequest : Tea.TeaModel {
     public var regionId: String?
 
+    public var serviceResourceType: String?
+
     public override init() {
         super.init()
     }
@@ -2135,12 +2233,18 @@ public class DescribeZonesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.serviceResourceType != nil {
+            map["ServiceResourceType"] = self.serviceResourceType!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ServiceResourceType") {
+            self.serviceResourceType = dict["ServiceResourceType"] as! String
         }
     }
 }
@@ -3246,6 +3350,8 @@ public class GetVpcEndpointAttributeRequest : Tea.TeaModel {
 }
 
 public class GetVpcEndpointAttributeResponseBody : Tea.TeaModel {
+    public var addressIpVersion: String?
+
     public var bandwidth: Int32?
 
     public var connectionStatus: String?
@@ -3302,6 +3408,9 @@ public class GetVpcEndpointAttributeResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.addressIpVersion != nil {
+            map["AddressIpVersion"] = self.addressIpVersion!
+        }
         if self.bandwidth != nil {
             map["Bandwidth"] = self.bandwidth!
         }
@@ -3369,6 +3478,9 @@ public class GetVpcEndpointAttributeResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AddressIpVersion") {
+            self.addressIpVersion = dict["AddressIpVersion"] as! String
+        }
         if dict.keys.contains("Bandwidth") {
             self.bandwidth = dict["Bandwidth"] as! Int32
         }
@@ -3523,6 +3635,8 @@ public class GetVpcEndpointServiceAttributeRequest : Tea.TeaModel {
 }
 
 public class GetVpcEndpointServiceAttributeResponseBody : Tea.TeaModel {
+    public var addressIpVersion: String?
+
     public var autoAcceptEnabled: Bool?
 
     public var connectBandwidth: Int32?
@@ -3577,6 +3691,9 @@ public class GetVpcEndpointServiceAttributeResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.addressIpVersion != nil {
+            map["AddressIpVersion"] = self.addressIpVersion!
+        }
         if self.autoAcceptEnabled != nil {
             map["AutoAcceptEnabled"] = self.autoAcceptEnabled!
         }
@@ -3641,6 +3758,9 @@ public class GetVpcEndpointServiceAttributeResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AddressIpVersion") {
+            self.addressIpVersion = dict["AddressIpVersion"] as! String
+        }
         if dict.keys.contains("AutoAcceptEnabled") {
             self.autoAcceptEnabled = dict["AutoAcceptEnabled"] as! Bool
         }
@@ -5264,6 +5384,8 @@ public class ListVpcEndpointServicesRequest : Tea.TeaModel {
             }
         }
     }
+    public var addressIpVersion: String?
+
     public var autoAcceptEnabled: Bool?
 
     public var maxResults: Int32?
@@ -5304,6 +5426,9 @@ public class ListVpcEndpointServicesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.addressIpVersion != nil {
+            map["AddressIpVersion"] = self.addressIpVersion!
+        }
         if self.autoAcceptEnabled != nil {
             map["AutoAcceptEnabled"] = self.autoAcceptEnabled!
         }
@@ -5351,6 +5476,9 @@ public class ListVpcEndpointServicesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AddressIpVersion") {
+            self.addressIpVersion = dict["AddressIpVersion"] as! String
+        }
         if dict.keys.contains("AutoAcceptEnabled") {
             self.autoAcceptEnabled = dict["AutoAcceptEnabled"] as! Bool
         }
@@ -5440,6 +5568,8 @@ public class ListVpcEndpointServicesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var addressIpVersion: String?
+
         public var autoAcceptEnabled: Bool?
 
         public var connectBandwidth: Int32?
@@ -5492,6 +5622,9 @@ public class ListVpcEndpointServicesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.addressIpVersion != nil {
+                map["AddressIpVersion"] = self.addressIpVersion!
+            }
             if self.autoAcceptEnabled != nil {
                 map["AutoAcceptEnabled"] = self.autoAcceptEnabled!
             }
@@ -5557,6 +5690,9 @@ public class ListVpcEndpointServicesResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AddressIpVersion") {
+                self.addressIpVersion = dict["AddressIpVersion"] as! String
+            }
             if dict.keys.contains("AutoAcceptEnabled") {
                 self.autoAcceptEnabled = dict["AutoAcceptEnabled"] as! Bool
             }
@@ -5920,6 +6056,8 @@ public class ListVpcEndpointServicesByEndUserResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var addressIpVersion: String?
+
         public var payer: String?
 
         public var resourceGroupId: String?
@@ -5954,6 +6092,9 @@ public class ListVpcEndpointServicesByEndUserResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.addressIpVersion != nil {
+                map["AddressIpVersion"] = self.addressIpVersion!
+            }
             if self.payer != nil {
                 map["Payer"] = self.payer!
             }
@@ -5992,6 +6133,9 @@ public class ListVpcEndpointServicesByEndUserResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AddressIpVersion") {
+                self.addressIpVersion = dict["AddressIpVersion"] as! String
+            }
             if dict.keys.contains("Payer") {
                 self.payer = dict["Payer"] as! String
             }
@@ -6454,6 +6598,8 @@ public class ListVpcEndpointsRequest : Tea.TeaModel {
             }
         }
     }
+    public var addressIpVersion: String?
+
     public var connectionStatus: String?
 
     public var endpointId: String?
@@ -6492,6 +6638,9 @@ public class ListVpcEndpointsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.addressIpVersion != nil {
+            map["AddressIpVersion"] = self.addressIpVersion!
+        }
         if self.connectionStatus != nil {
             map["ConnectionStatus"] = self.connectionStatus!
         }
@@ -6536,6 +6685,9 @@ public class ListVpcEndpointsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AddressIpVersion") {
+            self.addressIpVersion = dict["AddressIpVersion"] as! String
+        }
         if dict.keys.contains("ConnectionStatus") {
             self.connectionStatus = dict["ConnectionStatus"] as! String
         }
@@ -6622,6 +6774,8 @@ public class ListVpcEndpointsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var addressIpVersion: String?
+
         public var bandwidth: Int64?
 
         public var connectionStatus: String?
@@ -6674,6 +6828,9 @@ public class ListVpcEndpointsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.addressIpVersion != nil {
+                map["AddressIpVersion"] = self.addressIpVersion!
+            }
             if self.bandwidth != nil {
                 map["Bandwidth"] = self.bandwidth!
             }
@@ -6739,6 +6896,9 @@ public class ListVpcEndpointsResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AddressIpVersion") {
+                self.addressIpVersion = dict["AddressIpVersion"] as! String
+            }
             if dict.keys.contains("Bandwidth") {
                 self.bandwidth = dict["Bandwidth"] as! Int64
             }
@@ -7691,6 +7851,8 @@ public class UntagResourcesResponse : Tea.TeaModel {
 }
 
 public class UpdateVpcEndpointAttributeRequest : Tea.TeaModel {
+    public var addressIpVersion: String?
+
     public var clientToken: String?
 
     public var dryRun: Bool?
@@ -7719,6 +7881,9 @@ public class UpdateVpcEndpointAttributeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.addressIpVersion != nil {
+            map["AddressIpVersion"] = self.addressIpVersion!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -7744,6 +7909,9 @@ public class UpdateVpcEndpointAttributeRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AddressIpVersion") {
+            self.addressIpVersion = dict["AddressIpVersion"] as! String
+        }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
         }
@@ -7997,6 +8165,8 @@ public class UpdateVpcEndpointConnectionAttributeResponse : Tea.TeaModel {
 }
 
 public class UpdateVpcEndpointServiceAttributeRequest : Tea.TeaModel {
+    public var addressIpVersion: String?
+
     public var autoAcceptEnabled: Bool?
 
     public var clientToken: String?
@@ -8029,6 +8199,9 @@ public class UpdateVpcEndpointServiceAttributeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.addressIpVersion != nil {
+            map["AddressIpVersion"] = self.addressIpVersion!
+        }
         if self.autoAcceptEnabled != nil {
             map["AutoAcceptEnabled"] = self.autoAcceptEnabled!
         }
@@ -8060,6 +8233,9 @@ public class UpdateVpcEndpointServiceAttributeRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AddressIpVersion") {
+            self.addressIpVersion = dict["AddressIpVersion"] as! String
+        }
         if dict.keys.contains("AutoAcceptEnabled") {
             self.autoAcceptEnabled = dict["AutoAcceptEnabled"] as! Bool
         }

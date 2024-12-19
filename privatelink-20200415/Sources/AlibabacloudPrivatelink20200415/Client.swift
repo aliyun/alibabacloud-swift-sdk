@@ -85,6 +85,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.endpointId)) {
             query["EndpointId"] = request.endpointId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.ipv6Address)) {
+            query["Ipv6Address"] = request.ipv6Address ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
@@ -287,6 +290,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createVpcEndpointWithOptions(_ request: CreateVpcEndpointRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateVpcEndpointResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.addressIpVersion)) {
+            query["AddressIpVersion"] = request.addressIpVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
@@ -366,6 +372,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createVpcEndpointServiceWithOptions(_ request: CreateVpcEndpointServiceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateVpcEndpointServiceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.addressIpVersion)) {
+            query["AddressIpVersion"] = request.addressIpVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.autoAcceptEnabled)) {
             query["AutoAcceptEnabled"] = request.autoAcceptEnabled!;
         }
@@ -525,6 +534,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.serviceResourceType)) {
+            query["ServiceResourceType"] = request.serviceResourceType ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -558,6 +570,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceResourceType)) {
+            query["ServiceResourceType"] = request.serviceResourceType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -1200,6 +1215,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listVpcEndpointServicesWithOptions(_ request: ListVpcEndpointServicesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListVpcEndpointServicesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.addressIpVersion)) {
+            query["AddressIpVersion"] = request.addressIpVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.autoAcceptEnabled)) {
             query["AutoAcceptEnabled"] = request.autoAcceptEnabled!;
         }
@@ -1368,6 +1386,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listVpcEndpointsWithOptions(_ request: ListVpcEndpointsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListVpcEndpointsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.addressIpVersion)) {
+            query["AddressIpVersion"] = request.addressIpVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.connectionStatus)) {
             query["ConnectionStatus"] = request.connectionStatus ?? "";
         }
@@ -1663,6 +1684,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateVpcEndpointAttributeWithOptions(_ request: UpdateVpcEndpointAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateVpcEndpointAttributeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.addressIpVersion)) {
+            query["AddressIpVersion"] = request.addressIpVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
@@ -1764,6 +1788,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateVpcEndpointServiceAttributeWithOptions(_ request: UpdateVpcEndpointServiceAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateVpcEndpointServiceAttributeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.addressIpVersion)) {
+            query["AddressIpVersion"] = request.addressIpVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.autoAcceptEnabled)) {
             query["AutoAcceptEnabled"] = request.autoAcceptEnabled!;
         }
