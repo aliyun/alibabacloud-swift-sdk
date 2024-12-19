@@ -4202,6 +4202,8 @@ public class CreateIpControlResponse : Tea.TeaModel {
 }
 
 public class CreateLogConfigRequest : Tea.TeaModel {
+    public var createSlr: Bool?
+
     public var logType: String?
 
     public var securityToken: String?
@@ -4224,6 +4226,9 @@ public class CreateLogConfigRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.createSlr != nil {
+            map["CreateSlr"] = self.createSlr!
+        }
         if self.logType != nil {
             map["LogType"] = self.logType!
         }
@@ -4240,6 +4245,9 @@ public class CreateLogConfigRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CreateSlr") {
+            self.createSlr = dict["CreateSlr"] as! Bool
+        }
         if dict.keys.contains("LogType") {
             self.logType = dict["LogType"] as! String
         }
@@ -10536,6 +10544,8 @@ public class DescribeApiResponseBody : Tea.TeaModel {
 
             public var serviceName: String?
 
+            public var triggerName: String?
+
             public override init() {
                 super.init()
             }
@@ -10586,6 +10596,9 @@ public class DescribeApiResponseBody : Tea.TeaModel {
                 if self.serviceName != nil {
                     map["ServiceName"] = self.serviceName!
                 }
+                if self.triggerName != nil {
+                    map["TriggerName"] = self.triggerName!
+                }
                 return map
             }
 
@@ -10625,6 +10638,9 @@ public class DescribeApiResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ServiceName") {
                     self.serviceName = dict["ServiceName"] as! String
+                }
+                if dict.keys.contains("TriggerName") {
+                    self.triggerName = dict["TriggerName"] as! String
                 }
             }
         }
@@ -12755,6 +12771,8 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
 
     public var createdTime: String?
 
+    public var customAppCodeConfig: String?
+
     public var customDomains: DescribeApiGroupResponseBody.CustomDomains?
 
     public var customTraceConfig: String?
@@ -12842,6 +12860,9 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
         }
         if self.createdTime != nil {
             map["CreatedTime"] = self.createdTime!
+        }
+        if self.customAppCodeConfig != nil {
+            map["CustomAppCodeConfig"] = self.customAppCodeConfig!
         }
         if self.customDomains != nil {
             map["CustomDomains"] = self.customDomains?.toMap()
@@ -12945,6 +12966,9 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("CreatedTime") {
             self.createdTime = dict["CreatedTime"] as! String
+        }
+        if dict.keys.contains("CustomAppCodeConfig") {
+            self.customAppCodeConfig = dict["CustomAppCodeConfig"] as! String
         }
         if dict.keys.contains("CustomDomains") {
             var model = DescribeApiGroupResponseBody.CustomDomains()
@@ -24234,6 +24258,8 @@ public class DescribeBackendInfoResponseBody : Tea.TeaModel {
 
                     public var serviceName: String?
 
+                    public var triggerName: String?
+
                     public override init() {
                         super.init()
                     }
@@ -24272,6 +24298,9 @@ public class DescribeBackendInfoResponseBody : Tea.TeaModel {
                         if self.serviceName != nil {
                             map["ServiceName"] = self.serviceName!
                         }
+                        if self.triggerName != nil {
+                            map["TriggerName"] = self.triggerName!
+                        }
                         return map
                     }
 
@@ -24299,6 +24328,9 @@ public class DescribeBackendInfoResponseBody : Tea.TeaModel {
                         }
                         if dict.keys.contains("ServiceName") {
                             self.serviceName = dict["ServiceName"] as! String
+                        }
+                        if dict.keys.contains("TriggerName") {
+                            self.triggerName = dict["TriggerName"] as! String
                         }
                     }
                 }
@@ -33741,6 +33773,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
             public var networkInterfaceAttributes: DescribeInstancesResponseBody.Instances.InstanceAttribute.NetworkInterfaceAttributes?
 
+            public var newVpcEgressAddress: String?
+
             public var privateDnsList: DescribeInstancesResponseBody.Instances.InstanceAttribute.PrivateDnsList?
 
             public var regionId: String?
@@ -33874,6 +33908,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 }
                 if self.networkInterfaceAttributes != nil {
                     map["NetworkInterfaceAttributes"] = self.networkInterfaceAttributes?.toMap()
+                }
+                if self.newVpcEgressAddress != nil {
+                    map["NewVpcEgressAddress"] = self.newVpcEgressAddress!
                 }
                 if self.privateDnsList != nil {
                     map["PrivateDnsList"] = self.privateDnsList?.toMap()
@@ -34011,6 +34048,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                     var model = DescribeInstancesResponseBody.Instances.InstanceAttribute.NetworkInterfaceAttributes()
                     model.fromMap(dict["NetworkInterfaceAttributes"] as! [String: Any])
                     self.networkInterfaceAttributes = model
+                }
+                if dict.keys.contains("NewVpcEgressAddress") {
+                    self.newVpcEgressAddress = dict["NewVpcEgressAddress"] as! String
                 }
                 if dict.keys.contains("PrivateDnsList") {
                     var model = DescribeInstancesResponseBody.Instances.InstanceAttribute.PrivateDnsList()
@@ -45420,6 +45460,8 @@ public class ModifyApiGroupRequest : Tea.TeaModel {
 
     public var compatibleFlags: String?
 
+    public var customAppCodeConfig: String?
+
     public var customTraceConfig: String?
 
     public var customerConfigs: String?
@@ -45465,6 +45507,9 @@ public class ModifyApiGroupRequest : Tea.TeaModel {
         }
         if self.compatibleFlags != nil {
             map["CompatibleFlags"] = self.compatibleFlags!
+        }
+        if self.customAppCodeConfig != nil {
+            map["CustomAppCodeConfig"] = self.customAppCodeConfig!
         }
         if self.customTraceConfig != nil {
             map["CustomTraceConfig"] = self.customTraceConfig!
@@ -45518,6 +45563,9 @@ public class ModifyApiGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("CompatibleFlags") {
             self.compatibleFlags = dict["CompatibleFlags"] as! String
+        }
+        if dict.keys.contains("CustomAppCodeConfig") {
+            self.customAppCodeConfig = dict["CustomAppCodeConfig"] as! String
         }
         if dict.keys.contains("CustomTraceConfig") {
             self.customTraceConfig = dict["CustomTraceConfig"] as! String
@@ -52761,11 +52809,15 @@ public class SetDomainCertificateRequest : Tea.TeaModel {
 
     public var certificatePrivateKey: String?
 
+    public var clientCertSDnPassThrough: Bool?
+
     public var domainName: String?
 
     public var groupId: String?
 
     public var securityToken: String?
+
+    public var sslOcspEnable: Bool?
 
     public var sslVerifyDepth: String?
 
@@ -52795,6 +52847,9 @@ public class SetDomainCertificateRequest : Tea.TeaModel {
         if self.certificatePrivateKey != nil {
             map["CertificatePrivateKey"] = self.certificatePrivateKey!
         }
+        if self.clientCertSDnPassThrough != nil {
+            map["ClientCertSDnPassThrough"] = self.clientCertSDnPassThrough!
+        }
         if self.domainName != nil {
             map["DomainName"] = self.domainName!
         }
@@ -52803,6 +52858,9 @@ public class SetDomainCertificateRequest : Tea.TeaModel {
         }
         if self.securityToken != nil {
             map["SecurityToken"] = self.securityToken!
+        }
+        if self.sslOcspEnable != nil {
+            map["SslOcspEnable"] = self.sslOcspEnable!
         }
         if self.sslVerifyDepth != nil {
             map["SslVerifyDepth"] = self.sslVerifyDepth!
@@ -52823,6 +52881,9 @@ public class SetDomainCertificateRequest : Tea.TeaModel {
         if dict.keys.contains("CertificatePrivateKey") {
             self.certificatePrivateKey = dict["CertificatePrivateKey"] as! String
         }
+        if dict.keys.contains("ClientCertSDnPassThrough") {
+            self.clientCertSDnPassThrough = dict["ClientCertSDnPassThrough"] as! Bool
+        }
         if dict.keys.contains("DomainName") {
             self.domainName = dict["DomainName"] as! String
         }
@@ -52831,6 +52892,9 @@ public class SetDomainCertificateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityToken") {
             self.securityToken = dict["SecurityToken"] as! String
+        }
+        if dict.keys.contains("SslOcspEnable") {
+            self.sslOcspEnable = dict["SslOcspEnable"] as! Bool
         }
         if dict.keys.contains("SslVerifyDepth") {
             self.sslVerifyDepth = dict["SslVerifyDepth"] as! String

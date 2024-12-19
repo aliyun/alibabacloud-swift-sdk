@@ -1146,6 +1146,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createLogConfigWithOptions(_ request: CreateLogConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateLogConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.createSlr)) {
+            query["CreateSlr"] = request.createSlr!;
+        }
         if (!TeaUtils.Client.isUnset(request.logType)) {
             query["LogType"] = request.logType ?? "";
         }
@@ -6802,6 +6805,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.compatibleFlags)) {
             query["CompatibleFlags"] = request.compatibleFlags ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.customAppCodeConfig)) {
+            query["CustomAppCodeConfig"] = request.customAppCodeConfig ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.customTraceConfig)) {
             query["CustomTraceConfig"] = request.customTraceConfig ?? "";
         }
@@ -8720,6 +8726,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.certificatePrivateKey)) {
             query["CertificatePrivateKey"] = request.certificatePrivateKey ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.clientCertSDnPassThrough)) {
+            query["ClientCertSDnPassThrough"] = request.clientCertSDnPassThrough!;
+        }
         if (!TeaUtils.Client.isUnset(request.domainName)) {
             query["DomainName"] = request.domainName ?? "";
         }
@@ -8728,6 +8737,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.securityToken)) {
             query["SecurityToken"] = request.securityToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sslOcspEnable)) {
+            query["SslOcspEnable"] = request.sslOcspEnable!;
         }
         if (!TeaUtils.Client.isUnset(request.sslVerifyDepth)) {
             query["SslVerifyDepth"] = request.sslVerifyDepth ?? "";
