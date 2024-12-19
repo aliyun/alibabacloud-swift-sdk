@@ -1661,10 +1661,7 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getServiceSettingsWithOptions(_ request: GetServiceSettingsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetServiceSettingsResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.regionId)) {
-            query["RegionId"] = request.regionId ?? "";
-        }
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -1673,7 +1670,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "version": "2019-06-01",
             "protocol": "HTTPS",
             "pathname": "/",
-            "method": "POST",
+            "method": "GET",
             "authType": "AK",
             "style": "RPC",
             "reqBodyType": "formData",
