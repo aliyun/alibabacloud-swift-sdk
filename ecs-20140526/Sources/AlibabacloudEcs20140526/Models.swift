@@ -54474,7 +54474,192 @@ public class DescribeInstanceModificationPriceRequest : Tea.TeaModel {
 public class DescribeInstanceModificationPriceResponseBody : Tea.TeaModel {
     public class PriceInfo : Tea.TeaModel {
         public class Price : Tea.TeaModel {
+            public class DetailInfos : Tea.TeaModel {
+                public class DetailInfo : Tea.TeaModel {
+                    public class SubRules : Tea.TeaModel {
+                        public class Rule : Tea.TeaModel {
+                            public var description_: String?
+
+                            public var ruleId: Int64?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.description_ != nil {
+                                    map["Description"] = self.description_!
+                                }
+                                if self.ruleId != nil {
+                                    map["RuleId"] = self.ruleId!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any]) -> Void {
+                                if dict.keys.contains("Description") {
+                                    self.description_ = dict["Description"] as! String
+                                }
+                                if dict.keys.contains("RuleId") {
+                                    self.ruleId = dict["RuleId"] as! Int64
+                                }
+                            }
+                        }
+                        public var rule: [DescribeInstanceModificationPriceResponseBody.PriceInfo.Price.DetailInfos.DetailInfo.SubRules.Rule]?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.rule != nil {
+                                var tmp : [Any] = []
+                                for k in self.rule! {
+                                    tmp.append(k.toMap())
+                                }
+                                map["Rule"] = tmp
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("Rule") {
+                                var tmp : [DescribeInstanceModificationPriceResponseBody.PriceInfo.Price.DetailInfos.DetailInfo.SubRules.Rule] = []
+                                for v in dict["Rule"] as! [Any] {
+                                    var model = DescribeInstanceModificationPriceResponseBody.PriceInfo.Price.DetailInfos.DetailInfo.SubRules.Rule()
+                                    if v != nil {
+                                        model.fromMap(v as! [String: Any])
+                                    }
+                                    tmp.append(model)
+                                }
+                                self.rule = tmp
+                            }
+                        }
+                    }
+                    public var discountPrice: Double?
+
+                    public var originalPrice: Double?
+
+                    public var resource: String?
+
+                    public var subRules: DescribeInstanceModificationPriceResponseBody.PriceInfo.Price.DetailInfos.DetailInfo.SubRules?
+
+                    public var tradePrice: Double?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                        try self.subRules?.validate()
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.discountPrice != nil {
+                            map["DiscountPrice"] = self.discountPrice!
+                        }
+                        if self.originalPrice != nil {
+                            map["OriginalPrice"] = self.originalPrice!
+                        }
+                        if self.resource != nil {
+                            map["Resource"] = self.resource!
+                        }
+                        if self.subRules != nil {
+                            map["SubRules"] = self.subRules?.toMap()
+                        }
+                        if self.tradePrice != nil {
+                            map["TradePrice"] = self.tradePrice!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("DiscountPrice") {
+                            self.discountPrice = dict["DiscountPrice"] as! Double
+                        }
+                        if dict.keys.contains("OriginalPrice") {
+                            self.originalPrice = dict["OriginalPrice"] as! Double
+                        }
+                        if dict.keys.contains("Resource") {
+                            self.resource = dict["Resource"] as! String
+                        }
+                        if dict.keys.contains("SubRules") {
+                            var model = DescribeInstanceModificationPriceResponseBody.PriceInfo.Price.DetailInfos.DetailInfo.SubRules()
+                            model.fromMap(dict["SubRules"] as! [String: Any])
+                            self.subRules = model
+                        }
+                        if dict.keys.contains("TradePrice") {
+                            self.tradePrice = dict["TradePrice"] as! Double
+                        }
+                    }
+                }
+                public var detailInfo: [DescribeInstanceModificationPriceResponseBody.PriceInfo.Price.DetailInfos.DetailInfo]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.detailInfo != nil {
+                        var tmp : [Any] = []
+                        for k in self.detailInfo! {
+                            tmp.append(k.toMap())
+                        }
+                        map["DetailInfo"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("DetailInfo") {
+                        var tmp : [DescribeInstanceModificationPriceResponseBody.PriceInfo.Price.DetailInfos.DetailInfo] = []
+                        for v in dict["DetailInfo"] as! [Any] {
+                            var model = DescribeInstanceModificationPriceResponseBody.PriceInfo.Price.DetailInfos.DetailInfo()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.detailInfo = tmp
+                    }
+                }
+            }
             public var currency: String?
+
+            public var detailInfos: DescribeInstanceModificationPriceResponseBody.PriceInfo.Price.DetailInfos?
 
             public var discountPrice: Double?
 
@@ -54492,12 +54677,16 @@ public class DescribeInstanceModificationPriceResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.detailInfos?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
                 if self.currency != nil {
                     map["Currency"] = self.currency!
+                }
+                if self.detailInfos != nil {
+                    map["DetailInfos"] = self.detailInfos?.toMap()
                 }
                 if self.discountPrice != nil {
                     map["DiscountPrice"] = self.discountPrice!
@@ -54514,6 +54703,11 @@ public class DescribeInstanceModificationPriceResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Currency") {
                     self.currency = dict["Currency"] as! String
+                }
+                if dict.keys.contains("DetailInfos") {
+                    var model = DescribeInstanceModificationPriceResponseBody.PriceInfo.Price.DetailInfos()
+                    model.fromMap(dict["DetailInfos"] as! [String: Any])
+                    self.detailInfos = model
                 }
                 if dict.keys.contains("DiscountPrice") {
                     self.discountPrice = dict["DiscountPrice"] as! Double
@@ -70242,6 +70436,8 @@ public class DescribePriceRequest : Tea.TeaModel {
 
         public var size: Int64?
 
+        public var provisionedIops: Int64?
+
         public override init() {
             super.init()
         }
@@ -70265,6 +70461,9 @@ public class DescribePriceRequest : Tea.TeaModel {
             if self.size != nil {
                 map["Size"] = self.size!
             }
+            if self.provisionedIops != nil {
+                map["ProvisionedIops"] = self.provisionedIops!
+            }
             return map
         }
 
@@ -70277,6 +70476,9 @@ public class DescribePriceRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Size") {
                 self.size = dict["Size"] as! Int64
+            }
+            if dict.keys.contains("ProvisionedIops") {
+                self.provisionedIops = dict["ProvisionedIops"] as! Int64
             }
         }
     }
@@ -116250,6 +116452,43 @@ public class SendFileResponse : Tea.TeaModel {
 }
 
 public class StartImagePipelineExecutionRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public class TemplateTag : Tea.TeaModel {
         public var key: String?
 
@@ -116301,6 +116540,8 @@ public class StartImagePipelineExecutionRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var tag: [StartImagePipelineExecutionRequest.Tag]?
+
     public var templateTag: [StartImagePipelineExecutionRequest.TemplateTag]?
 
     public override init() {
@@ -116338,6 +116579,13 @@ public class StartImagePipelineExecutionRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.templateTag != nil {
             var tmp : [Any] = []
             for k in self.templateTag! {
@@ -116369,6 +116617,17 @@ public class StartImagePipelineExecutionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [StartImagePipelineExecutionRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = StartImagePipelineExecutionRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
         if dict.keys.contains("TemplateTag") {
             var tmp : [StartImagePipelineExecutionRequest.TemplateTag] = []
