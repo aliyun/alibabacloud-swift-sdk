@@ -458,6 +458,8 @@ public class AnalyzeConversationRequest : Tea.TeaModel {
     }
     public var categoryTags: [AnalyzeConversationRequest.CategoryTags]?
 
+    public var customPrompt: String?
+
     public var dialogue: AnalyzeConversationRequest.Dialogue?
 
     public var examples: [AnalyzeConversationRequest.Examples]?
@@ -502,6 +504,9 @@ public class AnalyzeConversationRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["categoryTags"] = tmp
+        }
+        if self.customPrompt != nil {
+            map["customPrompt"] = self.customPrompt!
         }
         if self.dialogue != nil {
             map["dialogue"] = self.dialogue?.toMap()
@@ -562,6 +567,9 @@ public class AnalyzeConversationRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.categoryTags = tmp
+        }
+        if dict.keys.contains("customPrompt") {
+            self.customPrompt = dict["customPrompt"] as! String
         }
         if dict.keys.contains("dialogue") {
             var model = AnalyzeConversationRequest.Dialogue()

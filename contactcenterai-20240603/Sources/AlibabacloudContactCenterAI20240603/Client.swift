@@ -30,6 +30,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.categoryTags)) {
             body["categoryTags"] = request.categoryTags ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.customPrompt)) {
+            body["customPrompt"] = request.customPrompt ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dialogue)) {
             body["dialogue"] = request.dialogue!;
         }
