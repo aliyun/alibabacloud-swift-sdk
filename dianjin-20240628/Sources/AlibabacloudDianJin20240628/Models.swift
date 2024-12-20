@@ -6980,6 +6980,8 @@ public class GetQualityCheckTaskResultResponseBody : Tea.TeaModel {
 
             public var ruleType: String?
 
+            public var subNodeCol: [Any]?
+
             public override init() {
                 super.init()
             }
@@ -7037,6 +7039,9 @@ public class GetQualityCheckTaskResultResponseBody : Tea.TeaModel {
                 if self.ruleType != nil {
                     map["ruleType"] = self.ruleType!
                 }
+                if self.subNodeCol != nil {
+                    map["subNodeCol"] = self.subNodeCol!
+                }
                 return map
             }
 
@@ -7087,6 +7092,9 @@ public class GetQualityCheckTaskResultResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ruleType") {
                     self.ruleType = dict["ruleType"] as! String
+                }
+                if dict.keys.contains("subNodeCol") {
+                    self.subNodeCol = dict["subNodeCol"] as! [Any]
                 }
             }
         }
