@@ -94,6 +94,8 @@ public class AISearchQuery : Tea.TeaModel {
 public class GenericSearchResult : Tea.TeaModel {
     public var pageItems: [ScorePageItem]?
 
+    public var queryContext: QueryContext?
+
     public var requestId: String?
 
     public var sceneItems: [SceneItem]?
@@ -112,6 +114,7 @@ public class GenericSearchResult : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.queryContext?.validate()
         try self.searchInformation?.validate()
     }
 
@@ -123,6 +126,9 @@ public class GenericSearchResult : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["pageItems"] = tmp
+        }
+        if self.queryContext != nil {
+            map["queryContext"] = self.queryContext?.toMap()
         }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
@@ -158,6 +164,11 @@ public class GenericSearchResult : Tea.TeaModel {
                 tmp.append(model)
             }
             self.pageItems = tmp
+        }
+        if dict.keys.contains("queryContext") {
+            var model = QueryContext()
+            model.fromMap(dict["queryContext"] as! [String: Any])
+            self.queryContext = model
         }
         if dict.keys.contains("requestId") {
             self.requestId = dict["requestId"] as! String
@@ -234,6 +245,140 @@ public class IncludeImage : Tea.TeaModel {
         }
         if dict.keys.contains("width") {
             self.width = dict["width"] as! Int32
+        }
+    }
+}
+
+public class QueryContext : Tea.TeaModel {
+    public class OriginalQuery : Tea.TeaModel {
+        public var industry: String?
+
+        public var page: String?
+
+        public var query: String?
+
+        public var timeRange: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.industry != nil {
+                map["industry"] = self.industry!
+            }
+            if self.page != nil {
+                map["page"] = self.page!
+            }
+            if self.query != nil {
+                map["query"] = self.query!
+            }
+            if self.timeRange != nil {
+                map["timeRange"] = self.timeRange!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("industry") {
+                self.industry = dict["industry"] as! String
+            }
+            if dict.keys.contains("page") {
+                self.page = dict["page"] as! String
+            }
+            if dict.keys.contains("query") {
+                self.query = dict["query"] as! String
+            }
+            if dict.keys.contains("timeRange") {
+                self.timeRange = dict["timeRange"] as! String
+            }
+        }
+    }
+    public class Rewrite : Tea.TeaModel {
+        public var enabled: Bool?
+
+        public var timeRange: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enabled != nil {
+                map["enabled"] = self.enabled!
+            }
+            if self.timeRange != nil {
+                map["timeRange"] = self.timeRange!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("enabled") {
+                self.enabled = dict["enabled"] as! Bool
+            }
+            if dict.keys.contains("timeRange") {
+                self.timeRange = dict["timeRange"] as! String
+            }
+        }
+    }
+    public var originalQuery: QueryContext.OriginalQuery?
+
+    public var rewrite: QueryContext.Rewrite?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.originalQuery?.validate()
+        try self.rewrite?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.originalQuery != nil {
+            map["originalQuery"] = self.originalQuery?.toMap()
+        }
+        if self.rewrite != nil {
+            map["rewrite"] = self.rewrite?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("originalQuery") {
+            var model = QueryContext.OriginalQuery()
+            model.fromMap(dict["originalQuery"] as! [String: Any])
+            self.originalQuery = model
+        }
+        if dict.keys.contains("rewrite") {
+            var model = QueryContext.Rewrite()
+            model.fromMap(dict["rewrite"] as! [String: Any])
+            self.rewrite = model
         }
     }
 }
@@ -610,9 +755,144 @@ public class AiSearchRequest : Tea.TeaModel {
 
 public class AiSearchResponseBody : Tea.TeaModel {
     public class Header : Tea.TeaModel {
+        public class QueryContext : Tea.TeaModel {
+            public class OriginalQuery : Tea.TeaModel {
+                public var industry: String?
+
+                public var page: Int32?
+
+                public var query: String?
+
+                public var timeRange: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.industry != nil {
+                        map["industry"] = self.industry!
+                    }
+                    if self.page != nil {
+                        map["page"] = self.page!
+                    }
+                    if self.query != nil {
+                        map["query"] = self.query!
+                    }
+                    if self.timeRange != nil {
+                        map["timeRange"] = self.timeRange!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("industry") {
+                        self.industry = dict["industry"] as! String
+                    }
+                    if dict.keys.contains("page") {
+                        self.page = dict["page"] as! Int32
+                    }
+                    if dict.keys.contains("query") {
+                        self.query = dict["query"] as! String
+                    }
+                    if dict.keys.contains("timeRange") {
+                        self.timeRange = dict["timeRange"] as! String
+                    }
+                }
+            }
+            public class Rewrite : Tea.TeaModel {
+                public var enabled: Bool?
+
+                public var timeRange: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.enabled != nil {
+                        map["enabled"] = self.enabled!
+                    }
+                    if self.timeRange != nil {
+                        map["timeRange"] = self.timeRange!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("enabled") {
+                        self.enabled = dict["enabled"] as! Bool
+                    }
+                    if dict.keys.contains("timeRange") {
+                        self.timeRange = dict["timeRange"] as! String
+                    }
+                }
+            }
+            public var originalQuery: AiSearchResponseBody.Header.QueryContext.OriginalQuery?
+
+            public var rewrite: AiSearchResponseBody.Header.QueryContext.Rewrite?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.originalQuery?.validate()
+                try self.rewrite?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.originalQuery != nil {
+                    map["originalQuery"] = self.originalQuery?.toMap()
+                }
+                if self.rewrite != nil {
+                    map["rewrite"] = self.rewrite?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("originalQuery") {
+                    var model = AiSearchResponseBody.Header.QueryContext.OriginalQuery()
+                    model.fromMap(dict["originalQuery"] as! [String: Any])
+                    self.originalQuery = model
+                }
+                if dict.keys.contains("rewrite") {
+                    var model = AiSearchResponseBody.Header.QueryContext.Rewrite()
+                    model.fromMap(dict["rewrite"] as! [String: Any])
+                    self.rewrite = model
+                }
+            }
+        }
         public var event: String?
 
         public var eventId: String?
+
+        public var queryContext: AiSearchResponseBody.Header.QueryContext?
 
         public var responseTime: Int64?
 
@@ -626,6 +906,7 @@ public class AiSearchResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.queryContext?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -635,6 +916,9 @@ public class AiSearchResponseBody : Tea.TeaModel {
             }
             if self.eventId != nil {
                 map["eventId"] = self.eventId!
+            }
+            if self.queryContext != nil {
+                map["queryContext"] = self.queryContext?.toMap()
             }
             if self.responseTime != nil {
                 map["responseTime"] = self.responseTime!
@@ -648,6 +932,11 @@ public class AiSearchResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("eventId") {
                 self.eventId = dict["eventId"] as! String
+            }
+            if dict.keys.contains("queryContext") {
+                var model = AiSearchResponseBody.Header.QueryContext()
+                model.fromMap(dict["queryContext"] as! [String: Any])
+                self.queryContext = model
             }
             if dict.keys.contains("responseTime") {
                 self.responseTime = dict["responseTime"] as! Int64
