@@ -4214,46 +4214,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listOuterOrderedNumbersWithOptions(_ request: ListOuterOrderedNumbersRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListOuterOrderedNumbersResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.ownerId)) {
-            query["OwnerId"] = request.ownerId!;
-        }
-        if (!TeaUtils.Client.isUnset(request.prodCode)) {
-            query["ProdCode"] = request.prodCode ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
-            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
-            query["ResourceOwnerId"] = request.resourceOwnerId!;
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ListOuterOrderedNumbers",
-            "version": "2019-10-15",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ListOuterOrderedNumbersResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listOuterOrderedNumbers(_ request: ListOuterOrderedNumbersRequest) async throws -> ListOuterOrderedNumbersResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await listOuterOrderedNumbersWithOptions(request as! ListOuterOrderedNumbersRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listRobotCallDialogWithOptions(_ request: ListRobotCallDialogRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListRobotCallDialogResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -4543,6 +4503,60 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listTaskDetail(_ request: ListTaskDetailRequest) async throws -> ListTaskDetailResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listTaskDetailWithOptions(request as! ListTaskDetailRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func llmSmartCallWithOptions(_ tmpReq: LlmSmartCallRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> LlmSmartCallResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: LlmSmartCallShrinkRequest = LlmSmartCallShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.promptParam)) {
+            request.promptParamShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.promptParam, "PromptParam", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.startWordParam)) {
+            request.startWordParamShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.startWordParam, "StartWordParam", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applicationCode)) {
+            query["ApplicationCode"] = request.applicationCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.calledNumber)) {
+            query["CalledNumber"] = request.calledNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callerNumber)) {
+            query["CallerNumber"] = request.callerNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outId)) {
+            query["OutId"] = request.outId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.promptParamShrink)) {
+            query["PromptParam"] = request.promptParamShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startWordParamShrink)) {
+            query["StartWordParam"] = request.startWordParamShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "LlmSmartCall",
+            "version": "2019-10-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(LlmSmartCallResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func llmSmartCall(_ request: LlmSmartCallRequest) async throws -> LlmSmartCallResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await llmSmartCallWithOptions(request as! LlmSmartCallRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

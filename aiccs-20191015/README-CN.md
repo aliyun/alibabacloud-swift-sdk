@@ -12,20 +12,12 @@
 
 ## 安装
 
-### CocoaPods
-
-[CocoaPods](https://cocoapods.org) 是 Cocoa 项目管理工具。请访问其官方网站获取关于 CocoaPods 的使用和安装说明。要使用 CocoaPods 将 `AlibabacloudAiccs20191015` 集成到你的 Xcode 项目中，需要在 `Podfile` 中定义以下内容:
-
-```ruby
-pod 'AlibabacloudAiccs20191015', '~> 1.0.1'
-```
-
 ### Carthage
 
 要使用 [Carthage](https://github.com/Carthage/Carthage) 将 `AlibabacloudAiccs20191015` 集成到你的 Xcode 项目中，需要在 `Cartfile` 中定义以下内容:
 
 ```ogdl
-github "alibabacloud-sdk-swift/aiccs-20191015" "1.0.1"
+github "alibabacloud-sdk-swift/aiccs-20191015" "2.0.0"
 ```
 
 ### Swift 包管理工具
@@ -34,7 +26,7 @@ github "alibabacloud-sdk-swift/aiccs-20191015" "1.0.1"
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/aiccs-20191015.git", from: "1.0.1")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/aiccs-20191015.git", from: "2.0.0")
 ]
 ```
 

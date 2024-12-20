@@ -151,7 +151,15 @@ public class AddHotlineNumberRequest : Tea.TeaModel {
             self.outboundAllDepart = dict["OutboundAllDepart"] as! Bool
         }
         if dict.keys.contains("OutboundRangeList") {
-            self.outboundRangeList = dict["OutboundRangeList"] as! [AddHotlineNumberRequest.OutboundRangeList]
+            var tmp : [AddHotlineNumberRequest.OutboundRangeList] = []
+            for v in dict["OutboundRangeList"] as! [Any] {
+                var model = AddHotlineNumberRequest.OutboundRangeList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.outboundRangeList = tmp
         }
     }
 }
@@ -345,9 +353,6 @@ public class AddHotlineNumberResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -561,9 +566,6 @@ public class AddOuterAccountResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -737,9 +739,6 @@ public class AddSkillGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1121,9 +1120,6 @@ public class AiccsSmartCallResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1305,9 +1301,6 @@ public class AiccsSmartCallOperateResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1481,9 +1474,6 @@ public class AnswerCallResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1657,9 +1647,6 @@ public class AttachTaskResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1867,7 +1854,15 @@ public class BatchCreateQualityProjectsResponseBody : Tea.TeaModel {
             self.code = dict["Code"] as! String
         }
         if dict.keys.contains("Data") {
-            self.data = dict["Data"] as! [BatchCreateQualityProjectsResponseBody.Data]
+            var tmp : [BatchCreateQualityProjectsResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = BatchCreateQualityProjectsResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
@@ -1898,9 +1893,6 @@ public class BatchCreateQualityProjectsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2066,9 +2058,6 @@ public class CancelTaskResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2242,9 +2231,6 @@ public class ChangeChatAgentStatusResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2402,9 +2388,6 @@ public class ChangeQualityProjectStatusResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2594,9 +2577,6 @@ public class CreateAgentResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2968,9 +2948,6 @@ public class CreateAiOutboundTaskResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3120,9 +3097,6 @@ public class CreateAiOutboundTaskBatchResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3280,9 +3254,6 @@ public class CreateDepartmentResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3552,9 +3523,6 @@ public class CreateOutboundTaskResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3824,9 +3792,6 @@ public class CreateQualityProjectResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3992,9 +3957,6 @@ public class CreateQualityRuleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4184,9 +4146,6 @@ public class CreateSkillGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4448,9 +4407,6 @@ public class CreateTaskResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4656,9 +4612,6 @@ public class CreateThirdSsoAgentResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4816,9 +4769,6 @@ public class DeleteAgentResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4960,9 +4910,6 @@ public class DeleteAiOutboundTaskResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5120,9 +5067,6 @@ public class DeleteDepartmentResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5272,9 +5216,6 @@ public class DeleteHotlineNumberResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5424,9 +5365,6 @@ public class DeleteOutboundTaskResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5576,9 +5514,6 @@ public class DeleteOuterAccountResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5728,9 +5663,6 @@ public class DeleteQualityProjectResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5880,9 +5812,6 @@ public class DeleteQualityRuleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -6032,9 +5961,6 @@ public class DeleteSkillGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -6240,9 +6166,6 @@ public class DescribeRecordDataResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -6498,7 +6421,15 @@ public class EditQualityProjectResponseBody : Tea.TeaModel {
             self.code = dict["Code"] as! String
         }
         if dict.keys.contains("Data") {
-            self.data = dict["Data"] as! [EditQualityProjectResponseBody.Data]
+            var tmp : [EditQualityProjectResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = EditQualityProjectResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
@@ -6529,9 +6460,6 @@ public class EditQualityProjectResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -6705,9 +6633,6 @@ public class EditQualityRuleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -6811,7 +6736,15 @@ public class EditQualityRuleTagRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AnalysisTypes") {
-            self.analysisTypes = dict["AnalysisTypes"] as! [EditQualityRuleTagRequest.AnalysisTypes]
+            var tmp : [EditQualityRuleTagRequest.AnalysisTypes] = []
+            for v in dict["AnalysisTypes"] as! [Any] {
+                var model = EditQualityRuleTagRequest.AnalysisTypes()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.analysisTypes = tmp
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
@@ -6898,9 +6831,6 @@ public class EditQualityRuleTagResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7050,9 +6980,6 @@ public class EncryptPhoneNumResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7234,9 +7161,6 @@ public class FetchCallResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7394,9 +7318,6 @@ public class FinishHotlineServiceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7562,9 +7483,6 @@ public class GenerateWebSocketSignResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7768,7 +7686,15 @@ public class GetAgentResponseBody : Tea.TeaModel {
                 self.displayName = dict["DisplayName"] as! String
             }
             if dict.keys.contains("GroupList") {
-                self.groupList = dict["GroupList"] as! [GetAgentResponseBody.Data.GroupList]
+                var tmp : [GetAgentResponseBody.Data.GroupList] = []
+                for v in dict["GroupList"] as! [Any] {
+                    var model = GetAgentResponseBody.Data.GroupList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.groupList = tmp
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! Int32
@@ -7859,9 +7785,6 @@ public class GetAgentResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8185,9 +8108,6 @@ public class GetAgentBasisStatusResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8417,9 +8337,6 @@ public class GetAgentByIdResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8791,9 +8708,6 @@ public class GetAgentDetailReportResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8975,7 +8889,15 @@ public class GetAgentIndexRealTimeResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Columns") {
-                self.columns = dict["Columns"] as! [GetAgentIndexRealTimeResponseBody.Data.Columns]
+                var tmp : [GetAgentIndexRealTimeResponseBody.Data.Columns] = []
+                for v in dict["Columns"] as! [Any] {
+                    var model = GetAgentIndexRealTimeResponseBody.Data.Columns()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.columns = tmp
             }
             if dict.keys.contains("Page") {
                 self.page = dict["Page"] as! Int32
@@ -9072,9 +8994,6 @@ public class GetAgentIndexRealTimeResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -9446,9 +9365,6 @@ public class GetAgentServiceStatusResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -9820,9 +9736,6 @@ public class GetAgentStatisticsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -10028,9 +9941,6 @@ public class GetAiOutboundTaskBizDataResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -10356,9 +10266,6 @@ public class GetAiOutboundTaskDetailResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -10642,7 +10549,15 @@ public class GetAiOutboundTaskExecDetailResponseBody : Tea.TeaModel {
                 self.hasNextPage = dict["HasNextPage"] as! Bool
             }
             if dict.keys.contains("List") {
-                self.list = dict["List"] as! [GetAiOutboundTaskExecDetailResponseBody.Data.List]
+                var tmp : [GetAiOutboundTaskExecDetailResponseBody.Data.List] = []
+                for v in dict["List"] as! [Any] {
+                    var model = GetAiOutboundTaskExecDetailResponseBody.Data.List()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.list = tmp
             }
             if dict.keys.contains("PageSize") {
                 self.pageSize = dict["PageSize"] as! Int32
@@ -10733,9 +10648,6 @@ public class GetAiOutboundTaskExecDetailResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -11027,7 +10939,15 @@ public class GetAiOutboundTaskListResponseBody : Tea.TeaModel {
                 self.hasNextPage = dict["HasNextPage"] as! Bool
             }
             if dict.keys.contains("List") {
-                self.list = dict["List"] as! [GetAiOutboundTaskListResponseBody.Data.List]
+                var tmp : [GetAiOutboundTaskListResponseBody.Data.List] = []
+                for v in dict["List"] as! [Any] {
+                    var model = GetAiOutboundTaskListResponseBody.Data.List()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.list = tmp
             }
             if dict.keys.contains("PageSize") {
                 self.pageSize = dict["PageSize"] as! Int32
@@ -11118,9 +11038,6 @@ public class GetAiOutboundTaskListResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -11558,9 +11475,6 @@ public class GetAiOutboundTaskProgressResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -11717,7 +11631,15 @@ public class GetAllDepartmentResponseBody : Tea.TeaModel {
             self.code = dict["Code"] as! String
         }
         if dict.keys.contains("Data") {
-            self.data = dict["Data"] as! [GetAllDepartmentResponseBody.Data]
+            var tmp : [GetAllDepartmentResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = GetAllDepartmentResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
         }
         if dict.keys.contains("HttpStatusCode") {
             self.httpStatusCode = dict["HttpStatusCode"] as! Int32
@@ -11751,9 +11673,6 @@ public class GetAllDepartmentResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -11927,9 +11846,6 @@ public class GetCallSoundRecordResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -12087,9 +12003,6 @@ public class GetConfigNumListResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -12311,9 +12224,6 @@ public class GetCustomerInfoResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -12467,7 +12377,15 @@ public class GetDepGroupTreeDataResponseBody : Tea.TeaModel {
                 self.depGroupName = dict["DepGroupName"] as! String
             }
             if dict.keys.contains("GroupDTOS") {
-                self.groupDTOS = dict["GroupDTOS"] as! [GetDepGroupTreeDataResponseBody.Data.GroupDTOS]
+                var tmp : [GetDepGroupTreeDataResponseBody.Data.GroupDTOS] = []
+                for v in dict["GroupDTOS"] as! [Any] {
+                    var model = GetDepGroupTreeDataResponseBody.Data.GroupDTOS()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.groupDTOS = tmp
             }
         }
     }
@@ -12522,7 +12440,15 @@ public class GetDepGroupTreeDataResponseBody : Tea.TeaModel {
             self.code = dict["Code"] as! String
         }
         if dict.keys.contains("Data") {
-            self.data = dict["Data"] as! [GetDepGroupTreeDataResponseBody.Data]
+            var tmp : [GetDepGroupTreeDataResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = GetDepGroupTreeDataResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
@@ -12553,9 +12479,6 @@ public class GetDepGroupTreeDataResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -12879,9 +12802,6 @@ public class GetDepartmentalLatitudeAgentStatusResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -13127,9 +13047,6 @@ public class GetHotlineAgentDetailResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -13327,7 +13244,15 @@ public class GetHotlineAgentDetailReportResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Columns") {
-                self.columns = dict["Columns"] as! [GetHotlineAgentDetailReportResponseBody.Data.Columns]
+                var tmp : [GetHotlineAgentDetailReportResponseBody.Data.Columns] = []
+                for v in dict["Columns"] as! [Any] {
+                    var model = GetHotlineAgentDetailReportResponseBody.Data.Columns()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.columns = tmp
             }
             if dict.keys.contains("Page") {
                 self.page = dict["Page"] as! Int32
@@ -13432,9 +13357,6 @@ public class GetHotlineAgentDetailReportResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -13592,9 +13514,6 @@ public class GetHotlineAgentStatusResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -13944,9 +13863,6 @@ public class GetHotlineCallActionResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -14144,7 +14060,15 @@ public class GetHotlineGroupDetailReportResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Columns") {
-                self.columns = dict["Columns"] as! [GetHotlineGroupDetailReportResponseBody.Data.Columns]
+                var tmp : [GetHotlineGroupDetailReportResponseBody.Data.Columns] = []
+                for v in dict["Columns"] as! [Any] {
+                    var model = GetHotlineGroupDetailReportResponseBody.Data.Columns()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.columns = tmp
             }
             if dict.keys.contains("Page") {
                 self.page = dict["Page"] as! Int32
@@ -14241,9 +14165,6 @@ public class GetHotlineGroupDetailReportResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -14435,7 +14356,15 @@ public class GetHotlineMessageLogResponseBody : Tea.TeaModel {
             self.code = dict["Code"] as! String
         }
         if dict.keys.contains("Data") {
-            self.data = dict["Data"] as! [GetHotlineMessageLogResponseBody.Data]
+            var tmp : [GetHotlineMessageLogResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = GetHotlineMessageLogResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
@@ -14466,9 +14395,6 @@ public class GetHotlineMessageLogResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -14618,9 +14544,6 @@ public class GetHotlineRuntimeInfoResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -15024,9 +14947,6 @@ public class GetHotlineServiceStatisticsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -15184,9 +15104,6 @@ public class GetHotlineWaitingNumberResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -15344,9 +15261,6 @@ public class GetIndexCurrentValueResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -15534,7 +15448,15 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
             self.code = dict["Code"] as! String
         }
         if dict.keys.contains("CommodityInstances") {
-            self.commodityInstances = dict["CommodityInstances"] as! [GetInstanceListResponseBody.CommodityInstances]
+            var tmp : [GetInstanceListResponseBody.CommodityInstances] = []
+            for v in dict["CommodityInstances"] as! [Any] {
+                var model = GetInstanceListResponseBody.CommodityInstances()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.commodityInstances = tmp
         }
         if dict.keys.contains("HttpStatusCode") {
             self.httpStatusCode = dict["HttpStatusCode"] as! Int32
@@ -15577,9 +15499,6 @@ public class GetInstanceListResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -15721,9 +15640,6 @@ public class GetMcuLvsIpResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -15881,9 +15797,6 @@ public class GetNumLocationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -16207,9 +16120,6 @@ public class GetOnlineSeatInformationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -16613,9 +16523,6 @@ public class GetOnlineServiceVolumeResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -16823,10 +16730,26 @@ public class GetOutbounNumListResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Num") {
-                self.num = dict["Num"] as! [GetOutbounNumListResponseBody.Data.Num]
+                var tmp : [GetOutbounNumListResponseBody.Data.Num] = []
+                for v in dict["Num"] as! [Any] {
+                    var model = GetOutbounNumListResponseBody.Data.Num()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.num = tmp
             }
             if dict.keys.contains("NumGroup") {
-                self.numGroup = dict["NumGroup"] as! [GetOutbounNumListResponseBody.Data.NumGroup]
+                var tmp : [GetOutbounNumListResponseBody.Data.NumGroup] = []
+                for v in dict["NumGroup"] as! [Any] {
+                    var model = GetOutbounNumListResponseBody.Data.NumGroup()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.numGroup = tmp
             }
         }
     }
@@ -16919,9 +16842,6 @@ public class GetOutbounNumListResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -17191,9 +17111,6 @@ public class GetQualityProjectDetailResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -17472,7 +17389,15 @@ public class GetQualityProjectListResponseBody : Tea.TeaModel {
                 self.pageSize = dict["PageSize"] as! Int32
             }
             if dict.keys.contains("QualityProjectList") {
-                self.qualityProjectList = dict["QualityProjectList"] as! [GetQualityProjectListResponseBody.Data.QualityProjectList]
+                var tmp : [GetQualityProjectListResponseBody.Data.QualityProjectList] = []
+                for v in dict["QualityProjectList"] as! [Any] {
+                    var model = GetQualityProjectListResponseBody.Data.QualityProjectList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.qualityProjectList = tmp
             }
             if dict.keys.contains("Total") {
                 self.total = dict["Total"] as! Int64
@@ -17560,9 +17485,6 @@ public class GetQualityProjectListResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -17746,7 +17668,15 @@ public class GetQualityProjectLogResponseBody : Tea.TeaModel {
             self.code = dict["Code"] as! String
         }
         if dict.keys.contains("Data") {
-            self.data = dict["Data"] as! [GetQualityProjectLogResponseBody.Data]
+            var tmp : [GetQualityProjectLogResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = GetQualityProjectLogResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
@@ -17777,9 +17707,6 @@ public class GetQualityProjectLogResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -18114,7 +18041,15 @@ public class GetQualityResultResponseBody : Tea.TeaModel {
                 self.pageSize = dict["PageSize"] as! Int32
             }
             if dict.keys.contains("QualityResultResponseList") {
-                self.qualityResultResponseList = dict["QualityResultResponseList"] as! [GetQualityResultResponseBody.Data.QualityResultResponseList]
+                var tmp : [GetQualityResultResponseBody.Data.QualityResultResponseList] = []
+                for v in dict["QualityResultResponseList"] as! [Any] {
+                    var model = GetQualityResultResponseBody.Data.QualityResultResponseList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.qualityResultResponseList = tmp
             }
             if dict.keys.contains("TotalNum") {
                 self.totalNum = dict["TotalNum"] as! Int32
@@ -18210,9 +18145,6 @@ public class GetQualityResultResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -18434,9 +18366,6 @@ public class GetQualityRuleDetailResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -18635,7 +18564,15 @@ public class GetQualityRuleListResponseBody : Tea.TeaModel {
                 self.pageSize = dict["PageSize"] as! Int32
             }
             if dict.keys.contains("QualityRuleList") {
-                self.qualityRuleList = dict["QualityRuleList"] as! [GetQualityRuleListResponseBody.Data.QualityRuleList]
+                var tmp : [GetQualityRuleListResponseBody.Data.QualityRuleList] = []
+                for v in dict["QualityRuleList"] as! [Any] {
+                    var model = GetQualityRuleListResponseBody.Data.QualityRuleList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.qualityRuleList = tmp
             }
             if dict.keys.contains("Total") {
                 self.total = dict["Total"] as! Int64
@@ -18723,9 +18660,6 @@ public class GetQualityRuleListResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -18877,7 +18811,15 @@ public class GetQualityRuleTagListResponseBody : Tea.TeaModel {
             self.code = dict["Code"] as! String
         }
         if dict.keys.contains("Data") {
-            self.data = dict["Data"] as! [GetQualityRuleTagListResponseBody.Data]
+            var tmp : [GetQualityRuleTagListResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = GetQualityRuleTagListResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
@@ -18908,9 +18850,6 @@ public class GetQualityRuleTagListResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -19266,9 +19205,6 @@ public class GetQueueInformationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -19466,9 +19402,6 @@ public class GetRecordDataResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -19658,9 +19591,6 @@ public class GetRecordUrlResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -19858,9 +19788,6 @@ public class GetRtcTokenResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -20184,9 +20111,6 @@ public class GetSeatInformationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -20542,9 +20466,6 @@ public class GetSkillGroupAgentStatusDetailsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -20900,9 +20821,6 @@ public class GetSkillGroupAndAgentStatusSummaryResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -21258,9 +21176,6 @@ public class GetSkillGroupLatitudeStateResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -21616,9 +21531,6 @@ public class GetSkillGroupServiceCapabilityResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -22054,9 +21966,6 @@ public class GetSkillGroupServiceStatusResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -22460,9 +22369,6 @@ public class GetSkillGroupStatusTotalResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -22604,9 +22510,6 @@ public class HangUpDoubleCallResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -22780,9 +22683,6 @@ public class HangupCallResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -22956,9 +22856,6 @@ public class HangupThirdCallResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -23132,9 +23029,6 @@ public class HoldCallResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -23703,7 +23597,15 @@ public class HotlineSessionQueryResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("CallDetailRecord") {
-                self.callDetailRecord = dict["CallDetailRecord"] as! [HotlineSessionQueryResponseBody.Data.CallDetailRecord]
+                var tmp : [HotlineSessionQueryResponseBody.Data.CallDetailRecord] = []
+                for v in dict["CallDetailRecord"] as! [Any] {
+                    var model = HotlineSessionQueryResponseBody.Data.CallDetailRecord()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.callDetailRecord = tmp
             }
             if dict.keys.contains("PageNumber") {
                 self.pageNumber = dict["PageNumber"] as! Int32
@@ -23797,9 +23699,6 @@ public class HotlineSessionQueryResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -23916,7 +23815,15 @@ public class InsertAiOutboundPhoneNumsRequest : Tea.TeaModel {
             self.batchVersion = dict["BatchVersion"] as! Int32
         }
         if dict.keys.contains("Details") {
-            self.details = dict["Details"] as! [InsertAiOutboundPhoneNumsRequest.Details]
+            var tmp : [InsertAiOutboundPhoneNumsRequest.Details] = []
+            for v in dict["Details"] as! [Any] {
+                var model = InsertAiOutboundPhoneNumsRequest.Details()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.details = tmp
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
@@ -24066,7 +23973,15 @@ public class InsertAiOutboundPhoneNumsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("FailInfo") {
-                self.failInfo = dict["FailInfo"] as! [InsertAiOutboundPhoneNumsResponseBody.Data.FailInfo]
+                var tmp : [InsertAiOutboundPhoneNumsResponseBody.Data.FailInfo] = []
+                for v in dict["FailInfo"] as! [Any] {
+                    var model = InsertAiOutboundPhoneNumsResponseBody.Data.FailInfo()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.failInfo = tmp
             }
             if dict.keys.contains("SuccessCount") {
                 self.successCount = dict["SuccessCount"] as! Int32
@@ -24157,9 +24072,6 @@ public class InsertAiOutboundPhoneNumsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -24317,9 +24229,6 @@ public class InsertTaskDetailResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -24501,9 +24410,6 @@ public class JoinThirdCallResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -24695,7 +24601,15 @@ public class ListAgentBySkillGroupIdResponseBody : Tea.TeaModel {
             self.code = dict["Code"] as! String
         }
         if dict.keys.contains("Data") {
-            self.data = dict["Data"] as! [ListAgentBySkillGroupIdResponseBody.Data]
+            var tmp : [ListAgentBySkillGroupIdResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = ListAgentBySkillGroupIdResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
@@ -24726,9 +24640,6 @@ public class ListAgentBySkillGroupIdResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -24928,7 +24839,15 @@ public class ListAiccsRobotResponseBody : Tea.TeaModel {
             self.code = dict["Code"] as! String
         }
         if dict.keys.contains("Data") {
-            self.data = dict["Data"] as! [ListAiccsRobotResponseBody.Data]
+            var tmp : [ListAiccsRobotResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = ListAiccsRobotResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
@@ -24959,9 +24878,6 @@ public class ListAiccsRobotResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -25174,7 +25090,15 @@ public class ListChatRecordDetailResponseBody : Tea.TeaModel {
                     self.endTime = dict["EndTime"] as! Int64
                 }
                 if dict.keys.contains("MessageList") {
-                    self.messageList = dict["MessageList"] as! [ListChatRecordDetailResponseBody.ResultData.Data.MessageList]
+                    var tmp : [ListChatRecordDetailResponseBody.ResultData.Data.MessageList] = []
+                    for v in dict["MessageList"] as! [Any] {
+                        var model = ListChatRecordDetailResponseBody.ResultData.Data.MessageList()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.messageList = tmp
                 }
                 if dict.keys.contains("ServicerName") {
                     self.servicerName = dict["ServicerName"] as! String
@@ -25235,7 +25159,15 @@ public class ListChatRecordDetailResponseBody : Tea.TeaModel {
                 self.currentPage = dict["CurrentPage"] as! Int64
             }
             if dict.keys.contains("Data") {
-                self.data = dict["Data"] as! [ListChatRecordDetailResponseBody.ResultData.Data]
+                var tmp : [ListChatRecordDetailResponseBody.ResultData.Data] = []
+                for v in dict["Data"] as! [Any] {
+                    var model = ListChatRecordDetailResponseBody.ResultData.Data()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.data = tmp
             }
             if dict.keys.contains("OnePageSize") {
                 self.onePageSize = dict["OnePageSize"] as! Int64
@@ -25337,9 +25269,6 @@ public class ListChatRecordDetailResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -25547,7 +25476,15 @@ public class ListDialogResponseBody : Tea.TeaModel {
             self.code = dict["Code"] as! String
         }
         if dict.keys.contains("Data") {
-            self.data = dict["Data"] as! [ListDialogResponseBody.Data]
+            var tmp : [ListDialogResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = ListDialogResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
@@ -25578,9 +25515,6 @@ public class ListDialogResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -25772,7 +25706,15 @@ public class ListHotlineRecordResponseBody : Tea.TeaModel {
             self.code = dict["Code"] as! String
         }
         if dict.keys.contains("Data") {
-            self.data = dict["Data"] as! [ListHotlineRecordResponseBody.Data]
+            var tmp : [ListHotlineRecordResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = ListHotlineRecordResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
@@ -25803,9 +25745,6 @@ public class ListHotlineRecordResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -26014,7 +25953,15 @@ public class ListHotlineRecordDetailResponseBody : Tea.TeaModel {
                 self.currentPage = dict["CurrentPage"] as! Int64
             }
             if dict.keys.contains("Data") {
-                self.data = dict["Data"] as! [ListHotlineRecordDetailResponseBody.ResultData.Data]
+                var tmp : [ListHotlineRecordDetailResponseBody.ResultData.Data] = []
+                for v in dict["Data"] as! [Any] {
+                    var model = ListHotlineRecordDetailResponseBody.ResultData.Data()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.data = tmp
             }
             if dict.keys.contains("OnePageSize") {
                 self.onePageSize = dict["OnePageSize"] as! Int64
@@ -26116,9 +26063,6 @@ public class ListHotlineRecordDetailResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -26284,9 +26228,6 @@ public class ListOutboundPhoneNumberResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -26313,166 +26254,6 @@ public class ListOutboundPhoneNumberResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ListOutboundPhoneNumberResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
-public class ListOuterOrderedNumbersRequest : Tea.TeaModel {
-    public var ownerId: Int64?
-
-    public var prodCode: String?
-
-    public var resourceOwnerAccount: String?
-
-    public var resourceOwnerId: Int64?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.ownerId != nil {
-            map["OwnerId"] = self.ownerId!
-        }
-        if self.prodCode != nil {
-            map["ProdCode"] = self.prodCode!
-        }
-        if self.resourceOwnerAccount != nil {
-            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
-        }
-        if self.resourceOwnerId != nil {
-            map["ResourceOwnerId"] = self.resourceOwnerId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("OwnerId") {
-            self.ownerId = dict["OwnerId"] as! Int64
-        }
-        if dict.keys.contains("ProdCode") {
-            self.prodCode = dict["ProdCode"] as! String
-        }
-        if dict.keys.contains("ResourceOwnerAccount") {
-            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
-        }
-        if dict.keys.contains("ResourceOwnerId") {
-            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-    }
-}
-
-public class ListOuterOrderedNumbersResponseBody : Tea.TeaModel {
-    public var code: String?
-
-    public var message: String?
-
-    public var numbers: [String]?
-
-    public var requestId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.code != nil {
-            map["Code"] = self.code!
-        }
-        if self.message != nil {
-            map["Message"] = self.message!
-        }
-        if self.numbers != nil {
-            map["Numbers"] = self.numbers!
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Code") {
-            self.code = dict["Code"] as! String
-        }
-        if dict.keys.contains("Message") {
-            self.message = dict["Message"] as! String
-        }
-        if dict.keys.contains("Numbers") {
-            self.numbers = dict["Numbers"] as! [String]
-        }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
-        }
-    }
-}
-
-public class ListOuterOrderedNumbersResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: ListOuterOrderedNumbersResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") {
-            var model = ListOuterOrderedNumbersResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -26654,7 +26435,15 @@ public class ListRobotCallDialogResponseBody : Tea.TeaModel {
             self.code = dict["Code"] as! String
         }
         if dict.keys.contains("Data") {
-            self.data = dict["Data"] as! [ListRobotCallDialogResponseBody.Data]
+            var tmp : [ListRobotCallDialogResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = ListRobotCallDialogResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
@@ -26685,9 +26474,6 @@ public class ListRobotCallDialogResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -26887,7 +26673,15 @@ public class ListRobotNodeResponseBody : Tea.TeaModel {
             self.code = dict["Code"] as! String
         }
         if dict.keys.contains("Data") {
-            self.data = dict["Data"] as! [ListRobotNodeResponseBody.Data]
+            var tmp : [ListRobotNodeResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = ListRobotNodeResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
@@ -26918,9 +26712,6 @@ public class ListRobotNodeResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -27104,7 +26895,15 @@ public class ListRobotParamsResponseBody : Tea.TeaModel {
             self.code = dict["Code"] as! String
         }
         if dict.keys.contains("Data") {
-            self.data = dict["Data"] as! [ListRobotParamsResponseBody.Data]
+            var tmp : [ListRobotParamsResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = ListRobotParamsResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
@@ -27135,9 +26934,6 @@ public class ListRobotParamsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -27342,7 +27138,15 @@ public class ListRolesResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Data") {
-            self.data = dict["Data"] as! [ListRolesResponseBody.Data]
+            var tmp : [ListRolesResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = ListRolesResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
         }
         if dict.keys.contains("HttpStatusCode") {
             self.httpStatusCode = dict["HttpStatusCode"] as! Int32
@@ -27376,9 +27180,6 @@ public class ListRolesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -27570,7 +27371,15 @@ public class ListSkillGroupResponseBody : Tea.TeaModel {
             self.code = dict["Code"] as! String
         }
         if dict.keys.contains("Data") {
-            self.data = dict["Data"] as! [ListSkillGroupResponseBody.Data]
+            var tmp : [ListSkillGroupResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = ListSkillGroupResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
@@ -27601,9 +27410,6 @@ public class ListSkillGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -27874,7 +27680,15 @@ public class ListTaskResponseBody : Tea.TeaModel {
                 self.pageSize = dict["PageSize"] as! Int64
             }
             if dict.keys.contains("Record") {
-                self.record = dict["Record"] as! [ListTaskResponseBody.Data.Record]
+                var tmp : [ListTaskResponseBody.Data.Record] = []
+                for v in dict["Record"] as! [Any] {
+                    var model = ListTaskResponseBody.Data.Record()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.record = tmp
             }
             if dict.keys.contains("Total") {
                 self.total = dict["Total"] as! Int64
@@ -27962,9 +27776,6 @@ public class ListTaskResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -28275,7 +28086,15 @@ public class ListTaskDetailResponseBody : Tea.TeaModel {
                 self.pageSize = dict["PageSize"] as! Int64
             }
             if dict.keys.contains("Record") {
-                self.record = dict["Record"] as! [ListTaskDetailResponseBody.Data.Record]
+                var tmp : [ListTaskDetailResponseBody.Data.Record] = []
+                for v in dict["Record"] as! [Any] {
+                    var model = ListTaskDetailResponseBody.Data.Record()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.record = tmp
             }
             if dict.keys.contains("Total") {
                 self.total = dict["Total"] as! Int64
@@ -28363,9 +28182,6 @@ public class ListTaskDetailResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -28392,6 +28208,249 @@ public class ListTaskDetailResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ListTaskDetailResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class LlmSmartCallRequest : Tea.TeaModel {
+    public var applicationCode: String?
+
+    public var calledNumber: String?
+
+    public var callerNumber: String?
+
+    public var outId: String?
+
+    public var promptParam: [String: Any]?
+
+    public var startWordParam: [String: Any]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationCode != nil {
+            map["ApplicationCode"] = self.applicationCode!
+        }
+        if self.calledNumber != nil {
+            map["CalledNumber"] = self.calledNumber!
+        }
+        if self.callerNumber != nil {
+            map["CallerNumber"] = self.callerNumber!
+        }
+        if self.outId != nil {
+            map["OutId"] = self.outId!
+        }
+        if self.promptParam != nil {
+            map["PromptParam"] = self.promptParam!
+        }
+        if self.startWordParam != nil {
+            map["StartWordParam"] = self.startWordParam!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ApplicationCode") {
+            self.applicationCode = dict["ApplicationCode"] as! String
+        }
+        if dict.keys.contains("CalledNumber") {
+            self.calledNumber = dict["CalledNumber"] as! String
+        }
+        if dict.keys.contains("CallerNumber") {
+            self.callerNumber = dict["CallerNumber"] as! String
+        }
+        if dict.keys.contains("OutId") {
+            self.outId = dict["OutId"] as! String
+        }
+        if dict.keys.contains("PromptParam") {
+            self.promptParam = dict["PromptParam"] as! [String: Any]
+        }
+        if dict.keys.contains("StartWordParam") {
+            self.startWordParam = dict["StartWordParam"] as! [String: Any]
+        }
+    }
+}
+
+public class LlmSmartCallShrinkRequest : Tea.TeaModel {
+    public var applicationCode: String?
+
+    public var calledNumber: String?
+
+    public var callerNumber: String?
+
+    public var outId: String?
+
+    public var promptParamShrink: String?
+
+    public var startWordParamShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationCode != nil {
+            map["ApplicationCode"] = self.applicationCode!
+        }
+        if self.calledNumber != nil {
+            map["CalledNumber"] = self.calledNumber!
+        }
+        if self.callerNumber != nil {
+            map["CallerNumber"] = self.callerNumber!
+        }
+        if self.outId != nil {
+            map["OutId"] = self.outId!
+        }
+        if self.promptParamShrink != nil {
+            map["PromptParam"] = self.promptParamShrink!
+        }
+        if self.startWordParamShrink != nil {
+            map["StartWordParam"] = self.startWordParamShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ApplicationCode") {
+            self.applicationCode = dict["ApplicationCode"] as! String
+        }
+        if dict.keys.contains("CalledNumber") {
+            self.calledNumber = dict["CalledNumber"] as! String
+        }
+        if dict.keys.contains("CallerNumber") {
+            self.callerNumber = dict["CallerNumber"] as! String
+        }
+        if dict.keys.contains("OutId") {
+            self.outId = dict["OutId"] as! String
+        }
+        if dict.keys.contains("PromptParam") {
+            self.promptParamShrink = dict["PromptParam"] as! String
+        }
+        if dict.keys.contains("StartWordParam") {
+            self.startWordParamShrink = dict["StartWordParam"] as! String
+        }
+    }
+}
+
+public class LlmSmartCallResponseBody : Tea.TeaModel {
+    public var callId: String?
+
+    public var code: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.callId != nil {
+            map["CallId"] = self.callId!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CallId") {
+            self.callId = dict["CallId"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class LlmSmartCallResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: LlmSmartCallResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = LlmSmartCallResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -28547,9 +28606,6 @@ public class MakeCallResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -28763,9 +28819,6 @@ public class MakeDoubleCallResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -28915,9 +28968,6 @@ public class QueryHotlineInQueueResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -29175,7 +29225,15 @@ public class QueryHotlineNumberResponseBody : Tea.TeaModel {
                         self.departmentName = dict["DepartmentName"] as! String
                     }
                     if dict.keys.contains("GroupDOList") {
-                        self.groupDOList = dict["GroupDOList"] as! [QueryHotlineNumberResponseBody.Data.HotlineNumList.CalloutRangeList.GroupDOList]
+                        var tmp : [QueryHotlineNumberResponseBody.Data.HotlineNumList.CalloutRangeList.GroupDOList] = []
+                        for v in dict["GroupDOList"] as! [Any] {
+                            var model = QueryHotlineNumberResponseBody.Data.HotlineNumList.CalloutRangeList.GroupDOList()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.groupDOList = tmp
                     }
                 }
             }
@@ -29260,7 +29318,15 @@ public class QueryHotlineNumberResponseBody : Tea.TeaModel {
                     self.calloutAllDepartment = dict["CalloutAllDepartment"] as! Bool
                 }
                 if dict.keys.contains("CalloutRangeList") {
-                    self.calloutRangeList = dict["CalloutRangeList"] as! [QueryHotlineNumberResponseBody.Data.HotlineNumList.CalloutRangeList]
+                    var tmp : [QueryHotlineNumberResponseBody.Data.HotlineNumList.CalloutRangeList] = []
+                    for v in dict["CalloutRangeList"] as! [Any] {
+                        var model = QueryHotlineNumberResponseBody.Data.HotlineNumList.CalloutRangeList()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.calloutRangeList = tmp
                 }
                 if dict.keys.contains("Description") {
                     self.description_ = dict["Description"] as! String
@@ -29337,7 +29403,15 @@ public class QueryHotlineNumberResponseBody : Tea.TeaModel {
                 self.currentPage = dict["CurrentPage"] as! Int64
             }
             if dict.keys.contains("HotlineNumList") {
-                self.hotlineNumList = dict["HotlineNumList"] as! [QueryHotlineNumberResponseBody.Data.HotlineNumList]
+                var tmp : [QueryHotlineNumberResponseBody.Data.HotlineNumList] = []
+                for v in dict["HotlineNumList"] as! [Any] {
+                    var model = QueryHotlineNumberResponseBody.Data.HotlineNumList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.hotlineNumList = tmp
             }
             if dict.keys.contains("PageSize") {
                 self.pageSize = dict["PageSize"] as! Int64
@@ -29428,9 +29502,6 @@ public class QueryHotlineNumberResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -29850,7 +29921,15 @@ public class QueryOutboundTaskResponseBody : Tea.TeaModel {
                 self.currentPage = dict["CurrentPage"] as! String
             }
             if dict.keys.contains("List") {
-                self.list = dict["List"] as! [QueryOutboundTaskResponseBody.Data.List]
+                var tmp : [QueryOutboundTaskResponseBody.Data.List] = []
+                for v in dict["List"] as! [Any] {
+                    var model = QueryOutboundTaskResponseBody.Data.List()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.list = tmp
             }
             if dict.keys.contains("PageSize") {
                 self.pageSize = dict["PageSize"] as! String
@@ -29949,9 +30028,6 @@ public class QueryOutboundTaskResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -30172,7 +30248,15 @@ public class QuerySkillGroupsResponseBody : Tea.TeaModel {
             self.currentPage = dict["CurrentPage"] as! Int32
         }
         if dict.keys.contains("Data") {
-            self.data = dict["Data"] as! [QuerySkillGroupsResponseBody.Data]
+            var tmp : [QuerySkillGroupsResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = QuerySkillGroupsResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
         }
         if dict.keys.contains("OnePageSize") {
             self.onePageSize = dict["OnePageSize"] as! Int32
@@ -30206,9 +30290,6 @@ public class QuerySkillGroupsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -30604,7 +30685,15 @@ public class QueryTaskDetailResponseBody : Tea.TeaModel {
                 self.currentPage = dict["CurrentPage"] as! String
             }
             if dict.keys.contains("List") {
-                self.list = dict["List"] as! [QueryTaskDetailResponseBody.Data.List]
+                var tmp : [QueryTaskDetailResponseBody.Data.List] = []
+                for v in dict["List"] as! [Any] {
+                    var model = QueryTaskDetailResponseBody.Data.List()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.list = tmp
             }
             if dict.keys.contains("PageSize") {
                 self.pageSize = dict["PageSize"] as! String
@@ -30703,9 +30792,6 @@ public class QueryTaskDetailResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -31069,9 +31155,6 @@ public class QueryTicketsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -31687,7 +31770,15 @@ public class QueryTouchListResponseBody : Tea.TeaModel {
                 self.currentPage = dict["CurrentPage"] as! Int32
             }
             if dict.keys.contains("Data") {
-                self.data = dict["Data"] as! [QueryTouchListResponseBody.ResultData.Data]
+                var tmp : [QueryTouchListResponseBody.ResultData.Data] = []
+                for v in dict["Data"] as! [Any] {
+                    var model = QueryTouchListResponseBody.ResultData.Data()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.data = tmp
             }
             if dict.keys.contains("Empty") {
                 self.empty = dict["Empty"] as! Bool
@@ -31790,9 +31881,6 @@ public class QueryTouchListResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -32028,9 +32116,6 @@ public class RemoveAgentFromSkillGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -32180,9 +32265,6 @@ public class RemoveSkillGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -32361,7 +32443,15 @@ public class ResetHotlineNumberRequest : Tea.TeaModel {
             self.outboundAllDepart = dict["OutboundAllDepart"] as! Bool
         }
         if dict.keys.contains("OutboundRangeList") {
-            self.outboundRangeList = dict["OutboundRangeList"] as! [ResetHotlineNumberRequest.OutboundRangeList]
+            var tmp : [ResetHotlineNumberRequest.OutboundRangeList] = []
+            for v in dict["OutboundRangeList"] as! [Any] {
+                var model = ResetHotlineNumberRequest.OutboundRangeList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.outboundRangeList = tmp
         }
     }
 }
@@ -32555,9 +32645,6 @@ public class ResetHotlineNumberResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -32707,9 +32794,6 @@ public class RestartOutboundTaskResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -32915,9 +32999,6 @@ public class RobotCallResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -33299,9 +33380,6 @@ public class SendCcoSmartCallResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -33483,9 +33561,6 @@ public class SendCcoSmartCallOperateResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -33643,9 +33718,6 @@ public class SendHotlineHeartBeatResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -33787,9 +33859,6 @@ public class StartAiOutboundTaskResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -33955,9 +34024,6 @@ public class StartCallResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -34131,9 +34197,6 @@ public class StartCallV2Response : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -34291,9 +34354,6 @@ public class StartChatWorkResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -34459,9 +34519,6 @@ public class StartHotlineServiceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -34691,9 +34748,6 @@ public class StartMicroOutboundResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -34867,9 +34921,6 @@ public class StartTaskResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -35011,9 +35062,6 @@ public class StopAiOutboundTaskResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -35179,9 +35227,6 @@ public class StopTaskResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -35339,9 +35384,6 @@ public class SuspendHotlineServiceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -35491,9 +35533,6 @@ public class SuspendOutboundTaskResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -35635,9 +35674,6 @@ public class TerminateAiOutboundTaskResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -35843,9 +35879,6 @@ public class TransferCallToSkillGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -36027,9 +36060,6 @@ public class UpdateAgentResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -36393,9 +36423,6 @@ public class UpdateAiOutboundTaskResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -36561,9 +36588,6 @@ public class UpdateDepartmentResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -36777,9 +36801,6 @@ public class UpdateOuterAccountResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -36953,9 +36974,6 @@ public class UpdateSkillGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
