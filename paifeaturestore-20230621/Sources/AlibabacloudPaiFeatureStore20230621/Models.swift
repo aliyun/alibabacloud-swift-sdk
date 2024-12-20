@@ -12,6 +12,8 @@ public class FeatureViewConfigValue : Tea.TeaModel {
 
     public var equal: Bool?
 
+    public var useMock: Bool?
+
     public override init() {
         super.init()
     }
@@ -39,6 +41,9 @@ public class FeatureViewConfigValue : Tea.TeaModel {
         if self.equal != nil {
             map["Equal"] = self.equal!
         }
+        if self.useMock != nil {
+            map["UseMock"] = self.useMock!
+        }
         return map
     }
 
@@ -59,6 +64,9 @@ public class FeatureViewConfigValue : Tea.TeaModel {
         }
         if dict.keys.contains("Equal") {
             self.equal = dict["Equal"] as! Bool
+        }
+        if dict.keys.contains("UseMock") {
+            self.useMock = dict["UseMock"] as! Bool
         }
     }
 }
@@ -2822,6 +2830,8 @@ public class GetFeatureViewResponseBody : Tea.TeaModel {
 
     public var lastSyncConfig: String?
 
+    public var mockTableName: String?
+
     public var name: String?
 
     public var owner: String?
@@ -2896,6 +2906,9 @@ public class GetFeatureViewResponseBody : Tea.TeaModel {
         }
         if self.lastSyncConfig != nil {
             map["LastSyncConfig"] = self.lastSyncConfig!
+        }
+        if self.mockTableName != nil {
+            map["MockTableName"] = self.mockTableName!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -2980,6 +2993,9 @@ public class GetFeatureViewResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("LastSyncConfig") {
             self.lastSyncConfig = dict["LastSyncConfig"] as! String
+        }
+        if dict.keys.contains("MockTableName") {
+            self.mockTableName = dict["MockTableName"] as! String
         }
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
