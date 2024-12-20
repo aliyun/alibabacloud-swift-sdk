@@ -489,6 +489,12 @@ public class GetAccountInfoResponseBody : Tea.TeaModel {
     public class AccountInfo : Tea.TeaModel {
         public var accountId: String?
 
+        public var dohEnabled: Bool?
+
+        public var dohResolveAllEnabled: Bool?
+
+        public var monthDohResolveCount: Int64?
+
         public var monthFreeCount: Int32?
 
         public var monthHttpsResolveCount: Int32?
@@ -524,6 +530,15 @@ public class GetAccountInfoResponseBody : Tea.TeaModel {
             if self.accountId != nil {
                 map["AccountId"] = self.accountId!
             }
+            if self.dohEnabled != nil {
+                map["DohEnabled"] = self.dohEnabled!
+            }
+            if self.dohResolveAllEnabled != nil {
+                map["DohResolveAllEnabled"] = self.dohResolveAllEnabled!
+            }
+            if self.monthDohResolveCount != nil {
+                map["MonthDohResolveCount"] = self.monthDohResolveCount!
+            }
             if self.monthFreeCount != nil {
                 map["MonthFreeCount"] = self.monthFreeCount!
             }
@@ -557,6 +572,15 @@ public class GetAccountInfoResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("AccountId") {
                 self.accountId = dict["AccountId"] as! String
+            }
+            if dict.keys.contains("DohEnabled") {
+                self.dohEnabled = dict["DohEnabled"] as! Bool
+            }
+            if dict.keys.contains("DohResolveAllEnabled") {
+                self.dohResolveAllEnabled = dict["DohResolveAllEnabled"] as! Bool
+            }
+            if dict.keys.contains("MonthDohResolveCount") {
+                self.monthDohResolveCount = dict["MonthDohResolveCount"] as! Int64
             }
             if dict.keys.contains("MonthFreeCount") {
                 self.monthFreeCount = dict["MonthFreeCount"] as! Int32
@@ -716,6 +740,8 @@ public class GetResolveCountSummaryRequest : Tea.TeaModel {
 
 public class GetResolveCountSummaryResponseBody : Tea.TeaModel {
     public class ResolveSummary : Tea.TeaModel {
+        public var doh: Int64?
+
         public var http: Int64?
 
         public var http6: Int64?
@@ -738,6 +764,9 @@ public class GetResolveCountSummaryResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.doh != nil {
+                map["Doh"] = self.doh!
+            }
             if self.http != nil {
                 map["Http"] = self.http!
             }
@@ -754,6 +783,9 @@ public class GetResolveCountSummaryResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Doh") {
+                self.doh = dict["Doh"] as! Int64
+            }
             if dict.keys.contains("Http") {
                 self.http = dict["Http"] as! Int64
             }
@@ -1086,6 +1118,8 @@ public class ListDomainsRequest : Tea.TeaModel {
 
     public var search: String?
 
+    public var withoutMeteringData: Bool?
+
     public override init() {
         super.init()
     }
@@ -1109,6 +1143,9 @@ public class ListDomainsRequest : Tea.TeaModel {
         if self.search != nil {
             map["Search"] = self.search!
         }
+        if self.withoutMeteringData != nil {
+            map["WithoutMeteringData"] = self.withoutMeteringData!
+        }
         return map
     }
 
@@ -1122,6 +1159,9 @@ public class ListDomainsRequest : Tea.TeaModel {
         if dict.keys.contains("Search") {
             self.search = dict["Search"] as! String
         }
+        if dict.keys.contains("WithoutMeteringData") {
+            self.withoutMeteringData = dict["WithoutMeteringData"] as! Bool
+        }
     }
 }
 
@@ -1133,6 +1173,8 @@ public class ListDomainsResponseBody : Tea.TeaModel {
             public var resolved: Int64?
 
             public var resolved6: Int64?
+
+            public var resolvedDoh: Int64?
 
             public var resolvedHttps: Int64?
 
@@ -1163,6 +1205,9 @@ public class ListDomainsResponseBody : Tea.TeaModel {
                 if self.resolved6 != nil {
                     map["Resolved6"] = self.resolved6!
                 }
+                if self.resolvedDoh != nil {
+                    map["ResolvedDoh"] = self.resolvedDoh!
+                }
                 if self.resolvedHttps != nil {
                     map["ResolvedHttps"] = self.resolvedHttps!
                 }
@@ -1184,6 +1229,9 @@ public class ListDomainsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Resolved6") {
                     self.resolved6 = dict["Resolved6"] as! Int64
+                }
+                if dict.keys.contains("ResolvedDoh") {
+                    self.resolvedDoh = dict["ResolvedDoh"] as! Int64
                 }
                 if dict.keys.contains("ResolvedHttps") {
                     self.resolvedHttps = dict["ResolvedHttps"] as! Int64

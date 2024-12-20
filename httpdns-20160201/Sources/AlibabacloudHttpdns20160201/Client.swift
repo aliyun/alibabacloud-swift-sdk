@@ -239,6 +239,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.search)) {
             query["Search"] = request.search ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.withoutMeteringData)) {
+            query["WithoutMeteringData"] = request.withoutMeteringData!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
