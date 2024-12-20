@@ -1362,6 +1362,209 @@ public class CreateJobResponse : Tea.TeaModel {
     }
 }
 
+public class CreatePoolRequest : Tea.TeaModel {
+    public class ResourceLimits : Tea.TeaModel {
+        public var maxExectorNum: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.maxExectorNum != nil {
+                map["MaxExectorNum"] = self.maxExectorNum!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("MaxExectorNum") {
+                self.maxExectorNum = dict["MaxExectorNum"] as! Int32
+            }
+        }
+    }
+    public var poolName: String?
+
+    public var priority: Int32?
+
+    public var resourceLimits: CreatePoolRequest.ResourceLimits?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.resourceLimits?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.poolName != nil {
+            map["PoolName"] = self.poolName!
+        }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
+        }
+        if self.resourceLimits != nil {
+            map["ResourceLimits"] = self.resourceLimits?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PoolName") {
+            self.poolName = dict["PoolName"] as! String
+        }
+        if dict.keys.contains("Priority") {
+            self.priority = dict["Priority"] as! Int32
+        }
+        if dict.keys.contains("ResourceLimits") {
+            var model = CreatePoolRequest.ResourceLimits()
+            model.fromMap(dict["ResourceLimits"] as! [String: Any])
+            self.resourceLimits = model
+        }
+    }
+}
+
+public class CreatePoolShrinkRequest : Tea.TeaModel {
+    public var poolName: String?
+
+    public var priority: Int32?
+
+    public var resourceLimitsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.poolName != nil {
+            map["PoolName"] = self.poolName!
+        }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
+        }
+        if self.resourceLimitsShrink != nil {
+            map["ResourceLimits"] = self.resourceLimitsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PoolName") {
+            self.poolName = dict["PoolName"] as! String
+        }
+        if dict.keys.contains("Priority") {
+            self.priority = dict["Priority"] as! Int32
+        }
+        if dict.keys.contains("ResourceLimits") {
+            self.resourceLimitsShrink = dict["ResourceLimits"] as! String
+        }
+    }
+}
+
+public class CreatePoolResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreatePoolResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreatePoolResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreatePoolResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DeleteJobsRequest : Tea.TeaModel {
     public class JobSpec : Tea.TeaModel {
         public class TaskSpec : Tea.TeaModel {
@@ -1609,6 +1812,115 @@ public class DeleteJobsResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DeleteJobsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DeletePoolRequest : Tea.TeaModel {
+    public var poolName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.poolName != nil {
+            map["PoolName"] = self.poolName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PoolName") {
+            self.poolName = dict["PoolName"] as! String
+        }
+    }
+}
+
+public class DeletePoolResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DeletePoolResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeletePoolResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeletePoolResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -3611,6 +3923,219 @@ public class GetJobResponse : Tea.TeaModel {
     }
 }
 
+public class GetPoolRequest : Tea.TeaModel {
+    public var poolName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.poolName != nil {
+            map["PoolName"] = self.poolName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PoolName") {
+            self.poolName = dict["PoolName"] as! String
+        }
+    }
+}
+
+public class GetPoolResponseBody : Tea.TeaModel {
+    public class PoolInfo : Tea.TeaModel {
+        public var createTime: String?
+
+        public var exectorUsage: Int32?
+
+        public var isDefault: Bool?
+
+        public var maxExectorNum: Int32?
+
+        public var poolName: String?
+
+        public var priority: Int32?
+
+        public var reason: String?
+
+        public var status: String?
+
+        public var updateTime: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.exectorUsage != nil {
+                map["ExectorUsage"] = self.exectorUsage!
+            }
+            if self.isDefault != nil {
+                map["IsDefault"] = self.isDefault!
+            }
+            if self.maxExectorNum != nil {
+                map["MaxExectorNum"] = self.maxExectorNum!
+            }
+            if self.poolName != nil {
+                map["PoolName"] = self.poolName!
+            }
+            if self.priority != nil {
+                map["Priority"] = self.priority!
+            }
+            if self.reason != nil {
+                map["Reason"] = self.reason!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.updateTime != nil {
+                map["UpdateTime"] = self.updateTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CreateTime") {
+                self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("ExectorUsage") {
+                self.exectorUsage = dict["ExectorUsage"] as! Int32
+            }
+            if dict.keys.contains("IsDefault") {
+                self.isDefault = dict["IsDefault"] as! Bool
+            }
+            if dict.keys.contains("MaxExectorNum") {
+                self.maxExectorNum = dict["MaxExectorNum"] as! Int32
+            }
+            if dict.keys.contains("PoolName") {
+                self.poolName = dict["PoolName"] as! String
+            }
+            if dict.keys.contains("Priority") {
+                self.priority = dict["Priority"] as! Int32
+            }
+            if dict.keys.contains("Reason") {
+                self.reason = dict["Reason"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("UpdateTime") {
+                self.updateTime = dict["UpdateTime"] as! String
+            }
+        }
+    }
+    public var poolInfo: GetPoolResponseBody.PoolInfo?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.poolInfo?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.poolInfo != nil {
+            map["PoolInfo"] = self.poolInfo?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PoolInfo") {
+            var model = GetPoolResponseBody.PoolInfo()
+            model.fromMap(dict["PoolInfo"] as! [String: Any])
+            self.poolInfo = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class GetPoolResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetPoolResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetPoolResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListExecutorsRequest : Tea.TeaModel {
     public class Filter : Tea.TeaModel {
         public var executorIds: [String]?
@@ -4395,6 +4920,8 @@ public class ListImagesResponseBody : Tea.TeaModel {
 
         public var version: String?
 
+        public var weight: Int32?
+
         public override init() {
             super.init()
         }
@@ -4439,6 +4966,9 @@ public class ListImagesResponseBody : Tea.TeaModel {
             if self.version != nil {
                 map["Version"] = self.version!
             }
+            if self.weight != nil {
+                map["Weight"] = self.weight!
+            }
             return map
         }
 
@@ -4472,6 +5002,9 @@ public class ListImagesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Version") {
                 self.version = dict["Version"] as! String
+            }
+            if dict.keys.contains("Weight") {
+                self.weight = dict["Weight"] as! Int32
             }
         }
     }
@@ -5545,6 +6078,338 @@ public class ListJobsResponse : Tea.TeaModel {
     }
 }
 
+public class ListPoolsRequest : Tea.TeaModel {
+    public class Filter : Tea.TeaModel {
+        public var poolName: [String]?
+
+        public var status: [String]?
+
+        public var timeCreatedAfter: Int32?
+
+        public var timeCreatedBefore: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.poolName != nil {
+                map["PoolName"] = self.poolName!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.timeCreatedAfter != nil {
+                map["TimeCreatedAfter"] = self.timeCreatedAfter!
+            }
+            if self.timeCreatedBefore != nil {
+                map["TimeCreatedBefore"] = self.timeCreatedBefore!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("PoolName") {
+                self.poolName = dict["PoolName"] as! [String]
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! [String]
+            }
+            if dict.keys.contains("TimeCreatedAfter") {
+                self.timeCreatedAfter = dict["TimeCreatedAfter"] as! Int32
+            }
+            if dict.keys.contains("TimeCreatedBefore") {
+                self.timeCreatedBefore = dict["TimeCreatedBefore"] as! Int32
+            }
+        }
+    }
+    public var filter: ListPoolsRequest.Filter?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.filter?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.filter != nil {
+            map["Filter"] = self.filter?.toMap()
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Filter") {
+            var model = ListPoolsRequest.Filter()
+            model.fromMap(dict["Filter"] as! [String: Any])
+            self.filter = model
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+    }
+}
+
+public class ListPoolsShrinkRequest : Tea.TeaModel {
+    public var filterShrink: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.filterShrink != nil {
+            map["Filter"] = self.filterShrink!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Filter") {
+            self.filterShrink = dict["Filter"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+    }
+}
+
+public class ListPoolsResponseBody : Tea.TeaModel {
+    public class PoolList : Tea.TeaModel {
+        public var isDefault: Bool?
+
+        public var maxExectorNum: Int32?
+
+        public var poolName: String?
+
+        public var priority: Int32?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.isDefault != nil {
+                map["IsDefault"] = self.isDefault!
+            }
+            if self.maxExectorNum != nil {
+                map["MaxExectorNum"] = self.maxExectorNum!
+            }
+            if self.poolName != nil {
+                map["PoolName"] = self.poolName!
+            }
+            if self.priority != nil {
+                map["Priority"] = self.priority!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("IsDefault") {
+                self.isDefault = dict["IsDefault"] as! Bool
+            }
+            if dict.keys.contains("MaxExectorNum") {
+                self.maxExectorNum = dict["MaxExectorNum"] as! Int32
+            }
+            if dict.keys.contains("PoolName") {
+                self.poolName = dict["PoolName"] as! String
+            }
+            if dict.keys.contains("Priority") {
+                self.priority = dict["Priority"] as! Int32
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+        }
+    }
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var poolList: [ListPoolsResponseBody.PoolList]?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.poolList != nil {
+            var tmp : [Any] = []
+            for k in self.poolList! {
+                tmp.append(k.toMap())
+            }
+            map["PoolList"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("PoolList") {
+            var tmp : [ListPoolsResponseBody.PoolList] = []
+            for v in dict["PoolList"] as! [Any] {
+                var model = ListPoolsResponseBody.PoolList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.poolList = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! Int32
+        }
+    }
+}
+
+public class ListPoolsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListPoolsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListPoolsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListTagResourcesRequest : Tea.TeaModel {
     public class Tag : Tea.TeaModel {
         public var key: String?
@@ -6274,6 +7139,209 @@ public class UnTagResourcesResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = UnTagResourcesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdatePoolRequest : Tea.TeaModel {
+    public class ResourceLimits : Tea.TeaModel {
+        public var maxExectorNum: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.maxExectorNum != nil {
+                map["MaxExectorNum"] = self.maxExectorNum!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("MaxExectorNum") {
+                self.maxExectorNum = dict["MaxExectorNum"] as! Int32
+            }
+        }
+    }
+    public var poolName: String?
+
+    public var priority: Int32?
+
+    public var resourceLimits: UpdatePoolRequest.ResourceLimits?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.resourceLimits?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.poolName != nil {
+            map["PoolName"] = self.poolName!
+        }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
+        }
+        if self.resourceLimits != nil {
+            map["ResourceLimits"] = self.resourceLimits?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PoolName") {
+            self.poolName = dict["PoolName"] as! String
+        }
+        if dict.keys.contains("Priority") {
+            self.priority = dict["Priority"] as! Int32
+        }
+        if dict.keys.contains("ResourceLimits") {
+            var model = UpdatePoolRequest.ResourceLimits()
+            model.fromMap(dict["ResourceLimits"] as! [String: Any])
+            self.resourceLimits = model
+        }
+    }
+}
+
+public class UpdatePoolShrinkRequest : Tea.TeaModel {
+    public var poolName: String?
+
+    public var priority: Int32?
+
+    public var resourceLimitsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.poolName != nil {
+            map["PoolName"] = self.poolName!
+        }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
+        }
+        if self.resourceLimitsShrink != nil {
+            map["ResourceLimits"] = self.resourceLimitsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PoolName") {
+            self.poolName = dict["PoolName"] as! String
+        }
+        if dict.keys.contains("Priority") {
+            self.priority = dict["Priority"] as! Int32
+        }
+        if dict.keys.contains("ResourceLimits") {
+            self.resourceLimitsShrink = dict["ResourceLimits"] as! String
+        }
+    }
+}
+
+public class UpdatePoolResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UpdatePoolResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdatePoolResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdatePoolResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
