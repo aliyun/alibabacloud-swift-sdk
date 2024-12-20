@@ -24,6 +24,114 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func aITeacherExpansionPracticeTaskGenerateWithOptions(_ request: AITeacherExpansionPracticeTaskGenerateRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AITeacherExpansionPracticeTaskGenerateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.grade)) {
+            body["grade"] = request.grade ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.keySentences)) {
+            body["keySentences"] = request.keySentences ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.keyWords)) {
+            body["keyWords"] = request.keyWords ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.learningObject)) {
+            body["learningObject"] = request.learningObject ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.textContent)) {
+            body["textContent"] = request.textContent ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.textbook)) {
+            body["textbook"] = request.textbook ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.topic)) {
+            body["topic"] = request.topic ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            body["userId"] = request.userId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AITeacherExpansionPracticeTaskGenerate",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/aiteacher/expansionPractice/generateTask",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AITeacherExpansionPracticeTaskGenerateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func aITeacherExpansionPracticeTaskGenerate(_ request: AITeacherExpansionPracticeTaskGenerateRequest) async throws -> AITeacherExpansionPracticeTaskGenerateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await aITeacherExpansionPracticeTaskGenerateWithOptions(request as! AITeacherExpansionPracticeTaskGenerateRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func aITeacherSyncPracticeTaskGenerateWithOptions(_ request: AITeacherSyncPracticeTaskGenerateRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AITeacherSyncPracticeTaskGenerateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.grade)) {
+            body["grade"] = request.grade ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.keySentences)) {
+            body["keySentences"] = request.keySentences ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.keyWords)) {
+            body["keyWords"] = request.keyWords ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.learningObject)) {
+            body["learningObject"] = request.learningObject ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.textContent)) {
+            body["textContent"] = request.textContent ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.textbook)) {
+            body["textbook"] = request.textbook ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.topic)) {
+            body["topic"] = request.topic ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            body["userId"] = request.userId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AITeacherSyncPracticeTaskGenerate",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/aiteacher/syncPractice/generateTask",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AITeacherSyncPracticeTaskGenerateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func aITeacherSyncPracticeTaskGenerate(_ request: AITeacherSyncPracticeTaskGenerateRequest) async throws -> AITeacherSyncPracticeTaskGenerateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await aITeacherSyncPracticeTaskGenerateWithOptions(request as! AITeacherSyncPracticeTaskGenerateRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func aliyunConsoleOpenApiQueryAliyunConsoleServcieListWithOptions(_ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AliyunConsoleOpenApiQueryAliyunConsoleServcieListResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
