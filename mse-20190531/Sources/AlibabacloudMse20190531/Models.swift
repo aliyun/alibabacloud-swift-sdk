@@ -34907,6 +34907,8 @@ public class ImportServicesRequest : Tea.TeaModel {
 
     public var serviceList: [ImportServicesRequest.ServiceList]?
 
+    public var sourceId: Int64?
+
     public var sourceType: String?
 
     public var tlsSetting: String?
@@ -34947,6 +34949,9 @@ public class ImportServicesRequest : Tea.TeaModel {
             }
             map["ServiceList"] = tmp
         }
+        if self.sourceId != nil {
+            map["SourceId"] = self.sourceId!
+        }
         if self.sourceType != nil {
             map["SourceType"] = self.sourceType!
         }
@@ -34983,6 +34988,9 @@ public class ImportServicesRequest : Tea.TeaModel {
             }
             self.serviceList = tmp
         }
+        if dict.keys.contains("SourceId") {
+            self.sourceId = dict["SourceId"] as! Int64
+        }
         if dict.keys.contains("SourceType") {
             self.sourceType = dict["SourceType"] as! String
         }
@@ -35004,6 +35012,8 @@ public class ImportServicesShrinkRequest : Tea.TeaModel {
     public var gatewayUniqueId: String?
 
     public var serviceListShrink: String?
+
+    public var sourceId: Int64?
 
     public var sourceType: String?
 
@@ -35041,6 +35051,9 @@ public class ImportServicesShrinkRequest : Tea.TeaModel {
         if self.serviceListShrink != nil {
             map["ServiceList"] = self.serviceListShrink!
         }
+        if self.sourceId != nil {
+            map["SourceId"] = self.sourceId!
+        }
         if self.sourceType != nil {
             map["SourceType"] = self.sourceType!
         }
@@ -35068,6 +35081,9 @@ public class ImportServicesShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ServiceList") {
             self.serviceListShrink = dict["ServiceList"] as! String
+        }
+        if dict.keys.contains("SourceId") {
+            self.sourceId = dict["SourceId"] as! Int64
         }
         if dict.keys.contains("SourceType") {
             self.sourceType = dict["SourceType"] as! String
@@ -56885,6 +56901,8 @@ public class PullServicesRequest : Tea.TeaModel {
 
     public var namespace: String?
 
+    public var sourceId: Int64?
+
     public var sourceType: String?
 
     public override init() {
@@ -56910,6 +56928,9 @@ public class PullServicesRequest : Tea.TeaModel {
         if self.namespace != nil {
             map["Namespace"] = self.namespace!
         }
+        if self.sourceId != nil {
+            map["SourceId"] = self.sourceId!
+        }
         if self.sourceType != nil {
             map["SourceType"] = self.sourceType!
         }
@@ -56925,6 +56946,9 @@ public class PullServicesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Namespace") {
             self.namespace = dict["Namespace"] as! String
+        }
+        if dict.keys.contains("SourceId") {
+            self.sourceId = dict["SourceId"] as! Int64
         }
         if dict.keys.contains("SourceType") {
             self.sourceType = dict["SourceType"] as! String
@@ -56942,6 +56966,8 @@ public class PullServicesResponseBody : Tea.TeaModel {
             public var namespace: String?
 
             public var sourceId: String?
+
+            public var sourceIdList: [Int64]?
 
             public var sourceType: String?
 
@@ -56971,6 +56997,9 @@ public class PullServicesResponseBody : Tea.TeaModel {
                 if self.sourceId != nil {
                     map["SourceId"] = self.sourceId!
                 }
+                if self.sourceIdList != nil {
+                    map["SourceIdList"] = self.sourceIdList!
+                }
                 if self.sourceType != nil {
                     map["SourceType"] = self.sourceType!
                 }
@@ -56989,6 +57018,9 @@ public class PullServicesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("SourceId") {
                     self.sourceId = dict["SourceId"] as! String
+                }
+                if dict.keys.contains("SourceIdList") {
+                    self.sourceIdList = dict["SourceIdList"] as! [Int64]
                 }
                 if dict.keys.contains("SourceType") {
                     self.sourceType = dict["SourceType"] as! String
