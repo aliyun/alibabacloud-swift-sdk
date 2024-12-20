@@ -50964,7 +50964,15 @@ public class DescribeImagesResponseBody : Tea.TeaModel {
                 }
             }
             public class Features : Tea.TeaModel {
+                public var cpuOnlineDowngrade: String?
+
+                public var cpuOnlineUpgrade: String?
+
                 public var imdsSupport: String?
+
+                public var memoryOnlineDowngrade: String?
+
+                public var memoryOnlineUpgrade: String?
 
                 public var nvmeSupport: String?
 
@@ -50982,8 +50990,20 @@ public class DescribeImagesResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.cpuOnlineDowngrade != nil {
+                        map["CpuOnlineDowngrade"] = self.cpuOnlineDowngrade!
+                    }
+                    if self.cpuOnlineUpgrade != nil {
+                        map["CpuOnlineUpgrade"] = self.cpuOnlineUpgrade!
+                    }
                     if self.imdsSupport != nil {
                         map["ImdsSupport"] = self.imdsSupport!
+                    }
+                    if self.memoryOnlineDowngrade != nil {
+                        map["MemoryOnlineDowngrade"] = self.memoryOnlineDowngrade!
+                    }
+                    if self.memoryOnlineUpgrade != nil {
+                        map["MemoryOnlineUpgrade"] = self.memoryOnlineUpgrade!
                     }
                     if self.nvmeSupport != nil {
                         map["NvmeSupport"] = self.nvmeSupport!
@@ -50992,8 +51012,20 @@ public class DescribeImagesResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("CpuOnlineDowngrade") {
+                        self.cpuOnlineDowngrade = dict["CpuOnlineDowngrade"] as! String
+                    }
+                    if dict.keys.contains("CpuOnlineUpgrade") {
+                        self.cpuOnlineUpgrade = dict["CpuOnlineUpgrade"] as! String
+                    }
                     if dict.keys.contains("ImdsSupport") {
                         self.imdsSupport = dict["ImdsSupport"] as! String
+                    }
+                    if dict.keys.contains("MemoryOnlineDowngrade") {
+                        self.memoryOnlineDowngrade = dict["MemoryOnlineDowngrade"] as! String
+                    }
+                    if dict.keys.contains("MemoryOnlineUpgrade") {
+                        self.memoryOnlineUpgrade = dict["MemoryOnlineUpgrade"] as! String
                     }
                     if dict.keys.contains("NvmeSupport") {
                         self.nvmeSupport = dict["NvmeSupport"] as! String
