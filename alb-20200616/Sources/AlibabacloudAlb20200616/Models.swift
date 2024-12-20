@@ -2292,6 +2292,10 @@ public class CreateListenerRequest : Tea.TeaModel {
 
         public var XForwardedForEnabled: Bool?
 
+        public var XForwardedForHostEnabled: Bool?
+
+        public var XForwardedForProcessingMode: String?
+
         public var XForwardedForProtoEnabled: Bool?
 
         public var XForwardedForSLBIdEnabled: Bool?
@@ -2348,6 +2352,12 @@ public class CreateListenerRequest : Tea.TeaModel {
             if self.XForwardedForEnabled != nil {
                 map["XForwardedForEnabled"] = self.XForwardedForEnabled!
             }
+            if self.XForwardedForHostEnabled != nil {
+                map["XForwardedForHostEnabled"] = self.XForwardedForHostEnabled!
+            }
+            if self.XForwardedForProcessingMode != nil {
+                map["XForwardedForProcessingMode"] = self.XForwardedForProcessingMode!
+            }
             if self.XForwardedForProtoEnabled != nil {
                 map["XForwardedForProtoEnabled"] = self.XForwardedForProtoEnabled!
             }
@@ -2396,6 +2406,12 @@ public class CreateListenerRequest : Tea.TeaModel {
             }
             if dict.keys.contains("XForwardedForEnabled") {
                 self.XForwardedForEnabled = dict["XForwardedForEnabled"] as! Bool
+            }
+            if dict.keys.contains("XForwardedForHostEnabled") {
+                self.XForwardedForHostEnabled = dict["XForwardedForHostEnabled"] as! Bool
+            }
+            if dict.keys.contains("XForwardedForProcessingMode") {
+                self.XForwardedForProcessingMode = dict["XForwardedForProcessingMode"] as! String
             }
             if dict.keys.contains("XForwardedForProtoEnabled") {
                 self.XForwardedForProtoEnabled = dict["XForwardedForProtoEnabled"] as! Bool
@@ -10537,6 +10553,10 @@ public class GetListenerAttributeResponseBody : Tea.TeaModel {
 
         public var XForwardedForEnabled: Bool?
 
+        public var XForwardedForHostEnabled: Bool?
+
+        public var XForwardedForProcessingMode: String?
+
         public var XForwardedForProtoEnabled: Bool?
 
         public var XForwardedForSLBIdEnabled: Bool?
@@ -10593,6 +10613,12 @@ public class GetListenerAttributeResponseBody : Tea.TeaModel {
             if self.XForwardedForEnabled != nil {
                 map["XForwardedForEnabled"] = self.XForwardedForEnabled!
             }
+            if self.XForwardedForHostEnabled != nil {
+                map["XForwardedForHostEnabled"] = self.XForwardedForHostEnabled!
+            }
+            if self.XForwardedForProcessingMode != nil {
+                map["XForwardedForProcessingMode"] = self.XForwardedForProcessingMode!
+            }
             if self.XForwardedForProtoEnabled != nil {
                 map["XForwardedForProtoEnabled"] = self.XForwardedForProtoEnabled!
             }
@@ -10641,6 +10667,12 @@ public class GetListenerAttributeResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("XForwardedForEnabled") {
                 self.XForwardedForEnabled = dict["XForwardedForEnabled"] as! Bool
+            }
+            if dict.keys.contains("XForwardedForHostEnabled") {
+                self.XForwardedForHostEnabled = dict["XForwardedForHostEnabled"] as! Bool
+            }
+            if dict.keys.contains("XForwardedForProcessingMode") {
+                self.XForwardedForProcessingMode = dict["XForwardedForProcessingMode"] as! String
             }
             if dict.keys.contains("XForwardedForProtoEnabled") {
                 self.XForwardedForProtoEnabled = dict["XForwardedForProtoEnabled"] as! Bool
@@ -14777,6 +14809,10 @@ public class ListListenersResponseBody : Tea.TeaModel {
 
             public var XForwardedForEnabled: Bool?
 
+            public var XForwardedForHostEnabled: Bool?
+
+            public var XForwardedForProcessingMode: String?
+
             public var XForwardedForProtoEnabled: Bool?
 
             public var XForwardedForSLBIdEnabled: Bool?
@@ -14833,6 +14869,12 @@ public class ListListenersResponseBody : Tea.TeaModel {
                 if self.XForwardedForEnabled != nil {
                     map["XForwardedForEnabled"] = self.XForwardedForEnabled!
                 }
+                if self.XForwardedForHostEnabled != nil {
+                    map["XForwardedForHostEnabled"] = self.XForwardedForHostEnabled!
+                }
+                if self.XForwardedForProcessingMode != nil {
+                    map["XForwardedForProcessingMode"] = self.XForwardedForProcessingMode!
+                }
                 if self.XForwardedForProtoEnabled != nil {
                     map["XForwardedForProtoEnabled"] = self.XForwardedForProtoEnabled!
                 }
@@ -14881,6 +14923,12 @@ public class ListListenersResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("XForwardedForEnabled") {
                     self.XForwardedForEnabled = dict["XForwardedForEnabled"] as! Bool
+                }
+                if dict.keys.contains("XForwardedForHostEnabled") {
+                    self.XForwardedForHostEnabled = dict["XForwardedForHostEnabled"] as! Bool
+                }
+                if dict.keys.contains("XForwardedForProcessingMode") {
+                    self.XForwardedForProcessingMode = dict["XForwardedForProcessingMode"] as! String
                 }
                 if dict.keys.contains("XForwardedForProtoEnabled") {
                     self.XForwardedForProtoEnabled = dict["XForwardedForProtoEnabled"] as! Bool
@@ -22848,6 +22896,10 @@ public class UpdateListenerAttributeRequest : Tea.TeaModel {
 
         public var XForwardedForEnabled: Bool?
 
+        public var XForwardedForHostEnabled: Bool?
+
+        public var XForwardedForProcessingMode: String?
+
         public var XForwardedForProtoEnabled: Bool?
 
         public var XForwardedForSLBIdEnabled: Bool?
@@ -22904,6 +22956,12 @@ public class UpdateListenerAttributeRequest : Tea.TeaModel {
             if self.XForwardedForEnabled != nil {
                 map["XForwardedForEnabled"] = self.XForwardedForEnabled!
             }
+            if self.XForwardedForHostEnabled != nil {
+                map["XForwardedForHostEnabled"] = self.XForwardedForHostEnabled!
+            }
+            if self.XForwardedForProcessingMode != nil {
+                map["XForwardedForProcessingMode"] = self.XForwardedForProcessingMode!
+            }
             if self.XForwardedForProtoEnabled != nil {
                 map["XForwardedForProtoEnabled"] = self.XForwardedForProtoEnabled!
             }
@@ -22952,6 +23010,12 @@ public class UpdateListenerAttributeRequest : Tea.TeaModel {
             }
             if dict.keys.contains("XForwardedForEnabled") {
                 self.XForwardedForEnabled = dict["XForwardedForEnabled"] as! Bool
+            }
+            if dict.keys.contains("XForwardedForHostEnabled") {
+                self.XForwardedForHostEnabled = dict["XForwardedForHostEnabled"] as! Bool
+            }
+            if dict.keys.contains("XForwardedForProcessingMode") {
+                self.XForwardedForProcessingMode = dict["XForwardedForProcessingMode"] as! String
             }
             if dict.keys.contains("XForwardedForProtoEnabled") {
                 self.XForwardedForProtoEnabled = dict["XForwardedForProtoEnabled"] as! Bool
