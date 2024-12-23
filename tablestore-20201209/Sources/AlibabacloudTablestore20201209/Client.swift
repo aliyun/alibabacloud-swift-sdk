@@ -60,6 +60,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func checkInstancePolicyWithOptions(_ request: CheckInstancePolicyRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CheckInstancePolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceName)) {
+            body["InstanceName"] = request.instanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.policy)) {
+            body["Policy"] = request.policy ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CheckInstancePolicy",
+            "version": "2020-12-09",
+            "protocol": "HTTPS",
+            "pathname": "/v2/openapi/checkinstancepolicy",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CheckInstancePolicyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func checkInstancePolicy(_ request: CheckInstancePolicyRequest) async throws -> CheckInstancePolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await checkInstancePolicyWithOptions(request as! CheckInstancePolicyRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createInstanceWithOptions(_ request: CreateInstanceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -153,6 +189,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteInstancePolicyWithOptions(_ request: DeleteInstancePolicyRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteInstancePolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceName)) {
+            body["InstanceName"] = request.instanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.policyVersion)) {
+            body["PolicyVersion"] = request.policyVersion!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteInstancePolicy",
+            "version": "2020-12-09",
+            "protocol": "HTTPS",
+            "pathname": "/v2/openapi/deleteinstancepolicy",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteInstancePolicyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteInstancePolicy(_ request: DeleteInstancePolicyRequest) async throws -> DeleteInstancePolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteInstancePolicyWithOptions(request as! DeleteInstancePolicyRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeRegionsWithOptions(_ request: DescribeRegionsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeRegionsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -219,11 +291,19 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listInstancesWithOptions(_ request: ListInstancesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListInstancesResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listInstancesWithOptions(_ tmpReq: ListInstancesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListInstancesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListInstancesShrinkRequest = ListInstancesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.instanceNameList)) {
+            request.instanceNameListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.instanceNameList, "InstanceNameList", "simple")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.instanceName)) {
             query["InstanceName"] = request.instanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceNameListShrink)) {
+            query["InstanceNameList"] = request.instanceNameListShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             query["MaxResults"] = request.maxResults!;
@@ -443,5 +523,80 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateInstanceWithOptions(request as! UpdateInstanceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateInstanceElasticVCUUpperLimitWithOptions(_ request: UpdateInstanceElasticVCUUpperLimitRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateInstanceElasticVCUUpperLimitResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.elasticVCUUpperLimit)) {
+            body["ElasticVCUUpperLimit"] = request.elasticVCUUpperLimit!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceName)) {
+            body["InstanceName"] = request.instanceName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateInstanceElasticVCUUpperLimit",
+            "version": "2020-12-09",
+            "protocol": "HTTPS",
+            "pathname": "/v2/openapi/updateinstanceelasticvcuupperlimit",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateInstanceElasticVCUUpperLimitResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateInstanceElasticVCUUpperLimit(_ request: UpdateInstanceElasticVCUUpperLimitRequest) async throws -> UpdateInstanceElasticVCUUpperLimitResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateInstanceElasticVCUUpperLimitWithOptions(request as! UpdateInstanceElasticVCUUpperLimitRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateInstancePolicyWithOptions(_ request: UpdateInstancePolicyRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateInstancePolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceName)) {
+            body["InstanceName"] = request.instanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.policy)) {
+            body["Policy"] = request.policy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.policyVersion)) {
+            body["PolicyVersion"] = request.policyVersion!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateInstancePolicy",
+            "version": "2020-12-09",
+            "protocol": "HTTPS",
+            "pathname": "/v2/openapi/updateinstancepolicy",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateInstancePolicyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateInstancePolicy(_ request: UpdateInstancePolicyRequest) async throws -> UpdateInstancePolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateInstancePolicyWithOptions(request as! UpdateInstancePolicyRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 }
