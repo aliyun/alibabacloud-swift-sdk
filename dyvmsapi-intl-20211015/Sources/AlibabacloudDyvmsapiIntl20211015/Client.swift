@@ -339,4 +339,161 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await signalCallWithOptions(request as! SignalCallRequest, runtime as! TeaUtils.RuntimeOptions)
     }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func voiceGroupCallWithOptions(_ tmpReq: VoiceGroupCallRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> VoiceGroupCallResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: VoiceGroupCallShrinkRequest = VoiceGroupCallShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.calledNumber)) {
+            request.calledNumberShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.calledNumber, "CalledNumber", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.calledNumberShrink)) {
+            query["CalledNumber"] = request.calledNumberShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callerIdNumber)) {
+            query["CallerIdNumber"] = request.callerIdNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.countryId)) {
+            query["CountryId"] = request.countryId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outId)) {
+            query["OutId"] = request.outId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.playTimes)) {
+            query["PlayTimes"] = request.playTimes!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sendType)) {
+            query["SendType"] = request.sendType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.speed)) {
+            query["Speed"] = request.speed!;
+        }
+        if (!TeaUtils.Client.isUnset(request.taskName)) {
+            query["TaskName"] = request.taskName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timingStart)) {
+            query["TimingStart"] = request.timingStart ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ttsCode)) {
+            query["TtsCode"] = request.ttsCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ttsParam)) {
+            query["TtsParam"] = request.ttsParam ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.voiceCode)) {
+            query["VoiceCode"] = request.voiceCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.volume)) {
+            query["Volume"] = request.volume!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "VoiceGroupCall",
+            "version": "2021-10-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(VoiceGroupCallResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func voiceGroupCall(_ request: VoiceGroupCallRequest) async throws -> VoiceGroupCallResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await voiceGroupCallWithOptions(request as! VoiceGroupCallRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func voiceSingleCallWithOptions(_ request: VoiceSingleCallRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> VoiceSingleCallResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.calledNumber)) {
+            query["CalledNumber"] = request.calledNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callerIdNumber)) {
+            query["CallerIdNumber"] = request.callerIdNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.countryId)) {
+            query["CountryId"] = request.countryId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outId)) {
+            query["OutId"] = request.outId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.playTimes)) {
+            query["PlayTimes"] = request.playTimes!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sendType)) {
+            query["SendType"] = request.sendType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.speed)) {
+            query["Speed"] = request.speed!;
+        }
+        if (!TeaUtils.Client.isUnset(request.taskName)) {
+            query["TaskName"] = request.taskName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timingStart)) {
+            query["TimingStart"] = request.timingStart ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ttsCode)) {
+            query["TtsCode"] = request.ttsCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ttsParam)) {
+            query["TtsParam"] = request.ttsParam ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.voiceCode)) {
+            query["VoiceCode"] = request.voiceCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.volume)) {
+            query["Volume"] = request.volume!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "VoiceSingleCall",
+            "version": "2021-10-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(VoiceSingleCallResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func voiceSingleCall(_ request: VoiceSingleCallRequest) async throws -> VoiceSingleCallResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await voiceSingleCallWithOptions(request as! VoiceSingleCallRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
 }
