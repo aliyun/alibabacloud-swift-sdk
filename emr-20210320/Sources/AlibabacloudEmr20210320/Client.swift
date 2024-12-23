@@ -3102,6 +3102,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateClusterAttributeWithOptions(_ request: UpdateClusterAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateClusterAttributeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clusterId)) {
+            query["ClusterId"] = request.clusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clusterName)) {
+            query["ClusterName"] = request.clusterName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.deletionProtection)) {
+            query["DeletionProtection"] = request.deletionProtection!;
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateClusterAttribute",
+            "version": "2021-03-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateClusterAttributeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateClusterAttribute(_ request: UpdateClusterAttributeRequest) async throws -> UpdateClusterAttributeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateClusterAttributeWithOptions(request as! UpdateClusterAttributeRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateScriptWithOptions(_ tmpReq: UpdateScriptRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateScriptResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpdateScriptShrinkRequest = UpdateScriptShrinkRequest([:])
