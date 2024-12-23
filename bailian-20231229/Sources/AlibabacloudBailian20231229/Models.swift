@@ -876,11 +876,27 @@ public class CreateAndPulishAgentRequest : Tea.TeaModel {
             }
         }
         public class RagConfig : Tea.TeaModel {
+            public var answerScope: String?
+
             public var enableCitation: Bool?
 
             public var enableSearch: Bool?
 
+            public var enableWebSearch: Bool?
+
+            public var fixedReplyDetail: String?
+
             public var knowledgeBaseCodeList: [String]?
+
+            public var promptStrategy: String?
+
+            public var ragRejectType: String?
+
+            public var rejectFilterPrompt: String?
+
+            public var rejectFilterType: String?
+
+            public var retrieveMaxLength: Int32?
 
             public var topK: Int32?
 
@@ -898,14 +914,38 @@ public class CreateAndPulishAgentRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.answerScope != nil {
+                    map["answerScope"] = self.answerScope!
+                }
                 if self.enableCitation != nil {
                     map["enableCitation"] = self.enableCitation!
                 }
                 if self.enableSearch != nil {
                     map["enableSearch"] = self.enableSearch!
                 }
+                if self.enableWebSearch != nil {
+                    map["enableWebSearch"] = self.enableWebSearch!
+                }
+                if self.fixedReplyDetail != nil {
+                    map["fixedReplyDetail"] = self.fixedReplyDetail!
+                }
                 if self.knowledgeBaseCodeList != nil {
                     map["knowledgeBaseCodeList"] = self.knowledgeBaseCodeList!
+                }
+                if self.promptStrategy != nil {
+                    map["promptStrategy"] = self.promptStrategy!
+                }
+                if self.ragRejectType != nil {
+                    map["ragRejectType"] = self.ragRejectType!
+                }
+                if self.rejectFilterPrompt != nil {
+                    map["rejectFilterPrompt"] = self.rejectFilterPrompt!
+                }
+                if self.rejectFilterType != nil {
+                    map["rejectFilterType"] = self.rejectFilterType!
+                }
+                if self.retrieveMaxLength != nil {
+                    map["retrieveMaxLength"] = self.retrieveMaxLength!
                 }
                 if self.topK != nil {
                     map["topK"] = self.topK!
@@ -914,14 +954,38 @@ public class CreateAndPulishAgentRequest : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("answerScope") {
+                    self.answerScope = dict["answerScope"] as! String
+                }
                 if dict.keys.contains("enableCitation") {
                     self.enableCitation = dict["enableCitation"] as! Bool
                 }
                 if dict.keys.contains("enableSearch") {
                     self.enableSearch = dict["enableSearch"] as! Bool
                 }
+                if dict.keys.contains("enableWebSearch") {
+                    self.enableWebSearch = dict["enableWebSearch"] as! Bool
+                }
+                if dict.keys.contains("fixedReplyDetail") {
+                    self.fixedReplyDetail = dict["fixedReplyDetail"] as! String
+                }
                 if dict.keys.contains("knowledgeBaseCodeList") {
                     self.knowledgeBaseCodeList = dict["knowledgeBaseCodeList"] as! [String]
+                }
+                if dict.keys.contains("promptStrategy") {
+                    self.promptStrategy = dict["promptStrategy"] as! String
+                }
+                if dict.keys.contains("ragRejectType") {
+                    self.ragRejectType = dict["ragRejectType"] as! String
+                }
+                if dict.keys.contains("rejectFilterPrompt") {
+                    self.rejectFilterPrompt = dict["rejectFilterPrompt"] as! String
+                }
+                if dict.keys.contains("rejectFilterType") {
+                    self.rejectFilterType = dict["rejectFilterType"] as! String
+                }
+                if dict.keys.contains("retrieveMaxLength") {
+                    self.retrieveMaxLength = dict["retrieveMaxLength"] as! Int32
                 }
                 if dict.keys.contains("topK") {
                     self.topK = dict["topK"] as! Int32
@@ -1130,6 +1194,51 @@ public class CreateAndPulishAgentRequest : Tea.TeaModel {
             }
         }
     }
+    public class SampleLibrary : Tea.TeaModel {
+        public var enableSample: Bool?
+
+        public var sampleLibraryIdList: [String]?
+
+        public var topK: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enableSample != nil {
+                map["enableSample"] = self.enableSample!
+            }
+            if self.sampleLibraryIdList != nil {
+                map["sampleLibraryIdList"] = self.sampleLibraryIdList!
+            }
+            if self.topK != nil {
+                map["topK"] = self.topK!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("enableSample") {
+                self.enableSample = dict["enableSample"] as! Bool
+            }
+            if dict.keys.contains("sampleLibraryIdList") {
+                self.sampleLibraryIdList = dict["sampleLibraryIdList"] as! [String]
+            }
+            if dict.keys.contains("topK") {
+                self.topK = dict["topK"] as! Int32
+            }
+        }
+    }
     public var applicationConfig: CreateAndPulishAgentRequest.ApplicationConfig?
 
     public var instructions: String?
@@ -1137,6 +1246,8 @@ public class CreateAndPulishAgentRequest : Tea.TeaModel {
     public var modelId: String?
 
     public var name: String?
+
+    public var sampleLibrary: CreateAndPulishAgentRequest.SampleLibrary?
 
     public override init() {
         super.init()
@@ -1149,6 +1260,7 @@ public class CreateAndPulishAgentRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.applicationConfig?.validate()
+        try self.sampleLibrary?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -1164,6 +1276,9 @@ public class CreateAndPulishAgentRequest : Tea.TeaModel {
         }
         if self.name != nil {
             map["name"] = self.name!
+        }
+        if self.sampleLibrary != nil {
+            map["sampleLibrary"] = self.sampleLibrary?.toMap()
         }
         return map
     }
@@ -1183,6 +1298,11 @@ public class CreateAndPulishAgentRequest : Tea.TeaModel {
         if dict.keys.contains("name") {
             self.name = dict["name"] as! String
         }
+        if dict.keys.contains("sampleLibrary") {
+            var model = CreateAndPulishAgentRequest.SampleLibrary()
+            model.fromMap(dict["sampleLibrary"] as! [String: Any])
+            self.sampleLibrary = model
+        }
     }
 }
 
@@ -1194,6 +1314,8 @@ public class CreateAndPulishAgentShrinkRequest : Tea.TeaModel {
     public var modelId: String?
 
     public var name: String?
+
+    public var sampleLibraryShrink: String?
 
     public override init() {
         super.init()
@@ -1221,6 +1343,9 @@ public class CreateAndPulishAgentShrinkRequest : Tea.TeaModel {
         if self.name != nil {
             map["name"] = self.name!
         }
+        if self.sampleLibraryShrink != nil {
+            map["sampleLibrary"] = self.sampleLibraryShrink!
+        }
         return map
     }
 
@@ -1236,6 +1361,9 @@ public class CreateAndPulishAgentShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("name") {
             self.name = dict["name"] as! String
+        }
+        if dict.keys.contains("sampleLibrary") {
+            self.sampleLibraryShrink = dict["sampleLibrary"] as! String
         }
     }
 }
@@ -5217,6 +5345,8 @@ public class ListCategoryResponse : Tea.TeaModel {
 public class ListChunksRequest : Tea.TeaModel {
     public var fields: [String]?
 
+    public var fileId: String?
+
     public var filed: String?
 
     public var indexId: String?
@@ -5242,6 +5372,9 @@ public class ListChunksRequest : Tea.TeaModel {
         if self.fields != nil {
             map["Fields"] = self.fields!
         }
+        if self.fileId != nil {
+            map["FileId"] = self.fileId!
+        }
         if self.filed != nil {
             map["Filed"] = self.filed!
         }
@@ -5260,6 +5393,9 @@ public class ListChunksRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Fields") {
             self.fields = dict["Fields"] as! [String]
+        }
+        if dict.keys.contains("FileId") {
+            self.fileId = dict["FileId"] as! String
         }
         if dict.keys.contains("Filed") {
             self.filed = dict["Filed"] as! String
@@ -9008,11 +9144,27 @@ public class UpdateAndPublishAgentRequest : Tea.TeaModel {
             }
         }
         public class RagConfig : Tea.TeaModel {
+            public var answerScope: String?
+
             public var enableCitation: Bool?
 
             public var enableSearch: Bool?
 
+            public var enableWebSearch: Bool?
+
+            public var fixedReplyDetail: String?
+
             public var knowledgeBaseCodeList: [String]?
+
+            public var promptStrategy: String?
+
+            public var ragRejectType: String?
+
+            public var rejectFilterPrompt: String?
+
+            public var rejectFilterType: String?
+
+            public var retrieveMaxLength: Int32?
 
             public var topK: Int32?
 
@@ -9030,14 +9182,38 @@ public class UpdateAndPublishAgentRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.answerScope != nil {
+                    map["answerScope"] = self.answerScope!
+                }
                 if self.enableCitation != nil {
                     map["enableCitation"] = self.enableCitation!
                 }
                 if self.enableSearch != nil {
                     map["enableSearch"] = self.enableSearch!
                 }
+                if self.enableWebSearch != nil {
+                    map["enableWebSearch"] = self.enableWebSearch!
+                }
+                if self.fixedReplyDetail != nil {
+                    map["fixedReplyDetail"] = self.fixedReplyDetail!
+                }
                 if self.knowledgeBaseCodeList != nil {
                     map["knowledgeBaseCodeList"] = self.knowledgeBaseCodeList!
+                }
+                if self.promptStrategy != nil {
+                    map["promptStrategy"] = self.promptStrategy!
+                }
+                if self.ragRejectType != nil {
+                    map["ragRejectType"] = self.ragRejectType!
+                }
+                if self.rejectFilterPrompt != nil {
+                    map["rejectFilterPrompt"] = self.rejectFilterPrompt!
+                }
+                if self.rejectFilterType != nil {
+                    map["rejectFilterType"] = self.rejectFilterType!
+                }
+                if self.retrieveMaxLength != nil {
+                    map["retrieveMaxLength"] = self.retrieveMaxLength!
                 }
                 if self.topK != nil {
                     map["topK"] = self.topK!
@@ -9046,14 +9222,38 @@ public class UpdateAndPublishAgentRequest : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("answerScope") {
+                    self.answerScope = dict["answerScope"] as! String
+                }
                 if dict.keys.contains("enableCitation") {
                     self.enableCitation = dict["enableCitation"] as! Bool
                 }
                 if dict.keys.contains("enableSearch") {
                     self.enableSearch = dict["enableSearch"] as! Bool
                 }
+                if dict.keys.contains("enableWebSearch") {
+                    self.enableWebSearch = dict["enableWebSearch"] as! Bool
+                }
+                if dict.keys.contains("fixedReplyDetail") {
+                    self.fixedReplyDetail = dict["fixedReplyDetail"] as! String
+                }
                 if dict.keys.contains("knowledgeBaseCodeList") {
                     self.knowledgeBaseCodeList = dict["knowledgeBaseCodeList"] as! [String]
+                }
+                if dict.keys.contains("promptStrategy") {
+                    self.promptStrategy = dict["promptStrategy"] as! String
+                }
+                if dict.keys.contains("ragRejectType") {
+                    self.ragRejectType = dict["ragRejectType"] as! String
+                }
+                if dict.keys.contains("rejectFilterPrompt") {
+                    self.rejectFilterPrompt = dict["rejectFilterPrompt"] as! String
+                }
+                if dict.keys.contains("rejectFilterType") {
+                    self.rejectFilterType = dict["rejectFilterType"] as! String
+                }
+                if dict.keys.contains("retrieveMaxLength") {
+                    self.retrieveMaxLength = dict["retrieveMaxLength"] as! Int32
                 }
                 if dict.keys.contains("topK") {
                     self.topK = dict["topK"] as! Int32
@@ -9262,6 +9462,51 @@ public class UpdateAndPublishAgentRequest : Tea.TeaModel {
             }
         }
     }
+    public class SampleLibrary : Tea.TeaModel {
+        public var enableSample: Bool?
+
+        public var sampleLibraryIdList: [String]?
+
+        public var topK: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enableSample != nil {
+                map["enableSample"] = self.enableSample!
+            }
+            if self.sampleLibraryIdList != nil {
+                map["sampleLibraryIdList"] = self.sampleLibraryIdList!
+            }
+            if self.topK != nil {
+                map["topK"] = self.topK!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("enableSample") {
+                self.enableSample = dict["enableSample"] as! Bool
+            }
+            if dict.keys.contains("sampleLibraryIdList") {
+                self.sampleLibraryIdList = dict["sampleLibraryIdList"] as! [String]
+            }
+            if dict.keys.contains("topK") {
+                self.topK = dict["topK"] as! Int32
+            }
+        }
+    }
     public var applicationConfig: UpdateAndPublishAgentRequest.ApplicationConfig?
 
     public var instructions: String?
@@ -9269,6 +9514,8 @@ public class UpdateAndPublishAgentRequest : Tea.TeaModel {
     public var modelId: String?
 
     public var name: String?
+
+    public var sampleLibrary: UpdateAndPublishAgentRequest.SampleLibrary?
 
     public override init() {
         super.init()
@@ -9281,6 +9528,7 @@ public class UpdateAndPublishAgentRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.applicationConfig?.validate()
+        try self.sampleLibrary?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -9296,6 +9544,9 @@ public class UpdateAndPublishAgentRequest : Tea.TeaModel {
         }
         if self.name != nil {
             map["name"] = self.name!
+        }
+        if self.sampleLibrary != nil {
+            map["sampleLibrary"] = self.sampleLibrary?.toMap()
         }
         return map
     }
@@ -9315,6 +9566,11 @@ public class UpdateAndPublishAgentRequest : Tea.TeaModel {
         if dict.keys.contains("name") {
             self.name = dict["name"] as! String
         }
+        if dict.keys.contains("sampleLibrary") {
+            var model = UpdateAndPublishAgentRequest.SampleLibrary()
+            model.fromMap(dict["sampleLibrary"] as! [String: Any])
+            self.sampleLibrary = model
+        }
     }
 }
 
@@ -9326,6 +9582,8 @@ public class UpdateAndPublishAgentShrinkRequest : Tea.TeaModel {
     public var modelId: String?
 
     public var name: String?
+
+    public var sampleLibraryShrink: String?
 
     public override init() {
         super.init()
@@ -9353,6 +9611,9 @@ public class UpdateAndPublishAgentShrinkRequest : Tea.TeaModel {
         if self.name != nil {
             map["name"] = self.name!
         }
+        if self.sampleLibraryShrink != nil {
+            map["sampleLibrary"] = self.sampleLibraryShrink!
+        }
         return map
     }
 
@@ -9368,6 +9629,9 @@ public class UpdateAndPublishAgentShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("name") {
             self.name = dict["name"] as! String
+        }
+        if dict.keys.contains("sampleLibrary") {
+            self.sampleLibraryShrink = dict["sampleLibrary"] as! String
         }
     }
 }
@@ -9485,6 +9749,755 @@ public class UpdateAndPublishAgentResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = UpdateAndPublishAgentResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateAndPublishAgentSelectiveRequest : Tea.TeaModel {
+    public class ApplicationConfig : Tea.TeaModel {
+        public class HistoryConfig : Tea.TeaModel {
+            public var enableAdbRecord: Bool?
+
+            public var enableRecord: Bool?
+
+            public var instanceId: String?
+
+            public var region: String?
+
+            public var storeCode: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enableAdbRecord != nil {
+                    map["enableAdbRecord"] = self.enableAdbRecord!
+                }
+                if self.enableRecord != nil {
+                    map["enableRecord"] = self.enableRecord!
+                }
+                if self.instanceId != nil {
+                    map["instanceId"] = self.instanceId!
+                }
+                if self.region != nil {
+                    map["region"] = self.region!
+                }
+                if self.storeCode != nil {
+                    map["storeCode"] = self.storeCode!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("enableAdbRecord") {
+                    self.enableAdbRecord = dict["enableAdbRecord"] as! Bool
+                }
+                if dict.keys.contains("enableRecord") {
+                    self.enableRecord = dict["enableRecord"] as! Bool
+                }
+                if dict.keys.contains("instanceId") {
+                    self.instanceId = dict["instanceId"] as! String
+                }
+                if dict.keys.contains("region") {
+                    self.region = dict["region"] as! String
+                }
+                if dict.keys.contains("storeCode") {
+                    self.storeCode = dict["storeCode"] as! String
+                }
+            }
+        }
+        public class LongTermMemory : Tea.TeaModel {
+            public var enable: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enable != nil {
+                    map["enable"] = self.enable!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("enable") {
+                    self.enable = dict["enable"] as! Bool
+                }
+            }
+        }
+        public class Parameters : Tea.TeaModel {
+            public var dialogRound: Int32?
+
+            public var maxTokens: Int32?
+
+            public var temperature: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dialogRound != nil {
+                    map["dialogRound"] = self.dialogRound!
+                }
+                if self.maxTokens != nil {
+                    map["maxTokens"] = self.maxTokens!
+                }
+                if self.temperature != nil {
+                    map["temperature"] = self.temperature!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("dialogRound") {
+                    self.dialogRound = dict["dialogRound"] as! Int32
+                }
+                if dict.keys.contains("maxTokens") {
+                    self.maxTokens = dict["maxTokens"] as! Int32
+                }
+                if dict.keys.contains("temperature") {
+                    self.temperature = dict["temperature"] as! Double
+                }
+            }
+        }
+        public class RagConfig : Tea.TeaModel {
+            public var answerScope: String?
+
+            public var enableCitation: Bool?
+
+            public var enableSearch: Bool?
+
+            public var enableWebSearch: String?
+
+            public var fixedReplyDetail: String?
+
+            public var knowledgeBaseCodeList: [String]?
+
+            public var promptStrategy: String?
+
+            public var ragRejectType: String?
+
+            public var rejectFilterPrompt: String?
+
+            public var rejectFilterType: String?
+
+            public var retrieveMaxLength: Int32?
+
+            public var topK: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.answerScope != nil {
+                    map["answerScope"] = self.answerScope!
+                }
+                if self.enableCitation != nil {
+                    map["enableCitation"] = self.enableCitation!
+                }
+                if self.enableSearch != nil {
+                    map["enableSearch"] = self.enableSearch!
+                }
+                if self.enableWebSearch != nil {
+                    map["enableWebSearch"] = self.enableWebSearch!
+                }
+                if self.fixedReplyDetail != nil {
+                    map["fixedReplyDetail"] = self.fixedReplyDetail!
+                }
+                if self.knowledgeBaseCodeList != nil {
+                    map["knowledgeBaseCodeList"] = self.knowledgeBaseCodeList!
+                }
+                if self.promptStrategy != nil {
+                    map["promptStrategy"] = self.promptStrategy!
+                }
+                if self.ragRejectType != nil {
+                    map["ragRejectType"] = self.ragRejectType!
+                }
+                if self.rejectFilterPrompt != nil {
+                    map["rejectFilterPrompt"] = self.rejectFilterPrompt!
+                }
+                if self.rejectFilterType != nil {
+                    map["rejectFilterType"] = self.rejectFilterType!
+                }
+                if self.retrieveMaxLength != nil {
+                    map["retrieveMaxLength"] = self.retrieveMaxLength!
+                }
+                if self.topK != nil {
+                    map["topK"] = self.topK!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("answerScope") {
+                    self.answerScope = dict["answerScope"] as! String
+                }
+                if dict.keys.contains("enableCitation") {
+                    self.enableCitation = dict["enableCitation"] as! Bool
+                }
+                if dict.keys.contains("enableSearch") {
+                    self.enableSearch = dict["enableSearch"] as! Bool
+                }
+                if dict.keys.contains("enableWebSearch") {
+                    self.enableWebSearch = dict["enableWebSearch"] as! String
+                }
+                if dict.keys.contains("fixedReplyDetail") {
+                    self.fixedReplyDetail = dict["fixedReplyDetail"] as! String
+                }
+                if dict.keys.contains("knowledgeBaseCodeList") {
+                    self.knowledgeBaseCodeList = dict["knowledgeBaseCodeList"] as! [String]
+                }
+                if dict.keys.contains("promptStrategy") {
+                    self.promptStrategy = dict["promptStrategy"] as! String
+                }
+                if dict.keys.contains("ragRejectType") {
+                    self.ragRejectType = dict["ragRejectType"] as! String
+                }
+                if dict.keys.contains("rejectFilterPrompt") {
+                    self.rejectFilterPrompt = dict["rejectFilterPrompt"] as! String
+                }
+                if dict.keys.contains("rejectFilterType") {
+                    self.rejectFilterType = dict["rejectFilterType"] as! String
+                }
+                if dict.keys.contains("retrieveMaxLength") {
+                    self.retrieveMaxLength = dict["retrieveMaxLength"] as! Int32
+                }
+                if dict.keys.contains("topK") {
+                    self.topK = dict["topK"] as! Int32
+                }
+            }
+        }
+        public class Security : Tea.TeaModel {
+            public var processingStrategy: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.processingStrategy != nil {
+                    map["processingStrategy"] = self.processingStrategy!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("processingStrategy") {
+                    self.processingStrategy = dict["processingStrategy"] as! String
+                }
+            }
+        }
+        public class Tools : Tea.TeaModel {
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("type") {
+                    self.type = dict["type"] as! String
+                }
+            }
+        }
+        public class WorkFlows : Tea.TeaModel {
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("type") {
+                    self.type = dict["type"] as! String
+                }
+            }
+        }
+        public var historyConfig: UpdateAndPublishAgentSelectiveRequest.ApplicationConfig.HistoryConfig?
+
+        public var longTermMemory: UpdateAndPublishAgentSelectiveRequest.ApplicationConfig.LongTermMemory?
+
+        public var parameters: UpdateAndPublishAgentSelectiveRequest.ApplicationConfig.Parameters?
+
+        public var ragConfig: UpdateAndPublishAgentSelectiveRequest.ApplicationConfig.RagConfig?
+
+        public var security: UpdateAndPublishAgentSelectiveRequest.ApplicationConfig.Security?
+
+        public var tools: [UpdateAndPublishAgentSelectiveRequest.ApplicationConfig.Tools]?
+
+        public var workFlows: [UpdateAndPublishAgentSelectiveRequest.ApplicationConfig.WorkFlows]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.historyConfig?.validate()
+            try self.longTermMemory?.validate()
+            try self.parameters?.validate()
+            try self.ragConfig?.validate()
+            try self.security?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.historyConfig != nil {
+                map["historyConfig"] = self.historyConfig?.toMap()
+            }
+            if self.longTermMemory != nil {
+                map["longTermMemory"] = self.longTermMemory?.toMap()
+            }
+            if self.parameters != nil {
+                map["parameters"] = self.parameters?.toMap()
+            }
+            if self.ragConfig != nil {
+                map["ragConfig"] = self.ragConfig?.toMap()
+            }
+            if self.security != nil {
+                map["security"] = self.security?.toMap()
+            }
+            if self.tools != nil {
+                var tmp : [Any] = []
+                for k in self.tools! {
+                    tmp.append(k.toMap())
+                }
+                map["tools"] = tmp
+            }
+            if self.workFlows != nil {
+                var tmp : [Any] = []
+                for k in self.workFlows! {
+                    tmp.append(k.toMap())
+                }
+                map["workFlows"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("historyConfig") {
+                var model = UpdateAndPublishAgentSelectiveRequest.ApplicationConfig.HistoryConfig()
+                model.fromMap(dict["historyConfig"] as! [String: Any])
+                self.historyConfig = model
+            }
+            if dict.keys.contains("longTermMemory") {
+                var model = UpdateAndPublishAgentSelectiveRequest.ApplicationConfig.LongTermMemory()
+                model.fromMap(dict["longTermMemory"] as! [String: Any])
+                self.longTermMemory = model
+            }
+            if dict.keys.contains("parameters") {
+                var model = UpdateAndPublishAgentSelectiveRequest.ApplicationConfig.Parameters()
+                model.fromMap(dict["parameters"] as! [String: Any])
+                self.parameters = model
+            }
+            if dict.keys.contains("ragConfig") {
+                var model = UpdateAndPublishAgentSelectiveRequest.ApplicationConfig.RagConfig()
+                model.fromMap(dict["ragConfig"] as! [String: Any])
+                self.ragConfig = model
+            }
+            if dict.keys.contains("security") {
+                var model = UpdateAndPublishAgentSelectiveRequest.ApplicationConfig.Security()
+                model.fromMap(dict["security"] as! [String: Any])
+                self.security = model
+            }
+            if dict.keys.contains("tools") {
+                var tmp : [UpdateAndPublishAgentSelectiveRequest.ApplicationConfig.Tools] = []
+                for v in dict["tools"] as! [Any] {
+                    var model = UpdateAndPublishAgentSelectiveRequest.ApplicationConfig.Tools()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tools = tmp
+            }
+            if dict.keys.contains("workFlows") {
+                var tmp : [UpdateAndPublishAgentSelectiveRequest.ApplicationConfig.WorkFlows] = []
+                for v in dict["workFlows"] as! [Any] {
+                    var model = UpdateAndPublishAgentSelectiveRequest.ApplicationConfig.WorkFlows()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.workFlows = tmp
+            }
+        }
+    }
+    public class SampleLibrary : Tea.TeaModel {
+        public var enableSample: Bool?
+
+        public var sampleLibraryIdList: [String]?
+
+        public var topK: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enableSample != nil {
+                map["enableSample"] = self.enableSample!
+            }
+            if self.sampleLibraryIdList != nil {
+                map["sampleLibraryIdList"] = self.sampleLibraryIdList!
+            }
+            if self.topK != nil {
+                map["topK"] = self.topK!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("enableSample") {
+                self.enableSample = dict["enableSample"] as! Bool
+            }
+            if dict.keys.contains("sampleLibraryIdList") {
+                self.sampleLibraryIdList = dict["sampleLibraryIdList"] as! [String]
+            }
+            if dict.keys.contains("topK") {
+                self.topK = dict["topK"] as! Int32
+            }
+        }
+    }
+    public var applicationConfig: UpdateAndPublishAgentSelectiveRequest.ApplicationConfig?
+
+    public var instructions: String?
+
+    public var modelId: String?
+
+    public var name: String?
+
+    public var sampleLibrary: UpdateAndPublishAgentSelectiveRequest.SampleLibrary?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.applicationConfig?.validate()
+        try self.sampleLibrary?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationConfig != nil {
+            map["applicationConfig"] = self.applicationConfig?.toMap()
+        }
+        if self.instructions != nil {
+            map["instructions"] = self.instructions!
+        }
+        if self.modelId != nil {
+            map["modelId"] = self.modelId!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.sampleLibrary != nil {
+            map["sampleLibrary"] = self.sampleLibrary?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("applicationConfig") {
+            var model = UpdateAndPublishAgentSelectiveRequest.ApplicationConfig()
+            model.fromMap(dict["applicationConfig"] as! [String: Any])
+            self.applicationConfig = model
+        }
+        if dict.keys.contains("instructions") {
+            self.instructions = dict["instructions"] as! String
+        }
+        if dict.keys.contains("modelId") {
+            self.modelId = dict["modelId"] as! String
+        }
+        if dict.keys.contains("name") {
+            self.name = dict["name"] as! String
+        }
+        if dict.keys.contains("sampleLibrary") {
+            var model = UpdateAndPublishAgentSelectiveRequest.SampleLibrary()
+            model.fromMap(dict["sampleLibrary"] as! [String: Any])
+            self.sampleLibrary = model
+        }
+    }
+}
+
+public class UpdateAndPublishAgentSelectiveShrinkRequest : Tea.TeaModel {
+    public var applicationConfigShrink: String?
+
+    public var instructions: String?
+
+    public var modelId: String?
+
+    public var name: String?
+
+    public var sampleLibraryShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationConfigShrink != nil {
+            map["applicationConfig"] = self.applicationConfigShrink!
+        }
+        if self.instructions != nil {
+            map["instructions"] = self.instructions!
+        }
+        if self.modelId != nil {
+            map["modelId"] = self.modelId!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.sampleLibraryShrink != nil {
+            map["sampleLibrary"] = self.sampleLibraryShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("applicationConfig") {
+            self.applicationConfigShrink = dict["applicationConfig"] as! String
+        }
+        if dict.keys.contains("instructions") {
+            self.instructions = dict["instructions"] as! String
+        }
+        if dict.keys.contains("modelId") {
+            self.modelId = dict["modelId"] as! String
+        }
+        if dict.keys.contains("name") {
+            self.name = dict["name"] as! String
+        }
+        if dict.keys.contains("sampleLibrary") {
+            self.sampleLibraryShrink = dict["sampleLibrary"] as! String
+        }
+    }
+}
+
+public class UpdateAndPublishAgentSelectiveResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var data: String?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data!
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") {
+            self.code = dict["code"] as! String
+        }
+        if dict.keys.contains("data") {
+            self.data = dict["data"] as! String
+        }
+        if dict.keys.contains("httpStatusCode") {
+            self.httpStatusCode = dict["httpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("message") {
+            self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class UpdateAndPublishAgentSelectiveResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateAndPublishAgentSelectiveResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateAndPublishAgentSelectiveResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

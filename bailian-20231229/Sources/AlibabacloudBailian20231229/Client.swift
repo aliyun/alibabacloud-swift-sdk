@@ -156,6 +156,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.applicationConfig)) {
             request.applicationConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.applicationConfig, "applicationConfig", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.sampleLibrary)) {
+            request.sampleLibraryShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sampleLibrary, "sampleLibrary", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.applicationConfigShrink)) {
             body["applicationConfig"] = request.applicationConfigShrink ?? "";
@@ -168,6 +171,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             body["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sampleLibraryShrink)) {
+            body["sampleLibrary"] = request.sampleLibraryShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -860,6 +866,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.fields)) {
             body["Fields"] = request.fields ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.fileId)) {
+            body["FileId"] = request.fileId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.filed)) {
             body["Filed"] = request.filed ?? "";
         }
@@ -1348,6 +1357,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.applicationConfig)) {
             request.applicationConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.applicationConfig, "applicationConfig", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.sampleLibrary)) {
+            request.sampleLibraryShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sampleLibrary, "sampleLibrary", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.applicationConfigShrink)) {
             body["applicationConfig"] = request.applicationConfigShrink ?? "";
@@ -1360,6 +1372,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             body["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sampleLibraryShrink)) {
+            body["sampleLibrary"] = request.sampleLibraryShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -1385,6 +1400,59 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateAndPublishAgentWithOptions(workspaceId as! String, appCode as! String, request as! UpdateAndPublishAgentRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAndPublishAgentSelectiveWithOptions(_ workspaceId: String, _ appCode: String, _ tmpReq: UpdateAndPublishAgentSelectiveRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAndPublishAgentSelectiveResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateAndPublishAgentSelectiveShrinkRequest = UpdateAndPublishAgentSelectiveShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.applicationConfig)) {
+            request.applicationConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.applicationConfig, "applicationConfig", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.sampleLibrary)) {
+            request.sampleLibraryShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sampleLibrary, "sampleLibrary", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applicationConfigShrink)) {
+            body["applicationConfig"] = request.applicationConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instructions)) {
+            body["instructions"] = request.instructions ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelId)) {
+            body["modelId"] = request.modelId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sampleLibraryShrink)) {
+            body["sampleLibrary"] = request.sampleLibraryShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateAndPublishAgentSelective",
+            "version": "2023-12-29",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/application/agents/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(appCode)) + "/updateAndPublishAgentSelective",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateAndPublishAgentSelectiveResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateAndPublishAgentSelective(_ workspaceId: String, _ appCode: String, _ request: UpdateAndPublishAgentSelectiveRequest) async throws -> UpdateAndPublishAgentSelectiveResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateAndPublishAgentSelectiveWithOptions(workspaceId as! String, appCode as! String, request as! UpdateAndPublishAgentSelectiveRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
