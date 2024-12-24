@@ -39581,6 +39581,53 @@ public class ListSearchLibRequest : Tea.TeaModel {
 
 public class ListSearchLibResponseBody : Tea.TeaModel {
     public class SearchLibInfoList : Tea.TeaModel {
+        public class IndexInfo : Tea.TeaModel {
+            public var indexReadiness: String?
+
+            public var indexStatus: String?
+
+            public var indexType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.indexReadiness != nil {
+                    map["IndexReadiness"] = self.indexReadiness!
+                }
+                if self.indexStatus != nil {
+                    map["IndexStatus"] = self.indexStatus!
+                }
+                if self.indexType != nil {
+                    map["IndexType"] = self.indexType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("IndexReadiness") {
+                    self.indexReadiness = dict["IndexReadiness"] as! String
+                }
+                if dict.keys.contains("IndexStatus") {
+                    self.indexStatus = dict["IndexStatus"] as! String
+                }
+                if dict.keys.contains("IndexType") {
+                    self.indexType = dict["IndexType"] as! String
+                }
+            }
+        }
+        public var indexInfo: [ListSearchLibResponseBody.SearchLibInfoList.IndexInfo]?
+
         public var searchLibName: String?
 
         public var status: String?
@@ -39599,6 +39646,13 @@ public class ListSearchLibResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.indexInfo != nil {
+                var tmp : [Any] = []
+                for k in self.indexInfo! {
+                    tmp.append(k.toMap())
+                }
+                map["IndexInfo"] = tmp
+            }
             if self.searchLibName != nil {
                 map["SearchLibName"] = self.searchLibName!
             }
@@ -39609,6 +39663,17 @@ public class ListSearchLibResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("IndexInfo") {
+                var tmp : [ListSearchLibResponseBody.SearchLibInfoList.IndexInfo] = []
+                for v in dict["IndexInfo"] as! [Any] {
+                    var model = ListSearchLibResponseBody.SearchLibInfoList.IndexInfo()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.indexInfo = tmp
+            }
             if dict.keys.contains("SearchLibName") {
                 self.searchLibName = dict["SearchLibName"] as! String
             }
@@ -47355,7 +47420,54 @@ public class QuerySearchLibRequest : Tea.TeaModel {
 }
 
 public class QuerySearchLibResponseBody : Tea.TeaModel {
+    public class IndexInfo : Tea.TeaModel {
+        public var indexReadiness: String?
+
+        public var indexStatus: String?
+
+        public var indexType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.indexReadiness != nil {
+                map["IndexReadiness"] = self.indexReadiness!
+            }
+            if self.indexStatus != nil {
+                map["IndexStatus"] = self.indexStatus!
+            }
+            if self.indexType != nil {
+                map["IndexType"] = self.indexType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("IndexReadiness") {
+                self.indexReadiness = dict["IndexReadiness"] as! String
+            }
+            if dict.keys.contains("IndexStatus") {
+                self.indexStatus = dict["IndexStatus"] as! String
+            }
+            if dict.keys.contains("IndexType") {
+                self.indexType = dict["IndexType"] as! String
+            }
+        }
+    }
     public var code: String?
+
+    public var indexInfo: [QuerySearchLibResponseBody.IndexInfo]?
 
     public var requestId: String?
 
@@ -47382,6 +47494,13 @@ public class QuerySearchLibResponseBody : Tea.TeaModel {
         if self.code != nil {
             map["Code"] = self.code!
         }
+        if self.indexInfo != nil {
+            var tmp : [Any] = []
+            for k in self.indexInfo! {
+                tmp.append(k.toMap())
+            }
+            map["IndexInfo"] = tmp
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -47400,6 +47519,17 @@ public class QuerySearchLibResponseBody : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("IndexInfo") {
+            var tmp : [QuerySearchLibResponseBody.IndexInfo] = []
+            for v in dict["IndexInfo"] as! [Any] {
+                var model = QuerySearchLibResponseBody.IndexInfo()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.indexInfo = tmp
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
