@@ -2023,6 +2023,916 @@ public class CancelJobRunResponse : Tea.TeaModel {
     }
 }
 
+public class CreateProcessDefinitionWithScheduleRequest : Tea.TeaModel {
+    public class Schedule : Tea.TeaModel {
+        public var crontab: String?
+
+        public var endTime: String?
+
+        public var startTime: String?
+
+        public var timezoneId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.crontab != nil {
+                map["crontab"] = self.crontab!
+            }
+            if self.endTime != nil {
+                map["endTime"] = self.endTime!
+            }
+            if self.startTime != nil {
+                map["startTime"] = self.startTime!
+            }
+            if self.timezoneId != nil {
+                map["timezoneId"] = self.timezoneId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("crontab") {
+                self.crontab = dict["crontab"] as! String
+            }
+            if dict.keys.contains("endTime") {
+                self.endTime = dict["endTime"] as! String
+            }
+            if dict.keys.contains("startTime") {
+                self.startTime = dict["startTime"] as! String
+            }
+            if dict.keys.contains("timezoneId") {
+                self.timezoneId = dict["timezoneId"] as! String
+            }
+        }
+    }
+    public class TaskDefinitionJson : Tea.TeaModel {
+        public class TaskParams : Tea.TeaModel {
+            public class SparkConf : Tea.TeaModel {
+                public var key: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.key != nil {
+                        map["key"] = self.key!
+                    }
+                    if self.value != nil {
+                        map["value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("key") {
+                        self.key = dict["key"] as! String
+                    }
+                    if dict.keys.contains("value") {
+                        self.value = dict["value"] as! String
+                    }
+                }
+            }
+            public var displaySparkVersion: String?
+
+            public var environmentId: String?
+
+            public var fusion: Bool?
+
+            public var resourceQueueId: String?
+
+            public var sparkConf: [CreateProcessDefinitionWithScheduleRequest.TaskDefinitionJson.TaskParams.SparkConf]?
+
+            public var sparkDriverCores: Int32?
+
+            public var sparkDriverMemory: Int64?
+
+            public var sparkExecutorCores: Int32?
+
+            public var sparkExecutorMemory: Int64?
+
+            public var sparkLogLevel: String?
+
+            public var sparkLogPath: String?
+
+            public var sparkVersion: String?
+
+            public var taskBizId: String?
+
+            public var type: String?
+
+            public var workspaceBizId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.displaySparkVersion != nil {
+                    map["displaySparkVersion"] = self.displaySparkVersion!
+                }
+                if self.environmentId != nil {
+                    map["environmentId"] = self.environmentId!
+                }
+                if self.fusion != nil {
+                    map["fusion"] = self.fusion!
+                }
+                if self.resourceQueueId != nil {
+                    map["resourceQueueId"] = self.resourceQueueId!
+                }
+                if self.sparkConf != nil {
+                    var tmp : [Any] = []
+                    for k in self.sparkConf! {
+                        tmp.append(k.toMap())
+                    }
+                    map["sparkConf"] = tmp
+                }
+                if self.sparkDriverCores != nil {
+                    map["sparkDriverCores"] = self.sparkDriverCores!
+                }
+                if self.sparkDriverMemory != nil {
+                    map["sparkDriverMemory"] = self.sparkDriverMemory!
+                }
+                if self.sparkExecutorCores != nil {
+                    map["sparkExecutorCores"] = self.sparkExecutorCores!
+                }
+                if self.sparkExecutorMemory != nil {
+                    map["sparkExecutorMemory"] = self.sparkExecutorMemory!
+                }
+                if self.sparkLogLevel != nil {
+                    map["sparkLogLevel"] = self.sparkLogLevel!
+                }
+                if self.sparkLogPath != nil {
+                    map["sparkLogPath"] = self.sparkLogPath!
+                }
+                if self.sparkVersion != nil {
+                    map["sparkVersion"] = self.sparkVersion!
+                }
+                if self.taskBizId != nil {
+                    map["taskBizId"] = self.taskBizId!
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                if self.workspaceBizId != nil {
+                    map["workspaceBizId"] = self.workspaceBizId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("displaySparkVersion") {
+                    self.displaySparkVersion = dict["displaySparkVersion"] as! String
+                }
+                if dict.keys.contains("environmentId") {
+                    self.environmentId = dict["environmentId"] as! String
+                }
+                if dict.keys.contains("fusion") {
+                    self.fusion = dict["fusion"] as! Bool
+                }
+                if dict.keys.contains("resourceQueueId") {
+                    self.resourceQueueId = dict["resourceQueueId"] as! String
+                }
+                if dict.keys.contains("sparkConf") {
+                    var tmp : [CreateProcessDefinitionWithScheduleRequest.TaskDefinitionJson.TaskParams.SparkConf] = []
+                    for v in dict["sparkConf"] as! [Any] {
+                        var model = CreateProcessDefinitionWithScheduleRequest.TaskDefinitionJson.TaskParams.SparkConf()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.sparkConf = tmp
+                }
+                if dict.keys.contains("sparkDriverCores") {
+                    self.sparkDriverCores = dict["sparkDriverCores"] as! Int32
+                }
+                if dict.keys.contains("sparkDriverMemory") {
+                    self.sparkDriverMemory = dict["sparkDriverMemory"] as! Int64
+                }
+                if dict.keys.contains("sparkExecutorCores") {
+                    self.sparkExecutorCores = dict["sparkExecutorCores"] as! Int32
+                }
+                if dict.keys.contains("sparkExecutorMemory") {
+                    self.sparkExecutorMemory = dict["sparkExecutorMemory"] as! Int64
+                }
+                if dict.keys.contains("sparkLogLevel") {
+                    self.sparkLogLevel = dict["sparkLogLevel"] as! String
+                }
+                if dict.keys.contains("sparkLogPath") {
+                    self.sparkLogPath = dict["sparkLogPath"] as! String
+                }
+                if dict.keys.contains("sparkVersion") {
+                    self.sparkVersion = dict["sparkVersion"] as! String
+                }
+                if dict.keys.contains("taskBizId") {
+                    self.taskBizId = dict["taskBizId"] as! String
+                }
+                if dict.keys.contains("type") {
+                    self.type = dict["type"] as! String
+                }
+                if dict.keys.contains("workspaceBizId") {
+                    self.workspaceBizId = dict["workspaceBizId"] as! String
+                }
+            }
+        }
+        public var alertEmailAddress: String?
+
+        public var code: Int64?
+
+        public var description_: String?
+
+        public var failAlertEnable: Bool?
+
+        public var failRetryTimes: Int32?
+
+        public var name: String?
+
+        public var startAlertEnable: Bool?
+
+        public var tags: [String: String]?
+
+        public var taskParams: CreateProcessDefinitionWithScheduleRequest.TaskDefinitionJson.TaskParams?
+
+        public var taskType: String?
+
+        public var timeout: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.taskParams?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.alertEmailAddress != nil {
+                map["alertEmailAddress"] = self.alertEmailAddress!
+            }
+            if self.code != nil {
+                map["code"] = self.code!
+            }
+            if self.description_ != nil {
+                map["description"] = self.description_!
+            }
+            if self.failAlertEnable != nil {
+                map["failAlertEnable"] = self.failAlertEnable!
+            }
+            if self.failRetryTimes != nil {
+                map["failRetryTimes"] = self.failRetryTimes!
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.startAlertEnable != nil {
+                map["startAlertEnable"] = self.startAlertEnable!
+            }
+            if self.tags != nil {
+                map["tags"] = self.tags!
+            }
+            if self.taskParams != nil {
+                map["taskParams"] = self.taskParams?.toMap()
+            }
+            if self.taskType != nil {
+                map["taskType"] = self.taskType!
+            }
+            if self.timeout != nil {
+                map["timeout"] = self.timeout!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("alertEmailAddress") {
+                self.alertEmailAddress = dict["alertEmailAddress"] as! String
+            }
+            if dict.keys.contains("code") {
+                self.code = dict["code"] as! Int64
+            }
+            if dict.keys.contains("description") {
+                self.description_ = dict["description"] as! String
+            }
+            if dict.keys.contains("failAlertEnable") {
+                self.failAlertEnable = dict["failAlertEnable"] as! Bool
+            }
+            if dict.keys.contains("failRetryTimes") {
+                self.failRetryTimes = dict["failRetryTimes"] as! Int32
+            }
+            if dict.keys.contains("name") {
+                self.name = dict["name"] as! String
+            }
+            if dict.keys.contains("startAlertEnable") {
+                self.startAlertEnable = dict["startAlertEnable"] as! Bool
+            }
+            if dict.keys.contains("tags") {
+                self.tags = dict["tags"] as! [String: String]
+            }
+            if dict.keys.contains("taskParams") {
+                var model = CreateProcessDefinitionWithScheduleRequest.TaskDefinitionJson.TaskParams()
+                model.fromMap(dict["taskParams"] as! [String: Any])
+                self.taskParams = model
+            }
+            if dict.keys.contains("taskType") {
+                self.taskType = dict["taskType"] as! String
+            }
+            if dict.keys.contains("timeout") {
+                self.timeout = dict["timeout"] as! Int32
+            }
+        }
+    }
+    public class TaskRelationJson : Tea.TeaModel {
+        public var name: String?
+
+        public var postTaskCode: Int64?
+
+        public var postTaskVersion: Int32?
+
+        public var preTaskCode: Int64?
+
+        public var preTaskVersion: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.postTaskCode != nil {
+                map["postTaskCode"] = self.postTaskCode!
+            }
+            if self.postTaskVersion != nil {
+                map["postTaskVersion"] = self.postTaskVersion!
+            }
+            if self.preTaskCode != nil {
+                map["preTaskCode"] = self.preTaskCode!
+            }
+            if self.preTaskVersion != nil {
+                map["preTaskVersion"] = self.preTaskVersion!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("name") {
+                self.name = dict["name"] as! String
+            }
+            if dict.keys.contains("postTaskCode") {
+                self.postTaskCode = dict["postTaskCode"] as! Int64
+            }
+            if dict.keys.contains("postTaskVersion") {
+                self.postTaskVersion = dict["postTaskVersion"] as! Int32
+            }
+            if dict.keys.contains("preTaskCode") {
+                self.preTaskCode = dict["preTaskCode"] as! Int64
+            }
+            if dict.keys.contains("preTaskVersion") {
+                self.preTaskVersion = dict["preTaskVersion"] as! Int32
+            }
+        }
+    }
+    public var alertEmailAddress: String?
+
+    public var description_: String?
+
+    public var executionType: String?
+
+    public var name: String?
+
+    public var productNamespace: String?
+
+    public var publish: Bool?
+
+    public var regionId: String?
+
+    public var resourceQueue: String?
+
+    public var retryTimes: Int32?
+
+    public var runAs: String?
+
+    public var schedule: CreateProcessDefinitionWithScheduleRequest.Schedule?
+
+    public var tags: [String: String]?
+
+    public var taskDefinitionJson: [CreateProcessDefinitionWithScheduleRequest.TaskDefinitionJson]?
+
+    public var taskParallelism: Int32?
+
+    public var taskRelationJson: [CreateProcessDefinitionWithScheduleRequest.TaskRelationJson]?
+
+    public var timeout: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.schedule?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.alertEmailAddress != nil {
+            map["alertEmailAddress"] = self.alertEmailAddress!
+        }
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.executionType != nil {
+            map["executionType"] = self.executionType!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.productNamespace != nil {
+            map["productNamespace"] = self.productNamespace!
+        }
+        if self.publish != nil {
+            map["publish"] = self.publish!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        if self.resourceQueue != nil {
+            map["resourceQueue"] = self.resourceQueue!
+        }
+        if self.retryTimes != nil {
+            map["retryTimes"] = self.retryTimes!
+        }
+        if self.runAs != nil {
+            map["runAs"] = self.runAs!
+        }
+        if self.schedule != nil {
+            map["schedule"] = self.schedule?.toMap()
+        }
+        if self.tags != nil {
+            map["tags"] = self.tags!
+        }
+        if self.taskDefinitionJson != nil {
+            var tmp : [Any] = []
+            for k in self.taskDefinitionJson! {
+                tmp.append(k.toMap())
+            }
+            map["taskDefinitionJson"] = tmp
+        }
+        if self.taskParallelism != nil {
+            map["taskParallelism"] = self.taskParallelism!
+        }
+        if self.taskRelationJson != nil {
+            var tmp : [Any] = []
+            for k in self.taskRelationJson! {
+                tmp.append(k.toMap())
+            }
+            map["taskRelationJson"] = tmp
+        }
+        if self.timeout != nil {
+            map["timeout"] = self.timeout!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("alertEmailAddress") {
+            self.alertEmailAddress = dict["alertEmailAddress"] as! String
+        }
+        if dict.keys.contains("description") {
+            self.description_ = dict["description"] as! String
+        }
+        if dict.keys.contains("executionType") {
+            self.executionType = dict["executionType"] as! String
+        }
+        if dict.keys.contains("name") {
+            self.name = dict["name"] as! String
+        }
+        if dict.keys.contains("productNamespace") {
+            self.productNamespace = dict["productNamespace"] as! String
+        }
+        if dict.keys.contains("publish") {
+            self.publish = dict["publish"] as! Bool
+        }
+        if dict.keys.contains("regionId") {
+            self.regionId = dict["regionId"] as! String
+        }
+        if dict.keys.contains("resourceQueue") {
+            self.resourceQueue = dict["resourceQueue"] as! String
+        }
+        if dict.keys.contains("retryTimes") {
+            self.retryTimes = dict["retryTimes"] as! Int32
+        }
+        if dict.keys.contains("runAs") {
+            self.runAs = dict["runAs"] as! String
+        }
+        if dict.keys.contains("schedule") {
+            var model = CreateProcessDefinitionWithScheduleRequest.Schedule()
+            model.fromMap(dict["schedule"] as! [String: Any])
+            self.schedule = model
+        }
+        if dict.keys.contains("tags") {
+            self.tags = dict["tags"] as! [String: String]
+        }
+        if dict.keys.contains("taskDefinitionJson") {
+            var tmp : [CreateProcessDefinitionWithScheduleRequest.TaskDefinitionJson] = []
+            for v in dict["taskDefinitionJson"] as! [Any] {
+                var model = CreateProcessDefinitionWithScheduleRequest.TaskDefinitionJson()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.taskDefinitionJson = tmp
+        }
+        if dict.keys.contains("taskParallelism") {
+            self.taskParallelism = dict["taskParallelism"] as! Int32
+        }
+        if dict.keys.contains("taskRelationJson") {
+            var tmp : [CreateProcessDefinitionWithScheduleRequest.TaskRelationJson] = []
+            for v in dict["taskRelationJson"] as! [Any] {
+                var model = CreateProcessDefinitionWithScheduleRequest.TaskRelationJson()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.taskRelationJson = tmp
+        }
+        if dict.keys.contains("timeout") {
+            self.timeout = dict["timeout"] as! Int32
+        }
+    }
+}
+
+public class CreateProcessDefinitionWithScheduleShrinkRequest : Tea.TeaModel {
+    public var alertEmailAddress: String?
+
+    public var description_: String?
+
+    public var executionType: String?
+
+    public var name: String?
+
+    public var productNamespace: String?
+
+    public var publish: Bool?
+
+    public var regionId: String?
+
+    public var resourceQueue: String?
+
+    public var retryTimes: Int32?
+
+    public var runAs: String?
+
+    public var scheduleShrink: String?
+
+    public var tagsShrink: String?
+
+    public var taskDefinitionJsonShrink: String?
+
+    public var taskParallelism: Int32?
+
+    public var taskRelationJsonShrink: String?
+
+    public var timeout: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.alertEmailAddress != nil {
+            map["alertEmailAddress"] = self.alertEmailAddress!
+        }
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.executionType != nil {
+            map["executionType"] = self.executionType!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.productNamespace != nil {
+            map["productNamespace"] = self.productNamespace!
+        }
+        if self.publish != nil {
+            map["publish"] = self.publish!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        if self.resourceQueue != nil {
+            map["resourceQueue"] = self.resourceQueue!
+        }
+        if self.retryTimes != nil {
+            map["retryTimes"] = self.retryTimes!
+        }
+        if self.runAs != nil {
+            map["runAs"] = self.runAs!
+        }
+        if self.scheduleShrink != nil {
+            map["schedule"] = self.scheduleShrink!
+        }
+        if self.tagsShrink != nil {
+            map["tags"] = self.tagsShrink!
+        }
+        if self.taskDefinitionJsonShrink != nil {
+            map["taskDefinitionJson"] = self.taskDefinitionJsonShrink!
+        }
+        if self.taskParallelism != nil {
+            map["taskParallelism"] = self.taskParallelism!
+        }
+        if self.taskRelationJsonShrink != nil {
+            map["taskRelationJson"] = self.taskRelationJsonShrink!
+        }
+        if self.timeout != nil {
+            map["timeout"] = self.timeout!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("alertEmailAddress") {
+            self.alertEmailAddress = dict["alertEmailAddress"] as! String
+        }
+        if dict.keys.contains("description") {
+            self.description_ = dict["description"] as! String
+        }
+        if dict.keys.contains("executionType") {
+            self.executionType = dict["executionType"] as! String
+        }
+        if dict.keys.contains("name") {
+            self.name = dict["name"] as! String
+        }
+        if dict.keys.contains("productNamespace") {
+            self.productNamespace = dict["productNamespace"] as! String
+        }
+        if dict.keys.contains("publish") {
+            self.publish = dict["publish"] as! Bool
+        }
+        if dict.keys.contains("regionId") {
+            self.regionId = dict["regionId"] as! String
+        }
+        if dict.keys.contains("resourceQueue") {
+            self.resourceQueue = dict["resourceQueue"] as! String
+        }
+        if dict.keys.contains("retryTimes") {
+            self.retryTimes = dict["retryTimes"] as! Int32
+        }
+        if dict.keys.contains("runAs") {
+            self.runAs = dict["runAs"] as! String
+        }
+        if dict.keys.contains("schedule") {
+            self.scheduleShrink = dict["schedule"] as! String
+        }
+        if dict.keys.contains("tags") {
+            self.tagsShrink = dict["tags"] as! String
+        }
+        if dict.keys.contains("taskDefinitionJson") {
+            self.taskDefinitionJsonShrink = dict["taskDefinitionJson"] as! String
+        }
+        if dict.keys.contains("taskParallelism") {
+            self.taskParallelism = dict["taskParallelism"] as! Int32
+        }
+        if dict.keys.contains("taskRelationJson") {
+            self.taskRelationJsonShrink = dict["taskRelationJson"] as! String
+        }
+        if dict.keys.contains("timeout") {
+            self.timeout = dict["timeout"] as! Int32
+        }
+    }
+}
+
+public class CreateProcessDefinitionWithScheduleResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var code: Int64?
+
+        public var id: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.code != nil {
+                map["code"] = self.code!
+            }
+            if self.id != nil {
+                map["id"] = self.id!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("code") {
+                self.code = dict["code"] as! Int64
+            }
+            if dict.keys.contains("id") {
+                self.id = dict["id"] as! Int32
+            }
+        }
+    }
+    public var code: Int32?
+
+    public var data: CreateProcessDefinitionWithScheduleResponseBody.Data?
+
+    public var failed: String?
+
+    public var httpStatusCode: Int32?
+
+    public var msg: String?
+
+    public var requestId: String?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.failed != nil {
+            map["failed"] = self.failed!
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.msg != nil {
+            map["msg"] = self.msg!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") {
+            self.code = dict["code"] as! Int32
+        }
+        if dict.keys.contains("data") {
+            var model = CreateProcessDefinitionWithScheduleResponseBody.Data()
+            model.fromMap(dict["data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("failed") {
+            self.failed = dict["failed"] as! String
+        }
+        if dict.keys.contains("httpStatusCode") {
+            self.httpStatusCode = dict["httpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("msg") {
+            self.msg = dict["msg"] as! String
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! String
+        }
+    }
+}
+
+public class CreateProcessDefinitionWithScheduleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateProcessDefinitionWithScheduleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateProcessDefinitionWithScheduleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateSqlStatementRequest : Tea.TeaModel {
     public var codeContent: String?
 
@@ -6544,6 +7454,211 @@ public class StartJobRunResponse : Tea.TeaModel {
     }
 }
 
+public class StartProcessInstanceRequest : Tea.TeaModel {
+    public var isProd: Bool?
+
+    public var processDefinitionCode: Int64?
+
+    public var productNamespace: String?
+
+    public var regionId: String?
+
+    public var runtimeQueue: String?
+
+    public var versionHashCode: String?
+
+    public var versionNumber: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.isProd != nil {
+            map["isProd"] = self.isProd!
+        }
+        if self.processDefinitionCode != nil {
+            map["processDefinitionCode"] = self.processDefinitionCode!
+        }
+        if self.productNamespace != nil {
+            map["productNamespace"] = self.productNamespace!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        if self.runtimeQueue != nil {
+            map["runtimeQueue"] = self.runtimeQueue!
+        }
+        if self.versionHashCode != nil {
+            map["versionHashCode"] = self.versionHashCode!
+        }
+        if self.versionNumber != nil {
+            map["versionNumber"] = self.versionNumber!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("isProd") {
+            self.isProd = dict["isProd"] as! Bool
+        }
+        if dict.keys.contains("processDefinitionCode") {
+            self.processDefinitionCode = dict["processDefinitionCode"] as! Int64
+        }
+        if dict.keys.contains("productNamespace") {
+            self.productNamespace = dict["productNamespace"] as! String
+        }
+        if dict.keys.contains("regionId") {
+            self.regionId = dict["regionId"] as! String
+        }
+        if dict.keys.contains("runtimeQueue") {
+            self.runtimeQueue = dict["runtimeQueue"] as! String
+        }
+        if dict.keys.contains("versionHashCode") {
+            self.versionHashCode = dict["versionHashCode"] as! String
+        }
+        if dict.keys.contains("versionNumber") {
+            self.versionNumber = dict["versionNumber"] as! Int32
+        }
+    }
+}
+
+public class StartProcessInstanceResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var data: Any?
+
+    public var failed: Bool?
+
+    public var httpStatusCode: Int32?
+
+    public var msg: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data!
+        }
+        if self.failed != nil {
+            map["failed"] = self.failed!
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.msg != nil {
+            map["msg"] = self.msg!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") {
+            self.code = dict["code"] as! Int32
+        }
+        if dict.keys.contains("data") {
+            self.data = dict["data"] as! Any
+        }
+        if dict.keys.contains("failed") {
+            self.failed = dict["failed"] as! Bool
+        }
+        if dict.keys.contains("httpStatusCode") {
+            self.httpStatusCode = dict["httpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("msg") {
+            self.msg = dict["msg"] as! String
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class StartProcessInstanceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: StartProcessInstanceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = StartProcessInstanceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class StartSessionClusterRequest : Tea.TeaModel {
     public var queueName: String?
 
@@ -6913,6 +8028,1068 @@ public class TerminateSqlStatementResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = TerminateSqlStatementResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateProcessDefinitionWithScheduleRequest : Tea.TeaModel {
+    public class Schedule : Tea.TeaModel {
+        public var crontab: String?
+
+        public var endTime: String?
+
+        public var startTime: String?
+
+        public var timezoneId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.crontab != nil {
+                map["crontab"] = self.crontab!
+            }
+            if self.endTime != nil {
+                map["endTime"] = self.endTime!
+            }
+            if self.startTime != nil {
+                map["startTime"] = self.startTime!
+            }
+            if self.timezoneId != nil {
+                map["timezoneId"] = self.timezoneId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("crontab") {
+                self.crontab = dict["crontab"] as! String
+            }
+            if dict.keys.contains("endTime") {
+                self.endTime = dict["endTime"] as! String
+            }
+            if dict.keys.contains("startTime") {
+                self.startTime = dict["startTime"] as! String
+            }
+            if dict.keys.contains("timezoneId") {
+                self.timezoneId = dict["timezoneId"] as! String
+            }
+        }
+    }
+    public class TaskDefinitionJson : Tea.TeaModel {
+        public class TaskParams : Tea.TeaModel {
+            public class SparkConf : Tea.TeaModel {
+                public var key: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.key != nil {
+                        map["key"] = self.key!
+                    }
+                    if self.value != nil {
+                        map["value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("key") {
+                        self.key = dict["key"] as! String
+                    }
+                    if dict.keys.contains("value") {
+                        self.value = dict["value"] as! String
+                    }
+                }
+            }
+            public var displaySparkVersion: String?
+
+            public var environmentId: String?
+
+            public var fusion: Bool?
+
+            public var resourceQueueId: String?
+
+            public var sparkConf: [UpdateProcessDefinitionWithScheduleRequest.TaskDefinitionJson.TaskParams.SparkConf]?
+
+            public var sparkDriverCores: Int32?
+
+            public var sparkDriverMemory: Int64?
+
+            public var sparkExecutorCores: Int32?
+
+            public var sparkExecutorMemory: Int64?
+
+            public var sparkLogLevel: String?
+
+            public var sparkLogPath: String?
+
+            public var sparkVersion: String?
+
+            public var taskBizId: String?
+
+            public var type: String?
+
+            public var workspaceBizId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.displaySparkVersion != nil {
+                    map["displaySparkVersion"] = self.displaySparkVersion!
+                }
+                if self.environmentId != nil {
+                    map["environmentId"] = self.environmentId!
+                }
+                if self.fusion != nil {
+                    map["fusion"] = self.fusion!
+                }
+                if self.resourceQueueId != nil {
+                    map["resourceQueueId"] = self.resourceQueueId!
+                }
+                if self.sparkConf != nil {
+                    var tmp : [Any] = []
+                    for k in self.sparkConf! {
+                        tmp.append(k.toMap())
+                    }
+                    map["sparkConf"] = tmp
+                }
+                if self.sparkDriverCores != nil {
+                    map["sparkDriverCores"] = self.sparkDriverCores!
+                }
+                if self.sparkDriverMemory != nil {
+                    map["sparkDriverMemory"] = self.sparkDriverMemory!
+                }
+                if self.sparkExecutorCores != nil {
+                    map["sparkExecutorCores"] = self.sparkExecutorCores!
+                }
+                if self.sparkExecutorMemory != nil {
+                    map["sparkExecutorMemory"] = self.sparkExecutorMemory!
+                }
+                if self.sparkLogLevel != nil {
+                    map["sparkLogLevel"] = self.sparkLogLevel!
+                }
+                if self.sparkLogPath != nil {
+                    map["sparkLogPath"] = self.sparkLogPath!
+                }
+                if self.sparkVersion != nil {
+                    map["sparkVersion"] = self.sparkVersion!
+                }
+                if self.taskBizId != nil {
+                    map["taskBizId"] = self.taskBizId!
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                if self.workspaceBizId != nil {
+                    map["workspaceBizId"] = self.workspaceBizId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("displaySparkVersion") {
+                    self.displaySparkVersion = dict["displaySparkVersion"] as! String
+                }
+                if dict.keys.contains("environmentId") {
+                    self.environmentId = dict["environmentId"] as! String
+                }
+                if dict.keys.contains("fusion") {
+                    self.fusion = dict["fusion"] as! Bool
+                }
+                if dict.keys.contains("resourceQueueId") {
+                    self.resourceQueueId = dict["resourceQueueId"] as! String
+                }
+                if dict.keys.contains("sparkConf") {
+                    var tmp : [UpdateProcessDefinitionWithScheduleRequest.TaskDefinitionJson.TaskParams.SparkConf] = []
+                    for v in dict["sparkConf"] as! [Any] {
+                        var model = UpdateProcessDefinitionWithScheduleRequest.TaskDefinitionJson.TaskParams.SparkConf()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.sparkConf = tmp
+                }
+                if dict.keys.contains("sparkDriverCores") {
+                    self.sparkDriverCores = dict["sparkDriverCores"] as! Int32
+                }
+                if dict.keys.contains("sparkDriverMemory") {
+                    self.sparkDriverMemory = dict["sparkDriverMemory"] as! Int64
+                }
+                if dict.keys.contains("sparkExecutorCores") {
+                    self.sparkExecutorCores = dict["sparkExecutorCores"] as! Int32
+                }
+                if dict.keys.contains("sparkExecutorMemory") {
+                    self.sparkExecutorMemory = dict["sparkExecutorMemory"] as! Int64
+                }
+                if dict.keys.contains("sparkLogLevel") {
+                    self.sparkLogLevel = dict["sparkLogLevel"] as! String
+                }
+                if dict.keys.contains("sparkLogPath") {
+                    self.sparkLogPath = dict["sparkLogPath"] as! String
+                }
+                if dict.keys.contains("sparkVersion") {
+                    self.sparkVersion = dict["sparkVersion"] as! String
+                }
+                if dict.keys.contains("taskBizId") {
+                    self.taskBizId = dict["taskBizId"] as! String
+                }
+                if dict.keys.contains("type") {
+                    self.type = dict["type"] as! String
+                }
+                if dict.keys.contains("workspaceBizId") {
+                    self.workspaceBizId = dict["workspaceBizId"] as! String
+                }
+            }
+        }
+        public var alertEmailAddress: String?
+
+        public var code: Int64?
+
+        public var description_: String?
+
+        public var failAlertEnable: Bool?
+
+        public var failRetryTimes: Int32?
+
+        public var name: String?
+
+        public var startAlertEnable: Bool?
+
+        public var tags: [String: String]?
+
+        public var taskParams: UpdateProcessDefinitionWithScheduleRequest.TaskDefinitionJson.TaskParams?
+
+        public var taskType: String?
+
+        public var timeout: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.taskParams?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.alertEmailAddress != nil {
+                map["alertEmailAddress"] = self.alertEmailAddress!
+            }
+            if self.code != nil {
+                map["code"] = self.code!
+            }
+            if self.description_ != nil {
+                map["description"] = self.description_!
+            }
+            if self.failAlertEnable != nil {
+                map["failAlertEnable"] = self.failAlertEnable!
+            }
+            if self.failRetryTimes != nil {
+                map["failRetryTimes"] = self.failRetryTimes!
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.startAlertEnable != nil {
+                map["startAlertEnable"] = self.startAlertEnable!
+            }
+            if self.tags != nil {
+                map["tags"] = self.tags!
+            }
+            if self.taskParams != nil {
+                map["taskParams"] = self.taskParams?.toMap()
+            }
+            if self.taskType != nil {
+                map["taskType"] = self.taskType!
+            }
+            if self.timeout != nil {
+                map["timeout"] = self.timeout!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("alertEmailAddress") {
+                self.alertEmailAddress = dict["alertEmailAddress"] as! String
+            }
+            if dict.keys.contains("code") {
+                self.code = dict["code"] as! Int64
+            }
+            if dict.keys.contains("description") {
+                self.description_ = dict["description"] as! String
+            }
+            if dict.keys.contains("failAlertEnable") {
+                self.failAlertEnable = dict["failAlertEnable"] as! Bool
+            }
+            if dict.keys.contains("failRetryTimes") {
+                self.failRetryTimes = dict["failRetryTimes"] as! Int32
+            }
+            if dict.keys.contains("name") {
+                self.name = dict["name"] as! String
+            }
+            if dict.keys.contains("startAlertEnable") {
+                self.startAlertEnable = dict["startAlertEnable"] as! Bool
+            }
+            if dict.keys.contains("tags") {
+                self.tags = dict["tags"] as! [String: String]
+            }
+            if dict.keys.contains("taskParams") {
+                var model = UpdateProcessDefinitionWithScheduleRequest.TaskDefinitionJson.TaskParams()
+                model.fromMap(dict["taskParams"] as! [String: Any])
+                self.taskParams = model
+            }
+            if dict.keys.contains("taskType") {
+                self.taskType = dict["taskType"] as! String
+            }
+            if dict.keys.contains("timeout") {
+                self.timeout = dict["timeout"] as! Int32
+            }
+        }
+    }
+    public class TaskRelationJson : Tea.TeaModel {
+        public var name: String?
+
+        public var postTaskCode: Int64?
+
+        public var postTaskVersion: Int32?
+
+        public var preTaskCode: Int64?
+
+        public var preTaskVersion: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.postTaskCode != nil {
+                map["postTaskCode"] = self.postTaskCode!
+            }
+            if self.postTaskVersion != nil {
+                map["postTaskVersion"] = self.postTaskVersion!
+            }
+            if self.preTaskCode != nil {
+                map["preTaskCode"] = self.preTaskCode!
+            }
+            if self.preTaskVersion != nil {
+                map["preTaskVersion"] = self.preTaskVersion!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("name") {
+                self.name = dict["name"] as! String
+            }
+            if dict.keys.contains("postTaskCode") {
+                self.postTaskCode = dict["postTaskCode"] as! Int64
+            }
+            if dict.keys.contains("postTaskVersion") {
+                self.postTaskVersion = dict["postTaskVersion"] as! Int32
+            }
+            if dict.keys.contains("preTaskCode") {
+                self.preTaskCode = dict["preTaskCode"] as! Int64
+            }
+            if dict.keys.contains("preTaskVersion") {
+                self.preTaskVersion = dict["preTaskVersion"] as! Int32
+            }
+        }
+    }
+    public var alertEmailAddress: String?
+
+    public var description_: String?
+
+    public var executionType: String?
+
+    public var name: String?
+
+    public var productNamespace: String?
+
+    public var publish: Bool?
+
+    public var regionId: String?
+
+    public var releaseState: String?
+
+    public var resourceQueue: String?
+
+    public var retryTimes: Int32?
+
+    public var runAs: String?
+
+    public var schedule: UpdateProcessDefinitionWithScheduleRequest.Schedule?
+
+    public var tags: [String: String]?
+
+    public var taskDefinitionJson: [UpdateProcessDefinitionWithScheduleRequest.TaskDefinitionJson]?
+
+    public var taskParallelism: Int32?
+
+    public var taskRelationJson: [UpdateProcessDefinitionWithScheduleRequest.TaskRelationJson]?
+
+    public var timeout: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.schedule?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.alertEmailAddress != nil {
+            map["alertEmailAddress"] = self.alertEmailAddress!
+        }
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.executionType != nil {
+            map["executionType"] = self.executionType!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.productNamespace != nil {
+            map["productNamespace"] = self.productNamespace!
+        }
+        if self.publish != nil {
+            map["publish"] = self.publish!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        if self.releaseState != nil {
+            map["releaseState"] = self.releaseState!
+        }
+        if self.resourceQueue != nil {
+            map["resourceQueue"] = self.resourceQueue!
+        }
+        if self.retryTimes != nil {
+            map["retryTimes"] = self.retryTimes!
+        }
+        if self.runAs != nil {
+            map["runAs"] = self.runAs!
+        }
+        if self.schedule != nil {
+            map["schedule"] = self.schedule?.toMap()
+        }
+        if self.tags != nil {
+            map["tags"] = self.tags!
+        }
+        if self.taskDefinitionJson != nil {
+            var tmp : [Any] = []
+            for k in self.taskDefinitionJson! {
+                tmp.append(k.toMap())
+            }
+            map["taskDefinitionJson"] = tmp
+        }
+        if self.taskParallelism != nil {
+            map["taskParallelism"] = self.taskParallelism!
+        }
+        if self.taskRelationJson != nil {
+            var tmp : [Any] = []
+            for k in self.taskRelationJson! {
+                tmp.append(k.toMap())
+            }
+            map["taskRelationJson"] = tmp
+        }
+        if self.timeout != nil {
+            map["timeout"] = self.timeout!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("alertEmailAddress") {
+            self.alertEmailAddress = dict["alertEmailAddress"] as! String
+        }
+        if dict.keys.contains("description") {
+            self.description_ = dict["description"] as! String
+        }
+        if dict.keys.contains("executionType") {
+            self.executionType = dict["executionType"] as! String
+        }
+        if dict.keys.contains("name") {
+            self.name = dict["name"] as! String
+        }
+        if dict.keys.contains("productNamespace") {
+            self.productNamespace = dict["productNamespace"] as! String
+        }
+        if dict.keys.contains("publish") {
+            self.publish = dict["publish"] as! Bool
+        }
+        if dict.keys.contains("regionId") {
+            self.regionId = dict["regionId"] as! String
+        }
+        if dict.keys.contains("releaseState") {
+            self.releaseState = dict["releaseState"] as! String
+        }
+        if dict.keys.contains("resourceQueue") {
+            self.resourceQueue = dict["resourceQueue"] as! String
+        }
+        if dict.keys.contains("retryTimes") {
+            self.retryTimes = dict["retryTimes"] as! Int32
+        }
+        if dict.keys.contains("runAs") {
+            self.runAs = dict["runAs"] as! String
+        }
+        if dict.keys.contains("schedule") {
+            var model = UpdateProcessDefinitionWithScheduleRequest.Schedule()
+            model.fromMap(dict["schedule"] as! [String: Any])
+            self.schedule = model
+        }
+        if dict.keys.contains("tags") {
+            self.tags = dict["tags"] as! [String: String]
+        }
+        if dict.keys.contains("taskDefinitionJson") {
+            var tmp : [UpdateProcessDefinitionWithScheduleRequest.TaskDefinitionJson] = []
+            for v in dict["taskDefinitionJson"] as! [Any] {
+                var model = UpdateProcessDefinitionWithScheduleRequest.TaskDefinitionJson()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.taskDefinitionJson = tmp
+        }
+        if dict.keys.contains("taskParallelism") {
+            self.taskParallelism = dict["taskParallelism"] as! Int32
+        }
+        if dict.keys.contains("taskRelationJson") {
+            var tmp : [UpdateProcessDefinitionWithScheduleRequest.TaskRelationJson] = []
+            for v in dict["taskRelationJson"] as! [Any] {
+                var model = UpdateProcessDefinitionWithScheduleRequest.TaskRelationJson()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.taskRelationJson = tmp
+        }
+        if dict.keys.contains("timeout") {
+            self.timeout = dict["timeout"] as! Int32
+        }
+    }
+}
+
+public class UpdateProcessDefinitionWithScheduleShrinkRequest : Tea.TeaModel {
+    public var alertEmailAddress: String?
+
+    public var description_: String?
+
+    public var executionType: String?
+
+    public var name: String?
+
+    public var productNamespace: String?
+
+    public var publish: Bool?
+
+    public var regionId: String?
+
+    public var releaseState: String?
+
+    public var resourceQueue: String?
+
+    public var retryTimes: Int32?
+
+    public var runAs: String?
+
+    public var scheduleShrink: String?
+
+    public var tagsShrink: String?
+
+    public var taskDefinitionJsonShrink: String?
+
+    public var taskParallelism: Int32?
+
+    public var taskRelationJsonShrink: String?
+
+    public var timeout: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.alertEmailAddress != nil {
+            map["alertEmailAddress"] = self.alertEmailAddress!
+        }
+        if self.description_ != nil {
+            map["description"] = self.description_!
+        }
+        if self.executionType != nil {
+            map["executionType"] = self.executionType!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.productNamespace != nil {
+            map["productNamespace"] = self.productNamespace!
+        }
+        if self.publish != nil {
+            map["publish"] = self.publish!
+        }
+        if self.regionId != nil {
+            map["regionId"] = self.regionId!
+        }
+        if self.releaseState != nil {
+            map["releaseState"] = self.releaseState!
+        }
+        if self.resourceQueue != nil {
+            map["resourceQueue"] = self.resourceQueue!
+        }
+        if self.retryTimes != nil {
+            map["retryTimes"] = self.retryTimes!
+        }
+        if self.runAs != nil {
+            map["runAs"] = self.runAs!
+        }
+        if self.scheduleShrink != nil {
+            map["schedule"] = self.scheduleShrink!
+        }
+        if self.tagsShrink != nil {
+            map["tags"] = self.tagsShrink!
+        }
+        if self.taskDefinitionJsonShrink != nil {
+            map["taskDefinitionJson"] = self.taskDefinitionJsonShrink!
+        }
+        if self.taskParallelism != nil {
+            map["taskParallelism"] = self.taskParallelism!
+        }
+        if self.taskRelationJsonShrink != nil {
+            map["taskRelationJson"] = self.taskRelationJsonShrink!
+        }
+        if self.timeout != nil {
+            map["timeout"] = self.timeout!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("alertEmailAddress") {
+            self.alertEmailAddress = dict["alertEmailAddress"] as! String
+        }
+        if dict.keys.contains("description") {
+            self.description_ = dict["description"] as! String
+        }
+        if dict.keys.contains("executionType") {
+            self.executionType = dict["executionType"] as! String
+        }
+        if dict.keys.contains("name") {
+            self.name = dict["name"] as! String
+        }
+        if dict.keys.contains("productNamespace") {
+            self.productNamespace = dict["productNamespace"] as! String
+        }
+        if dict.keys.contains("publish") {
+            self.publish = dict["publish"] as! Bool
+        }
+        if dict.keys.contains("regionId") {
+            self.regionId = dict["regionId"] as! String
+        }
+        if dict.keys.contains("releaseState") {
+            self.releaseState = dict["releaseState"] as! String
+        }
+        if dict.keys.contains("resourceQueue") {
+            self.resourceQueue = dict["resourceQueue"] as! String
+        }
+        if dict.keys.contains("retryTimes") {
+            self.retryTimes = dict["retryTimes"] as! Int32
+        }
+        if dict.keys.contains("runAs") {
+            self.runAs = dict["runAs"] as! String
+        }
+        if dict.keys.contains("schedule") {
+            self.scheduleShrink = dict["schedule"] as! String
+        }
+        if dict.keys.contains("tags") {
+            self.tagsShrink = dict["tags"] as! String
+        }
+        if dict.keys.contains("taskDefinitionJson") {
+            self.taskDefinitionJsonShrink = dict["taskDefinitionJson"] as! String
+        }
+        if dict.keys.contains("taskParallelism") {
+            self.taskParallelism = dict["taskParallelism"] as! Int32
+        }
+        if dict.keys.contains("taskRelationJson") {
+            self.taskRelationJsonShrink = dict["taskRelationJson"] as! String
+        }
+        if dict.keys.contains("timeout") {
+            self.timeout = dict["timeout"] as! Int32
+        }
+    }
+}
+
+public class UpdateProcessDefinitionWithScheduleResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var alertEmailAddress: String?
+
+        public var bizId: String?
+
+        public var code: String?
+
+        public var createTime: String?
+
+        public var crontab: String?
+
+        public var description_: String?
+
+        public var endTime: String?
+
+        public var executionType: String?
+
+        public var id: String?
+
+        public var name: String?
+
+        public var projectName: String?
+
+        public var releaseState: String?
+
+        public var startTime: String?
+
+        public var timezoneId: String?
+
+        public var updateTime: String?
+
+        public var userId: String?
+
+        public var userName: String?
+
+        public var version: Int32?
+
+        public var versionHashCode: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.alertEmailAddress != nil {
+                map["alertEmailAddress"] = self.alertEmailAddress!
+            }
+            if self.bizId != nil {
+                map["bizId"] = self.bizId!
+            }
+            if self.code != nil {
+                map["code"] = self.code!
+            }
+            if self.createTime != nil {
+                map["createTime"] = self.createTime!
+            }
+            if self.crontab != nil {
+                map["crontab"] = self.crontab!
+            }
+            if self.description_ != nil {
+                map["description"] = self.description_!
+            }
+            if self.endTime != nil {
+                map["endTime"] = self.endTime!
+            }
+            if self.executionType != nil {
+                map["executionType"] = self.executionType!
+            }
+            if self.id != nil {
+                map["id"] = self.id!
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.projectName != nil {
+                map["projectName"] = self.projectName!
+            }
+            if self.releaseState != nil {
+                map["releaseState"] = self.releaseState!
+            }
+            if self.startTime != nil {
+                map["startTime"] = self.startTime!
+            }
+            if self.timezoneId != nil {
+                map["timezoneId"] = self.timezoneId!
+            }
+            if self.updateTime != nil {
+                map["updateTime"] = self.updateTime!
+            }
+            if self.userId != nil {
+                map["userId"] = self.userId!
+            }
+            if self.userName != nil {
+                map["userName"] = self.userName!
+            }
+            if self.version != nil {
+                map["version"] = self.version!
+            }
+            if self.versionHashCode != nil {
+                map["versionHashCode"] = self.versionHashCode!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("alertEmailAddress") {
+                self.alertEmailAddress = dict["alertEmailAddress"] as! String
+            }
+            if dict.keys.contains("bizId") {
+                self.bizId = dict["bizId"] as! String
+            }
+            if dict.keys.contains("code") {
+                self.code = dict["code"] as! String
+            }
+            if dict.keys.contains("createTime") {
+                self.createTime = dict["createTime"] as! String
+            }
+            if dict.keys.contains("crontab") {
+                self.crontab = dict["crontab"] as! String
+            }
+            if dict.keys.contains("description") {
+                self.description_ = dict["description"] as! String
+            }
+            if dict.keys.contains("endTime") {
+                self.endTime = dict["endTime"] as! String
+            }
+            if dict.keys.contains("executionType") {
+                self.executionType = dict["executionType"] as! String
+            }
+            if dict.keys.contains("id") {
+                self.id = dict["id"] as! String
+            }
+            if dict.keys.contains("name") {
+                self.name = dict["name"] as! String
+            }
+            if dict.keys.contains("projectName") {
+                self.projectName = dict["projectName"] as! String
+            }
+            if dict.keys.contains("releaseState") {
+                self.releaseState = dict["releaseState"] as! String
+            }
+            if dict.keys.contains("startTime") {
+                self.startTime = dict["startTime"] as! String
+            }
+            if dict.keys.contains("timezoneId") {
+                self.timezoneId = dict["timezoneId"] as! String
+            }
+            if dict.keys.contains("updateTime") {
+                self.updateTime = dict["updateTime"] as! String
+            }
+            if dict.keys.contains("userId") {
+                self.userId = dict["userId"] as! String
+            }
+            if dict.keys.contains("userName") {
+                self.userName = dict["userName"] as! String
+            }
+            if dict.keys.contains("version") {
+                self.version = dict["version"] as! Int32
+            }
+            if dict.keys.contains("versionHashCode") {
+                self.versionHashCode = dict["versionHashCode"] as! String
+            }
+        }
+    }
+    public var code: Int32?
+
+    public var data: UpdateProcessDefinitionWithScheduleResponseBody.Data?
+
+    public var failed: String?
+
+    public var httpStatusCode: Int32?
+
+    public var msg: String?
+
+    public var requestId: String?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.failed != nil {
+            map["failed"] = self.failed!
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.msg != nil {
+            map["msg"] = self.msg!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") {
+            self.code = dict["code"] as! Int32
+        }
+        if dict.keys.contains("data") {
+            var model = UpdateProcessDefinitionWithScheduleResponseBody.Data()
+            model.fromMap(dict["data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("failed") {
+            self.failed = dict["failed"] as! String
+        }
+        if dict.keys.contains("httpStatusCode") {
+            self.httpStatusCode = dict["httpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("msg") {
+            self.msg = dict["msg"] as! String
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! String
+        }
+    }
+}
+
+public class UpdateProcessDefinitionWithScheduleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateProcessDefinitionWithScheduleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateProcessDefinitionWithScheduleResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

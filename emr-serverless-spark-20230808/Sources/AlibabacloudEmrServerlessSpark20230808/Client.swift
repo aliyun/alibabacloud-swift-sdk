@@ -98,6 +98,98 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createProcessDefinitionWithScheduleWithOptions(_ bizId: String, _ tmpReq: CreateProcessDefinitionWithScheduleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateProcessDefinitionWithScheduleResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateProcessDefinitionWithScheduleShrinkRequest = CreateProcessDefinitionWithScheduleShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.schedule)) {
+            request.scheduleShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.schedule, "schedule", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tags)) {
+            request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "tags", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.taskDefinitionJson)) {
+            request.taskDefinitionJsonShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.taskDefinitionJson, "taskDefinitionJson", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.taskRelationJson)) {
+            request.taskRelationJsonShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.taskRelationJson, "taskRelationJson", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.alertEmailAddress)) {
+            query["alertEmailAddress"] = request.alertEmailAddress ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.executionType)) {
+            query["executionType"] = request.executionType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productNamespace)) {
+            query["productNamespace"] = request.productNamespace ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.publish)) {
+            query["publish"] = request.publish!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceQueue)) {
+            query["resourceQueue"] = request.resourceQueue ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.retryTimes)) {
+            query["retryTimes"] = request.retryTimes!;
+        }
+        if (!TeaUtils.Client.isUnset(request.runAs)) {
+            query["runAs"] = request.runAs ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scheduleShrink)) {
+            query["schedule"] = request.scheduleShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagsShrink)) {
+            query["tags"] = request.tagsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskDefinitionJsonShrink)) {
+            query["taskDefinitionJson"] = request.taskDefinitionJsonShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskParallelism)) {
+            query["taskParallelism"] = request.taskParallelism!;
+        }
+        if (!TeaUtils.Client.isUnset(request.taskRelationJsonShrink)) {
+            query["taskRelationJson"] = request.taskRelationJsonShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timeout)) {
+            query["timeout"] = request.timeout!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateProcessDefinitionWithSchedule",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/dolphinscheduler/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(bizId)) + "/process-definition",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateProcessDefinitionWithScheduleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createProcessDefinitionWithSchedule(_ bizId: String, _ request: CreateProcessDefinitionWithScheduleRequest) async throws -> CreateProcessDefinitionWithScheduleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createProcessDefinitionWithScheduleWithOptions(bizId as! String, request as! CreateProcessDefinitionWithScheduleRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createSqlStatementWithOptions(_ workspaceId: String, _ request: CreateSqlStatementRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSqlStatementResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -691,6 +783,57 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startProcessInstanceWithOptions(_ bizId: String, _ request: StartProcessInstanceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StartProcessInstanceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.isProd)) {
+            query["isProd"] = request.isProd!;
+        }
+        if (!TeaUtils.Client.isUnset(request.processDefinitionCode)) {
+            query["processDefinitionCode"] = request.processDefinitionCode!;
+        }
+        if (!TeaUtils.Client.isUnset(request.productNamespace)) {
+            query["productNamespace"] = request.productNamespace ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.runtimeQueue)) {
+            query["runtimeQueue"] = request.runtimeQueue ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.versionHashCode)) {
+            query["versionHashCode"] = request.versionHashCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.versionNumber)) {
+            query["versionNumber"] = request.versionNumber!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StartProcessInstance",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/dolphinscheduler/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(bizId)) + "/executors/start-process-instance",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StartProcessInstanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startProcessInstance(_ bizId: String, _ request: StartProcessInstanceRequest) async throws -> StartProcessInstanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await startProcessInstanceWithOptions(bizId as! String, request as! StartProcessInstanceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func startSessionClusterWithOptions(_ workspaceId: String, _ request: StartSessionClusterRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StartSessionClusterResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -803,5 +946,100 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await terminateSqlStatementWithOptions(workspaceId as! String, statementId as! String, request as! TerminateSqlStatementRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateProcessDefinitionWithScheduleWithOptions(_ bizId: String, _ code: String, _ tmpReq: UpdateProcessDefinitionWithScheduleRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateProcessDefinitionWithScheduleResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateProcessDefinitionWithScheduleShrinkRequest = UpdateProcessDefinitionWithScheduleShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.schedule)) {
+            request.scheduleShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.schedule, "schedule", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tags)) {
+            request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "tags", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.taskDefinitionJson)) {
+            request.taskDefinitionJsonShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.taskDefinitionJson, "taskDefinitionJson", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.taskRelationJson)) {
+            request.taskRelationJsonShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.taskRelationJson, "taskRelationJson", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.alertEmailAddress)) {
+            query["alertEmailAddress"] = request.alertEmailAddress ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.executionType)) {
+            query["executionType"] = request.executionType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productNamespace)) {
+            query["productNamespace"] = request.productNamespace ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.publish)) {
+            query["publish"] = request.publish!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["regionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.releaseState)) {
+            query["releaseState"] = request.releaseState ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceQueue)) {
+            query["resourceQueue"] = request.resourceQueue ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.retryTimes)) {
+            query["retryTimes"] = request.retryTimes!;
+        }
+        if (!TeaUtils.Client.isUnset(request.runAs)) {
+            query["runAs"] = request.runAs ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scheduleShrink)) {
+            query["schedule"] = request.scheduleShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagsShrink)) {
+            query["tags"] = request.tagsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskDefinitionJsonShrink)) {
+            query["taskDefinitionJson"] = request.taskDefinitionJsonShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskParallelism)) {
+            query["taskParallelism"] = request.taskParallelism!;
+        }
+        if (!TeaUtils.Client.isUnset(request.taskRelationJsonShrink)) {
+            query["taskRelationJson"] = request.taskRelationJsonShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timeout)) {
+            query["timeout"] = request.timeout!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateProcessDefinitionWithSchedule",
+            "version": "2023-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/dolphinscheduler/projects/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(bizId)) + "/process-definition/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(code)),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateProcessDefinitionWithScheduleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateProcessDefinitionWithSchedule(_ bizId: String, _ code: String, _ request: UpdateProcessDefinitionWithScheduleRequest) async throws -> UpdateProcessDefinitionWithScheduleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateProcessDefinitionWithScheduleWithOptions(bizId as! String, code as! String, request as! UpdateProcessDefinitionWithScheduleRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 }
