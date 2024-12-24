@@ -802,6 +802,131 @@ public class AllocateReadWriteSplittingConnectionResponse : Tea.TeaModel {
     }
 }
 
+public class AssociateEipAddressWithRCInstanceRequest : Tea.TeaModel {
+    public var allocationId: String?
+
+    public var instanceId: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allocationId != nil {
+            map["AllocationId"] = self.allocationId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AllocationId") {
+            self.allocationId = dict["AllocationId"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class AssociateEipAddressWithRCInstanceResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class AssociateEipAddressWithRCInstanceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AssociateEipAddressWithRCInstanceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = AssociateEipAddressWithRCInstanceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class AttachRCDiskRequest : Tea.TeaModel {
     public var deleteWithInstance: Bool?
 
@@ -26484,6 +26609,10 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
             public var collation: String?
 
+            public var compressionMode: String?
+
+            public var compressionRatio: String?
+
             public var connectionMode: String?
 
             public var connectionString: String?
@@ -26600,6 +26729,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
             public var superPermissionMode: String?
 
+            public var supportCompression: Bool?
+
             public var tempDBInstanceId: String?
 
             public var tempUpgradeTimeEnd: String?
@@ -26674,6 +26805,12 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.collation != nil {
                     map["Collation"] = self.collation!
+                }
+                if self.compressionMode != nil {
+                    map["CompressionMode"] = self.compressionMode!
+                }
+                if self.compressionRatio != nil {
+                    map["CompressionRatio"] = self.compressionRatio!
                 }
                 if self.connectionMode != nil {
                     map["ConnectionMode"] = self.connectionMode!
@@ -26849,6 +26986,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 if self.superPermissionMode != nil {
                     map["SuperPermissionMode"] = self.superPermissionMode!
                 }
+                if self.supportCompression != nil {
+                    map["SupportCompression"] = self.supportCompression!
+                }
                 if self.tempDBInstanceId != nil {
                     map["TempDBInstanceId"] = self.tempDBInstanceId!
                 }
@@ -26920,6 +27060,12 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Collation") {
                     self.collation = dict["Collation"] as! String
+                }
+                if dict.keys.contains("CompressionMode") {
+                    self.compressionMode = dict["CompressionMode"] as! String
+                }
+                if dict.keys.contains("CompressionRatio") {
+                    self.compressionRatio = dict["CompressionRatio"] as! String
                 }
                 if dict.keys.contains("ConnectionMode") {
                     self.connectionMode = dict["ConnectionMode"] as! String
@@ -27104,6 +27250,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("SuperPermissionMode") {
                     self.superPermissionMode = dict["SuperPermissionMode"] as! String
+                }
+                if dict.keys.contains("SupportCompression") {
+                    self.supportCompression = dict["SupportCompression"] as! Bool
                 }
                 if dict.keys.contains("TempDBInstanceId") {
                     self.tempDBInstanceId = dict["TempDBInstanceId"] as! String
@@ -52243,8 +52392,8 @@ public class DescribeRCDeploymentSetsResponseBody : Tea.TeaModel {
                     }
                 }
             }
-            public class TagResources : Tea.TeaModel {
-                public class TagResources : Tea.TeaModel {
+            public class Tags : Tea.TeaModel {
+                public class Tag : Tea.TeaModel {
                     public var resourceId: String?
 
                     public var resourceType: String?
@@ -52297,7 +52446,7 @@ public class DescribeRCDeploymentSetsResponseBody : Tea.TeaModel {
                         }
                     }
                 }
-                public var tagResources: [DescribeRCDeploymentSetsResponseBody.DeploymentSets.DeploymentSet.TagResources.TagResources]?
+                public var tag: [DescribeRCDeploymentSetsResponseBody.DeploymentSets.DeploymentSet.Tags.Tag]?
 
                 public override init() {
                     super.init()
@@ -52313,27 +52462,27 @@ public class DescribeRCDeploymentSetsResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
-                    if self.tagResources != nil {
+                    if self.tag != nil {
                         var tmp : [Any] = []
-                        for k in self.tagResources! {
+                        for k in self.tag! {
                             tmp.append(k.toMap())
                         }
-                        map["TagResources"] = tmp
+                        map["Tag"] = tmp
                     }
                     return map
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
-                    if dict.keys.contains("TagResources") {
-                        var tmp : [DescribeRCDeploymentSetsResponseBody.DeploymentSets.DeploymentSet.TagResources.TagResources] = []
-                        for v in dict["TagResources"] as! [Any] {
-                            var model = DescribeRCDeploymentSetsResponseBody.DeploymentSets.DeploymentSet.TagResources.TagResources()
+                    if dict.keys.contains("Tag") {
+                        var tmp : [DescribeRCDeploymentSetsResponseBody.DeploymentSets.DeploymentSet.Tags.Tag] = []
+                        for v in dict["Tag"] as! [Any] {
+                            var model = DescribeRCDeploymentSetsResponseBody.DeploymentSets.DeploymentSet.Tags.Tag()
                             if v != nil {
                                 model.fromMap(v as! [String: Any])
                             }
                             tmp.append(model)
                         }
-                        self.tagResources = tmp
+                        self.tag = tmp
                     }
                 }
             }
@@ -52361,7 +52510,7 @@ public class DescribeRCDeploymentSetsResponseBody : Tea.TeaModel {
 
             public var strategy: String?
 
-            public var tagResources: DescribeRCDeploymentSetsResponseBody.DeploymentSets.DeploymentSet.TagResources?
+            public var tags: DescribeRCDeploymentSetsResponseBody.DeploymentSets.DeploymentSet.Tags?
 
             public override init() {
                 super.init()
@@ -52375,7 +52524,7 @@ public class DescribeRCDeploymentSetsResponseBody : Tea.TeaModel {
             public override func validate() throws -> Void {
                 try self.capacities?.validate()
                 try self.instanceIds?.validate()
-                try self.tagResources?.validate()
+                try self.tags?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -52416,8 +52565,8 @@ public class DescribeRCDeploymentSetsResponseBody : Tea.TeaModel {
                 if self.strategy != nil {
                     map["Strategy"] = self.strategy!
                 }
-                if self.tagResources != nil {
-                    map["TagResources"] = self.tagResources?.toMap()
+                if self.tags != nil {
+                    map["Tags"] = self.tags?.toMap()
                 }
                 return map
             }
@@ -52463,10 +52612,10 @@ public class DescribeRCDeploymentSetsResponseBody : Tea.TeaModel {
                 if dict.keys.contains("Strategy") {
                     self.strategy = dict["Strategy"] as! String
                 }
-                if dict.keys.contains("TagResources") {
-                    var model = DescribeRCDeploymentSetsResponseBody.DeploymentSets.DeploymentSet.TagResources()
-                    model.fromMap(dict["TagResources"] as! [String: Any])
-                    self.tagResources = model
+                if dict.keys.contains("Tags") {
+                    var model = DescribeRCDeploymentSetsResponseBody.DeploymentSets.DeploymentSet.Tags()
+                    model.fromMap(dict["Tags"] as! [String: Any])
+                    self.tags = model
                 }
             }
         }
@@ -53382,6 +53531,8 @@ public class DescribeRCImageListResponse : Tea.TeaModel {
 public class DescribeRCInstanceAttributeRequest : Tea.TeaModel {
     public var instanceId: String?
 
+    public var privateIpAddress: String?
+
     public var regionId: String?
 
     public override init() {
@@ -53401,6 +53552,9 @@ public class DescribeRCInstanceAttributeRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.privateIpAddress != nil {
+            map["PrivateIpAddress"] = self.privateIpAddress!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -53410,6 +53564,9 @@ public class DescribeRCInstanceAttributeRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("PrivateIpAddress") {
+            self.privateIpAddress = dict["PrivateIpAddress"] as! String
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
@@ -53767,6 +53924,100 @@ public class DescribeRCInstanceAttributeResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class Tags : Tea.TeaModel {
+        public class Tag : Tea.TeaModel {
+            public var resourceId: String?
+
+            public var resourceType: String?
+
+            public var tagKey: String?
+
+            public var tagValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.resourceId != nil {
+                    map["ResourceId"] = self.resourceId!
+                }
+                if self.resourceType != nil {
+                    map["ResourceType"] = self.resourceType!
+                }
+                if self.tagKey != nil {
+                    map["TagKey"] = self.tagKey!
+                }
+                if self.tagValue != nil {
+                    map["TagValue"] = self.tagValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ResourceId") {
+                    self.resourceId = dict["ResourceId"] as! String
+                }
+                if dict.keys.contains("ResourceType") {
+                    self.resourceType = dict["ResourceType"] as! String
+                }
+                if dict.keys.contains("TagKey") {
+                    self.tagKey = dict["TagKey"] as! String
+                }
+                if dict.keys.contains("TagValue") {
+                    self.tagValue = dict["TagValue"] as! String
+                }
+            }
+        }
+        public var tag: [DescribeRCInstanceAttributeResponseBody.Tags.Tag]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tag != nil {
+                var tmp : [Any] = []
+                for k in self.tag! {
+                    tmp.append(k.toMap())
+                }
+                map["Tag"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Tag") {
+                var tmp : [DescribeRCInstanceAttributeResponseBody.Tags.Tag] = []
+                for v in dict["Tag"] as! [Any] {
+                    var model = DescribeRCInstanceAttributeResponseBody.Tags.Tag()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tag = tmp
+            }
+        }
+    }
     public class VpcAttributes : Tea.TeaModel {
         public class PrivateIpAddress : Tea.TeaModel {
             public var ipAddress: [String]?
@@ -53930,6 +54181,8 @@ public class DescribeRCInstanceAttributeResponseBody : Tea.TeaModel {
 
     public var stoppedMode: String?
 
+    public var tags: DescribeRCInstanceAttributeResponseBody.Tags?
+
     public var vlanId: String?
 
     public var vpcAttributes: DescribeRCInstanceAttributeResponseBody.VpcAttributes?
@@ -53953,6 +54206,7 @@ public class DescribeRCInstanceAttributeResponseBody : Tea.TeaModel {
         try self.operationLocks?.validate()
         try self.publicIpAddress?.validate()
         try self.securityGroupIds?.validate()
+        try self.tags?.validate()
         try self.vpcAttributes?.validate()
     }
 
@@ -54074,6 +54328,9 @@ public class DescribeRCInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if self.stoppedMode != nil {
             map["StoppedMode"] = self.stoppedMode!
+        }
+        if self.tags != nil {
+            map["Tags"] = self.tags?.toMap()
         }
         if self.vlanId != nil {
             map["VlanId"] = self.vlanId!
@@ -54218,6 +54475,11 @@ public class DescribeRCInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("StoppedMode") {
             self.stoppedMode = dict["StoppedMode"] as! String
+        }
+        if dict.keys.contains("Tags") {
+            var model = DescribeRCInstanceAttributeResponseBody.Tags()
+            model.fromMap(dict["Tags"] as! [String: Any])
+            self.tags = model
         }
         if dict.keys.contains("VlanId") {
             self.vlanId = dict["VlanId"] as! String
@@ -54540,6 +54802,59 @@ public class DescribeRCInstancesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Tags : Tea.TeaModel {
+            public var resourceId: String?
+
+            public var resourceType: String?
+
+            public var tagKey: String?
+
+            public var tagValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.resourceId != nil {
+                    map["ResourceId"] = self.resourceId!
+                }
+                if self.resourceType != nil {
+                    map["ResourceType"] = self.resourceType!
+                }
+                if self.tagKey != nil {
+                    map["TagKey"] = self.tagKey!
+                }
+                if self.tagValue != nil {
+                    map["TagValue"] = self.tagValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ResourceId") {
+                    self.resourceId = dict["ResourceId"] as! String
+                }
+                if dict.keys.contains("ResourceType") {
+                    self.resourceType = dict["ResourceType"] as! String
+                }
+                if dict.keys.contains("TagKey") {
+                    self.tagKey = dict["TagKey"] as! String
+                }
+                if dict.keys.contains("TagValue") {
+                    self.tagValue = dict["TagValue"] as! String
+                }
+            }
+        }
         public var clusterName: String?
 
         public var createMode: String?
@@ -54565,6 +54880,8 @@ public class DescribeRCInstancesResponseBody : Tea.TeaModel {
         public var status: String?
 
         public var tagResources: [DescribeRCInstancesResponseBody.RCInstances.TagResources]?
+
+        public var tags: [DescribeRCInstancesResponseBody.RCInstances.Tags]?
 
         public var vpcId: String?
 
@@ -54627,6 +54944,13 @@ public class DescribeRCInstancesResponseBody : Tea.TeaModel {
                 }
                 map["TagResources"] = tmp
             }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
             if self.vpcId != nil {
                 map["VpcId"] = self.vpcId!
             }
@@ -54683,6 +55007,17 @@ public class DescribeRCInstancesResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.tagResources = tmp
+            }
+            if dict.keys.contains("Tags") {
+                var tmp : [DescribeRCInstancesResponseBody.RCInstances.Tags] = []
+                for v in dict["Tags"] as! [Any] {
+                    var model = DescribeRCInstancesResponseBody.RCInstances.Tags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tags = tmp
             }
             if dict.keys.contains("VpcId") {
                 self.vpcId = dict["VpcId"] as! String
@@ -69979,6 +70314,10 @@ public class ModifyDBInstanceConfigRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var switchTime: String?
+
+    public var switchTimeMode: String?
+
     public override init() {
         super.init()
     }
@@ -70020,6 +70359,12 @@ public class ModifyDBInstanceConfigRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.switchTime != nil {
+            map["SwitchTime"] = self.switchTime!
+        }
+        if self.switchTimeMode != nil {
+            map["SwitchTimeMode"] = self.switchTimeMode!
+        }
         return map
     }
 
@@ -70050,6 +70395,12 @@ public class ModifyDBInstanceConfigRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("SwitchTime") {
+            self.switchTime = dict["SwitchTime"] as! String
+        }
+        if dict.keys.contains("SwitchTimeMode") {
+            self.switchTimeMode = dict["SwitchTimeMode"] as! String
         }
     }
 }
@@ -73007,6 +73358,8 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
 
     public var coldDataEnabled: Bool?
 
+    public var compressionMode: String?
+
     public var DBInstanceClass: String?
 
     public var DBInstanceId: String?
@@ -73088,6 +73441,9 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
         }
         if self.coldDataEnabled != nil {
             map["ColdDataEnabled"] = self.coldDataEnabled!
+        }
+        if self.compressionMode != nil {
+            map["CompressionMode"] = self.compressionMode!
         }
         if self.DBInstanceClass != nil {
             map["DBInstanceClass"] = self.DBInstanceClass!
@@ -73186,6 +73542,9 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
         if dict.keys.contains("ColdDataEnabled") {
             self.coldDataEnabled = dict["ColdDataEnabled"] as! Bool
         }
+        if dict.keys.contains("CompressionMode") {
+            self.compressionMode = dict["CompressionMode"] as! String
+        }
         if dict.keys.contains("DBInstanceClass") {
             self.DBInstanceClass = dict["DBInstanceClass"] as! String
         }
@@ -73280,6 +73639,8 @@ public class ModifyDBInstanceSpecShrinkRequest : Tea.TeaModel {
 
     public var coldDataEnabled: Bool?
 
+    public var compressionMode: String?
+
     public var DBInstanceClass: String?
 
     public var DBInstanceId: String?
@@ -73360,6 +73721,9 @@ public class ModifyDBInstanceSpecShrinkRequest : Tea.TeaModel {
         }
         if self.coldDataEnabled != nil {
             map["ColdDataEnabled"] = self.coldDataEnabled!
+        }
+        if self.compressionMode != nil {
+            map["CompressionMode"] = self.compressionMode!
         }
         if self.DBInstanceClass != nil {
             map["DBInstanceClass"] = self.DBInstanceClass!
@@ -73457,6 +73821,9 @@ public class ModifyDBInstanceSpecShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ColdDataEnabled") {
             self.coldDataEnabled = dict["ColdDataEnabled"] as! Bool
+        }
+        if dict.keys.contains("CompressionMode") {
+            self.compressionMode = dict["CompressionMode"] as! String
         }
         if dict.keys.contains("DBInstanceClass") {
             self.DBInstanceClass = dict["DBInstanceClass"] as! String
@@ -79297,6 +79664,8 @@ public class ModifyResourceGroupRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var resourceType: String?
+
     public override init() {
         super.init()
     }
@@ -79332,6 +79701,9 @@ public class ModifyResourceGroupRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
         return map
     }
 
@@ -79356,6 +79728,9 @@ public class ModifyResourceGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceType") {
+            self.resourceType = dict["ResourceType"] as! String
         }
     }
 }
@@ -84971,6 +85346,8 @@ public class RunRCInstancesRequest : Tea.TeaModel {
     public class SystemDisk : Tea.TeaModel {
         public var category: String?
 
+        public var performanceLevel: String?
+
         public var size: Int32?
 
         public override init() {
@@ -84990,6 +85367,9 @@ public class RunRCInstancesRequest : Tea.TeaModel {
             if self.category != nil {
                 map["Category"] = self.category!
             }
+            if self.performanceLevel != nil {
+                map["PerformanceLevel"] = self.performanceLevel!
+            }
             if self.size != nil {
                 map["Size"] = self.size!
             }
@@ -84999,6 +85379,9 @@ public class RunRCInstancesRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Category") {
                 self.category = dict["Category"] as! String
+            }
+            if dict.keys.contains("PerformanceLevel") {
+                self.performanceLevel = dict["PerformanceLevel"] as! String
             }
             if dict.keys.contains("Size") {
                 self.size = dict["Size"] as! Int32
@@ -87064,6 +87447,131 @@ public class SyncRCKeyPairResponse : Tea.TeaModel {
     }
 }
 
+public class SyncRCSecurityGroupRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var regionId: String?
+
+    public var securityGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.securityGroupId != nil {
+            map["SecurityGroupId"] = self.securityGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("SecurityGroupId") {
+            self.securityGroupId = dict["SecurityGroupId"] as! String
+        }
+    }
+}
+
+public class SyncRCSecurityGroupResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class SyncRCSecurityGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SyncRCSecurityGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = SyncRCSecurityGroupResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class TagResourcesRequest : Tea.TeaModel {
     public class Tag : Tea.TeaModel {
         public var key: String?
@@ -87642,6 +88150,131 @@ public class TransformDBInstancePayTypeResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = TransformDBInstancePayTypeResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UnassociateEipAddressWithRCInstanceRequest : Tea.TeaModel {
+    public var allocationId: String?
+
+    public var instanceId: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allocationId != nil {
+            map["AllocationId"] = self.allocationId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AllocationId") {
+            self.allocationId = dict["AllocationId"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class UnassociateEipAddressWithRCInstanceResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UnassociateEipAddressWithRCInstanceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UnassociateEipAddressWithRCInstanceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UnassociateEipAddressWithRCInstanceResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
