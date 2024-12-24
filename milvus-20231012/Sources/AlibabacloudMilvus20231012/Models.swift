@@ -397,6 +397,8 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
 
                 public var cuNum: Int32?
 
+                public var cuRatio: Int32?
+
                 public var diskSize: Int32?
 
                 public var diskType: String?
@@ -423,6 +425,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
                     if self.cuNum != nil {
                         map["CuNum"] = self.cuNum!
                     }
+                    if self.cuRatio != nil {
+                        map["CuRatio"] = self.cuRatio!
+                    }
                     if self.diskSize != nil {
                         map["DiskSize"] = self.diskSize!
                     }
@@ -441,6 +446,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("CuNum") {
                         self.cuNum = dict["CuNum"] as! Int32
+                    }
+                    if dict.keys.contains("CuRatio") {
+                        self.cuRatio = dict["CuRatio"] as! Int32
                     }
                     if dict.keys.contains("DiskSize") {
                         self.diskSize = dict["DiskSize"] as! Int32
@@ -680,6 +688,8 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
 
         public var measureConfig: GetInstanceDetailResponseBody.Data.MeasureConfig?
 
+        public var nodeType: String?
+
         public var openPublicNet: Bool?
 
         public var packageType: String?
@@ -756,6 +766,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
             }
             if self.measureConfig != nil {
                 map["MeasureConfig"] = self.measureConfig?.toMap()
+            }
+            if self.nodeType != nil {
+                map["NodeType"] = self.nodeType!
             }
             if self.openPublicNet != nil {
                 map["OpenPublicNet"] = self.openPublicNet!
@@ -839,6 +852,9 @@ public class GetInstanceDetailResponseBody : Tea.TeaModel {
                 var model = GetInstanceDetailResponseBody.Data.MeasureConfig()
                 model.fromMap(dict["MeasureConfig"] as! [String: Any])
                 self.measureConfig = model
+            }
+            if dict.keys.contains("NodeType") {
+                self.nodeType = dict["NodeType"] as! String
             }
             if dict.keys.contains("OpenPublicNet") {
                 self.openPublicNet = dict["OpenPublicNet"] as! Bool
@@ -1247,6 +1263,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
         public var instanceStatus: String?
 
+        public var nodeType: String?
+
         public var openPublicNet: Bool?
 
         public var packageType: String?
@@ -1301,6 +1319,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if self.instanceStatus != nil {
                 map["InstanceStatus"] = self.instanceStatus!
+            }
+            if self.nodeType != nil {
+                map["NodeType"] = self.nodeType!
             }
             if self.openPublicNet != nil {
                 map["OpenPublicNet"] = self.openPublicNet!
@@ -1358,6 +1379,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("InstanceStatus") {
                 self.instanceStatus = dict["InstanceStatus"] as! String
+            }
+            if dict.keys.contains("NodeType") {
+                self.nodeType = dict["NodeType"] as! String
             }
             if dict.keys.contains("OpenPublicNet") {
                 self.openPublicNet = dict["OpenPublicNet"] as! Bool
