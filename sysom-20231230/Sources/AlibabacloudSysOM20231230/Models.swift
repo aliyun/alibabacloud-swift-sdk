@@ -347,6 +347,8 @@ public class GetAbnormalEventsCountRequest : Tea.TeaModel {
 
     public var pod: String?
 
+    public var showPod: Int32?
+
     public var start: Double?
 
     public override init() {
@@ -378,6 +380,9 @@ public class GetAbnormalEventsCountRequest : Tea.TeaModel {
         if self.pod != nil {
             map["pod"] = self.pod!
         }
+        if self.showPod != nil {
+            map["showPod"] = self.showPod!
+        }
         if self.start != nil {
             map["start"] = self.start!
         }
@@ -399,6 +404,9 @@ public class GetAbnormalEventsCountRequest : Tea.TeaModel {
         }
         if dict.keys.contains("pod") {
             self.pod = dict["pod"] as! String
+        }
+        if dict.keys.contains("showPod") {
+            self.showPod = dict["showPod"] as! Int32
         }
         if dict.keys.contains("start") {
             self.start = dict["start"] as! Double

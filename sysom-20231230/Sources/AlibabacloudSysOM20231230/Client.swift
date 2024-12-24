@@ -114,6 +114,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pod)) {
             query["pod"] = request.pod ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.showPod)) {
+            query["showPod"] = request.showPod!;
+        }
         if (!TeaUtils.Client.isUnset(request.start)) {
             query["start"] = request.start!;
         }
