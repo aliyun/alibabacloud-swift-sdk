@@ -16594,6 +16594,324 @@ public class CreateScheduleConferenceShrinkHeaders : Tea.TeaModel {
 }
 
 public class CreateScheduleConferenceRequest : Tea.TeaModel {
+    public class ScheduleConfSettingModel : Tea.TeaModel {
+        public class MoziConfOpenRecordSetting : Tea.TeaModel {
+            public var isFollowHost: Bool?
+
+            public var mode: String?
+
+            public var recordAutoStart: Int32?
+
+            public var recordAutoStartType: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.isFollowHost != nil {
+                    map["IsFollowHost"] = self.isFollowHost!
+                }
+                if self.mode != nil {
+                    map["Mode"] = self.mode!
+                }
+                if self.recordAutoStart != nil {
+                    map["RecordAutoStart"] = self.recordAutoStart!
+                }
+                if self.recordAutoStartType != nil {
+                    map["RecordAutoStartType"] = self.recordAutoStartType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("IsFollowHost") {
+                    self.isFollowHost = dict["IsFollowHost"] as! Bool
+                }
+                if dict.keys.contains("Mode") {
+                    self.mode = dict["Mode"] as! String
+                }
+                if dict.keys.contains("RecordAutoStart") {
+                    self.recordAutoStart = dict["RecordAutoStart"] as! Int32
+                }
+                if dict.keys.contains("RecordAutoStartType") {
+                    self.recordAutoStartType = dict["RecordAutoStartType"] as! Int32
+                }
+            }
+        }
+        public class MoziConfVirtualExtraSetting : Tea.TeaModel {
+            public class MoziConfExtensionAppSettings : Tea.TeaModel {
+                public var autoOpenMode: Int32?
+
+                public var coolAppCode: String?
+
+                public var extensionAppBizData: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.autoOpenMode != nil {
+                        map["AutoOpenMode"] = self.autoOpenMode!
+                    }
+                    if self.coolAppCode != nil {
+                        map["CoolAppCode"] = self.coolAppCode!
+                    }
+                    if self.extensionAppBizData != nil {
+                        map["ExtensionAppBizData"] = self.extensionAppBizData!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AutoOpenMode") {
+                        self.autoOpenMode = dict["AutoOpenMode"] as! Int32
+                    }
+                    if dict.keys.contains("CoolAppCode") {
+                        self.coolAppCode = dict["CoolAppCode"] as! String
+                    }
+                    if dict.keys.contains("ExtensionAppBizData") {
+                        self.extensionAppBizData = dict["ExtensionAppBizData"] as! String
+                    }
+                }
+            }
+            public var cloudRecordOwnerUserId: String?
+
+            public var enableChat: Int32?
+
+            public var enableWebAnonymousJoin: Bool?
+
+            public var joinBeforeHost: Int32?
+
+            public var lockMediaStatusMicMute: Int32?
+
+            public var lockNick: Int32?
+
+            public var minutesOwnerUserId: String?
+
+            public var moziConfExtensionAppSettings: [CreateScheduleConferenceRequest.ScheduleConfSettingModel.MoziConfVirtualExtraSetting.MoziConfExtensionAppSettings]?
+
+            public var pushAllMeetingRecords: Bool?
+
+            public var pushCloudRecordCard: Bool?
+
+            public var pushMinutesCard: Bool?
+
+            public var waitingRoom: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cloudRecordOwnerUserId != nil {
+                    map["CloudRecordOwnerUserId"] = self.cloudRecordOwnerUserId!
+                }
+                if self.enableChat != nil {
+                    map["EnableChat"] = self.enableChat!
+                }
+                if self.enableWebAnonymousJoin != nil {
+                    map["EnableWebAnonymousJoin"] = self.enableWebAnonymousJoin!
+                }
+                if self.joinBeforeHost != nil {
+                    map["JoinBeforeHost"] = self.joinBeforeHost!
+                }
+                if self.lockMediaStatusMicMute != nil {
+                    map["LockMediaStatusMicMute"] = self.lockMediaStatusMicMute!
+                }
+                if self.lockNick != nil {
+                    map["LockNick"] = self.lockNick!
+                }
+                if self.minutesOwnerUserId != nil {
+                    map["MinutesOwnerUserId"] = self.minutesOwnerUserId!
+                }
+                if self.moziConfExtensionAppSettings != nil {
+                    var tmp : [Any] = []
+                    for k in self.moziConfExtensionAppSettings! {
+                        tmp.append(k.toMap())
+                    }
+                    map["MoziConfExtensionAppSettings"] = tmp
+                }
+                if self.pushAllMeetingRecords != nil {
+                    map["PushAllMeetingRecords"] = self.pushAllMeetingRecords!
+                }
+                if self.pushCloudRecordCard != nil {
+                    map["PushCloudRecordCard"] = self.pushCloudRecordCard!
+                }
+                if self.pushMinutesCard != nil {
+                    map["PushMinutesCard"] = self.pushMinutesCard!
+                }
+                if self.waitingRoom != nil {
+                    map["WaitingRoom"] = self.waitingRoom!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CloudRecordOwnerUserId") {
+                    self.cloudRecordOwnerUserId = dict["CloudRecordOwnerUserId"] as! String
+                }
+                if dict.keys.contains("EnableChat") {
+                    self.enableChat = dict["EnableChat"] as! Int32
+                }
+                if dict.keys.contains("EnableWebAnonymousJoin") {
+                    self.enableWebAnonymousJoin = dict["EnableWebAnonymousJoin"] as! Bool
+                }
+                if dict.keys.contains("JoinBeforeHost") {
+                    self.joinBeforeHost = dict["JoinBeforeHost"] as! Int32
+                }
+                if dict.keys.contains("LockMediaStatusMicMute") {
+                    self.lockMediaStatusMicMute = dict["LockMediaStatusMicMute"] as! Int32
+                }
+                if dict.keys.contains("LockNick") {
+                    self.lockNick = dict["LockNick"] as! Int32
+                }
+                if dict.keys.contains("MinutesOwnerUserId") {
+                    self.minutesOwnerUserId = dict["MinutesOwnerUserId"] as! String
+                }
+                if dict.keys.contains("MoziConfExtensionAppSettings") {
+                    var tmp : [CreateScheduleConferenceRequest.ScheduleConfSettingModel.MoziConfVirtualExtraSetting.MoziConfExtensionAppSettings] = []
+                    for v in dict["MoziConfExtensionAppSettings"] as! [Any] {
+                        var model = CreateScheduleConferenceRequest.ScheduleConfSettingModel.MoziConfVirtualExtraSetting.MoziConfExtensionAppSettings()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.moziConfExtensionAppSettings = tmp
+                }
+                if dict.keys.contains("PushAllMeetingRecords") {
+                    self.pushAllMeetingRecords = dict["PushAllMeetingRecords"] as! Bool
+                }
+                if dict.keys.contains("PushCloudRecordCard") {
+                    self.pushCloudRecordCard = dict["PushCloudRecordCard"] as! Bool
+                }
+                if dict.keys.contains("PushMinutesCard") {
+                    self.pushMinutesCard = dict["PushMinutesCard"] as! Bool
+                }
+                if dict.keys.contains("WaitingRoom") {
+                    self.waitingRoom = dict["WaitingRoom"] as! Int32
+                }
+            }
+        }
+        public var cohostUserIds: [String]?
+
+        public var confAllowedCorpId: String?
+
+        public var hostUserId: String?
+
+        public var lockRoom: Int32?
+
+        public var moziConfOpenRecordSetting: CreateScheduleConferenceRequest.ScheduleConfSettingModel.MoziConfOpenRecordSetting?
+
+        public var moziConfVirtualExtraSetting: CreateScheduleConferenceRequest.ScheduleConfSettingModel.MoziConfVirtualExtraSetting?
+
+        public var muteOnJoin: Int32?
+
+        public var screenShareForbidden: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.moziConfOpenRecordSetting?.validate()
+            try self.moziConfVirtualExtraSetting?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cohostUserIds != nil {
+                map["CohostUserIds"] = self.cohostUserIds!
+            }
+            if self.confAllowedCorpId != nil {
+                map["ConfAllowedCorpId"] = self.confAllowedCorpId!
+            }
+            if self.hostUserId != nil {
+                map["HostUserId"] = self.hostUserId!
+            }
+            if self.lockRoom != nil {
+                map["LockRoom"] = self.lockRoom!
+            }
+            if self.moziConfOpenRecordSetting != nil {
+                map["MoziConfOpenRecordSetting"] = self.moziConfOpenRecordSetting?.toMap()
+            }
+            if self.moziConfVirtualExtraSetting != nil {
+                map["MoziConfVirtualExtraSetting"] = self.moziConfVirtualExtraSetting?.toMap()
+            }
+            if self.muteOnJoin != nil {
+                map["MuteOnJoin"] = self.muteOnJoin!
+            }
+            if self.screenShareForbidden != nil {
+                map["ScreenShareForbidden"] = self.screenShareForbidden!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CohostUserIds") {
+                self.cohostUserIds = dict["CohostUserIds"] as! [String]
+            }
+            if dict.keys.contains("ConfAllowedCorpId") {
+                self.confAllowedCorpId = dict["ConfAllowedCorpId"] as! String
+            }
+            if dict.keys.contains("HostUserId") {
+                self.hostUserId = dict["HostUserId"] as! String
+            }
+            if dict.keys.contains("LockRoom") {
+                self.lockRoom = dict["LockRoom"] as! Int32
+            }
+            if dict.keys.contains("MoziConfOpenRecordSetting") {
+                var model = CreateScheduleConferenceRequest.ScheduleConfSettingModel.MoziConfOpenRecordSetting()
+                model.fromMap(dict["MoziConfOpenRecordSetting"] as! [String: Any])
+                self.moziConfOpenRecordSetting = model
+            }
+            if dict.keys.contains("MoziConfVirtualExtraSetting") {
+                var model = CreateScheduleConferenceRequest.ScheduleConfSettingModel.MoziConfVirtualExtraSetting()
+                model.fromMap(dict["MoziConfVirtualExtraSetting"] as! [String: Any])
+                self.moziConfVirtualExtraSetting = model
+            }
+            if dict.keys.contains("MuteOnJoin") {
+                self.muteOnJoin = dict["MuteOnJoin"] as! Int32
+            }
+            if dict.keys.contains("ScreenShareForbidden") {
+                self.screenShareForbidden = dict["ScreenShareForbidden"] as! Int32
+            }
+        }
+    }
     public class TenantContext : Tea.TeaModel {
         public var tenantId: String?
 
@@ -16625,6 +16943,8 @@ public class CreateScheduleConferenceRequest : Tea.TeaModel {
     }
     public var endTime: Int64?
 
+    public var scheduleConfSettingModel: CreateScheduleConferenceRequest.ScheduleConfSettingModel?
+
     public var startTime: Int64?
 
     public var tenantContext: CreateScheduleConferenceRequest.TenantContext?
@@ -16641,6 +16961,7 @@ public class CreateScheduleConferenceRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.scheduleConfSettingModel?.validate()
         try self.tenantContext?.validate()
     }
 
@@ -16648,6 +16969,9 @@ public class CreateScheduleConferenceRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
+        }
+        if self.scheduleConfSettingModel != nil {
+            map["ScheduleConfSettingModel"] = self.scheduleConfSettingModel?.toMap()
         }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
@@ -16665,6 +16989,11 @@ public class CreateScheduleConferenceRequest : Tea.TeaModel {
         if dict.keys.contains("EndTime") {
             self.endTime = dict["EndTime"] as! Int64
         }
+        if dict.keys.contains("ScheduleConfSettingModel") {
+            var model = CreateScheduleConferenceRequest.ScheduleConfSettingModel()
+            model.fromMap(dict["ScheduleConfSettingModel"] as! [String: Any])
+            self.scheduleConfSettingModel = model
+        }
         if dict.keys.contains("StartTime") {
             self.startTime = dict["StartTime"] as! Int64
         }
@@ -16681,6 +17010,8 @@ public class CreateScheduleConferenceRequest : Tea.TeaModel {
 
 public class CreateScheduleConferenceShrinkRequest : Tea.TeaModel {
     public var endTime: Int64?
+
+    public var scheduleConfSettingModelShrink: String?
 
     public var startTime: Int64?
 
@@ -16705,6 +17036,9 @@ public class CreateScheduleConferenceShrinkRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.scheduleConfSettingModelShrink != nil {
+            map["ScheduleConfSettingModel"] = self.scheduleConfSettingModelShrink!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -16720,6 +17054,9 @@ public class CreateScheduleConferenceShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("EndTime") {
             self.endTime = dict["EndTime"] as! Int64
+        }
+        if dict.keys.contains("ScheduleConfSettingModel") {
+            self.scheduleConfSettingModelShrink = dict["ScheduleConfSettingModel"] as! String
         }
         if dict.keys.contains("StartTime") {
             self.startTime = dict["StartTime"] as! Int64
@@ -44509,6 +44846,8 @@ public class GetOrgLiveListResponseBody : Tea.TeaModel {
             public class LiveList : Tea.TeaModel {
                 public var anchorNickname: String?
 
+                public var anchorUnionId: String?
+
                 public var anchorUserId: String?
 
                 public var liveEndTime: Int64?
@@ -44538,6 +44877,9 @@ public class GetOrgLiveListResponseBody : Tea.TeaModel {
                     if self.anchorNickname != nil {
                         map["AnchorNickname"] = self.anchorNickname!
                     }
+                    if self.anchorUnionId != nil {
+                        map["AnchorUnionId"] = self.anchorUnionId!
+                    }
                     if self.anchorUserId != nil {
                         map["AnchorUserId"] = self.anchorUserId!
                     }
@@ -44562,6 +44904,9 @@ public class GetOrgLiveListResponseBody : Tea.TeaModel {
                 public override func fromMap(_ dict: [String: Any]) -> Void {
                     if dict.keys.contains("AnchorNickname") {
                         self.anchorNickname = dict["AnchorNickname"] as! String
+                    }
+                    if dict.keys.contains("AnchorUnionId") {
+                        self.anchorUnionId = dict["AnchorUnionId"] as! String
                     }
                     if dict.keys.contains("AnchorUserId") {
                         self.anchorUserId = dict["AnchorUserId"] as! String
@@ -44659,6 +45004,8 @@ public class GetOrgLiveListResponseBody : Tea.TeaModel {
             public class LiveList : Tea.TeaModel {
                 public var anchorNickname: String?
 
+                public var anchorUnionId: String?
+
                 public var anchorUserId: String?
 
                 public var liveEndTime: Int64?
@@ -44686,6 +45033,9 @@ public class GetOrgLiveListResponseBody : Tea.TeaModel {
                     if self.anchorNickname != nil {
                         map["AnchorNickname"] = self.anchorNickname!
                     }
+                    if self.anchorUnionId != nil {
+                        map["AnchorUnionId"] = self.anchorUnionId!
+                    }
                     if self.anchorUserId != nil {
                         map["AnchorUserId"] = self.anchorUserId!
                     }
@@ -44707,6 +45057,9 @@ public class GetOrgLiveListResponseBody : Tea.TeaModel {
                 public override func fromMap(_ dict: [String: Any]) -> Void {
                     if dict.keys.contains("AnchorNickname") {
                         self.anchorNickname = dict["AnchorNickname"] as! String
+                    }
+                    if dict.keys.contains("AnchorUnionId") {
+                        self.anchorUnionId = dict["AnchorUnionId"] as! String
                     }
                     if dict.keys.contains("AnchorUserId") {
                         self.anchorUserId = dict["AnchorUserId"] as! String
@@ -44938,6 +45291,357 @@ public class GetOrgLiveListResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = GetOrgLiveListResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetOrgOrWebOpenDocContentTaskIdHeaders : Tea.TeaModel {
+    public class AccountContext : Tea.TeaModel {
+        public var accountId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountId != nil {
+                map["accountId"] = self.accountId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("accountId") {
+                self.accountId = dict["accountId"] as! String
+            }
+        }
+    }
+    public var commonHeaders: [String: String]?
+
+    public var accountContext: GetOrgOrWebOpenDocContentTaskIdHeaders.AccountContext?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.accountContext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.accountContext != nil {
+            map["AccountContext"] = self.accountContext?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("commonHeaders") {
+            self.commonHeaders = dict["commonHeaders"] as! [String: String]
+        }
+        if dict.keys.contains("AccountContext") {
+            var model = GetOrgOrWebOpenDocContentTaskIdHeaders.AccountContext()
+            model.fromMap(dict["AccountContext"] as! [String: Any])
+            self.accountContext = model
+        }
+    }
+}
+
+public class GetOrgOrWebOpenDocContentTaskIdShrinkHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var accountContextShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.accountContextShrink != nil {
+            map["AccountContext"] = self.accountContextShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("commonHeaders") {
+            self.commonHeaders = dict["commonHeaders"] as! [String: String]
+        }
+        if dict.keys.contains("AccountContext") {
+            self.accountContextShrink = dict["AccountContext"] as! String
+        }
+    }
+}
+
+public class GetOrgOrWebOpenDocContentTaskIdRequest : Tea.TeaModel {
+    public class TenantContext : Tea.TeaModel {
+        public var tenantId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tenantId != nil {
+                map["tenantId"] = self.tenantId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("tenantId") {
+                self.tenantId = dict["tenantId"] as! String
+            }
+        }
+    }
+    public var dentryUuid: String?
+
+    public var generateCp: Bool?
+
+    public var targetFormat: String?
+
+    public var tenantContext: GetOrgOrWebOpenDocContentTaskIdRequest.TenantContext?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.tenantContext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dentryUuid != nil {
+            map["DentryUuid"] = self.dentryUuid!
+        }
+        if self.generateCp != nil {
+            map["GenerateCp"] = self.generateCp!
+        }
+        if self.targetFormat != nil {
+            map["TargetFormat"] = self.targetFormat!
+        }
+        if self.tenantContext != nil {
+            map["TenantContext"] = self.tenantContext?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DentryUuid") {
+            self.dentryUuid = dict["DentryUuid"] as! String
+        }
+        if dict.keys.contains("GenerateCp") {
+            self.generateCp = dict["GenerateCp"] as! Bool
+        }
+        if dict.keys.contains("TargetFormat") {
+            self.targetFormat = dict["TargetFormat"] as! String
+        }
+        if dict.keys.contains("TenantContext") {
+            var model = GetOrgOrWebOpenDocContentTaskIdRequest.TenantContext()
+            model.fromMap(dict["TenantContext"] as! [String: Any])
+            self.tenantContext = model
+        }
+    }
+}
+
+public class GetOrgOrWebOpenDocContentTaskIdShrinkRequest : Tea.TeaModel {
+    public var dentryUuid: String?
+
+    public var generateCp: Bool?
+
+    public var targetFormat: String?
+
+    public var tenantContextShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dentryUuid != nil {
+            map["DentryUuid"] = self.dentryUuid!
+        }
+        if self.generateCp != nil {
+            map["GenerateCp"] = self.generateCp!
+        }
+        if self.targetFormat != nil {
+            map["TargetFormat"] = self.targetFormat!
+        }
+        if self.tenantContextShrink != nil {
+            map["TenantContext"] = self.tenantContextShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DentryUuid") {
+            self.dentryUuid = dict["DentryUuid"] as! String
+        }
+        if dict.keys.contains("GenerateCp") {
+            self.generateCp = dict["GenerateCp"] as! Bool
+        }
+        if dict.keys.contains("TargetFormat") {
+            self.targetFormat = dict["TargetFormat"] as! String
+        }
+        if dict.keys.contains("TenantContext") {
+            self.tenantContextShrink = dict["TenantContext"] as! String
+        }
+    }
+}
+
+public class GetOrgOrWebOpenDocContentTaskIdResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var taskId: Int64?
+
+    public var vendorRequestId: String?
+
+    public var vendorType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["taskId"] = self.taskId!
+        }
+        if self.vendorRequestId != nil {
+            map["vendorRequestId"] = self.vendorRequestId!
+        }
+        if self.vendorType != nil {
+            map["vendorType"] = self.vendorType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("taskId") {
+            self.taskId = dict["taskId"] as! Int64
+        }
+        if dict.keys.contains("vendorRequestId") {
+            self.vendorRequestId = dict["vendorRequestId"] as! String
+        }
+        if dict.keys.contains("vendorType") {
+            self.vendorType = dict["vendorType"] as! String
+        }
+    }
+}
+
+public class GetOrgOrWebOpenDocContentTaskIdResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetOrgOrWebOpenDocContentTaskIdResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetOrgOrWebOpenDocContentTaskIdResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -70275,6 +70979,518 @@ public class QueryConferenceInfoResponse : Tea.TeaModel {
     }
 }
 
+public class QueryConferenceInfoByRoomCodeHeaders : Tea.TeaModel {
+    public class AccountContext : Tea.TeaModel {
+        public var accountId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountId != nil {
+                map["accountId"] = self.accountId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("accountId") {
+                self.accountId = dict["accountId"] as! String
+            }
+        }
+    }
+    public var commonHeaders: [String: String]?
+
+    public var accountContext: QueryConferenceInfoByRoomCodeHeaders.AccountContext?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.accountContext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.accountContext != nil {
+            map["AccountContext"] = self.accountContext?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("commonHeaders") {
+            self.commonHeaders = dict["commonHeaders"] as! [String: String]
+        }
+        if dict.keys.contains("AccountContext") {
+            var model = QueryConferenceInfoByRoomCodeHeaders.AccountContext()
+            model.fromMap(dict["AccountContext"] as! [String: Any])
+            self.accountContext = model
+        }
+    }
+}
+
+public class QueryConferenceInfoByRoomCodeShrinkHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var accountContextShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.accountContextShrink != nil {
+            map["AccountContext"] = self.accountContextShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("commonHeaders") {
+            self.commonHeaders = dict["commonHeaders"] as! [String: String]
+        }
+        if dict.keys.contains("AccountContext") {
+            self.accountContextShrink = dict["AccountContext"] as! String
+        }
+    }
+}
+
+public class QueryConferenceInfoByRoomCodeRequest : Tea.TeaModel {
+    public class TenantContext : Tea.TeaModel {
+        public var tenantId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tenantId != nil {
+                map["tenantId"] = self.tenantId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("tenantId") {
+                self.tenantId = dict["tenantId"] as! String
+            }
+        }
+    }
+    public var tenantContext: QueryConferenceInfoByRoomCodeRequest.TenantContext?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var roomCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.tenantContext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.tenantContext != nil {
+            map["TenantContext"] = self.tenantContext?.toMap()
+        }
+        if self.maxResults != nil {
+            map["maxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        if self.roomCode != nil {
+            map["roomCode"] = self.roomCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("TenantContext") {
+            var model = QueryConferenceInfoByRoomCodeRequest.TenantContext()
+            model.fromMap(dict["TenantContext"] as! [String: Any])
+            self.tenantContext = model
+        }
+        if dict.keys.contains("maxResults") {
+            self.maxResults = dict["maxResults"] as! Int32
+        }
+        if dict.keys.contains("nextToken") {
+            self.nextToken = dict["nextToken"] as! String
+        }
+        if dict.keys.contains("roomCode") {
+            self.roomCode = dict["roomCode"] as! String
+        }
+    }
+}
+
+public class QueryConferenceInfoByRoomCodeShrinkRequest : Tea.TeaModel {
+    public var tenantContextShrink: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var roomCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.tenantContextShrink != nil {
+            map["TenantContext"] = self.tenantContextShrink!
+        }
+        if self.maxResults != nil {
+            map["maxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        if self.roomCode != nil {
+            map["roomCode"] = self.roomCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("TenantContext") {
+            self.tenantContextShrink = dict["TenantContext"] as! String
+        }
+        if dict.keys.contains("maxResults") {
+            self.maxResults = dict["maxResults"] as! Int32
+        }
+        if dict.keys.contains("nextToken") {
+            self.nextToken = dict["nextToken"] as! String
+        }
+        if dict.keys.contains("roomCode") {
+            self.roomCode = dict["roomCode"] as! String
+        }
+    }
+}
+
+public class QueryConferenceInfoByRoomCodeResponseBody : Tea.TeaModel {
+    public class ConferenceList : Tea.TeaModel {
+        public var bizType: String?
+
+        public var confDuration: Int64?
+
+        public var conferenceId: String?
+
+        public var creatorId: String?
+
+        public var creatorNick: String?
+
+        public var endTime: Int64?
+
+        public var externalLinkUrl: String?
+
+        public var roomCode: String?
+
+        public var scheduleConferenceId: String?
+
+        public var startTime: Int64?
+
+        public var status: Int32?
+
+        public var title: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bizType != nil {
+                map["BizType"] = self.bizType!
+            }
+            if self.confDuration != nil {
+                map["ConfDuration"] = self.confDuration!
+            }
+            if self.conferenceId != nil {
+                map["ConferenceId"] = self.conferenceId!
+            }
+            if self.creatorId != nil {
+                map["CreatorId"] = self.creatorId!
+            }
+            if self.creatorNick != nil {
+                map["CreatorNick"] = self.creatorNick!
+            }
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            if self.externalLinkUrl != nil {
+                map["ExternalLinkUrl"] = self.externalLinkUrl!
+            }
+            if self.roomCode != nil {
+                map["RoomCode"] = self.roomCode!
+            }
+            if self.scheduleConferenceId != nil {
+                map["ScheduleConferenceId"] = self.scheduleConferenceId!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.title != nil {
+                map["Title"] = self.title!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BizType") {
+                self.bizType = dict["BizType"] as! String
+            }
+            if dict.keys.contains("ConfDuration") {
+                self.confDuration = dict["ConfDuration"] as! Int64
+            }
+            if dict.keys.contains("ConferenceId") {
+                self.conferenceId = dict["ConferenceId"] as! String
+            }
+            if dict.keys.contains("CreatorId") {
+                self.creatorId = dict["CreatorId"] as! String
+            }
+            if dict.keys.contains("CreatorNick") {
+                self.creatorNick = dict["CreatorNick"] as! String
+            }
+            if dict.keys.contains("EndTime") {
+                self.endTime = dict["EndTime"] as! Int64
+            }
+            if dict.keys.contains("ExternalLinkUrl") {
+                self.externalLinkUrl = dict["ExternalLinkUrl"] as! String
+            }
+            if dict.keys.contains("RoomCode") {
+                self.roomCode = dict["RoomCode"] as! String
+            }
+            if dict.keys.contains("ScheduleConferenceId") {
+                self.scheduleConferenceId = dict["ScheduleConferenceId"] as! String
+            }
+            if dict.keys.contains("StartTime") {
+                self.startTime = dict["StartTime"] as! Int64
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! Int32
+            }
+            if dict.keys.contains("Title") {
+                self.title = dict["Title"] as! String
+            }
+        }
+    }
+    public var conferenceList: [QueryConferenceInfoByRoomCodeResponseBody.ConferenceList]?
+
+    public var dingtalkRequestId: String?
+
+    public var hasMore: Bool?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public var vendorRequestId: String?
+
+    public var vendorType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.conferenceList != nil {
+            var tmp : [Any] = []
+            for k in self.conferenceList! {
+                tmp.append(k.toMap())
+            }
+            map["conferenceList"] = tmp
+        }
+        if self.dingtalkRequestId != nil {
+            map["dingtalkRequestId"] = self.dingtalkRequestId!
+        }
+        if self.hasMore != nil {
+            map["hasMore"] = self.hasMore!
+        }
+        if self.nextToken != nil {
+            map["nextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["totalCount"] = self.totalCount!
+        }
+        if self.vendorRequestId != nil {
+            map["vendorRequestId"] = self.vendorRequestId!
+        }
+        if self.vendorType != nil {
+            map["vendorType"] = self.vendorType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("conferenceList") {
+            var tmp : [QueryConferenceInfoByRoomCodeResponseBody.ConferenceList] = []
+            for v in dict["conferenceList"] as! [Any] {
+                var model = QueryConferenceInfoByRoomCodeResponseBody.ConferenceList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.conferenceList = tmp
+        }
+        if dict.keys.contains("dingtalkRequestId") {
+            self.dingtalkRequestId = dict["dingtalkRequestId"] as! String
+        }
+        if dict.keys.contains("hasMore") {
+            self.hasMore = dict["hasMore"] as! Bool
+        }
+        if dict.keys.contains("nextToken") {
+            self.nextToken = dict["nextToken"] as! String
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("totalCount") {
+            self.totalCount = dict["totalCount"] as! Int32
+        }
+        if dict.keys.contains("vendorRequestId") {
+            self.vendorRequestId = dict["vendorRequestId"] as! String
+        }
+        if dict.keys.contains("vendorType") {
+            self.vendorType = dict["vendorType"] as! String
+        }
+    }
+}
+
+public class QueryConferenceInfoByRoomCodeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryConferenceInfoByRoomCodeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = QueryConferenceInfoByRoomCodeResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class QueryConferenceMembersHeaders : Tea.TeaModel {
     public class AccountContext : Tea.TeaModel {
         public var accountId: String?
@@ -95572,7 +96788,105 @@ public class UpdateScheduleConfSettingsShrinkHeaders : Tea.TeaModel {
 
 public class UpdateScheduleConfSettingsRequest : Tea.TeaModel {
     public class ScheduleConfSettingModel : Tea.TeaModel {
+        public class MoziConfOpenRecordSetting : Tea.TeaModel {
+            public var isFollowHost: Bool?
+
+            public var mode: String?
+
+            public var recordAutoStart: Int32?
+
+            public var recordAutoStartType: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.isFollowHost != nil {
+                    map["IsFollowHost"] = self.isFollowHost!
+                }
+                if self.mode != nil {
+                    map["Mode"] = self.mode!
+                }
+                if self.recordAutoStart != nil {
+                    map["RecordAutoStart"] = self.recordAutoStart!
+                }
+                if self.recordAutoStartType != nil {
+                    map["RecordAutoStartType"] = self.recordAutoStartType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("IsFollowHost") {
+                    self.isFollowHost = dict["IsFollowHost"] as! Bool
+                }
+                if dict.keys.contains("Mode") {
+                    self.mode = dict["Mode"] as! String
+                }
+                if dict.keys.contains("RecordAutoStart") {
+                    self.recordAutoStart = dict["RecordAutoStart"] as! Int32
+                }
+                if dict.keys.contains("RecordAutoStartType") {
+                    self.recordAutoStartType = dict["RecordAutoStartType"] as! Int32
+                }
+            }
+        }
         public class MoziConfVirtualExtraSetting : Tea.TeaModel {
+            public class MoziConfExtensionAppSettings : Tea.TeaModel {
+                public var autoOpenMode: Int32?
+
+                public var coolAppCode: String?
+
+                public var extensionAppBizData: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.autoOpenMode != nil {
+                        map["AutoOpenMode"] = self.autoOpenMode!
+                    }
+                    if self.coolAppCode != nil {
+                        map["CoolAppCode"] = self.coolAppCode!
+                    }
+                    if self.extensionAppBizData != nil {
+                        map["ExtensionAppBizData"] = self.extensionAppBizData!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AutoOpenMode") {
+                        self.autoOpenMode = dict["AutoOpenMode"] as! Int32
+                    }
+                    if dict.keys.contains("CoolAppCode") {
+                        self.coolAppCode = dict["CoolAppCode"] as! String
+                    }
+                    if dict.keys.contains("ExtensionAppBizData") {
+                        self.extensionAppBizData = dict["ExtensionAppBizData"] as! String
+                    }
+                }
+            }
             public var cloudRecordOwnerUserId: String?
 
             public var enableChat: Int32?
@@ -95586,6 +96900,8 @@ public class UpdateScheduleConfSettingsRequest : Tea.TeaModel {
             public var lockNick: Int32?
 
             public var minutesOwnerUserId: String?
+
+            public var moziConfExtensionAppSettings: [UpdateScheduleConfSettingsRequest.ScheduleConfSettingModel.MoziConfVirtualExtraSetting.MoziConfExtensionAppSettings]?
 
             public var pushAllMeetingRecords: Bool?
 
@@ -95630,6 +96946,13 @@ public class UpdateScheduleConfSettingsRequest : Tea.TeaModel {
                 if self.minutesOwnerUserId != nil {
                     map["MinutesOwnerUserId"] = self.minutesOwnerUserId!
                 }
+                if self.moziConfExtensionAppSettings != nil {
+                    var tmp : [Any] = []
+                    for k in self.moziConfExtensionAppSettings! {
+                        tmp.append(k.toMap())
+                    }
+                    map["MoziConfExtensionAppSettings"] = tmp
+                }
                 if self.pushAllMeetingRecords != nil {
                     map["PushAllMeetingRecords"] = self.pushAllMeetingRecords!
                 }
@@ -95667,6 +96990,17 @@ public class UpdateScheduleConfSettingsRequest : Tea.TeaModel {
                 if dict.keys.contains("MinutesOwnerUserId") {
                     self.minutesOwnerUserId = dict["MinutesOwnerUserId"] as! String
                 }
+                if dict.keys.contains("MoziConfExtensionAppSettings") {
+                    var tmp : [UpdateScheduleConfSettingsRequest.ScheduleConfSettingModel.MoziConfVirtualExtraSetting.MoziConfExtensionAppSettings] = []
+                    for v in dict["MoziConfExtensionAppSettings"] as! [Any] {
+                        var model = UpdateScheduleConfSettingsRequest.ScheduleConfSettingModel.MoziConfVirtualExtraSetting.MoziConfExtensionAppSettings()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.moziConfExtensionAppSettings = tmp
+                }
                 if dict.keys.contains("PushAllMeetingRecords") {
                     self.pushAllMeetingRecords = dict["PushAllMeetingRecords"] as! Bool
                 }
@@ -95689,6 +97023,8 @@ public class UpdateScheduleConfSettingsRequest : Tea.TeaModel {
 
         public var lockRoom: Int32?
 
+        public var moziConfOpenRecordSetting: UpdateScheduleConfSettingsRequest.ScheduleConfSettingModel.MoziConfOpenRecordSetting?
+
         public var moziConfVirtualExtraSetting: UpdateScheduleConfSettingsRequest.ScheduleConfSettingModel.MoziConfVirtualExtraSetting?
 
         public var muteOnJoin: Int32?
@@ -95705,6 +97041,7 @@ public class UpdateScheduleConfSettingsRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.moziConfOpenRecordSetting?.validate()
             try self.moziConfVirtualExtraSetting?.validate()
         }
 
@@ -95721,6 +97058,9 @@ public class UpdateScheduleConfSettingsRequest : Tea.TeaModel {
             }
             if self.lockRoom != nil {
                 map["LockRoom"] = self.lockRoom!
+            }
+            if self.moziConfOpenRecordSetting != nil {
+                map["MoziConfOpenRecordSetting"] = self.moziConfOpenRecordSetting?.toMap()
             }
             if self.moziConfVirtualExtraSetting != nil {
                 map["MoziConfVirtualExtraSetting"] = self.moziConfVirtualExtraSetting?.toMap()
@@ -95746,6 +97086,11 @@ public class UpdateScheduleConfSettingsRequest : Tea.TeaModel {
             }
             if dict.keys.contains("LockRoom") {
                 self.lockRoom = dict["LockRoom"] as! Int32
+            }
+            if dict.keys.contains("MoziConfOpenRecordSetting") {
+                var model = UpdateScheduleConfSettingsRequest.ScheduleConfSettingModel.MoziConfOpenRecordSetting()
+                model.fromMap(dict["MoziConfOpenRecordSetting"] as! [String: Any])
+                self.moziConfOpenRecordSetting = model
             }
             if dict.keys.contains("MoziConfVirtualExtraSetting") {
                 var model = UpdateScheduleConfSettingsRequest.ScheduleConfSettingModel.MoziConfVirtualExtraSetting()
