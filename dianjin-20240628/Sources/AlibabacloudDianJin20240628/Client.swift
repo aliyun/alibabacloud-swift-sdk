@@ -79,6 +79,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.channel)) {
             body["channel"] = request.channel ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.enableLibrary)) {
+            body["enableLibrary"] = request.enableLibrary!;
+        }
         if (!TeaUtils.Client.isUnset(request.metaData)) {
             body["metaData"] = request.metaData ?? [:];
         }
@@ -90,6 +93,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.requestId)) {
             body["requestId"] = request.requestId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.selfDirected)) {
+            body["selfDirected"] = request.selfDirected!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -1156,6 +1162,60 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await reIndexWithOptions(workspaceId as! String, request as! ReIndexRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func realTimeDialogWithOptions(_ workspaceId: String, _ request: RealTimeDialogRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RealTimeDialogResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.analysis)) {
+            body["analysis"] = request.analysis!;
+        }
+        if (!TeaUtils.Client.isUnset(request.bizType)) {
+            body["bizType"] = request.bizType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.conversationModel)) {
+            body["conversationModel"] = request.conversationModel ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.dialogMemoryTurns)) {
+            body["dialogMemoryTurns"] = request.dialogMemoryTurns!;
+        }
+        if (!TeaUtils.Client.isUnset(request.metaData)) {
+            body["metaData"] = request.metaData ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.recommend)) {
+            body["recommend"] = request.recommend!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionId)) {
+            body["sessionId"] = request.sessionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.stream)) {
+            body["stream"] = request.stream!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RealTimeDialog",
+            "version": "2024-06-28",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/api/realtime/dialog/chat",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RealTimeDialogResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func realTimeDialog(_ workspaceId: String, _ request: RealTimeDialogRequest) async throws -> RealTimeDialogResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await realTimeDialogWithOptions(workspaceId as! String, request as! RealTimeDialogRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

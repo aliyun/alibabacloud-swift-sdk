@@ -282,6 +282,8 @@ public class CreateAnnualDocSummaryTaskResponse : Tea.TeaModel {
 public class CreateDialogRequest : Tea.TeaModel {
     public var channel: String?
 
+    public var enableLibrary: Bool?
+
     public var metaData: [String: Any]?
 
     public var playCode: String?
@@ -289,6 +291,8 @@ public class CreateDialogRequest : Tea.TeaModel {
     public var qaLibraryList: [String]?
 
     public var requestId: String?
+
+    public var selfDirected: Bool?
 
     public override init() {
         super.init()
@@ -307,6 +311,9 @@ public class CreateDialogRequest : Tea.TeaModel {
         if self.channel != nil {
             map["channel"] = self.channel!
         }
+        if self.enableLibrary != nil {
+            map["enableLibrary"] = self.enableLibrary!
+        }
         if self.metaData != nil {
             map["metaData"] = self.metaData!
         }
@@ -319,12 +326,18 @@ public class CreateDialogRequest : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
+        if self.selfDirected != nil {
+            map["selfDirected"] = self.selfDirected!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("channel") {
             self.channel = dict["channel"] as! String
+        }
+        if dict.keys.contains("enableLibrary") {
+            self.enableLibrary = dict["enableLibrary"] as! Bool
         }
         if dict.keys.contains("metaData") {
             self.metaData = dict["metaData"] as! [String: Any]
@@ -338,11 +351,16 @@ public class CreateDialogRequest : Tea.TeaModel {
         if dict.keys.contains("requestId") {
             self.requestId = dict["requestId"] as! String
         }
+        if dict.keys.contains("selfDirected") {
+            self.selfDirected = dict["selfDirected"] as! Bool
+        }
     }
 }
 
 public class CreateDialogResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var openingRemarks: String?
+
         public var sessionId: String?
 
         public override init() {
@@ -359,6 +377,9 @@ public class CreateDialogResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.openingRemarks != nil {
+                map["openingRemarks"] = self.openingRemarks!
+            }
             if self.sessionId != nil {
                 map["sessionId"] = self.sessionId!
             }
@@ -366,6 +387,9 @@ public class CreateDialogResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("openingRemarks") {
+                self.openingRemarks = dict["openingRemarks"] as! String
+            }
             if dict.keys.contains("sessionId") {
                 self.sessionId = dict["sessionId"] as! String
             }
@@ -9448,6 +9472,581 @@ public class ReIndexResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ReIndexResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class RealTimeDialogRequest : Tea.TeaModel {
+    public class ConversationModel : Tea.TeaModel {
+        public var begin: Int32?
+
+        public var beginTime: String?
+
+        public var content: String?
+
+        public var customerId: String?
+
+        public var customerServiceId: String?
+
+        public var customerServiceType: String?
+
+        public var end: Int32?
+
+        public var role: Int32?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.begin != nil {
+                map["begin"] = self.begin!
+            }
+            if self.beginTime != nil {
+                map["beginTime"] = self.beginTime!
+            }
+            if self.content != nil {
+                map["content"] = self.content!
+            }
+            if self.customerId != nil {
+                map["customerId"] = self.customerId!
+            }
+            if self.customerServiceId != nil {
+                map["customerServiceId"] = self.customerServiceId!
+            }
+            if self.customerServiceType != nil {
+                map["customerServiceType"] = self.customerServiceType!
+            }
+            if self.end != nil {
+                map["end"] = self.end!
+            }
+            if self.role != nil {
+                map["role"] = self.role!
+            }
+            if self.type != nil {
+                map["type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("begin") {
+                self.begin = dict["begin"] as! Int32
+            }
+            if dict.keys.contains("beginTime") {
+                self.beginTime = dict["beginTime"] as! String
+            }
+            if dict.keys.contains("content") {
+                self.content = dict["content"] as! String
+            }
+            if dict.keys.contains("customerId") {
+                self.customerId = dict["customerId"] as! String
+            }
+            if dict.keys.contains("customerServiceId") {
+                self.customerServiceId = dict["customerServiceId"] as! String
+            }
+            if dict.keys.contains("customerServiceType") {
+                self.customerServiceType = dict["customerServiceType"] as! String
+            }
+            if dict.keys.contains("end") {
+                self.end = dict["end"] as! Int32
+            }
+            if dict.keys.contains("role") {
+                self.role = dict["role"] as! Int32
+            }
+            if dict.keys.contains("type") {
+                self.type = dict["type"] as! String
+            }
+        }
+    }
+    public var analysis: Bool?
+
+    public var bizType: String?
+
+    public var conversationModel: [RealTimeDialogRequest.ConversationModel]?
+
+    public var dialogMemoryTurns: Int32?
+
+    public var metaData: [String: Any]?
+
+    public var recommend: Bool?
+
+    public var sessionId: String?
+
+    public var stream: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.analysis != nil {
+            map["analysis"] = self.analysis!
+        }
+        if self.bizType != nil {
+            map["bizType"] = self.bizType!
+        }
+        if self.conversationModel != nil {
+            var tmp : [Any] = []
+            for k in self.conversationModel! {
+                tmp.append(k.toMap())
+            }
+            map["conversationModel"] = tmp
+        }
+        if self.dialogMemoryTurns != nil {
+            map["dialogMemoryTurns"] = self.dialogMemoryTurns!
+        }
+        if self.metaData != nil {
+            map["metaData"] = self.metaData!
+        }
+        if self.recommend != nil {
+            map["recommend"] = self.recommend!
+        }
+        if self.sessionId != nil {
+            map["sessionId"] = self.sessionId!
+        }
+        if self.stream != nil {
+            map["stream"] = self.stream!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("analysis") {
+            self.analysis = dict["analysis"] as! Bool
+        }
+        if dict.keys.contains("bizType") {
+            self.bizType = dict["bizType"] as! String
+        }
+        if dict.keys.contains("conversationModel") {
+            var tmp : [RealTimeDialogRequest.ConversationModel] = []
+            for v in dict["conversationModel"] as! [Any] {
+                var model = RealTimeDialogRequest.ConversationModel()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.conversationModel = tmp
+        }
+        if dict.keys.contains("dialogMemoryTurns") {
+            self.dialogMemoryTurns = dict["dialogMemoryTurns"] as! Int32
+        }
+        if dict.keys.contains("metaData") {
+            self.metaData = dict["metaData"] as! [String: Any]
+        }
+        if dict.keys.contains("recommend") {
+            self.recommend = dict["recommend"] as! Bool
+        }
+        if dict.keys.contains("sessionId") {
+            self.sessionId = dict["sessionId"] as! String
+        }
+        if dict.keys.contains("stream") {
+            self.stream = dict["stream"] as! Bool
+        }
+    }
+}
+
+public class RealTimeDialogResponseBody : Tea.TeaModel {
+    public class Choices : Tea.TeaModel {
+        public class Delta : Tea.TeaModel {
+            public var analysisProcess: String?
+
+            public var callTime: String?
+
+            public var hangUpDialog: Bool?
+
+            public var intentionCode: String?
+
+            public var intentionName: String?
+
+            public var intentionScript: String?
+
+            public var recommendIntention: String?
+
+            public var recommendScript: String?
+
+            public var selfDirectedScript: String?
+
+            public var selfDirectedScriptFullContent: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.analysisProcess != nil {
+                    map["analysisProcess"] = self.analysisProcess!
+                }
+                if self.callTime != nil {
+                    map["callTime"] = self.callTime!
+                }
+                if self.hangUpDialog != nil {
+                    map["hangUpDialog"] = self.hangUpDialog!
+                }
+                if self.intentionCode != nil {
+                    map["intentionCode"] = self.intentionCode!
+                }
+                if self.intentionName != nil {
+                    map["intentionName"] = self.intentionName!
+                }
+                if self.intentionScript != nil {
+                    map["intentionScript"] = self.intentionScript!
+                }
+                if self.recommendIntention != nil {
+                    map["recommendIntention"] = self.recommendIntention!
+                }
+                if self.recommendScript != nil {
+                    map["recommendScript"] = self.recommendScript!
+                }
+                if self.selfDirectedScript != nil {
+                    map["selfDirectedScript"] = self.selfDirectedScript!
+                }
+                if self.selfDirectedScriptFullContent != nil {
+                    map["selfDirectedScriptFullContent"] = self.selfDirectedScriptFullContent!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("analysisProcess") {
+                    self.analysisProcess = dict["analysisProcess"] as! String
+                }
+                if dict.keys.contains("callTime") {
+                    self.callTime = dict["callTime"] as! String
+                }
+                if dict.keys.contains("hangUpDialog") {
+                    self.hangUpDialog = dict["hangUpDialog"] as! Bool
+                }
+                if dict.keys.contains("intentionCode") {
+                    self.intentionCode = dict["intentionCode"] as! String
+                }
+                if dict.keys.contains("intentionName") {
+                    self.intentionName = dict["intentionName"] as! String
+                }
+                if dict.keys.contains("intentionScript") {
+                    self.intentionScript = dict["intentionScript"] as! String
+                }
+                if dict.keys.contains("recommendIntention") {
+                    self.recommendIntention = dict["recommendIntention"] as! String
+                }
+                if dict.keys.contains("recommendScript") {
+                    self.recommendScript = dict["recommendScript"] as! String
+                }
+                if dict.keys.contains("selfDirectedScript") {
+                    self.selfDirectedScript = dict["selfDirectedScript"] as! String
+                }
+                if dict.keys.contains("selfDirectedScriptFullContent") {
+                    self.selfDirectedScriptFullContent = dict["selfDirectedScriptFullContent"] as! String
+                }
+            }
+        }
+        public class Message : Tea.TeaModel {
+            public var analysisProcess: String?
+
+            public var callTime: String?
+
+            public var hangUpDialog: Bool?
+
+            public var intentionCode: String?
+
+            public var intentionName: String?
+
+            public var intentionScript: String?
+
+            public var recommendIntention: String?
+
+            public var recommendScript: String?
+
+            public var selfDirectedScript: String?
+
+            public var selfDirectedScriptFullContent: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.analysisProcess != nil {
+                    map["analysisProcess"] = self.analysisProcess!
+                }
+                if self.callTime != nil {
+                    map["callTime"] = self.callTime!
+                }
+                if self.hangUpDialog != nil {
+                    map["hangUpDialog"] = self.hangUpDialog!
+                }
+                if self.intentionCode != nil {
+                    map["intentionCode"] = self.intentionCode!
+                }
+                if self.intentionName != nil {
+                    map["intentionName"] = self.intentionName!
+                }
+                if self.intentionScript != nil {
+                    map["intentionScript"] = self.intentionScript!
+                }
+                if self.recommendIntention != nil {
+                    map["recommendIntention"] = self.recommendIntention!
+                }
+                if self.recommendScript != nil {
+                    map["recommendScript"] = self.recommendScript!
+                }
+                if self.selfDirectedScript != nil {
+                    map["selfDirectedScript"] = self.selfDirectedScript!
+                }
+                if self.selfDirectedScriptFullContent != nil {
+                    map["selfDirectedScriptFullContent"] = self.selfDirectedScriptFullContent!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("analysisProcess") {
+                    self.analysisProcess = dict["analysisProcess"] as! String
+                }
+                if dict.keys.contains("callTime") {
+                    self.callTime = dict["callTime"] as! String
+                }
+                if dict.keys.contains("hangUpDialog") {
+                    self.hangUpDialog = dict["hangUpDialog"] as! Bool
+                }
+                if dict.keys.contains("intentionCode") {
+                    self.intentionCode = dict["intentionCode"] as! String
+                }
+                if dict.keys.contains("intentionName") {
+                    self.intentionName = dict["intentionName"] as! String
+                }
+                if dict.keys.contains("intentionScript") {
+                    self.intentionScript = dict["intentionScript"] as! String
+                }
+                if dict.keys.contains("recommendIntention") {
+                    self.recommendIntention = dict["recommendIntention"] as! String
+                }
+                if dict.keys.contains("recommendScript") {
+                    self.recommendScript = dict["recommendScript"] as! String
+                }
+                if dict.keys.contains("selfDirectedScript") {
+                    self.selfDirectedScript = dict["selfDirectedScript"] as! String
+                }
+                if dict.keys.contains("selfDirectedScriptFullContent") {
+                    self.selfDirectedScriptFullContent = dict["selfDirectedScriptFullContent"] as! String
+                }
+            }
+        }
+        public var delta: RealTimeDialogResponseBody.Choices.Delta?
+
+        public var finishReason: String?
+
+        public var index: Int32?
+
+        public var message: RealTimeDialogResponseBody.Choices.Message?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.delta?.validate()
+            try self.message?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.delta != nil {
+                map["delta"] = self.delta?.toMap()
+            }
+            if self.finishReason != nil {
+                map["finishReason"] = self.finishReason!
+            }
+            if self.index != nil {
+                map["index"] = self.index!
+            }
+            if self.message != nil {
+                map["message"] = self.message?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("delta") {
+                var model = RealTimeDialogResponseBody.Choices.Delta()
+                model.fromMap(dict["delta"] as! [String: Any])
+                self.delta = model
+            }
+            if dict.keys.contains("finishReason") {
+                self.finishReason = dict["finishReason"] as! String
+            }
+            if dict.keys.contains("index") {
+                self.index = dict["index"] as! Int32
+            }
+            if dict.keys.contains("message") {
+                var model = RealTimeDialogResponseBody.Choices.Message()
+                model.fromMap(dict["message"] as! [String: Any])
+                self.message = model
+            }
+        }
+    }
+    public var choices: [RealTimeDialogResponseBody.Choices]?
+
+    public var created: String?
+
+    public var id: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.choices != nil {
+            var tmp : [Any] = []
+            for k in self.choices! {
+                tmp.append(k.toMap())
+            }
+            map["choices"] = tmp
+        }
+        if self.created != nil {
+            map["created"] = self.created!
+        }
+        if self.id != nil {
+            map["id"] = self.id!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("choices") {
+            var tmp : [RealTimeDialogResponseBody.Choices] = []
+            for v in dict["choices"] as! [Any] {
+                var model = RealTimeDialogResponseBody.Choices()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.choices = tmp
+        }
+        if dict.keys.contains("created") {
+            self.created = dict["created"] as! String
+        }
+        if dict.keys.contains("id") {
+            self.id = dict["id"] as! String
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class RealTimeDialogResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RealTimeDialogResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = RealTimeDialogResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
