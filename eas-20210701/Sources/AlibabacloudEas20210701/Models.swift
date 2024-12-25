@@ -7023,6 +7023,181 @@ public class DescribeGroupResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeGroupEndpointsResponseBody : Tea.TeaModel {
+    public class Endpoints : Tea.TeaModel {
+        public var backendId: String?
+
+        public var endpointType: String?
+
+        public var internetEndpoints: [String]?
+
+        public var intranetEndpoints: [String]?
+
+        public var pathType: String?
+
+        public var port: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.backendId != nil {
+                map["BackendId"] = self.backendId!
+            }
+            if self.endpointType != nil {
+                map["EndpointType"] = self.endpointType!
+            }
+            if self.internetEndpoints != nil {
+                map["InternetEndpoints"] = self.internetEndpoints!
+            }
+            if self.intranetEndpoints != nil {
+                map["IntranetEndpoints"] = self.intranetEndpoints!
+            }
+            if self.pathType != nil {
+                map["PathType"] = self.pathType!
+            }
+            if self.port != nil {
+                map["Port"] = self.port!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BackendId") {
+                self.backendId = dict["BackendId"] as! String
+            }
+            if dict.keys.contains("EndpointType") {
+                self.endpointType = dict["EndpointType"] as! String
+            }
+            if dict.keys.contains("InternetEndpoints") {
+                self.internetEndpoints = dict["InternetEndpoints"] as! [String]
+            }
+            if dict.keys.contains("IntranetEndpoints") {
+                self.intranetEndpoints = dict["IntranetEndpoints"] as! [String]
+            }
+            if dict.keys.contains("PathType") {
+                self.pathType = dict["PathType"] as! String
+            }
+            if dict.keys.contains("Port") {
+                self.port = dict["Port"] as! Int32
+            }
+        }
+    }
+    public var accessToken: String?
+
+    public var endpoints: DescribeGroupEndpointsResponseBody.Endpoints?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.endpoints?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessToken != nil {
+            map["AccessToken"] = self.accessToken!
+        }
+        if self.endpoints != nil {
+            map["Endpoints"] = self.endpoints?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessToken") {
+            self.accessToken = dict["AccessToken"] as! String
+        }
+        if dict.keys.contains("Endpoints") {
+            var model = DescribeGroupEndpointsResponseBody.Endpoints()
+            model.fromMap(dict["Endpoints"] as! [String: Any])
+            self.endpoints = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeGroupEndpointsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeGroupEndpointsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeGroupEndpointsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeResourceResponseBody : Tea.TeaModel {
     public var clusterId: String?
 
@@ -8104,6 +8279,181 @@ public class DescribeServiceDiagnosisResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DescribeServiceDiagnosisResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeServiceEndpointsResponseBody : Tea.TeaModel {
+    public class Endpoints : Tea.TeaModel {
+        public var backendId: String?
+
+        public var endpointType: String?
+
+        public var internetEndpoints: [String]?
+
+        public var intranetEndpoints: [String]?
+
+        public var pathType: String?
+
+        public var port: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.backendId != nil {
+                map["BackendId"] = self.backendId!
+            }
+            if self.endpointType != nil {
+                map["EndpointType"] = self.endpointType!
+            }
+            if self.internetEndpoints != nil {
+                map["InternetEndpoints"] = self.internetEndpoints!
+            }
+            if self.intranetEndpoints != nil {
+                map["IntranetEndpoints"] = self.intranetEndpoints!
+            }
+            if self.pathType != nil {
+                map["PathType"] = self.pathType!
+            }
+            if self.port != nil {
+                map["Port"] = self.port!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BackendId") {
+                self.backendId = dict["BackendId"] as! String
+            }
+            if dict.keys.contains("EndpointType") {
+                self.endpointType = dict["EndpointType"] as! String
+            }
+            if dict.keys.contains("InternetEndpoints") {
+                self.internetEndpoints = dict["InternetEndpoints"] as! [String]
+            }
+            if dict.keys.contains("IntranetEndpoints") {
+                self.intranetEndpoints = dict["IntranetEndpoints"] as! [String]
+            }
+            if dict.keys.contains("PathType") {
+                self.pathType = dict["PathType"] as! String
+            }
+            if dict.keys.contains("Port") {
+                self.port = dict["Port"] as! Int32
+            }
+        }
+    }
+    public var accessToken: String?
+
+    public var endpoints: DescribeServiceEndpointsResponseBody.Endpoints?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.endpoints?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessToken != nil {
+            map["AccessToken"] = self.accessToken!
+        }
+        if self.endpoints != nil {
+            map["Endpoints"] = self.endpoints?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessToken") {
+            self.accessToken = dict["AccessToken"] as! String
+        }
+        if dict.keys.contains("Endpoints") {
+            var model = DescribeServiceEndpointsResponseBody.Endpoints()
+            model.fromMap(dict["Endpoints"] as! [String: Any])
+            self.endpoints = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeServiceEndpointsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeServiceEndpointsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeServiceEndpointsResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
