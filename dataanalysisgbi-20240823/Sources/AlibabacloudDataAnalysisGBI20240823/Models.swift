@@ -2816,6 +2816,8 @@ public class ResyncTableResponse : Tea.TeaModel {
 }
 
 public class RunDataAnalysisRequest : Tea.TeaModel {
+    public var dataRole: [String]?
+
     public var generateSqlOnly: Bool?
 
     public var query: String?
@@ -2823,6 +2825,8 @@ public class RunDataAnalysisRequest : Tea.TeaModel {
     public var sessionId: String?
 
     public var specificationType: String?
+
+    public var userParams: [String: Any]?
 
     public override init() {
         super.init()
@@ -2838,6 +2842,9 @@ public class RunDataAnalysisRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dataRole != nil {
+            map["dataRole"] = self.dataRole!
+        }
         if self.generateSqlOnly != nil {
             map["generateSqlOnly"] = self.generateSqlOnly!
         }
@@ -2850,10 +2857,16 @@ public class RunDataAnalysisRequest : Tea.TeaModel {
         if self.specificationType != nil {
             map["specificationType"] = self.specificationType!
         }
+        if self.userParams != nil {
+            map["userParams"] = self.userParams!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("dataRole") {
+            self.dataRole = dict["dataRole"] as! [String]
+        }
         if dict.keys.contains("generateSqlOnly") {
             self.generateSqlOnly = dict["generateSqlOnly"] as! Bool
         }
@@ -2865,6 +2878,9 @@ public class RunDataAnalysisRequest : Tea.TeaModel {
         }
         if dict.keys.contains("specificationType") {
             self.specificationType = dict["specificationType"] as! String
+        }
+        if dict.keys.contains("userParams") {
+            self.userParams = dict["userParams"] as! [String: Any]
         }
     }
 }
@@ -3214,6 +3230,568 @@ public class RunDataAnalysisResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = RunDataAnalysisResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class RunDataResultAnalysisRequest : Tea.TeaModel {
+    public class SqlData : Tea.TeaModel {
+        public var column: [String]?
+
+        public var data: [[String: String]]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.column != nil {
+                map["column"] = self.column!
+            }
+            if self.data != nil {
+                map["data"] = self.data!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("column") {
+                self.column = dict["column"] as! [String]
+            }
+            if dict.keys.contains("data") {
+                self.data = dict["data"] as! [[String: String]]
+            }
+        }
+    }
+    public var analysisMode: String?
+
+    public var requestId: String?
+
+    public var sqlData: RunDataResultAnalysisRequest.SqlData?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.sqlData?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.analysisMode != nil {
+            map["analysisMode"] = self.analysisMode!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.sqlData != nil {
+            map["sqlData"] = self.sqlData?.toMap()
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("analysisMode") {
+            self.analysisMode = dict["analysisMode"] as! String
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("sqlData") {
+            var model = RunDataResultAnalysisRequest.SqlData()
+            model.fromMap(dict["sqlData"] as! [String: Any])
+            self.sqlData = model
+        }
+        if dict.keys.contains("workspaceId") {
+            self.workspaceId = dict["workspaceId"] as! String
+        }
+    }
+}
+
+public class RunDataResultAnalysisResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Visualization : Tea.TeaModel {
+            public class Data : Tea.TeaModel {
+                public var plotType: String?
+
+                public var xAxis: [String]?
+
+                public var yAxis: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.plotType != nil {
+                        map["plotType"] = self.plotType!
+                    }
+                    if self.xAxis != nil {
+                        map["xAxis"] = self.xAxis!
+                    }
+                    if self.yAxis != nil {
+                        map["yAxis"] = self.yAxis!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("plotType") {
+                        self.plotType = dict["plotType"] as! String
+                    }
+                    if dict.keys.contains("xAxis") {
+                        self.xAxis = dict["xAxis"] as! [String]
+                    }
+                    if dict.keys.contains("yAxis") {
+                        self.yAxis = dict["yAxis"] as! [String]
+                    }
+                }
+            }
+            public var data: RunDataResultAnalysisResponseBody.Data.Visualization.Data?
+
+            public var text: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.data?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.data != nil {
+                    map["data"] = self.data?.toMap()
+                }
+                if self.text != nil {
+                    map["text"] = self.text!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("data") {
+                    var model = RunDataResultAnalysisResponseBody.Data.Visualization.Data()
+                    model.fromMap(dict["data"] as! [String: Any])
+                    self.data = model
+                }
+                if dict.keys.contains("text") {
+                    self.text = dict["text"] as! String
+                }
+            }
+        }
+        public var errorMessage: String?
+
+        public var event: String?
+
+        public var requestId: String?
+
+        public var rewrite: String?
+
+        public var sql: String?
+
+        public var visualization: RunDataResultAnalysisResponseBody.Data.Visualization?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.visualization?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.errorMessage != nil {
+                map["errorMessage"] = self.errorMessage!
+            }
+            if self.event != nil {
+                map["event"] = self.event!
+            }
+            if self.requestId != nil {
+                map["requestId"] = self.requestId!
+            }
+            if self.rewrite != nil {
+                map["rewrite"] = self.rewrite!
+            }
+            if self.sql != nil {
+                map["sql"] = self.sql!
+            }
+            if self.visualization != nil {
+                map["visualization"] = self.visualization?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("errorMessage") {
+                self.errorMessage = dict["errorMessage"] as! String
+            }
+            if dict.keys.contains("event") {
+                self.event = dict["event"] as! String
+            }
+            if dict.keys.contains("requestId") {
+                self.requestId = dict["requestId"] as! String
+            }
+            if dict.keys.contains("rewrite") {
+                self.rewrite = dict["rewrite"] as! String
+            }
+            if dict.keys.contains("sql") {
+                self.sql = dict["sql"] as! String
+            }
+            if dict.keys.contains("visualization") {
+                var model = RunDataResultAnalysisResponseBody.Data.Visualization()
+                model.fromMap(dict["visualization"] as! [String: Any])
+                self.visualization = model
+            }
+        }
+    }
+    public var data: RunDataResultAnalysisResponseBody.Data?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("data") {
+            var model = RunDataResultAnalysisResponseBody.Data()
+            model.fromMap(dict["data"] as! [String: Any])
+            self.data = model
+        }
+    }
+}
+
+public class RunDataResultAnalysisResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RunDataResultAnalysisResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = RunDataResultAnalysisResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class RunSqlGenerationRequest : Tea.TeaModel {
+    public var query: String?
+
+    public var sessionId: String?
+
+    public var specificationType: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.query != nil {
+            map["query"] = self.query!
+        }
+        if self.sessionId != nil {
+            map["sessionId"] = self.sessionId!
+        }
+        if self.specificationType != nil {
+            map["specificationType"] = self.specificationType!
+        }
+        if self.workspaceId != nil {
+            map["workspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("query") {
+            self.query = dict["query"] as! String
+        }
+        if dict.keys.contains("sessionId") {
+            self.sessionId = dict["sessionId"] as! String
+        }
+        if dict.keys.contains("specificationType") {
+            self.specificationType = dict["specificationType"] as! String
+        }
+        if dict.keys.contains("workspaceId") {
+            self.workspaceId = dict["workspaceId"] as! String
+        }
+    }
+}
+
+public class RunSqlGenerationResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var errorMessage: String?
+
+        public var event: String?
+
+        public var evidence: String?
+
+        public var requestId: String?
+
+        public var rewrite: String?
+
+        public var selector: [String]?
+
+        public var sessionId: String?
+
+        public var sql: String?
+
+        public var sqlError: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.errorMessage != nil {
+                map["errorMessage"] = self.errorMessage!
+            }
+            if self.event != nil {
+                map["event"] = self.event!
+            }
+            if self.evidence != nil {
+                map["evidence"] = self.evidence!
+            }
+            if self.requestId != nil {
+                map["requestId"] = self.requestId!
+            }
+            if self.rewrite != nil {
+                map["rewrite"] = self.rewrite!
+            }
+            if self.selector != nil {
+                map["selector"] = self.selector!
+            }
+            if self.sessionId != nil {
+                map["sessionId"] = self.sessionId!
+            }
+            if self.sql != nil {
+                map["sql"] = self.sql!
+            }
+            if self.sqlError != nil {
+                map["sqlError"] = self.sqlError!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("errorMessage") {
+                self.errorMessage = dict["errorMessage"] as! String
+            }
+            if dict.keys.contains("event") {
+                self.event = dict["event"] as! String
+            }
+            if dict.keys.contains("evidence") {
+                self.evidence = dict["evidence"] as! String
+            }
+            if dict.keys.contains("requestId") {
+                self.requestId = dict["requestId"] as! String
+            }
+            if dict.keys.contains("rewrite") {
+                self.rewrite = dict["rewrite"] as! String
+            }
+            if dict.keys.contains("selector") {
+                self.selector = dict["selector"] as! [String]
+            }
+            if dict.keys.contains("sessionId") {
+                self.sessionId = dict["sessionId"] as! String
+            }
+            if dict.keys.contains("sql") {
+                self.sql = dict["sql"] as! String
+            }
+            if dict.keys.contains("sqlError") {
+                self.sqlError = dict["sqlError"] as! String
+            }
+        }
+    }
+    public var data: RunSqlGenerationResponseBody.Data?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("data") {
+            var model = RunSqlGenerationResponseBody.Data()
+            model.fromMap(dict["data"] as! [String: Any])
+            self.data = model
+        }
+    }
+}
+
+public class RunSqlGenerationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RunSqlGenerationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = RunSqlGenerationResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
