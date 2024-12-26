@@ -278,4 +278,134 @@ open class Client : AlibabacloudOpenApi.Client {
         var headers: [String: String] = [:]
         return try await runLegalAdviceConsultationWithOptions(workspaceId as! String, request as! RunLegalAdviceConsultationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func runSearchCaseFullTextWithOptions(_ workspaceId: String, _ tmpReq: RunSearchCaseFullTextRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RunSearchCaseFullTextResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: RunSearchCaseFullTextShrinkRequest = RunSearchCaseFullTextShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.filterCondition)) {
+            request.filterConditionShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.filterCondition, "filterCondition", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.pageParam)) {
+            request.pageParamShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.pageParam, "pageParam", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.queryKeywords)) {
+            request.queryKeywordsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.queryKeywords, "queryKeywords", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.sortKeyAndDirection)) {
+            request.sortKeyAndDirectionShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sortKeyAndDirection, "sortKeyAndDirection", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.thread)) {
+            request.threadShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.thread, "thread", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            body["appId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filterConditionShrink)) {
+            body["filterCondition"] = request.filterConditionShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageParamShrink)) {
+            body["pageParam"] = request.pageParamShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.query)) {
+            body["query"] = request.query ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.queryKeywordsShrink)) {
+            body["queryKeywords"] = request.queryKeywordsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sortKeyAndDirectionShrink)) {
+            body["sortKeyAndDirection"] = request.sortKeyAndDirectionShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.threadShrink)) {
+            body["thread"] = request.threadShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RunSearchCaseFullText",
+            "version": "2024-06-28",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/farui/search/case/fulltext",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RunSearchCaseFullTextResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func runSearchCaseFullText(_ workspaceId: String, _ request: RunSearchCaseFullTextRequest) async throws -> RunSearchCaseFullTextResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await runSearchCaseFullTextWithOptions(workspaceId as! String, request as! RunSearchCaseFullTextRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func runSearchLawQueryWithOptions(_ workspaceId: String, _ tmpReq: RunSearchLawQueryRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RunSearchLawQueryResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: RunSearchLawQueryShrinkRequest = RunSearchLawQueryShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.filterCondition)) {
+            request.filterConditionShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.filterCondition, "filterCondition", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.pageParam)) {
+            request.pageParamShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.pageParam, "pageParam", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.queryKeywords)) {
+            request.queryKeywordsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.queryKeywords, "queryKeywords", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.thread)) {
+            request.threadShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.thread, "thread", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            body["appId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filterConditionShrink)) {
+            body["filterCondition"] = request.filterConditionShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageParamShrink)) {
+            body["pageParam"] = request.pageParamShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.query)) {
+            body["query"] = request.query ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.queryKeywordsShrink)) {
+            body["queryKeywords"] = request.queryKeywordsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.threadShrink)) {
+            body["thread"] = request.threadShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RunSearchLawQuery",
+            "version": "2024-06-28",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/farui/search/law/query",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RunSearchLawQueryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func runSearchLawQuery(_ workspaceId: String, _ request: RunSearchLawQueryRequest) async throws -> RunSearchLawQueryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await runSearchLawQueryWithOptions(workspaceId as! String, request as! RunSearchLawQueryRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
 }
