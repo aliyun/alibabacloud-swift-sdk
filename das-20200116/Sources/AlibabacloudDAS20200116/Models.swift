@@ -7916,6 +7916,2231 @@ public class DescribeInstanceDasProResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeSlowLogHistogramAsyncRequest : Tea.TeaModel {
+    public class Filters : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
+    public var endTime: Int64?
+
+    public var filters: [DescribeSlowLogHistogramAsyncRequest.Filters]?
+
+    public var instanceId: String?
+
+    public var nodeId: String?
+
+    public var startTime: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.filters != nil {
+            var tmp : [Any] = []
+            for k in self.filters! {
+                tmp.append(k.toMap())
+            }
+            map["Filters"] = tmp
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.nodeId != nil {
+            map["NodeId"] = self.nodeId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EndTime") {
+            self.endTime = dict["EndTime"] as! Int64
+        }
+        if dict.keys.contains("Filters") {
+            var tmp : [DescribeSlowLogHistogramAsyncRequest.Filters] = []
+            for v in dict["Filters"] as! [Any] {
+                var model = DescribeSlowLogHistogramAsyncRequest.Filters()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.filters = tmp
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("NodeId") {
+            self.nodeId = dict["NodeId"] as! String
+        }
+        if dict.keys.contains("StartTime") {
+            self.startTime = dict["StartTime"] as! Int64
+        }
+    }
+}
+
+public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Data : Tea.TeaModel {
+            public class Item : Tea.TeaModel {
+                public class InsItems : Tea.TeaModel {
+                    public var count: [Int64]?
+
+                    public var insId: String?
+
+                    public var insRole: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.count != nil {
+                            map["Count"] = self.count!
+                        }
+                        if self.insId != nil {
+                            map["InsId"] = self.insId!
+                        }
+                        if self.insRole != nil {
+                            map["InsRole"] = self.insRole!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Count") {
+                            self.count = dict["Count"] as! [Int64]
+                        }
+                        if dict.keys.contains("InsId") {
+                            self.insId = dict["InsId"] as! String
+                        }
+                        if dict.keys.contains("InsRole") {
+                            self.insRole = dict["InsRole"] as! String
+                        }
+                    }
+                }
+                public var count: [Int64]?
+
+                public var insItems: [DescribeSlowLogHistogramAsyncResponseBody.Data.Data.Item.InsItems]?
+
+                public var nodeId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.count != nil {
+                        map["Count"] = self.count!
+                    }
+                    if self.insItems != nil {
+                        var tmp : [Any] = []
+                        for k in self.insItems! {
+                            tmp.append(k.toMap())
+                        }
+                        map["InsItems"] = tmp
+                    }
+                    if self.nodeId != nil {
+                        map["NodeId"] = self.nodeId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Count") {
+                        self.count = dict["Count"] as! [Int64]
+                    }
+                    if dict.keys.contains("InsItems") {
+                        var tmp : [DescribeSlowLogHistogramAsyncResponseBody.Data.Data.Item.InsItems] = []
+                        for v in dict["InsItems"] as! [Any] {
+                            var model = DescribeSlowLogHistogramAsyncResponseBody.Data.Data.Item.InsItems()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.insItems = tmp
+                    }
+                    if dict.keys.contains("NodeId") {
+                        self.nodeId = dict["NodeId"] as! String
+                    }
+                }
+            }
+            public var avgCPUTime: [Double]?
+
+            public var avgDocExamined: [Double]?
+
+            public var avgIOWrites: [Double]?
+
+            public var avgKeysExamined: [Double]?
+
+            public var avgLastRowsCountAffected: [Double]?
+
+            public var avgLockTime: [Double]?
+
+            public var avgLogicalIOReads: [Double]?
+
+            public var avgPhysicalIOReads: [Double]?
+
+            public var avgReturnNum: [Double]?
+
+            public var avgRowsCountAffected: [Double]?
+
+            public var avgRowsExamined: [Double]?
+
+            public var avgRowsSent: [Double]?
+
+            public var avgRt: [Double]?
+
+            public var CPUTime: [Double]?
+
+            public var count: [Int64]?
+
+            public var docExamined: [Int64]?
+
+            public var IOWrites: [Int64]?
+
+            public var item: [DescribeSlowLogHistogramAsyncResponseBody.Data.Data.Item]?
+
+            public var keysExamined: [Int64]?
+
+            public var lastRowsCountAffected: [Int64]?
+
+            public var lockTime: [Double]?
+
+            public var logicalIOReads: [Int64]?
+
+            public var maxCPUTime: [Double]?
+
+            public var maxDocExamined: [Int64]?
+
+            public var maxIOWrites: [Int64]?
+
+            public var maxKeysExamined: [Int64]?
+
+            public var maxLastRowsCountAffected: [Int64]?
+
+            public var maxLockTime: [Double]?
+
+            public var maxLogicalIOReads: [Int64]?
+
+            public var maxPhysicalIOReads: [Int64]?
+
+            public var maxReturnNum: [Int64]?
+
+            public var maxRowsCountAffected: [Int64]?
+
+            public var maxRowsExamined: [Int64]?
+
+            public var maxRowsSent: [Int64]?
+
+            public var maxRt: [Double]?
+
+            public var physicalIOReads: [Int64]?
+
+            public var returnNum: [Int64]?
+
+            public var rowsCountAffected: [Int64]?
+
+            public var rowsExamined: [Int64]?
+
+            public var rowsSent: [Int64]?
+
+            public var rt: [Double]?
+
+            public var total: Int64?
+
+            public var ts: [Int64]?
+
+            public var tsEnd: [Int64]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.avgCPUTime != nil {
+                    map["AvgCPUTime"] = self.avgCPUTime!
+                }
+                if self.avgDocExamined != nil {
+                    map["AvgDocExamined"] = self.avgDocExamined!
+                }
+                if self.avgIOWrites != nil {
+                    map["AvgIOWrites"] = self.avgIOWrites!
+                }
+                if self.avgKeysExamined != nil {
+                    map["AvgKeysExamined"] = self.avgKeysExamined!
+                }
+                if self.avgLastRowsCountAffected != nil {
+                    map["AvgLastRowsCountAffected"] = self.avgLastRowsCountAffected!
+                }
+                if self.avgLockTime != nil {
+                    map["AvgLockTime"] = self.avgLockTime!
+                }
+                if self.avgLogicalIOReads != nil {
+                    map["AvgLogicalIOReads"] = self.avgLogicalIOReads!
+                }
+                if self.avgPhysicalIOReads != nil {
+                    map["AvgPhysicalIOReads"] = self.avgPhysicalIOReads!
+                }
+                if self.avgReturnNum != nil {
+                    map["AvgReturnNum"] = self.avgReturnNum!
+                }
+                if self.avgRowsCountAffected != nil {
+                    map["AvgRowsCountAffected"] = self.avgRowsCountAffected!
+                }
+                if self.avgRowsExamined != nil {
+                    map["AvgRowsExamined"] = self.avgRowsExamined!
+                }
+                if self.avgRowsSent != nil {
+                    map["AvgRowsSent"] = self.avgRowsSent!
+                }
+                if self.avgRt != nil {
+                    map["AvgRt"] = self.avgRt!
+                }
+                if self.CPUTime != nil {
+                    map["CPUTime"] = self.CPUTime!
+                }
+                if self.count != nil {
+                    map["Count"] = self.count!
+                }
+                if self.docExamined != nil {
+                    map["DocExamined"] = self.docExamined!
+                }
+                if self.IOWrites != nil {
+                    map["IOWrites"] = self.IOWrites!
+                }
+                if self.item != nil {
+                    var tmp : [Any] = []
+                    for k in self.item! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Item"] = tmp
+                }
+                if self.keysExamined != nil {
+                    map["KeysExamined"] = self.keysExamined!
+                }
+                if self.lastRowsCountAffected != nil {
+                    map["LastRowsCountAffected"] = self.lastRowsCountAffected!
+                }
+                if self.lockTime != nil {
+                    map["LockTime"] = self.lockTime!
+                }
+                if self.logicalIOReads != nil {
+                    map["LogicalIOReads"] = self.logicalIOReads!
+                }
+                if self.maxCPUTime != nil {
+                    map["MaxCPUTime"] = self.maxCPUTime!
+                }
+                if self.maxDocExamined != nil {
+                    map["MaxDocExamined"] = self.maxDocExamined!
+                }
+                if self.maxIOWrites != nil {
+                    map["MaxIOWrites"] = self.maxIOWrites!
+                }
+                if self.maxKeysExamined != nil {
+                    map["MaxKeysExamined"] = self.maxKeysExamined!
+                }
+                if self.maxLastRowsCountAffected != nil {
+                    map["MaxLastRowsCountAffected"] = self.maxLastRowsCountAffected!
+                }
+                if self.maxLockTime != nil {
+                    map["MaxLockTime"] = self.maxLockTime!
+                }
+                if self.maxLogicalIOReads != nil {
+                    map["MaxLogicalIOReads"] = self.maxLogicalIOReads!
+                }
+                if self.maxPhysicalIOReads != nil {
+                    map["MaxPhysicalIOReads"] = self.maxPhysicalIOReads!
+                }
+                if self.maxReturnNum != nil {
+                    map["MaxReturnNum"] = self.maxReturnNum!
+                }
+                if self.maxRowsCountAffected != nil {
+                    map["MaxRowsCountAffected"] = self.maxRowsCountAffected!
+                }
+                if self.maxRowsExamined != nil {
+                    map["MaxRowsExamined"] = self.maxRowsExamined!
+                }
+                if self.maxRowsSent != nil {
+                    map["MaxRowsSent"] = self.maxRowsSent!
+                }
+                if self.maxRt != nil {
+                    map["MaxRt"] = self.maxRt!
+                }
+                if self.physicalIOReads != nil {
+                    map["PhysicalIOReads"] = self.physicalIOReads!
+                }
+                if self.returnNum != nil {
+                    map["ReturnNum"] = self.returnNum!
+                }
+                if self.rowsCountAffected != nil {
+                    map["RowsCountAffected"] = self.rowsCountAffected!
+                }
+                if self.rowsExamined != nil {
+                    map["RowsExamined"] = self.rowsExamined!
+                }
+                if self.rowsSent != nil {
+                    map["RowsSent"] = self.rowsSent!
+                }
+                if self.rt != nil {
+                    map["Rt"] = self.rt!
+                }
+                if self.total != nil {
+                    map["Total"] = self.total!
+                }
+                if self.ts != nil {
+                    map["Ts"] = self.ts!
+                }
+                if self.tsEnd != nil {
+                    map["TsEnd"] = self.tsEnd!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AvgCPUTime") {
+                    self.avgCPUTime = dict["AvgCPUTime"] as! [Double]
+                }
+                if dict.keys.contains("AvgDocExamined") {
+                    self.avgDocExamined = dict["AvgDocExamined"] as! [Double]
+                }
+                if dict.keys.contains("AvgIOWrites") {
+                    self.avgIOWrites = dict["AvgIOWrites"] as! [Double]
+                }
+                if dict.keys.contains("AvgKeysExamined") {
+                    self.avgKeysExamined = dict["AvgKeysExamined"] as! [Double]
+                }
+                if dict.keys.contains("AvgLastRowsCountAffected") {
+                    self.avgLastRowsCountAffected = dict["AvgLastRowsCountAffected"] as! [Double]
+                }
+                if dict.keys.contains("AvgLockTime") {
+                    self.avgLockTime = dict["AvgLockTime"] as! [Double]
+                }
+                if dict.keys.contains("AvgLogicalIOReads") {
+                    self.avgLogicalIOReads = dict["AvgLogicalIOReads"] as! [Double]
+                }
+                if dict.keys.contains("AvgPhysicalIOReads") {
+                    self.avgPhysicalIOReads = dict["AvgPhysicalIOReads"] as! [Double]
+                }
+                if dict.keys.contains("AvgReturnNum") {
+                    self.avgReturnNum = dict["AvgReturnNum"] as! [Double]
+                }
+                if dict.keys.contains("AvgRowsCountAffected") {
+                    self.avgRowsCountAffected = dict["AvgRowsCountAffected"] as! [Double]
+                }
+                if dict.keys.contains("AvgRowsExamined") {
+                    self.avgRowsExamined = dict["AvgRowsExamined"] as! [Double]
+                }
+                if dict.keys.contains("AvgRowsSent") {
+                    self.avgRowsSent = dict["AvgRowsSent"] as! [Double]
+                }
+                if dict.keys.contains("AvgRt") {
+                    self.avgRt = dict["AvgRt"] as! [Double]
+                }
+                if dict.keys.contains("CPUTime") {
+                    self.CPUTime = dict["CPUTime"] as! [Double]
+                }
+                if dict.keys.contains("Count") {
+                    self.count = dict["Count"] as! [Int64]
+                }
+                if dict.keys.contains("DocExamined") {
+                    self.docExamined = dict["DocExamined"] as! [Int64]
+                }
+                if dict.keys.contains("IOWrites") {
+                    self.IOWrites = dict["IOWrites"] as! [Int64]
+                }
+                if dict.keys.contains("Item") {
+                    var tmp : [DescribeSlowLogHistogramAsyncResponseBody.Data.Data.Item] = []
+                    for v in dict["Item"] as! [Any] {
+                        var model = DescribeSlowLogHistogramAsyncResponseBody.Data.Data.Item()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.item = tmp
+                }
+                if dict.keys.contains("KeysExamined") {
+                    self.keysExamined = dict["KeysExamined"] as! [Int64]
+                }
+                if dict.keys.contains("LastRowsCountAffected") {
+                    self.lastRowsCountAffected = dict["LastRowsCountAffected"] as! [Int64]
+                }
+                if dict.keys.contains("LockTime") {
+                    self.lockTime = dict["LockTime"] as! [Double]
+                }
+                if dict.keys.contains("LogicalIOReads") {
+                    self.logicalIOReads = dict["LogicalIOReads"] as! [Int64]
+                }
+                if dict.keys.contains("MaxCPUTime") {
+                    self.maxCPUTime = dict["MaxCPUTime"] as! [Double]
+                }
+                if dict.keys.contains("MaxDocExamined") {
+                    self.maxDocExamined = dict["MaxDocExamined"] as! [Int64]
+                }
+                if dict.keys.contains("MaxIOWrites") {
+                    self.maxIOWrites = dict["MaxIOWrites"] as! [Int64]
+                }
+                if dict.keys.contains("MaxKeysExamined") {
+                    self.maxKeysExamined = dict["MaxKeysExamined"] as! [Int64]
+                }
+                if dict.keys.contains("MaxLastRowsCountAffected") {
+                    self.maxLastRowsCountAffected = dict["MaxLastRowsCountAffected"] as! [Int64]
+                }
+                if dict.keys.contains("MaxLockTime") {
+                    self.maxLockTime = dict["MaxLockTime"] as! [Double]
+                }
+                if dict.keys.contains("MaxLogicalIOReads") {
+                    self.maxLogicalIOReads = dict["MaxLogicalIOReads"] as! [Int64]
+                }
+                if dict.keys.contains("MaxPhysicalIOReads") {
+                    self.maxPhysicalIOReads = dict["MaxPhysicalIOReads"] as! [Int64]
+                }
+                if dict.keys.contains("MaxReturnNum") {
+                    self.maxReturnNum = dict["MaxReturnNum"] as! [Int64]
+                }
+                if dict.keys.contains("MaxRowsCountAffected") {
+                    self.maxRowsCountAffected = dict["MaxRowsCountAffected"] as! [Int64]
+                }
+                if dict.keys.contains("MaxRowsExamined") {
+                    self.maxRowsExamined = dict["MaxRowsExamined"] as! [Int64]
+                }
+                if dict.keys.contains("MaxRowsSent") {
+                    self.maxRowsSent = dict["MaxRowsSent"] as! [Int64]
+                }
+                if dict.keys.contains("MaxRt") {
+                    self.maxRt = dict["MaxRt"] as! [Double]
+                }
+                if dict.keys.contains("PhysicalIOReads") {
+                    self.physicalIOReads = dict["PhysicalIOReads"] as! [Int64]
+                }
+                if dict.keys.contains("ReturnNum") {
+                    self.returnNum = dict["ReturnNum"] as! [Int64]
+                }
+                if dict.keys.contains("RowsCountAffected") {
+                    self.rowsCountAffected = dict["RowsCountAffected"] as! [Int64]
+                }
+                if dict.keys.contains("RowsExamined") {
+                    self.rowsExamined = dict["RowsExamined"] as! [Int64]
+                }
+                if dict.keys.contains("RowsSent") {
+                    self.rowsSent = dict["RowsSent"] as! [Int64]
+                }
+                if dict.keys.contains("Rt") {
+                    self.rt = dict["Rt"] as! [Double]
+                }
+                if dict.keys.contains("Total") {
+                    self.total = dict["Total"] as! Int64
+                }
+                if dict.keys.contains("Ts") {
+                    self.ts = dict["Ts"] as! [Int64]
+                }
+                if dict.keys.contains("TsEnd") {
+                    self.tsEnd = dict["TsEnd"] as! [Int64]
+                }
+            }
+        }
+        public var data: DescribeSlowLogHistogramAsyncResponseBody.Data.Data?
+
+        public var errorCode: Int32?
+
+        public var isFinish: Bool?
+
+        public var message: String?
+
+        public var requestKey: String?
+
+        public var resultId: String?
+
+        public var state: String?
+
+        public var timestamp: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.data?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.data != nil {
+                map["Data"] = self.data?.toMap()
+            }
+            if self.errorCode != nil {
+                map["ErrorCode"] = self.errorCode!
+            }
+            if self.isFinish != nil {
+                map["IsFinish"] = self.isFinish!
+            }
+            if self.message != nil {
+                map["Message"] = self.message!
+            }
+            if self.requestKey != nil {
+                map["RequestKey"] = self.requestKey!
+            }
+            if self.resultId != nil {
+                map["ResultId"] = self.resultId!
+            }
+            if self.state != nil {
+                map["State"] = self.state!
+            }
+            if self.timestamp != nil {
+                map["Timestamp"] = self.timestamp!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Data") {
+                var model = DescribeSlowLogHistogramAsyncResponseBody.Data.Data()
+                model.fromMap(dict["Data"] as! [String: Any])
+                self.data = model
+            }
+            if dict.keys.contains("ErrorCode") {
+                self.errorCode = dict["ErrorCode"] as! Int32
+            }
+            if dict.keys.contains("IsFinish") {
+                self.isFinish = dict["IsFinish"] as! Bool
+            }
+            if dict.keys.contains("Message") {
+                self.message = dict["Message"] as! String
+            }
+            if dict.keys.contains("RequestKey") {
+                self.requestKey = dict["RequestKey"] as! String
+            }
+            if dict.keys.contains("ResultId") {
+                self.resultId = dict["ResultId"] as! String
+            }
+            if dict.keys.contains("State") {
+                self.state = dict["State"] as! String
+            }
+            if dict.keys.contains("Timestamp") {
+                self.timestamp = dict["Timestamp"] as! Int64
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: DescribeSlowLogHistogramAsyncResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = DescribeSlowLogHistogramAsyncResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! String
+        }
+    }
+}
+
+public class DescribeSlowLogHistogramAsyncResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeSlowLogHistogramAsyncResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeSlowLogHistogramAsyncResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeSlowLogStatisticRequest : Tea.TeaModel {
+    public class Filters : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
+    public var asc: Bool?
+
+    public var endTime: Int64?
+
+    public var filters: [DescribeSlowLogStatisticRequest.Filters]?
+
+    public var instanceId: String?
+
+    public var nodeId: String?
+
+    public var orderBy: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var startTime: Int64?
+
+    public var templateId: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.asc != nil {
+            map["Asc"] = self.asc!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.filters != nil {
+            var tmp : [Any] = []
+            for k in self.filters! {
+                tmp.append(k.toMap())
+            }
+            map["Filters"] = tmp
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.nodeId != nil {
+            map["NodeId"] = self.nodeId!
+        }
+        if self.orderBy != nil {
+            map["OrderBy"] = self.orderBy!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Asc") {
+            self.asc = dict["Asc"] as! Bool
+        }
+        if dict.keys.contains("EndTime") {
+            self.endTime = dict["EndTime"] as! Int64
+        }
+        if dict.keys.contains("Filters") {
+            var tmp : [DescribeSlowLogStatisticRequest.Filters] = []
+            for v in dict["Filters"] as! [Any] {
+                var model = DescribeSlowLogStatisticRequest.Filters()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.filters = tmp
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("NodeId") {
+            self.nodeId = dict["NodeId"] as! String
+        }
+        if dict.keys.contains("OrderBy") {
+            self.orderBy = dict["OrderBy"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("StartTime") {
+            self.startTime = dict["StartTime"] as! Int64
+        }
+        if dict.keys.contains("TemplateId") {
+            self.templateId = dict["TemplateId"] as! String
+        }
+        if dict.keys.contains("Type") {
+            self.type = dict["Type"] as! String
+        }
+    }
+}
+
+public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Data : Tea.TeaModel {
+            public class Logs : Tea.TeaModel {
+                public class Histogram : Tea.TeaModel {
+                    public class Item : Tea.TeaModel {
+                        public var count: [Int64]?
+
+                        public var nodeId: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.count != nil {
+                                map["Count"] = self.count!
+                            }
+                            if self.nodeId != nil {
+                                map["NodeId"] = self.nodeId!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("Count") {
+                                self.count = dict["Count"] as! [Int64]
+                            }
+                            if dict.keys.contains("NodeId") {
+                                self.nodeId = dict["NodeId"] as! String
+                            }
+                        }
+                    }
+                    public var avgLockTime: [Double]?
+
+                    public var avgRowsExamined: [Double]?
+
+                    public var avgRowsSent: [Double]?
+
+                    public var avgRt: [Double]?
+
+                    public var count: [Int64]?
+
+                    public var item: [DescribeSlowLogStatisticResponseBody.Data.Data.Logs.Histogram.Item]?
+
+                    public var lockTime: [Double]?
+
+                    public var maxLockTime: [Double]?
+
+                    public var maxRowsExamined: [Int64]?
+
+                    public var maxRowsSent: [Int64]?
+
+                    public var maxRt: [Double]?
+
+                    public var rowsExamined: [Int64]?
+
+                    public var rowsSent: [Int64]?
+
+                    public var rt: [Double]?
+
+                    public var total: Int64?
+
+                    public var ts: [Int64]?
+
+                    public var tsEnd: [Int64]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.avgLockTime != nil {
+                            map["AvgLockTime"] = self.avgLockTime!
+                        }
+                        if self.avgRowsExamined != nil {
+                            map["AvgRowsExamined"] = self.avgRowsExamined!
+                        }
+                        if self.avgRowsSent != nil {
+                            map["AvgRowsSent"] = self.avgRowsSent!
+                        }
+                        if self.avgRt != nil {
+                            map["AvgRt"] = self.avgRt!
+                        }
+                        if self.count != nil {
+                            map["Count"] = self.count!
+                        }
+                        if self.item != nil {
+                            var tmp : [Any] = []
+                            for k in self.item! {
+                                tmp.append(k.toMap())
+                            }
+                            map["Item"] = tmp
+                        }
+                        if self.lockTime != nil {
+                            map["LockTime"] = self.lockTime!
+                        }
+                        if self.maxLockTime != nil {
+                            map["MaxLockTime"] = self.maxLockTime!
+                        }
+                        if self.maxRowsExamined != nil {
+                            map["MaxRowsExamined"] = self.maxRowsExamined!
+                        }
+                        if self.maxRowsSent != nil {
+                            map["MaxRowsSent"] = self.maxRowsSent!
+                        }
+                        if self.maxRt != nil {
+                            map["MaxRt"] = self.maxRt!
+                        }
+                        if self.rowsExamined != nil {
+                            map["RowsExamined"] = self.rowsExamined!
+                        }
+                        if self.rowsSent != nil {
+                            map["RowsSent"] = self.rowsSent!
+                        }
+                        if self.rt != nil {
+                            map["Rt"] = self.rt!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        if self.ts != nil {
+                            map["Ts"] = self.ts!
+                        }
+                        if self.tsEnd != nil {
+                            map["TsEnd"] = self.tsEnd!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("AvgLockTime") {
+                            self.avgLockTime = dict["AvgLockTime"] as! [Double]
+                        }
+                        if dict.keys.contains("AvgRowsExamined") {
+                            self.avgRowsExamined = dict["AvgRowsExamined"] as! [Double]
+                        }
+                        if dict.keys.contains("AvgRowsSent") {
+                            self.avgRowsSent = dict["AvgRowsSent"] as! [Double]
+                        }
+                        if dict.keys.contains("AvgRt") {
+                            self.avgRt = dict["AvgRt"] as! [Double]
+                        }
+                        if dict.keys.contains("Count") {
+                            self.count = dict["Count"] as! [Int64]
+                        }
+                        if dict.keys.contains("Item") {
+                            var tmp : [DescribeSlowLogStatisticResponseBody.Data.Data.Logs.Histogram.Item] = []
+                            for v in dict["Item"] as! [Any] {
+                                var model = DescribeSlowLogStatisticResponseBody.Data.Data.Logs.Histogram.Item()
+                                if v != nil {
+                                    model.fromMap(v as! [String: Any])
+                                }
+                                tmp.append(model)
+                            }
+                            self.item = tmp
+                        }
+                        if dict.keys.contains("LockTime") {
+                            self.lockTime = dict["LockTime"] as! [Double]
+                        }
+                        if dict.keys.contains("MaxLockTime") {
+                            self.maxLockTime = dict["MaxLockTime"] as! [Double]
+                        }
+                        if dict.keys.contains("MaxRowsExamined") {
+                            self.maxRowsExamined = dict["MaxRowsExamined"] as! [Int64]
+                        }
+                        if dict.keys.contains("MaxRowsSent") {
+                            self.maxRowsSent = dict["MaxRowsSent"] as! [Int64]
+                        }
+                        if dict.keys.contains("MaxRt") {
+                            self.maxRt = dict["MaxRt"] as! [Double]
+                        }
+                        if dict.keys.contains("RowsExamined") {
+                            self.rowsExamined = dict["RowsExamined"] as! [Int64]
+                        }
+                        if dict.keys.contains("RowsSent") {
+                            self.rowsSent = dict["RowsSent"] as! [Int64]
+                        }
+                        if dict.keys.contains("Rt") {
+                            self.rt = dict["Rt"] as! [Double]
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                        if dict.keys.contains("Ts") {
+                            self.ts = dict["Ts"] as! [Int64]
+                        }
+                        if dict.keys.contains("TsEnd") {
+                            self.tsEnd = dict["TsEnd"] as! [Int64]
+                        }
+                    }
+                }
+                public class SqlTag : Tea.TeaModel {
+                    public var comments: String?
+
+                    public var sqlId: String?
+
+                    public var tags: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.comments != nil {
+                            map["Comments"] = self.comments!
+                        }
+                        if self.sqlId != nil {
+                            map["SqlId"] = self.sqlId!
+                        }
+                        if self.tags != nil {
+                            map["Tags"] = self.tags!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Comments") {
+                            self.comments = dict["Comments"] as! String
+                        }
+                        if dict.keys.contains("SqlId") {
+                            self.sqlId = dict["SqlId"] as! String
+                        }
+                        if dict.keys.contains("Tags") {
+                            self.tags = dict["Tags"] as! String
+                        }
+                    }
+                }
+                public class Trend : Tea.TeaModel {
+                    public var timestamp: Int64?
+
+                    public var value: Any?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.timestamp != nil {
+                            map["Timestamp"] = self.timestamp!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Timestamp") {
+                            self.timestamp = dict["Timestamp"] as! Int64
+                        }
+                        if dict.keys.contains("Value") {
+                            self.value = dict["Value"] as! Any
+                        }
+                    }
+                }
+                public var accountName: String?
+
+                public var avgCPUTime: Double?
+
+                public var avgDocExamined: Double?
+
+                public var avgIOWrites: Double?
+
+                public var avgKeysExamined: Double?
+
+                public var avgLastRowsCountAffected: Double?
+
+                public var avgLockTime: Double?
+
+                public var avgLockTimeSeconds: Double?
+
+                public var avgLogicalIOReads: Double?
+
+                public var avgPhysicalIOReads: Double?
+
+                public var avgQueryTime: Double?
+
+                public var avgQueryTimeSeconds: Double?
+
+                public var avgReturnNum: Double?
+
+                public var avgRowsCountAffected: Double?
+
+                public var avgRowsExamined: Double?
+
+                public var avgRowsSent: Double?
+
+                public var CPUTime: Double?
+
+                public var command: String?
+
+                public var count: Int64?
+
+                public var countRate: Double?
+
+                public var DBName: String?
+
+                public var database: String?
+
+                public var dbInstanceName: String?
+
+                public var docExamined: Int64?
+
+                public var docsExamined: Int64?
+
+                public var histogram: DescribeSlowLogStatisticResponseBody.Data.Data.Logs.Histogram?
+
+                public var hostAddress: String?
+
+                public var hostInsId: String?
+
+                public var IOWrites: Int64?
+
+                public var insName: String?
+
+                public var insRole: String?
+
+                public var keysExamined: Int64?
+
+                public var lastRowsCountAffected: Int64?
+
+                public var lockTime: Double?
+
+                public var lockTimeSeconds: Double?
+
+                public var logicalIOReads: Int64?
+
+                public var maxCPUTime: Double?
+
+                public var maxDocExamined: Int64?
+
+                public var maxIOWrites: Int64?
+
+                public var maxKeysExamined: Int64?
+
+                public var maxLastRowsCountAffected: Int64?
+
+                public var maxLockTime: Double?
+
+                public var maxLockTimeSeconds: Double?
+
+                public var maxLogicalIOReads: Int64?
+
+                public var maxPhysicalIOReads: Int64?
+
+                public var maxQueryTime: Double?
+
+                public var maxQueryTimeSeconds: Double?
+
+                public var maxReturnNum: Int64?
+
+                public var maxRowsCountAffected: Int64?
+
+                public var maxRowsExamined: Int64?
+
+                public var maxRowsSent: Int64?
+
+                public var namespace: String?
+
+                public var nodeType: String?
+
+                public var opType: String?
+
+                public var originAlias: String?
+
+                public var physicalIOReads: Int64?
+
+                public var psql: String?
+
+                public var queryId: String?
+
+                public var queryStartTime: String?
+
+                public var queryTime: Int64?
+
+                public var queryTimeRate: Double?
+
+                public var queryTimeSeconds: Double?
+
+                public var returnItemNumbers: String?
+
+                public var returnNum: Int64?
+
+                public var rowsCountAffected: Int64?
+
+                public var rowsExamined: Int64?
+
+                public var rowsSent: Int64?
+
+                public var SQLText: String?
+
+                public var scheme: String?
+
+                public var sqlId: String?
+
+                public var sqlTag: DescribeSlowLogStatisticResponseBody.Data.Data.Logs.SqlTag?
+
+                public var sqlType: String?
+
+                public var subInstanceId: String?
+
+                public var tableName: String?
+
+                public var threadId: String?
+
+                public var timestamp: Int64?
+
+                public var trend: [DescribeSlowLogStatisticResponseBody.Data.Data.Logs.Trend]?
+
+                public var user: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.histogram?.validate()
+                    try self.sqlTag?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.accountName != nil {
+                        map["AccountName"] = self.accountName!
+                    }
+                    if self.avgCPUTime != nil {
+                        map["AvgCPUTime"] = self.avgCPUTime!
+                    }
+                    if self.avgDocExamined != nil {
+                        map["AvgDocExamined"] = self.avgDocExamined!
+                    }
+                    if self.avgIOWrites != nil {
+                        map["AvgIOWrites"] = self.avgIOWrites!
+                    }
+                    if self.avgKeysExamined != nil {
+                        map["AvgKeysExamined"] = self.avgKeysExamined!
+                    }
+                    if self.avgLastRowsCountAffected != nil {
+                        map["AvgLastRowsCountAffected"] = self.avgLastRowsCountAffected!
+                    }
+                    if self.avgLockTime != nil {
+                        map["AvgLockTime"] = self.avgLockTime!
+                    }
+                    if self.avgLockTimeSeconds != nil {
+                        map["AvgLockTimeSeconds"] = self.avgLockTimeSeconds!
+                    }
+                    if self.avgLogicalIOReads != nil {
+                        map["AvgLogicalIOReads"] = self.avgLogicalIOReads!
+                    }
+                    if self.avgPhysicalIOReads != nil {
+                        map["AvgPhysicalIOReads"] = self.avgPhysicalIOReads!
+                    }
+                    if self.avgQueryTime != nil {
+                        map["AvgQueryTime"] = self.avgQueryTime!
+                    }
+                    if self.avgQueryTimeSeconds != nil {
+                        map["AvgQueryTimeSeconds"] = self.avgQueryTimeSeconds!
+                    }
+                    if self.avgReturnNum != nil {
+                        map["AvgReturnNum"] = self.avgReturnNum!
+                    }
+                    if self.avgRowsCountAffected != nil {
+                        map["AvgRowsCountAffected"] = self.avgRowsCountAffected!
+                    }
+                    if self.avgRowsExamined != nil {
+                        map["AvgRowsExamined"] = self.avgRowsExamined!
+                    }
+                    if self.avgRowsSent != nil {
+                        map["AvgRowsSent"] = self.avgRowsSent!
+                    }
+                    if self.CPUTime != nil {
+                        map["CPUTime"] = self.CPUTime!
+                    }
+                    if self.command != nil {
+                        map["Command"] = self.command!
+                    }
+                    if self.count != nil {
+                        map["Count"] = self.count!
+                    }
+                    if self.countRate != nil {
+                        map["CountRate"] = self.countRate!
+                    }
+                    if self.DBName != nil {
+                        map["DBName"] = self.DBName!
+                    }
+                    if self.database != nil {
+                        map["Database"] = self.database!
+                    }
+                    if self.dbInstanceName != nil {
+                        map["DbInstanceName"] = self.dbInstanceName!
+                    }
+                    if self.docExamined != nil {
+                        map["DocExamined"] = self.docExamined!
+                    }
+                    if self.docsExamined != nil {
+                        map["DocsExamined"] = self.docsExamined!
+                    }
+                    if self.histogram != nil {
+                        map["Histogram"] = self.histogram?.toMap()
+                    }
+                    if self.hostAddress != nil {
+                        map["HostAddress"] = self.hostAddress!
+                    }
+                    if self.hostInsId != nil {
+                        map["HostInsId"] = self.hostInsId!
+                    }
+                    if self.IOWrites != nil {
+                        map["IOWrites"] = self.IOWrites!
+                    }
+                    if self.insName != nil {
+                        map["InsName"] = self.insName!
+                    }
+                    if self.insRole != nil {
+                        map["InsRole"] = self.insRole!
+                    }
+                    if self.keysExamined != nil {
+                        map["KeysExamined"] = self.keysExamined!
+                    }
+                    if self.lastRowsCountAffected != nil {
+                        map["LastRowsCountAffected"] = self.lastRowsCountAffected!
+                    }
+                    if self.lockTime != nil {
+                        map["LockTime"] = self.lockTime!
+                    }
+                    if self.lockTimeSeconds != nil {
+                        map["LockTimeSeconds"] = self.lockTimeSeconds!
+                    }
+                    if self.logicalIOReads != nil {
+                        map["LogicalIOReads"] = self.logicalIOReads!
+                    }
+                    if self.maxCPUTime != nil {
+                        map["MaxCPUTime"] = self.maxCPUTime!
+                    }
+                    if self.maxDocExamined != nil {
+                        map["MaxDocExamined"] = self.maxDocExamined!
+                    }
+                    if self.maxIOWrites != nil {
+                        map["MaxIOWrites"] = self.maxIOWrites!
+                    }
+                    if self.maxKeysExamined != nil {
+                        map["MaxKeysExamined"] = self.maxKeysExamined!
+                    }
+                    if self.maxLastRowsCountAffected != nil {
+                        map["MaxLastRowsCountAffected"] = self.maxLastRowsCountAffected!
+                    }
+                    if self.maxLockTime != nil {
+                        map["MaxLockTime"] = self.maxLockTime!
+                    }
+                    if self.maxLockTimeSeconds != nil {
+                        map["MaxLockTimeSeconds"] = self.maxLockTimeSeconds!
+                    }
+                    if self.maxLogicalIOReads != nil {
+                        map["MaxLogicalIOReads"] = self.maxLogicalIOReads!
+                    }
+                    if self.maxPhysicalIOReads != nil {
+                        map["MaxPhysicalIOReads"] = self.maxPhysicalIOReads!
+                    }
+                    if self.maxQueryTime != nil {
+                        map["MaxQueryTime"] = self.maxQueryTime!
+                    }
+                    if self.maxQueryTimeSeconds != nil {
+                        map["MaxQueryTimeSeconds"] = self.maxQueryTimeSeconds!
+                    }
+                    if self.maxReturnNum != nil {
+                        map["MaxReturnNum"] = self.maxReturnNum!
+                    }
+                    if self.maxRowsCountAffected != nil {
+                        map["MaxRowsCountAffected"] = self.maxRowsCountAffected!
+                    }
+                    if self.maxRowsExamined != nil {
+                        map["MaxRowsExamined"] = self.maxRowsExamined!
+                    }
+                    if self.maxRowsSent != nil {
+                        map["MaxRowsSent"] = self.maxRowsSent!
+                    }
+                    if self.namespace != nil {
+                        map["Namespace"] = self.namespace!
+                    }
+                    if self.nodeType != nil {
+                        map["NodeType"] = self.nodeType!
+                    }
+                    if self.opType != nil {
+                        map["OpType"] = self.opType!
+                    }
+                    if self.originAlias != nil {
+                        map["OriginAlias"] = self.originAlias!
+                    }
+                    if self.physicalIOReads != nil {
+                        map["PhysicalIOReads"] = self.physicalIOReads!
+                    }
+                    if self.psql != nil {
+                        map["Psql"] = self.psql!
+                    }
+                    if self.queryId != nil {
+                        map["QueryId"] = self.queryId!
+                    }
+                    if self.queryStartTime != nil {
+                        map["QueryStartTime"] = self.queryStartTime!
+                    }
+                    if self.queryTime != nil {
+                        map["QueryTime"] = self.queryTime!
+                    }
+                    if self.queryTimeRate != nil {
+                        map["QueryTimeRate"] = self.queryTimeRate!
+                    }
+                    if self.queryTimeSeconds != nil {
+                        map["QueryTimeSeconds"] = self.queryTimeSeconds!
+                    }
+                    if self.returnItemNumbers != nil {
+                        map["ReturnItemNumbers"] = self.returnItemNumbers!
+                    }
+                    if self.returnNum != nil {
+                        map["ReturnNum"] = self.returnNum!
+                    }
+                    if self.rowsCountAffected != nil {
+                        map["RowsCountAffected"] = self.rowsCountAffected!
+                    }
+                    if self.rowsExamined != nil {
+                        map["RowsExamined"] = self.rowsExamined!
+                    }
+                    if self.rowsSent != nil {
+                        map["RowsSent"] = self.rowsSent!
+                    }
+                    if self.SQLText != nil {
+                        map["SQLText"] = self.SQLText!
+                    }
+                    if self.scheme != nil {
+                        map["Scheme"] = self.scheme!
+                    }
+                    if self.sqlId != nil {
+                        map["SqlId"] = self.sqlId!
+                    }
+                    if self.sqlTag != nil {
+                        map["SqlTag"] = self.sqlTag?.toMap()
+                    }
+                    if self.sqlType != nil {
+                        map["SqlType"] = self.sqlType!
+                    }
+                    if self.subInstanceId != nil {
+                        map["SubInstanceId"] = self.subInstanceId!
+                    }
+                    if self.tableName != nil {
+                        map["TableName"] = self.tableName!
+                    }
+                    if self.threadId != nil {
+                        map["ThreadId"] = self.threadId!
+                    }
+                    if self.timestamp != nil {
+                        map["Timestamp"] = self.timestamp!
+                    }
+                    if self.trend != nil {
+                        var tmp : [Any] = []
+                        for k in self.trend! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Trend"] = tmp
+                    }
+                    if self.user != nil {
+                        map["User"] = self.user!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AccountName") {
+                        self.accountName = dict["AccountName"] as! String
+                    }
+                    if dict.keys.contains("AvgCPUTime") {
+                        self.avgCPUTime = dict["AvgCPUTime"] as! Double
+                    }
+                    if dict.keys.contains("AvgDocExamined") {
+                        self.avgDocExamined = dict["AvgDocExamined"] as! Double
+                    }
+                    if dict.keys.contains("AvgIOWrites") {
+                        self.avgIOWrites = dict["AvgIOWrites"] as! Double
+                    }
+                    if dict.keys.contains("AvgKeysExamined") {
+                        self.avgKeysExamined = dict["AvgKeysExamined"] as! Double
+                    }
+                    if dict.keys.contains("AvgLastRowsCountAffected") {
+                        self.avgLastRowsCountAffected = dict["AvgLastRowsCountAffected"] as! Double
+                    }
+                    if dict.keys.contains("AvgLockTime") {
+                        self.avgLockTime = dict["AvgLockTime"] as! Double
+                    }
+                    if dict.keys.contains("AvgLockTimeSeconds") {
+                        self.avgLockTimeSeconds = dict["AvgLockTimeSeconds"] as! Double
+                    }
+                    if dict.keys.contains("AvgLogicalIOReads") {
+                        self.avgLogicalIOReads = dict["AvgLogicalIOReads"] as! Double
+                    }
+                    if dict.keys.contains("AvgPhysicalIOReads") {
+                        self.avgPhysicalIOReads = dict["AvgPhysicalIOReads"] as! Double
+                    }
+                    if dict.keys.contains("AvgQueryTime") {
+                        self.avgQueryTime = dict["AvgQueryTime"] as! Double
+                    }
+                    if dict.keys.contains("AvgQueryTimeSeconds") {
+                        self.avgQueryTimeSeconds = dict["AvgQueryTimeSeconds"] as! Double
+                    }
+                    if dict.keys.contains("AvgReturnNum") {
+                        self.avgReturnNum = dict["AvgReturnNum"] as! Double
+                    }
+                    if dict.keys.contains("AvgRowsCountAffected") {
+                        self.avgRowsCountAffected = dict["AvgRowsCountAffected"] as! Double
+                    }
+                    if dict.keys.contains("AvgRowsExamined") {
+                        self.avgRowsExamined = dict["AvgRowsExamined"] as! Double
+                    }
+                    if dict.keys.contains("AvgRowsSent") {
+                        self.avgRowsSent = dict["AvgRowsSent"] as! Double
+                    }
+                    if dict.keys.contains("CPUTime") {
+                        self.CPUTime = dict["CPUTime"] as! Double
+                    }
+                    if dict.keys.contains("Command") {
+                        self.command = dict["Command"] as! String
+                    }
+                    if dict.keys.contains("Count") {
+                        self.count = dict["Count"] as! Int64
+                    }
+                    if dict.keys.contains("CountRate") {
+                        self.countRate = dict["CountRate"] as! Double
+                    }
+                    if dict.keys.contains("DBName") {
+                        self.DBName = dict["DBName"] as! String
+                    }
+                    if dict.keys.contains("Database") {
+                        self.database = dict["Database"] as! String
+                    }
+                    if dict.keys.contains("DbInstanceName") {
+                        self.dbInstanceName = dict["DbInstanceName"] as! String
+                    }
+                    if dict.keys.contains("DocExamined") {
+                        self.docExamined = dict["DocExamined"] as! Int64
+                    }
+                    if dict.keys.contains("DocsExamined") {
+                        self.docsExamined = dict["DocsExamined"] as! Int64
+                    }
+                    if dict.keys.contains("Histogram") {
+                        var model = DescribeSlowLogStatisticResponseBody.Data.Data.Logs.Histogram()
+                        model.fromMap(dict["Histogram"] as! [String: Any])
+                        self.histogram = model
+                    }
+                    if dict.keys.contains("HostAddress") {
+                        self.hostAddress = dict["HostAddress"] as! String
+                    }
+                    if dict.keys.contains("HostInsId") {
+                        self.hostInsId = dict["HostInsId"] as! String
+                    }
+                    if dict.keys.contains("IOWrites") {
+                        self.IOWrites = dict["IOWrites"] as! Int64
+                    }
+                    if dict.keys.contains("InsName") {
+                        self.insName = dict["InsName"] as! String
+                    }
+                    if dict.keys.contains("InsRole") {
+                        self.insRole = dict["InsRole"] as! String
+                    }
+                    if dict.keys.contains("KeysExamined") {
+                        self.keysExamined = dict["KeysExamined"] as! Int64
+                    }
+                    if dict.keys.contains("LastRowsCountAffected") {
+                        self.lastRowsCountAffected = dict["LastRowsCountAffected"] as! Int64
+                    }
+                    if dict.keys.contains("LockTime") {
+                        self.lockTime = dict["LockTime"] as! Double
+                    }
+                    if dict.keys.contains("LockTimeSeconds") {
+                        self.lockTimeSeconds = dict["LockTimeSeconds"] as! Double
+                    }
+                    if dict.keys.contains("LogicalIOReads") {
+                        self.logicalIOReads = dict["LogicalIOReads"] as! Int64
+                    }
+                    if dict.keys.contains("MaxCPUTime") {
+                        self.maxCPUTime = dict["MaxCPUTime"] as! Double
+                    }
+                    if dict.keys.contains("MaxDocExamined") {
+                        self.maxDocExamined = dict["MaxDocExamined"] as! Int64
+                    }
+                    if dict.keys.contains("MaxIOWrites") {
+                        self.maxIOWrites = dict["MaxIOWrites"] as! Int64
+                    }
+                    if dict.keys.contains("MaxKeysExamined") {
+                        self.maxKeysExamined = dict["MaxKeysExamined"] as! Int64
+                    }
+                    if dict.keys.contains("MaxLastRowsCountAffected") {
+                        self.maxLastRowsCountAffected = dict["MaxLastRowsCountAffected"] as! Int64
+                    }
+                    if dict.keys.contains("MaxLockTime") {
+                        self.maxLockTime = dict["MaxLockTime"] as! Double
+                    }
+                    if dict.keys.contains("MaxLockTimeSeconds") {
+                        self.maxLockTimeSeconds = dict["MaxLockTimeSeconds"] as! Double
+                    }
+                    if dict.keys.contains("MaxLogicalIOReads") {
+                        self.maxLogicalIOReads = dict["MaxLogicalIOReads"] as! Int64
+                    }
+                    if dict.keys.contains("MaxPhysicalIOReads") {
+                        self.maxPhysicalIOReads = dict["MaxPhysicalIOReads"] as! Int64
+                    }
+                    if dict.keys.contains("MaxQueryTime") {
+                        self.maxQueryTime = dict["MaxQueryTime"] as! Double
+                    }
+                    if dict.keys.contains("MaxQueryTimeSeconds") {
+                        self.maxQueryTimeSeconds = dict["MaxQueryTimeSeconds"] as! Double
+                    }
+                    if dict.keys.contains("MaxReturnNum") {
+                        self.maxReturnNum = dict["MaxReturnNum"] as! Int64
+                    }
+                    if dict.keys.contains("MaxRowsCountAffected") {
+                        self.maxRowsCountAffected = dict["MaxRowsCountAffected"] as! Int64
+                    }
+                    if dict.keys.contains("MaxRowsExamined") {
+                        self.maxRowsExamined = dict["MaxRowsExamined"] as! Int64
+                    }
+                    if dict.keys.contains("MaxRowsSent") {
+                        self.maxRowsSent = dict["MaxRowsSent"] as! Int64
+                    }
+                    if dict.keys.contains("Namespace") {
+                        self.namespace = dict["Namespace"] as! String
+                    }
+                    if dict.keys.contains("NodeType") {
+                        self.nodeType = dict["NodeType"] as! String
+                    }
+                    if dict.keys.contains("OpType") {
+                        self.opType = dict["OpType"] as! String
+                    }
+                    if dict.keys.contains("OriginAlias") {
+                        self.originAlias = dict["OriginAlias"] as! String
+                    }
+                    if dict.keys.contains("PhysicalIOReads") {
+                        self.physicalIOReads = dict["PhysicalIOReads"] as! Int64
+                    }
+                    if dict.keys.contains("Psql") {
+                        self.psql = dict["Psql"] as! String
+                    }
+                    if dict.keys.contains("QueryId") {
+                        self.queryId = dict["QueryId"] as! String
+                    }
+                    if dict.keys.contains("QueryStartTime") {
+                        self.queryStartTime = dict["QueryStartTime"] as! String
+                    }
+                    if dict.keys.contains("QueryTime") {
+                        self.queryTime = dict["QueryTime"] as! Int64
+                    }
+                    if dict.keys.contains("QueryTimeRate") {
+                        self.queryTimeRate = dict["QueryTimeRate"] as! Double
+                    }
+                    if dict.keys.contains("QueryTimeSeconds") {
+                        self.queryTimeSeconds = dict["QueryTimeSeconds"] as! Double
+                    }
+                    if dict.keys.contains("ReturnItemNumbers") {
+                        self.returnItemNumbers = dict["ReturnItemNumbers"] as! String
+                    }
+                    if dict.keys.contains("ReturnNum") {
+                        self.returnNum = dict["ReturnNum"] as! Int64
+                    }
+                    if dict.keys.contains("RowsCountAffected") {
+                        self.rowsCountAffected = dict["RowsCountAffected"] as! Int64
+                    }
+                    if dict.keys.contains("RowsExamined") {
+                        self.rowsExamined = dict["RowsExamined"] as! Int64
+                    }
+                    if dict.keys.contains("RowsSent") {
+                        self.rowsSent = dict["RowsSent"] as! Int64
+                    }
+                    if dict.keys.contains("SQLText") {
+                        self.SQLText = dict["SQLText"] as! String
+                    }
+                    if dict.keys.contains("Scheme") {
+                        self.scheme = dict["Scheme"] as! String
+                    }
+                    if dict.keys.contains("SqlId") {
+                        self.sqlId = dict["SqlId"] as! String
+                    }
+                    if dict.keys.contains("SqlTag") {
+                        var model = DescribeSlowLogStatisticResponseBody.Data.Data.Logs.SqlTag()
+                        model.fromMap(dict["SqlTag"] as! [String: Any])
+                        self.sqlTag = model
+                    }
+                    if dict.keys.contains("SqlType") {
+                        self.sqlType = dict["SqlType"] as! String
+                    }
+                    if dict.keys.contains("SubInstanceId") {
+                        self.subInstanceId = dict["SubInstanceId"] as! String
+                    }
+                    if dict.keys.contains("TableName") {
+                        self.tableName = dict["TableName"] as! String
+                    }
+                    if dict.keys.contains("ThreadId") {
+                        self.threadId = dict["ThreadId"] as! String
+                    }
+                    if dict.keys.contains("Timestamp") {
+                        self.timestamp = dict["Timestamp"] as! Int64
+                    }
+                    if dict.keys.contains("Trend") {
+                        var tmp : [DescribeSlowLogStatisticResponseBody.Data.Data.Logs.Trend] = []
+                        for v in dict["Trend"] as! [Any] {
+                            var model = DescribeSlowLogStatisticResponseBody.Data.Data.Logs.Trend()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.trend = tmp
+                    }
+                    if dict.keys.contains("User") {
+                        self.user = dict["User"] as! String
+                    }
+                }
+            }
+            public var dbInstanceId: Int64?
+
+            public var dbInstanceName: String?
+
+            public var endTime: String?
+
+            public var itemsNumbers: Int64?
+
+            public var logs: [DescribeSlowLogStatisticResponseBody.Data.Data.Logs]?
+
+            public var maxRecordsPerPage: Int32?
+
+            public var nodeId: String?
+
+            public var pageNumbers: Int32?
+
+            public var startTime: String?
+
+            public var totalRecords: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dbInstanceId != nil {
+                    map["DbInstanceId"] = self.dbInstanceId!
+                }
+                if self.dbInstanceName != nil {
+                    map["DbInstanceName"] = self.dbInstanceName!
+                }
+                if self.endTime != nil {
+                    map["EndTime"] = self.endTime!
+                }
+                if self.itemsNumbers != nil {
+                    map["ItemsNumbers"] = self.itemsNumbers!
+                }
+                if self.logs != nil {
+                    var tmp : [Any] = []
+                    for k in self.logs! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Logs"] = tmp
+                }
+                if self.maxRecordsPerPage != nil {
+                    map["MaxRecordsPerPage"] = self.maxRecordsPerPage!
+                }
+                if self.nodeId != nil {
+                    map["NodeId"] = self.nodeId!
+                }
+                if self.pageNumbers != nil {
+                    map["PageNumbers"] = self.pageNumbers!
+                }
+                if self.startTime != nil {
+                    map["StartTime"] = self.startTime!
+                }
+                if self.totalRecords != nil {
+                    map["TotalRecords"] = self.totalRecords!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DbInstanceId") {
+                    self.dbInstanceId = dict["DbInstanceId"] as! Int64
+                }
+                if dict.keys.contains("DbInstanceName") {
+                    self.dbInstanceName = dict["DbInstanceName"] as! String
+                }
+                if dict.keys.contains("EndTime") {
+                    self.endTime = dict["EndTime"] as! String
+                }
+                if dict.keys.contains("ItemsNumbers") {
+                    self.itemsNumbers = dict["ItemsNumbers"] as! Int64
+                }
+                if dict.keys.contains("Logs") {
+                    var tmp : [DescribeSlowLogStatisticResponseBody.Data.Data.Logs] = []
+                    for v in dict["Logs"] as! [Any] {
+                        var model = DescribeSlowLogStatisticResponseBody.Data.Data.Logs()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.logs = tmp
+                }
+                if dict.keys.contains("MaxRecordsPerPage") {
+                    self.maxRecordsPerPage = dict["MaxRecordsPerPage"] as! Int32
+                }
+                if dict.keys.contains("NodeId") {
+                    self.nodeId = dict["NodeId"] as! String
+                }
+                if dict.keys.contains("PageNumbers") {
+                    self.pageNumbers = dict["PageNumbers"] as! Int32
+                }
+                if dict.keys.contains("StartTime") {
+                    self.startTime = dict["StartTime"] as! String
+                }
+                if dict.keys.contains("TotalRecords") {
+                    self.totalRecords = dict["TotalRecords"] as! Int64
+                }
+            }
+        }
+        public var data: DescribeSlowLogStatisticResponseBody.Data.Data?
+
+        public var errorCode: Int32?
+
+        public var isFinish: Bool?
+
+        public var message: String?
+
+        public var requestKey: String?
+
+        public var resultId: String?
+
+        public var state: String?
+
+        public var timestamp: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.data?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.data != nil {
+                map["Data"] = self.data?.toMap()
+            }
+            if self.errorCode != nil {
+                map["ErrorCode"] = self.errorCode!
+            }
+            if self.isFinish != nil {
+                map["IsFinish"] = self.isFinish!
+            }
+            if self.message != nil {
+                map["Message"] = self.message!
+            }
+            if self.requestKey != nil {
+                map["RequestKey"] = self.requestKey!
+            }
+            if self.resultId != nil {
+                map["ResultId"] = self.resultId!
+            }
+            if self.state != nil {
+                map["State"] = self.state!
+            }
+            if self.timestamp != nil {
+                map["Timestamp"] = self.timestamp!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Data") {
+                var model = DescribeSlowLogStatisticResponseBody.Data.Data()
+                model.fromMap(dict["Data"] as! [String: Any])
+                self.data = model
+            }
+            if dict.keys.contains("ErrorCode") {
+                self.errorCode = dict["ErrorCode"] as! Int32
+            }
+            if dict.keys.contains("IsFinish") {
+                self.isFinish = dict["IsFinish"] as! Bool
+            }
+            if dict.keys.contains("Message") {
+                self.message = dict["Message"] as! String
+            }
+            if dict.keys.contains("RequestKey") {
+                self.requestKey = dict["RequestKey"] as! String
+            }
+            if dict.keys.contains("ResultId") {
+                self.resultId = dict["ResultId"] as! String
+            }
+            if dict.keys.contains("State") {
+                self.state = dict["State"] as! String
+            }
+            if dict.keys.contains("Timestamp") {
+                self.timestamp = dict["Timestamp"] as! Int64
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: DescribeSlowLogStatisticResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = DescribeSlowLogStatisticResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! String
+        }
+    }
+}
+
+public class DescribeSlowLogStatisticResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeSlowLogStatisticResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeSlowLogStatisticResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeSqlLogConfigRequest : Tea.TeaModel {
     public var instanceId: String?
 
