@@ -50825,7 +50825,7 @@ public class DescribeImagesResponseBody : Tea.TeaModel {
                 public class DiskDeviceMapping : Tea.TeaModel {
                     public var device: String?
 
-                    public var encrypted: String?
+                    public var encrypted: Bool?
 
                     public var format: String?
 
@@ -50895,7 +50895,7 @@ public class DescribeImagesResponseBody : Tea.TeaModel {
                             self.device = dict["Device"] as! String
                         }
                         if dict.keys.contains("Encrypted") {
-                            self.encrypted = dict["Encrypted"] as! String
+                            self.encrypted = dict["Encrypted"] as! Bool
                         }
                         if dict.keys.contains("Format") {
                             self.format = dict["Format"] as! String
@@ -99456,6 +99456,10 @@ public class ModifyInstanceAttachmentAttributesResponse : Tea.TeaModel {
 
 public class ModifyInstanceAttributeRequest : Tea.TeaModel {
     public class CpuOptions : Tea.TeaModel {
+        public var core: Int32?
+
+        public var threadsPerCore: Int32?
+
         public var topologyType: String?
 
         public override init() {
@@ -99472,6 +99476,12 @@ public class ModifyInstanceAttributeRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.core != nil {
+                map["Core"] = self.core!
+            }
+            if self.threadsPerCore != nil {
+                map["ThreadsPerCore"] = self.threadsPerCore!
+            }
             if self.topologyType != nil {
                 map["TopologyType"] = self.topologyType!
             }
@@ -99479,6 +99489,12 @@ public class ModifyInstanceAttributeRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Core") {
+                self.core = dict["Core"] as! Int32
+            }
+            if dict.keys.contains("ThreadsPerCore") {
+                self.threadsPerCore = dict["ThreadsPerCore"] as! Int32
+            }
             if dict.keys.contains("TopologyType") {
                 self.topologyType = dict["TopologyType"] as! String
             }
