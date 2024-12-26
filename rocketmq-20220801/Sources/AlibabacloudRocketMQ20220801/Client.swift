@@ -24,6 +24,39 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addDisasterRecoveryItemWithOptions(_ planId: String, _ request: AddDisasterRecoveryItemRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AddDisasterRecoveryItemResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.topics)) {
+            body["topics"] = request.topics ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddDisasterRecoveryItem",
+            "version": "2022-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/disaster_recovery/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(planId)) + "/items",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddDisasterRecoveryItemResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addDisasterRecoveryItem(_ planId: String, _ request: AddDisasterRecoveryItemRequest) async throws -> AddDisasterRecoveryItemResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await addDisasterRecoveryItemWithOptions(planId as! String, request as! AddDisasterRecoveryItemRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func changeResourceGroupWithOptions(_ request: ChangeResourceGroupRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ChangeResourceGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -74,6 +107,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.deliveryOrderType)) {
             body["deliveryOrderType"] = request.deliveryOrderType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxReceiveTps)) {
+            body["maxReceiveTps"] = request.maxReceiveTps!;
         }
         if (!TeaUtils.Client.isUnset(request.remark)) {
             body["remark"] = request.remark ?? "";
@@ -299,6 +335,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createTopicWithOptions(_ instanceId: String, _ topicName: String, _ request: CreateTopicRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateTopicResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxSendTps)) {
+            body["maxSendTps"] = request.maxSendTps!;
+        }
         if (!TeaUtils.Client.isUnset(request.messageType)) {
             body["messageType"] = request.messageType ?? "";
         }
@@ -1069,6 +1108,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.seriesCodesShrink)) {
             query["seriesCodes"] = request.seriesCodesShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.storageSecretKey)) {
+            query["storageSecretKey"] = request.storageSecretKey ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.tags)) {
             query["tags"] = request.tags ?? "";
         }
@@ -1482,6 +1524,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.deliveryOrderType)) {
             body["deliveryOrderType"] = request.deliveryOrderType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.maxReceiveTps)) {
+            body["maxReceiveTps"] = request.maxReceiveTps!;
+        }
         if (!TeaUtils.Client.isUnset(request.remark)) {
             body["remark"] = request.remark ?? "";
         }
@@ -1641,6 +1686,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateTopicWithOptions(_ instanceId: String, _ topicName: String, _ request: UpdateTopicRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateTopicResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxSendTps)) {
+            body["maxSendTps"] = request.maxSendTps!;
+        }
         if (!TeaUtils.Client.isUnset(request.remark)) {
             body["remark"] = request.remark ?? "";
         }
