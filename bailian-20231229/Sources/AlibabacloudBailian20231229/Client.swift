@@ -74,6 +74,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.categoryId)) {
             body["CategoryId"] = request.categoryId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.categoryType)) {
+            body["CategoryType"] = request.categoryType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.leaseId)) {
             body["LeaseId"] = request.leaseId ?? "";
         }
@@ -113,6 +116,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func applyFileUploadLeaseWithOptions(_ CategoryId: String, _ WorkspaceId: String, _ request: ApplyFileUploadLeaseRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ApplyFileUploadLeaseResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.categoryType)) {
+            body["CategoryType"] = request.categoryType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.fileName)) {
             body["FileName"] = request.fileName ?? "";
         }

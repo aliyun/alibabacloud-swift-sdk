@@ -213,6 +213,8 @@ public class AddCategoryResponse : Tea.TeaModel {
 public class AddFileRequest : Tea.TeaModel {
     public var categoryId: String?
 
+    public var categoryType: String?
+
     public var leaseId: String?
 
     public var parser: String?
@@ -236,6 +238,9 @@ public class AddFileRequest : Tea.TeaModel {
         if self.categoryId != nil {
             map["CategoryId"] = self.categoryId!
         }
+        if self.categoryType != nil {
+            map["CategoryType"] = self.categoryType!
+        }
         if self.leaseId != nil {
             map["LeaseId"] = self.leaseId!
         }
@@ -252,6 +257,9 @@ public class AddFileRequest : Tea.TeaModel {
         if dict.keys.contains("CategoryId") {
             self.categoryId = dict["CategoryId"] as! String
         }
+        if dict.keys.contains("CategoryType") {
+            self.categoryType = dict["CategoryType"] as! String
+        }
         if dict.keys.contains("LeaseId") {
             self.leaseId = dict["LeaseId"] as! String
         }
@@ -266,6 +274,8 @@ public class AddFileRequest : Tea.TeaModel {
 
 public class AddFileShrinkRequest : Tea.TeaModel {
     public var categoryId: String?
+
+    public var categoryType: String?
 
     public var leaseId: String?
 
@@ -290,6 +300,9 @@ public class AddFileShrinkRequest : Tea.TeaModel {
         if self.categoryId != nil {
             map["CategoryId"] = self.categoryId!
         }
+        if self.categoryType != nil {
+            map["CategoryType"] = self.categoryType!
+        }
         if self.leaseId != nil {
             map["LeaseId"] = self.leaseId!
         }
@@ -305,6 +318,9 @@ public class AddFileShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("CategoryId") {
             self.categoryId = dict["CategoryId"] as! String
+        }
+        if dict.keys.contains("CategoryType") {
+            self.categoryType = dict["CategoryType"] as! String
         }
         if dict.keys.contains("LeaseId") {
             self.leaseId = dict["LeaseId"] as! String
@@ -478,6 +494,8 @@ public class AddFileResponse : Tea.TeaModel {
 }
 
 public class ApplyFileUploadLeaseRequest : Tea.TeaModel {
+    public var categoryType: String?
+
     public var fileName: String?
 
     public var md5: String?
@@ -498,6 +516,9 @@ public class ApplyFileUploadLeaseRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.categoryType != nil {
+            map["CategoryType"] = self.categoryType!
+        }
         if self.fileName != nil {
             map["FileName"] = self.fileName!
         }
@@ -511,6 +532,9 @@ public class ApplyFileUploadLeaseRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CategoryType") {
+            self.categoryType = dict["CategoryType"] as! String
+        }
         if dict.keys.contains("FileName") {
             self.fileName = dict["FileName"] as! String
         }
