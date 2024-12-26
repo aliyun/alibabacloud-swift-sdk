@@ -218,6 +218,8 @@ public class Instance : Tea.TeaModel {
 
     public var instancePort: Int32?
 
+    public var instanceType: String?
+
     public var isSpot: Bool?
 
     public var isolated: Bool?
@@ -289,6 +291,9 @@ public class Instance : Tea.TeaModel {
         }
         if self.instancePort != nil {
             map["InstancePort"] = self.instancePort!
+        }
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
         }
         if self.isSpot != nil {
             map["IsSpot"] = self.isSpot!
@@ -368,6 +373,9 @@ public class Instance : Tea.TeaModel {
         }
         if dict.keys.contains("InstancePort") {
             self.instancePort = dict["InstancePort"] as! Int32
+        }
+        if dict.keys.contains("InstanceType") {
+            self.instanceType = dict["InstanceType"] as! String
         }
         if dict.keys.contains("IsSpot") {
             self.isSpot = dict["IsSpot"] as! Bool
@@ -9143,6 +9151,139 @@ public class DescribeServiceMirrorResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DescribeServiceMirrorResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeServiceSignedUrlRequest : Tea.TeaModel {
+    public var expire: Int64?
+
+    public var internal_: Bool?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.expire != nil {
+            map["Expire"] = self.expire!
+        }
+        if self.internal_ != nil {
+            map["Internal"] = self.internal_!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Expire") {
+            self.expire = dict["Expire"] as! Int64
+        }
+        if dict.keys.contains("Internal") {
+            self.internal_ = dict["Internal"] as! Bool
+        }
+        if dict.keys.contains("Type") {
+            self.type = dict["Type"] as! String
+        }
+    }
+}
+
+public class DescribeServiceSignedUrlResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var signedUrl: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.signedUrl != nil {
+            map["SignedUrl"] = self.signedUrl!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SignedUrl") {
+            self.signedUrl = dict["SignedUrl"] as! String
+        }
+    }
+}
+
+public class DescribeServiceSignedUrlResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeServiceSignedUrlResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeServiceSignedUrlResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
