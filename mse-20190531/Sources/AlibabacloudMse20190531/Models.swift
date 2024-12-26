@@ -57823,6 +57823,8 @@ public class QueryAllSwimmingLaneResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var enable: String?
+
         public var entryRules: [QueryAllSwimmingLaneResponseBody.Data.EntryRules]?
 
         public var gatewaySwimmingLaneRoute: QueryAllSwimmingLaneResponseBody.Data.GatewaySwimmingLaneRoute?
@@ -57870,6 +57872,9 @@ public class QueryAllSwimmingLaneResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.enable != nil {
+                map["Enable"] = self.enable!
+            }
             if self.entryRules != nil {
                 var tmp : [Any] = []
                 for k in self.entryRules! {
@@ -57926,6 +57931,9 @@ public class QueryAllSwimmingLaneResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Enable") {
+                self.enable = dict["Enable"] as! String
+            }
             if dict.keys.contains("EntryRules") {
                 var tmp : [QueryAllSwimmingLaneResponseBody.Data.EntryRules] = []
                 for v in dict["EntryRules"] as! [Any] {
