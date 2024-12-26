@@ -2183,6 +2183,10 @@ public class CreateDBClusterRequest : Tea.TeaModel {
 
     public var storageAutoScale: String?
 
+    public var storageEncryption: Bool?
+
+    public var storageEncryptionKey: String?
+
     public var storagePayType: String?
 
     public var storageSpace: Int64?
@@ -2352,6 +2356,12 @@ public class CreateDBClusterRequest : Tea.TeaModel {
         }
         if self.storageAutoScale != nil {
             map["StorageAutoScale"] = self.storageAutoScale!
+        }
+        if self.storageEncryption != nil {
+            map["StorageEncryption"] = self.storageEncryption!
+        }
+        if self.storageEncryptionKey != nil {
+            map["StorageEncryptionKey"] = self.storageEncryptionKey!
         }
         if self.storagePayType != nil {
             map["StoragePayType"] = self.storagePayType!
@@ -2528,6 +2538,12 @@ public class CreateDBClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("StorageAutoScale") {
             self.storageAutoScale = dict["StorageAutoScale"] as! String
+        }
+        if dict.keys.contains("StorageEncryption") {
+            self.storageEncryption = dict["StorageEncryption"] as! Bool
+        }
+        if dict.keys.contains("StorageEncryptionKey") {
+            self.storageEncryptionKey = dict["StorageEncryptionKey"] as! String
         }
         if dict.keys.contains("StoragePayType") {
             self.storagePayType = dict["StoragePayType"] as! String
@@ -15216,6 +15232,8 @@ public class DescribeDBClusterTDEResponseBody : Tea.TeaModel {
 
     public var encryptionKey: String?
 
+    public var encryptionKeyStatus: String?
+
     public var requestId: String?
 
     public var rotationInterval: String?
@@ -15250,6 +15268,9 @@ public class DescribeDBClusterTDEResponseBody : Tea.TeaModel {
         if self.encryptionKey != nil {
             map["EncryptionKey"] = self.encryptionKey!
         }
+        if self.encryptionKeyStatus != nil {
+            map["EncryptionKeyStatus"] = self.encryptionKeyStatus!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -15277,6 +15298,9 @@ public class DescribeDBClusterTDEResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("EncryptionKey") {
             self.encryptionKey = dict["EncryptionKey"] as! String
+        }
+        if dict.keys.contains("EncryptionKeyStatus") {
+            self.encryptionKeyStatus = dict["EncryptionKeyStatus"] as! String
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String

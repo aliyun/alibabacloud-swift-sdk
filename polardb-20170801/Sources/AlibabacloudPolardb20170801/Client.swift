@@ -796,6 +796,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.storageAutoScale)) {
             query["StorageAutoScale"] = request.storageAutoScale ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.storageEncryption)) {
+            query["StorageEncryption"] = request.storageEncryption!;
+        }
+        if (!TeaUtils.Client.isUnset(request.storageEncryptionKey)) {
+            query["StorageEncryptionKey"] = request.storageEncryptionKey ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.storagePayType)) {
             query["StoragePayType"] = request.storagePayType ?? "";
         }
