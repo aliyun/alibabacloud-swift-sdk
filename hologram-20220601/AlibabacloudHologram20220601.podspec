@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudHologram20220601"
-  spec.version      = "1.8.0"
+  spec.version      = "1.9.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud Hologres (20220601) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/hologram-20220601" 

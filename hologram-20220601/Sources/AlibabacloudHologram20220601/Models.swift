@@ -1334,6 +1334,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
         public var resourceGroupId: String?
 
+        public var storageType: String?
+
         public var suspendReason: String?
 
         public var tags: [GetInstanceResponseBody.Instance.Tags]?
@@ -1434,6 +1436,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
             if self.resourceGroupId != nil {
                 map["ResourceGroupId"] = self.resourceGroupId!
+            }
+            if self.storageType != nil {
+                map["StorageType"] = self.storageType!
             }
             if self.suspendReason != nil {
                 map["SuspendReason"] = self.suspendReason!
@@ -1537,6 +1542,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ResourceGroupId") {
                 self.resourceGroupId = dict["ResourceGroupId"] as! String
+            }
+            if dict.keys.contains("StorageType") {
+                self.storageType = dict["StorageType"] as! String
             }
             if dict.keys.contains("SuspendReason") {
                 self.suspendReason = dict["SuspendReason"] as! String
@@ -2460,6 +2468,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
         public var resourceGroupId: String?
 
+        public var storageType: String?
+
         public var suspendReason: String?
 
         public var tags: [ListInstancesResponseBody.InstanceList.Tags]?
@@ -2524,6 +2534,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if self.resourceGroupId != nil {
                 map["ResourceGroupId"] = self.resourceGroupId!
+            }
+            if self.storageType != nil {
+                map["StorageType"] = self.storageType!
             }
             if self.suspendReason != nil {
                 map["SuspendReason"] = self.suspendReason!
@@ -2591,6 +2604,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ResourceGroupId") {
                 self.resourceGroupId = dict["ResourceGroupId"] as! String
+            }
+            if dict.keys.contains("StorageType") {
+                self.storageType = dict["StorageType"] as! String
             }
             if dict.keys.contains("SuspendReason") {
                 self.suspendReason = dict["SuspendReason"] as! String
