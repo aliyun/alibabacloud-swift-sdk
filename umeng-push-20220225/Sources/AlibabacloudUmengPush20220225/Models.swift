@@ -425,6 +425,8 @@ public class ChannelProperties : Tea.TeaModel {
 
     public var channelFcm: String?
 
+    public var harmonyChannelCategory: String?
+
     public var huaweiChannelCategory: String?
 
     public var huaweiChannelImportance: String?
@@ -470,6 +472,9 @@ public class ChannelProperties : Tea.TeaModel {
         }
         if self.channelFcm != nil {
             map["channelFcm"] = self.channelFcm!
+        }
+        if self.harmonyChannelCategory != nil {
+            map["harmonyChannelCategory"] = self.harmonyChannelCategory!
         }
         if self.huaweiChannelCategory != nil {
             map["huaweiChannelCategory"] = self.huaweiChannelCategory!
@@ -520,6 +525,9 @@ public class ChannelProperties : Tea.TeaModel {
         if dict.keys.contains("channelFcm") {
             self.channelFcm = dict["channelFcm"] as! String
         }
+        if dict.keys.contains("harmonyChannelCategory") {
+            self.harmonyChannelCategory = dict["harmonyChannelCategory"] as! String
+        }
         if dict.keys.contains("huaweiChannelCategory") {
             self.huaweiChannelCategory = dict["huaweiChannelCategory"] as! String
         }
@@ -558,6 +566,157 @@ public class ChannelProperties : Tea.TeaModel {
         }
         if dict.keys.contains("xiaomiChannelId") {
             self.xiaomiChannelId = dict["xiaomiChannelId"] as! String
+        }
+    }
+}
+
+public class HarmonyBody : Tea.TeaModel {
+    public var action: String?
+
+    public var addBadge: Int32?
+
+    public var afterOpen: String?
+
+    public var bigBody: String?
+
+    public var custom: String?
+
+    public var img: String?
+
+    public var largeIcon: String?
+
+    public var text: String?
+
+    public var title: String?
+
+    public var uri: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.action != nil {
+            map["action"] = self.action!
+        }
+        if self.addBadge != nil {
+            map["addBadge"] = self.addBadge!
+        }
+        if self.afterOpen != nil {
+            map["afterOpen"] = self.afterOpen!
+        }
+        if self.bigBody != nil {
+            map["bigBody"] = self.bigBody!
+        }
+        if self.custom != nil {
+            map["custom"] = self.custom!
+        }
+        if self.img != nil {
+            map["img"] = self.img!
+        }
+        if self.largeIcon != nil {
+            map["largeIcon"] = self.largeIcon!
+        }
+        if self.text != nil {
+            map["text"] = self.text!
+        }
+        if self.title != nil {
+            map["title"] = self.title!
+        }
+        if self.uri != nil {
+            map["uri"] = self.uri!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("action") {
+            self.action = dict["action"] as! String
+        }
+        if dict.keys.contains("addBadge") {
+            self.addBadge = dict["addBadge"] as! Int32
+        }
+        if dict.keys.contains("afterOpen") {
+            self.afterOpen = dict["afterOpen"] as! String
+        }
+        if dict.keys.contains("bigBody") {
+            self.bigBody = dict["bigBody"] as! String
+        }
+        if dict.keys.contains("custom") {
+            self.custom = dict["custom"] as! String
+        }
+        if dict.keys.contains("img") {
+            self.img = dict["img"] as! String
+        }
+        if dict.keys.contains("largeIcon") {
+            self.largeIcon = dict["largeIcon"] as! String
+        }
+        if dict.keys.contains("text") {
+            self.text = dict["text"] as! String
+        }
+        if dict.keys.contains("title") {
+            self.title = dict["title"] as! String
+        }
+        if dict.keys.contains("uri") {
+            self.uri = dict["uri"] as! String
+        }
+    }
+}
+
+public class HarmonyPayload : Tea.TeaModel {
+    public var displayType: String?
+
+    public var extra: [String: Any]?
+
+    public var harmonyBody: HarmonyBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.harmonyBody?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.displayType != nil {
+            map["displayType"] = self.displayType!
+        }
+        if self.extra != nil {
+            map["extra"] = self.extra!
+        }
+        if self.harmonyBody != nil {
+            map["harmonyBody"] = self.harmonyBody?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("displayType") {
+            self.displayType = dict["displayType"] as! String
+        }
+        if dict.keys.contains("extra") {
+            self.extra = dict["extra"] as! [String: Any]
+        }
+        if dict.keys.contains("harmonyBody") {
+            var model = HarmonyBody()
+            model.fromMap(dict["harmonyBody"] as! [String: Any])
+            self.harmonyBody = model
         }
     }
 }
@@ -698,6 +857,8 @@ public class Message2ThirdChannel : Tea.TeaModel {
 }
 
 public class Policy : Tea.TeaModel {
+    public var channelStrategy: [String: String]?
+
     public var expireTime: String?
 
     public var outerBizNo: String?
@@ -720,6 +881,9 @@ public class Policy : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.channelStrategy != nil {
+            map["channelStrategy"] = self.channelStrategy!
+        }
         if self.expireTime != nil {
             map["expireTime"] = self.expireTime!
         }
@@ -736,6 +900,9 @@ public class Policy : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("channelStrategy") {
+            self.channelStrategy = dict["channelStrategy"] as! [String: String]
+        }
         if dict.keys.contains("expireTime") {
             self.expireTime = dict["expireTime"] as! String
         }
@@ -1182,6 +1349,8 @@ public class SendByAliasRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var harmonyPayload: HarmonyPayload?
+
     public var iosPayload: IosPayload?
 
     public var policy: Policy?
@@ -1209,6 +1378,7 @@ public class SendByAliasRequest : Tea.TeaModel {
         try self.androidPayload?.validate()
         try self.androidShortPayload?.validate()
         try self.channelProperties?.validate()
+        try self.harmonyPayload?.validate()
         try self.iosPayload?.validate()
         try self.policy?.validate()
     }
@@ -1232,6 +1402,9 @@ public class SendByAliasRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.harmonyPayload != nil {
+            map["HarmonyPayload"] = self.harmonyPayload?.toMap()
         }
         if self.iosPayload != nil {
             map["IosPayload"] = self.iosPayload?.toMap()
@@ -1282,6 +1455,11 @@ public class SendByAliasRequest : Tea.TeaModel {
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
         }
+        if dict.keys.contains("HarmonyPayload") {
+            var model = HarmonyPayload()
+            model.fromMap(dict["HarmonyPayload"] as! [String: Any])
+            self.harmonyPayload = model
+        }
         if dict.keys.contains("IosPayload") {
             var model = IosPayload()
             model.fromMap(dict["IosPayload"] as! [String: Any])
@@ -1322,6 +1500,8 @@ public class SendByAliasShrinkRequest : Tea.TeaModel {
     public var channelPropertiesShrink: String?
 
     public var description_: String?
+
+    public var harmonyPayloadShrink: String?
 
     public var iosPayloadShrink: String?
 
@@ -1369,6 +1549,9 @@ public class SendByAliasShrinkRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.harmonyPayloadShrink != nil {
+            map["HarmonyPayload"] = self.harmonyPayloadShrink!
+        }
         if self.iosPayloadShrink != nil {
             map["IosPayload"] = self.iosPayloadShrink!
         }
@@ -1411,6 +1594,9 @@ public class SendByAliasShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("HarmonyPayload") {
+            self.harmonyPayloadShrink = dict["HarmonyPayload"] as! String
         }
         if dict.keys.contains("IosPayload") {
             self.iosPayloadShrink = dict["IosPayload"] as! String
@@ -1600,6 +1786,8 @@ public class SendByAliasFileIdRequest : Tea.TeaModel {
 
     public var fileId: String?
 
+    public var harmonyPayload: HarmonyPayload?
+
     public var iosPayload: IosPayload?
 
     public var policy: Policy?
@@ -1627,6 +1815,7 @@ public class SendByAliasFileIdRequest : Tea.TeaModel {
         try self.androidPayload?.validate()
         try self.androidShortPayload?.validate()
         try self.channelProperties?.validate()
+        try self.harmonyPayload?.validate()
         try self.iosPayload?.validate()
         try self.policy?.validate()
     }
@@ -1650,6 +1839,9 @@ public class SendByAliasFileIdRequest : Tea.TeaModel {
         }
         if self.fileId != nil {
             map["FileId"] = self.fileId!
+        }
+        if self.harmonyPayload != nil {
+            map["HarmonyPayload"] = self.harmonyPayload?.toMap()
         }
         if self.iosPayload != nil {
             map["IosPayload"] = self.iosPayload?.toMap()
@@ -1700,6 +1892,11 @@ public class SendByAliasFileIdRequest : Tea.TeaModel {
         if dict.keys.contains("FileId") {
             self.fileId = dict["FileId"] as! String
         }
+        if dict.keys.contains("HarmonyPayload") {
+            var model = HarmonyPayload()
+            model.fromMap(dict["HarmonyPayload"] as! [String: Any])
+            self.harmonyPayload = model
+        }
         if dict.keys.contains("IosPayload") {
             var model = IosPayload()
             model.fromMap(dict["IosPayload"] as! [String: Any])
@@ -1740,6 +1937,8 @@ public class SendByAliasFileIdShrinkRequest : Tea.TeaModel {
     public var description_: String?
 
     public var fileId: String?
+
+    public var harmonyPayloadShrink: String?
 
     public var iosPayloadShrink: String?
 
@@ -1787,6 +1986,9 @@ public class SendByAliasFileIdShrinkRequest : Tea.TeaModel {
         if self.fileId != nil {
             map["FileId"] = self.fileId!
         }
+        if self.harmonyPayloadShrink != nil {
+            map["HarmonyPayload"] = self.harmonyPayloadShrink!
+        }
         if self.iosPayloadShrink != nil {
             map["IosPayload"] = self.iosPayloadShrink!
         }
@@ -1829,6 +2031,9 @@ public class SendByAliasFileIdShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FileId") {
             self.fileId = dict["FileId"] as! String
+        }
+        if dict.keys.contains("HarmonyPayload") {
+            self.harmonyPayloadShrink = dict["HarmonyPayload"] as! String
         }
         if dict.keys.contains("IosPayload") {
             self.iosPayloadShrink = dict["IosPayload"] as! String
@@ -2014,6 +2219,8 @@ public class SendByAppRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var harmonyPayload: HarmonyPayload?
+
     public var iosPayload: IosPayload?
 
     public var policy: Policy?
@@ -2041,6 +2248,7 @@ public class SendByAppRequest : Tea.TeaModel {
         try self.androidPayload?.validate()
         try self.androidShortPayload?.validate()
         try self.channelProperties?.validate()
+        try self.harmonyPayload?.validate()
         try self.iosPayload?.validate()
         try self.policy?.validate()
     }
@@ -2058,6 +2266,9 @@ public class SendByAppRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.harmonyPayload != nil {
+            map["HarmonyPayload"] = self.harmonyPayload?.toMap()
         }
         if self.iosPayload != nil {
             map["IosPayload"] = self.iosPayload?.toMap()
@@ -2102,6 +2313,11 @@ public class SendByAppRequest : Tea.TeaModel {
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
         }
+        if dict.keys.contains("HarmonyPayload") {
+            var model = HarmonyPayload()
+            model.fromMap(dict["HarmonyPayload"] as! [String: Any])
+            self.harmonyPayload = model
+        }
         if dict.keys.contains("IosPayload") {
             var model = IosPayload()
             model.fromMap(dict["IosPayload"] as! [String: Any])
@@ -2138,6 +2354,8 @@ public class SendByAppShrinkRequest : Tea.TeaModel {
     public var channelPropertiesShrink: String?
 
     public var description_: String?
+
+    public var harmonyPayloadShrink: String?
 
     public var iosPayloadShrink: String?
 
@@ -2179,6 +2397,9 @@ public class SendByAppShrinkRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.harmonyPayloadShrink != nil {
+            map["HarmonyPayload"] = self.harmonyPayloadShrink!
+        }
         if self.iosPayloadShrink != nil {
             map["IosPayload"] = self.iosPayloadShrink!
         }
@@ -2215,6 +2436,9 @@ public class SendByAppShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("HarmonyPayload") {
+            self.harmonyPayloadShrink = dict["HarmonyPayload"] as! String
         }
         if dict.keys.contains("IosPayload") {
             self.iosPayloadShrink = dict["IosPayload"] as! String
@@ -2402,6 +2626,8 @@ public class SendByDeviceRequest : Tea.TeaModel {
 
     public var deviceTokens: String?
 
+    public var harmonyPayload: HarmonyPayload?
+
     public var iosPayload: IosPayload?
 
     public var policy: Policy?
@@ -2429,6 +2655,7 @@ public class SendByDeviceRequest : Tea.TeaModel {
         try self.androidPayload?.validate()
         try self.androidShortPayload?.validate()
         try self.channelProperties?.validate()
+        try self.harmonyPayload?.validate()
         try self.iosPayload?.validate()
         try self.policy?.validate()
     }
@@ -2449,6 +2676,9 @@ public class SendByDeviceRequest : Tea.TeaModel {
         }
         if self.deviceTokens != nil {
             map["DeviceTokens"] = self.deviceTokens!
+        }
+        if self.harmonyPayload != nil {
+            map["HarmonyPayload"] = self.harmonyPayload?.toMap()
         }
         if self.iosPayload != nil {
             map["IosPayload"] = self.iosPayload?.toMap()
@@ -2496,6 +2726,11 @@ public class SendByDeviceRequest : Tea.TeaModel {
         if dict.keys.contains("DeviceTokens") {
             self.deviceTokens = dict["DeviceTokens"] as! String
         }
+        if dict.keys.contains("HarmonyPayload") {
+            var model = HarmonyPayload()
+            model.fromMap(dict["HarmonyPayload"] as! [String: Any])
+            self.harmonyPayload = model
+        }
         if dict.keys.contains("IosPayload") {
             var model = IosPayload()
             model.fromMap(dict["IosPayload"] as! [String: Any])
@@ -2534,6 +2769,8 @@ public class SendByDeviceShrinkRequest : Tea.TeaModel {
     public var description_: String?
 
     public var deviceTokens: String?
+
+    public var harmonyPayloadShrink: String?
 
     public var iosPayloadShrink: String?
 
@@ -2578,6 +2815,9 @@ public class SendByDeviceShrinkRequest : Tea.TeaModel {
         if self.deviceTokens != nil {
             map["DeviceTokens"] = self.deviceTokens!
         }
+        if self.harmonyPayloadShrink != nil {
+            map["HarmonyPayload"] = self.harmonyPayloadShrink!
+        }
         if self.iosPayloadShrink != nil {
             map["IosPayload"] = self.iosPayloadShrink!
         }
@@ -2617,6 +2857,9 @@ public class SendByDeviceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DeviceTokens") {
             self.deviceTokens = dict["DeviceTokens"] as! String
+        }
+        if dict.keys.contains("HarmonyPayload") {
+            self.harmonyPayloadShrink = dict["HarmonyPayload"] as! String
         }
         if dict.keys.contains("IosPayload") {
             self.iosPayloadShrink = dict["IosPayload"] as! String
@@ -2804,6 +3047,8 @@ public class SendByDeviceFileIdRequest : Tea.TeaModel {
 
     public var fileId: String?
 
+    public var harmonyPayload: HarmonyPayload?
+
     public var iosPayload: IosPayload?
 
     public var policy: Policy?
@@ -2831,6 +3076,7 @@ public class SendByDeviceFileIdRequest : Tea.TeaModel {
         try self.androidPayload?.validate()
         try self.androidShortPayload?.validate()
         try self.channelProperties?.validate()
+        try self.harmonyPayload?.validate()
         try self.iosPayload?.validate()
         try self.policy?.validate()
     }
@@ -2851,6 +3097,9 @@ public class SendByDeviceFileIdRequest : Tea.TeaModel {
         }
         if self.fileId != nil {
             map["FileId"] = self.fileId!
+        }
+        if self.harmonyPayload != nil {
+            map["HarmonyPayload"] = self.harmonyPayload?.toMap()
         }
         if self.iosPayload != nil {
             map["IosPayload"] = self.iosPayload?.toMap()
@@ -2898,6 +3147,11 @@ public class SendByDeviceFileIdRequest : Tea.TeaModel {
         if dict.keys.contains("FileId") {
             self.fileId = dict["FileId"] as! String
         }
+        if dict.keys.contains("HarmonyPayload") {
+            var model = HarmonyPayload()
+            model.fromMap(dict["HarmonyPayload"] as! [String: Any])
+            self.harmonyPayload = model
+        }
         if dict.keys.contains("IosPayload") {
             var model = IosPayload()
             model.fromMap(dict["IosPayload"] as! [String: Any])
@@ -2936,6 +3190,8 @@ public class SendByDeviceFileIdShrinkRequest : Tea.TeaModel {
     public var description_: String?
 
     public var fileId: String?
+
+    public var harmonyPayloadShrink: String?
 
     public var iosPayloadShrink: String?
 
@@ -2980,6 +3236,9 @@ public class SendByDeviceFileIdShrinkRequest : Tea.TeaModel {
         if self.fileId != nil {
             map["FileId"] = self.fileId!
         }
+        if self.harmonyPayloadShrink != nil {
+            map["HarmonyPayload"] = self.harmonyPayloadShrink!
+        }
         if self.iosPayloadShrink != nil {
             map["IosPayload"] = self.iosPayloadShrink!
         }
@@ -3019,6 +3278,9 @@ public class SendByDeviceFileIdShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FileId") {
             self.fileId = dict["FileId"] as! String
+        }
+        if dict.keys.contains("HarmonyPayload") {
+            self.harmonyPayloadShrink = dict["HarmonyPayload"] as! String
         }
         if dict.keys.contains("IosPayload") {
             self.iosPayloadShrink = dict["IosPayload"] as! String
@@ -3206,6 +3468,8 @@ public class SendByFilterRequest : Tea.TeaModel {
 
     public var filter: String?
 
+    public var harmonyPayload: HarmonyPayload?
+
     public var iosPayload: IosPayload?
 
     public var policy: Policy?
@@ -3233,6 +3497,7 @@ public class SendByFilterRequest : Tea.TeaModel {
         try self.androidPayload?.validate()
         try self.androidShortPayload?.validate()
         try self.channelProperties?.validate()
+        try self.harmonyPayload?.validate()
         try self.iosPayload?.validate()
         try self.policy?.validate()
     }
@@ -3253,6 +3518,9 @@ public class SendByFilterRequest : Tea.TeaModel {
         }
         if self.filter != nil {
             map["Filter"] = self.filter!
+        }
+        if self.harmonyPayload != nil {
+            map["HarmonyPayload"] = self.harmonyPayload?.toMap()
         }
         if self.iosPayload != nil {
             map["IosPayload"] = self.iosPayload?.toMap()
@@ -3300,6 +3568,11 @@ public class SendByFilterRequest : Tea.TeaModel {
         if dict.keys.contains("Filter") {
             self.filter = dict["Filter"] as! String
         }
+        if dict.keys.contains("HarmonyPayload") {
+            var model = HarmonyPayload()
+            model.fromMap(dict["HarmonyPayload"] as! [String: Any])
+            self.harmonyPayload = model
+        }
         if dict.keys.contains("IosPayload") {
             var model = IosPayload()
             model.fromMap(dict["IosPayload"] as! [String: Any])
@@ -3338,6 +3611,8 @@ public class SendByFilterShrinkRequest : Tea.TeaModel {
     public var description_: String?
 
     public var filter: String?
+
+    public var harmonyPayloadShrink: String?
 
     public var iosPayloadShrink: String?
 
@@ -3383,6 +3658,9 @@ public class SendByFilterShrinkRequest : Tea.TeaModel {
         if self.filter != nil {
             map["Filter"] = self.filter!
         }
+        if self.harmonyPayloadShrink != nil {
+            map["HarmonyPayload"] = self.harmonyPayloadShrink!
+        }
         if self.iosPayloadShrink != nil {
             map["IosPayload"] = self.iosPayloadShrink!
         }
@@ -3424,6 +3702,9 @@ public class SendByFilterShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Filter") {
             self.filter = dict["Filter"] as! String
+        }
+        if dict.keys.contains("HarmonyPayload") {
+            self.harmonyPayloadShrink = dict["HarmonyPayload"] as! String
         }
         if dict.keys.contains("IosPayload") {
             self.iosPayloadShrink = dict["IosPayload"] as! String
