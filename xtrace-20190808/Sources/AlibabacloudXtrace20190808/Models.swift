@@ -503,6 +503,10 @@ public class GetTagValResponse : Tea.TeaModel {
 public class GetTraceRequest : Tea.TeaModel {
     public var appType: String?
 
+    public var pageNumber: Int64?
+
+    public var pageSize: String?
+
     public var regionId: String?
 
     public var traceID: String?
@@ -524,6 +528,12 @@ public class GetTraceRequest : Tea.TeaModel {
         if self.appType != nil {
             map["AppType"] = self.appType!
         }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -536,6 +546,12 @@ public class GetTraceRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AppType") {
             self.appType = dict["AppType"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int64
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! String
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
@@ -806,6 +822,8 @@ public class GetTraceResponseBody : Tea.TeaModel {
 
             public var spanId: String?
 
+            public var statusCode: Int64?
+
             public var tagEntryList: GetTraceResponseBody.Spans.Span.TagEntryList?
 
             public var timestamp: Int64?
@@ -858,6 +876,9 @@ public class GetTraceResponseBody : Tea.TeaModel {
                 if self.spanId != nil {
                     map["SpanId"] = self.spanId!
                 }
+                if self.statusCode != nil {
+                    map["StatusCode"] = self.statusCode!
+                }
                 if self.tagEntryList != nil {
                     map["TagEntryList"] = self.tagEntryList?.toMap()
                 }
@@ -902,6 +923,9 @@ public class GetTraceResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("SpanId") {
                     self.spanId = dict["SpanId"] as! String
+                }
+                if dict.keys.contains("StatusCode") {
+                    self.statusCode = dict["StatusCode"] as! Int64
                 }
                 if dict.keys.contains("TagEntryList") {
                     var model = GetTraceResponseBody.Spans.Span.TagEntryList()
@@ -2036,6 +2060,8 @@ public class SearchTracesRequest : Tea.TeaModel {
 
     public var startTime: Int64?
 
+    public var statusCode: String?
+
     public var tag: [SearchTracesRequest.Tag]?
 
     public override init() {
@@ -2085,6 +2111,9 @@ public class SearchTracesRequest : Tea.TeaModel {
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
+        if self.statusCode != nil {
+            map["StatusCode"] = self.statusCode!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -2129,6 +2158,9 @@ public class SearchTracesRequest : Tea.TeaModel {
         if dict.keys.contains("StartTime") {
             self.startTime = dict["StartTime"] as! Int64
         }
+        if dict.keys.contains("StatusCode") {
+            self.statusCode = dict["StatusCode"] as! String
+        }
         if dict.keys.contains("Tag") {
             var tmp : [SearchTracesRequest.Tag] = []
             for v in dict["Tag"] as! [Any] {
@@ -2154,6 +2186,8 @@ public class SearchTracesResponseBody : Tea.TeaModel {
                 public var serviceIp: String?
 
                 public var serviceName: String?
+
+                public var statusCode: Int64?
 
                 public var tagMap: [String: Any]?
 
@@ -2187,6 +2221,9 @@ public class SearchTracesResponseBody : Tea.TeaModel {
                     if self.serviceName != nil {
                         map["ServiceName"] = self.serviceName!
                     }
+                    if self.statusCode != nil {
+                        map["StatusCode"] = self.statusCode!
+                    }
                     if self.tagMap != nil {
                         map["TagMap"] = self.tagMap!
                     }
@@ -2211,6 +2248,9 @@ public class SearchTracesResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("ServiceName") {
                         self.serviceName = dict["ServiceName"] as! String
+                    }
+                    if dict.keys.contains("StatusCode") {
+                        self.statusCode = dict["StatusCode"] as! Int64
                     }
                     if dict.keys.contains("TagMap") {
                         self.tagMap = dict["TagMap"] as! [String: Any]
