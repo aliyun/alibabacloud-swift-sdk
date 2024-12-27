@@ -1063,6 +1063,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteAirEcsInstanceWithOptions(_ tmpReq: DeleteAirEcsInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAirEcsInstanceResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DeleteAirEcsInstanceShrinkRequest = DeleteAirEcsInstanceShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.uninstallClientSourceTypes)) {
+            request.uninstallClientSourceTypesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.uninstallClientSourceTypes, "UninstallClientSourceTypes", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ecsInstanceId)) {
+            query["EcsInstanceId"] = request.ecsInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uninstallClientSourceTypesShrink)) {
+            query["UninstallClientSourceTypes"] = request.uninstallClientSourceTypesShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteAirEcsInstance",
+            "version": "2017-09-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteAirEcsInstanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteAirEcsInstance(_ request: DeleteAirEcsInstanceRequest) async throws -> DeleteAirEcsInstanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteAirEcsInstanceWithOptions(request as! DeleteAirEcsInstanceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteBackupClientWithOptions(_ request: DeleteBackupClientRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteBackupClientResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
