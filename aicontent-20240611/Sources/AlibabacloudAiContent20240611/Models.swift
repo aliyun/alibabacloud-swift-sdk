@@ -1659,6 +1659,2972 @@ public class AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse : Tea.Tea
     }
 }
 
+public class ExecuteAITeacherExpansionDialogueRequest : Tea.TeaModel {
+    public class DialogueTasks : Tea.TeaModel {
+        public var assistant: String?
+
+        public var assistantTranslate: String?
+
+        public var order: Int32?
+
+        public var user: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.assistant != nil {
+                map["assistant"] = self.assistant!
+            }
+            if self.assistantTranslate != nil {
+                map["assistantTranslate"] = self.assistantTranslate!
+            }
+            if self.order != nil {
+                map["order"] = self.order!
+            }
+            if self.user != nil {
+                map["user"] = self.user!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("assistant") {
+                self.assistant = dict["assistant"] as! String
+            }
+            if dict.keys.contains("assistantTranslate") {
+                self.assistantTranslate = dict["assistantTranslate"] as! String
+            }
+            if dict.keys.contains("order") {
+                self.order = dict["order"] as! Int32
+            }
+            if dict.keys.contains("user") {
+                self.user = dict["user"] as! String
+            }
+        }
+    }
+    public class Records : Tea.TeaModel {
+        public var content: String?
+
+        public var isOffTopicControl: Bool?
+
+        public var isOnTopic: Bool?
+
+        public var order: Int32?
+
+        public var role: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.content != nil {
+                map["content"] = self.content!
+            }
+            if self.isOffTopicControl != nil {
+                map["isOffTopicControl"] = self.isOffTopicControl!
+            }
+            if self.isOnTopic != nil {
+                map["isOnTopic"] = self.isOnTopic!
+            }
+            if self.order != nil {
+                map["order"] = self.order!
+            }
+            if self.role != nil {
+                map["role"] = self.role!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("content") {
+                self.content = dict["content"] as! String
+            }
+            if dict.keys.contains("isOffTopicControl") {
+                self.isOffTopicControl = dict["isOffTopicControl"] as! Bool
+            }
+            if dict.keys.contains("isOnTopic") {
+                self.isOnTopic = dict["isOnTopic"] as! Bool
+            }
+            if dict.keys.contains("order") {
+                self.order = dict["order"] as! Int32
+            }
+            if dict.keys.contains("role") {
+                self.role = dict["role"] as! String
+            }
+        }
+    }
+    public class RoleInfo : Tea.TeaModel {
+        public var assistant: String?
+
+        public var user: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.assistant != nil {
+                map["assistant"] = self.assistant!
+            }
+            if self.user != nil {
+                map["user"] = self.user!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("assistant") {
+                self.assistant = dict["assistant"] as! String
+            }
+            if dict.keys.contains("user") {
+                self.user = dict["user"] as! String
+            }
+        }
+    }
+    public var background: String?
+
+    public var dialogueTasks: [ExecuteAITeacherExpansionDialogueRequest.DialogueTasks]?
+
+    public var languageCode: String?
+
+    public var records: [ExecuteAITeacherExpansionDialogueRequest.Records]?
+
+    public var roleInfo: ExecuteAITeacherExpansionDialogueRequest.RoleInfo?
+
+    public var startSentence: String?
+
+    public var topic: String?
+
+    public var userId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.roleInfo?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.background != nil {
+            map["background"] = self.background!
+        }
+        if self.dialogueTasks != nil {
+            var tmp : [Any] = []
+            for k in self.dialogueTasks! {
+                tmp.append(k.toMap())
+            }
+            map["dialogueTasks"] = tmp
+        }
+        if self.languageCode != nil {
+            map["languageCode"] = self.languageCode!
+        }
+        if self.records != nil {
+            var tmp : [Any] = []
+            for k in self.records! {
+                tmp.append(k.toMap())
+            }
+            map["records"] = tmp
+        }
+        if self.roleInfo != nil {
+            map["roleInfo"] = self.roleInfo?.toMap()
+        }
+        if self.startSentence != nil {
+            map["startSentence"] = self.startSentence!
+        }
+        if self.topic != nil {
+            map["topic"] = self.topic!
+        }
+        if self.userId != nil {
+            map["userId"] = self.userId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("background") {
+            self.background = dict["background"] as! String
+        }
+        if dict.keys.contains("dialogueTasks") {
+            var tmp : [ExecuteAITeacherExpansionDialogueRequest.DialogueTasks] = []
+            for v in dict["dialogueTasks"] as! [Any] {
+                var model = ExecuteAITeacherExpansionDialogueRequest.DialogueTasks()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.dialogueTasks = tmp
+        }
+        if dict.keys.contains("languageCode") {
+            self.languageCode = dict["languageCode"] as! String
+        }
+        if dict.keys.contains("records") {
+            var tmp : [ExecuteAITeacherExpansionDialogueRequest.Records] = []
+            for v in dict["records"] as! [Any] {
+                var model = ExecuteAITeacherExpansionDialogueRequest.Records()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.records = tmp
+        }
+        if dict.keys.contains("roleInfo") {
+            var model = ExecuteAITeacherExpansionDialogueRequest.RoleInfo()
+            model.fromMap(dict["roleInfo"] as! [String: Any])
+            self.roleInfo = model
+        }
+        if dict.keys.contains("startSentence") {
+            self.startSentence = dict["startSentence"] as! String
+        }
+        if dict.keys.contains("topic") {
+            self.topic = dict["topic"] as! String
+        }
+        if dict.keys.contains("userId") {
+            self.userId = dict["userId"] as! String
+        }
+    }
+}
+
+public class ExecuteAITeacherExpansionDialogueResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var chineseResult: String?
+
+        public var englishResult: String?
+
+        public var isFinish: Bool?
+
+        public var isOffTopicControl: Bool?
+
+        public var isOnTopic: Bool?
+
+        public var questionIndex: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.chineseResult != nil {
+                map["chineseResult"] = self.chineseResult!
+            }
+            if self.englishResult != nil {
+                map["englishResult"] = self.englishResult!
+            }
+            if self.isFinish != nil {
+                map["isFinish"] = self.isFinish!
+            }
+            if self.isOffTopicControl != nil {
+                map["isOffTopicControl"] = self.isOffTopicControl!
+            }
+            if self.isOnTopic != nil {
+                map["isOnTopic"] = self.isOnTopic!
+            }
+            if self.questionIndex != nil {
+                map["questionIndex"] = self.questionIndex!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("chineseResult") {
+                self.chineseResult = dict["chineseResult"] as! String
+            }
+            if dict.keys.contains("englishResult") {
+                self.englishResult = dict["englishResult"] as! String
+            }
+            if dict.keys.contains("isFinish") {
+                self.isFinish = dict["isFinish"] as! Bool
+            }
+            if dict.keys.contains("isOffTopicControl") {
+                self.isOffTopicControl = dict["isOffTopicControl"] as! Bool
+            }
+            if dict.keys.contains("isOnTopic") {
+                self.isOnTopic = dict["isOnTopic"] as! Bool
+            }
+            if dict.keys.contains("questionIndex") {
+                self.questionIndex = dict["questionIndex"] as! Int32
+            }
+        }
+    }
+    public var data: ExecuteAITeacherExpansionDialogueResponseBody.Data?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["errMessage"] = self.errMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("data") {
+            var model = ExecuteAITeacherExpansionDialogueResponseBody.Data()
+            model.fromMap(dict["data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("errCode") {
+            self.errCode = dict["errCode"] as! String
+        }
+        if dict.keys.contains("errMessage") {
+            self.errMessage = dict["errMessage"] as! String
+        }
+        if dict.keys.contains("httpStatusCode") {
+            self.httpStatusCode = dict["httpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class ExecuteAITeacherExpansionDialogueResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ExecuteAITeacherExpansionDialogueResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ExecuteAITeacherExpansionDialogueResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ExecuteAITeacherExpansionDialogueRefineRequest : Tea.TeaModel {
+    public class DialogueTasks : Tea.TeaModel {
+        public var assistant: String?
+
+        public var assistantTranslate: String?
+
+        public var order: Int32?
+
+        public var user: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.assistant != nil {
+                map["assistant"] = self.assistant!
+            }
+            if self.assistantTranslate != nil {
+                map["assistantTranslate"] = self.assistantTranslate!
+            }
+            if self.order != nil {
+                map["order"] = self.order!
+            }
+            if self.user != nil {
+                map["user"] = self.user!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("assistant") {
+                self.assistant = dict["assistant"] as! String
+            }
+            if dict.keys.contains("assistantTranslate") {
+                self.assistantTranslate = dict["assistantTranslate"] as! String
+            }
+            if dict.keys.contains("order") {
+                self.order = dict["order"] as! Int32
+            }
+            if dict.keys.contains("user") {
+                self.user = dict["user"] as! String
+            }
+        }
+    }
+    public class Records : Tea.TeaModel {
+        public var content: String?
+
+        public var isOffTopicControl: Bool?
+
+        public var isOnTopic: Bool?
+
+        public var order: Int32?
+
+        public var role: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.content != nil {
+                map["content"] = self.content!
+            }
+            if self.isOffTopicControl != nil {
+                map["isOffTopicControl"] = self.isOffTopicControl!
+            }
+            if self.isOnTopic != nil {
+                map["isOnTopic"] = self.isOnTopic!
+            }
+            if self.order != nil {
+                map["order"] = self.order!
+            }
+            if self.role != nil {
+                map["role"] = self.role!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("content") {
+                self.content = dict["content"] as! String
+            }
+            if dict.keys.contains("isOffTopicControl") {
+                self.isOffTopicControl = dict["isOffTopicControl"] as! Bool
+            }
+            if dict.keys.contains("isOnTopic") {
+                self.isOnTopic = dict["isOnTopic"] as! Bool
+            }
+            if dict.keys.contains("order") {
+                self.order = dict["order"] as! Int32
+            }
+            if dict.keys.contains("role") {
+                self.role = dict["role"] as! String
+            }
+        }
+    }
+    public class RoleInfo : Tea.TeaModel {
+        public var assistant: String?
+
+        public var user: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.assistant != nil {
+                map["assistant"] = self.assistant!
+            }
+            if self.user != nil {
+                map["user"] = self.user!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("assistant") {
+                self.assistant = dict["assistant"] as! String
+            }
+            if dict.keys.contains("user") {
+                self.user = dict["user"] as! String
+            }
+        }
+    }
+    public var background: String?
+
+    public var dialogueTasks: [ExecuteAITeacherExpansionDialogueRefineRequest.DialogueTasks]?
+
+    public var languageCode: String?
+
+    public var records: [ExecuteAITeacherExpansionDialogueRefineRequest.Records]?
+
+    public var roleInfo: ExecuteAITeacherExpansionDialogueRefineRequest.RoleInfo?
+
+    public var startSentence: String?
+
+    public var topic: String?
+
+    public var userId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.roleInfo?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.background != nil {
+            map["background"] = self.background!
+        }
+        if self.dialogueTasks != nil {
+            var tmp : [Any] = []
+            for k in self.dialogueTasks! {
+                tmp.append(k.toMap())
+            }
+            map["dialogueTasks"] = tmp
+        }
+        if self.languageCode != nil {
+            map["languageCode"] = self.languageCode!
+        }
+        if self.records != nil {
+            var tmp : [Any] = []
+            for k in self.records! {
+                tmp.append(k.toMap())
+            }
+            map["records"] = tmp
+        }
+        if self.roleInfo != nil {
+            map["roleInfo"] = self.roleInfo?.toMap()
+        }
+        if self.startSentence != nil {
+            map["startSentence"] = self.startSentence!
+        }
+        if self.topic != nil {
+            map["topic"] = self.topic!
+        }
+        if self.userId != nil {
+            map["userId"] = self.userId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("background") {
+            self.background = dict["background"] as! String
+        }
+        if dict.keys.contains("dialogueTasks") {
+            var tmp : [ExecuteAITeacherExpansionDialogueRefineRequest.DialogueTasks] = []
+            for v in dict["dialogueTasks"] as! [Any] {
+                var model = ExecuteAITeacherExpansionDialogueRefineRequest.DialogueTasks()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.dialogueTasks = tmp
+        }
+        if dict.keys.contains("languageCode") {
+            self.languageCode = dict["languageCode"] as! String
+        }
+        if dict.keys.contains("records") {
+            var tmp : [ExecuteAITeacherExpansionDialogueRefineRequest.Records] = []
+            for v in dict["records"] as! [Any] {
+                var model = ExecuteAITeacherExpansionDialogueRefineRequest.Records()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.records = tmp
+        }
+        if dict.keys.contains("roleInfo") {
+            var model = ExecuteAITeacherExpansionDialogueRefineRequest.RoleInfo()
+            model.fromMap(dict["roleInfo"] as! [String: Any])
+            self.roleInfo = model
+        }
+        if dict.keys.contains("startSentence") {
+            self.startSentence = dict["startSentence"] as! String
+        }
+        if dict.keys.contains("topic") {
+            self.topic = dict["topic"] as! String
+        }
+        if dict.keys.contains("userId") {
+            self.userId = dict["userId"] as! String
+        }
+    }
+}
+
+public class ExecuteAITeacherExpansionDialogueRefineResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var result: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.result != nil {
+                map["result"] = self.result!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("result") {
+                self.result = dict["result"] as! String
+            }
+        }
+    }
+    public var data: ExecuteAITeacherExpansionDialogueRefineResponseBody.Data?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["errMessage"] = self.errMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("data") {
+            var model = ExecuteAITeacherExpansionDialogueRefineResponseBody.Data()
+            model.fromMap(dict["data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("errCode") {
+            self.errCode = dict["errCode"] as! String
+        }
+        if dict.keys.contains("errMessage") {
+            self.errMessage = dict["errMessage"] as! String
+        }
+        if dict.keys.contains("httpStatusCode") {
+            self.httpStatusCode = dict["httpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class ExecuteAITeacherExpansionDialogueRefineResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ExecuteAITeacherExpansionDialogueRefineResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ExecuteAITeacherExpansionDialogueRefineResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ExecuteAITeacherExpansionDialogueTranslateRequest : Tea.TeaModel {
+    public class DialogueTasks : Tea.TeaModel {
+        public var assistant: String?
+
+        public var assistantTranslate: String?
+
+        public var order: Int32?
+
+        public var user: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.assistant != nil {
+                map["assistant"] = self.assistant!
+            }
+            if self.assistantTranslate != nil {
+                map["assistantTranslate"] = self.assistantTranslate!
+            }
+            if self.order != nil {
+                map["order"] = self.order!
+            }
+            if self.user != nil {
+                map["user"] = self.user!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("assistant") {
+                self.assistant = dict["assistant"] as! String
+            }
+            if dict.keys.contains("assistantTranslate") {
+                self.assistantTranslate = dict["assistantTranslate"] as! String
+            }
+            if dict.keys.contains("order") {
+                self.order = dict["order"] as! Int32
+            }
+            if dict.keys.contains("user") {
+                self.user = dict["user"] as! String
+            }
+        }
+    }
+    public class Records : Tea.TeaModel {
+        public var content: String?
+
+        public var isOffTopicControl: Bool?
+
+        public var isOnTopic: Bool?
+
+        public var order: Int32?
+
+        public var role: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.content != nil {
+                map["content"] = self.content!
+            }
+            if self.isOffTopicControl != nil {
+                map["isOffTopicControl"] = self.isOffTopicControl!
+            }
+            if self.isOnTopic != nil {
+                map["isOnTopic"] = self.isOnTopic!
+            }
+            if self.order != nil {
+                map["order"] = self.order!
+            }
+            if self.role != nil {
+                map["role"] = self.role!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("content") {
+                self.content = dict["content"] as! String
+            }
+            if dict.keys.contains("isOffTopicControl") {
+                self.isOffTopicControl = dict["isOffTopicControl"] as! Bool
+            }
+            if dict.keys.contains("isOnTopic") {
+                self.isOnTopic = dict["isOnTopic"] as! Bool
+            }
+            if dict.keys.contains("order") {
+                self.order = dict["order"] as! Int32
+            }
+            if dict.keys.contains("role") {
+                self.role = dict["role"] as! String
+            }
+        }
+    }
+    public class RoleInfo : Tea.TeaModel {
+        public var assistant: String?
+
+        public var user: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.assistant != nil {
+                map["assistant"] = self.assistant!
+            }
+            if self.user != nil {
+                map["user"] = self.user!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("assistant") {
+                self.assistant = dict["assistant"] as! String
+            }
+            if dict.keys.contains("user") {
+                self.user = dict["user"] as! String
+            }
+        }
+    }
+    public var background: String?
+
+    public var dialogueTasks: [ExecuteAITeacherExpansionDialogueTranslateRequest.DialogueTasks]?
+
+    public var records: [ExecuteAITeacherExpansionDialogueTranslateRequest.Records]?
+
+    public var roleInfo: ExecuteAITeacherExpansionDialogueTranslateRequest.RoleInfo?
+
+    public var startSentence: String?
+
+    public var topic: String?
+
+    public var userId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.roleInfo?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.background != nil {
+            map["background"] = self.background!
+        }
+        if self.dialogueTasks != nil {
+            var tmp : [Any] = []
+            for k in self.dialogueTasks! {
+                tmp.append(k.toMap())
+            }
+            map["dialogueTasks"] = tmp
+        }
+        if self.records != nil {
+            var tmp : [Any] = []
+            for k in self.records! {
+                tmp.append(k.toMap())
+            }
+            map["records"] = tmp
+        }
+        if self.roleInfo != nil {
+            map["roleInfo"] = self.roleInfo?.toMap()
+        }
+        if self.startSentence != nil {
+            map["startSentence"] = self.startSentence!
+        }
+        if self.topic != nil {
+            map["topic"] = self.topic!
+        }
+        if self.userId != nil {
+            map["userId"] = self.userId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("background") {
+            self.background = dict["background"] as! String
+        }
+        if dict.keys.contains("dialogueTasks") {
+            var tmp : [ExecuteAITeacherExpansionDialogueTranslateRequest.DialogueTasks] = []
+            for v in dict["dialogueTasks"] as! [Any] {
+                var model = ExecuteAITeacherExpansionDialogueTranslateRequest.DialogueTasks()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.dialogueTasks = tmp
+        }
+        if dict.keys.contains("records") {
+            var tmp : [ExecuteAITeacherExpansionDialogueTranslateRequest.Records] = []
+            for v in dict["records"] as! [Any] {
+                var model = ExecuteAITeacherExpansionDialogueTranslateRequest.Records()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.records = tmp
+        }
+        if dict.keys.contains("roleInfo") {
+            var model = ExecuteAITeacherExpansionDialogueTranslateRequest.RoleInfo()
+            model.fromMap(dict["roleInfo"] as! [String: Any])
+            self.roleInfo = model
+        }
+        if dict.keys.contains("startSentence") {
+            self.startSentence = dict["startSentence"] as! String
+        }
+        if dict.keys.contains("topic") {
+            self.topic = dict["topic"] as! String
+        }
+        if dict.keys.contains("userId") {
+            self.userId = dict["userId"] as! String
+        }
+    }
+}
+
+public class ExecuteAITeacherExpansionDialogueTranslateResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var result: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.result != nil {
+                map["result"] = self.result!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("result") {
+                self.result = dict["result"] as! String
+            }
+        }
+    }
+    public var data: ExecuteAITeacherExpansionDialogueTranslateResponseBody.Data?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["errMessage"] = self.errMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("data") {
+            var model = ExecuteAITeacherExpansionDialogueTranslateResponseBody.Data()
+            model.fromMap(dict["data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("errCode") {
+            self.errCode = dict["errCode"] as! String
+        }
+        if dict.keys.contains("errMessage") {
+            self.errMessage = dict["errMessage"] as! String
+        }
+        if dict.keys.contains("httpStatusCode") {
+            self.httpStatusCode = dict["httpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class ExecuteAITeacherExpansionDialogueTranslateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ExecuteAITeacherExpansionDialogueTranslateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ExecuteAITeacherExpansionDialogueTranslateResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ExecuteAITeacherGrammarCheckRequest : Tea.TeaModel {
+    public var content: String?
+
+    public var userId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.content != nil {
+            map["content"] = self.content!
+        }
+        if self.userId != nil {
+            map["userId"] = self.userId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("content") {
+            self.content = dict["content"] as! String
+        }
+        if dict.keys.contains("userId") {
+            self.userId = dict["userId"] as! String
+        }
+    }
+}
+
+public class ExecuteAITeacherGrammarCheckResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var analysis: String?
+
+        public var correction: String?
+
+        public var correctionStatus: String?
+
+        public var errorReason: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.analysis != nil {
+                map["analysis"] = self.analysis!
+            }
+            if self.correction != nil {
+                map["correction"] = self.correction!
+            }
+            if self.correctionStatus != nil {
+                map["correctionStatus"] = self.correctionStatus!
+            }
+            if self.errorReason != nil {
+                map["errorReason"] = self.errorReason!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("analysis") {
+                self.analysis = dict["analysis"] as! String
+            }
+            if dict.keys.contains("correction") {
+                self.correction = dict["correction"] as! String
+            }
+            if dict.keys.contains("correctionStatus") {
+                self.correctionStatus = dict["correctionStatus"] as! String
+            }
+            if dict.keys.contains("errorReason") {
+                self.errorReason = dict["errorReason"] as! String
+            }
+        }
+    }
+    public var data: ExecuteAITeacherGrammarCheckResponseBody.Data?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["errMessage"] = self.errMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("data") {
+            var model = ExecuteAITeacherGrammarCheckResponseBody.Data()
+            model.fromMap(dict["data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("errCode") {
+            self.errCode = dict["errCode"] as! String
+        }
+        if dict.keys.contains("errMessage") {
+            self.errMessage = dict["errMessage"] as! String
+        }
+        if dict.keys.contains("httpStatusCode") {
+            self.httpStatusCode = dict["httpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class ExecuteAITeacherGrammarCheckResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ExecuteAITeacherGrammarCheckResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ExecuteAITeacherGrammarCheckResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ExecuteAITeacherSyncDialogueRequest : Tea.TeaModel {
+    public class DialogueTasks : Tea.TeaModel {
+        public var assistant: String?
+
+        public var assistantTranslate: String?
+
+        public var order: Int32?
+
+        public var user: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.assistant != nil {
+                map["assistant"] = self.assistant!
+            }
+            if self.assistantTranslate != nil {
+                map["assistantTranslate"] = self.assistantTranslate!
+            }
+            if self.order != nil {
+                map["order"] = self.order!
+            }
+            if self.user != nil {
+                map["user"] = self.user!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("assistant") {
+                self.assistant = dict["assistant"] as! String
+            }
+            if dict.keys.contains("assistantTranslate") {
+                self.assistantTranslate = dict["assistantTranslate"] as! String
+            }
+            if dict.keys.contains("order") {
+                self.order = dict["order"] as! Int32
+            }
+            if dict.keys.contains("user") {
+                self.user = dict["user"] as! String
+            }
+        }
+    }
+    public class Records : Tea.TeaModel {
+        public var content: String?
+
+        public var isOffTopicControl: Bool?
+
+        public var isOnTopic: Bool?
+
+        public var order: Int32?
+
+        public var role: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.content != nil {
+                map["content"] = self.content!
+            }
+            if self.isOffTopicControl != nil {
+                map["isOffTopicControl"] = self.isOffTopicControl!
+            }
+            if self.isOnTopic != nil {
+                map["isOnTopic"] = self.isOnTopic!
+            }
+            if self.order != nil {
+                map["order"] = self.order!
+            }
+            if self.role != nil {
+                map["role"] = self.role!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("content") {
+                self.content = dict["content"] as! String
+            }
+            if dict.keys.contains("isOffTopicControl") {
+                self.isOffTopicControl = dict["isOffTopicControl"] as! Bool
+            }
+            if dict.keys.contains("isOnTopic") {
+                self.isOnTopic = dict["isOnTopic"] as! Bool
+            }
+            if dict.keys.contains("order") {
+                self.order = dict["order"] as! Int32
+            }
+            if dict.keys.contains("role") {
+                self.role = dict["role"] as! String
+            }
+        }
+    }
+    public var dialogueTasks: [ExecuteAITeacherSyncDialogueRequest.DialogueTasks]?
+
+    public var languageCode: String?
+
+    public var records: [ExecuteAITeacherSyncDialogueRequest.Records]?
+
+    public var userId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dialogueTasks != nil {
+            var tmp : [Any] = []
+            for k in self.dialogueTasks! {
+                tmp.append(k.toMap())
+            }
+            map["dialogueTasks"] = tmp
+        }
+        if self.languageCode != nil {
+            map["languageCode"] = self.languageCode!
+        }
+        if self.records != nil {
+            var tmp : [Any] = []
+            for k in self.records! {
+                tmp.append(k.toMap())
+            }
+            map["records"] = tmp
+        }
+        if self.userId != nil {
+            map["userId"] = self.userId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("dialogueTasks") {
+            var tmp : [ExecuteAITeacherSyncDialogueRequest.DialogueTasks] = []
+            for v in dict["dialogueTasks"] as! [Any] {
+                var model = ExecuteAITeacherSyncDialogueRequest.DialogueTasks()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.dialogueTasks = tmp
+        }
+        if dict.keys.contains("languageCode") {
+            self.languageCode = dict["languageCode"] as! String
+        }
+        if dict.keys.contains("records") {
+            var tmp : [ExecuteAITeacherSyncDialogueRequest.Records] = []
+            for v in dict["records"] as! [Any] {
+                var model = ExecuteAITeacherSyncDialogueRequest.Records()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.records = tmp
+        }
+        if dict.keys.contains("userId") {
+            self.userId = dict["userId"] as! String
+        }
+    }
+}
+
+public class ExecuteAITeacherSyncDialogueResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var englishResult: String?
+
+        public var isFinish: Bool?
+
+        public var isOnTopic: Bool?
+
+        public var questionIndex: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.englishResult != nil {
+                map["englishResult"] = self.englishResult!
+            }
+            if self.isFinish != nil {
+                map["isFinish"] = self.isFinish!
+            }
+            if self.isOnTopic != nil {
+                map["isOnTopic"] = self.isOnTopic!
+            }
+            if self.questionIndex != nil {
+                map["questionIndex"] = self.questionIndex!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("englishResult") {
+                self.englishResult = dict["englishResult"] as! String
+            }
+            if dict.keys.contains("isFinish") {
+                self.isFinish = dict["isFinish"] as! Bool
+            }
+            if dict.keys.contains("isOnTopic") {
+                self.isOnTopic = dict["isOnTopic"] as! Bool
+            }
+            if dict.keys.contains("questionIndex") {
+                self.questionIndex = dict["questionIndex"] as! Int32
+            }
+        }
+    }
+    public var data: ExecuteAITeacherSyncDialogueResponseBody.Data?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["errMessage"] = self.errMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("data") {
+            var model = ExecuteAITeacherSyncDialogueResponseBody.Data()
+            model.fromMap(dict["data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("errCode") {
+            self.errCode = dict["errCode"] as! String
+        }
+        if dict.keys.contains("errMessage") {
+            self.errMessage = dict["errMessage"] as! String
+        }
+        if dict.keys.contains("httpStatusCode") {
+            self.httpStatusCode = dict["httpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class ExecuteAITeacherSyncDialogueResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ExecuteAITeacherSyncDialogueResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ExecuteAITeacherSyncDialogueResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ExecuteAITeacherSyncDialogueTranslateRequest : Tea.TeaModel {
+    public class DialogueTasks : Tea.TeaModel {
+        public var assistant: String?
+
+        public var assistantTranslate: String?
+
+        public var order: Int32?
+
+        public var user: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.assistant != nil {
+                map["assistant"] = self.assistant!
+            }
+            if self.assistantTranslate != nil {
+                map["assistantTranslate"] = self.assistantTranslate!
+            }
+            if self.order != nil {
+                map["order"] = self.order!
+            }
+            if self.user != nil {
+                map["user"] = self.user!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("assistant") {
+                self.assistant = dict["assistant"] as! String
+            }
+            if dict.keys.contains("assistantTranslate") {
+                self.assistantTranslate = dict["assistantTranslate"] as! String
+            }
+            if dict.keys.contains("order") {
+                self.order = dict["order"] as! Int32
+            }
+            if dict.keys.contains("user") {
+                self.user = dict["user"] as! String
+            }
+        }
+    }
+    public class Records : Tea.TeaModel {
+        public var content: String?
+
+        public var isOffTopicControl: Bool?
+
+        public var isOnTopic: Bool?
+
+        public var order: Int32?
+
+        public var role: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.content != nil {
+                map["content"] = self.content!
+            }
+            if self.isOffTopicControl != nil {
+                map["isOffTopicControl"] = self.isOffTopicControl!
+            }
+            if self.isOnTopic != nil {
+                map["isOnTopic"] = self.isOnTopic!
+            }
+            if self.order != nil {
+                map["order"] = self.order!
+            }
+            if self.role != nil {
+                map["role"] = self.role!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("content") {
+                self.content = dict["content"] as! String
+            }
+            if dict.keys.contains("isOffTopicControl") {
+                self.isOffTopicControl = dict["isOffTopicControl"] as! Bool
+            }
+            if dict.keys.contains("isOnTopic") {
+                self.isOnTopic = dict["isOnTopic"] as! Bool
+            }
+            if dict.keys.contains("order") {
+                self.order = dict["order"] as! Int32
+            }
+            if dict.keys.contains("role") {
+                self.role = dict["role"] as! String
+            }
+        }
+    }
+    public var dialogueTasks: [ExecuteAITeacherSyncDialogueTranslateRequest.DialogueTasks]?
+
+    public var records: [ExecuteAITeacherSyncDialogueTranslateRequest.Records]?
+
+    public var userId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dialogueTasks != nil {
+            var tmp : [Any] = []
+            for k in self.dialogueTasks! {
+                tmp.append(k.toMap())
+            }
+            map["dialogueTasks"] = tmp
+        }
+        if self.records != nil {
+            var tmp : [Any] = []
+            for k in self.records! {
+                tmp.append(k.toMap())
+            }
+            map["records"] = tmp
+        }
+        if self.userId != nil {
+            map["userId"] = self.userId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("dialogueTasks") {
+            var tmp : [ExecuteAITeacherSyncDialogueTranslateRequest.DialogueTasks] = []
+            for v in dict["dialogueTasks"] as! [Any] {
+                var model = ExecuteAITeacherSyncDialogueTranslateRequest.DialogueTasks()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.dialogueTasks = tmp
+        }
+        if dict.keys.contains("records") {
+            var tmp : [ExecuteAITeacherSyncDialogueTranslateRequest.Records] = []
+            for v in dict["records"] as! [Any] {
+                var model = ExecuteAITeacherSyncDialogueTranslateRequest.Records()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.records = tmp
+        }
+        if dict.keys.contains("userId") {
+            self.userId = dict["userId"] as! String
+        }
+    }
+}
+
+public class ExecuteAITeacherSyncDialogueTranslateResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var result: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.result != nil {
+                map["result"] = self.result!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("result") {
+                self.result = dict["result"] as! String
+            }
+        }
+    }
+    public var data: ExecuteAITeacherSyncDialogueTranslateResponseBody.Data?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["errMessage"] = self.errMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("data") {
+            var model = ExecuteAITeacherSyncDialogueTranslateResponseBody.Data()
+            model.fromMap(dict["data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("errCode") {
+            self.errCode = dict["errCode"] as! String
+        }
+        if dict.keys.contains("errMessage") {
+            self.errMessage = dict["errMessage"] as! String
+        }
+        if dict.keys.contains("httpStatusCode") {
+            self.httpStatusCode = dict["httpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class ExecuteAITeacherSyncDialogueTranslateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ExecuteAITeacherSyncDialogueTranslateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ExecuteAITeacherSyncDialogueTranslateResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetAITeacherExpansionDialogueSuggestionRequest : Tea.TeaModel {
+    public class DialogueTasks : Tea.TeaModel {
+        public var assistant: String?
+
+        public var assistantTranslate: String?
+
+        public var order: Int32?
+
+        public var user: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.assistant != nil {
+                map["assistant"] = self.assistant!
+            }
+            if self.assistantTranslate != nil {
+                map["assistantTranslate"] = self.assistantTranslate!
+            }
+            if self.order != nil {
+                map["order"] = self.order!
+            }
+            if self.user != nil {
+                map["user"] = self.user!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("assistant") {
+                self.assistant = dict["assistant"] as! String
+            }
+            if dict.keys.contains("assistantTranslate") {
+                self.assistantTranslate = dict["assistantTranslate"] as! String
+            }
+            if dict.keys.contains("order") {
+                self.order = dict["order"] as! Int32
+            }
+            if dict.keys.contains("user") {
+                self.user = dict["user"] as! String
+            }
+        }
+    }
+    public class Records : Tea.TeaModel {
+        public var content: String?
+
+        public var isOffTopicControl: Bool?
+
+        public var isOnTopic: Bool?
+
+        public var order: Int32?
+
+        public var role: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.content != nil {
+                map["content"] = self.content!
+            }
+            if self.isOffTopicControl != nil {
+                map["isOffTopicControl"] = self.isOffTopicControl!
+            }
+            if self.isOnTopic != nil {
+                map["isOnTopic"] = self.isOnTopic!
+            }
+            if self.order != nil {
+                map["order"] = self.order!
+            }
+            if self.role != nil {
+                map["role"] = self.role!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("content") {
+                self.content = dict["content"] as! String
+            }
+            if dict.keys.contains("isOffTopicControl") {
+                self.isOffTopicControl = dict["isOffTopicControl"] as! Bool
+            }
+            if dict.keys.contains("isOnTopic") {
+                self.isOnTopic = dict["isOnTopic"] as! Bool
+            }
+            if dict.keys.contains("order") {
+                self.order = dict["order"] as! Int32
+            }
+            if dict.keys.contains("role") {
+                self.role = dict["role"] as! String
+            }
+        }
+    }
+    public class RoleInfo : Tea.TeaModel {
+        public var assistant: String?
+
+        public var user: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.assistant != nil {
+                map["assistant"] = self.assistant!
+            }
+            if self.user != nil {
+                map["user"] = self.user!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("assistant") {
+                self.assistant = dict["assistant"] as! String
+            }
+            if dict.keys.contains("user") {
+                self.user = dict["user"] as! String
+            }
+        }
+    }
+    public var background: String?
+
+    public var dialogueTasks: [GetAITeacherExpansionDialogueSuggestionRequest.DialogueTasks]?
+
+    public var languageCode: String?
+
+    public var records: [GetAITeacherExpansionDialogueSuggestionRequest.Records]?
+
+    public var roleInfo: GetAITeacherExpansionDialogueSuggestionRequest.RoleInfo?
+
+    public var startSentence: String?
+
+    public var topic: String?
+
+    public var userId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.roleInfo?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.background != nil {
+            map["background"] = self.background!
+        }
+        if self.dialogueTasks != nil {
+            var tmp : [Any] = []
+            for k in self.dialogueTasks! {
+                tmp.append(k.toMap())
+            }
+            map["dialogueTasks"] = tmp
+        }
+        if self.languageCode != nil {
+            map["languageCode"] = self.languageCode!
+        }
+        if self.records != nil {
+            var tmp : [Any] = []
+            for k in self.records! {
+                tmp.append(k.toMap())
+            }
+            map["records"] = tmp
+        }
+        if self.roleInfo != nil {
+            map["roleInfo"] = self.roleInfo?.toMap()
+        }
+        if self.startSentence != nil {
+            map["startSentence"] = self.startSentence!
+        }
+        if self.topic != nil {
+            map["topic"] = self.topic!
+        }
+        if self.userId != nil {
+            map["userId"] = self.userId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("background") {
+            self.background = dict["background"] as! String
+        }
+        if dict.keys.contains("dialogueTasks") {
+            var tmp : [GetAITeacherExpansionDialogueSuggestionRequest.DialogueTasks] = []
+            for v in dict["dialogueTasks"] as! [Any] {
+                var model = GetAITeacherExpansionDialogueSuggestionRequest.DialogueTasks()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.dialogueTasks = tmp
+        }
+        if dict.keys.contains("languageCode") {
+            self.languageCode = dict["languageCode"] as! String
+        }
+        if dict.keys.contains("records") {
+            var tmp : [GetAITeacherExpansionDialogueSuggestionRequest.Records] = []
+            for v in dict["records"] as! [Any] {
+                var model = GetAITeacherExpansionDialogueSuggestionRequest.Records()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.records = tmp
+        }
+        if dict.keys.contains("roleInfo") {
+            var model = GetAITeacherExpansionDialogueSuggestionRequest.RoleInfo()
+            model.fromMap(dict["roleInfo"] as! [String: Any])
+            self.roleInfo = model
+        }
+        if dict.keys.contains("startSentence") {
+            self.startSentence = dict["startSentence"] as! String
+        }
+        if dict.keys.contains("topic") {
+            self.topic = dict["topic"] as! String
+        }
+        if dict.keys.contains("userId") {
+            self.userId = dict["userId"] as! String
+        }
+    }
+}
+
+public class GetAITeacherExpansionDialogueSuggestionResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var chineseResult: String?
+
+        public var englishResult: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.chineseResult != nil {
+                map["chineseResult"] = self.chineseResult!
+            }
+            if self.englishResult != nil {
+                map["englishResult"] = self.englishResult!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("chineseResult") {
+                self.chineseResult = dict["chineseResult"] as! String
+            }
+            if dict.keys.contains("englishResult") {
+                self.englishResult = dict["englishResult"] as! String
+            }
+        }
+    }
+    public var data: GetAITeacherExpansionDialogueSuggestionResponseBody.Data?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["errMessage"] = self.errMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("data") {
+            var model = GetAITeacherExpansionDialogueSuggestionResponseBody.Data()
+            model.fromMap(dict["data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("errCode") {
+            self.errCode = dict["errCode"] as! String
+        }
+        if dict.keys.contains("errMessage") {
+            self.errMessage = dict["errMessage"] as! String
+        }
+        if dict.keys.contains("httpStatusCode") {
+            self.httpStatusCode = dict["httpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class GetAITeacherExpansionDialogueSuggestionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetAITeacherExpansionDialogueSuggestionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetAITeacherExpansionDialogueSuggestionResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetAITeacherSyncDialogueSuggestionRequest : Tea.TeaModel {
+    public class DialogueTasks : Tea.TeaModel {
+        public var assistant: String?
+
+        public var assistantTranslate: String?
+
+        public var order: Int32?
+
+        public var user: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.assistant != nil {
+                map["assistant"] = self.assistant!
+            }
+            if self.assistantTranslate != nil {
+                map["assistantTranslate"] = self.assistantTranslate!
+            }
+            if self.order != nil {
+                map["order"] = self.order!
+            }
+            if self.user != nil {
+                map["user"] = self.user!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("assistant") {
+                self.assistant = dict["assistant"] as! String
+            }
+            if dict.keys.contains("assistantTranslate") {
+                self.assistantTranslate = dict["assistantTranslate"] as! String
+            }
+            if dict.keys.contains("order") {
+                self.order = dict["order"] as! Int32
+            }
+            if dict.keys.contains("user") {
+                self.user = dict["user"] as! String
+            }
+        }
+    }
+    public class Records : Tea.TeaModel {
+        public var content: String?
+
+        public var isOffTopicControl: Bool?
+
+        public var isOnTopic: Bool?
+
+        public var order: Int32?
+
+        public var role: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.content != nil {
+                map["content"] = self.content!
+            }
+            if self.isOffTopicControl != nil {
+                map["isOffTopicControl"] = self.isOffTopicControl!
+            }
+            if self.isOnTopic != nil {
+                map["isOnTopic"] = self.isOnTopic!
+            }
+            if self.order != nil {
+                map["order"] = self.order!
+            }
+            if self.role != nil {
+                map["role"] = self.role!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("content") {
+                self.content = dict["content"] as! String
+            }
+            if dict.keys.contains("isOffTopicControl") {
+                self.isOffTopicControl = dict["isOffTopicControl"] as! Bool
+            }
+            if dict.keys.contains("isOnTopic") {
+                self.isOnTopic = dict["isOnTopic"] as! Bool
+            }
+            if dict.keys.contains("order") {
+                self.order = dict["order"] as! Int32
+            }
+            if dict.keys.contains("role") {
+                self.role = dict["role"] as! String
+            }
+        }
+    }
+    public var dialogueTasks: [GetAITeacherSyncDialogueSuggestionRequest.DialogueTasks]?
+
+    public var languageCode: String?
+
+    public var records: [GetAITeacherSyncDialogueSuggestionRequest.Records]?
+
+    public var userId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dialogueTasks != nil {
+            var tmp : [Any] = []
+            for k in self.dialogueTasks! {
+                tmp.append(k.toMap())
+            }
+            map["dialogueTasks"] = tmp
+        }
+        if self.languageCode != nil {
+            map["languageCode"] = self.languageCode!
+        }
+        if self.records != nil {
+            var tmp : [Any] = []
+            for k in self.records! {
+                tmp.append(k.toMap())
+            }
+            map["records"] = tmp
+        }
+        if self.userId != nil {
+            map["userId"] = self.userId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("dialogueTasks") {
+            var tmp : [GetAITeacherSyncDialogueSuggestionRequest.DialogueTasks] = []
+            for v in dict["dialogueTasks"] as! [Any] {
+                var model = GetAITeacherSyncDialogueSuggestionRequest.DialogueTasks()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.dialogueTasks = tmp
+        }
+        if dict.keys.contains("languageCode") {
+            self.languageCode = dict["languageCode"] as! String
+        }
+        if dict.keys.contains("records") {
+            var tmp : [GetAITeacherSyncDialogueSuggestionRequest.Records] = []
+            for v in dict["records"] as! [Any] {
+                var model = GetAITeacherSyncDialogueSuggestionRequest.Records()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.records = tmp
+        }
+        if dict.keys.contains("userId") {
+            self.userId = dict["userId"] as! String
+        }
+    }
+}
+
+public class GetAITeacherSyncDialogueSuggestionResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var englishResult: String?
+
+        public var englishResult1: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.englishResult != nil {
+                map["englishResult"] = self.englishResult!
+            }
+            if self.englishResult1 != nil {
+                map["englishResult1"] = self.englishResult1!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("englishResult") {
+                self.englishResult = dict["englishResult"] as! String
+            }
+            if dict.keys.contains("englishResult1") {
+                self.englishResult1 = dict["englishResult1"] as! String
+            }
+        }
+    }
+    public var data: GetAITeacherSyncDialogueSuggestionResponseBody.Data?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var httpStatusCode: Int32?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["errMessage"] = self.errMessage!
+        }
+        if self.httpStatusCode != nil {
+            map["httpStatusCode"] = self.httpStatusCode!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("data") {
+            var model = GetAITeacherSyncDialogueSuggestionResponseBody.Data()
+            model.fromMap(dict["data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("errCode") {
+            self.errCode = dict["errCode"] as! String
+        }
+        if dict.keys.contains("errMessage") {
+            self.errMessage = dict["errMessage"] as! String
+        }
+        if dict.keys.contains("httpStatusCode") {
+            self.httpStatusCode = dict["httpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class GetAITeacherSyncDialogueSuggestionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetAITeacherSyncDialogueSuggestionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetAITeacherSyncDialogueSuggestionResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class PersonalizedTextToImageAddInferenceJobRequest : Tea.TeaModel {
     public var imageNumber: Int32?
 
