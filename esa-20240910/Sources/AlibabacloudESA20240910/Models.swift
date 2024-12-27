@@ -7291,6 +7291,354 @@ public class CreateListResponse : Tea.TeaModel {
     }
 }
 
+public class CreateOriginPoolRequest : Tea.TeaModel {
+    public class Origins : Tea.TeaModel {
+        public class AuthConf : Tea.TeaModel {
+            public var accessKey: String?
+
+            public var authType: String?
+
+            public var region: String?
+
+            public var secretKey: String?
+
+            public var version: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.accessKey != nil {
+                    map["AccessKey"] = self.accessKey!
+                }
+                if self.authType != nil {
+                    map["AuthType"] = self.authType!
+                }
+                if self.region != nil {
+                    map["Region"] = self.region!
+                }
+                if self.secretKey != nil {
+                    map["SecretKey"] = self.secretKey!
+                }
+                if self.version != nil {
+                    map["Version"] = self.version!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AccessKey") {
+                    self.accessKey = dict["AccessKey"] as! String
+                }
+                if dict.keys.contains("AuthType") {
+                    self.authType = dict["AuthType"] as! String
+                }
+                if dict.keys.contains("Region") {
+                    self.region = dict["Region"] as! String
+                }
+                if dict.keys.contains("SecretKey") {
+                    self.secretKey = dict["SecretKey"] as! String
+                }
+                if dict.keys.contains("Version") {
+                    self.version = dict["Version"] as! String
+                }
+            }
+        }
+        public var address: String?
+
+        public var authConf: CreateOriginPoolRequest.Origins.AuthConf?
+
+        public var enabled: Bool?
+
+        public var header: Any?
+
+        public var name: String?
+
+        public var type: String?
+
+        public var weight: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.authConf?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.address != nil {
+                map["Address"] = self.address!
+            }
+            if self.authConf != nil {
+                map["AuthConf"] = self.authConf?.toMap()
+            }
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.header != nil {
+                map["Header"] = self.header!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            if self.weight != nil {
+                map["Weight"] = self.weight!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Address") {
+                self.address = dict["Address"] as! String
+            }
+            if dict.keys.contains("AuthConf") {
+                var model = CreateOriginPoolRequest.Origins.AuthConf()
+                model.fromMap(dict["AuthConf"] as! [String: Any])
+                self.authConf = model
+            }
+            if dict.keys.contains("Enabled") {
+                self.enabled = dict["Enabled"] as! Bool
+            }
+            if dict.keys.contains("Header") {
+                self.header = dict["Header"] as! Any
+            }
+            if dict.keys.contains("Name") {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+            if dict.keys.contains("Weight") {
+                self.weight = dict["Weight"] as! Int32
+            }
+        }
+    }
+    public var enabled: Bool?
+
+    public var name: String?
+
+    public var origins: [CreateOriginPoolRequest.Origins]?
+
+    public var siteId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enabled != nil {
+            map["Enabled"] = self.enabled!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.origins != nil {
+            var tmp : [Any] = []
+            for k in self.origins! {
+                tmp.append(k.toMap())
+            }
+            map["Origins"] = tmp
+        }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Enabled") {
+            self.enabled = dict["Enabled"] as! Bool
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("Origins") {
+            var tmp : [CreateOriginPoolRequest.Origins] = []
+            for v in dict["Origins"] as! [Any] {
+                var model = CreateOriginPoolRequest.Origins()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.origins = tmp
+        }
+        if dict.keys.contains("SiteId") {
+            self.siteId = dict["SiteId"] as! Int64
+        }
+    }
+}
+
+public class CreateOriginPoolShrinkRequest : Tea.TeaModel {
+    public var enabled: Bool?
+
+    public var name: String?
+
+    public var originsShrink: String?
+
+    public var siteId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enabled != nil {
+            map["Enabled"] = self.enabled!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.originsShrink != nil {
+            map["Origins"] = self.originsShrink!
+        }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Enabled") {
+            self.enabled = dict["Enabled"] as! Bool
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("Origins") {
+            self.originsShrink = dict["Origins"] as! String
+        }
+        if dict.keys.contains("SiteId") {
+            self.siteId = dict["SiteId"] as! Int64
+        }
+    }
+}
+
+public class CreateOriginPoolResponseBody : Tea.TeaModel {
+    public var id: Int64?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Id") {
+            self.id = dict["Id"] as! Int64
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateOriginPoolResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateOriginPoolResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateOriginPoolResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateOriginProtectionRequest : Tea.TeaModel {
     public var siteId: Int64?
 
@@ -13290,6 +13638,123 @@ public class DeleteListResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DeleteListResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DeleteOriginPoolRequest : Tea.TeaModel {
+    public var id: Int64?
+
+    public var siteId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Id") {
+            self.id = dict["Id"] as! Int64
+        }
+        if dict.keys.contains("SiteId") {
+            self.siteId = dict["SiteId"] as! Int64
+        }
+    }
+}
+
+public class DeleteOriginPoolResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DeleteOriginPoolResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteOriginPoolResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteOriginPoolResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -21064,6 +21529,543 @@ public class GetListResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = GetListResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetOriginPoolRequest : Tea.TeaModel {
+    public var id: Int64?
+
+    public var siteId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Id") {
+            self.id = dict["Id"] as! Int64
+        }
+        if dict.keys.contains("SiteId") {
+            self.siteId = dict["SiteId"] as! Int64
+        }
+    }
+}
+
+public class GetOriginPoolResponseBody : Tea.TeaModel {
+    public class Origins : Tea.TeaModel {
+        public class AuthConf : Tea.TeaModel {
+            public var accessKey: String?
+
+            public var authType: String?
+
+            public var region: String?
+
+            public var secretKey: String?
+
+            public var version: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.accessKey != nil {
+                    map["AccessKey"] = self.accessKey!
+                }
+                if self.authType != nil {
+                    map["AuthType"] = self.authType!
+                }
+                if self.region != nil {
+                    map["Region"] = self.region!
+                }
+                if self.secretKey != nil {
+                    map["SecretKey"] = self.secretKey!
+                }
+                if self.version != nil {
+                    map["Version"] = self.version!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AccessKey") {
+                    self.accessKey = dict["AccessKey"] as! String
+                }
+                if dict.keys.contains("AuthType") {
+                    self.authType = dict["AuthType"] as! String
+                }
+                if dict.keys.contains("Region") {
+                    self.region = dict["Region"] as! String
+                }
+                if dict.keys.contains("SecretKey") {
+                    self.secretKey = dict["SecretKey"] as! String
+                }
+                if dict.keys.contains("Version") {
+                    self.version = dict["Version"] as! String
+                }
+            }
+        }
+        public var address: String?
+
+        public var authConf: GetOriginPoolResponseBody.Origins.AuthConf?
+
+        public var enabled: Bool?
+
+        public var header: Any?
+
+        public var id: Int64?
+
+        public var name: String?
+
+        public var type: String?
+
+        public var weight: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.authConf?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.address != nil {
+                map["Address"] = self.address!
+            }
+            if self.authConf != nil {
+                map["AuthConf"] = self.authConf?.toMap()
+            }
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.header != nil {
+                map["Header"] = self.header!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            if self.weight != nil {
+                map["Weight"] = self.weight!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Address") {
+                self.address = dict["Address"] as! String
+            }
+            if dict.keys.contains("AuthConf") {
+                var model = GetOriginPoolResponseBody.Origins.AuthConf()
+                model.fromMap(dict["AuthConf"] as! [String: Any])
+                self.authConf = model
+            }
+            if dict.keys.contains("Enabled") {
+                self.enabled = dict["Enabled"] as! Bool
+            }
+            if dict.keys.contains("Header") {
+                self.header = dict["Header"] as! Any
+            }
+            if dict.keys.contains("Id") {
+                self.id = dict["Id"] as! Int64
+            }
+            if dict.keys.contains("Name") {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+            if dict.keys.contains("Weight") {
+                self.weight = dict["Weight"] as! Int32
+            }
+        }
+    }
+    public class References : Tea.TeaModel {
+        public class DnsRecords : Tea.TeaModel {
+            public var id: Int64?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Id") {
+                    self.id = dict["Id"] as! Int64
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+            }
+        }
+        public class IPARecords : Tea.TeaModel {
+            public var id: Int64?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Id") {
+                    self.id = dict["Id"] as! Int64
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+            }
+        }
+        public class LoadBalancers : Tea.TeaModel {
+            public var id: Int64?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Id") {
+                    self.id = dict["Id"] as! Int64
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+            }
+        }
+        public var dnsRecords: [GetOriginPoolResponseBody.References.DnsRecords]?
+
+        public var IPARecords: [GetOriginPoolResponseBody.References.IPARecords]?
+
+        public var loadBalancers: [GetOriginPoolResponseBody.References.LoadBalancers]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dnsRecords != nil {
+                var tmp : [Any] = []
+                for k in self.dnsRecords! {
+                    tmp.append(k.toMap())
+                }
+                map["DnsRecords"] = tmp
+            }
+            if self.IPARecords != nil {
+                var tmp : [Any] = []
+                for k in self.IPARecords! {
+                    tmp.append(k.toMap())
+                }
+                map["IPARecords"] = tmp
+            }
+            if self.loadBalancers != nil {
+                var tmp : [Any] = []
+                for k in self.loadBalancers! {
+                    tmp.append(k.toMap())
+                }
+                map["LoadBalancers"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DnsRecords") {
+                var tmp : [GetOriginPoolResponseBody.References.DnsRecords] = []
+                for v in dict["DnsRecords"] as! [Any] {
+                    var model = GetOriginPoolResponseBody.References.DnsRecords()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.dnsRecords = tmp
+            }
+            if dict.keys.contains("IPARecords") {
+                var tmp : [GetOriginPoolResponseBody.References.IPARecords] = []
+                for v in dict["IPARecords"] as! [Any] {
+                    var model = GetOriginPoolResponseBody.References.IPARecords()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.IPARecords = tmp
+            }
+            if dict.keys.contains("LoadBalancers") {
+                var tmp : [GetOriginPoolResponseBody.References.LoadBalancers] = []
+                for v in dict["LoadBalancers"] as! [Any] {
+                    var model = GetOriginPoolResponseBody.References.LoadBalancers()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.loadBalancers = tmp
+            }
+        }
+    }
+    public var enabled: Bool?
+
+    public var id: Int64?
+
+    public var name: String?
+
+    public var origins: [GetOriginPoolResponseBody.Origins]?
+
+    public var recordName: String?
+
+    public var referenceLBCount: Int32?
+
+    public var references: GetOriginPoolResponseBody.References?
+
+    public var requestId: String?
+
+    public var siteId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.references?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enabled != nil {
+            map["Enabled"] = self.enabled!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.origins != nil {
+            var tmp : [Any] = []
+            for k in self.origins! {
+                tmp.append(k.toMap())
+            }
+            map["Origins"] = tmp
+        }
+        if self.recordName != nil {
+            map["RecordName"] = self.recordName!
+        }
+        if self.referenceLBCount != nil {
+            map["ReferenceLBCount"] = self.referenceLBCount!
+        }
+        if self.references != nil {
+            map["References"] = self.references?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Enabled") {
+            self.enabled = dict["Enabled"] as! Bool
+        }
+        if dict.keys.contains("Id") {
+            self.id = dict["Id"] as! Int64
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("Origins") {
+            var tmp : [GetOriginPoolResponseBody.Origins] = []
+            for v in dict["Origins"] as! [Any] {
+                var model = GetOriginPoolResponseBody.Origins()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.origins = tmp
+        }
+        if dict.keys.contains("RecordName") {
+            self.recordName = dict["RecordName"] as! String
+        }
+        if dict.keys.contains("ReferenceLBCount") {
+            self.referenceLBCount = dict["ReferenceLBCount"] as! Int32
+        }
+        if dict.keys.contains("References") {
+            var model = GetOriginPoolResponseBody.References()
+            model.fromMap(dict["References"] as! [String: Any])
+            self.references = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SiteId") {
+            self.siteId = dict["SiteId"] as! Int64
+        }
+    }
+}
+
+public class GetOriginPoolResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetOriginPoolResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetOriginPoolResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -30938,6 +31940,648 @@ public class ListManagedRulesGroupsResponse : Tea.TeaModel {
     }
 }
 
+public class ListOriginPoolsRequest : Tea.TeaModel {
+    public var matchType: String?
+
+    public var name: String?
+
+    public var orderBy: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var siteId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.matchType != nil {
+            map["MatchType"] = self.matchType!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.orderBy != nil {
+            map["OrderBy"] = self.orderBy!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MatchType") {
+            self.matchType = dict["MatchType"] as! String
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("OrderBy") {
+            self.orderBy = dict["OrderBy"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SiteId") {
+            self.siteId = dict["SiteId"] as! Int64
+        }
+    }
+}
+
+public class ListOriginPoolsResponseBody : Tea.TeaModel {
+    public class OriginPools : Tea.TeaModel {
+        public class Origins : Tea.TeaModel {
+            public class AuthConf : Tea.TeaModel {
+                public var accessKey: String?
+
+                public var authType: String?
+
+                public var region: String?
+
+                public var secretKey: String?
+
+                public var version: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.accessKey != nil {
+                        map["AccessKey"] = self.accessKey!
+                    }
+                    if self.authType != nil {
+                        map["AuthType"] = self.authType!
+                    }
+                    if self.region != nil {
+                        map["Region"] = self.region!
+                    }
+                    if self.secretKey != nil {
+                        map["SecretKey"] = self.secretKey!
+                    }
+                    if self.version != nil {
+                        map["Version"] = self.version!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AccessKey") {
+                        self.accessKey = dict["AccessKey"] as! String
+                    }
+                    if dict.keys.contains("AuthType") {
+                        self.authType = dict["AuthType"] as! String
+                    }
+                    if dict.keys.contains("Region") {
+                        self.region = dict["Region"] as! String
+                    }
+                    if dict.keys.contains("SecretKey") {
+                        self.secretKey = dict["SecretKey"] as! String
+                    }
+                    if dict.keys.contains("Version") {
+                        self.version = dict["Version"] as! String
+                    }
+                }
+            }
+            public var address: String?
+
+            public var authConf: ListOriginPoolsResponseBody.OriginPools.Origins.AuthConf?
+
+            public var enabled: Bool?
+
+            public var header: Any?
+
+            public var id: Int64?
+
+            public var name: String?
+
+            public var type: String?
+
+            public var weight: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.authConf?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.address != nil {
+                    map["Address"] = self.address!
+                }
+                if self.authConf != nil {
+                    map["AuthConf"] = self.authConf?.toMap()
+                }
+                if self.enabled != nil {
+                    map["Enabled"] = self.enabled!
+                }
+                if self.header != nil {
+                    map["Header"] = self.header!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.weight != nil {
+                    map["Weight"] = self.weight!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Address") {
+                    self.address = dict["Address"] as! String
+                }
+                if dict.keys.contains("AuthConf") {
+                    var model = ListOriginPoolsResponseBody.OriginPools.Origins.AuthConf()
+                    model.fromMap(dict["AuthConf"] as! [String: Any])
+                    self.authConf = model
+                }
+                if dict.keys.contains("Enabled") {
+                    self.enabled = dict["Enabled"] as! Bool
+                }
+                if dict.keys.contains("Header") {
+                    self.header = dict["Header"] as! Any
+                }
+                if dict.keys.contains("Id") {
+                    self.id = dict["Id"] as! Int64
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("Weight") {
+                    self.weight = dict["Weight"] as! Int32
+                }
+            }
+        }
+        public class References : Tea.TeaModel {
+            public class DnsRecords : Tea.TeaModel {
+                public var id: Int64?
+
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Id") {
+                        self.id = dict["Id"] as! Int64
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                }
+            }
+            public class IPARecords : Tea.TeaModel {
+                public var id: Int64?
+
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Id") {
+                        self.id = dict["Id"] as! Int64
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                }
+            }
+            public class LoadBalancers : Tea.TeaModel {
+                public var id: Int64?
+
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.id != nil {
+                        map["Id"] = self.id!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Id") {
+                        self.id = dict["Id"] as! Int64
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                }
+            }
+            public var dnsRecords: [ListOriginPoolsResponseBody.OriginPools.References.DnsRecords]?
+
+            public var IPARecords: [ListOriginPoolsResponseBody.OriginPools.References.IPARecords]?
+
+            public var loadBalancers: [ListOriginPoolsResponseBody.OriginPools.References.LoadBalancers]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dnsRecords != nil {
+                    var tmp : [Any] = []
+                    for k in self.dnsRecords! {
+                        tmp.append(k.toMap())
+                    }
+                    map["DnsRecords"] = tmp
+                }
+                if self.IPARecords != nil {
+                    var tmp : [Any] = []
+                    for k in self.IPARecords! {
+                        tmp.append(k.toMap())
+                    }
+                    map["IPARecords"] = tmp
+                }
+                if self.loadBalancers != nil {
+                    var tmp : [Any] = []
+                    for k in self.loadBalancers! {
+                        tmp.append(k.toMap())
+                    }
+                    map["LoadBalancers"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DnsRecords") {
+                    var tmp : [ListOriginPoolsResponseBody.OriginPools.References.DnsRecords] = []
+                    for v in dict["DnsRecords"] as! [Any] {
+                        var model = ListOriginPoolsResponseBody.OriginPools.References.DnsRecords()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.dnsRecords = tmp
+                }
+                if dict.keys.contains("IPARecords") {
+                    var tmp : [ListOriginPoolsResponseBody.OriginPools.References.IPARecords] = []
+                    for v in dict["IPARecords"] as! [Any] {
+                        var model = ListOriginPoolsResponseBody.OriginPools.References.IPARecords()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.IPARecords = tmp
+                }
+                if dict.keys.contains("LoadBalancers") {
+                    var tmp : [ListOriginPoolsResponseBody.OriginPools.References.LoadBalancers] = []
+                    for v in dict["LoadBalancers"] as! [Any] {
+                        var model = ListOriginPoolsResponseBody.OriginPools.References.LoadBalancers()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.loadBalancers = tmp
+                }
+            }
+        }
+        public var enabled: Bool?
+
+        public var id: Int64?
+
+        public var name: String?
+
+        public var origins: [ListOriginPoolsResponseBody.OriginPools.Origins]?
+
+        public var recordName: String?
+
+        public var referenceLBCount: Int32?
+
+        public var references: ListOriginPoolsResponseBody.OriginPools.References?
+
+        public var siteId: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.references?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.origins != nil {
+                var tmp : [Any] = []
+                for k in self.origins! {
+                    tmp.append(k.toMap())
+                }
+                map["Origins"] = tmp
+            }
+            if self.recordName != nil {
+                map["RecordName"] = self.recordName!
+            }
+            if self.referenceLBCount != nil {
+                map["ReferenceLBCount"] = self.referenceLBCount!
+            }
+            if self.references != nil {
+                map["References"] = self.references?.toMap()
+            }
+            if self.siteId != nil {
+                map["SiteId"] = self.siteId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Enabled") {
+                self.enabled = dict["Enabled"] as! Bool
+            }
+            if dict.keys.contains("Id") {
+                self.id = dict["Id"] as! Int64
+            }
+            if dict.keys.contains("Name") {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("Origins") {
+                var tmp : [ListOriginPoolsResponseBody.OriginPools.Origins] = []
+                for v in dict["Origins"] as! [Any] {
+                    var model = ListOriginPoolsResponseBody.OriginPools.Origins()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.origins = tmp
+            }
+            if dict.keys.contains("RecordName") {
+                self.recordName = dict["RecordName"] as! String
+            }
+            if dict.keys.contains("ReferenceLBCount") {
+                self.referenceLBCount = dict["ReferenceLBCount"] as! Int32
+            }
+            if dict.keys.contains("References") {
+                var model = ListOriginPoolsResponseBody.OriginPools.References()
+                model.fromMap(dict["References"] as! [String: Any])
+                self.references = model
+            }
+            if dict.keys.contains("SiteId") {
+                self.siteId = dict["SiteId"] as! Int64
+            }
+        }
+    }
+    public var originPools: [ListOriginPoolsResponseBody.OriginPools]?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public var totalPage: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.originPools != nil {
+            var tmp : [Any] = []
+            for k in self.originPools! {
+                tmp.append(k.toMap())
+            }
+            map["OriginPools"] = tmp
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        if self.totalPage != nil {
+            map["TotalPage"] = self.totalPage!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OriginPools") {
+            var tmp : [ListOriginPoolsResponseBody.OriginPools] = []
+            for v in dict["OriginPools"] as! [Any] {
+                var model = ListOriginPoolsResponseBody.OriginPools()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.originPools = tmp
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! Int32
+        }
+        if dict.keys.contains("TotalPage") {
+            self.totalPage = dict["TotalPage"] as! Int32
+        }
+    }
+}
+
+public class ListOriginPoolsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListOriginPoolsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListOriginPoolsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListPagesRequest : Tea.TeaModel {
     public var pageNumber: Int32?
 
@@ -39949,6 +41593,354 @@ public class UpdateKvNamespaceResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = UpdateKvNamespaceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateOriginPoolRequest : Tea.TeaModel {
+    public class Origins : Tea.TeaModel {
+        public class AuthConf : Tea.TeaModel {
+            public var accessKey: String?
+
+            public var authType: String?
+
+            public var region: String?
+
+            public var secretKey: String?
+
+            public var version: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.accessKey != nil {
+                    map["AccessKey"] = self.accessKey!
+                }
+                if self.authType != nil {
+                    map["AuthType"] = self.authType!
+                }
+                if self.region != nil {
+                    map["Region"] = self.region!
+                }
+                if self.secretKey != nil {
+                    map["SecretKey"] = self.secretKey!
+                }
+                if self.version != nil {
+                    map["Version"] = self.version!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AccessKey") {
+                    self.accessKey = dict["AccessKey"] as! String
+                }
+                if dict.keys.contains("AuthType") {
+                    self.authType = dict["AuthType"] as! String
+                }
+                if dict.keys.contains("Region") {
+                    self.region = dict["Region"] as! String
+                }
+                if dict.keys.contains("SecretKey") {
+                    self.secretKey = dict["SecretKey"] as! String
+                }
+                if dict.keys.contains("Version") {
+                    self.version = dict["Version"] as! String
+                }
+            }
+        }
+        public var address: String?
+
+        public var authConf: UpdateOriginPoolRequest.Origins.AuthConf?
+
+        public var enabled: Bool?
+
+        public var header: Any?
+
+        public var name: String?
+
+        public var type: String?
+
+        public var weight: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.authConf?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.address != nil {
+                map["Address"] = self.address!
+            }
+            if self.authConf != nil {
+                map["AuthConf"] = self.authConf?.toMap()
+            }
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.header != nil {
+                map["Header"] = self.header!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            if self.weight != nil {
+                map["Weight"] = self.weight!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Address") {
+                self.address = dict["Address"] as! String
+            }
+            if dict.keys.contains("AuthConf") {
+                var model = UpdateOriginPoolRequest.Origins.AuthConf()
+                model.fromMap(dict["AuthConf"] as! [String: Any])
+                self.authConf = model
+            }
+            if dict.keys.contains("Enabled") {
+                self.enabled = dict["Enabled"] as! Bool
+            }
+            if dict.keys.contains("Header") {
+                self.header = dict["Header"] as! Any
+            }
+            if dict.keys.contains("Name") {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+            if dict.keys.contains("Weight") {
+                self.weight = dict["Weight"] as! Int32
+            }
+        }
+    }
+    public var enabled: Bool?
+
+    public var id: Int64?
+
+    public var origins: [UpdateOriginPoolRequest.Origins]?
+
+    public var siteId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enabled != nil {
+            map["Enabled"] = self.enabled!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.origins != nil {
+            var tmp : [Any] = []
+            for k in self.origins! {
+                tmp.append(k.toMap())
+            }
+            map["Origins"] = tmp
+        }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Enabled") {
+            self.enabled = dict["Enabled"] as! Bool
+        }
+        if dict.keys.contains("Id") {
+            self.id = dict["Id"] as! Int64
+        }
+        if dict.keys.contains("Origins") {
+            var tmp : [UpdateOriginPoolRequest.Origins] = []
+            for v in dict["Origins"] as! [Any] {
+                var model = UpdateOriginPoolRequest.Origins()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.origins = tmp
+        }
+        if dict.keys.contains("SiteId") {
+            self.siteId = dict["SiteId"] as! Int64
+        }
+    }
+}
+
+public class UpdateOriginPoolShrinkRequest : Tea.TeaModel {
+    public var enabled: Bool?
+
+    public var id: Int64?
+
+    public var originsShrink: String?
+
+    public var siteId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enabled != nil {
+            map["Enabled"] = self.enabled!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.originsShrink != nil {
+            map["Origins"] = self.originsShrink!
+        }
+        if self.siteId != nil {
+            map["SiteId"] = self.siteId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Enabled") {
+            self.enabled = dict["Enabled"] as! Bool
+        }
+        if dict.keys.contains("Id") {
+            self.id = dict["Id"] as! Int64
+        }
+        if dict.keys.contains("Origins") {
+            self.originsShrink = dict["Origins"] as! String
+        }
+        if dict.keys.contains("SiteId") {
+            self.siteId = dict["SiteId"] as! Int64
+        }
+    }
+}
+
+public class UpdateOriginPoolResponseBody : Tea.TeaModel {
+    public var id: Int64?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Id") {
+            self.id = dict["Id"] as! Int64
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UpdateOriginPoolResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateOriginPoolResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateOriginPoolResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
