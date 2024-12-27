@@ -144,6 +144,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["Description"] = request.description_ ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.executorBlockStrategy)) {
+            body["ExecutorBlockStrategy"] = request.executorBlockStrategy!;
+        }
         if (!TeaUtils.Client.isUnset(request.jobHandler)) {
             body["JobHandler"] = request.jobHandler ?? "";
         }
@@ -1141,8 +1144,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func operateRetryJobExecutionWithOptions(_ request: OperateRetryJobExecutionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> OperateRetryJobExecutionResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func operateRetryJobExecutionWithOptions(_ tmpReq: OperateRetryJobExecutionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> OperateRetryJobExecutionResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: OperateRetryJobExecutionShrinkRequest = OperateRetryJobExecutionShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.taskList)) {
+            request.taskListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.taskList, "TaskList", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.appName)) {
             query["AppName"] = request.appName ?? "";
@@ -1153,8 +1161,8 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.jobExecutionId)) {
             query["JobExecutionId"] = request.jobExecutionId ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.jobId)) {
-            query["JobId"] = request.jobId!;
+        if (!TeaUtils.Client.isUnset(request.taskListShrink)) {
+            query["TaskList"] = request.taskListShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -1181,8 +1189,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func operateStopJobExecutionWithOptions(_ request: OperateStopJobExecutionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> OperateStopJobExecutionResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func operateStopJobExecutionWithOptions(_ tmpReq: OperateStopJobExecutionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> OperateStopJobExecutionResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: OperateStopJobExecutionShrinkRequest = OperateStopJobExecutionShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.taskList)) {
+            request.taskListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.taskList, "TaskList", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.appName)) {
             query["AppName"] = request.appName ?? "";
@@ -1193,8 +1206,8 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.jobExecutionId)) {
             query["JobExecutionId"] = request.jobExecutionId ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.jobId)) {
-            query["JobId"] = request.jobId!;
+        if (!TeaUtils.Client.isUnset(request.taskListShrink)) {
+            query["TaskList"] = request.taskListShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -1326,6 +1339,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.executorBlockStrategy)) {
+            body["ExecutorBlockStrategy"] = request.executorBlockStrategy!;
         }
         if (!TeaUtils.Client.isUnset(request.jobHandler)) {
             body["JobHandler"] = request.jobHandler ?? "";

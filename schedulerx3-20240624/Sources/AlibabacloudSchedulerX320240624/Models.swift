@@ -691,6 +691,8 @@ public class CreateJobRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var executorBlockStrategy: Int32?
+
     public var jobHandler: String?
 
     public var jobType: String?
@@ -750,6 +752,9 @@ public class CreateJobRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.executorBlockStrategy != nil {
+            map["ExecutorBlockStrategy"] = self.executorBlockStrategy!
         }
         if self.jobHandler != nil {
             map["JobHandler"] = self.jobHandler!
@@ -818,6 +823,9 @@ public class CreateJobRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("ExecutorBlockStrategy") {
+            self.executorBlockStrategy = dict["ExecutorBlockStrategy"] as! Int32
         }
         if dict.keys.contains("JobHandler") {
             self.jobHandler = dict["JobHandler"] as! String
@@ -888,6 +896,8 @@ public class CreateJobShrinkRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var executorBlockStrategy: Int32?
+
     public var jobHandler: String?
 
     public var jobType: String?
@@ -946,6 +956,9 @@ public class CreateJobShrinkRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.executorBlockStrategy != nil {
+            map["ExecutorBlockStrategy"] = self.executorBlockStrategy!
         }
         if self.jobHandler != nil {
             map["JobHandler"] = self.jobHandler!
@@ -1010,6 +1023,9 @@ public class CreateJobShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("ExecutorBlockStrategy") {
+            self.executorBlockStrategy = dict["ExecutorBlockStrategy"] as! Int32
         }
         if dict.keys.contains("JobHandler") {
             self.jobHandler = dict["JobHandler"] as! String
@@ -5888,15 +5904,23 @@ public class ListJobsResponseBody : Tea.TeaModel {
 
             public var creator: String?
 
+            public var currentExecuteStatus: Int32?
+
             public var dataOffset: Int32?
 
             public var description_: String?
+
+            public var executorBlockStrategy: String?
 
             public var jobHandler: String?
 
             public var jobId: Int64?
 
             public var jobType: String?
+
+            public var lastExecuteEndTime: String?
+
+            public var lastExecuteStatus: Int32?
 
             public var maxAttempt: Int32?
 
@@ -5957,11 +5981,17 @@ public class ListJobsResponseBody : Tea.TeaModel {
                 if self.creator != nil {
                     map["Creator"] = self.creator!
                 }
+                if self.currentExecuteStatus != nil {
+                    map["CurrentExecuteStatus"] = self.currentExecuteStatus!
+                }
                 if self.dataOffset != nil {
                     map["DataOffset"] = self.dataOffset!
                 }
                 if self.description_ != nil {
                     map["Description"] = self.description_!
+                }
+                if self.executorBlockStrategy != nil {
+                    map["ExecutorBlockStrategy"] = self.executorBlockStrategy!
                 }
                 if self.jobHandler != nil {
                     map["JobHandler"] = self.jobHandler!
@@ -5971,6 +6001,12 @@ public class ListJobsResponseBody : Tea.TeaModel {
                 }
                 if self.jobType != nil {
                     map["JobType"] = self.jobType!
+                }
+                if self.lastExecuteEndTime != nil {
+                    map["LastExecuteEndTime"] = self.lastExecuteEndTime!
+                }
+                if self.lastExecuteStatus != nil {
+                    map["LastExecuteStatus"] = self.lastExecuteStatus!
                 }
                 if self.maxAttempt != nil {
                     map["MaxAttempt"] = self.maxAttempt!
@@ -6036,11 +6072,17 @@ public class ListJobsResponseBody : Tea.TeaModel {
                 if dict.keys.contains("Creator") {
                     self.creator = dict["Creator"] as! String
                 }
+                if dict.keys.contains("CurrentExecuteStatus") {
+                    self.currentExecuteStatus = dict["CurrentExecuteStatus"] as! Int32
+                }
                 if dict.keys.contains("DataOffset") {
                     self.dataOffset = dict["DataOffset"] as! Int32
                 }
                 if dict.keys.contains("Description") {
                     self.description_ = dict["Description"] as! String
+                }
+                if dict.keys.contains("ExecutorBlockStrategy") {
+                    self.executorBlockStrategy = dict["ExecutorBlockStrategy"] as! String
                 }
                 if dict.keys.contains("JobHandler") {
                     self.jobHandler = dict["JobHandler"] as! String
@@ -6050,6 +6092,12 @@ public class ListJobsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("JobType") {
                     self.jobType = dict["JobType"] as! String
+                }
+                if dict.keys.contains("LastExecuteEndTime") {
+                    self.lastExecuteEndTime = dict["LastExecuteEndTime"] as! String
+                }
+                if dict.keys.contains("LastExecuteStatus") {
+                    self.lastExecuteStatus = dict["LastExecuteStatus"] as! Int32
                 }
                 if dict.keys.contains("MaxAttempt") {
                     self.maxAttempt = dict["MaxAttempt"] as! Int32
@@ -6162,7 +6210,15 @@ public class ListJobsResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var code: Int32?
+
     public var data: ListJobsResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
 
     public override init() {
         super.init()
@@ -6179,17 +6235,41 @@ public class ListJobsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
         if self.data != nil {
             map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! Int32
+        }
         if dict.keys.contains("Data") {
             var model = ListJobsResponseBody.Data()
             model.fromMap(dict["Data"] as! [String: Any])
             self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
         }
     }
 }
@@ -8374,7 +8454,7 @@ public class OperateRetryJobExecutionRequest : Tea.TeaModel {
 
     public var jobExecutionId: String?
 
-    public var jobId: Int64?
+    public var taskList: [String]?
 
     public override init() {
         super.init()
@@ -8399,8 +8479,8 @@ public class OperateRetryJobExecutionRequest : Tea.TeaModel {
         if self.jobExecutionId != nil {
             map["JobExecutionId"] = self.jobExecutionId!
         }
-        if self.jobId != nil {
-            map["JobId"] = self.jobId!
+        if self.taskList != nil {
+            map["TaskList"] = self.taskList!
         }
         return map
     }
@@ -8415,8 +8495,62 @@ public class OperateRetryJobExecutionRequest : Tea.TeaModel {
         if dict.keys.contains("JobExecutionId") {
             self.jobExecutionId = dict["JobExecutionId"] as! String
         }
-        if dict.keys.contains("JobId") {
-            self.jobId = dict["JobId"] as! Int64
+        if dict.keys.contains("TaskList") {
+            self.taskList = dict["TaskList"] as! [String]
+        }
+    }
+}
+
+public class OperateRetryJobExecutionShrinkRequest : Tea.TeaModel {
+    public var appName: String?
+
+    public var clusterId: String?
+
+    public var jobExecutionId: String?
+
+    public var taskListShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.jobExecutionId != nil {
+            map["JobExecutionId"] = self.jobExecutionId!
+        }
+        if self.taskListShrink != nil {
+            map["TaskList"] = self.taskListShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppName") {
+            self.appName = dict["AppName"] as! String
+        }
+        if dict.keys.contains("ClusterId") {
+            self.clusterId = dict["ClusterId"] as! String
+        }
+        if dict.keys.contains("JobExecutionId") {
+            self.jobExecutionId = dict["JobExecutionId"] as! String
+        }
+        if dict.keys.contains("TaskList") {
+            self.taskListShrink = dict["TaskList"] as! String
         }
     }
 }
@@ -8531,7 +8665,7 @@ public class OperateStopJobExecutionRequest : Tea.TeaModel {
 
     public var jobExecutionId: String?
 
-    public var jobId: Int64?
+    public var taskList: [String]?
 
     public override init() {
         super.init()
@@ -8556,8 +8690,8 @@ public class OperateStopJobExecutionRequest : Tea.TeaModel {
         if self.jobExecutionId != nil {
             map["JobExecutionId"] = self.jobExecutionId!
         }
-        if self.jobId != nil {
-            map["JobId"] = self.jobId!
+        if self.taskList != nil {
+            map["TaskList"] = self.taskList!
         }
         return map
     }
@@ -8572,8 +8706,62 @@ public class OperateStopJobExecutionRequest : Tea.TeaModel {
         if dict.keys.contains("JobExecutionId") {
             self.jobExecutionId = dict["JobExecutionId"] as! String
         }
-        if dict.keys.contains("JobId") {
-            self.jobId = dict["JobId"] as! Int64
+        if dict.keys.contains("TaskList") {
+            self.taskList = dict["TaskList"] as! [String]
+        }
+    }
+}
+
+public class OperateStopJobExecutionShrinkRequest : Tea.TeaModel {
+    public var appName: String?
+
+    public var clusterId: String?
+
+    public var jobExecutionId: String?
+
+    public var taskListShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.jobExecutionId != nil {
+            map["JobExecutionId"] = self.jobExecutionId!
+        }
+        if self.taskListShrink != nil {
+            map["TaskList"] = self.taskListShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppName") {
+            self.appName = dict["AppName"] as! String
+        }
+        if dict.keys.contains("ClusterId") {
+            self.clusterId = dict["ClusterId"] as! String
+        }
+        if dict.keys.contains("JobExecutionId") {
+            self.jobExecutionId = dict["JobExecutionId"] as! String
+        }
+        if dict.keys.contains("TaskList") {
+            self.taskListShrink = dict["TaskList"] as! String
         }
     }
 }
@@ -9128,6 +9316,8 @@ public class UpdateJobRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var executorBlockStrategy: Int32?
+
     public var jobHandler: String?
 
     public var jobId: Int64?
@@ -9185,6 +9375,9 @@ public class UpdateJobRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.executorBlockStrategy != nil {
+            map["ExecutorBlockStrategy"] = self.executorBlockStrategy!
         }
         if self.jobHandler != nil {
             map["JobHandler"] = self.jobHandler!
@@ -9250,6 +9443,9 @@ public class UpdateJobRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("ExecutorBlockStrategy") {
+            self.executorBlockStrategy = dict["ExecutorBlockStrategy"] as! Int32
         }
         if dict.keys.contains("JobHandler") {
             self.jobHandler = dict["JobHandler"] as! String
@@ -9317,6 +9513,8 @@ public class UpdateJobShrinkRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var executorBlockStrategy: Int32?
+
     public var jobHandler: String?
 
     public var jobId: Int64?
@@ -9373,6 +9571,9 @@ public class UpdateJobShrinkRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.executorBlockStrategy != nil {
+            map["ExecutorBlockStrategy"] = self.executorBlockStrategy!
         }
         if self.jobHandler != nil {
             map["JobHandler"] = self.jobHandler!
@@ -9434,6 +9635,9 @@ public class UpdateJobShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("ExecutorBlockStrategy") {
+            self.executorBlockStrategy = dict["ExecutorBlockStrategy"] as! Int32
         }
         if dict.keys.contains("JobHandler") {
             self.jobHandler = dict["JobHandler"] as! String
