@@ -39556,6 +39556,8 @@ public class RunStepByStepWritingRequest : Tea.TeaModel {
 
         public var step: String?
 
+        public var summaryReturnType: String?
+
         public var tags: [RunStepByStepWritingRequest.WritingConfig.Tags]?
 
         public var useSearch: Bool?
@@ -39590,6 +39592,9 @@ public class RunStepByStepWritingRequest : Tea.TeaModel {
             if self.step != nil {
                 map["Step"] = self.step!
             }
+            if self.summaryReturnType != nil {
+                map["SummaryReturnType"] = self.summaryReturnType!
+            }
             if self.tags != nil {
                 var tmp : [Any] = []
                 for k in self.tags! {
@@ -39620,6 +39625,9 @@ public class RunStepByStepWritingRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Step") {
                 self.step = dict["Step"] as! String
+            }
+            if dict.keys.contains("SummaryReturnType") {
+                self.summaryReturnType = dict["SummaryReturnType"] as! String
             }
             if dict.keys.contains("Tags") {
                 var tmp : [RunStepByStepWritingRequest.WritingConfig.Tags] = []
