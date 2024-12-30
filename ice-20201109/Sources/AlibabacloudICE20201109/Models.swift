@@ -1067,6 +1067,205 @@ public class AppInfoDTO : Tea.TeaModel {
     }
 }
 
+public class Channel : Tea.TeaModel {
+    public class OutPutConfigList : Tea.TeaModel {
+        public var channelName: String?
+
+        public var format: String?
+
+        public var manifestName: String?
+
+        public var manifestSettings: String?
+
+        public var playbackUrl: String?
+
+        public var sourceGroupName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.channelName != nil {
+                map["ChannelName"] = self.channelName!
+            }
+            if self.format != nil {
+                map["Format"] = self.format!
+            }
+            if self.manifestName != nil {
+                map["ManifestName"] = self.manifestName!
+            }
+            if self.manifestSettings != nil {
+                map["ManifestSettings"] = self.manifestSettings!
+            }
+            if self.playbackUrl != nil {
+                map["PlaybackUrl"] = self.playbackUrl!
+            }
+            if self.sourceGroupName != nil {
+                map["SourceGroupName"] = self.sourceGroupName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ChannelName") {
+                self.channelName = dict["ChannelName"] as! String
+            }
+            if dict.keys.contains("Format") {
+                self.format = dict["Format"] as! String
+            }
+            if dict.keys.contains("ManifestName") {
+                self.manifestName = dict["ManifestName"] as! String
+            }
+            if dict.keys.contains("ManifestSettings") {
+                self.manifestSettings = dict["ManifestSettings"] as! String
+            }
+            if dict.keys.contains("PlaybackUrl") {
+                self.playbackUrl = dict["PlaybackUrl"] as! String
+            }
+            if dict.keys.contains("SourceGroupName") {
+                self.sourceGroupName = dict["SourceGroupName"] as! String
+            }
+        }
+    }
+    public var accessPolicy: Bool?
+
+    public var accessToken: String?
+
+    public var arn: String?
+
+    public var channelName: String?
+
+    public var channelTier: String?
+
+    public var fillerSourceLocationName: String?
+
+    public var fillerSourceName: String?
+
+    public var gmtCreate: String?
+
+    public var gmtModified: String?
+
+    public var outPutConfigList: [Channel.OutPutConfigList]?
+
+    public var playbackMode: String?
+
+    public var state: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessPolicy != nil {
+            map["AccessPolicy"] = self.accessPolicy!
+        }
+        if self.accessToken != nil {
+            map["AccessToken"] = self.accessToken!
+        }
+        if self.arn != nil {
+            map["Arn"] = self.arn!
+        }
+        if self.channelName != nil {
+            map["ChannelName"] = self.channelName!
+        }
+        if self.channelTier != nil {
+            map["ChannelTier"] = self.channelTier!
+        }
+        if self.fillerSourceLocationName != nil {
+            map["FillerSourceLocationName"] = self.fillerSourceLocationName!
+        }
+        if self.fillerSourceName != nil {
+            map["FillerSourceName"] = self.fillerSourceName!
+        }
+        if self.gmtCreate != nil {
+            map["GmtCreate"] = self.gmtCreate!
+        }
+        if self.gmtModified != nil {
+            map["GmtModified"] = self.gmtModified!
+        }
+        if self.outPutConfigList != nil {
+            var tmp : [Any] = []
+            for k in self.outPutConfigList! {
+                tmp.append(k.toMap())
+            }
+            map["OutPutConfigList"] = tmp
+        }
+        if self.playbackMode != nil {
+            map["PlaybackMode"] = self.playbackMode!
+        }
+        if self.state != nil {
+            map["State"] = self.state!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessPolicy") {
+            self.accessPolicy = dict["AccessPolicy"] as! Bool
+        }
+        if dict.keys.contains("AccessToken") {
+            self.accessToken = dict["AccessToken"] as! String
+        }
+        if dict.keys.contains("Arn") {
+            self.arn = dict["Arn"] as! String
+        }
+        if dict.keys.contains("ChannelName") {
+            self.channelName = dict["ChannelName"] as! String
+        }
+        if dict.keys.contains("ChannelTier") {
+            self.channelTier = dict["ChannelTier"] as! String
+        }
+        if dict.keys.contains("FillerSourceLocationName") {
+            self.fillerSourceLocationName = dict["FillerSourceLocationName"] as! String
+        }
+        if dict.keys.contains("FillerSourceName") {
+            self.fillerSourceName = dict["FillerSourceName"] as! String
+        }
+        if dict.keys.contains("GmtCreate") {
+            self.gmtCreate = dict["GmtCreate"] as! String
+        }
+        if dict.keys.contains("GmtModified") {
+            self.gmtModified = dict["GmtModified"] as! String
+        }
+        if dict.keys.contains("OutPutConfigList") {
+            var tmp : [Channel.OutPutConfigList] = []
+            for v in dict["OutPutConfigList"] as! [Any] {
+                var model = Channel.OutPutConfigList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.outPutConfigList = tmp
+        }
+        if dict.keys.contains("PlaybackMode") {
+            self.playbackMode = dict["PlaybackMode"] as! String
+        }
+        if dict.keys.contains("State") {
+            self.state = dict["State"] as! Int32
+        }
+    }
+}
+
 public class LicenseInstanceAppDTO : Tea.TeaModel {
     public class LicenseConfigs : Tea.TeaModel {
         public var businessType: String?
@@ -1262,6 +1461,544 @@ public class LicenseInstanceAppDTO : Tea.TeaModel {
         }
         if dict.keys.contains("UserId") {
             self.userId = dict["UserId"] as! Int64
+        }
+    }
+}
+
+public class Program : Tea.TeaModel {
+    public class AdBreaks : Tea.TeaModel {
+        public var channelName: String?
+
+        public var messageType: String?
+
+        public var offsetMillis: Int64?
+
+        public var programName: String?
+
+        public var sourceLocationName: String?
+
+        public var sourceName: String?
+
+        public var spliceInsertSettings: String?
+
+        public var timeSignalSettings: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.channelName != nil {
+                map["ChannelName"] = self.channelName!
+            }
+            if self.messageType != nil {
+                map["MessageType"] = self.messageType!
+            }
+            if self.offsetMillis != nil {
+                map["OffsetMillis"] = self.offsetMillis!
+            }
+            if self.programName != nil {
+                map["ProgramName"] = self.programName!
+            }
+            if self.sourceLocationName != nil {
+                map["SourceLocationName"] = self.sourceLocationName!
+            }
+            if self.sourceName != nil {
+                map["SourceName"] = self.sourceName!
+            }
+            if self.spliceInsertSettings != nil {
+                map["SpliceInsertSettings"] = self.spliceInsertSettings!
+            }
+            if self.timeSignalSettings != nil {
+                map["TimeSignalSettings"] = self.timeSignalSettings!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ChannelName") {
+                self.channelName = dict["ChannelName"] as! String
+            }
+            if dict.keys.contains("MessageType") {
+                self.messageType = dict["MessageType"] as! String
+            }
+            if dict.keys.contains("OffsetMillis") {
+                self.offsetMillis = dict["OffsetMillis"] as! Int64
+            }
+            if dict.keys.contains("ProgramName") {
+                self.programName = dict["ProgramName"] as! String
+            }
+            if dict.keys.contains("SourceLocationName") {
+                self.sourceLocationName = dict["SourceLocationName"] as! String
+            }
+            if dict.keys.contains("SourceName") {
+                self.sourceName = dict["SourceName"] as! String
+            }
+            if dict.keys.contains("SpliceInsertSettings") {
+                self.spliceInsertSettings = dict["SpliceInsertSettings"] as! String
+            }
+            if dict.keys.contains("TimeSignalSettings") {
+                self.timeSignalSettings = dict["TimeSignalSettings"] as! String
+            }
+        }
+    }
+    public var adBreaks: [Program.AdBreaks]?
+
+    public var arn: String?
+
+    public var channelName: String?
+
+    public var clipRange: String?
+
+    public var gmtCreate: String?
+
+    public var gmtModified: String?
+
+    public var programName: String?
+
+    public var sourceLocationName: String?
+
+    public var sourceName: String?
+
+    public var sourceType: String?
+
+    public var transition: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.adBreaks != nil {
+            var tmp : [Any] = []
+            for k in self.adBreaks! {
+                tmp.append(k.toMap())
+            }
+            map["AdBreaks"] = tmp
+        }
+        if self.arn != nil {
+            map["Arn"] = self.arn!
+        }
+        if self.channelName != nil {
+            map["ChannelName"] = self.channelName!
+        }
+        if self.clipRange != nil {
+            map["ClipRange"] = self.clipRange!
+        }
+        if self.gmtCreate != nil {
+            map["GmtCreate"] = self.gmtCreate!
+        }
+        if self.gmtModified != nil {
+            map["GmtModified"] = self.gmtModified!
+        }
+        if self.programName != nil {
+            map["ProgramName"] = self.programName!
+        }
+        if self.sourceLocationName != nil {
+            map["SourceLocationName"] = self.sourceLocationName!
+        }
+        if self.sourceName != nil {
+            map["SourceName"] = self.sourceName!
+        }
+        if self.sourceType != nil {
+            map["SourceType"] = self.sourceType!
+        }
+        if self.transition != nil {
+            map["Transition"] = self.transition!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AdBreaks") {
+            var tmp : [Program.AdBreaks] = []
+            for v in dict["AdBreaks"] as! [Any] {
+                var model = Program.AdBreaks()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.adBreaks = tmp
+        }
+        if dict.keys.contains("Arn") {
+            self.arn = dict["Arn"] as! String
+        }
+        if dict.keys.contains("ChannelName") {
+            self.channelName = dict["ChannelName"] as! String
+        }
+        if dict.keys.contains("ClipRange") {
+            self.clipRange = dict["ClipRange"] as! String
+        }
+        if dict.keys.contains("GmtCreate") {
+            self.gmtCreate = dict["GmtCreate"] as! String
+        }
+        if dict.keys.contains("GmtModified") {
+            self.gmtModified = dict["GmtModified"] as! String
+        }
+        if dict.keys.contains("ProgramName") {
+            self.programName = dict["ProgramName"] as! String
+        }
+        if dict.keys.contains("SourceLocationName") {
+            self.sourceLocationName = dict["SourceLocationName"] as! String
+        }
+        if dict.keys.contains("SourceName") {
+            self.sourceName = dict["SourceName"] as! String
+        }
+        if dict.keys.contains("SourceType") {
+            self.sourceType = dict["SourceType"] as! String
+        }
+        if dict.keys.contains("Transition") {
+            self.transition = dict["Transition"] as! String
+        }
+    }
+}
+
+public class ScheduleData : Tea.TeaModel {
+    public class AdBreaks : Tea.TeaModel {
+        public var messageType: String?
+
+        public var offsetMillis: String?
+
+        public var sourceLocationName: String?
+
+        public var sourceName: String?
+
+        public var spliceInsertSettings: String?
+
+        public var timeSignalSettings: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.messageType != nil {
+                map["MessageType"] = self.messageType!
+            }
+            if self.offsetMillis != nil {
+                map["OffsetMillis"] = self.offsetMillis!
+            }
+            if self.sourceLocationName != nil {
+                map["SourceLocationName"] = self.sourceLocationName!
+            }
+            if self.sourceName != nil {
+                map["SourceName"] = self.sourceName!
+            }
+            if self.spliceInsertSettings != nil {
+                map["SpliceInsertSettings"] = self.spliceInsertSettings!
+            }
+            if self.timeSignalSettings != nil {
+                map["TimeSignalSettings"] = self.timeSignalSettings!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("MessageType") {
+                self.messageType = dict["MessageType"] as! String
+            }
+            if dict.keys.contains("OffsetMillis") {
+                self.offsetMillis = dict["OffsetMillis"] as! String
+            }
+            if dict.keys.contains("SourceLocationName") {
+                self.sourceLocationName = dict["SourceLocationName"] as! String
+            }
+            if dict.keys.contains("SourceName") {
+                self.sourceName = dict["SourceName"] as! String
+            }
+            if dict.keys.contains("SpliceInsertSettings") {
+                self.spliceInsertSettings = dict["SpliceInsertSettings"] as! String
+            }
+            if dict.keys.contains("TimeSignalSettings") {
+                self.timeSignalSettings = dict["TimeSignalSettings"] as! String
+            }
+        }
+    }
+    public var adBreaks: [ScheduleData.AdBreaks]?
+
+    public var approximateDurationSeconds: Int64?
+
+    public var approximateStartTime: String?
+
+    public var entryType: String?
+
+    public var programName: String?
+
+    public var sourceLocationName: String?
+
+    public var sourceName: String?
+
+    public var sourceType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.adBreaks != nil {
+            var tmp : [Any] = []
+            for k in self.adBreaks! {
+                tmp.append(k.toMap())
+            }
+            map["AdBreaks"] = tmp
+        }
+        if self.approximateDurationSeconds != nil {
+            map["ApproximateDurationSeconds"] = self.approximateDurationSeconds!
+        }
+        if self.approximateStartTime != nil {
+            map["ApproximateStartTime"] = self.approximateStartTime!
+        }
+        if self.entryType != nil {
+            map["EntryType"] = self.entryType!
+        }
+        if self.programName != nil {
+            map["ProgramName"] = self.programName!
+        }
+        if self.sourceLocationName != nil {
+            map["SourceLocationName"] = self.sourceLocationName!
+        }
+        if self.sourceName != nil {
+            map["SourceName"] = self.sourceName!
+        }
+        if self.sourceType != nil {
+            map["SourceType"] = self.sourceType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AdBreaks") {
+            var tmp : [ScheduleData.AdBreaks] = []
+            for v in dict["AdBreaks"] as! [Any] {
+                var model = ScheduleData.AdBreaks()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.adBreaks = tmp
+        }
+        if dict.keys.contains("ApproximateDurationSeconds") {
+            self.approximateDurationSeconds = dict["ApproximateDurationSeconds"] as! Int64
+        }
+        if dict.keys.contains("ApproximateStartTime") {
+            self.approximateStartTime = dict["ApproximateStartTime"] as! String
+        }
+        if dict.keys.contains("EntryType") {
+            self.entryType = dict["EntryType"] as! String
+        }
+        if dict.keys.contains("ProgramName") {
+            self.programName = dict["ProgramName"] as! String
+        }
+        if dict.keys.contains("SourceLocationName") {
+            self.sourceLocationName = dict["SourceLocationName"] as! String
+        }
+        if dict.keys.contains("SourceName") {
+            self.sourceName = dict["SourceName"] as! String
+        }
+        if dict.keys.contains("SourceType") {
+            self.sourceType = dict["SourceType"] as! String
+        }
+    }
+}
+
+public class Source : Tea.TeaModel {
+    public var arn: String?
+
+    public var gmtCreate: String?
+
+    public var gmtModified: String?
+
+    public var httpPackageConfigurations: String?
+
+    public var sourceLocationName: String?
+
+    public var sourceName: String?
+
+    public var sourceType: String?
+
+    public var state: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.arn != nil {
+            map["Arn"] = self.arn!
+        }
+        if self.gmtCreate != nil {
+            map["GmtCreate"] = self.gmtCreate!
+        }
+        if self.gmtModified != nil {
+            map["GmtModified"] = self.gmtModified!
+        }
+        if self.httpPackageConfigurations != nil {
+            map["HttpPackageConfigurations"] = self.httpPackageConfigurations!
+        }
+        if self.sourceLocationName != nil {
+            map["SourceLocationName"] = self.sourceLocationName!
+        }
+        if self.sourceName != nil {
+            map["SourceName"] = self.sourceName!
+        }
+        if self.sourceType != nil {
+            map["SourceType"] = self.sourceType!
+        }
+        if self.state != nil {
+            map["State"] = self.state!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Arn") {
+            self.arn = dict["Arn"] as! String
+        }
+        if dict.keys.contains("GmtCreate") {
+            self.gmtCreate = dict["GmtCreate"] as! String
+        }
+        if dict.keys.contains("GmtModified") {
+            self.gmtModified = dict["GmtModified"] as! String
+        }
+        if dict.keys.contains("HttpPackageConfigurations") {
+            self.httpPackageConfigurations = dict["HttpPackageConfigurations"] as! String
+        }
+        if dict.keys.contains("SourceLocationName") {
+            self.sourceLocationName = dict["SourceLocationName"] as! String
+        }
+        if dict.keys.contains("SourceName") {
+            self.sourceName = dict["SourceName"] as! String
+        }
+        if dict.keys.contains("SourceType") {
+            self.sourceType = dict["SourceType"] as! String
+        }
+        if dict.keys.contains("State") {
+            self.state = dict["State"] as! Int32
+        }
+    }
+}
+
+public class SourceLocation : Tea.TeaModel {
+    public var arn: String?
+
+    public var baseUrl: String?
+
+    public var gmtCreate: String?
+
+    public var gmtModified: String?
+
+    public var segmentDeliveryConfigurations: String?
+
+    public var sourceLocationName: String?
+
+    public var state: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.arn != nil {
+            map["Arn"] = self.arn!
+        }
+        if self.baseUrl != nil {
+            map["BaseUrl"] = self.baseUrl!
+        }
+        if self.gmtCreate != nil {
+            map["GmtCreate"] = self.gmtCreate!
+        }
+        if self.gmtModified != nil {
+            map["GmtModified"] = self.gmtModified!
+        }
+        if self.segmentDeliveryConfigurations != nil {
+            map["SegmentDeliveryConfigurations"] = self.segmentDeliveryConfigurations!
+        }
+        if self.sourceLocationName != nil {
+            map["SourceLocationName"] = self.sourceLocationName!
+        }
+        if self.state != nil {
+            map["State"] = self.state!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Arn") {
+            self.arn = dict["Arn"] as! String
+        }
+        if dict.keys.contains("BaseUrl") {
+            self.baseUrl = dict["BaseUrl"] as! String
+        }
+        if dict.keys.contains("GmtCreate") {
+            self.gmtCreate = dict["GmtCreate"] as! String
+        }
+        if dict.keys.contains("GmtModified") {
+            self.gmtModified = dict["GmtModified"] as! String
+        }
+        if dict.keys.contains("SegmentDeliveryConfigurations") {
+            self.segmentDeliveryConfigurations = dict["SegmentDeliveryConfigurations"] as! String
+        }
+        if dict.keys.contains("SourceLocationName") {
+            self.sourceLocationName = dict["SourceLocationName"] as! String
+        }
+        if dict.keys.contains("State") {
+            self.state = dict["State"] as! Int32
         }
     }
 }
@@ -59755,6 +60492,8 @@ public class SubmitMediaAiAnalysisJobRequest : Tea.TeaModel {
 
     public var input: String?
 
+    public var userData: String?
+
     public override init() {
         super.init()
     }
@@ -59775,6 +60514,9 @@ public class SubmitMediaAiAnalysisJobRequest : Tea.TeaModel {
         if self.input != nil {
             map["Input"] = self.input!
         }
+        if self.userData != nil {
+            map["UserData"] = self.userData!
+        }
         return map
     }
 
@@ -59784,6 +60526,9 @@ public class SubmitMediaAiAnalysisJobRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Input") {
             self.input = dict["Input"] as! String
+        }
+        if dict.keys.contains("UserData") {
+            self.userData = dict["UserData"] as! String
         }
     }
 }
