@@ -283,6 +283,160 @@ public class DLOrder : Tea.TeaModel {
     }
 }
 
+public class DLPartition : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var createTime: Int32?
+
+    public var dbName: String?
+
+    public var lastAccessTime: Int32?
+
+    public var parameters: [String: String]?
+
+    public var sd: DLStorageDescriptor?
+
+    public var tableName: String?
+
+    public var values: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.sd?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.createTime != nil {
+            map["CreateTime"] = self.createTime!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.lastAccessTime != nil {
+            map["LastAccessTime"] = self.lastAccessTime!
+        }
+        if self.parameters != nil {
+            map["Parameters"] = self.parameters!
+        }
+        if self.sd != nil {
+            map["Sd"] = self.sd?.toMap()
+        }
+        if self.tableName != nil {
+            map["TableName"] = self.tableName!
+        }
+        if self.values != nil {
+            map["Values"] = self.values!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("CreateTime") {
+            self.createTime = dict["CreateTime"] as! Int32
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("LastAccessTime") {
+            self.lastAccessTime = dict["LastAccessTime"] as! Int32
+        }
+        if dict.keys.contains("Parameters") {
+            self.parameters = dict["Parameters"] as! [String: String]
+        }
+        if dict.keys.contains("Sd") {
+            var model = DLStorageDescriptor()
+            model.fromMap(dict["Sd"] as! [String: Any])
+            self.sd = model
+        }
+        if dict.keys.contains("TableName") {
+            self.tableName = dict["TableName"] as! String
+        }
+        if dict.keys.contains("Values") {
+            self.values = dict["Values"] as! [String]
+        }
+    }
+}
+
+public class DLPartitionInput : Tea.TeaModel {
+    public var createTime: Int32?
+
+    public var lastAccessTime: Int32?
+
+    public var parameters: [String: String]?
+
+    public var storageDescriptor: DLStorageDescriptor?
+
+    public var values: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.storageDescriptor?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.createTime != nil {
+            map["CreateTime"] = self.createTime!
+        }
+        if self.lastAccessTime != nil {
+            map["LastAccessTime"] = self.lastAccessTime!
+        }
+        if self.parameters != nil {
+            map["Parameters"] = self.parameters!
+        }
+        if self.storageDescriptor != nil {
+            map["StorageDescriptor"] = self.storageDescriptor?.toMap()
+        }
+        if self.values != nil {
+            map["Values"] = self.values!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CreateTime") {
+            self.createTime = dict["CreateTime"] as! Int32
+        }
+        if dict.keys.contains("LastAccessTime") {
+            self.lastAccessTime = dict["LastAccessTime"] as! Int32
+        }
+        if dict.keys.contains("Parameters") {
+            self.parameters = dict["Parameters"] as! [String: String]
+        }
+        if dict.keys.contains("StorageDescriptor") {
+            var model = DLStorageDescriptor()
+            model.fromMap(dict["StorageDescriptor"] as! [String: Any])
+            self.storageDescriptor = model
+        }
+        if dict.keys.contains("Values") {
+            self.values = dict["Values"] as! [String]
+        }
+    }
+}
+
 public class DLSerdeInfo : Tea.TeaModel {
     public var description_: String?
 
@@ -292,7 +446,7 @@ public class DLSerdeInfo : Tea.TeaModel {
 
     public var parameters: [String: Any]?
 
-    public var serdeType: String?
+    public var serdeType: Int32?
 
     public var serializationLib: String?
 
@@ -350,7 +504,7 @@ public class DLSerdeInfo : Tea.TeaModel {
             self.parameters = dict["Parameters"] as! [String: Any]
         }
         if dict.keys.contains("SerdeType") {
-            self.serdeType = dict["SerdeType"] as! String
+            self.serdeType = dict["SerdeType"] as! Int32
         }
         if dict.keys.contains("SerializationLib") {
             self.serializationLib = dict["SerializationLib"] as! String
@@ -1216,6 +1370,44 @@ public class ImportMasterKeyVO : Tea.TeaModel {
     }
 }
 
+public class PartitionError : Tea.TeaModel {
+    public var errorDetail: String?
+
+    public var values: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorDetail != nil {
+            map["ErrorDetail"] = self.errorDetail!
+        }
+        if self.values != nil {
+            map["Values"] = self.values!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorDetail") {
+            self.errorDetail = dict["ErrorDetail"] as! String
+        }
+        if dict.keys.contains("Values") {
+            self.values = dict["Values"] as! [String]
+        }
+    }
+}
+
 public class ProjectDetailsLiteVO : Tea.TeaModel {
     public var id: Int64?
 
@@ -1586,6 +1778,171 @@ public class UsersDetailsVO : Tea.TeaModel {
         }
         if dict.keys.contains("UserPublicKeyPem") {
             self.userPublicKeyPem = dict["UserPublicKeyPem"] as! String
+        }
+    }
+}
+
+public class OpenStructDLTableInput : Tea.TeaModel {
+    public var createTime: Int32?
+
+    public var creatorId: Int64?
+
+    public var description_: String?
+
+    public var lastAccessTime: Int32?
+
+    public var location: String?
+
+    public var modifierId: Int64?
+
+    public var name: String?
+
+    public var owner: String?
+
+    public var ownerType: String?
+
+    public var parameters: [String: String]?
+
+    public var partitionKeys: [DLColumn]?
+
+    public var retention: Int32?
+
+    public var storageDescriptor: DLStorageDescriptor?
+
+    public var tableType: String?
+
+    public var viewExpandedText: String?
+
+    public var viewOriginalText: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.storageDescriptor?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.createTime != nil {
+            map["CreateTime"] = self.createTime!
+        }
+        if self.creatorId != nil {
+            map["CreatorId"] = self.creatorId!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.lastAccessTime != nil {
+            map["LastAccessTime"] = self.lastAccessTime!
+        }
+        if self.location != nil {
+            map["Location"] = self.location!
+        }
+        if self.modifierId != nil {
+            map["ModifierId"] = self.modifierId!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.owner != nil {
+            map["Owner"] = self.owner!
+        }
+        if self.ownerType != nil {
+            map["OwnerType"] = self.ownerType!
+        }
+        if self.parameters != nil {
+            map["Parameters"] = self.parameters!
+        }
+        if self.partitionKeys != nil {
+            var tmp : [Any] = []
+            for k in self.partitionKeys! {
+                tmp.append(k.toMap())
+            }
+            map["PartitionKeys"] = tmp
+        }
+        if self.retention != nil {
+            map["Retention"] = self.retention!
+        }
+        if self.storageDescriptor != nil {
+            map["StorageDescriptor"] = self.storageDescriptor?.toMap()
+        }
+        if self.tableType != nil {
+            map["TableType"] = self.tableType!
+        }
+        if self.viewExpandedText != nil {
+            map["ViewExpandedText"] = self.viewExpandedText!
+        }
+        if self.viewOriginalText != nil {
+            map["ViewOriginalText"] = self.viewOriginalText!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CreateTime") {
+            self.createTime = dict["CreateTime"] as! Int32
+        }
+        if dict.keys.contains("CreatorId") {
+            self.creatorId = dict["CreatorId"] as! Int64
+        }
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("LastAccessTime") {
+            self.lastAccessTime = dict["LastAccessTime"] as! Int32
+        }
+        if dict.keys.contains("Location") {
+            self.location = dict["Location"] as! String
+        }
+        if dict.keys.contains("ModifierId") {
+            self.modifierId = dict["ModifierId"] as! Int64
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("Owner") {
+            self.owner = dict["Owner"] as! String
+        }
+        if dict.keys.contains("OwnerType") {
+            self.ownerType = dict["OwnerType"] as! String
+        }
+        if dict.keys.contains("Parameters") {
+            self.parameters = dict["Parameters"] as! [String: String]
+        }
+        if dict.keys.contains("PartitionKeys") {
+            var tmp : [DLColumn] = []
+            for v in dict["PartitionKeys"] as! [Any] {
+                var model = DLColumn()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.partitionKeys = tmp
+        }
+        if dict.keys.contains("Retention") {
+            self.retention = dict["Retention"] as! Int32
+        }
+        if dict.keys.contains("StorageDescriptor") {
+            var model = DLStorageDescriptor()
+            model.fromMap(dict["StorageDescriptor"] as! [String: Any])
+            self.storageDescriptor = model
+        }
+        if dict.keys.contains("TableType") {
+            self.tableType = dict["TableType"] as! String
+        }
+        if dict.keys.contains("ViewExpandedText") {
+            self.viewExpandedText = dict["ViewExpandedText"] as! String
+        }
+        if dict.keys.contains("ViewOriginalText") {
+            self.viewOriginalText = dict["ViewOriginalText"] as! String
         }
     }
 }
@@ -4059,6 +4416,789 @@ public class BackFillResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = BackFillResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class BatchCreateDataLakePartitionsRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var ifNotExists: Bool?
+
+    public var needResult: Bool?
+
+    public var partitionInputs: [DLPartitionInput]?
+
+    public var tableName: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.ifNotExists != nil {
+            map["IfNotExists"] = self.ifNotExists!
+        }
+        if self.needResult != nil {
+            map["NeedResult"] = self.needResult!
+        }
+        if self.partitionInputs != nil {
+            var tmp : [Any] = []
+            for k in self.partitionInputs! {
+                tmp.append(k.toMap())
+            }
+            map["PartitionInputs"] = tmp
+        }
+        if self.tableName != nil {
+            map["TableName"] = self.tableName!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("IfNotExists") {
+            self.ifNotExists = dict["IfNotExists"] as! Bool
+        }
+        if dict.keys.contains("NeedResult") {
+            self.needResult = dict["NeedResult"] as! Bool
+        }
+        if dict.keys.contains("PartitionInputs") {
+            var tmp : [DLPartitionInput] = []
+            for v in dict["PartitionInputs"] as! [Any] {
+                var model = DLPartitionInput()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.partitionInputs = tmp
+        }
+        if dict.keys.contains("TableName") {
+            self.tableName = dict["TableName"] as! String
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class BatchCreateDataLakePartitionsShrinkRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var ifNotExists: Bool?
+
+    public var needResult: Bool?
+
+    public var partitionInputsShrink: String?
+
+    public var tableName: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.ifNotExists != nil {
+            map["IfNotExists"] = self.ifNotExists!
+        }
+        if self.needResult != nil {
+            map["NeedResult"] = self.needResult!
+        }
+        if self.partitionInputsShrink != nil {
+            map["PartitionInputs"] = self.partitionInputsShrink!
+        }
+        if self.tableName != nil {
+            map["TableName"] = self.tableName!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("IfNotExists") {
+            self.ifNotExists = dict["IfNotExists"] as! Bool
+        }
+        if dict.keys.contains("NeedResult") {
+            self.needResult = dict["NeedResult"] as! Bool
+        }
+        if dict.keys.contains("PartitionInputs") {
+            self.partitionInputsShrink = dict["PartitionInputs"] as! String
+        }
+        if dict.keys.contains("TableName") {
+            self.tableName = dict["TableName"] as! String
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class BatchCreateDataLakePartitionsResponseBody : Tea.TeaModel {
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var partitions: [DLPartition]?
+
+    public var requestId: String?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.partitions != nil {
+            var tmp : [Any] = []
+            for k in self.partitions! {
+                tmp.append(k.toMap())
+            }
+            map["Partitions"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("Partitions") {
+            var tmp : [DLPartition] = []
+            for v in dict["Partitions"] as! [Any] {
+                var model = DLPartition()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.partitions = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! String
+        }
+    }
+}
+
+public class BatchCreateDataLakePartitionsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BatchCreateDataLakePartitionsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = BatchCreateDataLakePartitionsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class BatchDeleteDataLakePartitionsRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var ifExists: Bool?
+
+    public var partitionValuesList: [[String]]?
+
+    public var tableName: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.ifExists != nil {
+            map["IfExists"] = self.ifExists!
+        }
+        if self.partitionValuesList != nil {
+            map["PartitionValuesList"] = self.partitionValuesList!
+        }
+        if self.tableName != nil {
+            map["TableName"] = self.tableName!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("IfExists") {
+            self.ifExists = dict["IfExists"] as! Bool
+        }
+        if dict.keys.contains("PartitionValuesList") {
+            self.partitionValuesList = dict["PartitionValuesList"] as! [[String]]
+        }
+        if dict.keys.contains("TableName") {
+            self.tableName = dict["TableName"] as! String
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class BatchDeleteDataLakePartitionsResponseBody : Tea.TeaModel {
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var partitionErrors: [PartitionError]?
+
+    public var requestId: String?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.partitionErrors != nil {
+            var tmp : [Any] = []
+            for k in self.partitionErrors! {
+                tmp.append(k.toMap())
+            }
+            map["PartitionErrors"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("PartitionErrors") {
+            var tmp : [PartitionError] = []
+            for v in dict["PartitionErrors"] as! [Any] {
+                var model = PartitionError()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.partitionErrors = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! String
+        }
+    }
+}
+
+public class BatchDeleteDataLakePartitionsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BatchDeleteDataLakePartitionsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = BatchDeleteDataLakePartitionsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class BatchUpdateDataLakePartitionsRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var partitionInputs: [DLPartitionInput]?
+
+    public var tableName: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.partitionInputs != nil {
+            var tmp : [Any] = []
+            for k in self.partitionInputs! {
+                tmp.append(k.toMap())
+            }
+            map["PartitionInputs"] = tmp
+        }
+        if self.tableName != nil {
+            map["TableName"] = self.tableName!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("PartitionInputs") {
+            var tmp : [DLPartitionInput] = []
+            for v in dict["PartitionInputs"] as! [Any] {
+                var model = DLPartitionInput()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.partitionInputs = tmp
+        }
+        if dict.keys.contains("TableName") {
+            self.tableName = dict["TableName"] as! String
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class BatchUpdateDataLakePartitionsShrinkRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var partitionInputsShrink: String?
+
+    public var tableName: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.partitionInputsShrink != nil {
+            map["PartitionInputs"] = self.partitionInputsShrink!
+        }
+        if self.tableName != nil {
+            map["TableName"] = self.tableName!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("PartitionInputs") {
+            self.partitionInputsShrink = dict["PartitionInputs"] as! String
+        }
+        if dict.keys.contains("TableName") {
+            self.tableName = dict["TableName"] as! String
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class BatchUpdateDataLakePartitionsResponseBody : Tea.TeaModel {
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var partitionErrors: [PartitionError]?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.partitionErrors != nil {
+            var tmp : [Any] = []
+            for k in self.partitionErrors! {
+                tmp.append(k.toMap())
+            }
+            map["PartitionErrors"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("PartitionErrors") {
+            var tmp : [PartitionError] = []
+            for v in dict["PartitionErrors"] as! [Any] {
+                var model = PartitionError()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.partitionErrors = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class BatchUpdateDataLakePartitionsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BatchUpdateDataLakePartitionsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = BatchUpdateDataLakePartitionsResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -7632,6 +8772,795 @@ public class CreateDataImportOrderResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = CreateDataImportOrderResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class CreateDataLakeDatabaseRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var description_: String?
+
+    public var location: String?
+
+    public var parameters: [String: String]?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.location != nil {
+            map["Location"] = self.location!
+        }
+        if self.parameters != nil {
+            map["Parameters"] = self.parameters!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("Location") {
+            self.location = dict["Location"] as! String
+        }
+        if dict.keys.contains("Parameters") {
+            self.parameters = dict["Parameters"] as! [String: String]
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class CreateDataLakeDatabaseShrinkRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var description_: String?
+
+    public var location: String?
+
+    public var parametersShrink: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.location != nil {
+            map["Location"] = self.location!
+        }
+        if self.parametersShrink != nil {
+            map["Parameters"] = self.parametersShrink!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("Location") {
+            self.location = dict["Location"] as! String
+        }
+        if dict.keys.contains("Parameters") {
+            self.parametersShrink = dict["Parameters"] as! String
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class CreateDataLakeDatabaseResponseBody : Tea.TeaModel {
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class CreateDataLakeDatabaseResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateDataLakeDatabaseResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateDataLakeDatabaseResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class CreateDataLakePartitionRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var ifNotExists: Bool?
+
+    public var needResult: Bool?
+
+    public var partitionInput: DLPartitionInput?
+
+    public var tableName: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.partitionInput?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.ifNotExists != nil {
+            map["IfNotExists"] = self.ifNotExists!
+        }
+        if self.needResult != nil {
+            map["NeedResult"] = self.needResult!
+        }
+        if self.partitionInput != nil {
+            map["PartitionInput"] = self.partitionInput?.toMap()
+        }
+        if self.tableName != nil {
+            map["TableName"] = self.tableName!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("IfNotExists") {
+            self.ifNotExists = dict["IfNotExists"] as! Bool
+        }
+        if dict.keys.contains("NeedResult") {
+            self.needResult = dict["NeedResult"] as! Bool
+        }
+        if dict.keys.contains("PartitionInput") {
+            var model = DLPartitionInput()
+            model.fromMap(dict["PartitionInput"] as! [String: Any])
+            self.partitionInput = model
+        }
+        if dict.keys.contains("TableName") {
+            self.tableName = dict["TableName"] as! String
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class CreateDataLakePartitionShrinkRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var ifNotExists: Bool?
+
+    public var needResult: Bool?
+
+    public var partitionInputShrink: String?
+
+    public var tableName: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.ifNotExists != nil {
+            map["IfNotExists"] = self.ifNotExists!
+        }
+        if self.needResult != nil {
+            map["NeedResult"] = self.needResult!
+        }
+        if self.partitionInputShrink != nil {
+            map["PartitionInput"] = self.partitionInputShrink!
+        }
+        if self.tableName != nil {
+            map["TableName"] = self.tableName!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("IfNotExists") {
+            self.ifNotExists = dict["IfNotExists"] as! Bool
+        }
+        if dict.keys.contains("NeedResult") {
+            self.needResult = dict["NeedResult"] as! Bool
+        }
+        if dict.keys.contains("PartitionInput") {
+            self.partitionInputShrink = dict["PartitionInput"] as! String
+        }
+        if dict.keys.contains("TableName") {
+            self.tableName = dict["TableName"] as! String
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class CreateDataLakePartitionResponseBody : Tea.TeaModel {
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var partition: DLPartition?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.partition?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.partition != nil {
+            map["Partition"] = self.partition?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("Partition") {
+            var model = DLPartition()
+            model.fromMap(dict["Partition"] as! [String: Any])
+            self.partition = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class CreateDataLakePartitionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateDataLakePartitionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateDataLakePartitionResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class CreateDataLakeTableRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var tableInput: OpenStructDLTableInput?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.tableInput?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.tableInput != nil {
+            map["TableInput"] = self.tableInput?.toMap()
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("TableInput") {
+            var model = OpenStructDLTableInput()
+            model.fromMap(dict["TableInput"] as! [String: Any])
+            self.tableInput = model
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class CreateDataLakeTableShrinkRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var tableInputShrink: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.tableInputShrink != nil {
+            map["TableInput"] = self.tableInputShrink!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("TableInput") {
+            self.tableInputShrink = dict["TableInput"] as! String
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class CreateDataLakeTableResponseBody : Tea.TeaModel {
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var table: DLTable?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.table?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.table != nil {
+            map["Table"] = self.table?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+        if dict.keys.contains("Table") {
+            var model = DLTable()
+            model.fromMap(dict["Table"] as! [String: Any])
+            self.table = model
+        }
+    }
+}
+
+public class CreateDataLakeTableResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateDataLakeTableResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateDataLakeTableResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -12658,6 +14587,587 @@ public class DeleteAuthorityTemplateResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DeleteAuthorityTemplateResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DeleteDataLakeDatabaseRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class DeleteDataLakeDatabaseResponseBody : Tea.TeaModel {
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class DeleteDataLakeDatabaseResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteDataLakeDatabaseResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteDataLakeDatabaseResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DeleteDataLakePartitionRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var ifExists: Bool?
+
+    public var partitionValues: [String]?
+
+    public var tableName: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.ifExists != nil {
+            map["IfExists"] = self.ifExists!
+        }
+        if self.partitionValues != nil {
+            map["PartitionValues"] = self.partitionValues!
+        }
+        if self.tableName != nil {
+            map["TableName"] = self.tableName!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("IfExists") {
+            self.ifExists = dict["IfExists"] as! Bool
+        }
+        if dict.keys.contains("PartitionValues") {
+            self.partitionValues = dict["PartitionValues"] as! [String]
+        }
+        if dict.keys.contains("TableName") {
+            self.tableName = dict["TableName"] as! String
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class DeleteDataLakePartitionShrinkRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var ifExists: Bool?
+
+    public var partitionValuesShrink: String?
+
+    public var tableName: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.ifExists != nil {
+            map["IfExists"] = self.ifExists!
+        }
+        if self.partitionValuesShrink != nil {
+            map["PartitionValues"] = self.partitionValuesShrink!
+        }
+        if self.tableName != nil {
+            map["TableName"] = self.tableName!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("IfExists") {
+            self.ifExists = dict["IfExists"] as! Bool
+        }
+        if dict.keys.contains("PartitionValues") {
+            self.partitionValuesShrink = dict["PartitionValues"] as! String
+        }
+        if dict.keys.contains("TableName") {
+            self.tableName = dict["TableName"] as! String
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class DeleteDataLakePartitionResponseBody : Tea.TeaModel {
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class DeleteDataLakePartitionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteDataLakePartitionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteDataLakePartitionResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DeleteDataLakeTableRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var tableName: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.tableName != nil {
+            map["TableName"] = self.tableName!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("TableName") {
+            self.tableName = dict["TableName"] as! String
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class DeleteDataLakeTableResponseBody : Tea.TeaModel {
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class DeleteDataLakeTableResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteDataLakeTableResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteDataLakeTableResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -23135,6 +25645,260 @@ public class GetDataLakeDatabaseResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = GetDataLakeDatabaseResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetDataLakePartitionRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var partitionValues: [String]?
+
+    public var tableName: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.partitionValues != nil {
+            map["PartitionValues"] = self.partitionValues!
+        }
+        if self.tableName != nil {
+            map["TableName"] = self.tableName!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("PartitionValues") {
+            self.partitionValues = dict["PartitionValues"] as! [String]
+        }
+        if dict.keys.contains("TableName") {
+            self.tableName = dict["TableName"] as! String
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class GetDataLakePartitionShrinkRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var partitionValuesShrink: String?
+
+    public var tableName: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.partitionValuesShrink != nil {
+            map["PartitionValues"] = self.partitionValuesShrink!
+        }
+        if self.tableName != nil {
+            map["TableName"] = self.tableName!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("PartitionValues") {
+            self.partitionValuesShrink = dict["PartitionValues"] as! String
+        }
+        if dict.keys.contains("TableName") {
+            self.tableName = dict["TableName"] as! String
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class GetDataLakePartitionResponseBody : Tea.TeaModel {
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var partition: DLPartition?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.partition?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.partition != nil {
+            map["Partition"] = self.partition?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("Partition") {
+            var model = DLPartition()
+            model.fromMap(dict["Partition"] as! [String: Any])
+            self.partition = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class GetDataLakePartitionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetDataLakePartitionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetDataLakePartitionResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -41229,48 +43993,7 @@ public class ListDataLakeCatalogRequest : Tea.TeaModel {
 }
 
 public class ListDataLakeCatalogResponseBody : Tea.TeaModel {
-    public class CataLogList : Tea.TeaModel {
-        public var catalog: [DLCatalog]?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.catalog != nil {
-                var tmp : [Any] = []
-                for k in self.catalog! {
-                    tmp.append(k.toMap())
-                }
-                map["Catalog"] = tmp
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Catalog") {
-                var tmp : [DLCatalog] = []
-                for v in dict["Catalog"] as! [Any] {
-                    var model = DLCatalog()
-                    if v != nil {
-                        model.fromMap(v as! [String: Any])
-                    }
-                    tmp.append(model)
-                }
-                self.catalog = tmp
-            }
-        }
-    }
-    public var cataLogList: ListDataLakeCatalogResponseBody.CataLogList?
+    public var cataLogList: [DLCatalog]?
 
     public var errorCode: String?
 
@@ -41290,13 +44013,16 @@ public class ListDataLakeCatalogResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.cataLogList?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.cataLogList != nil {
-            map["CataLogList"] = self.cataLogList?.toMap()
+            var tmp : [Any] = []
+            for k in self.cataLogList! {
+                tmp.append(k.toMap())
+            }
+            map["CataLogList"] = tmp
         }
         if self.errorCode != nil {
             map["ErrorCode"] = self.errorCode!
@@ -41315,9 +44041,15 @@ public class ListDataLakeCatalogResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("CataLogList") {
-            var model = ListDataLakeCatalogResponseBody.CataLogList()
-            model.fromMap(dict["CataLogList"] as! [String: Any])
-            self.cataLogList = model
+            var tmp : [DLCatalog] = []
+            for v in dict["CataLogList"] as! [Any] {
+                var model = DLCatalog()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.cataLogList = tmp
         }
         if dict.keys.contains("ErrorCode") {
             self.errorCode = dict["ErrorCode"] as! String
@@ -41454,48 +44186,7 @@ public class ListDataLakeDatabaseRequest : Tea.TeaModel {
 }
 
 public class ListDataLakeDatabaseResponseBody : Tea.TeaModel {
-    public class DatabaseList : Tea.TeaModel {
-        public var database: [DLDatabase]?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.database != nil {
-                var tmp : [Any] = []
-                for k in self.database! {
-                    tmp.append(k.toMap())
-                }
-                map["Database"] = tmp
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Database") {
-                var tmp : [DLDatabase] = []
-                for v in dict["Database"] as! [Any] {
-                    var model = DLDatabase()
-                    if v != nil {
-                        model.fromMap(v as! [String: Any])
-                    }
-                    tmp.append(model)
-                }
-                self.database = tmp
-            }
-        }
-    }
-    public var databaseList: ListDataLakeDatabaseResponseBody.DatabaseList?
+    public var databaseList: [DLDatabase]?
 
     public var errorCode: String?
 
@@ -41519,13 +44210,16 @@ public class ListDataLakeDatabaseResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.databaseList?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.databaseList != nil {
-            map["DatabaseList"] = self.databaseList?.toMap()
+            var tmp : [Any] = []
+            for k in self.databaseList! {
+                tmp.append(k.toMap())
+            }
+            map["DatabaseList"] = tmp
         }
         if self.errorCode != nil {
             map["ErrorCode"] = self.errorCode!
@@ -41550,9 +44244,15 @@ public class ListDataLakeDatabaseResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DatabaseList") {
-            var model = ListDataLakeDatabaseResponseBody.DatabaseList()
-            model.fromMap(dict["DatabaseList"] as! [String: Any])
-            self.databaseList = model
+            var tmp : [DLDatabase] = []
+            for v in dict["DatabaseList"] as! [Any] {
+                var model = DLDatabase()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.databaseList = tmp
         }
         if dict.keys.contains("ErrorCode") {
             self.errorCode = dict["ErrorCode"] as! String
@@ -41618,6 +44318,1185 @@ public class ListDataLakeDatabaseResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ListDataLakeDatabaseResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListDataLakePartitionRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var partNames: [String]?
+
+    public var tableName: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.partNames != nil {
+            map["PartNames"] = self.partNames!
+        }
+        if self.tableName != nil {
+            map["TableName"] = self.tableName!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("PartNames") {
+            self.partNames = dict["PartNames"] as! [String]
+        }
+        if dict.keys.contains("TableName") {
+            self.tableName = dict["TableName"] as! String
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class ListDataLakePartitionShrinkRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var partNamesShrink: String?
+
+    public var tableName: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.partNamesShrink != nil {
+            map["PartNames"] = self.partNamesShrink!
+        }
+        if self.tableName != nil {
+            map["TableName"] = self.tableName!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("PartNames") {
+            self.partNamesShrink = dict["PartNames"] as! String
+        }
+        if dict.keys.contains("TableName") {
+            self.tableName = dict["TableName"] as! String
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class ListDataLakePartitionResponseBody : Tea.TeaModel {
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var partitionList: [DLPartition]?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.partitionList != nil {
+            var tmp : [Any] = []
+            for k in self.partitionList! {
+                tmp.append(k.toMap())
+            }
+            map["PartitionList"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("PartitionList") {
+            var tmp : [DLPartition] = []
+            for v in dict["PartitionList"] as! [Any] {
+                var model = DLPartition()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.partitionList = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class ListDataLakePartitionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListDataLakePartitionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListDataLakePartitionResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListDataLakePartitionByFilterRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var filter: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var tableName: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.filter != nil {
+            map["Filter"] = self.filter!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.tableName != nil {
+            map["TableName"] = self.tableName!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("Filter") {
+            self.filter = dict["Filter"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("TableName") {
+            self.tableName = dict["TableName"] as! String
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class ListDataLakePartitionByFilterResponseBody : Tea.TeaModel {
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var partitionList: [DLPartition]?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.partitionList != nil {
+            var tmp : [Any] = []
+            for k in self.partitionList! {
+                tmp.append(k.toMap())
+            }
+            map["PartitionList"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("PartitionList") {
+            var tmp : [DLPartition] = []
+            for v in dict["PartitionList"] as! [Any] {
+                var model = DLPartition()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.partitionList = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class ListDataLakePartitionByFilterResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListDataLakePartitionByFilterResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListDataLakePartitionByFilterResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListDataLakePartitionNameRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var tableName: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.tableName != nil {
+            map["TableName"] = self.tableName!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("TableName") {
+            self.tableName = dict["TableName"] as! String
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class ListDataLakePartitionNameResponseBody : Tea.TeaModel {
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var partitionNameList: [String]?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.partitionNameList != nil {
+            map["PartitionNameList"] = self.partitionNameList!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("PartitionNameList") {
+            self.partitionNameList = dict["PartitionNameList"] as! [String]
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class ListDataLakePartitionNameResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListDataLakePartitionNameResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListDataLakePartitionNameResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListDataLakeTableRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var tableNamePattern: String?
+
+    public var tableType: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.tableNamePattern != nil {
+            map["TableNamePattern"] = self.tableNamePattern!
+        }
+        if self.tableType != nil {
+            map["TableType"] = self.tableType!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("TableNamePattern") {
+            self.tableNamePattern = dict["TableNamePattern"] as! String
+        }
+        if dict.keys.contains("TableType") {
+            self.tableType = dict["TableType"] as! String
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class ListDataLakeTableResponseBody : Tea.TeaModel {
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var tableList: [DLTable]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.tableList != nil {
+            var tmp : [Any] = []
+            for k in self.tableList! {
+                tmp.append(k.toMap())
+            }
+            map["TableList"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+        if dict.keys.contains("TableList") {
+            var tmp : [DLTable] = []
+            for v in dict["TableList"] as! [Any] {
+                var model = DLTable()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tableList = tmp
+        }
+    }
+}
+
+public class ListDataLakeTableResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListDataLakeTableResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListDataLakeTableResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListDataLakeTableNameRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var tableNamePattern: String?
+
+    public var tableType: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.tableNamePattern != nil {
+            map["TableNamePattern"] = self.tableNamePattern!
+        }
+        if self.tableType != nil {
+            map["TableType"] = self.tableType!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("TableNamePattern") {
+            self.tableNamePattern = dict["TableNamePattern"] as! String
+        }
+        if dict.keys.contains("TableType") {
+            self.tableType = dict["TableType"] as! String
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class ListDataLakeTableNameResponseBody : Tea.TeaModel {
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var tableNameList: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.tableNameList != nil {
+            map["TableNameList"] = self.tableNameList!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+        if dict.keys.contains("TableNameList") {
+            self.tableNameList = dict["TableNameList"] as! [String]
+        }
+    }
+}
+
+public class ListDataLakeTableNameResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListDataLakeTableNameResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListDataLakeTableNameResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -41703,47 +45582,6 @@ public class ListDataLakeTablebaseInfoRequest : Tea.TeaModel {
 }
 
 public class ListDataLakeTablebaseInfoResponseBody : Tea.TeaModel {
-    public class TablebaseInfoList : Tea.TeaModel {
-        public var tablebaseInfo: [DLTablebaseInfo]?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.tablebaseInfo != nil {
-                var tmp : [Any] = []
-                for k in self.tablebaseInfo! {
-                    tmp.append(k.toMap())
-                }
-                map["TablebaseInfo"] = tmp
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("TablebaseInfo") {
-                var tmp : [DLTablebaseInfo] = []
-                for v in dict["TablebaseInfo"] as! [Any] {
-                    var model = DLTablebaseInfo()
-                    if v != nil {
-                        model.fromMap(v as! [String: Any])
-                    }
-                    tmp.append(model)
-                }
-                self.tablebaseInfo = tmp
-            }
-        }
-    }
     public var errorCode: String?
 
     public var errorMessage: String?
@@ -41752,7 +45590,7 @@ public class ListDataLakeTablebaseInfoResponseBody : Tea.TeaModel {
 
     public var success: Bool?
 
-    public var tablebaseInfoList: ListDataLakeTablebaseInfoResponseBody.TablebaseInfoList?
+    public var tablebaseInfoList: [DLTablebaseInfo]?
 
     public var totalCount: String?
 
@@ -41766,7 +45604,6 @@ public class ListDataLakeTablebaseInfoResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.tablebaseInfoList?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -41784,7 +45621,11 @@ public class ListDataLakeTablebaseInfoResponseBody : Tea.TeaModel {
             map["Success"] = self.success!
         }
         if self.tablebaseInfoList != nil {
-            map["TablebaseInfoList"] = self.tablebaseInfoList?.toMap()
+            var tmp : [Any] = []
+            for k in self.tablebaseInfoList! {
+                tmp.append(k.toMap())
+            }
+            map["TablebaseInfoList"] = tmp
         }
         if self.totalCount != nil {
             map["TotalCount"] = self.totalCount!
@@ -41806,9 +45647,15 @@ public class ListDataLakeTablebaseInfoResponseBody : Tea.TeaModel {
             self.success = dict["Success"] as! Bool
         }
         if dict.keys.contains("TablebaseInfoList") {
-            var model = ListDataLakeTablebaseInfoResponseBody.TablebaseInfoList()
-            model.fromMap(dict["TablebaseInfoList"] as! [String: Any])
-            self.tablebaseInfoList = model
+            var tmp : [DLTablebaseInfo] = []
+            for v in dict["TablebaseInfoList"] as! [Any] {
+                var model = DLTablebaseInfo()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tablebaseInfoList = tmp
         }
         if dict.keys.contains("TotalCount") {
             self.totalCount = dict["TotalCount"] as! String
@@ -63946,6 +67793,763 @@ public class UpdateAuthorityTemplateResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = UpdateAuthorityTemplateResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateDataLakeDatabaseRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var description_: String?
+
+    public var location: String?
+
+    public var parameters: [String: String]?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.location != nil {
+            map["Location"] = self.location!
+        }
+        if self.parameters != nil {
+            map["Parameters"] = self.parameters!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("Location") {
+            self.location = dict["Location"] as! String
+        }
+        if dict.keys.contains("Parameters") {
+            self.parameters = dict["Parameters"] as! [String: String]
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class UpdateDataLakeDatabaseShrinkRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var description_: String?
+
+    public var location: String?
+
+    public var parametersShrink: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.location != nil {
+            map["Location"] = self.location!
+        }
+        if self.parametersShrink != nil {
+            map["Parameters"] = self.parametersShrink!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("Location") {
+            self.location = dict["Location"] as! String
+        }
+        if dict.keys.contains("Parameters") {
+            self.parametersShrink = dict["Parameters"] as! String
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class UpdateDataLakeDatabaseResponseBody : Tea.TeaModel {
+    public var database: DLDatabase?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.database?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.database != nil {
+            map["Database"] = self.database?.toMap()
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Database") {
+            var model = DLDatabase()
+            model.fromMap(dict["Database"] as! [String: Any])
+            self.database = model
+        }
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class UpdateDataLakeDatabaseResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateDataLakeDatabaseResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateDataLakeDatabaseResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateDataLakePartitionRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var partitionInput: DLPartitionInput?
+
+    public var tableName: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.partitionInput?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.partitionInput != nil {
+            map["PartitionInput"] = self.partitionInput?.toMap()
+        }
+        if self.tableName != nil {
+            map["TableName"] = self.tableName!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("PartitionInput") {
+            var model = DLPartitionInput()
+            model.fromMap(dict["PartitionInput"] as! [String: Any])
+            self.partitionInput = model
+        }
+        if dict.keys.contains("TableName") {
+            self.tableName = dict["TableName"] as! String
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class UpdateDataLakePartitionShrinkRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var partitionInputShrink: String?
+
+    public var tableName: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.partitionInputShrink != nil {
+            map["PartitionInput"] = self.partitionInputShrink!
+        }
+        if self.tableName != nil {
+            map["TableName"] = self.tableName!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("PartitionInput") {
+            self.partitionInputShrink = dict["PartitionInput"] as! String
+        }
+        if dict.keys.contains("TableName") {
+            self.tableName = dict["TableName"] as! String
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class UpdateDataLakePartitionResponseBody : Tea.TeaModel {
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class UpdateDataLakePartitionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateDataLakePartitionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateDataLakePartitionResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateDataLakeTableRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var tableInput: OpenStructDLTableInput?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.tableInput?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.tableInput != nil {
+            map["TableInput"] = self.tableInput?.toMap()
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("TableInput") {
+            var model = OpenStructDLTableInput()
+            model.fromMap(dict["TableInput"] as! [String: Any])
+            self.tableInput = model
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class UpdateDataLakeTableShrinkRequest : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var dataRegion: String?
+
+    public var dbName: String?
+
+    public var tableInputShrink: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.tableInputShrink != nil {
+            map["TableInput"] = self.tableInputShrink!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("TableInput") {
+            self.tableInputShrink = dict["TableInput"] as! String
+        }
+        if dict.keys.contains("Tid") {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class UpdateDataLakeTableResponseBody : Tea.TeaModel {
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var table: DLTable?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.table?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.table != nil {
+            map["Table"] = self.table?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+        if dict.keys.contains("Table") {
+            var model = DLTable()
+            model.fromMap(dict["Table"] as! [String: Any])
+            self.table = model
+        }
+    }
+}
+
+public class UpdateDataLakeTableResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateDataLakeTableResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateDataLakeTableResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
