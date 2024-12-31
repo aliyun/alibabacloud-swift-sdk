@@ -1239,6 +1239,8 @@ public class CreateFixedPriceSelectedOrderResponseBody : Tea.TeaModel {
     public class Module : Tea.TeaModel {
         public var domain: String?
 
+        public var domainBlockTrade: [String]?
+
         public var orderNo: String?
 
         public var price: Int64?
@@ -1260,6 +1262,9 @@ public class CreateFixedPriceSelectedOrderResponseBody : Tea.TeaModel {
             if self.domain != nil {
                 map["Domain"] = self.domain!
             }
+            if self.domainBlockTrade != nil {
+                map["DomainBlockTrade"] = self.domainBlockTrade!
+            }
             if self.orderNo != nil {
                 map["OrderNo"] = self.orderNo!
             }
@@ -1272,6 +1277,9 @@ public class CreateFixedPriceSelectedOrderResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Domain") {
                 self.domain = dict["Domain"] as! String
+            }
+            if dict.keys.contains("DomainBlockTrade") {
+                self.domainBlockTrade = dict["DomainBlockTrade"] as! [String]
             }
             if dict.keys.contains("OrderNo") {
                 self.orderNo = dict["OrderNo"] as! String
