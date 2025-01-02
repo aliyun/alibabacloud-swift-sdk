@@ -957,6 +957,8 @@ public class CreateDownloadTaskRequest : Tea.TeaModel {
 
     public var taskData: String?
 
+    public var taskType: String?
+
     public var timeZone: String?
 
     public override init() {
@@ -979,6 +981,9 @@ public class CreateDownloadTaskRequest : Tea.TeaModel {
         if self.taskData != nil {
             map["TaskData"] = self.taskData!
         }
+        if self.taskType != nil {
+            map["TaskType"] = self.taskType!
+        }
         if self.timeZone != nil {
             map["TimeZone"] = self.timeZone!
         }
@@ -991,6 +996,9 @@ public class CreateDownloadTaskRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TaskData") {
             self.taskData = dict["TaskData"] as! String
+        }
+        if dict.keys.contains("TaskType") {
+            self.taskType = dict["TaskType"] as! String
         }
         if dict.keys.contains("TimeZone") {
             self.timeZone = dict["TimeZone"] as! String
@@ -4949,6 +4957,43 @@ public class DescribeAddressBookRequest : Tea.TeaModel {
 
 public class DescribeAddressBookResponseBody : Tea.TeaModel {
     public class Acls : Tea.TeaModel {
+        public class Addresses : Tea.TeaModel {
+            public var address: String?
+
+            public var note: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.address != nil {
+                    map["Address"] = self.address!
+                }
+                if self.note != nil {
+                    map["Note"] = self.note!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Address") {
+                    self.address = dict["Address"] as! String
+                }
+                if dict.keys.contains("Note") {
+                    self.note = dict["Note"] as! String
+                }
+            }
+        }
         public class TagList : Tea.TeaModel {
             public var tagKey: String?
 
@@ -4990,6 +5035,8 @@ public class DescribeAddressBookResponseBody : Tea.TeaModel {
 
         public var addressListCount: Int32?
 
+        public var addresses: [DescribeAddressBookResponseBody.Acls.Addresses]?
+
         public var autoAddTagEcs: Int32?
 
         public var description_: String?
@@ -5025,6 +5072,13 @@ public class DescribeAddressBookResponseBody : Tea.TeaModel {
             }
             if self.addressListCount != nil {
                 map["AddressListCount"] = self.addressListCount!
+            }
+            if self.addresses != nil {
+                var tmp : [Any] = []
+                for k in self.addresses! {
+                    tmp.append(k.toMap())
+                }
+                map["Addresses"] = tmp
             }
             if self.autoAddTagEcs != nil {
                 map["AutoAddTagEcs"] = self.autoAddTagEcs!
@@ -5063,6 +5117,17 @@ public class DescribeAddressBookResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("AddressListCount") {
                 self.addressListCount = dict["AddressListCount"] as! Int32
+            }
+            if dict.keys.contains("Addresses") {
+                var tmp : [DescribeAddressBookResponseBody.Acls.Addresses] = []
+                for v in dict["Addresses"] as! [Any] {
+                    var model = DescribeAddressBookResponseBody.Acls.Addresses()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.addresses = tmp
             }
             if dict.keys.contains("AutoAddTagEcs") {
                 self.autoAddTagEcs = dict["AutoAddTagEcs"] as! Int32
@@ -5932,16 +5997,6 @@ public class DescribeAssetStatisticResponseBody : Tea.TeaModel {
 
         public var ipNumUsed: Int32?
 
-        public var isIpNumEnough: Int32?
-
-        public var isRegionNumEnough: Int32?
-
-        public var isSuggestUpdate: Int32?
-
-        public var regionNumSpec: Int32?
-
-        public var regionNumUsed: Int32?
-
         public var sensitiveDataIpNumSpec: Int64?
 
         public var sensitiveDataIpNumUsed: Int64?
@@ -5966,21 +6021,6 @@ public class DescribeAssetStatisticResponseBody : Tea.TeaModel {
             if self.ipNumUsed != nil {
                 map["IpNumUsed"] = self.ipNumUsed!
             }
-            if self.isIpNumEnough != nil {
-                map["IsIpNumEnough"] = self.isIpNumEnough!
-            }
-            if self.isRegionNumEnough != nil {
-                map["IsRegionNumEnough"] = self.isRegionNumEnough!
-            }
-            if self.isSuggestUpdate != nil {
-                map["IsSuggestUpdate"] = self.isSuggestUpdate!
-            }
-            if self.regionNumSpec != nil {
-                map["RegionNumSpec"] = self.regionNumSpec!
-            }
-            if self.regionNumUsed != nil {
-                map["RegionNumUsed"] = self.regionNumUsed!
-            }
             if self.sensitiveDataIpNumSpec != nil {
                 map["SensitiveDataIpNumSpec"] = self.sensitiveDataIpNumSpec!
             }
@@ -5996,21 +6036,6 @@ public class DescribeAssetStatisticResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("IpNumUsed") {
                 self.ipNumUsed = dict["IpNumUsed"] as! Int32
-            }
-            if dict.keys.contains("IsIpNumEnough") {
-                self.isIpNumEnough = dict["IsIpNumEnough"] as! Int32
-            }
-            if dict.keys.contains("IsRegionNumEnough") {
-                self.isRegionNumEnough = dict["IsRegionNumEnough"] as! Int32
-            }
-            if dict.keys.contains("IsSuggestUpdate") {
-                self.isSuggestUpdate = dict["IsSuggestUpdate"] as! Int32
-            }
-            if dict.keys.contains("RegionNumSpec") {
-                self.regionNumSpec = dict["RegionNumSpec"] as! Int32
-            }
-            if dict.keys.contains("RegionNumUsed") {
-                self.regionNumUsed = dict["RegionNumUsed"] as! Int32
             }
             if dict.keys.contains("SensitiveDataIpNumSpec") {
                 self.sensitiveDataIpNumSpec = dict["SensitiveDataIpNumSpec"] as! Int64
@@ -12912,6 +12937,8 @@ public class DescribeRiskEventGroupRequest : Tea.TeaModel {
 
     public var firewallType: String?
 
+    public var isOnlyPrivateAssoc: String?
+
     public var lang: String?
 
     public var noLocation: String?
@@ -12980,6 +13007,9 @@ public class DescribeRiskEventGroupRequest : Tea.TeaModel {
         }
         if self.firewallType != nil {
             map["FirewallType"] = self.firewallType!
+        }
+        if self.isOnlyPrivateAssoc != nil {
+            map["IsOnlyPrivateAssoc"] = self.isOnlyPrivateAssoc!
         }
         if self.lang != nil {
             map["Lang"] = self.lang!
@@ -13050,6 +13080,9 @@ public class DescribeRiskEventGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FirewallType") {
             self.firewallType = dict["FirewallType"] as! String
+        }
+        if dict.keys.contains("IsOnlyPrivateAssoc") {
+            self.isOnlyPrivateAssoc = dict["IsOnlyPrivateAssoc"] as! String
         }
         if dict.keys.contains("Lang") {
             self.lang = dict["Lang"] as! String
