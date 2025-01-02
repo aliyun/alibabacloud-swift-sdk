@@ -598,6 +598,51 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDialogAnalysisResultWithOptions(_ workspaceId: String, _ request: GetDialogAnalysisResultRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDialogAnalysisResultResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.asc)) {
+            body["asc"] = request.asc!;
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            body["endTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionIds)) {
+            body["sessionIds"] = request.sessionIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            body["startTime"] = request.startTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.useUrl)) {
+            body["useUrl"] = request.useUrl!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetDialogAnalysisResult",
+            "version": "2024-06-28",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/api/virtualHuman/dialog/analysis",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetDialogAnalysisResultResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDialogAnalysisResult(_ workspaceId: String, _ request: GetDialogAnalysisResultRequest) async throws -> GetDialogAnalysisResultResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getDialogAnalysisResultWithOptions(workspaceId as! String, request as! GetDialogAnalysisResultRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getDocumentChunkListWithOptions(_ workspaceId: String, _ request: GetDocumentChunkListRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDocumentChunkListResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
