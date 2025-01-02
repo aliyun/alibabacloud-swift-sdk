@@ -43648,6 +43648,8 @@ public class UpgradeEngineVersionRequest : Tea.TeaModel {
 
     public var dryRun: Bool?
 
+    public var updateStrategy: String?
+
     public override init() {
         super.init()
     }
@@ -43681,6 +43683,9 @@ public class UpgradeEngineVersionRequest : Tea.TeaModel {
         if self.dryRun != nil {
             map["dryRun"] = self.dryRun!
         }
+        if self.updateStrategy != nil {
+            map["updateStrategy"] = self.updateStrategy!
+        }
         return map
     }
 
@@ -43707,6 +43712,9 @@ public class UpgradeEngineVersionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("dryRun") {
             self.dryRun = dict["dryRun"] as! Bool
+        }
+        if dict.keys.contains("updateStrategy") {
+            self.updateStrategy = dict["updateStrategy"] as! String
         }
     }
 }

@@ -6879,6 +6879,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["dryRun"] = request.dryRun!;
         }
+        if (!TeaUtils.Client.isUnset(request.updateStrategy)) {
+            query["updateStrategy"] = request.updateStrategy ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.plugins)) {
             body["plugins"] = request.plugins ?? [];
