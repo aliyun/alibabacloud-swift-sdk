@@ -12021,6 +12021,452 @@ public class DescribeSecurityIpsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeSlowLogRecordsRequest : Tea.TeaModel {
+    public var characterType: String?
+
+    public var DBInstanceName: String?
+
+    public var DBName: String?
+
+    public var DBNodeIds: String?
+
+    public var endTime: String?
+
+    public var page: Int32?
+
+    public var pageSize: Int32?
+
+    public var regionId: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.characterType != nil {
+            map["CharacterType"] = self.characterType!
+        }
+        if self.DBInstanceName != nil {
+            map["DBInstanceName"] = self.DBInstanceName!
+        }
+        if self.DBName != nil {
+            map["DBName"] = self.DBName!
+        }
+        if self.DBNodeIds != nil {
+            map["DBNodeIds"] = self.DBNodeIds!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.page != nil {
+            map["Page"] = self.page!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CharacterType") {
+            self.characterType = dict["CharacterType"] as! String
+        }
+        if dict.keys.contains("DBInstanceName") {
+            self.DBInstanceName = dict["DBInstanceName"] as! String
+        }
+        if dict.keys.contains("DBName") {
+            self.DBName = dict["DBName"] as! String
+        }
+        if dict.keys.contains("DBNodeIds") {
+            self.DBNodeIds = dict["DBNodeIds"] as! String
+        }
+        if dict.keys.contains("EndTime") {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("Page") {
+            self.page = dict["Page"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("StartTime") {
+            self.startTime = dict["StartTime"] as! String
+        }
+    }
+}
+
+public class DescribeSlowLogRecordsResponseBody : Tea.TeaModel {
+    public class Items : Tea.TeaModel {
+        public var CNname: String?
+
+        public var DBName: String?
+
+        public var extension_: String?
+
+        public var fail: String?
+
+        public var frows: String?
+
+        public var hostAddress: String?
+
+        public var insName: String?
+
+        public var isBind: String?
+
+        public var lockTimeMS: String?
+
+        public var params: String?
+
+        public var parseRowCounts: String?
+
+        public var queryStartTime: String?
+
+        public var queryTime: String?
+
+        public var queryTimeMS: String?
+
+        public var returnRowCounts: String?
+
+        public var rows: String?
+
+        public var SCNT: String?
+
+        public var SQLHash: String?
+
+        public var SQLText: String?
+
+        public var sqlType: String?
+
+        public var tooLong: String?
+
+        public var traceId: String?
+
+        public var transactionPolicy: String?
+
+        public var trxId: String?
+
+        public var WT: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.CNname != nil {
+                map["CNname"] = self.CNname!
+            }
+            if self.DBName != nil {
+                map["DBName"] = self.DBName!
+            }
+            if self.extension_ != nil {
+                map["Extension"] = self.extension_!
+            }
+            if self.fail != nil {
+                map["Fail"] = self.fail!
+            }
+            if self.frows != nil {
+                map["Frows"] = self.frows!
+            }
+            if self.hostAddress != nil {
+                map["HostAddress"] = self.hostAddress!
+            }
+            if self.insName != nil {
+                map["InsName"] = self.insName!
+            }
+            if self.isBind != nil {
+                map["IsBind"] = self.isBind!
+            }
+            if self.lockTimeMS != nil {
+                map["LockTimeMS"] = self.lockTimeMS!
+            }
+            if self.params != nil {
+                map["Params"] = self.params!
+            }
+            if self.parseRowCounts != nil {
+                map["ParseRowCounts"] = self.parseRowCounts!
+            }
+            if self.queryStartTime != nil {
+                map["QueryStartTime"] = self.queryStartTime!
+            }
+            if self.queryTime != nil {
+                map["QueryTime"] = self.queryTime!
+            }
+            if self.queryTimeMS != nil {
+                map["QueryTimeMS"] = self.queryTimeMS!
+            }
+            if self.returnRowCounts != nil {
+                map["ReturnRowCounts"] = self.returnRowCounts!
+            }
+            if self.rows != nil {
+                map["Rows"] = self.rows!
+            }
+            if self.SCNT != nil {
+                map["SCNT"] = self.SCNT!
+            }
+            if self.SQLHash != nil {
+                map["SQLHash"] = self.SQLHash!
+            }
+            if self.SQLText != nil {
+                map["SQLText"] = self.SQLText!
+            }
+            if self.sqlType != nil {
+                map["SqlType"] = self.sqlType!
+            }
+            if self.tooLong != nil {
+                map["TooLong"] = self.tooLong!
+            }
+            if self.traceId != nil {
+                map["TraceId"] = self.traceId!
+            }
+            if self.transactionPolicy != nil {
+                map["TransactionPolicy"] = self.transactionPolicy!
+            }
+            if self.trxId != nil {
+                map["TrxId"] = self.trxId!
+            }
+            if self.WT != nil {
+                map["WT"] = self.WT!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CNname") {
+                self.CNname = dict["CNname"] as! String
+            }
+            if dict.keys.contains("DBName") {
+                self.DBName = dict["DBName"] as! String
+            }
+            if dict.keys.contains("Extension") {
+                self.extension_ = dict["Extension"] as! String
+            }
+            if dict.keys.contains("Fail") {
+                self.fail = dict["Fail"] as! String
+            }
+            if dict.keys.contains("Frows") {
+                self.frows = dict["Frows"] as! String
+            }
+            if dict.keys.contains("HostAddress") {
+                self.hostAddress = dict["HostAddress"] as! String
+            }
+            if dict.keys.contains("InsName") {
+                self.insName = dict["InsName"] as! String
+            }
+            if dict.keys.contains("IsBind") {
+                self.isBind = dict["IsBind"] as! String
+            }
+            if dict.keys.contains("LockTimeMS") {
+                self.lockTimeMS = dict["LockTimeMS"] as! String
+            }
+            if dict.keys.contains("Params") {
+                self.params = dict["Params"] as! String
+            }
+            if dict.keys.contains("ParseRowCounts") {
+                self.parseRowCounts = dict["ParseRowCounts"] as! String
+            }
+            if dict.keys.contains("QueryStartTime") {
+                self.queryStartTime = dict["QueryStartTime"] as! String
+            }
+            if dict.keys.contains("QueryTime") {
+                self.queryTime = dict["QueryTime"] as! String
+            }
+            if dict.keys.contains("QueryTimeMS") {
+                self.queryTimeMS = dict["QueryTimeMS"] as! String
+            }
+            if dict.keys.contains("ReturnRowCounts") {
+                self.returnRowCounts = dict["ReturnRowCounts"] as! String
+            }
+            if dict.keys.contains("Rows") {
+                self.rows = dict["Rows"] as! String
+            }
+            if dict.keys.contains("SCNT") {
+                self.SCNT = dict["SCNT"] as! String
+            }
+            if dict.keys.contains("SQLHash") {
+                self.SQLHash = dict["SQLHash"] as! String
+            }
+            if dict.keys.contains("SQLText") {
+                self.SQLText = dict["SQLText"] as! String
+            }
+            if dict.keys.contains("SqlType") {
+                self.sqlType = dict["SqlType"] as! String
+            }
+            if dict.keys.contains("TooLong") {
+                self.tooLong = dict["TooLong"] as! String
+            }
+            if dict.keys.contains("TraceId") {
+                self.traceId = dict["TraceId"] as! String
+            }
+            if dict.keys.contains("TransactionPolicy") {
+                self.transactionPolicy = dict["TransactionPolicy"] as! String
+            }
+            if dict.keys.contains("TrxId") {
+                self.trxId = dict["TrxId"] as! String
+            }
+            if dict.keys.contains("WT") {
+                self.WT = dict["WT"] as! String
+            }
+        }
+    }
+    public var DBInstanceId: String?
+
+    public var items: [DescribeSlowLogRecordsResponseBody.Items]?
+
+    public var pageNumber: String?
+
+    public var pageRecordCount: String?
+
+    public var requestId: String?
+
+    public var totalCount: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.items != nil {
+            var tmp : [Any] = []
+            for k in self.items! {
+                tmp.append(k.toMap())
+            }
+            map["Items"] = tmp
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageRecordCount != nil {
+            map["PageRecordCount"] = self.pageRecordCount!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBInstanceId") {
+            self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("Items") {
+            var tmp : [DescribeSlowLogRecordsResponseBody.Items] = []
+            for v in dict["Items"] as! [Any] {
+                var model = DescribeSlowLogRecordsResponseBody.Items()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.items = tmp
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! String
+        }
+        if dict.keys.contains("PageRecordCount") {
+            self.pageRecordCount = dict["PageRecordCount"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! String
+        }
+    }
+}
+
+public class DescribeSlowLogRecordsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeSlowLogRecordsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeSlowLogRecordsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeTagsRequest : Tea.TeaModel {
     public var DBInstanceName: String?
 
