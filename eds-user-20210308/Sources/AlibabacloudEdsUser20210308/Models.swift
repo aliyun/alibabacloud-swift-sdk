@@ -158,7 +158,7 @@ public class ThirdApp : Tea.TeaModel {
 
         public var grantTypes: [String]?
 
-        public var idTokenAlgorithmType: Int32?
+        public var idTokenAlgorithmType: String?
 
         public var idTokenEffectiveTime: Int32?
 
@@ -236,7 +236,7 @@ public class ThirdApp : Tea.TeaModel {
                 self.grantTypes = dict["GrantTypes"] as! [String]
             }
             if dict.keys.contains("IdTokenAlgorithmType") {
-                self.idTokenAlgorithmType = dict["IdTokenAlgorithmType"] as! Int32
+                self.idTokenAlgorithmType = dict["IdTokenAlgorithmType"] as! String
             }
             if dict.keys.contains("IdTokenEffectiveTime") {
                 self.idTokenEffectiveTime = dict["IdTokenEffectiveTime"] as! Int32
@@ -2269,6 +2269,8 @@ public class DescribeUsersRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var isQueryAllSubOrgs: Bool?
+
     public var maxResults: Int64?
 
     public var nextToken: String?
@@ -2311,6 +2313,9 @@ public class DescribeUsersRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.isQueryAllSubOrgs != nil {
+            map["IsQueryAllSubOrgs"] = self.isQueryAllSubOrgs!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -2348,6 +2353,9 @@ public class DescribeUsersRequest : Tea.TeaModel {
         if dict.keys.contains("GroupId") {
             self.groupId = dict["GroupId"] as! String
         }
+        if dict.keys.contains("IsQueryAllSubOrgs") {
+            self.isQueryAllSubOrgs = dict["IsQueryAllSubOrgs"] as! Bool
+        }
         if dict.keys.contains("MaxResults") {
             self.maxResults = dict["MaxResults"] as! Int64
         }
@@ -2378,6 +2386,8 @@ public class DescribeUsersShrinkRequest : Tea.TeaModel {
     public var filterWithAssignedResourcesShrink: String?
 
     public var groupId: String?
+
+    public var isQueryAllSubOrgs: Bool?
 
     public var maxResults: Int64?
 
@@ -2421,6 +2431,9 @@ public class DescribeUsersShrinkRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.isQueryAllSubOrgs != nil {
+            map["IsQueryAllSubOrgs"] = self.isQueryAllSubOrgs!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -2457,6 +2470,9 @@ public class DescribeUsersShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("IsQueryAllSubOrgs") {
+            self.isQueryAllSubOrgs = dict["IsQueryAllSubOrgs"] as! Bool
         }
         if dict.keys.contains("MaxResults") {
             self.maxResults = dict["MaxResults"] as! Int64

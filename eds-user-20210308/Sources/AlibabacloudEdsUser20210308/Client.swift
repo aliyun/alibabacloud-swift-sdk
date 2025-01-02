@@ -393,6 +393,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.groupId)) {
             body["GroupId"] = request.groupId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.isQueryAllSubOrgs)) {
+            body["IsQueryAllSubOrgs"] = request.isQueryAllSubOrgs!;
+        }
         if (!TeaUtils.Client.isUnset(request.orgId)) {
             body["OrgId"] = request.orgId ?? "";
         }
