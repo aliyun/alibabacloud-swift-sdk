@@ -47081,6 +47081,213 @@ public class SubmitEnterpriseVocAnalysisTaskResponse : Tea.TeaModel {
 
 public class SubmitSmartClipTaskRequest : Tea.TeaModel {
     public class EditingConfig : Tea.TeaModel {
+        public class BackgroundMusicConfig : Tea.TeaModel {
+            public var style: String?
+
+            public var volume: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.style != nil {
+                    map["Style"] = self.style!
+                }
+                if self.volume != nil {
+                    map["Volume"] = self.volume!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Style") {
+                    self.style = dict["Style"] as! String
+                }
+                if dict.keys.contains("Volume") {
+                    self.volume = dict["Volume"] as! Double
+                }
+            }
+        }
+        public class MediaConfig : Tea.TeaModel {
+            public var volume: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.volume != nil {
+                    map["Volume"] = self.volume!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Volume") {
+                    self.volume = dict["Volume"] as! Double
+                }
+            }
+        }
+        public class SpeechConfig : Tea.TeaModel {
+            public class AsrConfig : Tea.TeaModel {
+                public var alignment: String?
+
+                public var font: String?
+
+                public var fontColor: String?
+
+                public var fontSize: String?
+
+                public var spacing: String?
+
+                public var x: Double?
+
+                public var y: Double?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.alignment != nil {
+                        map["Alignment"] = self.alignment!
+                    }
+                    if self.font != nil {
+                        map["Font"] = self.font!
+                    }
+                    if self.fontColor != nil {
+                        map["FontColor"] = self.fontColor!
+                    }
+                    if self.fontSize != nil {
+                        map["FontSize"] = self.fontSize!
+                    }
+                    if self.spacing != nil {
+                        map["Spacing"] = self.spacing!
+                    }
+                    if self.x != nil {
+                        map["X"] = self.x!
+                    }
+                    if self.y != nil {
+                        map["Y"] = self.y!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Alignment") {
+                        self.alignment = dict["Alignment"] as! String
+                    }
+                    if dict.keys.contains("Font") {
+                        self.font = dict["Font"] as! String
+                    }
+                    if dict.keys.contains("FontColor") {
+                        self.fontColor = dict["FontColor"] as! String
+                    }
+                    if dict.keys.contains("FontSize") {
+                        self.fontSize = dict["FontSize"] as! String
+                    }
+                    if dict.keys.contains("Spacing") {
+                        self.spacing = dict["Spacing"] as! String
+                    }
+                    if dict.keys.contains("X") {
+                        self.x = dict["X"] as! Double
+                    }
+                    if dict.keys.contains("Y") {
+                        self.y = dict["Y"] as! Double
+                    }
+                }
+            }
+            public var asrConfig: SubmitSmartClipTaskRequest.EditingConfig.SpeechConfig.AsrConfig?
+
+            public var speechRate: Double?
+
+            public var style: String?
+
+            public var voice: String?
+
+            public var volume: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.asrConfig?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.asrConfig != nil {
+                    map["AsrConfig"] = self.asrConfig?.toMap()
+                }
+                if self.speechRate != nil {
+                    map["SpeechRate"] = self.speechRate!
+                }
+                if self.style != nil {
+                    map["Style"] = self.style!
+                }
+                if self.voice != nil {
+                    map["Voice"] = self.voice!
+                }
+                if self.volume != nil {
+                    map["Volume"] = self.volume!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AsrConfig") {
+                    var model = SubmitSmartClipTaskRequest.EditingConfig.SpeechConfig.AsrConfig()
+                    model.fromMap(dict["AsrConfig"] as! [String: Any])
+                    self.asrConfig = model
+                }
+                if dict.keys.contains("SpeechRate") {
+                    self.speechRate = dict["SpeechRate"] as! Double
+                }
+                if dict.keys.contains("Style") {
+                    self.style = dict["Style"] as! String
+                }
+                if dict.keys.contains("Voice") {
+                    self.voice = dict["Voice"] as! String
+                }
+                if dict.keys.contains("Volume") {
+                    self.volume = dict["Volume"] as! Double
+                }
+            }
+        }
         public class TitleConfig : Tea.TeaModel {
             public var alignment: String?
 
@@ -47142,6 +47349,12 @@ public class SubmitSmartClipTaskRequest : Tea.TeaModel {
                 }
             }
         }
+        public var backgroundMusicConfig: SubmitSmartClipTaskRequest.EditingConfig.BackgroundMusicConfig?
+
+        public var mediaConfig: SubmitSmartClipTaskRequest.EditingConfig.MediaConfig?
+
+        public var speechConfig: SubmitSmartClipTaskRequest.EditingConfig.SpeechConfig?
+
         public var titleConfig: SubmitSmartClipTaskRequest.EditingConfig.TitleConfig?
 
         public override init() {
@@ -47154,11 +47367,23 @@ public class SubmitSmartClipTaskRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.backgroundMusicConfig?.validate()
+            try self.mediaConfig?.validate()
+            try self.speechConfig?.validate()
             try self.titleConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.backgroundMusicConfig != nil {
+                map["BackgroundMusicConfig"] = self.backgroundMusicConfig?.toMap()
+            }
+            if self.mediaConfig != nil {
+                map["MediaConfig"] = self.mediaConfig?.toMap()
+            }
+            if self.speechConfig != nil {
+                map["SpeechConfig"] = self.speechConfig?.toMap()
+            }
             if self.titleConfig != nil {
                 map["TitleConfig"] = self.titleConfig?.toMap()
             }
@@ -47166,6 +47391,21 @@ public class SubmitSmartClipTaskRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BackgroundMusicConfig") {
+                var model = SubmitSmartClipTaskRequest.EditingConfig.BackgroundMusicConfig()
+                model.fromMap(dict["BackgroundMusicConfig"] as! [String: Any])
+                self.backgroundMusicConfig = model
+            }
+            if dict.keys.contains("MediaConfig") {
+                var model = SubmitSmartClipTaskRequest.EditingConfig.MediaConfig()
+                model.fromMap(dict["MediaConfig"] as! [String: Any])
+                self.mediaConfig = model
+            }
+            if dict.keys.contains("SpeechConfig") {
+                var model = SubmitSmartClipTaskRequest.EditingConfig.SpeechConfig()
+                model.fromMap(dict["SpeechConfig"] as! [String: Any])
+                self.speechConfig = model
+            }
             if dict.keys.contains("TitleConfig") {
                 var model = SubmitSmartClipTaskRequest.EditingConfig.TitleConfig()
                 model.fromMap(dict["TitleConfig"] as! [String: Any])
@@ -47516,6 +47756,8 @@ public class SubmitSmartClipTaskRequest : Tea.TeaModel {
     }
     public var editingConfig: SubmitSmartClipTaskRequest.EditingConfig?
 
+    public var extendParam: String?
+
     public var inputConfig: SubmitSmartClipTaskRequest.InputConfig?
 
     public var outputConfig: SubmitSmartClipTaskRequest.OutputConfig?
@@ -47542,6 +47784,9 @@ public class SubmitSmartClipTaskRequest : Tea.TeaModel {
         if self.editingConfig != nil {
             map["EditingConfig"] = self.editingConfig?.toMap()
         }
+        if self.extendParam != nil {
+            map["ExtendParam"] = self.extendParam!
+        }
         if self.inputConfig != nil {
             map["InputConfig"] = self.inputConfig?.toMap()
         }
@@ -47559,6 +47804,9 @@ public class SubmitSmartClipTaskRequest : Tea.TeaModel {
             var model = SubmitSmartClipTaskRequest.EditingConfig()
             model.fromMap(dict["EditingConfig"] as! [String: Any])
             self.editingConfig = model
+        }
+        if dict.keys.contains("ExtendParam") {
+            self.extendParam = dict["ExtendParam"] as! String
         }
         if dict.keys.contains("InputConfig") {
             var model = SubmitSmartClipTaskRequest.InputConfig()
@@ -47578,6 +47826,8 @@ public class SubmitSmartClipTaskRequest : Tea.TeaModel {
 
 public class SubmitSmartClipTaskShrinkRequest : Tea.TeaModel {
     public var editingConfigShrink: String?
+
+    public var extendParam: String?
 
     public var inputConfigShrink: String?
 
@@ -47602,6 +47852,9 @@ public class SubmitSmartClipTaskShrinkRequest : Tea.TeaModel {
         if self.editingConfigShrink != nil {
             map["EditingConfig"] = self.editingConfigShrink!
         }
+        if self.extendParam != nil {
+            map["ExtendParam"] = self.extendParam!
+        }
         if self.inputConfigShrink != nil {
             map["InputConfig"] = self.inputConfigShrink!
         }
@@ -47617,6 +47870,9 @@ public class SubmitSmartClipTaskShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("EditingConfig") {
             self.editingConfigShrink = dict["EditingConfig"] as! String
+        }
+        if dict.keys.contains("ExtendParam") {
+            self.extendParam = dict["ExtendParam"] as! String
         }
         if dict.keys.contains("InputConfig") {
             self.inputConfigShrink = dict["InputConfig"] as! String

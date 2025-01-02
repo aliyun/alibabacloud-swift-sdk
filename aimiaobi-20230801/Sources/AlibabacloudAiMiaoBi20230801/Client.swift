@@ -5092,6 +5092,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.editingConfigShrink)) {
             body["EditingConfig"] = request.editingConfigShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.extendParam)) {
+            body["ExtendParam"] = request.extendParam ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.inputConfigShrink)) {
             body["InputConfig"] = request.inputConfigShrink ?? "";
         }
