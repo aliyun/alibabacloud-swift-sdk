@@ -175,6 +175,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDiagnosticTaskWithOptions(_ tmpReq: CreateDiagnosticTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDiagnosticTaskResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateDiagnosticTaskShrinkRequest = CreateDiagnosticTaskShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.aiJobLogInfo)) {
+            request.aiJobLogInfoShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.aiJobLogInfo, "AiJobLogInfo", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.nodeIds)) {
+            request.nodeIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.nodeIds, "NodeIds", "simple")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aiJobLogInfoShrink)) {
+            body["AiJobLogInfo"] = request.aiJobLogInfoShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clusterId)) {
+            body["ClusterId"] = request.clusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.diagnosticType)) {
+            body["DiagnosticType"] = request.diagnosticType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeIdsShrink)) {
+            body["NodeIds"] = request.nodeIdsShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateDiagnosticTask",
+            "version": "2022-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateDiagnosticTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDiagnosticTask(_ request: CreateDiagnosticTaskRequest) async throws -> CreateDiagnosticTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createDiagnosticTaskWithOptions(request as! CreateDiagnosticTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteClusterWithOptions(_ request: DeleteClusterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteClusterResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -759,6 +807,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.commandContent)) {
             body["CommandContent"] = request.commandContent ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.commandId)) {
+            body["CommandId"] = request.commandId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.contentEncoding)) {
             body["ContentEncoding"] = request.contentEncoding ?? "";
         }
@@ -771,6 +822,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.frequency)) {
             body["Frequency"] = request.frequency ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.launcher)) {
+            body["Launcher"] = request.launcher ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.name)) {
             body["Name"] = request.name ?? "";
         }
@@ -782,6 +836,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.repeatMode)) {
             body["RepeatMode"] = request.repeatMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.terminationMode)) {
+            body["TerminationMode"] = request.terminationMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.timeout)) {
             body["Timeout"] = request.timeout!;

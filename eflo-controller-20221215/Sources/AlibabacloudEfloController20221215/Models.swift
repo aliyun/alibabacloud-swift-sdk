@@ -1542,6 +1542,355 @@ public class CreateClusterResponse : Tea.TeaModel {
     }
 }
 
+public class CreateDiagnosticTaskRequest : Tea.TeaModel {
+    public class AiJobLogInfo : Tea.TeaModel {
+        public class AiJobLogs : Tea.TeaModel {
+            public class Logs : Tea.TeaModel {
+                public var datetime: String?
+
+                public var logContent: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.datetime != nil {
+                        map["Datetime"] = self.datetime!
+                    }
+                    if self.logContent != nil {
+                        map["LogContent"] = self.logContent!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Datetime") {
+                        self.datetime = dict["Datetime"] as! String
+                    }
+                    if dict.keys.contains("LogContent") {
+                        self.logContent = dict["LogContent"] as! String
+                    }
+                }
+            }
+            public var aiInstance: String?
+
+            public var logs: [CreateDiagnosticTaskRequest.AiJobLogInfo.AiJobLogs.Logs]?
+
+            public var nodeId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.aiInstance != nil {
+                    map["AiInstance"] = self.aiInstance!
+                }
+                if self.logs != nil {
+                    var tmp : [Any] = []
+                    for k in self.logs! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Logs"] = tmp
+                }
+                if self.nodeId != nil {
+                    map["NodeId"] = self.nodeId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AiInstance") {
+                    self.aiInstance = dict["AiInstance"] as! String
+                }
+                if dict.keys.contains("Logs") {
+                    var tmp : [CreateDiagnosticTaskRequest.AiJobLogInfo.AiJobLogs.Logs] = []
+                    for v in dict["Logs"] as! [Any] {
+                        var model = CreateDiagnosticTaskRequest.AiJobLogInfo.AiJobLogs.Logs()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.logs = tmp
+                }
+                if dict.keys.contains("NodeId") {
+                    self.nodeId = dict["NodeId"] as! String
+                }
+            }
+        }
+        public var aiJobLogs: [CreateDiagnosticTaskRequest.AiJobLogInfo.AiJobLogs]?
+
+        public var endTime: String?
+
+        public var startTime: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aiJobLogs != nil {
+                var tmp : [Any] = []
+                for k in self.aiJobLogs! {
+                    tmp.append(k.toMap())
+                }
+                map["AiJobLogs"] = tmp
+            }
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AiJobLogs") {
+                var tmp : [CreateDiagnosticTaskRequest.AiJobLogInfo.AiJobLogs] = []
+                for v in dict["AiJobLogs"] as! [Any] {
+                    var model = CreateDiagnosticTaskRequest.AiJobLogInfo.AiJobLogs()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.aiJobLogs = tmp
+            }
+            if dict.keys.contains("EndTime") {
+                self.endTime = dict["EndTime"] as! String
+            }
+            if dict.keys.contains("StartTime") {
+                self.startTime = dict["StartTime"] as! String
+            }
+        }
+    }
+    public var aiJobLogInfo: CreateDiagnosticTaskRequest.AiJobLogInfo?
+
+    public var clusterId: String?
+
+    public var diagnosticType: String?
+
+    public var nodeIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.aiJobLogInfo?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.aiJobLogInfo != nil {
+            map["AiJobLogInfo"] = self.aiJobLogInfo?.toMap()
+        }
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.diagnosticType != nil {
+            map["DiagnosticType"] = self.diagnosticType!
+        }
+        if self.nodeIds != nil {
+            map["NodeIds"] = self.nodeIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AiJobLogInfo") {
+            var model = CreateDiagnosticTaskRequest.AiJobLogInfo()
+            model.fromMap(dict["AiJobLogInfo"] as! [String: Any])
+            self.aiJobLogInfo = model
+        }
+        if dict.keys.contains("ClusterId") {
+            self.clusterId = dict["ClusterId"] as! String
+        }
+        if dict.keys.contains("DiagnosticType") {
+            self.diagnosticType = dict["DiagnosticType"] as! String
+        }
+        if dict.keys.contains("NodeIds") {
+            self.nodeIds = dict["NodeIds"] as! [String]
+        }
+    }
+}
+
+public class CreateDiagnosticTaskShrinkRequest : Tea.TeaModel {
+    public var aiJobLogInfoShrink: String?
+
+    public var clusterId: String?
+
+    public var diagnosticType: String?
+
+    public var nodeIdsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.aiJobLogInfoShrink != nil {
+            map["AiJobLogInfo"] = self.aiJobLogInfoShrink!
+        }
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.diagnosticType != nil {
+            map["DiagnosticType"] = self.diagnosticType!
+        }
+        if self.nodeIdsShrink != nil {
+            map["NodeIds"] = self.nodeIdsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AiJobLogInfo") {
+            self.aiJobLogInfoShrink = dict["AiJobLogInfo"] as! String
+        }
+        if dict.keys.contains("ClusterId") {
+            self.clusterId = dict["ClusterId"] as! String
+        }
+        if dict.keys.contains("DiagnosticType") {
+            self.diagnosticType = dict["DiagnosticType"] as! String
+        }
+        if dict.keys.contains("NodeIds") {
+            self.nodeIdsShrink = dict["NodeIds"] as! String
+        }
+    }
+}
+
+public class CreateDiagnosticTaskResponseBody : Tea.TeaModel {
+    public var diagnosticId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.diagnosticId != nil {
+            map["DiagnosticId"] = self.diagnosticId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DiagnosticId") {
+            self.diagnosticId = dict["DiagnosticId"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateDiagnosticTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateDiagnosticTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateDiagnosticTaskResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DeleteClusterRequest : Tea.TeaModel {
     public var clusterId: String?
 
@@ -6274,6 +6623,8 @@ public class RunCommandRequest : Tea.TeaModel {
 
     public var commandContent: String?
 
+    public var commandId: String?
+
     public var contentEncoding: String?
 
     public var description_: String?
@@ -6282,6 +6633,8 @@ public class RunCommandRequest : Tea.TeaModel {
 
     public var frequency: String?
 
+    public var launcher: String?
+
     public var name: String?
 
     public var nodeIdList: [String]?
@@ -6289,6 +6642,8 @@ public class RunCommandRequest : Tea.TeaModel {
     public var parameters: [String: Any]?
 
     public var repeatMode: String?
+
+    public var terminationMode: String?
 
     public var timeout: Int32?
 
@@ -6316,6 +6671,9 @@ public class RunCommandRequest : Tea.TeaModel {
         if self.commandContent != nil {
             map["CommandContent"] = self.commandContent!
         }
+        if self.commandId != nil {
+            map["CommandId"] = self.commandId!
+        }
         if self.contentEncoding != nil {
             map["ContentEncoding"] = self.contentEncoding!
         }
@@ -6328,6 +6686,9 @@ public class RunCommandRequest : Tea.TeaModel {
         if self.frequency != nil {
             map["Frequency"] = self.frequency!
         }
+        if self.launcher != nil {
+            map["Launcher"] = self.launcher!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -6339,6 +6700,9 @@ public class RunCommandRequest : Tea.TeaModel {
         }
         if self.repeatMode != nil {
             map["RepeatMode"] = self.repeatMode!
+        }
+        if self.terminationMode != nil {
+            map["TerminationMode"] = self.terminationMode!
         }
         if self.timeout != nil {
             map["Timeout"] = self.timeout!
@@ -6359,6 +6723,9 @@ public class RunCommandRequest : Tea.TeaModel {
         if dict.keys.contains("CommandContent") {
             self.commandContent = dict["CommandContent"] as! String
         }
+        if dict.keys.contains("CommandId") {
+            self.commandId = dict["CommandId"] as! String
+        }
         if dict.keys.contains("ContentEncoding") {
             self.contentEncoding = dict["ContentEncoding"] as! String
         }
@@ -6371,6 +6738,9 @@ public class RunCommandRequest : Tea.TeaModel {
         if dict.keys.contains("Frequency") {
             self.frequency = dict["Frequency"] as! String
         }
+        if dict.keys.contains("Launcher") {
+            self.launcher = dict["Launcher"] as! String
+        }
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
         }
@@ -6382,6 +6752,9 @@ public class RunCommandRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RepeatMode") {
             self.repeatMode = dict["RepeatMode"] as! String
+        }
+        if dict.keys.contains("TerminationMode") {
+            self.terminationMode = dict["TerminationMode"] as! String
         }
         if dict.keys.contains("Timeout") {
             self.timeout = dict["Timeout"] as! Int32
@@ -6400,6 +6773,8 @@ public class RunCommandShrinkRequest : Tea.TeaModel {
 
     public var commandContent: String?
 
+    public var commandId: String?
+
     public var contentEncoding: String?
 
     public var description_: String?
@@ -6408,6 +6783,8 @@ public class RunCommandShrinkRequest : Tea.TeaModel {
 
     public var frequency: String?
 
+    public var launcher: String?
+
     public var name: String?
 
     public var nodeIdListShrink: String?
@@ -6415,6 +6792,8 @@ public class RunCommandShrinkRequest : Tea.TeaModel {
     public var parametersShrink: String?
 
     public var repeatMode: String?
+
+    public var terminationMode: String?
 
     public var timeout: Int32?
 
@@ -6442,6 +6821,9 @@ public class RunCommandShrinkRequest : Tea.TeaModel {
         if self.commandContent != nil {
             map["CommandContent"] = self.commandContent!
         }
+        if self.commandId != nil {
+            map["CommandId"] = self.commandId!
+        }
         if self.contentEncoding != nil {
             map["ContentEncoding"] = self.contentEncoding!
         }
@@ -6454,6 +6836,9 @@ public class RunCommandShrinkRequest : Tea.TeaModel {
         if self.frequency != nil {
             map["Frequency"] = self.frequency!
         }
+        if self.launcher != nil {
+            map["Launcher"] = self.launcher!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -6465,6 +6850,9 @@ public class RunCommandShrinkRequest : Tea.TeaModel {
         }
         if self.repeatMode != nil {
             map["RepeatMode"] = self.repeatMode!
+        }
+        if self.terminationMode != nil {
+            map["TerminationMode"] = self.terminationMode!
         }
         if self.timeout != nil {
             map["Timeout"] = self.timeout!
@@ -6485,6 +6873,9 @@ public class RunCommandShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("CommandContent") {
             self.commandContent = dict["CommandContent"] as! String
         }
+        if dict.keys.contains("CommandId") {
+            self.commandId = dict["CommandId"] as! String
+        }
         if dict.keys.contains("ContentEncoding") {
             self.contentEncoding = dict["ContentEncoding"] as! String
         }
@@ -6497,6 +6888,9 @@ public class RunCommandShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("Frequency") {
             self.frequency = dict["Frequency"] as! String
         }
+        if dict.keys.contains("Launcher") {
+            self.launcher = dict["Launcher"] as! String
+        }
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
         }
@@ -6508,6 +6902,9 @@ public class RunCommandShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RepeatMode") {
             self.repeatMode = dict["RepeatMode"] as! String
+        }
+        if dict.keys.contains("TerminationMode") {
+            self.terminationMode = dict["TerminationMode"] as! String
         }
         if dict.keys.contains("Timeout") {
             self.timeout = dict["Timeout"] as! Int32
