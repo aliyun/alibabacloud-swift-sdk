@@ -4468,9 +4468,9 @@ public class GetAITeacherSyncDialogueSuggestionRequest : Tea.TeaModel {
 
 public class GetAITeacherSyncDialogueSuggestionResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
-        public var englishResult: String?
+        public var chineseResult: String?
 
-        public var englishResult1: String?
+        public var englishResult: String?
 
         public override init() {
             super.init()
@@ -4486,21 +4486,21 @@ public class GetAITeacherSyncDialogueSuggestionResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.chineseResult != nil {
+                map["chineseResult"] = self.chineseResult!
+            }
             if self.englishResult != nil {
                 map["englishResult"] = self.englishResult!
-            }
-            if self.englishResult1 != nil {
-                map["englishResult1"] = self.englishResult1!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("chineseResult") {
+                self.chineseResult = dict["chineseResult"] as! String
+            }
             if dict.keys.contains("englishResult") {
                 self.englishResult = dict["englishResult"] as! String
-            }
-            if dict.keys.contains("englishResult1") {
-                self.englishResult1 = dict["englishResult1"] as! String
             }
         }
     }
