@@ -2049,7 +2049,7 @@ public class DescribeInvocationsResponseBody : Tea.TeaModel {
 
                     public var dropped: Int32?
 
-                    public var errorCode: Bool?
+                    public var errorCode: String?
 
                     public var errorInfo: String?
 
@@ -2145,7 +2145,7 @@ public class DescribeInvocationsResponseBody : Tea.TeaModel {
                             self.dropped = dict["Dropped"] as! Int32
                         }
                         if dict.keys.contains("ErrorCode") {
-                            self.errorCode = dict["ErrorCode"] as! Bool
+                            self.errorCode = dict["ErrorCode"] as! String
                         }
                         if dict.keys.contains("ErrorInfo") {
                             self.errorInfo = dict["ErrorInfo"] as! String
