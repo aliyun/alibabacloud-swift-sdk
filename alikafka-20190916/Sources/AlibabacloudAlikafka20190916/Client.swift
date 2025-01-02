@@ -199,6 +199,75 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createPostPayInstanceWithOptions(_ tmpReq: CreatePostPayInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreatePostPayInstanceResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreatePostPayInstanceShrinkRequest = CreatePostPayInstanceShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.serverlessConfig)) {
+            request.serverlessConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.serverlessConfig, "ServerlessConfig", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deployType)) {
+            query["DeployType"] = request.deployType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.diskSize)) {
+            query["DiskSize"] = request.diskSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.diskType)) {
+            query["DiskType"] = request.diskType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.eipMax)) {
+            query["EipMax"] = request.eipMax!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ioMaxSpec)) {
+            query["IoMaxSpec"] = request.ioMaxSpec ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.paidType)) {
+            query["PaidType"] = request.paidType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.partitionNum)) {
+            query["PartitionNum"] = request.partitionNum!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serverlessConfigShrink)) {
+            query["ServerlessConfig"] = request.serverlessConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.specType)) {
+            query["SpecType"] = request.specType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tag)) {
+            query["Tag"] = request.tag ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreatePostPayInstance",
+            "version": "2019-09-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreatePostPayInstanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createPostPayInstance(_ request: CreatePostPayInstanceRequest) async throws -> CreatePostPayInstanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createPostPayInstanceWithOptions(request as! CreatePostPayInstanceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createPostPayOrderWithOptions(_ tmpReq: CreatePostPayOrderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreatePostPayOrderResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreatePostPayOrderShrinkRequest = CreatePostPayOrderShrinkRequest([:])
@@ -271,6 +340,78 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createPostPayOrder(_ request: CreatePostPayOrderRequest) async throws -> CreatePostPayOrderResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await createPostPayOrderWithOptions(request as! CreatePostPayOrderRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createPrePayInstanceWithOptions(_ tmpReq: CreatePrePayInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreatePrePayInstanceResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreatePrePayInstanceShrinkRequest = CreatePrePayInstanceShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.confluentConfig)) {
+            request.confluentConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.confluentConfig, "ConfluentConfig", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.confluentConfigShrink)) {
+            query["ConfluentConfig"] = request.confluentConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.deployType)) {
+            query["DeployType"] = request.deployType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.diskSize)) {
+            query["DiskSize"] = request.diskSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.diskType)) {
+            query["DiskType"] = request.diskType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.duration)) {
+            query["Duration"] = request.duration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.eipMax)) {
+            query["EipMax"] = request.eipMax!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ioMaxSpec)) {
+            query["IoMaxSpec"] = request.ioMaxSpec ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.paidType)) {
+            query["PaidType"] = request.paidType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.partitionNum)) {
+            query["PartitionNum"] = request.partitionNum!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.specType)) {
+            query["SpecType"] = request.specType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tag)) {
+            query["Tag"] = request.tag ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreatePrePayInstance",
+            "version": "2019-09-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreatePrePayInstanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createPrePayInstance(_ request: CreatePrePayInstanceRequest) async throws -> CreatePrePayInstanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createPrePayInstanceWithOptions(request as! CreatePrePayInstanceRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -914,6 +1055,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.updatePartition)) {
+            query["UpdatePartition"] = request.updatePartition!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
