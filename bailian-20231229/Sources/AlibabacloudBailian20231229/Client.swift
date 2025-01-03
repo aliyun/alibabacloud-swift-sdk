@@ -279,6 +279,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.structureType)) {
             query["StructureType"] = request.structureType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.enableHeaders)) {
+            query["enableHeaders"] = request.enableHeaders!;
+        }
         if (!TeaUtils.Client.isUnset(request.metaExtractColumnsShrink)) {
             query["metaExtractColumns"] = request.metaExtractColumnsShrink ?? "";
         }

@@ -1777,6 +1777,8 @@ public class CreateIndexRequest : Tea.TeaModel {
 
     public var structureType: String?
 
+    public var enableHeaders: Bool?
+
     public var metaExtractColumns: [CreateIndexRequest.MetaExtractColumns]?
 
     public override init() {
@@ -1848,6 +1850,9 @@ public class CreateIndexRequest : Tea.TeaModel {
         }
         if self.structureType != nil {
             map["StructureType"] = self.structureType!
+        }
+        if self.enableHeaders != nil {
+            map["enableHeaders"] = self.enableHeaders!
         }
         if self.metaExtractColumns != nil {
             var tmp : [Any] = []
@@ -1921,6 +1926,9 @@ public class CreateIndexRequest : Tea.TeaModel {
         if dict.keys.contains("StructureType") {
             self.structureType = dict["StructureType"] as! String
         }
+        if dict.keys.contains("enableHeaders") {
+            self.enableHeaders = dict["enableHeaders"] as! Bool
+        }
         if dict.keys.contains("metaExtractColumns") {
             var tmp : [CreateIndexRequest.MetaExtractColumns] = []
             for v in dict["metaExtractColumns"] as! [Any] {
@@ -1969,6 +1977,8 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
     public var sourceType: String?
 
     public var structureType: String?
+
+    public var enableHeaders: Bool?
 
     public var metaExtractColumnsShrink: String?
 
@@ -2037,6 +2047,9 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         if self.structureType != nil {
             map["StructureType"] = self.structureType!
         }
+        if self.enableHeaders != nil {
+            map["enableHeaders"] = self.enableHeaders!
+        }
         if self.metaExtractColumnsShrink != nil {
             map["metaExtractColumns"] = self.metaExtractColumnsShrink!
         }
@@ -2094,6 +2107,9 @@ public class CreateIndexShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("StructureType") {
             self.structureType = dict["StructureType"] as! String
+        }
+        if dict.keys.contains("enableHeaders") {
+            self.enableHeaders = dict["enableHeaders"] as! Bool
         }
         if dict.keys.contains("metaExtractColumns") {
             self.metaExtractColumnsShrink = dict["metaExtractColumns"] as! String
