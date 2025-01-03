@@ -6703,6 +6703,8 @@ public class DescribeEnterpriseSnapshotPolicyResponse : Tea.TeaModel {
 public class DescribeEventsRequest : Tea.TeaModel {
     public var endTime: String?
 
+    public var eventLevel: String?
+
     public var eventName: String?
 
     public var maxResults: Int32?
@@ -6736,6 +6738,9 @@ public class DescribeEventsRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.eventLevel != nil {
+            map["EventLevel"] = self.eventLevel!
+        }
         if self.eventName != nil {
             map["EventName"] = self.eventName!
         }
@@ -6766,6 +6771,9 @@ public class DescribeEventsRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("EndTime") {
             self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("EventLevel") {
+            self.eventLevel = dict["EventLevel"] as! String
         }
         if dict.keys.contains("EventName") {
             self.eventName = dict["EventName"] as! String
@@ -6805,6 +6813,8 @@ public class DescribeEventsResponseBody : Tea.TeaModel {
         public var eventName: String?
 
         public var eventType: String?
+
+        public var extraAttributes: String?
 
         public var recommendAction: String?
 
@@ -6847,6 +6857,9 @@ public class DescribeEventsResponseBody : Tea.TeaModel {
             if self.eventType != nil {
                 map["EventType"] = self.eventType!
             }
+            if self.extraAttributes != nil {
+                map["ExtraAttributes"] = self.extraAttributes!
+            }
             if self.recommendAction != nil {
                 map["RecommendAction"] = self.recommendAction!
             }
@@ -6883,6 +6896,9 @@ public class DescribeEventsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("EventType") {
                 self.eventType = dict["EventType"] as! String
+            }
+            if dict.keys.contains("ExtraAttributes") {
+                self.extraAttributes = dict["ExtraAttributes"] as! String
             }
             if dict.keys.contains("RecommendAction") {
                 self.recommendAction = dict["RecommendAction"] as! String
@@ -7021,6 +7037,8 @@ public class DescribeEventsResponse : Tea.TeaModel {
 public class DescribeLensMonitorDisksRequest : Tea.TeaModel {
     public var diskCategory: String?
 
+    public var diskIdPattern: String?
+
     public var diskIds: [String]?
 
     public var lensTags: [String]?
@@ -7048,6 +7066,9 @@ public class DescribeLensMonitorDisksRequest : Tea.TeaModel {
         if self.diskCategory != nil {
             map["DiskCategory"] = self.diskCategory!
         }
+        if self.diskIdPattern != nil {
+            map["DiskIdPattern"] = self.diskIdPattern!
+        }
         if self.diskIds != nil {
             map["DiskIds"] = self.diskIds!
         }
@@ -7069,6 +7090,9 @@ public class DescribeLensMonitorDisksRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DiskCategory") {
             self.diskCategory = dict["DiskCategory"] as! String
+        }
+        if dict.keys.contains("DiskIdPattern") {
+            self.diskIdPattern = dict["DiskIdPattern"] as! String
         }
         if dict.keys.contains("DiskIds") {
             self.diskIds = dict["DiskIds"] as! [String]
