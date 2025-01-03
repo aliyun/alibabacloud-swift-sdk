@@ -4416,6 +4416,8 @@ public class GetSmsSignResponseBody : Tea.TeaModel {
 
     public var qualificationId: Int64?
 
+    public var registerResult: Int32?
+
     public var remark: String?
 
     public var requestId: String?
@@ -4471,6 +4473,9 @@ public class GetSmsSignResponseBody : Tea.TeaModel {
         if self.qualificationId != nil {
             map["QualificationId"] = self.qualificationId!
         }
+        if self.registerResult != nil {
+            map["RegisterResult"] = self.registerResult!
+        }
         if self.remark != nil {
             map["Remark"] = self.remark!
         }
@@ -4524,6 +4529,9 @@ public class GetSmsSignResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("QualificationId") {
             self.qualificationId = dict["QualificationId"] as! Int64
+        }
+        if dict.keys.contains("RegisterResult") {
+            self.registerResult = dict["RegisterResult"] as! Int32
         }
         if dict.keys.contains("Remark") {
             self.remark = dict["Remark"] as! String
