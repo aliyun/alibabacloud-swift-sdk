@@ -5056,6 +5056,35 @@ public class CreateTransitRouterEcrAttachmentResponse : Tea.TeaModel {
 }
 
 public class CreateTransitRouterMulticastDomainRequest : Tea.TeaModel {
+    public class Options : Tea.TeaModel {
+        public var igmpv2Support: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.igmpv2Support != nil {
+                map["Igmpv2Support"] = self.igmpv2Support!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Igmpv2Support") {
+                self.igmpv2Support = dict["Igmpv2Support"] as! String
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -5099,6 +5128,8 @@ public class CreateTransitRouterMulticastDomainRequest : Tea.TeaModel {
 
     public var dryRun: Bool?
 
+    public var options: CreateTransitRouterMulticastDomainRequest.Options?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -5127,6 +5158,7 @@ public class CreateTransitRouterMulticastDomainRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.options?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -5139,6 +5171,9 @@ public class CreateTransitRouterMulticastDomainRequest : Tea.TeaModel {
         }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
+        }
+        if self.options != nil {
+            map["Options"] = self.options?.toMap()
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -5183,6 +5218,11 @@ public class CreateTransitRouterMulticastDomainRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DryRun") {
             self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("Options") {
+            var model = CreateTransitRouterMulticastDomainRequest.Options()
+            model.fromMap(dict["Options"] as! [String: Any])
+            self.options = model
         }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
@@ -26720,6 +26760,35 @@ public class ListTransitRouterMulticastDomainsRequest : Tea.TeaModel {
 
 public class ListTransitRouterMulticastDomainsResponseBody : Tea.TeaModel {
     public class TransitRouterMulticastDomains : Tea.TeaModel {
+        public class Options : Tea.TeaModel {
+            public var igmpv2Support: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.igmpv2Support != nil {
+                    map["Igmpv2Support"] = self.igmpv2Support!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Igmpv2Support") {
+                    self.igmpv2Support = dict["Igmpv2Support"] as! String
+                }
+            }
+        }
         public class Tags : Tea.TeaModel {
             public var key: String?
 
@@ -26759,6 +26828,8 @@ public class ListTransitRouterMulticastDomainsResponseBody : Tea.TeaModel {
         }
         public var cenId: String?
 
+        public var options: ListTransitRouterMulticastDomainsResponseBody.TransitRouterMulticastDomains.Options?
+
         public var regionId: String?
 
         public var status: String?
@@ -26783,12 +26854,16 @@ public class ListTransitRouterMulticastDomainsResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.options?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
             if self.cenId != nil {
                 map["CenId"] = self.cenId!
+            }
+            if self.options != nil {
+                map["Options"] = self.options?.toMap()
             }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
@@ -26821,6 +26896,11 @@ public class ListTransitRouterMulticastDomainsResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("CenId") {
                 self.cenId = dict["CenId"] as! String
+            }
+            if dict.keys.contains("Options") {
+                var model = ListTransitRouterMulticastDomainsResponseBody.TransitRouterMulticastDomains.Options()
+                model.fromMap(dict["Options"] as! [String: Any])
+                self.options = model
             }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
@@ -33494,9 +33574,40 @@ public class ModifyTransitRouterCidrResponse : Tea.TeaModel {
 }
 
 public class ModifyTransitRouterMulticastDomainRequest : Tea.TeaModel {
+    public class Options : Tea.TeaModel {
+        public var igmpv2Support: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.igmpv2Support != nil {
+                map["Igmpv2Support"] = self.igmpv2Support!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Igmpv2Support") {
+                self.igmpv2Support = dict["Igmpv2Support"] as! String
+            }
+        }
+    }
     public var clientToken: String?
 
     public var dryRun: Bool?
+
+    public var options: ModifyTransitRouterMulticastDomainRequest.Options?
 
     public var ownerAccount: String?
 
@@ -33522,6 +33633,7 @@ public class ModifyTransitRouterMulticastDomainRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.options?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -33531,6 +33643,9 @@ public class ModifyTransitRouterMulticastDomainRequest : Tea.TeaModel {
         }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
+        }
+        if self.options != nil {
+            map["Options"] = self.options?.toMap()
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -33562,6 +33677,11 @@ public class ModifyTransitRouterMulticastDomainRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DryRun") {
             self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("Options") {
+            var model = ModifyTransitRouterMulticastDomainRequest.Options()
+            model.fromMap(dict["Options"] as! [String: Any])
+            self.options = model
         }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
