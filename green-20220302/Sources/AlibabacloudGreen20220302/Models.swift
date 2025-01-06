@@ -4869,6 +4869,10 @@ public class TextModerationResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var accountId: String?
 
+        public var dataId: String?
+
+        public var descriptions: String?
+
         public var deviceId: String?
 
         public var labels: String?
@@ -4892,6 +4896,12 @@ public class TextModerationResponseBody : Tea.TeaModel {
             if self.accountId != nil {
                 map["accountId"] = self.accountId!
             }
+            if self.dataId != nil {
+                map["dataId"] = self.dataId!
+            }
+            if self.descriptions != nil {
+                map["descriptions"] = self.descriptions!
+            }
             if self.deviceId != nil {
                 map["deviceId"] = self.deviceId!
             }
@@ -4907,6 +4917,12 @@ public class TextModerationResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("accountId") {
                 self.accountId = dict["accountId"] as! String
+            }
+            if dict.keys.contains("dataId") {
+                self.dataId = dict["dataId"] as! String
+            }
+            if dict.keys.contains("descriptions") {
+                self.descriptions = dict["descriptions"] as! String
             }
             if dict.keys.contains("deviceId") {
                 self.deviceId = dict["deviceId"] as! String
@@ -5221,6 +5237,8 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
         }
         public var advice: [TextModerationPlusResponseBody.Data.Advice]?
 
+        public var dataId: String?
+
         public var result: [TextModerationPlusResponseBody.Data.Result]?
 
         public var riskLevel: String?
@@ -5247,6 +5265,9 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Advice"] = tmp
+            }
+            if self.dataId != nil {
+                map["DataId"] = self.dataId!
             }
             if self.result != nil {
                 var tmp : [Any] = []
@@ -5275,6 +5296,9 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.advice = tmp
+            }
+            if dict.keys.contains("DataId") {
+                self.dataId = dict["DataId"] as! String
             }
             if dict.keys.contains("Result") {
                 var tmp : [TextModerationPlusResponseBody.Data.Result] = []
