@@ -97562,6 +97562,8 @@ public class ModifyDiskSpecRequest : Tea.TeaModel {
             }
         }
     }
+    public var destinationZoneId: String?
+
     public var diskCategory: String?
 
     public var diskId: String?
@@ -97597,6 +97599,9 @@ public class ModifyDiskSpecRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.destinationZoneId != nil {
+            map["DestinationZoneId"] = self.destinationZoneId!
+        }
         if self.diskCategory != nil {
             map["DiskCategory"] = self.diskCategory!
         }
@@ -97631,6 +97636,9 @@ public class ModifyDiskSpecRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DestinationZoneId") {
+            self.destinationZoneId = dict["DestinationZoneId"] as! String
+        }
         if dict.keys.contains("DiskCategory") {
             self.diskCategory = dict["DiskCategory"] as! String
         }

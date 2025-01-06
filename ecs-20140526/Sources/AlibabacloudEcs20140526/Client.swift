@@ -16450,6 +16450,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyDiskSpecWithOptions(_ request: ModifyDiskSpecRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDiskSpecResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.destinationZoneId)) {
+            query["DestinationZoneId"] = request.destinationZoneId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.diskCategory)) {
             query["DiskCategory"] = request.diskCategory ?? "";
         }
