@@ -167,6 +167,8 @@ public class ConvertPostPayOrderRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var paidType: Int32?
+
     public var regionId: String?
 
     public override init() {
@@ -189,6 +191,9 @@ public class ConvertPostPayOrderRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.paidType != nil {
+            map["PaidType"] = self.paidType!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -201,6 +206,9 @@ public class ConvertPostPayOrderRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("PaidType") {
+            self.paidType = dict["PaidType"] as! Int32
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
