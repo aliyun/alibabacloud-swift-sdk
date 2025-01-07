@@ -6474,6 +6474,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.generateCp)) {
             body["GenerateCp"] = request.generateCp!;
         }
+        if (!TeaUtils.Client.isUnset(request.scopeType)) {
+            body["ScopeType"] = request.scopeType!;
+        }
         if (!TeaUtils.Client.isUnset(request.targetFormat)) {
             body["TargetFormat"] = request.targetFormat ?? "";
         }

@@ -45439,6 +45439,8 @@ public class GetOrgOrWebOpenDocContentTaskIdRequest : Tea.TeaModel {
 
     public var generateCp: Bool?
 
+    public var scopeType: Int32?
+
     public var targetFormat: String?
 
     public var tenantContext: GetOrgOrWebOpenDocContentTaskIdRequest.TenantContext?
@@ -45464,6 +45466,9 @@ public class GetOrgOrWebOpenDocContentTaskIdRequest : Tea.TeaModel {
         if self.generateCp != nil {
             map["GenerateCp"] = self.generateCp!
         }
+        if self.scopeType != nil {
+            map["ScopeType"] = self.scopeType!
+        }
         if self.targetFormat != nil {
             map["TargetFormat"] = self.targetFormat!
         }
@@ -45480,6 +45485,9 @@ public class GetOrgOrWebOpenDocContentTaskIdRequest : Tea.TeaModel {
         if dict.keys.contains("GenerateCp") {
             self.generateCp = dict["GenerateCp"] as! Bool
         }
+        if dict.keys.contains("ScopeType") {
+            self.scopeType = dict["ScopeType"] as! Int32
+        }
         if dict.keys.contains("TargetFormat") {
             self.targetFormat = dict["TargetFormat"] as! String
         }
@@ -45495,6 +45503,8 @@ public class GetOrgOrWebOpenDocContentTaskIdShrinkRequest : Tea.TeaModel {
     public var dentryUuid: String?
 
     public var generateCp: Bool?
+
+    public var scopeType: Int32?
 
     public var targetFormat: String?
 
@@ -45520,6 +45530,9 @@ public class GetOrgOrWebOpenDocContentTaskIdShrinkRequest : Tea.TeaModel {
         if self.generateCp != nil {
             map["GenerateCp"] = self.generateCp!
         }
+        if self.scopeType != nil {
+            map["ScopeType"] = self.scopeType!
+        }
         if self.targetFormat != nil {
             map["TargetFormat"] = self.targetFormat!
         }
@@ -45535,6 +45548,9 @@ public class GetOrgOrWebOpenDocContentTaskIdShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GenerateCp") {
             self.generateCp = dict["GenerateCp"] as! Bool
+        }
+        if dict.keys.contains("ScopeType") {
+            self.scopeType = dict["ScopeType"] as! Int32
         }
         if dict.keys.contains("TargetFormat") {
             self.targetFormat = dict["TargetFormat"] as! String
