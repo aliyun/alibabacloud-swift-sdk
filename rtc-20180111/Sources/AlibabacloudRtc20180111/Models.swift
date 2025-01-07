@@ -4478,7 +4478,7 @@ public class DescribeAppRecordTemplatesShrinkRequest : Tea.TeaModel {
 
 public class DescribeAppRecordTemplatesResponseBody : Tea.TeaModel {
     public class Templates : Tea.TeaModel {
-        public var createTime: [UInt8]?
+        public var createTime: String?
 
         public var delayStopTime: Int64?
 
@@ -4488,7 +4488,7 @@ public class DescribeAppRecordTemplatesResponseBody : Tea.TeaModel {
 
         public var formats: [String]?
 
-        public var layoutIds: [Int64]?
+        public var layoutIds: [String]?
 
         public var mediaEncode: Int32?
 
@@ -4542,7 +4542,7 @@ public class DescribeAppRecordTemplatesResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("CreateTime") {
-                self.createTime = dict["CreateTime"] as! [UInt8]
+                self.createTime = dict["CreateTime"] as! String
             }
             if dict.keys.contains("DelayStopTime") {
                 self.delayStopTime = dict["DelayStopTime"] as! Int64
@@ -4557,7 +4557,7 @@ public class DescribeAppRecordTemplatesResponseBody : Tea.TeaModel {
                 self.formats = dict["Formats"] as! [String]
             }
             if dict.keys.contains("LayoutIds") {
-                self.layoutIds = dict["LayoutIds"] as! [Int64]
+                self.layoutIds = dict["LayoutIds"] as! [String]
             }
             if dict.keys.contains("MediaEncode") {
                 self.mediaEncode = dict["MediaEncode"] as! Int32
