@@ -2657,6 +2657,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeApiGroupsWithOptions(_ request: DescribeApiGroupsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeApiGroupsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.basePath)) {
+            query["BasePath"] = request.basePath ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.enableTagAuth)) {
             query["EnableTagAuth"] = request.enableTagAuth!;
         }
@@ -7334,6 +7337,52 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyInstanceSpec(_ request: ModifyInstanceSpecRequest) async throws -> ModifyInstanceSpecResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifyInstanceSpecWithOptions(request as! ModifyInstanceSpecRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyInstanceVpcAttributeForConsoleWithOptions(_ request: ModifyInstanceVpcAttributeForConsoleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyInstanceVpcAttributeForConsoleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deleteVpcAccess)) {
+            query["DeleteVpcAccess"] = request.deleteVpcAccess!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.token)) {
+            query["Token"] = request.token ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vpcId)) {
+            query["VpcId"] = request.vpcId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vpcOwnerId)) {
+            query["VpcOwnerId"] = request.vpcOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.vswitchId)) {
+            query["VswitchId"] = request.vswitchId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyInstanceVpcAttributeForConsole",
+            "version": "2016-07-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyInstanceVpcAttributeForConsoleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyInstanceVpcAttributeForConsole(_ request: ModifyInstanceVpcAttributeForConsoleRequest) async throws -> ModifyInstanceVpcAttributeForConsoleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyInstanceVpcAttributeForConsoleWithOptions(request as! ModifyInstanceVpcAttributeForConsoleRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

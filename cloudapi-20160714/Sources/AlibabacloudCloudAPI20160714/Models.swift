@@ -13270,6 +13270,8 @@ public class DescribeApiGroupsRequest : Tea.TeaModel {
             }
         }
     }
+    public var basePath: String?
+
     public var enableTagAuth: Bool?
 
     public var groupId: String?
@@ -13302,6 +13304,9 @@ public class DescribeApiGroupsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.basePath != nil {
+            map["BasePath"] = self.basePath!
+        }
         if self.enableTagAuth != nil {
             map["EnableTagAuth"] = self.enableTagAuth!
         }
@@ -13337,6 +13342,9 @@ public class DescribeApiGroupsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BasePath") {
+            self.basePath = dict["BasePath"] as! String
+        }
         if dict.keys.contains("EnableTagAuth") {
             self.enableTagAuth = dict["EnableTagAuth"] as! Bool
         }
@@ -47500,6 +47508,155 @@ public class ModifyInstanceSpecResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ModifyInstanceSpecResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ModifyInstanceVpcAttributeForConsoleRequest : Tea.TeaModel {
+    public var deleteVpcAccess: Bool?
+
+    public var instanceId: String?
+
+    public var token: String?
+
+    public var vpcId: String?
+
+    public var vpcOwnerId: Int64?
+
+    public var vswitchId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.deleteVpcAccess != nil {
+            map["DeleteVpcAccess"] = self.deleteVpcAccess!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.token != nil {
+            map["Token"] = self.token!
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
+        if self.vpcOwnerId != nil {
+            map["VpcOwnerId"] = self.vpcOwnerId!
+        }
+        if self.vswitchId != nil {
+            map["VswitchId"] = self.vswitchId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DeleteVpcAccess") {
+            self.deleteVpcAccess = dict["DeleteVpcAccess"] as! Bool
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("Token") {
+            self.token = dict["Token"] as! String
+        }
+        if dict.keys.contains("VpcId") {
+            self.vpcId = dict["VpcId"] as! String
+        }
+        if dict.keys.contains("VpcOwnerId") {
+            self.vpcOwnerId = dict["VpcOwnerId"] as! Int64
+        }
+        if dict.keys.contains("VswitchId") {
+            self.vswitchId = dict["VswitchId"] as! String
+        }
+    }
+}
+
+public class ModifyInstanceVpcAttributeForConsoleResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ModifyInstanceVpcAttributeForConsoleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyInstanceVpcAttributeForConsoleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ModifyInstanceVpcAttributeForConsoleResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
