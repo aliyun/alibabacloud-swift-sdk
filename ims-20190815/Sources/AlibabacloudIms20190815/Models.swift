@@ -6933,6 +6933,8 @@ public class GetSecurityPreferenceResponseBody : Tea.TeaModel {
         public class LoginProfilePreference : Tea.TeaModel {
             public var allowUserToChangePassword: Bool?
 
+            public var allowUserToLoginWithPasskey: Bool?
+
             public var enableSaveMFATicket: Bool?
 
             public var loginNetworkMasks: String?
@@ -6960,6 +6962,9 @@ public class GetSecurityPreferenceResponseBody : Tea.TeaModel {
                 if self.allowUserToChangePassword != nil {
                     map["AllowUserToChangePassword"] = self.allowUserToChangePassword!
                 }
+                if self.allowUserToLoginWithPasskey != nil {
+                    map["AllowUserToLoginWithPasskey"] = self.allowUserToLoginWithPasskey!
+                }
                 if self.enableSaveMFATicket != nil {
                     map["EnableSaveMFATicket"] = self.enableSaveMFATicket!
                 }
@@ -6981,6 +6986,9 @@ public class GetSecurityPreferenceResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("AllowUserToChangePassword") {
                     self.allowUserToChangePassword = dict["AllowUserToChangePassword"] as! Bool
+                }
+                if dict.keys.contains("AllowUserToLoginWithPasskey") {
+                    self.allowUserToLoginWithPasskey = dict["AllowUserToLoginWithPasskey"] as! Bool
                 }
                 if dict.keys.contains("EnableSaveMFATicket") {
                     self.enableSaveMFATicket = dict["EnableSaveMFATicket"] as! Bool
@@ -12802,6 +12810,8 @@ public class SetPasswordPolicyResponse : Tea.TeaModel {
 public class SetSecurityPreferenceRequest : Tea.TeaModel {
     public var allowUserToChangePassword: Bool?
 
+    public var allowUserToLoginWithPasskey: Bool?
+
     public var allowUserToManageAccessKeys: Bool?
 
     public var allowUserToManageMFADevices: Bool?
@@ -12837,6 +12847,9 @@ public class SetSecurityPreferenceRequest : Tea.TeaModel {
         if self.allowUserToChangePassword != nil {
             map["AllowUserToChangePassword"] = self.allowUserToChangePassword!
         }
+        if self.allowUserToLoginWithPasskey != nil {
+            map["AllowUserToLoginWithPasskey"] = self.allowUserToLoginWithPasskey!
+        }
         if self.allowUserToManageAccessKeys != nil {
             map["AllowUserToManageAccessKeys"] = self.allowUserToManageAccessKeys!
         }
@@ -12871,6 +12884,9 @@ public class SetSecurityPreferenceRequest : Tea.TeaModel {
         if dict.keys.contains("AllowUserToChangePassword") {
             self.allowUserToChangePassword = dict["AllowUserToChangePassword"] as! Bool
         }
+        if dict.keys.contains("AllowUserToLoginWithPasskey") {
+            self.allowUserToLoginWithPasskey = dict["AllowUserToLoginWithPasskey"] as! Bool
+        }
         if dict.keys.contains("AllowUserToManageAccessKeys") {
             self.allowUserToManageAccessKeys = dict["AllowUserToManageAccessKeys"] as! Bool
         }
@@ -12903,6 +12919,8 @@ public class SetSecurityPreferenceRequest : Tea.TeaModel {
 
 public class SetSecurityPreferenceShrinkRequest : Tea.TeaModel {
     public var allowUserToChangePassword: Bool?
+
+    public var allowUserToLoginWithPasskey: Bool?
 
     public var allowUserToManageAccessKeys: Bool?
 
@@ -12939,6 +12957,9 @@ public class SetSecurityPreferenceShrinkRequest : Tea.TeaModel {
         if self.allowUserToChangePassword != nil {
             map["AllowUserToChangePassword"] = self.allowUserToChangePassword!
         }
+        if self.allowUserToLoginWithPasskey != nil {
+            map["AllowUserToLoginWithPasskey"] = self.allowUserToLoginWithPasskey!
+        }
         if self.allowUserToManageAccessKeys != nil {
             map["AllowUserToManageAccessKeys"] = self.allowUserToManageAccessKeys!
         }
@@ -12972,6 +12993,9 @@ public class SetSecurityPreferenceShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AllowUserToChangePassword") {
             self.allowUserToChangePassword = dict["AllowUserToChangePassword"] as! Bool
+        }
+        if dict.keys.contains("AllowUserToLoginWithPasskey") {
+            self.allowUserToLoginWithPasskey = dict["AllowUserToLoginWithPasskey"] as! Bool
         }
         if dict.keys.contains("AllowUserToManageAccessKeys") {
             self.allowUserToManageAccessKeys = dict["AllowUserToManageAccessKeys"] as! Bool
@@ -13037,6 +13061,8 @@ public class SetSecurityPreferenceResponseBody : Tea.TeaModel {
         public class LoginProfilePreference : Tea.TeaModel {
             public var allowUserToChangePassword: Bool?
 
+            public var allowUserToLoginWithPasskey: Bool?
+
             public var enableSaveMFATicket: Bool?
 
             public var loginNetworkMasks: String?
@@ -13064,6 +13090,9 @@ public class SetSecurityPreferenceResponseBody : Tea.TeaModel {
                 if self.allowUserToChangePassword != nil {
                     map["AllowUserToChangePassword"] = self.allowUserToChangePassword!
                 }
+                if self.allowUserToLoginWithPasskey != nil {
+                    map["AllowUserToLoginWithPasskey"] = self.allowUserToLoginWithPasskey!
+                }
                 if self.enableSaveMFATicket != nil {
                     map["EnableSaveMFATicket"] = self.enableSaveMFATicket!
                 }
@@ -13085,6 +13114,9 @@ public class SetSecurityPreferenceResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("AllowUserToChangePassword") {
                     self.allowUserToChangePassword = dict["AllowUserToChangePassword"] as! Bool
+                }
+                if dict.keys.contains("AllowUserToLoginWithPasskey") {
+                    self.allowUserToLoginWithPasskey = dict["AllowUserToLoginWithPasskey"] as! Bool
                 }
                 if dict.keys.contains("EnableSaveMFATicket") {
                     self.enableSaveMFATicket = dict["EnableSaveMFATicket"] as! Bool

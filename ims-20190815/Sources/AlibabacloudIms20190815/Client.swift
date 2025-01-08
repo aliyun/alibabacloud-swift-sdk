@@ -2079,6 +2079,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.allowUserToChangePassword)) {
             query["AllowUserToChangePassword"] = request.allowUserToChangePassword!;
         }
+        if (!TeaUtils.Client.isUnset(request.allowUserToLoginWithPasskey)) {
+            query["AllowUserToLoginWithPasskey"] = request.allowUserToLoginWithPasskey!;
+        }
         if (!TeaUtils.Client.isUnset(request.allowUserToManageAccessKeys)) {
             query["AllowUserToManageAccessKeys"] = request.allowUserToManageAccessKeys!;
         }
