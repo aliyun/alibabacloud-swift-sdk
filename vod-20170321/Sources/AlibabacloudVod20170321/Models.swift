@@ -2946,11 +2946,250 @@ public class BatchGetMediaInfosResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class PlayInfoList : Tea.TeaModel {
+            public var bitDepth: Int32?
+
+            public var bitrate: String?
+
+            public var codecName: String?
+
+            public var creationTime: String?
+
+            public var definition: String?
+
+            public var duration: String?
+
+            public var encrypt: Int64?
+
+            public var encryptMode: String?
+
+            public var encryptType: String?
+
+            public var format: String?
+
+            public var fps: String?
+
+            public var HDRType: String?
+
+            public var height: Int64?
+
+            public var jobExt: String?
+
+            public var jobId: String?
+
+            public var jobType: Int32?
+
+            public var modificationTime: String?
+
+            public var narrowBandType: String?
+
+            public var playURL: String?
+
+            public var size: Int64?
+
+            public var specification: String?
+
+            public var status: String?
+
+            public var streamType: String?
+
+            public var templateGroupId: String?
+
+            public var templateId: String?
+
+            public var watermarkId: String?
+
+            public var width: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bitDepth != nil {
+                    map["BitDepth"] = self.bitDepth!
+                }
+                if self.bitrate != nil {
+                    map["Bitrate"] = self.bitrate!
+                }
+                if self.codecName != nil {
+                    map["CodecName"] = self.codecName!
+                }
+                if self.creationTime != nil {
+                    map["CreationTime"] = self.creationTime!
+                }
+                if self.definition != nil {
+                    map["Definition"] = self.definition!
+                }
+                if self.duration != nil {
+                    map["Duration"] = self.duration!
+                }
+                if self.encrypt != nil {
+                    map["Encrypt"] = self.encrypt!
+                }
+                if self.encryptMode != nil {
+                    map["EncryptMode"] = self.encryptMode!
+                }
+                if self.encryptType != nil {
+                    map["EncryptType"] = self.encryptType!
+                }
+                if self.format != nil {
+                    map["Format"] = self.format!
+                }
+                if self.fps != nil {
+                    map["Fps"] = self.fps!
+                }
+                if self.HDRType != nil {
+                    map["HDRType"] = self.HDRType!
+                }
+                if self.height != nil {
+                    map["Height"] = self.height!
+                }
+                if self.jobExt != nil {
+                    map["JobExt"] = self.jobExt!
+                }
+                if self.jobId != nil {
+                    map["JobId"] = self.jobId!
+                }
+                if self.jobType != nil {
+                    map["JobType"] = self.jobType!
+                }
+                if self.modificationTime != nil {
+                    map["ModificationTime"] = self.modificationTime!
+                }
+                if self.narrowBandType != nil {
+                    map["NarrowBandType"] = self.narrowBandType!
+                }
+                if self.playURL != nil {
+                    map["PlayURL"] = self.playURL!
+                }
+                if self.size != nil {
+                    map["Size"] = self.size!
+                }
+                if self.specification != nil {
+                    map["Specification"] = self.specification!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.streamType != nil {
+                    map["StreamType"] = self.streamType!
+                }
+                if self.templateGroupId != nil {
+                    map["TemplateGroupId"] = self.templateGroupId!
+                }
+                if self.templateId != nil {
+                    map["TemplateId"] = self.templateId!
+                }
+                if self.watermarkId != nil {
+                    map["WatermarkId"] = self.watermarkId!
+                }
+                if self.width != nil {
+                    map["Width"] = self.width!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("BitDepth") {
+                    self.bitDepth = dict["BitDepth"] as! Int32
+                }
+                if dict.keys.contains("Bitrate") {
+                    self.bitrate = dict["Bitrate"] as! String
+                }
+                if dict.keys.contains("CodecName") {
+                    self.codecName = dict["CodecName"] as! String
+                }
+                if dict.keys.contains("CreationTime") {
+                    self.creationTime = dict["CreationTime"] as! String
+                }
+                if dict.keys.contains("Definition") {
+                    self.definition = dict["Definition"] as! String
+                }
+                if dict.keys.contains("Duration") {
+                    self.duration = dict["Duration"] as! String
+                }
+                if dict.keys.contains("Encrypt") {
+                    self.encrypt = dict["Encrypt"] as! Int64
+                }
+                if dict.keys.contains("EncryptMode") {
+                    self.encryptMode = dict["EncryptMode"] as! String
+                }
+                if dict.keys.contains("EncryptType") {
+                    self.encryptType = dict["EncryptType"] as! String
+                }
+                if dict.keys.contains("Format") {
+                    self.format = dict["Format"] as! String
+                }
+                if dict.keys.contains("Fps") {
+                    self.fps = dict["Fps"] as! String
+                }
+                if dict.keys.contains("HDRType") {
+                    self.HDRType = dict["HDRType"] as! String
+                }
+                if dict.keys.contains("Height") {
+                    self.height = dict["Height"] as! Int64
+                }
+                if dict.keys.contains("JobExt") {
+                    self.jobExt = dict["JobExt"] as! String
+                }
+                if dict.keys.contains("JobId") {
+                    self.jobId = dict["JobId"] as! String
+                }
+                if dict.keys.contains("JobType") {
+                    self.jobType = dict["JobType"] as! Int32
+                }
+                if dict.keys.contains("ModificationTime") {
+                    self.modificationTime = dict["ModificationTime"] as! String
+                }
+                if dict.keys.contains("NarrowBandType") {
+                    self.narrowBandType = dict["NarrowBandType"] as! String
+                }
+                if dict.keys.contains("PlayURL") {
+                    self.playURL = dict["PlayURL"] as! String
+                }
+                if dict.keys.contains("Size") {
+                    self.size = dict["Size"] as! Int64
+                }
+                if dict.keys.contains("Specification") {
+                    self.specification = dict["Specification"] as! String
+                }
+                if dict.keys.contains("Status") {
+                    self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("StreamType") {
+                    self.streamType = dict["StreamType"] as! String
+                }
+                if dict.keys.contains("TemplateGroupId") {
+                    self.templateGroupId = dict["TemplateGroupId"] as! String
+                }
+                if dict.keys.contains("TemplateId") {
+                    self.templateId = dict["TemplateId"] as! String
+                }
+                if dict.keys.contains("WatermarkId") {
+                    self.watermarkId = dict["WatermarkId"] as! String
+                }
+                if dict.keys.contains("Width") {
+                    self.width = dict["Width"] as! Int64
+                }
+            }
+        }
         public var mediaId: String?
 
         public var mediaInfo: BatchGetMediaInfosResponseBody.MediaInfos.MediaInfo?
 
         public var mezzanineInfo: BatchGetMediaInfosResponseBody.MediaInfos.MezzanineInfo?
+
+        public var playInfoList: [BatchGetMediaInfosResponseBody.MediaInfos.PlayInfoList]?
 
         public override init() {
             super.init()
@@ -2977,6 +3216,13 @@ public class BatchGetMediaInfosResponseBody : Tea.TeaModel {
             if self.mezzanineInfo != nil {
                 map["MezzanineInfo"] = self.mezzanineInfo?.toMap()
             }
+            if self.playInfoList != nil {
+                var tmp : [Any] = []
+                for k in self.playInfoList! {
+                    tmp.append(k.toMap())
+                }
+                map["PlayInfoList"] = tmp
+            }
             return map
         }
 
@@ -2993,6 +3239,17 @@ public class BatchGetMediaInfosResponseBody : Tea.TeaModel {
                 var model = BatchGetMediaInfosResponseBody.MediaInfos.MezzanineInfo()
                 model.fromMap(dict["MezzanineInfo"] as! [String: Any])
                 self.mezzanineInfo = model
+            }
+            if dict.keys.contains("PlayInfoList") {
+                var tmp : [BatchGetMediaInfosResponseBody.MediaInfos.PlayInfoList] = []
+                for v in dict["PlayInfoList"] as! [Any] {
+                    var model = BatchGetMediaInfosResponseBody.MediaInfos.PlayInfoList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.playInfoList = tmp
             }
         }
     }
