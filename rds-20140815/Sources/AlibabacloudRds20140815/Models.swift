@@ -54014,6 +54014,8 @@ public class DescribeRCImageListRequest : Tea.TeaModel {
 
     public var imageName: String?
 
+    public var instanceType: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -54045,6 +54047,9 @@ public class DescribeRCImageListRequest : Tea.TeaModel {
         if self.imageName != nil {
             map["ImageName"] = self.imageName!
         }
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -54069,6 +54074,9 @@ public class DescribeRCImageListRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ImageName") {
             self.imageName = dict["ImageName"] as! String
+        }
+        if dict.keys.contains("InstanceType") {
+            self.instanceType = dict["InstanceType"] as! String
         }
         if dict.keys.contains("PageNumber") {
             self.pageNumber = dict["PageNumber"] as! Int32
@@ -54108,6 +54116,8 @@ public class DescribeRCImageListResponseBody : Tea.TeaModel {
         public var OSNameEn: String?
 
         public var OSType: String?
+
+        public var platform: String?
 
         public var size: Int64?
 
@@ -54162,6 +54172,9 @@ public class DescribeRCImageListResponseBody : Tea.TeaModel {
             if self.OSType != nil {
                 map["OSType"] = self.OSType!
             }
+            if self.platform != nil {
+                map["Platform"] = self.platform!
+            }
             if self.size != nil {
                 map["Size"] = self.size!
             }
@@ -54207,6 +54220,9 @@ public class DescribeRCImageListResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("OSType") {
                 self.OSType = dict["OSType"] as! String
+            }
+            if dict.keys.contains("Platform") {
+                self.platform = dict["Platform"] as! String
             }
             if dict.keys.contains("Size") {
                 self.size = dict["Size"] as! Int64
