@@ -6925,6 +6925,10 @@ public class DescribeDefaultIPSConfigResponseBody : Tea.TeaModel {
 
     public var ctiRules: Int32?
 
+    public var freeTrailStatus: String?
+
+    public var maxSdl: Int64?
+
     public var patchRules: Int32?
 
     public var requestId: String?
@@ -6953,6 +6957,12 @@ public class DescribeDefaultIPSConfigResponseBody : Tea.TeaModel {
         if self.ctiRules != nil {
             map["CtiRules"] = self.ctiRules!
         }
+        if self.freeTrailStatus != nil {
+            map["FreeTrailStatus"] = self.freeTrailStatus!
+        }
+        if self.maxSdl != nil {
+            map["MaxSdl"] = self.maxSdl!
+        }
         if self.patchRules != nil {
             map["PatchRules"] = self.patchRules!
         }
@@ -6974,6 +6984,12 @@ public class DescribeDefaultIPSConfigResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("CtiRules") {
             self.ctiRules = dict["CtiRules"] as! Int32
+        }
+        if dict.keys.contains("FreeTrailStatus") {
+            self.freeTrailStatus = dict["FreeTrailStatus"] as! String
+        }
+        if dict.keys.contains("MaxSdl") {
+            self.maxSdl = dict["MaxSdl"] as! Int64
         }
         if dict.keys.contains("PatchRules") {
             self.patchRules = dict["PatchRules"] as! Int32
@@ -16024,6 +16040,8 @@ public class DescribeUserBuyVersionResponseBody : Tea.TeaModel {
 
     public var instanceStatus: String?
 
+    public var internetBandwidth: Int64?
+
     public var ipNumber: Int64?
 
     public var logStatus: Bool?
@@ -16032,6 +16050,8 @@ public class DescribeUserBuyVersionResponseBody : Tea.TeaModel {
 
     public var maxOverflow: Int64?
 
+    public var natBandwidth: Int64?
+
     public var requestId: String?
 
     public var startTime: Int64?
@@ -16039,6 +16059,8 @@ public class DescribeUserBuyVersionResponseBody : Tea.TeaModel {
     public var userStatus: Bool?
 
     public var version: Int32?
+
+    public var vpcBandwidth: Int64?
 
     public var vpcNumber: Int64?
 
@@ -16068,6 +16090,9 @@ public class DescribeUserBuyVersionResponseBody : Tea.TeaModel {
         if self.instanceStatus != nil {
             map["InstanceStatus"] = self.instanceStatus!
         }
+        if self.internetBandwidth != nil {
+            map["InternetBandwidth"] = self.internetBandwidth!
+        }
         if self.ipNumber != nil {
             map["IpNumber"] = self.ipNumber!
         }
@@ -16080,6 +16105,9 @@ public class DescribeUserBuyVersionResponseBody : Tea.TeaModel {
         if self.maxOverflow != nil {
             map["MaxOverflow"] = self.maxOverflow!
         }
+        if self.natBandwidth != nil {
+            map["NatBandwidth"] = self.natBandwidth!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -16091,6 +16119,9 @@ public class DescribeUserBuyVersionResponseBody : Tea.TeaModel {
         }
         if self.version != nil {
             map["Version"] = self.version!
+        }
+        if self.vpcBandwidth != nil {
+            map["VpcBandwidth"] = self.vpcBandwidth!
         }
         if self.vpcNumber != nil {
             map["VpcNumber"] = self.vpcNumber!
@@ -16111,6 +16142,9 @@ public class DescribeUserBuyVersionResponseBody : Tea.TeaModel {
         if dict.keys.contains("InstanceStatus") {
             self.instanceStatus = dict["InstanceStatus"] as! String
         }
+        if dict.keys.contains("InternetBandwidth") {
+            self.internetBandwidth = dict["InternetBandwidth"] as! Int64
+        }
         if dict.keys.contains("IpNumber") {
             self.ipNumber = dict["IpNumber"] as! Int64
         }
@@ -16123,6 +16157,9 @@ public class DescribeUserBuyVersionResponseBody : Tea.TeaModel {
         if dict.keys.contains("MaxOverflow") {
             self.maxOverflow = dict["MaxOverflow"] as! Int64
         }
+        if dict.keys.contains("NatBandwidth") {
+            self.natBandwidth = dict["NatBandwidth"] as! Int64
+        }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
@@ -16134,6 +16171,9 @@ public class DescribeUserBuyVersionResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Version") {
             self.version = dict["Version"] as! Int32
+        }
+        if dict.keys.contains("VpcBandwidth") {
+            self.vpcBandwidth = dict["VpcBandwidth"] as! Int64
         }
         if dict.keys.contains("VpcNumber") {
             self.vpcNumber = dict["VpcNumber"] as! Int64
@@ -21822,6 +21862,8 @@ public class ModifyDefaultIPSConfigRequest : Tea.TeaModel {
 
     public var lang: String?
 
+    public var maxSdl: Int64?
+
     public var patchRules: String?
 
     public var ruleClass: String?
@@ -21851,6 +21893,9 @@ public class ModifyDefaultIPSConfigRequest : Tea.TeaModel {
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
+        if self.maxSdl != nil {
+            map["MaxSdl"] = self.maxSdl!
+        }
         if self.patchRules != nil {
             map["PatchRules"] = self.patchRules!
         }
@@ -21872,6 +21917,9 @@ public class ModifyDefaultIPSConfigRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Lang") {
             self.lang = dict["Lang"] as! String
+        }
+        if dict.keys.contains("MaxSdl") {
+            self.maxSdl = dict["MaxSdl"] as! Int64
         }
         if dict.keys.contains("PatchRules") {
             self.patchRules = dict["PatchRules"] as! String

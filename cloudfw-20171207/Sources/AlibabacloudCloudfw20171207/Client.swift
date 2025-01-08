@@ -3957,6 +3957,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.maxSdl)) {
+            query["MaxSdl"] = request.maxSdl!;
+        }
         if (!TeaUtils.Client.isUnset(request.patchRules)) {
             query["PatchRules"] = request.patchRules ?? "";
         }
