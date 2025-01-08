@@ -3097,6 +3097,8 @@ public class DeleteLoginProfileResponse : Tea.TeaModel {
 }
 
 public class DeletePolicyRequest : Tea.TeaModel {
+    public var cascadingDelete: Bool?
+
     public var policyName: String?
 
     public override init() {
@@ -3113,6 +3115,9 @@ public class DeletePolicyRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cascadingDelete != nil {
+            map["CascadingDelete"] = self.cascadingDelete!
+        }
         if self.policyName != nil {
             map["PolicyName"] = self.policyName!
         }
@@ -3120,6 +3125,9 @@ public class DeletePolicyRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CascadingDelete") {
+            self.cascadingDelete = dict["CascadingDelete"] as! Bool
+        }
         if dict.keys.contains("PolicyName") {
             self.policyName = dict["PolicyName"] as! String
         }

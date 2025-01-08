@@ -693,6 +693,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deletePolicyWithOptions(_ request: DeletePolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeletePolicyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cascadingDelete)) {
+            query["CascadingDelete"] = request.cascadingDelete!;
+        }
         if (!TeaUtils.Client.isUnset(request.policyName)) {
             query["PolicyName"] = request.policyName ?? "";
         }
