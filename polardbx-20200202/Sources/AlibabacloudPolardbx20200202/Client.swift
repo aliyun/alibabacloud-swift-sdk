@@ -1583,6 +1583,52 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeGdnInstancesWithOptions(_ request: DescribeGdnInstancesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeGdnInstancesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.filterType)) {
+            query["FilterType"] = request.filterType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filterValue)) {
+            query["FilterValue"] = request.filterValue ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.GDNId)) {
+            query["GDNId"] = request.GDNId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNum)) {
+            query["PageNum"] = request.pageNum ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeGdnInstances",
+            "version": "2020-02-02",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeGdnInstancesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeGdnInstances(_ request: DescribeGdnInstancesRequest) async throws -> DescribeGdnInstancesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeGdnInstancesWithOptions(request as! DescribeGdnInstancesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeOpenBackupSetWithOptions(_ request: DescribeOpenBackupSetRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeOpenBackupSetResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2781,6 +2827,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func switchDBInstanceHA(_ request: SwitchDBInstanceHARequest) async throws -> SwitchDBInstanceHAResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await switchDBInstanceHAWithOptions(request as! SwitchDBInstanceHARequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func switchGdnMemberRoleWithOptions(_ request: SwitchGdnMemberRoleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SwitchGdnMemberRoleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBInstanceName)) {
+            query["DBInstanceName"] = request.DBInstanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.switchMode)) {
+            query["SwitchMode"] = request.switchMode ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SwitchGdnMemberRole",
+            "version": "2020-02-02",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SwitchGdnMemberRoleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func switchGdnMemberRole(_ request: SwitchGdnMemberRoleRequest) async throws -> SwitchGdnMemberRoleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await switchGdnMemberRoleWithOptions(request as! SwitchGdnMemberRoleRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

@@ -10615,6 +10615,501 @@ public class DescribeEventsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeGdnInstancesRequest : Tea.TeaModel {
+    public var filterType: String?
+
+    public var filterValue: String?
+
+    public var GDNId: String?
+
+    public var pageNum: String?
+
+    public var pageSize: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.filterType != nil {
+            map["FilterType"] = self.filterType!
+        }
+        if self.filterValue != nil {
+            map["FilterValue"] = self.filterValue!
+        }
+        if self.GDNId != nil {
+            map["GDNId"] = self.GDNId!
+        }
+        if self.pageNum != nil {
+            map["PageNum"] = self.pageNum!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("FilterType") {
+            self.filterType = dict["FilterType"] as! String
+        }
+        if dict.keys.contains("FilterValue") {
+            self.filterValue = dict["FilterValue"] as! String
+        }
+        if dict.keys.contains("GDNId") {
+            self.GDNId = dict["GDNId"] as! String
+        }
+        if dict.keys.contains("PageNum") {
+            self.pageNum = dict["PageNum"] as! String
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class DescribeGdnInstancesResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class GdnInstanceList : Tea.TeaModel {
+            public class MemberList : Tea.TeaModel {
+                public var classCode: String?
+
+                public var cnNodeClassCode: String?
+
+                public var cnNodeCount: String?
+
+                public var commodityCode: String?
+
+                public var dnNodeClassCode: String?
+
+                public var dnNodeCount: String?
+
+                public var expireTime: String?
+
+                public var gmtCreated: String?
+
+                public var memberName: String?
+
+                public var payType: String?
+
+                public var primaryZone: String?
+
+                public var regionId: String?
+
+                public var role: String?
+
+                public var secondaryZone: String?
+
+                public var secondsBehindMaster: String?
+
+                public var status: String?
+
+                public var tertiaryZone: String?
+
+                public var zoneId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.classCode != nil {
+                        map["ClassCode"] = self.classCode!
+                    }
+                    if self.cnNodeClassCode != nil {
+                        map["CnNodeClassCode"] = self.cnNodeClassCode!
+                    }
+                    if self.cnNodeCount != nil {
+                        map["CnNodeCount"] = self.cnNodeCount!
+                    }
+                    if self.commodityCode != nil {
+                        map["CommodityCode"] = self.commodityCode!
+                    }
+                    if self.dnNodeClassCode != nil {
+                        map["DnNodeClassCode"] = self.dnNodeClassCode!
+                    }
+                    if self.dnNodeCount != nil {
+                        map["DnNodeCount"] = self.dnNodeCount!
+                    }
+                    if self.expireTime != nil {
+                        map["ExpireTime"] = self.expireTime!
+                    }
+                    if self.gmtCreated != nil {
+                        map["GmtCreated"] = self.gmtCreated!
+                    }
+                    if self.memberName != nil {
+                        map["MemberName"] = self.memberName!
+                    }
+                    if self.payType != nil {
+                        map["PayType"] = self.payType!
+                    }
+                    if self.primaryZone != nil {
+                        map["PrimaryZone"] = self.primaryZone!
+                    }
+                    if self.regionId != nil {
+                        map["RegionId"] = self.regionId!
+                    }
+                    if self.role != nil {
+                        map["Role"] = self.role!
+                    }
+                    if self.secondaryZone != nil {
+                        map["SecondaryZone"] = self.secondaryZone!
+                    }
+                    if self.secondsBehindMaster != nil {
+                        map["SecondsBehindMaster"] = self.secondsBehindMaster!
+                    }
+                    if self.status != nil {
+                        map["Status"] = self.status!
+                    }
+                    if self.tertiaryZone != nil {
+                        map["TertiaryZone"] = self.tertiaryZone!
+                    }
+                    if self.zoneId != nil {
+                        map["ZoneId"] = self.zoneId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ClassCode") {
+                        self.classCode = dict["ClassCode"] as! String
+                    }
+                    if dict.keys.contains("CnNodeClassCode") {
+                        self.cnNodeClassCode = dict["CnNodeClassCode"] as! String
+                    }
+                    if dict.keys.contains("CnNodeCount") {
+                        self.cnNodeCount = dict["CnNodeCount"] as! String
+                    }
+                    if dict.keys.contains("CommodityCode") {
+                        self.commodityCode = dict["CommodityCode"] as! String
+                    }
+                    if dict.keys.contains("DnNodeClassCode") {
+                        self.dnNodeClassCode = dict["DnNodeClassCode"] as! String
+                    }
+                    if dict.keys.contains("DnNodeCount") {
+                        self.dnNodeCount = dict["DnNodeCount"] as! String
+                    }
+                    if dict.keys.contains("ExpireTime") {
+                        self.expireTime = dict["ExpireTime"] as! String
+                    }
+                    if dict.keys.contains("GmtCreated") {
+                        self.gmtCreated = dict["GmtCreated"] as! String
+                    }
+                    if dict.keys.contains("MemberName") {
+                        self.memberName = dict["MemberName"] as! String
+                    }
+                    if dict.keys.contains("PayType") {
+                        self.payType = dict["PayType"] as! String
+                    }
+                    if dict.keys.contains("PrimaryZone") {
+                        self.primaryZone = dict["PrimaryZone"] as! String
+                    }
+                    if dict.keys.contains("RegionId") {
+                        self.regionId = dict["RegionId"] as! String
+                    }
+                    if dict.keys.contains("Role") {
+                        self.role = dict["Role"] as! String
+                    }
+                    if dict.keys.contains("SecondaryZone") {
+                        self.secondaryZone = dict["SecondaryZone"] as! String
+                    }
+                    if dict.keys.contains("SecondsBehindMaster") {
+                        self.secondsBehindMaster = dict["SecondsBehindMaster"] as! String
+                    }
+                    if dict.keys.contains("Status") {
+                        self.status = dict["Status"] as! String
+                    }
+                    if dict.keys.contains("TertiaryZone") {
+                        self.tertiaryZone = dict["TertiaryZone"] as! String
+                    }
+                    if dict.keys.contains("ZoneId") {
+                        self.zoneId = dict["ZoneId"] as! String
+                    }
+                }
+            }
+            public var description_: String?
+
+            public var gdnInstanceName: String?
+
+            public var gmtCreated: String?
+
+            public var memberList: [DescribeGdnInstancesResponseBody.Data.GdnInstanceList.MemberList]?
+
+            public var mysqlVersion: String?
+
+            public var status: String?
+
+            public var switchHistory: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.gdnInstanceName != nil {
+                    map["GdnInstanceName"] = self.gdnInstanceName!
+                }
+                if self.gmtCreated != nil {
+                    map["GmtCreated"] = self.gmtCreated!
+                }
+                if self.memberList != nil {
+                    var tmp : [Any] = []
+                    for k in self.memberList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["MemberList"] = tmp
+                }
+                if self.mysqlVersion != nil {
+                    map["MysqlVersion"] = self.mysqlVersion!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.switchHistory != nil {
+                    map["SwitchHistory"] = self.switchHistory!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Description") {
+                    self.description_ = dict["Description"] as! String
+                }
+                if dict.keys.contains("GdnInstanceName") {
+                    self.gdnInstanceName = dict["GdnInstanceName"] as! String
+                }
+                if dict.keys.contains("GmtCreated") {
+                    self.gmtCreated = dict["GmtCreated"] as! String
+                }
+                if dict.keys.contains("MemberList") {
+                    var tmp : [DescribeGdnInstancesResponseBody.Data.GdnInstanceList.MemberList] = []
+                    for v in dict["MemberList"] as! [Any] {
+                        var model = DescribeGdnInstancesResponseBody.Data.GdnInstanceList.MemberList()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.memberList = tmp
+                }
+                if dict.keys.contains("MysqlVersion") {
+                    self.mysqlVersion = dict["MysqlVersion"] as! String
+                }
+                if dict.keys.contains("Status") {
+                    self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("SwitchHistory") {
+                    self.switchHistory = dict["SwitchHistory"] as! String
+                }
+            }
+        }
+        public var gdnInstanceList: [DescribeGdnInstancesResponseBody.Data.GdnInstanceList]?
+
+        public var pageNumber: String?
+
+        public var pageSize: String?
+
+        public var totalNumber: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.gdnInstanceList != nil {
+                var tmp : [Any] = []
+                for k in self.gdnInstanceList! {
+                    tmp.append(k.toMap())
+                }
+                map["GdnInstanceList"] = tmp
+            }
+            if self.pageNumber != nil {
+                map["PageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.totalNumber != nil {
+                map["TotalNumber"] = self.totalNumber!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("GdnInstanceList") {
+                var tmp : [DescribeGdnInstancesResponseBody.Data.GdnInstanceList] = []
+                for v in dict["GdnInstanceList"] as! [Any] {
+                    var model = DescribeGdnInstancesResponseBody.Data.GdnInstanceList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.gdnInstanceList = tmp
+            }
+            if dict.keys.contains("PageNumber") {
+                self.pageNumber = dict["PageNumber"] as! String
+            }
+            if dict.keys.contains("PageSize") {
+                self.pageSize = dict["PageSize"] as! String
+            }
+            if dict.keys.contains("TotalNumber") {
+                self.totalNumber = dict["TotalNumber"] as! String
+            }
+        }
+    }
+    public var data: DescribeGdnInstancesResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            var model = DescribeGdnInstancesResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class DescribeGdnInstancesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeGdnInstancesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeGdnInstancesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeOpenBackupSetRequest : Tea.TeaModel {
     public var DBInstanceName: String?
 
@@ -16207,6 +16702,187 @@ public class SwitchDBInstanceHAResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = SwitchDBInstanceHAResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class SwitchGdnMemberRoleRequest : Tea.TeaModel {
+    public var DBInstanceName: String?
+
+    public var regionId: String?
+
+    public var switchMode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceName != nil {
+            map["DBInstanceName"] = self.DBInstanceName!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.switchMode != nil {
+            map["SwitchMode"] = self.switchMode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBInstanceName") {
+            self.DBInstanceName = dict["DBInstanceName"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("SwitchMode") {
+            self.switchMode = dict["SwitchMode"] as! String
+        }
+    }
+}
+
+public class SwitchGdnMemberRoleResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var taskId: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("TaskId") {
+                self.taskId = dict["TaskId"] as! Int32
+            }
+        }
+    }
+    public var data: SwitchGdnMemberRoleResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            var model = SwitchGdnMemberRoleResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class SwitchGdnMemberRoleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SwitchGdnMemberRoleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = SwitchGdnMemberRoleResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
