@@ -1448,9 +1448,19 @@ public class QueryDocParserStatusRequest : Tea.TeaModel {
 
 public class QueryDocParserStatusResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var imageCount: Int32?
+
         public var numberOfSuccessfulParsing: Int32?
 
+        public var pageCountEstimate: Int32?
+
+        public var paragraphCount: Int32?
+
         public var status: String?
+
+        public var tableCount: Int32?
+
+        public var tokens: Int64?
 
         public override init() {
             super.init()
@@ -1466,21 +1476,51 @@ public class QueryDocParserStatusResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.imageCount != nil {
+                map["ImageCount"] = self.imageCount!
+            }
             if self.numberOfSuccessfulParsing != nil {
                 map["NumberOfSuccessfulParsing"] = self.numberOfSuccessfulParsing!
             }
+            if self.pageCountEstimate != nil {
+                map["PageCountEstimate"] = self.pageCountEstimate!
+            }
+            if self.paragraphCount != nil {
+                map["ParagraphCount"] = self.paragraphCount!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.tableCount != nil {
+                map["TableCount"] = self.tableCount!
+            }
+            if self.tokens != nil {
+                map["Tokens"] = self.tokens!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ImageCount") {
+                self.imageCount = dict["ImageCount"] as! Int32
+            }
             if dict.keys.contains("NumberOfSuccessfulParsing") {
                 self.numberOfSuccessfulParsing = dict["NumberOfSuccessfulParsing"] as! Int32
             }
+            if dict.keys.contains("PageCountEstimate") {
+                self.pageCountEstimate = dict["PageCountEstimate"] as! Int32
+            }
+            if dict.keys.contains("ParagraphCount") {
+                self.paragraphCount = dict["ParagraphCount"] as! Int32
+            }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("TableCount") {
+                self.tableCount = dict["TableCount"] as! Int32
+            }
+            if dict.keys.contains("Tokens") {
+                self.tokens = dict["Tokens"] as! Int64
             }
         }
     }
@@ -3673,6 +3713,8 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
 
     public var formulaEnhancement: Bool?
 
+    public var llmEnhancement: Bool?
+
     public override init() {
         super.init()
     }
@@ -3699,6 +3741,9 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
         if self.formulaEnhancement != nil {
             map["FormulaEnhancement"] = self.formulaEnhancement!
         }
+        if self.llmEnhancement != nil {
+            map["LlmEnhancement"] = self.llmEnhancement!
+        }
         return map
     }
 
@@ -3715,6 +3760,9 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
         if dict.keys.contains("FormulaEnhancement") {
             self.formulaEnhancement = dict["FormulaEnhancement"] as! Bool
         }
+        if dict.keys.contains("LlmEnhancement") {
+            self.llmEnhancement = dict["LlmEnhancement"] as! Bool
+        }
     }
 }
 
@@ -3726,6 +3774,8 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
     public var fileUrlObject: InputStream?
 
     public var formulaEnhancement: Bool?
+
+    public var llmEnhancement: Bool?
 
     public override init() {
         super.init()
@@ -3753,6 +3803,9 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
         if self.formulaEnhancement != nil {
             map["FormulaEnhancement"] = self.formulaEnhancement!
         }
+        if self.llmEnhancement != nil {
+            map["LlmEnhancement"] = self.llmEnhancement!
+        }
         return map
     }
 
@@ -3768,6 +3821,9 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FormulaEnhancement") {
             self.formulaEnhancement = dict["FormulaEnhancement"] as! Bool
+        }
+        if dict.keys.contains("LlmEnhancement") {
+            self.llmEnhancement = dict["LlmEnhancement"] as! Bool
         }
     }
 }

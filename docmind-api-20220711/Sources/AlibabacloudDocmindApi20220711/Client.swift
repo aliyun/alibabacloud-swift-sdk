@@ -1146,6 +1146,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.formulaEnhancement)) {
             query["FormulaEnhancement"] = request.formulaEnhancement!;
         }
+        if (!TeaUtils.Client.isUnset(request.llmEnhancement)) {
+            query["LlmEnhancement"] = request.llmEnhancement!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
