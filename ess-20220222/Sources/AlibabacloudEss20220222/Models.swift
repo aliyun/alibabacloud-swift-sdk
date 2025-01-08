@@ -687,6 +687,8 @@ public class AttachInstancesRequest : Tea.TeaModel {
 
     public var entrusted: Bool?
 
+    public var ignoreInvalidInstance: Bool?
+
     public var instanceIds: [String]?
 
     public var lifecycleHook: Bool?
@@ -725,6 +727,9 @@ public class AttachInstancesRequest : Tea.TeaModel {
         if self.entrusted != nil {
             map["Entrusted"] = self.entrusted!
         }
+        if self.ignoreInvalidInstance != nil {
+            map["IgnoreInvalidInstance"] = self.ignoreInvalidInstance!
+        }
         if self.instanceIds != nil {
             map["InstanceIds"] = self.instanceIds!
         }
@@ -761,6 +766,9 @@ public class AttachInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Entrusted") {
             self.entrusted = dict["Entrusted"] as! Bool
+        }
+        if dict.keys.contains("IgnoreInvalidInstance") {
+            self.ignoreInvalidInstance = dict["IgnoreInvalidInstance"] as! Bool
         }
         if dict.keys.contains("InstanceIds") {
             self.instanceIds = dict["InstanceIds"] as! [String]

@@ -263,6 +263,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.entrusted)) {
             query["Entrusted"] = request.entrusted!;
         }
+        if (!TeaUtils.Client.isUnset(request.ignoreInvalidInstance)) {
+            query["IgnoreInvalidInstance"] = request.ignoreInvalidInstance!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceIds)) {
             query["InstanceIds"] = request.instanceIds ?? [];
         }
