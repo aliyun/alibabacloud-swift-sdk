@@ -4315,6 +4315,56 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setSavingPlanUserDeductRuleWithOptions(_ tmpReq: SetSavingPlanUserDeductRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetSavingPlanUserDeductRuleResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SetSavingPlanUserDeductRuleShrinkRequest = SetSavingPlanUserDeductRuleShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.ecIdAccountIds)) {
+            request.ecIdAccountIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ecIdAccountIds, "EcIdAccountIds", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.userDeductRules)) {
+            request.userDeductRulesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.userDeductRules, "UserDeductRules", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ecIdAccountIdsShrink)) {
+            query["EcIdAccountIds"] = request.ecIdAccountIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nbid)) {
+            query["Nbid"] = request.nbid ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.spnInstanceCode)) {
+            body["SpnInstanceCode"] = request.spnInstanceCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userDeductRulesShrink)) {
+            body["UserDeductRules"] = request.userDeductRulesShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SetSavingPlanUserDeductRule",
+            "version": "2017-12-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SetSavingPlanUserDeductRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setSavingPlanUserDeductRule(_ request: SetSavingPlanUserDeductRuleRequest) async throws -> SetSavingPlanUserDeductRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await setSavingPlanUserDeductRuleWithOptions(request as! SetSavingPlanUserDeductRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func subscribeBillToOSSWithOptions(_ request: SubscribeBillToOSSRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubscribeBillToOSSResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

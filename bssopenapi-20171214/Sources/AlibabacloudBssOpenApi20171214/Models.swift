@@ -6264,6 +6264,8 @@ public class DescribeInstanceBillResponseBody : Tea.TeaModel {
         public class Items : Tea.TeaModel {
             public var adjustAmount: Double?
 
+            public var afterDiscountAmount: String?
+
             public var billAccountID: String?
 
             public var billAccountName: String?
@@ -6370,6 +6372,9 @@ public class DescribeInstanceBillResponseBody : Tea.TeaModel {
                 var map = super.toMap()
                 if self.adjustAmount != nil {
                     map["AdjustAmount"] = self.adjustAmount!
+                }
+                if self.afterDiscountAmount != nil {
+                    map["AfterDiscountAmount"] = self.afterDiscountAmount!
                 }
                 if self.billAccountID != nil {
                     map["BillAccountID"] = self.billAccountID!
@@ -6512,6 +6517,9 @@ public class DescribeInstanceBillResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("AdjustAmount") {
                     self.adjustAmount = dict["AdjustAmount"] as! Double
+                }
+                if dict.keys.contains("AfterDiscountAmount") {
+                    self.afterDiscountAmount = dict["AfterDiscountAmount"] as! String
                 }
                 if dict.keys.contains("BillAccountID") {
                     self.billAccountID = dict["BillAccountID"] as! String
@@ -13139,6 +13147,8 @@ public class DescribeSplitItemBillResponseBody : Tea.TeaModel {
         public class Items : Tea.TeaModel {
             public var adjustAmount: Double?
 
+            public var afterDiscountAmount: String?
+
             public var billAccountID: String?
 
             public var billAccountName: String?
@@ -13261,6 +13271,9 @@ public class DescribeSplitItemBillResponseBody : Tea.TeaModel {
                 var map = super.toMap()
                 if self.adjustAmount != nil {
                     map["AdjustAmount"] = self.adjustAmount!
+                }
+                if self.afterDiscountAmount != nil {
+                    map["AfterDiscountAmount"] = self.afterDiscountAmount!
                 }
                 if self.billAccountID != nil {
                     map["BillAccountID"] = self.billAccountID!
@@ -13427,6 +13440,9 @@ public class DescribeSplitItemBillResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("AdjustAmount") {
                     self.adjustAmount = dict["AdjustAmount"] as! Double
+                }
+                if dict.keys.contains("AfterDiscountAmount") {
+                    self.afterDiscountAmount = dict["AfterDiscountAmount"] as! String
                 }
                 if dict.keys.contains("BillAccountID") {
                     self.billAccountID = dict["BillAccountID"] as! String
@@ -35537,6 +35553,307 @@ public class SetResellerUserStatusResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = SetResellerUserStatusResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class SetSavingPlanUserDeductRuleRequest : Tea.TeaModel {
+    public class EcIdAccountIds : Tea.TeaModel {
+        public var accountIds: [Int64]?
+
+        public var ecId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountIds != nil {
+                map["AccountIds"] = self.accountIds!
+            }
+            if self.ecId != nil {
+                map["EcId"] = self.ecId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AccountIds") {
+                self.accountIds = dict["AccountIds"] as! [Int64]
+            }
+            if dict.keys.contains("EcId") {
+                self.ecId = dict["EcId"] as! String
+            }
+        }
+    }
+    public class UserDeductRules : Tea.TeaModel {
+        public var commodityCode: String?
+
+        public var moduleCode: String?
+
+        public var skipDeduct: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.commodityCode != nil {
+                map["CommodityCode"] = self.commodityCode!
+            }
+            if self.moduleCode != nil {
+                map["ModuleCode"] = self.moduleCode!
+            }
+            if self.skipDeduct != nil {
+                map["SkipDeduct"] = self.skipDeduct!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CommodityCode") {
+                self.commodityCode = dict["CommodityCode"] as! String
+            }
+            if dict.keys.contains("ModuleCode") {
+                self.moduleCode = dict["ModuleCode"] as! String
+            }
+            if dict.keys.contains("SkipDeduct") {
+                self.skipDeduct = dict["SkipDeduct"] as! Bool
+            }
+        }
+    }
+    public var ecIdAccountIds: [SetSavingPlanUserDeductRuleRequest.EcIdAccountIds]?
+
+    public var nbid: String?
+
+    public var spnInstanceCode: String?
+
+    public var userDeductRules: [SetSavingPlanUserDeductRuleRequest.UserDeductRules]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ecIdAccountIds != nil {
+            var tmp : [Any] = []
+            for k in self.ecIdAccountIds! {
+                tmp.append(k.toMap())
+            }
+            map["EcIdAccountIds"] = tmp
+        }
+        if self.nbid != nil {
+            map["Nbid"] = self.nbid!
+        }
+        if self.spnInstanceCode != nil {
+            map["SpnInstanceCode"] = self.spnInstanceCode!
+        }
+        if self.userDeductRules != nil {
+            var tmp : [Any] = []
+            for k in self.userDeductRules! {
+                tmp.append(k.toMap())
+            }
+            map["UserDeductRules"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EcIdAccountIds") {
+            var tmp : [SetSavingPlanUserDeductRuleRequest.EcIdAccountIds] = []
+            for v in dict["EcIdAccountIds"] as! [Any] {
+                var model = SetSavingPlanUserDeductRuleRequest.EcIdAccountIds()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.ecIdAccountIds = tmp
+        }
+        if dict.keys.contains("Nbid") {
+            self.nbid = dict["Nbid"] as! String
+        }
+        if dict.keys.contains("SpnInstanceCode") {
+            self.spnInstanceCode = dict["SpnInstanceCode"] as! String
+        }
+        if dict.keys.contains("UserDeductRules") {
+            var tmp : [SetSavingPlanUserDeductRuleRequest.UserDeductRules] = []
+            for v in dict["UserDeductRules"] as! [Any] {
+                var model = SetSavingPlanUserDeductRuleRequest.UserDeductRules()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.userDeductRules = tmp
+        }
+    }
+}
+
+public class SetSavingPlanUserDeductRuleShrinkRequest : Tea.TeaModel {
+    public var ecIdAccountIdsShrink: String?
+
+    public var nbid: String?
+
+    public var spnInstanceCode: String?
+
+    public var userDeductRulesShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ecIdAccountIdsShrink != nil {
+            map["EcIdAccountIds"] = self.ecIdAccountIdsShrink!
+        }
+        if self.nbid != nil {
+            map["Nbid"] = self.nbid!
+        }
+        if self.spnInstanceCode != nil {
+            map["SpnInstanceCode"] = self.spnInstanceCode!
+        }
+        if self.userDeductRulesShrink != nil {
+            map["UserDeductRules"] = self.userDeductRulesShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EcIdAccountIds") {
+            self.ecIdAccountIdsShrink = dict["EcIdAccountIds"] as! String
+        }
+        if dict.keys.contains("Nbid") {
+            self.nbid = dict["Nbid"] as! String
+        }
+        if dict.keys.contains("SpnInstanceCode") {
+            self.spnInstanceCode = dict["SpnInstanceCode"] as! String
+        }
+        if dict.keys.contains("UserDeductRules") {
+            self.userDeductRulesShrink = dict["UserDeductRules"] as! String
+        }
+    }
+}
+
+public class SetSavingPlanUserDeductRuleResponseBody : Tea.TeaModel {
+    public var data: Bool?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            self.data = dict["Data"] as! Bool
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class SetSavingPlanUserDeductRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SetSavingPlanUserDeductRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = SetSavingPlanUserDeductRuleResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
