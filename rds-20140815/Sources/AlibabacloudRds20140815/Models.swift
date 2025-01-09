@@ -11397,6 +11397,8 @@ public class CreateRCNodePoolRequest : Tea.TeaModel {
     public class SystemDisk : Tea.TeaModel {
         public var category: String?
 
+        public var performanceLevel: String?
+
         public var size: Int32?
 
         public override init() {
@@ -11416,6 +11418,9 @@ public class CreateRCNodePoolRequest : Tea.TeaModel {
             if self.category != nil {
                 map["Category"] = self.category!
             }
+            if self.performanceLevel != nil {
+                map["PerformanceLevel"] = self.performanceLevel!
+            }
             if self.size != nil {
                 map["Size"] = self.size!
             }
@@ -11425,6 +11430,9 @@ public class CreateRCNodePoolRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Category") {
                 self.category = dict["Category"] as! String
+            }
+            if dict.keys.contains("PerformanceLevel") {
+                self.performanceLevel = dict["PerformanceLevel"] as! String
             }
             if dict.keys.contains("Size") {
                 self.size = dict["Size"] as! Int32
@@ -54761,6 +54769,67 @@ public class DescribeRCInstanceAttributeResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class SystemDisk : Tea.TeaModel {
+        public var deleteWithInstance: Bool?
+
+        public var encrypted: String?
+
+        public var systemDiskCategory: String?
+
+        public var systemDiskPerformanceLevel: String?
+
+        public var systemDiskSize: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.deleteWithInstance != nil {
+                map["DeleteWithInstance"] = self.deleteWithInstance!
+            }
+            if self.encrypted != nil {
+                map["Encrypted"] = self.encrypted!
+            }
+            if self.systemDiskCategory != nil {
+                map["SystemDiskCategory"] = self.systemDiskCategory!
+            }
+            if self.systemDiskPerformanceLevel != nil {
+                map["SystemDiskPerformanceLevel"] = self.systemDiskPerformanceLevel!
+            }
+            if self.systemDiskSize != nil {
+                map["SystemDiskSize"] = self.systemDiskSize!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DeleteWithInstance") {
+                self.deleteWithInstance = dict["DeleteWithInstance"] as! Bool
+            }
+            if dict.keys.contains("Encrypted") {
+                self.encrypted = dict["Encrypted"] as! String
+            }
+            if dict.keys.contains("SystemDiskCategory") {
+                self.systemDiskCategory = dict["SystemDiskCategory"] as! String
+            }
+            if dict.keys.contains("SystemDiskPerformanceLevel") {
+                self.systemDiskPerformanceLevel = dict["SystemDiskPerformanceLevel"] as! String
+            }
+            if dict.keys.contains("SystemDiskSize") {
+                self.systemDiskSize = dict["SystemDiskSize"] as! Int64
+            }
+        }
+    }
     public class Tags : Tea.TeaModel {
         public class Tag : Tea.TeaModel {
             public var resourceId: String?
@@ -55018,6 +55087,8 @@ public class DescribeRCInstanceAttributeResponseBody : Tea.TeaModel {
 
     public var stoppedMode: String?
 
+    public var systemDisk: DescribeRCInstanceAttributeResponseBody.SystemDisk?
+
     public var tags: DescribeRCInstanceAttributeResponseBody.Tags?
 
     public var vlanId: String?
@@ -55043,6 +55114,7 @@ public class DescribeRCInstanceAttributeResponseBody : Tea.TeaModel {
         try self.operationLocks?.validate()
         try self.publicIpAddress?.validate()
         try self.securityGroupIds?.validate()
+        try self.systemDisk?.validate()
         try self.tags?.validate()
         try self.vpcAttributes?.validate()
     }
@@ -55165,6 +55237,9 @@ public class DescribeRCInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if self.stoppedMode != nil {
             map["StoppedMode"] = self.stoppedMode!
+        }
+        if self.systemDisk != nil {
+            map["SystemDisk"] = self.systemDisk?.toMap()
         }
         if self.tags != nil {
             map["Tags"] = self.tags?.toMap()
@@ -55312,6 +55387,11 @@ public class DescribeRCInstanceAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("StoppedMode") {
             self.stoppedMode = dict["StoppedMode"] as! String
+        }
+        if dict.keys.contains("SystemDisk") {
+            var model = DescribeRCInstanceAttributeResponseBody.SystemDisk()
+            model.fromMap(dict["SystemDisk"] as! [String: Any])
+            self.systemDisk = model
         }
         if dict.keys.contains("Tags") {
             var model = DescribeRCInstanceAttributeResponseBody.Tags()
@@ -56319,6 +56399,8 @@ public class DescribeRCNodePoolResponseBody : Tea.TeaModel {
         public class SystemDisk : Tea.TeaModel {
             public var category: String?
 
+            public var performanceLevel: String?
+
             public var size: Int32?
 
             public override init() {
@@ -56338,6 +56420,9 @@ public class DescribeRCNodePoolResponseBody : Tea.TeaModel {
                 if self.category != nil {
                     map["Category"] = self.category!
                 }
+                if self.performanceLevel != nil {
+                    map["PerformanceLevel"] = self.performanceLevel!
+                }
                 if self.size != nil {
                     map["Size"] = self.size!
                 }
@@ -56347,6 +56432,9 @@ public class DescribeRCNodePoolResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Category") {
                     self.category = dict["Category"] as! String
+                }
+                if dict.keys.contains("PerformanceLevel") {
+                    self.performanceLevel = dict["PerformanceLevel"] as! String
                 }
                 if dict.keys.contains("Size") {
                     self.size = dict["Size"] as! Int32
@@ -59628,6 +59716,8 @@ public class DescribeResourceUsageResponseBody : Tea.TeaModel {
 
     public var backupDataSize: Int64?
 
+    public var backupEcsSnapshotSize: String?
+
     public var backupLogSize: Int64?
 
     public var backupOssDataSize: Int64?
@@ -59673,6 +59763,9 @@ public class DescribeResourceUsageResponseBody : Tea.TeaModel {
         }
         if self.backupDataSize != nil {
             map["BackupDataSize"] = self.backupDataSize!
+        }
+        if self.backupEcsSnapshotSize != nil {
+            map["BackupEcsSnapshotSize"] = self.backupEcsSnapshotSize!
         }
         if self.backupLogSize != nil {
             map["BackupLogSize"] = self.backupLogSize!
@@ -59722,6 +59815,9 @@ public class DescribeResourceUsageResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("BackupDataSize") {
             self.backupDataSize = dict["BackupDataSize"] as! Int64
+        }
+        if dict.keys.contains("BackupEcsSnapshotSize") {
+            self.backupEcsSnapshotSize = dict["BackupEcsSnapshotSize"] as! String
         }
         if dict.keys.contains("BackupLogSize") {
             self.backupLogSize = dict["BackupLogSize"] as! Int64
