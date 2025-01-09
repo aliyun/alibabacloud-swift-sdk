@@ -223,6 +223,8 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
             public class TextResult : Tea.TeaModel {
                 public var description_: String?
 
+                public var descriptions: String?
+
                 public var labels: String?
 
                 public var riskLevel: String?
@@ -254,6 +256,9 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
                     if self.description_ != nil {
                         map["Description"] = self.description_!
                     }
+                    if self.descriptions != nil {
+                        map["Descriptions"] = self.descriptions!
+                    }
                     if self.labels != nil {
                         map["Labels"] = self.labels!
                     }
@@ -281,6 +286,9 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
                 public override func fromMap(_ dict: [String: Any]) -> Void {
                     if dict.keys.contains("Description") {
                         self.description_ = dict["Description"] as! String
+                    }
+                    if dict.keys.contains("Descriptions") {
+                        self.descriptions = dict["Descriptions"] as! String
                     }
                     if dict.keys.contains("Labels") {
                         self.labels = dict["Labels"] as! String
@@ -486,6 +494,8 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
             }
             public class TextSummary : Tea.TeaModel {
                 public class TextLabels : Tea.TeaModel {
+                    public var description_: String?
+
                     public var label: String?
 
                     public var labelSum: Int32?
@@ -504,6 +514,9 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
 
                     public override func toMap() -> [String : Any] {
                         var map = super.toMap()
+                        if self.description_ != nil {
+                            map["Description"] = self.description_!
+                        }
                         if self.label != nil {
                             map["Label"] = self.label!
                         }
@@ -514,6 +527,9 @@ public class DescribeFileModerationResultResponseBody : Tea.TeaModel {
                     }
 
                     public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Description") {
+                            self.description_ = dict["Description"] as! String
+                        }
                         if dict.keys.contains("Label") {
                             self.label = dict["Label"] as! String
                         }
@@ -5961,6 +5977,8 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class AudioResult : Tea.TeaModel {
             public class AudioSummarys : Tea.TeaModel {
+                public var description_: String?
+
                 public var label: String?
 
                 public var labelSum: Int32?
@@ -5979,6 +5997,9 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
                     if self.label != nil {
                         map["Label"] = self.label!
                     }
@@ -5989,6 +6010,9 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Description") {
+                        self.description_ = dict["Description"] as! String
+                    }
                     if dict.keys.contains("Label") {
                         self.label = dict["Label"] as! String
                     }
@@ -5998,6 +6022,8 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                 }
             }
             public class SliceDetails : Tea.TeaModel {
+                public var descriptions: String?
+
                 public var endTime: Int64?
 
                 public var endTimestamp: Int64?
@@ -6036,6 +6062,9 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.descriptions != nil {
+                        map["Descriptions"] = self.descriptions!
+                    }
                     if self.endTime != nil {
                         map["EndTime"] = self.endTime!
                     }
@@ -6076,6 +6105,9 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Descriptions") {
+                        self.descriptions = dict["Descriptions"] as! String
+                    }
                     if dict.keys.contains("EndTime") {
                         self.endTime = dict["EndTime"] as! Int64
                     }
@@ -7119,6 +7151,8 @@ public class VoiceModerationResultRequest : Tea.TeaModel {
 public class VoiceModerationResultResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class SliceDetails : Tea.TeaModel {
+            public var descriptions: String?
+
             public var endTime: Int64?
 
             public var endTimestamp: Int64?
@@ -7159,6 +7193,9 @@ public class VoiceModerationResultResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.descriptions != nil {
+                    map["Descriptions"] = self.descriptions!
+                }
                 if self.endTime != nil {
                     map["EndTime"] = self.endTime!
                 }
@@ -7202,6 +7239,9 @@ public class VoiceModerationResultResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Descriptions") {
+                    self.descriptions = dict["Descriptions"] as! String
+                }
                 if dict.keys.contains("EndTime") {
                     self.endTime = dict["EndTime"] as! Int64
                 }
