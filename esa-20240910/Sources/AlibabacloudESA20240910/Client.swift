@@ -4766,14 +4766,22 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listPagesWithOptions(_ request: ListPagesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPagesResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listPagesWithOptions(_ tmpReq: ListPagesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPagesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListPagesShrinkRequest = ListPagesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.queryArgs)) {
+            request.queryArgsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.queryArgs, "QueryArgs", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.queryArgsShrink)) {
+            query["QueryArgs"] = request.queryArgsShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

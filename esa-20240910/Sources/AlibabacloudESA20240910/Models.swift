@@ -32958,9 +32958,89 @@ public class ListOriginPoolsResponse : Tea.TeaModel {
 }
 
 public class ListPagesRequest : Tea.TeaModel {
+    public class QueryArgs : Tea.TeaModel {
+        public var nameDescriptionLike: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.nameDescriptionLike != nil {
+                map["NameDescriptionLike"] = self.nameDescriptionLike!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("NameDescriptionLike") {
+                self.nameDescriptionLike = dict["NameDescriptionLike"] as! String
+            }
+        }
+    }
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
+
+    public var queryArgs: ListPagesRequest.QueryArgs?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.queryArgs?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.queryArgs != nil {
+            map["QueryArgs"] = self.queryArgs?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("QueryArgs") {
+            var model = ListPagesRequest.QueryArgs()
+            model.fromMap(dict["QueryArgs"] as! [String: Any])
+            self.queryArgs = model
+        }
+    }
+}
+
+public class ListPagesShrinkRequest : Tea.TeaModel {
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var queryArgsShrink: String?
 
     public override init() {
         super.init()
@@ -32982,6 +33062,9 @@ public class ListPagesRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.queryArgsShrink != nil {
+            map["QueryArgs"] = self.queryArgsShrink!
+        }
         return map
     }
 
@@ -32991,6 +33074,9 @@ public class ListPagesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("QueryArgs") {
+            self.queryArgsShrink = dict["QueryArgs"] as! String
         }
     }
 }
@@ -40570,6 +40656,8 @@ public class SetCertificateRequest : Tea.TeaModel {
 }
 
 public class SetCertificateResponseBody : Tea.TeaModel {
+    public var id: String?
+
     public var requestId: String?
 
     public override init() {
@@ -40586,6 +40674,9 @@ public class SetCertificateResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -40593,6 +40684,9 @@ public class SetCertificateResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Id") {
+            self.id = dict["Id"] as! String
+        }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
