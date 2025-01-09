@@ -17048,6 +17048,8 @@ public class CreateNetworkInterfaceRequest : Tea.TeaModel {
         }
     }
     public class EnhancedNetwork : Tea.TeaModel {
+        public var enableRss: Bool?
+
         public var enableSriov: Bool?
 
         public override init() {
@@ -17064,6 +17066,9 @@ public class CreateNetworkInterfaceRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.enableRss != nil {
+                map["EnableRss"] = self.enableRss!
+            }
             if self.enableSriov != nil {
                 map["EnableSriov"] = self.enableSriov!
             }
@@ -17071,6 +17076,9 @@ public class CreateNetworkInterfaceRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EnableRss") {
+                self.enableRss = dict["EnableRss"] as! Bool
+            }
             if dict.keys.contains("EnableSriov") {
                 self.enableSriov = dict["EnableSriov"] as! Bool
             }
@@ -56862,6 +56870,8 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
                 }
             }
             public class EnhancedNetwork : Tea.TeaModel {
+                public var rssSupport: Bool?
+
                 public var sriovSupport: Bool?
 
                 public var vfQueueNumberPerEni: Int32?
@@ -56880,6 +56890,9 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.rssSupport != nil {
+                        map["RssSupport"] = self.rssSupport!
+                    }
                     if self.sriovSupport != nil {
                         map["SriovSupport"] = self.sriovSupport!
                     }
@@ -56890,6 +56903,9 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("RssSupport") {
+                        self.rssSupport = dict["RssSupport"] as! Bool
+                    }
                     if dict.keys.contains("SriovSupport") {
                         self.sriovSupport = dict["SriovSupport"] as! Bool
                     }
@@ -66317,6 +66333,8 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
         }
     }
     public class EnhancedNetwork : Tea.TeaModel {
+        public var enableRss: Bool?
+
         public var enableSriov: Bool?
 
         public override init() {
@@ -66333,6 +66351,9 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.enableRss != nil {
+                map["EnableRss"] = self.enableRss!
+            }
             if self.enableSriov != nil {
                 map["EnableSriov"] = self.enableSriov!
             }
@@ -66340,6 +66361,9 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EnableRss") {
+                self.enableRss = dict["EnableRss"] as! Bool
+            }
             if dict.keys.contains("EnableSriov") {
                 self.enableSriov = dict["EnableSriov"] as! Bool
             }
@@ -102812,6 +102836,8 @@ public class ModifyNetworkInterfaceAttributeRequest : Tea.TeaModel {
         }
     }
     public class EnhancedNetwork : Tea.TeaModel {
+        public var enableRss: Bool?
+
         public var enableSriov: Bool?
 
         public override init() {
@@ -102828,6 +102854,9 @@ public class ModifyNetworkInterfaceAttributeRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.enableRss != nil {
+                map["EnableRss"] = self.enableRss!
+            }
             if self.enableSriov != nil {
                 map["EnableSriov"] = self.enableSriov!
             }
@@ -102835,6 +102864,9 @@ public class ModifyNetworkInterfaceAttributeRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EnableRss") {
+                self.enableRss = dict["EnableRss"] as! Bool
+            }
             if dict.keys.contains("EnableSriov") {
                 self.enableSriov = dict["EnableSriov"] as! Bool
             }
