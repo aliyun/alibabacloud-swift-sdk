@@ -11425,6 +11425,8 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
 
     public var imciAutoIndex: String?
 
+    public var imperceptibleSwitch: String?
+
     public var inodeTotal: Int64?
 
     public var inodeUsed: Int64?
@@ -11462,6 +11464,8 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
     public var restoreDataPoint: String?
 
     public var restoreType: String?
+
+    public var rowCompression: String?
 
     public var SQLSize: Int64?
 
@@ -11596,6 +11600,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         if self.imciAutoIndex != nil {
             map["ImciAutoIndex"] = self.imciAutoIndex!
         }
+        if self.imperceptibleSwitch != nil {
+            map["ImperceptibleSwitch"] = self.imperceptibleSwitch!
+        }
         if self.inodeTotal != nil {
             map["InodeTotal"] = self.inodeTotal!
         }
@@ -11652,6 +11659,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if self.restoreType != nil {
             map["RestoreType"] = self.restoreType!
+        }
+        if self.rowCompression != nil {
+            map["RowCompression"] = self.rowCompression!
         }
         if self.SQLSize != nil {
             map["SQLSize"] = self.SQLSize!
@@ -11801,6 +11811,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         if dict.keys.contains("ImciAutoIndex") {
             self.imciAutoIndex = dict["ImciAutoIndex"] as! String
         }
+        if dict.keys.contains("ImperceptibleSwitch") {
+            self.imperceptibleSwitch = dict["ImperceptibleSwitch"] as! String
+        }
         if dict.keys.contains("InodeTotal") {
             self.inodeTotal = dict["InodeTotal"] as! Int64
         }
@@ -11857,6 +11870,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RestoreType") {
             self.restoreType = dict["RestoreType"] as! String
+        }
+        if dict.keys.contains("RowCompression") {
+            self.rowCompression = dict["RowCompression"] as! String
         }
         if dict.keys.contains("SQLSize") {
             self.SQLSize = dict["SQLSize"] as! Int64
@@ -29093,6 +29109,8 @@ public class ModifyDBClusterRequest : Tea.TeaModel {
 
     public var imciAutoIndex: String?
 
+    public var modifyRowCompression: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -29106,6 +29124,8 @@ public class ModifyDBClusterRequest : Tea.TeaModel {
     public var storageAutoScale: String?
 
     public var storageUpperBound: Int64?
+
+    public var tableMeta: String?
 
     public override init() {
         super.init()
@@ -29142,6 +29162,9 @@ public class ModifyDBClusterRequest : Tea.TeaModel {
         if self.imciAutoIndex != nil {
             map["ImciAutoIndex"] = self.imciAutoIndex!
         }
+        if self.modifyRowCompression != nil {
+            map["ModifyRowCompression"] = self.modifyRowCompression!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -29162,6 +29185,9 @@ public class ModifyDBClusterRequest : Tea.TeaModel {
         }
         if self.storageUpperBound != nil {
             map["StorageUpperBound"] = self.storageUpperBound!
+        }
+        if self.tableMeta != nil {
+            map["TableMeta"] = self.tableMeta!
         }
         return map
     }
@@ -29188,6 +29214,9 @@ public class ModifyDBClusterRequest : Tea.TeaModel {
         if dict.keys.contains("ImciAutoIndex") {
             self.imciAutoIndex = dict["ImciAutoIndex"] as! String
         }
+        if dict.keys.contains("ModifyRowCompression") {
+            self.modifyRowCompression = dict["ModifyRowCompression"] as! String
+        }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
         }
@@ -29208,6 +29237,9 @@ public class ModifyDBClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("StorageUpperBound") {
             self.storageUpperBound = dict["StorageUpperBound"] as! Int64
+        }
+        if dict.keys.contains("TableMeta") {
+            self.tableMeta = dict["TableMeta"] as! String
         }
     }
 }
