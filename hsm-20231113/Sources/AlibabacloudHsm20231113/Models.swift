@@ -2972,6 +2972,8 @@ public class GetClusterResponseBody : Tea.TeaModel {
 
         public var clusterId: String?
 
+        public var clusterMode: Int32?
+
         public var clusterName: String?
 
         public var clusterOwnerCertificate: String?
@@ -3016,6 +3018,9 @@ public class GetClusterResponseBody : Tea.TeaModel {
             }
             if self.clusterId != nil {
                 map["ClusterId"] = self.clusterId!
+            }
+            if self.clusterMode != nil {
+                map["ClusterMode"] = self.clusterMode!
             }
             if self.clusterName != nil {
                 map["ClusterName"] = self.clusterName!
@@ -3070,6 +3075,9 @@ public class GetClusterResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ClusterId") {
                 self.clusterId = dict["ClusterId"] as! String
+            }
+            if dict.keys.contains("ClusterMode") {
+                self.clusterMode = dict["ClusterMode"] as! Int32
             }
             if dict.keys.contains("ClusterName") {
                 self.clusterName = dict["ClusterName"] as! String
@@ -3522,6 +3530,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
         public var status: String?
 
+        public var tenantIsolationType: String?
+
         public var vSwitchId: String?
 
         public var vendor: String?
@@ -3585,6 +3595,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.tenantIsolationType != nil {
+                map["TenantIsolationType"] = self.tenantIsolationType!
+            }
             if self.vSwitchId != nil {
                 map["VSwitchId"] = self.vSwitchId!
             }
@@ -3642,6 +3655,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("TenantIsolationType") {
+                self.tenantIsolationType = dict["TenantIsolationType"] as! String
             }
             if dict.keys.contains("VSwitchId") {
                 self.vSwitchId = dict["VSwitchId"] as! String
@@ -5345,6 +5361,8 @@ public class ListInstancesRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var tenantIsolationType: String?
+
     public override init() {
         super.init()
     }
@@ -5368,6 +5386,9 @@ public class ListInstancesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.tenantIsolationType != nil {
+            map["TenantIsolationType"] = self.tenantIsolationType!
+        }
         return map
     }
 
@@ -5380,6 +5401,9 @@ public class ListInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("TenantIsolationType") {
+            self.tenantIsolationType = dict["TenantIsolationType"] as! String
         }
     }
 }
