@@ -2301,6 +2301,8 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
 
     public var ldapConfig: CreateIdentityProviderRequest.LdapConfig?
 
+    public var logoUrl: String?
+
     public var networkAccessEndpointId: String?
 
     public var oidcConfig: CreateIdentityProviderRequest.OidcConfig?
@@ -2366,6 +2368,9 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
         if self.ldapConfig != nil {
             map["LdapConfig"] = self.ldapConfig?.toMap()
         }
+        if self.logoUrl != nil {
+            map["LogoUrl"] = self.logoUrl!
+        }
         if self.networkAccessEndpointId != nil {
             map["NetworkAccessEndpointId"] = self.networkAccessEndpointId!
         }
@@ -2428,6 +2433,9 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
             var model = CreateIdentityProviderRequest.LdapConfig()
             model.fromMap(dict["LdapConfig"] as! [String: Any])
             self.ldapConfig = model
+        }
+        if dict.keys.contains("LogoUrl") {
+            self.logoUrl = dict["LogoUrl"] as! String
         }
         if dict.keys.contains("NetworkAccessEndpointId") {
             self.networkAccessEndpointId = dict["NetworkAccessEndpointId"] as! String
@@ -10145,6 +10153,8 @@ public class GetIdentityProviderResponseBody : Tea.TeaModel {
 
         public var lockReason: String?
 
+        public var logoUrl: String?
+
         public var networkAccessEndpointId: String?
 
         public var oidcConfig: GetIdentityProviderResponseBody.IdentityProviderDetail.OidcConfig?
@@ -10234,6 +10244,9 @@ public class GetIdentityProviderResponseBody : Tea.TeaModel {
             if self.lockReason != nil {
                 map["LockReason"] = self.lockReason!
             }
+            if self.logoUrl != nil {
+                map["LogoUrl"] = self.logoUrl!
+            }
             if self.networkAccessEndpointId != nil {
                 map["NetworkAccessEndpointId"] = self.networkAccessEndpointId!
             }
@@ -10320,6 +10333,9 @@ public class GetIdentityProviderResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("LockReason") {
                 self.lockReason = dict["LockReason"] as! String
+            }
+            if dict.keys.contains("LogoUrl") {
+                self.logoUrl = dict["LogoUrl"] as! String
             }
             if dict.keys.contains("NetworkAccessEndpointId") {
                 self.networkAccessEndpointId = dict["NetworkAccessEndpointId"] as! String
@@ -11096,6 +11112,235 @@ public class GetInstanceResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = GetInstanceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetInstanceLicenseRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+    }
+}
+
+public class GetInstanceLicenseResponseBody : Tea.TeaModel {
+    public class License : Tea.TeaModel {
+        public var edition: String?
+
+        public var endTime: Int64?
+
+        public var licenseChargeType: String?
+
+        public var licenseConfigJson: String?
+
+        public var licenseCreateTime: Int64?
+
+        public var licenseId: String?
+
+        public var licenseStatus: String?
+
+        public var purchaseChannel: String?
+
+        public var purchaseInstanceId: String?
+
+        public var startTime: Int64?
+
+        public var userQuota: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.edition != nil {
+                map["Edition"] = self.edition!
+            }
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            if self.licenseChargeType != nil {
+                map["LicenseChargeType"] = self.licenseChargeType!
+            }
+            if self.licenseConfigJson != nil {
+                map["LicenseConfigJson"] = self.licenseConfigJson!
+            }
+            if self.licenseCreateTime != nil {
+                map["LicenseCreateTime"] = self.licenseCreateTime!
+            }
+            if self.licenseId != nil {
+                map["LicenseId"] = self.licenseId!
+            }
+            if self.licenseStatus != nil {
+                map["LicenseStatus"] = self.licenseStatus!
+            }
+            if self.purchaseChannel != nil {
+                map["PurchaseChannel"] = self.purchaseChannel!
+            }
+            if self.purchaseInstanceId != nil {
+                map["PurchaseInstanceId"] = self.purchaseInstanceId!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.userQuota != nil {
+                map["UserQuota"] = self.userQuota!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Edition") {
+                self.edition = dict["Edition"] as! String
+            }
+            if dict.keys.contains("EndTime") {
+                self.endTime = dict["EndTime"] as! Int64
+            }
+            if dict.keys.contains("LicenseChargeType") {
+                self.licenseChargeType = dict["LicenseChargeType"] as! String
+            }
+            if dict.keys.contains("LicenseConfigJson") {
+                self.licenseConfigJson = dict["LicenseConfigJson"] as! String
+            }
+            if dict.keys.contains("LicenseCreateTime") {
+                self.licenseCreateTime = dict["LicenseCreateTime"] as! Int64
+            }
+            if dict.keys.contains("LicenseId") {
+                self.licenseId = dict["LicenseId"] as! String
+            }
+            if dict.keys.contains("LicenseStatus") {
+                self.licenseStatus = dict["LicenseStatus"] as! String
+            }
+            if dict.keys.contains("PurchaseChannel") {
+                self.purchaseChannel = dict["PurchaseChannel"] as! String
+            }
+            if dict.keys.contains("PurchaseInstanceId") {
+                self.purchaseInstanceId = dict["PurchaseInstanceId"] as! String
+            }
+            if dict.keys.contains("StartTime") {
+                self.startTime = dict["StartTime"] as! Int64
+            }
+            if dict.keys.contains("UserQuota") {
+                self.userQuota = dict["UserQuota"] as! Int64
+            }
+        }
+    }
+    public var license: GetInstanceLicenseResponseBody.License?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.license?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.license != nil {
+            map["License"] = self.license?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("License") {
+            var model = GetInstanceLicenseResponseBody.License()
+            model.fromMap(dict["License"] as! [String: Any])
+            self.license = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class GetInstanceLicenseResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetInstanceLicenseResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetInstanceLicenseResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -17535,6 +17780,8 @@ public class ListIdentityProvidersResponseBody : Tea.TeaModel {
 
         public var lockReason: String?
 
+        public var logoUrl: String?
+
         public var udPullStatus: String?
 
         public var udPullTargetScope: String?
@@ -17599,6 +17846,9 @@ public class ListIdentityProvidersResponseBody : Tea.TeaModel {
             if self.lockReason != nil {
                 map["LockReason"] = self.lockReason!
             }
+            if self.logoUrl != nil {
+                map["LogoUrl"] = self.logoUrl!
+            }
             if self.udPullStatus != nil {
                 map["UdPullStatus"] = self.udPullStatus!
             }
@@ -17656,6 +17906,9 @@ public class ListIdentityProvidersResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("LockReason") {
                 self.lockReason = dict["LockReason"] as! String
+            }
+            if dict.keys.contains("LogoUrl") {
+                self.logoUrl = dict["LogoUrl"] as! String
             }
             if dict.keys.contains("UdPullStatus") {
                 self.udPullStatus = dict["UdPullStatus"] as! String
@@ -19684,9 +19937,48 @@ public class ListRegionsResponse : Tea.TeaModel {
 }
 
 public class ListSynchronizationJobsRequest : Tea.TeaModel {
+    public class Filters : Tea.TeaModel {
+        public var key: String?
+
+        public var values: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.values != nil {
+                map["Values"] = self.values!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Values") {
+                self.values = dict["Values"] as! [String]
+            }
+        }
+    }
     public var direction: String?
 
     public var endTime: Int64?
+
+    public var filters: [ListSynchronizationJobsRequest.Filters]?
 
     public var instanceId: String?
 
@@ -19726,6 +20018,13 @@ public class ListSynchronizationJobsRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.filters != nil {
+            var tmp : [Any] = []
+            for k in self.filters! {
+                tmp.append(k.toMap())
+            }
+            map["Filters"] = tmp
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -19762,6 +20061,17 @@ public class ListSynchronizationJobsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EndTime") {
             self.endTime = dict["EndTime"] as! Int64
+        }
+        if dict.keys.contains("Filters") {
+            var tmp : [ListSynchronizationJobsRequest.Filters] = []
+            for v in dict["Filters"] as! [Any] {
+                var model = ListSynchronizationJobsRequest.Filters()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.filters = tmp
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
@@ -21171,6 +21481,59 @@ public class ListSynchronizationJobsResponseBody : Tea.TeaModel {
                         }
                     }
                 }
+                public class Exported : Tea.TeaModel {
+                    public var failed: Int64?
+
+                    public var skipped: Int64?
+
+                    public var success: Int64?
+
+                    public var total: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.failed != nil {
+                            map["Failed"] = self.failed!
+                        }
+                        if self.skipped != nil {
+                            map["Skipped"] = self.skipped!
+                        }
+                        if self.success != nil {
+                            map["Success"] = self.success!
+                        }
+                        if self.total != nil {
+                            map["Total"] = self.total!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Failed") {
+                            self.failed = dict["Failed"] as! Int64
+                        }
+                        if dict.keys.contains("Skipped") {
+                            self.skipped = dict["Skipped"] as! Int64
+                        }
+                        if dict.keys.contains("Success") {
+                            self.success = dict["Success"] as! Int64
+                        }
+                        if dict.keys.contains("Total") {
+                            self.total = dict["Total"] as! Int64
+                        }
+                    }
+                }
                 public class Pushed : Tea.TeaModel {
                     public var failed: Int64?
 
@@ -21336,6 +21699,8 @@ public class ListSynchronizationJobsResponseBody : Tea.TeaModel {
 
                 public var deleted: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.UserStatistics.Deleted?
 
+                public var exported: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.UserStatistics.Exported?
+
                 public var pushed: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.UserStatistics.Pushed?
 
                 public var same: ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.UserStatistics.Same?
@@ -21355,6 +21720,7 @@ public class ListSynchronizationJobsResponseBody : Tea.TeaModel {
                     try self.binded?.validate()
                     try self.created?.validate()
                     try self.deleted?.validate()
+                    try self.exported?.validate()
                     try self.pushed?.validate()
                     try self.same?.validate()
                     try self.updated?.validate()
@@ -21370,6 +21736,9 @@ public class ListSynchronizationJobsResponseBody : Tea.TeaModel {
                     }
                     if self.deleted != nil {
                         map["Deleted"] = self.deleted?.toMap()
+                    }
+                    if self.exported != nil {
+                        map["Exported"] = self.exported?.toMap()
                     }
                     if self.pushed != nil {
                         map["Pushed"] = self.pushed?.toMap()
@@ -21398,6 +21767,11 @@ public class ListSynchronizationJobsResponseBody : Tea.TeaModel {
                         var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.UserStatistics.Deleted()
                         model.fromMap(dict["Deleted"] as! [String: Any])
                         self.deleted = model
+                    }
+                    if dict.keys.contains("Exported") {
+                        var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.UserStatistics.Exported()
+                        model.fromMap(dict["Exported"] as! [String: Any])
+                        self.exported = model
                     }
                     if dict.keys.contains("Pushed") {
                         var model = ListSynchronizationJobsResponseBody.SynchronizationJobs.Result.UserStatistics.Pushed()
@@ -21496,6 +21870,8 @@ public class ListSynchronizationJobsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var description_: String?
+
         public var direction: String?
 
         public var endTime: Int64?
@@ -21529,6 +21905,9 @@ public class ListSynchronizationJobsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
             if self.direction != nil {
                 map["Direction"] = self.direction!
             }
@@ -21560,6 +21939,9 @@ public class ListSynchronizationJobsResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
+            }
             if dict.keys.contains("Direction") {
                 self.direction = dict["Direction"] as! String
             }
@@ -23607,11 +23989,64 @@ public class RevokeApplicationFromUsersResponse : Tea.TeaModel {
 }
 
 public class RunSynchronizationJobRequest : Tea.TeaModel {
+    public class SynchronizationScopeConfig : Tea.TeaModel {
+        public var groupIds: [String]?
+
+        public var organizationalUnitIds: [String]?
+
+        public var userIds: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.groupIds != nil {
+                map["GroupIds"] = self.groupIds!
+            }
+            if self.organizationalUnitIds != nil {
+                map["OrganizationalUnitIds"] = self.organizationalUnitIds!
+            }
+            if self.userIds != nil {
+                map["UserIds"] = self.userIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("GroupIds") {
+                self.groupIds = dict["GroupIds"] as! [String]
+            }
+            if dict.keys.contains("OrganizationalUnitIds") {
+                self.organizationalUnitIds = dict["OrganizationalUnitIds"] as! [String]
+            }
+            if dict.keys.contains("UserIds") {
+                self.userIds = dict["UserIds"] as! [String]
+            }
+        }
+    }
+    public var description_: String?
+
     public var instanceId: String?
+
+    public var passwordInitialization: Bool?
+
+    public var synchronizationScopeConfig: RunSynchronizationJobRequest.SynchronizationScopeConfig?
 
     public var targetId: String?
 
     public var targetType: String?
+
+    public var userIdentityTypes: [String]?
 
     public override init() {
         super.init()
@@ -23623,12 +24058,22 @@ public class RunSynchronizationJobRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.synchronizationScopeConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
+        }
+        if self.passwordInitialization != nil {
+            map["PasswordInitialization"] = self.passwordInitialization!
+        }
+        if self.synchronizationScopeConfig != nil {
+            map["SynchronizationScopeConfig"] = self.synchronizationScopeConfig?.toMap()
         }
         if self.targetId != nil {
             map["TargetId"] = self.targetId!
@@ -23636,18 +24081,35 @@ public class RunSynchronizationJobRequest : Tea.TeaModel {
         if self.targetType != nil {
             map["TargetType"] = self.targetType!
         }
+        if self.userIdentityTypes != nil {
+            map["UserIdentityTypes"] = self.userIdentityTypes!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
+        }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("PasswordInitialization") {
+            self.passwordInitialization = dict["PasswordInitialization"] as! Bool
+        }
+        if dict.keys.contains("SynchronizationScopeConfig") {
+            var model = RunSynchronizationJobRequest.SynchronizationScopeConfig()
+            model.fromMap(dict["SynchronizationScopeConfig"] as! [String: Any])
+            self.synchronizationScopeConfig = model
         }
         if dict.keys.contains("TargetId") {
             self.targetId = dict["TargetId"] as! String
         }
         if dict.keys.contains("TargetType") {
             self.targetType = dict["TargetType"] as! String
+        }
+        if dict.keys.contains("UserIdentityTypes") {
+            self.userIdentityTypes = dict["UserIdentityTypes"] as! [String]
         }
     }
 }
@@ -27250,6 +27712,8 @@ public class UpdateIdentityProviderRequest : Tea.TeaModel {
 
     public var ldapConfig: UpdateIdentityProviderRequest.LdapConfig?
 
+    public var logoUrl: String?
+
     public var networkAccessEndpointId: String?
 
     public var oidcConfig: UpdateIdentityProviderRequest.OidcConfig?
@@ -27293,6 +27757,9 @@ public class UpdateIdentityProviderRequest : Tea.TeaModel {
         if self.ldapConfig != nil {
             map["LdapConfig"] = self.ldapConfig?.toMap()
         }
+        if self.logoUrl != nil {
+            map["LogoUrl"] = self.logoUrl!
+        }
         if self.networkAccessEndpointId != nil {
             map["NetworkAccessEndpointId"] = self.networkAccessEndpointId!
         }
@@ -27329,6 +27796,9 @@ public class UpdateIdentityProviderRequest : Tea.TeaModel {
             var model = UpdateIdentityProviderRequest.LdapConfig()
             model.fromMap(dict["LdapConfig"] as! [String: Any])
             self.ldapConfig = model
+        }
+        if dict.keys.contains("LogoUrl") {
+            self.logoUrl = dict["LogoUrl"] as! String
         }
         if dict.keys.contains("NetworkAccessEndpointId") {
             self.networkAccessEndpointId = dict["NetworkAccessEndpointId"] as! String
