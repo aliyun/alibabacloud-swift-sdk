@@ -16219,6 +16219,8 @@ public class SearchRequest : Tea.TeaModel {
 
         public var airlinePreferList: [String]?
 
+        public var serviceQuality: String?
+
         public override init() {
             super.init()
         }
@@ -16239,6 +16241,9 @@ public class SearchRequest : Tea.TeaModel {
             if self.airlinePreferList != nil {
                 map["airline_prefer_list"] = self.airlinePreferList!
             }
+            if self.serviceQuality != nil {
+                map["service_quality"] = self.serviceQuality!
+            }
             return map
         }
 
@@ -16248,6 +16253,9 @@ public class SearchRequest : Tea.TeaModel {
             }
             if dict.keys.contains("airline_prefer_list") {
                 self.airlinePreferList = dict["airline_prefer_list"] as! [String]
+            }
+            if dict.keys.contains("service_quality") {
+                self.serviceQuality = dict["service_quality"] as! String
             }
         }
     }
