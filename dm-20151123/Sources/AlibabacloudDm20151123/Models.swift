@@ -286,6 +286,8 @@ public class BatchSendMailRequest : Tea.TeaModel {
 
     public var clickTrace: String?
 
+    public var headers: String?
+
     public var ownerId: Int64?
 
     public var receiversName: String?
@@ -329,6 +331,9 @@ public class BatchSendMailRequest : Tea.TeaModel {
         if self.clickTrace != nil {
             map["ClickTrace"] = self.clickTrace!
         }
+        if self.headers != nil {
+            map["Headers"] = self.headers!
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -371,6 +376,9 @@ public class BatchSendMailRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ClickTrace") {
             self.clickTrace = dict["ClickTrace"] as! String
+        }
+        if dict.keys.contains("Headers") {
+            self.headers = dict["Headers"] as! String
         }
         if dict.keys.contains("OwnerId") {
             self.ownerId = dict["OwnerId"] as! Int64
@@ -8816,6 +8824,8 @@ public class SingleSendMailRequest : Tea.TeaModel {
 
     public var fromAlias: String?
 
+    public var headers: String?
+
     public var htmlBody: String?
 
     public var ownerId: Int64?
@@ -8867,6 +8877,9 @@ public class SingleSendMailRequest : Tea.TeaModel {
         }
         if self.fromAlias != nil {
             map["FromAlias"] = self.fromAlias!
+        }
+        if self.headers != nil {
+            map["Headers"] = self.headers!
         }
         if self.htmlBody != nil {
             map["HtmlBody"] = self.htmlBody!
@@ -8922,6 +8935,9 @@ public class SingleSendMailRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FromAlias") {
             self.fromAlias = dict["FromAlias"] as! String
+        }
+        if dict.keys.contains("Headers") {
+            self.headers = dict["Headers"] as! String
         }
         if dict.keys.contains("HtmlBody") {
             self.htmlBody = dict["HtmlBody"] as! String
