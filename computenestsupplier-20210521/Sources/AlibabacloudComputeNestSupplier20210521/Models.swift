@@ -4003,6 +4003,8 @@ public class GetArtifactResponseBody : Tea.TeaModel {
 
     public var name: String?
 
+    public var permissionType: String?
+
     public var progress: String?
 
     public var requestId: String?
@@ -4062,6 +4064,9 @@ public class GetArtifactResponseBody : Tea.TeaModel {
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.permissionType != nil {
+            map["PermissionType"] = self.permissionType!
         }
         if self.progress != nil {
             map["Progress"] = self.progress!
@@ -4124,6 +4129,9 @@ public class GetArtifactResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("PermissionType") {
+            self.permissionType = dict["PermissionType"] as! String
         }
         if dict.keys.contains("Progress") {
             self.progress = dict["Progress"] as! String
@@ -14524,6 +14532,8 @@ public class UpdateArtifactRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var permissionType: String?
+
     public var supportRegionIds: [String]?
 
     public var versionName: String?
@@ -14559,6 +14569,9 @@ public class UpdateArtifactRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.permissionType != nil {
+            map["PermissionType"] = self.permissionType!
+        }
         if self.supportRegionIds != nil {
             map["SupportRegionIds"] = self.supportRegionIds!
         }
@@ -14588,6 +14601,9 @@ public class UpdateArtifactRequest : Tea.TeaModel {
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
         }
+        if dict.keys.contains("PermissionType") {
+            self.permissionType = dict["PermissionType"] as! String
+        }
         if dict.keys.contains("SupportRegionIds") {
             self.supportRegionIds = dict["SupportRegionIds"] as! [String]
         }
@@ -14607,6 +14623,8 @@ public class UpdateArtifactShrinkRequest : Tea.TeaModel {
     public var clientToken: String?
 
     public var description_: String?
+
+    public var permissionType: String?
 
     public var supportRegionIds: [String]?
 
@@ -14641,6 +14659,9 @@ public class UpdateArtifactShrinkRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.permissionType != nil {
+            map["PermissionType"] = self.permissionType!
+        }
         if self.supportRegionIds != nil {
             map["SupportRegionIds"] = self.supportRegionIds!
         }
@@ -14665,6 +14686,9 @@ public class UpdateArtifactShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("PermissionType") {
+            self.permissionType = dict["PermissionType"] as! String
         }
         if dict.keys.contains("SupportRegionIds") {
             self.supportRegionIds = dict["SupportRegionIds"] as! [String]

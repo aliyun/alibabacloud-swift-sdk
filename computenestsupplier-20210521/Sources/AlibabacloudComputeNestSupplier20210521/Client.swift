@@ -2005,6 +2005,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.permissionType)) {
+            query["PermissionType"] = request.permissionType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.supportRegionIds)) {
             query["SupportRegionIds"] = request.supportRegionIds ?? [];
         }
