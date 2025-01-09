@@ -8274,6 +8274,8 @@ public class ListJobsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var paymentType: String?
+
     public var pipelineId: String?
 
     public var resourceId: String?
@@ -8345,6 +8347,9 @@ public class ListJobsRequest : Tea.TeaModel {
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
+        }
+        if self.paymentType != nil {
+            map["PaymentType"] = self.paymentType!
         }
         if self.pipelineId != nil {
             map["PipelineId"] = self.pipelineId!
@@ -8419,6 +8424,9 @@ public class ListJobsRequest : Tea.TeaModel {
         if dict.keys.contains("PageSize") {
             self.pageSize = dict["PageSize"] as! Int32
         }
+        if dict.keys.contains("PaymentType") {
+            self.paymentType = dict["PaymentType"] as! String
+        }
         if dict.keys.contains("PipelineId") {
             self.pipelineId = dict["PipelineId"] as! String
         }
@@ -8479,6 +8487,8 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
+
+    public var paymentType: String?
 
     public var pipelineId: String?
 
@@ -8552,6 +8562,9 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.paymentType != nil {
+            map["PaymentType"] = self.paymentType!
+        }
         if self.pipelineId != nil {
             map["PipelineId"] = self.pipelineId!
         }
@@ -8624,6 +8637,9 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("PaymentType") {
+            self.paymentType = dict["PaymentType"] as! String
         }
         if dict.keys.contains("PipelineId") {
             self.pipelineId = dict["PipelineId"] as! String
