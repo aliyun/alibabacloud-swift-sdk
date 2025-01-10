@@ -36297,6 +36297,8 @@ public class ListUserRatePlanInstancesResponseBody : Tea.TeaModel {
 
         public var botInstanceLevel: String?
 
+        public var botRequest: String?
+
         public var coverages: String?
 
         public var createTime: String?
@@ -36358,6 +36360,9 @@ public class ListUserRatePlanInstancesResponseBody : Tea.TeaModel {
             }
             if self.botInstanceLevel != nil {
                 map["BotInstanceLevel"] = self.botInstanceLevel!
+            }
+            if self.botRequest != nil {
+                map["BotRequest"] = self.botRequest!
             }
             if self.coverages != nil {
                 map["Coverages"] = self.coverages!
@@ -36435,6 +36440,9 @@ public class ListUserRatePlanInstancesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("BotInstanceLevel") {
                 self.botInstanceLevel = dict["BotInstanceLevel"] as! String
+            }
+            if dict.keys.contains("BotRequest") {
+                self.botRequest = dict["BotRequest"] as! String
             }
             if dict.keys.contains("Coverages") {
                 self.coverages = dict["Coverages"] as! String
