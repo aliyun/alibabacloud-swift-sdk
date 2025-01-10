@@ -3326,6 +3326,8 @@ public class CreateAutoscalingConfigRequest : Tea.TeaModel {
 
     public var minReplicaCount: Int32?
 
+    public var priorities: [String: [String]]?
+
     public var recycleNodeDeletionEnabled: Bool?
 
     public var scaleDownEnabled: Bool?
@@ -3376,6 +3378,9 @@ public class CreateAutoscalingConfigRequest : Tea.TeaModel {
         if self.minReplicaCount != nil {
             map["min_replica_count"] = self.minReplicaCount!
         }
+        if self.priorities != nil {
+            map["priorities"] = self.priorities!
+        }
         if self.recycleNodeDeletionEnabled != nil {
             map["recycle_node_deletion_enabled"] = self.recycleNodeDeletionEnabled!
         }
@@ -3424,6 +3429,9 @@ public class CreateAutoscalingConfigRequest : Tea.TeaModel {
         }
         if dict.keys.contains("min_replica_count") {
             self.minReplicaCount = dict["min_replica_count"] as! Int32
+        }
+        if dict.keys.contains("priorities") {
+            self.priorities = dict["priorities"] as! [String: [String]]
         }
         if dict.keys.contains("recycle_node_deletion_enabled") {
             self.recycleNodeDeletionEnabled = dict["recycle_node_deletion_enabled"] as! Bool
@@ -24088,6 +24096,8 @@ public class ListOperationPlansResponseBody : Tea.TeaModel {
 
         public var targetType: String?
 
+        public var taskId: String?
+
         public var type: String?
 
         public override init() {
@@ -24128,6 +24138,9 @@ public class ListOperationPlansResponseBody : Tea.TeaModel {
             if self.targetType != nil {
                 map["target_type"] = self.targetType!
             }
+            if self.taskId != nil {
+                map["task_id"] = self.taskId!
+            }
             if self.type != nil {
                 map["type"] = self.type!
             }
@@ -24158,6 +24171,9 @@ public class ListOperationPlansResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("target_type") {
                 self.targetType = dict["target_type"] as! String
+            }
+            if dict.keys.contains("task_id") {
+                self.taskId = dict["task_id"] as! String
             }
             if dict.keys.contains("type") {
                 self.type = dict["type"] as! String

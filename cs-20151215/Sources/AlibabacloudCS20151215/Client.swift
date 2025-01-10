@@ -431,6 +431,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.minReplicaCount)) {
             body["min_replica_count"] = request.minReplicaCount!;
         }
+        if (!TeaUtils.Client.isUnset(request.priorities)) {
+            body["priorities"] = request.priorities ?? [:];
+        }
         if (!TeaUtils.Client.isUnset(request.recycleNodeDeletionEnabled)) {
             body["recycle_node_deletion_enabled"] = request.recycleNodeDeletionEnabled!;
         }
