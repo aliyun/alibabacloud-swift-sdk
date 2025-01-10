@@ -8328,6 +8328,8 @@ public class GetScanResultResponseBody : Tea.TeaModel {
             public class Result : Tea.TeaModel {
                 public var confidence: String?
 
+                public var description_: String?
+
                 public var label: String?
 
                 public override init() {
@@ -8347,6 +8349,9 @@ public class GetScanResultResponseBody : Tea.TeaModel {
                     if self.confidence != nil {
                         map["Confidence"] = self.confidence!
                     }
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
                     if self.label != nil {
                         map["Label"] = self.label!
                     }
@@ -8356,6 +8361,9 @@ public class GetScanResultResponseBody : Tea.TeaModel {
                 public override func fromMap(_ dict: [String: Any]) -> Void {
                     if dict.keys.contains("Confidence") {
                         self.confidence = dict["Confidence"] as! String
+                    }
+                    if dict.keys.contains("Description") {
+                        self.description_ = dict["Description"] as! String
                     }
                     if dict.keys.contains("Label") {
                         self.label = dict["Label"] as! String
@@ -8395,6 +8403,8 @@ public class GetScanResultResponseBody : Tea.TeaModel {
             public var requestTime: String?
 
             public var result: [GetScanResultResponseBody.Data.Items.Result]?
+
+            public var riskLevel: String?
 
             public var riskTips: String?
 
@@ -8494,6 +8504,9 @@ public class GetScanResultResponseBody : Tea.TeaModel {
                         tmp.append(k.toMap())
                     }
                     map["Result"] = tmp
+                }
+                if self.riskLevel != nil {
+                    map["RiskLevel"] = self.riskLevel!
                 }
                 if self.riskTips != nil {
                     map["RiskTips"] = self.riskTips!
@@ -8602,6 +8615,9 @@ public class GetScanResultResponseBody : Tea.TeaModel {
                         tmp.append(model)
                     }
                     self.result = tmp
+                }
+                if dict.keys.contains("RiskLevel") {
+                    self.riskLevel = dict["RiskLevel"] as! String
                 }
                 if dict.keys.contains("RiskTips") {
                     self.riskTips = dict["RiskTips"] as! String
@@ -8898,6 +8914,8 @@ public class GetServiceConfRequest : Tea.TeaModel {
 }
 
 public class GetServiceConfResponseBody : Tea.TeaModel {
+    public var classify: String?
+
     public var code: Int32?
 
     public var customServiceConf: [String: Any]?
@@ -8932,6 +8950,9 @@ public class GetServiceConfResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.classify != nil {
+            map["Classify"] = self.classify!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -8966,6 +8987,9 @@ public class GetServiceConfResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Classify") {
+            self.classify = dict["Classify"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -10321,6 +10345,8 @@ public class GetTextScanResultResponseBody : Tea.TeaModel {
             public class Result : Tea.TeaModel {
                 public var confidence: Double?
 
+                public var description_: String?
+
                 public var label: String?
 
                 public override init() {
@@ -10340,6 +10366,9 @@ public class GetTextScanResultResponseBody : Tea.TeaModel {
                     if self.confidence != nil {
                         map["Confidence"] = self.confidence!
                     }
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
                     if self.label != nil {
                         map["Label"] = self.label!
                     }
@@ -10350,11 +10379,16 @@ public class GetTextScanResultResponseBody : Tea.TeaModel {
                     if dict.keys.contains("Confidence") {
                         self.confidence = dict["Confidence"] as! Double
                     }
+                    if dict.keys.contains("Description") {
+                        self.description_ = dict["Description"] as! String
+                    }
                     if dict.keys.contains("Label") {
                         self.label = dict["Label"] as! String
                     }
                 }
             }
+            public var bailianRequestId: String?
+
             public var content: String?
 
             public var extFeedback: String?
@@ -10370,6 +10404,8 @@ public class GetTextScanResultResponseBody : Tea.TeaModel {
             public var requestTime: String?
 
             public var result: [GetTextScanResultResponseBody.Data.Items.Result]?
+
+            public var riskLevel: String?
 
             public var scanResult: String?
 
@@ -10395,6 +10431,9 @@ public class GetTextScanResultResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.bailianRequestId != nil {
+                    map["BailianRequestId"] = self.bailianRequestId!
+                }
                 if self.content != nil {
                     map["Content"] = self.content!
                 }
@@ -10423,6 +10462,9 @@ public class GetTextScanResultResponseBody : Tea.TeaModel {
                     }
                     map["Result"] = tmp
                 }
+                if self.riskLevel != nil {
+                    map["RiskLevel"] = self.riskLevel!
+                }
                 if self.scanResult != nil {
                     map["ScanResult"] = self.scanResult!
                 }
@@ -10442,6 +10484,9 @@ public class GetTextScanResultResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("BailianRequestId") {
+                    self.bailianRequestId = dict["BailianRequestId"] as! String
+                }
                 if dict.keys.contains("Content") {
                     self.content = dict["Content"] as! String
                 }
@@ -10473,6 +10518,9 @@ public class GetTextScanResultResponseBody : Tea.TeaModel {
                         tmp.append(model)
                     }
                     self.result = tmp
+                }
+                if dict.keys.contains("RiskLevel") {
+                    self.riskLevel = dict["RiskLevel"] as! String
                 }
                 if dict.keys.contains("ScanResult") {
                     self.scanResult = dict["ScanResult"] as! String
@@ -10927,6 +10975,8 @@ public class GetUserBuyStatusResponseBody : Tea.TeaModel {
 
         public var indebt: Bool?
 
+        public var tag: String?
+
         public override init() {
             super.init()
         }
@@ -10950,6 +11000,9 @@ public class GetUserBuyStatusResponseBody : Tea.TeaModel {
             if self.indebt != nil {
                 map["Indebt"] = self.indebt!
             }
+            if self.tag != nil {
+                map["Tag"] = self.tag!
+            }
             return map
         }
 
@@ -10962,6 +11015,9 @@ public class GetUserBuyStatusResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Indebt") {
                 self.indebt = dict["Indebt"] as! Bool
+            }
+            if dict.keys.contains("Tag") {
+                self.tag = dict["Tag"] as! String
             }
         }
     }
