@@ -14569,6 +14569,8 @@ public class DescribeClientEventsResponseBody : Tea.TeaModel {
 
         public var clientVersion: String?
 
+        public var description_: String?
+
         public var desktopGroupId: String?
 
         public var desktopGroupName: String?
@@ -14632,6 +14634,9 @@ public class DescribeClientEventsResponseBody : Tea.TeaModel {
             }
             if self.clientVersion != nil {
                 map["ClientVersion"] = self.clientVersion!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
             }
             if self.desktopGroupId != nil {
                 map["DesktopGroupId"] = self.desktopGroupId!
@@ -14702,6 +14707,9 @@ public class DescribeClientEventsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ClientVersion") {
                 self.clientVersion = dict["ClientVersion"] as! String
+            }
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
             }
             if dict.keys.contains("DesktopGroupId") {
                 self.desktopGroupId = dict["DesktopGroupId"] as! String
