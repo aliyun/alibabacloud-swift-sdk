@@ -436,6 +436,8 @@ public class CreateRuleRequest : Tea.TeaModel {
 
     public var matchType: Int32?
 
+    public var modelRuleIds: String?
+
     public var name: String?
 
     public var productCode: String?
@@ -455,6 +457,8 @@ public class CreateRuleRequest : Tea.TeaModel {
     public var supportForm: Int32?
 
     public var target: String?
+
+    public var templateRuleIds: String?
 
     public var warnLevel: Int32?
 
@@ -490,6 +494,9 @@ public class CreateRuleRequest : Tea.TeaModel {
         if self.matchType != nil {
             map["MatchType"] = self.matchType!
         }
+        if self.modelRuleIds != nil {
+            map["ModelRuleIds"] = self.modelRuleIds!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -520,6 +527,9 @@ public class CreateRuleRequest : Tea.TeaModel {
         if self.target != nil {
             map["Target"] = self.target!
         }
+        if self.templateRuleIds != nil {
+            map["TemplateRuleIds"] = self.templateRuleIds!
+        }
         if self.warnLevel != nil {
             map["WarnLevel"] = self.warnLevel!
         }
@@ -544,6 +554,9 @@ public class CreateRuleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("MatchType") {
             self.matchType = dict["MatchType"] as! Int32
+        }
+        if dict.keys.contains("ModelRuleIds") {
+            self.modelRuleIds = dict["ModelRuleIds"] as! String
         }
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
@@ -574,6 +587,9 @@ public class CreateRuleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Target") {
             self.target = dict["Target"] as! String
+        }
+        if dict.keys.contains("TemplateRuleIds") {
+            self.templateRuleIds = dict["TemplateRuleIds"] as! String
         }
         if dict.keys.contains("WarnLevel") {
             self.warnLevel = dict["WarnLevel"] as! Int32
@@ -11733,6 +11749,8 @@ public class DescribeRulesRequest : Tea.TeaModel {
 
     public var contentCategory: Int32?
 
+    public var cooperationChannel: String?
+
     public var currentPage: Int32?
 
     public var customType: Int32?
@@ -11759,6 +11777,8 @@ public class DescribeRulesRequest : Tea.TeaModel {
 
     public var ruleType: Int32?
 
+    public var simplify: Bool?
+
     public var status: Int32?
 
     public var supportForm: Int32?
@@ -11784,6 +11804,9 @@ public class DescribeRulesRequest : Tea.TeaModel {
         }
         if self.contentCategory != nil {
             map["ContentCategory"] = self.contentCategory!
+        }
+        if self.cooperationChannel != nil {
+            map["CooperationChannel"] = self.cooperationChannel!
         }
         if self.currentPage != nil {
             map["CurrentPage"] = self.currentPage!
@@ -11824,6 +11847,9 @@ public class DescribeRulesRequest : Tea.TeaModel {
         if self.ruleType != nil {
             map["RuleType"] = self.ruleType!
         }
+        if self.simplify != nil {
+            map["Simplify"] = self.simplify!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -11842,6 +11868,9 @@ public class DescribeRulesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ContentCategory") {
             self.contentCategory = dict["ContentCategory"] as! Int32
+        }
+        if dict.keys.contains("CooperationChannel") {
+            self.cooperationChannel = dict["CooperationChannel"] as! String
         }
         if dict.keys.contains("CurrentPage") {
             self.currentPage = dict["CurrentPage"] as! Int32
@@ -11881,6 +11910,9 @@ public class DescribeRulesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RuleType") {
             self.ruleType = dict["RuleType"] as! Int32
+        }
+        if dict.keys.contains("Simplify") {
+            self.simplify = dict["Simplify"] as! Bool
         }
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! Int32
@@ -11926,6 +11958,8 @@ public class DescribeRulesResponseBody : Tea.TeaModel {
 
         public var matchType: Int32?
 
+        public var modelRuleIds: String?
+
         public var name: String?
 
         public var productCode: String?
@@ -11943,6 +11977,8 @@ public class DescribeRulesResponseBody : Tea.TeaModel {
         public var supportForm: Int32?
 
         public var target: String?
+
+        public var templateRuleIds: String?
 
         public var userId: Int64?
 
@@ -12007,6 +12043,9 @@ public class DescribeRulesResponseBody : Tea.TeaModel {
             if self.matchType != nil {
                 map["MatchType"] = self.matchType!
             }
+            if self.modelRuleIds != nil {
+                map["ModelRuleIds"] = self.modelRuleIds!
+            }
             if self.name != nil {
                 map["Name"] = self.name!
             }
@@ -12033,6 +12072,9 @@ public class DescribeRulesResponseBody : Tea.TeaModel {
             }
             if self.target != nil {
                 map["Target"] = self.target!
+            }
+            if self.templateRuleIds != nil {
+                map["TemplateRuleIds"] = self.templateRuleIds!
             }
             if self.userId != nil {
                 map["UserId"] = self.userId!
@@ -12089,6 +12131,9 @@ public class DescribeRulesResponseBody : Tea.TeaModel {
             if dict.keys.contains("MatchType") {
                 self.matchType = dict["MatchType"] as! Int32
             }
+            if dict.keys.contains("ModelRuleIds") {
+                self.modelRuleIds = dict["ModelRuleIds"] as! String
+            }
             if dict.keys.contains("Name") {
                 self.name = dict["Name"] as! String
             }
@@ -12115,6 +12160,9 @@ public class DescribeRulesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Target") {
                 self.target = dict["Target"] as! String
+            }
+            if dict.keys.contains("TemplateRuleIds") {
+                self.templateRuleIds = dict["TemplateRuleIds"] as! String
             }
             if dict.keys.contains("UserId") {
                 self.userId = dict["UserId"] as! Int64
@@ -14339,6 +14387,8 @@ public class ModifyRuleRequest : Tea.TeaModel {
 
     public var matchType: Int32?
 
+    public var modelRuleIds: String?
+
     public var name: String?
 
     public var productCode: String?
@@ -14350,6 +14400,8 @@ public class ModifyRuleRequest : Tea.TeaModel {
     public var ruleType: Int32?
 
     public var supportForm: Int32?
+
+    public var templateRuleIds: String?
 
     public var warnLevel: Int32?
 
@@ -14382,6 +14434,9 @@ public class ModifyRuleRequest : Tea.TeaModel {
         if self.matchType != nil {
             map["MatchType"] = self.matchType!
         }
+        if self.modelRuleIds != nil {
+            map["ModelRuleIds"] = self.modelRuleIds!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -14399,6 +14454,9 @@ public class ModifyRuleRequest : Tea.TeaModel {
         }
         if self.supportForm != nil {
             map["SupportForm"] = self.supportForm!
+        }
+        if self.templateRuleIds != nil {
+            map["TemplateRuleIds"] = self.templateRuleIds!
         }
         if self.warnLevel != nil {
             map["WarnLevel"] = self.warnLevel!
@@ -14422,6 +14480,9 @@ public class ModifyRuleRequest : Tea.TeaModel {
         if dict.keys.contains("MatchType") {
             self.matchType = dict["MatchType"] as! Int32
         }
+        if dict.keys.contains("ModelRuleIds") {
+            self.modelRuleIds = dict["ModelRuleIds"] as! String
+        }
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
         }
@@ -14439,6 +14500,9 @@ public class ModifyRuleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SupportForm") {
             self.supportForm = dict["SupportForm"] as! Int32
+        }
+        if dict.keys.contains("TemplateRuleIds") {
+            self.templateRuleIds = dict["TemplateRuleIds"] as! String
         }
         if dict.keys.contains("WarnLevel") {
             self.warnLevel = dict["WarnLevel"] as! Int32
