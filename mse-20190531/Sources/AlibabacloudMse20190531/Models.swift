@@ -10040,6 +10040,8 @@ public class CreateFlowRuleRequest : Tea.TeaModel {
 
     public var enable: Bool?
 
+    public var limitApp: String?
+
     public var maxQueueingTimeMs: Int32?
 
     public var namespace: String?
@@ -10081,6 +10083,9 @@ public class CreateFlowRuleRequest : Tea.TeaModel {
         if self.enable != nil {
             map["Enable"] = self.enable!
         }
+        if self.limitApp != nil {
+            map["LimitApp"] = self.limitApp!
+        }
         if self.maxQueueingTimeMs != nil {
             map["MaxQueueingTimeMs"] = self.maxQueueingTimeMs!
         }
@@ -10118,6 +10123,9 @@ public class CreateFlowRuleRequest : Tea.TeaModel {
         if dict.keys.contains("Enable") {
             self.enable = dict["Enable"] as! Bool
         }
+        if dict.keys.contains("LimitApp") {
+            self.limitApp = dict["LimitApp"] as! String
+        }
         if dict.keys.contains("MaxQueueingTimeMs") {
             self.maxQueueingTimeMs = dict["MaxQueueingTimeMs"] as! Int32
         }
@@ -10150,6 +10158,8 @@ public class CreateFlowRuleResponseBody : Tea.TeaModel {
         public var enable: Bool?
 
         public var id: Int64?
+
+        public var limitApp: String?
 
         public var maxQueueingTimeMs: Int32?
 
@@ -10190,6 +10200,9 @@ public class CreateFlowRuleResponseBody : Tea.TeaModel {
             if self.id != nil {
                 map["Id"] = self.id!
             }
+            if self.limitApp != nil {
+                map["LimitApp"] = self.limitApp!
+            }
             if self.maxQueueingTimeMs != nil {
                 map["MaxQueueingTimeMs"] = self.maxQueueingTimeMs!
             }
@@ -10223,6 +10236,9 @@ public class CreateFlowRuleResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Id") {
                 self.id = dict["Id"] as! Int64
+            }
+            if dict.keys.contains("LimitApp") {
+                self.limitApp = dict["LimitApp"] as! String
             }
             if dict.keys.contains("MaxQueueingTimeMs") {
                 self.maxQueueingTimeMs = dict["MaxQueueingTimeMs"] as! Int32
@@ -11018,6 +11034,8 @@ public class CreateIsolationRuleRequest : Tea.TeaModel {
 
     public var enable: Bool?
 
+    public var limitApp: String?
+
     public var namespace: String?
 
     public var regionId: String?
@@ -11052,6 +11070,9 @@ public class CreateIsolationRuleRequest : Tea.TeaModel {
         if self.enable != nil {
             map["Enable"] = self.enable!
         }
+        if self.limitApp != nil {
+            map["LimitApp"] = self.limitApp!
+        }
         if self.namespace != nil {
             map["Namespace"] = self.namespace!
         }
@@ -11080,6 +11101,9 @@ public class CreateIsolationRuleRequest : Tea.TeaModel {
         if dict.keys.contains("Enable") {
             self.enable = dict["Enable"] as! Bool
         }
+        if dict.keys.contains("LimitApp") {
+            self.limitApp = dict["LimitApp"] as! String
+        }
         if dict.keys.contains("Namespace") {
             self.namespace = dict["Namespace"] as! String
         }
@@ -11104,6 +11128,8 @@ public class CreateIsolationRuleResponseBody : Tea.TeaModel {
         public var enable: Bool?
 
         public var id: Int64?
+
+        public var limitApp: String?
 
         public var namespace: String?
 
@@ -11139,6 +11165,9 @@ public class CreateIsolationRuleResponseBody : Tea.TeaModel {
             if self.id != nil {
                 map["Id"] = self.id!
             }
+            if self.limitApp != nil {
+                map["LimitApp"] = self.limitApp!
+            }
             if self.namespace != nil {
                 map["Namespace"] = self.namespace!
             }
@@ -11166,6 +11195,9 @@ public class CreateIsolationRuleResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Id") {
                 self.id = dict["Id"] as! Int64
+            }
+            if dict.keys.contains("LimitApp") {
+                self.limitApp = dict["LimitApp"] as! String
             }
             if dict.keys.contains("Namespace") {
                 self.namespace = dict["Namespace"] as! String
@@ -42875,6 +42907,8 @@ public class ListFlowRulesResponseBody : Tea.TeaModel {
 
             public var fallbackObject: String?
 
+            public var limitApp: String?
+
             public var maxQueueingTimeMs: Int32?
 
             public var metricType: Int32?
@@ -42922,6 +42956,9 @@ public class ListFlowRulesResponseBody : Tea.TeaModel {
                 if self.fallbackObject != nil {
                     map["FallbackObject"] = self.fallbackObject!
                 }
+                if self.limitApp != nil {
+                    map["LimitApp"] = self.limitApp!
+                }
                 if self.maxQueueingTimeMs != nil {
                     map["MaxQueueingTimeMs"] = self.maxQueueingTimeMs!
                 }
@@ -42967,6 +43004,9 @@ public class ListFlowRulesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("FallbackObject") {
                     self.fallbackObject = dict["FallbackObject"] as! String
+                }
+                if dict.keys.contains("LimitApp") {
+                    self.limitApp = dict["LimitApp"] as! String
                 }
                 if dict.keys.contains("MaxQueueingTimeMs") {
                     self.maxQueueingTimeMs = dict["MaxQueueingTimeMs"] as! Int32
@@ -50805,6 +50845,8 @@ public class ListIsolationRulesResponseBody : Tea.TeaModel {
 
             public var fallbackObject: String?
 
+            public var limitApp: String?
+
             public var namespace: String?
 
             public var regionId: String?
@@ -50841,6 +50883,9 @@ public class ListIsolationRulesResponseBody : Tea.TeaModel {
                 if self.fallbackObject != nil {
                     map["FallbackObject"] = self.fallbackObject!
                 }
+                if self.limitApp != nil {
+                    map["LimitApp"] = self.limitApp!
+                }
                 if self.namespace != nil {
                     map["Namespace"] = self.namespace!
                 }
@@ -50871,6 +50916,9 @@ public class ListIsolationRulesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("FallbackObject") {
                     self.fallbackObject = dict["FallbackObject"] as! String
+                }
+                if dict.keys.contains("LimitApp") {
+                    self.limitApp = dict["LimitApp"] as! String
                 }
                 if dict.keys.contains("Namespace") {
                     self.namespace = dict["Namespace"] as! String
@@ -66669,6 +66717,8 @@ public class UpdateFlowRuleRequest : Tea.TeaModel {
 
     public var enable: Bool?
 
+    public var limitApp: String?
+
     public var maxQueueingTimeMs: Int32?
 
     public var namespace: String?
@@ -66706,6 +66756,9 @@ public class UpdateFlowRuleRequest : Tea.TeaModel {
         if self.enable != nil {
             map["Enable"] = self.enable!
         }
+        if self.limitApp != nil {
+            map["LimitApp"] = self.limitApp!
+        }
         if self.maxQueueingTimeMs != nil {
             map["MaxQueueingTimeMs"] = self.maxQueueingTimeMs!
         }
@@ -66737,6 +66790,9 @@ public class UpdateFlowRuleRequest : Tea.TeaModel {
         if dict.keys.contains("Enable") {
             self.enable = dict["Enable"] as! Bool
         }
+        if dict.keys.contains("LimitApp") {
+            self.limitApp = dict["LimitApp"] as! String
+        }
         if dict.keys.contains("MaxQueueingTimeMs") {
             self.maxQueueingTimeMs = dict["MaxQueueingTimeMs"] as! Int32
         }
@@ -66763,6 +66819,8 @@ public class UpdateFlowRuleResponseBody : Tea.TeaModel {
         public var enable: Bool?
 
         public var id: Int64?
+
+        public var limitApp: String?
 
         public var maxQueueingTimeMs: Int32?
 
@@ -66801,6 +66859,9 @@ public class UpdateFlowRuleResponseBody : Tea.TeaModel {
             if self.id != nil {
                 map["Id"] = self.id!
             }
+            if self.limitApp != nil {
+                map["LimitApp"] = self.limitApp!
+            }
             if self.maxQueueingTimeMs != nil {
                 map["MaxQueueingTimeMs"] = self.maxQueueingTimeMs!
             }
@@ -66831,6 +66892,9 @@ public class UpdateFlowRuleResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Id") {
                 self.id = dict["Id"] as! Int64
+            }
+            if dict.keys.contains("LimitApp") {
+                self.limitApp = dict["LimitApp"] as! String
             }
             if dict.keys.contains("MaxQueueingTimeMs") {
                 self.maxQueueingTimeMs = dict["MaxQueueingTimeMs"] as! Int32
@@ -75035,6 +75099,8 @@ public class UpdateIsolationRuleRequest : Tea.TeaModel {
 
     public var enable: Bool?
 
+    public var limitApp: String?
+
     public var namespace: String?
 
     public var ruleId: Int64?
@@ -75067,6 +75133,9 @@ public class UpdateIsolationRuleRequest : Tea.TeaModel {
         if self.enable != nil {
             map["Enable"] = self.enable!
         }
+        if self.limitApp != nil {
+            map["LimitApp"] = self.limitApp!
+        }
         if self.namespace != nil {
             map["Namespace"] = self.namespace!
         }
@@ -75092,6 +75161,9 @@ public class UpdateIsolationRuleRequest : Tea.TeaModel {
         if dict.keys.contains("Enable") {
             self.enable = dict["Enable"] as! Bool
         }
+        if dict.keys.contains("LimitApp") {
+            self.limitApp = dict["LimitApp"] as! String
+        }
         if dict.keys.contains("Namespace") {
             self.namespace = dict["Namespace"] as! String
         }
@@ -75113,6 +75185,8 @@ public class UpdateIsolationRuleResponseBody : Tea.TeaModel {
         public var enable: Bool?
 
         public var id: Int64?
+
+        public var limitApp: String?
 
         public var namespace: String?
 
@@ -75146,6 +75220,9 @@ public class UpdateIsolationRuleResponseBody : Tea.TeaModel {
             if self.id != nil {
                 map["Id"] = self.id!
             }
+            if self.limitApp != nil {
+                map["LimitApp"] = self.limitApp!
+            }
             if self.namespace != nil {
                 map["Namespace"] = self.namespace!
             }
@@ -75170,6 +75247,9 @@ public class UpdateIsolationRuleResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Id") {
                 self.id = dict["Id"] as! Int64
+            }
+            if dict.keys.contains("LimitApp") {
+                self.limitApp = dict["LimitApp"] as! String
             }
             if dict.keys.contains("Namespace") {
                 self.namespace = dict["Namespace"] as! String
