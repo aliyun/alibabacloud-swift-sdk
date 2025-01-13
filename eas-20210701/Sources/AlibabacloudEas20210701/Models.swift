@@ -130,6 +130,8 @@ public class Group : Tea.TeaModel {
 
     public var queueService: String?
 
+    public var trafficMode: String?
+
     public var updateTime: String?
 
     public override init() {
@@ -167,6 +169,9 @@ public class Group : Tea.TeaModel {
         if self.queueService != nil {
             map["QueueService"] = self.queueService!
         }
+        if self.trafficMode != nil {
+            map["TrafficMode"] = self.trafficMode!
+        }
         if self.updateTime != nil {
             map["UpdateTime"] = self.updateTime!
         }
@@ -194,6 +199,9 @@ public class Group : Tea.TeaModel {
         }
         if dict.keys.contains("QueueService") {
             self.queueService = dict["QueueService"] as! String
+        }
+        if dict.keys.contains("TrafficMode") {
+            self.trafficMode = dict["TrafficMode"] as! String
         }
         if dict.keys.contains("UpdateTime") {
             self.updateTime = dict["UpdateTime"] as! String
@@ -1015,6 +1023,8 @@ public class Service : Tea.TeaModel {
 
     public var totalInstance: Int32?
 
+    public var trafficState: String?
+
     public var updateTime: String?
 
     public var weight: Int32?
@@ -1159,6 +1169,9 @@ public class Service : Tea.TeaModel {
         if self.totalInstance != nil {
             map["TotalInstance"] = self.totalInstance!
         }
+        if self.trafficState != nil {
+            map["TrafficState"] = self.trafficState!
+        }
         if self.updateTime != nil {
             map["UpdateTime"] = self.updateTime!
         }
@@ -1299,6 +1312,9 @@ public class Service : Tea.TeaModel {
         }
         if dict.keys.contains("TotalInstance") {
             self.totalInstance = dict["TotalInstance"] as! Int32
+        }
+        if dict.keys.contains("TrafficState") {
+            self.trafficState = dict["TrafficState"] as! String
         }
         if dict.keys.contains("UpdateTime") {
             self.updateTime = dict["UpdateTime"] as! String
