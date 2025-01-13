@@ -13199,6 +13199,217 @@ public class CreateImageComponentResponse : Tea.TeaModel {
 }
 
 public class CreateImagePipelineRequest : Tea.TeaModel {
+    public class AdvancedOptions : Tea.TeaModel {
+        public var retainCloudAssistant: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.retainCloudAssistant != nil {
+                map["RetainCloudAssistant"] = self.retainCloudAssistant!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("RetainCloudAssistant") {
+                self.retainCloudAssistant = dict["RetainCloudAssistant"] as! Bool
+            }
+        }
+    }
+    public class ImportImageOptions : Tea.TeaModel {
+        public class DiskDeviceMappings : Tea.TeaModel {
+            public var diskImageSize: Int32?
+
+            public var format: String?
+
+            public var OSSBucket: String?
+
+            public var OSSObject: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.diskImageSize != nil {
+                    map["DiskImageSize"] = self.diskImageSize!
+                }
+                if self.format != nil {
+                    map["Format"] = self.format!
+                }
+                if self.OSSBucket != nil {
+                    map["OSSBucket"] = self.OSSBucket!
+                }
+                if self.OSSObject != nil {
+                    map["OSSObject"] = self.OSSObject!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DiskImageSize") {
+                    self.diskImageSize = dict["DiskImageSize"] as! Int32
+                }
+                if dict.keys.contains("Format") {
+                    self.format = dict["Format"] as! String
+                }
+                if dict.keys.contains("OSSBucket") {
+                    self.OSSBucket = dict["OSSBucket"] as! String
+                }
+                if dict.keys.contains("OSSObject") {
+                    self.OSSObject = dict["OSSObject"] as! String
+                }
+            }
+        }
+        public class Features : Tea.TeaModel {
+            public var nvmeSupport: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.nvmeSupport != nil {
+                    map["NvmeSupport"] = self.nvmeSupport!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("NvmeSupport") {
+                    self.nvmeSupport = dict["NvmeSupport"] as! String
+                }
+            }
+        }
+        public var architecture: String?
+
+        public var bootMode: String?
+
+        public var diskDeviceMappings: [CreateImagePipelineRequest.ImportImageOptions.DiskDeviceMappings]?
+
+        public var features: CreateImagePipelineRequest.ImportImageOptions.Features?
+
+        public var licenseType: String?
+
+        public var OSType: String?
+
+        public var platform: String?
+
+        public var retainImportedImage: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.features?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.architecture != nil {
+                map["Architecture"] = self.architecture!
+            }
+            if self.bootMode != nil {
+                map["BootMode"] = self.bootMode!
+            }
+            if self.diskDeviceMappings != nil {
+                var tmp : [Any] = []
+                for k in self.diskDeviceMappings! {
+                    tmp.append(k.toMap())
+                }
+                map["DiskDeviceMappings"] = tmp
+            }
+            if self.features != nil {
+                map["Features"] = self.features?.toMap()
+            }
+            if self.licenseType != nil {
+                map["LicenseType"] = self.licenseType!
+            }
+            if self.OSType != nil {
+                map["OSType"] = self.OSType!
+            }
+            if self.platform != nil {
+                map["Platform"] = self.platform!
+            }
+            if self.retainImportedImage != nil {
+                map["RetainImportedImage"] = self.retainImportedImage!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Architecture") {
+                self.architecture = dict["Architecture"] as! String
+            }
+            if dict.keys.contains("BootMode") {
+                self.bootMode = dict["BootMode"] as! String
+            }
+            if dict.keys.contains("DiskDeviceMappings") {
+                var tmp : [CreateImagePipelineRequest.ImportImageOptions.DiskDeviceMappings] = []
+                for v in dict["DiskDeviceMappings"] as! [Any] {
+                    var model = CreateImagePipelineRequest.ImportImageOptions.DiskDeviceMappings()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.diskDeviceMappings = tmp
+            }
+            if dict.keys.contains("Features") {
+                var model = CreateImagePipelineRequest.ImportImageOptions.Features()
+                model.fromMap(dict["Features"] as! [String: Any])
+                self.features = model
+            }
+            if dict.keys.contains("LicenseType") {
+                self.licenseType = dict["LicenseType"] as! String
+            }
+            if dict.keys.contains("OSType") {
+                self.OSType = dict["OSType"] as! String
+            }
+            if dict.keys.contains("Platform") {
+                self.platform = dict["Platform"] as! String
+            }
+            if dict.keys.contains("RetainImportedImage") {
+                self.retainImportedImage = dict["RetainImportedImage"] as! Bool
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -13238,6 +13449,8 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
     }
     public var addAccount: [Int64]?
 
+    public var advancedOptions: CreateImagePipelineRequest.AdvancedOptions?
+
     public var baseImage: String?
 
     public var baseImageType: String?
@@ -13254,11 +13467,15 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
 
     public var imageName: String?
 
+    public var importImageOptions: CreateImagePipelineRequest.ImportImageOptions?
+
     public var instanceType: String?
 
     public var internetMaxBandwidthOut: Int32?
 
     public var name: String?
+
+    public var nvmeSupport: String?
 
     public var ownerAccount: String?
 
@@ -13294,12 +13511,17 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.advancedOptions?.validate()
+        try self.importImageOptions?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.addAccount != nil {
             map["AddAccount"] = self.addAccount!
+        }
+        if self.advancedOptions != nil {
+            map["AdvancedOptions"] = self.advancedOptions?.toMap()
         }
         if self.baseImage != nil {
             map["BaseImage"] = self.baseImage!
@@ -13325,6 +13547,9 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
         if self.imageName != nil {
             map["ImageName"] = self.imageName!
         }
+        if self.importImageOptions != nil {
+            map["ImportImageOptions"] = self.importImageOptions?.toMap()
+        }
         if self.instanceType != nil {
             map["InstanceType"] = self.instanceType!
         }
@@ -13333,6 +13558,9 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.nvmeSupport != nil {
+            map["NvmeSupport"] = self.nvmeSupport!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -13381,6 +13609,11 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
         if dict.keys.contains("AddAccount") {
             self.addAccount = dict["AddAccount"] as! [Int64]
         }
+        if dict.keys.contains("AdvancedOptions") {
+            var model = CreateImagePipelineRequest.AdvancedOptions()
+            model.fromMap(dict["AdvancedOptions"] as! [String: Any])
+            self.advancedOptions = model
+        }
         if dict.keys.contains("BaseImage") {
             self.baseImage = dict["BaseImage"] as! String
         }
@@ -13405,6 +13638,11 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
         if dict.keys.contains("ImageName") {
             self.imageName = dict["ImageName"] as! String
         }
+        if dict.keys.contains("ImportImageOptions") {
+            var model = CreateImagePipelineRequest.ImportImageOptions()
+            model.fromMap(dict["ImportImageOptions"] as! [String: Any])
+            self.importImageOptions = model
+        }
         if dict.keys.contains("InstanceType") {
             self.instanceType = dict["InstanceType"] as! String
         }
@@ -13413,6 +13651,9 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("NvmeSupport") {
+            self.nvmeSupport = dict["NvmeSupport"] as! String
         }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
@@ -49205,6 +49446,249 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class AdvancedOptions : Tea.TeaModel {
+                public var retainCloudAssistant: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.retainCloudAssistant != nil {
+                        map["RetainCloudAssistant"] = self.retainCloudAssistant!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("RetainCloudAssistant") {
+                        self.retainCloudAssistant = dict["RetainCloudAssistant"] as! Bool
+                    }
+                }
+            }
+            public class ImportImageOptions : Tea.TeaModel {
+                public class DiskDeviceMappings : Tea.TeaModel {
+                    public class DiskDeviceMapping : Tea.TeaModel {
+                        public var diskImageSize: Int32?
+
+                        public var format: String?
+
+                        public var OSSBucket: String?
+
+                        public var OSSObject: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.diskImageSize != nil {
+                                map["DiskImageSize"] = self.diskImageSize!
+                            }
+                            if self.format != nil {
+                                map["Format"] = self.format!
+                            }
+                            if self.OSSBucket != nil {
+                                map["OSSBucket"] = self.OSSBucket!
+                            }
+                            if self.OSSObject != nil {
+                                map["OSSObject"] = self.OSSObject!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("DiskImageSize") {
+                                self.diskImageSize = dict["DiskImageSize"] as! Int32
+                            }
+                            if dict.keys.contains("Format") {
+                                self.format = dict["Format"] as! String
+                            }
+                            if dict.keys.contains("OSSBucket") {
+                                self.OSSBucket = dict["OSSBucket"] as! String
+                            }
+                            if dict.keys.contains("OSSObject") {
+                                self.OSSObject = dict["OSSObject"] as! String
+                            }
+                        }
+                    }
+                    public var diskDeviceMapping: [DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImportImageOptions.DiskDeviceMappings.DiskDeviceMapping]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.diskDeviceMapping != nil {
+                            var tmp : [Any] = []
+                            for k in self.diskDeviceMapping! {
+                                tmp.append(k.toMap())
+                            }
+                            map["DiskDeviceMapping"] = tmp
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("DiskDeviceMapping") {
+                            var tmp : [DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImportImageOptions.DiskDeviceMappings.DiskDeviceMapping] = []
+                            for v in dict["DiskDeviceMapping"] as! [Any] {
+                                var model = DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImportImageOptions.DiskDeviceMappings.DiskDeviceMapping()
+                                if v != nil {
+                                    model.fromMap(v as! [String: Any])
+                                }
+                                tmp.append(model)
+                            }
+                            self.diskDeviceMapping = tmp
+                        }
+                    }
+                }
+                public class Features : Tea.TeaModel {
+                    public var nvmeSupport: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.nvmeSupport != nil {
+                            map["NvmeSupport"] = self.nvmeSupport!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("NvmeSupport") {
+                            self.nvmeSupport = dict["NvmeSupport"] as! String
+                        }
+                    }
+                }
+                public var architecture: String?
+
+                public var bootMode: String?
+
+                public var diskDeviceMappings: DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImportImageOptions.DiskDeviceMappings?
+
+                public var features: DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImportImageOptions.Features?
+
+                public var licenseType: String?
+
+                public var OSType: String?
+
+                public var platform: String?
+
+                public var retainImportedImage: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.diskDeviceMappings?.validate()
+                    try self.features?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.architecture != nil {
+                        map["Architecture"] = self.architecture!
+                    }
+                    if self.bootMode != nil {
+                        map["BootMode"] = self.bootMode!
+                    }
+                    if self.diskDeviceMappings != nil {
+                        map["DiskDeviceMappings"] = self.diskDeviceMappings?.toMap()
+                    }
+                    if self.features != nil {
+                        map["Features"] = self.features?.toMap()
+                    }
+                    if self.licenseType != nil {
+                        map["LicenseType"] = self.licenseType!
+                    }
+                    if self.OSType != nil {
+                        map["OSType"] = self.OSType!
+                    }
+                    if self.platform != nil {
+                        map["Platform"] = self.platform!
+                    }
+                    if self.retainImportedImage != nil {
+                        map["RetainImportedImage"] = self.retainImportedImage!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Architecture") {
+                        self.architecture = dict["Architecture"] as! String
+                    }
+                    if dict.keys.contains("BootMode") {
+                        self.bootMode = dict["BootMode"] as! String
+                    }
+                    if dict.keys.contains("DiskDeviceMappings") {
+                        var model = DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImportImageOptions.DiskDeviceMappings()
+                        model.fromMap(dict["DiskDeviceMappings"] as! [String: Any])
+                        self.diskDeviceMappings = model
+                    }
+                    if dict.keys.contains("Features") {
+                        var model = DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImportImageOptions.Features()
+                        model.fromMap(dict["Features"] as! [String: Any])
+                        self.features = model
+                    }
+                    if dict.keys.contains("LicenseType") {
+                        self.licenseType = dict["LicenseType"] as! String
+                    }
+                    if dict.keys.contains("OSType") {
+                        self.OSType = dict["OSType"] as! String
+                    }
+                    if dict.keys.contains("Platform") {
+                        self.platform = dict["Platform"] as! String
+                    }
+                    if dict.keys.contains("RetainImportedImage") {
+                        self.retainImportedImage = dict["RetainImportedImage"] as! Bool
+                    }
+                }
+            }
             public class Tags : Tea.TeaModel {
                 public class Tag : Tea.TeaModel {
                     public var tagKey: String?
@@ -49314,6 +49798,8 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
             }
             public var addAccounts: DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.AddAccounts?
 
+            public var advancedOptions: DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.AdvancedOptions?
+
             public var baseImage: String?
 
             public var baseImageType: String?
@@ -49332,11 +49818,15 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
 
             public var imagePipelineId: String?
 
+            public var importImageOptions: DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImportImageOptions?
+
             public var instanceType: String?
 
             public var internetMaxBandwidthOut: Int32?
 
             public var name: String?
+
+            public var nvmeSupport: String?
 
             public var repairMode: String?
 
@@ -49363,6 +49853,8 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.addAccounts?.validate()
+                try self.advancedOptions?.validate()
+                try self.importImageOptions?.validate()
                 try self.tags?.validate()
                 try self.toRegionIds?.validate()
             }
@@ -49371,6 +49863,9 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                 var map = super.toMap()
                 if self.addAccounts != nil {
                     map["AddAccounts"] = self.addAccounts?.toMap()
+                }
+                if self.advancedOptions != nil {
+                    map["AdvancedOptions"] = self.advancedOptions?.toMap()
                 }
                 if self.baseImage != nil {
                     map["BaseImage"] = self.baseImage!
@@ -49399,6 +49894,9 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                 if self.imagePipelineId != nil {
                     map["ImagePipelineId"] = self.imagePipelineId!
                 }
+                if self.importImageOptions != nil {
+                    map["ImportImageOptions"] = self.importImageOptions?.toMap()
+                }
                 if self.instanceType != nil {
                     map["InstanceType"] = self.instanceType!
                 }
@@ -49407,6 +49905,9 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                 }
                 if self.name != nil {
                     map["Name"] = self.name!
+                }
+                if self.nvmeSupport != nil {
+                    map["NvmeSupport"] = self.nvmeSupport!
                 }
                 if self.repairMode != nil {
                     map["RepairMode"] = self.repairMode!
@@ -49438,6 +49939,11 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                     model.fromMap(dict["AddAccounts"] as! [String: Any])
                     self.addAccounts = model
                 }
+                if dict.keys.contains("AdvancedOptions") {
+                    var model = DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.AdvancedOptions()
+                    model.fromMap(dict["AdvancedOptions"] as! [String: Any])
+                    self.advancedOptions = model
+                }
                 if dict.keys.contains("BaseImage") {
                     self.baseImage = dict["BaseImage"] as! String
                 }
@@ -49465,6 +49971,11 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                 if dict.keys.contains("ImagePipelineId") {
                     self.imagePipelineId = dict["ImagePipelineId"] as! String
                 }
+                if dict.keys.contains("ImportImageOptions") {
+                    var model = DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImportImageOptions()
+                    model.fromMap(dict["ImportImageOptions"] as! [String: Any])
+                    self.importImageOptions = model
+                }
                 if dict.keys.contains("InstanceType") {
                     self.instanceType = dict["InstanceType"] as! String
                 }
@@ -49473,6 +49984,9 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Name") {
                     self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("NvmeSupport") {
+                    self.nvmeSupport = dict["NvmeSupport"] as! String
                 }
                 if dict.keys.contains("RepairMode") {
                     self.repairMode = dict["RepairMode"] as! String
