@@ -1870,6 +1870,8 @@ public class CreateCollectionRequest : Tea.TeaModel {
 
     public var fullTextRetrievalFields: String?
 
+    public var hnswEfConstruction: String?
+
     public var hnswM: Int32?
 
     public var managerAccount: String?
@@ -1922,6 +1924,9 @@ public class CreateCollectionRequest : Tea.TeaModel {
         }
         if self.fullTextRetrievalFields != nil {
             map["FullTextRetrievalFields"] = self.fullTextRetrievalFields!
+        }
+        if self.hnswEfConstruction != nil {
+            map["HnswEfConstruction"] = self.hnswEfConstruction!
         }
         if self.hnswM != nil {
             map["HnswM"] = self.hnswM!
@@ -1977,6 +1982,9 @@ public class CreateCollectionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FullTextRetrievalFields") {
             self.fullTextRetrievalFields = dict["FullTextRetrievalFields"] as! String
+        }
+        if dict.keys.contains("HnswEfConstruction") {
+            self.hnswEfConstruction = dict["HnswEfConstruction"] as! String
         }
         if dict.keys.contains("HnswM") {
             self.hnswM = dict["HnswM"] as! Int32
@@ -2987,6 +2995,8 @@ public class CreateDocumentCollectionRequest : Tea.TeaModel {
 
     public var fullTextRetrievalFields: String?
 
+    public var hnswEfConstruction: String?
+
     public var hnswM: Int32?
 
     public var managerAccount: String?
@@ -3037,6 +3047,9 @@ public class CreateDocumentCollectionRequest : Tea.TeaModel {
         }
         if self.fullTextRetrievalFields != nil {
             map["FullTextRetrievalFields"] = self.fullTextRetrievalFields!
+        }
+        if self.hnswEfConstruction != nil {
+            map["HnswEfConstruction"] = self.hnswEfConstruction!
         }
         if self.hnswM != nil {
             map["HnswM"] = self.hnswM!
@@ -3089,6 +3102,9 @@ public class CreateDocumentCollectionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FullTextRetrievalFields") {
             self.fullTextRetrievalFields = dict["FullTextRetrievalFields"] as! String
+        }
+        if dict.keys.contains("HnswEfConstruction") {
+            self.hnswEfConstruction = dict["HnswEfConstruction"] as! String
         }
         if dict.keys.contains("HnswM") {
             self.hnswM = dict["HnswM"] as! Int32
@@ -5648,6 +5664,8 @@ public class CreateVectorIndexRequest : Tea.TeaModel {
 
     public var externalStorage: Int32?
 
+    public var hnswEfConstruction: Int32?
+
     public var hnswM: Int32?
 
     public var managerAccount: String?
@@ -5690,6 +5708,9 @@ public class CreateVectorIndexRequest : Tea.TeaModel {
         if self.externalStorage != nil {
             map["ExternalStorage"] = self.externalStorage!
         }
+        if self.hnswEfConstruction != nil {
+            map["HnswEfConstruction"] = self.hnswEfConstruction!
+        }
         if self.hnswM != nil {
             map["HnswM"] = self.hnswM!
         }
@@ -5729,6 +5750,9 @@ public class CreateVectorIndexRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ExternalStorage") {
             self.externalStorage = dict["ExternalStorage"] as! Int32
+        }
+        if dict.keys.contains("HnswEfConstruction") {
+            self.hnswEfConstruction = dict["HnswEfConstruction"] as! Int32
         }
         if dict.keys.contains("HnswM") {
             self.hnswM = dict["HnswM"] as! Int32
