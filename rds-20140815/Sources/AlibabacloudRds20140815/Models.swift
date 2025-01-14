@@ -2876,6 +2876,8 @@ public class CheckServiceLinkedRoleResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var requireServiceLinkedRole: String?
+
     public override init() {
         super.init()
     }
@@ -2896,6 +2898,9 @@ public class CheckServiceLinkedRoleResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.requireServiceLinkedRole != nil {
+            map["RequireServiceLinkedRole"] = self.requireServiceLinkedRole!
+        }
         return map
     }
 
@@ -2905,6 +2910,9 @@ public class CheckServiceLinkedRoleResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("RequireServiceLinkedRole") {
+            self.requireServiceLinkedRole = dict["RequireServiceLinkedRole"] as! String
         }
     }
 }
