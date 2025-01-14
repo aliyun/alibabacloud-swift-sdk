@@ -19507,6 +19507,59 @@ public class DescribeScalingActivitiesRequest : Tea.TeaModel {
 
 public class DescribeScalingActivitiesResponseBody : Tea.TeaModel {
     public class ScalingActivities : Tea.TeaModel {
+        public class ErrorMessages : Tea.TeaModel {
+            public var code: String?
+
+            public var description_: String?
+
+            public var failedInstanceIds: [String]?
+
+            public var message: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.code != nil {
+                    map["Code"] = self.code!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.failedInstanceIds != nil {
+                    map["FailedInstanceIds"] = self.failedInstanceIds!
+                }
+                if self.message != nil {
+                    map["Message"] = self.message!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Code") {
+                    self.code = dict["Code"] as! String
+                }
+                if dict.keys.contains("Description") {
+                    self.description_ = dict["Description"] as! String
+                }
+                if dict.keys.contains("FailedInstanceIds") {
+                    self.failedInstanceIds = dict["FailedInstanceIds"] as! [String]
+                }
+                if dict.keys.contains("Message") {
+                    self.message = dict["Message"] as! String
+                }
+            }
+        }
         public class LifecycleHookContext : Tea.TeaModel {
             public var disableLifecycleHook: Bool?
 
@@ -19569,6 +19622,8 @@ public class DescribeScalingActivitiesResponseBody : Tea.TeaModel {
         public var errorCode: String?
 
         public var errorMessage: String?
+
+        public var errorMessages: [DescribeScalingActivitiesResponseBody.ScalingActivities.ErrorMessages]?
 
         public var instanceRefreshTaskId: String?
 
@@ -19655,6 +19710,13 @@ public class DescribeScalingActivitiesResponseBody : Tea.TeaModel {
             }
             if self.errorMessage != nil {
                 map["ErrorMessage"] = self.errorMessage!
+            }
+            if self.errorMessages != nil {
+                var tmp : [Any] = []
+                for k in self.errorMessages! {
+                    tmp.append(k.toMap())
+                }
+                map["ErrorMessages"] = tmp
             }
             if self.instanceRefreshTaskId != nil {
                 map["InstanceRefreshTaskId"] = self.instanceRefreshTaskId!
@@ -19746,6 +19808,17 @@ public class DescribeScalingActivitiesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ErrorMessage") {
                 self.errorMessage = dict["ErrorMessage"] as! String
+            }
+            if dict.keys.contains("ErrorMessages") {
+                var tmp : [DescribeScalingActivitiesResponseBody.ScalingActivities.ErrorMessages] = []
+                for v in dict["ErrorMessages"] as! [Any] {
+                    var model = DescribeScalingActivitiesResponseBody.ScalingActivities.ErrorMessages()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.errorMessages = tmp
             }
             if dict.keys.contains("InstanceRefreshTaskId") {
                 self.instanceRefreshTaskId = dict["InstanceRefreshTaskId"] as! String
