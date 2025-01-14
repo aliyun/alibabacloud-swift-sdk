@@ -3401,11 +3401,19 @@ public class CreateWmBaseImageResponse : Tea.TeaModel {
 
 public class CreateWmEmbedTaskRequest : Tea.TeaModel {
     public class CsvControl : Tea.TeaModel {
+        public var embedBitsNumberInEachTime: Int64?
+
         public var embedColumn: Int64?
+
+        public var embedDensity: String?
 
         public var embedPrecision: Int64?
 
+        public var embedTimePosition: String?
+
         public var method: String?
+
+        public var timeFormat: String?
 
         public override init() {
             super.init()
@@ -3421,27 +3429,51 @@ public class CreateWmEmbedTaskRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.embedBitsNumberInEachTime != nil {
+                map["EmbedBitsNumberInEachTime"] = self.embedBitsNumberInEachTime!
+            }
             if self.embedColumn != nil {
                 map["EmbedColumn"] = self.embedColumn!
+            }
+            if self.embedDensity != nil {
+                map["EmbedDensity"] = self.embedDensity!
             }
             if self.embedPrecision != nil {
                 map["EmbedPrecision"] = self.embedPrecision!
             }
+            if self.embedTimePosition != nil {
+                map["EmbedTimePosition"] = self.embedTimePosition!
+            }
             if self.method != nil {
                 map["Method"] = self.method!
+            }
+            if self.timeFormat != nil {
+                map["TimeFormat"] = self.timeFormat!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EmbedBitsNumberInEachTime") {
+                self.embedBitsNumberInEachTime = dict["EmbedBitsNumberInEachTime"] as! Int64
+            }
             if dict.keys.contains("EmbedColumn") {
                 self.embedColumn = dict["EmbedColumn"] as! Int64
+            }
+            if dict.keys.contains("EmbedDensity") {
+                self.embedDensity = dict["EmbedDensity"] as! String
             }
             if dict.keys.contains("EmbedPrecision") {
                 self.embedPrecision = dict["EmbedPrecision"] as! Int64
             }
+            if dict.keys.contains("EmbedTimePosition") {
+                self.embedTimePosition = dict["EmbedTimePosition"] as! String
+            }
             if dict.keys.contains("Method") {
                 self.method = dict["Method"] as! String
+            }
+            if dict.keys.contains("TimeFormat") {
+                self.timeFormat = dict["TimeFormat"] as! String
             }
         }
     }
@@ -4044,11 +4076,17 @@ public class CreateWmEmbedTaskResponse : Tea.TeaModel {
 
 public class CreateWmExtractTaskRequest : Tea.TeaModel {
     public class CsvControl : Tea.TeaModel {
+        public var embedBitsNumberInEachTime: Int64?
+
         public var embedColumn: Int64?
 
         public var embedPrecision: Int64?
 
+        public var embedTimePosition: String?
+
         public var method: String?
+
+        public var timeFormat: String?
 
         public override init() {
             super.init()
@@ -4064,27 +4102,45 @@ public class CreateWmExtractTaskRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.embedBitsNumberInEachTime != nil {
+                map["EmbedBitsNumberInEachTime"] = self.embedBitsNumberInEachTime!
+            }
             if self.embedColumn != nil {
                 map["EmbedColumn"] = self.embedColumn!
             }
             if self.embedPrecision != nil {
                 map["EmbedPrecision"] = self.embedPrecision!
             }
+            if self.embedTimePosition != nil {
+                map["EmbedTimePosition"] = self.embedTimePosition!
+            }
             if self.method != nil {
                 map["Method"] = self.method!
+            }
+            if self.timeFormat != nil {
+                map["TimeFormat"] = self.timeFormat!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EmbedBitsNumberInEachTime") {
+                self.embedBitsNumberInEachTime = dict["EmbedBitsNumberInEachTime"] as! Int64
+            }
             if dict.keys.contains("EmbedColumn") {
                 self.embedColumn = dict["EmbedColumn"] as! Int64
             }
             if dict.keys.contains("EmbedPrecision") {
                 self.embedPrecision = dict["EmbedPrecision"] as! Int64
             }
+            if dict.keys.contains("EmbedTimePosition") {
+                self.embedTimePosition = dict["EmbedTimePosition"] as! String
+            }
             if dict.keys.contains("Method") {
                 self.method = dict["Method"] as! String
+            }
+            if dict.keys.contains("TimeFormat") {
+                self.timeFormat = dict["TimeFormat"] as! String
             }
         }
     }
