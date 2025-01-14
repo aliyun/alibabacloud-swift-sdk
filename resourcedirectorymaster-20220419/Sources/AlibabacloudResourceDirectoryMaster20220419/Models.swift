@@ -6657,6 +6657,10 @@ public class ListAccountsRequest : Tea.TeaModel {
     }
     public var includeTags: Bool?
 
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -6682,6 +6686,12 @@ public class ListAccountsRequest : Tea.TeaModel {
         if self.includeTags != nil {
             map["IncludeTags"] = self.includeTags!
         }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -6704,6 +6714,12 @@ public class ListAccountsRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("IncludeTags") {
             self.includeTags = dict["IncludeTags"] as! Bool
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
         }
         if dict.keys.contains("PageNumber") {
             self.pageNumber = dict["PageNumber"] as! Int32
@@ -6978,6 +6994,8 @@ public class ListAccountsResponseBody : Tea.TeaModel {
     }
     public var accounts: ListAccountsResponseBody.Accounts?
 
+    public var nextToken: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -7004,6 +7022,9 @@ public class ListAccountsResponseBody : Tea.TeaModel {
         if self.accounts != nil {
             map["Accounts"] = self.accounts?.toMap()
         }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -7024,6 +7045,9 @@ public class ListAccountsResponseBody : Tea.TeaModel {
             var model = ListAccountsResponseBody.Accounts()
             model.fromMap(dict["Accounts"] as! [String: Any])
             self.accounts = model
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
         }
         if dict.keys.contains("PageNumber") {
             self.pageNumber = dict["PageNumber"] as! Int32
@@ -8768,6 +8792,43 @@ public class ListDelegatedServicesForAccountResponse : Tea.TeaModel {
 }
 
 public class ListFoldersForParentRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -8775,6 +8836,8 @@ public class ListFoldersForParentRequest : Tea.TeaModel {
     public var parentFolderId: String?
 
     public var queryKeyword: String?
+
+    public var tag: [ListFoldersForParentRequest.Tag]?
 
     public override init() {
         super.init()
@@ -8802,6 +8865,13 @@ public class ListFoldersForParentRequest : Tea.TeaModel {
         if self.queryKeyword != nil {
             map["QueryKeyword"] = self.queryKeyword!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
@@ -8818,17 +8888,108 @@ public class ListFoldersForParentRequest : Tea.TeaModel {
         if dict.keys.contains("QueryKeyword") {
             self.queryKeyword = dict["QueryKeyword"] as! String
         }
+        if dict.keys.contains("Tag") {
+            var tmp : [ListFoldersForParentRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = ListFoldersForParentRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
     }
 }
 
 public class ListFoldersForParentResponseBody : Tea.TeaModel {
     public class Folders : Tea.TeaModel {
         public class Folder : Tea.TeaModel {
+            public class Tags : Tea.TeaModel {
+                public class Tag : Tea.TeaModel {
+                    public var key: String?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.key != nil {
+                            map["Key"] = self.key!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Key") {
+                            self.key = dict["Key"] as! String
+                        }
+                        if dict.keys.contains("Value") {
+                            self.value = dict["Value"] as! String
+                        }
+                    }
+                }
+                public var tag: [ListFoldersForParentResponseBody.Folders.Folder.Tags.Tag]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.tag != nil {
+                        var tmp : [Any] = []
+                        for k in self.tag! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Tag"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Tag") {
+                        var tmp : [ListFoldersForParentResponseBody.Folders.Folder.Tags.Tag] = []
+                        for v in dict["Tag"] as! [Any] {
+                            var model = ListFoldersForParentResponseBody.Folders.Folder.Tags.Tag()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.tag = tmp
+                    }
+                }
+            }
             public var createTime: String?
 
             public var folderId: String?
 
             public var folderName: String?
+
+            public var tags: ListFoldersForParentResponseBody.Folders.Folder.Tags?
 
             public override init() {
                 super.init()
@@ -8840,6 +9001,7 @@ public class ListFoldersForParentResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.tags?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -8853,6 +9015,9 @@ public class ListFoldersForParentResponseBody : Tea.TeaModel {
                 if self.folderName != nil {
                     map["FolderName"] = self.folderName!
                 }
+                if self.tags != nil {
+                    map["Tags"] = self.tags?.toMap()
+                }
                 return map
             }
 
@@ -8865,6 +9030,11 @@ public class ListFoldersForParentResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("FolderName") {
                     self.folderName = dict["FolderName"] as! String
+                }
+                if dict.keys.contains("Tags") {
+                    var model = ListFoldersForParentResponseBody.Folders.Folder.Tags()
+                    model.fromMap(dict["Tags"] as! [String: Any])
+                    self.tags = model
                 }
             }
         }
