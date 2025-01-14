@@ -2333,6 +2333,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var disabledPorts: String?
+
         public var engine: String?
 
         public var engineMinorVersion: String?
@@ -2411,6 +2413,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
+            }
+            if self.disabledPorts != nil {
+                map["DisabledPorts"] = self.disabledPorts!
             }
             if self.engine != nil {
                 map["Engine"] = self.engine!
@@ -2510,6 +2515,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Description") {
                 self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("DisabledPorts") {
+                self.disabledPorts = dict["DisabledPorts"] as! String
             }
             if dict.keys.contains("Engine") {
                 self.engine = dict["Engine"] as! String
@@ -5950,6 +5958,8 @@ public class ModifyDBInstanceConnectionStringRequest : Tea.TeaModel {
 
     public var DBInstanceId: String?
 
+    public var disablePorts: String?
+
     public var regionId: String?
 
     public override init() {
@@ -5975,6 +5985,9 @@ public class ModifyDBInstanceConnectionStringRequest : Tea.TeaModel {
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
+        if self.disablePorts != nil {
+            map["DisablePorts"] = self.disablePorts!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -5991,6 +6004,9 @@ public class ModifyDBInstanceConnectionStringRequest : Tea.TeaModel {
         if dict.keys.contains("DBInstanceId") {
             self.DBInstanceId = dict["DBInstanceId"] as! String
         }
+        if dict.keys.contains("DisablePorts") {
+            self.disablePorts = dict["DisablePorts"] as! String
+        }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
         }
@@ -6004,6 +6020,8 @@ public class ModifyDBInstanceConnectionStringResponseBody : Tea.TeaModel {
         public var DBInstanceID: Int32?
 
         public var DBInstanceName: String?
+
+        public var disabledPorts: String?
 
         public override init() {
             super.init()
@@ -6028,6 +6046,9 @@ public class ModifyDBInstanceConnectionStringResponseBody : Tea.TeaModel {
             if self.DBInstanceName != nil {
                 map["DBInstanceName"] = self.DBInstanceName!
             }
+            if self.disabledPorts != nil {
+                map["DisabledPorts"] = self.disabledPorts!
+            }
             return map
         }
 
@@ -6040,6 +6061,9 @@ public class ModifyDBInstanceConnectionStringResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("DBInstanceName") {
                 self.DBInstanceName = dict["DBInstanceName"] as! String
+            }
+            if dict.keys.contains("DisabledPorts") {
+                self.disabledPorts = dict["DisabledPorts"] as! String
             }
         }
     }
