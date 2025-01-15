@@ -2667,6 +2667,8 @@ public class RecoverColumnResponse : Tea.TeaModel {
 }
 
 public class ResyncTableRequest : Tea.TeaModel {
+    public var keep: Bool?
+
     public var tableIdKey: String?
 
     public var workspaceId: String?
@@ -2685,6 +2687,9 @@ public class ResyncTableRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.keep != nil {
+            map["keep"] = self.keep!
+        }
         if self.tableIdKey != nil {
             map["tableIdKey"] = self.tableIdKey!
         }
@@ -2695,6 +2700,9 @@ public class ResyncTableRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("keep") {
+            self.keep = dict["keep"] as! Bool
+        }
         if dict.keys.contains("tableIdKey") {
             self.tableIdKey = dict["tableIdKey"] as! String
         }
@@ -3958,6 +3966,8 @@ public class SaveVirtualDatasourceDdlResponse : Tea.TeaModel {
 public class SyncRemoteTablesRequest : Tea.TeaModel {
     public var keepTableNames: [String]?
 
+    public var noModifiedTableNames: [String]?
+
     public var pullSamples: Bool?
 
     public var tableNames: [String]?
@@ -3981,6 +3991,9 @@ public class SyncRemoteTablesRequest : Tea.TeaModel {
         if self.keepTableNames != nil {
             map["keepTableNames"] = self.keepTableNames!
         }
+        if self.noModifiedTableNames != nil {
+            map["noModifiedTableNames"] = self.noModifiedTableNames!
+        }
         if self.pullSamples != nil {
             map["pullSamples"] = self.pullSamples!
         }
@@ -3996,6 +4009,9 @@ public class SyncRemoteTablesRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("keepTableNames") {
             self.keepTableNames = dict["keepTableNames"] as! [String]
+        }
+        if dict.keys.contains("noModifiedTableNames") {
+            self.noModifiedTableNames = dict["noModifiedTableNames"] as! [String]
         }
         if dict.keys.contains("pullSamples") {
             self.pullSamples = dict["pullSamples"] as! Bool

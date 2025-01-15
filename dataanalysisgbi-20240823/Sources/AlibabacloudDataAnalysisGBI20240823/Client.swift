@@ -723,6 +723,9 @@ open class Client : AlibabacloudOpenApi.Client {
             query["workspaceId"] = request.workspaceId ?? "";
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.keep)) {
+            body["keep"] = request.keep!;
+        }
         if (!TeaUtils.Client.isUnset(request.tableIdKey)) {
             body["tableIdKey"] = request.tableIdKey ?? "";
         }
@@ -940,6 +943,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.keepTableNames)) {
             body["keepTableNames"] = request.keepTableNames ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.noModifiedTableNames)) {
+            body["noModifiedTableNames"] = request.noModifiedTableNames ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.pullSamples)) {
             body["pullSamples"] = request.pullSamples!;
