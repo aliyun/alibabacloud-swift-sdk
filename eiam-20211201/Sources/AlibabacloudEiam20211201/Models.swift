@@ -1671,7 +1671,11 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
 
         public var appSecret: String?
 
+        public var encryptKey: String?
+
         public var enterpriseNumber: String?
+
+        public var verificationToken: String?
 
         public override init() {
             super.init()
@@ -1693,8 +1697,14 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
             if self.appSecret != nil {
                 map["AppSecret"] = self.appSecret!
             }
+            if self.encryptKey != nil {
+                map["EncryptKey"] = self.encryptKey!
+            }
             if self.enterpriseNumber != nil {
                 map["EnterpriseNumber"] = self.enterpriseNumber!
+            }
+            if self.verificationToken != nil {
+                map["VerificationToken"] = self.verificationToken!
             }
             return map
         }
@@ -1706,8 +1716,14 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
             if dict.keys.contains("AppSecret") {
                 self.appSecret = dict["AppSecret"] as! String
             }
+            if dict.keys.contains("EncryptKey") {
+                self.encryptKey = dict["EncryptKey"] as! String
+            }
             if dict.keys.contains("EnterpriseNumber") {
                 self.enterpriseNumber = dict["EnterpriseNumber"] as! String
+            }
+            if dict.keys.contains("VerificationToken") {
+                self.verificationToken = dict["VerificationToken"] as! String
             }
         }
     }
@@ -9581,7 +9597,11 @@ public class GetIdentityProviderResponseBody : Tea.TeaModel {
 
             public var appSecret: String?
 
+            public var encryptKey: String?
+
             public var enterpriseNumber: String?
+
+            public var verificationToken: String?
 
             public override init() {
                 super.init()
@@ -9603,8 +9623,14 @@ public class GetIdentityProviderResponseBody : Tea.TeaModel {
                 if self.appSecret != nil {
                     map["AppSecret"] = self.appSecret!
                 }
+                if self.encryptKey != nil {
+                    map["EncryptKey"] = self.encryptKey!
+                }
                 if self.enterpriseNumber != nil {
                     map["EnterpriseNumber"] = self.enterpriseNumber!
+                }
+                if self.verificationToken != nil {
+                    map["VerificationToken"] = self.verificationToken!
                 }
                 return map
             }
@@ -9616,8 +9642,14 @@ public class GetIdentityProviderResponseBody : Tea.TeaModel {
                 if dict.keys.contains("AppSecret") {
                     self.appSecret = dict["AppSecret"] as! String
                 }
+                if dict.keys.contains("EncryptKey") {
+                    self.encryptKey = dict["EncryptKey"] as! String
+                }
                 if dict.keys.contains("EnterpriseNumber") {
                     self.enterpriseNumber = dict["EnterpriseNumber"] as! String
+                }
+                if dict.keys.contains("VerificationToken") {
+                    self.verificationToken = dict["VerificationToken"] as! String
                 }
             }
         }
@@ -17782,6 +17814,8 @@ public class ListIdentityProvidersResponseBody : Tea.TeaModel {
 
         public var logoUrl: String?
 
+        public var periodicSyncStatus: String?
+
         public var udPullStatus: String?
 
         public var udPullTargetScope: String?
@@ -17849,6 +17883,9 @@ public class ListIdentityProvidersResponseBody : Tea.TeaModel {
             if self.logoUrl != nil {
                 map["LogoUrl"] = self.logoUrl!
             }
+            if self.periodicSyncStatus != nil {
+                map["PeriodicSyncStatus"] = self.periodicSyncStatus!
+            }
             if self.udPullStatus != nil {
                 map["UdPullStatus"] = self.udPullStatus!
             }
@@ -17909,6 +17946,9 @@ public class ListIdentityProvidersResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("LogoUrl") {
                 self.logoUrl = dict["LogoUrl"] as! String
+            }
+            if dict.keys.contains("PeriodicSyncStatus") {
+                self.periodicSyncStatus = dict["PeriodicSyncStatus"] as! String
             }
             if dict.keys.contains("UdPullStatus") {
                 self.udPullStatus = dict["UdPullStatus"] as! String
@@ -27357,6 +27397,10 @@ public class UpdateIdentityProviderRequest : Tea.TeaModel {
 
         public var appSecret: String?
 
+        public var encryptKey: String?
+
+        public var verificationToken: String?
+
         public override init() {
             super.init()
         }
@@ -27377,6 +27421,12 @@ public class UpdateIdentityProviderRequest : Tea.TeaModel {
             if self.appSecret != nil {
                 map["AppSecret"] = self.appSecret!
             }
+            if self.encryptKey != nil {
+                map["EncryptKey"] = self.encryptKey!
+            }
+            if self.verificationToken != nil {
+                map["VerificationToken"] = self.verificationToken!
+            }
             return map
         }
 
@@ -27386,6 +27436,12 @@ public class UpdateIdentityProviderRequest : Tea.TeaModel {
             }
             if dict.keys.contains("AppSecret") {
                 self.appSecret = dict["AppSecret"] as! String
+            }
+            if dict.keys.contains("EncryptKey") {
+                self.encryptKey = dict["EncryptKey"] as! String
+            }
+            if dict.keys.contains("VerificationToken") {
+                self.verificationToken = dict["VerificationToken"] as! String
             }
         }
     }
