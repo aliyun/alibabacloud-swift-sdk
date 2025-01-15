@@ -3836,6 +3836,8 @@ public class DescribeInstanceAmortizedCostByAmortizationPeriodRequest : Tea.TeaM
 public class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Items : Tea.TeaModel {
+            public var afterDiscountAmount: Double?
+
             public var amortizationPeriod: String?
 
             public var amortizationStatus: String?
@@ -3855,6 +3857,8 @@ public class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBody : Tea
             public var costUnit: String?
 
             public var costUnitCode: String?
+
+            public var currentAmortizationAfterDiscountAmount: Double?
 
             public var currentAmortizationDeductedByCashCoupons: Double?
 
@@ -3892,6 +3896,8 @@ public class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBody : Tea
 
             public var pretaxGrossAmount: Double?
 
+            public var previouslyAmortizedAfterDiscountAmount: Double?
+
             public var previouslyAmortizedDeductedByCashCoupons: Double?
 
             public var previouslyAmortizedDeductedByCoupons: Double?
@@ -3917,6 +3923,8 @@ public class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBody : Tea
             public var productName: String?
 
             public var region: String?
+
+            public var remainingAmortizationAfterDiscountAmount: Double?
 
             public var remainingAmortizationDeductedByCashCoupons: Double?
 
@@ -3966,6 +3974,9 @@ public class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBody : Tea
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.afterDiscountAmount != nil {
+                    map["AfterDiscountAmount"] = self.afterDiscountAmount!
+                }
                 if self.amortizationPeriod != nil {
                     map["AmortizationPeriod"] = self.amortizationPeriod!
                 }
@@ -3995,6 +4006,9 @@ public class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBody : Tea
                 }
                 if self.costUnitCode != nil {
                     map["CostUnitCode"] = self.costUnitCode!
+                }
+                if self.currentAmortizationAfterDiscountAmount != nil {
+                    map["CurrentAmortizationAfterDiscountAmount"] = self.currentAmortizationAfterDiscountAmount!
                 }
                 if self.currentAmortizationDeductedByCashCoupons != nil {
                     map["CurrentAmortizationDeductedByCashCoupons"] = self.currentAmortizationDeductedByCashCoupons!
@@ -4050,6 +4064,9 @@ public class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBody : Tea
                 if self.pretaxGrossAmount != nil {
                     map["PretaxGrossAmount"] = self.pretaxGrossAmount!
                 }
+                if self.previouslyAmortizedAfterDiscountAmount != nil {
+                    map["PreviouslyAmortizedAfterDiscountAmount"] = self.previouslyAmortizedAfterDiscountAmount!
+                }
                 if self.previouslyAmortizedDeductedByCashCoupons != nil {
                     map["PreviouslyAmortizedDeductedByCashCoupons"] = self.previouslyAmortizedDeductedByCashCoupons!
                 }
@@ -4088,6 +4105,9 @@ public class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBody : Tea
                 }
                 if self.region != nil {
                     map["Region"] = self.region!
+                }
+                if self.remainingAmortizationAfterDiscountAmount != nil {
+                    map["RemainingAmortizationAfterDiscountAmount"] = self.remainingAmortizationAfterDiscountAmount!
                 }
                 if self.remainingAmortizationDeductedByCashCoupons != nil {
                     map["RemainingAmortizationDeductedByCashCoupons"] = self.remainingAmortizationDeductedByCashCoupons!
@@ -4144,6 +4164,9 @@ public class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBody : Tea
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AfterDiscountAmount") {
+                    self.afterDiscountAmount = dict["AfterDiscountAmount"] as! Double
+                }
                 if dict.keys.contains("AmortizationPeriod") {
                     self.amortizationPeriod = dict["AmortizationPeriod"] as! String
                 }
@@ -4173,6 +4196,9 @@ public class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBody : Tea
                 }
                 if dict.keys.contains("CostUnitCode") {
                     self.costUnitCode = dict["CostUnitCode"] as! String
+                }
+                if dict.keys.contains("CurrentAmortizationAfterDiscountAmount") {
+                    self.currentAmortizationAfterDiscountAmount = dict["CurrentAmortizationAfterDiscountAmount"] as! Double
                 }
                 if dict.keys.contains("CurrentAmortizationDeductedByCashCoupons") {
                     self.currentAmortizationDeductedByCashCoupons = dict["CurrentAmortizationDeductedByCashCoupons"] as! Double
@@ -4228,6 +4254,9 @@ public class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBody : Tea
                 if dict.keys.contains("PretaxGrossAmount") {
                     self.pretaxGrossAmount = dict["PretaxGrossAmount"] as! Double
                 }
+                if dict.keys.contains("PreviouslyAmortizedAfterDiscountAmount") {
+                    self.previouslyAmortizedAfterDiscountAmount = dict["PreviouslyAmortizedAfterDiscountAmount"] as! Double
+                }
                 if dict.keys.contains("PreviouslyAmortizedDeductedByCashCoupons") {
                     self.previouslyAmortizedDeductedByCashCoupons = dict["PreviouslyAmortizedDeductedByCashCoupons"] as! Double
                 }
@@ -4266,6 +4295,9 @@ public class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBody : Tea
                 }
                 if dict.keys.contains("Region") {
                     self.region = dict["Region"] as! String
+                }
+                if dict.keys.contains("RemainingAmortizationAfterDiscountAmount") {
+                    self.remainingAmortizationAfterDiscountAmount = dict["RemainingAmortizationAfterDiscountAmount"] as! Double
                 }
                 if dict.keys.contains("RemainingAmortizationDeductedByCashCoupons") {
                     self.remainingAmortizationDeductedByCashCoupons = dict["RemainingAmortizationDeductedByCashCoupons"] as! Double
@@ -5448,6 +5480,8 @@ public class DescribeInstanceAmortizedCostByConsumePeriodRequest : Tea.TeaModel 
 public class DescribeInstanceAmortizedCostByConsumePeriodResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Items : Tea.TeaModel {
+            public var afterDiscountAmount: Double?
+
             public var amortizationPeriod: String?
 
             public var amortizationStatus: String?
@@ -5467,6 +5501,8 @@ public class DescribeInstanceAmortizedCostByConsumePeriodResponseBody : Tea.TeaM
             public var costUnit: String?
 
             public var costUnitCode: String?
+
+            public var currentAmortizationAfterDiscountAmount: Double?
 
             public var currentAmortizationDeductedByCashCoupons: Double?
 
@@ -5504,6 +5540,8 @@ public class DescribeInstanceAmortizedCostByConsumePeriodResponseBody : Tea.TeaM
 
             public var pretaxGrossAmount: Double?
 
+            public var previouslyAmortizedAfterDiscountAmount: Double?
+
             public var previouslyAmortizedDeductedByCashCoupons: Double?
 
             public var previouslyAmortizedDeductedByCoupons: Double?
@@ -5529,6 +5567,8 @@ public class DescribeInstanceAmortizedCostByConsumePeriodResponseBody : Tea.TeaM
             public var productName: String?
 
             public var region: String?
+
+            public var remainingAmortizationAfterDiscountAmount: Double?
 
             public var remainingAmortizationDeductedByCashCoupons: Double?
 
@@ -5578,6 +5618,9 @@ public class DescribeInstanceAmortizedCostByConsumePeriodResponseBody : Tea.TeaM
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.afterDiscountAmount != nil {
+                    map["AfterDiscountAmount"] = self.afterDiscountAmount!
+                }
                 if self.amortizationPeriod != nil {
                     map["AmortizationPeriod"] = self.amortizationPeriod!
                 }
@@ -5607,6 +5650,9 @@ public class DescribeInstanceAmortizedCostByConsumePeriodResponseBody : Tea.TeaM
                 }
                 if self.costUnitCode != nil {
                     map["CostUnitCode"] = self.costUnitCode!
+                }
+                if self.currentAmortizationAfterDiscountAmount != nil {
+                    map["CurrentAmortizationAfterDiscountAmount"] = self.currentAmortizationAfterDiscountAmount!
                 }
                 if self.currentAmortizationDeductedByCashCoupons != nil {
                     map["CurrentAmortizationDeductedByCashCoupons"] = self.currentAmortizationDeductedByCashCoupons!
@@ -5662,6 +5708,9 @@ public class DescribeInstanceAmortizedCostByConsumePeriodResponseBody : Tea.TeaM
                 if self.pretaxGrossAmount != nil {
                     map["PretaxGrossAmount"] = self.pretaxGrossAmount!
                 }
+                if self.previouslyAmortizedAfterDiscountAmount != nil {
+                    map["PreviouslyAmortizedAfterDiscountAmount"] = self.previouslyAmortizedAfterDiscountAmount!
+                }
                 if self.previouslyAmortizedDeductedByCashCoupons != nil {
                     map["PreviouslyAmortizedDeductedByCashCoupons"] = self.previouslyAmortizedDeductedByCashCoupons!
                 }
@@ -5700,6 +5749,9 @@ public class DescribeInstanceAmortizedCostByConsumePeriodResponseBody : Tea.TeaM
                 }
                 if self.region != nil {
                     map["Region"] = self.region!
+                }
+                if self.remainingAmortizationAfterDiscountAmount != nil {
+                    map["RemainingAmortizationAfterDiscountAmount"] = self.remainingAmortizationAfterDiscountAmount!
                 }
                 if self.remainingAmortizationDeductedByCashCoupons != nil {
                     map["RemainingAmortizationDeductedByCashCoupons"] = self.remainingAmortizationDeductedByCashCoupons!
@@ -5756,6 +5808,9 @@ public class DescribeInstanceAmortizedCostByConsumePeriodResponseBody : Tea.TeaM
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AfterDiscountAmount") {
+                    self.afterDiscountAmount = dict["AfterDiscountAmount"] as! Double
+                }
                 if dict.keys.contains("AmortizationPeriod") {
                     self.amortizationPeriod = dict["AmortizationPeriod"] as! String
                 }
@@ -5785,6 +5840,9 @@ public class DescribeInstanceAmortizedCostByConsumePeriodResponseBody : Tea.TeaM
                 }
                 if dict.keys.contains("CostUnitCode") {
                     self.costUnitCode = dict["CostUnitCode"] as! String
+                }
+                if dict.keys.contains("CurrentAmortizationAfterDiscountAmount") {
+                    self.currentAmortizationAfterDiscountAmount = dict["CurrentAmortizationAfterDiscountAmount"] as! Double
                 }
                 if dict.keys.contains("CurrentAmortizationDeductedByCashCoupons") {
                     self.currentAmortizationDeductedByCashCoupons = dict["CurrentAmortizationDeductedByCashCoupons"] as! Double
@@ -5840,6 +5898,9 @@ public class DescribeInstanceAmortizedCostByConsumePeriodResponseBody : Tea.TeaM
                 if dict.keys.contains("PretaxGrossAmount") {
                     self.pretaxGrossAmount = dict["PretaxGrossAmount"] as! Double
                 }
+                if dict.keys.contains("PreviouslyAmortizedAfterDiscountAmount") {
+                    self.previouslyAmortizedAfterDiscountAmount = dict["PreviouslyAmortizedAfterDiscountAmount"] as! Double
+                }
                 if dict.keys.contains("PreviouslyAmortizedDeductedByCashCoupons") {
                     self.previouslyAmortizedDeductedByCashCoupons = dict["PreviouslyAmortizedDeductedByCashCoupons"] as! Double
                 }
@@ -5878,6 +5939,9 @@ public class DescribeInstanceAmortizedCostByConsumePeriodResponseBody : Tea.TeaM
                 }
                 if dict.keys.contains("Region") {
                     self.region = dict["Region"] as! String
+                }
+                if dict.keys.contains("RemainingAmortizationAfterDiscountAmount") {
+                    self.remainingAmortizationAfterDiscountAmount = dict["RemainingAmortizationAfterDiscountAmount"] as! Double
                 }
                 if dict.keys.contains("RemainingAmortizationDeductedByCashCoupons") {
                     self.remainingAmortizationDeductedByCashCoupons = dict["RemainingAmortizationDeductedByCashCoupons"] as! Double
@@ -6264,7 +6328,7 @@ public class DescribeInstanceBillResponseBody : Tea.TeaModel {
         public class Items : Tea.TeaModel {
             public var adjustAmount: Double?
 
-            public var afterDiscountAmount: String?
+            public var afterDiscountAmount: Double?
 
             public var billAccountID: String?
 
@@ -6519,7 +6583,7 @@ public class DescribeInstanceBillResponseBody : Tea.TeaModel {
                     self.adjustAmount = dict["AdjustAmount"] as! Double
                 }
                 if dict.keys.contains("AfterDiscountAmount") {
-                    self.afterDiscountAmount = dict["AfterDiscountAmount"] as! String
+                    self.afterDiscountAmount = dict["AfterDiscountAmount"] as! Double
                 }
                 if dict.keys.contains("BillAccountID") {
                     self.billAccountID = dict["BillAccountID"] as! String
@@ -8186,6 +8250,8 @@ public class DescribeProductAmortizedCostByAmortizationPeriodRequest : Tea.TeaMo
 public class DescribeProductAmortizedCostByAmortizationPeriodResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Items : Tea.TeaModel {
+            public var afterDiscountAmount: Double?
+
             public var amortizationPeriod: String?
 
             public var amortizationStatus: String?
@@ -8201,6 +8267,8 @@ public class DescribeProductAmortizedCostByAmortizationPeriodResponseBody : Tea.
             public var bizType: String?
 
             public var consumePeriod: String?
+
+            public var currentAmortizationAfterDiscountAmount: Double?
 
             public var currentAmortizationDeductedByCashCoupons: Double?
 
@@ -8232,6 +8300,8 @@ public class DescribeProductAmortizedCostByAmortizationPeriodResponseBody : Tea.
 
             public var pretaxGrossAmount: Double?
 
+            public var previouslyAmortizedAfterDiscountAmount: Double?
+
             public var previouslyAmortizedDeductedByCashCoupons: Double?
 
             public var previouslyAmortizedDeductedByCoupons: Double?
@@ -8255,6 +8325,8 @@ public class DescribeProductAmortizedCostByAmortizationPeriodResponseBody : Tea.
             public var productDetailCode: String?
 
             public var productName: String?
+
+            public var remainingAmortizationAfterDiscountAmount: Double?
 
             public var remainingAmortizationDeductedByCashCoupons: Double?
 
@@ -8290,6 +8362,9 @@ public class DescribeProductAmortizedCostByAmortizationPeriodResponseBody : Tea.
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.afterDiscountAmount != nil {
+                    map["AfterDiscountAmount"] = self.afterDiscountAmount!
+                }
                 if self.amortizationPeriod != nil {
                     map["AmortizationPeriod"] = self.amortizationPeriod!
                 }
@@ -8313,6 +8388,9 @@ public class DescribeProductAmortizedCostByAmortizationPeriodResponseBody : Tea.
                 }
                 if self.consumePeriod != nil {
                     map["ConsumePeriod"] = self.consumePeriod!
+                }
+                if self.currentAmortizationAfterDiscountAmount != nil {
+                    map["CurrentAmortizationAfterDiscountAmount"] = self.currentAmortizationAfterDiscountAmount!
                 }
                 if self.currentAmortizationDeductedByCashCoupons != nil {
                     map["CurrentAmortizationDeductedByCashCoupons"] = self.currentAmortizationDeductedByCashCoupons!
@@ -8359,6 +8437,9 @@ public class DescribeProductAmortizedCostByAmortizationPeriodResponseBody : Tea.
                 if self.pretaxGrossAmount != nil {
                     map["PretaxGrossAmount"] = self.pretaxGrossAmount!
                 }
+                if self.previouslyAmortizedAfterDiscountAmount != nil {
+                    map["PreviouslyAmortizedAfterDiscountAmount"] = self.previouslyAmortizedAfterDiscountAmount!
+                }
                 if self.previouslyAmortizedDeductedByCashCoupons != nil {
                     map["PreviouslyAmortizedDeductedByCashCoupons"] = self.previouslyAmortizedDeductedByCashCoupons!
                 }
@@ -8395,6 +8476,9 @@ public class DescribeProductAmortizedCostByAmortizationPeriodResponseBody : Tea.
                 if self.productName != nil {
                     map["ProductName"] = self.productName!
                 }
+                if self.remainingAmortizationAfterDiscountAmount != nil {
+                    map["RemainingAmortizationAfterDiscountAmount"] = self.remainingAmortizationAfterDiscountAmount!
+                }
                 if self.remainingAmortizationDeductedByCashCoupons != nil {
                     map["RemainingAmortizationDeductedByCashCoupons"] = self.remainingAmortizationDeductedByCashCoupons!
                 }
@@ -8429,6 +8513,9 @@ public class DescribeProductAmortizedCostByAmortizationPeriodResponseBody : Tea.
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AfterDiscountAmount") {
+                    self.afterDiscountAmount = dict["AfterDiscountAmount"] as! Double
+                }
                 if dict.keys.contains("AmortizationPeriod") {
                     self.amortizationPeriod = dict["AmortizationPeriod"] as! String
                 }
@@ -8452,6 +8539,9 @@ public class DescribeProductAmortizedCostByAmortizationPeriodResponseBody : Tea.
                 }
                 if dict.keys.contains("ConsumePeriod") {
                     self.consumePeriod = dict["ConsumePeriod"] as! String
+                }
+                if dict.keys.contains("CurrentAmortizationAfterDiscountAmount") {
+                    self.currentAmortizationAfterDiscountAmount = dict["CurrentAmortizationAfterDiscountAmount"] as! Double
                 }
                 if dict.keys.contains("CurrentAmortizationDeductedByCashCoupons") {
                     self.currentAmortizationDeductedByCashCoupons = dict["CurrentAmortizationDeductedByCashCoupons"] as! Double
@@ -8498,6 +8588,9 @@ public class DescribeProductAmortizedCostByAmortizationPeriodResponseBody : Tea.
                 if dict.keys.contains("PretaxGrossAmount") {
                     self.pretaxGrossAmount = dict["PretaxGrossAmount"] as! Double
                 }
+                if dict.keys.contains("PreviouslyAmortizedAfterDiscountAmount") {
+                    self.previouslyAmortizedAfterDiscountAmount = dict["PreviouslyAmortizedAfterDiscountAmount"] as! Double
+                }
                 if dict.keys.contains("PreviouslyAmortizedDeductedByCashCoupons") {
                     self.previouslyAmortizedDeductedByCashCoupons = dict["PreviouslyAmortizedDeductedByCashCoupons"] as! Double
                 }
@@ -8533,6 +8626,9 @@ public class DescribeProductAmortizedCostByAmortizationPeriodResponseBody : Tea.
                 }
                 if dict.keys.contains("ProductName") {
                     self.productName = dict["ProductName"] as! String
+                }
+                if dict.keys.contains("RemainingAmortizationAfterDiscountAmount") {
+                    self.remainingAmortizationAfterDiscountAmount = dict["RemainingAmortizationAfterDiscountAmount"] as! Double
                 }
                 if dict.keys.contains("RemainingAmortizationDeductedByCashCoupons") {
                     self.remainingAmortizationDeductedByCashCoupons = dict["RemainingAmortizationDeductedByCashCoupons"] as! Double
@@ -8864,6 +8960,8 @@ public class DescribeProductAmortizedCostByConsumePeriodRequest : Tea.TeaModel {
 public class DescribeProductAmortizedCostByConsumePeriodResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Items : Tea.TeaModel {
+            public var afterDiscountAmount: Double?
+
             public var amortizationPeriod: String?
 
             public var amortizationStatus: String?
@@ -8879,6 +8977,8 @@ public class DescribeProductAmortizedCostByConsumePeriodResponseBody : Tea.TeaMo
             public var bizType: String?
 
             public var consumePeriod: String?
+
+            public var currentAmortizationAfterDiscountAmount: Double?
 
             public var currentAmortizationDeductedByCashCoupons: Double?
 
@@ -8910,6 +9010,8 @@ public class DescribeProductAmortizedCostByConsumePeriodResponseBody : Tea.TeaMo
 
             public var pretaxGrossAmount: Double?
 
+            public var previouslyAmortizedAfterDiscountAmount: Double?
+
             public var previouslyAmortizedDeductedByCashCoupons: Double?
 
             public var previouslyAmortizedDeductedByCoupons: Double?
@@ -8933,6 +9035,8 @@ public class DescribeProductAmortizedCostByConsumePeriodResponseBody : Tea.TeaMo
             public var productDetailCode: String?
 
             public var productName: String?
+
+            public var remainingAmortizationAfterDiscountAmount: Double?
 
             public var remainingAmortizationDeductedByCashCoupons: Double?
 
@@ -8968,6 +9072,9 @@ public class DescribeProductAmortizedCostByConsumePeriodResponseBody : Tea.TeaMo
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.afterDiscountAmount != nil {
+                    map["AfterDiscountAmount"] = self.afterDiscountAmount!
+                }
                 if self.amortizationPeriod != nil {
                     map["AmortizationPeriod"] = self.amortizationPeriod!
                 }
@@ -8991,6 +9098,9 @@ public class DescribeProductAmortizedCostByConsumePeriodResponseBody : Tea.TeaMo
                 }
                 if self.consumePeriod != nil {
                     map["ConsumePeriod"] = self.consumePeriod!
+                }
+                if self.currentAmortizationAfterDiscountAmount != nil {
+                    map["CurrentAmortizationAfterDiscountAmount"] = self.currentAmortizationAfterDiscountAmount!
                 }
                 if self.currentAmortizationDeductedByCashCoupons != nil {
                     map["CurrentAmortizationDeductedByCashCoupons"] = self.currentAmortizationDeductedByCashCoupons!
@@ -9037,6 +9147,9 @@ public class DescribeProductAmortizedCostByConsumePeriodResponseBody : Tea.TeaMo
                 if self.pretaxGrossAmount != nil {
                     map["PretaxGrossAmount"] = self.pretaxGrossAmount!
                 }
+                if self.previouslyAmortizedAfterDiscountAmount != nil {
+                    map["PreviouslyAmortizedAfterDiscountAmount"] = self.previouslyAmortizedAfterDiscountAmount!
+                }
                 if self.previouslyAmortizedDeductedByCashCoupons != nil {
                     map["PreviouslyAmortizedDeductedByCashCoupons"] = self.previouslyAmortizedDeductedByCashCoupons!
                 }
@@ -9073,6 +9186,9 @@ public class DescribeProductAmortizedCostByConsumePeriodResponseBody : Tea.TeaMo
                 if self.productName != nil {
                     map["ProductName"] = self.productName!
                 }
+                if self.remainingAmortizationAfterDiscountAmount != nil {
+                    map["RemainingAmortizationAfterDiscountAmount"] = self.remainingAmortizationAfterDiscountAmount!
+                }
                 if self.remainingAmortizationDeductedByCashCoupons != nil {
                     map["RemainingAmortizationDeductedByCashCoupons"] = self.remainingAmortizationDeductedByCashCoupons!
                 }
@@ -9107,6 +9223,9 @@ public class DescribeProductAmortizedCostByConsumePeriodResponseBody : Tea.TeaMo
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AfterDiscountAmount") {
+                    self.afterDiscountAmount = dict["AfterDiscountAmount"] as! Double
+                }
                 if dict.keys.contains("AmortizationPeriod") {
                     self.amortizationPeriod = dict["AmortizationPeriod"] as! String
                 }
@@ -9130,6 +9249,9 @@ public class DescribeProductAmortizedCostByConsumePeriodResponseBody : Tea.TeaMo
                 }
                 if dict.keys.contains("ConsumePeriod") {
                     self.consumePeriod = dict["ConsumePeriod"] as! String
+                }
+                if dict.keys.contains("CurrentAmortizationAfterDiscountAmount") {
+                    self.currentAmortizationAfterDiscountAmount = dict["CurrentAmortizationAfterDiscountAmount"] as! Double
                 }
                 if dict.keys.contains("CurrentAmortizationDeductedByCashCoupons") {
                     self.currentAmortizationDeductedByCashCoupons = dict["CurrentAmortizationDeductedByCashCoupons"] as! Double
@@ -9176,6 +9298,9 @@ public class DescribeProductAmortizedCostByConsumePeriodResponseBody : Tea.TeaMo
                 if dict.keys.contains("PretaxGrossAmount") {
                     self.pretaxGrossAmount = dict["PretaxGrossAmount"] as! Double
                 }
+                if dict.keys.contains("PreviouslyAmortizedAfterDiscountAmount") {
+                    self.previouslyAmortizedAfterDiscountAmount = dict["PreviouslyAmortizedAfterDiscountAmount"] as! Double
+                }
                 if dict.keys.contains("PreviouslyAmortizedDeductedByCashCoupons") {
                     self.previouslyAmortizedDeductedByCashCoupons = dict["PreviouslyAmortizedDeductedByCashCoupons"] as! Double
                 }
@@ -9211,6 +9336,9 @@ public class DescribeProductAmortizedCostByConsumePeriodResponseBody : Tea.TeaMo
                 }
                 if dict.keys.contains("ProductName") {
                     self.productName = dict["ProductName"] as! String
+                }
+                if dict.keys.contains("RemainingAmortizationAfterDiscountAmount") {
+                    self.remainingAmortizationAfterDiscountAmount = dict["RemainingAmortizationAfterDiscountAmount"] as! Double
                 }
                 if dict.keys.contains("RemainingAmortizationDeductedByCashCoupons") {
                     self.remainingAmortizationDeductedByCashCoupons = dict["RemainingAmortizationDeductedByCashCoupons"] as! Double
@@ -13147,7 +13275,7 @@ public class DescribeSplitItemBillResponseBody : Tea.TeaModel {
         public class Items : Tea.TeaModel {
             public var adjustAmount: Double?
 
-            public var afterDiscountAmount: String?
+            public var afterDiscountAmount: Double?
 
             public var billAccountID: String?
 
@@ -13442,7 +13570,7 @@ public class DescribeSplitItemBillResponseBody : Tea.TeaModel {
                     self.adjustAmount = dict["AdjustAmount"] as! Double
                 }
                 if dict.keys.contains("AfterDiscountAmount") {
-                    self.afterDiscountAmount = dict["AfterDiscountAmount"] as! String
+                    self.afterDiscountAmount = dict["AfterDiscountAmount"] as! Double
                 }
                 if dict.keys.contains("BillAccountID") {
                     self.billAccountID = dict["BillAccountID"] as! String
