@@ -200,13 +200,27 @@ public class InstancePatterns : Tea.TeaModel {
 
     public var core: Int64?
 
+    public var cores: Int64?
+
+    public var cpuArchitectures: [String]?
+
     public var excludedInstanceTypes: [String]?
 
+    public var instanceCategories: [String]?
+
     public var instanceFamilyLevel: String?
+
+    public var maxCpuCores: Int64?
+
+    public var maxMemorySize: Double?
 
     public var maxPrice: Double?
 
     public var memory: Double?
+
+    public var minCpuCores: Int64?
+
+    public var minMemorySize: Double?
 
     public override init() {
         super.init()
@@ -231,17 +245,38 @@ public class InstancePatterns : Tea.TeaModel {
         if self.core != nil {
             map["core"] = self.core!
         }
+        if self.cores != nil {
+            map["cores"] = self.cores!
+        }
+        if self.cpuArchitectures != nil {
+            map["cpu_architectures"] = self.cpuArchitectures!
+        }
         if self.excludedInstanceTypes != nil {
             map["excluded_instance_types"] = self.excludedInstanceTypes!
         }
+        if self.instanceCategories != nil {
+            map["instance_categories"] = self.instanceCategories!
+        }
         if self.instanceFamilyLevel != nil {
             map["instance_family_level"] = self.instanceFamilyLevel!
+        }
+        if self.maxCpuCores != nil {
+            map["max_cpu_cores"] = self.maxCpuCores!
+        }
+        if self.maxMemorySize != nil {
+            map["max_memory_size"] = self.maxMemorySize!
         }
         if self.maxPrice != nil {
             map["max_price"] = self.maxPrice!
         }
         if self.memory != nil {
             map["memory"] = self.memory!
+        }
+        if self.minCpuCores != nil {
+            map["min_cpu_cores"] = self.minCpuCores!
+        }
+        if self.minMemorySize != nil {
+            map["min_memory_size"] = self.minMemorySize!
         }
         return map
     }
@@ -256,17 +291,38 @@ public class InstancePatterns : Tea.TeaModel {
         if dict.keys.contains("core") {
             self.core = dict["core"] as! Int64
         }
+        if dict.keys.contains("cores") {
+            self.cores = dict["cores"] as! Int64
+        }
+        if dict.keys.contains("cpu_architectures") {
+            self.cpuArchitectures = dict["cpu_architectures"] as! [String]
+        }
         if dict.keys.contains("excluded_instance_types") {
             self.excludedInstanceTypes = dict["excluded_instance_types"] as! [String]
         }
+        if dict.keys.contains("instance_categories") {
+            self.instanceCategories = dict["instance_categories"] as! [String]
+        }
         if dict.keys.contains("instance_family_level") {
             self.instanceFamilyLevel = dict["instance_family_level"] as! String
+        }
+        if dict.keys.contains("max_cpu_cores") {
+            self.maxCpuCores = dict["max_cpu_cores"] as! Int64
+        }
+        if dict.keys.contains("max_memory_size") {
+            self.maxMemorySize = dict["max_memory_size"] as! Double
         }
         if dict.keys.contains("max_price") {
             self.maxPrice = dict["max_price"] as! Double
         }
         if dict.keys.contains("memory") {
             self.memory = dict["memory"] as! Double
+        }
+        if dict.keys.contains("min_cpu_cores") {
+            self.minCpuCores = dict["min_cpu_cores"] as! Int64
+        }
+        if dict.keys.contains("min_memory_size") {
+            self.minMemorySize = dict["min_memory_size"] as! Double
         }
     }
 }
@@ -354,6 +410,10 @@ public class KubeletConfig : Tea.TeaModel {
 
     public var containerLogMaxSize: String?
 
+    public var containerLogMaxWorkers: Int32?
+
+    public var containerLogMonitorInterval: String?
+
     public var cpuCFSQuota: Bool?
 
     public var cpuCFSQuotaPeriod: String?
@@ -430,6 +490,12 @@ public class KubeletConfig : Tea.TeaModel {
         }
         if self.containerLogMaxSize != nil {
             map["containerLogMaxSize"] = self.containerLogMaxSize!
+        }
+        if self.containerLogMaxWorkers != nil {
+            map["containerLogMaxWorkers"] = self.containerLogMaxWorkers!
+        }
+        if self.containerLogMonitorInterval != nil {
+            map["containerLogMonitorInterval"] = self.containerLogMonitorInterval!
         }
         if self.cpuCFSQuota != nil {
             map["cpuCFSQuota"] = self.cpuCFSQuota!
@@ -525,6 +591,12 @@ public class KubeletConfig : Tea.TeaModel {
         }
         if dict.keys.contains("containerLogMaxSize") {
             self.containerLogMaxSize = dict["containerLogMaxSize"] as! String
+        }
+        if dict.keys.contains("containerLogMaxWorkers") {
+            self.containerLogMaxWorkers = dict["containerLogMaxWorkers"] as! Int32
+        }
+        if dict.keys.contains("containerLogMonitorInterval") {
+            self.containerLogMonitorInterval = dict["containerLogMonitorInterval"] as! String
         }
         if dict.keys.contains("cpuCFSQuota") {
             self.cpuCFSQuota = dict["cpuCFSQuota"] as! Bool
