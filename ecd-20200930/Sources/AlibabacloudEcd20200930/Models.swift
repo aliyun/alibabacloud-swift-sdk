@@ -13567,6 +13567,8 @@ public class DescribeBundlesResponseBody : Tea.TeaModel {
 
         public var creationTime: String?
 
+        public var dataDiskCategory: String?
+
         public var description_: String?
 
         public var desktopType: String?
@@ -13594,6 +13596,8 @@ public class DescribeBundlesResponseBody : Tea.TeaModel {
         public var sessionType: String?
 
         public var stockState: String?
+
+        public var systemDiskCategory: String?
 
         public var volumeEncryptionEnabled: Bool?
 
@@ -13625,6 +13629,9 @@ public class DescribeBundlesResponseBody : Tea.TeaModel {
             }
             if self.creationTime != nil {
                 map["CreationTime"] = self.creationTime!
+            }
+            if self.dataDiskCategory != nil {
+                map["DataDiskCategory"] = self.dataDiskCategory!
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
@@ -13672,6 +13679,9 @@ public class DescribeBundlesResponseBody : Tea.TeaModel {
             if self.stockState != nil {
                 map["StockState"] = self.stockState!
             }
+            if self.systemDiskCategory != nil {
+                map["SystemDiskCategory"] = self.systemDiskCategory!
+            }
             if self.volumeEncryptionEnabled != nil {
                 map["VolumeEncryptionEnabled"] = self.volumeEncryptionEnabled!
             }
@@ -13693,6 +13703,9 @@ public class DescribeBundlesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("CreationTime") {
                 self.creationTime = dict["CreationTime"] as! String
+            }
+            if dict.keys.contains("DataDiskCategory") {
+                self.dataDiskCategory = dict["DataDiskCategory"] as! String
             }
             if dict.keys.contains("Description") {
                 self.description_ = dict["Description"] as! String
@@ -13745,6 +13758,9 @@ public class DescribeBundlesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("StockState") {
                 self.stockState = dict["StockState"] as! String
+            }
+            if dict.keys.contains("SystemDiskCategory") {
+                self.systemDiskCategory = dict["SystemDiskCategory"] as! String
             }
             if dict.keys.contains("VolumeEncryptionEnabled") {
                 self.volumeEncryptionEnabled = dict["VolumeEncryptionEnabled"] as! Bool
@@ -30546,6 +30562,10 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
 
         public var remainTime: Int32?
 
+        public var restorePointId: String?
+
+        public var restorePointName: String?
+
         public var snapshotId: String?
 
         public var snapshotName: String?
@@ -30606,6 +30626,12 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
             if self.remainTime != nil {
                 map["RemainTime"] = self.remainTime!
             }
+            if self.restorePointId != nil {
+                map["RestorePointId"] = self.restorePointId!
+            }
+            if self.restorePointName != nil {
+                map["RestorePointName"] = self.restorePointName!
+            }
             if self.snapshotId != nil {
                 map["SnapshotId"] = self.snapshotId!
             }
@@ -30663,6 +30689,12 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RemainTime") {
                 self.remainTime = dict["RemainTime"] as! Int32
+            }
+            if dict.keys.contains("RestorePointId") {
+                self.restorePointId = dict["RestorePointId"] as! String
+            }
+            if dict.keys.contains("RestorePointName") {
+                self.restorePointName = dict["RestorePointName"] as! String
             }
             if dict.keys.contains("SnapshotId") {
                 self.snapshotId = dict["SnapshotId"] as! String
