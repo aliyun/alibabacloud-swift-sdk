@@ -272,6 +272,8 @@ public class CreateServiceWorkOrderRequest : Tea.TeaModel {
 
     public var isAttachment: String?
 
+    public var isMilestone: String?
+
     public var isWorkOrderNotify: String?
 
     public var notifyDay: String?
@@ -323,6 +325,9 @@ public class CreateServiceWorkOrderRequest : Tea.TeaModel {
         }
         if self.isAttachment != nil {
             map["IsAttachment"] = self.isAttachment!
+        }
+        if self.isMilestone != nil {
+            map["IsMilestone"] = self.isMilestone!
         }
         if self.isWorkOrderNotify != nil {
             map["IsWorkOrderNotify"] = self.isWorkOrderNotify!
@@ -378,6 +383,9 @@ public class CreateServiceWorkOrderRequest : Tea.TeaModel {
         }
         if dict.keys.contains("IsAttachment") {
             self.isAttachment = dict["IsAttachment"] as! String
+        }
+        if dict.keys.contains("IsMilestone") {
+            self.isMilestone = dict["IsMilestone"] as! String
         }
         if dict.keys.contains("IsWorkOrderNotify") {
             self.isWorkOrderNotify = dict["IsWorkOrderNotify"] as! String

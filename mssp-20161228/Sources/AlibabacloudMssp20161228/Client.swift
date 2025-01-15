@@ -104,6 +104,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.isAttachment)) {
             body["IsAttachment"] = request.isAttachment ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.isMilestone)) {
+            body["IsMilestone"] = request.isMilestone ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.isWorkOrderNotify)) {
             body["IsWorkOrderNotify"] = request.isWorkOrderNotify ?? "";
         }
