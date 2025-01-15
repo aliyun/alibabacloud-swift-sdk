@@ -8252,6 +8252,169 @@ public class StopInvocationResponse : Tea.TeaModel {
     }
 }
 
+public class StopNodesRequest : Tea.TeaModel {
+    public var ignoreFailedNodeTasks: Bool?
+
+    public var nodes: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ignoreFailedNodeTasks != nil {
+            map["IgnoreFailedNodeTasks"] = self.ignoreFailedNodeTasks!
+        }
+        if self.nodes != nil {
+            map["Nodes"] = self.nodes!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("IgnoreFailedNodeTasks") {
+            self.ignoreFailedNodeTasks = dict["IgnoreFailedNodeTasks"] as! Bool
+        }
+        if dict.keys.contains("Nodes") {
+            self.nodes = dict["Nodes"] as! [String]
+        }
+    }
+}
+
+public class StopNodesShrinkRequest : Tea.TeaModel {
+    public var ignoreFailedNodeTasks: Bool?
+
+    public var nodesShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ignoreFailedNodeTasks != nil {
+            map["IgnoreFailedNodeTasks"] = self.ignoreFailedNodeTasks!
+        }
+        if self.nodesShrink != nil {
+            map["Nodes"] = self.nodesShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("IgnoreFailedNodeTasks") {
+            self.ignoreFailedNodeTasks = dict["IgnoreFailedNodeTasks"] as! Bool
+        }
+        if dict.keys.contains("Nodes") {
+            self.nodesShrink = dict["Nodes"] as! String
+        }
+    }
+}
+
+public class StopNodesResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TaskId") {
+            self.taskId = dict["TaskId"] as! String
+        }
+    }
+}
+
+public class StopNodesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: StopNodesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = StopNodesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class TagResourcesRequest : Tea.TeaModel {
     public class Tag : Tea.TeaModel {
         public var key: String?
