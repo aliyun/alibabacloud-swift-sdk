@@ -2991,6 +2991,8 @@ public class DescribeDdosOriginInstanceBillResponseBody : Tea.TeaModel {
 
         public var time: Int64?
 
+        public var totalBillFlow: Int64?
+
         public var totalFlow: Int64?
 
         public override init() {
@@ -3016,6 +3018,9 @@ public class DescribeDdosOriginInstanceBillResponseBody : Tea.TeaModel {
             if self.time != nil {
                 map["Time"] = self.time!
             }
+            if self.totalBillFlow != nil {
+                map["TotalBillFlow"] = self.totalBillFlow!
+            }
             if self.totalFlow != nil {
                 map["TotalFlow"] = self.totalFlow!
             }
@@ -3031,6 +3036,9 @@ public class DescribeDdosOriginInstanceBillResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Time") {
                 self.time = dict["Time"] as! Int64
+            }
+            if dict.keys.contains("TotalBillFlow") {
+                self.totalBillFlow = dict["TotalBillFlow"] as! Int64
             }
             if dict.keys.contains("TotalFlow") {
                 self.totalFlow = dict["TotalFlow"] as! Int64
