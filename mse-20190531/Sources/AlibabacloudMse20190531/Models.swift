@@ -57954,6 +57954,8 @@ public class QueryAllSwimmingLaneResponseBody : Tea.TeaModel {
             }
             public var canaryModel: Int32?
 
+            public var condition: String?
+
             public var conditions: [QueryAllSwimmingLaneResponseBody.Data.GatewaySwimmingLaneRoute.Conditions]?
 
             public var gatewayId: Int64?
@@ -57984,6 +57986,9 @@ public class QueryAllSwimmingLaneResponseBody : Tea.TeaModel {
                 var map = super.toMap()
                 if self.canaryModel != nil {
                     map["CanaryModel"] = self.canaryModel!
+                }
+                if self.condition != nil {
+                    map["Condition"] = self.condition!
                 }
                 if self.conditions != nil {
                     var tmp : [Any] = []
@@ -58020,6 +58025,9 @@ public class QueryAllSwimmingLaneResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("CanaryModel") {
                     self.canaryModel = dict["CanaryModel"] as! Int32
+                }
+                if dict.keys.contains("Condition") {
+                    self.condition = dict["Condition"] as! String
                 }
                 if dict.keys.contains("Conditions") {
                     var tmp : [QueryAllSwimmingLaneResponseBody.Data.GatewaySwimmingLaneRoute.Conditions] = []
@@ -58065,6 +58073,8 @@ public class QueryAllSwimmingLaneResponseBody : Tea.TeaModel {
         public var entryRules: [QueryAllSwimmingLaneResponseBody.Data.EntryRules]?
 
         public var gatewaySwimmingLaneRoute: QueryAllSwimmingLaneResponseBody.Data.GatewaySwimmingLaneRoute?
+
+        public var gatewaySwimmingLaneRouteJson: String?
 
         public var groupId: String?
 
@@ -58121,6 +58131,9 @@ public class QueryAllSwimmingLaneResponseBody : Tea.TeaModel {
             }
             if self.gatewaySwimmingLaneRoute != nil {
                 map["GatewaySwimmingLaneRoute"] = self.gatewaySwimmingLaneRoute?.toMap()
+            }
+            if self.gatewaySwimmingLaneRouteJson != nil {
+                map["GatewaySwimmingLaneRouteJson"] = self.gatewaySwimmingLaneRouteJson!
             }
             if self.groupId != nil {
                 map["GroupId"] = self.groupId!
@@ -58186,6 +58199,9 @@ public class QueryAllSwimmingLaneResponseBody : Tea.TeaModel {
                 var model = QueryAllSwimmingLaneResponseBody.Data.GatewaySwimmingLaneRoute()
                 model.fromMap(dict["GatewaySwimmingLaneRoute"] as! [String: Any])
                 self.gatewaySwimmingLaneRoute = model
+            }
+            if dict.keys.contains("GatewaySwimmingLaneRouteJson") {
+                self.gatewaySwimmingLaneRouteJson = dict["GatewaySwimmingLaneRouteJson"] as! String
             }
             if dict.keys.contains("GroupId") {
                 self.groupId = dict["GroupId"] as! String
