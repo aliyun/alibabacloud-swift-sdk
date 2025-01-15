@@ -421,6 +421,43 @@ public class ChangeResourceGroupResponse : Tea.TeaModel {
 }
 
 public class CreateEaiRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var clientToken: String?
 
     public var image: String?
@@ -434,6 +471,8 @@ public class CreateEaiRequest : Tea.TeaModel {
     public var resourceGroupId: String?
 
     public var securityGroupId: String?
+
+    public var tag: [CreateEaiRequest.Tag]?
 
     public var vSwitchId: String?
 
@@ -472,6 +511,13 @@ public class CreateEaiRequest : Tea.TeaModel {
         if self.securityGroupId != nil {
             map["SecurityGroupId"] = self.securityGroupId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
@@ -499,6 +545,17 @@ public class CreateEaiRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityGroupId") {
             self.securityGroupId = dict["SecurityGroupId"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [CreateEaiRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateEaiRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
         if dict.keys.contains("VSwitchId") {
             self.vSwitchId = dict["VSwitchId"] as! String
@@ -719,6 +776,43 @@ public class CreateEaiEciRequest : Tea.TeaModel {
             }
         }
     }
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var clientToken: String?
 
     public var eaisName: String?
@@ -732,6 +826,8 @@ public class CreateEaiEciRequest : Tea.TeaModel {
     public var resourceGroupId: String?
 
     public var securityGroupId: String?
+
+    public var tag: [CreateEaiEciRequest.Tag]?
 
     public var vSwitchId: String?
 
@@ -771,6 +867,13 @@ public class CreateEaiEciRequest : Tea.TeaModel {
         if self.securityGroupId != nil {
             map["SecurityGroupId"] = self.securityGroupId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
@@ -801,6 +904,17 @@ public class CreateEaiEciRequest : Tea.TeaModel {
         if dict.keys.contains("SecurityGroupId") {
             self.securityGroupId = dict["SecurityGroupId"] as! String
         }
+        if dict.keys.contains("Tag") {
+            var tmp : [CreateEaiEciRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateEaiEciRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
         if dict.keys.contains("VSwitchId") {
             self.vSwitchId = dict["VSwitchId"] as! String
         }
@@ -808,6 +922,43 @@ public class CreateEaiEciRequest : Tea.TeaModel {
 }
 
 public class CreateEaiEciShrinkRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var clientToken: String?
 
     public var eaisName: String?
@@ -821,6 +972,8 @@ public class CreateEaiEciShrinkRequest : Tea.TeaModel {
     public var resourceGroupId: String?
 
     public var securityGroupId: String?
+
+    public var tag: [CreateEaiEciShrinkRequest.Tag]?
 
     public var vSwitchId: String?
 
@@ -859,6 +1012,13 @@ public class CreateEaiEciShrinkRequest : Tea.TeaModel {
         if self.securityGroupId != nil {
             map["SecurityGroupId"] = self.securityGroupId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
@@ -886,6 +1046,17 @@ public class CreateEaiEciShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityGroupId") {
             self.securityGroupId = dict["SecurityGroupId"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [CreateEaiEciShrinkRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateEaiEciShrinkRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
         if dict.keys.contains("VSwitchId") {
             self.vSwitchId = dict["VSwitchId"] as! String
@@ -1082,6 +1253,43 @@ public class CreateEaiEcsRequest : Tea.TeaModel {
             }
         }
     }
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var clientToken: String?
 
     public var eaisName: String?
@@ -1095,6 +1303,8 @@ public class CreateEaiEcsRequest : Tea.TeaModel {
     public var resourceGroupId: String?
 
     public var securityGroupId: String?
+
+    public var tag: [CreateEaiEcsRequest.Tag]?
 
     public var vSwitchId: String?
 
@@ -1134,6 +1344,13 @@ public class CreateEaiEcsRequest : Tea.TeaModel {
         if self.securityGroupId != nil {
             map["SecurityGroupId"] = self.securityGroupId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
@@ -1164,6 +1381,17 @@ public class CreateEaiEcsRequest : Tea.TeaModel {
         if dict.keys.contains("SecurityGroupId") {
             self.securityGroupId = dict["SecurityGroupId"] as! String
         }
+        if dict.keys.contains("Tag") {
+            var tmp : [CreateEaiEcsRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateEaiEcsRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
         if dict.keys.contains("VSwitchId") {
             self.vSwitchId = dict["VSwitchId"] as! String
         }
@@ -1171,6 +1399,43 @@ public class CreateEaiEcsRequest : Tea.TeaModel {
 }
 
 public class CreateEaiEcsShrinkRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var clientToken: String?
 
     public var eaisName: String?
@@ -1184,6 +1449,8 @@ public class CreateEaiEcsShrinkRequest : Tea.TeaModel {
     public var resourceGroupId: String?
 
     public var securityGroupId: String?
+
+    public var tag: [CreateEaiEcsShrinkRequest.Tag]?
 
     public var vSwitchId: String?
 
@@ -1222,6 +1489,13 @@ public class CreateEaiEcsShrinkRequest : Tea.TeaModel {
         if self.securityGroupId != nil {
             map["SecurityGroupId"] = self.securityGroupId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
@@ -1249,6 +1523,17 @@ public class CreateEaiEcsShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityGroupId") {
             self.securityGroupId = dict["SecurityGroupId"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [CreateEaiEcsShrinkRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateEaiEcsShrinkRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
         if dict.keys.contains("VSwitchId") {
             self.vSwitchId = dict["VSwitchId"] as! String
@@ -1389,6 +1674,43 @@ public class CreateEaiJupyterRequest : Tea.TeaModel {
             }
         }
     }
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var clientToken: String?
 
     public var eaisName: String?
@@ -1402,6 +1724,8 @@ public class CreateEaiJupyterRequest : Tea.TeaModel {
     public var resourceGroupId: String?
 
     public var securityGroupId: String?
+
+    public var tag: [CreateEaiJupyterRequest.Tag]?
 
     public var vSwitchId: String?
 
@@ -1444,6 +1768,13 @@ public class CreateEaiJupyterRequest : Tea.TeaModel {
         if self.securityGroupId != nil {
             map["SecurityGroupId"] = self.securityGroupId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
@@ -1480,6 +1811,17 @@ public class CreateEaiJupyterRequest : Tea.TeaModel {
         if dict.keys.contains("SecurityGroupId") {
             self.securityGroupId = dict["SecurityGroupId"] as! String
         }
+        if dict.keys.contains("Tag") {
+            var tmp : [CreateEaiJupyterRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateEaiJupyterRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
         if dict.keys.contains("VSwitchId") {
             self.vSwitchId = dict["VSwitchId"] as! String
         }
@@ -1487,6 +1829,43 @@ public class CreateEaiJupyterRequest : Tea.TeaModel {
 }
 
 public class CreateEaiJupyterShrinkRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var clientToken: String?
 
     public var eaisName: String?
@@ -1500,6 +1879,8 @@ public class CreateEaiJupyterShrinkRequest : Tea.TeaModel {
     public var resourceGroupId: String?
 
     public var securityGroupId: String?
+
+    public var tag: [CreateEaiJupyterShrinkRequest.Tag]?
 
     public var vSwitchId: String?
 
@@ -1538,6 +1919,13 @@ public class CreateEaiJupyterShrinkRequest : Tea.TeaModel {
         if self.securityGroupId != nil {
             map["SecurityGroupId"] = self.securityGroupId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
@@ -1565,6 +1953,17 @@ public class CreateEaiJupyterShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityGroupId") {
             self.securityGroupId = dict["SecurityGroupId"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [CreateEaiJupyterShrinkRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateEaiJupyterShrinkRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
         if dict.keys.contains("VSwitchId") {
             self.vSwitchId = dict["VSwitchId"] as! String
@@ -1660,6 +2059,43 @@ public class CreateEaiJupyterResponse : Tea.TeaModel {
 }
 
 public class CreateEaisEiRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var clientToken: String?
 
     public var instanceName: String?
@@ -1671,6 +2107,8 @@ public class CreateEaisEiRequest : Tea.TeaModel {
     public var resourceGroupId: String?
 
     public var securityGroupId: String?
+
+    public var tag: [CreateEaisEiRequest.Tag]?
 
     public var vSwitchId: String?
 
@@ -1706,6 +2144,13 @@ public class CreateEaisEiRequest : Tea.TeaModel {
         if self.securityGroupId != nil {
             map["SecurityGroupId"] = self.securityGroupId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
@@ -1730,6 +2175,17 @@ public class CreateEaisEiRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityGroupId") {
             self.securityGroupId = dict["SecurityGroupId"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [CreateEaisEiRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateEaisEiRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
         if dict.keys.contains("VSwitchId") {
             self.vSwitchId = dict["VSwitchId"] as! String
