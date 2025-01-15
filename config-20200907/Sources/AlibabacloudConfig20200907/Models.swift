@@ -90,6 +90,8 @@ public class ResourceDirectoryFolderNode : Tea.TeaModel {
 public class ActiveAggregateConfigRulesRequest : Tea.TeaModel {
     public var aggregatorId: String?
 
+    public var compliancePackId: String?
+
     public var configRuleIds: String?
 
     public override init() {
@@ -109,6 +111,9 @@ public class ActiveAggregateConfigRulesRequest : Tea.TeaModel {
         if self.aggregatorId != nil {
             map["AggregatorId"] = self.aggregatorId!
         }
+        if self.compliancePackId != nil {
+            map["CompliancePackId"] = self.compliancePackId!
+        }
         if self.configRuleIds != nil {
             map["ConfigRuleIds"] = self.configRuleIds!
         }
@@ -118,6 +123,9 @@ public class ActiveAggregateConfigRulesRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AggregatorId") {
             self.aggregatorId = dict["AggregatorId"] as! String
+        }
+        if dict.keys.contains("CompliancePackId") {
+            self.compliancePackId = dict["CompliancePackId"] as! String
         }
         if dict.keys.contains("ConfigRuleIds") {
             self.configRuleIds = dict["ConfigRuleIds"] as! String
@@ -302,6 +310,8 @@ public class ActiveAggregateConfigRulesResponse : Tea.TeaModel {
 }
 
 public class ActiveConfigRulesRequest : Tea.TeaModel {
+    public var compliancePackId: String?
+
     public var configRuleIds: String?
 
     public override init() {
@@ -318,6 +328,9 @@ public class ActiveConfigRulesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.compliancePackId != nil {
+            map["CompliancePackId"] = self.compliancePackId!
+        }
         if self.configRuleIds != nil {
             map["ConfigRuleIds"] = self.configRuleIds!
         }
@@ -325,6 +338,9 @@ public class ActiveConfigRulesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CompliancePackId") {
+            self.compliancePackId = dict["CompliancePackId"] as! String
+        }
         if dict.keys.contains("ConfigRuleIds") {
             self.configRuleIds = dict["ConfigRuleIds"] as! String
         }
@@ -2508,6 +2524,8 @@ public class CreateAggregateConfigRuleRequest : Tea.TeaModel {
 
     public var excludeTagsScope: [CreateAggregateConfigRuleRequest.ExcludeTagsScope]?
 
+    public var extendContent: String?
+
     public var folderIdsScope: String?
 
     public var inputParameters: [String: Any]?
@@ -2589,6 +2607,9 @@ public class CreateAggregateConfigRuleRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["ExcludeTagsScope"] = tmp
+        }
+        if self.extendContent != nil {
+            map["ExtendContent"] = self.extendContent!
         }
         if self.folderIdsScope != nil {
             map["FolderIdsScope"] = self.folderIdsScope!
@@ -2683,6 +2704,9 @@ public class CreateAggregateConfigRuleRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.excludeTagsScope = tmp
+        }
+        if dict.keys.contains("ExtendContent") {
+            self.extendContent = dict["ExtendContent"] as! String
         }
         if dict.keys.contains("FolderIdsScope") {
             self.folderIdsScope = dict["FolderIdsScope"] as! String
@@ -2836,6 +2860,8 @@ public class CreateAggregateConfigRuleShrinkRequest : Tea.TeaModel {
 
     public var excludeTagsScope: [CreateAggregateConfigRuleShrinkRequest.ExcludeTagsScope]?
 
+    public var extendContent: String?
+
     public var folderIdsScope: String?
 
     public var inputParametersShrink: String?
@@ -2917,6 +2943,9 @@ public class CreateAggregateConfigRuleShrinkRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["ExcludeTagsScope"] = tmp
+        }
+        if self.extendContent != nil {
+            map["ExtendContent"] = self.extendContent!
         }
         if self.folderIdsScope != nil {
             map["FolderIdsScope"] = self.folderIdsScope!
@@ -3011,6 +3040,9 @@ public class CreateAggregateConfigRuleShrinkRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.excludeTagsScope = tmp
+        }
+        if dict.keys.contains("ExtendContent") {
+            self.extendContent = dict["ExtendContent"] as! String
         }
         if dict.keys.contains("FolderIdsScope") {
             self.folderIdsScope = dict["FolderIdsScope"] as! String
@@ -4597,6 +4629,43 @@ public class CreateConfigRuleRequest : Tea.TeaModel {
             }
         }
     }
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public class TagsScope : Tea.TeaModel {
         public var tagKey: String?
 
@@ -4650,6 +4719,8 @@ public class CreateConfigRuleRequest : Tea.TeaModel {
 
     public var excludeTagsScope: [CreateConfigRuleRequest.ExcludeTagsScope]?
 
+    public var extendContent: String?
+
     public var inputParameters: [String: Any]?
 
     public var maximumExecutionFrequency: String?
@@ -4667,6 +4738,8 @@ public class CreateConfigRuleRequest : Tea.TeaModel {
     public var sourceIdentifier: String?
 
     public var sourceOwner: String?
+
+    public var tag: [CreateConfigRuleRequest.Tag]?
 
     public var tagKeyLogicScope: String?
 
@@ -4718,6 +4791,9 @@ public class CreateConfigRuleRequest : Tea.TeaModel {
             }
             map["ExcludeTagsScope"] = tmp
         }
+        if self.extendContent != nil {
+            map["ExtendContent"] = self.extendContent!
+        }
         if self.inputParameters != nil {
             map["InputParameters"] = self.inputParameters!
         }
@@ -4744,6 +4820,13 @@ public class CreateConfigRuleRequest : Tea.TeaModel {
         }
         if self.sourceOwner != nil {
             map["SourceOwner"] = self.sourceOwner!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
         }
         if self.tagKeyLogicScope != nil {
             map["TagKeyLogicScope"] = self.tagKeyLogicScope!
@@ -4797,6 +4880,9 @@ public class CreateConfigRuleRequest : Tea.TeaModel {
             }
             self.excludeTagsScope = tmp
         }
+        if dict.keys.contains("ExtendContent") {
+            self.extendContent = dict["ExtendContent"] as! String
+        }
         if dict.keys.contains("InputParameters") {
             self.inputParameters = dict["InputParameters"] as! [String: Any]
         }
@@ -4823,6 +4909,17 @@ public class CreateConfigRuleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SourceOwner") {
             self.sourceOwner = dict["SourceOwner"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [CreateConfigRuleRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateConfigRuleRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
         if dict.keys.contains("TagKeyLogicScope") {
             self.tagKeyLogicScope = dict["TagKeyLogicScope"] as! String
@@ -4938,6 +5035,8 @@ public class CreateConfigRuleShrinkRequest : Tea.TeaModel {
 
     public var excludeTagsScope: [CreateConfigRuleShrinkRequest.ExcludeTagsScope]?
 
+    public var extendContent: String?
+
     public var inputParametersShrink: String?
 
     public var maximumExecutionFrequency: String?
@@ -4955,6 +5054,8 @@ public class CreateConfigRuleShrinkRequest : Tea.TeaModel {
     public var sourceIdentifier: String?
 
     public var sourceOwner: String?
+
+    public var tagShrink: String?
 
     public var tagKeyLogicScope: String?
 
@@ -5006,6 +5107,9 @@ public class CreateConfigRuleShrinkRequest : Tea.TeaModel {
             }
             map["ExcludeTagsScope"] = tmp
         }
+        if self.extendContent != nil {
+            map["ExtendContent"] = self.extendContent!
+        }
         if self.inputParametersShrink != nil {
             map["InputParameters"] = self.inputParametersShrink!
         }
@@ -5032,6 +5136,9 @@ public class CreateConfigRuleShrinkRequest : Tea.TeaModel {
         }
         if self.sourceOwner != nil {
             map["SourceOwner"] = self.sourceOwner!
+        }
+        if self.tagShrink != nil {
+            map["Tag"] = self.tagShrink!
         }
         if self.tagKeyLogicScope != nil {
             map["TagKeyLogicScope"] = self.tagKeyLogicScope!
@@ -5085,6 +5192,9 @@ public class CreateConfigRuleShrinkRequest : Tea.TeaModel {
             }
             self.excludeTagsScope = tmp
         }
+        if dict.keys.contains("ExtendContent") {
+            self.extendContent = dict["ExtendContent"] as! String
+        }
         if dict.keys.contains("InputParameters") {
             self.inputParametersShrink = dict["InputParameters"] as! String
         }
@@ -5111,6 +5221,9 @@ public class CreateConfigRuleShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SourceOwner") {
             self.sourceOwner = dict["SourceOwner"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            self.tagShrink = dict["Tag"] as! String
         }
         if dict.keys.contains("TagKeyLogicScope") {
             self.tagKeyLogicScope = dict["TagKeyLogicScope"] as! String
@@ -5587,6 +5700,8 @@ public class CreateRemediationResponse : Tea.TeaModel {
 public class DeactiveAggregateConfigRulesRequest : Tea.TeaModel {
     public var aggregatorId: String?
 
+    public var compliancePackId: String?
+
     public var configRuleIds: String?
 
     public override init() {
@@ -5606,6 +5721,9 @@ public class DeactiveAggregateConfigRulesRequest : Tea.TeaModel {
         if self.aggregatorId != nil {
             map["AggregatorId"] = self.aggregatorId!
         }
+        if self.compliancePackId != nil {
+            map["CompliancePackId"] = self.compliancePackId!
+        }
         if self.configRuleIds != nil {
             map["ConfigRuleIds"] = self.configRuleIds!
         }
@@ -5615,6 +5733,9 @@ public class DeactiveAggregateConfigRulesRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AggregatorId") {
             self.aggregatorId = dict["AggregatorId"] as! String
+        }
+        if dict.keys.contains("CompliancePackId") {
+            self.compliancePackId = dict["CompliancePackId"] as! String
         }
         if dict.keys.contains("ConfigRuleIds") {
             self.configRuleIds = dict["ConfigRuleIds"] as! String
@@ -5799,6 +5920,8 @@ public class DeactiveAggregateConfigRulesResponse : Tea.TeaModel {
 }
 
 public class DeactiveConfigRulesRequest : Tea.TeaModel {
+    public var compliancePackId: String?
+
     public var configRuleIds: String?
 
     public override init() {
@@ -5815,6 +5938,9 @@ public class DeactiveConfigRulesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.compliancePackId != nil {
+            map["CompliancePackId"] = self.compliancePackId!
+        }
         if self.configRuleIds != nil {
             map["ConfigRuleIds"] = self.configRuleIds!
         }
@@ -5822,6 +5948,9 @@ public class DeactiveConfigRulesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CompliancePackId") {
+            self.compliancePackId = dict["CompliancePackId"] as! String
+        }
         if dict.keys.contains("ConfigRuleIds") {
             self.configRuleIds = dict["ConfigRuleIds"] as! String
         }
@@ -11417,9 +11546,48 @@ public class GetAggregateConfigDeliveryChannelResponse : Tea.TeaModel {
 }
 
 public class GetAggregateConfigRuleRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var aggregatorId: String?
 
     public var configRuleId: String?
+
+    public var tag: [GetAggregateConfigRuleRequest.Tag]?
 
     public override init() {
         super.init()
@@ -11441,6 +11609,13 @@ public class GetAggregateConfigRuleRequest : Tea.TeaModel {
         if self.configRuleId != nil {
             map["ConfigRuleId"] = self.configRuleId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
@@ -11450,6 +11625,63 @@ public class GetAggregateConfigRuleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ConfigRuleId") {
             self.configRuleId = dict["ConfigRuleId"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [GetAggregateConfigRuleRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = GetAggregateConfigRuleRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
+    }
+}
+
+public class GetAggregateConfigRuleShrinkRequest : Tea.TeaModel {
+    public var aggregatorId: String?
+
+    public var configRuleId: String?
+
+    public var tagShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.aggregatorId != nil {
+            map["AggregatorId"] = self.aggregatorId!
+        }
+        if self.configRuleId != nil {
+            map["ConfigRuleId"] = self.configRuleId!
+        }
+        if self.tagShrink != nil {
+            map["Tag"] = self.tagShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AggregatorId") {
+            self.aggregatorId = dict["AggregatorId"] as! String
+        }
+        if dict.keys.contains("ConfigRuleId") {
+            self.configRuleId = dict["ConfigRuleId"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            self.tagShrink = dict["Tag"] as! String
         }
     }
 }
@@ -11928,6 +12160,43 @@ public class GetAggregateConfigRuleResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Tags : Tea.TeaModel {
+            public var tagKey: String?
+
+            public var tagValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.tagKey != nil {
+                    map["TagKey"] = self.tagKey!
+                }
+                if self.tagValue != nil {
+                    map["TagValue"] = self.tagValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("TagKey") {
+                    self.tagKey = dict["TagKey"] as! String
+                }
+                if dict.keys.contains("TagValue") {
+                    self.tagValue = dict["TagValue"] as! String
+                }
+            }
+        }
         public class TagsScope : Tea.TeaModel {
             public var tagKey: String?
 
@@ -12001,6 +12270,8 @@ public class GetAggregateConfigRuleResponseBody : Tea.TeaModel {
 
         public var excludeTagsScope: [GetAggregateConfigRuleResponseBody.ConfigRule.ExcludeTagsScope]?
 
+        public var extendContent: String?
+
         public var folderIdsScope: String?
 
         public var inputParameters: [String: Any]?
@@ -12028,6 +12299,8 @@ public class GetAggregateConfigRuleResponseBody : Tea.TeaModel {
         public var tagKeyScope: String?
 
         public var tagValueScope: String?
+
+        public var tags: [GetAggregateConfigRuleResponseBody.ConfigRule.Tags]?
 
         public var tagsScope: [GetAggregateConfigRuleResponseBody.ConfigRule.TagsScope]?
 
@@ -12108,6 +12381,9 @@ public class GetAggregateConfigRuleResponseBody : Tea.TeaModel {
                 }
                 map["ExcludeTagsScope"] = tmp
             }
+            if self.extendContent != nil {
+                map["ExtendContent"] = self.extendContent!
+            }
             if self.folderIdsScope != nil {
                 map["FolderIdsScope"] = self.folderIdsScope!
             }
@@ -12149,6 +12425,13 @@ public class GetAggregateConfigRuleResponseBody : Tea.TeaModel {
             }
             if self.tagValueScope != nil {
                 map["TagValueScope"] = self.tagValueScope!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
             }
             if self.tagsScope != nil {
                 var tmp : [Any] = []
@@ -12229,6 +12512,9 @@ public class GetAggregateConfigRuleResponseBody : Tea.TeaModel {
                 }
                 self.excludeTagsScope = tmp
             }
+            if dict.keys.contains("ExtendContent") {
+                self.extendContent = dict["ExtendContent"] as! String
+            }
             if dict.keys.contains("FolderIdsScope") {
                 self.folderIdsScope = dict["FolderIdsScope"] as! String
             }
@@ -12274,6 +12560,17 @@ public class GetAggregateConfigRuleResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("TagValueScope") {
                 self.tagValueScope = dict["TagValueScope"] as! String
+            }
+            if dict.keys.contains("Tags") {
+                var tmp : [GetAggregateConfigRuleResponseBody.ConfigRule.Tags] = []
+                for v in dict["Tags"] as! [Any] {
+                    var model = GetAggregateConfigRuleResponseBody.ConfigRule.Tags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tags = tmp
             }
             if dict.keys.contains("TagsScope") {
                 var tmp : [GetAggregateConfigRuleResponseBody.ConfigRule.TagsScope] = []
@@ -17038,7 +17335,46 @@ public class GetConfigDeliveryChannelResponse : Tea.TeaModel {
 }
 
 public class GetConfigRuleRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var configRuleId: String?
+
+    public var tag: [GetConfigRuleRequest.Tag]?
 
     public override init() {
         super.init()
@@ -17057,12 +17393,68 @@ public class GetConfigRuleRequest : Tea.TeaModel {
         if self.configRuleId != nil {
             map["ConfigRuleId"] = self.configRuleId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ConfigRuleId") {
             self.configRuleId = dict["ConfigRuleId"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [GetConfigRuleRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = GetConfigRuleRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
+    }
+}
+
+public class GetConfigRuleShrinkRequest : Tea.TeaModel {
+    public var configRuleId: String?
+
+    public var tagShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configRuleId != nil {
+            map["ConfigRuleId"] = self.configRuleId!
+        }
+        if self.tagShrink != nil {
+            map["Tag"] = self.tagShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ConfigRuleId") {
+            self.configRuleId = dict["ConfigRuleId"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            self.tagShrink = dict["Tag"] as! String
         }
     }
 }
@@ -17546,6 +17938,43 @@ public class GetConfigRuleResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Tags : Tea.TeaModel {
+            public var tagKey: String?
+
+            public var tagValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.tagKey != nil {
+                    map["TagKey"] = self.tagKey!
+                }
+                if self.tagValue != nil {
+                    map["TagValue"] = self.tagValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("TagKey") {
+                    self.tagKey = dict["TagKey"] as! String
+                }
+                if dict.keys.contains("TagValue") {
+                    self.tagValue = dict["TagValue"] as! String
+                }
+            }
+        }
         public class TagsScope : Tea.TeaModel {
             public var tagKey: String?
 
@@ -17613,6 +18042,8 @@ public class GetConfigRuleResponseBody : Tea.TeaModel {
 
         public var excludeTagsScope: [GetConfigRuleResponseBody.ConfigRule.ExcludeTagsScope]?
 
+        public var extendContent: String?
+
         public var inputParameters: [String: Any]?
 
         public var managedRule: GetConfigRuleResponseBody.ConfigRule.ManagedRule?
@@ -17640,6 +18071,8 @@ public class GetConfigRuleResponseBody : Tea.TeaModel {
         public var tagKeyScope: String?
 
         public var tagValueScope: String?
+
+        public var tags: [GetConfigRuleResponseBody.ConfigRule.Tags]?
 
         public var tagsScope: [GetConfigRuleResponseBody.ConfigRule.TagsScope]?
 
@@ -17712,6 +18145,9 @@ public class GetConfigRuleResponseBody : Tea.TeaModel {
                 }
                 map["ExcludeTagsScope"] = tmp
             }
+            if self.extendContent != nil {
+                map["ExtendContent"] = self.extendContent!
+            }
             if self.inputParameters != nil {
                 map["InputParameters"] = self.inputParameters!
             }
@@ -17753,6 +18189,13 @@ public class GetConfigRuleResponseBody : Tea.TeaModel {
             }
             if self.tagValueScope != nil {
                 map["TagValueScope"] = self.tagValueScope!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
             }
             if self.tagsScope != nil {
                 var tmp : [Any] = []
@@ -17824,6 +18267,9 @@ public class GetConfigRuleResponseBody : Tea.TeaModel {
                 }
                 self.excludeTagsScope = tmp
             }
+            if dict.keys.contains("ExtendContent") {
+                self.extendContent = dict["ExtendContent"] as! String
+            }
             if dict.keys.contains("InputParameters") {
                 self.inputParameters = dict["InputParameters"] as! [String: Any]
             }
@@ -17871,6 +18317,17 @@ public class GetConfigRuleResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("TagValueScope") {
                 self.tagValueScope = dict["TagValueScope"] as! String
+            }
+            if dict.keys.contains("Tags") {
+                var tmp : [GetConfigRuleResponseBody.ConfigRule.Tags] = []
+                for v in dict["Tags"] as! [Any] {
+                    var model = GetConfigRuleResponseBody.ConfigRule.Tags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tags = tmp
             }
             if dict.keys.contains("TagsScope") {
                 var tmp : [GetConfigRuleResponseBody.ConfigRule.TagsScope] = []
@@ -19296,6 +19753,8 @@ public class GetIntegratedServiceStatusRequest : Tea.TeaModel {
 }
 
 public class GetIntegratedServiceStatusResponseBody : Tea.TeaModel {
+    public var aggregatorDeliveryDataType: String?
+
     public var data: Bool?
 
     public var integratedTypes: String?
@@ -19316,6 +19775,9 @@ public class GetIntegratedServiceStatusResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.aggregatorDeliveryDataType != nil {
+            map["AggregatorDeliveryDataType"] = self.aggregatorDeliveryDataType!
+        }
         if self.data != nil {
             map["Data"] = self.data!
         }
@@ -19329,6 +19791,9 @@ public class GetIntegratedServiceStatusResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AggregatorDeliveryDataType") {
+            self.aggregatorDeliveryDataType = dict["AggregatorDeliveryDataType"] as! String
+        }
         if dict.keys.contains("Data") {
             self.data = dict["Data"] as! Bool
         }
@@ -23551,6 +24016,8 @@ public class ListAggregateConfigRuleEvaluationStatisticsResponse : Tea.TeaModel 
 public class ListAggregateConfigRulesRequest : Tea.TeaModel {
     public var aggregatorId: String?
 
+    public var compliancePackId: String?
+
     public var complianceType: String?
 
     public var configRuleName: String?
@@ -23584,6 +24051,9 @@ public class ListAggregateConfigRulesRequest : Tea.TeaModel {
         if self.aggregatorId != nil {
             map["AggregatorId"] = self.aggregatorId!
         }
+        if self.compliancePackId != nil {
+            map["CompliancePackId"] = self.compliancePackId!
+        }
         if self.complianceType != nil {
             map["ComplianceType"] = self.complianceType!
         }
@@ -23614,6 +24084,9 @@ public class ListAggregateConfigRulesRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AggregatorId") {
             self.aggregatorId = dict["AggregatorId"] as! String
+        }
+        if dict.keys.contains("CompliancePackId") {
+            self.compliancePackId = dict["CompliancePackId"] as! String
         }
         if dict.keys.contains("ComplianceType") {
             self.complianceType = dict["ComplianceType"] as! String
@@ -27895,6 +28368,45 @@ public class ListConfigRuleEvaluationStatisticsResponse : Tea.TeaModel {
 }
 
 public class ListConfigRulesRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
+    public var compliancePackId: String?
+
     public var complianceType: String?
 
     public var configRuleName: String?
@@ -27911,6 +28423,8 @@ public class ListConfigRulesRequest : Tea.TeaModel {
 
     public var riskLevel: Int32?
 
+    public var tag: [ListConfigRulesRequest.Tag]?
+
     public override init() {
         super.init()
     }
@@ -27925,6 +28439,9 @@ public class ListConfigRulesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.compliancePackId != nil {
+            map["CompliancePackId"] = self.compliancePackId!
+        }
         if self.complianceType != nil {
             map["ComplianceType"] = self.complianceType!
         }
@@ -27949,10 +28466,20 @@ public class ListConfigRulesRequest : Tea.TeaModel {
         if self.riskLevel != nil {
             map["RiskLevel"] = self.riskLevel!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CompliancePackId") {
+            self.compliancePackId = dict["CompliancePackId"] as! String
+        }
         if dict.keys.contains("ComplianceType") {
             self.complianceType = dict["ComplianceType"] as! String
         }
@@ -27976,6 +28503,119 @@ public class ListConfigRulesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RiskLevel") {
             self.riskLevel = dict["RiskLevel"] as! Int32
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [ListConfigRulesRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = ListConfigRulesRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
+    }
+}
+
+public class ListConfigRulesShrinkRequest : Tea.TeaModel {
+    public var compliancePackId: String?
+
+    public var complianceType: String?
+
+    public var configRuleName: String?
+
+    public var configRuleState: String?
+
+    public var keyword: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var resourceTypes: String?
+
+    public var riskLevel: Int32?
+
+    public var tagShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.compliancePackId != nil {
+            map["CompliancePackId"] = self.compliancePackId!
+        }
+        if self.complianceType != nil {
+            map["ComplianceType"] = self.complianceType!
+        }
+        if self.configRuleName != nil {
+            map["ConfigRuleName"] = self.configRuleName!
+        }
+        if self.configRuleState != nil {
+            map["ConfigRuleState"] = self.configRuleState!
+        }
+        if self.keyword != nil {
+            map["Keyword"] = self.keyword!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.resourceTypes != nil {
+            map["ResourceTypes"] = self.resourceTypes!
+        }
+        if self.riskLevel != nil {
+            map["RiskLevel"] = self.riskLevel!
+        }
+        if self.tagShrink != nil {
+            map["Tag"] = self.tagShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CompliancePackId") {
+            self.compliancePackId = dict["CompliancePackId"] as! String
+        }
+        if dict.keys.contains("ComplianceType") {
+            self.complianceType = dict["ComplianceType"] as! String
+        }
+        if dict.keys.contains("ConfigRuleName") {
+            self.configRuleName = dict["ConfigRuleName"] as! String
+        }
+        if dict.keys.contains("ConfigRuleState") {
+            self.configRuleState = dict["ConfigRuleState"] as! String
+        }
+        if dict.keys.contains("Keyword") {
+            self.keyword = dict["Keyword"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("ResourceTypes") {
+            self.resourceTypes = dict["ResourceTypes"] as! String
+        }
+        if dict.keys.contains("RiskLevel") {
+            self.riskLevel = dict["RiskLevel"] as! Int32
+        }
+        if dict.keys.contains("Tag") {
+            self.tagShrink = dict["Tag"] as! String
         }
     }
 }
@@ -28765,6 +29405,8 @@ public class ListDiscoveredResourcesResponse : Tea.TeaModel {
 
 public class ListIntegratedServiceResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var aggregatorDeliveryDataType: String?
+
         public var integratedTypes: String?
 
         public var serviceCode: String?
@@ -28787,6 +29429,9 @@ public class ListIntegratedServiceResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.aggregatorDeliveryDataType != nil {
+                map["AggregatorDeliveryDataType"] = self.aggregatorDeliveryDataType!
+            }
             if self.integratedTypes != nil {
                 map["IntegratedTypes"] = self.integratedTypes!
             }
@@ -28803,6 +29448,9 @@ public class ListIntegratedServiceResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AggregatorDeliveryDataType") {
+                self.aggregatorDeliveryDataType = dict["AggregatorDeliveryDataType"] as! String
+            }
             if dict.keys.contains("IntegratedTypes") {
                 self.integratedTypes = dict["IntegratedTypes"] as! String
             }
@@ -36670,6 +37318,43 @@ public class UpdateConfigRuleRequest : Tea.TeaModel {
             }
         }
     }
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public class TagsScope : Tea.TeaModel {
         public var tagKey: String?
 
@@ -36725,6 +37410,8 @@ public class UpdateConfigRuleRequest : Tea.TeaModel {
 
     public var excludeTagsScope: [UpdateConfigRuleRequest.ExcludeTagsScope]?
 
+    public var extendContent: String?
+
     public var inputParameters: [String: Any]?
 
     public var maximumExecutionFrequency: String?
@@ -36738,6 +37425,8 @@ public class UpdateConfigRuleRequest : Tea.TeaModel {
     public var resourceTypesScope: [String]?
 
     public var riskLevel: Int32?
+
+    public var tag: [UpdateConfigRuleRequest.Tag]?
 
     public var tagKeyLogicScope: String?
 
@@ -36792,6 +37481,9 @@ public class UpdateConfigRuleRequest : Tea.TeaModel {
             }
             map["ExcludeTagsScope"] = tmp
         }
+        if self.extendContent != nil {
+            map["ExtendContent"] = self.extendContent!
+        }
         if self.inputParameters != nil {
             map["InputParameters"] = self.inputParameters!
         }
@@ -36812,6 +37504,13 @@ public class UpdateConfigRuleRequest : Tea.TeaModel {
         }
         if self.riskLevel != nil {
             map["RiskLevel"] = self.riskLevel!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
         }
         if self.tagKeyLogicScope != nil {
             map["TagKeyLogicScope"] = self.tagKeyLogicScope!
@@ -36868,6 +37567,9 @@ public class UpdateConfigRuleRequest : Tea.TeaModel {
             }
             self.excludeTagsScope = tmp
         }
+        if dict.keys.contains("ExtendContent") {
+            self.extendContent = dict["ExtendContent"] as! String
+        }
         if dict.keys.contains("InputParameters") {
             self.inputParameters = dict["InputParameters"] as! [String: Any]
         }
@@ -36888,6 +37590,17 @@ public class UpdateConfigRuleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RiskLevel") {
             self.riskLevel = dict["RiskLevel"] as! Int32
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [UpdateConfigRuleRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = UpdateConfigRuleRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
         if dict.keys.contains("TagKeyLogicScope") {
             self.tagKeyLogicScope = dict["TagKeyLogicScope"] as! String
@@ -37005,6 +37718,8 @@ public class UpdateConfigRuleShrinkRequest : Tea.TeaModel {
 
     public var excludeTagsScope: [UpdateConfigRuleShrinkRequest.ExcludeTagsScope]?
 
+    public var extendContent: String?
+
     public var inputParametersShrink: String?
 
     public var maximumExecutionFrequency: String?
@@ -37018,6 +37733,8 @@ public class UpdateConfigRuleShrinkRequest : Tea.TeaModel {
     public var resourceTypesScopeShrink: String?
 
     public var riskLevel: Int32?
+
+    public var tagShrink: String?
 
     public var tagKeyLogicScope: String?
 
@@ -37072,6 +37789,9 @@ public class UpdateConfigRuleShrinkRequest : Tea.TeaModel {
             }
             map["ExcludeTagsScope"] = tmp
         }
+        if self.extendContent != nil {
+            map["ExtendContent"] = self.extendContent!
+        }
         if self.inputParametersShrink != nil {
             map["InputParameters"] = self.inputParametersShrink!
         }
@@ -37092,6 +37812,9 @@ public class UpdateConfigRuleShrinkRequest : Tea.TeaModel {
         }
         if self.riskLevel != nil {
             map["RiskLevel"] = self.riskLevel!
+        }
+        if self.tagShrink != nil {
+            map["Tag"] = self.tagShrink!
         }
         if self.tagKeyLogicScope != nil {
             map["TagKeyLogicScope"] = self.tagKeyLogicScope!
@@ -37148,6 +37871,9 @@ public class UpdateConfigRuleShrinkRequest : Tea.TeaModel {
             }
             self.excludeTagsScope = tmp
         }
+        if dict.keys.contains("ExtendContent") {
+            self.extendContent = dict["ExtendContent"] as! String
+        }
         if dict.keys.contains("InputParameters") {
             self.inputParametersShrink = dict["InputParameters"] as! String
         }
@@ -37168,6 +37894,9 @@ public class UpdateConfigRuleShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RiskLevel") {
             self.riskLevel = dict["RiskLevel"] as! Int32
+        }
+        if dict.keys.contains("Tag") {
+            self.tagShrink = dict["Tag"] as! String
         }
         if dict.keys.contains("TagKeyLogicScope") {
             self.tagKeyLogicScope = dict["TagKeyLogicScope"] as! String
@@ -37642,6 +38371,8 @@ public class UpdateDeliveryChannelResponse : Tea.TeaModel {
 }
 
 public class UpdateIntegratedServiceStatusRequest : Tea.TeaModel {
+    public var aggregatorDeliveryDataType: String?
+
     public var integratedTypes: String?
 
     public var serviceCode: String?
@@ -37662,6 +38393,9 @@ public class UpdateIntegratedServiceStatusRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.aggregatorDeliveryDataType != nil {
+            map["AggregatorDeliveryDataType"] = self.aggregatorDeliveryDataType!
+        }
         if self.integratedTypes != nil {
             map["IntegratedTypes"] = self.integratedTypes!
         }
@@ -37675,6 +38409,9 @@ public class UpdateIntegratedServiceStatusRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AggregatorDeliveryDataType") {
+            self.aggregatorDeliveryDataType = dict["AggregatorDeliveryDataType"] as! String
+        }
         if dict.keys.contains("IntegratedTypes") {
             self.integratedTypes = dict["IntegratedTypes"] as! String
         }

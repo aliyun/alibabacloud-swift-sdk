@@ -34,6 +34,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.aggregatorId)) {
             query["AggregatorId"] = request.aggregatorId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.compliancePackId)) {
+            query["CompliancePackId"] = request.compliancePackId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.configRuleIds)) {
             query["ConfigRuleIds"] = request.configRuleIds ?? "";
         }
@@ -65,6 +68,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func activeConfigRulesWithOptions(_ request: ActiveConfigRulesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ActiveConfigRulesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.compliancePackId)) {
+            query["CompliancePackId"] = request.compliancePackId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.configRuleIds)) {
             query["ConfigRuleIds"] = request.configRuleIds ?? "";
         }
@@ -510,6 +516,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.excludeTagsScope)) {
             bodyFlat["ExcludeTagsScope"] = request.excludeTagsScope ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.extendContent)) {
+            body["ExtendContent"] = request.extendContent ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.folderIdsScope)) {
             body["FolderIdsScope"] = request.folderIdsScope ?? "";
         }
@@ -844,6 +853,13 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.resourceTypesScope)) {
             request.resourceTypesScopeShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.resourceTypesScope, "ResourceTypesScope", "simple")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.tag)) {
+            request.tagShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tag, "Tag", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.tagShrink)) {
+            query["Tag"] = request.tagShrink ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
@@ -869,6 +885,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var bodyFlat: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.excludeTagsScope)) {
             bodyFlat["ExcludeTagsScope"] = request.excludeTagsScope ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.extendContent)) {
+            body["ExtendContent"] = request.extendContent ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.inputParametersShrink)) {
             body["InputParameters"] = request.inputParametersShrink ?? "";
@@ -911,6 +930,7 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -1051,6 +1071,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.aggregatorId)) {
             query["AggregatorId"] = request.aggregatorId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.compliancePackId)) {
+            query["CompliancePackId"] = request.compliancePackId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.configRuleIds)) {
             query["ConfigRuleIds"] = request.configRuleIds ?? "";
         }
@@ -1082,6 +1105,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deactiveConfigRulesWithOptions(_ request: DeactiveConfigRulesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeactiveConfigRulesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.compliancePackId)) {
+            query["CompliancePackId"] = request.compliancePackId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.configRuleIds)) {
             query["ConfigRuleIds"] = request.configRuleIds ?? "";
         }
@@ -1980,14 +2006,22 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getAggregateConfigRuleWithOptions(_ request: GetAggregateConfigRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAggregateConfigRuleResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func getAggregateConfigRuleWithOptions(_ tmpReq: GetAggregateConfigRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAggregateConfigRuleResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetAggregateConfigRuleShrinkRequest = GetAggregateConfigRuleShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.tag)) {
+            request.tagShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tag, "Tag", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.aggregatorId)) {
             query["AggregatorId"] = request.aggregatorId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.configRuleId)) {
             query["ConfigRuleId"] = request.configRuleId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagShrink)) {
+            query["Tag"] = request.tagShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -2610,11 +2644,19 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getConfigRuleWithOptions(_ request: GetConfigRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetConfigRuleResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func getConfigRuleWithOptions(_ tmpReq: GetConfigRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetConfigRuleResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetConfigRuleShrinkRequest = GetConfigRuleShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.tag)) {
+            request.tagShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tag, "Tag", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.configRuleId)) {
             query["ConfigRuleId"] = request.configRuleId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagShrink)) {
+            query["Tag"] = request.tagShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -3437,6 +3479,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.aggregatorId)) {
             query["AggregatorId"] = request.aggregatorId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.compliancePackId)) {
+            query["CompliancePackId"] = request.compliancePackId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.complianceType)) {
             query["ComplianceType"] = request.complianceType ?? "";
         }
@@ -3965,9 +4010,17 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listConfigRulesWithOptions(_ request: ListConfigRulesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListConfigRulesResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listConfigRulesWithOptions(_ tmpReq: ListConfigRulesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListConfigRulesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListConfigRulesShrinkRequest = ListConfigRulesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.tag)) {
+            request.tagShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tag, "Tag", "json")
+        }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.compliancePackId)) {
+            query["CompliancePackId"] = request.compliancePackId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.complianceType)) {
             query["ComplianceType"] = request.complianceType ?? "";
         }
@@ -3991,6 +4044,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.riskLevel)) {
             query["RiskLevel"] = request.riskLevel!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tagShrink)) {
+            query["Tag"] = request.tagShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -5434,6 +5490,13 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.resourceTypesScope)) {
             request.resourceTypesScopeShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.resourceTypesScope, "ResourceTypesScope", "simple")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.tag)) {
+            request.tagShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tag, "Tag", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.tagShrink)) {
+            query["Tag"] = request.tagShrink ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
@@ -5462,6 +5525,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var bodyFlat: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.excludeTagsScope)) {
             bodyFlat["ExcludeTagsScope"] = request.excludeTagsScope ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.extendContent)) {
+            body["ExtendContent"] = request.extendContent ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.inputParametersShrink)) {
             body["InputParameters"] = request.inputParametersShrink ?? "";
@@ -5498,6 +5564,7 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -5620,6 +5687,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateIntegratedServiceStatusWithOptions(_ request: UpdateIntegratedServiceStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateIntegratedServiceStatusResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aggregatorDeliveryDataType)) {
+            body["AggregatorDeliveryDataType"] = request.aggregatorDeliveryDataType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.integratedTypes)) {
             body["IntegratedTypes"] = request.integratedTypes ?? "";
         }
