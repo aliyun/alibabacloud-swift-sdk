@@ -2462,6 +2462,10 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
 
         public var remainTime: Int32?
 
+        public var restorePointId: String?
+
+        public var restorePointName: String?
+
         public var snapshotId: String?
 
         public var snapshotName: String?
@@ -2503,6 +2507,12 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
             if self.remainTime != nil {
                 map["RemainTime"] = self.remainTime!
             }
+            if self.restorePointId != nil {
+                map["RestorePointId"] = self.restorePointId!
+            }
+            if self.restorePointName != nil {
+                map["RestorePointName"] = self.restorePointName!
+            }
             if self.snapshotId != nil {
                 map["SnapshotId"] = self.snapshotId!
             }
@@ -2539,6 +2549,12 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RemainTime") {
                 self.remainTime = dict["RemainTime"] as! Int32
+            }
+            if dict.keys.contains("RestorePointId") {
+                self.restorePointId = dict["RestorePointId"] as! String
+            }
+            if dict.keys.contains("RestorePointName") {
+                self.restorePointName = dict["RestorePointName"] as! String
             }
             if dict.keys.contains("SnapshotId") {
                 self.snapshotId = dict["SnapshotId"] as! String
@@ -4951,6 +4967,8 @@ public class ResetSnapshotRequest : Tea.TeaModel {
 
     public var snapshotId: String?
 
+    public var stopDesktop: Bool?
+
     public override init() {
         super.init()
     }
@@ -4983,6 +5001,9 @@ public class ResetSnapshotRequest : Tea.TeaModel {
         if self.snapshotId != nil {
             map["SnapshotId"] = self.snapshotId!
         }
+        if self.stopDesktop != nil {
+            map["StopDesktop"] = self.stopDesktop!
+        }
         return map
     }
 
@@ -5004,6 +5025,9 @@ public class ResetSnapshotRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SnapshotId") {
             self.snapshotId = dict["SnapshotId"] as! String
+        }
+        if dict.keys.contains("StopDesktop") {
+            self.stopDesktop = dict["StopDesktop"] as! Bool
         }
     }
 }
