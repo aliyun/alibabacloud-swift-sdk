@@ -12580,6 +12580,10 @@ public class DescribePostpayTrafficTotalResponseBody : Tea.TeaModel {
 
     public var totalNatTraffic: Int64?
 
+    public var totalSdlBillTraffic: Int64?
+
+    public var totalSdlFreeTraffic: Int64?
+
     public var totalTraffic: Int64?
 
     public var totalVpcAssets: Int64?
@@ -12621,6 +12625,12 @@ public class DescribePostpayTrafficTotalResponseBody : Tea.TeaModel {
         if self.totalNatTraffic != nil {
             map["TotalNatTraffic"] = self.totalNatTraffic!
         }
+        if self.totalSdlBillTraffic != nil {
+            map["TotalSdlBillTraffic"] = self.totalSdlBillTraffic!
+        }
+        if self.totalSdlFreeTraffic != nil {
+            map["TotalSdlFreeTraffic"] = self.totalSdlFreeTraffic!
+        }
         if self.totalTraffic != nil {
             map["TotalTraffic"] = self.totalTraffic!
         }
@@ -12654,6 +12664,12 @@ public class DescribePostpayTrafficTotalResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("TotalNatTraffic") {
             self.totalNatTraffic = dict["TotalNatTraffic"] as! Int64
+        }
+        if dict.keys.contains("TotalSdlBillTraffic") {
+            self.totalSdlBillTraffic = dict["TotalSdlBillTraffic"] as! Int64
+        }
+        if dict.keys.contains("TotalSdlFreeTraffic") {
+            self.totalSdlFreeTraffic = dict["TotalSdlFreeTraffic"] as! Int64
         }
         if dict.keys.contains("TotalTraffic") {
             self.totalTraffic = dict["TotalTraffic"] as! Int64
