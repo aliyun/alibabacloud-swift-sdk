@@ -462,6 +462,342 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func executeTextbookAssistantDialogueWithOptions(_ request: ExecuteTextbookAssistantDialogueRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ExecuteTextbookAssistantDialogueResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authToken)) {
+            body["authToken"] = request.authToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.chatId)) {
+            body["chatId"] = request.chatId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scenario)) {
+            body["scenario"] = request.scenario ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userMessage)) {
+            body["userMessage"] = request.userMessage ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ExecuteTextbookAssistantDialogue",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/textbookAssistant/dialogue/ExecuteDialogue",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ExecuteTextbookAssistantDialogueResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func executeTextbookAssistantDialogue(_ request: ExecuteTextbookAssistantDialogueRequest) async throws -> ExecuteTextbookAssistantDialogueResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await executeTextbookAssistantDialogueWithOptions(request as! ExecuteTextbookAssistantDialogueRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func executeTextbookAssistantDifficultyWithOptions(_ request: ExecuteTextbookAssistantDifficultyRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ExecuteTextbookAssistantDifficultyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.action)) {
+            body["action"] = request.action ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.assistant)) {
+            body["assistant"] = request.assistant ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authToken)) {
+            body["authToken"] = request.authToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.chatId)) {
+            body["chatId"] = request.chatId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scenario)) {
+            body["scenario"] = request.scenario ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ExecuteTextbookAssistantDifficulty",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/textbookAssistant/dialogue/ExecuteDifficulty",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ExecuteTextbookAssistantDifficultyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func executeTextbookAssistantDifficulty(_ request: ExecuteTextbookAssistantDifficultyRequest) async throws -> ExecuteTextbookAssistantDifficultyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await executeTextbookAssistantDifficultyWithOptions(request as! ExecuteTextbookAssistantDifficultyRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func executeTextbookAssistantGrammarCheckWithOptions(_ request: ExecuteTextbookAssistantGrammarCheckRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ExecuteTextbookAssistantGrammarCheckResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authToken)) {
+            body["authToken"] = request.authToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.chatId)) {
+            body["chatId"] = request.chatId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scenario)) {
+            body["scenario"] = request.scenario ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.user)) {
+            body["user"] = request.user ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ExecuteTextbookAssistantGrammarCheck",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/textbookAssistant/dialogue/ExecuteGrammarCheck",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ExecuteTextbookAssistantGrammarCheckResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func executeTextbookAssistantGrammarCheck(_ request: ExecuteTextbookAssistantGrammarCheckRequest) async throws -> ExecuteTextbookAssistantGrammarCheckResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await executeTextbookAssistantGrammarCheckWithOptions(request as! ExecuteTextbookAssistantGrammarCheckRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func executeTextbookAssistantRefineByContextWithOptions(_ request: ExecuteTextbookAssistantRefineByContextRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ExecuteTextbookAssistantRefineByContextResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authToken)) {
+            body["authToken"] = request.authToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.chatId)) {
+            body["chatId"] = request.chatId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scenario)) {
+            body["scenario"] = request.scenario ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.user)) {
+            body["user"] = request.user ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ExecuteTextbookAssistantRefineByContext",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/textbookAssistant/dialogue/RefineByContext",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ExecuteTextbookAssistantRefineByContextResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func executeTextbookAssistantRefineByContext(_ request: ExecuteTextbookAssistantRefineByContextRequest) async throws -> ExecuteTextbookAssistantRefineByContextResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await executeTextbookAssistantRefineByContextWithOptions(request as! ExecuteTextbookAssistantRefineByContextRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func executeTextbookAssistantRetryConversationWithOptions(_ request: ExecuteTextbookAssistantRetryConversationRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ExecuteTextbookAssistantRetryConversationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.assistant)) {
+            body["assistant"] = request.assistant ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authToken)) {
+            body["authToken"] = request.authToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.chatId)) {
+            body["chatId"] = request.chatId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scenario)) {
+            body["scenario"] = request.scenario ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ExecuteTextbookAssistantRetryConversation",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/textbookAssistant/dialogue/RetryConversation",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ExecuteTextbookAssistantRetryConversationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func executeTextbookAssistantRetryConversation(_ request: ExecuteTextbookAssistantRetryConversationRequest) async throws -> ExecuteTextbookAssistantRetryConversationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await executeTextbookAssistantRetryConversationWithOptions(request as! ExecuteTextbookAssistantRetryConversationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func executeTextbookAssistantStartConversationWithOptions(_ request: ExecuteTextbookAssistantStartConversationRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ExecuteTextbookAssistantStartConversationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.articleId)) {
+            body["articleId"] = request.articleId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authToken)) {
+            body["authToken"] = request.authToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scenario)) {
+            body["scenario"] = request.scenario ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ExecuteTextbookAssistantStartConversation",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/textbookAssistant/dialogue/StartConversation",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ExecuteTextbookAssistantStartConversationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func executeTextbookAssistantStartConversation(_ request: ExecuteTextbookAssistantStartConversationRequest) async throws -> ExecuteTextbookAssistantStartConversationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await executeTextbookAssistantStartConversationWithOptions(request as! ExecuteTextbookAssistantStartConversationRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func executeTextbookAssistantSuggestionWithOptions(_ request: ExecuteTextbookAssistantSuggestionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ExecuteTextbookAssistantSuggestionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.assistant)) {
+            body["assistant"] = request.assistant ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authToken)) {
+            body["authToken"] = request.authToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.chatId)) {
+            body["chatId"] = request.chatId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scenario)) {
+            body["scenario"] = request.scenario ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ExecuteTextbookAssistantSuggestion",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/textbookAssistant/dialogue/Suggestion",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ExecuteTextbookAssistantSuggestionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func executeTextbookAssistantSuggestion(_ request: ExecuteTextbookAssistantSuggestionRequest) async throws -> ExecuteTextbookAssistantSuggestionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await executeTextbookAssistantSuggestionWithOptions(request as! ExecuteTextbookAssistantSuggestionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func executeTextbookAssistantTranslateWithOptions(_ request: ExecuteTextbookAssistantTranslateRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ExecuteTextbookAssistantTranslateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.assistant)) {
+            body["assistant"] = request.assistant ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authToken)) {
+            body["authToken"] = request.authToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.chatId)) {
+            body["chatId"] = request.chatId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scenario)) {
+            body["scenario"] = request.scenario ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ExecuteTextbookAssistantTranslate",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/textbookAssistant/dialogue/ExecuteTranslate",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ExecuteTextbookAssistantTranslateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func executeTextbookAssistantTranslate(_ request: ExecuteTextbookAssistantTranslateRequest) async throws -> ExecuteTextbookAssistantTranslateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await executeTextbookAssistantTranslateWithOptions(request as! ExecuteTextbookAssistantTranslateRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getAITeacherExpansionDialogueSuggestionWithOptions(_ request: GetAITeacherExpansionDialogueSuggestionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAITeacherExpansionDialogueSuggestionResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -555,6 +891,204 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getAITeacherSyncDialogueSuggestionWithOptions(request as! GetAITeacherSyncDialogueSuggestionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getTextbookAssistantTokenWithOptions(_ request: GetTextbookAssistantTokenRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetTextbookAssistantTokenResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deviceId)) {
+            body["deviceId"] = request.deviceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.model)) {
+            body["model"] = request.model ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetTextbookAssistantToken",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/textbookAssistant/teachingResource/GetToken",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetTextbookAssistantTokenResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getTextbookAssistantToken(_ request: GetTextbookAssistantTokenRequest) async throws -> GetTextbookAssistantTokenResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getTextbookAssistantTokenWithOptions(request as! GetTextbookAssistantTokenRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listTextbookAssistantArticlesWithOptions(_ request: ListTextbookAssistantArticlesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTextbookAssistantArticlesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authToken)) {
+            body["authToken"] = request.authToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.directoryId)) {
+            body["directoryId"] = request.directoryId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListTextbookAssistantArticles",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/textbookAssistant/teachingResource/ListArticles",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListTextbookAssistantArticlesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listTextbookAssistantArticles(_ request: ListTextbookAssistantArticlesRequest) async throws -> ListTextbookAssistantArticlesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listTextbookAssistantArticlesWithOptions(request as! ListTextbookAssistantArticlesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listTextbookAssistantBookDirectoriesWithOptions(_ request: ListTextbookAssistantBookDirectoriesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTextbookAssistantBookDirectoriesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authToken)) {
+            body["authToken"] = request.authToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.bookId)) {
+            body["bookId"] = request.bookId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scenario)) {
+            body["scenario"] = request.scenario ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListTextbookAssistantBookDirectories",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/textbookAssistant/teachingResource/ListBookDirectories",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListTextbookAssistantBookDirectoriesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listTextbookAssistantBookDirectories(_ request: ListTextbookAssistantBookDirectoriesRequest) async throws -> ListTextbookAssistantBookDirectoriesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listTextbookAssistantBookDirectoriesWithOptions(request as! ListTextbookAssistantBookDirectoriesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listTextbookAssistantBooksWithOptions(_ request: ListTextbookAssistantBooksRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTextbookAssistantBooksResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authToken)) {
+            body["authToken"] = request.authToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.bookId)) {
+            body["bookId"] = request.bookId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.grade)) {
+            body["grade"] = request.grade ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            body["maxResults"] = request.maxResults ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.page)) {
+            body["page"] = request.page ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            body["version"] = request.version ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.volume)) {
+            body["volume"] = request.volume ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListTextbookAssistantBooks",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/textbookAssistant/teachingResource/ListBooks",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListTextbookAssistantBooksResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listTextbookAssistantBooks(_ request: ListTextbookAssistantBooksRequest) async throws -> ListTextbookAssistantBooksResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listTextbookAssistantBooksWithOptions(request as! ListTextbookAssistantBooksRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listTextbookAssistantGradeVolumesWithOptions(_ request: ListTextbookAssistantGradeVolumesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTextbookAssistantGradeVolumesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authToken)) {
+            body["authToken"] = request.authToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scenario)) {
+            body["scenario"] = request.scenario ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListTextbookAssistantGradeVolumes",
+            "version": "20240611",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/textbookAssistant/teachingResource/ListGradeVolumes",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListTextbookAssistantGradeVolumesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listTextbookAssistantGradeVolumes(_ request: ListTextbookAssistantGradeVolumesRequest) async throws -> ListTextbookAssistantGradeVolumesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listTextbookAssistantGradeVolumesWithOptions(request as! ListTextbookAssistantGradeVolumesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
