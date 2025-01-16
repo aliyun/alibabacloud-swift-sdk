@@ -1321,11 +1321,15 @@ public class CreateTaskRequest : Tea.TeaModel {
         }
     }
     public class Transcription : Tea.TeaModel {
+        public var asrModelCode: String?
+
         public var autoSplit: Int32?
 
         public var clientChannel: Int32?
 
         public var fileName: String?
+
+        public var level: String?
 
         public var serviceChannel: Int32?
 
@@ -1347,6 +1351,9 @@ public class CreateTaskRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.asrModelCode != nil {
+                map["asrModelCode"] = self.asrModelCode!
+            }
             if self.autoSplit != nil {
                 map["autoSplit"] = self.autoSplit!
             }
@@ -1355,6 +1362,9 @@ public class CreateTaskRequest : Tea.TeaModel {
             }
             if self.fileName != nil {
                 map["fileName"] = self.fileName!
+            }
+            if self.level != nil {
+                map["level"] = self.level!
             }
             if self.serviceChannel != nil {
                 map["serviceChannel"] = self.serviceChannel!
@@ -1369,6 +1379,9 @@ public class CreateTaskRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("asrModelCode") {
+                self.asrModelCode = dict["asrModelCode"] as! String
+            }
             if dict.keys.contains("autoSplit") {
                 self.autoSplit = dict["autoSplit"] as! Int32
             }
@@ -1377,6 +1390,9 @@ public class CreateTaskRequest : Tea.TeaModel {
             }
             if dict.keys.contains("fileName") {
                 self.fileName = dict["fileName"] as! String
+            }
+            if dict.keys.contains("level") {
+                self.level = dict["level"] as! String
             }
             if dict.keys.contains("serviceChannel") {
                 self.serviceChannel = dict["serviceChannel"] as! Int32
@@ -1782,6 +1798,8 @@ public class GetTaskResultResponseBody : Tea.TeaModel {
         }
         public var asrResult: [GetTaskResultResponseBody.Data.AsrResult]?
 
+        public var extra: String?
+
         public var taskErrorMessage: String?
 
         public var taskId: String?
@@ -1811,6 +1829,9 @@ public class GetTaskResultResponseBody : Tea.TeaModel {
                 }
                 map["asrResult"] = tmp
             }
+            if self.extra != nil {
+                map["extra"] = self.extra!
+            }
             if self.taskErrorMessage != nil {
                 map["taskErrorMessage"] = self.taskErrorMessage!
             }
@@ -1837,6 +1858,9 @@ public class GetTaskResultResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.asrResult = tmp
+            }
+            if dict.keys.contains("extra") {
+                self.extra = dict["extra"] as! String
             }
             if dict.keys.contains("taskErrorMessage") {
                 self.taskErrorMessage = dict["taskErrorMessage"] as! String
