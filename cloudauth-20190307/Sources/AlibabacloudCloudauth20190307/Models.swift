@@ -6082,6 +6082,8 @@ public class InitFaceVerifyRequest : Tea.TeaModel {
 
     public var callbackUrl: String?
 
+    public var cameraSelection: String?
+
     public var certName: String?
 
     public var certNo: String?
@@ -6172,6 +6174,9 @@ public class InitFaceVerifyRequest : Tea.TeaModel {
         }
         if self.callbackUrl != nil {
             map["CallbackUrl"] = self.callbackUrl!
+        }
+        if self.cameraSelection != nil {
+            map["CameraSelection"] = self.cameraSelection!
         }
         if self.certName != nil {
             map["CertName"] = self.certName!
@@ -6284,6 +6289,9 @@ public class InitFaceVerifyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("CallbackUrl") {
             self.callbackUrl = dict["CallbackUrl"] as! String
+        }
+        if dict.keys.contains("CameraSelection") {
+            self.cameraSelection = dict["CameraSelection"] as! String
         }
         if dict.keys.contains("CertName") {
             self.certName = dict["CertName"] as! String

@@ -1185,6 +1185,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.callbackUrl)) {
             query["CallbackUrl"] = request.callbackUrl ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.cameraSelection)) {
+            query["CameraSelection"] = request.cameraSelection ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.certName)) {
             query["CertName"] = request.certName ?? "";
         }
