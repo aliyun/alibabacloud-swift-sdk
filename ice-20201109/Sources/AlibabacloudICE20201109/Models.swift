@@ -264,6 +264,8 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
 
         public var voiceId: String?
 
+        public var voiceIdList: [String]?
+
         public var voiceprintId: String?
 
         public var volume: Int64?
@@ -335,6 +337,9 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             if self.voiceId != nil {
                 map["VoiceId"] = self.voiceId!
             }
+            if self.voiceIdList != nil {
+                map["VoiceIdList"] = self.voiceIdList!
+            }
             if self.voiceprintId != nil {
                 map["VoiceprintId"] = self.voiceprintId!
             }
@@ -403,6 +408,9 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             }
             if dict.keys.contains("VoiceId") {
                 self.voiceId = dict["VoiceId"] as! String
+            }
+            if dict.keys.contains("VoiceIdList") {
+                self.voiceIdList = dict["VoiceIdList"] as! [String]
             }
             if dict.keys.contains("VoiceprintId") {
                 self.voiceprintId = dict["VoiceprintId"] as! String
@@ -484,6 +492,8 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
 
         public var voiceId: String?
 
+        public var voiceIdList: [String]?
+
         public var voiceprintId: String?
 
         public var volume: Int64?
@@ -552,6 +562,9 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             if self.voiceId != nil {
                 map["VoiceId"] = self.voiceId!
             }
+            if self.voiceIdList != nil {
+                map["VoiceIdList"] = self.voiceIdList!
+            }
             if self.voiceprintId != nil {
                 map["VoiceprintId"] = self.voiceprintId!
             }
@@ -617,6 +630,9 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             }
             if dict.keys.contains("VoiceId") {
                 self.voiceId = dict["VoiceId"] as! String
+            }
+            if dict.keys.contains("VoiceIdList") {
+                self.voiceIdList = dict["VoiceIdList"] as! [String]
             }
             if dict.keys.contains("VoiceprintId") {
                 self.voiceprintId = dict["VoiceprintId"] as! String
@@ -702,6 +718,8 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
 
         public var voiceId: String?
 
+        public var voiceIdList: [String]?
+
         public var voiceprintId: String?
 
         public var volume: Int64?
@@ -776,6 +794,9 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             if self.voiceId != nil {
                 map["VoiceId"] = self.voiceId!
             }
+            if self.voiceIdList != nil {
+                map["VoiceIdList"] = self.voiceIdList!
+            }
             if self.voiceprintId != nil {
                 map["VoiceprintId"] = self.voiceprintId!
             }
@@ -847,6 +868,9 @@ public class AIAgentTemplateConfig : Tea.TeaModel {
             }
             if dict.keys.contains("VoiceId") {
                 self.voiceId = dict["VoiceId"] as! String
+            }
+            if dict.keys.contains("VoiceIdList") {
+                self.voiceIdList = dict["VoiceIdList"] as! [String]
             }
             if dict.keys.contains("VoiceprintId") {
                 self.voiceprintId = dict["VoiceprintId"] as! String
@@ -22669,6 +22693,243 @@ public class GetPlayInfoResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = GetPlayInfoResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetProjectExportJobRequest : Tea.TeaModel {
+    public var jobId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("JobId") {
+            self.jobId = dict["JobId"] as! String
+        }
+    }
+}
+
+public class GetProjectExportJobResponseBody : Tea.TeaModel {
+    public class ProjectExportJob : Tea.TeaModel {
+        public class ExportResult : Tea.TeaModel {
+            public var timeline: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.timeline != nil {
+                    map["Timeline"] = self.timeline!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Timeline") {
+                    self.timeline = dict["Timeline"] as! String
+                }
+            }
+        }
+        public var code: String?
+
+        public var exportResult: GetProjectExportJobResponseBody.ProjectExportJob.ExportResult?
+
+        public var exportType: String?
+
+        public var jobId: String?
+
+        public var message: String?
+
+        public var projectId: String?
+
+        public var status: String?
+
+        public var userData: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.exportResult?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.code != nil {
+                map["Code"] = self.code!
+            }
+            if self.exportResult != nil {
+                map["ExportResult"] = self.exportResult?.toMap()
+            }
+            if self.exportType != nil {
+                map["ExportType"] = self.exportType!
+            }
+            if self.jobId != nil {
+                map["JobId"] = self.jobId!
+            }
+            if self.message != nil {
+                map["Message"] = self.message!
+            }
+            if self.projectId != nil {
+                map["ProjectId"] = self.projectId!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.userData != nil {
+                map["UserData"] = self.userData!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Code") {
+                self.code = dict["Code"] as! String
+            }
+            if dict.keys.contains("ExportResult") {
+                var model = GetProjectExportJobResponseBody.ProjectExportJob.ExportResult()
+                model.fromMap(dict["ExportResult"] as! [String: Any])
+                self.exportResult = model
+            }
+            if dict.keys.contains("ExportType") {
+                self.exportType = dict["ExportType"] as! String
+            }
+            if dict.keys.contains("JobId") {
+                self.jobId = dict["JobId"] as! String
+            }
+            if dict.keys.contains("Message") {
+                self.message = dict["Message"] as! String
+            }
+            if dict.keys.contains("ProjectId") {
+                self.projectId = dict["ProjectId"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("UserData") {
+                self.userData = dict["UserData"] as! String
+            }
+        }
+    }
+    public var projectExportJob: GetProjectExportJobResponseBody.ProjectExportJob?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.projectExportJob?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.projectExportJob != nil {
+            map["ProjectExportJob"] = self.projectExportJob?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ProjectExportJob") {
+            var model = GetProjectExportJobResponseBody.ProjectExportJob()
+            model.fromMap(dict["ProjectExportJob"] as! [String: Any])
+            self.projectExportJob = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class GetProjectExportJobResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetProjectExportJobResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetProjectExportJobResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -62607,6 +62868,155 @@ public class SubmitPackageJobResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = SubmitPackageJobResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class SubmitProjectExportJobRequest : Tea.TeaModel {
+    public var exportType: String?
+
+    public var outputMediaConfig: String?
+
+    public var projectId: String?
+
+    public var timeline: String?
+
+    public var userData: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.exportType != nil {
+            map["ExportType"] = self.exportType!
+        }
+        if self.outputMediaConfig != nil {
+            map["OutputMediaConfig"] = self.outputMediaConfig!
+        }
+        if self.projectId != nil {
+            map["ProjectId"] = self.projectId!
+        }
+        if self.timeline != nil {
+            map["Timeline"] = self.timeline!
+        }
+        if self.userData != nil {
+            map["UserData"] = self.userData!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ExportType") {
+            self.exportType = dict["ExportType"] as! String
+        }
+        if dict.keys.contains("OutputMediaConfig") {
+            self.outputMediaConfig = dict["OutputMediaConfig"] as! String
+        }
+        if dict.keys.contains("ProjectId") {
+            self.projectId = dict["ProjectId"] as! String
+        }
+        if dict.keys.contains("Timeline") {
+            self.timeline = dict["Timeline"] as! String
+        }
+        if dict.keys.contains("UserData") {
+            self.userData = dict["UserData"] as! String
+        }
+    }
+}
+
+public class SubmitProjectExportJobResponseBody : Tea.TeaModel {
+    public var jobId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("JobId") {
+            self.jobId = dict["JobId"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class SubmitProjectExportJobResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SubmitProjectExportJobResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = SubmitProjectExportJobResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
