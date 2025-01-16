@@ -9939,7 +9939,7 @@ public class UpdateAndPublishAgentSelectiveRequest : Tea.TeaModel {
 
             public var enableSearch: Bool?
 
-            public var enableWebSearch: String?
+            public var enableWebSearch: Bool?
 
             public var fixedReplyDetail: String?
 
@@ -10021,7 +10021,7 @@ public class UpdateAndPublishAgentSelectiveRequest : Tea.TeaModel {
                     self.enableSearch = dict["enableSearch"] as! Bool
                 }
                 if dict.keys.contains("enableWebSearch") {
-                    self.enableWebSearch = dict["enableWebSearch"] as! String
+                    self.enableWebSearch = dict["enableWebSearch"] as! Bool
                 }
                 if dict.keys.contains("fixedReplyDetail") {
                     self.fixedReplyDetail = dict["fixedReplyDetail"] as! String
