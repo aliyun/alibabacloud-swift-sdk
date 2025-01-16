@@ -1312,20 +1312,20 @@ public class AutoScalingPolicy : Tea.TeaModel {
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
             if self.maxCapacity != nil {
-                map["maxCapacity"] = self.maxCapacity!
+                map["MaxCapacity"] = self.maxCapacity!
             }
             if self.minCapacity != nil {
-                map["minCapacity"] = self.minCapacity!
+                map["MinCapacity"] = self.minCapacity!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("maxCapacity") {
-                self.maxCapacity = dict["maxCapacity"] as! Int32
+            if dict.keys.contains("MaxCapacity") {
+                self.maxCapacity = dict["MaxCapacity"] as! Int32
             }
-            if dict.keys.contains("minCapacity") {
-                self.minCapacity = dict["minCapacity"] as! Int32
+            if dict.keys.contains("MinCapacity") {
+                self.minCapacity = dict["MinCapacity"] as! Int32
             }
         }
     }
@@ -1349,27 +1349,27 @@ public class AutoScalingPolicy : Tea.TeaModel {
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.constraints != nil {
-            map["constraints"] = self.constraints?.toMap()
+            map["Constraints"] = self.constraints?.toMap()
         }
         if self.scalingRules != nil {
             var tmp : [Any] = []
             for k in self.scalingRules! {
                 tmp.append(k.toMap())
             }
-            map["scalingRules"] = tmp
+            map["ScalingRules"] = tmp
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("constraints") {
+        if dict.keys.contains("Constraints") {
             var model = AutoScalingPolicy.Constraints()
-            model.fromMap(dict["constraints"] as! [String: Any])
+            model.fromMap(dict["Constraints"] as! [String: Any])
             self.constraints = model
         }
-        if dict.keys.contains("scalingRules") {
+        if dict.keys.contains("ScalingRules") {
             var tmp : [ScalingRule] = []
-            for v in dict["scalingRules"] as! [Any] {
+            for v in dict["ScalingRules"] as! [Any] {
                 var model = ScalingRule()
                 if v != nil {
                     model.fromMap(v as! [String: Any])
@@ -9013,6 +9013,8 @@ public class CreateScriptRequest : Tea.TeaModel {
 
     public var scripts: [Script]?
 
+    public var timeoutSecs: String?
+
     public override init() {
         super.init()
     }
@@ -9043,6 +9045,9 @@ public class CreateScriptRequest : Tea.TeaModel {
             }
             map["Scripts"] = tmp
         }
+        if self.timeoutSecs != nil {
+            map["TimeoutSecs"] = self.timeoutSecs!
+        }
         return map
     }
 
@@ -9066,6 +9071,9 @@ public class CreateScriptRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.scripts = tmp
+        }
+        if dict.keys.contains("TimeoutSecs") {
+            self.timeoutSecs = dict["TimeoutSecs"] as! String
         }
     }
 }
@@ -11175,6 +11183,8 @@ public class GetClusterCloneMetaResponseBody : Tea.TeaModel {
 
             public var nodeGroupId: String?
 
+            public var nodeGroupName: String?
+
             public var scalingPolicyId: String?
 
             public var scalingPolicyType: String?
@@ -11205,6 +11215,9 @@ public class GetClusterCloneMetaResponseBody : Tea.TeaModel {
                 if self.nodeGroupId != nil {
                     map["NodeGroupId"] = self.nodeGroupId!
                 }
+                if self.nodeGroupName != nil {
+                    map["NodeGroupName"] = self.nodeGroupName!
+                }
                 if self.scalingPolicyId != nil {
                     map["ScalingPolicyId"] = self.scalingPolicyId!
                 }
@@ -11232,6 +11245,9 @@ public class GetClusterCloneMetaResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("NodeGroupId") {
                     self.nodeGroupId = dict["NodeGroupId"] as! String
+                }
+                if dict.keys.contains("NodeGroupName") {
+                    self.nodeGroupName = dict["NodeGroupName"] as! String
                 }
                 if dict.keys.contains("ScalingPolicyId") {
                     self.scalingPolicyId = dict["ScalingPolicyId"] as! String
@@ -51552,7 +51568,13 @@ public class ListScriptsRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var scriptId: String?
+
+    public var scriptName: String?
+
     public var scriptType: String?
+
+    public var statuses: [String]?
 
     public override init() {
         super.init()
@@ -51580,8 +51602,17 @@ public class ListScriptsRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.scriptId != nil {
+            map["ScriptId"] = self.scriptId!
+        }
+        if self.scriptName != nil {
+            map["ScriptName"] = self.scriptName!
+        }
         if self.scriptType != nil {
             map["ScriptType"] = self.scriptType!
+        }
+        if self.statuses != nil {
+            map["Statuses"] = self.statuses!
         }
         return map
     }
@@ -51599,8 +51630,17 @@ public class ListScriptsRequest : Tea.TeaModel {
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
         }
+        if dict.keys.contains("ScriptId") {
+            self.scriptId = dict["ScriptId"] as! String
+        }
+        if dict.keys.contains("ScriptName") {
+            self.scriptName = dict["ScriptName"] as! String
+        }
         if dict.keys.contains("ScriptType") {
             self.scriptType = dict["ScriptType"] as! String
+        }
+        if dict.keys.contains("Statuses") {
+            self.statuses = dict["Statuses"] as! [String]
         }
     }
 }
