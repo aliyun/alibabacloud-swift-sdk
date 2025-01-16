@@ -4935,6 +4935,10 @@ public class AssociateVpcCidrBlockRequest : Tea.TeaModel {
 }
 
 public class AssociateVpcCidrBlockResponseBody : Tea.TeaModel {
+    public var cidrBlock: String?
+
+    public var ipVersion: String?
+
     public var requestId: String?
 
     public override init() {
@@ -4951,6 +4955,12 @@ public class AssociateVpcCidrBlockResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cidrBlock != nil {
+            map["CidrBlock"] = self.cidrBlock!
+        }
+        if self.ipVersion != nil {
+            map["IpVersion"] = self.ipVersion!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -4958,6 +4968,12 @@ public class AssociateVpcCidrBlockResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CidrBlock") {
+            self.cidrBlock = dict["CidrBlock"] as! String
+        }
+        if dict.keys.contains("IpVersion") {
+            self.ipVersion = dict["IpVersion"] as! String
+        }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
@@ -47848,6 +47864,8 @@ public class DescribeNatGatewayAssociateNetworkInterfacesResponseBody : Tea.TeaM
     }
     public var associateNetworkInterfaces: DescribeNatGatewayAssociateNetworkInterfacesResponseBody.AssociateNetworkInterfaces?
 
+    public var count: Int32?
+
     public var maxResults: Int32?
 
     public var natGatewayId: String?
@@ -47876,6 +47894,9 @@ public class DescribeNatGatewayAssociateNetworkInterfacesResponseBody : Tea.TeaM
         if self.associateNetworkInterfaces != nil {
             map["AssociateNetworkInterfaces"] = self.associateNetworkInterfaces?.toMap()
         }
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -47899,6 +47920,9 @@ public class DescribeNatGatewayAssociateNetworkInterfacesResponseBody : Tea.TeaM
             var model = DescribeNatGatewayAssociateNetworkInterfacesResponseBody.AssociateNetworkInterfaces()
             model.fromMap(dict["AssociateNetworkInterfaces"] as! [String: Any])
             self.associateNetworkInterfaces = model
+        }
+        if dict.keys.contains("Count") {
+            self.count = dict["Count"] as! Int32
         }
         if dict.keys.contains("MaxResults") {
             self.maxResults = dict["MaxResults"] as! Int32
