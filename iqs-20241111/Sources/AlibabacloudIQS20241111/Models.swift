@@ -440,6 +440,8 @@ public class ScorePageItem : Tea.TeaModel {
 
     public var mainText: String?
 
+    public var markdownText: String?
+
     public var mime: String?
 
     public var pageMap: [String: String]?
@@ -497,6 +499,9 @@ public class ScorePageItem : Tea.TeaModel {
         if self.mainText != nil {
             map["mainText"] = self.mainText!
         }
+        if self.markdownText != nil {
+            map["markdownText"] = self.markdownText!
+        }
         if self.mime != nil {
             map["mime"] = self.mime!
         }
@@ -553,6 +558,9 @@ public class ScorePageItem : Tea.TeaModel {
         }
         if dict.keys.contains("mainText") {
             self.mainText = dict["mainText"] as! String
+        }
+        if dict.keys.contains("markdownText") {
+            self.markdownText = dict["markdownText"] as! String
         }
         if dict.keys.contains("mime") {
             self.mime = dict["mime"] as! String
