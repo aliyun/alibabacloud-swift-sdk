@@ -6371,6 +6371,8 @@ public class ListServiceInstanceLogsRequest : Tea.TeaModel {
 
     public var serviceInstanceId: String?
 
+    public var sortOrder: String?
+
     public override init() {
         super.init()
     }
@@ -6410,6 +6412,9 @@ public class ListServiceInstanceLogsRequest : Tea.TeaModel {
         if self.serviceInstanceId != nil {
             map["ServiceInstanceId"] = self.serviceInstanceId!
         }
+        if self.sortOrder != nil {
+            map["SortOrder"] = self.sortOrder!
+        }
         return map
     }
 
@@ -6442,6 +6447,9 @@ public class ListServiceInstanceLogsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ServiceInstanceId") {
             self.serviceInstanceId = dict["ServiceInstanceId"] as! String
+        }
+        if dict.keys.contains("SortOrder") {
+            self.sortOrder = dict["SortOrder"] as! String
         }
     }
 }
