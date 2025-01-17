@@ -3906,6 +3906,8 @@ public class GetDialogAnalysisResultResponseBody : Tea.TeaModel {
 
                 public var dialogLabels: [GetDialogAnalysisResultResponseBody.Data.DialogAnalysisRespList.AnalysisResp.DialogLabels]?
 
+                public var dialogSop: String?
+
                 public var dialogSummary: String?
 
                 public override init() {
@@ -3932,6 +3934,9 @@ public class GetDialogAnalysisResultResponseBody : Tea.TeaModel {
                         }
                         map["dialogLabels"] = tmp
                     }
+                    if self.dialogSop != nil {
+                        map["dialogSop"] = self.dialogSop!
+                    }
                     if self.dialogSummary != nil {
                         map["dialogSummary"] = self.dialogSummary!
                     }
@@ -3952,6 +3957,9 @@ public class GetDialogAnalysisResultResponseBody : Tea.TeaModel {
                             tmp.append(model)
                         }
                         self.dialogLabels = tmp
+                    }
+                    if dict.keys.contains("dialogSop") {
+                        self.dialogSop = dict["dialogSop"] as! String
                     }
                     if dict.keys.contains("dialogSummary") {
                         self.dialogSummary = dict["dialogSummary"] as! String
