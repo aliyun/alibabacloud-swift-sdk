@@ -823,11 +823,17 @@ public class BicyclingDirectionNovaResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var code: String?
+
     public var data: BicyclingDirectionNovaResponseBody.Data?
 
     public var errorCode: Int32?
 
     public var errorMessage: String?
+
+    public var message: String?
+
+    public var requestId: String?
 
     public var success: Bool?
 
@@ -846,6 +852,9 @@ public class BicyclingDirectionNovaResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
         if self.data != nil {
             map["data"] = self.data?.toMap()
         }
@@ -855,6 +864,12 @@ public class BicyclingDirectionNovaResponseBody : Tea.TeaModel {
         if self.errorMessage != nil {
             map["errorMessage"] = self.errorMessage!
         }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
         if self.success != nil {
             map["success"] = self.success!
         }
@@ -862,6 +877,9 @@ public class BicyclingDirectionNovaResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") {
+            self.code = dict["code"] as! String
+        }
         if dict.keys.contains("data") {
             var model = BicyclingDirectionNovaResponseBody.Data()
             model.fromMap(dict["data"] as! [String: Any])
@@ -872,6 +890,12 @@ public class BicyclingDirectionNovaResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("errorMessage") {
             self.errorMessage = dict["errorMessage"] as! String
+        }
+        if dict.keys.contains("message") {
+            self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
         }
         if dict.keys.contains("success") {
             self.success = dict["success"] as! Bool
@@ -1472,11 +1496,17 @@ public class DrivingDirectionNovaResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var code: String?
+
     public var data: DrivingDirectionNovaResponseBody.Data?
 
     public var errorCode: Int32?
 
     public var errorMessage: String?
+
+    public var message: String?
+
+    public var requestId: String?
 
     public var success: Bool?
 
@@ -1495,6 +1525,9 @@ public class DrivingDirectionNovaResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
         if self.data != nil {
             map["data"] = self.data?.toMap()
         }
@@ -1504,6 +1537,12 @@ public class DrivingDirectionNovaResponseBody : Tea.TeaModel {
         if self.errorMessage != nil {
             map["errorMessage"] = self.errorMessage!
         }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
         if self.success != nil {
             map["success"] = self.success!
         }
@@ -1511,6 +1550,9 @@ public class DrivingDirectionNovaResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") {
+            self.code = dict["code"] as! String
+        }
         if dict.keys.contains("data") {
             var model = DrivingDirectionNovaResponseBody.Data()
             model.fromMap(dict["data"] as! [String: Any])
@@ -1521,6 +1563,12 @@ public class DrivingDirectionNovaResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("errorMessage") {
             self.errorMessage = dict["errorMessage"] as! String
+        }
+        if dict.keys.contains("message") {
+            self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
         }
         if dict.keys.contains("success") {
             self.success = dict["success"] as! Bool
@@ -1571,381 +1619,6 @@ public class DrivingDirectionNovaResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DrivingDirectionNovaResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
-public class ElectrobikeDirectionRequest : Tea.TeaModel {
-    public var destinationLatitude: String?
-
-    public var destinationLongitude: String?
-
-    public var originLatitude: String?
-
-    public var originLongitude: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.destinationLatitude != nil {
-            map["destinationLatitude"] = self.destinationLatitude!
-        }
-        if self.destinationLongitude != nil {
-            map["destinationLongitude"] = self.destinationLongitude!
-        }
-        if self.originLatitude != nil {
-            map["originLatitude"] = self.originLatitude!
-        }
-        if self.originLongitude != nil {
-            map["originLongitude"] = self.originLongitude!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("destinationLatitude") {
-            self.destinationLatitude = dict["destinationLatitude"] as! String
-        }
-        if dict.keys.contains("destinationLongitude") {
-            self.destinationLongitude = dict["destinationLongitude"] as! String
-        }
-        if dict.keys.contains("originLatitude") {
-            self.originLatitude = dict["originLatitude"] as! String
-        }
-        if dict.keys.contains("originLongitude") {
-            self.originLongitude = dict["originLongitude"] as! String
-        }
-    }
-}
-
-public class ElectrobikeDirectionResponseBody : Tea.TeaModel {
-    public class Data : Tea.TeaModel {
-        public class Steps : Tea.TeaModel {
-            public class Cost : Tea.TeaModel {
-                public var durationSecond: String?
-
-                public var taxiFee: String?
-
-                public var tollDistanceMeter: String?
-
-                public var tollRoads: String?
-
-                public var tolls: String?
-
-                public var trafficLights: String?
-
-                public var transitFee: String?
-
-                public override init() {
-                    super.init()
-                }
-
-                public init(_ dict: [String: Any]) {
-                    super.init()
-                    self.fromMap(dict)
-                }
-
-                public override func validate() throws -> Void {
-                }
-
-                public override func toMap() -> [String : Any] {
-                    var map = super.toMap()
-                    if self.durationSecond != nil {
-                        map["durationSecond"] = self.durationSecond!
-                    }
-                    if self.taxiFee != nil {
-                        map["taxiFee"] = self.taxiFee!
-                    }
-                    if self.tollDistanceMeter != nil {
-                        map["tollDistanceMeter"] = self.tollDistanceMeter!
-                    }
-                    if self.tollRoads != nil {
-                        map["tollRoads"] = self.tollRoads!
-                    }
-                    if self.tolls != nil {
-                        map["tolls"] = self.tolls!
-                    }
-                    if self.trafficLights != nil {
-                        map["trafficLights"] = self.trafficLights!
-                    }
-                    if self.transitFee != nil {
-                        map["transitFee"] = self.transitFee!
-                    }
-                    return map
-                }
-
-                public override func fromMap(_ dict: [String: Any]) -> Void {
-                    if dict.keys.contains("durationSecond") {
-                        self.durationSecond = dict["durationSecond"] as! String
-                    }
-                    if dict.keys.contains("taxiFee") {
-                        self.taxiFee = dict["taxiFee"] as! String
-                    }
-                    if dict.keys.contains("tollDistanceMeter") {
-                        self.tollDistanceMeter = dict["tollDistanceMeter"] as! String
-                    }
-                    if dict.keys.contains("tollRoads") {
-                        self.tollRoads = dict["tollRoads"] as! String
-                    }
-                    if dict.keys.contains("tolls") {
-                        self.tolls = dict["tolls"] as! String
-                    }
-                    if dict.keys.contains("trafficLights") {
-                        self.trafficLights = dict["trafficLights"] as! String
-                    }
-                    if dict.keys.contains("transitFee") {
-                        self.transitFee = dict["transitFee"] as! String
-                    }
-                }
-            }
-            public var cost: ElectrobikeDirectionResponseBody.Data.Steps.Cost?
-
-            public var instruction: String?
-
-            public var orientation: String?
-
-            public var roadName: String?
-
-            public var stepDistanceMeter: String?
-
-            public override init() {
-                super.init()
-            }
-
-            public init(_ dict: [String: Any]) {
-                super.init()
-                self.fromMap(dict)
-            }
-
-            public override func validate() throws -> Void {
-                try self.cost?.validate()
-            }
-
-            public override func toMap() -> [String : Any] {
-                var map = super.toMap()
-                if self.cost != nil {
-                    map["cost"] = self.cost?.toMap()
-                }
-                if self.instruction != nil {
-                    map["instruction"] = self.instruction!
-                }
-                if self.orientation != nil {
-                    map["orientation"] = self.orientation!
-                }
-                if self.roadName != nil {
-                    map["roadName"] = self.roadName!
-                }
-                if self.stepDistanceMeter != nil {
-                    map["stepDistanceMeter"] = self.stepDistanceMeter!
-                }
-                return map
-            }
-
-            public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("cost") {
-                    var model = ElectrobikeDirectionResponseBody.Data.Steps.Cost()
-                    model.fromMap(dict["cost"] as! [String: Any])
-                    self.cost = model
-                }
-                if dict.keys.contains("instruction") {
-                    self.instruction = dict["instruction"] as! String
-                }
-                if dict.keys.contains("orientation") {
-                    self.orientation = dict["orientation"] as! String
-                }
-                if dict.keys.contains("roadName") {
-                    self.roadName = dict["roadName"] as! String
-                }
-                if dict.keys.contains("stepDistanceMeter") {
-                    self.stepDistanceMeter = dict["stepDistanceMeter"] as! String
-                }
-            }
-        }
-        public var distanceMeter: String?
-
-        public var durationSecond: String?
-
-        public var steps: [ElectrobikeDirectionResponseBody.Data.Steps]?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.distanceMeter != nil {
-                map["distanceMeter"] = self.distanceMeter!
-            }
-            if self.durationSecond != nil {
-                map["durationSecond"] = self.durationSecond!
-            }
-            if self.steps != nil {
-                var tmp : [Any] = []
-                for k in self.steps! {
-                    tmp.append(k.toMap())
-                }
-                map["steps"] = tmp
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("distanceMeter") {
-                self.distanceMeter = dict["distanceMeter"] as! String
-            }
-            if dict.keys.contains("durationSecond") {
-                self.durationSecond = dict["durationSecond"] as! String
-            }
-            if dict.keys.contains("steps") {
-                var tmp : [ElectrobikeDirectionResponseBody.Data.Steps] = []
-                for v in dict["steps"] as! [Any] {
-                    var model = ElectrobikeDirectionResponseBody.Data.Steps()
-                    if v != nil {
-                        model.fromMap(v as! [String: Any])
-                    }
-                    tmp.append(model)
-                }
-                self.steps = tmp
-            }
-        }
-    }
-    public var data: [ElectrobikeDirectionResponseBody.Data]?
-
-    public var errorCode: String?
-
-    public var errorMessage: String?
-
-    public var requestId: String?
-
-    public var success: Bool?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.data != nil {
-            var tmp : [Any] = []
-            for k in self.data! {
-                tmp.append(k.toMap())
-            }
-            map["data"] = tmp
-        }
-        if self.errorCode != nil {
-            map["errorCode"] = self.errorCode!
-        }
-        if self.errorMessage != nil {
-            map["errorMessage"] = self.errorMessage!
-        }
-        if self.requestId != nil {
-            map["requestId"] = self.requestId!
-        }
-        if self.success != nil {
-            map["success"] = self.success!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("data") {
-            var tmp : [ElectrobikeDirectionResponseBody.Data] = []
-            for v in dict["data"] as! [Any] {
-                var model = ElectrobikeDirectionResponseBody.Data()
-                if v != nil {
-                    model.fromMap(v as! [String: Any])
-                }
-                tmp.append(model)
-            }
-            self.data = tmp
-        }
-        if dict.keys.contains("errorCode") {
-            self.errorCode = dict["errorCode"] as! String
-        }
-        if dict.keys.contains("errorMessage") {
-            self.errorMessage = dict["errorMessage"] as! String
-        }
-        if dict.keys.contains("requestId") {
-            self.requestId = dict["requestId"] as! String
-        }
-        if dict.keys.contains("success") {
-            self.success = dict["success"] as! Bool
-        }
-    }
-}
-
-public class ElectrobikeDirectionResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: ElectrobikeDirectionResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") {
-            var model = ElectrobikeDirectionResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -2398,11 +2071,17 @@ public class ElectrobikeDirectionNovaResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var code: String?
+
     public var data: ElectrobikeDirectionNovaResponseBody.Data?
 
     public var errorCode: Int32?
 
     public var errorMessage: String?
+
+    public var message: String?
+
+    public var requestId: String?
 
     public var success: Bool?
 
@@ -2421,6 +2100,9 @@ public class ElectrobikeDirectionNovaResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
         if self.data != nil {
             map["data"] = self.data?.toMap()
         }
@@ -2430,6 +2112,12 @@ public class ElectrobikeDirectionNovaResponseBody : Tea.TeaModel {
         if self.errorMessage != nil {
             map["errorMessage"] = self.errorMessage!
         }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
         if self.success != nil {
             map["success"] = self.success!
         }
@@ -2437,6 +2125,9 @@ public class ElectrobikeDirectionNovaResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") {
+            self.code = dict["code"] as! String
+        }
         if dict.keys.contains("data") {
             var model = ElectrobikeDirectionNovaResponseBody.Data()
             model.fromMap(dict["data"] as! [String: Any])
@@ -2447,6 +2138,12 @@ public class ElectrobikeDirectionNovaResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("errorMessage") {
             self.errorMessage = dict["errorMessage"] as! String
+        }
+        if dict.keys.contains("message") {
+            self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
         }
         if dict.keys.contains("success") {
             self.success = dict["success"] as! Bool
@@ -2691,11 +2388,17 @@ public class GeoCodeResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var code: String?
+
     public var data: [GeoCodeResponseBody.Data]?
 
     public var errorCode: Int32?
 
     public var errorMessage: String?
+
+    public var message: String?
+
+    public var requestId: String?
 
     public var success: Bool?
 
@@ -2713,6 +2416,9 @@ public class GeoCodeResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
         if self.data != nil {
             var tmp : [Any] = []
             for k in self.data! {
@@ -2726,6 +2432,12 @@ public class GeoCodeResponseBody : Tea.TeaModel {
         if self.errorMessage != nil {
             map["errorMessage"] = self.errorMessage!
         }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
         if self.success != nil {
             map["success"] = self.success!
         }
@@ -2733,6 +2445,9 @@ public class GeoCodeResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") {
+            self.code = dict["code"] as! String
+        }
         if dict.keys.contains("data") {
             var tmp : [GeoCodeResponseBody.Data] = []
             for v in dict["data"] as! [Any] {
@@ -2749,6 +2464,12 @@ public class GeoCodeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("errorMessage") {
             self.errorMessage = dict["errorMessage"] as! String
+        }
+        if dict.keys.contains("message") {
+            self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
         }
         if dict.keys.contains("success") {
             self.success = dict["success"] as! Bool
@@ -2806,6 +2527,8 @@ public class GeoCodeResponse : Tea.TeaModel {
 }
 
 public class NearbySearchNovaRequest : Tea.TeaModel {
+    public var cityLimit: Bool?
+
     public var keywords: String?
 
     public var latitude: String?
@@ -2817,6 +2540,8 @@ public class NearbySearchNovaRequest : Tea.TeaModel {
     public var radius: Int32?
 
     public var size: Int32?
+
+    public var sortRule: String?
 
     public var types: String?
 
@@ -2834,6 +2559,9 @@ public class NearbySearchNovaRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cityLimit != nil {
+            map["cityLimit"] = self.cityLimit!
+        }
         if self.keywords != nil {
             map["keywords"] = self.keywords!
         }
@@ -2852,6 +2580,9 @@ public class NearbySearchNovaRequest : Tea.TeaModel {
         if self.size != nil {
             map["size"] = self.size!
         }
+        if self.sortRule != nil {
+            map["sortRule"] = self.sortRule!
+        }
         if self.types != nil {
             map["types"] = self.types!
         }
@@ -2859,6 +2590,9 @@ public class NearbySearchNovaRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("cityLimit") {
+            self.cityLimit = dict["cityLimit"] as! Bool
+        }
         if dict.keys.contains("keywords") {
             self.keywords = dict["keywords"] as! String
         }
@@ -2876,6 +2610,9 @@ public class NearbySearchNovaRequest : Tea.TeaModel {
         }
         if dict.keys.contains("size") {
             self.size = dict["size"] as! Int32
+        }
+        if dict.keys.contains("sortRule") {
+            self.sortRule = dict["sortRule"] as! String
         }
         if dict.keys.contains("types") {
             self.types = dict["types"] as! String
@@ -3170,11 +2907,17 @@ public class NearbySearchNovaResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var code: String?
+
     public var data: [NearbySearchNovaResponseBody.Data]?
 
     public var errorCode: Int32?
 
     public var errorMessage: String?
+
+    public var message: String?
+
+    public var requestId: String?
 
     public var success: Bool?
 
@@ -3192,6 +2935,9 @@ public class NearbySearchNovaResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
         if self.data != nil {
             var tmp : [Any] = []
             for k in self.data! {
@@ -3205,6 +2951,12 @@ public class NearbySearchNovaResponseBody : Tea.TeaModel {
         if self.errorMessage != nil {
             map["errorMessage"] = self.errorMessage!
         }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
         if self.success != nil {
             map["success"] = self.success!
         }
@@ -3212,6 +2964,9 @@ public class NearbySearchNovaResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") {
+            self.code = dict["code"] as! String
+        }
         if dict.keys.contains("data") {
             var tmp : [NearbySearchNovaResponseBody.Data] = []
             for v in dict["data"] as! [Any] {
@@ -3228,6 +2983,12 @@ public class NearbySearchNovaResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("errorMessage") {
             self.errorMessage = dict["errorMessage"] as! String
+        }
+        if dict.keys.contains("message") {
+            self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
         }
         if dict.keys.contains("success") {
             self.success = dict["success"] as! Bool
@@ -3285,6 +3046,8 @@ public class NearbySearchNovaResponse : Tea.TeaModel {
 }
 
 public class PlaceSearchNovaRequest : Tea.TeaModel {
+    public var cityLimit: Bool?
+
     public var keywords: String?
 
     public var page: Int32?
@@ -3309,6 +3072,9 @@ public class PlaceSearchNovaRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cityLimit != nil {
+            map["cityLimit"] = self.cityLimit!
+        }
         if self.keywords != nil {
             map["keywords"] = self.keywords!
         }
@@ -3328,6 +3094,9 @@ public class PlaceSearchNovaRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("cityLimit") {
+            self.cityLimit = dict["cityLimit"] as! Bool
+        }
         if dict.keys.contains("keywords") {
             self.keywords = dict["keywords"] as! String
         }
@@ -3396,6 +3165,8 @@ public class PlaceSearchNovaResponseBody : Tea.TeaModel {
 
             public var phone: String?
 
+            public var score: String?
+
             public var tag: String?
 
             public var weeklyOpeningDays: String?
@@ -3429,6 +3200,9 @@ public class PlaceSearchNovaResponseBody : Tea.TeaModel {
                 if self.phone != nil {
                     map["phone"] = self.phone!
                 }
+                if self.score != nil {
+                    map["score"] = self.score!
+                }
                 if self.tag != nil {
                     map["tag"] = self.tag!
                 }
@@ -3453,6 +3227,9 @@ public class PlaceSearchNovaResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("phone") {
                     self.phone = dict["phone"] as! String
+                }
+                if dict.keys.contains("score") {
+                    self.score = dict["score"] as! String
                 }
                 if dict.keys.contains("tag") {
                     self.tag = dict["tag"] as! String
@@ -3625,11 +3402,17 @@ public class PlaceSearchNovaResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var code: String?
+
     public var data: [PlaceSearchNovaResponseBody.Data]?
 
     public var errorCode: Int32?
 
     public var errorMessage: String?
+
+    public var message: String?
+
+    public var requestId: String?
 
     public var success: Bool?
 
@@ -3647,6 +3430,9 @@ public class PlaceSearchNovaResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
         if self.data != nil {
             var tmp : [Any] = []
             for k in self.data! {
@@ -3660,6 +3446,12 @@ public class PlaceSearchNovaResponseBody : Tea.TeaModel {
         if self.errorMessage != nil {
             map["errorMessage"] = self.errorMessage!
         }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
         if self.success != nil {
             map["success"] = self.success!
         }
@@ -3667,6 +3459,9 @@ public class PlaceSearchNovaResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") {
+            self.code = dict["code"] as! String
+        }
         if dict.keys.contains("data") {
             var tmp : [PlaceSearchNovaResponseBody.Data] = []
             for v in dict["data"] as! [Any] {
@@ -3683,6 +3478,12 @@ public class PlaceSearchNovaResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("errorMessage") {
             self.errorMessage = dict["errorMessage"] as! String
+        }
+        if dict.keys.contains("message") {
+            self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
         }
         if dict.keys.contains("success") {
             self.success = dict["success"] as! Bool
@@ -4120,11 +3921,17 @@ public class RgeoCodeResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var code: String?
+
     public var data: RgeoCodeResponseBody.Data?
 
     public var errorCode: Int32?
 
     public var errorMessage: String?
+
+    public var message: String?
+
+    public var requestId: String?
 
     public var success: Bool?
 
@@ -4143,6 +3950,9 @@ public class RgeoCodeResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
         if self.data != nil {
             map["data"] = self.data?.toMap()
         }
@@ -4152,6 +3962,12 @@ public class RgeoCodeResponseBody : Tea.TeaModel {
         if self.errorMessage != nil {
             map["errorMessage"] = self.errorMessage!
         }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
         if self.success != nil {
             map["success"] = self.success!
         }
@@ -4159,6 +3975,9 @@ public class RgeoCodeResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") {
+            self.code = dict["code"] as! String
+        }
         if dict.keys.contains("data") {
             var model = RgeoCodeResponseBody.Data()
             model.fromMap(dict["data"] as! [String: Any])
@@ -4169,6 +3988,12 @@ public class RgeoCodeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("errorMessage") {
             self.errorMessage = dict["errorMessage"] as! String
+        }
+        if dict.keys.contains("message") {
+            self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
         }
         if dict.keys.contains("success") {
             self.success = dict["success"] as! Bool
@@ -4966,6 +4791,8 @@ public class TransitIntegratedDirectionResponseBody : Tea.TeaModel {
                     }
                     public var buslines: [TransitIntegratedDirectionResponseBody.Data.Paths.Segments.Bus.Buslines]?
 
+                    public var index: String?
+
                     public override init() {
                         super.init()
                     }
@@ -4987,6 +4814,9 @@ public class TransitIntegratedDirectionResponseBody : Tea.TeaModel {
                             }
                             map["buslines"] = tmp
                         }
+                        if self.index != nil {
+                            map["index"] = self.index!
+                        }
                         return map
                     }
 
@@ -5001,6 +4831,9 @@ public class TransitIntegratedDirectionResponseBody : Tea.TeaModel {
                                 tmp.append(model)
                             }
                             self.buslines = tmp
+                        }
+                        if dict.keys.contains("index") {
+                            self.index = dict["index"] as! String
                         }
                     }
                 }
@@ -5188,6 +5021,8 @@ public class TransitIntegratedDirectionResponseBody : Tea.TeaModel {
 
                     public var id: String?
 
+                    public var index: String?
+
                     public var name: String?
 
                     public var spaces: [TransitIntegratedDirectionResponseBody.Data.Paths.Segments.Railway.Spaces]?
@@ -5225,6 +5060,9 @@ public class TransitIntegratedDirectionResponseBody : Tea.TeaModel {
                         }
                         if self.id != nil {
                             map["id"] = self.id!
+                        }
+                        if self.index != nil {
+                            map["index"] = self.index!
                         }
                         if self.name != nil {
                             map["name"] = self.name!
@@ -5265,6 +5103,9 @@ public class TransitIntegratedDirectionResponseBody : Tea.TeaModel {
                         if dict.keys.contains("id") {
                             self.id = dict["id"] as! String
                         }
+                        if dict.keys.contains("index") {
+                            self.index = dict["index"] as! String
+                        }
                         if dict.keys.contains("name") {
                             self.name = dict["name"] as! String
                         }
@@ -5299,6 +5140,8 @@ public class TransitIntegratedDirectionResponseBody : Tea.TeaModel {
 
                     public var driveTimeSecond: String?
 
+                    public var index: String?
+
                     public var originName: String?
 
                     public var originPoint: String?
@@ -5331,6 +5174,9 @@ public class TransitIntegratedDirectionResponseBody : Tea.TeaModel {
                         if self.driveTimeSecond != nil {
                             map["driveTimeSecond"] = self.driveTimeSecond!
                         }
+                        if self.index != nil {
+                            map["index"] = self.index!
+                        }
                         if self.originName != nil {
                             map["originName"] = self.originName!
                         }
@@ -5355,6 +5201,9 @@ public class TransitIntegratedDirectionResponseBody : Tea.TeaModel {
                         }
                         if dict.keys.contains("driveTimeSecond") {
                             self.driveTimeSecond = dict["driveTimeSecond"] as! String
+                        }
+                        if dict.keys.contains("index") {
+                            self.index = dict["index"] as! String
                         }
                         if dict.keys.contains("originName") {
                             self.originName = dict["originName"] as! String
@@ -5632,6 +5481,8 @@ public class TransitIntegratedDirectionResponseBody : Tea.TeaModel {
 
                     public var distanceMeter: String?
 
+                    public var index: String?
+
                     public var origin: String?
 
                     public var steps: [TransitIntegratedDirectionResponseBody.Data.Paths.Segments.Walking.Steps]?
@@ -5660,6 +5511,9 @@ public class TransitIntegratedDirectionResponseBody : Tea.TeaModel {
                         if self.distanceMeter != nil {
                             map["distanceMeter"] = self.distanceMeter!
                         }
+                        if self.index != nil {
+                            map["index"] = self.index!
+                        }
                         if self.origin != nil {
                             map["origin"] = self.origin!
                         }
@@ -5684,6 +5538,9 @@ public class TransitIntegratedDirectionResponseBody : Tea.TeaModel {
                         }
                         if dict.keys.contains("distanceMeter") {
                             self.distanceMeter = dict["distanceMeter"] as! String
+                        }
+                        if dict.keys.contains("index") {
+                            self.index = dict["index"] as! String
                         }
                         if dict.keys.contains("origin") {
                             self.origin = dict["origin"] as! String
@@ -5939,11 +5796,17 @@ public class TransitIntegratedDirectionResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var code: String?
+
     public var data: TransitIntegratedDirectionResponseBody.Data?
 
     public var errorCode: Int32?
 
     public var errorMessage: String?
+
+    public var message: String?
+
+    public var requestId: String?
 
     public var success: Bool?
 
@@ -5962,6 +5825,9 @@ public class TransitIntegratedDirectionResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
         if self.data != nil {
             map["data"] = self.data?.toMap()
         }
@@ -5971,6 +5837,12 @@ public class TransitIntegratedDirectionResponseBody : Tea.TeaModel {
         if self.errorMessage != nil {
             map["errorMessage"] = self.errorMessage!
         }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
         if self.success != nil {
             map["success"] = self.success!
         }
@@ -5978,6 +5850,9 @@ public class TransitIntegratedDirectionResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") {
+            self.code = dict["code"] as! String
+        }
         if dict.keys.contains("data") {
             var model = TransitIntegratedDirectionResponseBody.Data()
             model.fromMap(dict["data"] as! [String: Any])
@@ -5988,6 +5863,12 @@ public class TransitIntegratedDirectionResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("errorMessage") {
             self.errorMessage = dict["errorMessage"] as! String
+        }
+        if dict.keys.contains("message") {
+            self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
         }
         if dict.keys.contains("success") {
             self.success = dict["success"] as! Bool
@@ -6490,11 +6371,17 @@ public class WalkingDirectionNovaResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var code: String?
+
     public var data: WalkingDirectionNovaResponseBody.Data?
 
     public var errorCode: Int32?
 
     public var errorMessage: String?
+
+    public var message: String?
+
+    public var requestId: String?
 
     public var success: Bool?
 
@@ -6513,6 +6400,9 @@ public class WalkingDirectionNovaResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
         if self.data != nil {
             map["data"] = self.data?.toMap()
         }
@@ -6522,6 +6412,12 @@ public class WalkingDirectionNovaResponseBody : Tea.TeaModel {
         if self.errorMessage != nil {
             map["errorMessage"] = self.errorMessage!
         }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
         if self.success != nil {
             map["success"] = self.success!
         }
@@ -6529,6 +6425,9 @@ public class WalkingDirectionNovaResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") {
+            self.code = dict["code"] as! String
+        }
         if dict.keys.contains("data") {
             var model = WalkingDirectionNovaResponseBody.Data()
             model.fromMap(dict["data"] as! [String: Any])
@@ -6539,6 +6438,12 @@ public class WalkingDirectionNovaResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("errorMessage") {
             self.errorMessage = dict["errorMessage"] as! String
+        }
+        if dict.keys.contains("message") {
+            self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
         }
         if dict.keys.contains("success") {
             self.success = dict["success"] as! Bool

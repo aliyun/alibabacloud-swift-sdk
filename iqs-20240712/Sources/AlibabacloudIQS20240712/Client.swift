@@ -143,48 +143,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func electrobikeDirectionWithOptions(_ request: ElectrobikeDirectionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ElectrobikeDirectionResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.destinationLatitude)) {
-            query["destinationLatitude"] = request.destinationLatitude ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.destinationLongitude)) {
-            query["destinationLongitude"] = request.destinationLongitude ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.originLatitude)) {
-            query["originLatitude"] = request.originLatitude ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.originLongitude)) {
-            query["originLongitude"] = request.originLongitude ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ElectrobikeDirection",
-            "version": "2024-07-12",
-            "protocol": "HTTPS",
-            "pathname": "/ipaas/v1/direction/electrobike",
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ElectrobikeDirectionResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func electrobikeDirection(_ request: ElectrobikeDirectionRequest) async throws -> ElectrobikeDirectionResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await electrobikeDirectionWithOptions(request as! ElectrobikeDirectionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func electrobikeDirectionNovaWithOptions(_ request: ElectrobikeDirectionNovaRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ElectrobikeDirectionNovaResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -266,6 +224,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func nearbySearchNovaWithOptions(_ request: NearbySearchNovaRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> NearbySearchNovaResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cityLimit)) {
+            query["cityLimit"] = request.cityLimit!;
+        }
         if (!TeaUtils.Client.isUnset(request.keywords)) {
             query["keywords"] = request.keywords ?? "";
         }
@@ -283,6 +244,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.size)) {
             query["size"] = request.size!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sortRule)) {
+            query["sortRule"] = request.sortRule ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.types)) {
             query["types"] = request.types ?? "";
@@ -317,6 +281,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func placeSearchNovaWithOptions(_ request: PlaceSearchNovaRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PlaceSearchNovaResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cityLimit)) {
+            query["cityLimit"] = request.cityLimit!;
+        }
         if (!TeaUtils.Client.isUnset(request.keywords)) {
             query["keywords"] = request.keywords ?? "";
         }
