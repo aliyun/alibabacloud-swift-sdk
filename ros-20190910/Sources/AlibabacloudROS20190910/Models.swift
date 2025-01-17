@@ -11772,6 +11772,8 @@ public class GetTemplateResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var additionalInfo: [String: Any]?
+
     public var changeSetId: String?
 
     public var createTime: String?
@@ -11824,6 +11826,9 @@ public class GetTemplateResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.additionalInfo != nil {
+            map["AdditionalInfo"] = self.additionalInfo!
+        }
         if self.changeSetId != nil {
             map["ChangeSetId"] = self.changeSetId!
         }
@@ -11893,6 +11898,9 @@ public class GetTemplateResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AdditionalInfo") {
+            self.additionalInfo = dict["AdditionalInfo"] as! [String: Any]
+        }
         if dict.keys.contains("ChangeSetId") {
             self.changeSetId = dict["ChangeSetId"] as! String
         }
@@ -12600,6 +12608,10 @@ public class GetTemplateParameterConstraintsResponseBody : Tea.TeaModel {
         public class OriginalConstraints : Tea.TeaModel {
             public var allowedValues: [Any]?
 
+            public var behavior: String?
+
+            public var behaviorReason: String?
+
             public var propertyName: String?
 
             public var resourceName: String?
@@ -12623,6 +12635,12 @@ public class GetTemplateParameterConstraintsResponseBody : Tea.TeaModel {
                 if self.allowedValues != nil {
                     map["AllowedValues"] = self.allowedValues!
                 }
+                if self.behavior != nil {
+                    map["Behavior"] = self.behavior!
+                }
+                if self.behaviorReason != nil {
+                    map["BehaviorReason"] = self.behaviorReason!
+                }
                 if self.propertyName != nil {
                     map["PropertyName"] = self.propertyName!
                 }
@@ -12638,6 +12656,12 @@ public class GetTemplateParameterConstraintsResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("AllowedValues") {
                     self.allowedValues = dict["AllowedValues"] as! [Any]
+                }
+                if dict.keys.contains("Behavior") {
+                    self.behavior = dict["Behavior"] as! String
+                }
+                if dict.keys.contains("BehaviorReason") {
+                    self.behaviorReason = dict["BehaviorReason"] as! String
                 }
                 if dict.keys.contains("PropertyName") {
                     self.propertyName = dict["PropertyName"] as! String
@@ -20762,6 +20786,43 @@ public class ListTemplateVersionsResponse : Tea.TeaModel {
 }
 
 public class ListTemplatesRequest : Tea.TeaModel {
+    public class Filters : Tea.TeaModel {
+        public var name: String?
+
+        public var values: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.values != nil {
+                map["Values"] = self.values!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Name") {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("Values") {
+                self.values = dict["Values"] as! [String]
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -20799,6 +20860,8 @@ public class ListTemplatesRequest : Tea.TeaModel {
             }
         }
     }
+    public var filters: [ListTemplatesRequest.Filters]?
+
     public var includeTags: String?
 
     public var pageNumber: Int64?
@@ -20827,6 +20890,13 @@ public class ListTemplatesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.filters != nil {
+            var tmp : [Any] = []
+            for k in self.filters! {
+                tmp.append(k.toMap())
+            }
+            map["Filters"] = tmp
+        }
         if self.includeTags != nil {
             map["IncludeTags"] = self.includeTags!
         }
@@ -20856,6 +20926,17 @@ public class ListTemplatesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Filters") {
+            var tmp : [ListTemplatesRequest.Filters] = []
+            for v in dict["Filters"] as! [Any] {
+                var model = ListTemplatesRequest.Filters()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.filters = tmp
+        }
         if dict.keys.contains("IncludeTags") {
             self.includeTags = dict["IncludeTags"] as! String
         }
@@ -20927,6 +21008,8 @@ public class ListTemplatesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var additionalInfo: [String: Any]?
+
         public var createTime: String?
 
         public var description_: String?
@@ -20944,6 +21027,8 @@ public class ListTemplatesResponseBody : Tea.TeaModel {
         public var templateId: String?
 
         public var templateName: String?
+
+        public var templateUrl: String?
 
         public var templateVersion: String?
 
@@ -20963,6 +21048,9 @@ public class ListTemplatesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.additionalInfo != nil {
+                map["AdditionalInfo"] = self.additionalInfo!
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -20994,6 +21082,9 @@ public class ListTemplatesResponseBody : Tea.TeaModel {
             if self.templateName != nil {
                 map["TemplateName"] = self.templateName!
             }
+            if self.templateUrl != nil {
+                map["TemplateUrl"] = self.templateUrl!
+            }
             if self.templateVersion != nil {
                 map["TemplateVersion"] = self.templateVersion!
             }
@@ -21004,6 +21095,9 @@ public class ListTemplatesResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AdditionalInfo") {
+                self.additionalInfo = dict["AdditionalInfo"] as! [String: Any]
+            }
             if dict.keys.contains("CreateTime") {
                 self.createTime = dict["CreateTime"] as! String
             }
@@ -21038,6 +21132,9 @@ public class ListTemplatesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("TemplateName") {
                 self.templateName = dict["TemplateName"] as! String
+            }
+            if dict.keys.contains("TemplateUrl") {
+                self.templateUrl = dict["TemplateUrl"] as! String
             }
             if dict.keys.contains("TemplateVersion") {
                 self.templateVersion = dict["TemplateVersion"] as! String

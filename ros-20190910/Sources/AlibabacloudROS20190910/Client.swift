@@ -3178,6 +3178,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listTemplatesWithOptions(_ request: ListTemplatesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTemplatesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.filters)) {
+            query["Filters"] = request.filters ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.includeTags)) {
             query["IncludeTags"] = request.includeTags ?? "";
         }
