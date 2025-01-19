@@ -3444,6 +3444,464 @@ public class DescribePhoneNumberOperatorAttributeResponse : Tea.TeaModel {
     }
 }
 
+public class DescribePhoneNumberOperatorAttributeAnnualRequest : Tea.TeaModel {
+    public var authCode: String?
+
+    public var mask: String?
+
+    public var number: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authCode != nil {
+            map["AuthCode"] = self.authCode!
+        }
+        if self.mask != nil {
+            map["Mask"] = self.mask!
+        }
+        if self.number != nil {
+            map["Number"] = self.number!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AuthCode") {
+            self.authCode = dict["AuthCode"] as! String
+        }
+        if dict.keys.contains("Mask") {
+            self.mask = dict["Mask"] as! String
+        }
+        if dict.keys.contains("Number") {
+            self.number = dict["Number"] as! String
+        }
+    }
+}
+
+public class DescribePhoneNumberOperatorAttributeAnnualResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var basicCarrier: String?
+
+        public var carrier: String?
+
+        public var city: String?
+
+        public var mts: String?
+
+        public var numberPortability: Bool?
+
+        public var province: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.basicCarrier != nil {
+                map["BasicCarrier"] = self.basicCarrier!
+            }
+            if self.carrier != nil {
+                map["Carrier"] = self.carrier!
+            }
+            if self.city != nil {
+                map["City"] = self.city!
+            }
+            if self.mts != nil {
+                map["Mts"] = self.mts!
+            }
+            if self.numberPortability != nil {
+                map["NumberPortability"] = self.numberPortability!
+            }
+            if self.province != nil {
+                map["Province"] = self.province!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BasicCarrier") {
+                self.basicCarrier = dict["BasicCarrier"] as! String
+            }
+            if dict.keys.contains("Carrier") {
+                self.carrier = dict["Carrier"] as! String
+            }
+            if dict.keys.contains("City") {
+                self.city = dict["City"] as! String
+            }
+            if dict.keys.contains("Mts") {
+                self.mts = dict["Mts"] as! String
+            }
+            if dict.keys.contains("NumberPortability") {
+                self.numberPortability = dict["NumberPortability"] as! Bool
+            }
+            if dict.keys.contains("Province") {
+                self.province = dict["Province"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: DescribePhoneNumberOperatorAttributeAnnualResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = DescribePhoneNumberOperatorAttributeAnnualResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class DescribePhoneNumberOperatorAttributeAnnualResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribePhoneNumberOperatorAttributeAnnualResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribePhoneNumberOperatorAttributeAnnualResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribePhoneNumberOperatorAttributeAnnualUseRequest : Tea.TeaModel {
+    public var authCode: String?
+
+    public var inputNumber: String?
+
+    public var mask: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authCode != nil {
+            map["AuthCode"] = self.authCode!
+        }
+        if self.inputNumber != nil {
+            map["InputNumber"] = self.inputNumber!
+        }
+        if self.mask != nil {
+            map["Mask"] = self.mask!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AuthCode") {
+            self.authCode = dict["AuthCode"] as! String
+        }
+        if dict.keys.contains("InputNumber") {
+            self.inputNumber = dict["InputNumber"] as! String
+        }
+        if dict.keys.contains("Mask") {
+            self.mask = dict["Mask"] as! String
+        }
+    }
+}
+
+public class DescribePhoneNumberOperatorAttributeAnnualUseResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var basicCarrier: String?
+
+        public var carrier: String?
+
+        public var city: String?
+
+        public var isNumberPortability: Bool?
+
+        public var numberSegment: Int64?
+
+        public var province: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.basicCarrier != nil {
+                map["BasicCarrier"] = self.basicCarrier!
+            }
+            if self.carrier != nil {
+                map["Carrier"] = self.carrier!
+            }
+            if self.city != nil {
+                map["City"] = self.city!
+            }
+            if self.isNumberPortability != nil {
+                map["IsNumberPortability"] = self.isNumberPortability!
+            }
+            if self.numberSegment != nil {
+                map["NumberSegment"] = self.numberSegment!
+            }
+            if self.province != nil {
+                map["Province"] = self.province!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BasicCarrier") {
+                self.basicCarrier = dict["BasicCarrier"] as! String
+            }
+            if dict.keys.contains("Carrier") {
+                self.carrier = dict["Carrier"] as! String
+            }
+            if dict.keys.contains("City") {
+                self.city = dict["City"] as! String
+            }
+            if dict.keys.contains("IsNumberPortability") {
+                self.isNumberPortability = dict["IsNumberPortability"] as! Bool
+            }
+            if dict.keys.contains("NumberSegment") {
+                self.numberSegment = dict["NumberSegment"] as! Int64
+            }
+            if dict.keys.contains("Province") {
+                self.province = dict["Province"] as! String
+            }
+        }
+    }
+    public var accessDeniedDetail: String?
+
+    public var code: String?
+
+    public var data: DescribePhoneNumberOperatorAttributeAnnualUseResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = DescribePhoneNumberOperatorAttributeAnnualUseResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribePhoneNumberOperatorAttributeAnnualUseResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribePhoneNumberOperatorAttributeAnnualUseResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribePhoneNumberOperatorAttributeAnnualUseResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribePhoneNumberRiskRequest : Tea.TeaModel {
     public var authCode: String?
 

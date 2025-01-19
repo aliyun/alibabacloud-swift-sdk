@@ -701,6 +701,80 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describePhoneNumberOperatorAttributeAnnualWithOptions(_ request: DescribePhoneNumberOperatorAttributeAnnualRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribePhoneNumberOperatorAttributeAnnualResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authCode)) {
+            query["AuthCode"] = request.authCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mask)) {
+            query["Mask"] = request.mask ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.number)) {
+            query["Number"] = request.number ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribePhoneNumberOperatorAttributeAnnual",
+            "version": "2020-02-17",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribePhoneNumberOperatorAttributeAnnualResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describePhoneNumberOperatorAttributeAnnual(_ request: DescribePhoneNumberOperatorAttributeAnnualRequest) async throws -> DescribePhoneNumberOperatorAttributeAnnualResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describePhoneNumberOperatorAttributeAnnualWithOptions(request as! DescribePhoneNumberOperatorAttributeAnnualRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describePhoneNumberOperatorAttributeAnnualUseWithOptions(_ request: DescribePhoneNumberOperatorAttributeAnnualUseRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribePhoneNumberOperatorAttributeAnnualUseResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authCode)) {
+            query["AuthCode"] = request.authCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.inputNumber)) {
+            query["InputNumber"] = request.inputNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mask)) {
+            query["Mask"] = request.mask ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribePhoneNumberOperatorAttributeAnnualUse",
+            "version": "2020-02-17",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribePhoneNumberOperatorAttributeAnnualUseResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describePhoneNumberOperatorAttributeAnnualUse(_ request: DescribePhoneNumberOperatorAttributeAnnualUseRequest) async throws -> DescribePhoneNumberOperatorAttributeAnnualUseResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describePhoneNumberOperatorAttributeAnnualUseWithOptions(request as! DescribePhoneNumberOperatorAttributeAnnualUseRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describePhoneNumberRiskWithOptions(_ request: DescribePhoneNumberRiskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribePhoneNumberRiskResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
