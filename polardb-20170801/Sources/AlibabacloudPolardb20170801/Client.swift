@@ -6672,6 +6672,55 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyDBClusterStoragePerformanceWithOptions(_ request: ModifyDBClusterStoragePerformanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDBClusterStoragePerformanceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.burstingEnabled)) {
+            query["BurstingEnabled"] = request.burstingEnabled ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modifyType)) {
+            query["ModifyType"] = request.modifyType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.provisionedIops)) {
+            query["ProvisionedIops"] = request.provisionedIops!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.storageType)) {
+            query["StorageType"] = request.storageType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyDBClusterStoragePerformance",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyDBClusterStoragePerformanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyDBClusterStoragePerformance(_ request: ModifyDBClusterStoragePerformanceRequest) async throws -> ModifyDBClusterStoragePerformanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyDBClusterStoragePerformanceWithOptions(request as! ModifyDBClusterStoragePerformanceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyDBClusterStorageSpaceWithOptions(_ request: ModifyDBClusterStorageSpaceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDBClusterStorageSpaceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

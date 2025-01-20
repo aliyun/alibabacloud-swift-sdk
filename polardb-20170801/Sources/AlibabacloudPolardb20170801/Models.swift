@@ -31857,6 +31857,179 @@ public class ModifyDBClusterServerlessConfResponse : Tea.TeaModel {
     }
 }
 
+public class ModifyDBClusterStoragePerformanceRequest : Tea.TeaModel {
+    public var burstingEnabled: String?
+
+    public var clientToken: String?
+
+    public var DBClusterId: String?
+
+    public var modifyType: String?
+
+    public var provisionedIops: Int32?
+
+    public var resourceOwnerId: Int64?
+
+    public var storageType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.burstingEnabled != nil {
+            map["BurstingEnabled"] = self.burstingEnabled!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.modifyType != nil {
+            map["ModifyType"] = self.modifyType!
+        }
+        if self.provisionedIops != nil {
+            map["ProvisionedIops"] = self.provisionedIops!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.storageType != nil {
+            map["StorageType"] = self.storageType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BurstingEnabled") {
+            self.burstingEnabled = dict["BurstingEnabled"] as! String
+        }
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DBClusterId") {
+            self.DBClusterId = dict["DBClusterId"] as! String
+        }
+        if dict.keys.contains("ModifyType") {
+            self.modifyType = dict["ModifyType"] as! String
+        }
+        if dict.keys.contains("ProvisionedIops") {
+            self.provisionedIops = dict["ProvisionedIops"] as! Int32
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("StorageType") {
+            self.storageType = dict["StorageType"] as! String
+        }
+    }
+}
+
+public class ModifyDBClusterStoragePerformanceResponseBody : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var orderId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBClusterId") {
+            self.DBClusterId = dict["DBClusterId"] as! String
+        }
+        if dict.keys.contains("OrderId") {
+            self.orderId = dict["OrderId"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ModifyDBClusterStoragePerformanceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyDBClusterStoragePerformanceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ModifyDBClusterStoragePerformanceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ModifyDBClusterStorageSpaceRequest : Tea.TeaModel {
     public var clientToken: String?
 
