@@ -39174,6 +39174,619 @@ public class RunSearchGenerationResponse : Tea.TeaModel {
     }
 }
 
+public class RunSearchSimilarArticlesRequest : Tea.TeaModel {
+    public class ChatConfig : Tea.TeaModel {
+        public class SearchParam : Tea.TeaModel {
+            public class SearchSources : Tea.TeaModel {
+                public var code: String?
+
+                public var name: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.code != nil {
+                        map["Code"] = self.code!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Code") {
+                        self.code = dict["Code"] as! String
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                }
+            }
+            public var searchSources: [RunSearchSimilarArticlesRequest.ChatConfig.SearchParam.SearchSources]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.searchSources != nil {
+                    var tmp : [Any] = []
+                    for k in self.searchSources! {
+                        tmp.append(k.toMap())
+                    }
+                    map["SearchSources"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("SearchSources") {
+                    var tmp : [RunSearchSimilarArticlesRequest.ChatConfig.SearchParam.SearchSources] = []
+                    for v in dict["SearchSources"] as! [Any] {
+                        var model = RunSearchSimilarArticlesRequest.ChatConfig.SearchParam.SearchSources()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.searchSources = tmp
+                }
+            }
+        }
+        public var searchParam: RunSearchSimilarArticlesRequest.ChatConfig.SearchParam?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.searchParam?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.searchParam != nil {
+                map["SearchParam"] = self.searchParam?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("SearchParam") {
+                var model = RunSearchSimilarArticlesRequest.ChatConfig.SearchParam()
+                model.fromMap(dict["SearchParam"] as! [String: Any])
+                self.searchParam = model
+            }
+        }
+    }
+    public var chatConfig: RunSearchSimilarArticlesRequest.ChatConfig?
+
+    public var docType: String?
+
+    public var title: String?
+
+    public var url: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.chatConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.chatConfig != nil {
+            map["ChatConfig"] = self.chatConfig?.toMap()
+        }
+        if self.docType != nil {
+            map["DocType"] = self.docType!
+        }
+        if self.title != nil {
+            map["Title"] = self.title!
+        }
+        if self.url != nil {
+            map["Url"] = self.url!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ChatConfig") {
+            var model = RunSearchSimilarArticlesRequest.ChatConfig()
+            model.fromMap(dict["ChatConfig"] as! [String: Any])
+            self.chatConfig = model
+        }
+        if dict.keys.contains("DocType") {
+            self.docType = dict["DocType"] as! String
+        }
+        if dict.keys.contains("Title") {
+            self.title = dict["Title"] as! String
+        }
+        if dict.keys.contains("Url") {
+            self.url = dict["Url"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
+        }
+    }
+}
+
+public class RunSearchSimilarArticlesShrinkRequest : Tea.TeaModel {
+    public var chatConfigShrink: String?
+
+    public var docType: String?
+
+    public var title: String?
+
+    public var url: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.chatConfigShrink != nil {
+            map["ChatConfig"] = self.chatConfigShrink!
+        }
+        if self.docType != nil {
+            map["DocType"] = self.docType!
+        }
+        if self.title != nil {
+            map["Title"] = self.title!
+        }
+        if self.url != nil {
+            map["Url"] = self.url!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ChatConfig") {
+            self.chatConfigShrink = dict["ChatConfig"] as! String
+        }
+        if dict.keys.contains("DocType") {
+            self.docType = dict["DocType"] as! String
+        }
+        if dict.keys.contains("Title") {
+            self.title = dict["Title"] as! String
+        }
+        if dict.keys.contains("Url") {
+            self.url = dict["Url"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
+        }
+    }
+}
+
+public class RunSearchSimilarArticlesResponseBody : Tea.TeaModel {
+    public class Header : Tea.TeaModel {
+        public var errorCode: String?
+
+        public var errorMessage: String?
+
+        public var event: String?
+
+        public var sessionId: String?
+
+        public var taskId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.errorCode != nil {
+                map["ErrorCode"] = self.errorCode!
+            }
+            if self.errorMessage != nil {
+                map["ErrorMessage"] = self.errorMessage!
+            }
+            if self.event != nil {
+                map["Event"] = self.event!
+            }
+            if self.sessionId != nil {
+                map["SessionId"] = self.sessionId!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ErrorCode") {
+                self.errorCode = dict["ErrorCode"] as! String
+            }
+            if dict.keys.contains("ErrorMessage") {
+                self.errorMessage = dict["ErrorMessage"] as! String
+            }
+            if dict.keys.contains("Event") {
+                self.event = dict["Event"] as! String
+            }
+            if dict.keys.contains("SessionId") {
+                self.sessionId = dict["SessionId"] as! String
+            }
+            if dict.keys.contains("TaskId") {
+                self.taskId = dict["TaskId"] as! String
+            }
+        }
+    }
+    public class Payload : Tea.TeaModel {
+        public class Output : Tea.TeaModel {
+            public class Articles : Tea.TeaModel {
+                public var docUuid: String?
+
+                public var pubTime: String?
+
+                public var searchSourceName: String?
+
+                public var source: String?
+
+                public var summary: String?
+
+                public var title: String?
+
+                public var url: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.docUuid != nil {
+                        map["DocUuid"] = self.docUuid!
+                    }
+                    if self.pubTime != nil {
+                        map["PubTime"] = self.pubTime!
+                    }
+                    if self.searchSourceName != nil {
+                        map["SearchSourceName"] = self.searchSourceName!
+                    }
+                    if self.source != nil {
+                        map["Source"] = self.source!
+                    }
+                    if self.summary != nil {
+                        map["Summary"] = self.summary!
+                    }
+                    if self.title != nil {
+                        map["Title"] = self.title!
+                    }
+                    if self.url != nil {
+                        map["Url"] = self.url!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("DocUuid") {
+                        self.docUuid = dict["DocUuid"] as! String
+                    }
+                    if dict.keys.contains("PubTime") {
+                        self.pubTime = dict["PubTime"] as! String
+                    }
+                    if dict.keys.contains("SearchSourceName") {
+                        self.searchSourceName = dict["SearchSourceName"] as! String
+                    }
+                    if dict.keys.contains("Source") {
+                        self.source = dict["Source"] as! String
+                    }
+                    if dict.keys.contains("Summary") {
+                        self.summary = dict["Summary"] as! String
+                    }
+                    if dict.keys.contains("Title") {
+                        self.title = dict["Title"] as! String
+                    }
+                    if dict.keys.contains("Url") {
+                        self.url = dict["Url"] as! String
+                    }
+                }
+            }
+            public var articles: [RunSearchSimilarArticlesResponseBody.Payload.Output.Articles]?
+
+            public var text: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.articles != nil {
+                    var tmp : [Any] = []
+                    for k in self.articles! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Articles"] = tmp
+                }
+                if self.text != nil {
+                    map["Text"] = self.text!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Articles") {
+                    var tmp : [RunSearchSimilarArticlesResponseBody.Payload.Output.Articles] = []
+                    for v in dict["Articles"] as! [Any] {
+                        var model = RunSearchSimilarArticlesResponseBody.Payload.Output.Articles()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.articles = tmp
+                }
+                if dict.keys.contains("Text") {
+                    self.text = dict["Text"] as! String
+                }
+            }
+        }
+        public class Usage : Tea.TeaModel {
+            public var inputTokens: Int64?
+
+            public var outputTokens: Int64?
+
+            public var totalTokens: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.inputTokens != nil {
+                    map["InputTokens"] = self.inputTokens!
+                }
+                if self.outputTokens != nil {
+                    map["OutputTokens"] = self.outputTokens!
+                }
+                if self.totalTokens != nil {
+                    map["TotalTokens"] = self.totalTokens!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("InputTokens") {
+                    self.inputTokens = dict["InputTokens"] as! Int64
+                }
+                if dict.keys.contains("OutputTokens") {
+                    self.outputTokens = dict["OutputTokens"] as! Int64
+                }
+                if dict.keys.contains("TotalTokens") {
+                    self.totalTokens = dict["TotalTokens"] as! Int64
+                }
+            }
+        }
+        public var output: RunSearchSimilarArticlesResponseBody.Payload.Output?
+
+        public var usage: RunSearchSimilarArticlesResponseBody.Payload.Usage?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.output?.validate()
+            try self.usage?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.output != nil {
+                map["Output"] = self.output?.toMap()
+            }
+            if self.usage != nil {
+                map["Usage"] = self.usage?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Output") {
+                var model = RunSearchSimilarArticlesResponseBody.Payload.Output()
+                model.fromMap(dict["Output"] as! [String: Any])
+                self.output = model
+            }
+            if dict.keys.contains("Usage") {
+                var model = RunSearchSimilarArticlesResponseBody.Payload.Usage()
+                model.fromMap(dict["Usage"] as! [String: Any])
+                self.usage = model
+            }
+        }
+    }
+    public var header: RunSearchSimilarArticlesResponseBody.Header?
+
+    public var payload: RunSearchSimilarArticlesResponseBody.Payload?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.header?.validate()
+        try self.payload?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.header != nil {
+            map["Header"] = self.header?.toMap()
+        }
+        if self.payload != nil {
+            map["Payload"] = self.payload?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Header") {
+            var model = RunSearchSimilarArticlesResponseBody.Header()
+            model.fromMap(dict["Header"] as! [String: Any])
+            self.header = model
+        }
+        if dict.keys.contains("Payload") {
+            var model = RunSearchSimilarArticlesResponseBody.Payload()
+            model.fromMap(dict["Payload"] as! [String: Any])
+            self.payload = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class RunSearchSimilarArticlesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RunSearchSimilarArticlesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = RunSearchSimilarArticlesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class RunStepByStepWritingRequest : Tea.TeaModel {
     public class ReferenceData : Tea.TeaModel {
         public class Articles : Tea.TeaModel {
