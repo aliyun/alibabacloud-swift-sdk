@@ -7079,6 +7079,8 @@ public class CreateDataCorrectOrderRequest : Tea.TeaModel {
         public class DbItemList : Tea.TeaModel {
             public var dbId: Int64?
 
+            public var instanceId: Int64?
+
             public var logic: Bool?
 
             public override init() {
@@ -7098,6 +7100,9 @@ public class CreateDataCorrectOrderRequest : Tea.TeaModel {
                 if self.dbId != nil {
                     map["DbId"] = self.dbId!
                 }
+                if self.instanceId != nil {
+                    map["InstanceId"] = self.instanceId!
+                }
                 if self.logic != nil {
                     map["Logic"] = self.logic!
                 }
@@ -7107,6 +7112,9 @@ public class CreateDataCorrectOrderRequest : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("DbId") {
                     self.dbId = dict["DbId"] as! Int64
+                }
+                if dict.keys.contains("InstanceId") {
+                    self.instanceId = dict["InstanceId"] as! Int64
                 }
                 if dict.keys.contains("Logic") {
                     self.logic = dict["Logic"] as! Bool
@@ -10434,6 +10442,8 @@ public class CreateFreeLockCorrectOrderRequest : Tea.TeaModel {
 
     public var param: CreateFreeLockCorrectOrderRequest.Param?
 
+    public var realLoginUserUid: String?
+
     public var relatedUserList: [Int64]?
 
     public var tid: Int64?
@@ -10462,6 +10472,9 @@ public class CreateFreeLockCorrectOrderRequest : Tea.TeaModel {
         if self.param != nil {
             map["Param"] = self.param?.toMap()
         }
+        if self.realLoginUserUid != nil {
+            map["RealLoginUserUid"] = self.realLoginUserUid!
+        }
         if self.relatedUserList != nil {
             map["RelatedUserList"] = self.relatedUserList!
         }
@@ -10483,6 +10496,9 @@ public class CreateFreeLockCorrectOrderRequest : Tea.TeaModel {
             model.fromMap(dict["Param"] as! [String: Any])
             self.param = model
         }
+        if dict.keys.contains("RealLoginUserUid") {
+            self.realLoginUserUid = dict["RealLoginUserUid"] as! String
+        }
         if dict.keys.contains("RelatedUserList") {
             self.relatedUserList = dict["RelatedUserList"] as! [Int64]
         }
@@ -10498,6 +10514,8 @@ public class CreateFreeLockCorrectOrderShrinkRequest : Tea.TeaModel {
     public var comment: String?
 
     public var paramShrink: String?
+
+    public var realLoginUserUid: String?
 
     public var relatedUserListShrink: String?
 
@@ -10526,6 +10544,9 @@ public class CreateFreeLockCorrectOrderShrinkRequest : Tea.TeaModel {
         if self.paramShrink != nil {
             map["Param"] = self.paramShrink!
         }
+        if self.realLoginUserUid != nil {
+            map["RealLoginUserUid"] = self.realLoginUserUid!
+        }
         if self.relatedUserListShrink != nil {
             map["RelatedUserList"] = self.relatedUserListShrink!
         }
@@ -10544,6 +10565,9 @@ public class CreateFreeLockCorrectOrderShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Param") {
             self.paramShrink = dict["Param"] as! String
+        }
+        if dict.keys.contains("RealLoginUserUid") {
+            self.realLoginUserUid = dict["RealLoginUserUid"] as! String
         }
         if dict.keys.contains("RelatedUserList") {
             self.relatedUserListShrink = dict["RelatedUserList"] as! String
@@ -60174,6 +60198,8 @@ public class ModifyDataCorrectExecSQLRequest : Tea.TeaModel {
 
     public var orderId: Int64?
 
+    public var realLoginUserUid: String?
+
     public var tid: Int64?
 
     public override init() {
@@ -60196,6 +60222,9 @@ public class ModifyDataCorrectExecSQLRequest : Tea.TeaModel {
         if self.orderId != nil {
             map["OrderId"] = self.orderId!
         }
+        if self.realLoginUserUid != nil {
+            map["RealLoginUserUid"] = self.realLoginUserUid!
+        }
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
@@ -60208,6 +60237,9 @@ public class ModifyDataCorrectExecSQLRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OrderId") {
             self.orderId = dict["OrderId"] as! Int64
+        }
+        if dict.keys.contains("RealLoginUserUid") {
+            self.realLoginUserUid = dict["RealLoginUserUid"] as! String
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
@@ -63352,6 +63384,8 @@ public class RestartDataCorrectSQLJobRequest : Tea.TeaModel {
 
     public var orderId: Int64?
 
+    public var realLoginUserUid: String?
+
     public var tid: Int64?
 
     public var type: String?
@@ -63376,6 +63410,9 @@ public class RestartDataCorrectSQLJobRequest : Tea.TeaModel {
         if self.orderId != nil {
             map["OrderId"] = self.orderId!
         }
+        if self.realLoginUserUid != nil {
+            map["RealLoginUserUid"] = self.realLoginUserUid!
+        }
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
@@ -63391,6 +63428,9 @@ public class RestartDataCorrectSQLJobRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OrderId") {
             self.orderId = dict["OrderId"] as! Int64
+        }
+        if dict.keys.contains("RealLoginUserUid") {
+            self.realLoginUserUid = dict["RealLoginUserUid"] as! String
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
@@ -63813,6 +63853,8 @@ public class ResumeTaskFlowInstanceResponse : Tea.TeaModel {
 public class RetryDataCorrectPreCheckRequest : Tea.TeaModel {
     public var orderId: Int64?
 
+    public var realLoginUserUid: String?
+
     public var tid: Int64?
 
     public override init() {
@@ -63832,6 +63874,9 @@ public class RetryDataCorrectPreCheckRequest : Tea.TeaModel {
         if self.orderId != nil {
             map["OrderId"] = self.orderId!
         }
+        if self.realLoginUserUid != nil {
+            map["RealLoginUserUid"] = self.realLoginUserUid!
+        }
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
@@ -63841,6 +63886,9 @@ public class RetryDataCorrectPreCheckRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("OrderId") {
             self.orderId = dict["OrderId"] as! Int64
+        }
+        if dict.keys.contains("RealLoginUserUid") {
+            self.realLoginUserUid = dict["RealLoginUserUid"] as! String
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
@@ -66208,6 +66256,8 @@ public class SetWorkflowExtraInfoResponse : Tea.TeaModel {
 public class SkipDataCorrectRowCheckRequest : Tea.TeaModel {
     public var orderId: Int64?
 
+    public var realLoginUserUid: String?
+
     public var reason: String?
 
     public var tid: Int64?
@@ -66229,6 +66279,9 @@ public class SkipDataCorrectRowCheckRequest : Tea.TeaModel {
         if self.orderId != nil {
             map["OrderId"] = self.orderId!
         }
+        if self.realLoginUserUid != nil {
+            map["RealLoginUserUid"] = self.realLoginUserUid!
+        }
         if self.reason != nil {
             map["Reason"] = self.reason!
         }
@@ -66241,6 +66294,9 @@ public class SkipDataCorrectRowCheckRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("OrderId") {
             self.orderId = dict["OrderId"] as! Int64
+        }
+        if dict.keys.contains("RealLoginUserUid") {
+            self.realLoginUserUid = dict["RealLoginUserUid"] as! String
         }
         if dict.keys.contains("Reason") {
             self.reason = dict["Reason"] as! String
