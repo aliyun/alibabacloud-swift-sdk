@@ -17712,6 +17712,8 @@ public class GetConversationDetailResponseBody : Tea.TeaModel {
 
         public var end: Int32?
 
+        public var finished: Bool?
+
         public var identity: String?
 
         public var role: String?
@@ -17738,6 +17740,9 @@ public class GetConversationDetailResponseBody : Tea.TeaModel {
             if self.end != nil {
                 map["End"] = self.end!
             }
+            if self.finished != nil {
+                map["Finished"] = self.finished!
+            }
             if self.identity != nil {
                 map["Identity"] = self.identity!
             }
@@ -17756,6 +17761,9 @@ public class GetConversationDetailResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("End") {
                 self.end = dict["End"] as! Int32
+            }
+            if dict.keys.contains("Finished") {
+                self.finished = dict["Finished"] as! Bool
             }
             if dict.keys.contains("Identity") {
                 self.identity = dict["Identity"] as! String
