@@ -8508,6 +8508,8 @@ public class CloneSentinelRuleFromAhasRequest : Tea.TeaModel {
 
     public var isAHASPublicRegion: Bool?
 
+    public var mseAppName: String?
+
     public var namespace: String?
 
     public override init() {
@@ -8536,6 +8538,9 @@ public class CloneSentinelRuleFromAhasRequest : Tea.TeaModel {
         if self.isAHASPublicRegion != nil {
             map["IsAHASPublicRegion"] = self.isAHASPublicRegion!
         }
+        if self.mseAppName != nil {
+            map["MseAppName"] = self.mseAppName!
+        }
         if self.namespace != nil {
             map["Namespace"] = self.namespace!
         }
@@ -8554,6 +8559,9 @@ public class CloneSentinelRuleFromAhasRequest : Tea.TeaModel {
         }
         if dict.keys.contains("IsAHASPublicRegion") {
             self.isAHASPublicRegion = dict["IsAHASPublicRegion"] as! Bool
+        }
+        if dict.keys.contains("MseAppName") {
+            self.mseAppName = dict["MseAppName"] as! String
         }
         if dict.keys.contains("Namespace") {
             self.namespace = dict["Namespace"] as! String
