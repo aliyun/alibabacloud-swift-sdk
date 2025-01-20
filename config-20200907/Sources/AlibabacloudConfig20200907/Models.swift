@@ -8597,6 +8597,8 @@ public class EvaluatePreConfigRulesRequest : Tea.TeaModel {
 
     public var resourceEvaluateItems: [EvaluatePreConfigRulesRequest.ResourceEvaluateItems]?
 
+    public var resourceTypeFormat: String?
+
     public override init() {
         super.init()
     }
@@ -8621,6 +8623,9 @@ public class EvaluatePreConfigRulesRequest : Tea.TeaModel {
             }
             map["ResourceEvaluateItems"] = tmp
         }
+        if self.resourceTypeFormat != nil {
+            map["ResourceTypeFormat"] = self.resourceTypeFormat!
+        }
         return map
     }
 
@@ -8639,6 +8644,9 @@ public class EvaluatePreConfigRulesRequest : Tea.TeaModel {
             }
             self.resourceEvaluateItems = tmp
         }
+        if dict.keys.contains("ResourceTypeFormat") {
+            self.resourceTypeFormat = dict["ResourceTypeFormat"] as! String
+        }
     }
 }
 
@@ -8646,6 +8654,8 @@ public class EvaluatePreConfigRulesShrinkRequest : Tea.TeaModel {
     public var enableManagedRules: Bool?
 
     public var resourceEvaluateItemsShrink: String?
+
+    public var resourceTypeFormat: String?
 
     public override init() {
         super.init()
@@ -8667,6 +8677,9 @@ public class EvaluatePreConfigRulesShrinkRequest : Tea.TeaModel {
         if self.resourceEvaluateItemsShrink != nil {
             map["ResourceEvaluateItems"] = self.resourceEvaluateItemsShrink!
         }
+        if self.resourceTypeFormat != nil {
+            map["ResourceTypeFormat"] = self.resourceTypeFormat!
+        }
         return map
     }
 
@@ -8676,6 +8689,9 @@ public class EvaluatePreConfigRulesShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceEvaluateItems") {
             self.resourceEvaluateItemsShrink = dict["ResourceEvaluateItems"] as! String
+        }
+        if dict.keys.contains("ResourceTypeFormat") {
+            self.resourceTypeFormat = dict["ResourceTypeFormat"] as! String
         }
     }
 }

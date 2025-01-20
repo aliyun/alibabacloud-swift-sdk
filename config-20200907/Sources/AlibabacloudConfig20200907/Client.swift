@@ -1555,6 +1555,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.resourceEvaluateItemsShrink)) {
             body["ResourceEvaluateItems"] = request.resourceEvaluateItemsShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.resourceTypeFormat)) {
+            body["ResourceTypeFormat"] = request.resourceTypeFormat ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
