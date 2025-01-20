@@ -63,6 +63,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchCreateAICoachTaskWithOptions(_ request: BatchCreateAICoachTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchCreateAICoachTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.requestId)) {
+            body["requestId"] = request.requestId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scriptRecordId)) {
+            body["scriptRecordId"] = request.scriptRecordId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.studentIds)) {
+            body["studentIds"] = request.studentIds ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchCreateAICoachTask",
+            "version": "2024-03-13",
+            "protocol": "HTTPS",
+            "pathname": "/yic/yic-console/openService/v1/aicoach/batchCreateTask",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchCreateAICoachTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchCreateAICoachTask(_ request: BatchCreateAICoachTaskRequest) async throws -> BatchCreateAICoachTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await batchCreateAICoachTaskWithOptions(request as! BatchCreateAICoachTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func batchGetProjectTaskWithOptions(_ tmpReq: BatchGetProjectTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchGetProjectTaskResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: BatchGetProjectTaskShrinkRequest = BatchGetProjectTaskShrinkRequest([:])
@@ -1019,6 +1058,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listAICoachScriptPageWithOptions(_ request: ListAICoachScriptPageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAICoachScriptPageResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["name"] = request.name ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["pageNumber"] = request.pageNumber!;
         }
@@ -1027,6 +1069,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["status"] = request.status!;
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["type"] = request.type!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -1560,6 +1605,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.resSpecType)) {
             body["resSpecType"] = request.resSpecType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.resolution)) {
+            body["resolution"] = request.resolution ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.scaleType)) {
             body["scaleType"] = request.scaleType ?? "";
         }
@@ -1740,8 +1788,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public func startAvatarSessionWithOptions(_ request: StartAvatarSessionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> StartAvatarSessionResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.channelToken)) {
+            body["channelToken"] = request.channelToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.customPushUrl)) {
             body["customPushUrl"] = request.customPushUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customUserId)) {
+            body["customUserId"] = request.customUserId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.projectId)) {
             body["projectId"] = request.projectId ?? "";

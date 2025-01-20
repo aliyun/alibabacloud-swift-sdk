@@ -346,6 +346,8 @@ public class IllustrationTaskCreateCmd : Tea.TeaModel {
 
     public var idempotentId: String?
 
+    public var imageUrls: [String]?
+
     public var nums: Int32?
 
     public var ossPaths: [String]?
@@ -378,6 +380,9 @@ public class IllustrationTaskCreateCmd : Tea.TeaModel {
         if self.idempotentId != nil {
             map["idempotentId"] = self.idempotentId!
         }
+        if self.imageUrls != nil {
+            map["imageUrls"] = self.imageUrls!
+        }
         if self.nums != nil {
             map["nums"] = self.nums!
         }
@@ -402,6 +407,9 @@ public class IllustrationTaskCreateCmd : Tea.TeaModel {
         }
         if dict.keys.contains("idempotentId") {
             self.idempotentId = dict["idempotentId"] as! String
+        }
+        if dict.keys.contains("imageUrls") {
+            self.imageUrls = dict["imageUrls"] as! [String]
         }
         if dict.keys.contains("nums") {
             self.nums = dict["nums"] as! Int32
@@ -786,7 +794,7 @@ public class TextTask : Tea.TeaModel {
 
     public var referenceTag: ReferenceTag?
 
-    public var relatedRagId: Int32?
+    public var relatedRagIds: [Int64]?
 
     public var style: String?
 
@@ -848,8 +856,8 @@ public class TextTask : Tea.TeaModel {
         if self.referenceTag != nil {
             map["referenceTag"] = self.referenceTag?.toMap()
         }
-        if self.relatedRagId != nil {
-            map["relatedRagId"] = self.relatedRagId!
+        if self.relatedRagIds != nil {
+            map["relatedRagIds"] = self.relatedRagIds!
         }
         if self.style != nil {
             map["style"] = self.style!
@@ -915,8 +923,8 @@ public class TextTask : Tea.TeaModel {
             model.fromMap(dict["referenceTag"] as! [String: Any])
             self.referenceTag = model
         }
-        if dict.keys.contains("relatedRagId") {
-            self.relatedRagId = dict["relatedRagId"] as! Int32
+        if dict.keys.contains("relatedRagIds") {
+            self.relatedRagIds = dict["relatedRagIds"] as! [Int64]
         }
         if dict.keys.contains("style") {
             self.style = dict["style"] as! String
@@ -1529,6 +1537,139 @@ public class AddTextFeedbackResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = AddTextFeedbackResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class BatchCreateAICoachTaskRequest : Tea.TeaModel {
+    public var requestId: String?
+
+    public var scriptRecordId: String?
+
+    public var studentIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.scriptRecordId != nil {
+            map["scriptRecordId"] = self.scriptRecordId!
+        }
+        if self.studentIds != nil {
+            map["studentIds"] = self.studentIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("scriptRecordId") {
+            self.scriptRecordId = dict["scriptRecordId"] as! String
+        }
+        if dict.keys.contains("studentIds") {
+            self.studentIds = dict["studentIds"] as! [String]
+        }
+    }
+}
+
+public class BatchCreateAICoachTaskResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var taskIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.taskIds != nil {
+            map["taskIds"] = self.taskIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("taskIds") {
+            self.taskIds = dict["taskIds"] as! [String]
+        }
+    }
+}
+
+public class BatchCreateAICoachTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BatchCreateAICoachTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = BatchCreateAICoachTaskResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -5376,11 +5517,15 @@ public class InteractTextResponse : Tea.TeaModel {
 }
 
 public class ListAICoachScriptPageRequest : Tea.TeaModel {
+    public var name: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
 
     public var status: Int32?
+
+    public var type: Int32?
 
     public override init() {
         super.init()
@@ -5396,6 +5541,9 @@ public class ListAICoachScriptPageRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.name != nil {
+            map["name"] = self.name!
+        }
         if self.pageNumber != nil {
             map["pageNumber"] = self.pageNumber!
         }
@@ -5405,10 +5553,16 @@ public class ListAICoachScriptPageRequest : Tea.TeaModel {
         if self.status != nil {
             map["status"] = self.status!
         }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("name") {
+            self.name = dict["name"] as! String
+        }
         if dict.keys.contains("pageNumber") {
             self.pageNumber = dict["pageNumber"] as! Int32
         }
@@ -5417,6 +5571,9 @@ public class ListAICoachScriptPageRequest : Tea.TeaModel {
         }
         if dict.keys.contains("status") {
             self.status = dict["status"] as! Int32
+        }
+        if dict.keys.contains("type") {
+            self.type = dict["type"] as! Int32
         }
     }
 }
@@ -5510,6 +5667,12 @@ public class ListAICoachScriptPageResponseBody : Tea.TeaModel {
 
             public var expressiveness: Int32?
 
+            public var expressivenessEnabled: Bool?
+
+            public var pointDeductionRule: Int32?
+
+            public var pointDeductionRuleEnabled: Bool?
+
             public var standard: Int32?
 
             public var standardEnabled: Bool?
@@ -5534,6 +5697,15 @@ public class ListAICoachScriptPageResponseBody : Tea.TeaModel {
                 if self.expressiveness != nil {
                     map["expressiveness"] = self.expressiveness!
                 }
+                if self.expressivenessEnabled != nil {
+                    map["expressivenessEnabled"] = self.expressivenessEnabled!
+                }
+                if self.pointDeductionRule != nil {
+                    map["pointDeductionRule"] = self.pointDeductionRule!
+                }
+                if self.pointDeductionRuleEnabled != nil {
+                    map["pointDeductionRuleEnabled"] = self.pointDeductionRuleEnabled!
+                }
                 if self.standard != nil {
                     map["standard"] = self.standard!
                 }
@@ -5550,6 +5722,15 @@ public class ListAICoachScriptPageResponseBody : Tea.TeaModel {
                 if dict.keys.contains("expressiveness") {
                     self.expressiveness = dict["expressiveness"] as! Int32
                 }
+                if dict.keys.contains("expressivenessEnabled") {
+                    self.expressivenessEnabled = dict["expressivenessEnabled"] as! Bool
+                }
+                if dict.keys.contains("pointDeductionRule") {
+                    self.pointDeductionRule = dict["pointDeductionRule"] as! Int32
+                }
+                if dict.keys.contains("pointDeductionRuleEnabled") {
+                    self.pointDeductionRuleEnabled = dict["pointDeductionRuleEnabled"] as! Bool
+                }
                 if dict.keys.contains("standard") {
                     self.standard = dict["standard"] as! Int32
                 }
@@ -5558,9 +5739,17 @@ public class ListAICoachScriptPageResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var appendQuestionFlag: String?
+
+        public var assessmentScope: String?
+
         public var completeStrategy: ListAICoachScriptPageResponseBody.List.CompleteStrategy?
 
         public var coverUrl: String?
+
+        public var dialogueTipFlag: Bool?
+
+        public var evaluateReportFlag: Bool?
 
         public var expressiveness: [String: String]?
 
@@ -5576,11 +5765,21 @@ public class ListAICoachScriptPageResponseBody : Tea.TeaModel {
 
         public var name: String?
 
+        public var orderAckFlag: Bool?
+
         public var sampleDialogueList: [ListAICoachScriptPageResponseBody.List.SampleDialogueList]?
 
         public var scriptRecordId: String?
 
+        public var sparringTipContent: String?
+
+        public var sparringTipTitle: String?
+
         public var status: Int32?
+
+        public var studentThinkTimeFlag: Bool?
+
+        public var type: Int32?
 
         public var weights: ListAICoachScriptPageResponseBody.List.Weights?
 
@@ -5600,11 +5799,23 @@ public class ListAICoachScriptPageResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.appendQuestionFlag != nil {
+                map["appendQuestionFlag"] = self.appendQuestionFlag!
+            }
+            if self.assessmentScope != nil {
+                map["assessmentScope"] = self.assessmentScope!
+            }
             if self.completeStrategy != nil {
                 map["completeStrategy"] = self.completeStrategy?.toMap()
             }
             if self.coverUrl != nil {
                 map["coverUrl"] = self.coverUrl!
+            }
+            if self.dialogueTipFlag != nil {
+                map["dialogueTipFlag"] = self.dialogueTipFlag!
+            }
+            if self.evaluateReportFlag != nil {
+                map["evaluateReportFlag"] = self.evaluateReportFlag!
             }
             if self.expressiveness != nil {
                 map["expressiveness"] = self.expressiveness!
@@ -5627,6 +5838,9 @@ public class ListAICoachScriptPageResponseBody : Tea.TeaModel {
             if self.name != nil {
                 map["name"] = self.name!
             }
+            if self.orderAckFlag != nil {
+                map["orderAckFlag"] = self.orderAckFlag!
+            }
             if self.sampleDialogueList != nil {
                 var tmp : [Any] = []
                 for k in self.sampleDialogueList! {
@@ -5637,8 +5851,20 @@ public class ListAICoachScriptPageResponseBody : Tea.TeaModel {
             if self.scriptRecordId != nil {
                 map["scriptRecordId"] = self.scriptRecordId!
             }
+            if self.sparringTipContent != nil {
+                map["sparringTipContent"] = self.sparringTipContent!
+            }
+            if self.sparringTipTitle != nil {
+                map["sparringTipTitle"] = self.sparringTipTitle!
+            }
             if self.status != nil {
                 map["status"] = self.status!
+            }
+            if self.studentThinkTimeFlag != nil {
+                map["studentThinkTimeFlag"] = self.studentThinkTimeFlag!
+            }
+            if self.type != nil {
+                map["type"] = self.type!
             }
             if self.weights != nil {
                 map["weights"] = self.weights?.toMap()
@@ -5647,6 +5873,12 @@ public class ListAICoachScriptPageResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("appendQuestionFlag") {
+                self.appendQuestionFlag = dict["appendQuestionFlag"] as! String
+            }
+            if dict.keys.contains("assessmentScope") {
+                self.assessmentScope = dict["assessmentScope"] as! String
+            }
             if dict.keys.contains("completeStrategy") {
                 var model = ListAICoachScriptPageResponseBody.List.CompleteStrategy()
                 model.fromMap(dict["completeStrategy"] as! [String: Any])
@@ -5654,6 +5886,12 @@ public class ListAICoachScriptPageResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("coverUrl") {
                 self.coverUrl = dict["coverUrl"] as! String
+            }
+            if dict.keys.contains("dialogueTipFlag") {
+                self.dialogueTipFlag = dict["dialogueTipFlag"] as! Bool
+            }
+            if dict.keys.contains("evaluateReportFlag") {
+                self.evaluateReportFlag = dict["evaluateReportFlag"] as! Bool
             }
             if dict.keys.contains("expressiveness") {
                 self.expressiveness = dict["expressiveness"] as! [String: String]
@@ -5676,6 +5914,9 @@ public class ListAICoachScriptPageResponseBody : Tea.TeaModel {
             if dict.keys.contains("name") {
                 self.name = dict["name"] as! String
             }
+            if dict.keys.contains("orderAckFlag") {
+                self.orderAckFlag = dict["orderAckFlag"] as! Bool
+            }
             if dict.keys.contains("sampleDialogueList") {
                 var tmp : [ListAICoachScriptPageResponseBody.List.SampleDialogueList] = []
                 for v in dict["sampleDialogueList"] as! [Any] {
@@ -5690,8 +5931,20 @@ public class ListAICoachScriptPageResponseBody : Tea.TeaModel {
             if dict.keys.contains("scriptRecordId") {
                 self.scriptRecordId = dict["scriptRecordId"] as! String
             }
+            if dict.keys.contains("sparringTipContent") {
+                self.sparringTipContent = dict["sparringTipContent"] as! String
+            }
+            if dict.keys.contains("sparringTipTitle") {
+                self.sparringTipTitle = dict["sparringTipTitle"] as! String
+            }
             if dict.keys.contains("status") {
                 self.status = dict["status"] as! Int32
+            }
+            if dict.keys.contains("studentThinkTimeFlag") {
+                self.studentThinkTimeFlag = dict["studentThinkTimeFlag"] as! Bool
+            }
+            if dict.keys.contains("type") {
+                self.type = dict["type"] as! Int32
             }
             if dict.keys.contains("weights") {
                 var model = ListAICoachScriptPageResponseBody.List.Weights()
@@ -8382,6 +8635,8 @@ public class SaveAvatarProjectRequest : Tea.TeaModel {
 
     public var resSpecType: String?
 
+    public var resolution: String?
+
     public var scaleType: String?
 
     public override init() {
@@ -8420,6 +8675,9 @@ public class SaveAvatarProjectRequest : Tea.TeaModel {
         if self.resSpecType != nil {
             map["resSpecType"] = self.resSpecType!
         }
+        if self.resolution != nil {
+            map["resolution"] = self.resolution!
+        }
         if self.scaleType != nil {
             map["scaleType"] = self.scaleType!
         }
@@ -8452,6 +8710,9 @@ public class SaveAvatarProjectRequest : Tea.TeaModel {
         }
         if dict.keys.contains("resSpecType") {
             self.resSpecType = dict["resSpecType"] as! String
+        }
+        if dict.keys.contains("resolution") {
+            self.resolution = dict["resolution"] as! String
         }
         if dict.keys.contains("scaleType") {
             self.scaleType = dict["scaleType"] as! String
@@ -9323,7 +9584,11 @@ public class SendTextMsgResponse : Tea.TeaModel {
 }
 
 public class StartAvatarSessionRequest : Tea.TeaModel {
+    public var channelToken: String?
+
     public var customPushUrl: String?
+
+    public var customUserId: String?
 
     public var projectId: String?
 
@@ -9343,8 +9608,14 @@ public class StartAvatarSessionRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.channelToken != nil {
+            map["channelToken"] = self.channelToken!
+        }
         if self.customPushUrl != nil {
             map["customPushUrl"] = self.customPushUrl!
+        }
+        if self.customUserId != nil {
+            map["customUserId"] = self.customUserId!
         }
         if self.projectId != nil {
             map["projectId"] = self.projectId!
@@ -9356,8 +9627,14 @@ public class StartAvatarSessionRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("channelToken") {
+            self.channelToken = dict["channelToken"] as! String
+        }
         if dict.keys.contains("customPushUrl") {
             self.customPushUrl = dict["customPushUrl"] as! String
+        }
+        if dict.keys.contains("customUserId") {
+            self.customUserId = dict["customUserId"] as! String
         }
         if dict.keys.contains("projectId") {
             self.projectId = dict["projectId"] as! String
