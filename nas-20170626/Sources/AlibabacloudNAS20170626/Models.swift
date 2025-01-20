@@ -12896,6 +12896,10 @@ public class DescribeFilesetsRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var orderByField: String?
+
+    public var sortOrder: String?
+
     public override init() {
         super.init()
     }
@@ -12926,6 +12930,12 @@ public class DescribeFilesetsRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.orderByField != nil {
+            map["OrderByField"] = self.orderByField!
+        }
+        if self.sortOrder != nil {
+            map["SortOrder"] = self.sortOrder!
+        }
         return map
     }
 
@@ -12949,6 +12959,12 @@ public class DescribeFilesetsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("NextToken") {
             self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("OrderByField") {
+            self.orderByField = dict["OrderByField"] as! String
+        }
+        if dict.keys.contains("SortOrder") {
+            self.sortOrder = dict["SortOrder"] as! String
         }
     }
 }
@@ -15792,6 +15808,8 @@ public class DescribeSnapshotsRequest : Tea.TeaModel {
 public class DescribeSnapshotsResponseBody : Tea.TeaModel {
     public class Snapshots : Tea.TeaModel {
         public class Snapshot : Tea.TeaModel {
+            public var completedTime: String?
+
             public var createTime: String?
 
             public var description_: String?
@@ -15834,6 +15852,9 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.completedTime != nil {
+                    map["CompletedTime"] = self.completedTime!
+                }
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
                 }
@@ -15880,6 +15901,9 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CompletedTime") {
+                    self.completedTime = dict["CompletedTime"] as! String
+                }
                 if dict.keys.contains("CreateTime") {
                     self.createTime = dict["CreateTime"] as! String
                 }
