@@ -2701,6 +2701,8 @@ public class JobSettings : Tea.TeaModel {
 
     public var driver: String?
 
+    public var enableCPUAffinity: Bool?
+
     public var enableErrorMonitoringInAIMaster: Bool?
 
     public var enableOssAppend: Bool?
@@ -2753,6 +2755,9 @@ public class JobSettings : Tea.TeaModel {
         }
         if self.driver != nil {
             map["Driver"] = self.driver!
+        }
+        if self.enableCPUAffinity != nil {
+            map["EnableCPUAffinity"] = self.enableCPUAffinity!
         }
         if self.enableErrorMonitoringInAIMaster != nil {
             map["EnableErrorMonitoringInAIMaster"] = self.enableErrorMonitoringInAIMaster!
@@ -2808,6 +2813,9 @@ public class JobSettings : Tea.TeaModel {
         }
         if dict.keys.contains("Driver") {
             self.driver = dict["Driver"] as! String
+        }
+        if dict.keys.contains("EnableCPUAffinity") {
+            self.enableCPUAffinity = dict["EnableCPUAffinity"] as! Bool
         }
         if dict.keys.contains("EnableErrorMonitoringInAIMaster") {
             self.enableErrorMonitoringInAIMaster = dict["EnableErrorMonitoringInAIMaster"] as! Bool
