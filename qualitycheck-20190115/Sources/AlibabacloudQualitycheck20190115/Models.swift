@@ -7884,6 +7884,10 @@ public class GetAsrVocabResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var asrVersion: Int32?
+
+        public var modelCustomizationId: String?
+
         public var name: String?
 
         public var words: GetAsrVocabResponseBody.Data.Words?
@@ -7903,6 +7907,12 @@ public class GetAsrVocabResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.asrVersion != nil {
+                map["AsrVersion"] = self.asrVersion!
+            }
+            if self.modelCustomizationId != nil {
+                map["ModelCustomizationId"] = self.modelCustomizationId!
+            }
             if self.name != nil {
                 map["Name"] = self.name!
             }
@@ -7913,6 +7923,12 @@ public class GetAsrVocabResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AsrVersion") {
+                self.asrVersion = dict["AsrVersion"] as! Int32
+            }
+            if dict.keys.contains("ModelCustomizationId") {
+                self.modelCustomizationId = dict["ModelCustomizationId"] as! String
+            }
             if dict.keys.contains("Name") {
                 self.name = dict["Name"] as! String
             }
@@ -8315,6 +8331,8 @@ public class GetCustomizationConfigListRequest : Tea.TeaModel {
 public class GetCustomizationConfigListResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class ModelCustomizationDataSetPo : Tea.TeaModel {
+            public var asrVersion: Int32?
+
             public var createTime: String?
 
             public var modeCustomizationId: String?
@@ -8341,6 +8359,9 @@ public class GetCustomizationConfigListResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.asrVersion != nil {
+                    map["AsrVersion"] = self.asrVersion!
+                }
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
                 }
@@ -8363,6 +8384,9 @@ public class GetCustomizationConfigListResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AsrVersion") {
+                    self.asrVersion = dict["AsrVersion"] as! Int32
+                }
                 if dict.keys.contains("CreateTime") {
                     self.createTime = dict["CreateTime"] as! String
                 }
@@ -19618,9 +19642,13 @@ public class ListAsrVocabRequest : Tea.TeaModel {
 public class ListAsrVocabResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class AsrVocab : Tea.TeaModel {
+            public var asrVersion: Int32?
+
             public var createTime: String?
 
             public var id: String?
+
+            public var modelCustomizationId: String?
 
             public var name: String?
 
@@ -19642,11 +19670,17 @@ public class ListAsrVocabResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.asrVersion != nil {
+                    map["AsrVersion"] = self.asrVersion!
+                }
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
                 }
                 if self.id != nil {
                     map["Id"] = self.id!
+                }
+                if self.modelCustomizationId != nil {
+                    map["ModelCustomizationId"] = self.modelCustomizationId!
                 }
                 if self.name != nil {
                     map["Name"] = self.name!
@@ -19661,11 +19695,17 @@ public class ListAsrVocabResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AsrVersion") {
+                    self.asrVersion = dict["AsrVersion"] as! Int32
+                }
                 if dict.keys.contains("CreateTime") {
                     self.createTime = dict["CreateTime"] as! String
                 }
                 if dict.keys.contains("Id") {
                     self.id = dict["Id"] as! String
+                }
+                if dict.keys.contains("ModelCustomizationId") {
+                    self.modelCustomizationId = dict["ModelCustomizationId"] as! String
                 }
                 if dict.keys.contains("Name") {
                     self.name = dict["Name"] as! String
@@ -22401,6 +22441,8 @@ public class ListSchemeTaskConfigResponseBody : Tea.TeaModel {
             }
             public var asrTaskPriority: Int32?
 
+            public var asrVersion: Int32?
+
             public var assignType: Int32?
 
             public var createTime: String?
@@ -22470,6 +22512,9 @@ public class ListSchemeTaskConfigResponseBody : Tea.TeaModel {
                 var map = super.toMap()
                 if self.asrTaskPriority != nil {
                     map["AsrTaskPriority"] = self.asrTaskPriority!
+                }
+                if self.asrVersion != nil {
+                    map["AsrVersion"] = self.asrVersion!
                 }
                 if self.assignType != nil {
                     map["AssignType"] = self.assignType!
@@ -22552,6 +22597,9 @@ public class ListSchemeTaskConfigResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("AsrTaskPriority") {
                     self.asrTaskPriority = dict["AsrTaskPriority"] as! Int32
+                }
+                if dict.keys.contains("AsrVersion") {
+                    self.asrVersion = dict["AsrVersion"] as! Int32
                 }
                 if dict.keys.contains("AssignType") {
                     self.assignType = dict["AssignType"] as! Int32
@@ -27501,9 +27549,88 @@ public class SyncQualityCheckResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class RuleInfoBase : Tea.TeaModel {
+                public var comments: String?
+
+                public var level: Int32?
+
+                public var ruleCategoryName: String?
+
+                public var scoreNum: Int32?
+
+                public var scoreNumType: Int32?
+
+                public var scoreType: Int32?
+
+                public var type: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.comments != nil {
+                        map["Comments"] = self.comments!
+                    }
+                    if self.level != nil {
+                        map["Level"] = self.level!
+                    }
+                    if self.ruleCategoryName != nil {
+                        map["RuleCategoryName"] = self.ruleCategoryName!
+                    }
+                    if self.scoreNum != nil {
+                        map["ScoreNum"] = self.scoreNum!
+                    }
+                    if self.scoreNumType != nil {
+                        map["ScoreNumType"] = self.scoreNumType!
+                    }
+                    if self.scoreType != nil {
+                        map["ScoreType"] = self.scoreType!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Comments") {
+                        self.comments = dict["Comments"] as! String
+                    }
+                    if dict.keys.contains("Level") {
+                        self.level = dict["Level"] as! Int32
+                    }
+                    if dict.keys.contains("RuleCategoryName") {
+                        self.ruleCategoryName = dict["RuleCategoryName"] as! String
+                    }
+                    if dict.keys.contains("ScoreNum") {
+                        self.scoreNum = dict["ScoreNum"] as! Int32
+                    }
+                    if dict.keys.contains("ScoreNumType") {
+                        self.scoreNumType = dict["ScoreNumType"] as! Int32
+                    }
+                    if dict.keys.contains("ScoreType") {
+                        self.scoreType = dict["ScoreType"] as! Int32
+                    }
+                    if dict.keys.contains("Type") {
+                        self.type = dict["Type"] as! Int32
+                    }
+                }
+            }
             public var hit: [SyncQualityCheckResponseBody.Data.Rules.Hit]?
 
             public var rid: String?
+
+            public var ruleInfoBase: SyncQualityCheckResponseBody.Data.Rules.RuleInfoBase?
 
             public var ruleName: String?
 
@@ -27517,6 +27644,7 @@ public class SyncQualityCheckResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.ruleInfoBase?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -27530,6 +27658,9 @@ public class SyncQualityCheckResponseBody : Tea.TeaModel {
                 }
                 if self.rid != nil {
                     map["Rid"] = self.rid!
+                }
+                if self.ruleInfoBase != nil {
+                    map["RuleInfoBase"] = self.ruleInfoBase?.toMap()
                 }
                 if self.ruleName != nil {
                     map["RuleName"] = self.ruleName!
@@ -27551,6 +27682,11 @@ public class SyncQualityCheckResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Rid") {
                     self.rid = dict["Rid"] as! String
+                }
+                if dict.keys.contains("RuleInfoBase") {
+                    var model = SyncQualityCheckResponseBody.Data.Rules.RuleInfoBase()
+                    model.fromMap(dict["RuleInfoBase"] as! [String: Any])
+                    self.ruleInfoBase = model
                 }
                 if dict.keys.contains("RuleName") {
                     self.ruleName = dict["RuleName"] as! String
