@@ -4507,6 +4507,8 @@ public class CreateVirtualResourceRequest : Tea.TeaModel {
             }
         }
     }
+    public var disableSpotProtectionPeriod: Bool?
+
     public var resources: [CreateVirtualResourceRequest.Resources]?
 
     public var virtualResourceName: String?
@@ -4525,6 +4527,9 @@ public class CreateVirtualResourceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.disableSpotProtectionPeriod != nil {
+            map["DisableSpotProtectionPeriod"] = self.disableSpotProtectionPeriod!
+        }
         if self.resources != nil {
             var tmp : [Any] = []
             for k in self.resources! {
@@ -4539,6 +4544,9 @@ public class CreateVirtualResourceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DisableSpotProtectionPeriod") {
+            self.disableSpotProtectionPeriod = dict["DisableSpotProtectionPeriod"] as! Bool
+        }
         if dict.keys.contains("Resources") {
             var tmp : [CreateVirtualResourceRequest.Resources] = []
             for v in dict["Resources"] as! [Any] {
@@ -9568,9 +9576,13 @@ public class DescribeVirtualResourceResponseBody : Tea.TeaModel {
     }
     public var createTime: String?
 
+    public var disableSpotProtectionPeriod: Bool?
+
     public var requestId: String?
 
     public var resources: [DescribeVirtualResourceResponseBody.Resources]?
+
+    public var serviceCount: Int32?
 
     public var updateTime: String?
 
@@ -9595,6 +9607,9 @@ public class DescribeVirtualResourceResponseBody : Tea.TeaModel {
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
         }
+        if self.disableSpotProtectionPeriod != nil {
+            map["DisableSpotProtectionPeriod"] = self.disableSpotProtectionPeriod!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -9604,6 +9619,9 @@ public class DescribeVirtualResourceResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Resources"] = tmp
+        }
+        if self.serviceCount != nil {
+            map["ServiceCount"] = self.serviceCount!
         }
         if self.updateTime != nil {
             map["UpdateTime"] = self.updateTime!
@@ -9621,6 +9639,9 @@ public class DescribeVirtualResourceResponseBody : Tea.TeaModel {
         if dict.keys.contains("CreateTime") {
             self.createTime = dict["CreateTime"] as! String
         }
+        if dict.keys.contains("DisableSpotProtectionPeriod") {
+            self.disableSpotProtectionPeriod = dict["DisableSpotProtectionPeriod"] as! Bool
+        }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
@@ -9634,6 +9655,9 @@ public class DescribeVirtualResourceResponseBody : Tea.TeaModel {
                 tmp.append(model)
             }
             self.resources = tmp
+        }
+        if dict.keys.contains("ServiceCount") {
+            self.serviceCount = dict["ServiceCount"] as! Int32
         }
         if dict.keys.contains("UpdateTime") {
             self.updateTime = dict["UpdateTime"] as! String
@@ -11721,6 +11745,8 @@ public class ListResourceInstanceWorkerRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var workerName: String?
+
     public override init() {
         super.init()
     }
@@ -11741,6 +11767,9 @@ public class ListResourceInstanceWorkerRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.workerName != nil {
+            map["WorkerName"] = self.workerName!
+        }
         return map
     }
 
@@ -11750,6 +11779,9 @@ public class ListResourceInstanceWorkerRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("WorkerName") {
+            self.workerName = dict["WorkerName"] as! String
         }
     }
 }
@@ -12264,6 +12296,8 @@ public class ListResourceServicesResponse : Tea.TeaModel {
 }
 
 public class ListResourcesRequest : Tea.TeaModel {
+    public var order: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -12272,7 +12306,11 @@ public class ListResourcesRequest : Tea.TeaModel {
 
     public var resourceName: String?
 
+    public var resourceStatus: String?
+
     public var resourceType: String?
+
+    public var sort: String?
 
     public override init() {
         super.init()
@@ -12288,6 +12326,9 @@ public class ListResourcesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.order != nil {
+            map["Order"] = self.order!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -12300,13 +12341,22 @@ public class ListResourcesRequest : Tea.TeaModel {
         if self.resourceName != nil {
             map["ResourceName"] = self.resourceName!
         }
+        if self.resourceStatus != nil {
+            map["ResourceStatus"] = self.resourceStatus!
+        }
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
+        }
+        if self.sort != nil {
+            map["Sort"] = self.sort!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Order") {
+            self.order = dict["Order"] as! String
+        }
         if dict.keys.contains("PageNumber") {
             self.pageNumber = dict["PageNumber"] as! Int32
         }
@@ -12319,8 +12369,14 @@ public class ListResourcesRequest : Tea.TeaModel {
         if dict.keys.contains("ResourceName") {
             self.resourceName = dict["ResourceName"] as! String
         }
+        if dict.keys.contains("ResourceStatus") {
+            self.resourceStatus = dict["ResourceStatus"] as! String
+        }
         if dict.keys.contains("ResourceType") {
             self.resourceType = dict["ResourceType"] as! String
+        }
+        if dict.keys.contains("Sort") {
+            self.sort = dict["Sort"] as! String
         }
     }
 }
@@ -13667,6 +13723,8 @@ public class ListVirtualResourceResponseBody : Tea.TeaModel {
     public class VirtualResources : Tea.TeaModel {
         public var createTime: String?
 
+        public var serviceCount: Int32?
+
         public var updateTime: String?
 
         public var virtualResourceId: String?
@@ -13690,6 +13748,9 @@ public class ListVirtualResourceResponseBody : Tea.TeaModel {
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
+            if self.serviceCount != nil {
+                map["ServiceCount"] = self.serviceCount!
+            }
             if self.updateTime != nil {
                 map["UpdateTime"] = self.updateTime!
             }
@@ -13705,6 +13766,9 @@ public class ListVirtualResourceResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("CreateTime") {
                 self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("ServiceCount") {
+                self.serviceCount = dict["ServiceCount"] as! Int32
             }
             if dict.keys.contains("UpdateTime") {
                 self.updateTime = dict["UpdateTime"] as! String
@@ -16765,6 +16829,8 @@ public class UpdateVirtualResourceRequest : Tea.TeaModel {
             }
         }
     }
+    public var disableSpotProtectionPeriod: Bool?
+
     public var resources: [UpdateVirtualResourceRequest.Resources]?
 
     public var virtualResourceName: String?
@@ -16783,6 +16849,9 @@ public class UpdateVirtualResourceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.disableSpotProtectionPeriod != nil {
+            map["DisableSpotProtectionPeriod"] = self.disableSpotProtectionPeriod!
+        }
         if self.resources != nil {
             var tmp : [Any] = []
             for k in self.resources! {
@@ -16797,6 +16866,9 @@ public class UpdateVirtualResourceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DisableSpotProtectionPeriod") {
+            self.disableSpotProtectionPeriod = dict["DisableSpotProtectionPeriod"] as! Bool
+        }
         if dict.keys.contains("Resources") {
             var tmp : [UpdateVirtualResourceRequest.Resources] = []
             for v in dict["Resources"] as! [Any] {
