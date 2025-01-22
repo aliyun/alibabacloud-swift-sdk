@@ -12522,6 +12522,549 @@ public class RecognizeIntentionResponse : Tea.TeaModel {
     }
 }
 
+public class RunAgentRequest : Tea.TeaModel {
+    public var botId: String?
+
+    public var modelId: String?
+
+    public var stream: Bool?
+
+    public var threadId: String?
+
+    public var useDraft: Bool?
+
+    public var userContent: String?
+
+    public var versionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.botId != nil {
+            map["botId"] = self.botId!
+        }
+        if self.modelId != nil {
+            map["modelId"] = self.modelId!
+        }
+        if self.stream != nil {
+            map["stream"] = self.stream!
+        }
+        if self.threadId != nil {
+            map["threadId"] = self.threadId!
+        }
+        if self.useDraft != nil {
+            map["useDraft"] = self.useDraft!
+        }
+        if self.userContent != nil {
+            map["userContent"] = self.userContent!
+        }
+        if self.versionId != nil {
+            map["versionId"] = self.versionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("botId") {
+            self.botId = dict["botId"] as! String
+        }
+        if dict.keys.contains("modelId") {
+            self.modelId = dict["modelId"] as! String
+        }
+        if dict.keys.contains("stream") {
+            self.stream = dict["stream"] as! Bool
+        }
+        if dict.keys.contains("threadId") {
+            self.threadId = dict["threadId"] as! String
+        }
+        if dict.keys.contains("useDraft") {
+            self.useDraft = dict["useDraft"] as! Bool
+        }
+        if dict.keys.contains("userContent") {
+            self.userContent = dict["userContent"] as! String
+        }
+        if dict.keys.contains("versionId") {
+            self.versionId = dict["versionId"] as! String
+        }
+    }
+}
+
+public class RunAgentResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class FunctionCallResponses : Tea.TeaModel {
+            public var displayName: String?
+
+            public var endTime: String?
+
+            public var functionArgs: String?
+
+            public var functionName: String?
+
+            public var result: String?
+
+            public var startTime: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.displayName != nil {
+                    map["displayName"] = self.displayName!
+                }
+                if self.endTime != nil {
+                    map["endTime"] = self.endTime!
+                }
+                if self.functionArgs != nil {
+                    map["functionArgs"] = self.functionArgs!
+                }
+                if self.functionName != nil {
+                    map["functionName"] = self.functionName!
+                }
+                if self.result != nil {
+                    map["result"] = self.result!
+                }
+                if self.startTime != nil {
+                    map["startTime"] = self.startTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("displayName") {
+                    self.displayName = dict["displayName"] as! String
+                }
+                if dict.keys.contains("endTime") {
+                    self.endTime = dict["endTime"] as! String
+                }
+                if dict.keys.contains("functionArgs") {
+                    self.functionArgs = dict["functionArgs"] as! String
+                }
+                if dict.keys.contains("functionName") {
+                    self.functionName = dict["functionName"] as! String
+                }
+                if dict.keys.contains("result") {
+                    self.result = dict["result"] as! String
+                }
+                if dict.keys.contains("startTime") {
+                    self.startTime = dict["startTime"] as! String
+                }
+            }
+        }
+        public class Response : Tea.TeaModel {
+            public class Choices : Tea.TeaModel {
+                public class Message : Tea.TeaModel {
+                    public var content: String?
+
+                    public var role: String?
+
+                    public var roleDisplayName: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.content != nil {
+                            map["content"] = self.content!
+                        }
+                        if self.role != nil {
+                            map["role"] = self.role!
+                        }
+                        if self.roleDisplayName != nil {
+                            map["roleDisplayName"] = self.roleDisplayName!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("content") {
+                            self.content = dict["content"] as! String
+                        }
+                        if dict.keys.contains("role") {
+                            self.role = dict["role"] as! String
+                        }
+                        if dict.keys.contains("roleDisplayName") {
+                            self.roleDisplayName = dict["roleDisplayName"] as! String
+                        }
+                    }
+                }
+                public var finishReason: String?
+
+                public var index: Int32?
+
+                public var message: RunAgentResponseBody.Data.Response.Choices.Message?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.message?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.finishReason != nil {
+                        map["finishReason"] = self.finishReason!
+                    }
+                    if self.index != nil {
+                        map["index"] = self.index!
+                    }
+                    if self.message != nil {
+                        map["message"] = self.message?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("finishReason") {
+                        self.finishReason = dict["finishReason"] as! String
+                    }
+                    if dict.keys.contains("index") {
+                        self.index = dict["index"] as! Int32
+                    }
+                    if dict.keys.contains("message") {
+                        var model = RunAgentResponseBody.Data.Response.Choices.Message()
+                        model.fromMap(dict["message"] as! [String: Any])
+                        self.message = model
+                    }
+                }
+            }
+            public var choices: [RunAgentResponseBody.Data.Response.Choices]?
+
+            public var created: Int64?
+
+            public var id: String?
+
+            public var modelId: String?
+
+            public var time: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.choices != nil {
+                    var tmp : [Any] = []
+                    for k in self.choices! {
+                        tmp.append(k.toMap())
+                    }
+                    map["choices"] = tmp
+                }
+                if self.created != nil {
+                    map["created"] = self.created!
+                }
+                if self.id != nil {
+                    map["id"] = self.id!
+                }
+                if self.modelId != nil {
+                    map["modelId"] = self.modelId!
+                }
+                if self.time != nil {
+                    map["time"] = self.time!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("choices") {
+                    var tmp : [RunAgentResponseBody.Data.Response.Choices] = []
+                    for v in dict["choices"] as! [Any] {
+                        var model = RunAgentResponseBody.Data.Response.Choices()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.choices = tmp
+                }
+                if dict.keys.contains("created") {
+                    self.created = dict["created"] as! Int64
+                }
+                if dict.keys.contains("id") {
+                    self.id = dict["id"] as! String
+                }
+                if dict.keys.contains("modelId") {
+                    self.modelId = dict["modelId"] as! String
+                }
+                if dict.keys.contains("time") {
+                    self.time = dict["time"] as! String
+                }
+            }
+        }
+        public var functionCallResponses: [RunAgentResponseBody.Data.FunctionCallResponses]?
+
+        public var inputTokens: Int32?
+
+        public var outputTokens: Int32?
+
+        public var response: RunAgentResponseBody.Data.Response?
+
+        public var threadId: String?
+
+        public var traceId: String?
+
+        public var versionId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.response?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.functionCallResponses != nil {
+                var tmp : [Any] = []
+                for k in self.functionCallResponses! {
+                    tmp.append(k.toMap())
+                }
+                map["functionCallResponses"] = tmp
+            }
+            if self.inputTokens != nil {
+                map["inputTokens"] = self.inputTokens!
+            }
+            if self.outputTokens != nil {
+                map["outputTokens"] = self.outputTokens!
+            }
+            if self.response != nil {
+                map["response"] = self.response?.toMap()
+            }
+            if self.threadId != nil {
+                map["threadId"] = self.threadId!
+            }
+            if self.traceId != nil {
+                map["traceId"] = self.traceId!
+            }
+            if self.versionId != nil {
+                map["versionId"] = self.versionId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("functionCallResponses") {
+                var tmp : [RunAgentResponseBody.Data.FunctionCallResponses] = []
+                for v in dict["functionCallResponses"] as! [Any] {
+                    var model = RunAgentResponseBody.Data.FunctionCallResponses()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.functionCallResponses = tmp
+            }
+            if dict.keys.contains("inputTokens") {
+                self.inputTokens = dict["inputTokens"] as! Int32
+            }
+            if dict.keys.contains("outputTokens") {
+                self.outputTokens = dict["outputTokens"] as! Int32
+            }
+            if dict.keys.contains("response") {
+                var model = RunAgentResponseBody.Data.Response()
+                model.fromMap(dict["response"] as! [String: Any])
+                self.response = model
+            }
+            if dict.keys.contains("threadId") {
+                self.threadId = dict["threadId"] as! String
+            }
+            if dict.keys.contains("traceId") {
+                self.traceId = dict["traceId"] as! String
+            }
+            if dict.keys.contains("versionId") {
+                self.versionId = dict["versionId"] as! String
+            }
+        }
+    }
+    public var cost: Int64?
+
+    public var data: RunAgentResponseBody.Data?
+
+    public var dataType: String?
+
+    public var errCode: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var time: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cost != nil {
+            map["cost"] = self.cost!
+        }
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.dataType != nil {
+            map["dataType"] = self.dataType!
+        }
+        if self.errCode != nil {
+            map["errCode"] = self.errCode!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.time != nil {
+            map["time"] = self.time!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("cost") {
+            self.cost = dict["cost"] as! Int64
+        }
+        if dict.keys.contains("data") {
+            var model = RunAgentResponseBody.Data()
+            model.fromMap(dict["data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("dataType") {
+            self.dataType = dict["dataType"] as! String
+        }
+        if dict.keys.contains("errCode") {
+            self.errCode = dict["errCode"] as! String
+        }
+        if dict.keys.contains("message") {
+            self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+        if dict.keys.contains("time") {
+            self.time = dict["time"] as! String
+        }
+    }
+}
+
+public class RunAgentResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RunAgentResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = RunAgentResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class RunChatResultGenerationRequest : Tea.TeaModel {
     public class Messages : Tea.TeaModel {
         public var content: String?
