@@ -2041,6 +2041,8 @@ public class CreatePrivateAccessPolicyRequest : Tea.TeaModel {
 
     public var tagIds: [String]?
 
+    public var triggerTemplateId: String?
+
     public var userGroupIds: [String]?
 
     public var userGroupMode: String?
@@ -2096,6 +2098,9 @@ public class CreatePrivateAccessPolicyRequest : Tea.TeaModel {
         if self.tagIds != nil {
             map["TagIds"] = self.tagIds!
         }
+        if self.triggerTemplateId != nil {
+            map["TriggerTemplateId"] = self.triggerTemplateId!
+        }
         if self.userGroupIds != nil {
             map["UserGroupIds"] = self.userGroupIds!
         }
@@ -2146,6 +2151,9 @@ public class CreatePrivateAccessPolicyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TagIds") {
             self.tagIds = dict["TagIds"] as! [String]
+        }
+        if dict.keys.contains("TriggerTemplateId") {
+            self.triggerTemplateId = dict["TriggerTemplateId"] as! String
         }
         if dict.keys.contains("UserGroupIds") {
             self.userGroupIds = dict["UserGroupIds"] as! [String]
@@ -9094,6 +9102,8 @@ public class GetPrivateAccessPolicyResponseBody : Tea.TeaModel {
 
         public var tagIds: [String]?
 
+        public var triggerTemplateId: String?
+
         public var userGroupIds: [String]?
 
         public var userGroupMode: String?
@@ -9155,6 +9165,9 @@ public class GetPrivateAccessPolicyResponseBody : Tea.TeaModel {
             if self.tagIds != nil {
                 map["TagIds"] = self.tagIds!
             }
+            if self.triggerTemplateId != nil {
+                map["TriggerTemplateId"] = self.triggerTemplateId!
+            }
             if self.userGroupIds != nil {
                 map["UserGroupIds"] = self.userGroupIds!
             }
@@ -9211,6 +9224,9 @@ public class GetPrivateAccessPolicyResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("TagIds") {
                 self.tagIds = dict["TagIds"] as! [String]
+            }
+            if dict.keys.contains("TriggerTemplateId") {
+                self.triggerTemplateId = dict["TriggerTemplateId"] as! String
             }
             if dict.keys.contains("UserGroupIds") {
                 self.userGroupIds = dict["UserGroupIds"] as! [String]
@@ -9735,6 +9751,8 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
 
         public var dlpStatus: String?
 
+        public var edrStatus: String?
+
         public var historyUsers: [GetUserDeviceResponseBody.Device.HistoryUsers]?
 
         public var hostname: String?
@@ -9815,6 +9833,9 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
             }
             if self.dlpStatus != nil {
                 map["DlpStatus"] = self.dlpStatus!
+            }
+            if self.edrStatus != nil {
+                map["EdrStatus"] = self.edrStatus!
             }
             if self.historyUsers != nil {
                 var tmp : [Any] = []
@@ -9908,6 +9929,9 @@ public class GetUserDeviceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("DlpStatus") {
                 self.dlpStatus = dict["DlpStatus"] as! String
+            }
+            if dict.keys.contains("EdrStatus") {
+                self.edrStatus = dict["EdrStatus"] as! String
             }
             if dict.keys.contains("HistoryUsers") {
                 var tmp : [GetUserDeviceResponseBody.Device.HistoryUsers] = []
@@ -17676,6 +17700,8 @@ public class ListPrivateAccessPolicesResponseBody : Tea.TeaModel {
 
         public var tagIds: [String]?
 
+        public var triggerTemplateId: String?
+
         public var userGroupIds: [String]?
 
         public var userGroupMode: String?
@@ -17737,6 +17763,9 @@ public class ListPrivateAccessPolicesResponseBody : Tea.TeaModel {
             if self.tagIds != nil {
                 map["TagIds"] = self.tagIds!
             }
+            if self.triggerTemplateId != nil {
+                map["TriggerTemplateId"] = self.triggerTemplateId!
+            }
             if self.userGroupIds != nil {
                 map["UserGroupIds"] = self.userGroupIds!
             }
@@ -17793,6 +17822,9 @@ public class ListPrivateAccessPolicesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("TagIds") {
                 self.tagIds = dict["TagIds"] as! [String]
+            }
+            if dict.keys.contains("TriggerTemplateId") {
+                self.triggerTemplateId = dict["TriggerTemplateId"] as! String
             }
             if dict.keys.contains("UserGroupIds") {
                 self.userGroupIds = dict["UserGroupIds"] as! [String]
@@ -20476,6 +20508,8 @@ public class ListUserApplicationsResponse : Tea.TeaModel {
 public class ListUserDevicesRequest : Tea.TeaModel {
     public var appStatuses: [String]?
 
+    public var appVersions: [String]?
+
     public var currentPage: Int64?
 
     public var department: String?
@@ -20528,6 +20562,9 @@ public class ListUserDevicesRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.appStatuses != nil {
             map["AppStatuses"] = self.appStatuses!
+        }
+        if self.appVersions != nil {
+            map["AppVersions"] = self.appVersions!
         }
         if self.currentPage != nil {
             map["CurrentPage"] = self.currentPage!
@@ -20589,6 +20626,9 @@ public class ListUserDevicesRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AppStatuses") {
             self.appStatuses = dict["AppStatuses"] as! [String]
+        }
+        if dict.keys.contains("AppVersions") {
+            self.appVersions = dict["AppVersions"] as! [String]
         }
         if dict.keys.contains("CurrentPage") {
             self.currentPage = dict["CurrentPage"] as! Int64
@@ -20712,6 +20752,8 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
 
         public var dlpStatus: String?
 
+        public var edrStatus: String?
+
         public var hostname: String?
 
         public var iaStatus: String?
@@ -20790,6 +20832,9 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
             }
             if self.dlpStatus != nil {
                 map["DlpStatus"] = self.dlpStatus!
+            }
+            if self.edrStatus != nil {
+                map["EdrStatus"] = self.edrStatus!
             }
             if self.hostname != nil {
                 map["Hostname"] = self.hostname!
@@ -20876,6 +20921,9 @@ public class ListUserDevicesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("DlpStatus") {
                 self.dlpStatus = dict["DlpStatus"] as! String
+            }
+            if dict.keys.contains("EdrStatus") {
+                self.edrStatus = dict["EdrStatus"] as! String
             }
             if dict.keys.contains("Hostname") {
                 self.hostname = dict["Hostname"] as! String
@@ -26046,6 +26094,8 @@ public class UpdatePrivateAccessPolicyRequest : Tea.TeaModel {
 
     public var tagIds: [String]?
 
+    public var triggerTemplateId: String?
+
     public var userGroupIds: [String]?
 
     public var userGroupMode: String?
@@ -26104,6 +26154,9 @@ public class UpdatePrivateAccessPolicyRequest : Tea.TeaModel {
         if self.tagIds != nil {
             map["TagIds"] = self.tagIds!
         }
+        if self.triggerTemplateId != nil {
+            map["TriggerTemplateId"] = self.triggerTemplateId!
+        }
         if self.userGroupIds != nil {
             map["UserGroupIds"] = self.userGroupIds!
         }
@@ -26157,6 +26210,9 @@ public class UpdatePrivateAccessPolicyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TagIds") {
             self.tagIds = dict["TagIds"] as! [String]
+        }
+        if dict.keys.contains("TriggerTemplateId") {
+            self.triggerTemplateId = dict["TriggerTemplateId"] as! String
         }
         if dict.keys.contains("UserGroupIds") {
             self.userGroupIds = dict["UserGroupIds"] as! [String]
