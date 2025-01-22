@@ -4585,6 +4585,10 @@ public class ListOOSLogsResponse : Tea.TeaModel {
 }
 
 public class ListPublicParametersRequest : Tea.TeaModel {
+    public var createdDateAfter: String?
+
+    public var createdDateBefore: String?
+
     public var maxResults: Int32?
 
     public var name: String?
@@ -4617,6 +4621,12 @@ public class ListPublicParametersRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.createdDateAfter != nil {
+            map["CreatedDateAfter"] = self.createdDateAfter!
+        }
+        if self.createdDateBefore != nil {
+            map["CreatedDateBefore"] = self.createdDateBefore!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -4648,6 +4658,12 @@ public class ListPublicParametersRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CreatedDateAfter") {
+            self.createdDateAfter = dict["CreatedDateAfter"] as! String
+        }
+        if dict.keys.contains("CreatedDateBefore") {
+            self.createdDateBefore = dict["CreatedDateBefore"] as! String
+        }
         if dict.keys.contains("MaxResults") {
             self.maxResults = dict["MaxResults"] as! Int32
         }
