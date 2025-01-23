@@ -6778,9 +6778,13 @@ public class RunScriptRefineResponse : Tea.TeaModel {
 public class RunStyleWritingRequest : Tea.TeaModel {
     public var learningSamples: [String]?
 
+    public var processStage: String?
+
     public var referenceMaterials: [String]?
 
     public var styleFeature: String?
+
+    public var useSearch: Bool?
 
     public var writingTheme: String?
 
@@ -6801,11 +6805,17 @@ public class RunStyleWritingRequest : Tea.TeaModel {
         if self.learningSamples != nil {
             map["learningSamples"] = self.learningSamples!
         }
+        if self.processStage != nil {
+            map["processStage"] = self.processStage!
+        }
         if self.referenceMaterials != nil {
             map["referenceMaterials"] = self.referenceMaterials!
         }
         if self.styleFeature != nil {
             map["styleFeature"] = self.styleFeature!
+        }
+        if self.useSearch != nil {
+            map["useSearch"] = self.useSearch!
         }
         if self.writingTheme != nil {
             map["writingTheme"] = self.writingTheme!
@@ -6817,11 +6827,17 @@ public class RunStyleWritingRequest : Tea.TeaModel {
         if dict.keys.contains("learningSamples") {
             self.learningSamples = dict["learningSamples"] as! [String]
         }
+        if dict.keys.contains("processStage") {
+            self.processStage = dict["processStage"] as! String
+        }
         if dict.keys.contains("referenceMaterials") {
             self.referenceMaterials = dict["referenceMaterials"] as! [String]
         }
         if dict.keys.contains("styleFeature") {
             self.styleFeature = dict["styleFeature"] as! String
+        }
+        if dict.keys.contains("useSearch") {
+            self.useSearch = dict["useSearch"] as! Bool
         }
         if dict.keys.contains("writingTheme") {
             self.writingTheme = dict["writingTheme"] as! String
@@ -6832,9 +6848,13 @@ public class RunStyleWritingRequest : Tea.TeaModel {
 public class RunStyleWritingShrinkRequest : Tea.TeaModel {
     public var learningSamplesShrink: String?
 
+    public var processStage: String?
+
     public var referenceMaterialsShrink: String?
 
     public var styleFeature: String?
+
+    public var useSearch: Bool?
 
     public var writingTheme: String?
 
@@ -6855,11 +6875,17 @@ public class RunStyleWritingShrinkRequest : Tea.TeaModel {
         if self.learningSamplesShrink != nil {
             map["learningSamples"] = self.learningSamplesShrink!
         }
+        if self.processStage != nil {
+            map["processStage"] = self.processStage!
+        }
         if self.referenceMaterialsShrink != nil {
             map["referenceMaterials"] = self.referenceMaterialsShrink!
         }
         if self.styleFeature != nil {
             map["styleFeature"] = self.styleFeature!
+        }
+        if self.useSearch != nil {
+            map["useSearch"] = self.useSearch!
         }
         if self.writingTheme != nil {
             map["writingTheme"] = self.writingTheme!
@@ -6871,11 +6897,17 @@ public class RunStyleWritingShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("learningSamples") {
             self.learningSamplesShrink = dict["learningSamples"] as! String
         }
+        if dict.keys.contains("processStage") {
+            self.processStage = dict["processStage"] as! String
+        }
         if dict.keys.contains("referenceMaterials") {
             self.referenceMaterialsShrink = dict["referenceMaterials"] as! String
         }
         if dict.keys.contains("styleFeature") {
             self.styleFeature = dict["styleFeature"] as! String
+        }
+        if dict.keys.contains("useSearch") {
+            self.useSearch = dict["useSearch"] as! Bool
         }
         if dict.keys.contains("writingTheme") {
             self.writingTheme = dict["writingTheme"] as! String
