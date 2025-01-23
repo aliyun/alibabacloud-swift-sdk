@@ -3542,6 +3542,8 @@ public class GetChatQuestionRespResponseBody : Tea.TeaModel {
 
             public var gmtCreate: String?
 
+            public var oriContent: String?
+
             public var reply: String?
 
             public var sessionId: String?
@@ -3572,6 +3574,9 @@ public class GetChatQuestionRespResponseBody : Tea.TeaModel {
                 if self.gmtCreate != nil {
                     map["gmtCreate"] = self.gmtCreate!
                 }
+                if self.oriContent != nil {
+                    map["oriContent"] = self.oriContent!
+                }
                 if self.reply != nil {
                     map["reply"] = self.reply!
                 }
@@ -3596,6 +3601,9 @@ public class GetChatQuestionRespResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("gmtCreate") {
                     self.gmtCreate = dict["gmtCreate"] as! String
+                }
+                if dict.keys.contains("oriContent") {
+                    self.oriContent = dict["oriContent"] as! String
                 }
                 if dict.keys.contains("reply") {
                     self.reply = dict["reply"] as! String
