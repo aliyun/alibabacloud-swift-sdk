@@ -5464,6 +5464,8 @@ public class CreateVaultRequest : Tea.TeaModel {
 
     public var vaultType: String?
 
+    public var wormEnabled: Bool?
+
     public override init() {
         super.init()
     }
@@ -5499,6 +5501,9 @@ public class CreateVaultRequest : Tea.TeaModel {
         if self.vaultType != nil {
             map["VaultType"] = self.vaultType!
         }
+        if self.wormEnabled != nil {
+            map["WormEnabled"] = self.wormEnabled!
+        }
         return map
     }
 
@@ -5523,6 +5528,9 @@ public class CreateVaultRequest : Tea.TeaModel {
         }
         if dict.keys.contains("VaultType") {
             self.vaultType = dict["VaultType"] as! String
+        }
+        if dict.keys.contains("WormEnabled") {
+            self.wormEnabled = dict["WormEnabled"] as! Bool
         }
     }
 }
@@ -25375,6 +25383,8 @@ public class UpdateVaultRequest : Tea.TeaModel {
 
     public var vaultName: String?
 
+    public var wormEnabled: Bool?
+
     public override init() {
         super.init()
     }
@@ -25401,6 +25411,9 @@ public class UpdateVaultRequest : Tea.TeaModel {
         if self.vaultName != nil {
             map["VaultName"] = self.vaultName!
         }
+        if self.wormEnabled != nil {
+            map["WormEnabled"] = self.wormEnabled!
+        }
         return map
     }
 
@@ -25416,6 +25429,9 @@ public class UpdateVaultRequest : Tea.TeaModel {
         }
         if dict.keys.contains("VaultName") {
             self.vaultName = dict["VaultName"] as! String
+        }
+        if dict.keys.contains("WormEnabled") {
+            self.wormEnabled = dict["WormEnabled"] as! Bool
         }
     }
 }
