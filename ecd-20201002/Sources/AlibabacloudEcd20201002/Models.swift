@@ -2682,6 +2682,1208 @@ public class DescribeSnapshotsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeUserResourcesRequest : Tea.TeaModel {
+    public var accessType: String?
+
+    public var autoRefresh: Bool?
+
+    public var categoryId: Int32?
+
+    public var categoryType: Int32?
+
+    public var clientId: String?
+
+    public var clientType: String?
+
+    public var clientVersion: String?
+
+    public var dualCenterForward: Bool?
+
+    public var language: String?
+
+    public var loginRegionId: String?
+
+    public var loginToken: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var officeSiteIds: [String]?
+
+    public var orderBy: String?
+
+    public var productTypes: [String]?
+
+    public var protocolType: String?
+
+    public var queryFotaUpdate: Bool?
+
+    public var refreshFotaUpdate: Bool?
+
+    public var resourceIds: [String]?
+
+    public var resourceName: String?
+
+    public var resourceTypes: [String]?
+
+    public var scene: String?
+
+    public var searchRegionId: String?
+
+    public var sessionId: String?
+
+    public var sortType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessType != nil {
+            map["AccessType"] = self.accessType!
+        }
+        if self.autoRefresh != nil {
+            map["AutoRefresh"] = self.autoRefresh!
+        }
+        if self.categoryId != nil {
+            map["CategoryId"] = self.categoryId!
+        }
+        if self.categoryType != nil {
+            map["CategoryType"] = self.categoryType!
+        }
+        if self.clientId != nil {
+            map["ClientId"] = self.clientId!
+        }
+        if self.clientType != nil {
+            map["ClientType"] = self.clientType!
+        }
+        if self.clientVersion != nil {
+            map["ClientVersion"] = self.clientVersion!
+        }
+        if self.dualCenterForward != nil {
+            map["DualCenterForward"] = self.dualCenterForward!
+        }
+        if self.language != nil {
+            map["Language"] = self.language!
+        }
+        if self.loginRegionId != nil {
+            map["LoginRegionId"] = self.loginRegionId!
+        }
+        if self.loginToken != nil {
+            map["LoginToken"] = self.loginToken!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.officeSiteIds != nil {
+            map["OfficeSiteIds"] = self.officeSiteIds!
+        }
+        if self.orderBy != nil {
+            map["OrderBy"] = self.orderBy!
+        }
+        if self.productTypes != nil {
+            map["ProductTypes"] = self.productTypes!
+        }
+        if self.protocolType != nil {
+            map["ProtocolType"] = self.protocolType!
+        }
+        if self.queryFotaUpdate != nil {
+            map["QueryFotaUpdate"] = self.queryFotaUpdate!
+        }
+        if self.refreshFotaUpdate != nil {
+            map["RefreshFotaUpdate"] = self.refreshFotaUpdate!
+        }
+        if self.resourceIds != nil {
+            map["ResourceIds"] = self.resourceIds!
+        }
+        if self.resourceName != nil {
+            map["ResourceName"] = self.resourceName!
+        }
+        if self.resourceTypes != nil {
+            map["ResourceTypes"] = self.resourceTypes!
+        }
+        if self.scene != nil {
+            map["Scene"] = self.scene!
+        }
+        if self.searchRegionId != nil {
+            map["SearchRegionId"] = self.searchRegionId!
+        }
+        if self.sessionId != nil {
+            map["SessionId"] = self.sessionId!
+        }
+        if self.sortType != nil {
+            map["SortType"] = self.sortType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessType") {
+            self.accessType = dict["AccessType"] as! String
+        }
+        if dict.keys.contains("AutoRefresh") {
+            self.autoRefresh = dict["AutoRefresh"] as! Bool
+        }
+        if dict.keys.contains("CategoryId") {
+            self.categoryId = dict["CategoryId"] as! Int32
+        }
+        if dict.keys.contains("CategoryType") {
+            self.categoryType = dict["CategoryType"] as! Int32
+        }
+        if dict.keys.contains("ClientId") {
+            self.clientId = dict["ClientId"] as! String
+        }
+        if dict.keys.contains("ClientType") {
+            self.clientType = dict["ClientType"] as! String
+        }
+        if dict.keys.contains("ClientVersion") {
+            self.clientVersion = dict["ClientVersion"] as! String
+        }
+        if dict.keys.contains("DualCenterForward") {
+            self.dualCenterForward = dict["DualCenterForward"] as! Bool
+        }
+        if dict.keys.contains("Language") {
+            self.language = dict["Language"] as! String
+        }
+        if dict.keys.contains("LoginRegionId") {
+            self.loginRegionId = dict["LoginRegionId"] as! String
+        }
+        if dict.keys.contains("LoginToken") {
+            self.loginToken = dict["LoginToken"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("OfficeSiteIds") {
+            self.officeSiteIds = dict["OfficeSiteIds"] as! [String]
+        }
+        if dict.keys.contains("OrderBy") {
+            self.orderBy = dict["OrderBy"] as! String
+        }
+        if dict.keys.contains("ProductTypes") {
+            self.productTypes = dict["ProductTypes"] as! [String]
+        }
+        if dict.keys.contains("ProtocolType") {
+            self.protocolType = dict["ProtocolType"] as! String
+        }
+        if dict.keys.contains("QueryFotaUpdate") {
+            self.queryFotaUpdate = dict["QueryFotaUpdate"] as! Bool
+        }
+        if dict.keys.contains("RefreshFotaUpdate") {
+            self.refreshFotaUpdate = dict["RefreshFotaUpdate"] as! Bool
+        }
+        if dict.keys.contains("ResourceIds") {
+            self.resourceIds = dict["ResourceIds"] as! [String]
+        }
+        if dict.keys.contains("ResourceName") {
+            self.resourceName = dict["ResourceName"] as! String
+        }
+        if dict.keys.contains("ResourceTypes") {
+            self.resourceTypes = dict["ResourceTypes"] as! [String]
+        }
+        if dict.keys.contains("Scene") {
+            self.scene = dict["Scene"] as! String
+        }
+        if dict.keys.contains("SearchRegionId") {
+            self.searchRegionId = dict["SearchRegionId"] as! String
+        }
+        if dict.keys.contains("SessionId") {
+            self.sessionId = dict["SessionId"] as! String
+        }
+        if dict.keys.contains("SortType") {
+            self.sortType = dict["SortType"] as! String
+        }
+    }
+}
+
+public class DescribeUserResourcesResponseBody : Tea.TeaModel {
+    public class Resources : Tea.TeaModel {
+        public class Clients : Tea.TeaModel {
+            public var clientType: String?
+
+            public var status: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.clientType != nil {
+                    map["ClientType"] = self.clientType!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ClientType") {
+                    self.clientType = dict["ClientType"] as! String
+                }
+                if dict.keys.contains("Status") {
+                    self.status = dict["Status"] as! String
+                }
+            }
+        }
+        public class DesktopDurationList : Tea.TeaModel {
+            public var orderInstanceId: String?
+
+            public var packageCreationTime: String?
+
+            public var packageExpiredTime: String?
+
+            public var packageId: String?
+
+            public var packageStatus: String?
+
+            public var packageType: String?
+
+            public var packageUsedUpStrategy: String?
+
+            public var periodEndTime: String?
+
+            public var periodStartTime: String?
+
+            public var postPaidLimitFee: Double?
+
+            public var totalDuration: Int64?
+
+            public var usedDuration: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.orderInstanceId != nil {
+                    map["OrderInstanceId"] = self.orderInstanceId!
+                }
+                if self.packageCreationTime != nil {
+                    map["PackageCreationTime"] = self.packageCreationTime!
+                }
+                if self.packageExpiredTime != nil {
+                    map["PackageExpiredTime"] = self.packageExpiredTime!
+                }
+                if self.packageId != nil {
+                    map["PackageId"] = self.packageId!
+                }
+                if self.packageStatus != nil {
+                    map["PackageStatus"] = self.packageStatus!
+                }
+                if self.packageType != nil {
+                    map["PackageType"] = self.packageType!
+                }
+                if self.packageUsedUpStrategy != nil {
+                    map["PackageUsedUpStrategy"] = self.packageUsedUpStrategy!
+                }
+                if self.periodEndTime != nil {
+                    map["PeriodEndTime"] = self.periodEndTime!
+                }
+                if self.periodStartTime != nil {
+                    map["PeriodStartTime"] = self.periodStartTime!
+                }
+                if self.postPaidLimitFee != nil {
+                    map["PostPaidLimitFee"] = self.postPaidLimitFee!
+                }
+                if self.totalDuration != nil {
+                    map["TotalDuration"] = self.totalDuration!
+                }
+                if self.usedDuration != nil {
+                    map["UsedDuration"] = self.usedDuration!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("OrderInstanceId") {
+                    self.orderInstanceId = dict["OrderInstanceId"] as! String
+                }
+                if dict.keys.contains("PackageCreationTime") {
+                    self.packageCreationTime = dict["PackageCreationTime"] as! String
+                }
+                if dict.keys.contains("PackageExpiredTime") {
+                    self.packageExpiredTime = dict["PackageExpiredTime"] as! String
+                }
+                if dict.keys.contains("PackageId") {
+                    self.packageId = dict["PackageId"] as! String
+                }
+                if dict.keys.contains("PackageStatus") {
+                    self.packageStatus = dict["PackageStatus"] as! String
+                }
+                if dict.keys.contains("PackageType") {
+                    self.packageType = dict["PackageType"] as! String
+                }
+                if dict.keys.contains("PackageUsedUpStrategy") {
+                    self.packageUsedUpStrategy = dict["PackageUsedUpStrategy"] as! String
+                }
+                if dict.keys.contains("PeriodEndTime") {
+                    self.periodEndTime = dict["PeriodEndTime"] as! String
+                }
+                if dict.keys.contains("PeriodStartTime") {
+                    self.periodStartTime = dict["PeriodStartTime"] as! String
+                }
+                if dict.keys.contains("PostPaidLimitFee") {
+                    self.postPaidLimitFee = dict["PostPaidLimitFee"] as! Double
+                }
+                if dict.keys.contains("TotalDuration") {
+                    self.totalDuration = dict["TotalDuration"] as! Int64
+                }
+                if dict.keys.contains("UsedDuration") {
+                    self.usedDuration = dict["UsedDuration"] as! Int64
+                }
+            }
+        }
+        public class DesktopTimers : Tea.TeaModel {
+            public var allowClientSetting: String?
+
+            public var cronExpression: String?
+
+            public var enforce: Bool?
+
+            public var executionTime: String?
+
+            public var interval: Int32?
+
+            public var operationType: String?
+
+            public var resetType: String?
+
+            public var timerType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.allowClientSetting != nil {
+                    map["AllowClientSetting"] = self.allowClientSetting!
+                }
+                if self.cronExpression != nil {
+                    map["CronExpression"] = self.cronExpression!
+                }
+                if self.enforce != nil {
+                    map["Enforce"] = self.enforce!
+                }
+                if self.executionTime != nil {
+                    map["ExecutionTime"] = self.executionTime!
+                }
+                if self.interval != nil {
+                    map["Interval"] = self.interval!
+                }
+                if self.operationType != nil {
+                    map["OperationType"] = self.operationType!
+                }
+                if self.resetType != nil {
+                    map["ResetType"] = self.resetType!
+                }
+                if self.timerType != nil {
+                    map["TimerType"] = self.timerType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AllowClientSetting") {
+                    self.allowClientSetting = dict["AllowClientSetting"] as! String
+                }
+                if dict.keys.contains("CronExpression") {
+                    self.cronExpression = dict["CronExpression"] as! String
+                }
+                if dict.keys.contains("Enforce") {
+                    self.enforce = dict["Enforce"] as! Bool
+                }
+                if dict.keys.contains("ExecutionTime") {
+                    self.executionTime = dict["ExecutionTime"] as! String
+                }
+                if dict.keys.contains("Interval") {
+                    self.interval = dict["Interval"] as! Int32
+                }
+                if dict.keys.contains("OperationType") {
+                    self.operationType = dict["OperationType"] as! String
+                }
+                if dict.keys.contains("ResetType") {
+                    self.resetType = dict["ResetType"] as! String
+                }
+                if dict.keys.contains("TimerType") {
+                    self.timerType = dict["TimerType"] as! String
+                }
+            }
+        }
+        public class FotaUpdate : Tea.TeaModel {
+            public var channel: String?
+
+            public var currentAppVersion: String?
+
+            public var force: Bool?
+
+            public var newAppVersion: String?
+
+            public var newDcdVersion: String?
+
+            public var project: String?
+
+            public var releaseNote: String?
+
+            public var releaseNoteEn: String?
+
+            public var releaseNoteJp: String?
+
+            public var size: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.channel != nil {
+                    map["Channel"] = self.channel!
+                }
+                if self.currentAppVersion != nil {
+                    map["CurrentAppVersion"] = self.currentAppVersion!
+                }
+                if self.force != nil {
+                    map["Force"] = self.force!
+                }
+                if self.newAppVersion != nil {
+                    map["NewAppVersion"] = self.newAppVersion!
+                }
+                if self.newDcdVersion != nil {
+                    map["NewDcdVersion"] = self.newDcdVersion!
+                }
+                if self.project != nil {
+                    map["Project"] = self.project!
+                }
+                if self.releaseNote != nil {
+                    map["ReleaseNote"] = self.releaseNote!
+                }
+                if self.releaseNoteEn != nil {
+                    map["ReleaseNoteEn"] = self.releaseNoteEn!
+                }
+                if self.releaseNoteJp != nil {
+                    map["ReleaseNoteJp"] = self.releaseNoteJp!
+                }
+                if self.size != nil {
+                    map["Size"] = self.size!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Channel") {
+                    self.channel = dict["Channel"] as! String
+                }
+                if dict.keys.contains("CurrentAppVersion") {
+                    self.currentAppVersion = dict["CurrentAppVersion"] as! String
+                }
+                if dict.keys.contains("Force") {
+                    self.force = dict["Force"] as! Bool
+                }
+                if dict.keys.contains("NewAppVersion") {
+                    self.newAppVersion = dict["NewAppVersion"] as! String
+                }
+                if dict.keys.contains("NewDcdVersion") {
+                    self.newDcdVersion = dict["NewDcdVersion"] as! String
+                }
+                if dict.keys.contains("Project") {
+                    self.project = dict["Project"] as! String
+                }
+                if dict.keys.contains("ReleaseNote") {
+                    self.releaseNote = dict["ReleaseNote"] as! String
+                }
+                if dict.keys.contains("ReleaseNoteEn") {
+                    self.releaseNoteEn = dict["ReleaseNoteEn"] as! String
+                }
+                if dict.keys.contains("ReleaseNoteJp") {
+                    self.releaseNoteJp = dict["ReleaseNoteJp"] as! String
+                }
+                if dict.keys.contains("Size") {
+                    self.size = dict["Size"] as! String
+                }
+            }
+        }
+        public class Sessions : Tea.TeaModel {
+            public var resourceSessionStartTime: String?
+
+            public var userId: String?
+
+            public var userPrincipalName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.resourceSessionStartTime != nil {
+                    map["ResourceSessionStartTime"] = self.resourceSessionStartTime!
+                }
+                if self.userId != nil {
+                    map["UserId"] = self.userId!
+                }
+                if self.userPrincipalName != nil {
+                    map["UserPrincipalName"] = self.userPrincipalName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ResourceSessionStartTime") {
+                    self.resourceSessionStartTime = dict["ResourceSessionStartTime"] as! String
+                }
+                if dict.keys.contains("UserId") {
+                    self.userId = dict["UserId"] as! String
+                }
+                if dict.keys.contains("UserPrincipalName") {
+                    self.userPrincipalName = dict["UserPrincipalName"] as! String
+                }
+            }
+        }
+        public var accessType: String?
+
+        public var aliUid: Int64?
+
+        public var appId: String?
+
+        public var authMode: String?
+
+        public var categoryId: Int32?
+
+        public var categoryType: Int32?
+
+        public var cdsName: String?
+
+        public var centerResourceId: String?
+
+        public var chargeType: String?
+
+        public var clients: [DescribeUserResourcesResponseBody.Resources.Clients]?
+
+        public var connectionProperties: String?
+
+        public var createTime: String?
+
+        public var desktopDurationList: [DescribeUserResourcesResponseBody.Resources.DesktopDurationList]?
+
+        public var desktopTimers: [DescribeUserResourcesResponseBody.Resources.DesktopTimers]?
+
+        public var expiredTime: String?
+
+        public var externalDomainId: String?
+
+        public var externalUserId: String?
+
+        public var fotaUpdate: DescribeUserResourcesResponseBody.Resources.FotaUpdate?
+
+        public var globalStatus: Bool?
+
+        public var hibernationBeta: Bool?
+
+        public var icon: String?
+
+        public var lastStartTime: String?
+
+        public var localName: String?
+
+        public var managementStatuses: [String]?
+
+        public var officeSiteId: String?
+
+        public var orderStatus: String?
+
+        public var os: String?
+
+        public var osDescription: String?
+
+        public var osType: String?
+
+        public var productType: String?
+
+        public var protocolType: String?
+
+        public var realDesktopId: String?
+
+        public var regionId: String?
+
+        public var regionLocation: String?
+
+        public var resourceGroupId: String?
+
+        public var resourceId: String?
+
+        public var resourceLevel: String?
+
+        public var resourceName: String?
+
+        public var resourceSessionStatus: String?
+
+        public var resourceStatus: String?
+
+        public var resourceType: String?
+
+        public var sessionType: String?
+
+        public var sessions: [DescribeUserResourcesResponseBody.Resources.Sessions]?
+
+        public var subPayType: String?
+
+        public var supportHibernation: Bool?
+
+        public var supportedActions: [String]?
+
+        public var themeColor: String?
+
+        public var userCustomName: String?
+
+        public var version: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.fotaUpdate?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accessType != nil {
+                map["AccessType"] = self.accessType!
+            }
+            if self.aliUid != nil {
+                map["AliUid"] = self.aliUid!
+            }
+            if self.appId != nil {
+                map["AppId"] = self.appId!
+            }
+            if self.authMode != nil {
+                map["AuthMode"] = self.authMode!
+            }
+            if self.categoryId != nil {
+                map["CategoryId"] = self.categoryId!
+            }
+            if self.categoryType != nil {
+                map["CategoryType"] = self.categoryType!
+            }
+            if self.cdsName != nil {
+                map["CdsName"] = self.cdsName!
+            }
+            if self.centerResourceId != nil {
+                map["CenterResourceId"] = self.centerResourceId!
+            }
+            if self.chargeType != nil {
+                map["ChargeType"] = self.chargeType!
+            }
+            if self.clients != nil {
+                var tmp : [Any] = []
+                for k in self.clients! {
+                    tmp.append(k.toMap())
+                }
+                map["Clients"] = tmp
+            }
+            if self.connectionProperties != nil {
+                map["ConnectionProperties"] = self.connectionProperties!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.desktopDurationList != nil {
+                var tmp : [Any] = []
+                for k in self.desktopDurationList! {
+                    tmp.append(k.toMap())
+                }
+                map["DesktopDurationList"] = tmp
+            }
+            if self.desktopTimers != nil {
+                var tmp : [Any] = []
+                for k in self.desktopTimers! {
+                    tmp.append(k.toMap())
+                }
+                map["DesktopTimers"] = tmp
+            }
+            if self.expiredTime != nil {
+                map["ExpiredTime"] = self.expiredTime!
+            }
+            if self.externalDomainId != nil {
+                map["ExternalDomainId"] = self.externalDomainId!
+            }
+            if self.externalUserId != nil {
+                map["ExternalUserId"] = self.externalUserId!
+            }
+            if self.fotaUpdate != nil {
+                map["FotaUpdate"] = self.fotaUpdate?.toMap()
+            }
+            if self.globalStatus != nil {
+                map["GlobalStatus"] = self.globalStatus!
+            }
+            if self.hibernationBeta != nil {
+                map["HibernationBeta"] = self.hibernationBeta!
+            }
+            if self.icon != nil {
+                map["Icon"] = self.icon!
+            }
+            if self.lastStartTime != nil {
+                map["LastStartTime"] = self.lastStartTime!
+            }
+            if self.localName != nil {
+                map["LocalName"] = self.localName!
+            }
+            if self.managementStatuses != nil {
+                map["ManagementStatuses"] = self.managementStatuses!
+            }
+            if self.officeSiteId != nil {
+                map["OfficeSiteId"] = self.officeSiteId!
+            }
+            if self.orderStatus != nil {
+                map["OrderStatus"] = self.orderStatus!
+            }
+            if self.os != nil {
+                map["Os"] = self.os!
+            }
+            if self.osDescription != nil {
+                map["OsDescription"] = self.osDescription!
+            }
+            if self.osType != nil {
+                map["OsType"] = self.osType!
+            }
+            if self.productType != nil {
+                map["ProductType"] = self.productType!
+            }
+            if self.protocolType != nil {
+                map["ProtocolType"] = self.protocolType!
+            }
+            if self.realDesktopId != nil {
+                map["RealDesktopId"] = self.realDesktopId!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.regionLocation != nil {
+                map["RegionLocation"] = self.regionLocation!
+            }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
+            if self.resourceId != nil {
+                map["ResourceId"] = self.resourceId!
+            }
+            if self.resourceLevel != nil {
+                map["ResourceLevel"] = self.resourceLevel!
+            }
+            if self.resourceName != nil {
+                map["ResourceName"] = self.resourceName!
+            }
+            if self.resourceSessionStatus != nil {
+                map["ResourceSessionStatus"] = self.resourceSessionStatus!
+            }
+            if self.resourceStatus != nil {
+                map["ResourceStatus"] = self.resourceStatus!
+            }
+            if self.resourceType != nil {
+                map["ResourceType"] = self.resourceType!
+            }
+            if self.sessionType != nil {
+                map["SessionType"] = self.sessionType!
+            }
+            if self.sessions != nil {
+                var tmp : [Any] = []
+                for k in self.sessions! {
+                    tmp.append(k.toMap())
+                }
+                map["Sessions"] = tmp
+            }
+            if self.subPayType != nil {
+                map["SubPayType"] = self.subPayType!
+            }
+            if self.supportHibernation != nil {
+                map["SupportHibernation"] = self.supportHibernation!
+            }
+            if self.supportedActions != nil {
+                map["SupportedActions"] = self.supportedActions!
+            }
+            if self.themeColor != nil {
+                map["ThemeColor"] = self.themeColor!
+            }
+            if self.userCustomName != nil {
+                map["UserCustomName"] = self.userCustomName!
+            }
+            if self.version != nil {
+                map["Version"] = self.version!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AccessType") {
+                self.accessType = dict["AccessType"] as! String
+            }
+            if dict.keys.contains("AliUid") {
+                self.aliUid = dict["AliUid"] as! Int64
+            }
+            if dict.keys.contains("AppId") {
+                self.appId = dict["AppId"] as! String
+            }
+            if dict.keys.contains("AuthMode") {
+                self.authMode = dict["AuthMode"] as! String
+            }
+            if dict.keys.contains("CategoryId") {
+                self.categoryId = dict["CategoryId"] as! Int32
+            }
+            if dict.keys.contains("CategoryType") {
+                self.categoryType = dict["CategoryType"] as! Int32
+            }
+            if dict.keys.contains("CdsName") {
+                self.cdsName = dict["CdsName"] as! String
+            }
+            if dict.keys.contains("CenterResourceId") {
+                self.centerResourceId = dict["CenterResourceId"] as! String
+            }
+            if dict.keys.contains("ChargeType") {
+                self.chargeType = dict["ChargeType"] as! String
+            }
+            if dict.keys.contains("Clients") {
+                var tmp : [DescribeUserResourcesResponseBody.Resources.Clients] = []
+                for v in dict["Clients"] as! [Any] {
+                    var model = DescribeUserResourcesResponseBody.Resources.Clients()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.clients = tmp
+            }
+            if dict.keys.contains("ConnectionProperties") {
+                self.connectionProperties = dict["ConnectionProperties"] as! String
+            }
+            if dict.keys.contains("CreateTime") {
+                self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("DesktopDurationList") {
+                var tmp : [DescribeUserResourcesResponseBody.Resources.DesktopDurationList] = []
+                for v in dict["DesktopDurationList"] as! [Any] {
+                    var model = DescribeUserResourcesResponseBody.Resources.DesktopDurationList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.desktopDurationList = tmp
+            }
+            if dict.keys.contains("DesktopTimers") {
+                var tmp : [DescribeUserResourcesResponseBody.Resources.DesktopTimers] = []
+                for v in dict["DesktopTimers"] as! [Any] {
+                    var model = DescribeUserResourcesResponseBody.Resources.DesktopTimers()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.desktopTimers = tmp
+            }
+            if dict.keys.contains("ExpiredTime") {
+                self.expiredTime = dict["ExpiredTime"] as! String
+            }
+            if dict.keys.contains("ExternalDomainId") {
+                self.externalDomainId = dict["ExternalDomainId"] as! String
+            }
+            if dict.keys.contains("ExternalUserId") {
+                self.externalUserId = dict["ExternalUserId"] as! String
+            }
+            if dict.keys.contains("FotaUpdate") {
+                var model = DescribeUserResourcesResponseBody.Resources.FotaUpdate()
+                model.fromMap(dict["FotaUpdate"] as! [String: Any])
+                self.fotaUpdate = model
+            }
+            if dict.keys.contains("GlobalStatus") {
+                self.globalStatus = dict["GlobalStatus"] as! Bool
+            }
+            if dict.keys.contains("HibernationBeta") {
+                self.hibernationBeta = dict["HibernationBeta"] as! Bool
+            }
+            if dict.keys.contains("Icon") {
+                self.icon = dict["Icon"] as! String
+            }
+            if dict.keys.contains("LastStartTime") {
+                self.lastStartTime = dict["LastStartTime"] as! String
+            }
+            if dict.keys.contains("LocalName") {
+                self.localName = dict["LocalName"] as! String
+            }
+            if dict.keys.contains("ManagementStatuses") {
+                self.managementStatuses = dict["ManagementStatuses"] as! [String]
+            }
+            if dict.keys.contains("OfficeSiteId") {
+                self.officeSiteId = dict["OfficeSiteId"] as! String
+            }
+            if dict.keys.contains("OrderStatus") {
+                self.orderStatus = dict["OrderStatus"] as! String
+            }
+            if dict.keys.contains("Os") {
+                self.os = dict["Os"] as! String
+            }
+            if dict.keys.contains("OsDescription") {
+                self.osDescription = dict["OsDescription"] as! String
+            }
+            if dict.keys.contains("OsType") {
+                self.osType = dict["OsType"] as! String
+            }
+            if dict.keys.contains("ProductType") {
+                self.productType = dict["ProductType"] as! String
+            }
+            if dict.keys.contains("ProtocolType") {
+                self.protocolType = dict["ProtocolType"] as! String
+            }
+            if dict.keys.contains("RealDesktopId") {
+                self.realDesktopId = dict["RealDesktopId"] as! String
+            }
+            if dict.keys.contains("RegionId") {
+                self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("RegionLocation") {
+                self.regionLocation = dict["RegionLocation"] as! String
+            }
+            if dict.keys.contains("ResourceGroupId") {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
+            }
+            if dict.keys.contains("ResourceId") {
+                self.resourceId = dict["ResourceId"] as! String
+            }
+            if dict.keys.contains("ResourceLevel") {
+                self.resourceLevel = dict["ResourceLevel"] as! String
+            }
+            if dict.keys.contains("ResourceName") {
+                self.resourceName = dict["ResourceName"] as! String
+            }
+            if dict.keys.contains("ResourceSessionStatus") {
+                self.resourceSessionStatus = dict["ResourceSessionStatus"] as! String
+            }
+            if dict.keys.contains("ResourceStatus") {
+                self.resourceStatus = dict["ResourceStatus"] as! String
+            }
+            if dict.keys.contains("ResourceType") {
+                self.resourceType = dict["ResourceType"] as! String
+            }
+            if dict.keys.contains("SessionType") {
+                self.sessionType = dict["SessionType"] as! String
+            }
+            if dict.keys.contains("Sessions") {
+                var tmp : [DescribeUserResourcesResponseBody.Resources.Sessions] = []
+                for v in dict["Sessions"] as! [Any] {
+                    var model = DescribeUserResourcesResponseBody.Resources.Sessions()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.sessions = tmp
+            }
+            if dict.keys.contains("SubPayType") {
+                self.subPayType = dict["SubPayType"] as! String
+            }
+            if dict.keys.contains("SupportHibernation") {
+                self.supportHibernation = dict["SupportHibernation"] as! Bool
+            }
+            if dict.keys.contains("SupportedActions") {
+                self.supportedActions = dict["SupportedActions"] as! [String]
+            }
+            if dict.keys.contains("ThemeColor") {
+                self.themeColor = dict["ThemeColor"] as! String
+            }
+            if dict.keys.contains("UserCustomName") {
+                self.userCustomName = dict["UserCustomName"] as! String
+            }
+            if dict.keys.contains("Version") {
+                self.version = dict["Version"] as! String
+            }
+        }
+    }
+    public var nextToken: String?
+
+    public var queryFailedResourceTypes: [String]?
+
+    public var rankVersion: Int64?
+
+    public var requestId: String?
+
+    public var resources: [DescribeUserResourcesResponseBody.Resources]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.queryFailedResourceTypes != nil {
+            map["QueryFailedResourceTypes"] = self.queryFailedResourceTypes!
+        }
+        if self.rankVersion != nil {
+            map["RankVersion"] = self.rankVersion!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resources != nil {
+            var tmp : [Any] = []
+            for k in self.resources! {
+                tmp.append(k.toMap())
+            }
+            map["Resources"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("QueryFailedResourceTypes") {
+            self.queryFailedResourceTypes = dict["QueryFailedResourceTypes"] as! [String]
+        }
+        if dict.keys.contains("RankVersion") {
+            self.rankVersion = dict["RankVersion"] as! Int64
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Resources") {
+            var tmp : [DescribeUserResourcesResponseBody.Resources] = []
+            for v in dict["Resources"] as! [Any] {
+                var model = DescribeUserResourcesResponseBody.Resources()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.resources = tmp
+        }
+    }
+}
+
+public class DescribeUserResourcesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeUserResourcesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeUserResourcesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class EncryptPasswordRequest : Tea.TeaModel {
     public var clientId: String?
 
