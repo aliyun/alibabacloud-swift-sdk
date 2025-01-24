@@ -1549,6 +1549,8 @@ public class CreateBackupPlanRequest : Tea.TeaModel {
 
     public var changeListPath: String?
 
+    public var clusterId: String?
+
     public var createTime: Int64?
 
     public var crossAccountRoleName: String?
@@ -1556,6 +1558,8 @@ public class CreateBackupPlanRequest : Tea.TeaModel {
     public var crossAccountType: String?
 
     public var crossAccountUserId: Int64?
+
+    public var dataSourceId: String?
 
     public var destDataSourceDetail: [String: Any]?
 
@@ -1627,6 +1631,9 @@ public class CreateBackupPlanRequest : Tea.TeaModel {
         if self.changeListPath != nil {
             map["ChangeListPath"] = self.changeListPath!
         }
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
         }
@@ -1638,6 +1645,9 @@ public class CreateBackupPlanRequest : Tea.TeaModel {
         }
         if self.crossAccountUserId != nil {
             map["CrossAccountUserId"] = self.crossAccountUserId!
+        }
+        if self.dataSourceId != nil {
+            map["DataSourceId"] = self.dataSourceId!
         }
         if self.destDataSourceDetail != nil {
             map["DestDataSourceDetail"] = self.destDataSourceDetail!
@@ -1725,6 +1735,9 @@ public class CreateBackupPlanRequest : Tea.TeaModel {
         if dict.keys.contains("ChangeListPath") {
             self.changeListPath = dict["ChangeListPath"] as! String
         }
+        if dict.keys.contains("ClusterId") {
+            self.clusterId = dict["ClusterId"] as! String
+        }
         if dict.keys.contains("CreateTime") {
             self.createTime = dict["CreateTime"] as! Int64
         }
@@ -1736,6 +1749,9 @@ public class CreateBackupPlanRequest : Tea.TeaModel {
         }
         if dict.keys.contains("CrossAccountUserId") {
             self.crossAccountUserId = dict["CrossAccountUserId"] as! Int64
+        }
+        if dict.keys.contains("DataSourceId") {
+            self.dataSourceId = dict["DataSourceId"] as! String
         }
         if dict.keys.contains("DestDataSourceDetail") {
             self.destDataSourceDetail = dict["DestDataSourceDetail"] as! [String: Any]
@@ -1911,6 +1927,8 @@ public class CreateBackupPlanShrinkRequest : Tea.TeaModel {
 
     public var changeListPath: String?
 
+    public var clusterId: String?
+
     public var createTime: Int64?
 
     public var crossAccountRoleName: String?
@@ -1918,6 +1936,8 @@ public class CreateBackupPlanShrinkRequest : Tea.TeaModel {
     public var crossAccountType: String?
 
     public var crossAccountUserId: Int64?
+
+    public var dataSourceId: String?
 
     public var destDataSourceDetailShrink: String?
 
@@ -1988,6 +2008,9 @@ public class CreateBackupPlanShrinkRequest : Tea.TeaModel {
         if self.changeListPath != nil {
             map["ChangeListPath"] = self.changeListPath!
         }
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
         }
@@ -1999,6 +2022,9 @@ public class CreateBackupPlanShrinkRequest : Tea.TeaModel {
         }
         if self.crossAccountUserId != nil {
             map["CrossAccountUserId"] = self.crossAccountUserId!
+        }
+        if self.dataSourceId != nil {
+            map["DataSourceId"] = self.dataSourceId!
         }
         if self.destDataSourceDetailShrink != nil {
             map["DestDataSourceDetail"] = self.destDataSourceDetailShrink!
@@ -2086,6 +2112,9 @@ public class CreateBackupPlanShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("ChangeListPath") {
             self.changeListPath = dict["ChangeListPath"] as! String
         }
+        if dict.keys.contains("ClusterId") {
+            self.clusterId = dict["ClusterId"] as! String
+        }
         if dict.keys.contains("CreateTime") {
             self.createTime = dict["CreateTime"] as! Int64
         }
@@ -2097,6 +2126,9 @@ public class CreateBackupPlanShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("CrossAccountUserId") {
             self.crossAccountUserId = dict["CrossAccountUserId"] as! Int64
+        }
+        if dict.keys.contains("DataSourceId") {
+            self.dataSourceId = dict["DataSourceId"] as! String
         }
         if dict.keys.contains("DestDataSourceDetail") {
             self.destDataSourceDetailShrink = dict["DestDataSourceDetail"] as! String
