@@ -116,6 +116,100 @@ public class CreateTaskRequest : Tea.TeaModel {
         }
     }
     public class Parameters : Tea.TeaModel {
+        public class ContentExtraction : Tea.TeaModel {
+            public class ExtractionContents : Tea.TeaModel {
+                public var content: String?
+
+                public var title: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.content != nil {
+                        map["Content"] = self.content!
+                    }
+                    if self.title != nil {
+                        map["Title"] = self.title!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Content") {
+                        self.content = dict["Content"] as! String
+                    }
+                    if dict.keys.contains("Title") {
+                        self.title = dict["Title"] as! String
+                    }
+                }
+            }
+            public var extractionContents: [CreateTaskRequest.Parameters.ContentExtraction.ExtractionContents]?
+
+            public var sceneIntroduction: String?
+
+            public var speakerMap: [String: Any]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.extractionContents != nil {
+                    var tmp : [Any] = []
+                    for k in self.extractionContents! {
+                        tmp.append(k.toMap())
+                    }
+                    map["ExtractionContents"] = tmp
+                }
+                if self.sceneIntroduction != nil {
+                    map["SceneIntroduction"] = self.sceneIntroduction!
+                }
+                if self.speakerMap != nil {
+                    map["SpeakerMap"] = self.speakerMap!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ExtractionContents") {
+                    var tmp : [CreateTaskRequest.Parameters.ContentExtraction.ExtractionContents] = []
+                    for v in dict["ExtractionContents"] as! [Any] {
+                        var model = CreateTaskRequest.Parameters.ContentExtraction.ExtractionContents()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.extractionContents = tmp
+                }
+                if dict.keys.contains("SceneIntroduction") {
+                    self.sceneIntroduction = dict["SceneIntroduction"] as! String
+                }
+                if dict.keys.contains("SpeakerMap") {
+                    self.speakerMap = dict["SpeakerMap"] as! [String: Any]
+                }
+            }
+        }
         public class CustomPrompt : Tea.TeaModel {
             public class Contents : Tea.TeaModel {
                 public var model: String?
@@ -640,6 +734,10 @@ public class CreateTaskRequest : Tea.TeaModel {
         }
         public var autoChaptersEnabled: Bool?
 
+        public var contentExtraction: CreateTaskRequest.Parameters.ContentExtraction?
+
+        public var contentExtractionEnabled: Bool?
+
         public var customPrompt: CreateTaskRequest.Parameters.CustomPrompt?
 
         public var customPromptEnabled: Bool?
@@ -680,6 +778,7 @@ public class CreateTaskRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.contentExtraction?.validate()
             try self.customPrompt?.validate()
             try self.extraParams?.validate()
             try self.meetingAssistance?.validate()
@@ -694,6 +793,12 @@ public class CreateTaskRequest : Tea.TeaModel {
             var map = super.toMap()
             if self.autoChaptersEnabled != nil {
                 map["AutoChaptersEnabled"] = self.autoChaptersEnabled!
+            }
+            if self.contentExtraction != nil {
+                map["ContentExtraction"] = self.contentExtraction?.toMap()
+            }
+            if self.contentExtractionEnabled != nil {
+                map["ContentExtractionEnabled"] = self.contentExtractionEnabled!
             }
             if self.customPrompt != nil {
                 map["CustomPrompt"] = self.customPrompt?.toMap()
@@ -746,6 +851,14 @@ public class CreateTaskRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("AutoChaptersEnabled") {
                 self.autoChaptersEnabled = dict["AutoChaptersEnabled"] as! Bool
+            }
+            if dict.keys.contains("ContentExtraction") {
+                var model = CreateTaskRequest.Parameters.ContentExtraction()
+                model.fromMap(dict["ContentExtraction"] as! [String: Any])
+                self.contentExtraction = model
+            }
+            if dict.keys.contains("ContentExtractionEnabled") {
+                self.contentExtractionEnabled = dict["ContentExtractionEnabled"] as! Bool
             }
             if dict.keys.contains("CustomPrompt") {
                 var model = CreateTaskRequest.Parameters.CustomPrompt()
