@@ -582,6 +582,43 @@ public class Resource : Tea.TeaModel {
 }
 
 public class ResourceInstance : Tea.TeaModel {
+    public class Labels : Tea.TeaModel {
+        public var labelKey: String?
+
+        public var labelValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.labelKey != nil {
+                map["LabelKey"] = self.labelKey!
+            }
+            if self.labelValue != nil {
+                map["LabelValue"] = self.labelValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("LabelKey") {
+                self.labelKey = dict["LabelKey"] as! String
+            }
+            if dict.keys.contains("LabelValue") {
+                self.labelValue = dict["LabelValue"] as! String
+            }
+        }
+    }
     public var arch: String?
 
     public var autoRenewal: Bool?
@@ -621,6 +658,8 @@ public class ResourceInstance : Tea.TeaModel {
     public var instanceUsedGpuMemory: String?
 
     public var instanceUsedMemory: String?
+
+    public var labels: [ResourceInstance.Labels]?
 
     public var region: String?
 
@@ -702,6 +741,13 @@ public class ResourceInstance : Tea.TeaModel {
         if self.instanceUsedMemory != nil {
             map["InstanceUsedMemory"] = self.instanceUsedMemory!
         }
+        if self.labels != nil {
+            var tmp : [Any] = []
+            for k in self.labels! {
+                tmp.append(k.toMap())
+            }
+            map["Labels"] = tmp
+        }
         if self.region != nil {
             map["Region"] = self.region!
         }
@@ -774,6 +820,17 @@ public class ResourceInstance : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceUsedMemory") {
             self.instanceUsedMemory = dict["InstanceUsedMemory"] as! String
+        }
+        if dict.keys.contains("Labels") {
+            var tmp : [ResourceInstance.Labels] = []
+            for v in dict["Labels"] as! [Any] {
+                var model = ResourceInstance.Labels()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.labels = tmp
         }
         if dict.keys.contains("Region") {
             self.region = dict["Region"] as! String
@@ -3048,6 +3105,8 @@ public class CreateResourceRequest : Tea.TeaModel {
 
     public var ecsInstanceType: String?
 
+    public var labels: [String: String]?
+
     public var resourceType: String?
 
     public var selfManagedResourceOptions: CreateResourceRequest.SelfManagedResourceOptions?
@@ -3083,6 +3142,9 @@ public class CreateResourceRequest : Tea.TeaModel {
         if self.ecsInstanceType != nil {
             map["EcsInstanceType"] = self.ecsInstanceType!
         }
+        if self.labels != nil {
+            map["Labels"] = self.labels!
+        }
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
         }
@@ -3110,6 +3172,9 @@ public class CreateResourceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EcsInstanceType") {
             self.ecsInstanceType = dict["EcsInstanceType"] as! String
+        }
+        if dict.keys.contains("Labels") {
+            self.labels = dict["Labels"] as! [String: String]
         }
         if dict.keys.contains("ResourceType") {
             self.resourceType = dict["ResourceType"] as! String
@@ -3256,6 +3321,8 @@ public class CreateResourceInstancesRequest : Tea.TeaModel {
 
     public var ecsInstanceType: String?
 
+    public var labels: [String: String]?
+
     public var systemDiskSize: Int32?
 
     public var userData: String?
@@ -3288,6 +3355,9 @@ public class CreateResourceInstancesRequest : Tea.TeaModel {
         if self.ecsInstanceType != nil {
             map["EcsInstanceType"] = self.ecsInstanceType!
         }
+        if self.labels != nil {
+            map["Labels"] = self.labels!
+        }
         if self.systemDiskSize != nil {
             map["SystemDiskSize"] = self.systemDiskSize!
         }
@@ -3312,6 +3382,9 @@ public class CreateResourceInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EcsInstanceType") {
             self.ecsInstanceType = dict["EcsInstanceType"] as! String
+        }
+        if dict.keys.contains("Labels") {
+            self.labels = dict["Labels"] as! [String: String]
         }
         if dict.keys.contains("SystemDiskSize") {
             self.systemDiskSize = dict["SystemDiskSize"] as! Int32
@@ -5582,6 +5655,185 @@ public class DeleteResourceDLinkResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DeleteResourceDLinkResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DeleteResourceInstanceLabelRequest : Tea.TeaModel {
+    public var allInstances: Bool?
+
+    public var instanceIds: [String]?
+
+    public var keys: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allInstances != nil {
+            map["AllInstances"] = self.allInstances!
+        }
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        if self.keys != nil {
+            map["Keys"] = self.keys!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AllInstances") {
+            self.allInstances = dict["AllInstances"] as! Bool
+        }
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIds = dict["InstanceIds"] as! [String]
+        }
+        if dict.keys.contains("Keys") {
+            self.keys = dict["Keys"] as! [String]
+        }
+    }
+}
+
+public class DeleteResourceInstanceLabelShrinkRequest : Tea.TeaModel {
+    public var allInstances: Bool?
+
+    public var instanceIdsShrink: String?
+
+    public var keysShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allInstances != nil {
+            map["AllInstances"] = self.allInstances!
+        }
+        if self.instanceIdsShrink != nil {
+            map["InstanceIds"] = self.instanceIdsShrink!
+        }
+        if self.keysShrink != nil {
+            map["Keys"] = self.keysShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AllInstances") {
+            self.allInstances = dict["AllInstances"] as! Bool
+        }
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIdsShrink = dict["InstanceIds"] as! String
+        }
+        if dict.keys.contains("Keys") {
+            self.keysShrink = dict["Keys"] as! String
+        }
+    }
+}
+
+public class DeleteResourceInstanceLabelResponseBody : Tea.TeaModel {
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DeleteResourceInstanceLabelResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteResourceInstanceLabelResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteResourceInstanceLabelResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -11922,6 +12174,8 @@ public class ListResourceInstancesRequest : Tea.TeaModel {
 
     public var instanceStatus: String?
 
+    public var label: [String: String]?
+
     public var order: String?
 
     public var pageNumber: Int32?
@@ -11962,6 +12216,9 @@ public class ListResourceInstancesRequest : Tea.TeaModel {
         if self.instanceStatus != nil {
             map["InstanceStatus"] = self.instanceStatus!
         }
+        if self.label != nil {
+            map["Label"] = self.label!
+        }
         if self.order != nil {
             map["Order"] = self.order!
         }
@@ -11995,6 +12252,119 @@ public class ListResourceInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceStatus") {
             self.instanceStatus = dict["InstanceStatus"] as! String
+        }
+        if dict.keys.contains("Label") {
+            self.label = dict["Label"] as! [String: String]
+        }
+        if dict.keys.contains("Order") {
+            self.order = dict["Order"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("Sort") {
+            self.sort = dict["Sort"] as! String
+        }
+    }
+}
+
+public class ListResourceInstancesShrinkRequest : Tea.TeaModel {
+    public var chargeType: String?
+
+    public var filter: String?
+
+    public var instanceIP: String?
+
+    public var instanceId: String?
+
+    public var instanceName: String?
+
+    public var instanceStatus: String?
+
+    public var labelShrink: String?
+
+    public var order: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var sort: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.chargeType != nil {
+            map["ChargeType"] = self.chargeType!
+        }
+        if self.filter != nil {
+            map["Filter"] = self.filter!
+        }
+        if self.instanceIP != nil {
+            map["InstanceIP"] = self.instanceIP!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.instanceStatus != nil {
+            map["InstanceStatus"] = self.instanceStatus!
+        }
+        if self.labelShrink != nil {
+            map["Label"] = self.labelShrink!
+        }
+        if self.order != nil {
+            map["Order"] = self.order!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.sort != nil {
+            map["Sort"] = self.sort!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ChargeType") {
+            self.chargeType = dict["ChargeType"] as! String
+        }
+        if dict.keys.contains("Filter") {
+            self.filter = dict["Filter"] as! String
+        }
+        if dict.keys.contains("InstanceIP") {
+            self.instanceIP = dict["InstanceIP"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("InstanceName") {
+            self.instanceName = dict["InstanceName"] as! String
+        }
+        if dict.keys.contains("InstanceStatus") {
+            self.instanceStatus = dict["InstanceStatus"] as! String
+        }
+        if dict.keys.contains("Label") {
+            self.labelShrink = dict["Label"] as! String
         }
         if dict.keys.contains("Order") {
             self.order = dict["Order"] as! String
@@ -15503,6 +15873,185 @@ public class UpdateResourceInstanceResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = UpdateResourceInstanceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateResourceInstanceLabelRequest : Tea.TeaModel {
+    public var allInstances: Bool?
+
+    public var instanceIds: [String]?
+
+    public var labels: [String: String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allInstances != nil {
+            map["AllInstances"] = self.allInstances!
+        }
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        if self.labels != nil {
+            map["Labels"] = self.labels!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AllInstances") {
+            self.allInstances = dict["AllInstances"] as! Bool
+        }
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIds = dict["InstanceIds"] as! [String]
+        }
+        if dict.keys.contains("Labels") {
+            self.labels = dict["Labels"] as! [String: String]
+        }
+    }
+}
+
+public class UpdateResourceInstanceLabelShrinkRequest : Tea.TeaModel {
+    public var allInstances: Bool?
+
+    public var instanceIdsShrink: String?
+
+    public var labels: [String: String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allInstances != nil {
+            map["AllInstances"] = self.allInstances!
+        }
+        if self.instanceIdsShrink != nil {
+            map["InstanceIds"] = self.instanceIdsShrink!
+        }
+        if self.labels != nil {
+            map["Labels"] = self.labels!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AllInstances") {
+            self.allInstances = dict["AllInstances"] as! Bool
+        }
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIdsShrink = dict["InstanceIds"] as! String
+        }
+        if dict.keys.contains("Labels") {
+            self.labels = dict["Labels"] as! [String: String]
+        }
+    }
+}
+
+public class UpdateResourceInstanceLabelResponseBody : Tea.TeaModel {
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UpdateResourceInstanceLabelResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateResourceInstanceLabelResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateResourceInstanceLabelResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

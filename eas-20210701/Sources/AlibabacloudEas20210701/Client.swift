@@ -473,6 +473,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ecsInstanceType)) {
             body["EcsInstanceType"] = request.ecsInstanceType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.labels)) {
+            body["Labels"] = request.labels ?? [:];
+        }
         if (!TeaUtils.Client.isUnset(request.resourceType)) {
             body["ResourceType"] = request.resourceType ?? "";
         }
@@ -532,6 +535,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ecsInstanceType)) {
             body["EcsInstanceType"] = request.ecsInstanceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.labels)) {
+            body["Labels"] = request.labels ?? [:];
         }
         if (!TeaUtils.Client.isUnset(request.systemDiskSize)) {
             body["SystemDiskSize"] = request.systemDiskSize!;
@@ -1110,6 +1116,59 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await deleteResourceDLinkWithOptions(ClusterId as! String, ResourceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteResourceInstanceLabelWithOptions(_ ClusterId: String, _ ResourceId: String, _ tmpReq: DeleteResourceInstanceLabelRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteResourceInstanceLabelResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DeleteResourceInstanceLabelShrinkRequest = DeleteResourceInstanceLabelShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.instanceIds)) {
+            request.instanceIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.instanceIds, "InstanceIds", "simple")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.keys)) {
+            request.keysShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.keys, "Keys", "simple")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allInstances)) {
+            query["AllInstances"] = request.allInstances!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceIdsShrink)) {
+            query["InstanceIds"] = request.instanceIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.keysShrink)) {
+            query["Keys"] = request.keysShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteResourceInstanceLabel",
+            "version": "2021-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/resources/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ClusterId)) + "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceId)) + "/label",
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(DeleteResourceInstanceLabelResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(DeleteResourceInstanceLabelResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteResourceInstanceLabel(_ ClusterId: String, _ ResourceId: String, _ request: DeleteResourceInstanceLabelRequest) async throws -> DeleteResourceInstanceLabelResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteResourceInstanceLabelWithOptions(ClusterId as! String, ResourceId as! String, request as! DeleteResourceInstanceLabelRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2632,8 +2691,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listResourceInstancesWithOptions(_ ClusterId: String, _ ResourceId: String, _ request: ListResourceInstancesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListResourceInstancesResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listResourceInstancesWithOptions(_ ClusterId: String, _ ResourceId: String, _ tmpReq: ListResourceInstancesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListResourceInstancesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListResourceInstancesShrinkRequest = ListResourceInstancesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.label)) {
+            request.labelShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.label, "Label", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.chargeType)) {
             query["ChargeType"] = request.chargeType ?? "";
@@ -2652,6 +2716,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.instanceStatus)) {
             query["InstanceStatus"] = request.instanceStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.labelShrink)) {
+            query["Label"] = request.labelShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.order)) {
             query["Order"] = request.order ?? "";
@@ -3640,6 +3707,58 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateResourceInstanceWithOptions(ClusterId as! String, ResourceId as! String, InstanceId as! String, request as! UpdateResourceInstanceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateResourceInstanceLabelWithOptions(_ ClusterId: String, _ ResourceId: String, _ tmpReq: UpdateResourceInstanceLabelRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateResourceInstanceLabelResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateResourceInstanceLabelShrinkRequest = UpdateResourceInstanceLabelShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.instanceIds)) {
+            request.instanceIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.instanceIds, "InstanceIds", "simple")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allInstances)) {
+            query["AllInstances"] = request.allInstances!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceIdsShrink)) {
+            query["InstanceIds"] = request.instanceIdsShrink ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.labels)) {
+            body["Labels"] = request.labels ?? [:];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateResourceInstanceLabel",
+            "version": "2021-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/resources/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ClusterId)) + "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(ResourceId)) + "/label",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(UpdateResourceInstanceLabelResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(UpdateResourceInstanceLabelResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateResourceInstanceLabel(_ ClusterId: String, _ ResourceId: String, _ request: UpdateResourceInstanceLabelRequest) async throws -> UpdateResourceInstanceLabelResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateResourceInstanceLabelWithOptions(ClusterId as! String, ResourceId as! String, request as! UpdateResourceInstanceLabelRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
