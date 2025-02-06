@@ -7754,6 +7754,8 @@ public class DescribeActivationCodeDetailsResponse : Tea.TeaModel {
 public class DescribeActivationCodesRequest : Tea.TeaModel {
     public var aliyunOrderId: String?
 
+    public var macAddress: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -7765,6 +7767,8 @@ public class DescribeActivationCodesRequest : Tea.TeaModel {
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
+
+    public var systemIdentifier: String?
 
     public override init() {
         super.init()
@@ -7782,6 +7786,9 @@ public class DescribeActivationCodesRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.aliyunOrderId != nil {
             map["AliyunOrderId"] = self.aliyunOrderId!
+        }
+        if self.macAddress != nil {
+            map["MacAddress"] = self.macAddress!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -7801,12 +7808,18 @@ public class DescribeActivationCodesRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.systemIdentifier != nil {
+            map["SystemIdentifier"] = self.systemIdentifier!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AliyunOrderId") {
             self.aliyunOrderId = dict["AliyunOrderId"] as! String
+        }
+        if dict.keys.contains("MacAddress") {
+            self.macAddress = dict["MacAddress"] as! String
         }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
@@ -7825,6 +7838,9 @@ public class DescribeActivationCodesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("SystemIdentifier") {
+            self.systemIdentifier = dict["SystemIdentifier"] as! String
         }
     }
 }
