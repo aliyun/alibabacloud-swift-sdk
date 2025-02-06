@@ -583,6 +583,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public var DBInstanceDescription: String?
 
+    public var deploySchema: String?
+
     public var engine: String?
 
     public var engineVersion: String?
@@ -620,6 +622,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if self.DBInstanceDescription != nil {
             map["DBInstanceDescription"] = self.DBInstanceDescription!
+        }
+        if self.deploySchema != nil {
+            map["DeploySchema"] = self.deploySchema!
         }
         if self.engine != nil {
             map["Engine"] = self.engine!
@@ -661,6 +666,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DBInstanceDescription") {
             self.DBInstanceDescription = dict["DBInstanceDescription"] as! String
+        }
+        if dict.keys.contains("DeploySchema") {
+            self.deploySchema = dict["DeploySchema"] as! String
         }
         if dict.keys.contains("Engine") {
             self.engine = dict["Engine"] as! String
@@ -705,6 +713,8 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
 
     public var DBInstanceDescription: String?
 
+    public var deploySchema: String?
+
     public var engine: String?
 
     public var engineVersion: String?
@@ -743,6 +753,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         if self.DBInstanceDescription != nil {
             map["DBInstanceDescription"] = self.DBInstanceDescription!
         }
+        if self.deploySchema != nil {
+            map["DeploySchema"] = self.deploySchema!
+        }
         if self.engine != nil {
             map["Engine"] = self.engine!
         }
@@ -779,6 +792,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DBInstanceDescription") {
             self.DBInstanceDescription = dict["DBInstanceDescription"] as! String
+        }
+        if dict.keys.contains("DeploySchema") {
+            self.deploySchema = dict["DeploySchema"] as! String
         }
         if dict.keys.contains("Engine") {
             self.engine = dict["Engine"] as! String
