@@ -4698,10 +4698,6 @@ public class GetListenerAttributeResponse : Tea.TeaModel {
 public class GetListenerHealthStatusRequest : Tea.TeaModel {
     public var listenerId: String?
 
-    public var maxResults: Int32?
-
-    public var nextToken: String?
-
     public var regionId: String?
 
     public override init() {
@@ -4721,12 +4717,6 @@ public class GetListenerHealthStatusRequest : Tea.TeaModel {
         if self.listenerId != nil {
             map["ListenerId"] = self.listenerId!
         }
-        if self.maxResults != nil {
-            map["MaxResults"] = self.maxResults!
-        }
-        if self.nextToken != nil {
-            map["NextToken"] = self.nextToken!
-        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -4736,12 +4726,6 @@ public class GetListenerHealthStatusRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ListenerId") {
             self.listenerId = dict["ListenerId"] as! String
-        }
-        if dict.keys.contains("MaxResults") {
-            self.maxResults = dict["MaxResults"] as! Int32
-        }
-        if dict.keys.contains("NextToken") {
-            self.nextToken = dict["NextToken"] as! String
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
@@ -5803,6 +5787,8 @@ public class GetLoadBalancerAttributeResponse : Tea.TeaModel {
 public class ListListenerCertificatesRequest : Tea.TeaModel {
     public var certType: String?
 
+    public var certificateIds: [String]?
+
     public var listenerId: String?
 
     public var maxResults: Int32?
@@ -5828,6 +5814,9 @@ public class ListListenerCertificatesRequest : Tea.TeaModel {
         if self.certType != nil {
             map["CertType"] = self.certType!
         }
+        if self.certificateIds != nil {
+            map["CertificateIds"] = self.certificateIds!
+        }
         if self.listenerId != nil {
             map["ListenerId"] = self.listenerId!
         }
@@ -5846,6 +5835,9 @@ public class ListListenerCertificatesRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("CertType") {
             self.certType = dict["CertType"] as! String
+        }
+        if dict.keys.contains("CertificateIds") {
+            self.certificateIds = dict["CertificateIds"] as! [String]
         }
         if dict.keys.contains("ListenerId") {
             self.listenerId = dict["ListenerId"] as! String
@@ -10823,8 +10815,6 @@ public class TagResourcesRequest : Tea.TeaModel {
 }
 
 public class TagResourcesResponseBody : Tea.TeaModel {
-    public var jobId: String?
-
     public var requestId: String?
 
     public override init() {
@@ -10841,9 +10831,6 @@ public class TagResourcesResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.jobId != nil {
-            map["JobId"] = self.jobId!
-        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -10851,9 +10838,6 @@ public class TagResourcesResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("JobId") {
-            self.jobId = dict["JobId"] as! String
-        }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
@@ -10988,8 +10972,6 @@ public class UntagResourcesRequest : Tea.TeaModel {
 }
 
 public class UntagResourcesResponseBody : Tea.TeaModel {
-    public var jobId: String?
-
     public var requestId: String?
 
     public override init() {
@@ -11006,9 +10988,6 @@ public class UntagResourcesResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.jobId != nil {
-            map["JobId"] = self.jobId!
-        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -11016,9 +10995,6 @@ public class UntagResourcesResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("JobId") {
-            self.jobId = dict["JobId"] as! String
-        }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
