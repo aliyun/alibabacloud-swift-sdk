@@ -210,17 +210,27 @@ public class InstancePatterns : Tea.TeaModel {
 
     public var instanceFamilyLevel: String?
 
+    public var instanceTypeFamilies: [String]?
+
     public var maxCpuCores: Int64?
 
     public var maxMemorySize: Double?
 
     public var maxPrice: Double?
 
+    public var maximumGpuAmount: Int64?
+
     public var memory: Double?
 
     public var minCpuCores: Int64?
 
     public var minMemorySize: Double?
+
+    public var minimumEniIpv6AddressQuantity: Int64?
+
+    public var minimumEniPrivateIpAddressQuantity: Int64?
+
+    public var minimumEniQuantity: Int64?
 
     public override init() {
         super.init()
@@ -260,6 +270,9 @@ public class InstancePatterns : Tea.TeaModel {
         if self.instanceFamilyLevel != nil {
             map["instance_family_level"] = self.instanceFamilyLevel!
         }
+        if self.instanceTypeFamilies != nil {
+            map["instance_type_families"] = self.instanceTypeFamilies!
+        }
         if self.maxCpuCores != nil {
             map["max_cpu_cores"] = self.maxCpuCores!
         }
@@ -269,6 +282,9 @@ public class InstancePatterns : Tea.TeaModel {
         if self.maxPrice != nil {
             map["max_price"] = self.maxPrice!
         }
+        if self.maximumGpuAmount != nil {
+            map["maximum_gpu_amount"] = self.maximumGpuAmount!
+        }
         if self.memory != nil {
             map["memory"] = self.memory!
         }
@@ -277,6 +293,15 @@ public class InstancePatterns : Tea.TeaModel {
         }
         if self.minMemorySize != nil {
             map["min_memory_size"] = self.minMemorySize!
+        }
+        if self.minimumEniIpv6AddressQuantity != nil {
+            map["minimum_eni_ipv6_address_quantity"] = self.minimumEniIpv6AddressQuantity!
+        }
+        if self.minimumEniPrivateIpAddressQuantity != nil {
+            map["minimum_eni_private_ip_address_quantity"] = self.minimumEniPrivateIpAddressQuantity!
+        }
+        if self.minimumEniQuantity != nil {
+            map["minimum_eni_quantity"] = self.minimumEniQuantity!
         }
         return map
     }
@@ -306,6 +331,9 @@ public class InstancePatterns : Tea.TeaModel {
         if dict.keys.contains("instance_family_level") {
             self.instanceFamilyLevel = dict["instance_family_level"] as! String
         }
+        if dict.keys.contains("instance_type_families") {
+            self.instanceTypeFamilies = dict["instance_type_families"] as! [String]
+        }
         if dict.keys.contains("max_cpu_cores") {
             self.maxCpuCores = dict["max_cpu_cores"] as! Int64
         }
@@ -315,6 +343,9 @@ public class InstancePatterns : Tea.TeaModel {
         if dict.keys.contains("max_price") {
             self.maxPrice = dict["max_price"] as! Double
         }
+        if dict.keys.contains("maximum_gpu_amount") {
+            self.maximumGpuAmount = dict["maximum_gpu_amount"] as! Int64
+        }
         if dict.keys.contains("memory") {
             self.memory = dict["memory"] as! Double
         }
@@ -323,6 +354,15 @@ public class InstancePatterns : Tea.TeaModel {
         }
         if dict.keys.contains("min_memory_size") {
             self.minMemorySize = dict["min_memory_size"] as! Double
+        }
+        if dict.keys.contains("minimum_eni_ipv6_address_quantity") {
+            self.minimumEniIpv6AddressQuantity = dict["minimum_eni_ipv6_address_quantity"] as! Int64
+        }
+        if dict.keys.contains("minimum_eni_private_ip_address_quantity") {
+            self.minimumEniPrivateIpAddressQuantity = dict["minimum_eni_private_ip_address_quantity"] as! Int64
+        }
+        if dict.keys.contains("minimum_eni_quantity") {
+            self.minimumEniQuantity = dict["minimum_eni_quantity"] as! Int64
         }
     }
 }
