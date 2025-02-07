@@ -11399,7 +11399,11 @@ public class DescribeTransferHistoryRequest : Tea.TeaModel {
 public class DescribeTransferHistoryResponseBody : Tea.TeaModel {
     public class HistoryDetails : Tea.TeaModel {
         public class HistoryDetail : Tea.TeaModel {
+            public var bytesPerMinute: Int64?
+
             public var disableWriteWindows: String?
+
+            public var partsPerMinute: Double?
 
             public var progress: String?
 
@@ -11409,9 +11413,17 @@ public class DescribeTransferHistoryResponseBody : Tea.TeaModel {
 
             public var status: String?
 
+            public var subJob: String?
+
+            public var subJobStatus: String?
+
             public var targetControlVersion: String?
 
             public var targetDBCluster: String?
+
+            public var unsyncedBytes: Int64?
+
+            public var unsyncedParts: Int64?
 
             public override init() {
                 super.init()
@@ -11427,8 +11439,14 @@ public class DescribeTransferHistoryResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.bytesPerMinute != nil {
+                    map["BytesPerMinute"] = self.bytesPerMinute!
+                }
                 if self.disableWriteWindows != nil {
                     map["DisableWriteWindows"] = self.disableWriteWindows!
+                }
+                if self.partsPerMinute != nil {
+                    map["PartsPerMinute"] = self.partsPerMinute!
                 }
                 if self.progress != nil {
                     map["Progress"] = self.progress!
@@ -11442,18 +11460,36 @@ public class DescribeTransferHistoryResponseBody : Tea.TeaModel {
                 if self.status != nil {
                     map["Status"] = self.status!
                 }
+                if self.subJob != nil {
+                    map["SubJob"] = self.subJob!
+                }
+                if self.subJobStatus != nil {
+                    map["SubJobStatus"] = self.subJobStatus!
+                }
                 if self.targetControlVersion != nil {
                     map["TargetControlVersion"] = self.targetControlVersion!
                 }
                 if self.targetDBCluster != nil {
                     map["TargetDBCluster"] = self.targetDBCluster!
                 }
+                if self.unsyncedBytes != nil {
+                    map["UnsyncedBytes"] = self.unsyncedBytes!
+                }
+                if self.unsyncedParts != nil {
+                    map["UnsyncedParts"] = self.unsyncedParts!
+                }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("BytesPerMinute") {
+                    self.bytesPerMinute = dict["BytesPerMinute"] as! Int64
+                }
                 if dict.keys.contains("DisableWriteWindows") {
                     self.disableWriteWindows = dict["DisableWriteWindows"] as! String
+                }
+                if dict.keys.contains("PartsPerMinute") {
+                    self.partsPerMinute = dict["PartsPerMinute"] as! Double
                 }
                 if dict.keys.contains("Progress") {
                     self.progress = dict["Progress"] as! String
@@ -11467,11 +11503,23 @@ public class DescribeTransferHistoryResponseBody : Tea.TeaModel {
                 if dict.keys.contains("Status") {
                     self.status = dict["Status"] as! String
                 }
+                if dict.keys.contains("SubJob") {
+                    self.subJob = dict["SubJob"] as! String
+                }
+                if dict.keys.contains("SubJobStatus") {
+                    self.subJobStatus = dict["SubJobStatus"] as! String
+                }
                 if dict.keys.contains("TargetControlVersion") {
                     self.targetControlVersion = dict["TargetControlVersion"] as! String
                 }
                 if dict.keys.contains("TargetDBCluster") {
                     self.targetDBCluster = dict["TargetDBCluster"] as! String
+                }
+                if dict.keys.contains("UnsyncedBytes") {
+                    self.unsyncedBytes = dict["UnsyncedBytes"] as! Int64
+                }
+                if dict.keys.contains("UnsyncedParts") {
+                    self.unsyncedParts = dict["UnsyncedParts"] as! Int64
                 }
             }
         }
@@ -14353,7 +14401,11 @@ public class TransferVersionRequest : Tea.TeaModel {
 
     public var sourceAccount: String?
 
+    public var sourceClusterName: String?
+
     public var sourcePassword: String?
+
+    public var sourceShards: String?
 
     public var targetAccount: String?
 
@@ -14405,8 +14457,14 @@ public class TransferVersionRequest : Tea.TeaModel {
         if self.sourceAccount != nil {
             map["SourceAccount"] = self.sourceAccount!
         }
+        if self.sourceClusterName != nil {
+            map["SourceClusterName"] = self.sourceClusterName!
+        }
         if self.sourcePassword != nil {
             map["SourcePassword"] = self.sourcePassword!
+        }
+        if self.sourceShards != nil {
+            map["SourceShards"] = self.sourceShards!
         }
         if self.targetAccount != nil {
             map["TargetAccount"] = self.targetAccount!
@@ -14451,8 +14509,14 @@ public class TransferVersionRequest : Tea.TeaModel {
         if dict.keys.contains("SourceAccount") {
             self.sourceAccount = dict["SourceAccount"] as! String
         }
+        if dict.keys.contains("SourceClusterName") {
+            self.sourceClusterName = dict["SourceClusterName"] as! String
+        }
         if dict.keys.contains("SourcePassword") {
             self.sourcePassword = dict["SourcePassword"] as! String
+        }
+        if dict.keys.contains("SourceShards") {
+            self.sourceShards = dict["SourceShards"] as! String
         }
         if dict.keys.contains("TargetAccount") {
             self.targetAccount = dict["TargetAccount"] as! String
