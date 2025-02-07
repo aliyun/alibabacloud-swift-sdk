@@ -7904,6 +7904,8 @@ public class ListInstanceStatusResponse : Tea.TeaModel {
 }
 
 public class ListInstancesRequest : Tea.TeaModel {
+    public var clusterId: String?
+
     public var current: Int64?
 
     public var instance: String?
@@ -7928,6 +7930,9 @@ public class ListInstancesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clusterId != nil {
+            map["cluster_id"] = self.clusterId!
+        }
         if self.current != nil {
             map["current"] = self.current!
         }
@@ -7947,6 +7952,9 @@ public class ListInstancesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("cluster_id") {
+            self.clusterId = dict["cluster_id"] as! String
+        }
         if dict.keys.contains("current") {
             self.current = dict["current"] as! Int64
         }

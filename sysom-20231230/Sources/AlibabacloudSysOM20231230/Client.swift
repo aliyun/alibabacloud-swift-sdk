@@ -1692,6 +1692,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listInstancesWithOptions(_ request: ListInstancesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListInstancesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clusterId)) {
+            query["cluster_id"] = request.clusterId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.current)) {
             query["current"] = request.current!;
         }
