@@ -1580,6 +1580,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createChatMediaUrlWithOptions(_ request: CreateChatMediaUrlRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateChatMediaUrlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mimeType)) {
+            body["MimeType"] = request.mimeType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.requestId)) {
+            body["RequestId"] = request.requestId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateChatMediaUrl",
+            "version": "2020-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(CreateChatMediaUrlResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(CreateChatMediaUrlResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createChatMediaUrl(_ request: CreateChatMediaUrlRequest) async throws -> CreateChatMediaUrlResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createChatMediaUrlWithOptions(request as! CreateChatMediaUrlRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createContactFlowWithOptions(_ request: CreateContactFlowRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateContactFlowResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -8965,6 +9008,64 @@ open class Client : AlibabacloudOpenApi.Client {
     public func processAliMeCallbackOfStaging(_ request: ProcessAliMeCallbackOfStagingRequest) async throws -> ProcessAliMeCallbackOfStagingResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await processAliMeCallbackOfStagingWithOptions(request as! ProcessAliMeCallbackOfStagingRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func processCustomIMCallbackWithOptions(_ request: ProcessCustomIMCallbackRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ProcessCustomIMCallbackResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessChannelId)) {
+            body["AccessChannelId"] = request.accessChannelId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.conversationId)) {
+            body["ConversationId"] = request.conversationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.messageContent)) {
+            body["MessageContent"] = request.messageContent ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.requestId)) {
+            body["RequestId"] = request.requestId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.senderAvatarMediaId)) {
+            body["SenderAvatarMediaId"] = request.senderAvatarMediaId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.senderId)) {
+            body["SenderId"] = request.senderId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.senderName)) {
+            body["SenderName"] = request.senderName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ProcessCustomIMCallback",
+            "version": "2020-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(ProcessCustomIMCallbackResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(ProcessCustomIMCallbackResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func processCustomIMCallback(_ request: ProcessCustomIMCallbackRequest) async throws -> ProcessCustomIMCallbackResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await processCustomIMCallbackWithOptions(request as! ProcessCustomIMCallbackRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
