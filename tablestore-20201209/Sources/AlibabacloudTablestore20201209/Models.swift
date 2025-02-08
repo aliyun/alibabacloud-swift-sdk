@@ -997,6 +997,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
     public var createTime: String?
 
+    public var elasticVCUUpperLimit: Double?
+
     public var instanceDescription: String?
 
     public var instanceName: String?
@@ -1056,6 +1058,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
+        }
+        if self.elasticVCUUpperLimit != nil {
+            map["ElasticVCUUpperLimit"] = self.elasticVCUUpperLimit!
         }
         if self.instanceDescription != nil {
             map["InstanceDescription"] = self.instanceDescription!
@@ -1130,6 +1135,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("CreateTime") {
             self.createTime = dict["CreateTime"] as! String
+        }
+        if dict.keys.contains("ElasticVCUUpperLimit") {
+            self.elasticVCUUpperLimit = dict["ElasticVCUUpperLimit"] as! Double
         }
         if dict.keys.contains("InstanceDescription") {
             self.instanceDescription = dict["InstanceDescription"] as! String
@@ -1252,6 +1260,43 @@ public class GetInstanceResponse : Tea.TeaModel {
 }
 
 public class ListInstancesRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var instanceName: String?
 
     public var instanceNameList: [String]?
@@ -1263,6 +1308,8 @@ public class ListInstancesRequest : Tea.TeaModel {
     public var resourceGroupId: String?
 
     public var status: String?
+
+    public var tag: [ListInstancesRequest.Tag]?
 
     public override init() {
         super.init()
@@ -1296,6 +1343,13 @@ public class ListInstancesRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
@@ -1318,6 +1372,17 @@ public class ListInstancesRequest : Tea.TeaModel {
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! String
         }
+        if dict.keys.contains("Tag") {
+            var tmp : [ListInstancesRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = ListInstancesRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
     }
 }
 
@@ -1333,6 +1398,8 @@ public class ListInstancesShrinkRequest : Tea.TeaModel {
     public var resourceGroupId: String?
 
     public var status: String?
+
+    public var tagShrink: String?
 
     public override init() {
         super.init()
@@ -1366,6 +1433,9 @@ public class ListInstancesShrinkRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.tagShrink != nil {
+            map["Tag"] = self.tagShrink!
+        }
         return map
     }
 
@@ -1387,6 +1457,9 @@ public class ListInstancesShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            self.tagShrink = dict["Tag"] as! String
         }
     }
 }
