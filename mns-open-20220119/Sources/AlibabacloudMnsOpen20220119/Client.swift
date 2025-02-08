@@ -72,11 +72,19 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createQueueWithOptions(_ request: CreateQueueRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateQueueResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createQueueWithOptions(_ tmpReq: CreateQueueRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateQueueResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateQueueShrinkRequest = CreateQueueShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.dlqPolicy)) {
+            request.dlqPolicyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dlqPolicy, "DlqPolicy", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.delaySeconds)) {
             query["DelaySeconds"] = request.delaySeconds!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dlqPolicyShrink)) {
+            query["DlqPolicy"] = request.dlqPolicyShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.enableLogging)) {
             query["EnableLogging"] = request.enableLogging!;
@@ -669,11 +677,19 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func setQueueAttributesWithOptions(_ request: SetQueueAttributesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetQueueAttributesResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func setQueueAttributesWithOptions(_ tmpReq: SetQueueAttributesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetQueueAttributesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SetQueueAttributesShrinkRequest = SetQueueAttributesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.dlqPolicy)) {
+            request.dlqPolicyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dlqPolicy, "DlqPolicy", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.delaySeconds)) {
             query["DelaySeconds"] = request.delaySeconds!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dlqPolicyShrink)) {
+            query["DlqPolicy"] = request.dlqPolicyShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.enableLogging)) {
             query["EnableLogging"] = request.enableLogging!;
@@ -724,9 +740,17 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func setSubscriptionAttributesWithOptions(_ request: SetSubscriptionAttributesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetSubscriptionAttributesResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func setSubscriptionAttributesWithOptions(_ tmpReq: SetSubscriptionAttributesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetSubscriptionAttributesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SetSubscriptionAttributesShrinkRequest = SetSubscriptionAttributesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.dlqPolicy)) {
+            request.dlqPolicyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dlqPolicy, "DlqPolicy", "json")
+        }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dlqPolicyShrink)) {
+            query["DlqPolicy"] = request.dlqPolicyShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.notifyStrategy)) {
             query["NotifyStrategy"] = request.notifyStrategy ?? "";
         }
@@ -810,9 +834,17 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func subscribeWithOptions(_ request: SubscribeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubscribeResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func subscribeWithOptions(_ tmpReq: SubscribeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubscribeResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SubscribeShrinkRequest = SubscribeShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.dlqPolicy)) {
+            request.dlqPolicyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dlqPolicy, "DlqPolicy", "json")
+        }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dlqPolicyShrink)) {
+            query["DlqPolicy"] = request.dlqPolicyShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endpoint)) {
             query["Endpoint"] = request.endpoint ?? "";
         }

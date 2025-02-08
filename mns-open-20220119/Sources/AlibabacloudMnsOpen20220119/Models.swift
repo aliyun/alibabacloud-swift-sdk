@@ -263,6 +263,51 @@ public class AuthorizeEndpointAclResponse : Tea.TeaModel {
 }
 
 public class CreateQueueRequest : Tea.TeaModel {
+    public class DlqPolicy : Tea.TeaModel {
+        public var deadLetterTargetQueue: String?
+
+        public var enabled: Bool?
+
+        public var maxReceiveCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.deadLetterTargetQueue != nil {
+                map["DeadLetterTargetQueue"] = self.deadLetterTargetQueue!
+            }
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.maxReceiveCount != nil {
+                map["MaxReceiveCount"] = self.maxReceiveCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DeadLetterTargetQueue") {
+                self.deadLetterTargetQueue = dict["DeadLetterTargetQueue"] as! String
+            }
+            if dict.keys.contains("Enabled") {
+                self.enabled = dict["Enabled"] as! Bool
+            }
+            if dict.keys.contains("MaxReceiveCount") {
+                self.maxReceiveCount = dict["MaxReceiveCount"] as! Int32
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -302,6 +347,8 @@ public class CreateQueueRequest : Tea.TeaModel {
     }
     public var delaySeconds: Int64?
 
+    public var dlqPolicy: CreateQueueRequest.DlqPolicy?
+
     public var enableLogging: Bool?
 
     public var maximumMessageSize: Int64?
@@ -326,12 +373,16 @@ public class CreateQueueRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.dlqPolicy?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.delaySeconds != nil {
             map["DelaySeconds"] = self.delaySeconds!
+        }
+        if self.dlqPolicy != nil {
+            map["DlqPolicy"] = self.dlqPolicy?.toMap()
         }
         if self.enableLogging != nil {
             map["EnableLogging"] = self.enableLogging!
@@ -365,6 +416,11 @@ public class CreateQueueRequest : Tea.TeaModel {
         if dict.keys.contains("DelaySeconds") {
             self.delaySeconds = dict["DelaySeconds"] as! Int64
         }
+        if dict.keys.contains("DlqPolicy") {
+            var model = CreateQueueRequest.DlqPolicy()
+            model.fromMap(dict["DlqPolicy"] as! [String: Any])
+            self.dlqPolicy = model
+        }
         if dict.keys.contains("EnableLogging") {
             self.enableLogging = dict["EnableLogging"] as! Bool
         }
@@ -384,6 +440,149 @@ public class CreateQueueRequest : Tea.TeaModel {
             var tmp : [CreateQueueRequest.Tag] = []
             for v in dict["Tag"] as! [Any] {
                 var model = CreateQueueRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
+        if dict.keys.contains("VisibilityTimeout") {
+            self.visibilityTimeout = dict["VisibilityTimeout"] as! Int64
+        }
+    }
+}
+
+public class CreateQueueShrinkRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
+    public var delaySeconds: Int64?
+
+    public var dlqPolicyShrink: String?
+
+    public var enableLogging: Bool?
+
+    public var maximumMessageSize: Int64?
+
+    public var messageRetentionPeriod: Int64?
+
+    public var pollingWaitSeconds: Int64?
+
+    public var queueName: String?
+
+    public var tag: [CreateQueueShrinkRequest.Tag]?
+
+    public var visibilityTimeout: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.delaySeconds != nil {
+            map["DelaySeconds"] = self.delaySeconds!
+        }
+        if self.dlqPolicyShrink != nil {
+            map["DlqPolicy"] = self.dlqPolicyShrink!
+        }
+        if self.enableLogging != nil {
+            map["EnableLogging"] = self.enableLogging!
+        }
+        if self.maximumMessageSize != nil {
+            map["MaximumMessageSize"] = self.maximumMessageSize!
+        }
+        if self.messageRetentionPeriod != nil {
+            map["MessageRetentionPeriod"] = self.messageRetentionPeriod!
+        }
+        if self.pollingWaitSeconds != nil {
+            map["PollingWaitSeconds"] = self.pollingWaitSeconds!
+        }
+        if self.queueName != nil {
+            map["QueueName"] = self.queueName!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
+        if self.visibilityTimeout != nil {
+            map["VisibilityTimeout"] = self.visibilityTimeout!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DelaySeconds") {
+            self.delaySeconds = dict["DelaySeconds"] as! Int64
+        }
+        if dict.keys.contains("DlqPolicy") {
+            self.dlqPolicyShrink = dict["DlqPolicy"] as! String
+        }
+        if dict.keys.contains("EnableLogging") {
+            self.enableLogging = dict["EnableLogging"] as! Bool
+        }
+        if dict.keys.contains("MaximumMessageSize") {
+            self.maximumMessageSize = dict["MaximumMessageSize"] as! Int64
+        }
+        if dict.keys.contains("MessageRetentionPeriod") {
+            self.messageRetentionPeriod = dict["MessageRetentionPeriod"] as! Int64
+        }
+        if dict.keys.contains("PollingWaitSeconds") {
+            self.pollingWaitSeconds = dict["PollingWaitSeconds"] as! Int64
+        }
+        if dict.keys.contains("QueueName") {
+            self.queueName = dict["QueueName"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [CreateQueueShrinkRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateQueueShrinkRequest.Tag()
                 if v != nil {
                     model.fromMap(v as! [String: Any])
                 }
@@ -1797,6 +1996,51 @@ public class GetQueueAttributesRequest : Tea.TeaModel {
 
 public class GetQueueAttributesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class DlqPolicy : Tea.TeaModel {
+            public var deadLetterTargetQueue: String?
+
+            public var enabled: Bool?
+
+            public var maxReceiveCount: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.deadLetterTargetQueue != nil {
+                    map["DeadLetterTargetQueue"] = self.deadLetterTargetQueue!
+                }
+                if self.enabled != nil {
+                    map["Enabled"] = self.enabled!
+                }
+                if self.maxReceiveCount != nil {
+                    map["MaxReceiveCount"] = self.maxReceiveCount!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DeadLetterTargetQueue") {
+                    self.deadLetterTargetQueue = dict["DeadLetterTargetQueue"] as! String
+                }
+                if dict.keys.contains("Enabled") {
+                    self.enabled = dict["Enabled"] as! Bool
+                }
+                if dict.keys.contains("MaxReceiveCount") {
+                    self.maxReceiveCount = dict["MaxReceiveCount"] as! String
+                }
+            }
+        }
         public class Tags : Tea.TeaModel {
             public var tagKey: String?
 
@@ -1842,6 +2086,8 @@ public class GetQueueAttributesResponseBody : Tea.TeaModel {
 
         public var delaySeconds: Int64?
 
+        public var dlqPolicy: GetQueueAttributesResponseBody.Data.DlqPolicy?
+
         public var inactiveMessages: Int64?
 
         public var lastModifyTime: Int64?
@@ -1870,6 +2116,7 @@ public class GetQueueAttributesResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.dlqPolicy?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -1885,6 +2132,9 @@ public class GetQueueAttributesResponseBody : Tea.TeaModel {
             }
             if self.delaySeconds != nil {
                 map["DelaySeconds"] = self.delaySeconds!
+            }
+            if self.dlqPolicy != nil {
+                map["DlqPolicy"] = self.dlqPolicy?.toMap()
             }
             if self.inactiveMessages != nil {
                 map["InactiveMessages"] = self.inactiveMessages!
@@ -1932,6 +2182,11 @@ public class GetQueueAttributesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("DelaySeconds") {
                 self.delaySeconds = dict["DelaySeconds"] as! Int64
+            }
+            if dict.keys.contains("DlqPolicy") {
+                var model = GetQueueAttributesResponseBody.Data.DlqPolicy()
+                model.fromMap(dict["DlqPolicy"] as! [String: Any])
+                self.dlqPolicy = model
             }
             if dict.keys.contains("InactiveMessages") {
                 self.inactiveMessages = dict["InactiveMessages"] as! Int64
@@ -2131,7 +2386,46 @@ public class GetSubscriptionAttributesRequest : Tea.TeaModel {
 
 public class GetSubscriptionAttributesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class DlqPolicy : Tea.TeaModel {
+            public var deadLetterTargetQueue: String?
+
+            public var enabled: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.deadLetterTargetQueue != nil {
+                    map["DeadLetterTargetQueue"] = self.deadLetterTargetQueue!
+                }
+                if self.enabled != nil {
+                    map["Enabled"] = self.enabled!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DeadLetterTargetQueue") {
+                    self.deadLetterTargetQueue = dict["DeadLetterTargetQueue"] as! String
+                }
+                if dict.keys.contains("Enabled") {
+                    self.enabled = dict["Enabled"] as! Bool
+                }
+            }
+        }
         public var createTime: Int64?
+
+        public var dlqPolicy: GetSubscriptionAttributesResponseBody.Data.DlqPolicy?
 
         public var endpoint: String?
 
@@ -2159,12 +2453,16 @@ public class GetSubscriptionAttributesResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.dlqPolicy?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
+            }
+            if self.dlqPolicy != nil {
+                map["DlqPolicy"] = self.dlqPolicy?.toMap()
             }
             if self.endpoint != nil {
                 map["Endpoint"] = self.endpoint!
@@ -2196,6 +2494,11 @@ public class GetSubscriptionAttributesResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("CreateTime") {
                 self.createTime = dict["CreateTime"] as! Int64
+            }
+            if dict.keys.contains("DlqPolicy") {
+                var model = GetSubscriptionAttributesResponseBody.Data.DlqPolicy()
+                model.fromMap(dict["DlqPolicy"] as! [String: Any])
+                self.dlqPolicy = model
             }
             if dict.keys.contains("Endpoint") {
                 self.endpoint = dict["Endpoint"] as! String
@@ -2793,6 +3096,51 @@ public class ListQueueRequest : Tea.TeaModel {
 public class ListQueueResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class PageData : Tea.TeaModel {
+            public class DlqPolicy : Tea.TeaModel {
+                public var deadLetterTargetQueue: String?
+
+                public var enabled: Bool?
+
+                public var maxReceiveCount: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.deadLetterTargetQueue != nil {
+                        map["DeadLetterTargetQueue"] = self.deadLetterTargetQueue!
+                    }
+                    if self.enabled != nil {
+                        map["Enabled"] = self.enabled!
+                    }
+                    if self.maxReceiveCount != nil {
+                        map["MaxReceiveCount"] = self.maxReceiveCount!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("DeadLetterTargetQueue") {
+                        self.deadLetterTargetQueue = dict["DeadLetterTargetQueue"] as! String
+                    }
+                    if dict.keys.contains("Enabled") {
+                        self.enabled = dict["Enabled"] as! Bool
+                    }
+                    if dict.keys.contains("MaxReceiveCount") {
+                        self.maxReceiveCount = dict["MaxReceiveCount"] as! String
+                    }
+                }
+            }
             public class Tags : Tea.TeaModel {
                 public var tagKey: String?
 
@@ -2838,6 +3186,8 @@ public class ListQueueResponseBody : Tea.TeaModel {
 
             public var delaySeconds: Int64?
 
+            public var dlqPolicy: ListQueueResponseBody.Data.PageData.DlqPolicy?
+
             public var inactiveMessages: Int64?
 
             public var lastModifyTime: Int64?
@@ -2866,6 +3216,7 @@ public class ListQueueResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.dlqPolicy?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -2881,6 +3232,9 @@ public class ListQueueResponseBody : Tea.TeaModel {
                 }
                 if self.delaySeconds != nil {
                     map["DelaySeconds"] = self.delaySeconds!
+                }
+                if self.dlqPolicy != nil {
+                    map["DlqPolicy"] = self.dlqPolicy?.toMap()
                 }
                 if self.inactiveMessages != nil {
                     map["InactiveMessages"] = self.inactiveMessages!
@@ -2928,6 +3282,11 @@ public class ListQueueResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("DelaySeconds") {
                     self.delaySeconds = dict["DelaySeconds"] as! Int64
+                }
+                if dict.keys.contains("DlqPolicy") {
+                    var model = ListQueueResponseBody.Data.PageData.DlqPolicy()
+                    model.fromMap(dict["DlqPolicy"] as! [String: Any])
+                    self.dlqPolicy = model
                 }
                 if dict.keys.contains("InactiveMessages") {
                     self.inactiveMessages = dict["InactiveMessages"] as! Int64
@@ -3224,7 +3583,46 @@ public class ListSubscriptionByTopicRequest : Tea.TeaModel {
 public class ListSubscriptionByTopicResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class PageData : Tea.TeaModel {
+            public class DlqPolicy : Tea.TeaModel {
+                public var deadLetterTargetQueue: String?
+
+                public var enabled: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.deadLetterTargetQueue != nil {
+                        map["DeadLetterTargetQueue"] = self.deadLetterTargetQueue!
+                    }
+                    if self.enabled != nil {
+                        map["Enabled"] = self.enabled!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("DeadLetterTargetQueue") {
+                        self.deadLetterTargetQueue = dict["DeadLetterTargetQueue"] as! String
+                    }
+                    if dict.keys.contains("Enabled") {
+                        self.enabled = dict["Enabled"] as! Bool
+                    }
+                }
+            }
             public var createTime: Int64?
+
+            public var dlqPolicy: ListSubscriptionByTopicResponseBody.Data.PageData.DlqPolicy?
 
             public var endpoint: String?
 
@@ -3252,12 +3650,16 @@ public class ListSubscriptionByTopicResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.dlqPolicy?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
+                }
+                if self.dlqPolicy != nil {
+                    map["DlqPolicy"] = self.dlqPolicy?.toMap()
                 }
                 if self.endpoint != nil {
                     map["Endpoint"] = self.endpoint!
@@ -3289,6 +3691,11 @@ public class ListSubscriptionByTopicResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("CreateTime") {
                     self.createTime = dict["CreateTime"] as! Int64
+                }
+                if dict.keys.contains("DlqPolicy") {
+                    var model = ListSubscriptionByTopicResponseBody.Data.PageData.DlqPolicy()
+                    model.fromMap(dict["DlqPolicy"] as! [String: Any])
+                    self.dlqPolicy = model
                 }
                 if dict.keys.contains("Endpoint") {
                     self.endpoint = dict["Endpoint"] as! String
@@ -4161,7 +4568,143 @@ public class RevokeEndpointAclResponse : Tea.TeaModel {
 }
 
 public class SetQueueAttributesRequest : Tea.TeaModel {
+    public class DlqPolicy : Tea.TeaModel {
+        public var deadLetterTargetQueue: String?
+
+        public var enabled: Bool?
+
+        public var maxReceiveCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.deadLetterTargetQueue != nil {
+                map["DeadLetterTargetQueue"] = self.deadLetterTargetQueue!
+            }
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            if self.maxReceiveCount != nil {
+                map["MaxReceiveCount"] = self.maxReceiveCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DeadLetterTargetQueue") {
+                self.deadLetterTargetQueue = dict["DeadLetterTargetQueue"] as! String
+            }
+            if dict.keys.contains("Enabled") {
+                self.enabled = dict["Enabled"] as! Bool
+            }
+            if dict.keys.contains("MaxReceiveCount") {
+                self.maxReceiveCount = dict["MaxReceiveCount"] as! Int32
+            }
+        }
+    }
     public var delaySeconds: Int64?
+
+    public var dlqPolicy: SetQueueAttributesRequest.DlqPolicy?
+
+    public var enableLogging: Bool?
+
+    public var maximumMessageSize: Int64?
+
+    public var messageRetentionPeriod: Int64?
+
+    public var pollingWaitSeconds: Int64?
+
+    public var queueName: String?
+
+    public var visibilityTimeout: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.dlqPolicy?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.delaySeconds != nil {
+            map["DelaySeconds"] = self.delaySeconds!
+        }
+        if self.dlqPolicy != nil {
+            map["DlqPolicy"] = self.dlqPolicy?.toMap()
+        }
+        if self.enableLogging != nil {
+            map["EnableLogging"] = self.enableLogging!
+        }
+        if self.maximumMessageSize != nil {
+            map["MaximumMessageSize"] = self.maximumMessageSize!
+        }
+        if self.messageRetentionPeriod != nil {
+            map["MessageRetentionPeriod"] = self.messageRetentionPeriod!
+        }
+        if self.pollingWaitSeconds != nil {
+            map["PollingWaitSeconds"] = self.pollingWaitSeconds!
+        }
+        if self.queueName != nil {
+            map["QueueName"] = self.queueName!
+        }
+        if self.visibilityTimeout != nil {
+            map["VisibilityTimeout"] = self.visibilityTimeout!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DelaySeconds") {
+            self.delaySeconds = dict["DelaySeconds"] as! Int64
+        }
+        if dict.keys.contains("DlqPolicy") {
+            var model = SetQueueAttributesRequest.DlqPolicy()
+            model.fromMap(dict["DlqPolicy"] as! [String: Any])
+            self.dlqPolicy = model
+        }
+        if dict.keys.contains("EnableLogging") {
+            self.enableLogging = dict["EnableLogging"] as! Bool
+        }
+        if dict.keys.contains("MaximumMessageSize") {
+            self.maximumMessageSize = dict["MaximumMessageSize"] as! Int64
+        }
+        if dict.keys.contains("MessageRetentionPeriod") {
+            self.messageRetentionPeriod = dict["MessageRetentionPeriod"] as! Int64
+        }
+        if dict.keys.contains("PollingWaitSeconds") {
+            self.pollingWaitSeconds = dict["PollingWaitSeconds"] as! Int64
+        }
+        if dict.keys.contains("QueueName") {
+            self.queueName = dict["QueueName"] as! String
+        }
+        if dict.keys.contains("VisibilityTimeout") {
+            self.visibilityTimeout = dict["VisibilityTimeout"] as! Int64
+        }
+    }
+}
+
+public class SetQueueAttributesShrinkRequest : Tea.TeaModel {
+    public var delaySeconds: Int64?
+
+    public var dlqPolicyShrink: String?
 
     public var enableLogging: Bool?
 
@@ -4192,6 +4735,9 @@ public class SetQueueAttributesRequest : Tea.TeaModel {
         if self.delaySeconds != nil {
             map["DelaySeconds"] = self.delaySeconds!
         }
+        if self.dlqPolicyShrink != nil {
+            map["DlqPolicy"] = self.dlqPolicyShrink!
+        }
         if self.enableLogging != nil {
             map["EnableLogging"] = self.enableLogging!
         }
@@ -4216,6 +4762,9 @@ public class SetQueueAttributesRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DelaySeconds") {
             self.delaySeconds = dict["DelaySeconds"] as! Int64
+        }
+        if dict.keys.contains("DlqPolicy") {
+            self.dlqPolicyShrink = dict["DlqPolicy"] as! String
         }
         if dict.keys.contains("EnableLogging") {
             self.enableLogging = dict["EnableLogging"] as! Bool
@@ -4406,6 +4955,102 @@ public class SetQueueAttributesResponse : Tea.TeaModel {
 }
 
 public class SetSubscriptionAttributesRequest : Tea.TeaModel {
+    public class DlqPolicy : Tea.TeaModel {
+        public var deadLetterTargetQueue: String?
+
+        public var enabled: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.deadLetterTargetQueue != nil {
+                map["DeadLetterTargetQueue"] = self.deadLetterTargetQueue!
+            }
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DeadLetterTargetQueue") {
+                self.deadLetterTargetQueue = dict["DeadLetterTargetQueue"] as! String
+            }
+            if dict.keys.contains("Enabled") {
+                self.enabled = dict["Enabled"] as! Bool
+            }
+        }
+    }
+    public var dlqPolicy: SetSubscriptionAttributesRequest.DlqPolicy?
+
+    public var notifyStrategy: String?
+
+    public var subscriptionName: String?
+
+    public var topicName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.dlqPolicy?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dlqPolicy != nil {
+            map["DlqPolicy"] = self.dlqPolicy?.toMap()
+        }
+        if self.notifyStrategy != nil {
+            map["NotifyStrategy"] = self.notifyStrategy!
+        }
+        if self.subscriptionName != nil {
+            map["SubscriptionName"] = self.subscriptionName!
+        }
+        if self.topicName != nil {
+            map["TopicName"] = self.topicName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DlqPolicy") {
+            var model = SetSubscriptionAttributesRequest.DlqPolicy()
+            model.fromMap(dict["DlqPolicy"] as! [String: Any])
+            self.dlqPolicy = model
+        }
+        if dict.keys.contains("NotifyStrategy") {
+            self.notifyStrategy = dict["NotifyStrategy"] as! String
+        }
+        if dict.keys.contains("SubscriptionName") {
+            self.subscriptionName = dict["SubscriptionName"] as! String
+        }
+        if dict.keys.contains("TopicName") {
+            self.topicName = dict["TopicName"] as! String
+        }
+    }
+}
+
+public class SetSubscriptionAttributesShrinkRequest : Tea.TeaModel {
+    public var dlqPolicyShrink: String?
+
     public var notifyStrategy: String?
 
     public var subscriptionName: String?
@@ -4426,6 +5071,9 @@ public class SetSubscriptionAttributesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dlqPolicyShrink != nil {
+            map["DlqPolicy"] = self.dlqPolicyShrink!
+        }
         if self.notifyStrategy != nil {
             map["NotifyStrategy"] = self.notifyStrategy!
         }
@@ -4439,6 +5087,9 @@ public class SetSubscriptionAttributesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DlqPolicy") {
+            self.dlqPolicyShrink = dict["DlqPolicy"] as! String
+        }
         if dict.keys.contains("NotifyStrategy") {
             self.notifyStrategy = dict["NotifyStrategy"] as! String
         }
@@ -4832,6 +5483,134 @@ public class SetTopicAttributesResponse : Tea.TeaModel {
 }
 
 public class SubscribeRequest : Tea.TeaModel {
+    public class DlqPolicy : Tea.TeaModel {
+        public var deadLetterTargetQueue: String?
+
+        public var enabled: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.deadLetterTargetQueue != nil {
+                map["DeadLetterTargetQueue"] = self.deadLetterTargetQueue!
+            }
+            if self.enabled != nil {
+                map["Enabled"] = self.enabled!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DeadLetterTargetQueue") {
+                self.deadLetterTargetQueue = dict["DeadLetterTargetQueue"] as! String
+            }
+            if dict.keys.contains("Enabled") {
+                self.enabled = dict["Enabled"] as! Bool
+            }
+        }
+    }
+    public var dlqPolicy: SubscribeRequest.DlqPolicy?
+
+    public var endpoint: String?
+
+    public var messageTag: String?
+
+    public var notifyContentFormat: String?
+
+    public var notifyStrategy: String?
+
+    public var pushType: String?
+
+    public var subscriptionName: String?
+
+    public var topicName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.dlqPolicy?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dlqPolicy != nil {
+            map["DlqPolicy"] = self.dlqPolicy?.toMap()
+        }
+        if self.endpoint != nil {
+            map["Endpoint"] = self.endpoint!
+        }
+        if self.messageTag != nil {
+            map["MessageTag"] = self.messageTag!
+        }
+        if self.notifyContentFormat != nil {
+            map["NotifyContentFormat"] = self.notifyContentFormat!
+        }
+        if self.notifyStrategy != nil {
+            map["NotifyStrategy"] = self.notifyStrategy!
+        }
+        if self.pushType != nil {
+            map["PushType"] = self.pushType!
+        }
+        if self.subscriptionName != nil {
+            map["SubscriptionName"] = self.subscriptionName!
+        }
+        if self.topicName != nil {
+            map["TopicName"] = self.topicName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DlqPolicy") {
+            var model = SubscribeRequest.DlqPolicy()
+            model.fromMap(dict["DlqPolicy"] as! [String: Any])
+            self.dlqPolicy = model
+        }
+        if dict.keys.contains("Endpoint") {
+            self.endpoint = dict["Endpoint"] as! String
+        }
+        if dict.keys.contains("MessageTag") {
+            self.messageTag = dict["MessageTag"] as! String
+        }
+        if dict.keys.contains("NotifyContentFormat") {
+            self.notifyContentFormat = dict["NotifyContentFormat"] as! String
+        }
+        if dict.keys.contains("NotifyStrategy") {
+            self.notifyStrategy = dict["NotifyStrategy"] as! String
+        }
+        if dict.keys.contains("PushType") {
+            self.pushType = dict["PushType"] as! String
+        }
+        if dict.keys.contains("SubscriptionName") {
+            self.subscriptionName = dict["SubscriptionName"] as! String
+        }
+        if dict.keys.contains("TopicName") {
+            self.topicName = dict["TopicName"] as! String
+        }
+    }
+}
+
+public class SubscribeShrinkRequest : Tea.TeaModel {
+    public var dlqPolicyShrink: String?
+
     public var endpoint: String?
 
     public var messageTag: String?
@@ -4860,6 +5639,9 @@ public class SubscribeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dlqPolicyShrink != nil {
+            map["DlqPolicy"] = self.dlqPolicyShrink!
+        }
         if self.endpoint != nil {
             map["Endpoint"] = self.endpoint!
         }
@@ -4885,6 +5667,9 @@ public class SubscribeRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DlqPolicy") {
+            self.dlqPolicyShrink = dict["DlqPolicy"] as! String
+        }
         if dict.keys.contains("Endpoint") {
             self.endpoint = dict["Endpoint"] as! String
         }
