@@ -7448,6 +7448,8 @@ public class GetLindormInstanceListResponseBody : Tea.TeaModel {
 
         public var enableMessage: Bool?
 
+        public var enableRow: Bool?
+
         public var enableStream: Bool?
 
         public var enableVector: Bool?
@@ -7516,6 +7518,9 @@ public class GetLindormInstanceListResponseBody : Tea.TeaModel {
             }
             if self.enableMessage != nil {
                 map["EnableMessage"] = self.enableMessage!
+            }
+            if self.enableRow != nil {
+                map["EnableRow"] = self.enableRow!
             }
             if self.enableStream != nil {
                 map["EnableStream"] = self.enableStream!
@@ -7596,6 +7601,9 @@ public class GetLindormInstanceListResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("EnableMessage") {
                 self.enableMessage = dict["EnableMessage"] as! Bool
+            }
+            if dict.keys.contains("EnableRow") {
+                self.enableRow = dict["EnableRow"] as! Bool
             }
             if dict.keys.contains("EnableStream") {
                 self.enableStream = dict["EnableStream"] as! Bool
