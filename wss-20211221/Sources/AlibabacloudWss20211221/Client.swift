@@ -24,6 +24,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMultiOrderWithOptions(_ tmpReq: CreateMultiOrderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateMultiOrderResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateMultiOrderShrinkRequest = CreateMultiOrderShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.properties)) {
+            request.propertiesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.properties, "Properties", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.orderItems)) {
+            query["OrderItems"] = request.orderItems ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.orderType)) {
+            query["OrderType"] = request.orderType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.propertiesShrink)) {
+            query["Properties"] = request.propertiesShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateMultiOrder",
+            "version": "2021-12-21",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(CreateMultiOrderResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(CreateMultiOrderResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMultiOrder(_ request: CreateMultiOrderRequest) async throws -> CreateMultiOrderResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createMultiOrderWithOptions(request as! CreateMultiOrderRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeDeliveryAddressWithOptions(_ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDeliveryAddressResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([

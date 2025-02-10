@@ -5,6 +5,493 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class CreateMultiOrderRequest : Tea.TeaModel {
+    public class OrderItems : Tea.TeaModel {
+        public class Components : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("Value") {
+                    self.value = dict["Value"] as! String
+                }
+            }
+        }
+        public var amount: Int32?
+
+        public var autoPay: Bool?
+
+        public var autoRenew: Bool?
+
+        public var components: [CreateMultiOrderRequest.OrderItems.Components]?
+
+        public var period: Int32?
+
+        public var periodUnit: String?
+
+        public var promotionId: String?
+
+        public var resourceIds: [String]?
+
+        public var resourceType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.amount != nil {
+                map["Amount"] = self.amount!
+            }
+            if self.autoPay != nil {
+                map["AutoPay"] = self.autoPay!
+            }
+            if self.autoRenew != nil {
+                map["AutoRenew"] = self.autoRenew!
+            }
+            if self.components != nil {
+                var tmp : [Any] = []
+                for k in self.components! {
+                    tmp.append(k.toMap())
+                }
+                map["Components"] = tmp
+            }
+            if self.period != nil {
+                map["Period"] = self.period!
+            }
+            if self.periodUnit != nil {
+                map["PeriodUnit"] = self.periodUnit!
+            }
+            if self.promotionId != nil {
+                map["PromotionId"] = self.promotionId!
+            }
+            if self.resourceIds != nil {
+                map["ResourceIds"] = self.resourceIds!
+            }
+            if self.resourceType != nil {
+                map["ResourceType"] = self.resourceType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Amount") {
+                self.amount = dict["Amount"] as! Int32
+            }
+            if dict.keys.contains("AutoPay") {
+                self.autoPay = dict["AutoPay"] as! Bool
+            }
+            if dict.keys.contains("AutoRenew") {
+                self.autoRenew = dict["AutoRenew"] as! Bool
+            }
+            if dict.keys.contains("Components") {
+                var tmp : [CreateMultiOrderRequest.OrderItems.Components] = []
+                for v in dict["Components"] as! [Any] {
+                    var model = CreateMultiOrderRequest.OrderItems.Components()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.components = tmp
+            }
+            if dict.keys.contains("Period") {
+                self.period = dict["Period"] as! Int32
+            }
+            if dict.keys.contains("PeriodUnit") {
+                self.periodUnit = dict["PeriodUnit"] as! String
+            }
+            if dict.keys.contains("PromotionId") {
+                self.promotionId = dict["PromotionId"] as! String
+            }
+            if dict.keys.contains("ResourceIds") {
+                self.resourceIds = dict["ResourceIds"] as! [String]
+            }
+            if dict.keys.contains("ResourceType") {
+                self.resourceType = dict["ResourceType"] as! String
+            }
+        }
+    }
+    public var orderItems: [CreateMultiOrderRequest.OrderItems]?
+
+    public var orderType: String?
+
+    public var properties: [String: String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.orderItems != nil {
+            var tmp : [Any] = []
+            for k in self.orderItems! {
+                tmp.append(k.toMap())
+            }
+            map["OrderItems"] = tmp
+        }
+        if self.orderType != nil {
+            map["OrderType"] = self.orderType!
+        }
+        if self.properties != nil {
+            map["Properties"] = self.properties!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OrderItems") {
+            var tmp : [CreateMultiOrderRequest.OrderItems] = []
+            for v in dict["OrderItems"] as! [Any] {
+                var model = CreateMultiOrderRequest.OrderItems()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.orderItems = tmp
+        }
+        if dict.keys.contains("OrderType") {
+            self.orderType = dict["OrderType"] as! String
+        }
+        if dict.keys.contains("Properties") {
+            self.properties = dict["Properties"] as! [String: String]
+        }
+    }
+}
+
+public class CreateMultiOrderShrinkRequest : Tea.TeaModel {
+    public class OrderItems : Tea.TeaModel {
+        public class Components : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("Value") {
+                    self.value = dict["Value"] as! String
+                }
+            }
+        }
+        public var amount: Int32?
+
+        public var autoPay: Bool?
+
+        public var autoRenew: Bool?
+
+        public var components: [CreateMultiOrderShrinkRequest.OrderItems.Components]?
+
+        public var period: Int32?
+
+        public var periodUnit: String?
+
+        public var promotionId: String?
+
+        public var resourceIds: [String]?
+
+        public var resourceType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.amount != nil {
+                map["Amount"] = self.amount!
+            }
+            if self.autoPay != nil {
+                map["AutoPay"] = self.autoPay!
+            }
+            if self.autoRenew != nil {
+                map["AutoRenew"] = self.autoRenew!
+            }
+            if self.components != nil {
+                var tmp : [Any] = []
+                for k in self.components! {
+                    tmp.append(k.toMap())
+                }
+                map["Components"] = tmp
+            }
+            if self.period != nil {
+                map["Period"] = self.period!
+            }
+            if self.periodUnit != nil {
+                map["PeriodUnit"] = self.periodUnit!
+            }
+            if self.promotionId != nil {
+                map["PromotionId"] = self.promotionId!
+            }
+            if self.resourceIds != nil {
+                map["ResourceIds"] = self.resourceIds!
+            }
+            if self.resourceType != nil {
+                map["ResourceType"] = self.resourceType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Amount") {
+                self.amount = dict["Amount"] as! Int32
+            }
+            if dict.keys.contains("AutoPay") {
+                self.autoPay = dict["AutoPay"] as! Bool
+            }
+            if dict.keys.contains("AutoRenew") {
+                self.autoRenew = dict["AutoRenew"] as! Bool
+            }
+            if dict.keys.contains("Components") {
+                var tmp : [CreateMultiOrderShrinkRequest.OrderItems.Components] = []
+                for v in dict["Components"] as! [Any] {
+                    var model = CreateMultiOrderShrinkRequest.OrderItems.Components()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.components = tmp
+            }
+            if dict.keys.contains("Period") {
+                self.period = dict["Period"] as! Int32
+            }
+            if dict.keys.contains("PeriodUnit") {
+                self.periodUnit = dict["PeriodUnit"] as! String
+            }
+            if dict.keys.contains("PromotionId") {
+                self.promotionId = dict["PromotionId"] as! String
+            }
+            if dict.keys.contains("ResourceIds") {
+                self.resourceIds = dict["ResourceIds"] as! [String]
+            }
+            if dict.keys.contains("ResourceType") {
+                self.resourceType = dict["ResourceType"] as! String
+            }
+        }
+    }
+    public var orderItems: [CreateMultiOrderShrinkRequest.OrderItems]?
+
+    public var orderType: String?
+
+    public var propertiesShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.orderItems != nil {
+            var tmp : [Any] = []
+            for k in self.orderItems! {
+                tmp.append(k.toMap())
+            }
+            map["OrderItems"] = tmp
+        }
+        if self.orderType != nil {
+            map["OrderType"] = self.orderType!
+        }
+        if self.propertiesShrink != nil {
+            map["Properties"] = self.propertiesShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OrderItems") {
+            var tmp : [CreateMultiOrderShrinkRequest.OrderItems] = []
+            for v in dict["OrderItems"] as! [Any] {
+                var model = CreateMultiOrderShrinkRequest.OrderItems()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.orderItems = tmp
+        }
+        if dict.keys.contains("OrderType") {
+            self.orderType = dict["OrderType"] as! String
+        }
+        if dict.keys.contains("Properties") {
+            self.propertiesShrink = dict["Properties"] as! String
+        }
+    }
+}
+
+public class CreateMultiOrderResponseBody : Tea.TeaModel {
+    public var orderIds: [Int64]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.orderIds != nil {
+            map["OrderIds"] = self.orderIds!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OrderIds") {
+            self.orderIds = dict["OrderIds"] as! [Int64]
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateMultiOrderResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateMultiOrderResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateMultiOrderResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeDeliveryAddressResponseBody : Tea.TeaModel {
     public class Addresses : Tea.TeaModel {
         public class Area : Tea.TeaModel {
