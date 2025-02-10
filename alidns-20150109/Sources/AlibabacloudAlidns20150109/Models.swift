@@ -33280,6 +33280,8 @@ public class DescribePdnsUserInfoRequest : Tea.TeaModel {
 
 public class DescribePdnsUserInfoResponseBody : Tea.TeaModel {
     public class UserInfo : Tea.TeaModel {
+        public var availableAccessSecurityType: String?
+
         public var availableService: String?
 
         public var pdnsId: Int64?
@@ -33308,6 +33310,9 @@ public class DescribePdnsUserInfoResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.availableAccessSecurityType != nil {
+                map["AvailableAccessSecurityType"] = self.availableAccessSecurityType!
+            }
             if self.availableService != nil {
                 map["AvailableService"] = self.availableService!
             }
@@ -33333,6 +33338,9 @@ public class DescribePdnsUserInfoResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AvailableAccessSecurityType") {
+                self.availableAccessSecurityType = dict["AvailableAccessSecurityType"] as! String
+            }
             if dict.keys.contains("AvailableService") {
                 self.availableService = dict["AvailableService"] as! String
             }
