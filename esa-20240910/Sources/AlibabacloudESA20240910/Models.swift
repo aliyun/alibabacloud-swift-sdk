@@ -53032,6 +53032,45 @@ public class PublishRoutineCodeVersionResponse : Tea.TeaModel {
 
 public class PurgeCachesRequest : Tea.TeaModel {
     public class Content : Tea.TeaModel {
+        public class CacheKeys : Tea.TeaModel {
+            public var headers: [String: String]?
+
+            public var url: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.headers != nil {
+                    map["Headers"] = self.headers!
+                }
+                if self.url != nil {
+                    map["Url"] = self.url!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Headers") {
+                    self.headers = dict["Headers"] as! [String: String]
+                }
+                if dict.keys.contains("Url") {
+                    self.url = dict["Url"] as! String
+                }
+            }
+        }
+        public var cacheKeys: [PurgeCachesRequest.Content.CacheKeys]?
+
         public var cacheTags: [String]?
 
         public var directories: [String]?
@@ -53058,6 +53097,13 @@ public class PurgeCachesRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.cacheKeys != nil {
+                var tmp : [Any] = []
+                for k in self.cacheKeys! {
+                    tmp.append(k.toMap())
+                }
+                map["CacheKeys"] = tmp
+            }
             if self.cacheTags != nil {
                 map["CacheTags"] = self.cacheTags!
             }
@@ -53080,6 +53126,17 @@ public class PurgeCachesRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CacheKeys") {
+                var tmp : [PurgeCachesRequest.Content.CacheKeys] = []
+                for v in dict["CacheKeys"] as! [Any] {
+                    var model = PurgeCachesRequest.Content.CacheKeys()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.cacheKeys = tmp
+            }
             if dict.keys.contains("CacheTags") {
                 self.cacheTags = dict["CacheTags"] as! [String]
             }
