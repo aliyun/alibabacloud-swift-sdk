@@ -161,6 +161,8 @@ public class CreateVpcPeerConnectionRequest : Tea.TeaModel {
 
     public var dryRun: Bool?
 
+    public var linkType: String?
+
     public var name: String?
 
     public var regionId: String?
@@ -204,6 +206,9 @@ public class CreateVpcPeerConnectionRequest : Tea.TeaModel {
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
+        if self.linkType != nil {
+            map["LinkType"] = self.linkType!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -240,6 +245,9 @@ public class CreateVpcPeerConnectionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DryRun") {
             self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("LinkType") {
+            self.linkType = dict["LinkType"] as! String
         }
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
@@ -662,6 +670,8 @@ public class GetVpcPeerConnectionAttributeResponseBody : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var linkType: String?
+
     public var name: String?
 
     public var ownerId: Int64?
@@ -723,6 +733,9 @@ public class GetVpcPeerConnectionAttributeResponseBody : Tea.TeaModel {
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
+        }
+        if self.linkType != nil {
+            map["LinkType"] = self.linkType!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -787,6 +800,9 @@ public class GetVpcPeerConnectionAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("LinkType") {
+            self.linkType = dict["LinkType"] as! String
         }
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
@@ -1588,6 +1604,8 @@ public class ListVpcPeerConnectionsResponseBody : Tea.TeaModel {
 
         public var instanceId: String?
 
+        public var linkType: String?
+
         public var name: String?
 
         public var ownerId: Int64?
@@ -1647,6 +1665,9 @@ public class ListVpcPeerConnectionsResponseBody : Tea.TeaModel {
             }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
+            }
+            if self.linkType != nil {
+                map["LinkType"] = self.linkType!
             }
             if self.name != nil {
                 map["Name"] = self.name!
@@ -1708,6 +1729,9 @@ public class ListVpcPeerConnectionsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("InstanceId") {
                 self.instanceId = dict["InstanceId"] as! String
+            }
+            if dict.keys.contains("LinkType") {
+                self.linkType = dict["LinkType"] as! String
             }
             if dict.keys.contains("Name") {
                 self.name = dict["Name"] as! String
@@ -1875,6 +1899,8 @@ public class ModifyVpcPeerConnectionRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var linkType: String?
+
     public var name: String?
 
     public override init() {
@@ -1906,6 +1932,9 @@ public class ModifyVpcPeerConnectionRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.linkType != nil {
+            map["LinkType"] = self.linkType!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -1927,6 +1956,9 @@ public class ModifyVpcPeerConnectionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("LinkType") {
+            self.linkType = dict["LinkType"] as! String
         }
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
