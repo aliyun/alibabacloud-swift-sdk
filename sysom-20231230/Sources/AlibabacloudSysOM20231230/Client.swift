@@ -1140,6 +1140,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clusterId)) {
             body["cluster_id"] = request.clusterId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.grayscaleConfig)) {
+            body["grayscale_config"] = request.grayscaleConfig ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)

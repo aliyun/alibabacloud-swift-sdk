@@ -5159,6 +5159,8 @@ public class InstallAgentForClusterRequest : Tea.TeaModel {
 
     public var clusterId: String?
 
+    public var grayscaleConfig: String?
+
     public override init() {
         super.init()
     }
@@ -5182,6 +5184,9 @@ public class InstallAgentForClusterRequest : Tea.TeaModel {
         if self.clusterId != nil {
             map["cluster_id"] = self.clusterId!
         }
+        if self.grayscaleConfig != nil {
+            map["grayscale_config"] = self.grayscaleConfig!
+        }
         return map
     }
 
@@ -5194,6 +5199,9 @@ public class InstallAgentForClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("cluster_id") {
             self.clusterId = dict["cluster_id"] as! String
+        }
+        if dict.keys.contains("grayscale_config") {
+            self.grayscaleConfig = dict["grayscale_config"] as! String
         }
     }
 }
