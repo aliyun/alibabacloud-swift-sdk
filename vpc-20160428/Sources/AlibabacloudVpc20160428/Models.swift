@@ -37789,6 +37789,8 @@ public class DescribeEipAddressesResponseBody : Tea.TeaModel {
 
             public var segmentInstanceId: String?
 
+            public var serviceID: Int64?
+
             public var serviceManaged: Int32?
 
             public var status: String?
@@ -37924,6 +37926,9 @@ public class DescribeEipAddressesResponseBody : Tea.TeaModel {
                 if self.segmentInstanceId != nil {
                     map["SegmentInstanceId"] = self.segmentInstanceId!
                 }
+                if self.serviceID != nil {
+                    map["ServiceID"] = self.serviceID!
+                }
                 if self.serviceManaged != nil {
                     map["ServiceManaged"] = self.serviceManaged!
                 }
@@ -38054,6 +38059,9 @@ public class DescribeEipAddressesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("SegmentInstanceId") {
                     self.segmentInstanceId = dict["SegmentInstanceId"] as! String
+                }
+                if dict.keys.contains("ServiceID") {
+                    self.serviceID = dict["ServiceID"] as! Int64
                 }
                 if dict.keys.contains("ServiceManaged") {
                     self.serviceManaged = dict["ServiceManaged"] as! Int32
