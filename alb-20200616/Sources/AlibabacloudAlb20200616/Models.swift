@@ -6746,6 +6746,8 @@ public class CreateServerGroupRequest : Tea.TeaModel {
 
     public var healthCheckConfig: CreateServerGroupRequest.HealthCheckConfig?
 
+    public var ipv6Enabled: Bool?
+
     public var protocol_: String?
 
     public var resourceGroupId: String?
@@ -6803,6 +6805,9 @@ public class CreateServerGroupRequest : Tea.TeaModel {
         }
         if self.healthCheckConfig != nil {
             map["HealthCheckConfig"] = self.healthCheckConfig?.toMap()
+        }
+        if self.ipv6Enabled != nil {
+            map["Ipv6Enabled"] = self.ipv6Enabled!
         }
         if self.protocol_ != nil {
             map["Protocol"] = self.protocol_!
@@ -6866,6 +6871,9 @@ public class CreateServerGroupRequest : Tea.TeaModel {
             var model = CreateServerGroupRequest.HealthCheckConfig()
             model.fromMap(dict["HealthCheckConfig"] as! [String: Any])
             self.healthCheckConfig = model
+        }
+        if dict.keys.contains("Ipv6Enabled") {
+            self.ipv6Enabled = dict["Ipv6Enabled"] as! Bool
         }
         if dict.keys.contains("Protocol") {
             self.protocol_ = dict["Protocol"] as! String
