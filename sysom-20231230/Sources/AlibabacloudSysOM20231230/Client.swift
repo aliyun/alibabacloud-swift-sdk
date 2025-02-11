@@ -1041,6 +1041,56 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getServiceFuncStatusWithOptions(_ tmpReq: GetServiceFuncStatusRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetServiceFuncStatusResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetServiceFuncStatusShrinkRequest = GetServiceFuncStatusShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.params)) {
+            request.paramsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.params, "params", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.channel)) {
+            query["channel"] = request.channel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.paramsShrink)) {
+            query["params"] = request.paramsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceName)) {
+            query["service_name"] = request.serviceName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetServiceFuncStatus",
+            "version": "2023-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/func-switch/get-service-func-status",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(GetServiceFuncStatusResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(GetServiceFuncStatusResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getServiceFuncStatus(_ request: GetServiceFuncStatusRequest) async throws -> GetServiceFuncStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getServiceFuncStatusWithOptions(request as! GetServiceFuncStatusRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func initialSysomWithOptions(_ request: InitialSysomRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> InitialSysomResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -2012,6 +2062,56 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateEventsAttentionWithOptions(request as! UpdateEventsAttentionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateFuncSwitchRecordWithOptions(_ tmpReq: UpdateFuncSwitchRecordRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateFuncSwitchRecordResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateFuncSwitchRecordShrinkRequest = UpdateFuncSwitchRecordShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.params)) {
+            request.paramsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.params, "params", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.channel)) {
+            query["channel"] = request.channel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.paramsShrink)) {
+            query["params"] = request.paramsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceName)) {
+            query["service_name"] = request.serviceName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateFuncSwitchRecord",
+            "version": "2023-12-30",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/func-switch/update-service-func-switch",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(UpdateFuncSwitchRecordResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(UpdateFuncSwitchRecordResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateFuncSwitchRecord(_ request: UpdateFuncSwitchRecordRequest) async throws -> UpdateFuncSwitchRecordResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateFuncSwitchRecordWithOptions(request as! UpdateFuncSwitchRecordRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
