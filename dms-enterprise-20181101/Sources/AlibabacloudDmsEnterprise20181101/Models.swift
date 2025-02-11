@@ -8421,6 +8421,8 @@ public class CreateDataImportOrderRequest : Tea.TeaModel {
 
         public var dbItemList: [CreateDataImportOrderRequest.Param.DbItemList]?
 
+        public var execMode: String?
+
         public var fileEncoding: String?
 
         public var fileType: String?
@@ -8468,6 +8470,9 @@ public class CreateDataImportOrderRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["DbItemList"] = tmp
+            }
+            if self.execMode != nil {
+                map["ExecMode"] = self.execMode!
             }
             if self.fileEncoding != nil {
                 map["FileEncoding"] = self.fileEncoding!
@@ -8519,6 +8524,9 @@ public class CreateDataImportOrderRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.dbItemList = tmp
+            }
+            if dict.keys.contains("ExecMode") {
+                self.execMode = dict["ExecMode"] as! String
             }
             if dict.keys.contains("FileEncoding") {
                 self.fileEncoding = dict["FileEncoding"] as! String
@@ -10287,6 +10295,651 @@ public class CreateDatabaseExportOrderResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = CreateDatabaseExportOrderResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class CreateDifyInstanceRequest : Tea.TeaModel {
+    public var adbpgInstanceMode: String?
+
+    public var clientToken: String?
+
+    public var dataRegion: String?
+
+    public var databaseOption: String?
+
+    public var dbEngineType: String?
+
+    public var dbEngineVersion: String?
+
+    public var dbInstanceAccount: String?
+
+    public var dbInstanceCategory: String?
+
+    public var dbInstanceClass: String?
+
+    public var dbInstancePassword: String?
+
+    public var dbResourceId: Int32?
+
+    public var dbStorageSize: String?
+
+    public var dbStorageType: String?
+
+    public var dryRun: Bool?
+
+    public var kvStoreAccount: String?
+
+    public var kvStoreEngineVersion: String?
+
+    public var kvStoreInstanceClass: String?
+
+    public var kvStoreNodeType: String?
+
+    public var kvStoreOption: String?
+
+    public var kvStorePassword: String?
+
+    public var kvStoreResourceId: Int32?
+
+    public var kvStoreType: String?
+
+    public var ossPath: String?
+
+    public var ossResourceId: Int32?
+
+    public var payPeriod: Int32?
+
+    public var payPeriodType: String?
+
+    public var payType: String?
+
+    public var replicas: Int32?
+
+    public var resourceQuota: String?
+
+    public var securityGroupId: String?
+
+    public var segDiskPerformanceLevel: String?
+
+    public var segNodeNum: Int32?
+
+    public var storageType: String?
+
+    public var vSwitchId: String?
+
+    public var vectordbAccount: String?
+
+    public var vectordbCategory: String?
+
+    public var vectordbEngineVersion: String?
+
+    public var vectordbInstanceSpec: String?
+
+    public var vectordbOption: String?
+
+    public var vectordbPassword: String?
+
+    public var vectordbResourceId: Int32?
+
+    public var vectordbStorageSize: String?
+
+    public var vectordbStorageType: String?
+
+    public var vectordbType: String?
+
+    public var vpcId: String?
+
+    public var workspaceDescription: String?
+
+    public var workspaceId: String?
+
+    public var workspaceName: String?
+
+    public var workspaceOption: String?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.adbpgInstanceMode != nil {
+            map["AdbpgInstanceMode"] = self.adbpgInstanceMode!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.databaseOption != nil {
+            map["DatabaseOption"] = self.databaseOption!
+        }
+        if self.dbEngineType != nil {
+            map["DbEngineType"] = self.dbEngineType!
+        }
+        if self.dbEngineVersion != nil {
+            map["DbEngineVersion"] = self.dbEngineVersion!
+        }
+        if self.dbInstanceAccount != nil {
+            map["DbInstanceAccount"] = self.dbInstanceAccount!
+        }
+        if self.dbInstanceCategory != nil {
+            map["DbInstanceCategory"] = self.dbInstanceCategory!
+        }
+        if self.dbInstanceClass != nil {
+            map["DbInstanceClass"] = self.dbInstanceClass!
+        }
+        if self.dbInstancePassword != nil {
+            map["DbInstancePassword"] = self.dbInstancePassword!
+        }
+        if self.dbResourceId != nil {
+            map["DbResourceId"] = self.dbResourceId!
+        }
+        if self.dbStorageSize != nil {
+            map["DbStorageSize"] = self.dbStorageSize!
+        }
+        if self.dbStorageType != nil {
+            map["DbStorageType"] = self.dbStorageType!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.kvStoreAccount != nil {
+            map["KvStoreAccount"] = self.kvStoreAccount!
+        }
+        if self.kvStoreEngineVersion != nil {
+            map["KvStoreEngineVersion"] = self.kvStoreEngineVersion!
+        }
+        if self.kvStoreInstanceClass != nil {
+            map["KvStoreInstanceClass"] = self.kvStoreInstanceClass!
+        }
+        if self.kvStoreNodeType != nil {
+            map["KvStoreNodeType"] = self.kvStoreNodeType!
+        }
+        if self.kvStoreOption != nil {
+            map["KvStoreOption"] = self.kvStoreOption!
+        }
+        if self.kvStorePassword != nil {
+            map["KvStorePassword"] = self.kvStorePassword!
+        }
+        if self.kvStoreResourceId != nil {
+            map["KvStoreResourceId"] = self.kvStoreResourceId!
+        }
+        if self.kvStoreType != nil {
+            map["KvStoreType"] = self.kvStoreType!
+        }
+        if self.ossPath != nil {
+            map["OssPath"] = self.ossPath!
+        }
+        if self.ossResourceId != nil {
+            map["OssResourceId"] = self.ossResourceId!
+        }
+        if self.payPeriod != nil {
+            map["PayPeriod"] = self.payPeriod!
+        }
+        if self.payPeriodType != nil {
+            map["PayPeriodType"] = self.payPeriodType!
+        }
+        if self.payType != nil {
+            map["PayType"] = self.payType!
+        }
+        if self.replicas != nil {
+            map["Replicas"] = self.replicas!
+        }
+        if self.resourceQuota != nil {
+            map["ResourceQuota"] = self.resourceQuota!
+        }
+        if self.securityGroupId != nil {
+            map["SecurityGroupId"] = self.securityGroupId!
+        }
+        if self.segDiskPerformanceLevel != nil {
+            map["SegDiskPerformanceLevel"] = self.segDiskPerformanceLevel!
+        }
+        if self.segNodeNum != nil {
+            map["SegNodeNum"] = self.segNodeNum!
+        }
+        if self.storageType != nil {
+            map["StorageType"] = self.storageType!
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
+        if self.vectordbAccount != nil {
+            map["VectordbAccount"] = self.vectordbAccount!
+        }
+        if self.vectordbCategory != nil {
+            map["VectordbCategory"] = self.vectordbCategory!
+        }
+        if self.vectordbEngineVersion != nil {
+            map["VectordbEngineVersion"] = self.vectordbEngineVersion!
+        }
+        if self.vectordbInstanceSpec != nil {
+            map["VectordbInstanceSpec"] = self.vectordbInstanceSpec!
+        }
+        if self.vectordbOption != nil {
+            map["VectordbOption"] = self.vectordbOption!
+        }
+        if self.vectordbPassword != nil {
+            map["VectordbPassword"] = self.vectordbPassword!
+        }
+        if self.vectordbResourceId != nil {
+            map["VectordbResourceId"] = self.vectordbResourceId!
+        }
+        if self.vectordbStorageSize != nil {
+            map["VectordbStorageSize"] = self.vectordbStorageSize!
+        }
+        if self.vectordbStorageType != nil {
+            map["VectordbStorageType"] = self.vectordbStorageType!
+        }
+        if self.vectordbType != nil {
+            map["VectordbType"] = self.vectordbType!
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
+        if self.workspaceDescription != nil {
+            map["WorkspaceDescription"] = self.workspaceDescription!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        if self.workspaceName != nil {
+            map["WorkspaceName"] = self.workspaceName!
+        }
+        if self.workspaceOption != nil {
+            map["WorkspaceOption"] = self.workspaceOption!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AdbpgInstanceMode") {
+            self.adbpgInstanceMode = dict["AdbpgInstanceMode"] as! String
+        }
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("DatabaseOption") {
+            self.databaseOption = dict["DatabaseOption"] as! String
+        }
+        if dict.keys.contains("DbEngineType") {
+            self.dbEngineType = dict["DbEngineType"] as! String
+        }
+        if dict.keys.contains("DbEngineVersion") {
+            self.dbEngineVersion = dict["DbEngineVersion"] as! String
+        }
+        if dict.keys.contains("DbInstanceAccount") {
+            self.dbInstanceAccount = dict["DbInstanceAccount"] as! String
+        }
+        if dict.keys.contains("DbInstanceCategory") {
+            self.dbInstanceCategory = dict["DbInstanceCategory"] as! String
+        }
+        if dict.keys.contains("DbInstanceClass") {
+            self.dbInstanceClass = dict["DbInstanceClass"] as! String
+        }
+        if dict.keys.contains("DbInstancePassword") {
+            self.dbInstancePassword = dict["DbInstancePassword"] as! String
+        }
+        if dict.keys.contains("DbResourceId") {
+            self.dbResourceId = dict["DbResourceId"] as! Int32
+        }
+        if dict.keys.contains("DbStorageSize") {
+            self.dbStorageSize = dict["DbStorageSize"] as! String
+        }
+        if dict.keys.contains("DbStorageType") {
+            self.dbStorageType = dict["DbStorageType"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("KvStoreAccount") {
+            self.kvStoreAccount = dict["KvStoreAccount"] as! String
+        }
+        if dict.keys.contains("KvStoreEngineVersion") {
+            self.kvStoreEngineVersion = dict["KvStoreEngineVersion"] as! String
+        }
+        if dict.keys.contains("KvStoreInstanceClass") {
+            self.kvStoreInstanceClass = dict["KvStoreInstanceClass"] as! String
+        }
+        if dict.keys.contains("KvStoreNodeType") {
+            self.kvStoreNodeType = dict["KvStoreNodeType"] as! String
+        }
+        if dict.keys.contains("KvStoreOption") {
+            self.kvStoreOption = dict["KvStoreOption"] as! String
+        }
+        if dict.keys.contains("KvStorePassword") {
+            self.kvStorePassword = dict["KvStorePassword"] as! String
+        }
+        if dict.keys.contains("KvStoreResourceId") {
+            self.kvStoreResourceId = dict["KvStoreResourceId"] as! Int32
+        }
+        if dict.keys.contains("KvStoreType") {
+            self.kvStoreType = dict["KvStoreType"] as! String
+        }
+        if dict.keys.contains("OssPath") {
+            self.ossPath = dict["OssPath"] as! String
+        }
+        if dict.keys.contains("OssResourceId") {
+            self.ossResourceId = dict["OssResourceId"] as! Int32
+        }
+        if dict.keys.contains("PayPeriod") {
+            self.payPeriod = dict["PayPeriod"] as! Int32
+        }
+        if dict.keys.contains("PayPeriodType") {
+            self.payPeriodType = dict["PayPeriodType"] as! String
+        }
+        if dict.keys.contains("PayType") {
+            self.payType = dict["PayType"] as! String
+        }
+        if dict.keys.contains("Replicas") {
+            self.replicas = dict["Replicas"] as! Int32
+        }
+        if dict.keys.contains("ResourceQuota") {
+            self.resourceQuota = dict["ResourceQuota"] as! String
+        }
+        if dict.keys.contains("SecurityGroupId") {
+            self.securityGroupId = dict["SecurityGroupId"] as! String
+        }
+        if dict.keys.contains("SegDiskPerformanceLevel") {
+            self.segDiskPerformanceLevel = dict["SegDiskPerformanceLevel"] as! String
+        }
+        if dict.keys.contains("SegNodeNum") {
+            self.segNodeNum = dict["SegNodeNum"] as! Int32
+        }
+        if dict.keys.contains("StorageType") {
+            self.storageType = dict["StorageType"] as! String
+        }
+        if dict.keys.contains("VSwitchId") {
+            self.vSwitchId = dict["VSwitchId"] as! String
+        }
+        if dict.keys.contains("VectordbAccount") {
+            self.vectordbAccount = dict["VectordbAccount"] as! String
+        }
+        if dict.keys.contains("VectordbCategory") {
+            self.vectordbCategory = dict["VectordbCategory"] as! String
+        }
+        if dict.keys.contains("VectordbEngineVersion") {
+            self.vectordbEngineVersion = dict["VectordbEngineVersion"] as! String
+        }
+        if dict.keys.contains("VectordbInstanceSpec") {
+            self.vectordbInstanceSpec = dict["VectordbInstanceSpec"] as! String
+        }
+        if dict.keys.contains("VectordbOption") {
+            self.vectordbOption = dict["VectordbOption"] as! String
+        }
+        if dict.keys.contains("VectordbPassword") {
+            self.vectordbPassword = dict["VectordbPassword"] as! String
+        }
+        if dict.keys.contains("VectordbResourceId") {
+            self.vectordbResourceId = dict["VectordbResourceId"] as! Int32
+        }
+        if dict.keys.contains("VectordbStorageSize") {
+            self.vectordbStorageSize = dict["VectordbStorageSize"] as! String
+        }
+        if dict.keys.contains("VectordbStorageType") {
+            self.vectordbStorageType = dict["VectordbStorageType"] as! String
+        }
+        if dict.keys.contains("VectordbType") {
+            self.vectordbType = dict["VectordbType"] as! String
+        }
+        if dict.keys.contains("VpcId") {
+            self.vpcId = dict["VpcId"] as! String
+        }
+        if dict.keys.contains("WorkspaceDescription") {
+            self.workspaceDescription = dict["WorkspaceDescription"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
+        }
+        if dict.keys.contains("WorkspaceName") {
+            self.workspaceName = dict["WorkspaceName"] as! String
+        }
+        if dict.keys.contains("WorkspaceOption") {
+            self.workspaceOption = dict["WorkspaceOption"] as! String
+        }
+        if dict.keys.contains("ZoneId") {
+            self.zoneId = dict["ZoneId"] as! String
+        }
+    }
+}
+
+public class CreateDifyInstanceResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var instanceId: String?
+
+        public var replicas: Int32?
+
+        public var resourceQuota: String?
+
+        public var securityGroupId: String?
+
+        public var status: String?
+
+        public var vSwitchId: String?
+
+        public var vpcId: String?
+
+        public var workspaceId: String?
+
+        public var zoneId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.replicas != nil {
+                map["Replicas"] = self.replicas!
+            }
+            if self.resourceQuota != nil {
+                map["ResourceQuota"] = self.resourceQuota!
+            }
+            if self.securityGroupId != nil {
+                map["SecurityGroupId"] = self.securityGroupId!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.vSwitchId != nil {
+                map["VSwitchId"] = self.vSwitchId!
+            }
+            if self.vpcId != nil {
+                map["VpcId"] = self.vpcId!
+            }
+            if self.workspaceId != nil {
+                map["WorkspaceId"] = self.workspaceId!
+            }
+            if self.zoneId != nil {
+                map["ZoneId"] = self.zoneId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("InstanceId") {
+                self.instanceId = dict["InstanceId"] as! String
+            }
+            if dict.keys.contains("Replicas") {
+                self.replicas = dict["Replicas"] as! Int32
+            }
+            if dict.keys.contains("ResourceQuota") {
+                self.resourceQuota = dict["ResourceQuota"] as! String
+            }
+            if dict.keys.contains("SecurityGroupId") {
+                self.securityGroupId = dict["SecurityGroupId"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("VSwitchId") {
+                self.vSwitchId = dict["VSwitchId"] as! String
+            }
+            if dict.keys.contains("VpcId") {
+                self.vpcId = dict["VpcId"] as! String
+            }
+            if dict.keys.contains("WorkspaceId") {
+                self.workspaceId = dict["WorkspaceId"] as! String
+            }
+            if dict.keys.contains("ZoneId") {
+                self.zoneId = dict["ZoneId"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: CreateDifyInstanceResponseBody.Data?
+
+    public var errorCode: String?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = CreateDifyInstanceResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class CreateDifyInstanceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateDifyInstanceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateDifyInstanceResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -17143,6 +17796,219 @@ public class DeleteUserResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DeleteUserResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeDifyDefaultVpcRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dataRegion: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dataRegion != nil {
+            map["DataRegion"] = self.dataRegion!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DataRegion") {
+            self.dataRegion = dict["DataRegion"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
+        }
+    }
+}
+
+public class DescribeDifyDefaultVpcResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var defaultVpcId: String?
+
+        public var workspaceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.defaultVpcId != nil {
+                map["DefaultVpcId"] = self.defaultVpcId!
+            }
+            if self.workspaceId != nil {
+                map["WorkspaceId"] = self.workspaceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DefaultVpcId") {
+                self.defaultVpcId = dict["DefaultVpcId"] as! String
+            }
+            if dict.keys.contains("WorkspaceId") {
+                self.workspaceId = dict["WorkspaceId"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: DescribeDifyDefaultVpcResponseBody.Data?
+
+    public var errorCode: String?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = DescribeDifyDefaultVpcResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class DescribeDifyDefaultVpcResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeDifyDefaultVpcResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeDifyDefaultVpcResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
