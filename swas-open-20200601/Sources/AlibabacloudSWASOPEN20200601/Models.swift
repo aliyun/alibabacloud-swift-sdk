@@ -17309,11 +17309,50 @@ public class ResetDiskResponse : Tea.TeaModel {
 }
 
 public class ResetSystemRequest : Tea.TeaModel {
+    public class LoginCredentials : Tea.TeaModel {
+        public var keyPairName: String?
+
+        public var password: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.keyPairName != nil {
+                map["KeyPairName"] = self.keyPairName!
+            }
+            if self.password != nil {
+                map["Password"] = self.password!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("KeyPairName") {
+                self.keyPairName = dict["KeyPairName"] as! String
+            }
+            if dict.keys.contains("Password") {
+                self.password = dict["Password"] as! String
+            }
+        }
+    }
     public var clientToken: String?
 
     public var imageId: String?
 
     public var instanceId: String?
+
+    public var loginCredentials: ResetSystemRequest.LoginCredentials?
 
     public var regionId: String?
 
@@ -17327,6 +17366,7 @@ public class ResetSystemRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.loginCredentials?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -17339,6 +17379,9 @@ public class ResetSystemRequest : Tea.TeaModel {
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
+        }
+        if self.loginCredentials != nil {
+            map["LoginCredentials"] = self.loginCredentials?.toMap()
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -17355,6 +17398,11 @@ public class ResetSystemRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("LoginCredentials") {
+            var model = ResetSystemRequest.LoginCredentials()
+            model.fromMap(dict["LoginCredentials"] as! [String: Any])
+            self.loginCredentials = model
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
