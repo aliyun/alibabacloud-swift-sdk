@@ -8051,6 +8051,8 @@ public class CreateDesktopsRequest : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
+    public var savingPlanId: String?
+
     public var snapshotPolicyId: String?
 
     public var tag: [CreateDesktopsRequest.Tag]?
@@ -8161,6 +8163,9 @@ public class CreateDesktopsRequest : Tea.TeaModel {
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.savingPlanId != nil {
+            map["SavingPlanId"] = self.savingPlanId!
         }
         if self.snapshotPolicyId != nil {
             map["SnapshotPolicyId"] = self.snapshotPolicyId!
@@ -8289,6 +8294,9 @@ public class CreateDesktopsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceGroupId") {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("SavingPlanId") {
+            self.savingPlanId = dict["SavingPlanId"] as! String
         }
         if dict.keys.contains("SnapshotPolicyId") {
             self.snapshotPolicyId = dict["SnapshotPolicyId"] as! String
@@ -8664,6 +8672,8 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
+    public var savingPlanId: String?
+
     public var snapshotPolicyId: String?
 
     public var tag: [CreateDesktopsShrinkRequest.Tag]?
@@ -8773,6 +8783,9 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.savingPlanId != nil {
+            map["SavingPlanId"] = self.savingPlanId!
         }
         if self.snapshotPolicyId != nil {
             map["SnapshotPolicyId"] = self.snapshotPolicyId!
@@ -8899,6 +8912,9 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceGroupId") {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("SavingPlanId") {
+            self.savingPlanId = dict["SavingPlanId"] as! String
         }
         if dict.keys.contains("SnapshotPolicyId") {
             self.snapshotPolicyId = dict["SnapshotPolicyId"] as! String
