@@ -1815,6 +1815,558 @@ public class DescribeDistributionProductsLinkResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeImageInstanceForIsvRequest : Tea.TeaModel {
+    public var customerPk: Int64?
+
+    public var ecsInstanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.customerPk != nil {
+            map["CustomerPk"] = self.customerPk!
+        }
+        if self.ecsInstanceId != nil {
+            map["EcsInstanceId"] = self.ecsInstanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CustomerPk") {
+            self.customerPk = dict["CustomerPk"] as! Int64
+        }
+        if dict.keys.contains("EcsInstanceId") {
+            self.ecsInstanceId = dict["EcsInstanceId"] as! String
+        }
+    }
+}
+
+public class DescribeImageInstanceForIsvResponseBody : Tea.TeaModel {
+    public class Modules : Tea.TeaModel {
+        public class Properties : Tea.TeaModel {
+            public class PropertyValues : Tea.TeaModel {
+                public var displayName: String?
+
+                public var max: String?
+
+                public var min: String?
+
+                public var remark: String?
+
+                public var step: String?
+
+                public var type: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.displayName != nil {
+                        map["DisplayName"] = self.displayName!
+                    }
+                    if self.max != nil {
+                        map["Max"] = self.max!
+                    }
+                    if self.min != nil {
+                        map["Min"] = self.min!
+                    }
+                    if self.remark != nil {
+                        map["Remark"] = self.remark!
+                    }
+                    if self.step != nil {
+                        map["Step"] = self.step!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("DisplayName") {
+                        self.displayName = dict["DisplayName"] as! String
+                    }
+                    if dict.keys.contains("Max") {
+                        self.max = dict["Max"] as! String
+                    }
+                    if dict.keys.contains("Min") {
+                        self.min = dict["Min"] as! String
+                    }
+                    if dict.keys.contains("Remark") {
+                        self.remark = dict["Remark"] as! String
+                    }
+                    if dict.keys.contains("Step") {
+                        self.step = dict["Step"] as! String
+                    }
+                    if dict.keys.contains("Type") {
+                        self.type = dict["Type"] as! String
+                    }
+                    if dict.keys.contains("Value") {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public var displayUnit: String?
+
+            public var key: String?
+
+            public var name: String?
+
+            public var propertyValues: [DescribeImageInstanceForIsvResponseBody.Modules.Properties.PropertyValues]?
+
+            public var showType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.displayUnit != nil {
+                    map["DisplayUnit"] = self.displayUnit!
+                }
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.propertyValues != nil {
+                    var tmp : [Any] = []
+                    for k in self.propertyValues! {
+                        tmp.append(k.toMap())
+                    }
+                    map["PropertyValues"] = tmp
+                }
+                if self.showType != nil {
+                    map["ShowType"] = self.showType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DisplayUnit") {
+                    self.displayUnit = dict["DisplayUnit"] as! String
+                }
+                if dict.keys.contains("Key") {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("PropertyValues") {
+                    var tmp : [DescribeImageInstanceForIsvResponseBody.Modules.Properties.PropertyValues] = []
+                    for v in dict["PropertyValues"] as! [Any] {
+                        var model = DescribeImageInstanceForIsvResponseBody.Modules.Properties.PropertyValues()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.propertyValues = tmp
+                }
+                if dict.keys.contains("ShowType") {
+                    self.showType = dict["ShowType"] as! String
+                }
+            }
+        }
+        public var code: String?
+
+        public var id: String?
+
+        public var name: String?
+
+        public var properties: [DescribeImageInstanceForIsvResponseBody.Modules.Properties]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.code != nil {
+                map["Code"] = self.code!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.properties != nil {
+                var tmp : [Any] = []
+                for k in self.properties! {
+                    tmp.append(k.toMap())
+                }
+                map["Properties"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Code") {
+                self.code = dict["Code"] as! String
+            }
+            if dict.keys.contains("Id") {
+                self.id = dict["Id"] as! String
+            }
+            if dict.keys.contains("Name") {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("Properties") {
+                var tmp : [DescribeImageInstanceForIsvResponseBody.Modules.Properties] = []
+                for v in dict["Properties"] as! [Any] {
+                    var model = DescribeImageInstanceForIsvResponseBody.Modules.Properties()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.properties = tmp
+            }
+        }
+    }
+    public class RelationalData : Tea.TeaModel {
+        public var serviceStatus: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.serviceStatus != nil {
+                map["ServiceStatus"] = self.serviceStatus!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ServiceStatus") {
+                self.serviceStatus = dict["ServiceStatus"] as! String
+            }
+        }
+    }
+    public var activeAddress: String?
+
+    public var appJson: String?
+
+    public var autoRenewal: String?
+
+    public var beganOn: Int64?
+
+    public var componentJson: String?
+
+    public var constraints: String?
+
+    public var createdOn: Int64?
+
+    public var endOn: Int64?
+
+    public var extendJson: String?
+
+    public var hostJson: String?
+
+    public var instanceId: Int64?
+
+    public var isTrial: Bool?
+
+    public var licenseCode: String?
+
+    public var modules: [DescribeImageInstanceForIsvResponseBody.Modules]?
+
+    public var orderId: Int64?
+
+    public var productCode: String?
+
+    public var productName: String?
+
+    public var productSkuCode: String?
+
+    public var productType: String?
+
+    public var relationalData: DescribeImageInstanceForIsvResponseBody.RelationalData?
+
+    public var requestId: String?
+
+    public var status: String?
+
+    public var supplierName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.relationalData?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.activeAddress != nil {
+            map["ActiveAddress"] = self.activeAddress!
+        }
+        if self.appJson != nil {
+            map["AppJson"] = self.appJson!
+        }
+        if self.autoRenewal != nil {
+            map["AutoRenewal"] = self.autoRenewal!
+        }
+        if self.beganOn != nil {
+            map["BeganOn"] = self.beganOn!
+        }
+        if self.componentJson != nil {
+            map["ComponentJson"] = self.componentJson!
+        }
+        if self.constraints != nil {
+            map["Constraints"] = self.constraints!
+        }
+        if self.createdOn != nil {
+            map["CreatedOn"] = self.createdOn!
+        }
+        if self.endOn != nil {
+            map["EndOn"] = self.endOn!
+        }
+        if self.extendJson != nil {
+            map["ExtendJson"] = self.extendJson!
+        }
+        if self.hostJson != nil {
+            map["HostJson"] = self.hostJson!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.isTrial != nil {
+            map["IsTrial"] = self.isTrial!
+        }
+        if self.licenseCode != nil {
+            map["LicenseCode"] = self.licenseCode!
+        }
+        if self.modules != nil {
+            var tmp : [Any] = []
+            for k in self.modules! {
+                tmp.append(k.toMap())
+            }
+            map["Modules"] = tmp
+        }
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.productName != nil {
+            map["ProductName"] = self.productName!
+        }
+        if self.productSkuCode != nil {
+            map["ProductSkuCode"] = self.productSkuCode!
+        }
+        if self.productType != nil {
+            map["ProductType"] = self.productType!
+        }
+        if self.relationalData != nil {
+            map["RelationalData"] = self.relationalData?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.supplierName != nil {
+            map["SupplierName"] = self.supplierName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ActiveAddress") {
+            self.activeAddress = dict["ActiveAddress"] as! String
+        }
+        if dict.keys.contains("AppJson") {
+            self.appJson = dict["AppJson"] as! String
+        }
+        if dict.keys.contains("AutoRenewal") {
+            self.autoRenewal = dict["AutoRenewal"] as! String
+        }
+        if dict.keys.contains("BeganOn") {
+            self.beganOn = dict["BeganOn"] as! Int64
+        }
+        if dict.keys.contains("ComponentJson") {
+            self.componentJson = dict["ComponentJson"] as! String
+        }
+        if dict.keys.contains("Constraints") {
+            self.constraints = dict["Constraints"] as! String
+        }
+        if dict.keys.contains("CreatedOn") {
+            self.createdOn = dict["CreatedOn"] as! Int64
+        }
+        if dict.keys.contains("EndOn") {
+            self.endOn = dict["EndOn"] as! Int64
+        }
+        if dict.keys.contains("ExtendJson") {
+            self.extendJson = dict["ExtendJson"] as! String
+        }
+        if dict.keys.contains("HostJson") {
+            self.hostJson = dict["HostJson"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! Int64
+        }
+        if dict.keys.contains("IsTrial") {
+            self.isTrial = dict["IsTrial"] as! Bool
+        }
+        if dict.keys.contains("LicenseCode") {
+            self.licenseCode = dict["LicenseCode"] as! String
+        }
+        if dict.keys.contains("Modules") {
+            var tmp : [DescribeImageInstanceForIsvResponseBody.Modules] = []
+            for v in dict["Modules"] as! [Any] {
+                var model = DescribeImageInstanceForIsvResponseBody.Modules()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.modules = tmp
+        }
+        if dict.keys.contains("OrderId") {
+            self.orderId = dict["OrderId"] as! Int64
+        }
+        if dict.keys.contains("ProductCode") {
+            self.productCode = dict["ProductCode"] as! String
+        }
+        if dict.keys.contains("ProductName") {
+            self.productName = dict["ProductName"] as! String
+        }
+        if dict.keys.contains("ProductSkuCode") {
+            self.productSkuCode = dict["ProductSkuCode"] as! String
+        }
+        if dict.keys.contains("ProductType") {
+            self.productType = dict["ProductType"] as! String
+        }
+        if dict.keys.contains("RelationalData") {
+            var model = DescribeImageInstanceForIsvResponseBody.RelationalData()
+            model.fromMap(dict["RelationalData"] as! [String: Any])
+            self.relationalData = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Status") {
+            self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("SupplierName") {
+            self.supplierName = dict["SupplierName"] as! String
+        }
+    }
+}
+
+public class DescribeImageInstanceForIsvResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeImageInstanceForIsvResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeImageInstanceForIsvResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeInstanceRequest : Tea.TeaModel {
     public var instanceId: String?
 
