@@ -8136,6 +8136,8 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
 
             public var avgDocExamined: [Double]?
 
+            public var avgFrows: [Double]?
+
             public var avgIOWrites: [Double]?
 
             public var avgKeysExamined: [Double]?
@@ -8150,6 +8152,8 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
 
             public var avgReturnNum: [Double]?
 
+            public var avgRows: [Double]?
+
             public var avgRowsCountAffected: [Double]?
 
             public var avgRowsExamined: [Double]?
@@ -8158,11 +8162,15 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
 
             public var avgRt: [Double]?
 
+            public var avgScnt: [Double]?
+
             public var CPUTime: [Double]?
 
             public var count: [Int64]?
 
             public var docExamined: [Int64]?
+
+            public var frows: [Int64]?
 
             public var IOWrites: [Int64]?
 
@@ -8180,6 +8188,8 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
 
             public var maxDocExamined: [Int64]?
 
+            public var maxFrows: [Int64]?
+
             public var maxIOWrites: [Int64]?
 
             public var maxKeysExamined: [Int64]?
@@ -8194,6 +8204,8 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
 
             public var maxReturnNum: [Int64]?
 
+            public var maxRows: [Int64]?
+
             public var maxRowsCountAffected: [Int64]?
 
             public var maxRowsExamined: [Int64]?
@@ -8202,9 +8214,13 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
 
             public var maxRt: [Double]?
 
+            public var maxScnt: [Int64]?
+
             public var physicalIOReads: [Int64]?
 
             public var returnNum: [Int64]?
+
+            public var rows: [Int64]?
 
             public var rowsCountAffected: [Int64]?
 
@@ -8213,6 +8229,8 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
             public var rowsSent: [Int64]?
 
             public var rt: [Double]?
+
+            public var scnt: [Int64]?
 
             public var total: Int64?
 
@@ -8240,6 +8258,9 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
                 if self.avgDocExamined != nil {
                     map["AvgDocExamined"] = self.avgDocExamined!
                 }
+                if self.avgFrows != nil {
+                    map["AvgFrows"] = self.avgFrows!
+                }
                 if self.avgIOWrites != nil {
                     map["AvgIOWrites"] = self.avgIOWrites!
                 }
@@ -8261,6 +8282,9 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
                 if self.avgReturnNum != nil {
                     map["AvgReturnNum"] = self.avgReturnNum!
                 }
+                if self.avgRows != nil {
+                    map["AvgRows"] = self.avgRows!
+                }
                 if self.avgRowsCountAffected != nil {
                     map["AvgRowsCountAffected"] = self.avgRowsCountAffected!
                 }
@@ -8273,6 +8297,9 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
                 if self.avgRt != nil {
                     map["AvgRt"] = self.avgRt!
                 }
+                if self.avgScnt != nil {
+                    map["AvgScnt"] = self.avgScnt!
+                }
                 if self.CPUTime != nil {
                     map["CPUTime"] = self.CPUTime!
                 }
@@ -8281,6 +8308,9 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
                 }
                 if self.docExamined != nil {
                     map["DocExamined"] = self.docExamined!
+                }
+                if self.frows != nil {
+                    map["Frows"] = self.frows!
                 }
                 if self.IOWrites != nil {
                     map["IOWrites"] = self.IOWrites!
@@ -8310,6 +8340,9 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
                 if self.maxDocExamined != nil {
                     map["MaxDocExamined"] = self.maxDocExamined!
                 }
+                if self.maxFrows != nil {
+                    map["MaxFrows"] = self.maxFrows!
+                }
                 if self.maxIOWrites != nil {
                     map["MaxIOWrites"] = self.maxIOWrites!
                 }
@@ -8331,6 +8364,9 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
                 if self.maxReturnNum != nil {
                     map["MaxReturnNum"] = self.maxReturnNum!
                 }
+                if self.maxRows != nil {
+                    map["MaxRows"] = self.maxRows!
+                }
                 if self.maxRowsCountAffected != nil {
                     map["MaxRowsCountAffected"] = self.maxRowsCountAffected!
                 }
@@ -8343,11 +8379,17 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
                 if self.maxRt != nil {
                     map["MaxRt"] = self.maxRt!
                 }
+                if self.maxScnt != nil {
+                    map["MaxScnt"] = self.maxScnt!
+                }
                 if self.physicalIOReads != nil {
                     map["PhysicalIOReads"] = self.physicalIOReads!
                 }
                 if self.returnNum != nil {
                     map["ReturnNum"] = self.returnNum!
+                }
+                if self.rows != nil {
+                    map["Rows"] = self.rows!
                 }
                 if self.rowsCountAffected != nil {
                     map["RowsCountAffected"] = self.rowsCountAffected!
@@ -8360,6 +8402,9 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
                 }
                 if self.rt != nil {
                     map["Rt"] = self.rt!
+                }
+                if self.scnt != nil {
+                    map["Scnt"] = self.scnt!
                 }
                 if self.total != nil {
                     map["Total"] = self.total!
@@ -8379,6 +8424,9 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("AvgDocExamined") {
                     self.avgDocExamined = dict["AvgDocExamined"] as! [Double]
+                }
+                if dict.keys.contains("AvgFrows") {
+                    self.avgFrows = dict["AvgFrows"] as! [Double]
                 }
                 if dict.keys.contains("AvgIOWrites") {
                     self.avgIOWrites = dict["AvgIOWrites"] as! [Double]
@@ -8401,6 +8449,9 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
                 if dict.keys.contains("AvgReturnNum") {
                     self.avgReturnNum = dict["AvgReturnNum"] as! [Double]
                 }
+                if dict.keys.contains("AvgRows") {
+                    self.avgRows = dict["AvgRows"] as! [Double]
+                }
                 if dict.keys.contains("AvgRowsCountAffected") {
                     self.avgRowsCountAffected = dict["AvgRowsCountAffected"] as! [Double]
                 }
@@ -8413,6 +8464,9 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
                 if dict.keys.contains("AvgRt") {
                     self.avgRt = dict["AvgRt"] as! [Double]
                 }
+                if dict.keys.contains("AvgScnt") {
+                    self.avgScnt = dict["AvgScnt"] as! [Double]
+                }
                 if dict.keys.contains("CPUTime") {
                     self.CPUTime = dict["CPUTime"] as! [Double]
                 }
@@ -8421,6 +8475,9 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("DocExamined") {
                     self.docExamined = dict["DocExamined"] as! [Int64]
+                }
+                if dict.keys.contains("Frows") {
+                    self.frows = dict["Frows"] as! [Int64]
                 }
                 if dict.keys.contains("IOWrites") {
                     self.IOWrites = dict["IOWrites"] as! [Int64]
@@ -8454,6 +8511,9 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
                 if dict.keys.contains("MaxDocExamined") {
                     self.maxDocExamined = dict["MaxDocExamined"] as! [Int64]
                 }
+                if dict.keys.contains("MaxFrows") {
+                    self.maxFrows = dict["MaxFrows"] as! [Int64]
+                }
                 if dict.keys.contains("MaxIOWrites") {
                     self.maxIOWrites = dict["MaxIOWrites"] as! [Int64]
                 }
@@ -8475,6 +8535,9 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
                 if dict.keys.contains("MaxReturnNum") {
                     self.maxReturnNum = dict["MaxReturnNum"] as! [Int64]
                 }
+                if dict.keys.contains("MaxRows") {
+                    self.maxRows = dict["MaxRows"] as! [Int64]
+                }
                 if dict.keys.contains("MaxRowsCountAffected") {
                     self.maxRowsCountAffected = dict["MaxRowsCountAffected"] as! [Int64]
                 }
@@ -8487,11 +8550,17 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
                 if dict.keys.contains("MaxRt") {
                     self.maxRt = dict["MaxRt"] as! [Double]
                 }
+                if dict.keys.contains("MaxScnt") {
+                    self.maxScnt = dict["MaxScnt"] as! [Int64]
+                }
                 if dict.keys.contains("PhysicalIOReads") {
                     self.physicalIOReads = dict["PhysicalIOReads"] as! [Int64]
                 }
                 if dict.keys.contains("ReturnNum") {
                     self.returnNum = dict["ReturnNum"] as! [Int64]
+                }
+                if dict.keys.contains("Rows") {
+                    self.rows = dict["Rows"] as! [Int64]
                 }
                 if dict.keys.contains("RowsCountAffected") {
                     self.rowsCountAffected = dict["RowsCountAffected"] as! [Int64]
@@ -8504,6 +8573,9 @@ public class DescribeSlowLogHistogramAsyncResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Rt") {
                     self.rt = dict["Rt"] as! [Double]
+                }
+                if dict.keys.contains("Scnt") {
+                    self.scnt = dict["Scnt"] as! [Int64]
                 }
                 if dict.keys.contains("Total") {
                     self.total = dict["Total"] as! Int64
@@ -9171,7 +9243,11 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
 
                 public var avgCPUTime: Double?
 
+                public var avgCPUTimeSeconds: Double?
+
                 public var avgDocExamined: Double?
+
+                public var avgFrows: Double?
 
                 public var avgIOWrites: Double?
 
@@ -9193,13 +9269,19 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
 
                 public var avgReturnNum: Double?
 
+                public var avgRows: Double?
+
                 public var avgRowsCountAffected: Double?
 
                 public var avgRowsExamined: Double?
 
                 public var avgRowsSent: Double?
 
+                public var avgScnt: Double?
+
                 public var CPUTime: Double?
+
+                public var CPUTimeSeconds: Double?
 
                 public var command: String?
 
@@ -9216,6 +9298,8 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                 public var docExamined: Int64?
 
                 public var docsExamined: Int64?
+
+                public var frows: Int64?
 
                 public var histogram: DescribeSlowLogStatisticResponseBody.Data.Data.Logs.Histogram?
 
@@ -9241,7 +9325,11 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
 
                 public var maxCPUTime: Double?
 
+                public var maxCPUTimeSeconds: Double?
+
                 public var maxDocExamined: Int64?
+
+                public var maxFrows: Int64?
 
                 public var maxIOWrites: Int64?
 
@@ -9263,11 +9351,15 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
 
                 public var maxReturnNum: Int64?
 
+                public var maxRows: Int64?
+
                 public var maxRowsCountAffected: Int64?
 
                 public var maxRowsExamined: Int64?
 
                 public var maxRowsSent: Int64?
+
+                public var maxScnt: Int64?
 
                 public var namespace: String?
 
@@ -9295,6 +9387,8 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
 
                 public var returnNum: Int64?
 
+                public var rows: Int64?
+
                 public var rowsCountAffected: Int64?
 
                 public var rowsExamined: Int64?
@@ -9304,6 +9398,8 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                 public var SQLText: String?
 
                 public var scheme: String?
+
+                public var scnt: Int64?
 
                 public var sqlId: String?
 
@@ -9345,8 +9441,14 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     if self.avgCPUTime != nil {
                         map["AvgCPUTime"] = self.avgCPUTime!
                     }
+                    if self.avgCPUTimeSeconds != nil {
+                        map["AvgCPUTimeSeconds"] = self.avgCPUTimeSeconds!
+                    }
                     if self.avgDocExamined != nil {
                         map["AvgDocExamined"] = self.avgDocExamined!
+                    }
+                    if self.avgFrows != nil {
+                        map["AvgFrows"] = self.avgFrows!
                     }
                     if self.avgIOWrites != nil {
                         map["AvgIOWrites"] = self.avgIOWrites!
@@ -9378,6 +9480,9 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     if self.avgReturnNum != nil {
                         map["AvgReturnNum"] = self.avgReturnNum!
                     }
+                    if self.avgRows != nil {
+                        map["AvgRows"] = self.avgRows!
+                    }
                     if self.avgRowsCountAffected != nil {
                         map["AvgRowsCountAffected"] = self.avgRowsCountAffected!
                     }
@@ -9387,8 +9492,14 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     if self.avgRowsSent != nil {
                         map["AvgRowsSent"] = self.avgRowsSent!
                     }
+                    if self.avgScnt != nil {
+                        map["AvgScnt"] = self.avgScnt!
+                    }
                     if self.CPUTime != nil {
                         map["CPUTime"] = self.CPUTime!
+                    }
+                    if self.CPUTimeSeconds != nil {
+                        map["CPUTimeSeconds"] = self.CPUTimeSeconds!
                     }
                     if self.command != nil {
                         map["Command"] = self.command!
@@ -9413,6 +9524,9 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     }
                     if self.docsExamined != nil {
                         map["DocsExamined"] = self.docsExamined!
+                    }
+                    if self.frows != nil {
+                        map["Frows"] = self.frows!
                     }
                     if self.histogram != nil {
                         map["Histogram"] = self.histogram?.toMap()
@@ -9450,8 +9564,14 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     if self.maxCPUTime != nil {
                         map["MaxCPUTime"] = self.maxCPUTime!
                     }
+                    if self.maxCPUTimeSeconds != nil {
+                        map["MaxCPUTimeSeconds"] = self.maxCPUTimeSeconds!
+                    }
                     if self.maxDocExamined != nil {
                         map["MaxDocExamined"] = self.maxDocExamined!
+                    }
+                    if self.maxFrows != nil {
+                        map["MaxFrows"] = self.maxFrows!
                     }
                     if self.maxIOWrites != nil {
                         map["MaxIOWrites"] = self.maxIOWrites!
@@ -9483,6 +9603,9 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     if self.maxReturnNum != nil {
                         map["MaxReturnNum"] = self.maxReturnNum!
                     }
+                    if self.maxRows != nil {
+                        map["MaxRows"] = self.maxRows!
+                    }
                     if self.maxRowsCountAffected != nil {
                         map["MaxRowsCountAffected"] = self.maxRowsCountAffected!
                     }
@@ -9491,6 +9614,9 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     }
                     if self.maxRowsSent != nil {
                         map["MaxRowsSent"] = self.maxRowsSent!
+                    }
+                    if self.maxScnt != nil {
+                        map["MaxScnt"] = self.maxScnt!
                     }
                     if self.namespace != nil {
                         map["Namespace"] = self.namespace!
@@ -9531,6 +9657,9 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     if self.returnNum != nil {
                         map["ReturnNum"] = self.returnNum!
                     }
+                    if self.rows != nil {
+                        map["Rows"] = self.rows!
+                    }
                     if self.rowsCountAffected != nil {
                         map["RowsCountAffected"] = self.rowsCountAffected!
                     }
@@ -9545,6 +9674,9 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     }
                     if self.scheme != nil {
                         map["Scheme"] = self.scheme!
+                    }
+                    if self.scnt != nil {
+                        map["Scnt"] = self.scnt!
                     }
                     if self.sqlId != nil {
                         map["SqlId"] = self.sqlId!
@@ -9587,8 +9719,14 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     if dict.keys.contains("AvgCPUTime") {
                         self.avgCPUTime = dict["AvgCPUTime"] as! Double
                     }
+                    if dict.keys.contains("AvgCPUTimeSeconds") {
+                        self.avgCPUTimeSeconds = dict["AvgCPUTimeSeconds"] as! Double
+                    }
                     if dict.keys.contains("AvgDocExamined") {
                         self.avgDocExamined = dict["AvgDocExamined"] as! Double
+                    }
+                    if dict.keys.contains("AvgFrows") {
+                        self.avgFrows = dict["AvgFrows"] as! Double
                     }
                     if dict.keys.contains("AvgIOWrites") {
                         self.avgIOWrites = dict["AvgIOWrites"] as! Double
@@ -9620,6 +9758,9 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     if dict.keys.contains("AvgReturnNum") {
                         self.avgReturnNum = dict["AvgReturnNum"] as! Double
                     }
+                    if dict.keys.contains("AvgRows") {
+                        self.avgRows = dict["AvgRows"] as! Double
+                    }
                     if dict.keys.contains("AvgRowsCountAffected") {
                         self.avgRowsCountAffected = dict["AvgRowsCountAffected"] as! Double
                     }
@@ -9629,8 +9770,14 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     if dict.keys.contains("AvgRowsSent") {
                         self.avgRowsSent = dict["AvgRowsSent"] as! Double
                     }
+                    if dict.keys.contains("AvgScnt") {
+                        self.avgScnt = dict["AvgScnt"] as! Double
+                    }
                     if dict.keys.contains("CPUTime") {
                         self.CPUTime = dict["CPUTime"] as! Double
+                    }
+                    if dict.keys.contains("CPUTimeSeconds") {
+                        self.CPUTimeSeconds = dict["CPUTimeSeconds"] as! Double
                     }
                     if dict.keys.contains("Command") {
                         self.command = dict["Command"] as! String
@@ -9655,6 +9802,9 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("DocsExamined") {
                         self.docsExamined = dict["DocsExamined"] as! Int64
+                    }
+                    if dict.keys.contains("Frows") {
+                        self.frows = dict["Frows"] as! Int64
                     }
                     if dict.keys.contains("Histogram") {
                         var model = DescribeSlowLogStatisticResponseBody.Data.Data.Logs.Histogram()
@@ -9694,8 +9844,14 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     if dict.keys.contains("MaxCPUTime") {
                         self.maxCPUTime = dict["MaxCPUTime"] as! Double
                     }
+                    if dict.keys.contains("MaxCPUTimeSeconds") {
+                        self.maxCPUTimeSeconds = dict["MaxCPUTimeSeconds"] as! Double
+                    }
                     if dict.keys.contains("MaxDocExamined") {
                         self.maxDocExamined = dict["MaxDocExamined"] as! Int64
+                    }
+                    if dict.keys.contains("MaxFrows") {
+                        self.maxFrows = dict["MaxFrows"] as! Int64
                     }
                     if dict.keys.contains("MaxIOWrites") {
                         self.maxIOWrites = dict["MaxIOWrites"] as! Int64
@@ -9727,6 +9883,9 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     if dict.keys.contains("MaxReturnNum") {
                         self.maxReturnNum = dict["MaxReturnNum"] as! Int64
                     }
+                    if dict.keys.contains("MaxRows") {
+                        self.maxRows = dict["MaxRows"] as! Int64
+                    }
                     if dict.keys.contains("MaxRowsCountAffected") {
                         self.maxRowsCountAffected = dict["MaxRowsCountAffected"] as! Int64
                     }
@@ -9735,6 +9894,9 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("MaxRowsSent") {
                         self.maxRowsSent = dict["MaxRowsSent"] as! Int64
+                    }
+                    if dict.keys.contains("MaxScnt") {
+                        self.maxScnt = dict["MaxScnt"] as! Int64
                     }
                     if dict.keys.contains("Namespace") {
                         self.namespace = dict["Namespace"] as! String
@@ -9775,6 +9937,9 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     if dict.keys.contains("ReturnNum") {
                         self.returnNum = dict["ReturnNum"] as! Int64
                     }
+                    if dict.keys.contains("Rows") {
+                        self.rows = dict["Rows"] as! Int64
+                    }
                     if dict.keys.contains("RowsCountAffected") {
                         self.rowsCountAffected = dict["RowsCountAffected"] as! Int64
                     }
@@ -9789,6 +9954,9 @@ public class DescribeSlowLogStatisticResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("Scheme") {
                         self.scheme = dict["Scheme"] as! String
+                    }
+                    if dict.keys.contains("Scnt") {
+                        self.scnt = dict["Scnt"] as! Int64
                     }
                     if dict.keys.contains("SqlId") {
                         self.sqlId = dict["SqlId"] as! String
