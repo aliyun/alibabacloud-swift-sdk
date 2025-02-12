@@ -1058,6 +1058,453 @@ public class CommonQueryBySceneResponse : Tea.TeaModel {
     }
 }
 
+public class DrivingDirectionRequest : Tea.TeaModel {
+    public var destinationLatitude: String?
+
+    public var destinationLongitude: String?
+
+    public var originLatitude: String?
+
+    public var originLongitude: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.destinationLatitude != nil {
+            map["destinationLatitude"] = self.destinationLatitude!
+        }
+        if self.destinationLongitude != nil {
+            map["destinationLongitude"] = self.destinationLongitude!
+        }
+        if self.originLatitude != nil {
+            map["originLatitude"] = self.originLatitude!
+        }
+        if self.originLongitude != nil {
+            map["originLongitude"] = self.originLongitude!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("destinationLatitude") {
+            self.destinationLatitude = dict["destinationLatitude"] as! String
+        }
+        if dict.keys.contains("destinationLongitude") {
+            self.destinationLongitude = dict["destinationLongitude"] as! String
+        }
+        if dict.keys.contains("originLatitude") {
+            self.originLatitude = dict["originLatitude"] as! String
+        }
+        if dict.keys.contains("originLongitude") {
+            self.originLongitude = dict["originLongitude"] as! String
+        }
+    }
+}
+
+public class DrivingDirectionResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Cost : Tea.TeaModel {
+            public var durationSecond: String?
+
+            public var taxiFee: String?
+
+            public var tollDistanceMeter: String?
+
+            public var tollRoads: String?
+
+            public var tolls: String?
+
+            public var trafficLights: String?
+
+            public var transitFee: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.durationSecond != nil {
+                    map["durationSecond"] = self.durationSecond!
+                }
+                if self.taxiFee != nil {
+                    map["taxiFee"] = self.taxiFee!
+                }
+                if self.tollDistanceMeter != nil {
+                    map["tollDistanceMeter"] = self.tollDistanceMeter!
+                }
+                if self.tollRoads != nil {
+                    map["tollRoads"] = self.tollRoads!
+                }
+                if self.tolls != nil {
+                    map["tolls"] = self.tolls!
+                }
+                if self.trafficLights != nil {
+                    map["trafficLights"] = self.trafficLights!
+                }
+                if self.transitFee != nil {
+                    map["transitFee"] = self.transitFee!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("durationSecond") {
+                    self.durationSecond = dict["durationSecond"] as! String
+                }
+                if dict.keys.contains("taxiFee") {
+                    self.taxiFee = dict["taxiFee"] as! String
+                }
+                if dict.keys.contains("tollDistanceMeter") {
+                    self.tollDistanceMeter = dict["tollDistanceMeter"] as! String
+                }
+                if dict.keys.contains("tollRoads") {
+                    self.tollRoads = dict["tollRoads"] as! String
+                }
+                if dict.keys.contains("tolls") {
+                    self.tolls = dict["tolls"] as! String
+                }
+                if dict.keys.contains("trafficLights") {
+                    self.trafficLights = dict["trafficLights"] as! String
+                }
+                if dict.keys.contains("transitFee") {
+                    self.transitFee = dict["transitFee"] as! String
+                }
+            }
+        }
+        public class Steps : Tea.TeaModel {
+            public class Cost : Tea.TeaModel {
+                public var durationSecond: String?
+
+                public var taxiFee: String?
+
+                public var tollDistanceMeter: String?
+
+                public var tollRoads: String?
+
+                public var tolls: String?
+
+                public var trafficLights: String?
+
+                public var transitFee: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.durationSecond != nil {
+                        map["durationSecond"] = self.durationSecond!
+                    }
+                    if self.taxiFee != nil {
+                        map["taxiFee"] = self.taxiFee!
+                    }
+                    if self.tollDistanceMeter != nil {
+                        map["tollDistanceMeter"] = self.tollDistanceMeter!
+                    }
+                    if self.tollRoads != nil {
+                        map["tollRoads"] = self.tollRoads!
+                    }
+                    if self.tolls != nil {
+                        map["tolls"] = self.tolls!
+                    }
+                    if self.trafficLights != nil {
+                        map["trafficLights"] = self.trafficLights!
+                    }
+                    if self.transitFee != nil {
+                        map["transitFee"] = self.transitFee!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("durationSecond") {
+                        self.durationSecond = dict["durationSecond"] as! String
+                    }
+                    if dict.keys.contains("taxiFee") {
+                        self.taxiFee = dict["taxiFee"] as! String
+                    }
+                    if dict.keys.contains("tollDistanceMeter") {
+                        self.tollDistanceMeter = dict["tollDistanceMeter"] as! String
+                    }
+                    if dict.keys.contains("tollRoads") {
+                        self.tollRoads = dict["tollRoads"] as! String
+                    }
+                    if dict.keys.contains("tolls") {
+                        self.tolls = dict["tolls"] as! String
+                    }
+                    if dict.keys.contains("trafficLights") {
+                        self.trafficLights = dict["trafficLights"] as! String
+                    }
+                    if dict.keys.contains("transitFee") {
+                        self.transitFee = dict["transitFee"] as! String
+                    }
+                }
+            }
+            public var cost: DrivingDirectionResponseBody.Data.Steps.Cost?
+
+            public var instruction: String?
+
+            public var orientation: String?
+
+            public var roadName: String?
+
+            public var stepDistanceMeter: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.cost?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cost != nil {
+                    map["cost"] = self.cost?.toMap()
+                }
+                if self.instruction != nil {
+                    map["instruction"] = self.instruction!
+                }
+                if self.orientation != nil {
+                    map["orientation"] = self.orientation!
+                }
+                if self.roadName != nil {
+                    map["roadName"] = self.roadName!
+                }
+                if self.stepDistanceMeter != nil {
+                    map["stepDistanceMeter"] = self.stepDistanceMeter!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("cost") {
+                    var model = DrivingDirectionResponseBody.Data.Steps.Cost()
+                    model.fromMap(dict["cost"] as! [String: Any])
+                    self.cost = model
+                }
+                if dict.keys.contains("instruction") {
+                    self.instruction = dict["instruction"] as! String
+                }
+                if dict.keys.contains("orientation") {
+                    self.orientation = dict["orientation"] as! String
+                }
+                if dict.keys.contains("roadName") {
+                    self.roadName = dict["roadName"] as! String
+                }
+                if dict.keys.contains("stepDistanceMeter") {
+                    self.stepDistanceMeter = dict["stepDistanceMeter"] as! String
+                }
+            }
+        }
+        public var cost: DrivingDirectionResponseBody.Data.Cost?
+
+        public var distanceMeter: String?
+
+        public var restriction: String?
+
+        public var steps: [DrivingDirectionResponseBody.Data.Steps]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.cost?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cost != nil {
+                map["cost"] = self.cost?.toMap()
+            }
+            if self.distanceMeter != nil {
+                map["distanceMeter"] = self.distanceMeter!
+            }
+            if self.restriction != nil {
+                map["restriction"] = self.restriction!
+            }
+            if self.steps != nil {
+                var tmp : [Any] = []
+                for k in self.steps! {
+                    tmp.append(k.toMap())
+                }
+                map["steps"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("cost") {
+                var model = DrivingDirectionResponseBody.Data.Cost()
+                model.fromMap(dict["cost"] as! [String: Any])
+                self.cost = model
+            }
+            if dict.keys.contains("distanceMeter") {
+                self.distanceMeter = dict["distanceMeter"] as! String
+            }
+            if dict.keys.contains("restriction") {
+                self.restriction = dict["restriction"] as! String
+            }
+            if dict.keys.contains("steps") {
+                var tmp : [DrivingDirectionResponseBody.Data.Steps] = []
+                for v in dict["steps"] as! [Any] {
+                    var model = DrivingDirectionResponseBody.Data.Steps()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.steps = tmp
+            }
+        }
+    }
+    public var data: [DrivingDirectionResponseBody.Data]?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["data"] = tmp
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("data") {
+            var tmp : [DrivingDirectionResponseBody.Data] = []
+            for v in dict["data"] as! [Any] {
+                var model = DrivingDirectionResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class DrivingDirectionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DrivingDirectionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DrivingDirectionResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DrivingDirectionNovaRequest : Tea.TeaModel {
     public var carType: String?
 

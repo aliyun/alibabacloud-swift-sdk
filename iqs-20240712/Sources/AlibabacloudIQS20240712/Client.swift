@@ -107,6 +107,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func drivingDirectionWithOptions(_ request: DrivingDirectionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DrivingDirectionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.destinationLatitude)) {
+            query["destinationLatitude"] = request.destinationLatitude ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.destinationLongitude)) {
+            query["destinationLongitude"] = request.destinationLongitude ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.originLatitude)) {
+            query["originLatitude"] = request.originLatitude ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.originLongitude)) {
+            query["originLongitude"] = request.originLongitude ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DrivingDirection",
+            "version": "2024-07-12",
+            "protocol": "HTTPS",
+            "pathname": "/ipaas/v1/direction/driving",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(DrivingDirectionResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(DrivingDirectionResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func drivingDirection(_ request: DrivingDirectionRequest) async throws -> DrivingDirectionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await drivingDirectionWithOptions(request as! DrivingDirectionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func drivingDirectionNovaWithOptions(_ request: DrivingDirectionNovaRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DrivingDirectionNovaResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
