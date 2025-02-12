@@ -2498,6 +2498,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public var instanceSpec: String?
 
+    public var masterAISpec: String?
+
     public var masterCU: Int32?
 
     public var masterNodeNum: String?
@@ -2614,6 +2616,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if self.instanceSpec != nil {
             map["InstanceSpec"] = self.instanceSpec!
+        }
+        if self.masterAISpec != nil {
+            map["MasterAISpec"] = self.masterAISpec!
         }
         if self.masterCU != nil {
             map["MasterCU"] = self.masterCU!
@@ -2751,6 +2756,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceSpec") {
             self.instanceSpec = dict["InstanceSpec"] as! String
+        }
+        if dict.keys.contains("MasterAISpec") {
+            self.masterAISpec = dict["MasterAISpec"] as! String
         }
         if dict.keys.contains("MasterCU") {
             self.masterCU = dict["MasterCU"] as! Int32
@@ -11979,6 +11987,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
             public var maintainStartTime: String?
 
+            public var masterAISpec: String?
+
             public var masterCU: Int32?
 
             public var masterNodeNum: Int32?
@@ -12012,6 +12022,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             public var segDiskPerformanceLevel: String?
 
             public var segNodeNum: Int32?
+
+            public var segmentAISpec: String?
 
             public var segmentCounts: Int32?
 
@@ -12157,6 +12169,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 if self.maintainStartTime != nil {
                     map["MaintainStartTime"] = self.maintainStartTime!
                 }
+                if self.masterAISpec != nil {
+                    map["MasterAISpec"] = self.masterAISpec!
+                }
                 if self.masterCU != nil {
                     map["MasterCU"] = self.masterCU!
                 }
@@ -12207,6 +12222,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.segNodeNum != nil {
                     map["SegNodeNum"] = self.segNodeNum!
+                }
+                if self.segmentAISpec != nil {
+                    map["SegmentAISpec"] = self.segmentAISpec!
                 }
                 if self.segmentCounts != nil {
                     map["SegmentCounts"] = self.segmentCounts!
@@ -12356,6 +12374,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 if dict.keys.contains("MaintainStartTime") {
                     self.maintainStartTime = dict["MaintainStartTime"] as! String
                 }
+                if dict.keys.contains("MasterAISpec") {
+                    self.masterAISpec = dict["MasterAISpec"] as! String
+                }
                 if dict.keys.contains("MasterCU") {
                     self.masterCU = dict["MasterCU"] as! Int32
                 }
@@ -12406,6 +12427,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("SegNodeNum") {
                     self.segNodeNum = dict["SegNodeNum"] as! Int32
+                }
+                if dict.keys.contains("SegmentAISpec") {
+                    self.segmentAISpec = dict["SegmentAISpec"] as! String
                 }
                 if dict.keys.contains("SegmentCounts") {
                     self.segmentCounts = dict["SegmentCounts"] as! Int32
@@ -37258,6 +37282,8 @@ public class ModifyMasterSpecRequest : Tea.TeaModel {
 
     public var DBInstanceId: String?
 
+    public var masterAISpec: String?
+
     public var masterCU: Int32?
 
     public var resourceGroupId: String?
@@ -37282,6 +37308,9 @@ public class ModifyMasterSpecRequest : Tea.TeaModel {
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
+        if self.masterAISpec != nil {
+            map["MasterAISpec"] = self.masterAISpec!
+        }
         if self.masterCU != nil {
             map["MasterCU"] = self.masterCU!
         }
@@ -37297,6 +37326,9 @@ public class ModifyMasterSpecRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DBInstanceId") {
             self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("MasterAISpec") {
+            self.masterAISpec = dict["MasterAISpec"] as! String
         }
         if dict.keys.contains("MasterCU") {
             self.masterCU = dict["MasterCU"] as! Int32
