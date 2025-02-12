@@ -5071,6 +5071,101 @@ public class BlockObjectResponse : Tea.TeaModel {
     }
 }
 
+public class CheckAssumeSlrRoleResponseBody : Tea.TeaModel {
+    public var errorMsg: String?
+
+    public var isExist: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorMsg != nil {
+            map["ErrorMsg"] = self.errorMsg!
+        }
+        if self.isExist != nil {
+            map["IsExist"] = self.isExist!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorMsg") {
+            self.errorMsg = dict["ErrorMsg"] as! String
+        }
+        if dict.keys.contains("IsExist") {
+            self.isExist = dict["IsExist"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CheckAssumeSlrRoleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CheckAssumeSlrRoleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CheckAssumeSlrRoleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CheckSiteNameRequest : Tea.TeaModel {
     public var siteName: String?
 
@@ -6172,6 +6267,8 @@ public class CreateCompressionRuleRequest : Tea.TeaModel {
 
     public var siteVersion: Int32?
 
+    public var zstd: String?
+
     public override init() {
         super.init()
     }
@@ -6207,6 +6304,9 @@ public class CreateCompressionRuleRequest : Tea.TeaModel {
         if self.siteVersion != nil {
             map["SiteVersion"] = self.siteVersion!
         }
+        if self.zstd != nil {
+            map["Zstd"] = self.zstd!
+        }
         return map
     }
 
@@ -6231,6 +6331,9 @@ public class CreateCompressionRuleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SiteVersion") {
             self.siteVersion = dict["SiteVersion"] as! Int32
+        }
+        if dict.keys.contains("Zstd") {
+            self.zstd = dict["Zstd"] as! String
         }
     }
 }
@@ -13810,6 +13913,85 @@ public class CreateSiteDeliveryTaskResponse : Tea.TeaModel {
     }
 }
 
+public class CreateSlrRoleForRealtimeLogResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateSlrRoleForRealtimeLogResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateSlrRoleForRealtimeLogResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateSlrRoleForRealtimeLogResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateUserDeliveryTaskRequest : Tea.TeaModel {
     public class HttpDelivery : Tea.TeaModel {
         public class StandardAuthParam : Tea.TeaModel {
@@ -15061,6 +15243,8 @@ public class CreateWaitingRoomShrinkRequest : Tea.TeaModel {
 public class CreateWaitingRoomResponseBody : Tea.TeaModel {
     public var requestId: String?
 
+    public var waitingRoomId: String?
+
     public override init() {
         super.init()
     }
@@ -15078,12 +15262,18 @@ public class CreateWaitingRoomResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.waitingRoomId != nil {
+            map["WaitingRoomId"] = self.waitingRoomId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("WaitingRoomId") {
+            self.waitingRoomId = dict["WaitingRoomId"] as! String
         }
     }
 }
@@ -15322,6 +15512,8 @@ public class CreateWaitingRoomEventRequest : Tea.TeaModel {
 public class CreateWaitingRoomEventResponseBody : Tea.TeaModel {
     public var requestId: String?
 
+    public var waitingRoomEventId: Int64?
+
     public override init() {
         super.init()
     }
@@ -15339,12 +15531,18 @@ public class CreateWaitingRoomEventResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.waitingRoomEventId != nil {
+            map["WaitingRoomEventId"] = self.waitingRoomEventId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("WaitingRoomEventId") {
+            self.waitingRoomEventId = dict["WaitingRoomEventId"] as! Int64
         }
     }
 }
@@ -15463,6 +15661,8 @@ public class CreateWaitingRoomRuleRequest : Tea.TeaModel {
 public class CreateWaitingRoomRuleResponseBody : Tea.TeaModel {
     public var requestId: String?
 
+    public var waitingRoomRuleId: Int64?
+
     public override init() {
         super.init()
     }
@@ -15480,12 +15680,18 @@ public class CreateWaitingRoomRuleResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.waitingRoomRuleId != nil {
+            map["WaitingRoomRuleId"] = self.waitingRoomRuleId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("WaitingRoomRuleId") {
+            self.waitingRoomRuleId = dict["WaitingRoomRuleId"] as! Int64
         }
     }
 }
@@ -24796,6 +25002,8 @@ public class GetCompressionRuleResponseBody : Tea.TeaModel {
 
     public var siteVersion: Int32?
 
+    public var zstd: String?
+
     public override init() {
         super.init()
     }
@@ -24840,6 +25048,9 @@ public class GetCompressionRuleResponseBody : Tea.TeaModel {
         if self.siteVersion != nil {
             map["SiteVersion"] = self.siteVersion!
         }
+        if self.zstd != nil {
+            map["Zstd"] = self.zstd!
+        }
         return map
     }
 
@@ -24873,6 +25084,9 @@ public class GetCompressionRuleResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("SiteVersion") {
             self.siteVersion = dict["SiteVersion"] as! Int32
+        }
+        if dict.keys.contains("Zstd") {
+            self.zstd = dict["Zstd"] as! String
         }
     }
 }
@@ -38347,6 +38561,8 @@ public class ListCompressionRulesResponseBody : Tea.TeaModel {
 
         public var siteVersion: Int32?
 
+        public var zstd: String?
+
         public override init() {
             super.init()
         }
@@ -38388,6 +38604,9 @@ public class ListCompressionRulesResponseBody : Tea.TeaModel {
             if self.siteVersion != nil {
                 map["SiteVersion"] = self.siteVersion!
             }
+            if self.zstd != nil {
+                map["Zstd"] = self.zstd!
+            }
             return map
         }
 
@@ -38418,6 +38637,9 @@ public class ListCompressionRulesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SiteVersion") {
                 self.siteVersion = dict["SiteVersion"] as! Int32
+            }
+            if dict.keys.contains("Zstd") {
+                self.zstd = dict["Zstd"] as! String
             }
         }
     }
@@ -49885,6 +50107,8 @@ public class ListUserRatePlanInstancesRequest : Tea.TeaModel {
 
     public var status: String?
 
+    public var subscribeType: String?
+
     public override init() {
         super.init()
     }
@@ -49923,6 +50147,9 @@ public class ListUserRatePlanInstancesRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.subscribeType != nil {
+            map["SubscribeType"] = self.subscribeType!
+        }
         return map
     }
 
@@ -49950,6 +50177,9 @@ public class ListUserRatePlanInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("SubscribeType") {
+            self.subscribeType = dict["SubscribeType"] as! String
         }
     }
 }
@@ -50049,6 +50279,8 @@ public class ListUserRatePlanInstancesResponseBody : Tea.TeaModel {
 
         public var status: String?
 
+        public var subscribeType: String?
+
         public override init() {
             super.init()
         }
@@ -50139,6 +50371,9 @@ public class ListUserRatePlanInstancesResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.subscribeType != nil {
+                map["SubscribeType"] = self.subscribeType!
+            }
             return map
         }
 
@@ -50222,6 +50457,9 @@ public class ListUserRatePlanInstancesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("SubscribeType") {
+                self.subscribeType = dict["SubscribeType"] as! String
             }
         }
     }
@@ -56061,6 +56299,8 @@ public class UpdateCompressionRuleRequest : Tea.TeaModel {
 
     public var siteId: Int64?
 
+    public var zstd: String?
+
     public override init() {
         super.init()
     }
@@ -56096,6 +56336,9 @@ public class UpdateCompressionRuleRequest : Tea.TeaModel {
         if self.siteId != nil {
             map["SiteId"] = self.siteId!
         }
+        if self.zstd != nil {
+            map["Zstd"] = self.zstd!
+        }
         return map
     }
 
@@ -56120,6 +56363,9 @@ public class UpdateCompressionRuleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SiteId") {
             self.siteId = dict["SiteId"] as! Int64
+        }
+        if dict.keys.contains("Zstd") {
+            self.zstd = dict["Zstd"] as! String
         }
     }
 }
