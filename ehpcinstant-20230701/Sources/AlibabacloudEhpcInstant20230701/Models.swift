@@ -519,6 +519,67 @@ public class CreateJobRequest : Tea.TeaModel {
             }
         }
     }
+    public class SecurityPolicy : Tea.TeaModel {
+        public class SecurityGroup : Tea.TeaModel {
+            public var securityGroupIds: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.securityGroupIds != nil {
+                    map["SecurityGroupIds"] = self.securityGroupIds!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("SecurityGroupIds") {
+                    self.securityGroupIds = dict["SecurityGroupIds"] as! [String]
+                }
+            }
+        }
+        public var securityGroup: CreateJobRequest.SecurityPolicy.SecurityGroup?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.securityGroup?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.securityGroup != nil {
+                map["SecurityGroup"] = self.securityGroup?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("SecurityGroup") {
+                var model = CreateJobRequest.SecurityPolicy.SecurityGroup()
+                model.fromMap(dict["SecurityGroup"] as! [String: Any])
+                self.securityGroup = model
+            }
+        }
+    }
     public class Tasks : Tea.TeaModel {
         public class ExecutorPolicy : Tea.TeaModel {
             public class ArraySpec : Tea.TeaModel {
@@ -1088,6 +1149,8 @@ public class CreateJobRequest : Tea.TeaModel {
 
     public var jobScheduler: String?
 
+    public var securityPolicy: CreateJobRequest.SecurityPolicy?
+
     public var tasks: [CreateJobRequest.Tasks]?
 
     public override init() {
@@ -1101,6 +1164,7 @@ public class CreateJobRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.deploymentPolicy?.validate()
+        try self.securityPolicy?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -1116,6 +1180,9 @@ public class CreateJobRequest : Tea.TeaModel {
         }
         if self.jobScheduler != nil {
             map["JobScheduler"] = self.jobScheduler!
+        }
+        if self.securityPolicy != nil {
+            map["SecurityPolicy"] = self.securityPolicy?.toMap()
         }
         if self.tasks != nil {
             var tmp : [Any] = []
@@ -1142,6 +1209,11 @@ public class CreateJobRequest : Tea.TeaModel {
         if dict.keys.contains("JobScheduler") {
             self.jobScheduler = dict["JobScheduler"] as! String
         }
+        if dict.keys.contains("SecurityPolicy") {
+            var model = CreateJobRequest.SecurityPolicy()
+            model.fromMap(dict["SecurityPolicy"] as! [String: Any])
+            self.securityPolicy = model
+        }
         if dict.keys.contains("Tasks") {
             var tmp : [CreateJobRequest.Tasks] = []
             for v in dict["Tasks"] as! [Any] {
@@ -1164,6 +1236,8 @@ public class CreateJobShrinkRequest : Tea.TeaModel {
     public var jobName: String?
 
     public var jobScheduler: String?
+
+    public var securityPolicyShrink: String?
 
     public var tasksShrink: String?
 
@@ -1193,6 +1267,9 @@ public class CreateJobShrinkRequest : Tea.TeaModel {
         if self.jobScheduler != nil {
             map["JobScheduler"] = self.jobScheduler!
         }
+        if self.securityPolicyShrink != nil {
+            map["SecurityPolicy"] = self.securityPolicyShrink!
+        }
         if self.tasksShrink != nil {
             map["Tasks"] = self.tasksShrink!
         }
@@ -1211,6 +1288,9 @@ public class CreateJobShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("JobScheduler") {
             self.jobScheduler = dict["JobScheduler"] as! String
+        }
+        if dict.keys.contains("SecurityPolicy") {
+            self.securityPolicyShrink = dict["SecurityPolicy"] as! String
         }
         if dict.keys.contains("Tasks") {
             self.tasksShrink = dict["Tasks"] as! String
@@ -4208,9 +4288,9 @@ public class ListExecutorsRequest : Tea.TeaModel {
     }
     public var filter: ListExecutorsRequest.Filter?
 
-    public var pageNumber: String?
+    public var pageNumber: Int32?
 
-    public var pageSize: String?
+    public var pageSize: Int32?
 
     public override init() {
         super.init()
@@ -4246,10 +4326,10 @@ public class ListExecutorsRequest : Tea.TeaModel {
             self.filter = model
         }
         if dict.keys.contains("PageNumber") {
-            self.pageNumber = dict["PageNumber"] as! String
+            self.pageNumber = dict["PageNumber"] as! Int32
         }
         if dict.keys.contains("PageSize") {
-            self.pageSize = dict["PageSize"] as! String
+            self.pageSize = dict["PageSize"] as! Int32
         }
     }
 }
@@ -4257,9 +4337,9 @@ public class ListExecutorsRequest : Tea.TeaModel {
 public class ListExecutorsShrinkRequest : Tea.TeaModel {
     public var filterShrink: String?
 
-    public var pageNumber: String?
+    public var pageNumber: Int32?
 
-    public var pageSize: String?
+    public var pageSize: Int32?
 
     public override init() {
         super.init()
@@ -4292,10 +4372,10 @@ public class ListExecutorsShrinkRequest : Tea.TeaModel {
             self.filterShrink = dict["Filter"] as! String
         }
         if dict.keys.contains("PageNumber") {
-            self.pageNumber = dict["PageNumber"] as! String
+            self.pageNumber = dict["PageNumber"] as! Int32
         }
         if dict.keys.contains("PageSize") {
-            self.pageSize = dict["PageSize"] as! String
+            self.pageSize = dict["PageSize"] as! Int32
         }
     }
 }
@@ -4433,6 +4513,8 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var appName: String?
+
         public var arrayIndex: Int32?
 
         public var createTime: String?
@@ -4440,6 +4522,8 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
         public var endTime: String?
 
         public var executorId: String?
+
+        public var expirationTime: String?
 
         public var externalIpAddress: [String]?
 
@@ -4486,6 +4570,9 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.appName != nil {
+                map["AppName"] = self.appName!
+            }
             if self.arrayIndex != nil {
                 map["ArrayIndex"] = self.arrayIndex!
             }
@@ -4497,6 +4584,9 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
             }
             if self.executorId != nil {
                 map["ExecutorId"] = self.executorId!
+            }
+            if self.expirationTime != nil {
+                map["ExpirationTime"] = self.expirationTime!
             }
             if self.externalIpAddress != nil {
                 map["ExternalIpAddress"] = self.externalIpAddress!
@@ -4551,6 +4641,9 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AppName") {
+                self.appName = dict["AppName"] as! String
+            }
             if dict.keys.contains("ArrayIndex") {
                 self.arrayIndex = dict["ArrayIndex"] as! Int32
             }
@@ -4562,6 +4655,9 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ExecutorId") {
                 self.executorId = dict["ExecutorId"] as! String
+            }
+            if dict.keys.contains("ExpirationTime") {
+                self.expirationTime = dict["ExpirationTime"] as! String
             }
             if dict.keys.contains("ExternalIpAddress") {
                 self.externalIpAddress = dict["ExternalIpAddress"] as! [String]
@@ -4622,9 +4718,9 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
     }
     public var executors: [ListExecutorsResponseBody.Executors]?
 
-    public var pageNumber: String?
+    public var pageNumber: Int32?
 
-    public var pageSize: String?
+    public var pageSize: Int32?
 
     public var requestId: String?
 
@@ -4679,10 +4775,10 @@ public class ListExecutorsResponseBody : Tea.TeaModel {
             self.executors = tmp
         }
         if dict.keys.contains("PageNumber") {
-            self.pageNumber = dict["PageNumber"] as! String
+            self.pageNumber = dict["PageNumber"] as! Int32
         }
         if dict.keys.contains("PageSize") {
-            self.pageSize = dict["PageSize"] as! String
+            self.pageSize = dict["PageSize"] as! Int32
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
@@ -5141,9 +5237,9 @@ public class ListImagesResponse : Tea.TeaModel {
 public class ListJobExecutorsRequest : Tea.TeaModel {
     public var jobId: String?
 
-    public var pageNumber: String?
+    public var pageNumber: Int32?
 
-    public var pageSize: String?
+    public var pageSize: Int32?
 
     public var taskName: String?
 
@@ -5181,10 +5277,10 @@ public class ListJobExecutorsRequest : Tea.TeaModel {
             self.jobId = dict["JobId"] as! String
         }
         if dict.keys.contains("PageNumber") {
-            self.pageNumber = dict["PageNumber"] as! String
+            self.pageNumber = dict["PageNumber"] as! Int32
         }
         if dict.keys.contains("PageSize") {
-            self.pageSize = dict["PageSize"] as! String
+            self.pageSize = dict["PageSize"] as! Int32
         }
         if dict.keys.contains("TaskName") {
             self.taskName = dict["TaskName"] as! String
@@ -5316,6 +5412,8 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
 
         public var executorId: String?
 
+        public var expirationTime: String?
+
         public var externalIpAddress: [String]?
 
         public var hostName: [String]?
@@ -5355,6 +5453,9 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
             }
             if self.executorId != nil {
                 map["ExecutorId"] = self.executorId!
+            }
+            if self.expirationTime != nil {
+                map["ExpirationTime"] = self.expirationTime!
             }
             if self.externalIpAddress != nil {
                 map["ExternalIpAddress"] = self.externalIpAddress!
@@ -5397,6 +5498,9 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
             if dict.keys.contains("ExecutorId") {
                 self.executorId = dict["ExecutorId"] as! String
             }
+            if dict.keys.contains("ExpirationTime") {
+                self.expirationTime = dict["ExpirationTime"] as! String
+            }
             if dict.keys.contains("ExternalIpAddress") {
                 self.externalIpAddress = dict["ExternalIpAddress"] as! [String]
             }
@@ -5434,9 +5538,9 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
 
     public var jobId: String?
 
-    public var pageNumber: String?
+    public var pageNumber: Int32?
 
-    public var pageSize: String?
+    public var pageSize: Int32?
 
     public var requestId: String?
 
@@ -5511,10 +5615,10 @@ public class ListJobExecutorsResponseBody : Tea.TeaModel {
             self.jobId = dict["JobId"] as! String
         }
         if dict.keys.contains("PageNumber") {
-            self.pageNumber = dict["PageNumber"] as! String
+            self.pageNumber = dict["PageNumber"] as! Int32
         }
         if dict.keys.contains("PageSize") {
-            self.pageSize = dict["PageSize"] as! String
+            self.pageSize = dict["PageSize"] as! Int32
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
@@ -5678,9 +5782,9 @@ public class ListJobsRequest : Tea.TeaModel {
     }
     public var filter: ListJobsRequest.Filter?
 
-    public var pageNumber: String?
+    public var pageNumber: Int32?
 
-    public var pageSize: String?
+    public var pageSize: Int32?
 
     public var sortBy: ListJobsRequest.SortBy?
 
@@ -5722,10 +5826,10 @@ public class ListJobsRequest : Tea.TeaModel {
             self.filter = model
         }
         if dict.keys.contains("PageNumber") {
-            self.pageNumber = dict["PageNumber"] as! String
+            self.pageNumber = dict["PageNumber"] as! Int32
         }
         if dict.keys.contains("PageSize") {
-            self.pageSize = dict["PageSize"] as! String
+            self.pageSize = dict["PageSize"] as! Int32
         }
         if dict.keys.contains("SortBy") {
             var model = ListJobsRequest.SortBy()
@@ -5738,9 +5842,9 @@ public class ListJobsRequest : Tea.TeaModel {
 public class ListJobsShrinkRequest : Tea.TeaModel {
     public var filterShrink: String?
 
-    public var pageNumber: String?
+    public var pageNumber: Int32?
 
-    public var pageSize: String?
+    public var pageSize: Int32?
 
     public var sortByShrink: String?
 
@@ -5778,10 +5882,10 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
             self.filterShrink = dict["Filter"] as! String
         }
         if dict.keys.contains("PageNumber") {
-            self.pageNumber = dict["PageNumber"] as! String
+            self.pageNumber = dict["PageNumber"] as! Int32
         }
         if dict.keys.contains("PageSize") {
-            self.pageSize = dict["PageSize"] as! String
+            self.pageSize = dict["PageSize"] as! Int32
         }
         if dict.keys.contains("SortBy") {
             self.sortByShrink = dict["SortBy"] as! String
@@ -5828,6 +5932,8 @@ public class ListJobsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var appName: String?
+
         public var createTime: String?
 
         public var endTime: String?
@@ -5866,6 +5972,9 @@ public class ListJobsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.appName != nil {
+                map["AppName"] = self.appName!
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -5910,6 +6019,9 @@ public class ListJobsResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AppName") {
+                self.appName = dict["AppName"] as! String
+            }
             if dict.keys.contains("CreateTime") {
                 self.createTime = dict["CreateTime"] as! String
             }
