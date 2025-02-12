@@ -45488,6 +45488,8 @@ public class ModifyApiGroupRequest : Tea.TeaModel {
 
     public var rpcPattern: String?
 
+    public var rpsLimitForServerless: String?
+
     public var securityToken: String?
 
     public var supportSSE: String?
@@ -45546,6 +45548,9 @@ public class ModifyApiGroupRequest : Tea.TeaModel {
         if self.rpcPattern != nil {
             map["RpcPattern"] = self.rpcPattern!
         }
+        if self.rpsLimitForServerless != nil {
+            map["RpsLimitForServerless"] = self.rpsLimitForServerless!
+        }
         if self.securityToken != nil {
             map["SecurityToken"] = self.securityToken!
         }
@@ -45601,6 +45606,9 @@ public class ModifyApiGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RpcPattern") {
             self.rpcPattern = dict["RpcPattern"] as! String
+        }
+        if dict.keys.contains("RpsLimitForServerless") {
+            self.rpsLimitForServerless = dict["RpsLimitForServerless"] as! String
         }
         if dict.keys.contains("SecurityToken") {
             self.securityToken = dict["SecurityToken"] as! String
