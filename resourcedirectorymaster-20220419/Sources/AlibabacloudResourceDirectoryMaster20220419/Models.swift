@@ -6144,6 +6144,8 @@ public class GetResourceDirectoryResponseBody : Tea.TeaModel {
 
         public var masterAccountName: String?
 
+        public var memberAccountDisplayNameSyncStatus: String?
+
         public var memberDeletionStatus: String?
 
         public var resourceDirectoryId: String?
@@ -6179,6 +6181,9 @@ public class GetResourceDirectoryResponseBody : Tea.TeaModel {
             if self.masterAccountName != nil {
                 map["MasterAccountName"] = self.masterAccountName!
             }
+            if self.memberAccountDisplayNameSyncStatus != nil {
+                map["MemberAccountDisplayNameSyncStatus"] = self.memberAccountDisplayNameSyncStatus!
+            }
             if self.memberDeletionStatus != nil {
                 map["MemberDeletionStatus"] = self.memberDeletionStatus!
             }
@@ -6206,6 +6211,9 @@ public class GetResourceDirectoryResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("MasterAccountName") {
                 self.masterAccountName = dict["MasterAccountName"] as! String
+            }
+            if dict.keys.contains("MemberAccountDisplayNameSyncStatus") {
+                self.memberAccountDisplayNameSyncStatus = dict["MemberAccountDisplayNameSyncStatus"] as! String
             }
             if dict.keys.contains("MemberDeletionStatus") {
                 self.memberDeletionStatus = dict["MemberDeletionStatus"] as! String
@@ -7792,6 +7800,43 @@ public class ListAncestorsResponse : Tea.TeaModel {
 }
 
 public class ListControlPoliciesRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var language: String?
 
     public var pageNumber: Int32?
@@ -7799,6 +7844,8 @@ public class ListControlPoliciesRequest : Tea.TeaModel {
     public var pageSize: Int32?
 
     public var policyType: String?
+
+    public var tag: [ListControlPoliciesRequest.Tag]?
 
     public override init() {
         super.init()
@@ -7826,6 +7873,13 @@ public class ListControlPoliciesRequest : Tea.TeaModel {
         if self.policyType != nil {
             map["PolicyType"] = self.policyType!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
@@ -7842,12 +7896,101 @@ public class ListControlPoliciesRequest : Tea.TeaModel {
         if dict.keys.contains("PolicyType") {
             self.policyType = dict["PolicyType"] as! String
         }
+        if dict.keys.contains("Tag") {
+            var tmp : [ListControlPoliciesRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = ListControlPoliciesRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
     }
 }
 
 public class ListControlPoliciesResponseBody : Tea.TeaModel {
     public class ControlPolicies : Tea.TeaModel {
         public class ControlPolicy : Tea.TeaModel {
+            public class Tags : Tea.TeaModel {
+                public class Tag : Tea.TeaModel {
+                    public var key: String?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.key != nil {
+                            map["Key"] = self.key!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Key") {
+                            self.key = dict["Key"] as! String
+                        }
+                        if dict.keys.contains("Value") {
+                            self.value = dict["Value"] as! String
+                        }
+                    }
+                }
+                public var tag: [ListControlPoliciesResponseBody.ControlPolicies.ControlPolicy.Tags.Tag]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.tag != nil {
+                        var tmp : [Any] = []
+                        for k in self.tag! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Tag"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Tag") {
+                        var tmp : [ListControlPoliciesResponseBody.ControlPolicies.ControlPolicy.Tags.Tag] = []
+                        for v in dict["Tag"] as! [Any] {
+                            var model = ListControlPoliciesResponseBody.ControlPolicies.ControlPolicy.Tags.Tag()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.tag = tmp
+                    }
+                }
+            }
             public var attachmentCount: String?
 
             public var createDate: String?
@@ -7862,6 +8005,8 @@ public class ListControlPoliciesResponseBody : Tea.TeaModel {
 
             public var policyType: String?
 
+            public var tags: ListControlPoliciesResponseBody.ControlPolicies.ControlPolicy.Tags?
+
             public var updateDate: String?
 
             public override init() {
@@ -7874,6 +8019,7 @@ public class ListControlPoliciesResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.tags?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -7898,6 +8044,9 @@ public class ListControlPoliciesResponseBody : Tea.TeaModel {
                 }
                 if self.policyType != nil {
                     map["PolicyType"] = self.policyType!
+                }
+                if self.tags != nil {
+                    map["Tags"] = self.tags?.toMap()
                 }
                 if self.updateDate != nil {
                     map["UpdateDate"] = self.updateDate!
@@ -7926,6 +8075,11 @@ public class ListControlPoliciesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("PolicyType") {
                     self.policyType = dict["PolicyType"] as! String
+                }
+                if dict.keys.contains("Tags") {
+                    var model = ListControlPoliciesResponseBody.ControlPolicies.ControlPolicy.Tags()
+                    model.fromMap(dict["Tags"] as! [String: Any])
+                    self.tags = model
                 }
                 if dict.keys.contains("UpdateDate") {
                     self.updateDate = dict["UpdateDate"] as! String
