@@ -23028,6 +23028,35 @@ public class StartCloudRecordRequest : Tea.TeaModel {
                 }
             }
         }
+        public class Whiteboard : Tea.TeaModel {
+            public var whiteboardId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.whiteboardId != nil {
+                    map["WhiteboardId"] = self.whiteboardId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("WhiteboardId") {
+                    self.whiteboardId = dict["WhiteboardId"] as! String
+                }
+            }
+        }
         public var images: [StartCloudRecordRequest.Panes.Images]?
 
         public var paneCropMode: Int32?
@@ -23040,6 +23069,8 @@ public class StartCloudRecordRequest : Tea.TeaModel {
 
         public var texts: [StartCloudRecordRequest.Panes.Texts]?
 
+        public var whiteboard: StartCloudRecordRequest.Panes.Whiteboard?
+
         public override init() {
             super.init()
         }
@@ -23050,6 +23081,7 @@ public class StartCloudRecordRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.whiteboard?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -23079,6 +23111,9 @@ public class StartCloudRecordRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Texts"] = tmp
+            }
+            if self.whiteboard != nil {
+                map["Whiteboard"] = self.whiteboard?.toMap()
             }
             return map
         }
@@ -23117,6 +23152,11 @@ public class StartCloudRecordRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.texts = tmp
+            }
+            if dict.keys.contains("Whiteboard") {
+                var model = StartCloudRecordRequest.Panes.Whiteboard()
+                model.fromMap(dict["Whiteboard"] as! [String: Any])
+                self.whiteboard = model
             }
         }
     }
@@ -24316,6 +24356,35 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
                 }
             }
         }
+        public class Whiteboard : Tea.TeaModel {
+            public var whiteboardId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.whiteboardId != nil {
+                    map["WhiteboardId"] = self.whiteboardId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("WhiteboardId") {
+                    self.whiteboardId = dict["WhiteboardId"] as! String
+                }
+            }
+        }
         public var images: [StartCloudRecordShrinkRequest.Panes.Images]?
 
         public var paneCropMode: Int32?
@@ -24328,6 +24397,8 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
 
         public var texts: [StartCloudRecordShrinkRequest.Panes.Texts]?
 
+        public var whiteboard: StartCloudRecordShrinkRequest.Panes.Whiteboard?
+
         public override init() {
             super.init()
         }
@@ -24338,6 +24409,7 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.whiteboard?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -24367,6 +24439,9 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Texts"] = tmp
+            }
+            if self.whiteboard != nil {
+                map["Whiteboard"] = self.whiteboard?.toMap()
             }
             return map
         }
@@ -24405,6 +24480,11 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.texts = tmp
+            }
+            if dict.keys.contains("Whiteboard") {
+                var model = StartCloudRecordShrinkRequest.Panes.Whiteboard()
+                model.fromMap(dict["Whiteboard"] as! [String: Any])
+                self.whiteboard = model
             }
         }
     }
@@ -27232,6 +27312,35 @@ public class StartStreamingOutRequest : Tea.TeaModel {
                 }
             }
         }
+        public class Whiteboard : Tea.TeaModel {
+            public var whiteboardId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.whiteboardId != nil {
+                    map["WhiteboardId"] = self.whiteboardId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("WhiteboardId") {
+                    self.whiteboardId = dict["WhiteboardId"] as! String
+                }
+            }
+        }
         public var images: [StartStreamingOutRequest.Panes.Images]?
 
         public var paneCropMode: Int32?
@@ -27244,6 +27353,8 @@ public class StartStreamingOutRequest : Tea.TeaModel {
 
         public var texts: [StartStreamingOutRequest.Panes.Texts]?
 
+        public var whiteboard: StartStreamingOutRequest.Panes.Whiteboard?
+
         public override init() {
             super.init()
         }
@@ -27254,6 +27365,7 @@ public class StartStreamingOutRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.whiteboard?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -27283,6 +27395,9 @@ public class StartStreamingOutRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Texts"] = tmp
+            }
+            if self.whiteboard != nil {
+                map["Whiteboard"] = self.whiteboard?.toMap()
             }
             return map
         }
@@ -27321,6 +27436,11 @@ public class StartStreamingOutRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.texts = tmp
+            }
+            if dict.keys.contains("Whiteboard") {
+                var model = StartStreamingOutRequest.Panes.Whiteboard()
+                model.fromMap(dict["Whiteboard"] as! [String: Any])
+                self.whiteboard = model
             }
         }
     }
@@ -28456,6 +28576,35 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
                 }
             }
         }
+        public class Whiteboard : Tea.TeaModel {
+            public var whiteboardId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.whiteboardId != nil {
+                    map["WhiteboardId"] = self.whiteboardId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("WhiteboardId") {
+                    self.whiteboardId = dict["WhiteboardId"] as! String
+                }
+            }
+        }
         public var images: [StartStreamingOutShrinkRequest.Panes.Images]?
 
         public var paneCropMode: Int32?
@@ -28468,6 +28617,8 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
 
         public var texts: [StartStreamingOutShrinkRequest.Panes.Texts]?
 
+        public var whiteboard: StartStreamingOutShrinkRequest.Panes.Whiteboard?
+
         public override init() {
             super.init()
         }
@@ -28478,6 +28629,7 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.whiteboard?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -28507,6 +28659,9 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Texts"] = tmp
+            }
+            if self.whiteboard != nil {
+                map["Whiteboard"] = self.whiteboard?.toMap()
             }
             return map
         }
@@ -28545,6 +28700,11 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.texts = tmp
+            }
+            if dict.keys.contains("Whiteboard") {
+                var model = StartStreamingOutShrinkRequest.Panes.Whiteboard()
+                model.fromMap(dict["Whiteboard"] as! [String: Any])
+                self.whiteboard = model
             }
         }
     }
@@ -30935,6 +31095,35 @@ public class UpdateCloudRecordRequest : Tea.TeaModel {
                 }
             }
         }
+        public class Whiteboard : Tea.TeaModel {
+            public var whiteboardId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.whiteboardId != nil {
+                    map["WhiteboardId"] = self.whiteboardId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("WhiteboardId") {
+                    self.whiteboardId = dict["WhiteboardId"] as! String
+                }
+            }
+        }
         public var images: [UpdateCloudRecordRequest.Panes.Images]?
 
         public var paneCropMode: Int32?
@@ -30947,6 +31136,8 @@ public class UpdateCloudRecordRequest : Tea.TeaModel {
 
         public var texts: [UpdateCloudRecordRequest.Panes.Texts]?
 
+        public var whiteboard: UpdateCloudRecordRequest.Panes.Whiteboard?
+
         public override init() {
             super.init()
         }
@@ -30957,6 +31148,7 @@ public class UpdateCloudRecordRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.whiteboard?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -30986,6 +31178,9 @@ public class UpdateCloudRecordRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Texts"] = tmp
+            }
+            if self.whiteboard != nil {
+                map["Whiteboard"] = self.whiteboard?.toMap()
             }
             return map
         }
@@ -31024,6 +31219,11 @@ public class UpdateCloudRecordRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.texts = tmp
+            }
+            if dict.keys.contains("Whiteboard") {
+                var model = UpdateCloudRecordRequest.Panes.Whiteboard()
+                model.fromMap(dict["Whiteboard"] as! [String: Any])
+                self.whiteboard = model
             }
         }
     }
@@ -32087,6 +32287,35 @@ public class UpdateCloudRecordShrinkRequest : Tea.TeaModel {
                 }
             }
         }
+        public class Whiteboard : Tea.TeaModel {
+            public var whiteboardId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.whiteboardId != nil {
+                    map["WhiteboardId"] = self.whiteboardId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("WhiteboardId") {
+                    self.whiteboardId = dict["WhiteboardId"] as! String
+                }
+            }
+        }
         public var images: [UpdateCloudRecordShrinkRequest.Panes.Images]?
 
         public var paneCropMode: Int32?
@@ -32099,6 +32328,8 @@ public class UpdateCloudRecordShrinkRequest : Tea.TeaModel {
 
         public var texts: [UpdateCloudRecordShrinkRequest.Panes.Texts]?
 
+        public var whiteboard: UpdateCloudRecordShrinkRequest.Panes.Whiteboard?
+
         public override init() {
             super.init()
         }
@@ -32109,6 +32340,7 @@ public class UpdateCloudRecordShrinkRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.whiteboard?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -32138,6 +32370,9 @@ public class UpdateCloudRecordShrinkRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Texts"] = tmp
+            }
+            if self.whiteboard != nil {
+                map["Whiteboard"] = self.whiteboard?.toMap()
             }
             return map
         }
@@ -32176,6 +32411,11 @@ public class UpdateCloudRecordShrinkRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.texts = tmp
+            }
+            if dict.keys.contains("Whiteboard") {
+                var model = UpdateCloudRecordShrinkRequest.Panes.Whiteboard()
+                model.fromMap(dict["Whiteboard"] as! [String: Any])
+                self.whiteboard = model
             }
         }
     }
@@ -35275,6 +35515,35 @@ public class UpdateStreamingOutRequest : Tea.TeaModel {
                 }
             }
         }
+        public class Whiteboard : Tea.TeaModel {
+            public var whiteboardId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.whiteboardId != nil {
+                    map["WhiteboardId"] = self.whiteboardId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("WhiteboardId") {
+                    self.whiteboardId = dict["WhiteboardId"] as! String
+                }
+            }
+        }
         public var images: [UpdateStreamingOutRequest.Panes.Images]?
 
         public var paneCropMode: Int32?
@@ -35287,6 +35556,8 @@ public class UpdateStreamingOutRequest : Tea.TeaModel {
 
         public var texts: [UpdateStreamingOutRequest.Panes.Texts]?
 
+        public var whiteboard: UpdateStreamingOutRequest.Panes.Whiteboard?
+
         public override init() {
             super.init()
         }
@@ -35297,6 +35568,7 @@ public class UpdateStreamingOutRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.whiteboard?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -35326,6 +35598,9 @@ public class UpdateStreamingOutRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Texts"] = tmp
+            }
+            if self.whiteboard != nil {
+                map["Whiteboard"] = self.whiteboard?.toMap()
             }
             return map
         }
@@ -35364,6 +35639,11 @@ public class UpdateStreamingOutRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.texts = tmp
+            }
+            if dict.keys.contains("Whiteboard") {
+                var model = UpdateStreamingOutRequest.Panes.Whiteboard()
+                model.fromMap(dict["Whiteboard"] as! [String: Any])
+                self.whiteboard = model
             }
         }
     }
@@ -36427,6 +36707,35 @@ public class UpdateStreamingOutShrinkRequest : Tea.TeaModel {
                 }
             }
         }
+        public class Whiteboard : Tea.TeaModel {
+            public var whiteboardId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.whiteboardId != nil {
+                    map["WhiteboardId"] = self.whiteboardId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("WhiteboardId") {
+                    self.whiteboardId = dict["WhiteboardId"] as! String
+                }
+            }
+        }
         public var images: [UpdateStreamingOutShrinkRequest.Panes.Images]?
 
         public var paneCropMode: Int32?
@@ -36439,6 +36748,8 @@ public class UpdateStreamingOutShrinkRequest : Tea.TeaModel {
 
         public var texts: [UpdateStreamingOutShrinkRequest.Panes.Texts]?
 
+        public var whiteboard: UpdateStreamingOutShrinkRequest.Panes.Whiteboard?
+
         public override init() {
             super.init()
         }
@@ -36449,6 +36760,7 @@ public class UpdateStreamingOutShrinkRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.whiteboard?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -36478,6 +36790,9 @@ public class UpdateStreamingOutShrinkRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Texts"] = tmp
+            }
+            if self.whiteboard != nil {
+                map["Whiteboard"] = self.whiteboard?.toMap()
             }
             return map
         }
@@ -36516,6 +36831,11 @@ public class UpdateStreamingOutShrinkRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.texts = tmp
+            }
+            if dict.keys.contains("Whiteboard") {
+                var model = UpdateStreamingOutShrinkRequest.Panes.Whiteboard()
+                model.fromMap(dict["Whiteboard"] as! [String: Any])
+                self.whiteboard = model
             }
         }
     }
