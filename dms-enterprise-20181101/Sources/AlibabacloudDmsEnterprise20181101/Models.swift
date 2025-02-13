@@ -245,6 +245,234 @@ public class DLDatabase : Tea.TeaModel {
     }
 }
 
+public class DLFunction : Tea.TeaModel {
+    public var catalogName: String?
+
+    public var className: String?
+
+    public var createTime: Int32?
+
+    public var creatorId: Int64?
+
+    public var dbName: String?
+
+    public var functionName: String?
+
+    public var functionType: String?
+
+    public var modifierId: Int64?
+
+    public var ownerName: String?
+
+    public var ownerType: String?
+
+    public var resourceUris: [DLResourceUri]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.catalogName != nil {
+            map["CatalogName"] = self.catalogName!
+        }
+        if self.className != nil {
+            map["ClassName"] = self.className!
+        }
+        if self.createTime != nil {
+            map["CreateTime"] = self.createTime!
+        }
+        if self.creatorId != nil {
+            map["CreatorId"] = self.creatorId!
+        }
+        if self.dbName != nil {
+            map["DbName"] = self.dbName!
+        }
+        if self.functionName != nil {
+            map["FunctionName"] = self.functionName!
+        }
+        if self.functionType != nil {
+            map["FunctionType"] = self.functionType!
+        }
+        if self.modifierId != nil {
+            map["ModifierId"] = self.modifierId!
+        }
+        if self.ownerName != nil {
+            map["OwnerName"] = self.ownerName!
+        }
+        if self.ownerType != nil {
+            map["OwnerType"] = self.ownerType!
+        }
+        if self.resourceUris != nil {
+            var tmp : [Any] = []
+            for k in self.resourceUris! {
+                tmp.append(k.toMap())
+            }
+            map["ResourceUris"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CatalogName") {
+            self.catalogName = dict["CatalogName"] as! String
+        }
+        if dict.keys.contains("ClassName") {
+            self.className = dict["ClassName"] as! String
+        }
+        if dict.keys.contains("CreateTime") {
+            self.createTime = dict["CreateTime"] as! Int32
+        }
+        if dict.keys.contains("CreatorId") {
+            self.creatorId = dict["CreatorId"] as! Int64
+        }
+        if dict.keys.contains("DbName") {
+            self.dbName = dict["DbName"] as! String
+        }
+        if dict.keys.contains("FunctionName") {
+            self.functionName = dict["FunctionName"] as! String
+        }
+        if dict.keys.contains("FunctionType") {
+            self.functionType = dict["FunctionType"] as! String
+        }
+        if dict.keys.contains("ModifierId") {
+            self.modifierId = dict["ModifierId"] as! Int64
+        }
+        if dict.keys.contains("OwnerName") {
+            self.ownerName = dict["OwnerName"] as! String
+        }
+        if dict.keys.contains("OwnerType") {
+            self.ownerType = dict["OwnerType"] as! String
+        }
+        if dict.keys.contains("ResourceUris") {
+            var tmp : [DLResourceUri] = []
+            for v in dict["ResourceUris"] as! [Any] {
+                var model = DLResourceUri()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.resourceUris = tmp
+        }
+    }
+}
+
+public class DLFunctionInput : Tea.TeaModel {
+    public var className: String?
+
+    public var createTime: Int32?
+
+    public var creatorId: Int64?
+
+    public var functionName: String?
+
+    public var functionType: String?
+
+    public var modifierId: Int64?
+
+    public var ownerName: String?
+
+    public var ownerType: String?
+
+    public var resourceUris: [DLResourceUri]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.className != nil {
+            map["ClassName"] = self.className!
+        }
+        if self.createTime != nil {
+            map["CreateTime"] = self.createTime!
+        }
+        if self.creatorId != nil {
+            map["CreatorId"] = self.creatorId!
+        }
+        if self.functionName != nil {
+            map["FunctionName"] = self.functionName!
+        }
+        if self.functionType != nil {
+            map["FunctionType"] = self.functionType!
+        }
+        if self.modifierId != nil {
+            map["ModifierId"] = self.modifierId!
+        }
+        if self.ownerName != nil {
+            map["OwnerName"] = self.ownerName!
+        }
+        if self.ownerType != nil {
+            map["OwnerType"] = self.ownerType!
+        }
+        if self.resourceUris != nil {
+            var tmp : [Any] = []
+            for k in self.resourceUris! {
+                tmp.append(k.toMap())
+            }
+            map["ResourceUris"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClassName") {
+            self.className = dict["ClassName"] as! String
+        }
+        if dict.keys.contains("CreateTime") {
+            self.createTime = dict["CreateTime"] as! Int32
+        }
+        if dict.keys.contains("CreatorId") {
+            self.creatorId = dict["CreatorId"] as! Int64
+        }
+        if dict.keys.contains("FunctionName") {
+            self.functionName = dict["FunctionName"] as! String
+        }
+        if dict.keys.contains("FunctionType") {
+            self.functionType = dict["FunctionType"] as! String
+        }
+        if dict.keys.contains("ModifierId") {
+            self.modifierId = dict["ModifierId"] as! Int64
+        }
+        if dict.keys.contains("OwnerName") {
+            self.ownerName = dict["OwnerName"] as! String
+        }
+        if dict.keys.contains("OwnerType") {
+            self.ownerType = dict["OwnerType"] as! String
+        }
+        if dict.keys.contains("ResourceUris") {
+            var tmp : [DLResourceUri] = []
+            for v in dict["ResourceUris"] as! [Any] {
+                var model = DLResourceUri()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.resourceUris = tmp
+        }
+    }
+}
+
 public class DLOrder : Tea.TeaModel {
     public var col: String?
 
@@ -433,6 +661,44 @@ public class DLPartitionInput : Tea.TeaModel {
         }
         if dict.keys.contains("Values") {
             self.values = dict["Values"] as! [String]
+        }
+    }
+}
+
+public class DLResourceUri : Tea.TeaModel {
+    public var resourceType: String?
+
+    public var uri: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        if self.uri != nil {
+            map["Uri"] = self.uri!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ResourceType") {
+            self.resourceType = dict["ResourceType"] as! String
+        }
+        if dict.keys.contains("Uri") {
+            self.uri = dict["Uri"] as! String
         }
     }
 }
@@ -69246,6 +69512,8 @@ public class UpdateDataLakeTableRequest : Tea.TeaModel {
 
     public var tableInput: OpenStructDLTableInput?
 
+    public var tableName: String?
+
     public var tid: Int64?
 
     public override init() {
@@ -69275,6 +69543,9 @@ public class UpdateDataLakeTableRequest : Tea.TeaModel {
         if self.tableInput != nil {
             map["TableInput"] = self.tableInput?.toMap()
         }
+        if self.tableName != nil {
+            map["TableName"] = self.tableName!
+        }
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
@@ -69296,6 +69567,9 @@ public class UpdateDataLakeTableRequest : Tea.TeaModel {
             model.fromMap(dict["TableInput"] as! [String: Any])
             self.tableInput = model
         }
+        if dict.keys.contains("TableName") {
+            self.tableName = dict["TableName"] as! String
+        }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
         }
@@ -69310,6 +69584,8 @@ public class UpdateDataLakeTableShrinkRequest : Tea.TeaModel {
     public var dbName: String?
 
     public var tableInputShrink: String?
+
+    public var tableName: String?
 
     public var tid: Int64?
 
@@ -69339,6 +69615,9 @@ public class UpdateDataLakeTableShrinkRequest : Tea.TeaModel {
         if self.tableInputShrink != nil {
             map["TableInput"] = self.tableInputShrink!
         }
+        if self.tableName != nil {
+            map["TableName"] = self.tableName!
+        }
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
@@ -69357,6 +69636,9 @@ public class UpdateDataLakeTableShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TableInput") {
             self.tableInputShrink = dict["TableInput"] as! String
+        }
+        if dict.keys.contains("TableName") {
+            self.tableName = dict["TableName"] as! String
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
@@ -72983,6 +73265,8 @@ public class UpdateUserRequest : Tea.TeaModel {
 
     public var uid: Int64?
 
+    public var uidString: String?
+
     public var userNick: String?
 
     public override init() {
@@ -73017,6 +73301,9 @@ public class UpdateUserRequest : Tea.TeaModel {
         if self.uid != nil {
             map["Uid"] = self.uid!
         }
+        if self.uidString != nil {
+            map["UidString"] = self.uidString!
+        }
         if self.userNick != nil {
             map["UserNick"] = self.userNick!
         }
@@ -73041,6 +73328,9 @@ public class UpdateUserRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Uid") {
             self.uid = dict["Uid"] as! Int64
+        }
+        if dict.keys.contains("UidString") {
+            self.uidString = dict["UidString"] as! String
         }
         if dict.keys.contains("UserNick") {
             self.userNick = dict["UserNick"] as! String

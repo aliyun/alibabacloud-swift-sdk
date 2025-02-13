@@ -12139,6 +12139,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dbName)) {
             query["DbName"] = request.dbName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.tableName)) {
+            query["TableName"] = request.tableName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.tid)) {
             query["Tid"] = request.tid!;
         }
@@ -13099,6 +13102,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.uid)) {
             query["Uid"] = request.uid!;
+        }
+        if (!TeaUtils.Client.isUnset(request.uidString)) {
+            query["UidString"] = request.uidString ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.userNick)) {
             query["UserNick"] = request.userNick ?? "";
