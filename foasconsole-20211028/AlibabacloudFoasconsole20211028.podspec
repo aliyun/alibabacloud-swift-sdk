@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudFoasconsole20211028"
-  spec.version      = "1.0.5"
+  spec.version      = "2.0.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud foasconsole (20211028) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/foasconsole-20211028" 

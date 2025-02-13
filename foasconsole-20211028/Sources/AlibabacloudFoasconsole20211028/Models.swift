@@ -526,8 +526,6 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public var haVSwitchIds: [String]?
 
-    public var haZoneId: String?
-
     public var instanceName: String?
 
     public var monitorType: String?
@@ -551,8 +549,6 @@ public class CreateInstanceRequest : Tea.TeaModel {
     public var vSwitchIds: [String]?
 
     public var vpcId: String?
-
-    public var zoneId: String?
 
     public override init() {
         super.init()
@@ -595,9 +591,6 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if self.haVSwitchIds != nil {
             map["HaVSwitchIds"] = self.haVSwitchIds!
         }
-        if self.haZoneId != nil {
-            map["HaZoneId"] = self.haZoneId!
-        }
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
@@ -638,9 +631,6 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
         }
-        if self.zoneId != nil {
-            map["ZoneId"] = self.zoneId!
-        }
         return map
     }
 
@@ -670,9 +660,6 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("HaVSwitchIds") {
             self.haVSwitchIds = dict["HaVSwitchIds"] as! [String]
-        }
-        if dict.keys.contains("HaZoneId") {
-            self.haZoneId = dict["HaZoneId"] as! String
         }
         if dict.keys.contains("InstanceName") {
             self.instanceName = dict["InstanceName"] as! String
@@ -722,9 +709,6 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if dict.keys.contains("VpcId") {
             self.vpcId = dict["VpcId"] as! String
         }
-        if dict.keys.contains("ZoneId") {
-            self.zoneId = dict["ZoneId"] as! String
-        }
     }
 }
 
@@ -744,8 +728,6 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
     public var haResourceSpecShrink: String?
 
     public var haVSwitchIdsShrink: String?
-
-    public var haZoneId: String?
 
     public var instanceName: String?
 
@@ -770,8 +752,6 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
     public var vSwitchIdsShrink: String?
 
     public var vpcId: String?
-
-    public var zoneId: String?
 
     public override init() {
         super.init()
@@ -811,9 +791,6 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
         if self.haVSwitchIdsShrink != nil {
             map["HaVSwitchIds"] = self.haVSwitchIdsShrink!
         }
-        if self.haZoneId != nil {
-            map["HaZoneId"] = self.haZoneId!
-        }
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
@@ -850,9 +827,6 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
         }
-        if self.zoneId != nil {
-            map["ZoneId"] = self.zoneId!
-        }
         return map
     }
 
@@ -880,9 +854,6 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("HaVSwitchIds") {
             self.haVSwitchIdsShrink = dict["HaVSwitchIds"] as! String
-        }
-        if dict.keys.contains("HaZoneId") {
-            self.haZoneId = dict["HaZoneId"] as! String
         }
         if dict.keys.contains("InstanceName") {
             self.instanceName = dict["InstanceName"] as! String
@@ -919,9 +890,6 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("VpcId") {
             self.vpcId = dict["VpcId"] as! String
-        }
-        if dict.keys.contains("ZoneId") {
-            self.zoneId = dict["ZoneId"] as! String
         }
     }
 }
@@ -2131,6 +2099,18 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
         public class ClusterUsedResources : Tea.TeaModel {
             public var clusterId: String?
 
+            public var elasticUsedCpu: Double?
+
+            public var elasticUsedMemory: Double?
+
+            public var elasticUsedResource: Double?
+
+            public var guaranteedUsedCpu: Double?
+
+            public var guaranteedUsedMemory: Double?
+
+            public var guaranteedUsedResource: Double?
+
             public var ha: Bool?
 
             public var haUsedCpu: Double?
@@ -2162,6 +2142,24 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 if self.clusterId != nil {
                     map["ClusterId"] = self.clusterId!
                 }
+                if self.elasticUsedCpu != nil {
+                    map["ElasticUsedCpu"] = self.elasticUsedCpu!
+                }
+                if self.elasticUsedMemory != nil {
+                    map["ElasticUsedMemory"] = self.elasticUsedMemory!
+                }
+                if self.elasticUsedResource != nil {
+                    map["ElasticUsedResource"] = self.elasticUsedResource!
+                }
+                if self.guaranteedUsedCpu != nil {
+                    map["GuaranteedUsedCpu"] = self.guaranteedUsedCpu!
+                }
+                if self.guaranteedUsedMemory != nil {
+                    map["GuaranteedUsedMemory"] = self.guaranteedUsedMemory!
+                }
+                if self.guaranteedUsedResource != nil {
+                    map["GuaranteedUsedResource"] = self.guaranteedUsedResource!
+                }
                 if self.ha != nil {
                     map["Ha"] = self.ha!
                 }
@@ -2189,6 +2187,24 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("ClusterId") {
                     self.clusterId = dict["ClusterId"] as! String
+                }
+                if dict.keys.contains("ElasticUsedCpu") {
+                    self.elasticUsedCpu = dict["ElasticUsedCpu"] as! Double
+                }
+                if dict.keys.contains("ElasticUsedMemory") {
+                    self.elasticUsedMemory = dict["ElasticUsedMemory"] as! Double
+                }
+                if dict.keys.contains("ElasticUsedResource") {
+                    self.elasticUsedResource = dict["ElasticUsedResource"] as! Double
+                }
+                if dict.keys.contains("GuaranteedUsedCpu") {
+                    self.guaranteedUsedCpu = dict["GuaranteedUsedCpu"] as! Double
+                }
+                if dict.keys.contains("GuaranteedUsedMemory") {
+                    self.guaranteedUsedMemory = dict["GuaranteedUsedMemory"] as! Double
+                }
+                if dict.keys.contains("GuaranteedUsedResource") {
+                    self.guaranteedUsedResource = dict["GuaranteedUsedResource"] as! Double
                 }
                 if dict.keys.contains("Ha") {
                     self.ha = dict["Ha"] as! Bool
@@ -2247,6 +2263,43 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("UsedStorage") {
                     self.usedStorage = dict["UsedStorage"] as! Double
+                }
+            }
+        }
+        public class ElasticResourceSpec : Tea.TeaModel {
+            public var cpu: Int32?
+
+            public var memoryGB: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cpu != nil {
+                    map["Cpu"] = self.cpu!
+                }
+                if self.memoryGB != nil {
+                    map["MemoryGB"] = self.memoryGB!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Cpu") {
+                    self.cpu = dict["Cpu"] as! Int32
+                }
+                if dict.keys.contains("MemoryGB") {
+                    self.memoryGB = dict["MemoryGB"] as! Int32
                 }
             }
         }
@@ -2775,6 +2828,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var ansm: Bool?
+
         public var architectureType: String?
 
         public var askClusterId: String?
@@ -2785,9 +2840,15 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
         public var clusterStatus: String?
 
-        public var clusterUsedResources: [DescribeInstancesResponseBody.Instances.ClusterUsedResources]?
+        public var clusterUsedResources: DescribeInstancesResponseBody.Instances.ClusterUsedResources?
 
         public var clusterUsedStorage: DescribeInstancesResponseBody.Instances.ClusterUsedStorage?
+
+        public var elastic: Bool?
+
+        public var elasticOrderState: String?
+
+        public var elasticResourceSpec: DescribeInstancesResponseBody.Instances.ElasticResourceSpec?
 
         public var ha: Bool?
 
@@ -2850,7 +2911,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.clusterState?.validate()
+            try self.clusterUsedResources?.validate()
             try self.clusterUsedStorage?.validate()
+            try self.elasticResourceSpec?.validate()
             try self.haResourceSpec?.validate()
             try self.ossInfo?.validate()
             try self.resourceSpec?.validate()
@@ -2860,6 +2923,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.ansm != nil {
+                map["Ansm"] = self.ansm!
+            }
             if self.architectureType != nil {
                 map["ArchitectureType"] = self.architectureType!
             }
@@ -2876,14 +2942,19 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 map["ClusterStatus"] = self.clusterStatus!
             }
             if self.clusterUsedResources != nil {
-                var tmp : [Any] = []
-                for k in self.clusterUsedResources! {
-                    tmp.append(k.toMap())
-                }
-                map["ClusterUsedResources"] = tmp
+                map["ClusterUsedResources"] = self.clusterUsedResources?.toMap()
             }
             if self.clusterUsedStorage != nil {
                 map["ClusterUsedStorage"] = self.clusterUsedStorage?.toMap()
+            }
+            if self.elastic != nil {
+                map["Elastic"] = self.elastic!
+            }
+            if self.elasticOrderState != nil {
+                map["ElasticOrderState"] = self.elasticOrderState!
+            }
+            if self.elasticResourceSpec != nil {
+                map["ElasticResourceSpec"] = self.elasticResourceSpec?.toMap()
             }
             if self.ha != nil {
                 map["Ha"] = self.ha!
@@ -2980,6 +3051,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Ansm") {
+                self.ansm = dict["Ansm"] as! Bool
+            }
             if dict.keys.contains("ArchitectureType") {
                 self.architectureType = dict["ArchitectureType"] as! String
             }
@@ -2998,20 +3072,25 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 self.clusterStatus = dict["ClusterStatus"] as! String
             }
             if dict.keys.contains("ClusterUsedResources") {
-                var tmp : [DescribeInstancesResponseBody.Instances.ClusterUsedResources] = []
-                for v in dict["ClusterUsedResources"] as! [Any] {
-                    var model = DescribeInstancesResponseBody.Instances.ClusterUsedResources()
-                    if v != nil {
-                        model.fromMap(v as! [String: Any])
-                    }
-                    tmp.append(model)
-                }
-                self.clusterUsedResources = tmp
+                var model = DescribeInstancesResponseBody.Instances.ClusterUsedResources()
+                model.fromMap(dict["ClusterUsedResources"] as! [String: Any])
+                self.clusterUsedResources = model
             }
             if dict.keys.contains("ClusterUsedStorage") {
                 var model = DescribeInstancesResponseBody.Instances.ClusterUsedStorage()
                 model.fromMap(dict["ClusterUsedStorage"] as! [String: Any])
                 self.clusterUsedStorage = model
+            }
+            if dict.keys.contains("Elastic") {
+                self.elastic = dict["Elastic"] as! Bool
+            }
+            if dict.keys.contains("ElasticOrderState") {
+                self.elasticOrderState = dict["ElasticOrderState"] as! String
+            }
+            if dict.keys.contains("ElasticResourceSpec") {
+                var model = DescribeInstancesResponseBody.Instances.ElasticResourceSpec()
+                model.fromMap(dict["ElasticResourceSpec"] as! [String: Any])
+                self.elasticResourceSpec = model
             }
             if dict.keys.contains("Ha") {
                 self.ha = dict["Ha"] as! Bool
@@ -3477,6 +3556,80 @@ public class DescribeNamespacesShrinkRequest : Tea.TeaModel {
 
 public class DescribeNamespacesResponseBody : Tea.TeaModel {
     public class Namespaces : Tea.TeaModel {
+        public class ElasticResourceSpec : Tea.TeaModel {
+            public var cpu: Int32?
+
+            public var memoryGB: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cpu != nil {
+                    map["Cpu"] = self.cpu!
+                }
+                if self.memoryGB != nil {
+                    map["MemoryGB"] = self.memoryGB!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Cpu") {
+                    self.cpu = dict["Cpu"] as! Int32
+                }
+                if dict.keys.contains("MemoryGB") {
+                    self.memoryGB = dict["MemoryGB"] as! Int32
+                }
+            }
+        }
+        public class GuaranteedResourceSpec : Tea.TeaModel {
+            public var cpu: Int32?
+
+            public var memoryGB: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cpu != nil {
+                    map["Cpu"] = self.cpu!
+                }
+                if self.memoryGB != nil {
+                    map["MemoryGB"] = self.memoryGB!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Cpu") {
+                    self.cpu = dict["Cpu"] as! Int32
+                }
+                if dict.keys.contains("MemoryGB") {
+                    self.memoryGB = dict["MemoryGB"] as! Int32
+                }
+            }
+        }
         public class ResourceSpec : Tea.TeaModel {
             public var cpu: Int32?
 
@@ -3596,9 +3749,13 @@ public class DescribeNamespacesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var elasticResourceSpec: DescribeNamespacesResponseBody.Namespaces.ElasticResourceSpec?
+
         public var gmtCreate: Int64?
 
         public var gmtModified: Int64?
+
+        public var guaranteedResourceSpec: DescribeNamespacesResponseBody.Namespaces.GuaranteedResourceSpec?
 
         public var ha: Bool?
 
@@ -3622,17 +3779,25 @@ public class DescribeNamespacesResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.elasticResourceSpec?.validate()
+            try self.guaranteedResourceSpec?.validate()
             try self.resourceSpec?.validate()
             try self.resourceUsed?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.elasticResourceSpec != nil {
+                map["ElasticResourceSpec"] = self.elasticResourceSpec?.toMap()
+            }
             if self.gmtCreate != nil {
                 map["GmtCreate"] = self.gmtCreate!
             }
             if self.gmtModified != nil {
                 map["GmtModified"] = self.gmtModified!
+            }
+            if self.guaranteedResourceSpec != nil {
+                map["GuaranteedResourceSpec"] = self.guaranteedResourceSpec?.toMap()
             }
             if self.ha != nil {
                 map["Ha"] = self.ha!
@@ -3660,11 +3825,21 @@ public class DescribeNamespacesResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ElasticResourceSpec") {
+                var model = DescribeNamespacesResponseBody.Namespaces.ElasticResourceSpec()
+                model.fromMap(dict["ElasticResourceSpec"] as! [String: Any])
+                self.elasticResourceSpec = model
+            }
             if dict.keys.contains("GmtCreate") {
                 self.gmtCreate = dict["GmtCreate"] as! Int64
             }
             if dict.keys.contains("GmtModified") {
                 self.gmtModified = dict["GmtModified"] as! Int64
+            }
+            if dict.keys.contains("GuaranteedResourceSpec") {
+                var model = DescribeNamespacesResponseBody.Namespaces.GuaranteedResourceSpec()
+                model.fromMap(dict["GuaranteedResourceSpec"] as! [String: Any])
+                self.guaranteedResourceSpec = model
             }
             if dict.keys.contains("Ha") {
                 self.ha = dict["Ha"] as! Bool
@@ -5844,8 +6019,6 @@ public class QueryCreateInstancePriceRequest : Tea.TeaModel {
 
     public var vpcId: String?
 
-    public var zoneId: String?
-
     public override init() {
         super.init()
     }
@@ -5911,9 +6084,6 @@ public class QueryCreateInstancePriceRequest : Tea.TeaModel {
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
         }
-        if self.zoneId != nil {
-            map["ZoneId"] = self.zoneId!
-        }
         return map
     }
 
@@ -5972,9 +6142,6 @@ public class QueryCreateInstancePriceRequest : Tea.TeaModel {
         if dict.keys.contains("VpcId") {
             self.vpcId = dict["VpcId"] as! String
         }
-        if dict.keys.contains("ZoneId") {
-            self.zoneId = dict["ZoneId"] as! String
-        }
     }
 }
 
@@ -6010,8 +6177,6 @@ public class QueryCreateInstancePriceShrinkRequest : Tea.TeaModel {
     public var vSwitchIdsShrink: String?
 
     public var vpcId: String?
-
-    public var zoneId: String?
 
     public override init() {
         super.init()
@@ -6075,9 +6240,6 @@ public class QueryCreateInstancePriceShrinkRequest : Tea.TeaModel {
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
         }
-        if self.zoneId != nil {
-            map["ZoneId"] = self.zoneId!
-        }
         return map
     }
 
@@ -6129,9 +6291,6 @@ public class QueryCreateInstancePriceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("VpcId") {
             self.vpcId = dict["VpcId"] as! String
-        }
-        if dict.keys.contains("ZoneId") {
-            self.zoneId = dict["ZoneId"] as! String
         }
     }
 }
@@ -6618,8 +6777,6 @@ public class QueryModifyInstancePriceRequest : Tea.TeaModel {
 
     public var haVSwitchIds: [String]?
 
-    public var haZoneId: String?
-
     public var instanceId: String?
 
     public var promotionCode: String?
@@ -6655,9 +6812,6 @@ public class QueryModifyInstancePriceRequest : Tea.TeaModel {
         if self.haVSwitchIds != nil {
             map["HaVSwitchIds"] = self.haVSwitchIds!
         }
-        if self.haZoneId != nil {
-            map["HaZoneId"] = self.haZoneId!
-        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -6688,9 +6842,6 @@ public class QueryModifyInstancePriceRequest : Tea.TeaModel {
         if dict.keys.contains("HaVSwitchIds") {
             self.haVSwitchIds = dict["HaVSwitchIds"] as! [String]
         }
-        if dict.keys.contains("HaZoneId") {
-            self.haZoneId = dict["HaZoneId"] as! String
-        }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
         }
@@ -6717,8 +6868,6 @@ public class QueryModifyInstancePriceShrinkRequest : Tea.TeaModel {
     public var haResourceSpecShrink: String?
 
     public var haVSwitchIdsShrink: String?
-
-    public var haZoneId: String?
 
     public var instanceId: String?
 
@@ -6753,9 +6902,6 @@ public class QueryModifyInstancePriceShrinkRequest : Tea.TeaModel {
         if self.haVSwitchIdsShrink != nil {
             map["HaVSwitchIds"] = self.haVSwitchIdsShrink!
         }
-        if self.haZoneId != nil {
-            map["HaZoneId"] = self.haZoneId!
-        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -6783,9 +6929,6 @@ public class QueryModifyInstancePriceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("HaVSwitchIds") {
             self.haVSwitchIdsShrink = dict["HaVSwitchIds"] as! String
-        }
-        if dict.keys.contains("HaZoneId") {
-            self.haZoneId = dict["HaZoneId"] as! String
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
