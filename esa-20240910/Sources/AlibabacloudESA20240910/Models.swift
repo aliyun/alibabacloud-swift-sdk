@@ -9328,56 +9328,13 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
             }
         }
     }
-    public class SessionAffinityAttributes : Tea.TeaModel {
-        public var sameSite: String?
-
-        public var secure: String?
-
-        public var zeroDowntimeFailover: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.sameSite != nil {
-                map["SameSite"] = self.sameSite!
-            }
-            if self.secure != nil {
-                map["Secure"] = self.secure!
-            }
-            if self.zeroDowntimeFailover != nil {
-                map["ZeroDowntimeFailover"] = self.zeroDowntimeFailover!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("SameSite") {
-                self.sameSite = dict["SameSite"] as! String
-            }
-            if dict.keys.contains("Secure") {
-                self.secure = dict["Secure"] as! String
-            }
-            if dict.keys.contains("ZeroDowntimeFailover") {
-                self.zeroDowntimeFailover = dict["ZeroDowntimeFailover"] as! String
-            }
-        }
-    }
     public var adaptiveRouting: CreateLoadBalancerRequest.AdaptiveRouting?
 
     public var defaultPools: [Int64]?
 
     public var description_: String?
+
+    public var enabled: Bool?
 
     public var fallbackPool: Int64?
 
@@ -9392,8 +9349,6 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
     public var rules: [CreateLoadBalancerRequest.Rules]?
 
     public var sessionAffinity: String?
-
-    public var sessionAffinityAttributes: CreateLoadBalancerRequest.SessionAffinityAttributes?
 
     public var siteId: Int64?
 
@@ -9416,7 +9371,6 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
         try self.adaptiveRouting?.validate()
         try self.monitor?.validate()
         try self.randomSteering?.validate()
-        try self.sessionAffinityAttributes?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -9429,6 +9383,9 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.enabled != nil {
+            map["Enabled"] = self.enabled!
         }
         if self.fallbackPool != nil {
             map["FallbackPool"] = self.fallbackPool!
@@ -9454,9 +9411,6 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
         }
         if self.sessionAffinity != nil {
             map["SessionAffinity"] = self.sessionAffinity!
-        }
-        if self.sessionAffinityAttributes != nil {
-            map["SessionAffinityAttributes"] = self.sessionAffinityAttributes?.toMap()
         }
         if self.siteId != nil {
             map["SiteId"] = self.siteId!
@@ -9484,6 +9438,9 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("Enabled") {
+            self.enabled = dict["Enabled"] as! Bool
         }
         if dict.keys.contains("FallbackPool") {
             self.fallbackPool = dict["FallbackPool"] as! Int64
@@ -9518,11 +9475,6 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
         if dict.keys.contains("SessionAffinity") {
             self.sessionAffinity = dict["SessionAffinity"] as! String
         }
-        if dict.keys.contains("SessionAffinityAttributes") {
-            var model = CreateLoadBalancerRequest.SessionAffinityAttributes()
-            model.fromMap(dict["SessionAffinityAttributes"] as! [String: Any])
-            self.sessionAffinityAttributes = model
-        }
         if dict.keys.contains("SiteId") {
             self.siteId = dict["SiteId"] as! Int64
         }
@@ -9545,6 +9497,8 @@ public class CreateLoadBalancerShrinkRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var enabled: Bool?
+
     public var fallbackPool: Int64?
 
     public var monitorShrink: String?
@@ -9558,8 +9512,6 @@ public class CreateLoadBalancerShrinkRequest : Tea.TeaModel {
     public var rulesShrink: String?
 
     public var sessionAffinity: String?
-
-    public var sessionAffinityAttributesShrink: String?
 
     public var siteId: Int64?
 
@@ -9592,6 +9544,9 @@ public class CreateLoadBalancerShrinkRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.enabled != nil {
+            map["Enabled"] = self.enabled!
+        }
         if self.fallbackPool != nil {
             map["FallbackPool"] = self.fallbackPool!
         }
@@ -9612,9 +9567,6 @@ public class CreateLoadBalancerShrinkRequest : Tea.TeaModel {
         }
         if self.sessionAffinity != nil {
             map["SessionAffinity"] = self.sessionAffinity!
-        }
-        if self.sessionAffinityAttributesShrink != nil {
-            map["SessionAffinityAttributes"] = self.sessionAffinityAttributesShrink!
         }
         if self.siteId != nil {
             map["SiteId"] = self.siteId!
@@ -9641,6 +9593,9 @@ public class CreateLoadBalancerShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
         }
+        if dict.keys.contains("Enabled") {
+            self.enabled = dict["Enabled"] as! Bool
+        }
         if dict.keys.contains("FallbackPool") {
             self.fallbackPool = dict["FallbackPool"] as! Int64
         }
@@ -9661,9 +9616,6 @@ public class CreateLoadBalancerShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SessionAffinity") {
             self.sessionAffinity = dict["SessionAffinity"] as! String
-        }
-        if dict.keys.contains("SessionAffinityAttributes") {
-            self.sessionAffinityAttributesShrink = dict["SessionAffinityAttributes"] as! String
         }
         if dict.keys.contains("SiteId") {
             self.siteId = dict["SiteId"] as! Int64
@@ -44380,51 +44332,6 @@ public class ListLoadBalancersResponseBody : Tea.TeaModel {
                 }
             }
         }
-        public class SessionAffinityAttributes : Tea.TeaModel {
-            public var sameSite: String?
-
-            public var secure: String?
-
-            public var zeroDowntimeFailover: String?
-
-            public override init() {
-                super.init()
-            }
-
-            public init(_ dict: [String: Any]) {
-                super.init()
-                self.fromMap(dict)
-            }
-
-            public override func validate() throws -> Void {
-            }
-
-            public override func toMap() -> [String : Any] {
-                var map = super.toMap()
-                if self.sameSite != nil {
-                    map["SameSite"] = self.sameSite!
-                }
-                if self.secure != nil {
-                    map["Secure"] = self.secure!
-                }
-                if self.zeroDowntimeFailover != nil {
-                    map["ZeroDowntimeFailover"] = self.zeroDowntimeFailover!
-                }
-                return map
-            }
-
-            public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("SameSite") {
-                    self.sameSite = dict["SameSite"] as! String
-                }
-                if dict.keys.contains("Secure") {
-                    self.secure = dict["Secure"] as! String
-                }
-                if dict.keys.contains("ZeroDowntimeFailover") {
-                    self.zeroDowntimeFailover = dict["ZeroDowntimeFailover"] as! String
-                }
-            }
-        }
         public var adaptiveRouting: ListLoadBalancersResponseBody.LoadBalancers.AdaptiveRouting?
 
         public var defaultPools: [Int64]?
@@ -44449,8 +44356,6 @@ public class ListLoadBalancersResponseBody : Tea.TeaModel {
 
         public var sessionAffinity: String?
 
-        public var sessionAffinityAttributes: ListLoadBalancersResponseBody.LoadBalancers.SessionAffinityAttributes?
-
         public var siteId: Int64?
 
         public var status: String?
@@ -44474,7 +44379,6 @@ public class ListLoadBalancersResponseBody : Tea.TeaModel {
             try self.adaptiveRouting?.validate()
             try self.monitor?.validate()
             try self.randomSteering?.validate()
-            try self.sessionAffinityAttributes?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -44518,9 +44422,6 @@ public class ListLoadBalancersResponseBody : Tea.TeaModel {
             }
             if self.sessionAffinity != nil {
                 map["SessionAffinity"] = self.sessionAffinity!
-            }
-            if self.sessionAffinityAttributes != nil {
-                map["SessionAffinityAttributes"] = self.sessionAffinityAttributes?.toMap()
             }
             if self.siteId != nil {
                 map["SiteId"] = self.siteId!
@@ -44590,11 +44491,6 @@ public class ListLoadBalancersResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SessionAffinity") {
                 self.sessionAffinity = dict["SessionAffinity"] as! String
-            }
-            if dict.keys.contains("SessionAffinityAttributes") {
-                var model = ListLoadBalancersResponseBody.LoadBalancers.SessionAffinityAttributes()
-                model.fromMap(dict["SessionAffinityAttributes"] as! [String: Any])
-                self.sessionAffinityAttributes = model
             }
             if dict.keys.contains("SiteId") {
                 self.siteId = dict["SiteId"] as! Int64
@@ -54577,8 +54473,6 @@ public class SetCertificateRequest : Tea.TeaModel {
 
     public var type: String?
 
-    public var update: Bool?
-
     public override init() {
         super.init()
     }
@@ -54623,9 +54517,6 @@ public class SetCertificateRequest : Tea.TeaModel {
         if self.type != nil {
             map["Type"] = self.type!
         }
-        if self.update != nil {
-            map["Update"] = self.update!
-        }
         return map
     }
 
@@ -54659,9 +54550,6 @@ public class SetCertificateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Type") {
             self.type = dict["Type"] as! String
-        }
-        if dict.keys.contains("Update") {
-            self.update = dict["Update"] as! Bool
         }
     }
 }
@@ -58668,56 +58556,13 @@ public class UpdateLoadBalancerRequest : Tea.TeaModel {
             }
         }
     }
-    public class SessionAffinityAttributes : Tea.TeaModel {
-        public var sameSite: String?
-
-        public var secure: String?
-
-        public var zeroDowntimeFailover: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.sameSite != nil {
-                map["SameSite"] = self.sameSite!
-            }
-            if self.secure != nil {
-                map["Secure"] = self.secure!
-            }
-            if self.zeroDowntimeFailover != nil {
-                map["ZeroDowntimeFailover"] = self.zeroDowntimeFailover!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("SameSite") {
-                self.sameSite = dict["SameSite"] as! String
-            }
-            if dict.keys.contains("Secure") {
-                self.secure = dict["Secure"] as! String
-            }
-            if dict.keys.contains("ZeroDowntimeFailover") {
-                self.zeroDowntimeFailover = dict["ZeroDowntimeFailover"] as! String
-            }
-        }
-    }
     public var adaptiveRouting: UpdateLoadBalancerRequest.AdaptiveRouting?
 
     public var defaultPools: [Int64]?
 
     public var description_: String?
+
+    public var enabled: Bool?
 
     public var fallbackPool: Int64?
 
@@ -58732,8 +58577,6 @@ public class UpdateLoadBalancerRequest : Tea.TeaModel {
     public var rules: [UpdateLoadBalancerRequest.Rules]?
 
     public var sessionAffinity: String?
-
-    public var sessionAffinityAttributes: UpdateLoadBalancerRequest.SessionAffinityAttributes?
 
     public var siteId: Int64?
 
@@ -58756,7 +58599,6 @@ public class UpdateLoadBalancerRequest : Tea.TeaModel {
         try self.adaptiveRouting?.validate()
         try self.monitor?.validate()
         try self.randomSteering?.validate()
-        try self.sessionAffinityAttributes?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -58769,6 +58611,9 @@ public class UpdateLoadBalancerRequest : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.enabled != nil {
+            map["Enabled"] = self.enabled!
         }
         if self.fallbackPool != nil {
             map["FallbackPool"] = self.fallbackPool!
@@ -58794,9 +58639,6 @@ public class UpdateLoadBalancerRequest : Tea.TeaModel {
         }
         if self.sessionAffinity != nil {
             map["SessionAffinity"] = self.sessionAffinity!
-        }
-        if self.sessionAffinityAttributes != nil {
-            map["SessionAffinityAttributes"] = self.sessionAffinityAttributes?.toMap()
         }
         if self.siteId != nil {
             map["SiteId"] = self.siteId!
@@ -58824,6 +58666,9 @@ public class UpdateLoadBalancerRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("Enabled") {
+            self.enabled = dict["Enabled"] as! Bool
         }
         if dict.keys.contains("FallbackPool") {
             self.fallbackPool = dict["FallbackPool"] as! Int64
@@ -58858,11 +58703,6 @@ public class UpdateLoadBalancerRequest : Tea.TeaModel {
         if dict.keys.contains("SessionAffinity") {
             self.sessionAffinity = dict["SessionAffinity"] as! String
         }
-        if dict.keys.contains("SessionAffinityAttributes") {
-            var model = UpdateLoadBalancerRequest.SessionAffinityAttributes()
-            model.fromMap(dict["SessionAffinityAttributes"] as! [String: Any])
-            self.sessionAffinityAttributes = model
-        }
         if dict.keys.contains("SiteId") {
             self.siteId = dict["SiteId"] as! Int64
         }
@@ -58885,6 +58725,8 @@ public class UpdateLoadBalancerShrinkRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var enabled: Bool?
+
     public var fallbackPool: Int64?
 
     public var id: Int64?
@@ -58898,8 +58740,6 @@ public class UpdateLoadBalancerShrinkRequest : Tea.TeaModel {
     public var rulesShrink: String?
 
     public var sessionAffinity: String?
-
-    public var sessionAffinityAttributesShrink: String?
 
     public var siteId: Int64?
 
@@ -58932,6 +58772,9 @@ public class UpdateLoadBalancerShrinkRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.enabled != nil {
+            map["Enabled"] = self.enabled!
+        }
         if self.fallbackPool != nil {
             map["FallbackPool"] = self.fallbackPool!
         }
@@ -58952,9 +58795,6 @@ public class UpdateLoadBalancerShrinkRequest : Tea.TeaModel {
         }
         if self.sessionAffinity != nil {
             map["SessionAffinity"] = self.sessionAffinity!
-        }
-        if self.sessionAffinityAttributesShrink != nil {
-            map["SessionAffinityAttributes"] = self.sessionAffinityAttributesShrink!
         }
         if self.siteId != nil {
             map["SiteId"] = self.siteId!
@@ -58981,6 +58821,9 @@ public class UpdateLoadBalancerShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
         }
+        if dict.keys.contains("Enabled") {
+            self.enabled = dict["Enabled"] as! Bool
+        }
         if dict.keys.contains("FallbackPool") {
             self.fallbackPool = dict["FallbackPool"] as! Int64
         }
@@ -59001,9 +58844,6 @@ public class UpdateLoadBalancerShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SessionAffinity") {
             self.sessionAffinity = dict["SessionAffinity"] as! String
-        }
-        if dict.keys.contains("SessionAffinityAttributes") {
-            self.sessionAffinityAttributesShrink = dict["SessionAffinityAttributes"] as! String
         }
         if dict.keys.contains("SiteId") {
             self.siteId = dict["SiteId"] as! Int64
