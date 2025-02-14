@@ -6806,7 +6806,13 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
         public var logoUrl: String?
 
+        public var m2MClientStatus: String?
+
         public var managedServiceCode: String?
+
+        public var resourceServerIdentifier: String?
+
+        public var resourceServerStatus: String?
 
         public var serviceManaged: Bool?
 
@@ -6869,8 +6875,17 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             if self.logoUrl != nil {
                 map["LogoUrl"] = self.logoUrl!
             }
+            if self.m2MClientStatus != nil {
+                map["M2MClientStatus"] = self.m2MClientStatus!
+            }
             if self.managedServiceCode != nil {
                 map["ManagedServiceCode"] = self.managedServiceCode!
+            }
+            if self.resourceServerIdentifier != nil {
+                map["ResourceServerIdentifier"] = self.resourceServerIdentifier!
+            }
+            if self.resourceServerStatus != nil {
+                map["ResourceServerStatus"] = self.resourceServerStatus!
             }
             if self.serviceManaged != nil {
                 map["ServiceManaged"] = self.serviceManaged!
@@ -6927,8 +6942,17 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             if dict.keys.contains("LogoUrl") {
                 self.logoUrl = dict["LogoUrl"] as! String
             }
+            if dict.keys.contains("M2MClientStatus") {
+                self.m2MClientStatus = dict["M2MClientStatus"] as! String
+            }
             if dict.keys.contains("ManagedServiceCode") {
                 self.managedServiceCode = dict["ManagedServiceCode"] as! String
+            }
+            if dict.keys.contains("ResourceServerIdentifier") {
+                self.resourceServerIdentifier = dict["ResourceServerIdentifier"] as! String
+            }
+            if dict.keys.contains("ResourceServerStatus") {
+                self.resourceServerStatus = dict["ResourceServerStatus"] as! String
             }
             if dict.keys.contains("ServiceManaged") {
                 self.serviceManaged = dict["ServiceManaged"] as! Bool
@@ -15467,9 +15491,15 @@ public class ListApplicationsRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var m2MClientStatus: String?
+
     public var pageNumber: Int64?
 
     public var pageSize: Int64?
+
+    public var resourceServerStatus: String?
+
+    public var ssoType: String?
 
     public var status: String?
 
@@ -15499,11 +15529,20 @@ public class ListApplicationsRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.m2MClientStatus != nil {
+            map["M2MClientStatus"] = self.m2MClientStatus!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
+        }
+        if self.resourceServerStatus != nil {
+            map["ResourceServerStatus"] = self.resourceServerStatus!
+        }
+        if self.ssoType != nil {
+            map["SsoType"] = self.ssoType!
         }
         if self.status != nil {
             map["Status"] = self.status!
@@ -15524,11 +15563,20 @@ public class ListApplicationsRequest : Tea.TeaModel {
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
         }
+        if dict.keys.contains("M2MClientStatus") {
+            self.m2MClientStatus = dict["M2MClientStatus"] as! String
+        }
         if dict.keys.contains("PageNumber") {
             self.pageNumber = dict["PageNumber"] as! Int64
         }
         if dict.keys.contains("PageSize") {
             self.pageSize = dict["PageSize"] as! Int64
+        }
+        if dict.keys.contains("ResourceServerStatus") {
+            self.resourceServerStatus = dict["ResourceServerStatus"] as! String
+        }
+        if dict.keys.contains("SsoType") {
+            self.ssoType = dict["SsoType"] as! String
         }
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! String
@@ -15558,7 +15606,13 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
 
         public var logoUrl: String?
 
+        public var m2MClientStatus: String?
+
         public var managedServiceCode: String?
+
+        public var resourceServerIdentifier: String?
+
+        public var resourceServerStatus: String?
 
         public var serviceManaged: Bool?
 
@@ -15612,8 +15666,17 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
             if self.logoUrl != nil {
                 map["LogoUrl"] = self.logoUrl!
             }
+            if self.m2MClientStatus != nil {
+                map["M2MClientStatus"] = self.m2MClientStatus!
+            }
             if self.managedServiceCode != nil {
                 map["ManagedServiceCode"] = self.managedServiceCode!
+            }
+            if self.resourceServerIdentifier != nil {
+                map["ResourceServerIdentifier"] = self.resourceServerIdentifier!
+            }
+            if self.resourceServerStatus != nil {
+                map["ResourceServerStatus"] = self.resourceServerStatus!
             }
             if self.serviceManaged != nil {
                 map["ServiceManaged"] = self.serviceManaged!
@@ -15661,8 +15724,17 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
             if dict.keys.contains("LogoUrl") {
                 self.logoUrl = dict["LogoUrl"] as! String
             }
+            if dict.keys.contains("M2MClientStatus") {
+                self.m2MClientStatus = dict["M2MClientStatus"] as! String
+            }
             if dict.keys.contains("ManagedServiceCode") {
                 self.managedServiceCode = dict["ManagedServiceCode"] as! String
+            }
+            if dict.keys.contains("ResourceServerIdentifier") {
+                self.resourceServerIdentifier = dict["ResourceServerIdentifier"] as! String
+            }
+            if dict.keys.contains("ResourceServerStatus") {
+                self.resourceServerStatus = dict["ResourceServerStatus"] as! String
             }
             if dict.keys.contains("ServiceManaged") {
                 self.serviceManaged = dict["ServiceManaged"] as! Bool
