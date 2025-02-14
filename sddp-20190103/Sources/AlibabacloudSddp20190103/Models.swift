@@ -2069,11 +2069,15 @@ public class DescribeColumnsResponseBody : Tea.TeaModel {
 
         public var dataType: String?
 
+        public var engineType: String?
+
         public var id: String?
 
         public var instanceId: Int64?
 
         public var instanceName: String?
+
+        public var maskingStatus: Int32?
 
         public var modelTags: [DescribeColumnsResponseBody.Items.ModelTags]?
 
@@ -2084,6 +2088,8 @@ public class DescribeColumnsResponseBody : Tea.TeaModel {
         public var odpsRiskLevelValue: Int32?
 
         public var productCode: String?
+
+        public var productId: Int64?
 
         public var regionId: String?
 
@@ -2127,6 +2133,9 @@ public class DescribeColumnsResponseBody : Tea.TeaModel {
             if self.dataType != nil {
                 map["DataType"] = self.dataType!
             }
+            if self.engineType != nil {
+                map["EngineType"] = self.engineType!
+            }
             if self.id != nil {
                 map["Id"] = self.id!
             }
@@ -2135,6 +2144,9 @@ public class DescribeColumnsResponseBody : Tea.TeaModel {
             }
             if self.instanceName != nil {
                 map["InstanceName"] = self.instanceName!
+            }
+            if self.maskingStatus != nil {
+                map["MaskingStatus"] = self.maskingStatus!
             }
             if self.modelTags != nil {
                 var tmp : [Any] = []
@@ -2154,6 +2166,9 @@ public class DescribeColumnsResponseBody : Tea.TeaModel {
             }
             if self.productCode != nil {
                 map["ProductCode"] = self.productCode!
+            }
+            if self.productId != nil {
+                map["ProductId"] = self.productId!
             }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
@@ -2198,6 +2213,9 @@ public class DescribeColumnsResponseBody : Tea.TeaModel {
             if dict.keys.contains("DataType") {
                 self.dataType = dict["DataType"] as! String
             }
+            if dict.keys.contains("EngineType") {
+                self.engineType = dict["EngineType"] as! String
+            }
             if dict.keys.contains("Id") {
                 self.id = dict["Id"] as! String
             }
@@ -2206,6 +2224,9 @@ public class DescribeColumnsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("InstanceName") {
                 self.instanceName = dict["InstanceName"] as! String
+            }
+            if dict.keys.contains("MaskingStatus") {
+                self.maskingStatus = dict["MaskingStatus"] as! Int32
             }
             if dict.keys.contains("ModelTags") {
                 var tmp : [DescribeColumnsResponseBody.Items.ModelTags] = []
@@ -2229,6 +2250,9 @@ public class DescribeColumnsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ProductCode") {
                 self.productCode = dict["ProductCode"] as! String
+            }
+            if dict.keys.contains("ProductId") {
+                self.productId = dict["ProductId"] as! Int64
             }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
@@ -2390,6 +2414,8 @@ public class DescribeColumnsResponse : Tea.TeaModel {
 public class DescribeColumnsV2Request : Tea.TeaModel {
     public var currentPage: Int32?
 
+    public var engineType: String?
+
     public var instanceId: Int64?
 
     public var instanceName: String?
@@ -2430,6 +2456,9 @@ public class DescribeColumnsV2Request : Tea.TeaModel {
         var map = super.toMap()
         if self.currentPage != nil {
             map["CurrentPage"] = self.currentPage!
+        }
+        if self.engineType != nil {
+            map["EngineType"] = self.engineType!
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
@@ -2473,6 +2502,9 @@ public class DescribeColumnsV2Request : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("CurrentPage") {
             self.currentPage = dict["CurrentPage"] as! Int32
+        }
+        if dict.keys.contains("EngineType") {
+            self.engineType = dict["EngineType"] as! String
         }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! Int64
@@ -2556,11 +2588,15 @@ public class DescribeColumnsV2ResponseBody : Tea.TeaModel {
 
         public var dataType: String?
 
+        public var engineType: String?
+
         public var id: String?
 
         public var instanceId: Int64?
 
         public var instanceName: String?
+
+        public var maskingStatus: Int32?
 
         public var modelTags: [DescribeColumnsV2ResponseBody.Items.ModelTags]?
 
@@ -2571,6 +2607,10 @@ public class DescribeColumnsV2ResponseBody : Tea.TeaModel {
         public var odpsRiskLevelValue: Int32?
 
         public var productCode: String?
+
+        public var productId: Int64?
+
+        public var regionId: String?
 
         public var revisionId: Int64?
 
@@ -2612,6 +2652,9 @@ public class DescribeColumnsV2ResponseBody : Tea.TeaModel {
             if self.dataType != nil {
                 map["DataType"] = self.dataType!
             }
+            if self.engineType != nil {
+                map["EngineType"] = self.engineType!
+            }
             if self.id != nil {
                 map["Id"] = self.id!
             }
@@ -2620,6 +2663,9 @@ public class DescribeColumnsV2ResponseBody : Tea.TeaModel {
             }
             if self.instanceName != nil {
                 map["InstanceName"] = self.instanceName!
+            }
+            if self.maskingStatus != nil {
+                map["MaskingStatus"] = self.maskingStatus!
             }
             if self.modelTags != nil {
                 var tmp : [Any] = []
@@ -2639,6 +2685,12 @@ public class DescribeColumnsV2ResponseBody : Tea.TeaModel {
             }
             if self.productCode != nil {
                 map["ProductCode"] = self.productCode!
+            }
+            if self.productId != nil {
+                map["ProductId"] = self.productId!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
             }
             if self.revisionId != nil {
                 map["RevisionId"] = self.revisionId!
@@ -2680,6 +2732,9 @@ public class DescribeColumnsV2ResponseBody : Tea.TeaModel {
             if dict.keys.contains("DataType") {
                 self.dataType = dict["DataType"] as! String
             }
+            if dict.keys.contains("EngineType") {
+                self.engineType = dict["EngineType"] as! String
+            }
             if dict.keys.contains("Id") {
                 self.id = dict["Id"] as! String
             }
@@ -2688,6 +2743,9 @@ public class DescribeColumnsV2ResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("InstanceName") {
                 self.instanceName = dict["InstanceName"] as! String
+            }
+            if dict.keys.contains("MaskingStatus") {
+                self.maskingStatus = dict["MaskingStatus"] as! Int32
             }
             if dict.keys.contains("ModelTags") {
                 var tmp : [DescribeColumnsV2ResponseBody.Items.ModelTags] = []
@@ -2711,6 +2769,12 @@ public class DescribeColumnsV2ResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ProductCode") {
                 self.productCode = dict["ProductCode"] as! String
+            }
+            if dict.keys.contains("ProductId") {
+                self.productId = dict["ProductId"] as! Int64
+            }
+            if dict.keys.contains("RegionId") {
+                self.regionId = dict["RegionId"] as! String
             }
             if dict.keys.contains("RevisionId") {
                 self.revisionId = dict["RevisionId"] as! Int64
@@ -5626,11 +5690,21 @@ public class DescribeDataObjectColumnDetailResponseBody : Tea.TeaModel {
 
         public var dataType: String?
 
+        public var engineType: String?
+
         public var id: String?
+
+        public var instanceName: String?
+
+        public var maskingStatus: Int32?
 
         public var modelTags: [DescribeDataObjectColumnDetailResponseBody.Items.ModelTags]?
 
         public var primaryKey: Bool?
+
+        public var productId: Int64?
+
+        public var regionId: String?
 
         public var riskLevelId: Int64?
 
@@ -5639,6 +5713,8 @@ public class DescribeDataObjectColumnDetailResponseBody : Tea.TeaModel {
         public var ruleId: Int64?
 
         public var ruleName: String?
+
+        public var tableName: String?
 
         public override init() {
             super.init()
@@ -5666,8 +5742,17 @@ public class DescribeDataObjectColumnDetailResponseBody : Tea.TeaModel {
             if self.dataType != nil {
                 map["DataType"] = self.dataType!
             }
+            if self.engineType != nil {
+                map["EngineType"] = self.engineType!
+            }
             if self.id != nil {
                 map["Id"] = self.id!
+            }
+            if self.instanceName != nil {
+                map["InstanceName"] = self.instanceName!
+            }
+            if self.maskingStatus != nil {
+                map["MaskingStatus"] = self.maskingStatus!
             }
             if self.modelTags != nil {
                 var tmp : [Any] = []
@@ -5678,6 +5763,12 @@ public class DescribeDataObjectColumnDetailResponseBody : Tea.TeaModel {
             }
             if self.primaryKey != nil {
                 map["PrimaryKey"] = self.primaryKey!
+            }
+            if self.productId != nil {
+                map["ProductId"] = self.productId!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
             }
             if self.riskLevelId != nil {
                 map["RiskLevelId"] = self.riskLevelId!
@@ -5690,6 +5781,9 @@ public class DescribeDataObjectColumnDetailResponseBody : Tea.TeaModel {
             }
             if self.ruleName != nil {
                 map["RuleName"] = self.ruleName!
+            }
+            if self.tableName != nil {
+                map["TableName"] = self.tableName!
             }
             return map
         }
@@ -5707,8 +5801,17 @@ public class DescribeDataObjectColumnDetailResponseBody : Tea.TeaModel {
             if dict.keys.contains("DataType") {
                 self.dataType = dict["DataType"] as! String
             }
+            if dict.keys.contains("EngineType") {
+                self.engineType = dict["EngineType"] as! String
+            }
             if dict.keys.contains("Id") {
                 self.id = dict["Id"] as! String
+            }
+            if dict.keys.contains("InstanceName") {
+                self.instanceName = dict["InstanceName"] as! String
+            }
+            if dict.keys.contains("MaskingStatus") {
+                self.maskingStatus = dict["MaskingStatus"] as! Int32
             }
             if dict.keys.contains("ModelTags") {
                 var tmp : [DescribeDataObjectColumnDetailResponseBody.Items.ModelTags] = []
@@ -5724,6 +5827,12 @@ public class DescribeDataObjectColumnDetailResponseBody : Tea.TeaModel {
             if dict.keys.contains("PrimaryKey") {
                 self.primaryKey = dict["PrimaryKey"] as! Bool
             }
+            if dict.keys.contains("ProductId") {
+                self.productId = dict["ProductId"] as! Int64
+            }
+            if dict.keys.contains("RegionId") {
+                self.regionId = dict["RegionId"] as! String
+            }
             if dict.keys.contains("RiskLevelId") {
                 self.riskLevelId = dict["RiskLevelId"] as! Int64
             }
@@ -5735,6 +5844,9 @@ public class DescribeDataObjectColumnDetailResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RuleName") {
                 self.ruleName = dict["RuleName"] as! String
+            }
+            if dict.keys.contains("TableName") {
+                self.tableName = dict["TableName"] as! String
             }
         }
     }
@@ -5985,11 +6097,21 @@ public class DescribeDataObjectColumnDetailV2ResponseBody : Tea.TeaModel {
 
         public var dataType: String?
 
+        public var engineType: String?
+
         public var id: String?
+
+        public var instanceName: String?
+
+        public var maskingStatus: Int32?
 
         public var modelTags: [DescribeDataObjectColumnDetailV2ResponseBody.Items.ModelTags]?
 
         public var primaryKey: Bool?
+
+        public var productId: Int64?
+
+        public var regionId: String?
 
         public var riskLevelId: Int64?
 
@@ -5998,6 +6120,8 @@ public class DescribeDataObjectColumnDetailV2ResponseBody : Tea.TeaModel {
         public var ruleId: Int64?
 
         public var ruleName: String?
+
+        public var tableName: String?
 
         public override init() {
             super.init()
@@ -6025,8 +6149,17 @@ public class DescribeDataObjectColumnDetailV2ResponseBody : Tea.TeaModel {
             if self.dataType != nil {
                 map["DataType"] = self.dataType!
             }
+            if self.engineType != nil {
+                map["EngineType"] = self.engineType!
+            }
             if self.id != nil {
                 map["Id"] = self.id!
+            }
+            if self.instanceName != nil {
+                map["InstanceName"] = self.instanceName!
+            }
+            if self.maskingStatus != nil {
+                map["MaskingStatus"] = self.maskingStatus!
             }
             if self.modelTags != nil {
                 var tmp : [Any] = []
@@ -6037,6 +6170,12 @@ public class DescribeDataObjectColumnDetailV2ResponseBody : Tea.TeaModel {
             }
             if self.primaryKey != nil {
                 map["PrimaryKey"] = self.primaryKey!
+            }
+            if self.productId != nil {
+                map["ProductId"] = self.productId!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
             }
             if self.riskLevelId != nil {
                 map["RiskLevelId"] = self.riskLevelId!
@@ -6049,6 +6188,9 @@ public class DescribeDataObjectColumnDetailV2ResponseBody : Tea.TeaModel {
             }
             if self.ruleName != nil {
                 map["RuleName"] = self.ruleName!
+            }
+            if self.tableName != nil {
+                map["TableName"] = self.tableName!
             }
             return map
         }
@@ -6066,8 +6208,17 @@ public class DescribeDataObjectColumnDetailV2ResponseBody : Tea.TeaModel {
             if dict.keys.contains("DataType") {
                 self.dataType = dict["DataType"] as! String
             }
+            if dict.keys.contains("EngineType") {
+                self.engineType = dict["EngineType"] as! String
+            }
             if dict.keys.contains("Id") {
                 self.id = dict["Id"] as! String
+            }
+            if dict.keys.contains("InstanceName") {
+                self.instanceName = dict["InstanceName"] as! String
+            }
+            if dict.keys.contains("MaskingStatus") {
+                self.maskingStatus = dict["MaskingStatus"] as! Int32
             }
             if dict.keys.contains("ModelTags") {
                 var tmp : [DescribeDataObjectColumnDetailV2ResponseBody.Items.ModelTags] = []
@@ -6083,6 +6234,12 @@ public class DescribeDataObjectColumnDetailV2ResponseBody : Tea.TeaModel {
             if dict.keys.contains("PrimaryKey") {
                 self.primaryKey = dict["PrimaryKey"] as! Bool
             }
+            if dict.keys.contains("ProductId") {
+                self.productId = dict["ProductId"] as! Int64
+            }
+            if dict.keys.contains("RegionId") {
+                self.regionId = dict["RegionId"] as! String
+            }
             if dict.keys.contains("RiskLevelId") {
                 self.riskLevelId = dict["RiskLevelId"] as! Int64
             }
@@ -6094,6 +6251,9 @@ public class DescribeDataObjectColumnDetailV2ResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RuleName") {
                 self.ruleName = dict["RuleName"] as! String
+            }
+            if dict.keys.contains("TableName") {
+                self.tableName = dict["TableName"] as! String
             }
         }
     }
