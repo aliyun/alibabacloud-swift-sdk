@@ -44141,6 +44141,10 @@ public class ImportSwaggerResponse : Tea.TeaModel {
 public class ListPrivateDNSRequest : Tea.TeaModel {
     public var intranetDomain: String?
 
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
     public var securityToken: String?
 
     public var type: String?
@@ -44162,6 +44166,12 @@ public class ListPrivateDNSRequest : Tea.TeaModel {
         if self.intranetDomain != nil {
             map["IntranetDomain"] = self.intranetDomain!
         }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         if self.securityToken != nil {
             map["SecurityToken"] = self.securityToken!
         }
@@ -44174,6 +44184,12 @@ public class ListPrivateDNSRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("IntranetDomain") {
             self.intranetDomain = dict["IntranetDomain"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
         }
         if dict.keys.contains("SecurityToken") {
             self.securityToken = dict["SecurityToken"] as! String
