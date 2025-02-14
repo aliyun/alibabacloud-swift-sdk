@@ -410,6 +410,8 @@ public class BicyclingDirectionNovaRequest : Tea.TeaModel {
 
     public var originLongitude: String?
 
+    public var showPolyline: Bool?
+
     public override init() {
         super.init()
     }
@@ -436,6 +438,9 @@ public class BicyclingDirectionNovaRequest : Tea.TeaModel {
         if self.originLongitude != nil {
             map["originLongitude"] = self.originLongitude!
         }
+        if self.showPolyline != nil {
+            map["showPolyline"] = self.showPolyline!
+        }
         return map
     }
 
@@ -451,6 +456,9 @@ public class BicyclingDirectionNovaRequest : Tea.TeaModel {
         }
         if dict.keys.contains("originLongitude") {
             self.originLongitude = dict["originLongitude"] as! String
+        }
+        if dict.keys.contains("showPolyline") {
+            self.showPolyline = dict["showPolyline"] as! Bool
         }
     }
 }
@@ -1486,6 +1494,8 @@ public class DrivingDirectionNovaRequest : Tea.TeaModel {
 
     public var plate: String?
 
+    public var showPolyline: Bool?
+
     public override init() {
         super.init()
     }
@@ -1518,6 +1528,9 @@ public class DrivingDirectionNovaRequest : Tea.TeaModel {
         if self.plate != nil {
             map["plate"] = self.plate!
         }
+        if self.showPolyline != nil {
+            map["showPolyline"] = self.showPolyline!
+        }
         return map
     }
 
@@ -1539,6 +1552,9 @@ public class DrivingDirectionNovaRequest : Tea.TeaModel {
         }
         if dict.keys.contains("plate") {
             self.plate = dict["plate"] as! String
+        }
+        if dict.keys.contains("showPolyline") {
+            self.showPolyline = dict["showPolyline"] as! Bool
         }
     }
 }
@@ -2041,6 +2057,8 @@ public class ElectrobikeDirectionNovaRequest : Tea.TeaModel {
 
     public var originLongitude: String?
 
+    public var showPolyline: Bool?
+
     public override init() {
         super.init()
     }
@@ -2067,6 +2085,9 @@ public class ElectrobikeDirectionNovaRequest : Tea.TeaModel {
         if self.originLongitude != nil {
             map["originLongitude"] = self.originLongitude!
         }
+        if self.showPolyline != nil {
+            map["showPolyline"] = self.showPolyline!
+        }
         return map
     }
 
@@ -2082,6 +2103,9 @@ public class ElectrobikeDirectionNovaRequest : Tea.TeaModel {
         }
         if dict.keys.contains("originLongitude") {
             self.originLongitude = dict["originLongitude"] as! String
+        }
+        if dict.keys.contains("showPolyline") {
+            self.showPolyline = dict["showPolyline"] as! Bool
         }
     }
 }
@@ -4925,6 +4949,8 @@ public class TransitIntegratedDirectionRequest : Tea.TeaModel {
 
     public var originLongitude: String?
 
+    public var showPolyline: Bool?
+
     public override init() {
         super.init()
     }
@@ -4957,6 +4983,9 @@ public class TransitIntegratedDirectionRequest : Tea.TeaModel {
         if self.originLongitude != nil {
             map["originLongitude"] = self.originLongitude!
         }
+        if self.showPolyline != nil {
+            map["showPolyline"] = self.showPolyline!
+        }
         return map
     }
 
@@ -4978,6 +5007,9 @@ public class TransitIntegratedDirectionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("originLongitude") {
             self.originLongitude = dict["originLongitude"] as! String
+        }
+        if dict.keys.contains("showPolyline") {
+            self.showPolyline = dict["showPolyline"] as! Bool
         }
     }
 }
@@ -6764,6 +6796,8 @@ public class WalkingDirectionNovaRequest : Tea.TeaModel {
 
     public var originLongitude: String?
 
+    public var showPolyline: Bool?
+
     public override init() {
         super.init()
     }
@@ -6790,6 +6824,9 @@ public class WalkingDirectionNovaRequest : Tea.TeaModel {
         if self.originLongitude != nil {
             map["originLongitude"] = self.originLongitude!
         }
+        if self.showPolyline != nil {
+            map["showPolyline"] = self.showPolyline!
+        }
         return map
     }
 
@@ -6805,6 +6842,9 @@ public class WalkingDirectionNovaRequest : Tea.TeaModel {
         }
         if dict.keys.contains("originLongitude") {
             self.originLongitude = dict["originLongitude"] as! String
+        }
+        if dict.keys.contains("showPolyline") {
+            self.showPolyline = dict["showPolyline"] as! Bool
         }
     }
 }

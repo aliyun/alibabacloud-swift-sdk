@@ -39,6 +39,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.originLongitude)) {
             query["originLongitude"] = request.originLongitude ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.showPolyline)) {
+            query["showPolyline"] = request.showPolyline!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -176,6 +179,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.plate)) {
             query["plate"] = request.plate ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.showPolyline)) {
+            query["showPolyline"] = request.showPolyline!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -223,6 +229,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.originLongitude)) {
             query["originLongitude"] = request.originLongitude ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.showPolyline)) {
+            query["showPolyline"] = request.showPolyline!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -689,6 +698,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.originLongitude)) {
             query["originLongitude"] = request.originLongitude ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.showPolyline)) {
+            query["showPolyline"] = request.showPolyline!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -736,6 +748,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.originLongitude)) {
             query["originLongitude"] = request.originLongitude ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.showPolyline)) {
+            query["showPolyline"] = request.showPolyline!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
