@@ -2834,7 +2834,7 @@ public class RunDataAnalysisRequest : Tea.TeaModel {
 
     public var specificationType: String?
 
-    public var userParams: [String: Any]?
+    public var userParams: Any?
 
     public override init() {
         super.init()
@@ -2888,7 +2888,7 @@ public class RunDataAnalysisRequest : Tea.TeaModel {
             self.specificationType = dict["specificationType"] as! String
         }
         if dict.keys.contains("userParams") {
-            self.userParams = dict["userParams"] as! [String: Any]
+            self.userParams = dict["userParams"] as! Any
         }
     }
 }
