@@ -10721,6 +10721,8 @@ public class DescribeGdnInstancesResponseBody : Tea.TeaModel {
 
                 public var status: String?
 
+                public var taskStatus: String?
+
                 public var tertiaryZone: String?
 
                 public var zoneId: String?
@@ -10787,6 +10789,9 @@ public class DescribeGdnInstancesResponseBody : Tea.TeaModel {
                     if self.status != nil {
                         map["Status"] = self.status!
                     }
+                    if self.taskStatus != nil {
+                        map["TaskStatus"] = self.taskStatus!
+                    }
                     if self.tertiaryZone != nil {
                         map["TertiaryZone"] = self.tertiaryZone!
                     }
@@ -10844,6 +10849,9 @@ public class DescribeGdnInstancesResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("Status") {
                         self.status = dict["Status"] as! String
+                    }
+                    if dict.keys.contains("TaskStatus") {
+                        self.taskStatus = dict["TaskStatus"] as! String
                     }
                     if dict.keys.contains("TertiaryZone") {
                         self.tertiaryZone = dict["TertiaryZone"] as! String
@@ -16715,6 +16723,8 @@ public class SwitchGdnMemberRoleRequest : Tea.TeaModel {
 
     public var switchMode: String?
 
+    public var taskTimeout: Int64?
+
     public override init() {
         super.init()
     }
@@ -16738,6 +16748,9 @@ public class SwitchGdnMemberRoleRequest : Tea.TeaModel {
         if self.switchMode != nil {
             map["SwitchMode"] = self.switchMode!
         }
+        if self.taskTimeout != nil {
+            map["TaskTimeout"] = self.taskTimeout!
+        }
         return map
     }
 
@@ -16750,6 +16763,9 @@ public class SwitchGdnMemberRoleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SwitchMode") {
             self.switchMode = dict["SwitchMode"] as! String
+        }
+        if dict.keys.contains("TaskTimeout") {
+            self.taskTimeout = dict["TaskTimeout"] as! Int64
         }
     }
 }
