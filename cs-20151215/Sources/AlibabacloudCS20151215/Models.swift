@@ -59,6 +59,44 @@ public class Addon : Tea.TeaModel {
     }
 }
 
+public class ContainerdConfig : Tea.TeaModel {
+    public var insecureRegistries: [String]?
+
+    public var registryMirrors: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.insecureRegistries != nil {
+            map["insecureRegistries"] = self.insecureRegistries!
+        }
+        if self.registryMirrors != nil {
+            map["registryMirrors"] = self.registryMirrors!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("insecureRegistries") {
+            self.insecureRegistries = dict["insecureRegistries"] as! [String]
+        }
+        if dict.keys.contains("registryMirrors") {
+            self.registryMirrors = dict["registryMirrors"] as! [String]
+        }
+    }
+}
+
 public class DataDisk : Tea.TeaModel {
     public var autoFormat: Bool?
 
@@ -27248,6 +27286,8 @@ public class ModifyNodePoolNodeConfigRequest : Tea.TeaModel {
             }
         }
     }
+    public var containerdConfig: ContainerdConfig?
+
     public var kubeletConfig: KubeletConfig?
 
     public var osConfig: ModifyNodePoolNodeConfigRequest.OsConfig?
@@ -27264,6 +27304,7 @@ public class ModifyNodePoolNodeConfigRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.containerdConfig?.validate()
         try self.kubeletConfig?.validate()
         try self.osConfig?.validate()
         try self.rollingPolicy?.validate()
@@ -27271,6 +27312,9 @@ public class ModifyNodePoolNodeConfigRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.containerdConfig != nil {
+            map["containerd_config"] = self.containerdConfig?.toMap()
+        }
         if self.kubeletConfig != nil {
             map["kubelet_config"] = self.kubeletConfig?.toMap()
         }
@@ -27284,6 +27328,11 @@ public class ModifyNodePoolNodeConfigRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("containerd_config") {
+            var model = ContainerdConfig()
+            model.fromMap(dict["containerd_config"] as! [String: Any])
+            self.containerdConfig = model
+        }
         if dict.keys.contains("kubelet_config") {
             var model = KubeletConfig()
             model.fromMap(dict["kubelet_config"] as! [String: Any])

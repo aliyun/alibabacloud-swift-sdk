@@ -4524,6 +4524,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyNodePoolNodeConfigWithOptions(_ ClusterId: String, _ NodepoolId: String, _ request: ModifyNodePoolNodeConfigRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyNodePoolNodeConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.containerdConfig)) {
+            body["containerd_config"] = request.containerdConfig!;
+        }
         if (!TeaUtils.Client.isUnset(request.kubeletConfig)) {
             body["kubelet_config"] = request.kubeletConfig!;
         }
