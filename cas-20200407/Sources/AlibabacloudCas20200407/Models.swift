@@ -3635,6 +3635,10 @@ public class GetUserCertificateDetailResponseBody : Tea.TeaModel {
 
     public var name: String?
 
+    public var notAfter: Int64?
+
+    public var notBefore: Int64?
+
     public var orderId: Int64?
 
     public var orgName: String?
@@ -3728,6 +3732,12 @@ public class GetUserCertificateDetailResponseBody : Tea.TeaModel {
         }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.notAfter != nil {
+            map["NotAfter"] = self.notAfter!
+        }
+        if self.notBefore != nil {
+            map["NotBefore"] = self.notBefore!
         }
         if self.orderId != nil {
             map["OrderId"] = self.orderId!
@@ -3827,6 +3837,12 @@ public class GetUserCertificateDetailResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("NotAfter") {
+            self.notAfter = dict["NotAfter"] as! Int64
+        }
+        if dict.keys.contains("NotBefore") {
+            self.notBefore = dict["NotBefore"] as! Int64
         }
         if dict.keys.contains("OrderId") {
             self.orderId = dict["OrderId"] as! Int64
@@ -8822,6 +8838,8 @@ public class UploadUserCertificateResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var resourceId: String?
+
     public override init() {
         super.init()
     }
@@ -8842,6 +8860,9 @@ public class UploadUserCertificateResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
+        }
         return map
     }
 
@@ -8851,6 +8872,9 @@ public class UploadUserCertificateResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResourceId") {
+            self.resourceId = dict["ResourceId"] as! String
         }
     }
 }
