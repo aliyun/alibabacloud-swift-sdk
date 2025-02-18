@@ -8192,6 +8192,8 @@ public class CreateScalingGroupRequest : Tea.TeaModel {
 
         public var onDemandPercentageAboveBaseCapacity: Int32?
 
+        public var priceComparisonMode: String?
+
         public var spotAutoReplaceOnDemand: Bool?
 
         public override init() {
@@ -8217,6 +8219,9 @@ public class CreateScalingGroupRequest : Tea.TeaModel {
             if self.onDemandPercentageAboveBaseCapacity != nil {
                 map["OnDemandPercentageAboveBaseCapacity"] = self.onDemandPercentageAboveBaseCapacity!
             }
+            if self.priceComparisonMode != nil {
+                map["PriceComparisonMode"] = self.priceComparisonMode!
+            }
             if self.spotAutoReplaceOnDemand != nil {
                 map["SpotAutoReplaceOnDemand"] = self.spotAutoReplaceOnDemand!
             }
@@ -8232,6 +8237,9 @@ public class CreateScalingGroupRequest : Tea.TeaModel {
             }
             if dict.keys.contains("OnDemandPercentageAboveBaseCapacity") {
                 self.onDemandPercentageAboveBaseCapacity = dict["OnDemandPercentageAboveBaseCapacity"] as! Int32
+            }
+            if dict.keys.contains("PriceComparisonMode") {
+                self.priceComparisonMode = dict["PriceComparisonMode"] as! String
             }
             if dict.keys.contains("SpotAutoReplaceOnDemand") {
                 self.spotAutoReplaceOnDemand = dict["SpotAutoReplaceOnDemand"] as! Bool
@@ -23058,6 +23066,8 @@ public class DescribeScalingGroupsResponseBody : Tea.TeaModel {
 
             public var onDemandPercentageAboveBaseCapacity: Int32?
 
+            public var priceComparisonMode: String?
+
             public var spotAutoReplaceOnDemand: Bool?
 
             public override init() {
@@ -23083,6 +23093,9 @@ public class DescribeScalingGroupsResponseBody : Tea.TeaModel {
                 if self.onDemandPercentageAboveBaseCapacity != nil {
                     map["OnDemandPercentageAboveBaseCapacity"] = self.onDemandPercentageAboveBaseCapacity!
                 }
+                if self.priceComparisonMode != nil {
+                    map["PriceComparisonMode"] = self.priceComparisonMode!
+                }
                 if self.spotAutoReplaceOnDemand != nil {
                     map["SpotAutoReplaceOnDemand"] = self.spotAutoReplaceOnDemand!
                 }
@@ -23098,6 +23111,9 @@ public class DescribeScalingGroupsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("OnDemandPercentageAboveBaseCapacity") {
                     self.onDemandPercentageAboveBaseCapacity = dict["OnDemandPercentageAboveBaseCapacity"] as! Int32
+                }
+                if dict.keys.contains("PriceComparisonMode") {
+                    self.priceComparisonMode = dict["PriceComparisonMode"] as! String
                 }
                 if dict.keys.contains("SpotAutoReplaceOnDemand") {
                     self.spotAutoReplaceOnDemand = dict["SpotAutoReplaceOnDemand"] as! Bool
@@ -35210,6 +35226,8 @@ public class ModifyScalingGroupRequest : Tea.TeaModel {
 
         public var onDemandPercentageAboveBaseCapacity: Int32?
 
+        public var priceComparisonMode: String?
+
         public var spotAutoReplaceOnDemand: Bool?
 
         public override init() {
@@ -35235,6 +35253,9 @@ public class ModifyScalingGroupRequest : Tea.TeaModel {
             if self.onDemandPercentageAboveBaseCapacity != nil {
                 map["OnDemandPercentageAboveBaseCapacity"] = self.onDemandPercentageAboveBaseCapacity!
             }
+            if self.priceComparisonMode != nil {
+                map["PriceComparisonMode"] = self.priceComparisonMode!
+            }
             if self.spotAutoReplaceOnDemand != nil {
                 map["SpotAutoReplaceOnDemand"] = self.spotAutoReplaceOnDemand!
             }
@@ -35250,6 +35271,9 @@ public class ModifyScalingGroupRequest : Tea.TeaModel {
             }
             if dict.keys.contains("OnDemandPercentageAboveBaseCapacity") {
                 self.onDemandPercentageAboveBaseCapacity = dict["OnDemandPercentageAboveBaseCapacity"] as! Int32
+            }
+            if dict.keys.contains("PriceComparisonMode") {
+                self.priceComparisonMode = dict["PriceComparisonMode"] as! String
             }
             if dict.keys.contains("SpotAutoReplaceOnDemand") {
                 self.spotAutoReplaceOnDemand = dict["SpotAutoReplaceOnDemand"] as! Bool
