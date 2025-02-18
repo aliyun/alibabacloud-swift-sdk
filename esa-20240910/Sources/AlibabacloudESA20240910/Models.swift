@@ -34196,6 +34196,8 @@ public class GetSiteResponseBody : Tea.TeaModel {
 
         public var nameServerList: String?
 
+        public var offlineReason: String?
+
         public var planName: String?
 
         public var planSpecName: String?
@@ -34249,6 +34251,9 @@ public class GetSiteResponseBody : Tea.TeaModel {
             }
             if self.nameServerList != nil {
                 map["NameServerList"] = self.nameServerList!
+            }
+            if self.offlineReason != nil {
+                map["OfflineReason"] = self.offlineReason!
             }
             if self.planName != nil {
                 map["PlanName"] = self.planName!
@@ -34304,6 +34309,9 @@ public class GetSiteResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("NameServerList") {
                 self.nameServerList = dict["NameServerList"] as! String
+            }
+            if dict.keys.contains("OfflineReason") {
+                self.offlineReason = dict["OfflineReason"] as! String
             }
             if dict.keys.contains("PlanName") {
                 self.planName = dict["PlanName"] as! String
@@ -49533,6 +49541,8 @@ public class ListSitesResponseBody : Tea.TeaModel {
 
         public var nameServerList: String?
 
+        public var offlineReason: String?
+
         public var planName: String?
 
         public var planSpecName: String?
@@ -49585,6 +49595,9 @@ public class ListSitesResponseBody : Tea.TeaModel {
             if self.nameServerList != nil {
                 map["NameServerList"] = self.nameServerList!
             }
+            if self.offlineReason != nil {
+                map["OfflineReason"] = self.offlineReason!
+            }
             if self.planName != nil {
                 map["PlanName"] = self.planName!
             }
@@ -49636,6 +49649,9 @@ public class ListSitesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("NameServerList") {
                 self.nameServerList = dict["NameServerList"] as! String
+            }
+            if dict.keys.contains("OfflineReason") {
+                self.offlineReason = dict["OfflineReason"] as! String
             }
             if dict.keys.contains("PlanName") {
                 self.planName = dict["PlanName"] as! String
