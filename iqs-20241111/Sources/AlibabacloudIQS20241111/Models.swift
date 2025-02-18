@@ -452,6 +452,8 @@ public class ScorePageItem : Tea.TeaModel {
 
     public var siteLabel: String?
 
+    public var snippet: String?
+
     public var title: String?
 
     public override init() {
@@ -517,6 +519,9 @@ public class ScorePageItem : Tea.TeaModel {
         if self.siteLabel != nil {
             map["siteLabel"] = self.siteLabel!
         }
+        if self.snippet != nil {
+            map["snippet"] = self.snippet!
+        }
         if self.title != nil {
             map["title"] = self.title!
         }
@@ -576,6 +581,9 @@ public class ScorePageItem : Tea.TeaModel {
         }
         if dict.keys.contains("siteLabel") {
             self.siteLabel = dict["siteLabel"] as! String
+        }
+        if dict.keys.contains("snippet") {
+            self.snippet = dict["snippet"] as! String
         }
         if dict.keys.contains("title") {
             self.title = dict["title"] as! String
