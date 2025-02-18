@@ -7055,11 +7055,15 @@ public class ListAppInstancesResponseBody : Tea.TeaModel {
 
         public var bindInfo: ListAppInstancesResponseBody.AppInstanceModels.BindInfo?
 
+        public var chargeType: String?
+
         public var gmtCreate: String?
 
         public var gmtModified: String?
 
         public var mainEthPublicIp: String?
+
+        public var nodeId: String?
 
         public var sessionStatus: String?
 
@@ -7089,6 +7093,9 @@ public class ListAppInstancesResponseBody : Tea.TeaModel {
             if self.bindInfo != nil {
                 map["BindInfo"] = self.bindInfo?.toMap()
             }
+            if self.chargeType != nil {
+                map["ChargeType"] = self.chargeType!
+            }
             if self.gmtCreate != nil {
                 map["GmtCreate"] = self.gmtCreate!
             }
@@ -7097,6 +7104,9 @@ public class ListAppInstancesResponseBody : Tea.TeaModel {
             }
             if self.mainEthPublicIp != nil {
                 map["MainEthPublicIp"] = self.mainEthPublicIp!
+            }
+            if self.nodeId != nil {
+                map["NodeId"] = self.nodeId!
             }
             if self.sessionStatus != nil {
                 map["SessionStatus"] = self.sessionStatus!
@@ -7119,6 +7129,9 @@ public class ListAppInstancesResponseBody : Tea.TeaModel {
                 model.fromMap(dict["BindInfo"] as! [String: Any])
                 self.bindInfo = model
             }
+            if dict.keys.contains("ChargeType") {
+                self.chargeType = dict["ChargeType"] as! String
+            }
             if dict.keys.contains("GmtCreate") {
                 self.gmtCreate = dict["GmtCreate"] as! String
             }
@@ -7127,6 +7140,9 @@ public class ListAppInstancesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("MainEthPublicIp") {
                 self.mainEthPublicIp = dict["MainEthPublicIp"] as! String
+            }
+            if dict.keys.contains("NodeId") {
+                self.nodeId = dict["NodeId"] as! String
             }
             if dict.keys.contains("SessionStatus") {
                 self.sessionStatus = dict["SessionStatus"] as! String
@@ -9150,6 +9166,43 @@ public class ModifyAppInstanceGroupAttributeRequest : Tea.TeaModel {
         }
     }
     public class StoragePolicy : Tea.TeaModel {
+        public class UserProfile : Tea.TeaModel {
+            public var fileSystemId: String?
+
+            public var userProfileSwitch: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.fileSystemId != nil {
+                    map["FileSystemId"] = self.fileSystemId!
+                }
+                if self.userProfileSwitch != nil {
+                    map["UserProfileSwitch"] = self.userProfileSwitch!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("FileSystemId") {
+                    self.fileSystemId = dict["FileSystemId"] as! String
+                }
+                if dict.keys.contains("UserProfileSwitch") {
+                    self.userProfileSwitch = dict["UserProfileSwitch"] as! Bool
+                }
+            }
+        }
         public class UserProfileFollow : Tea.TeaModel {
             public var fileSystemId: String?
 
@@ -9189,6 +9242,8 @@ public class ModifyAppInstanceGroupAttributeRequest : Tea.TeaModel {
         }
         public var storageTypeList: [String]?
 
+        public var userProfile: ModifyAppInstanceGroupAttributeRequest.StoragePolicy.UserProfile?
+
         public var userProfileFollow: ModifyAppInstanceGroupAttributeRequest.StoragePolicy.UserProfileFollow?
 
         public override init() {
@@ -9201,6 +9256,7 @@ public class ModifyAppInstanceGroupAttributeRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.userProfile?.validate()
             try self.userProfileFollow?.validate()
         }
 
@@ -9208,6 +9264,9 @@ public class ModifyAppInstanceGroupAttributeRequest : Tea.TeaModel {
             var map = super.toMap()
             if self.storageTypeList != nil {
                 map["StorageTypeList"] = self.storageTypeList!
+            }
+            if self.userProfile != nil {
+                map["UserProfile"] = self.userProfile?.toMap()
             }
             if self.userProfileFollow != nil {
                 map["UserProfileFollow"] = self.userProfileFollow?.toMap()
@@ -9218,6 +9277,11 @@ public class ModifyAppInstanceGroupAttributeRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("StorageTypeList") {
                 self.storageTypeList = dict["StorageTypeList"] as! [String]
+            }
+            if dict.keys.contains("UserProfile") {
+                var model = ModifyAppInstanceGroupAttributeRequest.StoragePolicy.UserProfile()
+                model.fromMap(dict["UserProfile"] as! [String: Any])
+                self.userProfile = model
             }
             if dict.keys.contains("UserProfileFollow") {
                 var model = ModifyAppInstanceGroupAttributeRequest.StoragePolicy.UserProfileFollow()
