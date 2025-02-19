@@ -725,6 +725,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createDBInstanceWithOptions(_ request: CreateDBInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDBInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.AINodeSpecInfos)) {
+            query["AINodeSpecInfos"] = request.AINodeSpecInfos ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.backupId)) {
             query["BackupId"] = request.backupId ?? "";
         }

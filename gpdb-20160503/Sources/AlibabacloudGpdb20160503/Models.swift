@@ -2427,6 +2427,43 @@ public class CreateCollectionResponse : Tea.TeaModel {
 }
 
 public class CreateDBInstanceRequest : Tea.TeaModel {
+    public class AINodeSpecInfos : Tea.TeaModel {
+        public var AINodeNum: String?
+
+        public var AINodeSpec: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.AINodeNum != nil {
+                map["AINodeNum"] = self.AINodeNum!
+            }
+            if self.AINodeSpec != nil {
+                map["AINodeSpec"] = self.AINodeSpec!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AINodeNum") {
+                self.AINodeNum = dict["AINodeNum"] as! String
+            }
+            if dict.keys.contains("AINodeSpec") {
+                self.AINodeSpec = dict["AINodeSpec"] as! String
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -2464,6 +2501,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
             }
         }
     }
+    public var AINodeSpecInfos: [CreateDBInstanceRequest.AINodeSpecInfos]?
+
     public var backupId: String?
 
     public var clientToken: String?
@@ -2566,6 +2605,13 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.AINodeSpecInfos != nil {
+            var tmp : [Any] = []
+            for k in self.AINodeSpecInfos! {
+                tmp.append(k.toMap())
+            }
+            map["AINodeSpecInfos"] = tmp
+        }
         if self.backupId != nil {
             map["BackupId"] = self.backupId!
         }
@@ -2706,6 +2752,17 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AINodeSpecInfos") {
+            var tmp : [CreateDBInstanceRequest.AINodeSpecInfos] = []
+            for v in dict["AINodeSpecInfos"] as! [Any] {
+                var model = CreateDBInstanceRequest.AINodeSpecInfos()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.AINodeSpecInfos = tmp
+        }
         if dict.keys.contains("BackupId") {
             self.backupId = dict["BackupId"] as! String
         }
