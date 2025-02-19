@@ -1638,6 +1638,10 @@ public class SubmitConvertImageToExcelJobRequest : Tea.TeaModel {
 
     public var imageUrls: [String]?
 
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
+
     public override init() {
         super.init()
     }
@@ -1664,6 +1668,12 @@ public class SubmitConvertImageToExcelJobRequest : Tea.TeaModel {
         if self.imageUrls != nil {
             map["ImageUrls"] = self.imageUrls!
         }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
         return map
     }
 
@@ -1680,6 +1690,12 @@ public class SubmitConvertImageToExcelJobRequest : Tea.TeaModel {
         if dict.keys.contains("ImageUrls") {
             self.imageUrls = dict["ImageUrls"] as! [String]
         }
+        if dict.keys.contains("OssBucket") {
+            self.ossBucket = dict["OssBucket"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
+        }
     }
 }
 
@@ -1691,6 +1707,10 @@ public class SubmitConvertImageToExcelJobShrinkRequest : Tea.TeaModel {
     public var imageNamesShrink: String?
 
     public var imageUrlsShrink: String?
+
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
 
     public override init() {
         super.init()
@@ -1718,6 +1738,12 @@ public class SubmitConvertImageToExcelJobShrinkRequest : Tea.TeaModel {
         if self.imageUrlsShrink != nil {
             map["ImageUrls"] = self.imageUrlsShrink!
         }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
         return map
     }
 
@@ -1733,6 +1759,12 @@ public class SubmitConvertImageToExcelJobShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ImageUrls") {
             self.imageUrlsShrink = dict["ImageUrls"] as! String
+        }
+        if dict.keys.contains("OssBucket") {
+            self.ossBucket = dict["OssBucket"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
         }
     }
 }
@@ -1879,6 +1911,10 @@ public class SubmitConvertImageToMarkdownJobRequest : Tea.TeaModel {
 
     public var imageUrls: [String]?
 
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
+
     public override init() {
         super.init()
     }
@@ -1902,6 +1938,12 @@ public class SubmitConvertImageToMarkdownJobRequest : Tea.TeaModel {
         if self.imageUrls != nil {
             map["ImageUrls"] = self.imageUrls!
         }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
         return map
     }
 
@@ -1915,6 +1957,12 @@ public class SubmitConvertImageToMarkdownJobRequest : Tea.TeaModel {
         if dict.keys.contains("ImageUrls") {
             self.imageUrls = dict["ImageUrls"] as! [String]
         }
+        if dict.keys.contains("OssBucket") {
+            self.ossBucket = dict["OssBucket"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
+        }
     }
 }
 
@@ -1924,6 +1972,10 @@ public class SubmitConvertImageToMarkdownJobShrinkRequest : Tea.TeaModel {
     public var imageNamesShrink: String?
 
     public var imageUrlsShrink: String?
+
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
 
     public override init() {
         super.init()
@@ -1948,6 +2000,12 @@ public class SubmitConvertImageToMarkdownJobShrinkRequest : Tea.TeaModel {
         if self.imageUrlsShrink != nil {
             map["ImageUrls"] = self.imageUrlsShrink!
         }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
         return map
     }
 
@@ -1960,6 +2018,12 @@ public class SubmitConvertImageToMarkdownJobShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ImageUrls") {
             self.imageUrlsShrink = dict["ImageUrls"] as! String
+        }
+        if dict.keys.contains("OssBucket") {
+            self.ossBucket = dict["OssBucket"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
         }
     }
 }
@@ -2106,6 +2170,10 @@ public class SubmitConvertImageToPdfJobRequest : Tea.TeaModel {
 
     public var imageUrls: [String]?
 
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
+
     public override init() {
         super.init()
     }
@@ -2129,6 +2197,12 @@ public class SubmitConvertImageToPdfJobRequest : Tea.TeaModel {
         if self.imageUrls != nil {
             map["ImageUrls"] = self.imageUrls!
         }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
         return map
     }
 
@@ -2142,6 +2216,12 @@ public class SubmitConvertImageToPdfJobRequest : Tea.TeaModel {
         if dict.keys.contains("ImageUrls") {
             self.imageUrls = dict["ImageUrls"] as! [String]
         }
+        if dict.keys.contains("OssBucket") {
+            self.ossBucket = dict["OssBucket"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
+        }
     }
 }
 
@@ -2151,6 +2231,10 @@ public class SubmitConvertImageToPdfJobShrinkRequest : Tea.TeaModel {
     public var imageNamesShrink: String?
 
     public var imageUrlsShrink: String?
+
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
 
     public override init() {
         super.init()
@@ -2175,6 +2259,12 @@ public class SubmitConvertImageToPdfJobShrinkRequest : Tea.TeaModel {
         if self.imageUrlsShrink != nil {
             map["ImageUrls"] = self.imageUrlsShrink!
         }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
         return map
     }
 
@@ -2187,6 +2277,12 @@ public class SubmitConvertImageToPdfJobShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ImageUrls") {
             self.imageUrlsShrink = dict["ImageUrls"] as! String
+        }
+        if dict.keys.contains("OssBucket") {
+            self.ossBucket = dict["OssBucket"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
         }
     }
 }
@@ -2333,6 +2429,10 @@ public class SubmitConvertImageToWordJobRequest : Tea.TeaModel {
 
     public var imageUrls: [String]?
 
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
+
     public override init() {
         super.init()
     }
@@ -2356,6 +2456,12 @@ public class SubmitConvertImageToWordJobRequest : Tea.TeaModel {
         if self.imageUrls != nil {
             map["ImageUrls"] = self.imageUrls!
         }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
         return map
     }
 
@@ -2369,6 +2475,12 @@ public class SubmitConvertImageToWordJobRequest : Tea.TeaModel {
         if dict.keys.contains("ImageUrls") {
             self.imageUrls = dict["ImageUrls"] as! [String]
         }
+        if dict.keys.contains("OssBucket") {
+            self.ossBucket = dict["OssBucket"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
+        }
     }
 }
 
@@ -2378,6 +2490,10 @@ public class SubmitConvertImageToWordJobShrinkRequest : Tea.TeaModel {
     public var imageNamesShrink: String?
 
     public var imageUrlsShrink: String?
+
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
 
     public override init() {
         super.init()
@@ -2402,6 +2518,12 @@ public class SubmitConvertImageToWordJobShrinkRequest : Tea.TeaModel {
         if self.imageUrlsShrink != nil {
             map["ImageUrls"] = self.imageUrlsShrink!
         }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
         return map
     }
 
@@ -2414,6 +2536,12 @@ public class SubmitConvertImageToWordJobShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ImageUrls") {
             self.imageUrlsShrink = dict["ImageUrls"] as! String
+        }
+        if dict.keys.contains("OssBucket") {
+            self.ossBucket = dict["OssBucket"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
         }
     }
 }
@@ -2562,6 +2690,10 @@ public class SubmitConvertPdfToExcelJobRequest : Tea.TeaModel {
 
     public var forceMergeExcel: Bool?
 
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
+
     public override init() {
         super.init()
     }
@@ -2588,6 +2720,12 @@ public class SubmitConvertPdfToExcelJobRequest : Tea.TeaModel {
         if self.forceMergeExcel != nil {
             map["ForceMergeExcel"] = self.forceMergeExcel!
         }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
         return map
     }
 
@@ -2604,6 +2742,12 @@ public class SubmitConvertPdfToExcelJobRequest : Tea.TeaModel {
         if dict.keys.contains("ForceMergeExcel") {
             self.forceMergeExcel = dict["ForceMergeExcel"] as! Bool
         }
+        if dict.keys.contains("OssBucket") {
+            self.ossBucket = dict["OssBucket"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
+        }
     }
 }
 
@@ -2615,6 +2759,10 @@ public class SubmitConvertPdfToExcelJobAdvanceRequest : Tea.TeaModel {
     public var forceExportInnerImage: Bool?
 
     public var forceMergeExcel: Bool?
+
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
 
     public override init() {
         super.init()
@@ -2642,6 +2790,12 @@ public class SubmitConvertPdfToExcelJobAdvanceRequest : Tea.TeaModel {
         if self.forceMergeExcel != nil {
             map["ForceMergeExcel"] = self.forceMergeExcel!
         }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
         return map
     }
 
@@ -2657,6 +2811,12 @@ public class SubmitConvertPdfToExcelJobAdvanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ForceMergeExcel") {
             self.forceMergeExcel = dict["ForceMergeExcel"] as! Bool
+        }
+        if dict.keys.contains("OssBucket") {
+            self.ossBucket = dict["OssBucket"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
         }
     }
 }
@@ -2801,6 +2961,10 @@ public class SubmitConvertPdfToImageJobRequest : Tea.TeaModel {
 
     public var fileUrl: String?
 
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
+
     public override init() {
         super.init()
     }
@@ -2821,6 +2985,12 @@ public class SubmitConvertPdfToImageJobRequest : Tea.TeaModel {
         if self.fileUrl != nil {
             map["FileUrl"] = self.fileUrl!
         }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
         return map
     }
 
@@ -2831,6 +3001,12 @@ public class SubmitConvertPdfToImageJobRequest : Tea.TeaModel {
         if dict.keys.contains("FileUrl") {
             self.fileUrl = dict["FileUrl"] as! String
         }
+        if dict.keys.contains("OssBucket") {
+            self.ossBucket = dict["OssBucket"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
+        }
     }
 }
 
@@ -2838,6 +3014,10 @@ public class SubmitConvertPdfToImageJobAdvanceRequest : Tea.TeaModel {
     public var fileName: String?
 
     public var fileUrlObject: InputStream?
+
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
 
     public override init() {
         super.init()
@@ -2859,6 +3039,12 @@ public class SubmitConvertPdfToImageJobAdvanceRequest : Tea.TeaModel {
         if self.fileUrlObject != nil {
             map["FileUrl"] = self.fileUrlObject!
         }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
         return map
     }
 
@@ -2868,6 +3054,12 @@ public class SubmitConvertPdfToImageJobAdvanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FileUrl") {
             self.fileUrlObject = dict["FileUrl"] as! InputStream
+        }
+        if dict.keys.contains("OssBucket") {
+            self.ossBucket = dict["OssBucket"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
         }
     }
 }
@@ -3012,6 +3204,10 @@ public class SubmitConvertPdfToMarkdownJobRequest : Tea.TeaModel {
 
     public var fileUrl: String?
 
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
+
     public override init() {
         super.init()
     }
@@ -3032,6 +3228,12 @@ public class SubmitConvertPdfToMarkdownJobRequest : Tea.TeaModel {
         if self.fileUrl != nil {
             map["FileUrl"] = self.fileUrl!
         }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
         return map
     }
 
@@ -3042,6 +3244,12 @@ public class SubmitConvertPdfToMarkdownJobRequest : Tea.TeaModel {
         if dict.keys.contains("FileUrl") {
             self.fileUrl = dict["FileUrl"] as! String
         }
+        if dict.keys.contains("OssBucket") {
+            self.ossBucket = dict["OssBucket"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
+        }
     }
 }
 
@@ -3049,6 +3257,10 @@ public class SubmitConvertPdfToMarkdownJobAdvanceRequest : Tea.TeaModel {
     public var fileName: String?
 
     public var fileUrlObject: InputStream?
+
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
 
     public override init() {
         super.init()
@@ -3070,6 +3282,12 @@ public class SubmitConvertPdfToMarkdownJobAdvanceRequest : Tea.TeaModel {
         if self.fileUrlObject != nil {
             map["FileUrl"] = self.fileUrlObject!
         }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
         return map
     }
 
@@ -3079,6 +3297,12 @@ public class SubmitConvertPdfToMarkdownJobAdvanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FileUrl") {
             self.fileUrlObject = dict["FileUrl"] as! InputStream
+        }
+        if dict.keys.contains("OssBucket") {
+            self.ossBucket = dict["OssBucket"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
         }
     }
 }
@@ -3225,6 +3449,10 @@ public class SubmitConvertPdfToWordJobRequest : Tea.TeaModel {
 
     public var forceExportInnerImage: Bool?
 
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
+
     public override init() {
         super.init()
     }
@@ -3248,6 +3476,12 @@ public class SubmitConvertPdfToWordJobRequest : Tea.TeaModel {
         if self.forceExportInnerImage != nil {
             map["ForceExportInnerImage"] = self.forceExportInnerImage!
         }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
         return map
     }
 
@@ -3261,6 +3495,12 @@ public class SubmitConvertPdfToWordJobRequest : Tea.TeaModel {
         if dict.keys.contains("ForceExportInnerImage") {
             self.forceExportInnerImage = dict["ForceExportInnerImage"] as! Bool
         }
+        if dict.keys.contains("OssBucket") {
+            self.ossBucket = dict["OssBucket"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
+        }
     }
 }
 
@@ -3270,6 +3510,10 @@ public class SubmitConvertPdfToWordJobAdvanceRequest : Tea.TeaModel {
     public var fileUrlObject: InputStream?
 
     public var forceExportInnerImage: Bool?
+
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
 
     public override init() {
         super.init()
@@ -3294,6 +3538,12 @@ public class SubmitConvertPdfToWordJobAdvanceRequest : Tea.TeaModel {
         if self.forceExportInnerImage != nil {
             map["ForceExportInnerImage"] = self.forceExportInnerImage!
         }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
         return map
     }
 
@@ -3306,6 +3556,12 @@ public class SubmitConvertPdfToWordJobAdvanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ForceExportInnerImage") {
             self.forceExportInnerImage = dict["ForceExportInnerImage"] as! Bool
+        }
+        if dict.keys.contains("OssBucket") {
+            self.ossBucket = dict["OssBucket"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
         }
     }
 }
@@ -3454,6 +3710,10 @@ public class SubmitDigitalDocStructureJobRequest : Tea.TeaModel {
 
     public var imageStrategy: String?
 
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
+
     public var revealMarkdown: Bool?
 
     public var useUrlResponseBody: Bool?
@@ -3484,6 +3744,12 @@ public class SubmitDigitalDocStructureJobRequest : Tea.TeaModel {
         if self.imageStrategy != nil {
             map["ImageStrategy"] = self.imageStrategy!
         }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
         if self.revealMarkdown != nil {
             map["RevealMarkdown"] = self.revealMarkdown!
         }
@@ -3506,6 +3772,12 @@ public class SubmitDigitalDocStructureJobRequest : Tea.TeaModel {
         if dict.keys.contains("ImageStrategy") {
             self.imageStrategy = dict["ImageStrategy"] as! String
         }
+        if dict.keys.contains("OssBucket") {
+            self.ossBucket = dict["OssBucket"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
+        }
         if dict.keys.contains("RevealMarkdown") {
             self.revealMarkdown = dict["RevealMarkdown"] as! Bool
         }
@@ -3523,6 +3795,10 @@ public class SubmitDigitalDocStructureJobAdvanceRequest : Tea.TeaModel {
     public var fileUrlObject: InputStream?
 
     public var imageStrategy: String?
+
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
 
     public var revealMarkdown: Bool?
 
@@ -3554,6 +3830,12 @@ public class SubmitDigitalDocStructureJobAdvanceRequest : Tea.TeaModel {
         if self.imageStrategy != nil {
             map["ImageStrategy"] = self.imageStrategy!
         }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
         if self.revealMarkdown != nil {
             map["RevealMarkdown"] = self.revealMarkdown!
         }
@@ -3575,6 +3857,12 @@ public class SubmitDigitalDocStructureJobAdvanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ImageStrategy") {
             self.imageStrategy = dict["ImageStrategy"] as! String
+        }
+        if dict.keys.contains("OssBucket") {
+            self.ossBucket = dict["OssBucket"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
         }
         if dict.keys.contains("RevealMarkdown") {
             self.revealMarkdown = dict["RevealMarkdown"] as! Bool
@@ -3715,6 +4003,10 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
 
     public var llmEnhancement: Bool?
 
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
+
     public override init() {
         super.init()
     }
@@ -3744,6 +4036,12 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
         if self.llmEnhancement != nil {
             map["LlmEnhancement"] = self.llmEnhancement!
         }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
         return map
     }
 
@@ -3763,6 +4061,12 @@ public class SubmitDocParserJobRequest : Tea.TeaModel {
         if dict.keys.contains("LlmEnhancement") {
             self.llmEnhancement = dict["LlmEnhancement"] as! Bool
         }
+        if dict.keys.contains("OssBucket") {
+            self.ossBucket = dict["OssBucket"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
+        }
     }
 }
 
@@ -3776,6 +4080,10 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
     public var formulaEnhancement: Bool?
 
     public var llmEnhancement: Bool?
+
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
 
     public override init() {
         super.init()
@@ -3806,6 +4114,12 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
         if self.llmEnhancement != nil {
             map["LlmEnhancement"] = self.llmEnhancement!
         }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
         return map
     }
 
@@ -3824,6 +4138,12 @@ public class SubmitDocParserJobAdvanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("LlmEnhancement") {
             self.llmEnhancement = dict["LlmEnhancement"] as! Bool
+        }
+        if dict.keys.contains("OssBucket") {
+            self.ossBucket = dict["OssBucket"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
         }
     }
 }
@@ -3974,6 +4294,10 @@ public class SubmitDocStructureJobRequest : Tea.TeaModel {
 
     public var formulaEnhancement: Bool?
 
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
+
     public var structureType: String?
 
     public override init() {
@@ -4005,6 +4329,12 @@ public class SubmitDocStructureJobRequest : Tea.TeaModel {
         if self.formulaEnhancement != nil {
             map["FormulaEnhancement"] = self.formulaEnhancement!
         }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
         if self.structureType != nil {
             map["StructureType"] = self.structureType!
         }
@@ -4027,6 +4357,12 @@ public class SubmitDocStructureJobRequest : Tea.TeaModel {
         if dict.keys.contains("FormulaEnhancement") {
             self.formulaEnhancement = dict["FormulaEnhancement"] as! Bool
         }
+        if dict.keys.contains("OssBucket") {
+            self.ossBucket = dict["OssBucket"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
+        }
         if dict.keys.contains("StructureType") {
             self.structureType = dict["StructureType"] as! String
         }
@@ -4043,6 +4379,10 @@ public class SubmitDocStructureJobAdvanceRequest : Tea.TeaModel {
     public var fileUrlObject: InputStream?
 
     public var formulaEnhancement: Bool?
+
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
 
     public var structureType: String?
 
@@ -4075,6 +4415,12 @@ public class SubmitDocStructureJobAdvanceRequest : Tea.TeaModel {
         if self.formulaEnhancement != nil {
             map["FormulaEnhancement"] = self.formulaEnhancement!
         }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
         if self.structureType != nil {
             map["StructureType"] = self.structureType!
         }
@@ -4096,6 +4442,12 @@ public class SubmitDocStructureJobAdvanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FormulaEnhancement") {
             self.formulaEnhancement = dict["FormulaEnhancement"] as! Bool
+        }
+        if dict.keys.contains("OssBucket") {
+            self.ossBucket = dict["OssBucket"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
         }
         if dict.keys.contains("StructureType") {
             self.structureType = dict["StructureType"] as! String
@@ -4245,6 +4597,10 @@ public class SubmitDocumentExtractJobRequest : Tea.TeaModel {
 
     public var fileUrl: String?
 
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
+
     public override init() {
         super.init()
     }
@@ -4268,6 +4624,12 @@ public class SubmitDocumentExtractJobRequest : Tea.TeaModel {
         if self.fileUrl != nil {
             map["FileUrl"] = self.fileUrl!
         }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
         return map
     }
 
@@ -4281,6 +4643,12 @@ public class SubmitDocumentExtractJobRequest : Tea.TeaModel {
         if dict.keys.contains("FileUrl") {
             self.fileUrl = dict["FileUrl"] as! String
         }
+        if dict.keys.contains("OssBucket") {
+            self.ossBucket = dict["OssBucket"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
+        }
     }
 }
 
@@ -4290,6 +4658,10 @@ public class SubmitDocumentExtractJobAdvanceRequest : Tea.TeaModel {
     public var fileNameExtension: String?
 
     public var fileUrlObject: InputStream?
+
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
 
     public override init() {
         super.init()
@@ -4314,6 +4686,12 @@ public class SubmitDocumentExtractJobAdvanceRequest : Tea.TeaModel {
         if self.fileUrlObject != nil {
             map["FileUrl"] = self.fileUrlObject!
         }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
         return map
     }
 
@@ -4326,6 +4704,12 @@ public class SubmitDocumentExtractJobAdvanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FileUrl") {
             self.fileUrlObject = dict["FileUrl"] as! InputStream
+        }
+        if dict.keys.contains("OssBucket") {
+            self.ossBucket = dict["OssBucket"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
         }
     }
 }
@@ -4472,6 +4856,10 @@ public class SubmitTableUnderstandingJobRequest : Tea.TeaModel {
 
     public var fileUrl: String?
 
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
+
     public override init() {
         super.init()
     }
@@ -4495,6 +4883,12 @@ public class SubmitTableUnderstandingJobRequest : Tea.TeaModel {
         if self.fileUrl != nil {
             map["FileUrl"] = self.fileUrl!
         }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
         return map
     }
 
@@ -4508,6 +4902,12 @@ public class SubmitTableUnderstandingJobRequest : Tea.TeaModel {
         if dict.keys.contains("FileUrl") {
             self.fileUrl = dict["FileUrl"] as! String
         }
+        if dict.keys.contains("OssBucket") {
+            self.ossBucket = dict["OssBucket"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
+        }
     }
 }
 
@@ -4517,6 +4917,10 @@ public class SubmitTableUnderstandingJobAdvanceRequest : Tea.TeaModel {
     public var fileNameExtension: String?
 
     public var fileUrlObject: InputStream?
+
+    public var ossBucket: String?
+
+    public var ossEndpoint: String?
 
     public override init() {
         super.init()
@@ -4541,6 +4945,12 @@ public class SubmitTableUnderstandingJobAdvanceRequest : Tea.TeaModel {
         if self.fileUrlObject != nil {
             map["FileUrl"] = self.fileUrlObject!
         }
+        if self.ossBucket != nil {
+            map["OssBucket"] = self.ossBucket!
+        }
+        if self.ossEndpoint != nil {
+            map["OssEndpoint"] = self.ossEndpoint!
+        }
         return map
     }
 
@@ -4553,6 +4963,12 @@ public class SubmitTableUnderstandingJobAdvanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FileUrl") {
             self.fileUrlObject = dict["FileUrl"] as! InputStream
+        }
+        if dict.keys.contains("OssBucket") {
+            self.ossBucket = dict["OssBucket"] as! String
+        }
+        if dict.keys.contains("OssEndpoint") {
+            self.ossEndpoint = dict["OssEndpoint"] as! String
         }
     }
 }
