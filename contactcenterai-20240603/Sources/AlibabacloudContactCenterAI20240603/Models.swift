@@ -1335,6 +1335,8 @@ public class CreateTaskRequest : Tea.TeaModel {
 
         public var serviceChannelKeywords: [String]?
 
+        public var vocabularyId: String?
+
         public var voiceFileUrl: String?
 
         public override init() {
@@ -1372,6 +1374,9 @@ public class CreateTaskRequest : Tea.TeaModel {
             if self.serviceChannelKeywords != nil {
                 map["serviceChannelKeywords"] = self.serviceChannelKeywords!
             }
+            if self.vocabularyId != nil {
+                map["vocabularyId"] = self.vocabularyId!
+            }
             if self.voiceFileUrl != nil {
                 map["voiceFileUrl"] = self.voiceFileUrl!
             }
@@ -1399,6 +1404,9 @@ public class CreateTaskRequest : Tea.TeaModel {
             }
             if dict.keys.contains("serviceChannelKeywords") {
                 self.serviceChannelKeywords = dict["serviceChannelKeywords"] as! [String]
+            }
+            if dict.keys.contains("vocabularyId") {
+                self.vocabularyId = dict["vocabularyId"] as! String
             }
             if dict.keys.contains("voiceFileUrl") {
                 self.voiceFileUrl = dict["voiceFileUrl"] as! String
