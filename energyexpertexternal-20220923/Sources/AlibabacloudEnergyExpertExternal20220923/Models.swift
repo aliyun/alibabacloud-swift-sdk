@@ -987,6 +987,386 @@ public class OrgEmission : Tea.TeaModel {
     }
 }
 
+public class AnalyzeVlRealtimeRequest : Tea.TeaModel {
+    public var fileUrl: String?
+
+    public var language: String?
+
+    public var templateId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.fileUrl != nil {
+            map["fileUrl"] = self.fileUrl!
+        }
+        if self.language != nil {
+            map["language"] = self.language!
+        }
+        if self.templateId != nil {
+            map["templateId"] = self.templateId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("fileUrl") {
+            self.fileUrl = dict["fileUrl"] as! String
+        }
+        if dict.keys.contains("language") {
+            self.language = dict["language"] as! String
+        }
+        if dict.keys.contains("templateId") {
+            self.templateId = dict["templateId"] as! String
+        }
+    }
+}
+
+public class AnalyzeVlRealtimeAdvanceRequest : Tea.TeaModel {
+    public var fileUrlObject: InputStream?
+
+    public var language: String?
+
+    public var templateId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.fileUrlObject != nil {
+            map["fileUrl"] = self.fileUrlObject!
+        }
+        if self.language != nil {
+            map["language"] = self.language!
+        }
+        if self.templateId != nil {
+            map["templateId"] = self.templateId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("fileUrl") {
+            self.fileUrlObject = dict["fileUrl"] as! InputStream
+        }
+        if dict.keys.contains("language") {
+            self.language = dict["language"] as! String
+        }
+        if dict.keys.contains("templateId") {
+            self.templateId = dict["templateId"] as! String
+        }
+    }
+}
+
+public class AnalyzeVlRealtimeResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class KvListInfo : Tea.TeaModel {
+            public class Context : Tea.TeaModel {
+                public class Confidence : Tea.TeaModel {
+                    public var keyConfidence: Double?
+
+                    public var valueConfidence: Double?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.keyConfidence != nil {
+                            map["keyConfidence"] = self.keyConfidence!
+                        }
+                        if self.valueConfidence != nil {
+                            map["valueConfidence"] = self.valueConfidence!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("keyConfidence") {
+                            self.keyConfidence = dict["keyConfidence"] as! Double
+                        }
+                        if dict.keys.contains("valueConfidence") {
+                            self.valueConfidence = dict["valueConfidence"] as! Double
+                        }
+                    }
+                }
+                public var confidence: AnalyzeVlRealtimeResponseBody.Data.KvListInfo.Context.Confidence?
+
+                public var key: [ContentItem]?
+
+                public var value: [ContentItem]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.confidence?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.confidence != nil {
+                        map["confidence"] = self.confidence?.toMap()
+                    }
+                    if self.key != nil {
+                        var tmp : [Any] = []
+                        for k in self.key! {
+                            tmp.append(k.toMap())
+                        }
+                        map["key"] = tmp
+                    }
+                    if self.value != nil {
+                        var tmp : [Any] = []
+                        for k in self.value! {
+                            tmp.append(k.toMap())
+                        }
+                        map["value"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("confidence") {
+                        var model = AnalyzeVlRealtimeResponseBody.Data.KvListInfo.Context.Confidence()
+                        model.fromMap(dict["confidence"] as! [String: Any])
+                        self.confidence = model
+                    }
+                    if dict.keys.contains("key") {
+                        var tmp : [ContentItem] = []
+                        for v in dict["key"] as! [Any] {
+                            var model = ContentItem()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.key = tmp
+                    }
+                    if dict.keys.contains("value") {
+                        var tmp : [ContentItem] = []
+                        for v in dict["value"] as! [Any] {
+                            var model = ContentItem()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.value = tmp
+                    }
+                }
+            }
+            public var context: AnalyzeVlRealtimeResponseBody.Data.KvListInfo.Context?
+
+            public var keyName: String?
+
+            public var keyValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.context?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.context != nil {
+                    map["context"] = self.context?.toMap()
+                }
+                if self.keyName != nil {
+                    map["keyName"] = self.keyName!
+                }
+                if self.keyValue != nil {
+                    map["keyValue"] = self.keyValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("context") {
+                    var model = AnalyzeVlRealtimeResponseBody.Data.KvListInfo.Context()
+                    model.fromMap(dict["context"] as! [String: Any])
+                    self.context = model
+                }
+                if dict.keys.contains("keyName") {
+                    self.keyName = dict["keyName"] as! String
+                }
+                if dict.keys.contains("keyValue") {
+                    self.keyValue = dict["keyValue"] as! String
+                }
+            }
+        }
+        public var kvListInfo: [AnalyzeVlRealtimeResponseBody.Data.KvListInfo]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.kvListInfo != nil {
+                var tmp : [Any] = []
+                for k in self.kvListInfo! {
+                    tmp.append(k.toMap())
+                }
+                map["kvListInfo"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("kvListInfo") {
+                var tmp : [AnalyzeVlRealtimeResponseBody.Data.KvListInfo] = []
+                for v in dict["kvListInfo"] as! [Any] {
+                    var model = AnalyzeVlRealtimeResponseBody.Data.KvListInfo()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.kvListInfo = tmp
+            }
+        }
+    }
+    public var data: AnalyzeVlRealtimeResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("data") {
+            var model = AnalyzeVlRealtimeResponseBody.Data()
+            model.fromMap(dict["data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+    }
+}
+
+public class AnalyzeVlRealtimeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AnalyzeVlRealtimeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = AnalyzeVlRealtimeResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class BatchSaveInstructionStatusRequest : Tea.TeaModel {
     public var factoryId: String?
 
