@@ -23063,11 +23063,15 @@ public class StartCloudRecordRequest : Tea.TeaModel {
 
         public var paneId: Int32?
 
+        public var reservePaneForOfflineUser: Bool?
+
         public var source: String?
 
         public var sourceType: String?
 
         public var texts: [StartCloudRecordRequest.Panes.Texts]?
+
+        public var videoOrder: String?
 
         public var whiteboard: StartCloudRecordRequest.Panes.Whiteboard?
 
@@ -23099,6 +23103,9 @@ public class StartCloudRecordRequest : Tea.TeaModel {
             if self.paneId != nil {
                 map["PaneId"] = self.paneId!
             }
+            if self.reservePaneForOfflineUser != nil {
+                map["ReservePaneForOfflineUser"] = self.reservePaneForOfflineUser!
+            }
             if self.source != nil {
                 map["Source"] = self.source!
             }
@@ -23111,6 +23118,9 @@ public class StartCloudRecordRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Texts"] = tmp
+            }
+            if self.videoOrder != nil {
+                map["VideoOrder"] = self.videoOrder!
             }
             if self.whiteboard != nil {
                 map["Whiteboard"] = self.whiteboard?.toMap()
@@ -23136,6 +23146,9 @@ public class StartCloudRecordRequest : Tea.TeaModel {
             if dict.keys.contains("PaneId") {
                 self.paneId = dict["PaneId"] as! Int32
             }
+            if dict.keys.contains("ReservePaneForOfflineUser") {
+                self.reservePaneForOfflineUser = dict["ReservePaneForOfflineUser"] as! Bool
+            }
             if dict.keys.contains("Source") {
                 self.source = dict["Source"] as! String
             }
@@ -23152,6 +23165,9 @@ public class StartCloudRecordRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.texts = tmp
+            }
+            if dict.keys.contains("VideoOrder") {
+                self.videoOrder = dict["VideoOrder"] as! String
             }
             if dict.keys.contains("Whiteboard") {
                 var model = StartCloudRecordRequest.Panes.Whiteboard()
@@ -23210,6 +23226,8 @@ public class StartCloudRecordRequest : Tea.TeaModel {
 
         public var bucket: String?
 
+        public var endpoint: String?
+
         public var region: Int32?
 
         public var secretKey: String?
@@ -23236,6 +23254,9 @@ public class StartCloudRecordRequest : Tea.TeaModel {
             if self.bucket != nil {
                 map["Bucket"] = self.bucket!
             }
+            if self.endpoint != nil {
+                map["Endpoint"] = self.endpoint!
+            }
             if self.region != nil {
                 map["Region"] = self.region!
             }
@@ -23254,6 +23275,9 @@ public class StartCloudRecordRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Bucket") {
                 self.bucket = dict["Bucket"] as! String
+            }
+            if dict.keys.contains("Endpoint") {
+                self.endpoint = dict["Endpoint"] as! String
             }
             if dict.keys.contains("Region") {
                 self.region = dict["Region"] as! Int32
@@ -23497,6 +23521,8 @@ public class StartCloudRecordRequest : Tea.TeaModel {
 
     public var regionColor: StartCloudRecordRequest.RegionColor?
 
+    public var reservePaneForNoCameraUser: Bool?
+
     public var storageConfig: StartCloudRecordRequest.StorageConfig?
 
     public var taskId: String?
@@ -23564,6 +23590,9 @@ public class StartCloudRecordRequest : Tea.TeaModel {
         }
         if self.regionColor != nil {
             map["RegionColor"] = self.regionColor?.toMap()
+        }
+        if self.reservePaneForNoCameraUser != nil {
+            map["ReservePaneForNoCameraUser"] = self.reservePaneForNoCameraUser!
         }
         if self.storageConfig != nil {
             map["StorageConfig"] = self.storageConfig?.toMap()
@@ -23647,6 +23676,9 @@ public class StartCloudRecordRequest : Tea.TeaModel {
             var model = StartCloudRecordRequest.RegionColor()
             model.fromMap(dict["RegionColor"] as! [String: Any])
             self.regionColor = model
+        }
+        if dict.keys.contains("ReservePaneForNoCameraUser") {
+            self.reservePaneForNoCameraUser = dict["ReservePaneForNoCameraUser"] as! Bool
         }
         if dict.keys.contains("StorageConfig") {
             var model = StartCloudRecordRequest.StorageConfig()
@@ -24391,11 +24423,15 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
 
         public var paneId: Int32?
 
+        public var reservePaneForOfflineUser: Bool?
+
         public var source: String?
 
         public var sourceType: String?
 
         public var texts: [StartCloudRecordShrinkRequest.Panes.Texts]?
+
+        public var videoOrder: String?
 
         public var whiteboard: StartCloudRecordShrinkRequest.Panes.Whiteboard?
 
@@ -24427,6 +24463,9 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
             if self.paneId != nil {
                 map["PaneId"] = self.paneId!
             }
+            if self.reservePaneForOfflineUser != nil {
+                map["ReservePaneForOfflineUser"] = self.reservePaneForOfflineUser!
+            }
             if self.source != nil {
                 map["Source"] = self.source!
             }
@@ -24439,6 +24478,9 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Texts"] = tmp
+            }
+            if self.videoOrder != nil {
+                map["VideoOrder"] = self.videoOrder!
             }
             if self.whiteboard != nil {
                 map["Whiteboard"] = self.whiteboard?.toMap()
@@ -24464,6 +24506,9 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
             if dict.keys.contains("PaneId") {
                 self.paneId = dict["PaneId"] as! Int32
             }
+            if dict.keys.contains("ReservePaneForOfflineUser") {
+                self.reservePaneForOfflineUser = dict["ReservePaneForOfflineUser"] as! Bool
+            }
             if dict.keys.contains("Source") {
                 self.source = dict["Source"] as! String
             }
@@ -24480,6 +24525,9 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.texts = tmp
+            }
+            if dict.keys.contains("VideoOrder") {
+                self.videoOrder = dict["VideoOrder"] as! String
             }
             if dict.keys.contains("Whiteboard") {
                 var model = StartCloudRecordShrinkRequest.Panes.Whiteboard()
@@ -24538,6 +24586,8 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
 
         public var bucket: String?
 
+        public var endpoint: String?
+
         public var region: Int32?
 
         public var secretKey: String?
@@ -24564,6 +24614,9 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
             if self.bucket != nil {
                 map["Bucket"] = self.bucket!
             }
+            if self.endpoint != nil {
+                map["Endpoint"] = self.endpoint!
+            }
             if self.region != nil {
                 map["Region"] = self.region!
             }
@@ -24582,6 +24635,9 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Bucket") {
                 self.bucket = dict["Bucket"] as! String
+            }
+            if dict.keys.contains("Endpoint") {
+                self.endpoint = dict["Endpoint"] as! String
             }
             if dict.keys.contains("Region") {
                 self.region = dict["Region"] as! Int32
@@ -24825,6 +24881,8 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
 
     public var regionColor: StartCloudRecordShrinkRequest.RegionColor?
 
+    public var reservePaneForNoCameraUser: Bool?
+
     public var storageConfig: StartCloudRecordShrinkRequest.StorageConfig?
 
     public var taskId: String?
@@ -24891,6 +24949,9 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
         }
         if self.regionColor != nil {
             map["RegionColor"] = self.regionColor?.toMap()
+        }
+        if self.reservePaneForNoCameraUser != nil {
+            map["ReservePaneForNoCameraUser"] = self.reservePaneForNoCameraUser!
         }
         if self.storageConfig != nil {
             map["StorageConfig"] = self.storageConfig?.toMap()
@@ -24972,6 +25033,9 @@ public class StartCloudRecordShrinkRequest : Tea.TeaModel {
             var model = StartCloudRecordShrinkRequest.RegionColor()
             model.fromMap(dict["RegionColor"] as! [String: Any])
             self.regionColor = model
+        }
+        if dict.keys.contains("ReservePaneForNoCameraUser") {
+            self.reservePaneForNoCameraUser = dict["ReservePaneForNoCameraUser"] as! Bool
         }
         if dict.keys.contains("StorageConfig") {
             var model = StartCloudRecordShrinkRequest.StorageConfig()
@@ -27347,11 +27411,15 @@ public class StartStreamingOutRequest : Tea.TeaModel {
 
         public var paneId: String?
 
+        public var reservePaneForOfflineUser: Bool?
+
         public var source: String?
 
         public var sourceType: String?
 
         public var texts: [StartStreamingOutRequest.Panes.Texts]?
+
+        public var videoOrder: String?
 
         public var whiteboard: StartStreamingOutRequest.Panes.Whiteboard?
 
@@ -27383,6 +27451,9 @@ public class StartStreamingOutRequest : Tea.TeaModel {
             if self.paneId != nil {
                 map["PaneId"] = self.paneId!
             }
+            if self.reservePaneForOfflineUser != nil {
+                map["ReservePaneForOfflineUser"] = self.reservePaneForOfflineUser!
+            }
             if self.source != nil {
                 map["Source"] = self.source!
             }
@@ -27395,6 +27466,9 @@ public class StartStreamingOutRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Texts"] = tmp
+            }
+            if self.videoOrder != nil {
+                map["VideoOrder"] = self.videoOrder!
             }
             if self.whiteboard != nil {
                 map["Whiteboard"] = self.whiteboard?.toMap()
@@ -27420,6 +27494,9 @@ public class StartStreamingOutRequest : Tea.TeaModel {
             if dict.keys.contains("PaneId") {
                 self.paneId = dict["PaneId"] as! String
             }
+            if dict.keys.contains("ReservePaneForOfflineUser") {
+                self.reservePaneForOfflineUser = dict["ReservePaneForOfflineUser"] as! Bool
+            }
             if dict.keys.contains("Source") {
                 self.source = dict["Source"] as! String
             }
@@ -27436,6 +27513,9 @@ public class StartStreamingOutRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.texts = tmp
+            }
+            if dict.keys.contains("VideoOrder") {
+                self.videoOrder = dict["VideoOrder"] as! String
             }
             if dict.keys.contains("Whiteboard") {
                 var model = StartStreamingOutRequest.Panes.Whiteboard()
@@ -27720,6 +27800,12 @@ public class StartStreamingOutRequest : Tea.TeaModel {
 
     public var regionColor: StartStreamingOutRequest.RegionColor?
 
+    public var reservePaneForNoCameraUser: Bool?
+
+    public var startWithoutChannel: Bool?
+
+    public var startWithoutChannelWaitTime: Int32?
+
     public var taskId: String?
 
     public var templateId: String?
@@ -27786,6 +27872,15 @@ public class StartStreamingOutRequest : Tea.TeaModel {
         }
         if self.regionColor != nil {
             map["RegionColor"] = self.regionColor?.toMap()
+        }
+        if self.reservePaneForNoCameraUser != nil {
+            map["ReservePaneForNoCameraUser"] = self.reservePaneForNoCameraUser!
+        }
+        if self.startWithoutChannel != nil {
+            map["StartWithoutChannel"] = self.startWithoutChannel!
+        }
+        if self.startWithoutChannelWaitTime != nil {
+            map["StartWithoutChannelWaitTime"] = self.startWithoutChannelWaitTime!
         }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
@@ -27869,6 +27964,15 @@ public class StartStreamingOutRequest : Tea.TeaModel {
             var model = StartStreamingOutRequest.RegionColor()
             model.fromMap(dict["RegionColor"] as! [String: Any])
             self.regionColor = model
+        }
+        if dict.keys.contains("ReservePaneForNoCameraUser") {
+            self.reservePaneForNoCameraUser = dict["ReservePaneForNoCameraUser"] as! Bool
+        }
+        if dict.keys.contains("StartWithoutChannel") {
+            self.startWithoutChannel = dict["StartWithoutChannel"] as! Bool
+        }
+        if dict.keys.contains("StartWithoutChannelWaitTime") {
+            self.startWithoutChannelWaitTime = dict["StartWithoutChannelWaitTime"] as! Int32
         }
         if dict.keys.contains("TaskId") {
             self.taskId = dict["TaskId"] as! String
@@ -28611,11 +28715,15 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
 
         public var paneId: String?
 
+        public var reservePaneForOfflineUser: Bool?
+
         public var source: String?
 
         public var sourceType: String?
 
         public var texts: [StartStreamingOutShrinkRequest.Panes.Texts]?
+
+        public var videoOrder: String?
 
         public var whiteboard: StartStreamingOutShrinkRequest.Panes.Whiteboard?
 
@@ -28647,6 +28755,9 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
             if self.paneId != nil {
                 map["PaneId"] = self.paneId!
             }
+            if self.reservePaneForOfflineUser != nil {
+                map["ReservePaneForOfflineUser"] = self.reservePaneForOfflineUser!
+            }
             if self.source != nil {
                 map["Source"] = self.source!
             }
@@ -28659,6 +28770,9 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Texts"] = tmp
+            }
+            if self.videoOrder != nil {
+                map["VideoOrder"] = self.videoOrder!
             }
             if self.whiteboard != nil {
                 map["Whiteboard"] = self.whiteboard?.toMap()
@@ -28684,6 +28798,9 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
             if dict.keys.contains("PaneId") {
                 self.paneId = dict["PaneId"] as! String
             }
+            if dict.keys.contains("ReservePaneForOfflineUser") {
+                self.reservePaneForOfflineUser = dict["ReservePaneForOfflineUser"] as! Bool
+            }
             if dict.keys.contains("Source") {
                 self.source = dict["Source"] as! String
             }
@@ -28700,6 +28817,9 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.texts = tmp
+            }
+            if dict.keys.contains("VideoOrder") {
+                self.videoOrder = dict["VideoOrder"] as! String
             }
             if dict.keys.contains("Whiteboard") {
                 var model = StartStreamingOutShrinkRequest.Panes.Whiteboard()
@@ -28984,6 +29104,12 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
 
     public var regionColor: StartStreamingOutShrinkRequest.RegionColor?
 
+    public var reservePaneForNoCameraUser: Bool?
+
+    public var startWithoutChannel: Bool?
+
+    public var startWithoutChannelWaitTime: Int32?
+
     public var taskId: String?
 
     public var templateId: String?
@@ -29049,6 +29175,15 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
         }
         if self.regionColor != nil {
             map["RegionColor"] = self.regionColor?.toMap()
+        }
+        if self.reservePaneForNoCameraUser != nil {
+            map["ReservePaneForNoCameraUser"] = self.reservePaneForNoCameraUser!
+        }
+        if self.startWithoutChannel != nil {
+            map["StartWithoutChannel"] = self.startWithoutChannel!
+        }
+        if self.startWithoutChannelWaitTime != nil {
+            map["StartWithoutChannelWaitTime"] = self.startWithoutChannelWaitTime!
         }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
@@ -29130,6 +29265,15 @@ public class StartStreamingOutShrinkRequest : Tea.TeaModel {
             var model = StartStreamingOutShrinkRequest.RegionColor()
             model.fromMap(dict["RegionColor"] as! [String: Any])
             self.regionColor = model
+        }
+        if dict.keys.contains("ReservePaneForNoCameraUser") {
+            self.reservePaneForNoCameraUser = dict["ReservePaneForNoCameraUser"] as! Bool
+        }
+        if dict.keys.contains("StartWithoutChannel") {
+            self.startWithoutChannel = dict["StartWithoutChannel"] as! Bool
+        }
+        if dict.keys.contains("StartWithoutChannelWaitTime") {
+            self.startWithoutChannelWaitTime = dict["StartWithoutChannelWaitTime"] as! Int32
         }
         if dict.keys.contains("TaskId") {
             self.taskId = dict["TaskId"] as! String
@@ -31130,11 +31274,15 @@ public class UpdateCloudRecordRequest : Tea.TeaModel {
 
         public var paneId: Int32?
 
+        public var reservePaneForOfflineUser: Bool?
+
         public var source: String?
 
         public var sourceType: String?
 
         public var texts: [UpdateCloudRecordRequest.Panes.Texts]?
+
+        public var videoOrder: String?
 
         public var whiteboard: UpdateCloudRecordRequest.Panes.Whiteboard?
 
@@ -31166,6 +31314,9 @@ public class UpdateCloudRecordRequest : Tea.TeaModel {
             if self.paneId != nil {
                 map["PaneId"] = self.paneId!
             }
+            if self.reservePaneForOfflineUser != nil {
+                map["ReservePaneForOfflineUser"] = self.reservePaneForOfflineUser!
+            }
             if self.source != nil {
                 map["Source"] = self.source!
             }
@@ -31178,6 +31329,9 @@ public class UpdateCloudRecordRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Texts"] = tmp
+            }
+            if self.videoOrder != nil {
+                map["VideoOrder"] = self.videoOrder!
             }
             if self.whiteboard != nil {
                 map["Whiteboard"] = self.whiteboard?.toMap()
@@ -31203,6 +31357,9 @@ public class UpdateCloudRecordRequest : Tea.TeaModel {
             if dict.keys.contains("PaneId") {
                 self.paneId = dict["PaneId"] as! Int32
             }
+            if dict.keys.contains("ReservePaneForOfflineUser") {
+                self.reservePaneForOfflineUser = dict["ReservePaneForOfflineUser"] as! Bool
+            }
             if dict.keys.contains("Source") {
                 self.source = dict["Source"] as! String
             }
@@ -31219,6 +31376,9 @@ public class UpdateCloudRecordRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.texts = tmp
+            }
+            if dict.keys.contains("VideoOrder") {
+                self.videoOrder = dict["VideoOrder"] as! String
             }
             if dict.keys.contains("Whiteboard") {
                 var model = UpdateCloudRecordRequest.Panes.Whiteboard()
@@ -32322,11 +32482,15 @@ public class UpdateCloudRecordShrinkRequest : Tea.TeaModel {
 
         public var paneId: Int32?
 
+        public var reservePaneForOfflineUser: Bool?
+
         public var source: String?
 
         public var sourceType: String?
 
         public var texts: [UpdateCloudRecordShrinkRequest.Panes.Texts]?
+
+        public var videoOrder: String?
 
         public var whiteboard: UpdateCloudRecordShrinkRequest.Panes.Whiteboard?
 
@@ -32358,6 +32522,9 @@ public class UpdateCloudRecordShrinkRequest : Tea.TeaModel {
             if self.paneId != nil {
                 map["PaneId"] = self.paneId!
             }
+            if self.reservePaneForOfflineUser != nil {
+                map["ReservePaneForOfflineUser"] = self.reservePaneForOfflineUser!
+            }
             if self.source != nil {
                 map["Source"] = self.source!
             }
@@ -32370,6 +32537,9 @@ public class UpdateCloudRecordShrinkRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Texts"] = tmp
+            }
+            if self.videoOrder != nil {
+                map["VideoOrder"] = self.videoOrder!
             }
             if self.whiteboard != nil {
                 map["Whiteboard"] = self.whiteboard?.toMap()
@@ -32395,6 +32565,9 @@ public class UpdateCloudRecordShrinkRequest : Tea.TeaModel {
             if dict.keys.contains("PaneId") {
                 self.paneId = dict["PaneId"] as! Int32
             }
+            if dict.keys.contains("ReservePaneForOfflineUser") {
+                self.reservePaneForOfflineUser = dict["ReservePaneForOfflineUser"] as! Bool
+            }
             if dict.keys.contains("Source") {
                 self.source = dict["Source"] as! String
             }
@@ -32411,6 +32584,9 @@ public class UpdateCloudRecordShrinkRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.texts = tmp
+            }
+            if dict.keys.contains("VideoOrder") {
+                self.videoOrder = dict["VideoOrder"] as! String
             }
             if dict.keys.contains("Whiteboard") {
                 var model = UpdateCloudRecordShrinkRequest.Panes.Whiteboard()
@@ -35550,11 +35726,15 @@ public class UpdateStreamingOutRequest : Tea.TeaModel {
 
         public var paneId: Int32?
 
+        public var reservePaneForOfflineUser: Bool?
+
         public var source: String?
 
         public var sourceType: String?
 
         public var texts: [UpdateStreamingOutRequest.Panes.Texts]?
+
+        public var videoOrder: String?
 
         public var whiteboard: UpdateStreamingOutRequest.Panes.Whiteboard?
 
@@ -35586,6 +35766,9 @@ public class UpdateStreamingOutRequest : Tea.TeaModel {
             if self.paneId != nil {
                 map["PaneId"] = self.paneId!
             }
+            if self.reservePaneForOfflineUser != nil {
+                map["ReservePaneForOfflineUser"] = self.reservePaneForOfflineUser!
+            }
             if self.source != nil {
                 map["Source"] = self.source!
             }
@@ -35598,6 +35781,9 @@ public class UpdateStreamingOutRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Texts"] = tmp
+            }
+            if self.videoOrder != nil {
+                map["VideoOrder"] = self.videoOrder!
             }
             if self.whiteboard != nil {
                 map["Whiteboard"] = self.whiteboard?.toMap()
@@ -35623,6 +35809,9 @@ public class UpdateStreamingOutRequest : Tea.TeaModel {
             if dict.keys.contains("PaneId") {
                 self.paneId = dict["PaneId"] as! Int32
             }
+            if dict.keys.contains("ReservePaneForOfflineUser") {
+                self.reservePaneForOfflineUser = dict["ReservePaneForOfflineUser"] as! Bool
+            }
             if dict.keys.contains("Source") {
                 self.source = dict["Source"] as! String
             }
@@ -35639,6 +35828,9 @@ public class UpdateStreamingOutRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.texts = tmp
+            }
+            if dict.keys.contains("VideoOrder") {
+                self.videoOrder = dict["VideoOrder"] as! String
             }
             if dict.keys.contains("Whiteboard") {
                 var model = UpdateStreamingOutRequest.Panes.Whiteboard()
@@ -36742,11 +36934,15 @@ public class UpdateStreamingOutShrinkRequest : Tea.TeaModel {
 
         public var paneId: Int32?
 
+        public var reservePaneForOfflineUser: Bool?
+
         public var source: String?
 
         public var sourceType: String?
 
         public var texts: [UpdateStreamingOutShrinkRequest.Panes.Texts]?
+
+        public var videoOrder: String?
 
         public var whiteboard: UpdateStreamingOutShrinkRequest.Panes.Whiteboard?
 
@@ -36778,6 +36974,9 @@ public class UpdateStreamingOutShrinkRequest : Tea.TeaModel {
             if self.paneId != nil {
                 map["PaneId"] = self.paneId!
             }
+            if self.reservePaneForOfflineUser != nil {
+                map["ReservePaneForOfflineUser"] = self.reservePaneForOfflineUser!
+            }
             if self.source != nil {
                 map["Source"] = self.source!
             }
@@ -36790,6 +36989,9 @@ public class UpdateStreamingOutShrinkRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Texts"] = tmp
+            }
+            if self.videoOrder != nil {
+                map["VideoOrder"] = self.videoOrder!
             }
             if self.whiteboard != nil {
                 map["Whiteboard"] = self.whiteboard?.toMap()
@@ -36815,6 +37017,9 @@ public class UpdateStreamingOutShrinkRequest : Tea.TeaModel {
             if dict.keys.contains("PaneId") {
                 self.paneId = dict["PaneId"] as! Int32
             }
+            if dict.keys.contains("ReservePaneForOfflineUser") {
+                self.reservePaneForOfflineUser = dict["ReservePaneForOfflineUser"] as! Bool
+            }
             if dict.keys.contains("Source") {
                 self.source = dict["Source"] as! String
             }
@@ -36831,6 +37036,9 @@ public class UpdateStreamingOutShrinkRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.texts = tmp
+            }
+            if dict.keys.contains("VideoOrder") {
+                self.videoOrder = dict["VideoOrder"] as! String
             }
             if dict.keys.contains("Whiteboard") {
                 var model = UpdateStreamingOutShrinkRequest.Panes.Whiteboard()

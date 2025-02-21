@@ -4044,6 +4044,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.regionColor)) {
             query["RegionColor"] = request.regionColor!;
         }
+        if (!TeaUtils.Client.isUnset(request.reservePaneForNoCameraUser)) {
+            query["ReservePaneForNoCameraUser"] = request.reservePaneForNoCameraUser!;
+        }
         if (!TeaUtils.Client.isUnset(request.storageConfig)) {
             query["StorageConfig"] = request.storageConfig!;
         }
@@ -4343,6 +4346,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.regionColor)) {
             query["RegionColor"] = request.regionColor!;
+        }
+        if (!TeaUtils.Client.isUnset(request.reservePaneForNoCameraUser)) {
+            query["ReservePaneForNoCameraUser"] = request.reservePaneForNoCameraUser!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startWithoutChannel)) {
+            query["StartWithoutChannel"] = request.startWithoutChannel!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startWithoutChannelWaitTime)) {
+            query["StartWithoutChannelWaitTime"] = request.startWithoutChannelWaitTime!;
         }
         if (!TeaUtils.Client.isUnset(request.taskId)) {
             query["TaskId"] = request.taskId ?? "";
