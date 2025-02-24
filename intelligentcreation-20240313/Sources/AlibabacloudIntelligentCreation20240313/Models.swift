@@ -2801,13 +2801,35 @@ public class CreateAICoachTaskSessionRequest : Tea.TeaModel {
 
 public class CreateAICoachTaskSessionResponseBody : Tea.TeaModel {
     public class ScriptInfo : Tea.TeaModel {
+        public var agentIconUrl: String?
+
+        public var characterName: String?
+
+        public var dialogueTextFlag: Bool?
+
+        public var dialogueTipFlag: Bool?
+
         public var initiator: String?
+
+        public var inputTypeList: [String]?
 
         public var maxDuration: Int64?
 
         public var scriptDesc: String?
 
         public var scriptName: String?
+
+        public var scriptRecordId: String?
+
+        public var scriptType: Int64?
+
+        public var sparringTipContent: String?
+
+        public var sparringTipTitle: String?
+
+        public var studentThinkTimeFlag: Bool?
+
+        public var studentThinkTimeLimit: Int64?
 
         public override init() {
             super.init()
@@ -2823,8 +2845,23 @@ public class CreateAICoachTaskSessionResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.agentIconUrl != nil {
+                map["agentIconUrl"] = self.agentIconUrl!
+            }
+            if self.characterName != nil {
+                map["characterName"] = self.characterName!
+            }
+            if self.dialogueTextFlag != nil {
+                map["dialogueTextFlag"] = self.dialogueTextFlag!
+            }
+            if self.dialogueTipFlag != nil {
+                map["dialogueTipFlag"] = self.dialogueTipFlag!
+            }
             if self.initiator != nil {
                 map["initiator"] = self.initiator!
+            }
+            if self.inputTypeList != nil {
+                map["inputTypeList"] = self.inputTypeList!
             }
             if self.maxDuration != nil {
                 map["maxDuration"] = self.maxDuration!
@@ -2835,12 +2872,45 @@ public class CreateAICoachTaskSessionResponseBody : Tea.TeaModel {
             if self.scriptName != nil {
                 map["scriptName"] = self.scriptName!
             }
+            if self.scriptRecordId != nil {
+                map["scriptRecordId"] = self.scriptRecordId!
+            }
+            if self.scriptType != nil {
+                map["scriptType"] = self.scriptType!
+            }
+            if self.sparringTipContent != nil {
+                map["sparringTipContent"] = self.sparringTipContent!
+            }
+            if self.sparringTipTitle != nil {
+                map["sparringTipTitle"] = self.sparringTipTitle!
+            }
+            if self.studentThinkTimeFlag != nil {
+                map["studentThinkTimeFlag"] = self.studentThinkTimeFlag!
+            }
+            if self.studentThinkTimeLimit != nil {
+                map["studentThinkTimeLimit"] = self.studentThinkTimeLimit!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("agentIconUrl") {
+                self.agentIconUrl = dict["agentIconUrl"] as! String
+            }
+            if dict.keys.contains("characterName") {
+                self.characterName = dict["characterName"] as! String
+            }
+            if dict.keys.contains("dialogueTextFlag") {
+                self.dialogueTextFlag = dict["dialogueTextFlag"] as! Bool
+            }
+            if dict.keys.contains("dialogueTipFlag") {
+                self.dialogueTipFlag = dict["dialogueTipFlag"] as! Bool
+            }
             if dict.keys.contains("initiator") {
                 self.initiator = dict["initiator"] as! String
+            }
+            if dict.keys.contains("inputTypeList") {
+                self.inputTypeList = dict["inputTypeList"] as! [String]
             }
             if dict.keys.contains("maxDuration") {
                 self.maxDuration = dict["maxDuration"] as! Int64
@@ -2851,6 +2921,24 @@ public class CreateAICoachTaskSessionResponseBody : Tea.TeaModel {
             if dict.keys.contains("scriptName") {
                 self.scriptName = dict["scriptName"] as! String
             }
+            if dict.keys.contains("scriptRecordId") {
+                self.scriptRecordId = dict["scriptRecordId"] as! String
+            }
+            if dict.keys.contains("scriptType") {
+                self.scriptType = dict["scriptType"] as! Int64
+            }
+            if dict.keys.contains("sparringTipContent") {
+                self.sparringTipContent = dict["sparringTipContent"] as! String
+            }
+            if dict.keys.contains("sparringTipTitle") {
+                self.sparringTipTitle = dict["sparringTipTitle"] as! String
+            }
+            if dict.keys.contains("studentThinkTimeFlag") {
+                self.studentThinkTimeFlag = dict["studentThinkTimeFlag"] as! Bool
+            }
+            if dict.keys.contains("studentThinkTimeLimit") {
+                self.studentThinkTimeLimit = dict["studentThinkTimeLimit"] as! Int64
+            }
         }
     }
     public var channelToken: String?
@@ -2860,6 +2948,8 @@ public class CreateAICoachTaskSessionResponseBody : Tea.TeaModel {
     public var scriptInfo: CreateAICoachTaskSessionResponseBody.ScriptInfo?
 
     public var sessionId: String?
+
+    public var sessionStatus: Int64?
 
     public var token: String?
 
@@ -2892,6 +2982,9 @@ public class CreateAICoachTaskSessionResponseBody : Tea.TeaModel {
         if self.sessionId != nil {
             map["sessionId"] = self.sessionId!
         }
+        if self.sessionStatus != nil {
+            map["sessionStatus"] = self.sessionStatus!
+        }
         if self.token != nil {
             map["token"] = self.token!
         }
@@ -2915,6 +3008,9 @@ public class CreateAICoachTaskSessionResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("sessionId") {
             self.sessionId = dict["sessionId"] as! String
+        }
+        if dict.keys.contains("sessionStatus") {
+            self.sessionStatus = dict["sessionStatus"] as! Int64
         }
         if dict.keys.contains("token") {
             self.token = dict["token"] as! String
@@ -4181,6 +4277,816 @@ public class FinishAICoachTaskSessionResponse : Tea.TeaModel {
     }
 }
 
+public class GetAICoachScriptRequest : Tea.TeaModel {
+    public var scriptRecordId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.scriptRecordId != nil {
+            map["scriptRecordId"] = self.scriptRecordId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("scriptRecordId") {
+            self.scriptRecordId = dict["scriptRecordId"] as! String
+        }
+    }
+}
+
+public class GetAICoachScriptResponseBody : Tea.TeaModel {
+    public class CompleteStrategy : Tea.TeaModel {
+        public var abnormalQuitSessionExpired: Int32?
+
+        public var abnormalQuitSessionExpiredFlag: Bool?
+
+        public var clickCompleteAutoEnd: Bool?
+
+        public var duration: Int32?
+
+        public var durationFlag: Bool?
+
+        public var fullCoverageAutoEnd: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.abnormalQuitSessionExpired != nil {
+                map["abnormalQuitSessionExpired"] = self.abnormalQuitSessionExpired!
+            }
+            if self.abnormalQuitSessionExpiredFlag != nil {
+                map["abnormalQuitSessionExpiredFlag"] = self.abnormalQuitSessionExpiredFlag!
+            }
+            if self.clickCompleteAutoEnd != nil {
+                map["clickCompleteAutoEnd"] = self.clickCompleteAutoEnd!
+            }
+            if self.duration != nil {
+                map["duration"] = self.duration!
+            }
+            if self.durationFlag != nil {
+                map["durationFlag"] = self.durationFlag!
+            }
+            if self.fullCoverageAutoEnd != nil {
+                map["fullCoverageAutoEnd"] = self.fullCoverageAutoEnd!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("abnormalQuitSessionExpired") {
+                self.abnormalQuitSessionExpired = dict["abnormalQuitSessionExpired"] as! Int32
+            }
+            if dict.keys.contains("abnormalQuitSessionExpiredFlag") {
+                self.abnormalQuitSessionExpiredFlag = dict["abnormalQuitSessionExpiredFlag"] as! Bool
+            }
+            if dict.keys.contains("clickCompleteAutoEnd") {
+                self.clickCompleteAutoEnd = dict["clickCompleteAutoEnd"] as! Bool
+            }
+            if dict.keys.contains("duration") {
+                self.duration = dict["duration"] as! Int32
+            }
+            if dict.keys.contains("durationFlag") {
+                self.durationFlag = dict["durationFlag"] as! Bool
+            }
+            if dict.keys.contains("fullCoverageAutoEnd") {
+                self.fullCoverageAutoEnd = dict["fullCoverageAutoEnd"] as! Bool
+            }
+        }
+    }
+    public class PointDeductionRuleList : Tea.TeaModel {
+        public var description_: String?
+
+        public var punishmentTypes: [String]?
+
+        public var ruleValue: String?
+
+        public var weight: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.description_ != nil {
+                map["description"] = self.description_!
+            }
+            if self.punishmentTypes != nil {
+                map["punishmentTypes"] = self.punishmentTypes!
+            }
+            if self.ruleValue != nil {
+                map["ruleValue"] = self.ruleValue!
+            }
+            if self.weight != nil {
+                map["weight"] = self.weight!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("description") {
+                self.description_ = dict["description"] as! String
+            }
+            if dict.keys.contains("punishmentTypes") {
+                self.punishmentTypes = dict["punishmentTypes"] as! [String]
+            }
+            if dict.keys.contains("ruleValue") {
+                self.ruleValue = dict["ruleValue"] as! String
+            }
+            if dict.keys.contains("weight") {
+                self.weight = dict["weight"] as! Int32
+            }
+        }
+    }
+    public class Points : Tea.TeaModel {
+        public class AnswerList : Tea.TeaModel {
+            public class Parameters : Tea.TeaModel {
+                public var name: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.value != nil {
+                        map["value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("name") {
+                        self.name = dict["name"] as! String
+                    }
+                    if dict.keys.contains("value") {
+                        self.value = dict["value"] as! String
+                    }
+                }
+            }
+            public var name: String?
+
+            public var parameters: [GetAICoachScriptResponseBody.Points.AnswerList.Parameters]?
+
+            public var type: String?
+
+            public var weight: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.parameters != nil {
+                    var tmp : [Any] = []
+                    for k in self.parameters! {
+                        tmp.append(k.toMap())
+                    }
+                    map["parameters"] = tmp
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                if self.weight != nil {
+                    map["weight"] = self.weight!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("name") {
+                    self.name = dict["name"] as! String
+                }
+                if dict.keys.contains("parameters") {
+                    var tmp : [GetAICoachScriptResponseBody.Points.AnswerList.Parameters] = []
+                    for v in dict["parameters"] as! [Any] {
+                        var model = GetAICoachScriptResponseBody.Points.AnswerList.Parameters()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.parameters = tmp
+                }
+                if dict.keys.contains("type") {
+                    self.type = dict["type"] as! String
+                }
+                if dict.keys.contains("weight") {
+                    self.weight = dict["weight"] as! Int32
+                }
+            }
+        }
+        public var answerList: [GetAICoachScriptResponseBody.Points.AnswerList]?
+
+        public var knowledgeList: [String]?
+
+        public var name: String?
+
+        public var questionDescription: String?
+
+        public var sortNo: Int32?
+
+        public var weight: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.answerList != nil {
+                var tmp : [Any] = []
+                for k in self.answerList! {
+                    tmp.append(k.toMap())
+                }
+                map["answerList"] = tmp
+            }
+            if self.knowledgeList != nil {
+                map["knowledgeList"] = self.knowledgeList!
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.questionDescription != nil {
+                map["questionDescription"] = self.questionDescription!
+            }
+            if self.sortNo != nil {
+                map["sortNo"] = self.sortNo!
+            }
+            if self.weight != nil {
+                map["weight"] = self.weight!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("answerList") {
+                var tmp : [GetAICoachScriptResponseBody.Points.AnswerList] = []
+                for v in dict["answerList"] as! [Any] {
+                    var model = GetAICoachScriptResponseBody.Points.AnswerList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.answerList = tmp
+            }
+            if dict.keys.contains("knowledgeList") {
+                self.knowledgeList = dict["knowledgeList"] as! [String]
+            }
+            if dict.keys.contains("name") {
+                self.name = dict["name"] as! String
+            }
+            if dict.keys.contains("questionDescription") {
+                self.questionDescription = dict["questionDescription"] as! String
+            }
+            if dict.keys.contains("sortNo") {
+                self.sortNo = dict["sortNo"] as! Int32
+            }
+            if dict.keys.contains("weight") {
+                self.weight = dict["weight"] as! Int32
+            }
+        }
+    }
+    public class SampleDialogueList : Tea.TeaModel {
+        public var message: String?
+
+        public var role: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.message != nil {
+                map["message"] = self.message!
+            }
+            if self.role != nil {
+                map["role"] = self.role!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("message") {
+                self.message = dict["message"] as! String
+            }
+            if dict.keys.contains("role") {
+                self.role = dict["role"] as! String
+            }
+        }
+    }
+    public class Weights : Tea.TeaModel {
+        public var abilityEvaluation: Int32?
+
+        public var abilityEvaluationEnabled: Bool?
+
+        public var assessmentPoint: Int32?
+
+        public var expressiveness: Int32?
+
+        public var expressivenessEnabled: Bool?
+
+        public var pointDeductionRule: Int32?
+
+        public var pointDeductionRuleEnabled: Bool?
+
+        public var standard: Int32?
+
+        public var standardEnabled: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.abilityEvaluation != nil {
+                map["abilityEvaluation"] = self.abilityEvaluation!
+            }
+            if self.abilityEvaluationEnabled != nil {
+                map["abilityEvaluationEnabled"] = self.abilityEvaluationEnabled!
+            }
+            if self.assessmentPoint != nil {
+                map["assessmentPoint"] = self.assessmentPoint!
+            }
+            if self.expressiveness != nil {
+                map["expressiveness"] = self.expressiveness!
+            }
+            if self.expressivenessEnabled != nil {
+                map["expressivenessEnabled"] = self.expressivenessEnabled!
+            }
+            if self.pointDeductionRule != nil {
+                map["pointDeductionRule"] = self.pointDeductionRule!
+            }
+            if self.pointDeductionRuleEnabled != nil {
+                map["pointDeductionRuleEnabled"] = self.pointDeductionRuleEnabled!
+            }
+            if self.standard != nil {
+                map["standard"] = self.standard!
+            }
+            if self.standardEnabled != nil {
+                map["standardEnabled"] = self.standardEnabled!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("abilityEvaluation") {
+                self.abilityEvaluation = dict["abilityEvaluation"] as! Int32
+            }
+            if dict.keys.contains("abilityEvaluationEnabled") {
+                self.abilityEvaluationEnabled = dict["abilityEvaluationEnabled"] as! Bool
+            }
+            if dict.keys.contains("assessmentPoint") {
+                self.assessmentPoint = dict["assessmentPoint"] as! Int32
+            }
+            if dict.keys.contains("expressiveness") {
+                self.expressiveness = dict["expressiveness"] as! Int32
+            }
+            if dict.keys.contains("expressivenessEnabled") {
+                self.expressivenessEnabled = dict["expressivenessEnabled"] as! Bool
+            }
+            if dict.keys.contains("pointDeductionRule") {
+                self.pointDeductionRule = dict["pointDeductionRule"] as! Int32
+            }
+            if dict.keys.contains("pointDeductionRuleEnabled") {
+                self.pointDeductionRuleEnabled = dict["pointDeductionRuleEnabled"] as! Bool
+            }
+            if dict.keys.contains("standard") {
+                self.standard = dict["standard"] as! Int32
+            }
+            if dict.keys.contains("standardEnabled") {
+                self.standardEnabled = dict["standardEnabled"] as! Bool
+            }
+        }
+    }
+    public var assessmentScope: String?
+
+    public var completeStrategy: GetAICoachScriptResponseBody.CompleteStrategy?
+
+    public var coverUrl: String?
+
+    public var dialogueInputTextLimit: Int32?
+
+    public var dialogueTextFlag: Bool?
+
+    public var dialogueTipFlag: Bool?
+
+    public var dialogueVoiceLimit: Int32?
+
+    public var evaluateReportFlag: Bool?
+
+    public var expressiveness: [String: Int32]?
+
+    public var gmtCreate: String?
+
+    public var gmtModified: String?
+
+    public var initiator: String?
+
+    public var interactionInputTypes: [String]?
+
+    public var interactionType: Int32?
+
+    public var introduce: String?
+
+    public var name: String?
+
+    public var orderAckFlag: Bool?
+
+    public var pointDeductionRuleList: [GetAICoachScriptResponseBody.PointDeductionRuleList]?
+
+    public var points: [GetAICoachScriptResponseBody.Points]?
+
+    public var requestId: String?
+
+    public var sampleDialogueList: [GetAICoachScriptResponseBody.SampleDialogueList]?
+
+    public var scriptRecordId: String?
+
+    public var sparringTipContent: String?
+
+    public var sparringTipTitle: String?
+
+    public var status: Int32?
+
+    public var studentThinkTimeFlag: Bool?
+
+    public var studentThinkTimeLimit: Int32?
+
+    public var type: Int32?
+
+    public var weights: GetAICoachScriptResponseBody.Weights?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.completeStrategy?.validate()
+        try self.weights?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.assessmentScope != nil {
+            map["assessmentScope"] = self.assessmentScope!
+        }
+        if self.completeStrategy != nil {
+            map["completeStrategy"] = self.completeStrategy?.toMap()
+        }
+        if self.coverUrl != nil {
+            map["coverUrl"] = self.coverUrl!
+        }
+        if self.dialogueInputTextLimit != nil {
+            map["dialogueInputTextLimit"] = self.dialogueInputTextLimit!
+        }
+        if self.dialogueTextFlag != nil {
+            map["dialogueTextFlag"] = self.dialogueTextFlag!
+        }
+        if self.dialogueTipFlag != nil {
+            map["dialogueTipFlag"] = self.dialogueTipFlag!
+        }
+        if self.dialogueVoiceLimit != nil {
+            map["dialogueVoiceLimit"] = self.dialogueVoiceLimit!
+        }
+        if self.evaluateReportFlag != nil {
+            map["evaluateReportFlag"] = self.evaluateReportFlag!
+        }
+        if self.expressiveness != nil {
+            map["expressiveness"] = self.expressiveness!
+        }
+        if self.gmtCreate != nil {
+            map["gmtCreate"] = self.gmtCreate!
+        }
+        if self.gmtModified != nil {
+            map["gmtModified"] = self.gmtModified!
+        }
+        if self.initiator != nil {
+            map["initiator"] = self.initiator!
+        }
+        if self.interactionInputTypes != nil {
+            map["interactionInputTypes"] = self.interactionInputTypes!
+        }
+        if self.interactionType != nil {
+            map["interactionType"] = self.interactionType!
+        }
+        if self.introduce != nil {
+            map["introduce"] = self.introduce!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.orderAckFlag != nil {
+            map["orderAckFlag"] = self.orderAckFlag!
+        }
+        if self.pointDeductionRuleList != nil {
+            var tmp : [Any] = []
+            for k in self.pointDeductionRuleList! {
+                tmp.append(k.toMap())
+            }
+            map["pointDeductionRuleList"] = tmp
+        }
+        if self.points != nil {
+            var tmp : [Any] = []
+            for k in self.points! {
+                tmp.append(k.toMap())
+            }
+            map["points"] = tmp
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.sampleDialogueList != nil {
+            var tmp : [Any] = []
+            for k in self.sampleDialogueList! {
+                tmp.append(k.toMap())
+            }
+            map["sampleDialogueList"] = tmp
+        }
+        if self.scriptRecordId != nil {
+            map["scriptRecordId"] = self.scriptRecordId!
+        }
+        if self.sparringTipContent != nil {
+            map["sparringTipContent"] = self.sparringTipContent!
+        }
+        if self.sparringTipTitle != nil {
+            map["sparringTipTitle"] = self.sparringTipTitle!
+        }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
+        if self.studentThinkTimeFlag != nil {
+            map["studentThinkTimeFlag"] = self.studentThinkTimeFlag!
+        }
+        if self.studentThinkTimeLimit != nil {
+            map["studentThinkTimeLimit"] = self.studentThinkTimeLimit!
+        }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
+        if self.weights != nil {
+            map["weights"] = self.weights?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("assessmentScope") {
+            self.assessmentScope = dict["assessmentScope"] as! String
+        }
+        if dict.keys.contains("completeStrategy") {
+            var model = GetAICoachScriptResponseBody.CompleteStrategy()
+            model.fromMap(dict["completeStrategy"] as! [String: Any])
+            self.completeStrategy = model
+        }
+        if dict.keys.contains("coverUrl") {
+            self.coverUrl = dict["coverUrl"] as! String
+        }
+        if dict.keys.contains("dialogueInputTextLimit") {
+            self.dialogueInputTextLimit = dict["dialogueInputTextLimit"] as! Int32
+        }
+        if dict.keys.contains("dialogueTextFlag") {
+            self.dialogueTextFlag = dict["dialogueTextFlag"] as! Bool
+        }
+        if dict.keys.contains("dialogueTipFlag") {
+            self.dialogueTipFlag = dict["dialogueTipFlag"] as! Bool
+        }
+        if dict.keys.contains("dialogueVoiceLimit") {
+            self.dialogueVoiceLimit = dict["dialogueVoiceLimit"] as! Int32
+        }
+        if dict.keys.contains("evaluateReportFlag") {
+            self.evaluateReportFlag = dict["evaluateReportFlag"] as! Bool
+        }
+        if dict.keys.contains("expressiveness") {
+            self.expressiveness = dict["expressiveness"] as! [String: Int32]
+        }
+        if dict.keys.contains("gmtCreate") {
+            self.gmtCreate = dict["gmtCreate"] as! String
+        }
+        if dict.keys.contains("gmtModified") {
+            self.gmtModified = dict["gmtModified"] as! String
+        }
+        if dict.keys.contains("initiator") {
+            self.initiator = dict["initiator"] as! String
+        }
+        if dict.keys.contains("interactionInputTypes") {
+            self.interactionInputTypes = dict["interactionInputTypes"] as! [String]
+        }
+        if dict.keys.contains("interactionType") {
+            self.interactionType = dict["interactionType"] as! Int32
+        }
+        if dict.keys.contains("introduce") {
+            self.introduce = dict["introduce"] as! String
+        }
+        if dict.keys.contains("name") {
+            self.name = dict["name"] as! String
+        }
+        if dict.keys.contains("orderAckFlag") {
+            self.orderAckFlag = dict["orderAckFlag"] as! Bool
+        }
+        if dict.keys.contains("pointDeductionRuleList") {
+            var tmp : [GetAICoachScriptResponseBody.PointDeductionRuleList] = []
+            for v in dict["pointDeductionRuleList"] as! [Any] {
+                var model = GetAICoachScriptResponseBody.PointDeductionRuleList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.pointDeductionRuleList = tmp
+        }
+        if dict.keys.contains("points") {
+            var tmp : [GetAICoachScriptResponseBody.Points] = []
+            for v in dict["points"] as! [Any] {
+                var model = GetAICoachScriptResponseBody.Points()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.points = tmp
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("sampleDialogueList") {
+            var tmp : [GetAICoachScriptResponseBody.SampleDialogueList] = []
+            for v in dict["sampleDialogueList"] as! [Any] {
+                var model = GetAICoachScriptResponseBody.SampleDialogueList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.sampleDialogueList = tmp
+        }
+        if dict.keys.contains("scriptRecordId") {
+            self.scriptRecordId = dict["scriptRecordId"] as! String
+        }
+        if dict.keys.contains("sparringTipContent") {
+            self.sparringTipContent = dict["sparringTipContent"] as! String
+        }
+        if dict.keys.contains("sparringTipTitle") {
+            self.sparringTipTitle = dict["sparringTipTitle"] as! String
+        }
+        if dict.keys.contains("status") {
+            self.status = dict["status"] as! Int32
+        }
+        if dict.keys.contains("studentThinkTimeFlag") {
+            self.studentThinkTimeFlag = dict["studentThinkTimeFlag"] as! Bool
+        }
+        if dict.keys.contains("studentThinkTimeLimit") {
+            self.studentThinkTimeLimit = dict["studentThinkTimeLimit"] as! Int32
+        }
+        if dict.keys.contains("type") {
+            self.type = dict["type"] as! Int32
+        }
+        if dict.keys.contains("weights") {
+            var model = GetAICoachScriptResponseBody.Weights()
+            model.fromMap(dict["weights"] as! [String: Any])
+            self.weights = model
+        }
+    }
+}
+
+public class GetAICoachScriptResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetAICoachScriptResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetAICoachScriptResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class GetAICoachTaskSessionHistoryRequest : Tea.TeaModel {
     public var pageNumber: Int32?
 
@@ -4303,6 +5209,8 @@ public class GetAICoachTaskSessionHistoryResponseBody : Tea.TeaModel {
 
     public var endTime: String?
 
+    public var pauseDuration: Int64?
+
     public var requestId: String?
 
     public var scriptName: String?
@@ -4342,6 +5250,9 @@ public class GetAICoachTaskSessionHistoryResponseBody : Tea.TeaModel {
         if self.endTime != nil {
             map["endTime"] = self.endTime!
         }
+        if self.pauseDuration != nil {
+            map["pauseDuration"] = self.pauseDuration!
+        }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
@@ -4380,6 +5291,9 @@ public class GetAICoachTaskSessionHistoryResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("endTime") {
             self.endTime = dict["endTime"] as! String
+        }
+        if dict.keys.contains("pauseDuration") {
+            self.pauseDuration = dict["pauseDuration"] as! Int64
         }
         if dict.keys.contains("requestId") {
             self.requestId = dict["requestId"] as! String
@@ -9336,6 +10250,8 @@ public class SelectResourceResponse : Tea.TeaModel {
 public class SendSdkMessageRequest : Tea.TeaModel {
     public var data: String?
 
+    public var header: String?
+
     public var moduleName: String?
 
     public var operationName: String?
@@ -9359,6 +10275,9 @@ public class SendSdkMessageRequest : Tea.TeaModel {
         if self.data != nil {
             map["data"] = self.data!
         }
+        if self.header != nil {
+            map["header"] = self.header!
+        }
         if self.moduleName != nil {
             map["moduleName"] = self.moduleName!
         }
@@ -9374,6 +10293,9 @@ public class SendSdkMessageRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("data") {
             self.data = dict["data"] as! String
+        }
+        if dict.keys.contains("header") {
+            self.header = dict["header"] as! String
         }
         if dict.keys.contains("moduleName") {
             self.moduleName = dict["moduleName"] as! String
