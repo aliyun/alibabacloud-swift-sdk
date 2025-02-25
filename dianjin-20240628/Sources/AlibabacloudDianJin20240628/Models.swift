@@ -9999,9 +9999,13 @@ public class RealTimeDialogRequest : Tea.TeaModel {
 
     public var recommend: Bool?
 
+    public var scriptContentPlayed: String?
+
     public var sessionId: String?
 
     public var stream: Bool?
+
+    public var userVad: Bool?
 
     public override init() {
         super.init()
@@ -10039,11 +10043,17 @@ public class RealTimeDialogRequest : Tea.TeaModel {
         if self.recommend != nil {
             map["recommend"] = self.recommend!
         }
+        if self.scriptContentPlayed != nil {
+            map["scriptContentPlayed"] = self.scriptContentPlayed!
+        }
         if self.sessionId != nil {
             map["sessionId"] = self.sessionId!
         }
         if self.stream != nil {
             map["stream"] = self.stream!
+        }
+        if self.userVad != nil {
+            map["userVad"] = self.userVad!
         }
         return map
     }
@@ -10075,11 +10085,17 @@ public class RealTimeDialogRequest : Tea.TeaModel {
         if dict.keys.contains("recommend") {
             self.recommend = dict["recommend"] as! Bool
         }
+        if dict.keys.contains("scriptContentPlayed") {
+            self.scriptContentPlayed = dict["scriptContentPlayed"] as! String
+        }
         if dict.keys.contains("sessionId") {
             self.sessionId = dict["sessionId"] as! String
         }
         if dict.keys.contains("stream") {
             self.stream = dict["stream"] as! Bool
+        }
+        if dict.keys.contains("userVad") {
+            self.userVad = dict["userVad"] as! Bool
         }
     }
 }
@@ -10098,6 +10114,8 @@ public class RealTimeDialogResponseBody : Tea.TeaModel {
             public var intentionName: String?
 
             public var intentionScript: String?
+
+            public var interrupt: Bool?
 
             public var recommendIntention: String?
 
@@ -10139,6 +10157,9 @@ public class RealTimeDialogResponseBody : Tea.TeaModel {
                 if self.intentionScript != nil {
                     map["intentionScript"] = self.intentionScript!
                 }
+                if self.interrupt != nil {
+                    map["interrupt"] = self.interrupt!
+                }
                 if self.recommendIntention != nil {
                     map["recommendIntention"] = self.recommendIntention!
                 }
@@ -10172,6 +10193,9 @@ public class RealTimeDialogResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("intentionScript") {
                     self.intentionScript = dict["intentionScript"] as! String
+                }
+                if dict.keys.contains("interrupt") {
+                    self.interrupt = dict["interrupt"] as! Bool
                 }
                 if dict.keys.contains("recommendIntention") {
                     self.recommendIntention = dict["recommendIntention"] as! String
@@ -10200,6 +10224,8 @@ public class RealTimeDialogResponseBody : Tea.TeaModel {
 
             public var intentionScript: String?
 
+            public var interrupt: Bool?
+
             public var recommendIntention: String?
 
             public var recommendScript: String?
@@ -10240,6 +10266,9 @@ public class RealTimeDialogResponseBody : Tea.TeaModel {
                 if self.intentionScript != nil {
                     map["intentionScript"] = self.intentionScript!
                 }
+                if self.interrupt != nil {
+                    map["interrupt"] = self.interrupt!
+                }
                 if self.recommendIntention != nil {
                     map["recommendIntention"] = self.recommendIntention!
                 }
@@ -10273,6 +10302,9 @@ public class RealTimeDialogResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("intentionScript") {
                     self.intentionScript = dict["intentionScript"] as! String
+                }
+                if dict.keys.contains("interrupt") {
+                    self.interrupt = dict["interrupt"] as! Bool
                 }
                 if dict.keys.contains("recommendIntention") {
                     self.recommendIntention = dict["recommendIntention"] as! String

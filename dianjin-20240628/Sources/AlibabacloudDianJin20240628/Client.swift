@@ -1411,11 +1411,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.recommend)) {
             body["recommend"] = request.recommend!;
         }
+        if (!TeaUtils.Client.isUnset(request.scriptContentPlayed)) {
+            body["scriptContentPlayed"] = request.scriptContentPlayed ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.sessionId)) {
             body["sessionId"] = request.sessionId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.stream)) {
             body["stream"] = request.stream!;
+        }
+        if (!TeaUtils.Client.isUnset(request.userVad)) {
+            body["userVad"] = request.userVad!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
