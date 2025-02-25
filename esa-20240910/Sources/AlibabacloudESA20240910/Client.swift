@@ -9191,6 +9191,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func purchaseRatePlanWithOptions(_ request: PurchaseRatePlanRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PurchaseRatePlanResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.amount)) {
+            query["Amount"] = request.amount!;
+        }
         if (!TeaUtils.Client.isUnset(request.autoPay)) {
             query["AutoPay"] = request.autoPay!;
         }

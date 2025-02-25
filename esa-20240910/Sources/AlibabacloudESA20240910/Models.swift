@@ -37115,9 +37115,11 @@ public class ListCacheReserveInstancesRequest : Tea.TeaModel {
 
 public class ListCacheReserveInstancesResponseBody : Tea.TeaModel {
     public class InstanceInfo : Tea.TeaModel {
-        public var cacheReserveCapacity: String?
+        public var cacheReserveCapacity: Int64?
 
         public var cacheReserveRegion: String?
+
+        public var chargeType: String?
 
         public var createTime: String?
 
@@ -37149,6 +37151,9 @@ public class ListCacheReserveInstancesResponseBody : Tea.TeaModel {
             if self.cacheReserveRegion != nil {
                 map["CacheReserveRegion"] = self.cacheReserveRegion!
             }
+            if self.chargeType != nil {
+                map["ChargeType"] = self.chargeType!
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -37169,10 +37174,13 @@ public class ListCacheReserveInstancesResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("CacheReserveCapacity") {
-                self.cacheReserveCapacity = dict["CacheReserveCapacity"] as! String
+                self.cacheReserveCapacity = dict["CacheReserveCapacity"] as! Int64
             }
             if dict.keys.contains("CacheReserveRegion") {
                 self.cacheReserveRegion = dict["CacheReserveRegion"] as! String
+            }
+            if dict.keys.contains("ChargeType") {
+                self.chargeType = dict["ChargeType"] as! String
             }
             if dict.keys.contains("CreateTime") {
                 self.createTime = dict["CreateTime"] as! String
@@ -53749,6 +53757,8 @@ public class PublishRoutineCodeVersionResponse : Tea.TeaModel {
 }
 
 public class PurchaseRatePlanRequest : Tea.TeaModel {
+    public var amount: Int32?
+
     public var autoPay: Bool?
 
     public var autoRenew: Bool?
@@ -53781,6 +53791,9 @@ public class PurchaseRatePlanRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.amount != nil {
+            map["Amount"] = self.amount!
+        }
         if self.autoPay != nil {
             map["AutoPay"] = self.autoPay!
         }
@@ -53812,6 +53825,9 @@ public class PurchaseRatePlanRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Amount") {
+            self.amount = dict["Amount"] as! Int32
+        }
         if dict.keys.contains("AutoPay") {
             self.autoPay = dict["AutoPay"] as! Bool
         }
