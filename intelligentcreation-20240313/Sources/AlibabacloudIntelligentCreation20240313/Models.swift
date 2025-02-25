@@ -4539,6 +4539,8 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
 
         public var name: String?
 
+        public var pointId: String?
+
         public var questionDescription: String?
 
         public var sortNo: Int32?
@@ -4572,6 +4574,9 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
             if self.name != nil {
                 map["name"] = self.name!
             }
+            if self.pointId != nil {
+                map["pointId"] = self.pointId!
+            }
             if self.questionDescription != nil {
                 map["questionDescription"] = self.questionDescription!
             }
@@ -4601,6 +4606,9 @@ public class GetAICoachScriptResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("name") {
                 self.name = dict["name"] as! String
+            }
+            if dict.keys.contains("pointId") {
+                self.pointId = dict["pointId"] as! String
             }
             if dict.keys.contains("questionDescription") {
                 self.questionDescription = dict["questionDescription"] as! String
