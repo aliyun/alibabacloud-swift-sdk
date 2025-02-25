@@ -1413,6 +1413,8 @@ public class CreateTaskRequest : Tea.TeaModel {
             }
         }
     }
+    public var customPrompt: String?
+
     public var dialogue: CreateTaskRequest.Dialogue?
 
     public var examples: CreateTaskRequest.Examples?
@@ -1449,6 +1451,9 @@ public class CreateTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.customPrompt != nil {
+            map["customPrompt"] = self.customPrompt!
+        }
         if self.dialogue != nil {
             map["dialogue"] = self.dialogue?.toMap()
         }
@@ -1484,6 +1489,9 @@ public class CreateTaskRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("customPrompt") {
+            self.customPrompt = dict["customPrompt"] as! String
+        }
         if dict.keys.contains("dialogue") {
             var model = CreateTaskRequest.Dialogue()
             model.fromMap(dict["dialogue"] as! [String: Any])

@@ -147,6 +147,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createTaskWithOptions(_ workspaceId: String, _ appId: String, _ request: CreateTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.customPrompt)) {
+            body["customPrompt"] = request.customPrompt ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dialogue)) {
             body["dialogue"] = request.dialogue!;
         }
