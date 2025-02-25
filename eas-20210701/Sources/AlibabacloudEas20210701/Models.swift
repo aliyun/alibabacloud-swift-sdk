@@ -7482,6 +7482,331 @@ public class DescribeGroupEndpointsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeMachineSpecRequest : Tea.TeaModel {
+    public var instanceTypes: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceTypes != nil {
+            map["InstanceTypes"] = self.instanceTypes!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceTypes") {
+            self.instanceTypes = dict["InstanceTypes"] as! [String]
+        }
+    }
+}
+
+public class DescribeMachineSpecShrinkRequest : Tea.TeaModel {
+    public var instanceTypesShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceTypesShrink != nil {
+            map["InstanceTypes"] = self.instanceTypesShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceTypes") {
+            self.instanceTypesShrink = dict["InstanceTypes"] as! String
+        }
+    }
+}
+
+public class DescribeMachineSpecResponseBody : Tea.TeaModel {
+    public class InstanceMetas : Tea.TeaModel {
+        public var CPU: Int32?
+
+        public var GPU: String?
+
+        public var GPUAmount: Int32?
+
+        public var GPUMemory: Double?
+
+        public var instanceType: String?
+
+        public var isAvailable: Bool?
+
+        public var memory: Double?
+
+        public var nonProtectSpotDiscount: Double?
+
+        public var spotDiscount: Double?
+
+        public var stockStatus: String?
+
+        public var vendor: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.CPU != nil {
+                map["CPU"] = self.CPU!
+            }
+            if self.GPU != nil {
+                map["GPU"] = self.GPU!
+            }
+            if self.GPUAmount != nil {
+                map["GPUAmount"] = self.GPUAmount!
+            }
+            if self.GPUMemory != nil {
+                map["GPUMemory"] = self.GPUMemory!
+            }
+            if self.instanceType != nil {
+                map["InstanceType"] = self.instanceType!
+            }
+            if self.isAvailable != nil {
+                map["IsAvailable"] = self.isAvailable!
+            }
+            if self.memory != nil {
+                map["Memory"] = self.memory!
+            }
+            if self.nonProtectSpotDiscount != nil {
+                map["NonProtectSpotDiscount"] = self.nonProtectSpotDiscount!
+            }
+            if self.spotDiscount != nil {
+                map["SpotDiscount"] = self.spotDiscount!
+            }
+            if self.stockStatus != nil {
+                map["StockStatus"] = self.stockStatus!
+            }
+            if self.vendor != nil {
+                map["Vendor"] = self.vendor!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CPU") {
+                self.CPU = dict["CPU"] as! Int32
+            }
+            if dict.keys.contains("GPU") {
+                self.GPU = dict["GPU"] as! String
+            }
+            if dict.keys.contains("GPUAmount") {
+                self.GPUAmount = dict["GPUAmount"] as! Int32
+            }
+            if dict.keys.contains("GPUMemory") {
+                self.GPUMemory = dict["GPUMemory"] as! Double
+            }
+            if dict.keys.contains("InstanceType") {
+                self.instanceType = dict["InstanceType"] as! String
+            }
+            if dict.keys.contains("IsAvailable") {
+                self.isAvailable = dict["IsAvailable"] as! Bool
+            }
+            if dict.keys.contains("Memory") {
+                self.memory = dict["Memory"] as! Double
+            }
+            if dict.keys.contains("NonProtectSpotDiscount") {
+                self.nonProtectSpotDiscount = dict["NonProtectSpotDiscount"] as! Double
+            }
+            if dict.keys.contains("SpotDiscount") {
+                self.spotDiscount = dict["SpotDiscount"] as! Double
+            }
+            if dict.keys.contains("StockStatus") {
+                self.stockStatus = dict["StockStatus"] as! String
+            }
+            if dict.keys.contains("Vendor") {
+                self.vendor = dict["Vendor"] as! String
+            }
+        }
+    }
+    public class Types : Tea.TeaModel {
+        public var CPU: Int32?
+
+        public var memory: [Int32]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.CPU != nil {
+                map["CPU"] = self.CPU!
+            }
+            if self.memory != nil {
+                map["Memory"] = self.memory!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CPU") {
+                self.CPU = dict["CPU"] as! Int32
+            }
+            if dict.keys.contains("Memory") {
+                self.memory = dict["Memory"] as! [Int32]
+            }
+        }
+    }
+    public var instanceMetas: [DescribeMachineSpecResponseBody.InstanceMetas]?
+
+    public var requestId: String?
+
+    public var types: [DescribeMachineSpecResponseBody.Types]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceMetas != nil {
+            var tmp : [Any] = []
+            for k in self.instanceMetas! {
+                tmp.append(k.toMap())
+            }
+            map["InstanceMetas"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.types != nil {
+            var tmp : [Any] = []
+            for k in self.types! {
+                tmp.append(k.toMap())
+            }
+            map["Types"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceMetas") {
+            var tmp : [DescribeMachineSpecResponseBody.InstanceMetas] = []
+            for v in dict["InstanceMetas"] as! [Any] {
+                var model = DescribeMachineSpecResponseBody.InstanceMetas()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.instanceMetas = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Types") {
+            var tmp : [DescribeMachineSpecResponseBody.Types] = []
+            for v in dict["Types"] as! [Any] {
+                var model = DescribeMachineSpecResponseBody.Types()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.types = tmp
+        }
+    }
+}
+
+public class DescribeMachineSpecResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeMachineSpecResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeMachineSpecResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeResourceResponseBody : Tea.TeaModel {
     public var clusterId: String?
 
