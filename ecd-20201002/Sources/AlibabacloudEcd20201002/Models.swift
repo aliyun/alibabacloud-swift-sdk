@@ -88,6 +88,8 @@ public class ApproveFotaUpdateRequest : Tea.TeaModel {
 
     public var sessionId: String?
 
+    public var targetStatus: String?
+
     public var uuid: String?
 
     public override init() {
@@ -122,6 +124,9 @@ public class ApproveFotaUpdateRequest : Tea.TeaModel {
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
         }
+        if self.targetStatus != nil {
+            map["TargetStatus"] = self.targetStatus!
+        }
         if self.uuid != nil {
             map["Uuid"] = self.uuid!
         }
@@ -146,6 +151,9 @@ public class ApproveFotaUpdateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SessionId") {
             self.sessionId = dict["SessionId"] as! String
+        }
+        if dict.keys.contains("TargetStatus") {
+            self.targetStatus = dict["TargetStatus"] as! String
         }
         if dict.keys.contains("Uuid") {
             self.uuid = dict["Uuid"] as! String
@@ -3254,6 +3262,124 @@ public class DescribeUserResourcesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class OsUpdate : Tea.TeaModel {
+            public class Packages : Tea.TeaModel {
+                public var description_: String?
+
+                public var kb: String?
+
+                public var title: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
+                    if self.kb != nil {
+                        map["Kb"] = self.kb!
+                    }
+                    if self.title != nil {
+                        map["Title"] = self.title!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Description") {
+                        self.description_ = dict["Description"] as! String
+                    }
+                    if dict.keys.contains("Kb") {
+                        self.kb = dict["Kb"] as! String
+                    }
+                    if dict.keys.contains("Title") {
+                        self.title = dict["Title"] as! String
+                    }
+                }
+            }
+            public var checkId: String?
+
+            public var kbListString: String?
+
+            public var packageCount: Int32?
+
+            public var packages: [DescribeUserResourcesResponseBody.Resources.OsUpdate.Packages]?
+
+            public var updateCatalogUrl: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.checkId != nil {
+                    map["CheckId"] = self.checkId!
+                }
+                if self.kbListString != nil {
+                    map["KbListString"] = self.kbListString!
+                }
+                if self.packageCount != nil {
+                    map["PackageCount"] = self.packageCount!
+                }
+                if self.packages != nil {
+                    var tmp : [Any] = []
+                    for k in self.packages! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Packages"] = tmp
+                }
+                if self.updateCatalogUrl != nil {
+                    map["UpdateCatalogUrl"] = self.updateCatalogUrl!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CheckId") {
+                    self.checkId = dict["CheckId"] as! String
+                }
+                if dict.keys.contains("KbListString") {
+                    self.kbListString = dict["KbListString"] as! String
+                }
+                if dict.keys.contains("PackageCount") {
+                    self.packageCount = dict["PackageCount"] as! Int32
+                }
+                if dict.keys.contains("Packages") {
+                    var tmp : [DescribeUserResourcesResponseBody.Resources.OsUpdate.Packages] = []
+                    for v in dict["Packages"] as! [Any] {
+                        var model = DescribeUserResourcesResponseBody.Resources.OsUpdate.Packages()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.packages = tmp
+                }
+                if dict.keys.contains("UpdateCatalogUrl") {
+                    self.updateCatalogUrl = dict["UpdateCatalogUrl"] as! String
+                }
+            }
+        }
         public class Sessions : Tea.TeaModel {
             public var resourceSessionStartTime: String?
 
@@ -3337,6 +3463,8 @@ public class DescribeUserResourcesResponseBody : Tea.TeaModel {
 
         public var globalStatus: Bool?
 
+        public var hasUpgrade: Bool?
+
         public var hibernationBeta: Bool?
 
         public var icon: String?
@@ -3356,6 +3484,8 @@ public class DescribeUserResourcesResponseBody : Tea.TeaModel {
         public var osDescription: String?
 
         public var osType: String?
+
+        public var osUpdate: DescribeUserResourcesResponseBody.Resources.OsUpdate?
 
         public var productType: String?
 
@@ -3408,6 +3538,7 @@ public class DescribeUserResourcesResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.fotaUpdate?.validate()
+            try self.osUpdate?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -3481,6 +3612,9 @@ public class DescribeUserResourcesResponseBody : Tea.TeaModel {
             if self.globalStatus != nil {
                 map["GlobalStatus"] = self.globalStatus!
             }
+            if self.hasUpgrade != nil {
+                map["HasUpgrade"] = self.hasUpgrade!
+            }
             if self.hibernationBeta != nil {
                 map["HibernationBeta"] = self.hibernationBeta!
             }
@@ -3510,6 +3644,9 @@ public class DescribeUserResourcesResponseBody : Tea.TeaModel {
             }
             if self.osType != nil {
                 map["OsType"] = self.osType!
+            }
+            if self.osUpdate != nil {
+                map["OsUpdate"] = self.osUpdate?.toMap()
             }
             if self.productType != nil {
                 map["ProductType"] = self.productType!
@@ -3662,6 +3799,9 @@ public class DescribeUserResourcesResponseBody : Tea.TeaModel {
             if dict.keys.contains("GlobalStatus") {
                 self.globalStatus = dict["GlobalStatus"] as! Bool
             }
+            if dict.keys.contains("HasUpgrade") {
+                self.hasUpgrade = dict["HasUpgrade"] as! Bool
+            }
             if dict.keys.contains("HibernationBeta") {
                 self.hibernationBeta = dict["HibernationBeta"] as! Bool
             }
@@ -3691,6 +3831,11 @@ public class DescribeUserResourcesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("OsType") {
                 self.osType = dict["OsType"] as! String
+            }
+            if dict.keys.contains("OsUpdate") {
+                var model = DescribeUserResourcesResponseBody.Resources.OsUpdate()
+                model.fromMap(dict["OsUpdate"] as! [String: Any])
+                self.osUpdate = model
             }
             if dict.keys.contains("ProductType") {
                 self.productType = dict["ProductType"] as! String

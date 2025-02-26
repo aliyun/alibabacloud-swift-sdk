@@ -46,6 +46,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.sessionId)) {
             query["SessionId"] = request.sessionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.targetStatus)) {
+            query["TargetStatus"] = request.targetStatus ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.uuid)) {
             query["Uuid"] = request.uuid ?? "";
         }
