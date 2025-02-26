@@ -10853,6 +10853,8 @@ public class CreateDifyInstanceRequest : Tea.TeaModel {
 
     public var dryRun: Bool?
 
+    public var gpuNodeSpec: String?
+
     public var kvStoreAccount: String?
 
     public var kvStoreEngineVersion: String?
@@ -10868,6 +10870,10 @@ public class CreateDifyInstanceRequest : Tea.TeaModel {
     public var kvStoreResourceId: Int32?
 
     public var kvStoreType: String?
+
+    public var modelId: String?
+
+    public var modelOption: String?
 
     public var ossPath: String?
 
@@ -10981,6 +10987,9 @@ public class CreateDifyInstanceRequest : Tea.TeaModel {
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
+        if self.gpuNodeSpec != nil {
+            map["GpuNodeSpec"] = self.gpuNodeSpec!
+        }
         if self.kvStoreAccount != nil {
             map["KvStoreAccount"] = self.kvStoreAccount!
         }
@@ -11004,6 +11013,12 @@ public class CreateDifyInstanceRequest : Tea.TeaModel {
         }
         if self.kvStoreType != nil {
             map["KvStoreType"] = self.kvStoreType!
+        }
+        if self.modelId != nil {
+            map["ModelId"] = self.modelId!
+        }
+        if self.modelOption != nil {
+            map["ModelOption"] = self.modelOption!
         }
         if self.ossPath != nil {
             map["OssPath"] = self.ossPath!
@@ -11135,6 +11150,9 @@ public class CreateDifyInstanceRequest : Tea.TeaModel {
         if dict.keys.contains("DryRun") {
             self.dryRun = dict["DryRun"] as! Bool
         }
+        if dict.keys.contains("GpuNodeSpec") {
+            self.gpuNodeSpec = dict["GpuNodeSpec"] as! String
+        }
         if dict.keys.contains("KvStoreAccount") {
             self.kvStoreAccount = dict["KvStoreAccount"] as! String
         }
@@ -11158,6 +11176,12 @@ public class CreateDifyInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("KvStoreType") {
             self.kvStoreType = dict["KvStoreType"] as! String
+        }
+        if dict.keys.contains("ModelId") {
+            self.modelId = dict["ModelId"] as! String
+        }
+        if dict.keys.contains("ModelOption") {
+            self.modelOption = dict["ModelOption"] as! String
         }
         if dict.keys.contains("OssPath") {
             self.ossPath = dict["OssPath"] as! String
@@ -72340,6 +72364,147 @@ public class UpdateTaskContentResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = UpdateTaskContentResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateTaskContentV2Request : Tea.TeaModel {
+    public var nodeContent: String?
+
+    public var nodeId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.nodeContent != nil {
+            map["NodeContent"] = self.nodeContent!
+        }
+        if self.nodeId != nil {
+            map["NodeId"] = self.nodeId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("NodeContent") {
+            self.nodeContent = dict["NodeContent"] as! String
+        }
+        if dict.keys.contains("NodeId") {
+            self.nodeId = dict["NodeId"] as! String
+        }
+    }
+}
+
+public class UpdateTaskContentV2ResponseBody : Tea.TeaModel {
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! String
+        }
+    }
+}
+
+public class UpdateTaskContentV2Response : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateTaskContentV2ResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateTaskContentV2ResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

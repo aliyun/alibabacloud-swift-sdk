@@ -1831,6 +1831,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
         }
+        if (!TeaUtils.Client.isUnset(request.gpuNodeSpec)) {
+            query["GpuNodeSpec"] = request.gpuNodeSpec ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.kvStoreAccount)) {
             query["KvStoreAccount"] = request.kvStoreAccount ?? "";
         }
@@ -1854,6 +1857,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.kvStoreType)) {
             query["KvStoreType"] = request.kvStoreType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelId)) {
+            query["ModelId"] = request.modelId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelOption)) {
+            query["ModelOption"] = request.modelOption ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ossPath)) {
             query["OssPath"] = request.ossPath ?? "";
@@ -12848,6 +12857,48 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateTaskContent(_ request: UpdateTaskContentRequest) async throws -> UpdateTaskContentResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateTaskContentWithOptions(request as! UpdateTaskContentRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateTaskContentV2WithOptions(_ request: UpdateTaskContentV2Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateTaskContentV2Response {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.nodeId)) {
+            query["NodeId"] = request.nodeId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.nodeContent)) {
+            body["NodeContent"] = request.nodeContent ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateTaskContentV2",
+            "version": "2018-11-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(UpdateTaskContentV2Response(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(UpdateTaskContentV2Response(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateTaskContentV2(_ request: UpdateTaskContentV2Request) async throws -> UpdateTaskContentV2Response {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateTaskContentV2WithOptions(request as! UpdateTaskContentV2Request, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
