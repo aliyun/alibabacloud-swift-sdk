@@ -868,6 +868,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func runDataAnalysisWithOptions(_ workspaceId: String, _ request: RunDataAnalysisRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RunDataAnalysisResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentCtrlParams)) {
+            body["agentCtrlParams"] = request.agentCtrlParams!;
+        }
         if (!TeaUtils.Client.isUnset(request.dataRole)) {
             body["dataRole"] = request.dataRole ?? [];
         }

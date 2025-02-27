@@ -2824,6 +2824,8 @@ public class ResyncTableResponse : Tea.TeaModel {
 }
 
 public class RunDataAnalysisRequest : Tea.TeaModel {
+    public var agentCtrlParams: Any?
+
     public var dataRole: [String]?
 
     public var generateSqlOnly: Bool?
@@ -2850,6 +2852,9 @@ public class RunDataAnalysisRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.agentCtrlParams != nil {
+            map["agentCtrlParams"] = self.agentCtrlParams!
+        }
         if self.dataRole != nil {
             map["dataRole"] = self.dataRole!
         }
@@ -2872,6 +2877,9 @@ public class RunDataAnalysisRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("agentCtrlParams") {
+            self.agentCtrlParams = dict["agentCtrlParams"] as! Any
+        }
         if dict.keys.contains("dataRole") {
             self.dataRole = dict["dataRole"] as! [String]
         }
