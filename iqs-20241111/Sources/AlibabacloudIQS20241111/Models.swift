@@ -1057,6 +1057,8 @@ public class AiSearchResponse : Tea.TeaModel {
 }
 
 public class GenericAdvancedSearchRequest : Tea.TeaModel {
+    public var industry: String?
+
     public var query: String?
 
     public var sessionId: String?
@@ -1077,6 +1079,9 @@ public class GenericAdvancedSearchRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.industry != nil {
+            map["industry"] = self.industry!
+        }
         if self.query != nil {
             map["query"] = self.query!
         }
@@ -1090,6 +1095,9 @@ public class GenericAdvancedSearchRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("industry") {
+            self.industry = dict["industry"] as! String
+        }
         if dict.keys.contains("query") {
             self.query = dict["query"] as! String
         }

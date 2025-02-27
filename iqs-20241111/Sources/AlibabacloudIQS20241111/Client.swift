@@ -78,6 +78,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func genericAdvancedSearchWithOptions(_ request: GenericAdvancedSearchRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GenericAdvancedSearchResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.industry)) {
+            query["industry"] = request.industry ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.query)) {
             query["query"] = request.query ?? "";
         }
