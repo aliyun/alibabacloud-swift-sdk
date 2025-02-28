@@ -1701,6 +1701,100 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class ComplianceList : Tea.TeaModel {
+            public class Rules : Tea.TeaModel {
+                public var ruleDetail: String?
+
+                public var ruleId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.ruleDetail != nil {
+                        map["ruleDetail"] = self.ruleDetail!
+                    }
+                    if self.ruleId != nil {
+                        map["ruleId"] = self.ruleId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ruleDetail") {
+                        self.ruleDetail = dict["ruleDetail"] as! String
+                    }
+                    if dict.keys.contains("ruleId") {
+                        self.ruleId = dict["ruleId"] as! String
+                    }
+                }
+            }
+            public var resourceCode: String?
+
+            public var resourceName: String?
+
+            public var rules: [GetApplicationResponseBody.Data.ComplianceList.Rules]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.resourceCode != nil {
+                    map["ResourceCode"] = self.resourceCode!
+                }
+                if self.resourceName != nil {
+                    map["ResourceName"] = self.resourceName!
+                }
+                if self.rules != nil {
+                    var tmp : [Any] = []
+                    for k in self.rules! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Rules"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ResourceCode") {
+                    self.resourceCode = dict["ResourceCode"] as! String
+                }
+                if dict.keys.contains("ResourceName") {
+                    self.resourceName = dict["ResourceName"] as! String
+                }
+                if dict.keys.contains("Rules") {
+                    var tmp : [GetApplicationResponseBody.Data.ComplianceList.Rules] = []
+                    for v in dict["Rules"] as! [Any] {
+                        var model = GetApplicationResponseBody.Data.ComplianceList.Rules()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.rules = tmp
+                }
+            }
+        }
         public class PriceList : Tea.TeaModel {
             public var chargeType: String?
 
@@ -1931,6 +2025,8 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
         public var checklist: [GetApplicationResponseBody.Data.Checklist]?
 
+        public var complianceList: [GetApplicationResponseBody.Data.ComplianceList]?
+
         public var createTime: String?
 
         public var deployPercent: Double?
@@ -1976,6 +2072,13 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Checklist"] = tmp
+            }
+            if self.complianceList != nil {
+                var tmp : [Any] = []
+                for k in self.complianceList! {
+                    tmp.append(k.toMap())
+                }
+                map["ComplianceList"] = tmp
             }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
@@ -2035,6 +2138,17 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.checklist = tmp
+            }
+            if dict.keys.contains("ComplianceList") {
+                var tmp : [GetApplicationResponseBody.Data.ComplianceList] = []
+                for v in dict["ComplianceList"] as! [Any] {
+                    var model = GetApplicationResponseBody.Data.ComplianceList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.complianceList = tmp
             }
             if dict.keys.contains("CreateTime") {
                 self.createTime = dict["CreateTime"] as! String
@@ -6746,7 +6860,7 @@ public class ValuateTemplateRequest : Tea.TeaModel {
 
     public var templateId: String?
 
-    public var variables: [String: String]?
+    public var variables: [String: Any]?
 
     public override init() {
         super.init()
@@ -6812,7 +6926,7 @@ public class ValuateTemplateRequest : Tea.TeaModel {
             self.templateId = dict["TemplateId"] as! String
         }
         if dict.keys.contains("Variables") {
-            self.variables = dict["Variables"] as! [String: String]
+            self.variables = dict["Variables"] as! [String: Any]
         }
     }
 }
