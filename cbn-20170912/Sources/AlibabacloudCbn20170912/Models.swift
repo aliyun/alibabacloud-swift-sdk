@@ -3910,6 +3910,8 @@ public class CreateTransitRouteTableAggregationRequest : Tea.TeaModel {
 
     public var transitRouteTableAggregationScope: String?
 
+    public var transitRouteTableAggregationScopeList: [String]?
+
     public var transitRouteTableId: String?
 
     public override init() {
@@ -3956,6 +3958,9 @@ public class CreateTransitRouteTableAggregationRequest : Tea.TeaModel {
         if self.transitRouteTableAggregationScope != nil {
             map["TransitRouteTableAggregationScope"] = self.transitRouteTableAggregationScope!
         }
+        if self.transitRouteTableAggregationScopeList != nil {
+            map["TransitRouteTableAggregationScopeList"] = self.transitRouteTableAggregationScopeList!
+        }
         if self.transitRouteTableId != nil {
             map["TransitRouteTableId"] = self.transitRouteTableId!
         }
@@ -3992,6 +3997,127 @@ public class CreateTransitRouteTableAggregationRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TransitRouteTableAggregationScope") {
             self.transitRouteTableAggregationScope = dict["TransitRouteTableAggregationScope"] as! String
+        }
+        if dict.keys.contains("TransitRouteTableAggregationScopeList") {
+            self.transitRouteTableAggregationScopeList = dict["TransitRouteTableAggregationScopeList"] as! [String]
+        }
+        if dict.keys.contains("TransitRouteTableId") {
+            self.transitRouteTableId = dict["TransitRouteTableId"] as! String
+        }
+    }
+}
+
+public class CreateTransitRouteTableAggregationShrinkRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var transitRouteTableAggregationCidr: String?
+
+    public var transitRouteTableAggregationDescription: String?
+
+    public var transitRouteTableAggregationName: String?
+
+    public var transitRouteTableAggregationScope: String?
+
+    public var transitRouteTableAggregationScopeListShrink: String?
+
+    public var transitRouteTableId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.transitRouteTableAggregationCidr != nil {
+            map["TransitRouteTableAggregationCidr"] = self.transitRouteTableAggregationCidr!
+        }
+        if self.transitRouteTableAggregationDescription != nil {
+            map["TransitRouteTableAggregationDescription"] = self.transitRouteTableAggregationDescription!
+        }
+        if self.transitRouteTableAggregationName != nil {
+            map["TransitRouteTableAggregationName"] = self.transitRouteTableAggregationName!
+        }
+        if self.transitRouteTableAggregationScope != nil {
+            map["TransitRouteTableAggregationScope"] = self.transitRouteTableAggregationScope!
+        }
+        if self.transitRouteTableAggregationScopeListShrink != nil {
+            map["TransitRouteTableAggregationScopeList"] = self.transitRouteTableAggregationScopeListShrink!
+        }
+        if self.transitRouteTableId != nil {
+            map["TransitRouteTableId"] = self.transitRouteTableId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("OwnerAccount") {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("TransitRouteTableAggregationCidr") {
+            self.transitRouteTableAggregationCidr = dict["TransitRouteTableAggregationCidr"] as! String
+        }
+        if dict.keys.contains("TransitRouteTableAggregationDescription") {
+            self.transitRouteTableAggregationDescription = dict["TransitRouteTableAggregationDescription"] as! String
+        }
+        if dict.keys.contains("TransitRouteTableAggregationName") {
+            self.transitRouteTableAggregationName = dict["TransitRouteTableAggregationName"] as! String
+        }
+        if dict.keys.contains("TransitRouteTableAggregationScope") {
+            self.transitRouteTableAggregationScope = dict["TransitRouteTableAggregationScope"] as! String
+        }
+        if dict.keys.contains("TransitRouteTableAggregationScopeList") {
+            self.transitRouteTableAggregationScopeListShrink = dict["TransitRouteTableAggregationScopeList"] as! String
         }
         if dict.keys.contains("TransitRouteTableId") {
             self.transitRouteTableId = dict["TransitRouteTableId"] as! String
@@ -20481,6 +20607,8 @@ public class DescribeTransitRouteTableAggregationResponseBody : Tea.TeaModel {
 
         public var scope: String?
 
+        public var scopeList: [String]?
+
         public var status: String?
 
         public var trRouteTableId: String?
@@ -20513,6 +20641,9 @@ public class DescribeTransitRouteTableAggregationResponseBody : Tea.TeaModel {
             if self.scope != nil {
                 map["Scope"] = self.scope!
             }
+            if self.scopeList != nil {
+                map["ScopeList"] = self.scopeList!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -20537,6 +20668,9 @@ public class DescribeTransitRouteTableAggregationResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Scope") {
                 self.scope = dict["Scope"] as! String
+            }
+            if dict.keys.contains("ScopeList") {
+                self.scopeList = dict["ScopeList"] as! [String]
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
@@ -33362,6 +33496,321 @@ public class ModifyTrafficMatchRuleToTrafficMarkingPolicyResponse : Tea.TeaModel
         }
         if dict.keys.contains("body") {
             var model = ModifyTrafficMatchRuleToTrafficMarkingPolicyResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ModifyTransitRouteTableAggregationRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var transitRouteTableAggregationCidr: String?
+
+    public var transitRouteTableAggregationDescription: String?
+
+    public var transitRouteTableAggregationName: String?
+
+    public var transitRouteTableAggregationScope: String?
+
+    public var transitRouteTableAggregationScopeList: [String]?
+
+    public var transitRouteTableId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.transitRouteTableAggregationCidr != nil {
+            map["TransitRouteTableAggregationCidr"] = self.transitRouteTableAggregationCidr!
+        }
+        if self.transitRouteTableAggregationDescription != nil {
+            map["TransitRouteTableAggregationDescription"] = self.transitRouteTableAggregationDescription!
+        }
+        if self.transitRouteTableAggregationName != nil {
+            map["TransitRouteTableAggregationName"] = self.transitRouteTableAggregationName!
+        }
+        if self.transitRouteTableAggregationScope != nil {
+            map["TransitRouteTableAggregationScope"] = self.transitRouteTableAggregationScope!
+        }
+        if self.transitRouteTableAggregationScopeList != nil {
+            map["TransitRouteTableAggregationScopeList"] = self.transitRouteTableAggregationScopeList!
+        }
+        if self.transitRouteTableId != nil {
+            map["TransitRouteTableId"] = self.transitRouteTableId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("OwnerAccount") {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("TransitRouteTableAggregationCidr") {
+            self.transitRouteTableAggregationCidr = dict["TransitRouteTableAggregationCidr"] as! String
+        }
+        if dict.keys.contains("TransitRouteTableAggregationDescription") {
+            self.transitRouteTableAggregationDescription = dict["TransitRouteTableAggregationDescription"] as! String
+        }
+        if dict.keys.contains("TransitRouteTableAggregationName") {
+            self.transitRouteTableAggregationName = dict["TransitRouteTableAggregationName"] as! String
+        }
+        if dict.keys.contains("TransitRouteTableAggregationScope") {
+            self.transitRouteTableAggregationScope = dict["TransitRouteTableAggregationScope"] as! String
+        }
+        if dict.keys.contains("TransitRouteTableAggregationScopeList") {
+            self.transitRouteTableAggregationScopeList = dict["TransitRouteTableAggregationScopeList"] as! [String]
+        }
+        if dict.keys.contains("TransitRouteTableId") {
+            self.transitRouteTableId = dict["TransitRouteTableId"] as! String
+        }
+    }
+}
+
+public class ModifyTransitRouteTableAggregationShrinkRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var transitRouteTableAggregationCidr: String?
+
+    public var transitRouteTableAggregationDescription: String?
+
+    public var transitRouteTableAggregationName: String?
+
+    public var transitRouteTableAggregationScope: String?
+
+    public var transitRouteTableAggregationScopeListShrink: String?
+
+    public var transitRouteTableId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.transitRouteTableAggregationCidr != nil {
+            map["TransitRouteTableAggregationCidr"] = self.transitRouteTableAggregationCidr!
+        }
+        if self.transitRouteTableAggregationDescription != nil {
+            map["TransitRouteTableAggregationDescription"] = self.transitRouteTableAggregationDescription!
+        }
+        if self.transitRouteTableAggregationName != nil {
+            map["TransitRouteTableAggregationName"] = self.transitRouteTableAggregationName!
+        }
+        if self.transitRouteTableAggregationScope != nil {
+            map["TransitRouteTableAggregationScope"] = self.transitRouteTableAggregationScope!
+        }
+        if self.transitRouteTableAggregationScopeListShrink != nil {
+            map["TransitRouteTableAggregationScopeList"] = self.transitRouteTableAggregationScopeListShrink!
+        }
+        if self.transitRouteTableId != nil {
+            map["TransitRouteTableId"] = self.transitRouteTableId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("OwnerAccount") {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("TransitRouteTableAggregationCidr") {
+            self.transitRouteTableAggregationCidr = dict["TransitRouteTableAggregationCidr"] as! String
+        }
+        if dict.keys.contains("TransitRouteTableAggregationDescription") {
+            self.transitRouteTableAggregationDescription = dict["TransitRouteTableAggregationDescription"] as! String
+        }
+        if dict.keys.contains("TransitRouteTableAggregationName") {
+            self.transitRouteTableAggregationName = dict["TransitRouteTableAggregationName"] as! String
+        }
+        if dict.keys.contains("TransitRouteTableAggregationScope") {
+            self.transitRouteTableAggregationScope = dict["TransitRouteTableAggregationScope"] as! String
+        }
+        if dict.keys.contains("TransitRouteTableAggregationScopeList") {
+            self.transitRouteTableAggregationScopeListShrink = dict["TransitRouteTableAggregationScopeList"] as! String
+        }
+        if dict.keys.contains("TransitRouteTableId") {
+            self.transitRouteTableId = dict["TransitRouteTableId"] as! String
+        }
+    }
+}
+
+public class ModifyTransitRouteTableAggregationResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ModifyTransitRouteTableAggregationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyTransitRouteTableAggregationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ModifyTransitRouteTableAggregationResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
