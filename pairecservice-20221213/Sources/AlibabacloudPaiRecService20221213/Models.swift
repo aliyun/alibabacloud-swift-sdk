@@ -5,6 +5,74 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class TrafficControlTaskTrafficInfoTargetTrafficsDataValue : Tea.TeaModel {
+    public var traffic: Double?
+
+    public var recordTime: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.traffic != nil {
+            map["Traffic"] = self.traffic!
+        }
+        if self.recordTime != nil {
+            map["RecordTime"] = self.recordTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Traffic") {
+            self.traffic = dict["Traffic"] as! Double
+        }
+        if dict.keys.contains("RecordTime") {
+            self.recordTime = dict["RecordTime"] as! Int64
+        }
+    }
+}
+
+public class TrafficControlTaskTrafficInfoTaskTrafficsValue : Tea.TeaModel {
+    public var traffic: Double?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.traffic != nil {
+            map["Traffic"] = self.traffic!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Traffic") {
+            self.traffic = dict["Traffic"] as! Double
+        }
+    }
+}
+
 public class ExperimentReportValue : Tea.TeaModel {
     public var baseline: Bool?
 
@@ -515,8 +583,151 @@ public class CheckInstanceResourcesResponse : Tea.TeaModel {
     }
 }
 
+public class CheckTrafficControlTaskExpressionRequest : Tea.TeaModel {
+    public var expression: String?
+
+    public var instanceId: String?
+
+    public var tableMetaId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.expression != nil {
+            map["Expression"] = self.expression!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.tableMetaId != nil {
+            map["TableMetaId"] = self.tableMetaId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Expression") {
+            self.expression = dict["Expression"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("TableMetaId") {
+            self.tableMetaId = dict["TableMetaId"] as! String
+        }
+    }
+}
+
+public class CheckTrafficControlTaskExpressionResponseBody : Tea.TeaModel {
+    public var isValie: Bool?
+
+    public var reason: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.isValie != nil {
+            map["IsValie"] = self.isValie!
+        }
+        if self.reason != nil {
+            map["Reason"] = self.reason!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("IsValie") {
+            self.isValie = dict["IsValie"] as! Bool
+        }
+        if dict.keys.contains("Reason") {
+            self.reason = dict["Reason"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CheckTrafficControlTaskExpressionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CheckTrafficControlTaskExpressionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CheckTrafficControlTaskExpressionResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CloneEngineConfigRequest : Tea.TeaModel {
     public var configValue: String?
+
+    public var description_: String?
 
     public var environment: String?
 
@@ -539,6 +750,9 @@ public class CloneEngineConfigRequest : Tea.TeaModel {
         if self.configValue != nil {
             map["ConfigValue"] = self.configValue!
         }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
         if self.environment != nil {
             map["Environment"] = self.environment!
         }
@@ -551,6 +765,9 @@ public class CloneEngineConfigRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ConfigValue") {
             self.configValue = dict["ConfigValue"] as! String
+        }
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
         }
         if dict.keys.contains("Environment") {
             self.environment = dict["Environment"] as! String
@@ -1936,6 +2153,8 @@ public class CreateCrowdResponse : Tea.TeaModel {
 public class CreateEngineConfigRequest : Tea.TeaModel {
     public var configValue: String?
 
+    public var description_: String?
+
     public var environment: String?
 
     public var instanceId: String?
@@ -1959,6 +2178,9 @@ public class CreateEngineConfigRequest : Tea.TeaModel {
         if self.configValue != nil {
             map["ConfigValue"] = self.configValue!
         }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
         if self.environment != nil {
             map["Environment"] = self.environment!
         }
@@ -1974,6 +2196,9 @@ public class CreateEngineConfigRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ConfigValue") {
             self.configValue = dict["ConfigValue"] as! String
+        }
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
         }
         if dict.keys.contains("Environment") {
             self.environment = dict["Environment"] as! String
@@ -2628,6 +2853,18 @@ public class CreateFeatureConsistencyCheckJobResponse : Tea.TeaModel {
 public class CreateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
     public var compareFeature: Bool?
 
+    public var datasetId: String?
+
+    public var datasetMountPath: String?
+
+    public var datasetName: String?
+
+    public var datasetType: String?
+
+    public var datasetUri: String?
+
+    public var defaultRoute: String?
+
     public var easServiceName: String?
 
     public var easyRecPackagePath: String?
@@ -2672,11 +2909,21 @@ public class CreateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
 
     public var ossResourceId: String?
 
+    public var predictWorkerCount: Int32?
+
+    public var predictWorkerCpu: Int32?
+
+    public var predictWorkerMemory: Int32?
+
     public var sampleRate: Double?
 
     public var sceneId: String?
 
+    public var securityGroupId: String?
+
     public var serviceId: String?
+
+    public var switchId: String?
 
     public var useFeatureStore: Bool?
 
@@ -2688,7 +2935,11 @@ public class CreateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
 
     public var userTablePartitionFieldFormat: String?
 
+    public var vpcId: String?
+
     public var workflowName: String?
+
+    public var workspaceId: String?
 
     public override init() {
         super.init()
@@ -2706,6 +2957,24 @@ public class CreateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.compareFeature != nil {
             map["CompareFeature"] = self.compareFeature!
+        }
+        if self.datasetId != nil {
+            map["DatasetId"] = self.datasetId!
+        }
+        if self.datasetMountPath != nil {
+            map["DatasetMountPath"] = self.datasetMountPath!
+        }
+        if self.datasetName != nil {
+            map["DatasetName"] = self.datasetName!
+        }
+        if self.datasetType != nil {
+            map["DatasetType"] = self.datasetType!
+        }
+        if self.datasetUri != nil {
+            map["DatasetUri"] = self.datasetUri!
+        }
+        if self.defaultRoute != nil {
+            map["DefaultRoute"] = self.defaultRoute!
         }
         if self.easServiceName != nil {
             map["EasServiceName"] = self.easServiceName!
@@ -2773,14 +3042,29 @@ public class CreateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
         if self.ossResourceId != nil {
             map["OssResourceId"] = self.ossResourceId!
         }
+        if self.predictWorkerCount != nil {
+            map["PredictWorkerCount"] = self.predictWorkerCount!
+        }
+        if self.predictWorkerCpu != nil {
+            map["PredictWorkerCpu"] = self.predictWorkerCpu!
+        }
+        if self.predictWorkerMemory != nil {
+            map["PredictWorkerMemory"] = self.predictWorkerMemory!
+        }
         if self.sampleRate != nil {
             map["SampleRate"] = self.sampleRate!
         }
         if self.sceneId != nil {
             map["SceneId"] = self.sceneId!
         }
+        if self.securityGroupId != nil {
+            map["SecurityGroupId"] = self.securityGroupId!
+        }
         if self.serviceId != nil {
             map["ServiceId"] = self.serviceId!
+        }
+        if self.switchId != nil {
+            map["SwitchId"] = self.switchId!
         }
         if self.useFeatureStore != nil {
             map["UseFeatureStore"] = self.useFeatureStore!
@@ -2797,8 +3081,14 @@ public class CreateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
         if self.userTablePartitionFieldFormat != nil {
             map["UserTablePartitionFieldFormat"] = self.userTablePartitionFieldFormat!
         }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
         if self.workflowName != nil {
             map["WorkflowName"] = self.workflowName!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
         }
         return map
     }
@@ -2806,6 +3096,24 @@ public class CreateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("CompareFeature") {
             self.compareFeature = dict["CompareFeature"] as! Bool
+        }
+        if dict.keys.contains("DatasetId") {
+            self.datasetId = dict["DatasetId"] as! String
+        }
+        if dict.keys.contains("DatasetMountPath") {
+            self.datasetMountPath = dict["DatasetMountPath"] as! String
+        }
+        if dict.keys.contains("DatasetName") {
+            self.datasetName = dict["DatasetName"] as! String
+        }
+        if dict.keys.contains("DatasetType") {
+            self.datasetType = dict["DatasetType"] as! String
+        }
+        if dict.keys.contains("DatasetUri") {
+            self.datasetUri = dict["DatasetUri"] as! String
+        }
+        if dict.keys.contains("DefaultRoute") {
+            self.defaultRoute = dict["DefaultRoute"] as! String
         }
         if dict.keys.contains("EasServiceName") {
             self.easServiceName = dict["EasServiceName"] as! String
@@ -2873,14 +3181,29 @@ public class CreateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
         if dict.keys.contains("OssResourceId") {
             self.ossResourceId = dict["OssResourceId"] as! String
         }
+        if dict.keys.contains("PredictWorkerCount") {
+            self.predictWorkerCount = dict["PredictWorkerCount"] as! Int32
+        }
+        if dict.keys.contains("PredictWorkerCpu") {
+            self.predictWorkerCpu = dict["PredictWorkerCpu"] as! Int32
+        }
+        if dict.keys.contains("PredictWorkerMemory") {
+            self.predictWorkerMemory = dict["PredictWorkerMemory"] as! Int32
+        }
         if dict.keys.contains("SampleRate") {
             self.sampleRate = dict["SampleRate"] as! Double
         }
         if dict.keys.contains("SceneId") {
             self.sceneId = dict["SceneId"] as! String
         }
+        if dict.keys.contains("SecurityGroupId") {
+            self.securityGroupId = dict["SecurityGroupId"] as! String
+        }
         if dict.keys.contains("ServiceId") {
             self.serviceId = dict["ServiceId"] as! String
+        }
+        if dict.keys.contains("SwitchId") {
+            self.switchId = dict["SwitchId"] as! String
         }
         if dict.keys.contains("UseFeatureStore") {
             self.useFeatureStore = dict["UseFeatureStore"] as! Bool
@@ -2897,8 +3220,14 @@ public class CreateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
         if dict.keys.contains("UserTablePartitionFieldFormat") {
             self.userTablePartitionFieldFormat = dict["UserTablePartitionFieldFormat"] as! String
         }
+        if dict.keys.contains("VpcId") {
+            self.vpcId = dict["VpcId"] as! String
+        }
         if dict.keys.contains("WorkflowName") {
             self.workflowName = dict["WorkflowName"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
         }
     }
 }
@@ -4971,7 +5300,13 @@ public class CreateTrafficControlTaskRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var preExperimentIds: String?
+
+    public var prodExperimentIds: String?
+
     public var sceneId: String?
+
+    public var serviceId: String?
 
     public var startTime: String?
 
@@ -5044,8 +5379,17 @@ public class CreateTrafficControlTaskRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.preExperimentIds != nil {
+            map["PreExperimentIds"] = self.preExperimentIds!
+        }
+        if self.prodExperimentIds != nil {
+            map["ProdExperimentIds"] = self.prodExperimentIds!
+        }
         if self.sceneId != nil {
             map["SceneId"] = self.sceneId!
+        }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
         }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
@@ -5121,8 +5465,17 @@ public class CreateTrafficControlTaskRequest : Tea.TeaModel {
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
         }
+        if dict.keys.contains("PreExperimentIds") {
+            self.preExperimentIds = dict["PreExperimentIds"] as! String
+        }
+        if dict.keys.contains("ProdExperimentIds") {
+            self.prodExperimentIds = dict["ProdExperimentIds"] as! String
+        }
         if dict.keys.contains("SceneId") {
             self.sceneId = dict["SceneId"] as! String
+        }
+        if dict.keys.contains("ServiceId") {
+            self.serviceId = dict["ServiceId"] as! String
         }
         if dict.keys.contains("StartTime") {
             self.startTime = dict["StartTime"] as! String
@@ -7260,6 +7613,8 @@ public class DeleteTrafficControlTaskResponse : Tea.TeaModel {
 }
 
 public class GenerateTrafficControlTaskCodeRequest : Tea.TeaModel {
+    public var environment: String?
+
     public var instanceId: String?
 
     public override init() {
@@ -7276,6 +7631,9 @@ public class GenerateTrafficControlTaskCodeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.environment != nil {
+            map["Environment"] = self.environment!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -7283,6 +7641,9 @@ public class GenerateTrafficControlTaskCodeRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Environment") {
+            self.environment = dict["Environment"] as! String
+        }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
         }
@@ -7291,6 +7652,8 @@ public class GenerateTrafficControlTaskCodeRequest : Tea.TeaModel {
 
 public class GenerateTrafficControlTaskCodeResponseBody : Tea.TeaModel {
     public var code: String?
+
+    public var preNeedConfig: Bool?
 
     public var requestId: String?
 
@@ -7311,6 +7674,9 @@ public class GenerateTrafficControlTaskCodeResponseBody : Tea.TeaModel {
         if self.code != nil {
             map["Code"] = self.code!
         }
+        if self.preNeedConfig != nil {
+            map["PreNeedConfig"] = self.preNeedConfig!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -7320,6 +7686,9 @@ public class GenerateTrafficControlTaskCodeResponseBody : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("PreNeedConfig") {
+            self.preNeedConfig = dict["PreNeedConfig"] as! Bool
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
@@ -8085,6 +8454,8 @@ public class GetEngineConfigRequest : Tea.TeaModel {
 public class GetEngineConfigResponseBody : Tea.TeaModel {
     public var configValue: String?
 
+    public var description_: String?
+
     public var environment: String?
 
     public var gmtCreateTime: String?
@@ -8116,6 +8487,9 @@ public class GetEngineConfigResponseBody : Tea.TeaModel {
         if self.configValue != nil {
             map["ConfigValue"] = self.configValue!
         }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
         if self.environment != nil {
             map["Environment"] = self.environment!
         }
@@ -8143,6 +8517,9 @@ public class GetEngineConfigResponseBody : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ConfigValue") {
             self.configValue = dict["ConfigValue"] as! String
+        }
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
         }
         if dict.keys.contains("Environment") {
             self.environment = dict["Environment"] as! String
@@ -8913,6 +9290,18 @@ public class GetFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
 public class GetFeatureConsistencyCheckJobConfigResponseBody : Tea.TeaModel {
     public var compareFeature: Bool?
 
+    public var datasetId: String?
+
+    public var datasetMountPath: String?
+
+    public var datasetName: String?
+
+    public var datasetType: String?
+
+    public var datasetUri: String?
+
+    public var defaultRoute: String?
+
     public var easServiceName: String?
 
     public var easyRecPackagePath: String?
@@ -8969,6 +9358,12 @@ public class GetFeatureConsistencyCheckJobConfigResponseBody : Tea.TeaModel {
 
     public var ossResourceId: String?
 
+    public var predictWorkerCount: Int32?
+
+    public var predictWorkerCpu: Int32?
+
+    public var predictWorkerMemory: Int32?
+
     public var requestId: String?
 
     public var sampleRate: String?
@@ -8977,11 +9372,15 @@ public class GetFeatureConsistencyCheckJobConfigResponseBody : Tea.TeaModel {
 
     public var sceneName: String?
 
+    public var securityGroupId: String?
+
     public var serviceId: String?
 
     public var serviceName: String?
 
     public var status: String?
+
+    public var switchId: String?
 
     public var useFeatureStore: Bool?
 
@@ -8993,7 +9392,11 @@ public class GetFeatureConsistencyCheckJobConfigResponseBody : Tea.TeaModel {
 
     public var userTablePartitionFieldFormat: String?
 
+    public var vpcId: String?
+
     public var workflowName: String?
+
+    public var workspaceId: String?
 
     public override init() {
         super.init()
@@ -9011,6 +9414,24 @@ public class GetFeatureConsistencyCheckJobConfigResponseBody : Tea.TeaModel {
         var map = super.toMap()
         if self.compareFeature != nil {
             map["CompareFeature"] = self.compareFeature!
+        }
+        if self.datasetId != nil {
+            map["DatasetId"] = self.datasetId!
+        }
+        if self.datasetMountPath != nil {
+            map["DatasetMountPath"] = self.datasetMountPath!
+        }
+        if self.datasetName != nil {
+            map["DatasetName"] = self.datasetName!
+        }
+        if self.datasetType != nil {
+            map["DatasetType"] = self.datasetType!
+        }
+        if self.datasetUri != nil {
+            map["DatasetUri"] = self.datasetUri!
+        }
+        if self.defaultRoute != nil {
+            map["DefaultRoute"] = self.defaultRoute!
         }
         if self.easServiceName != nil {
             map["EasServiceName"] = self.easServiceName!
@@ -9096,6 +9517,15 @@ public class GetFeatureConsistencyCheckJobConfigResponseBody : Tea.TeaModel {
         if self.ossResourceId != nil {
             map["OssResourceId"] = self.ossResourceId!
         }
+        if self.predictWorkerCount != nil {
+            map["PredictWorkerCount"] = self.predictWorkerCount!
+        }
+        if self.predictWorkerCpu != nil {
+            map["PredictWorkerCpu"] = self.predictWorkerCpu!
+        }
+        if self.predictWorkerMemory != nil {
+            map["PredictWorkerMemory"] = self.predictWorkerMemory!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -9108,6 +9538,9 @@ public class GetFeatureConsistencyCheckJobConfigResponseBody : Tea.TeaModel {
         if self.sceneName != nil {
             map["SceneName"] = self.sceneName!
         }
+        if self.securityGroupId != nil {
+            map["SecurityGroupId"] = self.securityGroupId!
+        }
         if self.serviceId != nil {
             map["ServiceId"] = self.serviceId!
         }
@@ -9116,6 +9549,9 @@ public class GetFeatureConsistencyCheckJobConfigResponseBody : Tea.TeaModel {
         }
         if self.status != nil {
             map["Status"] = self.status!
+        }
+        if self.switchId != nil {
+            map["SwitchId"] = self.switchId!
         }
         if self.useFeatureStore != nil {
             map["UseFeatureStore"] = self.useFeatureStore!
@@ -9132,8 +9568,14 @@ public class GetFeatureConsistencyCheckJobConfigResponseBody : Tea.TeaModel {
         if self.userTablePartitionFieldFormat != nil {
             map["UserTablePartitionFieldFormat"] = self.userTablePartitionFieldFormat!
         }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
         if self.workflowName != nil {
             map["WorkflowName"] = self.workflowName!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
         }
         return map
     }
@@ -9141,6 +9583,24 @@ public class GetFeatureConsistencyCheckJobConfigResponseBody : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("CompareFeature") {
             self.compareFeature = dict["CompareFeature"] as! Bool
+        }
+        if dict.keys.contains("DatasetId") {
+            self.datasetId = dict["DatasetId"] as! String
+        }
+        if dict.keys.contains("DatasetMountPath") {
+            self.datasetMountPath = dict["DatasetMountPath"] as! String
+        }
+        if dict.keys.contains("DatasetName") {
+            self.datasetName = dict["DatasetName"] as! String
+        }
+        if dict.keys.contains("DatasetType") {
+            self.datasetType = dict["DatasetType"] as! String
+        }
+        if dict.keys.contains("DatasetUri") {
+            self.datasetUri = dict["DatasetUri"] as! String
+        }
+        if dict.keys.contains("DefaultRoute") {
+            self.defaultRoute = dict["DefaultRoute"] as! String
         }
         if dict.keys.contains("EasServiceName") {
             self.easServiceName = dict["EasServiceName"] as! String
@@ -9226,6 +9686,15 @@ public class GetFeatureConsistencyCheckJobConfigResponseBody : Tea.TeaModel {
         if dict.keys.contains("OssResourceId") {
             self.ossResourceId = dict["OssResourceId"] as! String
         }
+        if dict.keys.contains("PredictWorkerCount") {
+            self.predictWorkerCount = dict["PredictWorkerCount"] as! Int32
+        }
+        if dict.keys.contains("PredictWorkerCpu") {
+            self.predictWorkerCpu = dict["PredictWorkerCpu"] as! Int32
+        }
+        if dict.keys.contains("PredictWorkerMemory") {
+            self.predictWorkerMemory = dict["PredictWorkerMemory"] as! Int32
+        }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
@@ -9238,6 +9707,9 @@ public class GetFeatureConsistencyCheckJobConfigResponseBody : Tea.TeaModel {
         if dict.keys.contains("SceneName") {
             self.sceneName = dict["SceneName"] as! String
         }
+        if dict.keys.contains("SecurityGroupId") {
+            self.securityGroupId = dict["SecurityGroupId"] as! String
+        }
         if dict.keys.contains("ServiceId") {
             self.serviceId = dict["ServiceId"] as! String
         }
@@ -9246,6 +9718,9 @@ public class GetFeatureConsistencyCheckJobConfigResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("SwitchId") {
+            self.switchId = dict["SwitchId"] as! String
         }
         if dict.keys.contains("UseFeatureStore") {
             self.useFeatureStore = dict["UseFeatureStore"] as! Bool
@@ -9262,8 +9737,14 @@ public class GetFeatureConsistencyCheckJobConfigResponseBody : Tea.TeaModel {
         if dict.keys.contains("UserTablePartitionFieldFormat") {
             self.userTablePartitionFieldFormat = dict["UserTablePartitionFieldFormat"] as! String
         }
+        if dict.keys.contains("VpcId") {
+            self.vpcId = dict["VpcId"] as! String
+        }
         if dict.keys.contains("WorkflowName") {
             self.workflowName = dict["WorkflowName"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
         }
     }
 }
@@ -11854,7 +12335,11 @@ public class GetTrafficControlTaskResponseBody : Tea.TeaModel {
 
     public var name: String?
 
+    public var preExperimentIds: String?
+
     public var prepubStatus: String?
+
+    public var prodExperimentIds: String?
 
     public var productStatus: String?
 
@@ -11863,6 +12348,8 @@ public class GetTrafficControlTaskResponseBody : Tea.TeaModel {
     public var sceneId: String?
 
     public var sceneName: String?
+
+    public var serviceId: String?
 
     public var startTime: String?
 
@@ -11943,8 +12430,14 @@ public class GetTrafficControlTaskResponseBody : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.preExperimentIds != nil {
+            map["PreExperimentIds"] = self.preExperimentIds!
+        }
         if self.prepubStatus != nil {
             map["PrepubStatus"] = self.prepubStatus!
+        }
+        if self.prodExperimentIds != nil {
+            map["ProdExperimentIds"] = self.prodExperimentIds!
         }
         if self.productStatus != nil {
             map["ProductStatus"] = self.productStatus!
@@ -11957,6 +12450,9 @@ public class GetTrafficControlTaskResponseBody : Tea.TeaModel {
         }
         if self.sceneName != nil {
             map["SceneName"] = self.sceneName!
+        }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
         }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
@@ -12041,8 +12537,14 @@ public class GetTrafficControlTaskResponseBody : Tea.TeaModel {
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
         }
+        if dict.keys.contains("PreExperimentIds") {
+            self.preExperimentIds = dict["PreExperimentIds"] as! String
+        }
         if dict.keys.contains("PrepubStatus") {
             self.prepubStatus = dict["PrepubStatus"] as! String
+        }
+        if dict.keys.contains("ProdExperimentIds") {
+            self.prodExperimentIds = dict["ProdExperimentIds"] as! String
         }
         if dict.keys.contains("ProductStatus") {
             self.productStatus = dict["ProductStatus"] as! String
@@ -12055,6 +12557,9 @@ public class GetTrafficControlTaskResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("SceneName") {
             self.sceneName = dict["SceneName"] as! String
+        }
+        if dict.keys.contains("ServiceId") {
+            self.serviceId = dict["ServiceId"] as! String
         }
         if dict.keys.contains("StartTime") {
             self.startTime = dict["StartTime"] as! String
@@ -12187,7 +12692,7 @@ public class GetTrafficControlTaskTrafficRequest : Tea.TeaModel {
 public class GetTrafficControlTaskTrafficResponseBody : Tea.TeaModel {
     public class TrafficControlTaskTrafficInfo : Tea.TeaModel {
         public class TargetTraffics : Tea.TeaModel {
-            public var data: [[String: Any]]?
+            public var data: [String: TrafficControlTaskTrafficInfoTargetTrafficsDataValue]?
 
             public var trafficContorlTargetId: String?
 
@@ -12206,7 +12711,11 @@ public class GetTrafficControlTaskTrafficResponseBody : Tea.TeaModel {
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
                 if self.data != nil {
-                    map["Data"] = self.data!
+                    var tmp : [String: Any] = [:]
+                    for (k, v) in self.data! {
+                        tmp[k] = v.toMap()
+                    }
+                    map["Data"] = tmp
                 }
                 if self.trafficContorlTargetId != nil {
                     map["TrafficContorlTargetId"] = self.trafficContorlTargetId!
@@ -12216,7 +12725,15 @@ public class GetTrafficControlTaskTrafficResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Data") {
-                    self.data = dict["Data"] as! [[String: Any]]
+                    var tmp : [String: TrafficControlTaskTrafficInfoTargetTrafficsDataValue] = [:]
+                    for (k, v) in dict["Data"] as! [String: Any] {
+                        if v != nil {
+                            var model = TrafficControlTaskTrafficInfoTargetTrafficsDataValue()
+                            model.fromMap(v as! [String: Any])
+                            tmp[k] = model
+                        }
+                    }
+                    self.data = tmp
                 }
                 if dict.keys.contains("TrafficContorlTargetId") {
                     self.trafficContorlTargetId = dict["TrafficContorlTargetId"] as! String
@@ -12225,7 +12742,7 @@ public class GetTrafficControlTaskTrafficResponseBody : Tea.TeaModel {
         }
         public var targetTraffics: [GetTrafficControlTaskTrafficResponseBody.TrafficControlTaskTrafficInfo.TargetTraffics]?
 
-        public var taskTraffics: [String: Any]?
+        public var taskTraffics: [String: TrafficControlTaskTrafficInfoTaskTrafficsValue]?
 
         public override init() {
             super.init()
@@ -12249,7 +12766,11 @@ public class GetTrafficControlTaskTrafficResponseBody : Tea.TeaModel {
                 map["TargetTraffics"] = tmp
             }
             if self.taskTraffics != nil {
-                map["TaskTraffics"] = self.taskTraffics!
+                var tmp : [String: Any] = [:]
+                for (k, v) in self.taskTraffics! {
+                    tmp[k] = v.toMap()
+                }
+                map["TaskTraffics"] = tmp
             }
             return map
         }
@@ -12267,7 +12788,15 @@ public class GetTrafficControlTaskTrafficResponseBody : Tea.TeaModel {
                 self.targetTraffics = tmp
             }
             if dict.keys.contains("TaskTraffics") {
-                self.taskTraffics = dict["TaskTraffics"] as! [String: Any]
+                var tmp : [String: TrafficControlTaskTrafficInfoTaskTrafficsValue] = [:]
+                for (k, v) in dict["TaskTraffics"] as! [String: Any] {
+                    if v != nil {
+                        var model = TrafficControlTaskTrafficInfoTaskTrafficsValue()
+                        model.fromMap(v as! [String: Any])
+                        tmp[k] = model
+                    }
+                }
+                self.taskTraffics = tmp
             }
         }
     }
@@ -13647,6 +14176,8 @@ public class ListEngineConfigsResponseBody : Tea.TeaModel {
     public class EngineConfigs : Tea.TeaModel {
         public var configValue: String?
 
+        public var description_: String?
+
         public var engineConfigId: String?
 
         public var environment: String?
@@ -13680,6 +14211,9 @@ public class ListEngineConfigsResponseBody : Tea.TeaModel {
             if self.configValue != nil {
                 map["ConfigValue"] = self.configValue!
             }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
             if self.engineConfigId != nil {
                 map["EngineConfigId"] = self.engineConfigId!
             }
@@ -13710,6 +14244,9 @@ public class ListEngineConfigsResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("ConfigValue") {
                 self.configValue = dict["ConfigValue"] as! String
+            }
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
             }
             if dict.keys.contains("EngineConfigId") {
                 self.engineConfigId = dict["EngineConfigId"] as! String
@@ -14585,6 +15122,18 @@ public class ListFeatureConsistencyCheckJobConfigsResponseBody : Tea.TeaModel {
     public class FeatureConsistencyCheckConfigs : Tea.TeaModel {
         public var compareFeature: Bool?
 
+        public var datasetId: String?
+
+        public var datasetMountPath: String?
+
+        public var datasetName: String?
+
+        public var datasetType: String?
+
+        public var datasetUri: String?
+
+        public var defaultRoute: String?
+
         public var easServiceName: String?
 
         public var easyRecPackagePath: String?
@@ -14643,17 +15192,27 @@ public class ListFeatureConsistencyCheckJobConfigsResponseBody : Tea.TeaModel {
 
         public var ossResourceId: String?
 
+        public var predictWorkerCount: Int32?
+
+        public var predictWorkerCpu: Int32?
+
+        public var predictWorkerMemory: Int32?
+
         public var sampleRate: String?
 
         public var sceneId: String?
 
         public var sceneName: String?
 
+        public var securityGroupId: String?
+
         public var serviceId: String?
 
         public var serviceName: String?
 
         public var status: String?
+
+        public var switchId: String?
 
         public var useFeatureStore: String?
 
@@ -14665,7 +15224,11 @@ public class ListFeatureConsistencyCheckJobConfigsResponseBody : Tea.TeaModel {
 
         public var userTablePartitionFieldFormat: String?
 
+        public var vpcId: String?
+
         public var workflowName: String?
+
+        public var workspaceId: String?
 
         public override init() {
             super.init()
@@ -14683,6 +15246,24 @@ public class ListFeatureConsistencyCheckJobConfigsResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.compareFeature != nil {
                 map["CompareFeature"] = self.compareFeature!
+            }
+            if self.datasetId != nil {
+                map["DatasetId"] = self.datasetId!
+            }
+            if self.datasetMountPath != nil {
+                map["DatasetMountPath"] = self.datasetMountPath!
+            }
+            if self.datasetName != nil {
+                map["DatasetName"] = self.datasetName!
+            }
+            if self.datasetType != nil {
+                map["DatasetType"] = self.datasetType!
+            }
+            if self.datasetUri != nil {
+                map["DatasetUri"] = self.datasetUri!
+            }
+            if self.defaultRoute != nil {
+                map["DefaultRoute"] = self.defaultRoute!
             }
             if self.easServiceName != nil {
                 map["EasServiceName"] = self.easServiceName!
@@ -14771,6 +15352,15 @@ public class ListFeatureConsistencyCheckJobConfigsResponseBody : Tea.TeaModel {
             if self.ossResourceId != nil {
                 map["OssResourceId"] = self.ossResourceId!
             }
+            if self.predictWorkerCount != nil {
+                map["PredictWorkerCount"] = self.predictWorkerCount!
+            }
+            if self.predictWorkerCpu != nil {
+                map["PredictWorkerCpu"] = self.predictWorkerCpu!
+            }
+            if self.predictWorkerMemory != nil {
+                map["PredictWorkerMemory"] = self.predictWorkerMemory!
+            }
             if self.sampleRate != nil {
                 map["SampleRate"] = self.sampleRate!
             }
@@ -14780,6 +15370,9 @@ public class ListFeatureConsistencyCheckJobConfigsResponseBody : Tea.TeaModel {
             if self.sceneName != nil {
                 map["SceneName"] = self.sceneName!
             }
+            if self.securityGroupId != nil {
+                map["SecurityGroupId"] = self.securityGroupId!
+            }
             if self.serviceId != nil {
                 map["ServiceId"] = self.serviceId!
             }
@@ -14788,6 +15381,9 @@ public class ListFeatureConsistencyCheckJobConfigsResponseBody : Tea.TeaModel {
             }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.switchId != nil {
+                map["SwitchId"] = self.switchId!
             }
             if self.useFeatureStore != nil {
                 map["UseFeatureStore"] = self.useFeatureStore!
@@ -14804,8 +15400,14 @@ public class ListFeatureConsistencyCheckJobConfigsResponseBody : Tea.TeaModel {
             if self.userTablePartitionFieldFormat != nil {
                 map["UserTablePartitionFieldFormat"] = self.userTablePartitionFieldFormat!
             }
+            if self.vpcId != nil {
+                map["VpcId"] = self.vpcId!
+            }
             if self.workflowName != nil {
                 map["WorkflowName"] = self.workflowName!
+            }
+            if self.workspaceId != nil {
+                map["WorkspaceId"] = self.workspaceId!
             }
             return map
         }
@@ -14813,6 +15415,24 @@ public class ListFeatureConsistencyCheckJobConfigsResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("CompareFeature") {
                 self.compareFeature = dict["CompareFeature"] as! Bool
+            }
+            if dict.keys.contains("DatasetId") {
+                self.datasetId = dict["DatasetId"] as! String
+            }
+            if dict.keys.contains("DatasetMountPath") {
+                self.datasetMountPath = dict["DatasetMountPath"] as! String
+            }
+            if dict.keys.contains("DatasetName") {
+                self.datasetName = dict["DatasetName"] as! String
+            }
+            if dict.keys.contains("DatasetType") {
+                self.datasetType = dict["DatasetType"] as! String
+            }
+            if dict.keys.contains("DatasetUri") {
+                self.datasetUri = dict["DatasetUri"] as! String
+            }
+            if dict.keys.contains("DefaultRoute") {
+                self.defaultRoute = dict["DefaultRoute"] as! String
             }
             if dict.keys.contains("EasServiceName") {
                 self.easServiceName = dict["EasServiceName"] as! String
@@ -14901,6 +15521,15 @@ public class ListFeatureConsistencyCheckJobConfigsResponseBody : Tea.TeaModel {
             if dict.keys.contains("OssResourceId") {
                 self.ossResourceId = dict["OssResourceId"] as! String
             }
+            if dict.keys.contains("PredictWorkerCount") {
+                self.predictWorkerCount = dict["PredictWorkerCount"] as! Int32
+            }
+            if dict.keys.contains("PredictWorkerCpu") {
+                self.predictWorkerCpu = dict["PredictWorkerCpu"] as! Int32
+            }
+            if dict.keys.contains("PredictWorkerMemory") {
+                self.predictWorkerMemory = dict["PredictWorkerMemory"] as! Int32
+            }
             if dict.keys.contains("SampleRate") {
                 self.sampleRate = dict["SampleRate"] as! String
             }
@@ -14910,6 +15539,9 @@ public class ListFeatureConsistencyCheckJobConfigsResponseBody : Tea.TeaModel {
             if dict.keys.contains("SceneName") {
                 self.sceneName = dict["SceneName"] as! String
             }
+            if dict.keys.contains("SecurityGroupId") {
+                self.securityGroupId = dict["SecurityGroupId"] as! String
+            }
             if dict.keys.contains("ServiceId") {
                 self.serviceId = dict["ServiceId"] as! String
             }
@@ -14918,6 +15550,9 @@ public class ListFeatureConsistencyCheckJobConfigsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("SwitchId") {
+                self.switchId = dict["SwitchId"] as! String
             }
             if dict.keys.contains("UseFeatureStore") {
                 self.useFeatureStore = dict["UseFeatureStore"] as! String
@@ -14934,8 +15569,14 @@ public class ListFeatureConsistencyCheckJobConfigsResponseBody : Tea.TeaModel {
             if dict.keys.contains("UserTablePartitionFieldFormat") {
                 self.userTablePartitionFieldFormat = dict["UserTablePartitionFieldFormat"] as! String
             }
+            if dict.keys.contains("VpcId") {
+                self.vpcId = dict["VpcId"] as! String
+            }
             if dict.keys.contains("WorkflowName") {
                 self.workflowName = dict["WorkflowName"] as! String
+            }
+            if dict.keys.contains("WorkspaceId") {
+                self.workspaceId = dict["WorkspaceId"] as! String
             }
         }
     }
@@ -18591,11 +19232,11 @@ public class ListTrafficControlTargetTrafficHistoryResponseBody : Tea.TeaModel {
 
         public var recordTime: String?
 
-        public var trafficControlTargetAimTraffic: String?
+        public var trafficControlTargetAimTraffic: Double?
 
-        public var trafficControlTargetTraffic: String?
+        public var trafficControlTargetTraffic: Double?
 
-        public var trafficControlTaskTraffic: String?
+        public var trafficControlTaskTraffic: Double?
 
         public override init() {
             super.init()
@@ -18643,13 +19284,13 @@ public class ListTrafficControlTargetTrafficHistoryResponseBody : Tea.TeaModel {
                 self.recordTime = dict["RecordTime"] as! String
             }
             if dict.keys.contains("TrafficControlTargetAimTraffic") {
-                self.trafficControlTargetAimTraffic = dict["TrafficControlTargetAimTraffic"] as! String
+                self.trafficControlTargetAimTraffic = dict["TrafficControlTargetAimTraffic"] as! Double
             }
             if dict.keys.contains("TrafficControlTargetTraffic") {
-                self.trafficControlTargetTraffic = dict["TrafficControlTargetTraffic"] as! String
+                self.trafficControlTargetTraffic = dict["TrafficControlTargetTraffic"] as! Double
             }
             if dict.keys.contains("TrafficControlTaskTraffic") {
-                self.trafficControlTaskTraffic = dict["TrafficControlTaskTraffic"] as! String
+                self.trafficControlTaskTraffic = dict["TrafficControlTaskTraffic"] as! Double
             }
         }
     }
@@ -19114,13 +19755,19 @@ public class ListTrafficControlTasksResponseBody : Tea.TeaModel {
 
         public var name: String?
 
+        public var preExperimentIds: String?
+
         public var prepubStatus: String?
+
+        public var prodExperimentIds: String?
 
         public var productStatus: String?
 
         public var sceneId: String?
 
         public var sceneName: String?
+
+        public var serviceId: String?
 
         public var startTime: String?
 
@@ -19201,8 +19848,14 @@ public class ListTrafficControlTasksResponseBody : Tea.TeaModel {
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.preExperimentIds != nil {
+                map["PreExperimentIds"] = self.preExperimentIds!
+            }
             if self.prepubStatus != nil {
                 map["PrepubStatus"] = self.prepubStatus!
+            }
+            if self.prodExperimentIds != nil {
+                map["ProdExperimentIds"] = self.prodExperimentIds!
             }
             if self.productStatus != nil {
                 map["ProductStatus"] = self.productStatus!
@@ -19212,6 +19865,9 @@ public class ListTrafficControlTasksResponseBody : Tea.TeaModel {
             }
             if self.sceneName != nil {
                 map["SceneName"] = self.sceneName!
+            }
+            if self.serviceId != nil {
+                map["ServiceId"] = self.serviceId!
             }
             if self.startTime != nil {
                 map["StartTime"] = self.startTime!
@@ -19296,8 +19952,14 @@ public class ListTrafficControlTasksResponseBody : Tea.TeaModel {
             if dict.keys.contains("Name") {
                 self.name = dict["Name"] as! String
             }
+            if dict.keys.contains("PreExperimentIds") {
+                self.preExperimentIds = dict["PreExperimentIds"] as! String
+            }
             if dict.keys.contains("PrepubStatus") {
                 self.prepubStatus = dict["PrepubStatus"] as! String
+            }
+            if dict.keys.contains("ProdExperimentIds") {
+                self.prodExperimentIds = dict["ProdExperimentIds"] as! String
             }
             if dict.keys.contains("ProductStatus") {
                 self.productStatus = dict["ProductStatus"] as! String
@@ -19307,6 +19969,9 @@ public class ListTrafficControlTasksResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SceneName") {
                 self.sceneName = dict["SceneName"] as! String
+            }
+            if dict.keys.contains("ServiceId") {
+                self.serviceId = dict["ServiceId"] as! String
             }
             if dict.keys.contains("StartTime") {
                 self.startTime = dict["StartTime"] as! String
@@ -20503,6 +21168,309 @@ public class PushResourceRuleResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = PushResourceRuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class QueryTrafficControlTargetItemReportDetailRequest : Tea.TeaModel {
+    public var date: String?
+
+    public var environment: String?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.date != nil {
+            map["Date"] = self.date!
+        }
+        if self.environment != nil {
+            map["Environment"] = self.environment!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Date") {
+            self.date = dict["Date"] as! String
+        }
+        if dict.keys.contains("Environment") {
+            self.environment = dict["Environment"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+    }
+}
+
+public class QueryTrafficControlTargetItemReportDetailResponseBody : Tea.TeaModel {
+    public class TrafficControlTargetItemReportDetail : Tea.TeaModel {
+        public class ItemControlTailReportDetails : Tea.TeaModel {
+            public var features: [String: Any]?
+
+            public var itemId: String?
+
+            public var targetProgress: String?
+
+            public var targetTraffic: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.features != nil {
+                    map["Features"] = self.features!
+                }
+                if self.itemId != nil {
+                    map["ItemId"] = self.itemId!
+                }
+                if self.targetProgress != nil {
+                    map["TargetProgress"] = self.targetProgress!
+                }
+                if self.targetTraffic != nil {
+                    map["TargetTraffic"] = self.targetTraffic!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Features") {
+                    self.features = dict["Features"] as! [String: Any]
+                }
+                if dict.keys.contains("ItemId") {
+                    self.itemId = dict["ItemId"] as! String
+                }
+                if dict.keys.contains("TargetProgress") {
+                    self.targetProgress = dict["TargetProgress"] as! String
+                }
+                if dict.keys.contains("TargetTraffic") {
+                    self.targetTraffic = dict["TargetTraffic"] as! Int64
+                }
+            }
+        }
+        public class ItemControlTopReportDetails : Tea.TeaModel {
+            public var features: [String: Any]?
+
+            public var itemId: String?
+
+            public var targetProgress: String?
+
+            public var targetTraffic: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.features != nil {
+                    map["Features"] = self.features!
+                }
+                if self.itemId != nil {
+                    map["ItemId"] = self.itemId!
+                }
+                if self.targetProgress != nil {
+                    map["TargetProgress"] = self.targetProgress!
+                }
+                if self.targetTraffic != nil {
+                    map["TargetTraffic"] = self.targetTraffic!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Features") {
+                    self.features = dict["Features"] as! [String: Any]
+                }
+                if dict.keys.contains("ItemId") {
+                    self.itemId = dict["ItemId"] as! String
+                }
+                if dict.keys.contains("TargetProgress") {
+                    self.targetProgress = dict["TargetProgress"] as! String
+                }
+                if dict.keys.contains("TargetTraffic") {
+                    self.targetTraffic = dict["TargetTraffic"] as! Int64
+                }
+            }
+        }
+        public var itemControlTailReportDetails: [QueryTrafficControlTargetItemReportDetailResponseBody.TrafficControlTargetItemReportDetail.ItemControlTailReportDetails]?
+
+        public var itemControlTopReportDetails: [QueryTrafficControlTargetItemReportDetailResponseBody.TrafficControlTargetItemReportDetail.ItemControlTopReportDetails]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.itemControlTailReportDetails != nil {
+                var tmp : [Any] = []
+                for k in self.itemControlTailReportDetails! {
+                    tmp.append(k.toMap())
+                }
+                map["ItemControlTailReportDetails"] = tmp
+            }
+            if self.itemControlTopReportDetails != nil {
+                var tmp : [Any] = []
+                for k in self.itemControlTopReportDetails! {
+                    tmp.append(k.toMap())
+                }
+                map["ItemControlTopReportDetails"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ItemControlTailReportDetails") {
+                var tmp : [QueryTrafficControlTargetItemReportDetailResponseBody.TrafficControlTargetItemReportDetail.ItemControlTailReportDetails] = []
+                for v in dict["ItemControlTailReportDetails"] as! [Any] {
+                    var model = QueryTrafficControlTargetItemReportDetailResponseBody.TrafficControlTargetItemReportDetail.ItemControlTailReportDetails()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.itemControlTailReportDetails = tmp
+            }
+            if dict.keys.contains("ItemControlTopReportDetails") {
+                var tmp : [QueryTrafficControlTargetItemReportDetailResponseBody.TrafficControlTargetItemReportDetail.ItemControlTopReportDetails] = []
+                for v in dict["ItemControlTopReportDetails"] as! [Any] {
+                    var model = QueryTrafficControlTargetItemReportDetailResponseBody.TrafficControlTargetItemReportDetail.ItemControlTopReportDetails()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.itemControlTopReportDetails = tmp
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var trafficControlTargetItemReportDetail: QueryTrafficControlTargetItemReportDetailResponseBody.TrafficControlTargetItemReportDetail?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.trafficControlTargetItemReportDetail?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.trafficControlTargetItemReportDetail != nil {
+            map["TrafficControlTargetItemReportDetail"] = self.trafficControlTargetItemReportDetail?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TrafficControlTargetItemReportDetail") {
+            var model = QueryTrafficControlTargetItemReportDetailResponseBody.TrafficControlTargetItemReportDetail()
+            model.fromMap(dict["TrafficControlTargetItemReportDetail"] as! [String: Any])
+            self.trafficControlTargetItemReportDetail = model
+        }
+    }
+}
+
+public class QueryTrafficControlTargetItemReportDetailResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryTrafficControlTargetItemReportDetailResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = QueryTrafficControlTargetItemReportDetailResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -22208,6 +23176,8 @@ public class UpdateCrowdResponse : Tea.TeaModel {
 public class UpdateEngineConfigRequest : Tea.TeaModel {
     public var configValue: String?
 
+    public var description_: String?
+
     public var environment: String?
 
     public var instanceId: String?
@@ -22231,6 +23201,9 @@ public class UpdateEngineConfigRequest : Tea.TeaModel {
         if self.configValue != nil {
             map["ConfigValue"] = self.configValue!
         }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
         if self.environment != nil {
             map["Environment"] = self.environment!
         }
@@ -22246,6 +23219,9 @@ public class UpdateEngineConfigRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ConfigValue") {
             self.configValue = dict["ConfigValue"] as! String
+        }
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
         }
         if dict.keys.contains("Environment") {
             self.environment = dict["Environment"] as! String
@@ -22727,6 +23703,18 @@ public class UpdateExperimentGroupResponse : Tea.TeaModel {
 public class UpdateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
     public var compareFeature: Bool?
 
+    public var datasetId: String?
+
+    public var datasetMountPath: String?
+
+    public var datasetName: String?
+
+    public var datasetType: String?
+
+    public var datasetUri: String?
+
+    public var defaultRoute: String?
+
     public var easServiceName: String?
 
     public var easyRecPackagePath: String?
@@ -22773,11 +23761,21 @@ public class UpdateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
 
     public var ossResourceId: String?
 
+    public var predictWorkerCount: Int32?
+
+    public var predictWorkerCpu: Int32?
+
+    public var predictWorkerMemory: Int32?
+
     public var sampleRate: Double?
 
     public var sceneId: String?
 
+    public var securityGroupId: String?
+
     public var serviceId: String?
+
+    public var switchId: String?
 
     public var userIdField: String?
 
@@ -22787,7 +23785,11 @@ public class UpdateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
 
     public var userTablePartitionFieldFormat: String?
 
+    public var vpcId: String?
+
     public var workflowName: String?
+
+    public var workspaceId: String?
 
     public override init() {
         super.init()
@@ -22805,6 +23807,24 @@ public class UpdateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.compareFeature != nil {
             map["CompareFeature"] = self.compareFeature!
+        }
+        if self.datasetId != nil {
+            map["DatasetId"] = self.datasetId!
+        }
+        if self.datasetMountPath != nil {
+            map["DatasetMountPath"] = self.datasetMountPath!
+        }
+        if self.datasetName != nil {
+            map["DatasetName"] = self.datasetName!
+        }
+        if self.datasetType != nil {
+            map["DatasetType"] = self.datasetType!
+        }
+        if self.datasetUri != nil {
+            map["DatasetUri"] = self.datasetUri!
+        }
+        if self.defaultRoute != nil {
+            map["DefaultRoute"] = self.defaultRoute!
         }
         if self.easServiceName != nil {
             map["EasServiceName"] = self.easServiceName!
@@ -22875,14 +23895,29 @@ public class UpdateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
         if self.ossResourceId != nil {
             map["OssResourceId"] = self.ossResourceId!
         }
+        if self.predictWorkerCount != nil {
+            map["PredictWorkerCount"] = self.predictWorkerCount!
+        }
+        if self.predictWorkerCpu != nil {
+            map["PredictWorkerCpu"] = self.predictWorkerCpu!
+        }
+        if self.predictWorkerMemory != nil {
+            map["PredictWorkerMemory"] = self.predictWorkerMemory!
+        }
         if self.sampleRate != nil {
             map["SampleRate"] = self.sampleRate!
         }
         if self.sceneId != nil {
             map["SceneId"] = self.sceneId!
         }
+        if self.securityGroupId != nil {
+            map["SecurityGroupId"] = self.securityGroupId!
+        }
         if self.serviceId != nil {
             map["ServiceId"] = self.serviceId!
+        }
+        if self.switchId != nil {
+            map["SwitchId"] = self.switchId!
         }
         if self.userIdField != nil {
             map["UserIdField"] = self.userIdField!
@@ -22896,8 +23931,14 @@ public class UpdateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
         if self.userTablePartitionFieldFormat != nil {
             map["UserTablePartitionFieldFormat"] = self.userTablePartitionFieldFormat!
         }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
         if self.workflowName != nil {
             map["WorkflowName"] = self.workflowName!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
         }
         return map
     }
@@ -22905,6 +23946,24 @@ public class UpdateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("CompareFeature") {
             self.compareFeature = dict["CompareFeature"] as! Bool
+        }
+        if dict.keys.contains("DatasetId") {
+            self.datasetId = dict["DatasetId"] as! String
+        }
+        if dict.keys.contains("DatasetMountPath") {
+            self.datasetMountPath = dict["DatasetMountPath"] as! String
+        }
+        if dict.keys.contains("DatasetName") {
+            self.datasetName = dict["DatasetName"] as! String
+        }
+        if dict.keys.contains("DatasetType") {
+            self.datasetType = dict["DatasetType"] as! String
+        }
+        if dict.keys.contains("DatasetUri") {
+            self.datasetUri = dict["DatasetUri"] as! String
+        }
+        if dict.keys.contains("DefaultRoute") {
+            self.defaultRoute = dict["DefaultRoute"] as! String
         }
         if dict.keys.contains("EasServiceName") {
             self.easServiceName = dict["EasServiceName"] as! String
@@ -22975,14 +24034,29 @@ public class UpdateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
         if dict.keys.contains("OssResourceId") {
             self.ossResourceId = dict["OssResourceId"] as! String
         }
+        if dict.keys.contains("PredictWorkerCount") {
+            self.predictWorkerCount = dict["PredictWorkerCount"] as! Int32
+        }
+        if dict.keys.contains("PredictWorkerCpu") {
+            self.predictWorkerCpu = dict["PredictWorkerCpu"] as! Int32
+        }
+        if dict.keys.contains("PredictWorkerMemory") {
+            self.predictWorkerMemory = dict["PredictWorkerMemory"] as! Int32
+        }
         if dict.keys.contains("SampleRate") {
             self.sampleRate = dict["SampleRate"] as! Double
         }
         if dict.keys.contains("SceneId") {
             self.sceneId = dict["SceneId"] as! String
         }
+        if dict.keys.contains("SecurityGroupId") {
+            self.securityGroupId = dict["SecurityGroupId"] as! String
+        }
         if dict.keys.contains("ServiceId") {
             self.serviceId = dict["ServiceId"] as! String
+        }
+        if dict.keys.contains("SwitchId") {
+            self.switchId = dict["SwitchId"] as! String
         }
         if dict.keys.contains("UserIdField") {
             self.userIdField = dict["UserIdField"] as! String
@@ -22996,8 +24070,14 @@ public class UpdateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
         if dict.keys.contains("UserTablePartitionFieldFormat") {
             self.userTablePartitionFieldFormat = dict["UserTablePartitionFieldFormat"] as! String
         }
+        if dict.keys.contains("VpcId") {
+            self.vpcId = dict["VpcId"] as! String
+        }
         if dict.keys.contains("WorkflowName") {
             self.workflowName = dict["WorkflowName"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
         }
     }
 }
@@ -24720,7 +25800,13 @@ public class UpdateTrafficControlTaskRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var preExperimentIds: String?
+
+    public var prodExperimentIds: String?
+
     public var sceneId: String?
+
+    public var serviceId: String?
 
     public var startTime: String?
 
@@ -24793,8 +25879,17 @@ public class UpdateTrafficControlTaskRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.preExperimentIds != nil {
+            map["PreExperimentIds"] = self.preExperimentIds!
+        }
+        if self.prodExperimentIds != nil {
+            map["ProdExperimentIds"] = self.prodExperimentIds!
+        }
         if self.sceneId != nil {
             map["SceneId"] = self.sceneId!
+        }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
         }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
@@ -24870,8 +25965,17 @@ public class UpdateTrafficControlTaskRequest : Tea.TeaModel {
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
         }
+        if dict.keys.contains("PreExperimentIds") {
+            self.preExperimentIds = dict["PreExperimentIds"] as! String
+        }
+        if dict.keys.contains("ProdExperimentIds") {
+            self.prodExperimentIds = dict["ProdExperimentIds"] as! String
+        }
         if dict.keys.contains("SceneId") {
             self.sceneId = dict["SceneId"] as! String
+        }
+        if dict.keys.contains("ServiceId") {
+            self.serviceId = dict["ServiceId"] as! String
         }
         if dict.keys.contains("StartTime") {
             self.startTime = dict["StartTime"] as! String
