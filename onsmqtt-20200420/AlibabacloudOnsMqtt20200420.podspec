@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudOnsMqtt20200420"
-  spec.version      = "1.4.0"
+  spec.version      = "1.3.3"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud OnsMqtt (20200420) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/onsmqtt-20200420" 
