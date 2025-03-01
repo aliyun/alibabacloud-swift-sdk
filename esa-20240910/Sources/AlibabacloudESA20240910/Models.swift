@@ -869,6 +869,35 @@ public class WafRuleConfig : Tea.TeaModel {
             }
         }
     }
+    public class SecurityLevel : Tea.TeaModel {
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var action: String?
 
     public var actions: WafRuleConfig.Actions?
@@ -892,6 +921,8 @@ public class WafRuleConfig : Tea.TeaModel {
     public var notes: String?
 
     public var rateLimit: WafRuleConfig.RateLimit?
+
+    public var securityLevel: WafRuleConfig.SecurityLevel?
 
     public var sigchl: [String]?
 
@@ -917,6 +948,7 @@ public class WafRuleConfig : Tea.TeaModel {
         try self.appPackage?.validate()
         try self.appSdk?.validate()
         try self.rateLimit?.validate()
+        try self.securityLevel?.validate()
         try self.timer?.validate()
     }
 
@@ -961,6 +993,9 @@ public class WafRuleConfig : Tea.TeaModel {
         }
         if self.rateLimit != nil {
             map["RateLimit"] = self.rateLimit?.toMap()
+        }
+        if self.securityLevel != nil {
+            map["SecurityLevel"] = self.securityLevel?.toMap()
         }
         if self.sigchl != nil {
             map["Sigchl"] = self.sigchl!
@@ -1032,6 +1067,11 @@ public class WafRuleConfig : Tea.TeaModel {
             var model = WafRuleConfig.RateLimit()
             model.fromMap(dict["RateLimit"] as! [String: Any])
             self.rateLimit = model
+        }
+        if dict.keys.contains("SecurityLevel") {
+            var model = WafRuleConfig.SecurityLevel()
+            model.fromMap(dict["SecurityLevel"] as! [String: Any])
+            self.securityLevel = model
         }
         if dict.keys.contains("Sigchl") {
             self.sigchl = dict["Sigchl"] as! [String]
@@ -10374,9 +10414,13 @@ public class CreateOriginRuleRequest : Tea.TeaModel {
 
     public var originHttpsPort: String?
 
+    public var originMtls: String?
+
     public var originScheme: String?
 
     public var originSni: String?
+
+    public var originVerify: String?
 
     public var range: String?
 
@@ -10416,11 +10460,17 @@ public class CreateOriginRuleRequest : Tea.TeaModel {
         if self.originHttpsPort != nil {
             map["OriginHttpsPort"] = self.originHttpsPort!
         }
+        if self.originMtls != nil {
+            map["OriginMtls"] = self.originMtls!
+        }
         if self.originScheme != nil {
             map["OriginScheme"] = self.originScheme!
         }
         if self.originSni != nil {
             map["OriginSni"] = self.originSni!
+        }
+        if self.originVerify != nil {
+            map["OriginVerify"] = self.originVerify!
         }
         if self.range != nil {
             map["Range"] = self.range!
@@ -10456,11 +10506,17 @@ public class CreateOriginRuleRequest : Tea.TeaModel {
         if dict.keys.contains("OriginHttpsPort") {
             self.originHttpsPort = dict["OriginHttpsPort"] as! String
         }
+        if dict.keys.contains("OriginMtls") {
+            self.originMtls = dict["OriginMtls"] as! String
+        }
         if dict.keys.contains("OriginScheme") {
             self.originScheme = dict["OriginScheme"] as! String
         }
         if dict.keys.contains("OriginSni") {
             self.originSni = dict["OriginSni"] as! String
+        }
+        if dict.keys.contains("OriginVerify") {
+            self.originVerify = dict["OriginVerify"] as! String
         }
         if dict.keys.contains("Range") {
             self.range = dict["Range"] as! String
@@ -13767,7 +13823,7 @@ public class CreateSiteDeliveryTaskResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
-    public var siteId: String?
+    public var siteId: Int64?
 
     public var taskName: String?
 
@@ -13808,7 +13864,7 @@ public class CreateSiteDeliveryTaskResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("SiteId") {
-            self.siteId = dict["SiteId"] as! String
+            self.siteId = dict["SiteId"] as! Int64
         }
         if dict.keys.contains("TaskName") {
             self.taskName = dict["TaskName"] as! String
@@ -31525,9 +31581,13 @@ public class GetOriginRuleResponseBody : Tea.TeaModel {
 
     public var originHttpsPort: String?
 
+    public var originMtls: String?
+
     public var originScheme: String?
 
     public var originSni: String?
+
+    public var originVerify: String?
 
     public var range: String?
 
@@ -31575,11 +31635,17 @@ public class GetOriginRuleResponseBody : Tea.TeaModel {
         if self.originHttpsPort != nil {
             map["OriginHttpsPort"] = self.originHttpsPort!
         }
+        if self.originMtls != nil {
+            map["OriginMtls"] = self.originMtls!
+        }
         if self.originScheme != nil {
             map["OriginScheme"] = self.originScheme!
         }
         if self.originSni != nil {
             map["OriginSni"] = self.originSni!
+        }
+        if self.originVerify != nil {
+            map["OriginVerify"] = self.originVerify!
         }
         if self.range != nil {
             map["Range"] = self.range!
@@ -31624,11 +31690,17 @@ public class GetOriginRuleResponseBody : Tea.TeaModel {
         if dict.keys.contains("OriginHttpsPort") {
             self.originHttpsPort = dict["OriginHttpsPort"] as! String
         }
+        if dict.keys.contains("OriginMtls") {
+            self.originMtls = dict["OriginMtls"] as! String
+        }
         if dict.keys.contains("OriginScheme") {
             self.originScheme = dict["OriginScheme"] as! String
         }
         if dict.keys.contains("OriginSni") {
             self.originSni = dict["OriginSni"] as! String
+        }
+        if dict.keys.contains("OriginVerify") {
+            self.originVerify = dict["OriginVerify"] as! String
         }
         if dict.keys.contains("Range") {
             self.range = dict["Range"] as! String
@@ -36229,7 +36301,11 @@ public class GetWafFilterResponseBody : Tea.TeaModel {
                 }
                 public var attributes: Int32?
 
+                public var enable: Bool?
+
                 public var kind: String?
+
+                public var minPlan: String?
 
                 public var negative: Bool?
 
@@ -36261,8 +36337,14 @@ public class GetWafFilterResponseBody : Tea.TeaModel {
                     if self.attributes != nil {
                         map["Attributes"] = self.attributes!
                     }
+                    if self.enable != nil {
+                        map["Enable"] = self.enable!
+                    }
                     if self.kind != nil {
                         map["Kind"] = self.kind!
+                    }
+                    if self.minPlan != nil {
+                        map["MinPlan"] = self.minPlan!
                     }
                     if self.negative != nil {
                         map["Negative"] = self.negative!
@@ -36289,8 +36371,14 @@ public class GetWafFilterResponseBody : Tea.TeaModel {
                     if dict.keys.contains("Attributes") {
                         self.attributes = dict["Attributes"] as! Int32
                     }
+                    if dict.keys.contains("Enable") {
+                        self.enable = dict["Enable"] as! Bool
+                    }
                     if dict.keys.contains("Kind") {
                         self.kind = dict["Kind"] as! String
+                    }
+                    if dict.keys.contains("MinPlan") {
+                        self.minPlan = dict["MinPlan"] as! String
                     }
                     if dict.keys.contains("Negative") {
                         self.negative = dict["Negative"] as! Bool
@@ -36400,11 +36488,15 @@ public class GetWafFilterResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var enable: Bool?
+
             public var key: String?
 
             public var label: String?
 
             public var logics: [GetWafFilterResponseBody.Filter.Fields.Logics]?
+
+            public var minPlan: String?
 
             public var selector: GetWafFilterResponseBody.Filter.Fields.Selector?
 
@@ -36427,6 +36519,9 @@ public class GetWafFilterResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.enable != nil {
+                    map["Enable"] = self.enable!
+                }
                 if self.key != nil {
                     map["Key"] = self.key!
                 }
@@ -36439,6 +36534,9 @@ public class GetWafFilterResponseBody : Tea.TeaModel {
                         tmp.append(k.toMap())
                     }
                     map["Logics"] = tmp
+                }
+                if self.minPlan != nil {
+                    map["MinPlan"] = self.minPlan!
                 }
                 if self.selector != nil {
                     map["Selector"] = self.selector?.toMap()
@@ -36453,6 +36551,9 @@ public class GetWafFilterResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Enable") {
+                    self.enable = dict["Enable"] as! Bool
+                }
                 if dict.keys.contains("Key") {
                     self.key = dict["Key"] as! String
                 }
@@ -36469,6 +36570,9 @@ public class GetWafFilterResponseBody : Tea.TeaModel {
                         tmp.append(model)
                     }
                     self.logics = tmp
+                }
+                if dict.keys.contains("MinPlan") {
+                    self.minPlan = dict["MinPlan"] as! String
                 }
                 if dict.keys.contains("Selector") {
                     var model = GetWafFilterResponseBody.Filter.Fields.Selector()
@@ -46481,9 +46585,13 @@ public class ListOriginRulesResponseBody : Tea.TeaModel {
 
         public var originHttpsPort: String?
 
+        public var originMtls: String?
+
         public var originScheme: String?
 
         public var originSni: String?
+
+        public var originVerify: String?
 
         public var range: String?
 
@@ -46529,11 +46637,17 @@ public class ListOriginRulesResponseBody : Tea.TeaModel {
             if self.originHttpsPort != nil {
                 map["OriginHttpsPort"] = self.originHttpsPort!
             }
+            if self.originMtls != nil {
+                map["OriginMtls"] = self.originMtls!
+            }
             if self.originScheme != nil {
                 map["OriginScheme"] = self.originScheme!
             }
             if self.originSni != nil {
                 map["OriginSni"] = self.originSni!
+            }
+            if self.originVerify != nil {
+                map["OriginVerify"] = self.originVerify!
             }
             if self.range != nil {
                 map["Range"] = self.range!
@@ -46575,11 +46689,17 @@ public class ListOriginRulesResponseBody : Tea.TeaModel {
             if dict.keys.contains("OriginHttpsPort") {
                 self.originHttpsPort = dict["OriginHttpsPort"] as! String
             }
+            if dict.keys.contains("OriginMtls") {
+                self.originMtls = dict["OriginMtls"] as! String
+            }
             if dict.keys.contains("OriginScheme") {
                 self.originScheme = dict["OriginScheme"] as! String
             }
             if dict.keys.contains("OriginSni") {
                 self.originSni = dict["OriginSni"] as! String
+            }
+            if dict.keys.contains("OriginVerify") {
+                self.originVerify = dict["OriginVerify"] as! String
             }
             if dict.keys.contains("Range") {
                 self.range = dict["Range"] as! String
@@ -60619,9 +60739,13 @@ public class UpdateOriginRuleRequest : Tea.TeaModel {
 
     public var originHttpsPort: String?
 
+    public var originMtls: String?
+
     public var originScheme: String?
 
     public var originSni: String?
+
+    public var originVerify: String?
 
     public var range: String?
 
@@ -60662,11 +60786,17 @@ public class UpdateOriginRuleRequest : Tea.TeaModel {
         if self.originHttpsPort != nil {
             map["OriginHttpsPort"] = self.originHttpsPort!
         }
+        if self.originMtls != nil {
+            map["OriginMtls"] = self.originMtls!
+        }
         if self.originScheme != nil {
             map["OriginScheme"] = self.originScheme!
         }
         if self.originSni != nil {
             map["OriginSni"] = self.originSni!
+        }
+        if self.originVerify != nil {
+            map["OriginVerify"] = self.originVerify!
         }
         if self.range != nil {
             map["Range"] = self.range!
@@ -60702,11 +60832,17 @@ public class UpdateOriginRuleRequest : Tea.TeaModel {
         if dict.keys.contains("OriginHttpsPort") {
             self.originHttpsPort = dict["OriginHttpsPort"] as! String
         }
+        if dict.keys.contains("OriginMtls") {
+            self.originMtls = dict["OriginMtls"] as! String
+        }
         if dict.keys.contains("OriginScheme") {
             self.originScheme = dict["OriginScheme"] as! String
         }
         if dict.keys.contains("OriginSni") {
             self.originSni = dict["OriginSni"] as! String
+        }
+        if dict.keys.contains("OriginVerify") {
+            self.originVerify = dict["OriginVerify"] as! String
         }
         if dict.keys.contains("Range") {
             self.range = dict["Range"] as! String

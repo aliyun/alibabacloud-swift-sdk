@@ -1884,11 +1884,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.originHttpsPort)) {
             query["OriginHttpsPort"] = request.originHttpsPort ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.originMtls)) {
+            query["OriginMtls"] = request.originMtls ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.originScheme)) {
             query["OriginScheme"] = request.originScheme ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.originSni)) {
             query["OriginSni"] = request.originSni ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.originVerify)) {
+            query["OriginVerify"] = request.originVerify ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.range)) {
             query["Range"] = request.range ?? "";
@@ -11111,11 +11117,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.originHttpsPort)) {
             query["OriginHttpsPort"] = request.originHttpsPort ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.originMtls)) {
+            query["OriginMtls"] = request.originMtls ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.originScheme)) {
             query["OriginScheme"] = request.originScheme ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.originSni)) {
             query["OriginSni"] = request.originSni ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.originVerify)) {
+            query["OriginVerify"] = request.originVerify ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.range)) {
             query["Range"] = request.range ?? "";
