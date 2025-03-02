@@ -2890,6 +2890,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.vaultId)) {
             query["VaultId"] = request.vaultId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.vaultName)) {
+            query["VaultName"] = request.vaultName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.vaultRegionId)) {
             query["VaultRegionId"] = request.vaultRegionId ?? "";
         }

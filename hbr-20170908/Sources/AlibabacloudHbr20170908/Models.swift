@@ -8841,6 +8841,67 @@ public class DescribeBackupJobs2ResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class Report : Tea.TeaModel {
+                public var failedFiles: String?
+
+                public var reportTaskStatus: String?
+
+                public var skippedFiles: String?
+
+                public var successFiles: String?
+
+                public var totalFiles: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.failedFiles != nil {
+                        map["FailedFiles"] = self.failedFiles!
+                    }
+                    if self.reportTaskStatus != nil {
+                        map["ReportTaskStatus"] = self.reportTaskStatus!
+                    }
+                    if self.skippedFiles != nil {
+                        map["SkippedFiles"] = self.skippedFiles!
+                    }
+                    if self.successFiles != nil {
+                        map["SuccessFiles"] = self.successFiles!
+                    }
+                    if self.totalFiles != nil {
+                        map["TotalFiles"] = self.totalFiles!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("FailedFiles") {
+                        self.failedFiles = dict["FailedFiles"] as! String
+                    }
+                    if dict.keys.contains("ReportTaskStatus") {
+                        self.reportTaskStatus = dict["ReportTaskStatus"] as! String
+                    }
+                    if dict.keys.contains("SkippedFiles") {
+                        self.skippedFiles = dict["SkippedFiles"] as! String
+                    }
+                    if dict.keys.contains("SuccessFiles") {
+                        self.successFiles = dict["SuccessFiles"] as! String
+                    }
+                    if dict.keys.contains("TotalFiles") {
+                        self.totalFiles = dict["TotalFiles"] as! String
+                    }
+                }
+            }
             public var actualBytes: Int64?
 
             public var actualFiles: Int64?
@@ -8917,6 +8978,8 @@ public class DescribeBackupJobs2ResponseBody : Tea.TeaModel {
 
             public var progress: Int32?
 
+            public var report: DescribeBackupJobs2ResponseBody.BackupJobs.BackupJob.Report?
+
             public var sourceType: String?
 
             public var speed: Int64?
@@ -8946,6 +9009,7 @@ public class DescribeBackupJobs2ResponseBody : Tea.TeaModel {
                 try self.detail?.validate()
                 try self.otsDetail?.validate()
                 try self.paths?.validate()
+                try self.report?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -9063,6 +9127,9 @@ public class DescribeBackupJobs2ResponseBody : Tea.TeaModel {
                 }
                 if self.progress != nil {
                     map["Progress"] = self.progress!
+                }
+                if self.report != nil {
+                    map["Report"] = self.report?.toMap()
                 }
                 if self.sourceType != nil {
                     map["SourceType"] = self.sourceType!
@@ -9211,6 +9278,11 @@ public class DescribeBackupJobs2ResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Progress") {
                     self.progress = dict["Progress"] as! Int32
+                }
+                if dict.keys.contains("Report") {
+                    var model = DescribeBackupJobs2ResponseBody.BackupJobs.BackupJob.Report()
+                    model.fromMap(dict["Report"] as! [String: Any])
+                    self.report = model
                 }
                 if dict.keys.contains("SourceType") {
                     self.sourceType = dict["SourceType"] as! String
@@ -17737,6 +17809,8 @@ public class DescribeUdmSnapshotsResponseBody : Tea.TeaModel {
 
         public var bytesTotal: Int64?
 
+        public var canBeDeleted: Bool?
+
         public var completeTime: Int64?
 
         public var createTime: Int64?
@@ -17803,6 +17877,9 @@ public class DescribeUdmSnapshotsResponseBody : Tea.TeaModel {
             }
             if self.bytesTotal != nil {
                 map["BytesTotal"] = self.bytesTotal!
+            }
+            if self.canBeDeleted != nil {
+                map["CanBeDeleted"] = self.canBeDeleted!
             }
             if self.completeTime != nil {
                 map["CompleteTime"] = self.completeTime!
@@ -17879,6 +17956,9 @@ public class DescribeUdmSnapshotsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("BytesTotal") {
                 self.bytesTotal = dict["BytesTotal"] as! Int64
+            }
+            if dict.keys.contains("CanBeDeleted") {
+                self.canBeDeleted = dict["CanBeDeleted"] as! Bool
             }
             if dict.keys.contains("CompleteTime") {
                 self.completeTime = dict["CompleteTime"] as! Int64
@@ -18305,6 +18385,8 @@ public class DescribeVaultsRequest : Tea.TeaModel {
 
     public var vaultId: String?
 
+    public var vaultName: String?
+
     public var vaultRegionId: String?
 
     public var vaultType: String?
@@ -18345,6 +18427,9 @@ public class DescribeVaultsRequest : Tea.TeaModel {
         if self.vaultId != nil {
             map["VaultId"] = self.vaultId!
         }
+        if self.vaultName != nil {
+            map["VaultName"] = self.vaultName!
+        }
         if self.vaultRegionId != nil {
             map["VaultRegionId"] = self.vaultRegionId!
         }
@@ -18380,6 +18465,9 @@ public class DescribeVaultsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("VaultId") {
             self.vaultId = dict["VaultId"] as! String
+        }
+        if dict.keys.contains("VaultName") {
+            self.vaultName = dict["VaultName"] as! String
         }
         if dict.keys.contains("VaultRegionId") {
             self.vaultRegionId = dict["VaultRegionId"] as! String
