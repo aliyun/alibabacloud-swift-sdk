@@ -622,6 +622,8 @@ public class CreateTaskRequest : Tea.TeaModel {
 
             public var phraseId: String?
 
+            public var realtimeDiarizationEnabled: Bool?
+
             public override init() {
                 super.init()
             }
@@ -658,6 +660,9 @@ public class CreateTaskRequest : Tea.TeaModel {
                 if self.phraseId != nil {
                     map["PhraseId"] = self.phraseId!
                 }
+                if self.realtimeDiarizationEnabled != nil {
+                    map["RealtimeDiarizationEnabled"] = self.realtimeDiarizationEnabled!
+                }
                 return map
             }
 
@@ -684,6 +689,9 @@ public class CreateTaskRequest : Tea.TeaModel {
                 }
                 if dict.keys.contains("PhraseId") {
                     self.phraseId = dict["PhraseId"] as! String
+                }
+                if dict.keys.contains("RealtimeDiarizationEnabled") {
+                    self.realtimeDiarizationEnabled = dict["RealtimeDiarizationEnabled"] as! Bool
                 }
             }
         }
