@@ -255,6 +255,139 @@ public class ChangeResourceGroupResponse : Tea.TeaModel {
     }
 }
 
+public class CloseSessionRequest : Tea.TeaModel {
+    public var sessionId: String?
+
+    public var sessionToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.sessionId != nil {
+            map["SessionId"] = self.sessionId!
+        }
+        if self.sessionToken != nil {
+            map["SessionToken"] = self.sessionToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("SessionId") {
+            self.sessionId = dict["SessionId"] as! String
+        }
+        if dict.keys.contains("SessionToken") {
+            self.sessionToken = dict["SessionToken"] as! String
+        }
+    }
+}
+
+public class CloseSessionResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var sessionId: String?
+
+    public var state: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.sessionId != nil {
+            map["SessionId"] = self.sessionId!
+        }
+        if self.state != nil {
+            map["State"] = self.state!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SessionId") {
+            self.sessionId = dict["SessionId"] as! String
+        }
+        if dict.keys.contains("State") {
+            self.state = dict["State"] as! String
+        }
+    }
+}
+
+public class CloseSessionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CloseSessionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CloseSessionResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateClusterRequest : Tea.TeaModel {
     public class Components : Tea.TeaModel {
         public class ComponentConfig : Tea.TeaModel {
@@ -1891,6 +2024,874 @@ public class CreateDiagnosticTaskResponse : Tea.TeaModel {
     }
 }
 
+public class CreateNetTestTaskRequest : Tea.TeaModel {
+    public class CommTest : Tea.TeaModel {
+        public class Hosts : Tea.TeaModel {
+            public var IP: String?
+
+            public var nodeId: String?
+
+            public var resourceId: String?
+
+            public var serverName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.IP != nil {
+                    map["IP"] = self.IP!
+                }
+                if self.nodeId != nil {
+                    map["NodeId"] = self.nodeId!
+                }
+                if self.resourceId != nil {
+                    map["ResourceId"] = self.resourceId!
+                }
+                if self.serverName != nil {
+                    map["ServerName"] = self.serverName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("IP") {
+                    self.IP = dict["IP"] as! String
+                }
+                if dict.keys.contains("NodeId") {
+                    self.nodeId = dict["NodeId"] as! String
+                }
+                if dict.keys.contains("ResourceId") {
+                    self.resourceId = dict["ResourceId"] as! String
+                }
+                if dict.keys.contains("ServerName") {
+                    self.serverName = dict["ServerName"] as! String
+                }
+            }
+        }
+        public var GPUNum: Int64?
+
+        public var hosts: [CreateNetTestTaskRequest.CommTest.Hosts]?
+
+        public var model: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.GPUNum != nil {
+                map["GPUNum"] = self.GPUNum!
+            }
+            if self.hosts != nil {
+                var tmp : [Any] = []
+                for k in self.hosts! {
+                    tmp.append(k.toMap())
+                }
+                map["Hosts"] = tmp
+            }
+            if self.model != nil {
+                map["Model"] = self.model!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("GPUNum") {
+                self.GPUNum = dict["GPUNum"] as! Int64
+            }
+            if dict.keys.contains("Hosts") {
+                var tmp : [CreateNetTestTaskRequest.CommTest.Hosts] = []
+                for v in dict["Hosts"] as! [Any] {
+                    var model = CreateNetTestTaskRequest.CommTest.Hosts()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.hosts = tmp
+            }
+            if dict.keys.contains("Model") {
+                self.model = dict["Model"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+        }
+    }
+    public class DelayTest : Tea.TeaModel {
+        public class Hosts : Tea.TeaModel {
+            public var bond: String?
+
+            public var IP: String?
+
+            public var nodeId: String?
+
+            public var resourceId: String?
+
+            public var serverName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bond != nil {
+                    map["Bond"] = self.bond!
+                }
+                if self.IP != nil {
+                    map["IP"] = self.IP!
+                }
+                if self.nodeId != nil {
+                    map["NodeId"] = self.nodeId!
+                }
+                if self.resourceId != nil {
+                    map["ResourceId"] = self.resourceId!
+                }
+                if self.serverName != nil {
+                    map["ServerName"] = self.serverName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Bond") {
+                    self.bond = dict["Bond"] as! String
+                }
+                if dict.keys.contains("IP") {
+                    self.IP = dict["IP"] as! String
+                }
+                if dict.keys.contains("NodeId") {
+                    self.nodeId = dict["NodeId"] as! String
+                }
+                if dict.keys.contains("ResourceId") {
+                    self.resourceId = dict["ResourceId"] as! String
+                }
+                if dict.keys.contains("ServerName") {
+                    self.serverName = dict["ServerName"] as! String
+                }
+            }
+        }
+        public var hosts: [CreateNetTestTaskRequest.DelayTest.Hosts]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.hosts != nil {
+                var tmp : [Any] = []
+                for k in self.hosts! {
+                    tmp.append(k.toMap())
+                }
+                map["Hosts"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Hosts") {
+                var tmp : [CreateNetTestTaskRequest.DelayTest.Hosts] = []
+                for v in dict["Hosts"] as! [Any] {
+                    var model = CreateNetTestTaskRequest.DelayTest.Hosts()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.hosts = tmp
+            }
+        }
+    }
+    public class TrafficTest : Tea.TeaModel {
+        public class Clients : Tea.TeaModel {
+            public var bond: String?
+
+            public var IP: String?
+
+            public var nodeId: String?
+
+            public var resourceId: String?
+
+            public var serverName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bond != nil {
+                    map["Bond"] = self.bond!
+                }
+                if self.IP != nil {
+                    map["IP"] = self.IP!
+                }
+                if self.nodeId != nil {
+                    map["NodeId"] = self.nodeId!
+                }
+                if self.resourceId != nil {
+                    map["ResourceId"] = self.resourceId!
+                }
+                if self.serverName != nil {
+                    map["ServerName"] = self.serverName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Bond") {
+                    self.bond = dict["Bond"] as! String
+                }
+                if dict.keys.contains("IP") {
+                    self.IP = dict["IP"] as! String
+                }
+                if dict.keys.contains("NodeId") {
+                    self.nodeId = dict["NodeId"] as! String
+                }
+                if dict.keys.contains("ResourceId") {
+                    self.resourceId = dict["ResourceId"] as! String
+                }
+                if dict.keys.contains("ServerName") {
+                    self.serverName = dict["ServerName"] as! String
+                }
+            }
+        }
+        public class Servers : Tea.TeaModel {
+            public var bond: String?
+
+            public var IP: String?
+
+            public var nodeId: String?
+
+            public var resourceId: String?
+
+            public var serverName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bond != nil {
+                    map["Bond"] = self.bond!
+                }
+                if self.IP != nil {
+                    map["IP"] = self.IP!
+                }
+                if self.nodeId != nil {
+                    map["NodeId"] = self.nodeId!
+                }
+                if self.resourceId != nil {
+                    map["ResourceId"] = self.resourceId!
+                }
+                if self.serverName != nil {
+                    map["ServerName"] = self.serverName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Bond") {
+                    self.bond = dict["Bond"] as! String
+                }
+                if dict.keys.contains("IP") {
+                    self.IP = dict["IP"] as! String
+                }
+                if dict.keys.contains("NodeId") {
+                    self.nodeId = dict["NodeId"] as! String
+                }
+                if dict.keys.contains("ResourceId") {
+                    self.resourceId = dict["ResourceId"] as! String
+                }
+                if dict.keys.contains("ServerName") {
+                    self.serverName = dict["ServerName"] as! String
+                }
+            }
+        }
+        public var clients: [CreateNetTestTaskRequest.TrafficTest.Clients]?
+
+        public var duration: Int64?
+
+        public var GDR: Bool?
+
+        public var protocol_: String?
+
+        public var QP: Int64?
+
+        public var servers: [CreateNetTestTaskRequest.TrafficTest.Servers]?
+
+        public var trafficModel: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clients != nil {
+                var tmp : [Any] = []
+                for k in self.clients! {
+                    tmp.append(k.toMap())
+                }
+                map["Clients"] = tmp
+            }
+            if self.duration != nil {
+                map["Duration"] = self.duration!
+            }
+            if self.GDR != nil {
+                map["GDR"] = self.GDR!
+            }
+            if self.protocol_ != nil {
+                map["Protocol"] = self.protocol_!
+            }
+            if self.QP != nil {
+                map["QP"] = self.QP!
+            }
+            if self.servers != nil {
+                var tmp : [Any] = []
+                for k in self.servers! {
+                    tmp.append(k.toMap())
+                }
+                map["Servers"] = tmp
+            }
+            if self.trafficModel != nil {
+                map["TrafficModel"] = self.trafficModel!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Clients") {
+                var tmp : [CreateNetTestTaskRequest.TrafficTest.Clients] = []
+                for v in dict["Clients"] as! [Any] {
+                    var model = CreateNetTestTaskRequest.TrafficTest.Clients()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.clients = tmp
+            }
+            if dict.keys.contains("Duration") {
+                self.duration = dict["Duration"] as! Int64
+            }
+            if dict.keys.contains("GDR") {
+                self.GDR = dict["GDR"] as! Bool
+            }
+            if dict.keys.contains("Protocol") {
+                self.protocol_ = dict["Protocol"] as! String
+            }
+            if dict.keys.contains("QP") {
+                self.QP = dict["QP"] as! Int64
+            }
+            if dict.keys.contains("Servers") {
+                var tmp : [CreateNetTestTaskRequest.TrafficTest.Servers] = []
+                for v in dict["Servers"] as! [Any] {
+                    var model = CreateNetTestTaskRequest.TrafficTest.Servers()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.servers = tmp
+            }
+            if dict.keys.contains("TrafficModel") {
+                self.trafficModel = dict["TrafficModel"] as! String
+            }
+        }
+    }
+    public var clusterId: String?
+
+    public var clusterName: String?
+
+    public var commTest: CreateNetTestTaskRequest.CommTest?
+
+    public var delayTest: CreateNetTestTaskRequest.DelayTest?
+
+    public var netTestType: String?
+
+    public var networkMode: String?
+
+    public var port: String?
+
+    public var trafficTest: CreateNetTestTaskRequest.TrafficTest?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.commTest?.validate()
+        try self.delayTest?.validate()
+        try self.trafficTest?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.clusterName != nil {
+            map["ClusterName"] = self.clusterName!
+        }
+        if self.commTest != nil {
+            map["CommTest"] = self.commTest?.toMap()
+        }
+        if self.delayTest != nil {
+            map["DelayTest"] = self.delayTest?.toMap()
+        }
+        if self.netTestType != nil {
+            map["NetTestType"] = self.netTestType!
+        }
+        if self.networkMode != nil {
+            map["NetworkMode"] = self.networkMode!
+        }
+        if self.port != nil {
+            map["Port"] = self.port!
+        }
+        if self.trafficTest != nil {
+            map["TrafficTest"] = self.trafficTest?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClusterId") {
+            self.clusterId = dict["ClusterId"] as! String
+        }
+        if dict.keys.contains("ClusterName") {
+            self.clusterName = dict["ClusterName"] as! String
+        }
+        if dict.keys.contains("CommTest") {
+            var model = CreateNetTestTaskRequest.CommTest()
+            model.fromMap(dict["CommTest"] as! [String: Any])
+            self.commTest = model
+        }
+        if dict.keys.contains("DelayTest") {
+            var model = CreateNetTestTaskRequest.DelayTest()
+            model.fromMap(dict["DelayTest"] as! [String: Any])
+            self.delayTest = model
+        }
+        if dict.keys.contains("NetTestType") {
+            self.netTestType = dict["NetTestType"] as! String
+        }
+        if dict.keys.contains("NetworkMode") {
+            self.networkMode = dict["NetworkMode"] as! String
+        }
+        if dict.keys.contains("Port") {
+            self.port = dict["Port"] as! String
+        }
+        if dict.keys.contains("TrafficTest") {
+            var model = CreateNetTestTaskRequest.TrafficTest()
+            model.fromMap(dict["TrafficTest"] as! [String: Any])
+            self.trafficTest = model
+        }
+    }
+}
+
+public class CreateNetTestTaskShrinkRequest : Tea.TeaModel {
+    public var clusterId: String?
+
+    public var clusterName: String?
+
+    public var commTestShrink: String?
+
+    public var delayTestShrink: String?
+
+    public var netTestType: String?
+
+    public var networkMode: String?
+
+    public var port: String?
+
+    public var trafficTestShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.clusterName != nil {
+            map["ClusterName"] = self.clusterName!
+        }
+        if self.commTestShrink != nil {
+            map["CommTest"] = self.commTestShrink!
+        }
+        if self.delayTestShrink != nil {
+            map["DelayTest"] = self.delayTestShrink!
+        }
+        if self.netTestType != nil {
+            map["NetTestType"] = self.netTestType!
+        }
+        if self.networkMode != nil {
+            map["NetworkMode"] = self.networkMode!
+        }
+        if self.port != nil {
+            map["Port"] = self.port!
+        }
+        if self.trafficTestShrink != nil {
+            map["TrafficTest"] = self.trafficTestShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClusterId") {
+            self.clusterId = dict["ClusterId"] as! String
+        }
+        if dict.keys.contains("ClusterName") {
+            self.clusterName = dict["ClusterName"] as! String
+        }
+        if dict.keys.contains("CommTest") {
+            self.commTestShrink = dict["CommTest"] as! String
+        }
+        if dict.keys.contains("DelayTest") {
+            self.delayTestShrink = dict["DelayTest"] as! String
+        }
+        if dict.keys.contains("NetTestType") {
+            self.netTestType = dict["NetTestType"] as! String
+        }
+        if dict.keys.contains("NetworkMode") {
+            self.networkMode = dict["NetworkMode"] as! String
+        }
+        if dict.keys.contains("Port") {
+            self.port = dict["Port"] as! String
+        }
+        if dict.keys.contains("TrafficTest") {
+            self.trafficTestShrink = dict["TrafficTest"] as! String
+        }
+    }
+}
+
+public class CreateNetTestTaskResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var testId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.testId != nil {
+            map["TestId"] = self.testId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TestId") {
+            self.testId = dict["TestId"] as! String
+        }
+    }
+}
+
+public class CreateNetTestTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateNetTestTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateNetTestTaskResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class CreateSessionRequest : Tea.TeaModel {
+    public var nodeId: String?
+
+    public var sessionType: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.nodeId != nil {
+            map["NodeId"] = self.nodeId!
+        }
+        if self.sessionType != nil {
+            map["SessionType"] = self.sessionType!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("NodeId") {
+            self.nodeId = dict["NodeId"] as! String
+        }
+        if dict.keys.contains("SessionType") {
+            self.sessionType = dict["SessionType"] as! String
+        }
+        if dict.keys.contains("StartTime") {
+            self.startTime = dict["StartTime"] as! String
+        }
+    }
+}
+
+public class CreateSessionResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var serverSn: String?
+
+    public var sessionId: String?
+
+    public var sessionToken: String?
+
+    public var wssEndpoint: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.serverSn != nil {
+            map["ServerSn"] = self.serverSn!
+        }
+        if self.sessionId != nil {
+            map["SessionId"] = self.sessionId!
+        }
+        if self.sessionToken != nil {
+            map["SessionToken"] = self.sessionToken!
+        }
+        if self.wssEndpoint != nil {
+            map["WssEndpoint"] = self.wssEndpoint!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ServerSn") {
+            self.serverSn = dict["ServerSn"] as! String
+        }
+        if dict.keys.contains("SessionId") {
+            self.sessionId = dict["SessionId"] as! String
+        }
+        if dict.keys.contains("SessionToken") {
+            self.sessionToken = dict["SessionToken"] as! String
+        }
+        if dict.keys.contains("WssEndpoint") {
+            self.wssEndpoint = dict["WssEndpoint"] as! String
+        }
+    }
+}
+
+public class CreateSessionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateSessionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateSessionResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DeleteClusterRequest : Tea.TeaModel {
     public var clusterId: String?
 
@@ -2832,6 +3833,631 @@ public class DescribeInvocationsResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DescribeInvocationsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeNetTestResultRequest : Tea.TeaModel {
+    public var testId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.testId != nil {
+            map["TestId"] = self.testId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("TestId") {
+            self.testId = dict["TestId"] as! String
+        }
+    }
+}
+
+public class DescribeNetTestResultResponseBody : Tea.TeaModel {
+    public class CommTest : Tea.TeaModel {
+        public class Hosts : Tea.TeaModel {
+            public var IP: String?
+
+            public var resourceId: String?
+
+            public var serverName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.IP != nil {
+                    map["IP"] = self.IP!
+                }
+                if self.resourceId != nil {
+                    map["ResourceId"] = self.resourceId!
+                }
+                if self.serverName != nil {
+                    map["ServerName"] = self.serverName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("IP") {
+                    self.IP = dict["IP"] as! String
+                }
+                if dict.keys.contains("ResourceId") {
+                    self.resourceId = dict["ResourceId"] as! String
+                }
+                if dict.keys.contains("ServerName") {
+                    self.serverName = dict["ServerName"] as! String
+                }
+            }
+        }
+        public var GPUNum: String?
+
+        public var hosts: [DescribeNetTestResultResponseBody.CommTest.Hosts]?
+
+        public var model: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.GPUNum != nil {
+                map["GPUNum"] = self.GPUNum!
+            }
+            if self.hosts != nil {
+                var tmp : [Any] = []
+                for k in self.hosts! {
+                    tmp.append(k.toMap())
+                }
+                map["Hosts"] = tmp
+            }
+            if self.model != nil {
+                map["Model"] = self.model!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("GPUNum") {
+                self.GPUNum = dict["GPUNum"] as! String
+            }
+            if dict.keys.contains("Hosts") {
+                var tmp : [DescribeNetTestResultResponseBody.CommTest.Hosts] = []
+                for v in dict["Hosts"] as! [Any] {
+                    var model = DescribeNetTestResultResponseBody.CommTest.Hosts()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.hosts = tmp
+            }
+            if dict.keys.contains("Model") {
+                self.model = dict["Model"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+        }
+    }
+    public class DelayTest : Tea.TeaModel {
+        public class Hosts : Tea.TeaModel {
+            public var bond: String?
+
+            public var IP: String?
+
+            public var resourceId: String?
+
+            public var serverName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bond != nil {
+                    map["Bond"] = self.bond!
+                }
+                if self.IP != nil {
+                    map["IP"] = self.IP!
+                }
+                if self.resourceId != nil {
+                    map["ResourceId"] = self.resourceId!
+                }
+                if self.serverName != nil {
+                    map["ServerName"] = self.serverName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Bond") {
+                    self.bond = dict["Bond"] as! String
+                }
+                if dict.keys.contains("IP") {
+                    self.IP = dict["IP"] as! String
+                }
+                if dict.keys.contains("ResourceId") {
+                    self.resourceId = dict["ResourceId"] as! String
+                }
+                if dict.keys.contains("ServerName") {
+                    self.serverName = dict["ServerName"] as! String
+                }
+            }
+        }
+        public var hosts: [DescribeNetTestResultResponseBody.DelayTest.Hosts]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.hosts != nil {
+                var tmp : [Any] = []
+                for k in self.hosts! {
+                    tmp.append(k.toMap())
+                }
+                map["Hosts"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Hosts") {
+                var tmp : [DescribeNetTestResultResponseBody.DelayTest.Hosts] = []
+                for v in dict["Hosts"] as! [Any] {
+                    var model = DescribeNetTestResultResponseBody.DelayTest.Hosts()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.hosts = tmp
+            }
+        }
+    }
+    public class TrafficTest : Tea.TeaModel {
+        public class Clients : Tea.TeaModel {
+            public var bond: String?
+
+            public var IP: String?
+
+            public var resourceId: String?
+
+            public var serverName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bond != nil {
+                    map["Bond"] = self.bond!
+                }
+                if self.IP != nil {
+                    map["IP"] = self.IP!
+                }
+                if self.resourceId != nil {
+                    map["ResourceId"] = self.resourceId!
+                }
+                if self.serverName != nil {
+                    map["ServerName"] = self.serverName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Bond") {
+                    self.bond = dict["Bond"] as! String
+                }
+                if dict.keys.contains("IP") {
+                    self.IP = dict["IP"] as! String
+                }
+                if dict.keys.contains("ResourceId") {
+                    self.resourceId = dict["ResourceId"] as! String
+                }
+                if dict.keys.contains("ServerName") {
+                    self.serverName = dict["ServerName"] as! String
+                }
+            }
+        }
+        public class Servers : Tea.TeaModel {
+            public var bond: String?
+
+            public var IP: String?
+
+            public var resourceId: String?
+
+            public var serverName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bond != nil {
+                    map["Bond"] = self.bond!
+                }
+                if self.IP != nil {
+                    map["IP"] = self.IP!
+                }
+                if self.resourceId != nil {
+                    map["ResourceId"] = self.resourceId!
+                }
+                if self.serverName != nil {
+                    map["ServerName"] = self.serverName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Bond") {
+                    self.bond = dict["Bond"] as! String
+                }
+                if dict.keys.contains("IP") {
+                    self.IP = dict["IP"] as! String
+                }
+                if dict.keys.contains("ResourceId") {
+                    self.resourceId = dict["ResourceId"] as! String
+                }
+                if dict.keys.contains("ServerName") {
+                    self.serverName = dict["ServerName"] as! String
+                }
+            }
+        }
+        public var clients: [DescribeNetTestResultResponseBody.TrafficTest.Clients]?
+
+        public var duration: Int64?
+
+        public var GDR: String?
+
+        public var protocol_: String?
+
+        public var QP: Int64?
+
+        public var servers: [DescribeNetTestResultResponseBody.TrafficTest.Servers]?
+
+        public var trafficModel: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clients != nil {
+                var tmp : [Any] = []
+                for k in self.clients! {
+                    tmp.append(k.toMap())
+                }
+                map["Clients"] = tmp
+            }
+            if self.duration != nil {
+                map["Duration"] = self.duration!
+            }
+            if self.GDR != nil {
+                map["GDR"] = self.GDR!
+            }
+            if self.protocol_ != nil {
+                map["Protocol"] = self.protocol_!
+            }
+            if self.QP != nil {
+                map["QP"] = self.QP!
+            }
+            if self.servers != nil {
+                var tmp : [Any] = []
+                for k in self.servers! {
+                    tmp.append(k.toMap())
+                }
+                map["Servers"] = tmp
+            }
+            if self.trafficModel != nil {
+                map["TrafficModel"] = self.trafficModel!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Clients") {
+                var tmp : [DescribeNetTestResultResponseBody.TrafficTest.Clients] = []
+                for v in dict["Clients"] as! [Any] {
+                    var model = DescribeNetTestResultResponseBody.TrafficTest.Clients()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.clients = tmp
+            }
+            if dict.keys.contains("Duration") {
+                self.duration = dict["Duration"] as! Int64
+            }
+            if dict.keys.contains("GDR") {
+                self.GDR = dict["GDR"] as! String
+            }
+            if dict.keys.contains("Protocol") {
+                self.protocol_ = dict["Protocol"] as! String
+            }
+            if dict.keys.contains("QP") {
+                self.QP = dict["QP"] as! Int64
+            }
+            if dict.keys.contains("Servers") {
+                var tmp : [DescribeNetTestResultResponseBody.TrafficTest.Servers] = []
+                for v in dict["Servers"] as! [Any] {
+                    var model = DescribeNetTestResultResponseBody.TrafficTest.Servers()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.servers = tmp
+            }
+            if dict.keys.contains("TrafficModel") {
+                self.trafficModel = dict["TrafficModel"] as! String
+            }
+        }
+    }
+    public var clusterId: String?
+
+    public var clusterName: String?
+
+    public var commTest: DescribeNetTestResultResponseBody.CommTest?
+
+    public var creationTime: String?
+
+    public var delayTest: DescribeNetTestResultResponseBody.DelayTest?
+
+    public var finishedTime: String?
+
+    public var netTestType: String?
+
+    public var port: String?
+
+    public var requestId: String?
+
+    public var resultDetial: String?
+
+    public var status: String?
+
+    public var testId: String?
+
+    public var trafficTest: DescribeNetTestResultResponseBody.TrafficTest?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.commTest?.validate()
+        try self.delayTest?.validate()
+        try self.trafficTest?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.clusterName != nil {
+            map["ClusterName"] = self.clusterName!
+        }
+        if self.commTest != nil {
+            map["CommTest"] = self.commTest?.toMap()
+        }
+        if self.creationTime != nil {
+            map["CreationTime"] = self.creationTime!
+        }
+        if self.delayTest != nil {
+            map["DelayTest"] = self.delayTest?.toMap()
+        }
+        if self.finishedTime != nil {
+            map["FinishedTime"] = self.finishedTime!
+        }
+        if self.netTestType != nil {
+            map["NetTestType"] = self.netTestType!
+        }
+        if self.port != nil {
+            map["Port"] = self.port!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resultDetial != nil {
+            map["ResultDetial"] = self.resultDetial!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.testId != nil {
+            map["TestId"] = self.testId!
+        }
+        if self.trafficTest != nil {
+            map["TrafficTest"] = self.trafficTest?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClusterId") {
+            self.clusterId = dict["ClusterId"] as! String
+        }
+        if dict.keys.contains("ClusterName") {
+            self.clusterName = dict["ClusterName"] as! String
+        }
+        if dict.keys.contains("CommTest") {
+            var model = DescribeNetTestResultResponseBody.CommTest()
+            model.fromMap(dict["CommTest"] as! [String: Any])
+            self.commTest = model
+        }
+        if dict.keys.contains("CreationTime") {
+            self.creationTime = dict["CreationTime"] as! String
+        }
+        if dict.keys.contains("DelayTest") {
+            var model = DescribeNetTestResultResponseBody.DelayTest()
+            model.fromMap(dict["DelayTest"] as! [String: Any])
+            self.delayTest = model
+        }
+        if dict.keys.contains("FinishedTime") {
+            self.finishedTime = dict["FinishedTime"] as! String
+        }
+        if dict.keys.contains("NetTestType") {
+            self.netTestType = dict["NetTestType"] as! String
+        }
+        if dict.keys.contains("Port") {
+            self.port = dict["Port"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResultDetial") {
+            self.resultDetial = dict["ResultDetial"] as! String
+        }
+        if dict.keys.contains("Status") {
+            self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("TestId") {
+            self.testId = dict["TestId"] as! String
+        }
+        if dict.keys.contains("TrafficTest") {
+            var model = DescribeNetTestResultResponseBody.TrafficTest()
+            model.fromMap(dict["TrafficTest"] as! [String: Any])
+            self.trafficTest = model
+        }
+    }
+}
+
+public class DescribeNetTestResultResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeNetTestResultResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeNetTestResultResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -5622,6 +7248,276 @@ public class ListClustersResponse : Tea.TeaModel {
     }
 }
 
+public class ListDiagnosticResultsRequest : Tea.TeaModel {
+    public var diagType: String?
+
+    public var maxResults: Int64?
+
+    public var nextToken: String?
+
+    public var resourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.diagType != nil {
+            map["DiagType"] = self.diagType!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DiagType") {
+            self.diagType = dict["DiagType"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int64
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+    }
+}
+
+public class ListDiagnosticResultsResponseBody : Tea.TeaModel {
+    public class DiagnosticResults : Tea.TeaModel {
+        public var clusterId: String?
+
+        public var clusterName: String?
+
+        public var creationTime: String?
+
+        public var diagContent: String?
+
+        public var diagId: String?
+
+        public var diagResult: String?
+
+        public var finishedTime: String?
+
+        public var resourceId: String?
+
+        public var serverName: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clusterId != nil {
+                map["ClusterId"] = self.clusterId!
+            }
+            if self.clusterName != nil {
+                map["ClusterName"] = self.clusterName!
+            }
+            if self.creationTime != nil {
+                map["CreationTime"] = self.creationTime!
+            }
+            if self.diagContent != nil {
+                map["DiagContent"] = self.diagContent!
+            }
+            if self.diagId != nil {
+                map["DiagId"] = self.diagId!
+            }
+            if self.diagResult != nil {
+                map["DiagResult"] = self.diagResult!
+            }
+            if self.finishedTime != nil {
+                map["FinishedTime"] = self.finishedTime!
+            }
+            if self.resourceId != nil {
+                map["ResourceId"] = self.resourceId!
+            }
+            if self.serverName != nil {
+                map["ServerName"] = self.serverName!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ClusterId") {
+                self.clusterId = dict["ClusterId"] as! String
+            }
+            if dict.keys.contains("ClusterName") {
+                self.clusterName = dict["ClusterName"] as! String
+            }
+            if dict.keys.contains("CreationTime") {
+                self.creationTime = dict["CreationTime"] as! String
+            }
+            if dict.keys.contains("DiagContent") {
+                self.diagContent = dict["DiagContent"] as! String
+            }
+            if dict.keys.contains("DiagId") {
+                self.diagId = dict["DiagId"] as! String
+            }
+            if dict.keys.contains("DiagResult") {
+                self.diagResult = dict["DiagResult"] as! String
+            }
+            if dict.keys.contains("FinishedTime") {
+                self.finishedTime = dict["FinishedTime"] as! String
+            }
+            if dict.keys.contains("ResourceId") {
+                self.resourceId = dict["ResourceId"] as! String
+            }
+            if dict.keys.contains("ServerName") {
+                self.serverName = dict["ServerName"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+        }
+    }
+    public var diagnosticResults: [ListDiagnosticResultsResponseBody.DiagnosticResults]?
+
+    public var maxResults: Int64?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.diagnosticResults != nil {
+            var tmp : [Any] = []
+            for k in self.diagnosticResults! {
+                tmp.append(k.toMap())
+            }
+            map["DiagnosticResults"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DiagnosticResults") {
+            var tmp : [ListDiagnosticResultsResponseBody.DiagnosticResults] = []
+            for v in dict["DiagnosticResults"] as! [Any] {
+                var model = ListDiagnosticResultsResponseBody.DiagnosticResults()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.diagnosticResults = tmp
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int64
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ListDiagnosticResultsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListDiagnosticResultsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListDiagnosticResultsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListFreeNodesRequest : Tea.TeaModel {
     public var hpnZone: String?
 
@@ -5876,6 +7772,553 @@ public class ListFreeNodesResponse : Tea.TeaModel {
     }
 }
 
+public class ListImagesRequest : Tea.TeaModel {
+    public var architecture: String?
+
+    public var imageVersion: String?
+
+    public var platform: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.architecture != nil {
+            map["Architecture"] = self.architecture!
+        }
+        if self.imageVersion != nil {
+            map["ImageVersion"] = self.imageVersion!
+        }
+        if self.platform != nil {
+            map["Platform"] = self.platform!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Architecture") {
+            self.architecture = dict["Architecture"] as! String
+        }
+        if dict.keys.contains("ImageVersion") {
+            self.imageVersion = dict["ImageVersion"] as! String
+        }
+        if dict.keys.contains("Platform") {
+            self.platform = dict["Platform"] as! String
+        }
+    }
+}
+
+public class ListImagesResponseBody : Tea.TeaModel {
+    public class Images : Tea.TeaModel {
+        public var architecture: String?
+
+        public var description_: String?
+
+        public var imageId: String?
+
+        public var imageName: String?
+
+        public var imageVersion: String?
+
+        public var nodeCount: Int64?
+
+        public var platform: String?
+
+        public var releaseFileMd5: String?
+
+        public var releaseFileSize: Int64?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.architecture != nil {
+                map["Architecture"] = self.architecture!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.imageId != nil {
+                map["ImageId"] = self.imageId!
+            }
+            if self.imageName != nil {
+                map["ImageName"] = self.imageName!
+            }
+            if self.imageVersion != nil {
+                map["ImageVersion"] = self.imageVersion!
+            }
+            if self.nodeCount != nil {
+                map["NodeCount"] = self.nodeCount!
+            }
+            if self.platform != nil {
+                map["Platform"] = self.platform!
+            }
+            if self.releaseFileMd5 != nil {
+                map["ReleaseFileMd5"] = self.releaseFileMd5!
+            }
+            if self.releaseFileSize != nil {
+                map["ReleaseFileSize"] = self.releaseFileSize!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Architecture") {
+                self.architecture = dict["Architecture"] as! String
+            }
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("ImageId") {
+                self.imageId = dict["ImageId"] as! String
+            }
+            if dict.keys.contains("ImageName") {
+                self.imageName = dict["ImageName"] as! String
+            }
+            if dict.keys.contains("ImageVersion") {
+                self.imageVersion = dict["ImageVersion"] as! String
+            }
+            if dict.keys.contains("NodeCount") {
+                self.nodeCount = dict["NodeCount"] as! Int64
+            }
+            if dict.keys.contains("Platform") {
+                self.platform = dict["Platform"] as! String
+            }
+            if dict.keys.contains("ReleaseFileMd5") {
+                self.releaseFileMd5 = dict["ReleaseFileMd5"] as! String
+            }
+            if dict.keys.contains("ReleaseFileSize") {
+                self.releaseFileSize = dict["ReleaseFileSize"] as! Int64
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+        }
+    }
+    public var images: [ListImagesResponseBody.Images]?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.images != nil {
+            var tmp : [Any] = []
+            for k in self.images! {
+                tmp.append(k.toMap())
+            }
+            map["Images"] = tmp
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Images") {
+            var tmp : [ListImagesResponseBody.Images] = []
+            for v in dict["Images"] as! [Any] {
+                var model = ListImagesResponseBody.Images()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.images = tmp
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ListImagesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListImagesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListImagesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListMachineNetworkInfoRequest : Tea.TeaModel {
+    public class MachineHpnInfo : Tea.TeaModel {
+        public var hpnZone: String?
+
+        public var machineType: String?
+
+        public var regionId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.hpnZone != nil {
+                map["HpnZone"] = self.hpnZone!
+            }
+            if self.machineType != nil {
+                map["MachineType"] = self.machineType!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("HpnZone") {
+                self.hpnZone = dict["HpnZone"] as! String
+            }
+            if dict.keys.contains("MachineType") {
+                self.machineType = dict["MachineType"] as! String
+            }
+            if dict.keys.contains("RegionId") {
+                self.regionId = dict["RegionId"] as! String
+            }
+        }
+    }
+    public var machineHpnInfo: [ListMachineNetworkInfoRequest.MachineHpnInfo]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.machineHpnInfo != nil {
+            var tmp : [Any] = []
+            for k in self.machineHpnInfo! {
+                tmp.append(k.toMap())
+            }
+            map["MachineHpnInfo"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MachineHpnInfo") {
+            var tmp : [ListMachineNetworkInfoRequest.MachineHpnInfo] = []
+            for v in dict["MachineHpnInfo"] as! [Any] {
+                var model = ListMachineNetworkInfoRequest.MachineHpnInfo()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.machineHpnInfo = tmp
+        }
+    }
+}
+
+public class ListMachineNetworkInfoShrinkRequest : Tea.TeaModel {
+    public var machineHpnInfoShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.machineHpnInfoShrink != nil {
+            map["MachineHpnInfo"] = self.machineHpnInfoShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MachineHpnInfo") {
+            self.machineHpnInfoShrink = dict["MachineHpnInfo"] as! String
+        }
+    }
+}
+
+public class ListMachineNetworkInfoResponseBody : Tea.TeaModel {
+    public class MachineNetworkInfo : Tea.TeaModel {
+        public var clusterNet: String?
+
+        public var enableJumboFrame: Bool?
+
+        public var hpnZone: String?
+
+        public var isDpuMode: Bool?
+
+        public var machineType: String?
+
+        public var netArch: String?
+
+        public var regionId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clusterNet != nil {
+                map["ClusterNet"] = self.clusterNet!
+            }
+            if self.enableJumboFrame != nil {
+                map["EnableJumboFrame"] = self.enableJumboFrame!
+            }
+            if self.hpnZone != nil {
+                map["HpnZone"] = self.hpnZone!
+            }
+            if self.isDpuMode != nil {
+                map["IsDpuMode"] = self.isDpuMode!
+            }
+            if self.machineType != nil {
+                map["MachineType"] = self.machineType!
+            }
+            if self.netArch != nil {
+                map["NetArch"] = self.netArch!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ClusterNet") {
+                self.clusterNet = dict["ClusterNet"] as! String
+            }
+            if dict.keys.contains("EnableJumboFrame") {
+                self.enableJumboFrame = dict["EnableJumboFrame"] as! Bool
+            }
+            if dict.keys.contains("HpnZone") {
+                self.hpnZone = dict["HpnZone"] as! String
+            }
+            if dict.keys.contains("IsDpuMode") {
+                self.isDpuMode = dict["IsDpuMode"] as! Bool
+            }
+            if dict.keys.contains("MachineType") {
+                self.machineType = dict["MachineType"] as! String
+            }
+            if dict.keys.contains("NetArch") {
+                self.netArch = dict["NetArch"] as! String
+            }
+            if dict.keys.contains("RegionId") {
+                self.regionId = dict["RegionId"] as! String
+            }
+        }
+    }
+    public var machineNetworkInfo: [ListMachineNetworkInfoResponseBody.MachineNetworkInfo]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.machineNetworkInfo != nil {
+            var tmp : [Any] = []
+            for k in self.machineNetworkInfo! {
+                tmp.append(k.toMap())
+            }
+            map["MachineNetworkInfo"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MachineNetworkInfo") {
+            var tmp : [ListMachineNetworkInfoResponseBody.MachineNetworkInfo] = []
+            for v in dict["MachineNetworkInfo"] as! [Any] {
+                var model = ListMachineNetworkInfoResponseBody.MachineNetworkInfo()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.machineNetworkInfo = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ListMachineNetworkInfoResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListMachineNetworkInfoResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListMachineNetworkInfoResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListMachineTypesRequest : Tea.TeaModel {
     public var name: String?
 
@@ -6108,6 +8551,712 @@ public class ListMachineTypesResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ListMachineTypesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListNetTestResultsRequest : Tea.TeaModel {
+    public var maxResults: Int64?
+
+    public var netTestType: String?
+
+    public var nextToken: String?
+
+    public var resourceGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.netTestType != nil {
+            map["NetTestType"] = self.netTestType!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int64
+        }
+        if dict.keys.contains("NetTestType") {
+            self.netTestType = dict["NetTestType"] as! String
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+    }
+}
+
+public class ListNetTestResultsResponseBody : Tea.TeaModel {
+    public class NetTestResults : Tea.TeaModel {
+        public class CommTest : Tea.TeaModel {
+            public class Hosts : Tea.TeaModel {
+                public var IP: String?
+
+                public var resourceId: String?
+
+                public var serverName: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.IP != nil {
+                        map["IP"] = self.IP!
+                    }
+                    if self.resourceId != nil {
+                        map["ResourceId"] = self.resourceId!
+                    }
+                    if self.serverName != nil {
+                        map["ServerName"] = self.serverName!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("IP") {
+                        self.IP = dict["IP"] as! String
+                    }
+                    if dict.keys.contains("ResourceId") {
+                        self.resourceId = dict["ResourceId"] as! String
+                    }
+                    if dict.keys.contains("ServerName") {
+                        self.serverName = dict["ServerName"] as! String
+                    }
+                }
+            }
+            public var GPUNum: String?
+
+            public var hosts: [ListNetTestResultsResponseBody.NetTestResults.CommTest.Hosts]?
+
+            public var model: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.GPUNum != nil {
+                    map["GPUNum"] = self.GPUNum!
+                }
+                if self.hosts != nil {
+                    var tmp : [Any] = []
+                    for k in self.hosts! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Hosts"] = tmp
+                }
+                if self.model != nil {
+                    map["Model"] = self.model!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("GPUNum") {
+                    self.GPUNum = dict["GPUNum"] as! String
+                }
+                if dict.keys.contains("Hosts") {
+                    var tmp : [ListNetTestResultsResponseBody.NetTestResults.CommTest.Hosts] = []
+                    for v in dict["Hosts"] as! [Any] {
+                        var model = ListNetTestResultsResponseBody.NetTestResults.CommTest.Hosts()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.hosts = tmp
+                }
+                if dict.keys.contains("Model") {
+                    self.model = dict["Model"] as! String
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+            }
+        }
+        public class DelayTest : Tea.TeaModel {
+            public class Hosts : Tea.TeaModel {
+                public var bond: String?
+
+                public var IP: String?
+
+                public var resourceId: String?
+
+                public var serverName: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.bond != nil {
+                        map["Bond"] = self.bond!
+                    }
+                    if self.IP != nil {
+                        map["IP"] = self.IP!
+                    }
+                    if self.resourceId != nil {
+                        map["ResourceId"] = self.resourceId!
+                    }
+                    if self.serverName != nil {
+                        map["ServerName"] = self.serverName!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Bond") {
+                        self.bond = dict["Bond"] as! String
+                    }
+                    if dict.keys.contains("IP") {
+                        self.IP = dict["IP"] as! String
+                    }
+                    if dict.keys.contains("ResourceId") {
+                        self.resourceId = dict["ResourceId"] as! String
+                    }
+                    if dict.keys.contains("ServerName") {
+                        self.serverName = dict["ServerName"] as! String
+                    }
+                }
+            }
+            public var hosts: [ListNetTestResultsResponseBody.NetTestResults.DelayTest.Hosts]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.hosts != nil {
+                    var tmp : [Any] = []
+                    for k in self.hosts! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Hosts"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Hosts") {
+                    var tmp : [ListNetTestResultsResponseBody.NetTestResults.DelayTest.Hosts] = []
+                    for v in dict["Hosts"] as! [Any] {
+                        var model = ListNetTestResultsResponseBody.NetTestResults.DelayTest.Hosts()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.hosts = tmp
+                }
+            }
+        }
+        public class TrafficTest : Tea.TeaModel {
+            public class Clients : Tea.TeaModel {
+                public var bond: String?
+
+                public var IP: String?
+
+                public var resourceId: String?
+
+                public var serverName: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.bond != nil {
+                        map["Bond"] = self.bond!
+                    }
+                    if self.IP != nil {
+                        map["IP"] = self.IP!
+                    }
+                    if self.resourceId != nil {
+                        map["ResourceId"] = self.resourceId!
+                    }
+                    if self.serverName != nil {
+                        map["ServerName"] = self.serverName!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Bond") {
+                        self.bond = dict["Bond"] as! String
+                    }
+                    if dict.keys.contains("IP") {
+                        self.IP = dict["IP"] as! String
+                    }
+                    if dict.keys.contains("ResourceId") {
+                        self.resourceId = dict["ResourceId"] as! String
+                    }
+                    if dict.keys.contains("ServerName") {
+                        self.serverName = dict["ServerName"] as! String
+                    }
+                }
+            }
+            public class Servers : Tea.TeaModel {
+                public var bond: String?
+
+                public var IP: String?
+
+                public var resourceId: String?
+
+                public var serverName: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.bond != nil {
+                        map["Bond"] = self.bond!
+                    }
+                    if self.IP != nil {
+                        map["IP"] = self.IP!
+                    }
+                    if self.resourceId != nil {
+                        map["ResourceId"] = self.resourceId!
+                    }
+                    if self.serverName != nil {
+                        map["ServerName"] = self.serverName!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Bond") {
+                        self.bond = dict["Bond"] as! String
+                    }
+                    if dict.keys.contains("IP") {
+                        self.IP = dict["IP"] as! String
+                    }
+                    if dict.keys.contains("ResourceId") {
+                        self.resourceId = dict["ResourceId"] as! String
+                    }
+                    if dict.keys.contains("ServerName") {
+                        self.serverName = dict["ServerName"] as! String
+                    }
+                }
+            }
+            public var clients: [ListNetTestResultsResponseBody.NetTestResults.TrafficTest.Clients]?
+
+            public var duration: Int64?
+
+            public var GDR: String?
+
+            public var protocol_: String?
+
+            public var QP: Int64?
+
+            public var servers: [ListNetTestResultsResponseBody.NetTestResults.TrafficTest.Servers]?
+
+            public var trafficModel: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.clients != nil {
+                    var tmp : [Any] = []
+                    for k in self.clients! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Clients"] = tmp
+                }
+                if self.duration != nil {
+                    map["Duration"] = self.duration!
+                }
+                if self.GDR != nil {
+                    map["GDR"] = self.GDR!
+                }
+                if self.protocol_ != nil {
+                    map["Protocol"] = self.protocol_!
+                }
+                if self.QP != nil {
+                    map["QP"] = self.QP!
+                }
+                if self.servers != nil {
+                    var tmp : [Any] = []
+                    for k in self.servers! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Servers"] = tmp
+                }
+                if self.trafficModel != nil {
+                    map["TrafficModel"] = self.trafficModel!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Clients") {
+                    var tmp : [ListNetTestResultsResponseBody.NetTestResults.TrafficTest.Clients] = []
+                    for v in dict["Clients"] as! [Any] {
+                        var model = ListNetTestResultsResponseBody.NetTestResults.TrafficTest.Clients()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.clients = tmp
+                }
+                if dict.keys.contains("Duration") {
+                    self.duration = dict["Duration"] as! Int64
+                }
+                if dict.keys.contains("GDR") {
+                    self.GDR = dict["GDR"] as! String
+                }
+                if dict.keys.contains("Protocol") {
+                    self.protocol_ = dict["Protocol"] as! String
+                }
+                if dict.keys.contains("QP") {
+                    self.QP = dict["QP"] as! Int64
+                }
+                if dict.keys.contains("Servers") {
+                    var tmp : [ListNetTestResultsResponseBody.NetTestResults.TrafficTest.Servers] = []
+                    for v in dict["Servers"] as! [Any] {
+                        var model = ListNetTestResultsResponseBody.NetTestResults.TrafficTest.Servers()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.servers = tmp
+                }
+                if dict.keys.contains("TrafficModel") {
+                    self.trafficModel = dict["TrafficModel"] as! String
+                }
+            }
+        }
+        public var clusterId: String?
+
+        public var clusterName: String?
+
+        public var commTest: ListNetTestResultsResponseBody.NetTestResults.CommTest?
+
+        public var creationTime: String?
+
+        public var delayTest: ListNetTestResultsResponseBody.NetTestResults.DelayTest?
+
+        public var finishedTime: String?
+
+        public var netTestType: String?
+
+        public var networkMode: String?
+
+        public var port: String?
+
+        public var status: String?
+
+        public var testId: String?
+
+        public var trafficTest: ListNetTestResultsResponseBody.NetTestResults.TrafficTest?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.commTest?.validate()
+            try self.delayTest?.validate()
+            try self.trafficTest?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clusterId != nil {
+                map["ClusterId"] = self.clusterId!
+            }
+            if self.clusterName != nil {
+                map["ClusterName"] = self.clusterName!
+            }
+            if self.commTest != nil {
+                map["CommTest"] = self.commTest?.toMap()
+            }
+            if self.creationTime != nil {
+                map["CreationTime"] = self.creationTime!
+            }
+            if self.delayTest != nil {
+                map["DelayTest"] = self.delayTest?.toMap()
+            }
+            if self.finishedTime != nil {
+                map["FinishedTime"] = self.finishedTime!
+            }
+            if self.netTestType != nil {
+                map["NetTestType"] = self.netTestType!
+            }
+            if self.networkMode != nil {
+                map["NetworkMode"] = self.networkMode!
+            }
+            if self.port != nil {
+                map["Port"] = self.port!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.testId != nil {
+                map["TestId"] = self.testId!
+            }
+            if self.trafficTest != nil {
+                map["TrafficTest"] = self.trafficTest?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ClusterId") {
+                self.clusterId = dict["ClusterId"] as! String
+            }
+            if dict.keys.contains("ClusterName") {
+                self.clusterName = dict["ClusterName"] as! String
+            }
+            if dict.keys.contains("CommTest") {
+                var model = ListNetTestResultsResponseBody.NetTestResults.CommTest()
+                model.fromMap(dict["CommTest"] as! [String: Any])
+                self.commTest = model
+            }
+            if dict.keys.contains("CreationTime") {
+                self.creationTime = dict["CreationTime"] as! String
+            }
+            if dict.keys.contains("DelayTest") {
+                var model = ListNetTestResultsResponseBody.NetTestResults.DelayTest()
+                model.fromMap(dict["DelayTest"] as! [String: Any])
+                self.delayTest = model
+            }
+            if dict.keys.contains("FinishedTime") {
+                self.finishedTime = dict["FinishedTime"] as! String
+            }
+            if dict.keys.contains("NetTestType") {
+                self.netTestType = dict["NetTestType"] as! String
+            }
+            if dict.keys.contains("NetworkMode") {
+                self.networkMode = dict["NetworkMode"] as! String
+            }
+            if dict.keys.contains("Port") {
+                self.port = dict["Port"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("TestId") {
+                self.testId = dict["TestId"] as! String
+            }
+            if dict.keys.contains("TrafficTest") {
+                var model = ListNetTestResultsResponseBody.NetTestResults.TrafficTest()
+                model.fromMap(dict["TrafficTest"] as! [String: Any])
+                self.trafficTest = model
+            }
+        }
+    }
+    public var maxResults: Int64?
+
+    public var netTestResults: [ListNetTestResultsResponseBody.NetTestResults]?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.netTestResults != nil {
+            var tmp : [Any] = []
+            for k in self.netTestResults! {
+                tmp.append(k.toMap())
+            }
+            map["NetTestResults"] = tmp
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int64
+        }
+        if dict.keys.contains("NetTestResults") {
+            var tmp : [ListNetTestResultsResponseBody.NetTestResults] = []
+            for v in dict["NetTestResults"] as! [Any] {
+                var model = ListNetTestResultsResponseBody.NetTestResults()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.netTestResults = tmp
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ListNetTestResultsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListNetTestResultsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListNetTestResultsResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -6689,6 +9838,150 @@ public class ListTagResourcesResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ListTagResourcesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListUserClusterTypesResponseBody : Tea.TeaModel {
+    public class ClusterTypes : Tea.TeaModel {
+        public var accessType: String?
+
+        public var typeName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accessType != nil {
+                map["AccessType"] = self.accessType!
+            }
+            if self.typeName != nil {
+                map["TypeName"] = self.typeName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AccessType") {
+                self.accessType = dict["AccessType"] as! String
+            }
+            if dict.keys.contains("TypeName") {
+                self.typeName = dict["TypeName"] as! String
+            }
+        }
+    }
+    public var clusterTypes: [ListUserClusterTypesResponseBody.ClusterTypes]?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterTypes != nil {
+            var tmp : [Any] = []
+            for k in self.clusterTypes! {
+                tmp.append(k.toMap())
+            }
+            map["ClusterTypes"] = tmp
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClusterTypes") {
+            var tmp : [ListUserClusterTypesResponseBody.ClusterTypes] = []
+            for v in dict["ClusterTypes"] as! [Any] {
+                var model = ListUserClusterTypesResponseBody.ClusterTypes()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.clusterTypes = tmp
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ListUserClusterTypesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListUserClusterTypesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListUserClusterTypesResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
