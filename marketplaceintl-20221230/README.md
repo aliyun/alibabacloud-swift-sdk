@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudMarketplaceIntl20221230` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/marketplaceintl-20221230" "1.0.1"
+github "alibabacloud-sdk-swift/marketplaceintl-20221230" "1.0.2"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudMarketplaceIntl20221230` into your Xcode project using
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/marketplaceintl-20221230.git", from: "1.0.1")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/marketplaceintl-20221230.git", from: "1.0.2")
 ]
 ```
 
