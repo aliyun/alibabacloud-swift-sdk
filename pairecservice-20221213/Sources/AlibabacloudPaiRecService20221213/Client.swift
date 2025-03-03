@@ -93,6 +93,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.scores)) {
             body["Scores"] = request.scores ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.serviceName)) {
+            body["ServiceName"] = request.serviceName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.userFeatures)) {
             body["UserFeatures"] = request.userFeatures ?? "";
         }

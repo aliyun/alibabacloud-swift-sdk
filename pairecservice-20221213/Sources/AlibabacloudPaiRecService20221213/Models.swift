@@ -239,6 +239,8 @@ public class BackflowFeatureConsistencyCheckJobDataRequest : Tea.TeaModel {
 
     public var scores: String?
 
+    public var serviceName: String?
+
     public var userFeatures: String?
 
     public override init() {
@@ -282,6 +284,9 @@ public class BackflowFeatureConsistencyCheckJobDataRequest : Tea.TeaModel {
         if self.scores != nil {
             map["Scores"] = self.scores!
         }
+        if self.serviceName != nil {
+            map["ServiceName"] = self.serviceName!
+        }
         if self.userFeatures != nil {
             map["UserFeatures"] = self.userFeatures!
         }
@@ -315,6 +320,9 @@ public class BackflowFeatureConsistencyCheckJobDataRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Scores") {
             self.scores = dict["Scores"] as! String
+        }
+        if dict.keys.contains("ServiceName") {
+            self.serviceName = dict["ServiceName"] as! String
         }
         if dict.keys.contains("UserFeatures") {
             self.userFeatures = dict["UserFeatures"] as! String
