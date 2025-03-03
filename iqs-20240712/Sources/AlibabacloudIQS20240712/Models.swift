@@ -1379,8 +1379,6 @@ public class DrivingDirectionResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
-    public var success: Bool?
-
     public override init() {
         super.init()
     }
@@ -1405,9 +1403,6 @@ public class DrivingDirectionResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
-        if self.success != nil {
-            map["success"] = self.success!
-        }
         return map
     }
 
@@ -1425,9 +1420,6 @@ public class DrivingDirectionResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("requestId") {
             self.requestId = dict["requestId"] as! String
-        }
-        if dict.keys.contains("success") {
-            self.success = dict["success"] as! Bool
         }
     }
 }
