@@ -1017,6 +1017,8 @@ public class AllocateDedicatedHostsResponseBody : Tea.TeaModel {
     }
     public var dedicatedHostIdSets: AllocateDedicatedHostsResponseBody.DedicatedHostIdSets?
 
+    public var orderId: String?
+
     public var requestId: String?
 
     public override init() {
@@ -1037,6 +1039,9 @@ public class AllocateDedicatedHostsResponseBody : Tea.TeaModel {
         if self.dedicatedHostIdSets != nil {
             map["DedicatedHostIdSets"] = self.dedicatedHostIdSets?.toMap()
         }
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -1048,6 +1053,9 @@ public class AllocateDedicatedHostsResponseBody : Tea.TeaModel {
             var model = AllocateDedicatedHostsResponseBody.DedicatedHostIdSets()
             model.fromMap(dict["DedicatedHostIdSets"] as! [String: Any])
             self.dedicatedHostIdSets = model
+        }
+        if dict.keys.contains("OrderId") {
+            self.orderId = dict["OrderId"] as! String
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
@@ -11892,6 +11900,59 @@ public class CreateElasticityAssuranceRequest : Tea.TeaModel {
             }
         }
     }
+    public class RecurrenceRules : Tea.TeaModel {
+        public var endHour: Int32?
+
+        public var recurrenceType: String?
+
+        public var recurrenceValue: String?
+
+        public var startHour: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.endHour != nil {
+                map["EndHour"] = self.endHour!
+            }
+            if self.recurrenceType != nil {
+                map["RecurrenceType"] = self.recurrenceType!
+            }
+            if self.recurrenceValue != nil {
+                map["RecurrenceValue"] = self.recurrenceValue!
+            }
+            if self.startHour != nil {
+                map["StartHour"] = self.startHour!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EndHour") {
+                self.endHour = dict["EndHour"] as! Int32
+            }
+            if dict.keys.contains("RecurrenceType") {
+                self.recurrenceType = dict["RecurrenceType"] as! String
+            }
+            if dict.keys.contains("RecurrenceValue") {
+                self.recurrenceValue = dict["RecurrenceValue"] as! String
+            }
+            if dict.keys.contains("StartHour") {
+                self.startHour = dict["StartHour"] as! Int32
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -11954,6 +12015,8 @@ public class CreateElasticityAssuranceRequest : Tea.TeaModel {
     public var period: Int32?
 
     public var periodUnit: String?
+
+    public var recurrenceRules: [CreateElasticityAssuranceRequest.RecurrenceRules]?
 
     public var regionId: String?
 
@@ -12022,6 +12085,13 @@ public class CreateElasticityAssuranceRequest : Tea.TeaModel {
         }
         if self.periodUnit != nil {
             map["PeriodUnit"] = self.periodUnit!
+        }
+        if self.recurrenceRules != nil {
+            var tmp : [Any] = []
+            for k in self.recurrenceRules! {
+                tmp.append(k.toMap())
+            }
+            map["RecurrenceRules"] = tmp
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -12092,6 +12162,17 @@ public class CreateElasticityAssuranceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PeriodUnit") {
             self.periodUnit = dict["PeriodUnit"] as! String
+        }
+        if dict.keys.contains("RecurrenceRules") {
+            var tmp : [CreateElasticityAssuranceRequest.RecurrenceRules] = []
+            for v in dict["RecurrenceRules"] as! [Any] {
+                var model = CreateElasticityAssuranceRequest.RecurrenceRules()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.recurrenceRules = tmp
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
@@ -13458,6 +13539,8 @@ public class CreateImageComponentResponse : Tea.TeaModel {
 
 public class CreateImagePipelineRequest : Tea.TeaModel {
     public class AdvancedOptions : Tea.TeaModel {
+        public var imageNameSuffix: String?
+
         public var retainCloudAssistant: Bool?
 
         public override init() {
@@ -13474,6 +13557,9 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.imageNameSuffix != nil {
+                map["ImageNameSuffix"] = self.imageNameSuffix!
+            }
             if self.retainCloudAssistant != nil {
                 map["RetainCloudAssistant"] = self.retainCloudAssistant!
             }
@@ -13481,8 +13567,153 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ImageNameSuffix") {
+                self.imageNameSuffix = dict["ImageNameSuffix"] as! String
+            }
             if dict.keys.contains("RetainCloudAssistant") {
                 self.retainCloudAssistant = dict["RetainCloudAssistant"] as! Bool
+            }
+        }
+    }
+    public class ImageOptions : Tea.TeaModel {
+        public class ImageFeatures : Tea.TeaModel {
+            public var nvmeSupport: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.nvmeSupport != nil {
+                    map["NvmeSupport"] = self.nvmeSupport!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("NvmeSupport") {
+                    self.nvmeSupport = dict["NvmeSupport"] as! String
+                }
+            }
+        }
+        public class ImageTags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("Value") {
+                    self.value = dict["Value"] as! String
+                }
+            }
+        }
+        public var description_: String?
+
+        public var imageFamily: String?
+
+        public var imageFeatures: CreateImagePipelineRequest.ImageOptions.ImageFeatures?
+
+        public var imageName: String?
+
+        public var imageTags: [CreateImagePipelineRequest.ImageOptions.ImageTags]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.imageFeatures?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.imageFamily != nil {
+                map["ImageFamily"] = self.imageFamily!
+            }
+            if self.imageFeatures != nil {
+                map["ImageFeatures"] = self.imageFeatures?.toMap()
+            }
+            if self.imageName != nil {
+                map["ImageName"] = self.imageName!
+            }
+            if self.imageTags != nil {
+                var tmp : [Any] = []
+                for k in self.imageTags! {
+                    tmp.append(k.toMap())
+                }
+                map["ImageTags"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("ImageFamily") {
+                self.imageFamily = dict["ImageFamily"] as! String
+            }
+            if dict.keys.contains("ImageFeatures") {
+                var model = CreateImagePipelineRequest.ImageOptions.ImageFeatures()
+                model.fromMap(dict["ImageFeatures"] as! [String: Any])
+                self.imageFeatures = model
+            }
+            if dict.keys.contains("ImageName") {
+                self.imageName = dict["ImageName"] as! String
+            }
+            if dict.keys.contains("ImageTags") {
+                var tmp : [CreateImagePipelineRequest.ImageOptions.ImageTags] = []
+                for v in dict["ImageTags"] as! [Any] {
+                    var model = CreateImagePipelineRequest.ImageOptions.ImageTags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.imageTags = tmp
             }
         }
     }
@@ -13725,6 +13956,8 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
 
     public var imageName: String?
 
+    public var imageOptions: CreateImagePipelineRequest.ImageOptions?
+
     public var importImageOptions: CreateImagePipelineRequest.ImportImageOptions?
 
     public var instanceType: String?
@@ -13770,6 +14003,7 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.advancedOptions?.validate()
+        try self.imageOptions?.validate()
         try self.importImageOptions?.validate()
     }
 
@@ -13804,6 +14038,9 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
         }
         if self.imageName != nil {
             map["ImageName"] = self.imageName!
+        }
+        if self.imageOptions != nil {
+            map["ImageOptions"] = self.imageOptions?.toMap()
         }
         if self.importImageOptions != nil {
             map["ImportImageOptions"] = self.importImageOptions?.toMap()
@@ -13895,6 +14132,11 @@ public class CreateImagePipelineRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ImageName") {
             self.imageName = dict["ImageName"] as! String
+        }
+        if dict.keys.contains("ImageOptions") {
+            var model = CreateImagePipelineRequest.ImageOptions()
+            model.fromMap(dict["ImageOptions"] as! [String: Any])
+            self.imageOptions = model
         }
         if dict.keys.contains("ImportImageOptions") {
             var model = CreateImagePipelineRequest.ImportImageOptions()
@@ -15505,6 +15747,8 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
         }
     }
     public class NetworkInterface : Tea.TeaModel {
+        public var deleteOnRelease: Bool?
+
         public var description_: String?
 
         public var instanceType: String?
@@ -15535,6 +15779,9 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.deleteOnRelease != nil {
+                map["DeleteOnRelease"] = self.deleteOnRelease!
+            }
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
@@ -15563,6 +15810,9 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DeleteOnRelease") {
+                self.deleteOnRelease = dict["DeleteOnRelease"] as! Bool
+            }
             if dict.keys.contains("Description") {
                 self.description_ = dict["Description"] as! String
             }
@@ -16482,6 +16732,8 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
         }
     }
     public class NetworkInterface : Tea.TeaModel {
+        public var deleteOnRelease: Bool?
+
         public var description_: String?
 
         public var instanceType: String?
@@ -16512,6 +16764,9 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.deleteOnRelease != nil {
+                map["DeleteOnRelease"] = self.deleteOnRelease!
+            }
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
@@ -16540,6 +16795,9 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DeleteOnRelease") {
+                self.deleteOnRelease = dict["DeleteOnRelease"] as! Bool
+            }
             if dict.keys.contains("Description") {
                 self.description_ = dict["Description"] as! String
             }
@@ -45288,6 +45546,292 @@ public class DescribeEipMonitorDataResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeElasticityAssuranceAutoRenewAttributeRequest : Tea.TeaModel {
+    public class PrivatePoolOptions : Tea.TeaModel {
+        public var id: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Id") {
+                self.id = dict["Id"] as! [String]
+            }
+        }
+    }
+    public var privatePoolOptions: DescribeElasticityAssuranceAutoRenewAttributeRequest.PrivatePoolOptions?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.privatePoolOptions?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.privatePoolOptions != nil {
+            map["PrivatePoolOptions"] = self.privatePoolOptions?.toMap()
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PrivatePoolOptions") {
+            var model = DescribeElasticityAssuranceAutoRenewAttributeRequest.PrivatePoolOptions()
+            model.fromMap(dict["PrivatePoolOptions"] as! [String: Any])
+            self.privatePoolOptions = model
+        }
+        if dict.keys.contains("OwnerAccount") {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class DescribeElasticityAssuranceAutoRenewAttributeResponseBody : Tea.TeaModel {
+    public class ElasticityAssuranceRenewAttributes : Tea.TeaModel {
+        public class ElasticityAssuranceRenewAttribute : Tea.TeaModel {
+            public var period: Int32?
+
+            public var periodUnit: String?
+
+            public var privatePoolOptionsId: String?
+
+            public var renewalStatus: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.period != nil {
+                    map["Period"] = self.period!
+                }
+                if self.periodUnit != nil {
+                    map["PeriodUnit"] = self.periodUnit!
+                }
+                if self.privatePoolOptionsId != nil {
+                    map["PrivatePoolOptionsId"] = self.privatePoolOptionsId!
+                }
+                if self.renewalStatus != nil {
+                    map["RenewalStatus"] = self.renewalStatus!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Period") {
+                    self.period = dict["Period"] as! Int32
+                }
+                if dict.keys.contains("PeriodUnit") {
+                    self.periodUnit = dict["PeriodUnit"] as! String
+                }
+                if dict.keys.contains("PrivatePoolOptionsId") {
+                    self.privatePoolOptionsId = dict["PrivatePoolOptionsId"] as! String
+                }
+                if dict.keys.contains("RenewalStatus") {
+                    self.renewalStatus = dict["RenewalStatus"] as! String
+                }
+            }
+        }
+        public var elasticityAssuranceRenewAttribute: [DescribeElasticityAssuranceAutoRenewAttributeResponseBody.ElasticityAssuranceRenewAttributes.ElasticityAssuranceRenewAttribute]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.elasticityAssuranceRenewAttribute != nil {
+                var tmp : [Any] = []
+                for k in self.elasticityAssuranceRenewAttribute! {
+                    tmp.append(k.toMap())
+                }
+                map["ElasticityAssuranceRenewAttribute"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ElasticityAssuranceRenewAttribute") {
+                var tmp : [DescribeElasticityAssuranceAutoRenewAttributeResponseBody.ElasticityAssuranceRenewAttributes.ElasticityAssuranceRenewAttribute] = []
+                for v in dict["ElasticityAssuranceRenewAttribute"] as! [Any] {
+                    var model = DescribeElasticityAssuranceAutoRenewAttributeResponseBody.ElasticityAssuranceRenewAttributes.ElasticityAssuranceRenewAttribute()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.elasticityAssuranceRenewAttribute = tmp
+            }
+        }
+    }
+    public var elasticityAssuranceRenewAttributes: DescribeElasticityAssuranceAutoRenewAttributeResponseBody.ElasticityAssuranceRenewAttributes?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.elasticityAssuranceRenewAttributes?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.elasticityAssuranceRenewAttributes != nil {
+            map["ElasticityAssuranceRenewAttributes"] = self.elasticityAssuranceRenewAttributes?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ElasticityAssuranceRenewAttributes") {
+            var model = DescribeElasticityAssuranceAutoRenewAttributeResponseBody.ElasticityAssuranceRenewAttributes()
+            model.fromMap(dict["ElasticityAssuranceRenewAttributes"] as! [String: Any])
+            self.elasticityAssuranceRenewAttributes = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeElasticityAssuranceAutoRenewAttributeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeElasticityAssuranceAutoRenewAttributeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeElasticityAssuranceAutoRenewAttributeResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeElasticityAssuranceInstancesRequest : Tea.TeaModel {
     public class PrivatePoolOptions : Tea.TeaModel {
         public var id: String?
@@ -45671,6 +46215,8 @@ public class DescribeElasticityAssurancesRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var packageType: String?
+
     public var platform: String?
 
     public var regionId: String?
@@ -45722,6 +46268,9 @@ public class DescribeElasticityAssurancesRequest : Tea.TeaModel {
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
+        }
+        if self.packageType != nil {
+            map["PackageType"] = self.packageType!
         }
         if self.platform != nil {
             map["Platform"] = self.platform!
@@ -45777,6 +46326,9 @@ public class DescribeElasticityAssurancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OwnerId") {
             self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("PackageType") {
+            self.packageType = dict["PackageType"] as! String
         }
         if dict.keys.contains("Platform") {
             self.platform = dict["Platform"] as! String
@@ -46015,6 +46567,100 @@ public class DescribeElasticityAssurancesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class RecurrenceRules : Tea.TeaModel {
+                public class RecurrenceRule : Tea.TeaModel {
+                    public var endHour: Int32?
+
+                    public var recurrenceType: String?
+
+                    public var recurrenceValue: String?
+
+                    public var startHour: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.endHour != nil {
+                            map["EndHour"] = self.endHour!
+                        }
+                        if self.recurrenceType != nil {
+                            map["RecurrenceType"] = self.recurrenceType!
+                        }
+                        if self.recurrenceValue != nil {
+                            map["RecurrenceValue"] = self.recurrenceValue!
+                        }
+                        if self.startHour != nil {
+                            map["StartHour"] = self.startHour!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("EndHour") {
+                            self.endHour = dict["EndHour"] as! Int32
+                        }
+                        if dict.keys.contains("RecurrenceType") {
+                            self.recurrenceType = dict["RecurrenceType"] as! String
+                        }
+                        if dict.keys.contains("RecurrenceValue") {
+                            self.recurrenceValue = dict["RecurrenceValue"] as! String
+                        }
+                        if dict.keys.contains("StartHour") {
+                            self.startHour = dict["StartHour"] as! Int32
+                        }
+                    }
+                }
+                public var recurrenceRule: [DescribeElasticityAssurancesResponseBody.ElasticityAssuranceSet.ElasticityAssuranceItem.RecurrenceRules.RecurrenceRule]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.recurrenceRule != nil {
+                        var tmp : [Any] = []
+                        for k in self.recurrenceRule! {
+                            tmp.append(k.toMap())
+                        }
+                        map["RecurrenceRule"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("RecurrenceRule") {
+                        var tmp : [DescribeElasticityAssurancesResponseBody.ElasticityAssuranceSet.ElasticityAssuranceItem.RecurrenceRules.RecurrenceRule] = []
+                        for v in dict["RecurrenceRule"] as! [Any] {
+                            var model = DescribeElasticityAssurancesResponseBody.ElasticityAssuranceSet.ElasticityAssuranceItem.RecurrenceRules.RecurrenceRule()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.recurrenceRule = tmp
+                    }
+                }
+            }
             public class Tags : Tea.TeaModel {
                 public class Tag : Tea.TeaModel {
                     public var tagKey: String?
@@ -46105,11 +46751,15 @@ public class DescribeElasticityAssurancesResponseBody : Tea.TeaModel {
 
             public var latestStartTime: String?
 
+            public var packageType: String?
+
             public var privatePoolOptionsId: String?
 
             public var privatePoolOptionsMatchCriteria: String?
 
             public var privatePoolOptionsName: String?
+
+            public var recurrenceRules: DescribeElasticityAssurancesResponseBody.ElasticityAssuranceSet.ElasticityAssuranceItem.RecurrenceRules?
 
             public var regionId: String?
 
@@ -46138,6 +46788,7 @@ public class DescribeElasticityAssurancesResponseBody : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.allocatedResources?.validate()
+                try self.recurrenceRules?.validate()
                 try self.tags?.validate()
             }
 
@@ -46161,6 +46812,9 @@ public class DescribeElasticityAssurancesResponseBody : Tea.TeaModel {
                 if self.latestStartTime != nil {
                     map["LatestStartTime"] = self.latestStartTime!
                 }
+                if self.packageType != nil {
+                    map["PackageType"] = self.packageType!
+                }
                 if self.privatePoolOptionsId != nil {
                     map["PrivatePoolOptionsId"] = self.privatePoolOptionsId!
                 }
@@ -46169,6 +46823,9 @@ public class DescribeElasticityAssurancesResponseBody : Tea.TeaModel {
                 }
                 if self.privatePoolOptionsName != nil {
                     map["PrivatePoolOptionsName"] = self.privatePoolOptionsName!
+                }
+                if self.recurrenceRules != nil {
+                    map["RecurrenceRules"] = self.recurrenceRules?.toMap()
                 }
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
@@ -46218,6 +46875,9 @@ public class DescribeElasticityAssurancesResponseBody : Tea.TeaModel {
                 if dict.keys.contains("LatestStartTime") {
                     self.latestStartTime = dict["LatestStartTime"] as! String
                 }
+                if dict.keys.contains("PackageType") {
+                    self.packageType = dict["PackageType"] as! String
+                }
                 if dict.keys.contains("PrivatePoolOptionsId") {
                     self.privatePoolOptionsId = dict["PrivatePoolOptionsId"] as! String
                 }
@@ -46226,6 +46886,11 @@ public class DescribeElasticityAssurancesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("PrivatePoolOptionsName") {
                     self.privatePoolOptionsName = dict["PrivatePoolOptionsName"] as! String
+                }
+                if dict.keys.contains("RecurrenceRules") {
+                    var model = DescribeElasticityAssurancesResponseBody.ElasticityAssuranceSet.ElasticityAssuranceItem.RecurrenceRules()
+                    model.fromMap(dict["RecurrenceRules"] as! [String: Any])
+                    self.recurrenceRules = model
                 }
                 if dict.keys.contains("RegionId") {
                     self.regionId = dict["RegionId"] as! String
@@ -49705,6 +50370,8 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                 }
             }
             public class AdvancedOptions : Tea.TeaModel {
+                public var imageNameSuffix: String?
+
                 public var retainCloudAssistant: Bool?
 
                 public override init() {
@@ -49721,6 +50388,9 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.imageNameSuffix != nil {
+                        map["ImageNameSuffix"] = self.imageNameSuffix!
+                    }
                     if self.retainCloudAssistant != nil {
                         map["RetainCloudAssistant"] = self.retainCloudAssistant!
                     }
@@ -49728,8 +50398,185 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ImageNameSuffix") {
+                        self.imageNameSuffix = dict["ImageNameSuffix"] as! String
+                    }
                     if dict.keys.contains("RetainCloudAssistant") {
                         self.retainCloudAssistant = dict["RetainCloudAssistant"] as! Bool
+                    }
+                }
+            }
+            public class ImageOptions : Tea.TeaModel {
+                public class ImageFeatures : Tea.TeaModel {
+                    public var nvmeSupport: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.nvmeSupport != nil {
+                            map["NvmeSupport"] = self.nvmeSupport!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("NvmeSupport") {
+                            self.nvmeSupport = dict["NvmeSupport"] as! String
+                        }
+                    }
+                }
+                public class ImageTags : Tea.TeaModel {
+                    public class ImageTag : Tea.TeaModel {
+                        public var tagKey: String?
+
+                        public var tagValue: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.tagKey != nil {
+                                map["TagKey"] = self.tagKey!
+                            }
+                            if self.tagValue != nil {
+                                map["TagValue"] = self.tagValue!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("TagKey") {
+                                self.tagKey = dict["TagKey"] as! String
+                            }
+                            if dict.keys.contains("TagValue") {
+                                self.tagValue = dict["TagValue"] as! String
+                            }
+                        }
+                    }
+                    public var imageTag: [DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImageOptions.ImageTags.ImageTag]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.imageTag != nil {
+                            var tmp : [Any] = []
+                            for k in self.imageTag! {
+                                tmp.append(k.toMap())
+                            }
+                            map["ImageTag"] = tmp
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("ImageTag") {
+                            var tmp : [DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImageOptions.ImageTags.ImageTag] = []
+                            for v in dict["ImageTag"] as! [Any] {
+                                var model = DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImageOptions.ImageTags.ImageTag()
+                                if v != nil {
+                                    model.fromMap(v as! [String: Any])
+                                }
+                                tmp.append(model)
+                            }
+                            self.imageTag = tmp
+                        }
+                    }
+                }
+                public var description_: String?
+
+                public var imageFamily: String?
+
+                public var imageFeatures: DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImageOptions.ImageFeatures?
+
+                public var imageName: String?
+
+                public var imageTags: DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImageOptions.ImageTags?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.imageFeatures?.validate()
+                    try self.imageTags?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
+                    if self.imageFamily != nil {
+                        map["ImageFamily"] = self.imageFamily!
+                    }
+                    if self.imageFeatures != nil {
+                        map["ImageFeatures"] = self.imageFeatures?.toMap()
+                    }
+                    if self.imageName != nil {
+                        map["ImageName"] = self.imageName!
+                    }
+                    if self.imageTags != nil {
+                        map["ImageTags"] = self.imageTags?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Description") {
+                        self.description_ = dict["Description"] as! String
+                    }
+                    if dict.keys.contains("ImageFamily") {
+                        self.imageFamily = dict["ImageFamily"] as! String
+                    }
+                    if dict.keys.contains("ImageFeatures") {
+                        var model = DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImageOptions.ImageFeatures()
+                        model.fromMap(dict["ImageFeatures"] as! [String: Any])
+                        self.imageFeatures = model
+                    }
+                    if dict.keys.contains("ImageName") {
+                        self.imageName = dict["ImageName"] as! String
+                    }
+                    if dict.keys.contains("ImageTags") {
+                        var model = DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImageOptions.ImageTags()
+                        model.fromMap(dict["ImageTags"] as! [String: Any])
+                        self.imageTags = model
                     }
                 }
             }
@@ -50074,6 +50921,8 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
 
             public var imageName: String?
 
+            public var imageOptions: DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImageOptions?
+
             public var imagePipelineId: String?
 
             public var importImageOptions: DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImportImageOptions?
@@ -50112,6 +50961,7 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
             public override func validate() throws -> Void {
                 try self.addAccounts?.validate()
                 try self.advancedOptions?.validate()
+                try self.imageOptions?.validate()
                 try self.importImageOptions?.validate()
                 try self.tags?.validate()
                 try self.toRegionIds?.validate()
@@ -50148,6 +50998,9 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                 }
                 if self.imageName != nil {
                     map["ImageName"] = self.imageName!
+                }
+                if self.imageOptions != nil {
+                    map["ImageOptions"] = self.imageOptions?.toMap()
                 }
                 if self.imagePipelineId != nil {
                     map["ImagePipelineId"] = self.imagePipelineId!
@@ -50225,6 +51078,11 @@ public class DescribeImagePipelinesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ImageName") {
                     self.imageName = dict["ImageName"] as! String
+                }
+                if dict.keys.contains("ImageOptions") {
+                    var model = DescribeImagePipelinesResponseBody.ImagePipeline.ImagePipelineSet.ImageOptions()
+                    model.fromMap(dict["ImageOptions"] as! [String: Any])
+                    self.imageOptions = model
                 }
                 if dict.keys.contains("ImagePipelineId") {
                     self.imagePipelineId = dict["ImagePipelineId"] as! String
@@ -64195,6 +65053,8 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
                                 }
                             }
                         }
+                        public var deleteOnRelease: Bool?
+
                         public var description_: String?
 
                         public var instanceType: String?
@@ -64226,6 +65086,9 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
 
                         public override func toMap() -> [String : Any] {
                             var map = super.toMap()
+                            if self.deleteOnRelease != nil {
+                                map["DeleteOnRelease"] = self.deleteOnRelease!
+                            }
                             if self.description_ != nil {
                                 map["Description"] = self.description_!
                             }
@@ -64254,6 +65117,9 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
                         }
 
                         public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("DeleteOnRelease") {
+                                self.deleteOnRelease = dict["DeleteOnRelease"] as! Bool
+                            }
                             if dict.keys.contains("Description") {
                                 self.description_ = dict["Description"] as! String
                             }
@@ -71384,6 +72250,59 @@ public class DescribePriceRequest : Tea.TeaModel {
             }
         }
     }
+    public class RecurrenceRules : Tea.TeaModel {
+        public var endHour: Int32?
+
+        public var recurrenceType: String?
+
+        public var recurrenceValue: String?
+
+        public var startHour: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.endHour != nil {
+                map["EndHour"] = self.endHour!
+            }
+            if self.recurrenceType != nil {
+                map["RecurrenceType"] = self.recurrenceType!
+            }
+            if self.recurrenceValue != nil {
+                map["RecurrenceValue"] = self.recurrenceValue!
+            }
+            if self.startHour != nil {
+                map["StartHour"] = self.startHour!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EndHour") {
+                self.endHour = dict["EndHour"] as! Int32
+            }
+            if dict.keys.contains("RecurrenceType") {
+                self.recurrenceType = dict["RecurrenceType"] as! String
+            }
+            if dict.keys.contains("RecurrenceValue") {
+                self.recurrenceValue = dict["RecurrenceValue"] as! String
+            }
+            if dict.keys.contains("StartHour") {
+                self.startHour = dict["StartHour"] as! Int32
+            }
+        }
+    }
     public var dataDisk: [DescribePriceRequest.DataDisk]?
 
     public var schedulerOptions: DescribePriceRequest.SchedulerOptions?
@@ -71430,6 +72349,8 @@ public class DescribePriceRequest : Tea.TeaModel {
 
     public var priceUnit: String?
 
+    public var recurrenceRules: [DescribePriceRequest.RecurrenceRules]?
+
     public var regionId: String?
 
     public var resourceOwnerAccount: String?
@@ -71443,6 +72364,8 @@ public class DescribePriceRequest : Tea.TeaModel {
     public var spotDuration: Int32?
 
     public var spotStrategy: String?
+
+    public var startTime: String?
 
     public var zoneId: String?
 
@@ -71535,6 +72458,13 @@ public class DescribePriceRequest : Tea.TeaModel {
         if self.priceUnit != nil {
             map["PriceUnit"] = self.priceUnit!
         }
+        if self.recurrenceRules != nil {
+            var tmp : [Any] = []
+            for k in self.recurrenceRules! {
+                tmp.append(k.toMap())
+            }
+            map["RecurrenceRules"] = tmp
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -71555,6 +72485,9 @@ public class DescribePriceRequest : Tea.TeaModel {
         }
         if self.spotStrategy != nil {
             map["SpotStrategy"] = self.spotStrategy!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
         }
         if self.zoneId != nil {
             map["ZoneId"] = self.zoneId!
@@ -71644,6 +72577,17 @@ public class DescribePriceRequest : Tea.TeaModel {
         if dict.keys.contains("PriceUnit") {
             self.priceUnit = dict["PriceUnit"] as! String
         }
+        if dict.keys.contains("RecurrenceRules") {
+            var tmp : [DescribePriceRequest.RecurrenceRules] = []
+            for v in dict["RecurrenceRules"] as! [Any] {
+                var model = DescribePriceRequest.RecurrenceRules()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.recurrenceRules = tmp
+        }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
         }
@@ -71664,6 +72608,9 @@ public class DescribePriceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SpotStrategy") {
             self.spotStrategy = dict["SpotStrategy"] as! String
+        }
+        if dict.keys.contains("StartTime") {
+            self.startTime = dict["StartTime"] as! String
         }
         if dict.keys.contains("ZoneId") {
             self.zoneId = dict["ZoneId"] as! String
@@ -98712,6 +99659,59 @@ public class ModifyElasticityAssuranceRequest : Tea.TeaModel {
             }
         }
     }
+    public class RecurrenceRules : Tea.TeaModel {
+        public var endHour: Int32?
+
+        public var recurrenceType: String?
+
+        public var recurrenceValue: String?
+
+        public var startHour: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.endHour != nil {
+                map["EndHour"] = self.endHour!
+            }
+            if self.recurrenceType != nil {
+                map["RecurrenceType"] = self.recurrenceType!
+            }
+            if self.recurrenceValue != nil {
+                map["RecurrenceValue"] = self.recurrenceValue!
+            }
+            if self.startHour != nil {
+                map["StartHour"] = self.startHour!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EndHour") {
+                self.endHour = dict["EndHour"] as! Int32
+            }
+            if dict.keys.contains("RecurrenceType") {
+                self.recurrenceType = dict["RecurrenceType"] as! String
+            }
+            if dict.keys.contains("RecurrenceValue") {
+                self.recurrenceValue = dict["RecurrenceValue"] as! String
+            }
+            if dict.keys.contains("StartHour") {
+                self.startHour = dict["StartHour"] as! Int32
+            }
+        }
+    }
     public var privatePoolOptions: ModifyElasticityAssuranceRequest.PrivatePoolOptions?
 
     public var clientToken: String?
@@ -98723,6 +99723,8 @@ public class ModifyElasticityAssuranceRequest : Tea.TeaModel {
     public var ownerAccount: String?
 
     public var ownerId: Int64?
+
+    public var recurrenceRules: [ModifyElasticityAssuranceRequest.RecurrenceRules]?
 
     public var regionId: String?
 
@@ -98763,6 +99765,13 @@ public class ModifyElasticityAssuranceRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.recurrenceRules != nil {
+            var tmp : [Any] = []
+            for k in self.recurrenceRules! {
+                tmp.append(k.toMap())
+            }
+            map["RecurrenceRules"] = tmp
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -98795,6 +99804,17 @@ public class ModifyElasticityAssuranceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OwnerId") {
             self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RecurrenceRules") {
+            var tmp : [ModifyElasticityAssuranceRequest.RecurrenceRules] = []
+            for v in dict["RecurrenceRules"] as! [Any] {
+                var model = ModifyElasticityAssuranceRequest.RecurrenceRules()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.recurrenceRules = tmp
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
@@ -98881,6 +99901,211 @@ public class ModifyElasticityAssuranceResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ModifyElasticityAssuranceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ModifyElasticityAssuranceAutoRenewAttributeRequest : Tea.TeaModel {
+    public class PrivatePoolOptions : Tea.TeaModel {
+        public var id: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Id") {
+                self.id = dict["Id"] as! [String]
+            }
+        }
+    }
+    public var privatePoolOptions: ModifyElasticityAssuranceAutoRenewAttributeRequest.PrivatePoolOptions?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var period: Int32?
+
+    public var periodUnit: String?
+
+    public var regionId: String?
+
+    public var renewalStatus: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.privatePoolOptions?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.privatePoolOptions != nil {
+            map["PrivatePoolOptions"] = self.privatePoolOptions?.toMap()
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.period != nil {
+            map["Period"] = self.period!
+        }
+        if self.periodUnit != nil {
+            map["PeriodUnit"] = self.periodUnit!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.renewalStatus != nil {
+            map["RenewalStatus"] = self.renewalStatus!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PrivatePoolOptions") {
+            var model = ModifyElasticityAssuranceAutoRenewAttributeRequest.PrivatePoolOptions()
+            model.fromMap(dict["PrivatePoolOptions"] as! [String: Any])
+            self.privatePoolOptions = model
+        }
+        if dict.keys.contains("OwnerAccount") {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("Period") {
+            self.period = dict["Period"] as! Int32
+        }
+        if dict.keys.contains("PeriodUnit") {
+            self.periodUnit = dict["PeriodUnit"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("RenewalStatus") {
+            self.renewalStatus = dict["RenewalStatus"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class ModifyElasticityAssuranceAutoRenewAttributeResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ModifyElasticityAssuranceAutoRenewAttributeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyElasticityAssuranceAutoRenewAttributeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ModifyElasticityAssuranceAutoRenewAttributeResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -108874,6 +110099,8 @@ public class PurchaseReservedInstancesOfferingResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var orderId: String?
+
     public var requestId: String?
 
     public var reservedInstanceIdSets: PurchaseReservedInstancesOfferingResponseBody.ReservedInstanceIdSets?
@@ -108893,6 +110120,9 @@ public class PurchaseReservedInstancesOfferingResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -108903,6 +110133,9 @@ public class PurchaseReservedInstancesOfferingResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OrderId") {
+            self.orderId = dict["OrderId"] as! String
+        }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
@@ -111619,6 +112852,8 @@ public class RenewDedicatedHostsRequest : Tea.TeaModel {
 }
 
 public class RenewDedicatedHostsResponseBody : Tea.TeaModel {
+    public var orderId: String?
+
     public var requestId: String?
 
     public override init() {
@@ -111635,6 +112870,9 @@ public class RenewDedicatedHostsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -111642,6 +112880,9 @@ public class RenewDedicatedHostsResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OrderId") {
+            self.orderId = dict["OrderId"] as! String
+        }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
