@@ -1810,6 +1810,8 @@ public class CreateHealthCheckTemplateRequest : Tea.TeaModel {
 
     public var healthyThreshold: Int32?
 
+    public var resourceGroupId: String?
+
     public var tag: [CreateHealthCheckTemplateRequest.Tag]?
 
     public var unhealthyThreshold: Int32?
@@ -1867,6 +1869,9 @@ public class CreateHealthCheckTemplateRequest : Tea.TeaModel {
         if self.healthyThreshold != nil {
             map["HealthyThreshold"] = self.healthyThreshold!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -1919,6 +1924,9 @@ public class CreateHealthCheckTemplateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("HealthyThreshold") {
             self.healthyThreshold = dict["HealthyThreshold"] as! Int32
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("Tag") {
             var tmp : [CreateHealthCheckTemplateRequest.Tag] = []
@@ -9900,6 +9908,8 @@ public class GetHealthCheckTemplateAttributeResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var resourceGroupId: String?
+
     public var tags: [GetHealthCheckTemplateAttributeResponseBody.Tags]?
 
     public var unhealthyThreshold: Int32?
@@ -9957,6 +9967,9 @@ public class GetHealthCheckTemplateAttributeResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.tags != nil {
             var tmp : [Any] = []
             for k in self.tags! {
@@ -10009,6 +10022,9 @@ public class GetHealthCheckTemplateAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("Tags") {
             var tmp : [GetHealthCheckTemplateAttributeResponseBody.Tags] = []
@@ -13794,6 +13810,8 @@ public class ListHealthCheckTemplatesRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var resourceGroupId: String?
+
     public var tag: [ListHealthCheckTemplatesRequest.Tag]?
 
     public override init() {
@@ -13822,6 +13840,9 @@ public class ListHealthCheckTemplatesRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -13844,6 +13865,9 @@ public class ListHealthCheckTemplatesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("NextToken") {
             self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("Tag") {
             var tmp : [ListHealthCheckTemplatesRequest.Tag] = []
@@ -13922,6 +13946,8 @@ public class ListHealthCheckTemplatesResponseBody : Tea.TeaModel {
 
         public var healthyThreshold: Int32?
 
+        public var resourceGroupId: String?
+
         public var tags: [ListHealthCheckTemplatesResponseBody.HealthCheckTemplates.Tags]?
 
         public var unhealthyThreshold: Int32?
@@ -13976,6 +14002,9 @@ public class ListHealthCheckTemplatesResponseBody : Tea.TeaModel {
             if self.healthyThreshold != nil {
                 map["HealthyThreshold"] = self.healthyThreshold!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.tags != nil {
                 var tmp : [Any] = []
                 for k in self.tags! {
@@ -14025,6 +14054,9 @@ public class ListHealthCheckTemplatesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("HealthyThreshold") {
                 self.healthyThreshold = dict["HealthyThreshold"] as! Int32
+            }
+            if dict.keys.contains("ResourceGroupId") {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
             }
             if dict.keys.contains("Tags") {
                 var tmp : [ListHealthCheckTemplatesResponseBody.HealthCheckTemplates.Tags] = []
