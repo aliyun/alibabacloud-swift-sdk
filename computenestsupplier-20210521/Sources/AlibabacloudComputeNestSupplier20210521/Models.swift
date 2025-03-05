@@ -11860,6 +11860,293 @@ public class ListArtifactsResponse : Tea.TeaModel {
     }
 }
 
+public class ListResellersRequest : Tea.TeaModel {
+    public class Filter : Tea.TeaModel {
+        public var name: String?
+
+        public var value: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Name") {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! [String]
+            }
+        }
+    }
+    public var filter: [ListResellersRequest.Filter]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.filter != nil {
+            var tmp : [Any] = []
+            for k in self.filter! {
+                tmp.append(k.toMap())
+            }
+            map["Filter"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Filter") {
+            var tmp : [ListResellersRequest.Filter] = []
+            for v in dict["Filter"] as! [Any] {
+                var model = ListResellersRequest.Filter()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.filter = tmp
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class ListResellersResponseBody : Tea.TeaModel {
+    public class SupplierInformation : Tea.TeaModel {
+        public var supplierDesc: String?
+
+        public var supplierLogo: String?
+
+        public var supplierName: String?
+
+        public var supplierUid: Int64?
+
+        public var supplierUrl: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.supplierDesc != nil {
+                map["SupplierDesc"] = self.supplierDesc!
+            }
+            if self.supplierLogo != nil {
+                map["SupplierLogo"] = self.supplierLogo!
+            }
+            if self.supplierName != nil {
+                map["SupplierName"] = self.supplierName!
+            }
+            if self.supplierUid != nil {
+                map["SupplierUid"] = self.supplierUid!
+            }
+            if self.supplierUrl != nil {
+                map["SupplierUrl"] = self.supplierUrl!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("SupplierDesc") {
+                self.supplierDesc = dict["SupplierDesc"] as! String
+            }
+            if dict.keys.contains("SupplierLogo") {
+                self.supplierLogo = dict["SupplierLogo"] as! String
+            }
+            if dict.keys.contains("SupplierName") {
+                self.supplierName = dict["SupplierName"] as! String
+            }
+            if dict.keys.contains("SupplierUid") {
+                self.supplierUid = dict["SupplierUid"] as! Int64
+            }
+            if dict.keys.contains("SupplierUrl") {
+                self.supplierUrl = dict["SupplierUrl"] as! String
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var supplierInformation: [ListResellersResponseBody.SupplierInformation]?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.supplierInformation != nil {
+            var tmp : [Any] = []
+            for k in self.supplierInformation! {
+                tmp.append(k.toMap())
+            }
+            map["SupplierInformation"] = tmp
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SupplierInformation") {
+            var tmp : [ListResellersResponseBody.SupplierInformation] = []
+            for v in dict["SupplierInformation"] as! [Any] {
+                var model = ListResellersResponseBody.SupplierInformation()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.supplierInformation = tmp
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! Int32
+        }
+    }
+}
+
+public class ListResellersResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListResellersResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListResellersResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListServiceInstanceDeployDetailsRequest : Tea.TeaModel {
     public class Filter : Tea.TeaModel {
         public var name: String?
@@ -12693,8 +12980,6 @@ public class ListServiceInstanceResourcesRequest : Tea.TeaModel {
 
     public var regionId: String?
 
-    public var resourceARN: [String]?
-
     public var serviceInstanceId: String?
 
     public var serviceInstanceResourceType: String?
@@ -12730,9 +13015,6 @@ public class ListServiceInstanceResourcesRequest : Tea.TeaModel {
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
-        }
-        if self.resourceARN != nil {
-            map["ResourceARN"] = self.resourceARN!
         }
         if self.serviceInstanceId != nil {
             map["ServiceInstanceId"] = self.serviceInstanceId!
@@ -12770,9 +13052,6 @@ public class ListServiceInstanceResourcesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
-        }
-        if dict.keys.contains("ResourceARN") {
-            self.resourceARN = dict["ResourceARN"] as! [String]
         }
         if dict.keys.contains("ServiceInstanceId") {
             self.serviceInstanceId = dict["ServiceInstanceId"] as! String
