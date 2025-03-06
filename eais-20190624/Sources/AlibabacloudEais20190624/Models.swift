@@ -2907,6 +2907,8 @@ public class DescribeEaisResponseBody : Tea.TeaModel {
 
             public var jupyterUrl: String?
 
+            public var paymentType: String?
+
             public var regionId: String?
 
             public var resourceGroupId: String?
@@ -2968,6 +2970,9 @@ public class DescribeEaisResponseBody : Tea.TeaModel {
                 if self.jupyterUrl != nil {
                     map["JupyterUrl"] = self.jupyterUrl!
                 }
+                if self.paymentType != nil {
+                    map["PaymentType"] = self.paymentType!
+                }
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
                 }
@@ -3025,6 +3030,9 @@ public class DescribeEaisResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("JupyterUrl") {
                     self.jupyterUrl = dict["JupyterUrl"] as! String
+                }
+                if dict.keys.contains("PaymentType") {
+                    self.paymentType = dict["PaymentType"] as! String
                 }
                 if dict.keys.contains("RegionId") {
                     self.regionId = dict["RegionId"] as! String
