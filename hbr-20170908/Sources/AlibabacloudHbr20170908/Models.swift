@@ -10696,6 +10696,8 @@ public class DescribeClientsResponseBody : Tea.TeaModel {
 
             public var createdTime: Int64?
 
+            public var heartBeatTime: Int64?
+
             public var instanceId: String?
 
             public var instanceName: String?
@@ -10749,6 +10751,9 @@ public class DescribeClientsResponseBody : Tea.TeaModel {
                 if self.createdTime != nil {
                     map["CreatedTime"] = self.createdTime!
                 }
+                if self.heartBeatTime != nil {
+                    map["HeartBeatTime"] = self.heartBeatTime!
+                }
                 if self.instanceId != nil {
                     map["InstanceId"] = self.instanceId!
                 }
@@ -10800,6 +10805,9 @@ public class DescribeClientsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("CreatedTime") {
                     self.createdTime = dict["CreatedTime"] as! Int64
+                }
+                if dict.keys.contains("HeartBeatTime") {
+                    self.heartBeatTime = dict["HeartBeatTime"] as! Int64
                 }
                 if dict.keys.contains("InstanceId") {
                     self.instanceId = dict["InstanceId"] as! String
@@ -25138,6 +25146,8 @@ public class UpdatePolicyV2Request : Tea.TeaModel {
 
         public var tagFilters: [UpdatePolicyV2Request.Rules.TagFilters]?
 
+        public var vaultId: String?
+
         public override init() {
             super.init()
         }
@@ -25202,6 +25212,9 @@ public class UpdatePolicyV2Request : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["TagFilters"] = tmp
+            }
+            if self.vaultId != nil {
+                map["VaultId"] = self.vaultId!
             }
             return map
         }
@@ -25269,6 +25282,9 @@ public class UpdatePolicyV2Request : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.tagFilters = tmp
+            }
+            if dict.keys.contains("VaultId") {
+                self.vaultId = dict["VaultId"] as! String
             }
         }
     }
