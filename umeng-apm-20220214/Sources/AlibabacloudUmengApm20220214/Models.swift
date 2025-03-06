@@ -212,6 +212,212 @@ public class DeleteSymRecordsResponse : Tea.TeaModel {
     }
 }
 
+public class GetErrorMinuteStatTrendRequest : Tea.TeaModel {
+    public var dataSourceId: String?
+
+    public var startTime: String?
+
+    public var type: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataSourceId != nil {
+            map["dataSourceId"] = self.dataSourceId!
+        }
+        if self.startTime != nil {
+            map["startTime"] = self.startTime!
+        }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("dataSourceId") {
+            self.dataSourceId = dict["dataSourceId"] as! String
+        }
+        if dict.keys.contains("startTime") {
+            self.startTime = dict["startTime"] as! String
+        }
+        if dict.keys.contains("type") {
+            self.type = dict["type"] as! Int32
+        }
+    }
+}
+
+public class GetErrorMinuteStatTrendResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var errorCount: Int64?
+
+        public var launchCount: Int64?
+
+        public var timePoint: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.errorCount != nil {
+                map["errorCount"] = self.errorCount!
+            }
+            if self.launchCount != nil {
+                map["launchCount"] = self.launchCount!
+            }
+            if self.timePoint != nil {
+                map["timePoint"] = self.timePoint!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("errorCount") {
+                self.errorCount = dict["errorCount"] as! Int64
+            }
+            if dict.keys.contains("launchCount") {
+                self.launchCount = dict["launchCount"] as! Int64
+            }
+            if dict.keys.contains("timePoint") {
+                self.timePoint = dict["timePoint"] as! String
+            }
+        }
+    }
+    public var code: Int64?
+
+    public var data: [GetErrorMinuteStatTrendResponseBody.Data]?
+
+    public var msg: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["data"] = tmp
+        }
+        if self.msg != nil {
+            map["msg"] = self.msg!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") {
+            self.code = dict["code"] as! Int64
+        }
+        if dict.keys.contains("data") {
+            var tmp : [GetErrorMinuteStatTrendResponseBody.Data] = []
+            for v in dict["data"] as! [Any] {
+                var model = GetErrorMinuteStatTrendResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
+        }
+        if dict.keys.contains("msg") {
+            self.msg = dict["msg"] as! String
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class GetErrorMinuteStatTrendResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetErrorMinuteStatTrendResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetErrorMinuteStatTrendResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class GetH5PageTrendRequest : Tea.TeaModel {
     public var appVersion: String?
 
@@ -1072,6 +1278,204 @@ public class GetNativePageTrendResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = GetNativePageTrendResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetNetworkMinuteTrendRequest : Tea.TeaModel {
+    public var dataSourceId: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataSourceId != nil {
+            map["dataSourceId"] = self.dataSourceId!
+        }
+        if self.startTime != nil {
+            map["startTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("dataSourceId") {
+            self.dataSourceId = dict["dataSourceId"] as! String
+        }
+        if dict.keys.contains("startTime") {
+            self.startTime = dict["startTime"] as! String
+        }
+    }
+}
+
+public class GetNetworkMinuteTrendResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var errorCount: Int64?
+
+        public var requestCount: Int64?
+
+        public var timePoint: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.errorCount != nil {
+                map["errorCount"] = self.errorCount!
+            }
+            if self.requestCount != nil {
+                map["requestCount"] = self.requestCount!
+            }
+            if self.timePoint != nil {
+                map["timePoint"] = self.timePoint!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("errorCount") {
+                self.errorCount = dict["errorCount"] as! Int64
+            }
+            if dict.keys.contains("requestCount") {
+                self.requestCount = dict["requestCount"] as! Int64
+            }
+            if dict.keys.contains("timePoint") {
+                self.timePoint = dict["timePoint"] as! String
+            }
+        }
+    }
+    public var code: Int64?
+
+    public var data: [GetNetworkMinuteTrendResponseBody.Data]?
+
+    public var msg: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["data"] = tmp
+        }
+        if self.msg != nil {
+            map["msg"] = self.msg!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") {
+            self.code = dict["code"] as! Int64
+        }
+        if dict.keys.contains("data") {
+            var tmp : [GetNetworkMinuteTrendResponseBody.Data] = []
+            for v in dict["data"] as! [Any] {
+                var model = GetNetworkMinuteTrendResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
+        }
+        if dict.keys.contains("msg") {
+            self.msg = dict["msg"] as! String
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class GetNetworkMinuteTrendResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetNetworkMinuteTrendResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetNetworkMinuteTrendResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
