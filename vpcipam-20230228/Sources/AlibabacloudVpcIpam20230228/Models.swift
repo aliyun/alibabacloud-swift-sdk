@@ -146,6 +146,179 @@ public class AddIpamPoolCidrResponse : Tea.TeaModel {
     }
 }
 
+public class AssociateIpamResourceDiscoveryRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
+    public var ipamId: String?
+
+    public var ipamResourceDiscoveryId: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.ipamId != nil {
+            map["IpamId"] = self.ipamId!
+        }
+        if self.ipamResourceDiscoveryId != nil {
+            map["IpamResourceDiscoveryId"] = self.ipamResourceDiscoveryId!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("IpamId") {
+            self.ipamId = dict["IpamId"] as! String
+        }
+        if dict.keys.contains("IpamResourceDiscoveryId") {
+            self.ipamResourceDiscoveryId = dict["IpamResourceDiscoveryId"] as! String
+        }
+        if dict.keys.contains("OwnerAccount") {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class AssociateIpamResourceDiscoveryResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class AssociateIpamResourceDiscoveryResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AssociateIpamResourceDiscoveryResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = AssociateIpamResourceDiscoveryResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ChangeResourceGroupRequest : Tea.TeaModel {
     public var newResourceGroupId: String?
 
@@ -671,6 +844,8 @@ public class CreateIpamPoolRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -735,6 +910,9 @@ public class CreateIpamPoolRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -796,6 +974,9 @@ public class CreateIpamPoolRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -1096,6 +1277,260 @@ public class CreateIpamPoolAllocationResponse : Tea.TeaModel {
     }
 }
 
+public class CreateIpamResourceDiscoveryRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
+    public var ipamResourceDiscoveryDescription: String?
+
+    public var ipamResourceDiscoveryName: String?
+
+    public var operatingRegionList: [String]?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceGroupId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var tag: [CreateIpamResourceDiscoveryRequest.Tag]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.ipamResourceDiscoveryDescription != nil {
+            map["IpamResourceDiscoveryDescription"] = self.ipamResourceDiscoveryDescription!
+        }
+        if self.ipamResourceDiscoveryName != nil {
+            map["IpamResourceDiscoveryName"] = self.ipamResourceDiscoveryName!
+        }
+        if self.operatingRegionList != nil {
+            map["OperatingRegionList"] = self.operatingRegionList!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("IpamResourceDiscoveryDescription") {
+            self.ipamResourceDiscoveryDescription = dict["IpamResourceDiscoveryDescription"] as! String
+        }
+        if dict.keys.contains("IpamResourceDiscoveryName") {
+            self.ipamResourceDiscoveryName = dict["IpamResourceDiscoveryName"] as! String
+        }
+        if dict.keys.contains("OperatingRegionList") {
+            self.operatingRegionList = dict["OperatingRegionList"] as! [String]
+        }
+        if dict.keys.contains("OwnerAccount") {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [CreateIpamResourceDiscoveryRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateIpamResourceDiscoveryRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
+    }
+}
+
+public class CreateIpamResourceDiscoveryResponseBody : Tea.TeaModel {
+    public var ipamResourceDiscoveryId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ipamResourceDiscoveryId != nil {
+            map["IpamResourceDiscoveryId"] = self.ipamResourceDiscoveryId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("IpamResourceDiscoveryId") {
+            self.ipamResourceDiscoveryId = dict["IpamResourceDiscoveryId"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateIpamResourceDiscoveryResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateIpamResourceDiscoveryResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateIpamResourceDiscoveryResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateIpamScopeRequest : Tea.TeaModel {
     public class Tag : Tea.TeaModel {
         public var key: String?
@@ -1152,6 +1587,8 @@ public class CreateIpamScopeRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -1199,6 +1636,9 @@ public class CreateIpamScopeRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -1242,6 +1682,9 @@ public class CreateIpamScopeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -1954,6 +2397,171 @@ public class DeleteIpamPoolCidrResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteIpamResourceDiscoveryRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
+    public var ipamResourceDiscoveryId: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.ipamResourceDiscoveryId != nil {
+            map["IpamResourceDiscoveryId"] = self.ipamResourceDiscoveryId!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("IpamResourceDiscoveryId") {
+            self.ipamResourceDiscoveryId = dict["IpamResourceDiscoveryId"] as! String
+        }
+        if dict.keys.contains("OwnerAccount") {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class DeleteIpamResourceDiscoveryResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DeleteIpamResourceDiscoveryResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteIpamResourceDiscoveryResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteIpamResourceDiscoveryResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DeleteIpamScopeRequest : Tea.TeaModel {
     public var clientToken: String?
 
@@ -2113,6 +2721,549 @@ public class DeleteIpamScopeResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DeleteIpamScopeResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DissociateIpamResourceDiscoveryRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
+    public var ipamId: String?
+
+    public var ipamResourceDiscoveryId: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.ipamId != nil {
+            map["IpamId"] = self.ipamId!
+        }
+        if self.ipamResourceDiscoveryId != nil {
+            map["IpamResourceDiscoveryId"] = self.ipamResourceDiscoveryId!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("IpamId") {
+            self.ipamId = dict["IpamId"] as! String
+        }
+        if dict.keys.contains("IpamResourceDiscoveryId") {
+            self.ipamResourceDiscoveryId = dict["IpamResourceDiscoveryId"] as! String
+        }
+        if dict.keys.contains("OwnerAccount") {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class DissociateIpamResourceDiscoveryResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DissociateIpamResourceDiscoveryResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DissociateIpamResourceDiscoveryResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DissociateIpamResourceDiscoveryResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetIpamPoolAllocationRequest : Tea.TeaModel {
+    public var ipamPoolAllocationId: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ipamPoolAllocationId != nil {
+            map["IpamPoolAllocationId"] = self.ipamPoolAllocationId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("IpamPoolAllocationId") {
+            self.ipamPoolAllocationId = dict["IpamPoolAllocationId"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class GetIpamPoolAllocationResponseBody : Tea.TeaModel {
+    public var cidr: String?
+
+    public var creationTime: String?
+
+    public var ipamPoolAllocationDescription: String?
+
+    public var ipamPoolAllocationId: String?
+
+    public var ipamPoolAllocationName: String?
+
+    public var ipamPoolId: String?
+
+    public var regionId: String?
+
+    public var requestId: String?
+
+    public var resourceId: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var resourceRegionId: String?
+
+    public var resourceType: String?
+
+    public var sourceCidr: String?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cidr != nil {
+            map["Cidr"] = self.cidr!
+        }
+        if self.creationTime != nil {
+            map["CreationTime"] = self.creationTime!
+        }
+        if self.ipamPoolAllocationDescription != nil {
+            map["IpamPoolAllocationDescription"] = self.ipamPoolAllocationDescription!
+        }
+        if self.ipamPoolAllocationId != nil {
+            map["IpamPoolAllocationId"] = self.ipamPoolAllocationId!
+        }
+        if self.ipamPoolAllocationName != nil {
+            map["IpamPoolAllocationName"] = self.ipamPoolAllocationName!
+        }
+        if self.ipamPoolId != nil {
+            map["IpamPoolId"] = self.ipamPoolId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.resourceRegionId != nil {
+            map["ResourceRegionId"] = self.resourceRegionId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        if self.sourceCidr != nil {
+            map["SourceCidr"] = self.sourceCidr!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Cidr") {
+            self.cidr = dict["Cidr"] as! String
+        }
+        if dict.keys.contains("CreationTime") {
+            self.creationTime = dict["CreationTime"] as! String
+        }
+        if dict.keys.contains("IpamPoolAllocationDescription") {
+            self.ipamPoolAllocationDescription = dict["IpamPoolAllocationDescription"] as! String
+        }
+        if dict.keys.contains("IpamPoolAllocationId") {
+            self.ipamPoolAllocationId = dict["IpamPoolAllocationId"] as! String
+        }
+        if dict.keys.contains("IpamPoolAllocationName") {
+            self.ipamPoolAllocationName = dict["IpamPoolAllocationName"] as! String
+        }
+        if dict.keys.contains("IpamPoolId") {
+            self.ipamPoolId = dict["IpamPoolId"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResourceId") {
+            self.resourceId = dict["ResourceId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceRegionId") {
+            self.resourceRegionId = dict["ResourceRegionId"] as! String
+        }
+        if dict.keys.contains("ResourceType") {
+            self.resourceType = dict["ResourceType"] as! String
+        }
+        if dict.keys.contains("SourceCidr") {
+            self.sourceCidr = dict["SourceCidr"] as! String
+        }
+        if dict.keys.contains("Status") {
+            self.status = dict["Status"] as! String
+        }
+    }
+}
+
+public class GetIpamPoolAllocationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetIpamPoolAllocationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetIpamPoolAllocationResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetIpamPoolNextAvailableCidrRequest : Tea.TeaModel {
+    public var cidrBlock: String?
+
+    public var cidrMask: Int32?
+
+    public var clientToken: String?
+
+    public var ipamPoolId: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cidrBlock != nil {
+            map["CidrBlock"] = self.cidrBlock!
+        }
+        if self.cidrMask != nil {
+            map["CidrMask"] = self.cidrMask!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.ipamPoolId != nil {
+            map["IpamPoolId"] = self.ipamPoolId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CidrBlock") {
+            self.cidrBlock = dict["CidrBlock"] as! String
+        }
+        if dict.keys.contains("CidrMask") {
+            self.cidrMask = dict["CidrMask"] as! Int32
+        }
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("IpamPoolId") {
+            self.ipamPoolId = dict["IpamPoolId"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class GetIpamPoolNextAvailableCidrResponseBody : Tea.TeaModel {
+    public var cidrBlock: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cidrBlock != nil {
+            map["CidrBlock"] = self.cidrBlock!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CidrBlock") {
+            self.cidrBlock = dict["CidrBlock"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class GetIpamPoolNextAvailableCidrResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetIpamPoolNextAvailableCidrResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetIpamPoolNextAvailableCidrResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -3426,6 +4577,8 @@ public class ListIpamPoolsResponseBody : Tea.TeaModel {
 
         public var regionId: String?
 
+        public var resourceGroupId: String?
+
         public var sourceIpamPoolId: String?
 
         public var status: String?
@@ -3503,6 +4656,9 @@ public class ListIpamPoolsResponseBody : Tea.TeaModel {
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.sourceIpamPoolId != nil {
                 map["SourceIpamPoolId"] = self.sourceIpamPoolId!
             }
@@ -3576,6 +4732,9 @@ public class ListIpamPoolsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("ResourceGroupId") {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
             }
             if dict.keys.contains("SourceIpamPoolId") {
                 self.sourceIpamPoolId = dict["SourceIpamPoolId"] as! String
@@ -3822,6 +4981,51 @@ public class ListIpamResourceCidrsRequest : Tea.TeaModel {
 
 public class ListIpamResourceCidrsResponseBody : Tea.TeaModel {
     public class IpamResourceCidrs : Tea.TeaModel {
+        public class OverlapDetail : Tea.TeaModel {
+            public var overlapResourceCidr: String?
+
+            public var overlapResourceId: String?
+
+            public var overlapResourceRegion: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.overlapResourceCidr != nil {
+                    map["OverlapResourceCidr"] = self.overlapResourceCidr!
+                }
+                if self.overlapResourceId != nil {
+                    map["OverlapResourceId"] = self.overlapResourceId!
+                }
+                if self.overlapResourceRegion != nil {
+                    map["OverlapResourceRegion"] = self.overlapResourceRegion!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("OverlapResourceCidr") {
+                    self.overlapResourceCidr = dict["OverlapResourceCidr"] as! String
+                }
+                if dict.keys.contains("OverlapResourceId") {
+                    self.overlapResourceId = dict["OverlapResourceId"] as! String
+                }
+                if dict.keys.contains("OverlapResourceRegion") {
+                    self.overlapResourceRegion = dict["OverlapResourceRegion"] as! String
+                }
+            }
+        }
         public var aliUid: Int64?
 
         public var cidr: String?
@@ -3839,6 +5043,8 @@ public class ListIpamResourceCidrsResponseBody : Tea.TeaModel {
         public var ipamScopeId: String?
 
         public var managementStatus: String?
+
+        public var overlapDetail: [ListIpamResourceCidrsResponseBody.IpamResourceCidrs.OverlapDetail]?
 
         public var overlapStatus: String?
 
@@ -3897,6 +5103,13 @@ public class ListIpamResourceCidrsResponseBody : Tea.TeaModel {
             if self.managementStatus != nil {
                 map["ManagementStatus"] = self.managementStatus!
             }
+            if self.overlapDetail != nil {
+                var tmp : [Any] = []
+                for k in self.overlapDetail! {
+                    tmp.append(k.toMap())
+                }
+                map["OverlapDetail"] = tmp
+            }
             if self.overlapStatus != nil {
                 map["OverlapStatus"] = self.overlapStatus!
             }
@@ -3951,6 +5164,17 @@ public class ListIpamResourceCidrsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ManagementStatus") {
                 self.managementStatus = dict["ManagementStatus"] as! String
+            }
+            if dict.keys.contains("OverlapDetail") {
+                var tmp : [ListIpamResourceCidrsResponseBody.IpamResourceCidrs.OverlapDetail] = []
+                for v in dict["OverlapDetail"] as! [Any] {
+                    var model = ListIpamResourceCidrsResponseBody.IpamResourceCidrs.OverlapDetail()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.overlapDetail = tmp
             }
             if dict.keys.contains("OverlapStatus") {
                 self.overlapStatus = dict["OverlapStatus"] as! String
@@ -4150,6 +5374,8 @@ public class ListIpamResourceDiscoveriesRequest : Tea.TeaModel {
 
     public var ipamResourceDiscoveryName: String?
 
+    public var isShared: Bool?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -4189,6 +5415,9 @@ public class ListIpamResourceDiscoveriesRequest : Tea.TeaModel {
         }
         if self.ipamResourceDiscoveryName != nil {
             map["IpamResourceDiscoveryName"] = self.ipamResourceDiscoveryName!
+        }
+        if self.isShared != nil {
+            map["IsShared"] = self.isShared!
         }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
@@ -4233,6 +5462,9 @@ public class ListIpamResourceDiscoveriesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("IpamResourceDiscoveryName") {
             self.ipamResourceDiscoveryName = dict["IpamResourceDiscoveryName"] as! String
+        }
+        if dict.keys.contains("IsShared") {
+            self.isShared = dict["IsShared"] as! Bool
         }
         if dict.keys.contains("MaxResults") {
             self.maxResults = dict["MaxResults"] as! Int32
@@ -4332,6 +5564,8 @@ public class ListIpamResourceDiscoveriesResponseBody : Tea.TeaModel {
 
         public var resourceGroupId: String?
 
+        public var shareType: String?
+
         public var tags: [ListIpamResourceDiscoveriesResponseBody.IpamResourceDiscoveries.Tags]?
 
         public var type: String?
@@ -4377,6 +5611,9 @@ public class ListIpamResourceDiscoveriesResponseBody : Tea.TeaModel {
             if self.resourceGroupId != nil {
                 map["ResourceGroupId"] = self.resourceGroupId!
             }
+            if self.shareType != nil {
+                map["ShareType"] = self.shareType!
+            }
             if self.tags != nil {
                 var tmp : [Any] = []
                 for k in self.tags! {
@@ -4417,6 +5654,9 @@ public class ListIpamResourceDiscoveriesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ResourceGroupId") {
                 self.resourceGroupId = dict["ResourceGroupId"] as! String
+            }
+            if dict.keys.contains("ShareType") {
+                self.shareType = dict["ShareType"] as! String
             }
             if dict.keys.contains("Tags") {
                 var tmp : [ListIpamResourceDiscoveriesResponseBody.IpamResourceDiscoveries.Tags] = []
@@ -4558,6 +5798,300 @@ public class ListIpamResourceDiscoveriesResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ListIpamResourceDiscoveriesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListIpamResourceDiscoveryAssociationsRequest : Tea.TeaModel {
+    public var ipamId: String?
+
+    public var ipamResourceDiscoveryId: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ipamId != nil {
+            map["IpamId"] = self.ipamId!
+        }
+        if self.ipamResourceDiscoveryId != nil {
+            map["IpamResourceDiscoveryId"] = self.ipamResourceDiscoveryId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("IpamId") {
+            self.ipamId = dict["IpamId"] as! String
+        }
+        if dict.keys.contains("IpamResourceDiscoveryId") {
+            self.ipamResourceDiscoveryId = dict["IpamResourceDiscoveryId"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("OwnerAccount") {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class ListIpamResourceDiscoveryAssociationsResponseBody : Tea.TeaModel {
+    public class IpamResourceDiscoveryAssociations : Tea.TeaModel {
+        public var ipamId: String?
+
+        public var ipamResourceDiscoveryId: String?
+
+        public var ipamResourceDiscoveryOwnerId: String?
+
+        public var ipamResourceDiscoveryStatus: String?
+
+        public var ipamResourceDiscoveryType: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.ipamId != nil {
+                map["IpamId"] = self.ipamId!
+            }
+            if self.ipamResourceDiscoveryId != nil {
+                map["IpamResourceDiscoveryId"] = self.ipamResourceDiscoveryId!
+            }
+            if self.ipamResourceDiscoveryOwnerId != nil {
+                map["IpamResourceDiscoveryOwnerId"] = self.ipamResourceDiscoveryOwnerId!
+            }
+            if self.ipamResourceDiscoveryStatus != nil {
+                map["IpamResourceDiscoveryStatus"] = self.ipamResourceDiscoveryStatus!
+            }
+            if self.ipamResourceDiscoveryType != nil {
+                map["IpamResourceDiscoveryType"] = self.ipamResourceDiscoveryType!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("IpamId") {
+                self.ipamId = dict["IpamId"] as! String
+            }
+            if dict.keys.contains("IpamResourceDiscoveryId") {
+                self.ipamResourceDiscoveryId = dict["IpamResourceDiscoveryId"] as! String
+            }
+            if dict.keys.contains("IpamResourceDiscoveryOwnerId") {
+                self.ipamResourceDiscoveryOwnerId = dict["IpamResourceDiscoveryOwnerId"] as! String
+            }
+            if dict.keys.contains("IpamResourceDiscoveryStatus") {
+                self.ipamResourceDiscoveryStatus = dict["IpamResourceDiscoveryStatus"] as! String
+            }
+            if dict.keys.contains("IpamResourceDiscoveryType") {
+                self.ipamResourceDiscoveryType = dict["IpamResourceDiscoveryType"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+        }
+    }
+    public var count: Int32?
+
+    public var ipamResourceDiscoveryAssociations: [ListIpamResourceDiscoveryAssociationsResponseBody.IpamResourceDiscoveryAssociations]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
+        if self.ipamResourceDiscoveryAssociations != nil {
+            var tmp : [Any] = []
+            for k in self.ipamResourceDiscoveryAssociations! {
+                tmp.append(k.toMap())
+            }
+            map["IpamResourceDiscoveryAssociations"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Count") {
+            self.count = dict["Count"] as! Int32
+        }
+        if dict.keys.contains("IpamResourceDiscoveryAssociations") {
+            var tmp : [ListIpamResourceDiscoveryAssociationsResponseBody.IpamResourceDiscoveryAssociations] = []
+            for v in dict["IpamResourceDiscoveryAssociations"] as! [Any] {
+                var model = ListIpamResourceDiscoveryAssociationsResponseBody.IpamResourceDiscoveryAssociations()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.ipamResourceDiscoveryAssociations = tmp
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! Int64
+        }
+    }
+}
+
+public class ListIpamResourceDiscoveryAssociationsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListIpamResourceDiscoveryAssociationsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListIpamResourceDiscoveryAssociationsResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -4798,6 +6332,8 @@ public class ListIpamScopesResponseBody : Tea.TeaModel {
 
         public var regionId: String?
 
+        public var resourceGroupId: String?
+
         public var status: String?
 
         public var tags: [ListIpamScopesResponseBody.IpamScopes.Tags]?
@@ -4846,6 +6382,9 @@ public class ListIpamScopesResponseBody : Tea.TeaModel {
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.status != nil {
                 map["Status"] = self.status!
             }
@@ -4889,6 +6428,9 @@ public class ListIpamScopesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("ResourceGroupId") {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
@@ -6948,6 +8490,203 @@ public class UpdateIpamPoolAllocationResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = UpdateIpamPoolAllocationResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateIpamResourceDiscoveryRequest : Tea.TeaModel {
+    public var addOperatingRegion: [String]?
+
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
+    public var ipamResourceDiscoveryDescription: String?
+
+    public var ipamResourceDiscoveryId: String?
+
+    public var ipamResourceDiscoveryName: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var removeOperatingRegion: [String]?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.addOperatingRegion != nil {
+            map["AddOperatingRegion"] = self.addOperatingRegion!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.ipamResourceDiscoveryDescription != nil {
+            map["IpamResourceDiscoveryDescription"] = self.ipamResourceDiscoveryDescription!
+        }
+        if self.ipamResourceDiscoveryId != nil {
+            map["IpamResourceDiscoveryId"] = self.ipamResourceDiscoveryId!
+        }
+        if self.ipamResourceDiscoveryName != nil {
+            map["IpamResourceDiscoveryName"] = self.ipamResourceDiscoveryName!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.removeOperatingRegion != nil {
+            map["RemoveOperatingRegion"] = self.removeOperatingRegion!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AddOperatingRegion") {
+            self.addOperatingRegion = dict["AddOperatingRegion"] as! [String]
+        }
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("IpamResourceDiscoveryDescription") {
+            self.ipamResourceDiscoveryDescription = dict["IpamResourceDiscoveryDescription"] as! String
+        }
+        if dict.keys.contains("IpamResourceDiscoveryId") {
+            self.ipamResourceDiscoveryId = dict["IpamResourceDiscoveryId"] as! String
+        }
+        if dict.keys.contains("IpamResourceDiscoveryName") {
+            self.ipamResourceDiscoveryName = dict["IpamResourceDiscoveryName"] as! String
+        }
+        if dict.keys.contains("OwnerAccount") {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("RemoveOperatingRegion") {
+            self.removeOperatingRegion = dict["RemoveOperatingRegion"] as! [String]
+        }
+        if dict.keys.contains("ResourceOwnerAccount") {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class UpdateIpamResourceDiscoveryResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UpdateIpamResourceDiscoveryResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateIpamResourceDiscoveryResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateIpamResourceDiscoveryResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
