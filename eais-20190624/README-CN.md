@@ -17,7 +17,7 @@
 要使用 [Carthage](https://github.com/Carthage/Carthage) 将 `AlibabacloudEais20190624` 集成到你的 Xcode 项目中，需要在 `Cartfile` 中定义以下内容:
 
 ```ogdl
-github "alibabacloud-sdk-swift/eais-20190624" "1.0.5"
+github "alibabacloud-sdk-swift/eais-20190624" "1.0.6"
 ```
 
 ### Swift 包管理工具
@@ -26,7 +26,7 @@ github "alibabacloud-sdk-swift/eais-20190624" "1.0.5"
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/eais-20190624.git", from: "1.0.5")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/eais-20190624.git", from: "1.0.6")
 ]
 ```
 
