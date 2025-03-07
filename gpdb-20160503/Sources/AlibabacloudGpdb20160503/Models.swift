@@ -3360,6 +3360,8 @@ public class CreateDocumentCollectionRequest : Tea.TeaModel {
 
     public var DBInstanceId: String?
 
+    public var dimension: Int32?
+
     public var embeddingModel: String?
 
     public var externalStorage: Int32?
@@ -3409,6 +3411,9 @@ public class CreateDocumentCollectionRequest : Tea.TeaModel {
         }
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.dimension != nil {
+            map["Dimension"] = self.dimension!
         }
         if self.embeddingModel != nil {
             map["EmbeddingModel"] = self.embeddingModel!
@@ -3464,6 +3469,9 @@ public class CreateDocumentCollectionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DBInstanceId") {
             self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("Dimension") {
+            self.dimension = dict["Dimension"] as! Int32
         }
         if dict.keys.contains("EmbeddingModel") {
             self.embeddingModel = dict["EmbeddingModel"] as! String
