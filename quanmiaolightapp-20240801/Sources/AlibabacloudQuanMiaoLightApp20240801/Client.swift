@@ -119,6 +119,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getTagMiningAnalysisTaskWithOptions(_ workspaceId: String, _ request: GetTagMiningAnalysisTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetTagMiningAnalysisTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.taskId)) {
+            query["taskId"] = request.taskId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetTagMiningAnalysisTask",
+            "version": "2024-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/quanmiao/lightapp/getTagMiningAnalysisTask",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(GetTagMiningAnalysisTaskResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(GetTagMiningAnalysisTaskResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getTagMiningAnalysisTask(_ workspaceId: String, _ request: GetTagMiningAnalysisTaskRequest) async throws -> GetTagMiningAnalysisTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getTagMiningAnalysisTaskWithOptions(workspaceId as! String, request as! GetTagMiningAnalysisTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getVideoAnalysisConfigWithOptions(_ workspaceId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetVideoAnalysisConfigResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -946,6 +985,74 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await runVideoAnalysisWithOptions(workspaceId as! String, request as! RunVideoAnalysisRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitTagMiningAnalysisTaskWithOptions(_ workspaceId: String, _ tmpReq: SubmitTagMiningAnalysisTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitTagMiningAnalysisTaskResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SubmitTagMiningAnalysisTaskShrinkRequest = SubmitTagMiningAnalysisTaskShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.contents)) {
+            request.contentsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.contents, "contents", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tags)) {
+            request.tagsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tags, "tags", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessType)) {
+            body["businessType"] = request.businessType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.contentsShrink)) {
+            body["contents"] = request.contentsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extraInfo)) {
+            body["extraInfo"] = request.extraInfo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelId)) {
+            body["modelId"] = request.modelId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outputFormat)) {
+            body["outputFormat"] = request.outputFormat ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagsShrink)) {
+            body["tags"] = request.tagsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskDescription)) {
+            body["taskDescription"] = request.taskDescription ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.url)) {
+            body["url"] = request.url ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitTagMiningAnalysisTask",
+            "version": "2024-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/quanmiao/lightapp/submitTagMiningAnalysisTask",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(SubmitTagMiningAnalysisTaskResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(SubmitTagMiningAnalysisTaskResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitTagMiningAnalysisTask(_ workspaceId: String, _ request: SubmitTagMiningAnalysisTaskRequest) async throws -> SubmitTagMiningAnalysisTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await submitTagMiningAnalysisTaskWithOptions(workspaceId as! String, request as! SubmitTagMiningAnalysisTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
