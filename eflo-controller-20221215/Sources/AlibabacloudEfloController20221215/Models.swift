@@ -137,6 +137,8 @@ public class ChangeResourceGroupRequest : Tea.TeaModel {
 
     public var resourceRegionId: String?
 
+    public var resourceType: String?
+
     public override init() {
         super.init()
     }
@@ -160,6 +162,9 @@ public class ChangeResourceGroupRequest : Tea.TeaModel {
         if self.resourceRegionId != nil {
             map["ResourceRegionId"] = self.resourceRegionId!
         }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
         return map
     }
 
@@ -172,6 +177,9 @@ public class ChangeResourceGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceRegionId") {
             self.resourceRegionId = dict["ResourceRegionId"] as! String
+        }
+        if dict.keys.contains("ResourceType") {
+            self.resourceType = dict["ResourceType"] as! String
         }
     }
 }
