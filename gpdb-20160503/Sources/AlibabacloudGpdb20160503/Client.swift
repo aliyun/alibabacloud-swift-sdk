@@ -634,8 +634,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createCollectionWithOptions(_ request: CreateCollectionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCollectionResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createCollectionWithOptions(_ tmpReq: CreateCollectionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCollectionResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateCollectionShrinkRequest = CreateCollectionShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.sparseVectorIndexConfig)) {
+            request.sparseVectorIndexConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sparseVectorIndexConfig, "SparseVectorIndexConfig", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.collection)) {
             query["Collection"] = request.collection ?? "";
@@ -687,6 +692,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sparseVectorIndexConfigShrink)) {
+            query["SparseVectorIndexConfig"] = request.sparseVectorIndexConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.supportSparse)) {
+            query["SupportSparse"] = request.supportSparse!;
         }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             query["WorkspaceId"] = request.workspaceId ?? "";
@@ -1565,6 +1576,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.username)) {
             query["Username"] = request.username ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -1895,6 +1909,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["Type"] = request.type ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -2711,6 +2728,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.secretName)) {
             query["SecretName"] = request.secretName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -2894,6 +2914,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["Type"] = request.type ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -5880,6 +5903,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.table)) {
             query["Table"] = request.table ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -6343,6 +6369,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.parameters)) {
             request.parametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.parameters, "Parameters", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.ragWorkspaceCollection)) {
+            request.ragWorkspaceCollectionShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ragWorkspaceCollection, "RagWorkspaceCollection", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.sqls)) {
             request.sqlsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sqls, "Sqls", "json")
         }
@@ -6356,6 +6385,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }
+        if (!TeaUtils.Client.isUnset(request.ragWorkspaceCollectionShrink)) {
+            query["RagWorkspaceCollection"] = request.ragWorkspaceCollectionShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
@@ -6367,6 +6399,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.statementName)) {
             query["StatementName"] = request.statementName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
         }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.parametersShrink)) {
@@ -6467,6 +6502,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.secretName)) {
             query["SecretName"] = request.secretName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -7441,6 +7479,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            query["WorkspaceId"] = request.workspaceId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -9060,6 +9101,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.relationalTableFilter)) {
             request.relationalTableFilterShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.relationalTableFilter, "RelationalTableFilter", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.sparseVector)) {
+            request.sparseVectorShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sparseVector, "SparseVector", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.vector)) {
             request.vectorShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.vector, "Vector", "json")
         }
@@ -9111,6 +9155,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.relationalTableFilterShrink)) {
             query["RelationalTableFilter"] = request.relationalTableFilterShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sparseVectorShrink)) {
+            query["SparseVector"] = request.sparseVectorShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.topK)) {
             query["TopK"] = request.topK!;

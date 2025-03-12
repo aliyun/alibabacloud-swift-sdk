@@ -2166,6 +2166,43 @@ public class CreateBackupResponse : Tea.TeaModel {
 }
 
 public class CreateCollectionRequest : Tea.TeaModel {
+    public class SparseVectorIndexConfig : Tea.TeaModel {
+        public var hnswEfConstruction: Int32?
+
+        public var hnswM: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.hnswEfConstruction != nil {
+                map["HnswEfConstruction"] = self.hnswEfConstruction!
+            }
+            if self.hnswM != nil {
+                map["HnswM"] = self.hnswM!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("HnswEfConstruction") {
+                self.hnswEfConstruction = dict["HnswEfConstruction"] as! Int32
+            }
+            if dict.keys.contains("HnswM") {
+                self.hnswM = dict["HnswM"] as! Int32
+            }
+        }
+    }
     public var collection: String?
 
     public var DBInstanceId: String?
@@ -2199,6 +2236,195 @@ public class CreateCollectionRequest : Tea.TeaModel {
     public var pqEnable: Int32?
 
     public var regionId: String?
+
+    public var sparseVectorIndexConfig: CreateCollectionRequest.SparseVectorIndexConfig?
+
+    public var supportSparse: Bool?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.sparseVectorIndexConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.collection != nil {
+            map["Collection"] = self.collection!
+        }
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.dimension != nil {
+            map["Dimension"] = self.dimension!
+        }
+        if self.externalStorage != nil {
+            map["ExternalStorage"] = self.externalStorage!
+        }
+        if self.fullTextRetrievalFields != nil {
+            map["FullTextRetrievalFields"] = self.fullTextRetrievalFields!
+        }
+        if self.hnswEfConstruction != nil {
+            map["HnswEfConstruction"] = self.hnswEfConstruction!
+        }
+        if self.hnswM != nil {
+            map["HnswM"] = self.hnswM!
+        }
+        if self.managerAccount != nil {
+            map["ManagerAccount"] = self.managerAccount!
+        }
+        if self.managerAccountPassword != nil {
+            map["ManagerAccountPassword"] = self.managerAccountPassword!
+        }
+        if self.metadata != nil {
+            map["Metadata"] = self.metadata!
+        }
+        if self.metadataIndices != nil {
+            map["MetadataIndices"] = self.metadataIndices!
+        }
+        if self.metrics != nil {
+            map["Metrics"] = self.metrics!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.parser != nil {
+            map["Parser"] = self.parser!
+        }
+        if self.pqEnable != nil {
+            map["PqEnable"] = self.pqEnable!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.sparseVectorIndexConfig != nil {
+            map["SparseVectorIndexConfig"] = self.sparseVectorIndexConfig?.toMap()
+        }
+        if self.supportSparse != nil {
+            map["SupportSparse"] = self.supportSparse!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Collection") {
+            self.collection = dict["Collection"] as! String
+        }
+        if dict.keys.contains("DBInstanceId") {
+            self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("Dimension") {
+            self.dimension = dict["Dimension"] as! Int64
+        }
+        if dict.keys.contains("ExternalStorage") {
+            self.externalStorage = dict["ExternalStorage"] as! Int32
+        }
+        if dict.keys.contains("FullTextRetrievalFields") {
+            self.fullTextRetrievalFields = dict["FullTextRetrievalFields"] as! String
+        }
+        if dict.keys.contains("HnswEfConstruction") {
+            self.hnswEfConstruction = dict["HnswEfConstruction"] as! String
+        }
+        if dict.keys.contains("HnswM") {
+            self.hnswM = dict["HnswM"] as! Int32
+        }
+        if dict.keys.contains("ManagerAccount") {
+            self.managerAccount = dict["ManagerAccount"] as! String
+        }
+        if dict.keys.contains("ManagerAccountPassword") {
+            self.managerAccountPassword = dict["ManagerAccountPassword"] as! String
+        }
+        if dict.keys.contains("Metadata") {
+            self.metadata = dict["Metadata"] as! String
+        }
+        if dict.keys.contains("MetadataIndices") {
+            self.metadataIndices = dict["MetadataIndices"] as! String
+        }
+        if dict.keys.contains("Metrics") {
+            self.metrics = dict["Metrics"] as! String
+        }
+        if dict.keys.contains("Namespace") {
+            self.namespace = dict["Namespace"] as! String
+        }
+        if dict.keys.contains("OwnerId") {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("Parser") {
+            self.parser = dict["Parser"] as! String
+        }
+        if dict.keys.contains("PqEnable") {
+            self.pqEnable = dict["PqEnable"] as! Int32
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("SparseVectorIndexConfig") {
+            var model = CreateCollectionRequest.SparseVectorIndexConfig()
+            model.fromMap(dict["SparseVectorIndexConfig"] as! [String: Any])
+            self.sparseVectorIndexConfig = model
+        }
+        if dict.keys.contains("SupportSparse") {
+            self.supportSparse = dict["SupportSparse"] as! Bool
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
+        }
+    }
+}
+
+public class CreateCollectionShrinkRequest : Tea.TeaModel {
+    public var collection: String?
+
+    public var DBInstanceId: String?
+
+    public var dimension: Int64?
+
+    public var externalStorage: Int32?
+
+    public var fullTextRetrievalFields: String?
+
+    public var hnswEfConstruction: String?
+
+    public var hnswM: Int32?
+
+    public var managerAccount: String?
+
+    public var managerAccountPassword: String?
+
+    public var metadata: String?
+
+    public var metadataIndices: String?
+
+    public var metrics: String?
+
+    public var namespace: String?
+
+    public var ownerId: Int64?
+
+    public var parser: String?
+
+    public var pqEnable: Int32?
+
+    public var regionId: String?
+
+    public var sparseVectorIndexConfigShrink: String?
+
+    public var supportSparse: Bool?
 
     public var workspaceId: String?
 
@@ -2267,6 +2493,12 @@ public class CreateCollectionRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.sparseVectorIndexConfigShrink != nil {
+            map["SparseVectorIndexConfig"] = self.sparseVectorIndexConfigShrink!
+        }
+        if self.supportSparse != nil {
+            map["SupportSparse"] = self.supportSparse!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -2324,6 +2556,12 @@ public class CreateCollectionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("SparseVectorIndexConfig") {
+            self.sparseVectorIndexConfigShrink = dict["SparseVectorIndexConfig"] as! String
+        }
+        if dict.keys.contains("SupportSparse") {
+            self.supportSparse = dict["SupportSparse"] as! Bool
         }
         if dict.keys.contains("WorkspaceId") {
             self.workspaceId = dict["WorkspaceId"] as! String
@@ -5145,6 +5383,8 @@ public class CreateSecretRequest : Tea.TeaModel {
 
     public var username: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -5183,6 +5423,9 @@ public class CreateSecretRequest : Tea.TeaModel {
         if self.username != nil {
             map["Username"] = self.username!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -5210,6 +5453,9 @@ public class CreateSecretRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Username") {
             self.username = dict["Username"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
         }
     }
 }
@@ -6266,6 +6512,8 @@ public class CreateVectorIndexRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var type: String?
+
     public override init() {
         super.init()
     }
@@ -6319,6 +6567,9 @@ public class CreateVectorIndexRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
         return map
     }
 
@@ -6361,6 +6612,9 @@ public class CreateVectorIndexRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("Type") {
+            self.type = dict["Type"] as! String
         }
     }
 }
@@ -8823,6 +9077,8 @@ public class DeleteSecretRequest : Tea.TeaModel {
 
     public var secretName: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -8852,6 +9108,9 @@ public class DeleteSecretRequest : Tea.TeaModel {
         if self.secretName != nil {
             map["SecretName"] = self.secretName!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -8870,6 +9129,9 @@ public class DeleteSecretRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecretName") {
             self.secretName = dict["SecretName"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
         }
     }
 }
@@ -9383,6 +9645,8 @@ public class DeleteVectorIndexRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var type: String?
+
     public override init() {
         super.init()
     }
@@ -9418,6 +9682,9 @@ public class DeleteVectorIndexRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
         return map
     }
 
@@ -9442,6 +9709,9 @@ public class DeleteVectorIndexRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("Type") {
+            self.type = dict["Type"] as! String
         }
     }
 }
@@ -10934,7 +11204,11 @@ public class DescribeCollectionResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var sparseVectorMetrics: String?
+
     public var status: String?
+
+    public var supportSparse: Bool?
 
     public override init() {
         super.init()
@@ -10980,8 +11254,14 @@ public class DescribeCollectionResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.sparseVectorMetrics != nil {
+            map["SparseVectorMetrics"] = self.sparseVectorMetrics!
+        }
         if self.status != nil {
             map["Status"] = self.status!
+        }
+        if self.supportSparse != nil {
+            map["SupportSparse"] = self.supportSparse!
         }
         return map
     }
@@ -11017,8 +11297,14 @@ public class DescribeCollectionResponseBody : Tea.TeaModel {
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
+        if dict.keys.contains("SparseVectorMetrics") {
+            self.sparseVectorMetrics = dict["SparseVectorMetrics"] as! String
+        }
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("SupportSparse") {
+            self.supportSparse = dict["SupportSparse"] as! Bool
         }
     }
 }
@@ -26302,6 +26588,8 @@ public class DescribeTableRequest : Tea.TeaModel {
 
     public var table: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -26337,6 +26625,9 @@ public class DescribeTableRequest : Tea.TeaModel {
         if self.table != nil {
             map["Table"] = self.table!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -26361,6 +26652,9 @@ public class DescribeTableRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Table") {
             self.table = dict["Table"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
         }
     }
 }
@@ -28109,6 +28403,43 @@ public class EnableDBResourceGroupResponse : Tea.TeaModel {
 }
 
 public class ExecuteStatementRequest : Tea.TeaModel {
+    public class RagWorkspaceCollection : Tea.TeaModel {
+        public var collection: String?
+
+        public var namespace: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.collection != nil {
+                map["Collection"] = self.collection!
+            }
+            if self.namespace != nil {
+                map["Namespace"] = self.namespace!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Collection") {
+                self.collection = dict["Collection"] as! String
+            }
+            if dict.keys.contains("Namespace") {
+                self.namespace = dict["Namespace"] as! String
+            }
+        }
+    }
     public var DBInstanceId: String?
 
     public var database: String?
@@ -28116,6 +28447,8 @@ public class ExecuteStatementRequest : Tea.TeaModel {
     public var ownerId: Int64?
 
     public var parameters: [Any]?
+
+    public var ragWorkspaceCollection: ExecuteStatementRequest.RagWorkspaceCollection?
 
     public var regionId: String?
 
@@ -28129,6 +28462,8 @@ public class ExecuteStatementRequest : Tea.TeaModel {
 
     public var statementName: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -28139,6 +28474,7 @@ public class ExecuteStatementRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.ragWorkspaceCollection?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -28154,6 +28490,9 @@ public class ExecuteStatementRequest : Tea.TeaModel {
         }
         if self.parameters != nil {
             map["Parameters"] = self.parameters!
+        }
+        if self.ragWorkspaceCollection != nil {
+            map["RagWorkspaceCollection"] = self.ragWorkspaceCollection?.toMap()
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -28173,6 +28512,9 @@ public class ExecuteStatementRequest : Tea.TeaModel {
         if self.statementName != nil {
             map["StatementName"] = self.statementName!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -28188,6 +28530,11 @@ public class ExecuteStatementRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Parameters") {
             self.parameters = dict["Parameters"] as! [Any]
+        }
+        if dict.keys.contains("RagWorkspaceCollection") {
+            var model = ExecuteStatementRequest.RagWorkspaceCollection()
+            model.fromMap(dict["RagWorkspaceCollection"] as! [String: Any])
+            self.ragWorkspaceCollection = model
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
@@ -28207,6 +28554,9 @@ public class ExecuteStatementRequest : Tea.TeaModel {
         if dict.keys.contains("StatementName") {
             self.statementName = dict["StatementName"] as! String
         }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
+        }
     }
 }
 
@@ -28219,6 +28569,8 @@ public class ExecuteStatementShrinkRequest : Tea.TeaModel {
 
     public var parametersShrink: String?
 
+    public var ragWorkspaceCollectionShrink: String?
+
     public var regionId: String?
 
     public var runType: String?
@@ -28230,6 +28582,8 @@ public class ExecuteStatementShrinkRequest : Tea.TeaModel {
     public var sqlsShrink: String?
 
     public var statementName: String?
+
+    public var workspaceId: String?
 
     public override init() {
         super.init()
@@ -28257,6 +28611,9 @@ public class ExecuteStatementShrinkRequest : Tea.TeaModel {
         if self.parametersShrink != nil {
             map["Parameters"] = self.parametersShrink!
         }
+        if self.ragWorkspaceCollectionShrink != nil {
+            map["RagWorkspaceCollection"] = self.ragWorkspaceCollectionShrink!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -28275,6 +28632,9 @@ public class ExecuteStatementShrinkRequest : Tea.TeaModel {
         if self.statementName != nil {
             map["StatementName"] = self.statementName!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -28290,6 +28650,9 @@ public class ExecuteStatementShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Parameters") {
             self.parametersShrink = dict["Parameters"] as! String
+        }
+        if dict.keys.contains("RagWorkspaceCollection") {
+            self.ragWorkspaceCollectionShrink = dict["RagWorkspaceCollection"] as! String
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
@@ -28308,6 +28671,9 @@ public class ExecuteStatementShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("StatementName") {
             self.statementName = dict["StatementName"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
         }
     }
 }
@@ -28800,6 +29166,8 @@ public class GetSecretValueRequest : Tea.TeaModel {
 
     public var secretName: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -28829,6 +29197,9 @@ public class GetSecretValueRequest : Tea.TeaModel {
         if self.secretName != nil {
             map["SecretName"] = self.secretName!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -28847,6 +29218,9 @@ public class GetSecretValueRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecretName") {
             self.secretName = dict["SecretName"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
         }
     }
 }
@@ -33645,6 +34019,8 @@ public class ListSecretsRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var workspaceId: String?
+
     public override init() {
         super.init()
     }
@@ -33668,6 +34044,9 @@ public class ListSecretsRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -33680,6 +34059,9 @@ public class ListSecretsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
         }
     }
 }
@@ -39711,6 +40093,43 @@ public class QueryCollectionDataRequest : Tea.TeaModel {
             }
         }
     }
+    public class SparseVector : Tea.TeaModel {
+        public var indices: [Int64]?
+
+        public var values: [Double]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.indices != nil {
+                map["Indices"] = self.indices!
+            }
+            if self.values != nil {
+                map["Values"] = self.values!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Indices") {
+                self.indices = dict["Indices"] as! [Int64]
+            }
+            if dict.keys.contains("Values") {
+                self.values = dict["Values"] as! [Double]
+            }
+        }
+    }
     public var collection: String?
 
     public var content: String?
@@ -39743,6 +40162,8 @@ public class QueryCollectionDataRequest : Tea.TeaModel {
 
     public var relationalTableFilter: QueryCollectionDataRequest.RelationalTableFilter?
 
+    public var sparseVector: QueryCollectionDataRequest.SparseVector?
+
     public var topK: Int64?
 
     public var vector: [Double]?
@@ -39760,6 +40181,7 @@ public class QueryCollectionDataRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.relationalTableFilter?.validate()
+        try self.sparseVector?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -39811,6 +40233,9 @@ public class QueryCollectionDataRequest : Tea.TeaModel {
         }
         if self.relationalTableFilter != nil {
             map["RelationalTableFilter"] = self.relationalTableFilter?.toMap()
+        }
+        if self.sparseVector != nil {
+            map["SparseVector"] = self.sparseVector?.toMap()
         }
         if self.topK != nil {
             map["TopK"] = self.topK!
@@ -39875,6 +40300,11 @@ public class QueryCollectionDataRequest : Tea.TeaModel {
             model.fromMap(dict["RelationalTableFilter"] as! [String: Any])
             self.relationalTableFilter = model
         }
+        if dict.keys.contains("SparseVector") {
+            var model = QueryCollectionDataRequest.SparseVector()
+            model.fromMap(dict["SparseVector"] as! [String: Any])
+            self.sparseVector = model
+        }
         if dict.keys.contains("TopK") {
             self.topK = dict["TopK"] as! Int64
         }
@@ -39919,6 +40349,8 @@ public class QueryCollectionDataShrinkRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var relationalTableFilterShrink: String?
+
+    public var sparseVectorShrink: String?
 
     public var topK: Int64?
 
@@ -39988,6 +40420,9 @@ public class QueryCollectionDataShrinkRequest : Tea.TeaModel {
         if self.relationalTableFilterShrink != nil {
             map["RelationalTableFilter"] = self.relationalTableFilterShrink!
         }
+        if self.sparseVectorShrink != nil {
+            map["SparseVector"] = self.sparseVectorShrink!
+        }
         if self.topK != nil {
             map["TopK"] = self.topK!
         }
@@ -40048,6 +40483,9 @@ public class QueryCollectionDataShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RelationalTableFilter") {
             self.relationalTableFilterShrink = dict["RelationalTableFilter"] as! String
+        }
+        if dict.keys.contains("SparseVector") {
+            self.sparseVectorShrink = dict["SparseVector"] as! String
         }
         if dict.keys.contains("TopK") {
             self.topK = dict["TopK"] as! Int64
@@ -46098,9 +46536,48 @@ public class UpsertChunksResponse : Tea.TeaModel {
 
 public class UpsertCollectionDataRequest : Tea.TeaModel {
     public class Rows : Tea.TeaModel {
+        public class SparseVector : Tea.TeaModel {
+            public var indices: [Int64]?
+
+            public var values: [Double]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.indices != nil {
+                    map["Indices"] = self.indices!
+                }
+                if self.values != nil {
+                    map["Values"] = self.values!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Indices") {
+                    self.indices = dict["Indices"] as! [Int64]
+                }
+                if dict.keys.contains("Values") {
+                    self.values = dict["Values"] as! [Double]
+                }
+            }
+        }
         public var id: String?
 
         public var metadata: [String: String]?
+
+        public var sparseVector: UpsertCollectionDataRequest.Rows.SparseVector?
 
         public var vector: [Double]?
 
@@ -46114,6 +46591,7 @@ public class UpsertCollectionDataRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.sparseVector?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -46123,6 +46601,9 @@ public class UpsertCollectionDataRequest : Tea.TeaModel {
             }
             if self.metadata != nil {
                 map["Metadata"] = self.metadata!
+            }
+            if self.sparseVector != nil {
+                map["SparseVector"] = self.sparseVector?.toMap()
             }
             if self.vector != nil {
                 map["Vector"] = self.vector!
@@ -46136,6 +46617,11 @@ public class UpsertCollectionDataRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Metadata") {
                 self.metadata = dict["Metadata"] as! [String: String]
+            }
+            if dict.keys.contains("SparseVector") {
+                var model = UpsertCollectionDataRequest.Rows.SparseVector()
+                model.fromMap(dict["SparseVector"] as! [String: Any])
+                self.sparseVector = model
             }
             if dict.keys.contains("Vector") {
                 self.vector = dict["Vector"] as! [Double]
