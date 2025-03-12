@@ -716,9 +716,15 @@ public class CreateArtifactRequest : Tea.TeaModel {
         public class CodeRepo : Tea.TeaModel {
             public var branch: String?
 
+            public var endpoint: String?
+
+            public var orgId: String?
+
             public var owner: String?
 
             public var platform: String?
+
+            public var repoId: Int64?
 
             public var repoName: String?
 
@@ -739,11 +745,20 @@ public class CreateArtifactRequest : Tea.TeaModel {
                 if self.branch != nil {
                     map["Branch"] = self.branch!
                 }
+                if self.endpoint != nil {
+                    map["Endpoint"] = self.endpoint!
+                }
+                if self.orgId != nil {
+                    map["OrgId"] = self.orgId!
+                }
                 if self.owner != nil {
                     map["Owner"] = self.owner!
                 }
                 if self.platform != nil {
                     map["Platform"] = self.platform!
+                }
+                if self.repoId != nil {
+                    map["RepoId"] = self.repoId!
                 }
                 if self.repoName != nil {
                     map["RepoName"] = self.repoName!
@@ -755,11 +770,20 @@ public class CreateArtifactRequest : Tea.TeaModel {
                 if dict.keys.contains("Branch") {
                     self.branch = dict["Branch"] as! String
                 }
+                if dict.keys.contains("Endpoint") {
+                    self.endpoint = dict["Endpoint"] as! String
+                }
+                if dict.keys.contains("OrgId") {
+                    self.orgId = dict["OrgId"] as! String
+                }
                 if dict.keys.contains("Owner") {
                     self.owner = dict["Owner"] as! String
                 }
                 if dict.keys.contains("Platform") {
                     self.platform = dict["Platform"] as! String
+                }
+                if dict.keys.contains("RepoId") {
+                    self.repoId = dict["RepoId"] as! Int64
                 }
                 if dict.keys.contains("RepoName") {
                     self.repoName = dict["RepoName"] as! String
@@ -19632,9 +19656,15 @@ public class UpdateArtifactRequest : Tea.TeaModel {
         public class CodeRepo : Tea.TeaModel {
             public var branch: String?
 
+            public var endpoint: String?
+
+            public var orgId: String?
+
             public var owner: String?
 
             public var platform: String?
+
+            public var repoId: Int64?
 
             public var repoName: String?
 
@@ -19655,11 +19685,20 @@ public class UpdateArtifactRequest : Tea.TeaModel {
                 if self.branch != nil {
                     map["Branch"] = self.branch!
                 }
+                if self.endpoint != nil {
+                    map["Endpoint"] = self.endpoint!
+                }
+                if self.orgId != nil {
+                    map["OrgId"] = self.orgId!
+                }
                 if self.owner != nil {
                     map["Owner"] = self.owner!
                 }
                 if self.platform != nil {
                     map["Platform"] = self.platform!
+                }
+                if self.repoId != nil {
+                    map["RepoId"] = self.repoId!
                 }
                 if self.repoName != nil {
                     map["RepoName"] = self.repoName!
@@ -19671,11 +19710,20 @@ public class UpdateArtifactRequest : Tea.TeaModel {
                 if dict.keys.contains("Branch") {
                     self.branch = dict["Branch"] as! String
                 }
+                if dict.keys.contains("Endpoint") {
+                    self.endpoint = dict["Endpoint"] as! String
+                }
+                if dict.keys.contains("OrgId") {
+                    self.orgId = dict["OrgId"] as! String
+                }
                 if dict.keys.contains("Owner") {
                     self.owner = dict["Owner"] as! String
                 }
                 if dict.keys.contains("Platform") {
                     self.platform = dict["Platform"] as! String
+                }
+                if dict.keys.contains("RepoId") {
+                    self.repoId = dict["RepoId"] as! Int64
                 }
                 if dict.keys.contains("RepoName") {
                     self.repoName = dict["RepoName"] as! String
