@@ -859,8 +859,6 @@ public class BicyclingDirectionNovaResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
-    public var success: Bool?
-
     public override init() {
         super.init()
     }
@@ -882,9 +880,6 @@ public class BicyclingDirectionNovaResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
-        if self.success != nil {
-            map["success"] = self.success!
-        }
         return map
     }
 
@@ -896,9 +891,6 @@ public class BicyclingDirectionNovaResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("requestId") {
             self.requestId = dict["requestId"] as! String
-        }
-        if dict.keys.contains("success") {
-            self.success = dict["success"] as! Bool
         }
     }
 }
@@ -1947,8 +1939,6 @@ public class DrivingDirectionNovaResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
-    public var success: Bool?
-
     public override init() {
         super.init()
     }
@@ -1970,9 +1960,6 @@ public class DrivingDirectionNovaResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
-        if self.success != nil {
-            map["success"] = self.success!
-        }
         return map
     }
 
@@ -1984,9 +1971,6 @@ public class DrivingDirectionNovaResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("requestId") {
             self.requestId = dict["requestId"] as! String
-        }
-        if dict.keys.contains("success") {
-            self.success = dict["success"] as! Bool
         }
     }
 }
@@ -2498,8 +2482,6 @@ public class ElectrobikeDirectionNovaResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
-    public var success: Bool?
-
     public override init() {
         super.init()
     }
@@ -2521,9 +2503,6 @@ public class ElectrobikeDirectionNovaResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
-        if self.success != nil {
-            map["success"] = self.success!
-        }
         return map
     }
 
@@ -2535,9 +2514,6 @@ public class ElectrobikeDirectionNovaResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("requestId") {
             self.requestId = dict["requestId"] as! String
-        }
-        if dict.keys.contains("success") {
-            self.success = dict["success"] as! Bool
         }
     }
 }
@@ -2783,8 +2759,6 @@ public class GeoCodeResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
-    public var success: Bool?
-
     public override init() {
         super.init()
     }
@@ -2809,9 +2783,6 @@ public class GeoCodeResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
-        if self.success != nil {
-            map["success"] = self.success!
-        }
         return map
     }
 
@@ -2829,9 +2800,6 @@ public class GeoCodeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("requestId") {
             self.requestId = dict["requestId"] as! String
-        }
-        if dict.keys.contains("success") {
-            self.success = dict["success"] as! Bool
         }
     }
 }
@@ -3270,8 +3238,6 @@ public class NearbySearchNovaResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
-    public var success: Bool?
-
     public override init() {
         super.init()
     }
@@ -3296,9 +3262,6 @@ public class NearbySearchNovaResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
-        if self.success != nil {
-            map["success"] = self.success!
-        }
         return map
     }
 
@@ -3316,9 +3279,6 @@ public class NearbySearchNovaResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("requestId") {
             self.requestId = dict["requestId"] as! String
-        }
-        if dict.keys.contains("success") {
-            self.success = dict["success"] as! Bool
         }
     }
 }
@@ -3733,8 +3693,6 @@ public class PlaceSearchNovaResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
-    public var success: Bool?
-
     public override init() {
         super.init()
     }
@@ -3759,9 +3717,6 @@ public class PlaceSearchNovaResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
-        if self.success != nil {
-            map["success"] = self.success!
-        }
         return map
     }
 
@@ -3779,9 +3734,6 @@ public class PlaceSearchNovaResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("requestId") {
             self.requestId = dict["requestId"] as! String
-        }
-        if dict.keys.contains("success") {
-            self.success = dict["success"] as! Bool
         }
     }
 }
@@ -4835,8 +4787,6 @@ public class RgeoCodeResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
-    public var success: Bool?
-
     public override init() {
         super.init()
     }
@@ -4858,9 +4808,6 @@ public class RgeoCodeResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
-        if self.success != nil {
-            map["success"] = self.success!
-        }
         return map
     }
 
@@ -4872,9 +4819,6 @@ public class RgeoCodeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("requestId") {
             self.requestId = dict["requestId"] as! String
-        }
-        if dict.keys.contains("success") {
-            self.success = dict["success"] as! Bool
         }
     }
 }
@@ -6018,6 +5962,35 @@ public class TransitIntegratedDirectionResponseBody : Tea.TeaModel {
                     }
                 }
                 public class Taxi : Tea.TeaModel {
+                    public class Polyline : Tea.TeaModel {
+                        public var polyline: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.polyline != nil {
+                                map["polyline"] = self.polyline!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("polyline") {
+                                self.polyline = dict["polyline"] as! String
+                            }
+                        }
+                    }
                     public var destinationName: String?
 
                     public var destinationPoint: String?
@@ -6032,6 +6005,8 @@ public class TransitIntegratedDirectionResponseBody : Tea.TeaModel {
 
                     public var originPoint: String?
 
+                    public var polyline: TransitIntegratedDirectionResponseBody.Data.Paths.Segments.Taxi.Polyline?
+
                     public var price: String?
 
                     public override init() {
@@ -6044,6 +6019,7 @@ public class TransitIntegratedDirectionResponseBody : Tea.TeaModel {
                     }
 
                     public override func validate() throws -> Void {
+                        try self.polyline?.validate()
                     }
 
                     public override func toMap() -> [String : Any] {
@@ -6068,6 +6044,9 @@ public class TransitIntegratedDirectionResponseBody : Tea.TeaModel {
                         }
                         if self.originPoint != nil {
                             map["originPoint"] = self.originPoint!
+                        }
+                        if self.polyline != nil {
+                            map["polyline"] = self.polyline?.toMap()
                         }
                         if self.price != nil {
                             map["price"] = self.price!
@@ -6096,6 +6075,11 @@ public class TransitIntegratedDirectionResponseBody : Tea.TeaModel {
                         }
                         if dict.keys.contains("originPoint") {
                             self.originPoint = dict["originPoint"] as! String
+                        }
+                        if dict.keys.contains("polyline") {
+                            var model = TransitIntegratedDirectionResponseBody.Data.Paths.Segments.Taxi.Polyline()
+                            model.fromMap(dict["polyline"] as! [String: Any])
+                            self.polyline = model
                         }
                         if dict.keys.contains("price") {
                             self.price = dict["price"] as! String
@@ -6686,8 +6670,6 @@ public class TransitIntegratedDirectionResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
-    public var success: Bool?
-
     public override init() {
         super.init()
     }
@@ -6709,9 +6691,6 @@ public class TransitIntegratedDirectionResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
-        if self.success != nil {
-            map["success"] = self.success!
-        }
         return map
     }
 
@@ -6723,9 +6702,6 @@ public class TransitIntegratedDirectionResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("requestId") {
             self.requestId = dict["requestId"] as! String
-        }
-        if dict.keys.contains("success") {
-            self.success = dict["success"] as! Bool
         }
     }
 }
@@ -7237,8 +7213,6 @@ public class WalkingDirectionNovaResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
-    public var success: Bool?
-
     public override init() {
         super.init()
     }
@@ -7260,9 +7234,6 @@ public class WalkingDirectionNovaResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
-        if self.success != nil {
-            map["success"] = self.success!
-        }
         return map
     }
 
@@ -7274,9 +7245,6 @@ public class WalkingDirectionNovaResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("requestId") {
             self.requestId = dict["requestId"] as! String
-        }
-        if dict.keys.contains("success") {
-            self.success = dict["success"] as! Bool
         }
     }
 }
