@@ -36111,6 +36111,8 @@ public class DescribeCommandsResponseBody : Tea.TeaModel {
 
                     public var parameterName: String?
 
+                    public var patternRegex: String?
+
                     public var possibleValues: DescribeCommandsResponseBody.Commands.Command.ParameterDefinitions.ParameterDefinition.PossibleValues?
 
                     public var required_: Bool?
@@ -36139,6 +36141,9 @@ public class DescribeCommandsResponseBody : Tea.TeaModel {
                         if self.parameterName != nil {
                             map["ParameterName"] = self.parameterName!
                         }
+                        if self.patternRegex != nil {
+                            map["PatternRegex"] = self.patternRegex!
+                        }
                         if self.possibleValues != nil {
                             map["PossibleValues"] = self.possibleValues?.toMap()
                         }
@@ -36157,6 +36162,9 @@ public class DescribeCommandsResponseBody : Tea.TeaModel {
                         }
                         if dict.keys.contains("ParameterName") {
                             self.parameterName = dict["ParameterName"] as! String
+                        }
+                        if dict.keys.contains("PatternRegex") {
+                            self.patternRegex = dict["PatternRegex"] as! String
                         }
                         if dict.keys.contains("PossibleValues") {
                             var model = DescribeCommandsResponseBody.Commands.Command.ParameterDefinitions.ParameterDefinition.PossibleValues()
@@ -110256,6 +110264,8 @@ public class PurchaseStorageCapacityUnitRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -110311,6 +110321,9 @@ public class PurchaseStorageCapacityUnitRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -110363,6 +110376,9 @@ public class PurchaseStorageCapacityUnitRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
