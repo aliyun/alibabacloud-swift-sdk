@@ -2960,6 +2960,8 @@ public class CreateCommentRequest : Tea.TeaModel {
 
     public var filePath: String?
 
+    public var fromPachSetBizId: String?
+
     public var lineNumber: Int32?
 
     public var parentCommentBizId: String?
@@ -2967,6 +2969,8 @@ public class CreateCommentRequest : Tea.TeaModel {
     public var patchSetBizId: String?
 
     public var resolved: Bool?
+
+    public var toPatchSetBizId: String?
 
     public var localId: Int64?
 
@@ -3003,6 +3007,9 @@ public class CreateCommentRequest : Tea.TeaModel {
         if self.filePath != nil {
             map["filePath"] = self.filePath!
         }
+        if self.fromPachSetBizId != nil {
+            map["fromPachSetBizId"] = self.fromPachSetBizId!
+        }
         if self.lineNumber != nil {
             map["lineNumber"] = self.lineNumber!
         }
@@ -3014,6 +3021,9 @@ public class CreateCommentRequest : Tea.TeaModel {
         }
         if self.resolved != nil {
             map["resolved"] = self.resolved!
+        }
+        if self.toPatchSetBizId != nil {
+            map["toPatchSetBizId"] = self.toPatchSetBizId!
         }
         if self.localId != nil {
             map["localId"] = self.localId!
@@ -3043,6 +3053,9 @@ public class CreateCommentRequest : Tea.TeaModel {
         if dict.keys.contains("filePath") {
             self.filePath = dict["filePath"] as! String
         }
+        if dict.keys.contains("fromPachSetBizId") {
+            self.fromPachSetBizId = dict["fromPachSetBizId"] as! String
+        }
         if dict.keys.contains("lineNumber") {
             self.lineNumber = dict["lineNumber"] as! Int32
         }
@@ -3054,6 +3067,9 @@ public class CreateCommentRequest : Tea.TeaModel {
         }
         if dict.keys.contains("resolved") {
             self.resolved = dict["resolved"] as! Bool
+        }
+        if dict.keys.contains("toPatchSetBizId") {
+            self.toPatchSetBizId = dict["toPatchSetBizId"] as! String
         }
         if dict.keys.contains("localId") {
             self.localId = dict["localId"] as! Int64
