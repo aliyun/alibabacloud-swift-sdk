@@ -20564,6 +20564,123 @@ public class DescribeDesktopsRequest : Tea.TeaModel {
 
 public class DescribeDesktopsResponseBody : Tea.TeaModel {
     public class Desktops : Tea.TeaModel {
+        public class DesktopDurationList : Tea.TeaModel {
+            public var orderInstanceId: String?
+
+            public var packageCreationTime: String?
+
+            public var packageExpiredTime: String?
+
+            public var packageId: String?
+
+            public var packageStatus: String?
+
+            public var packageType: String?
+
+            public var packageUsedUpStrategy: String?
+
+            public var periodEndTime: String?
+
+            public var periodStartTime: String?
+
+            public var postPaidLimitFee: Double?
+
+            public var totalDuration: Int64?
+
+            public var usedDuration: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.orderInstanceId != nil {
+                    map["OrderInstanceId"] = self.orderInstanceId!
+                }
+                if self.packageCreationTime != nil {
+                    map["PackageCreationTime"] = self.packageCreationTime!
+                }
+                if self.packageExpiredTime != nil {
+                    map["PackageExpiredTime"] = self.packageExpiredTime!
+                }
+                if self.packageId != nil {
+                    map["PackageId"] = self.packageId!
+                }
+                if self.packageStatus != nil {
+                    map["PackageStatus"] = self.packageStatus!
+                }
+                if self.packageType != nil {
+                    map["PackageType"] = self.packageType!
+                }
+                if self.packageUsedUpStrategy != nil {
+                    map["PackageUsedUpStrategy"] = self.packageUsedUpStrategy!
+                }
+                if self.periodEndTime != nil {
+                    map["PeriodEndTime"] = self.periodEndTime!
+                }
+                if self.periodStartTime != nil {
+                    map["PeriodStartTime"] = self.periodStartTime!
+                }
+                if self.postPaidLimitFee != nil {
+                    map["PostPaidLimitFee"] = self.postPaidLimitFee!
+                }
+                if self.totalDuration != nil {
+                    map["TotalDuration"] = self.totalDuration!
+                }
+                if self.usedDuration != nil {
+                    map["UsedDuration"] = self.usedDuration!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("OrderInstanceId") {
+                    self.orderInstanceId = dict["OrderInstanceId"] as! String
+                }
+                if dict.keys.contains("PackageCreationTime") {
+                    self.packageCreationTime = dict["PackageCreationTime"] as! String
+                }
+                if dict.keys.contains("PackageExpiredTime") {
+                    self.packageExpiredTime = dict["PackageExpiredTime"] as! String
+                }
+                if dict.keys.contains("PackageId") {
+                    self.packageId = dict["PackageId"] as! String
+                }
+                if dict.keys.contains("PackageStatus") {
+                    self.packageStatus = dict["PackageStatus"] as! String
+                }
+                if dict.keys.contains("PackageType") {
+                    self.packageType = dict["PackageType"] as! String
+                }
+                if dict.keys.contains("PackageUsedUpStrategy") {
+                    self.packageUsedUpStrategy = dict["PackageUsedUpStrategy"] as! String
+                }
+                if dict.keys.contains("PeriodEndTime") {
+                    self.periodEndTime = dict["PeriodEndTime"] as! String
+                }
+                if dict.keys.contains("PeriodStartTime") {
+                    self.periodStartTime = dict["PeriodStartTime"] as! String
+                }
+                if dict.keys.contains("PostPaidLimitFee") {
+                    self.postPaidLimitFee = dict["PostPaidLimitFee"] as! Double
+                }
+                if dict.keys.contains("TotalDuration") {
+                    self.totalDuration = dict["TotalDuration"] as! Int64
+                }
+                if dict.keys.contains("UsedDuration") {
+                    self.usedDuration = dict["UsedDuration"] as! Int64
+                }
+            }
+        }
         public class Disks : Tea.TeaModel {
             public var diskCategory: String?
 
@@ -20831,6 +20948,8 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
 
         public var dataDiskSize: String?
 
+        public var desktopDurationList: [DescribeDesktopsResponseBody.Desktops.DesktopDurationList]?
+
         public var desktopGroupId: String?
 
         public var desktopId: String?
@@ -20976,6 +21095,13 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
             }
             if self.dataDiskSize != nil {
                 map["DataDiskSize"] = self.dataDiskSize!
+            }
+            if self.desktopDurationList != nil {
+                var tmp : [Any] = []
+                for k in self.desktopDurationList! {
+                    tmp.append(k.toMap())
+                }
+                map["DesktopDurationList"] = tmp
             }
             if self.desktopGroupId != nil {
                 map["DesktopGroupId"] = self.desktopGroupId!
@@ -21179,6 +21305,17 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("DataDiskSize") {
                 self.dataDiskSize = dict["DataDiskSize"] as! String
+            }
+            if dict.keys.contains("DesktopDurationList") {
+                var tmp : [DescribeDesktopsResponseBody.Desktops.DesktopDurationList] = []
+                for v in dict["DesktopDurationList"] as! [Any] {
+                    var model = DescribeDesktopsResponseBody.Desktops.DesktopDurationList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.desktopDurationList = tmp
             }
             if dict.keys.contains("DesktopGroupId") {
                 self.desktopGroupId = dict["DesktopGroupId"] as! String
