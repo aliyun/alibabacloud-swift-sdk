@@ -966,6 +966,10 @@ public class CreateInstanceRequest : Tea.TeaModel {
     public class Datasets : Tea.TeaModel {
         public var datasetId: String?
 
+        public var datasetVersion: String?
+
+        public var mountAccess: String?
+
         public var mountPath: String?
 
         public var optionType: String?
@@ -991,6 +995,12 @@ public class CreateInstanceRequest : Tea.TeaModel {
             if self.datasetId != nil {
                 map["DatasetId"] = self.datasetId!
             }
+            if self.datasetVersion != nil {
+                map["DatasetVersion"] = self.datasetVersion!
+            }
+            if self.mountAccess != nil {
+                map["MountAccess"] = self.mountAccess!
+            }
             if self.mountPath != nil {
                 map["MountPath"] = self.mountPath!
             }
@@ -1009,6 +1019,12 @@ public class CreateInstanceRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("DatasetId") {
                 self.datasetId = dict["DatasetId"] as! String
+            }
+            if dict.keys.contains("DatasetVersion") {
+                self.datasetVersion = dict["DatasetVersion"] as! String
+            }
+            if dict.keys.contains("MountAccess") {
+                self.mountAccess = dict["MountAccess"] as! String
             }
             if dict.keys.contains("MountPath") {
                 self.mountPath = dict["MountPath"] as! String
@@ -2887,6 +2903,10 @@ public class GetInstanceResponseBody : Tea.TeaModel {
     public class Datasets : Tea.TeaModel {
         public var datasetId: String?
 
+        public var datasetVersion: String?
+
+        public var mountAccess: String?
+
         public var mountPath: String?
 
         public var optionType: String?
@@ -2912,6 +2932,12 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             if self.datasetId != nil {
                 map["DatasetId"] = self.datasetId!
             }
+            if self.datasetVersion != nil {
+                map["DatasetVersion"] = self.datasetVersion!
+            }
+            if self.mountAccess != nil {
+                map["MountAccess"] = self.mountAccess!
+            }
             if self.mountPath != nil {
                 map["MountPath"] = self.mountPath!
             }
@@ -2930,6 +2956,12 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("DatasetId") {
                 self.datasetId = dict["DatasetId"] as! String
+            }
+            if dict.keys.contains("DatasetVersion") {
+                self.datasetVersion = dict["DatasetVersion"] as! String
+            }
+            if dict.keys.contains("MountAccess") {
+                self.mountAccess = dict["MountAccess"] as! String
             }
             if dict.keys.contains("MountPath") {
                 self.mountPath = dict["MountPath"] as! String
@@ -7474,6 +7506,10 @@ public class ListInstancesResponseBody : Tea.TeaModel {
         public class Datasets : Tea.TeaModel {
             public var datasetId: String?
 
+            public var datasetVersion: String?
+
+            public var mountAccess: String?
+
             public var mountPath: String?
 
             public var optionType: String?
@@ -7499,6 +7535,12 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 if self.datasetId != nil {
                     map["DatasetId"] = self.datasetId!
                 }
+                if self.datasetVersion != nil {
+                    map["DatasetVersion"] = self.datasetVersion!
+                }
+                if self.mountAccess != nil {
+                    map["MountAccess"] = self.mountAccess!
+                }
                 if self.mountPath != nil {
                     map["MountPath"] = self.mountPath!
                 }
@@ -7517,6 +7559,12 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("DatasetId") {
                     self.datasetId = dict["DatasetId"] as! String
+                }
+                if dict.keys.contains("DatasetVersion") {
+                    self.datasetVersion = dict["DatasetVersion"] as! String
+                }
+                if dict.keys.contains("MountAccess") {
+                    self.mountAccess = dict["MountAccess"] as! String
                 }
                 if dict.keys.contains("MountPath") {
                     self.mountPath = dict["MountPath"] as! String
@@ -9001,6 +9049,10 @@ public class UpdateInstanceRequest : Tea.TeaModel {
     public class Datasets : Tea.TeaModel {
         public var datasetId: String?
 
+        public var datasetVersion: String?
+
+        public var mountAccess: String?
+
         public var mountPath: String?
 
         public var optionType: String?
@@ -9026,6 +9078,12 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             if self.datasetId != nil {
                 map["DatasetId"] = self.datasetId!
             }
+            if self.datasetVersion != nil {
+                map["DatasetVersion"] = self.datasetVersion!
+            }
+            if self.mountAccess != nil {
+                map["MountAccess"] = self.mountAccess!
+            }
             if self.mountPath != nil {
                 map["MountPath"] = self.mountPath!
             }
@@ -9044,6 +9102,12 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("DatasetId") {
                 self.datasetId = dict["DatasetId"] as! String
+            }
+            if dict.keys.contains("DatasetVersion") {
+                self.datasetVersion = dict["DatasetVersion"] as! String
+            }
+            if dict.keys.contains("MountAccess") {
+                self.mountAccess = dict["MountAccess"] as! String
             }
             if dict.keys.contains("MountPath") {
                 self.mountPath = dict["MountPath"] as! String
