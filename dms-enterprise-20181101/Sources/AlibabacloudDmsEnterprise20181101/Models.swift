@@ -4705,6 +4705,8 @@ public class BatchCreateDataLakePartitionsRequest : Tea.TeaModel {
 
     public var tid: Int64?
 
+    public var workspaceId: Int64?
+
     public override init() {
         super.init()
     }
@@ -4747,6 +4749,9 @@ public class BatchCreateDataLakePartitionsRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -4783,6 +4788,9 @@ public class BatchCreateDataLakePartitionsRequest : Tea.TeaModel {
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
         }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
+        }
     }
 }
 
@@ -4802,6 +4810,8 @@ public class BatchCreateDataLakePartitionsShrinkRequest : Tea.TeaModel {
     public var tableName: String?
 
     public var tid: Int64?
+
+    public var workspaceId: Int64?
 
     public override init() {
         super.init()
@@ -4841,6 +4851,9 @@ public class BatchCreateDataLakePartitionsShrinkRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -4868,6 +4881,9 @@ public class BatchCreateDataLakePartitionsShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
         }
     }
 }
@@ -5010,6 +5026,8 @@ public class BatchDeleteDataLakePartitionsRequest : Tea.TeaModel {
 
     public var tid: Int64?
 
+    public var workspaceId: Int64?
+
     public override init() {
         super.init()
     }
@@ -5045,6 +5063,9 @@ public class BatchDeleteDataLakePartitionsRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -5069,6 +5090,9 @@ public class BatchDeleteDataLakePartitionsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
         }
     }
 }
@@ -5209,6 +5233,8 @@ public class BatchUpdateDataLakePartitionsRequest : Tea.TeaModel {
 
     public var tid: Int64?
 
+    public var workspaceId: Int64?
+
     public override init() {
         super.init()
     }
@@ -5245,6 +5271,9 @@ public class BatchUpdateDataLakePartitionsRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -5275,6 +5304,9 @@ public class BatchUpdateDataLakePartitionsRequest : Tea.TeaModel {
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
         }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
+        }
     }
 }
 
@@ -5290,6 +5322,8 @@ public class BatchUpdateDataLakePartitionsShrinkRequest : Tea.TeaModel {
     public var tableName: String?
 
     public var tid: Int64?
+
+    public var workspaceId: Int64?
 
     public override init() {
         super.init()
@@ -5323,6 +5357,9 @@ public class BatchUpdateDataLakePartitionsShrinkRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -5344,6 +5381,9 @@ public class BatchUpdateDataLakePartitionsShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
         }
     }
 }
@@ -9075,6 +9115,8 @@ public class CreateDataLakeDatabaseRequest : Tea.TeaModel {
 
     public var tid: Int64?
 
+    public var workspaceId: Int64?
+
     public override init() {
         super.init()
     }
@@ -9110,6 +9152,9 @@ public class CreateDataLakeDatabaseRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -9135,6 +9180,9 @@ public class CreateDataLakeDatabaseRequest : Tea.TeaModel {
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
         }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
+        }
     }
 }
 
@@ -9152,6 +9200,8 @@ public class CreateDataLakeDatabaseShrinkRequest : Tea.TeaModel {
     public var parametersShrink: String?
 
     public var tid: Int64?
+
+    public var workspaceId: Int64?
 
     public override init() {
         super.init()
@@ -9188,6 +9238,9 @@ public class CreateDataLakeDatabaseShrinkRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -9212,6 +9265,9 @@ public class CreateDataLakeDatabaseShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
         }
     }
 }
@@ -9593,6 +9649,8 @@ public class CreateDataLakePartitionRequest : Tea.TeaModel {
 
     public var tid: Int64?
 
+    public var workspaceId: Int64?
+
     public override init() {
         super.init()
     }
@@ -9632,6 +9690,9 @@ public class CreateDataLakePartitionRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -9662,6 +9723,9 @@ public class CreateDataLakePartitionRequest : Tea.TeaModel {
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
         }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
+        }
     }
 }
 
@@ -9681,6 +9745,8 @@ public class CreateDataLakePartitionShrinkRequest : Tea.TeaModel {
     public var tableName: String?
 
     public var tid: Int64?
+
+    public var workspaceId: Int64?
 
     public override init() {
         super.init()
@@ -9720,6 +9786,9 @@ public class CreateDataLakePartitionShrinkRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -9747,6 +9816,9 @@ public class CreateDataLakePartitionShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
         }
     }
 }
@@ -9876,6 +9948,8 @@ public class CreateDataLakeTableRequest : Tea.TeaModel {
 
     public var tid: Int64?
 
+    public var workspaceId: Int64?
+
     public override init() {
         super.init()
     }
@@ -9906,6 +9980,9 @@ public class CreateDataLakeTableRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -9927,6 +10004,9 @@ public class CreateDataLakeTableRequest : Tea.TeaModel {
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
         }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
+        }
     }
 }
 
@@ -9940,6 +10020,8 @@ public class CreateDataLakeTableShrinkRequest : Tea.TeaModel {
     public var tableInputShrink: String?
 
     public var tid: Int64?
+
+    public var workspaceId: Int64?
 
     public override init() {
         super.init()
@@ -9970,6 +10052,9 @@ public class CreateDataLakeTableShrinkRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -9988,6 +10073,9 @@ public class CreateDataLakeTableShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
         }
     }
 }
@@ -15826,6 +15914,8 @@ public class DeleteDataLakeDatabaseRequest : Tea.TeaModel {
 
     public var tid: Int64?
 
+    public var workspaceId: Int64?
+
     public override init() {
         super.init()
     }
@@ -15852,6 +15942,9 @@ public class DeleteDataLakeDatabaseRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -15867,6 +15960,9 @@ public class DeleteDataLakeDatabaseRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
         }
     }
 }
@@ -16162,6 +16258,8 @@ public class DeleteDataLakePartitionRequest : Tea.TeaModel {
 
     public var tid: Int64?
 
+    public var workspaceId: Int64?
+
     public override init() {
         super.init()
     }
@@ -16197,6 +16295,9 @@ public class DeleteDataLakePartitionRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -16222,6 +16323,9 @@ public class DeleteDataLakePartitionRequest : Tea.TeaModel {
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
         }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
+        }
     }
 }
 
@@ -16239,6 +16343,8 @@ public class DeleteDataLakePartitionShrinkRequest : Tea.TeaModel {
     public var tableName: String?
 
     public var tid: Int64?
+
+    public var workspaceId: Int64?
 
     public override init() {
         super.init()
@@ -16275,6 +16381,9 @@ public class DeleteDataLakePartitionShrinkRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -16299,6 +16408,9 @@ public class DeleteDataLakePartitionShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
         }
     }
 }
@@ -16417,6 +16529,8 @@ public class DeleteDataLakeTableRequest : Tea.TeaModel {
 
     public var tid: Int64?
 
+    public var workspaceId: Int64?
+
     public override init() {
         super.init()
     }
@@ -16446,6 +16560,9 @@ public class DeleteDataLakeTableRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -16464,6 +16581,9 @@ public class DeleteDataLakeTableRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
         }
     }
 }
@@ -26940,6 +27060,8 @@ public class GetDataLakeCatalogRequest : Tea.TeaModel {
 
     public var tid: Int64?
 
+    public var workspaceId: Int64?
+
     public override init() {
         super.init()
     }
@@ -26963,6 +27085,9 @@ public class GetDataLakeCatalogRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -26975,6 +27100,9 @@ public class GetDataLakeCatalogRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
         }
     }
 }
@@ -27102,6 +27230,8 @@ public class GetDataLakeDatabaseRequest : Tea.TeaModel {
 
     public var tid: Int64?
 
+    public var workspaceId: Int64?
+
     public override init() {
         super.init()
     }
@@ -27128,6 +27258,9 @@ public class GetDataLakeDatabaseRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -27143,6 +27276,9 @@ public class GetDataLakeDatabaseRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
         }
     }
 }
@@ -27458,6 +27594,8 @@ public class GetDataLakePartitionRequest : Tea.TeaModel {
 
     public var tid: Int64?
 
+    public var workspaceId: Int64?
+
     public override init() {
         super.init()
     }
@@ -27490,6 +27628,9 @@ public class GetDataLakePartitionRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -27512,6 +27653,9 @@ public class GetDataLakePartitionRequest : Tea.TeaModel {
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
         }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
+        }
     }
 }
 
@@ -27527,6 +27671,8 @@ public class GetDataLakePartitionShrinkRequest : Tea.TeaModel {
     public var tableName: String?
 
     public var tid: Int64?
+
+    public var workspaceId: Int64?
 
     public override init() {
         super.init()
@@ -27560,6 +27706,9 @@ public class GetDataLakePartitionShrinkRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -27581,6 +27730,9 @@ public class GetDataLakePartitionShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
         }
     }
 }
@@ -27710,6 +27862,8 @@ public class GetDataLakeTableRequest : Tea.TeaModel {
 
     public var tid: Int64?
 
+    public var workspaceId: Int64?
+
     public override init() {
         super.init()
     }
@@ -27739,6 +27893,9 @@ public class GetDataLakeTableRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -27757,6 +27914,9 @@ public class GetDataLakeTableRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
         }
     }
 }
@@ -45745,6 +45905,8 @@ public class ListDataLakeCatalogRequest : Tea.TeaModel {
 
     public var searchKey: String?
 
+    public var sessionToken: String?
+
     public var tid: Int64?
 
     public override init() {
@@ -45767,6 +45929,9 @@ public class ListDataLakeCatalogRequest : Tea.TeaModel {
         if self.searchKey != nil {
             map["SearchKey"] = self.searchKey!
         }
+        if self.sessionToken != nil {
+            map["SessionToken"] = self.sessionToken!
+        }
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
@@ -45779,6 +45944,9 @@ public class ListDataLakeCatalogRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SearchKey") {
             self.searchKey = dict["SearchKey"] as! String
+        }
+        if dict.keys.contains("SessionToken") {
+            self.sessionToken = dict["SessionToken"] as! String
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
@@ -45922,6 +46090,8 @@ public class ListDataLakeDatabaseRequest : Tea.TeaModel {
 
     public var tid: Int64?
 
+    public var workspaceId: Int64?
+
     public override init() {
         super.init()
     }
@@ -45954,6 +46124,9 @@ public class ListDataLakeDatabaseRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -45975,6 +46148,9 @@ public class ListDataLakeDatabaseRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
         }
     }
 }
@@ -46133,6 +46309,8 @@ public class ListDataLakeFunctionRequest : Tea.TeaModel {
 
     public var tid: Int64?
 
+    public var workspaceId: Int64?
+
     public override init() {
         super.init()
     }
@@ -46168,6 +46346,9 @@ public class ListDataLakeFunctionRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -46192,6 +46373,9 @@ public class ListDataLakeFunctionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
         }
     }
 }
@@ -46350,6 +46534,8 @@ public class ListDataLakeFunctionNameRequest : Tea.TeaModel {
 
     public var tid: Int64?
 
+    public var workspaceId: Int64?
+
     public override init() {
         super.init()
     }
@@ -46385,6 +46571,9 @@ public class ListDataLakeFunctionNameRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -46409,6 +46598,9 @@ public class ListDataLakeFunctionNameRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
         }
     }
 }
@@ -46557,6 +46749,8 @@ public class ListDataLakePartitionRequest : Tea.TeaModel {
 
     public var tid: Int64?
 
+    public var workspaceId: Int64?
+
     public override init() {
         super.init()
     }
@@ -46595,6 +46789,9 @@ public class ListDataLakePartitionRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -46623,6 +46820,9 @@ public class ListDataLakePartitionRequest : Tea.TeaModel {
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
         }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
+        }
     }
 }
 
@@ -46642,6 +46842,8 @@ public class ListDataLakePartitionShrinkRequest : Tea.TeaModel {
     public var tableName: String?
 
     public var tid: Int64?
+
+    public var workspaceId: Int64?
 
     public override init() {
         super.init()
@@ -46681,6 +46883,9 @@ public class ListDataLakePartitionShrinkRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -46708,6 +46913,9 @@ public class ListDataLakePartitionShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
         }
     }
 }
@@ -46868,6 +47076,8 @@ public class ListDataLakePartitionByFilterRequest : Tea.TeaModel {
 
     public var tid: Int64?
 
+    public var workspaceId: Int64?
+
     public override init() {
         super.init()
     }
@@ -46906,6 +47116,9 @@ public class ListDataLakePartitionByFilterRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -46933,6 +47146,9 @@ public class ListDataLakePartitionByFilterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
         }
     }
 }
@@ -47091,6 +47307,8 @@ public class ListDataLakePartitionNameRequest : Tea.TeaModel {
 
     public var tid: Int64?
 
+    public var workspaceId: Int64?
+
     public override init() {
         super.init()
     }
@@ -47126,6 +47344,9 @@ public class ListDataLakePartitionNameRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -47150,6 +47371,9 @@ public class ListDataLakePartitionNameRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
         }
     }
 }
@@ -47298,6 +47522,8 @@ public class ListDataLakeTableRequest : Tea.TeaModel {
 
     public var tid: Int64?
 
+    public var workspaceId: Int64?
+
     public override init() {
         super.init()
     }
@@ -47336,6 +47562,9 @@ public class ListDataLakeTableRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -47363,6 +47592,9 @@ public class ListDataLakeTableRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
         }
     }
 }
@@ -47523,6 +47755,8 @@ public class ListDataLakeTableNameRequest : Tea.TeaModel {
 
     public var tid: Int64?
 
+    public var workspaceId: Int64?
+
     public override init() {
         super.init()
     }
@@ -47561,6 +47795,9 @@ public class ListDataLakeTableNameRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -47588,6 +47825,9 @@ public class ListDataLakeTableNameRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
         }
     }
 }
@@ -47734,6 +47974,8 @@ public class ListDataLakeTablebaseInfoRequest : Tea.TeaModel {
 
     public var tid: Int64?
 
+    public var workspaceId: Int64?
+
     public override init() {
         super.init()
     }
@@ -47769,6 +48011,9 @@ public class ListDataLakeTablebaseInfoRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -47793,6 +48038,9 @@ public class ListDataLakeTablebaseInfoRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
         }
     }
 }
@@ -69645,6 +69893,147 @@ public class SyncInstanceMetaResponse : Tea.TeaModel {
     }
 }
 
+public class TryRunTaskFlowRequest : Tea.TeaModel {
+    public var dagId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dagId != nil {
+            map["DagId"] = self.dagId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DagId") {
+            self.dagId = dict["DagId"] as! Int64
+        }
+    }
+}
+
+public class TryRunTaskFlowResponseBody : Tea.TeaModel {
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var instanceId: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class TryRunTaskFlowResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: TryRunTaskFlowResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = TryRunTaskFlowResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class UpdateAbacPolicyRequest : Tea.TeaModel {
     public var abacPolicyContent: String?
 
@@ -70062,6 +70451,8 @@ public class UpdateDataLakeDatabaseRequest : Tea.TeaModel {
 
     public var tid: Int64?
 
+    public var workspaceId: Int64?
+
     public override init() {
         super.init()
     }
@@ -70097,6 +70488,9 @@ public class UpdateDataLakeDatabaseRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -70122,6 +70516,9 @@ public class UpdateDataLakeDatabaseRequest : Tea.TeaModel {
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
         }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
+        }
     }
 }
 
@@ -70139,6 +70536,8 @@ public class UpdateDataLakeDatabaseShrinkRequest : Tea.TeaModel {
     public var parametersShrink: String?
 
     public var tid: Int64?
+
+    public var workspaceId: Int64?
 
     public override init() {
         super.init()
@@ -70175,6 +70574,9 @@ public class UpdateDataLakeDatabaseShrinkRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -70199,6 +70601,9 @@ public class UpdateDataLakeDatabaseShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
         }
     }
 }
@@ -70603,6 +71008,8 @@ public class UpdateDataLakePartitionRequest : Tea.TeaModel {
 
     public var tid: Int64?
 
+    public var workspaceId: Int64?
+
     public override init() {
         super.init()
     }
@@ -70636,6 +71043,9 @@ public class UpdateDataLakePartitionRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -70660,6 +71070,9 @@ public class UpdateDataLakePartitionRequest : Tea.TeaModel {
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
         }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
+        }
     }
 }
 
@@ -70675,6 +71088,8 @@ public class UpdateDataLakePartitionShrinkRequest : Tea.TeaModel {
     public var tableName: String?
 
     public var tid: Int64?
+
+    public var workspaceId: Int64?
 
     public override init() {
         super.init()
@@ -70708,6 +71123,9 @@ public class UpdateDataLakePartitionShrinkRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -70729,6 +71147,9 @@ public class UpdateDataLakePartitionShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
         }
     }
 }
@@ -70849,6 +71270,8 @@ public class UpdateDataLakeTableRequest : Tea.TeaModel {
 
     public var tid: Int64?
 
+    public var workspaceId: Int64?
+
     public override init() {
         super.init()
     }
@@ -70882,6 +71305,9 @@ public class UpdateDataLakeTableRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -70906,6 +71332,9 @@ public class UpdateDataLakeTableRequest : Tea.TeaModel {
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
         }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
+        }
     }
 }
 
@@ -70921,6 +71350,8 @@ public class UpdateDataLakeTableShrinkRequest : Tea.TeaModel {
     public var tableName: String?
 
     public var tid: Int64?
+
+    public var workspaceId: Int64?
 
     public override init() {
         super.init()
@@ -70954,6 +71385,9 @@ public class UpdateDataLakeTableShrinkRequest : Tea.TeaModel {
         if self.tid != nil {
             map["Tid"] = self.tid!
         }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
         return map
     }
 
@@ -70975,6 +71409,9 @@ public class UpdateDataLakeTableShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
         }
     }
 }
