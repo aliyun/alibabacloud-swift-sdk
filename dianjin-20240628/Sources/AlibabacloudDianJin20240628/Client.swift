@@ -136,6 +136,57 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDialogAnalysisTaskWithOptions(_ workspaceId: String, _ request: CreateDialogAnalysisTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDialogAnalysisTaskResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.analysisNodes)) {
+            body["analysisNodes"] = request.analysisNodes ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.conversationList)) {
+            body["conversationList"] = request.conversationList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.metaData)) {
+            body["metaData"] = request.metaData ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.playCode)) {
+            body["playCode"] = request.playCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.requestId)) {
+            body["requestId"] = request.requestId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateDialogAnalysisTask",
+            "version": "2024-06-28",
+            "protocol": "HTTPS",
+            "pathname": "/" + (AlibabaCloudOpenApiUtil.Client.getEncodeParam(workspaceId)) + "/api/virtualHuman/dialog/analysis/submit",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(CreateDialogAnalysisTaskResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(CreateDialogAnalysisTaskResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDialogAnalysisTask(_ workspaceId: String, _ request: CreateDialogAnalysisTaskRequest) async throws -> CreateDialogAnalysisTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createDialogAnalysisTaskWithOptions(workspaceId as! String, request as! CreateDialogAnalysisTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createDocsSummaryTaskWithOptions(_ workspaceId: String, _ request: CreateDocsSummaryTaskRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDocsSummaryTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
