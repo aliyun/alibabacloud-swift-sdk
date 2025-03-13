@@ -6883,6 +6883,156 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                             }
                         }
                     }
+                    public class LogoData : Tea.TeaModel {
+                        public class Location : Tea.TeaModel {
+                            public var h: Int32?
+
+                            public var w: Int32?
+
+                            public var x: Int32?
+
+                            public var y: Int32?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.h != nil {
+                                    map["H"] = self.h!
+                                }
+                                if self.w != nil {
+                                    map["W"] = self.w!
+                                }
+                                if self.x != nil {
+                                    map["X"] = self.x!
+                                }
+                                if self.y != nil {
+                                    map["Y"] = self.y!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any]) -> Void {
+                                if dict.keys.contains("H") {
+                                    self.h = dict["H"] as! Int32
+                                }
+                                if dict.keys.contains("W") {
+                                    self.w = dict["W"] as! Int32
+                                }
+                                if dict.keys.contains("X") {
+                                    self.x = dict["X"] as! Int32
+                                }
+                                if dict.keys.contains("Y") {
+                                    self.y = dict["Y"] as! Int32
+                                }
+                            }
+                        }
+                        public class Logo : Tea.TeaModel {
+                            public var confidence: Int64?
+
+                            public var label: String?
+
+                            public var name: String?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.confidence != nil {
+                                    map["confidence"] = self.confidence!
+                                }
+                                if self.label != nil {
+                                    map["label"] = self.label!
+                                }
+                                if self.name != nil {
+                                    map["name"] = self.name!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any]) -> Void {
+                                if dict.keys.contains("confidence") {
+                                    self.confidence = dict["confidence"] as! Int64
+                                }
+                                if dict.keys.contains("label") {
+                                    self.label = dict["label"] as! String
+                                }
+                                if dict.keys.contains("name") {
+                                    self.name = dict["name"] as! String
+                                }
+                            }
+                        }
+                        public var location: VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.LogoData.Location?
+
+                        public var logo: [VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.LogoData.Logo]?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                            try self.location?.validate()
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.location != nil {
+                                map["Location"] = self.location?.toMap()
+                            }
+                            if self.logo != nil {
+                                var tmp : [Any] = []
+                                for k in self.logo! {
+                                    tmp.append(k.toMap())
+                                }
+                                map["Logo"] = tmp
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("Location") {
+                                var model = VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.LogoData.Location()
+                                model.fromMap(dict["Location"] as! [String: Any])
+                                self.location = model
+                            }
+                            if dict.keys.contains("Logo") {
+                                var tmp : [VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.LogoData.Logo] = []
+                                for v in dict["Logo"] as! [Any] {
+                                    var model = VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.LogoData.Logo()
+                                    if v != nil {
+                                        model.fromMap(v as! [String: Any])
+                                    }
+                                    tmp.append(model)
+                                }
+                                self.logo = tmp
+                            }
+                        }
+                    }
                     public class PublicFigure : Tea.TeaModel {
                         public var figureId: String?
 
@@ -6959,6 +7109,8 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                     }
                     public var customImage: [VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.CustomImage]?
 
+                    public var logoData: [VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.LogoData]?
+
                     public var publicFigure: [VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.PublicFigure]?
 
                     public var result: [VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.Result]?
@@ -6987,6 +7139,13 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                                 tmp.append(k.toMap())
                             }
                             map["CustomImage"] = tmp
+                        }
+                        if self.logoData != nil {
+                            var tmp : [Any] = []
+                            for k in self.logoData! {
+                                tmp.append(k.toMap())
+                            }
+                            map["LogoData"] = tmp
                         }
                         if self.publicFigure != nil {
                             var tmp : [Any] = []
@@ -7022,6 +7181,17 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                                 tmp.append(model)
                             }
                             self.customImage = tmp
+                        }
+                        if dict.keys.contains("LogoData") {
+                            var tmp : [VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.LogoData] = []
+                            for v in dict["LogoData"] as! [Any] {
+                                var model = VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.LogoData()
+                                if v != nil {
+                                    model.fromMap(v as! [String: Any])
+                                }
+                                tmp.append(model)
+                            }
+                            self.logoData = tmp
                         }
                         if dict.keys.contains("PublicFigure") {
                             var tmp : [VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.PublicFigure] = []
