@@ -4124,8 +4124,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.docId)) {
             body["DocId"] = request.docId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.keyPointPrompt)) {
+            body["KeyPointPrompt"] = request.keyPointPrompt ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.sessionId)) {
             body["SessionId"] = request.sessionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.summaryPrompt)) {
+            body["SummaryPrompt"] = request.summaryPrompt ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";
@@ -4235,6 +4241,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.sentimentShrink)) {
             body["Sentiment"] = request.sentimentShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionId)) {
+            body["SessionId"] = request.sessionId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.sourceMaterial)) {
             body["SourceMaterial"] = request.sourceMaterial ?? "";
@@ -4441,11 +4450,23 @@ open class Client : AlibabacloudOpenApi.Client {
     public func runDocBrainmapWithOptions(_ request: RunDocBrainmapRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RunDocBrainmapResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cleanCache)) {
+            body["CleanCache"] = request.cleanCache!;
+        }
         if (!TeaUtils.Client.isUnset(request.docId)) {
             body["DocId"] = request.docId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.nodeNumber)) {
+            body["NodeNumber"] = request.nodeNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.prompt)) {
+            body["Prompt"] = request.prompt ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.sessionId)) {
             body["SessionId"] = request.sessionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.wordNumber)) {
+            body["WordNumber"] = request.wordNumber!;
         }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";
@@ -4483,17 +4504,31 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func runDocIntroductionWithOptions(_ request: RunDocIntroductionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RunDocIntroductionResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cleanCache)) {
+            query["CleanCache"] = request.cleanCache!;
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.docId)) {
             body["DocId"] = request.docId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.introductionPrompt)) {
+            body["IntroductionPrompt"] = request.introductionPrompt ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.keyPointPrompt)) {
+            body["KeyPointPrompt"] = request.keyPointPrompt ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.sessionId)) {
             body["SessionId"] = request.sessionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.summaryPrompt)) {
+            body["SummaryPrompt"] = request.summaryPrompt ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.workspaceId)) {
             body["WorkspaceId"] = request.workspaceId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -4639,6 +4674,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func runDocSummaryWithOptions(_ request: RunDocSummaryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RunDocSummaryResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cleanCache)) {
+            body["CleanCache"] = request.cleanCache!;
+        }
         if (!TeaUtils.Client.isUnset(request.docId)) {
             body["DocId"] = request.docId ?? "";
         }
@@ -4688,6 +4726,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func runDocTranslationWithOptions(_ request: RunDocTranslationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RunDocTranslationResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cleanCache)) {
+            body["CleanCache"] = request.cleanCache!;
+        }
         if (!TeaUtils.Client.isUnset(request.docId)) {
             body["DocId"] = request.docId ?? "";
         }
@@ -4731,6 +4772,64 @@ open class Client : AlibabacloudOpenApi.Client {
     public func runDocTranslation(_ request: RunDocTranslationRequest) async throws -> RunDocTranslationResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await runDocTranslationWithOptions(request as! RunDocTranslationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func runDocWashingWithOptions(_ request: RunDocWashingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RunDocWashingResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.prompt)) {
+            body["Prompt"] = request.prompt ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.referenceContent)) {
+            body["ReferenceContent"] = request.referenceContent ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionId)) {
+            body["SessionId"] = request.sessionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.topic)) {
+            body["Topic"] = request.topic ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.wordNumber)) {
+            body["WordNumber"] = request.wordNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            body["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.writingTypeName)) {
+            body["WritingTypeName"] = request.writingTypeName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.writingTypeRefDoc)) {
+            body["WritingTypeRefDoc"] = request.writingTypeRefDoc ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RunDocWashing",
+            "version": "2023-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(RunDocWashingResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(RunDocWashingResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func runDocWashing(_ request: RunDocWashingRequest) async throws -> RunDocWashingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await runDocWashingWithOptions(request as! RunDocWashingRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

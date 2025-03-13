@@ -29064,7 +29064,11 @@ public class RunAbbreviationContentResponse : Tea.TeaModel {
 public class RunBookIntroductionRequest : Tea.TeaModel {
     public var docId: String?
 
+    public var keyPointPrompt: String?
+
     public var sessionId: String?
+
+    public var summaryPrompt: String?
 
     public var workspaceId: String?
 
@@ -29085,8 +29089,14 @@ public class RunBookIntroductionRequest : Tea.TeaModel {
         if self.docId != nil {
             map["DocId"] = self.docId!
         }
+        if self.keyPointPrompt != nil {
+            map["KeyPointPrompt"] = self.keyPointPrompt!
+        }
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
+        }
+        if self.summaryPrompt != nil {
+            map["SummaryPrompt"] = self.summaryPrompt!
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -29098,8 +29108,14 @@ public class RunBookIntroductionRequest : Tea.TeaModel {
         if dict.keys.contains("DocId") {
             self.docId = dict["DocId"] as! String
         }
+        if dict.keys.contains("KeyPointPrompt") {
+            self.keyPointPrompt = dict["KeyPointPrompt"] as! String
+        }
         if dict.keys.contains("SessionId") {
             self.sessionId = dict["SessionId"] as! String
+        }
+        if dict.keys.contains("SummaryPrompt") {
+            self.summaryPrompt = dict["SummaryPrompt"] as! String
         }
         if dict.keys.contains("WorkspaceId") {
             self.workspaceId = dict["WorkspaceId"] as! String
@@ -29772,6 +29788,8 @@ public class RunCommentGenerationRequest : Tea.TeaModel {
 
     public var sentiment: [String: Any]?
 
+    public var sessionId: String?
+
     public var sourceMaterial: String?
 
     public var style: String?
@@ -29812,6 +29830,9 @@ public class RunCommentGenerationRequest : Tea.TeaModel {
         if self.sentiment != nil {
             map["Sentiment"] = self.sentiment!
         }
+        if self.sessionId != nil {
+            map["SessionId"] = self.sessionId!
+        }
         if self.sourceMaterial != nil {
             map["SourceMaterial"] = self.sourceMaterial!
         }
@@ -29846,6 +29867,9 @@ public class RunCommentGenerationRequest : Tea.TeaModel {
         if dict.keys.contains("Sentiment") {
             self.sentiment = dict["Sentiment"] as! [String: Any]
         }
+        if dict.keys.contains("SessionId") {
+            self.sessionId = dict["SessionId"] as! String
+        }
         if dict.keys.contains("SourceMaterial") {
             self.sourceMaterial = dict["SourceMaterial"] as! String
         }
@@ -29873,6 +29897,8 @@ public class RunCommentGenerationShrinkRequest : Tea.TeaModel {
     public var numComments: String?
 
     public var sentimentShrink: String?
+
+    public var sessionId: String?
 
     public var sourceMaterial: String?
 
@@ -29914,6 +29940,9 @@ public class RunCommentGenerationShrinkRequest : Tea.TeaModel {
         if self.sentimentShrink != nil {
             map["Sentiment"] = self.sentimentShrink!
         }
+        if self.sessionId != nil {
+            map["SessionId"] = self.sessionId!
+        }
         if self.sourceMaterial != nil {
             map["SourceMaterial"] = self.sourceMaterial!
         }
@@ -29947,6 +29976,9 @@ public class RunCommentGenerationShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Sentiment") {
             self.sentimentShrink = dict["Sentiment"] as! String
+        }
+        if dict.keys.contains("SessionId") {
+            self.sessionId = dict["SessionId"] as! String
         }
         if dict.keys.contains("SourceMaterial") {
             self.sourceMaterial = dict["SourceMaterial"] as! String
@@ -31571,9 +31603,17 @@ public class RunCustomHotTopicViewPointAnalysisResponse : Tea.TeaModel {
 }
 
 public class RunDocBrainmapRequest : Tea.TeaModel {
+    public var cleanCache: Bool?
+
     public var docId: String?
 
+    public var nodeNumber: Int32?
+
+    public var prompt: String?
+
     public var sessionId: String?
+
+    public var wordNumber: Int32?
 
     public var workspaceId: String?
 
@@ -31591,11 +31631,23 @@ public class RunDocBrainmapRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cleanCache != nil {
+            map["CleanCache"] = self.cleanCache!
+        }
         if self.docId != nil {
             map["DocId"] = self.docId!
         }
+        if self.nodeNumber != nil {
+            map["NodeNumber"] = self.nodeNumber!
+        }
+        if self.prompt != nil {
+            map["Prompt"] = self.prompt!
+        }
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
+        }
+        if self.wordNumber != nil {
+            map["WordNumber"] = self.wordNumber!
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -31604,11 +31656,23 @@ public class RunDocBrainmapRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CleanCache") {
+            self.cleanCache = dict["CleanCache"] as! Bool
+        }
         if dict.keys.contains("DocId") {
             self.docId = dict["DocId"] as! String
         }
+        if dict.keys.contains("NodeNumber") {
+            self.nodeNumber = dict["NodeNumber"] as! Int32
+        }
+        if dict.keys.contains("Prompt") {
+            self.prompt = dict["Prompt"] as! String
+        }
         if dict.keys.contains("SessionId") {
             self.sessionId = dict["SessionId"] as! String
+        }
+        if dict.keys.contains("WordNumber") {
+            self.wordNumber = dict["WordNumber"] as! Int32
         }
         if dict.keys.contains("WorkspaceId") {
             self.workspaceId = dict["WorkspaceId"] as! String
@@ -31912,9 +31976,17 @@ public class RunDocBrainmapResponse : Tea.TeaModel {
 }
 
 public class RunDocIntroductionRequest : Tea.TeaModel {
+    public var cleanCache: Bool?
+
     public var docId: String?
 
+    public var introductionPrompt: String?
+
+    public var keyPointPrompt: String?
+
     public var sessionId: String?
+
+    public var summaryPrompt: String?
 
     public var workspaceId: String?
 
@@ -31932,11 +32004,23 @@ public class RunDocIntroductionRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cleanCache != nil {
+            map["CleanCache"] = self.cleanCache!
+        }
         if self.docId != nil {
             map["DocId"] = self.docId!
         }
+        if self.introductionPrompt != nil {
+            map["IntroductionPrompt"] = self.introductionPrompt!
+        }
+        if self.keyPointPrompt != nil {
+            map["KeyPointPrompt"] = self.keyPointPrompt!
+        }
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
+        }
+        if self.summaryPrompt != nil {
+            map["SummaryPrompt"] = self.summaryPrompt!
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -31945,11 +32029,23 @@ public class RunDocIntroductionRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CleanCache") {
+            self.cleanCache = dict["CleanCache"] as! Bool
+        }
         if dict.keys.contains("DocId") {
             self.docId = dict["DocId"] as! String
         }
+        if dict.keys.contains("IntroductionPrompt") {
+            self.introductionPrompt = dict["IntroductionPrompt"] as! String
+        }
+        if dict.keys.contains("KeyPointPrompt") {
+            self.keyPointPrompt = dict["KeyPointPrompt"] as! String
+        }
         if dict.keys.contains("SessionId") {
             self.sessionId = dict["SessionId"] as! String
+        }
+        if dict.keys.contains("SummaryPrompt") {
+            self.summaryPrompt = dict["SummaryPrompt"] as! String
         }
         if dict.keys.contains("WorkspaceId") {
             self.workspaceId = dict["WorkspaceId"] as! String
@@ -33556,6 +33652,8 @@ public class RunDocSmartCardResponse : Tea.TeaModel {
 }
 
 public class RunDocSummaryRequest : Tea.TeaModel {
+    public var cleanCache: Bool?
+
     public var docId: String?
 
     public var query: String?
@@ -33580,6 +33678,9 @@ public class RunDocSummaryRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cleanCache != nil {
+            map["CleanCache"] = self.cleanCache!
+        }
         if self.docId != nil {
             map["DocId"] = self.docId!
         }
@@ -33599,6 +33700,9 @@ public class RunDocSummaryRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CleanCache") {
+            self.cleanCache = dict["CleanCache"] as! Bool
+        }
         if dict.keys.contains("DocId") {
             self.docId = dict["DocId"] as! String
         }
@@ -33913,6 +34017,8 @@ public class RunDocSummaryResponse : Tea.TeaModel {
 }
 
 public class RunDocTranslationRequest : Tea.TeaModel {
+    public var cleanCache: Bool?
+
     public var docId: String?
 
     public var recommendContent: String?
@@ -33937,6 +34043,9 @@ public class RunDocTranslationRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cleanCache != nil {
+            map["CleanCache"] = self.cleanCache!
+        }
         if self.docId != nil {
             map["DocId"] = self.docId!
         }
@@ -33956,6 +34065,9 @@ public class RunDocTranslationRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CleanCache") {
+            self.cleanCache = dict["CleanCache"] as! Bool
+        }
         if dict.keys.contains("DocId") {
             self.docId = dict["DocId"] as! String
         }
@@ -34263,6 +34375,387 @@ public class RunDocTranslationResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = RunDocTranslationResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class RunDocWashingRequest : Tea.TeaModel {
+    public var prompt: String?
+
+    public var referenceContent: String?
+
+    public var sessionId: String?
+
+    public var topic: String?
+
+    public var wordNumber: Int32?
+
+    public var workspaceId: String?
+
+    public var writingTypeName: String?
+
+    public var writingTypeRefDoc: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.prompt != nil {
+            map["Prompt"] = self.prompt!
+        }
+        if self.referenceContent != nil {
+            map["ReferenceContent"] = self.referenceContent!
+        }
+        if self.sessionId != nil {
+            map["SessionId"] = self.sessionId!
+        }
+        if self.topic != nil {
+            map["Topic"] = self.topic!
+        }
+        if self.wordNumber != nil {
+            map["WordNumber"] = self.wordNumber!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        if self.writingTypeName != nil {
+            map["WritingTypeName"] = self.writingTypeName!
+        }
+        if self.writingTypeRefDoc != nil {
+            map["WritingTypeRefDoc"] = self.writingTypeRefDoc!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Prompt") {
+            self.prompt = dict["Prompt"] as! String
+        }
+        if dict.keys.contains("ReferenceContent") {
+            self.referenceContent = dict["ReferenceContent"] as! String
+        }
+        if dict.keys.contains("SessionId") {
+            self.sessionId = dict["SessionId"] as! String
+        }
+        if dict.keys.contains("Topic") {
+            self.topic = dict["Topic"] as! String
+        }
+        if dict.keys.contains("WordNumber") {
+            self.wordNumber = dict["WordNumber"] as! Int32
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! String
+        }
+        if dict.keys.contains("WritingTypeName") {
+            self.writingTypeName = dict["WritingTypeName"] as! String
+        }
+        if dict.keys.contains("WritingTypeRefDoc") {
+            self.writingTypeRefDoc = dict["WritingTypeRefDoc"] as! String
+        }
+    }
+}
+
+public class RunDocWashingResponseBody : Tea.TeaModel {
+    public class Header : Tea.TeaModel {
+        public var event: String?
+
+        public var eventInfo: String?
+
+        public var requestId: String?
+
+        public var sessionId: String?
+
+        public var taskId: String?
+
+        public var traceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.event != nil {
+                map["Event"] = self.event!
+            }
+            if self.eventInfo != nil {
+                map["EventInfo"] = self.eventInfo!
+            }
+            if self.requestId != nil {
+                map["RequestId"] = self.requestId!
+            }
+            if self.sessionId != nil {
+                map["SessionId"] = self.sessionId!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            if self.traceId != nil {
+                map["TraceId"] = self.traceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Event") {
+                self.event = dict["Event"] as! String
+            }
+            if dict.keys.contains("EventInfo") {
+                self.eventInfo = dict["EventInfo"] as! String
+            }
+            if dict.keys.contains("RequestId") {
+                self.requestId = dict["RequestId"] as! String
+            }
+            if dict.keys.contains("SessionId") {
+                self.sessionId = dict["SessionId"] as! String
+            }
+            if dict.keys.contains("TaskId") {
+                self.taskId = dict["TaskId"] as! String
+            }
+            if dict.keys.contains("TraceId") {
+                self.traceId = dict["TraceId"] as! String
+            }
+        }
+    }
+    public class Payload : Tea.TeaModel {
+        public class Output : Tea.TeaModel {
+            public var text: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.text != nil {
+                    map["Text"] = self.text!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Text") {
+                    self.text = dict["Text"] as! String
+                }
+            }
+        }
+        public class Usage : Tea.TeaModel {
+            public var inputTokens: Int64?
+
+            public var outputTokens: Int64?
+
+            public var totalTokens: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.inputTokens != nil {
+                    map["InputTokens"] = self.inputTokens!
+                }
+                if self.outputTokens != nil {
+                    map["OutputTokens"] = self.outputTokens!
+                }
+                if self.totalTokens != nil {
+                    map["TotalTokens"] = self.totalTokens!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("InputTokens") {
+                    self.inputTokens = dict["InputTokens"] as! Int64
+                }
+                if dict.keys.contains("OutputTokens") {
+                    self.outputTokens = dict["OutputTokens"] as! Int64
+                }
+                if dict.keys.contains("TotalTokens") {
+                    self.totalTokens = dict["TotalTokens"] as! Int64
+                }
+            }
+        }
+        public var output: RunDocWashingResponseBody.Payload.Output?
+
+        public var usage: RunDocWashingResponseBody.Payload.Usage?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.output?.validate()
+            try self.usage?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.output != nil {
+                map["Output"] = self.output?.toMap()
+            }
+            if self.usage != nil {
+                map["Usage"] = self.usage?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Output") {
+                var model = RunDocWashingResponseBody.Payload.Output()
+                model.fromMap(dict["Output"] as! [String: Any])
+                self.output = model
+            }
+            if dict.keys.contains("Usage") {
+                var model = RunDocWashingResponseBody.Payload.Usage()
+                model.fromMap(dict["Usage"] as! [String: Any])
+                self.usage = model
+            }
+        }
+    }
+    public var end: Bool?
+
+    public var header: RunDocWashingResponseBody.Header?
+
+    public var payload: RunDocWashingResponseBody.Payload?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.header?.validate()
+        try self.payload?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.end != nil {
+            map["End"] = self.end!
+        }
+        if self.header != nil {
+            map["Header"] = self.header?.toMap()
+        }
+        if self.payload != nil {
+            map["Payload"] = self.payload?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("End") {
+            self.end = dict["End"] as! Bool
+        }
+        if dict.keys.contains("Header") {
+            var model = RunDocWashingResponseBody.Header()
+            model.fromMap(dict["Header"] as! [String: Any])
+            self.header = model
+        }
+        if dict.keys.contains("Payload") {
+            var model = RunDocWashingResponseBody.Payload()
+            model.fromMap(dict["Payload"] as! [String: Any])
+            self.payload = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class RunDocWashingResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RunDocWashingResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = RunDocWashingResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
