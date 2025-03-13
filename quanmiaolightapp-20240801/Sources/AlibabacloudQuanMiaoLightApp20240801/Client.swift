@@ -909,10 +909,16 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.generateOptions)) {
             request.generateOptionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.generateOptions, "generateOptions", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.textProcessTasks)) {
+            request.textProcessTasksShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.textProcessTasks, "textProcessTasks", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.videoRoles)) {
             request.videoRolesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.videoRoles, "videoRoles", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.faceIdentitySimilarityMinScore)) {
+            body["faceIdentitySimilarityMinScore"] = request.faceIdentitySimilarityMinScore!;
+        }
         if (!TeaUtils.Client.isUnset(request.frameSampleMethodShrink)) {
             body["frameSampleMethod"] = request.frameSampleMethodShrink ?? "";
         }
@@ -940,6 +946,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.taskId)) {
             body["taskId"] = request.taskId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.textProcessTasksShrink)) {
+            body["textProcessTasks"] = request.textProcessTasksShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.videoExtraInfo)) {
             body["videoExtraInfo"] = request.videoExtraInfo ?? "";
         }
@@ -951,6 +960,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.videoRolesShrink)) {
             body["videoRoles"] = request.videoRolesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.videoShotFaceIdentityCount)) {
+            body["videoShotFaceIdentityCount"] = request.videoShotFaceIdentityCount!;
         }
         if (!TeaUtils.Client.isUnset(request.videoUrl)) {
             body["videoUrl"] = request.videoUrl ?? "";
@@ -1066,10 +1078,16 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.generateOptions)) {
             request.generateOptionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.generateOptions, "generateOptions", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.textProcessTasks)) {
+            request.textProcessTasksShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.textProcessTasks, "textProcessTasks", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.videoRoles)) {
             request.videoRolesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.videoRoles, "videoRoles", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.faceIdentitySimilarityMinScore)) {
+            body["faceIdentitySimilarityMinScore"] = request.faceIdentitySimilarityMinScore!;
+        }
         if (!TeaUtils.Client.isUnset(request.frameSampleMethodShrink)) {
             body["frameSampleMethod"] = request.frameSampleMethodShrink ?? "";
         }
@@ -1091,6 +1109,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.snapshotInterval)) {
             body["snapshotInterval"] = request.snapshotInterval!;
         }
+        if (!TeaUtils.Client.isUnset(request.textProcessTasksShrink)) {
+            body["textProcessTasks"] = request.textProcessTasksShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.videoExtraInfo)) {
             body["videoExtraInfo"] = request.videoExtraInfo ?? "";
         }
@@ -1102,6 +1123,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.videoRolesShrink)) {
             body["videoRoles"] = request.videoRolesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.videoShotFaceIdentityCount)) {
+            body["videoShotFaceIdentityCount"] = request.videoShotFaceIdentityCount!;
         }
         if (!TeaUtils.Client.isUnset(request.videoUrl)) {
             body["videoUrl"] = request.videoUrl ?? "";
