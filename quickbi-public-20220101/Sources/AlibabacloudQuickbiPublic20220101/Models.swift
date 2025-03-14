@@ -19186,6 +19186,8 @@ public class QueryUserListResponseBody : Tea.TeaModel {
 
             public var authAdminUser: Bool?
 
+            public var isDeleted: Bool?
+
             public var joinedDate: Int64?
 
             public var lastLoginTime: Int64?
@@ -19224,6 +19226,9 @@ public class QueryUserListResponseBody : Tea.TeaModel {
                 if self.authAdminUser != nil {
                     map["AuthAdminUser"] = self.authAdminUser!
                 }
+                if self.isDeleted != nil {
+                    map["IsDeleted"] = self.isDeleted!
+                }
                 if self.joinedDate != nil {
                     map["JoinedDate"] = self.joinedDate!
                 }
@@ -19257,6 +19262,9 @@ public class QueryUserListResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("AuthAdminUser") {
                     self.authAdminUser = dict["AuthAdminUser"] as! Bool
+                }
+                if dict.keys.contains("IsDeleted") {
+                    self.isDeleted = dict["IsDeleted"] as! Bool
                 }
                 if dict.keys.contains("JoinedDate") {
                     self.joinedDate = dict["JoinedDate"] as! Int64
