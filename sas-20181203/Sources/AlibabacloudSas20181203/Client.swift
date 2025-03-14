@@ -2072,8 +2072,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createAntiBruteForceRuleWithOptions(_ request: CreateAntiBruteForceRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAntiBruteForceRuleResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createAntiBruteForceRuleWithOptions(_ tmpReq: CreateAntiBruteForceRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAntiBruteForceRuleResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateAntiBruteForceRuleShrinkRequest = CreateAntiBruteForceRuleShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.protocolType)) {
+            request.protocolTypeShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.protocolType, "ProtocolType", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.defaultRule)) {
             query["DefaultRule"] = request.defaultRule!;
@@ -2086,6 +2091,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.protocolTypeShrink)) {
+            query["ProtocolType"] = request.protocolTypeShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
@@ -31419,8 +31427,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func modifyAntiBruteForceRuleWithOptions(_ request: ModifyAntiBruteForceRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyAntiBruteForceRuleResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func modifyAntiBruteForceRuleWithOptions(_ tmpReq: ModifyAntiBruteForceRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyAntiBruteForceRuleResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ModifyAntiBruteForceRuleShrinkRequest = ModifyAntiBruteForceRuleShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.protocolType)) {
+            request.protocolTypeShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.protocolType, "ProtocolType", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.defaultRule)) {
             query["DefaultRule"] = request.defaultRule!;
@@ -31436,6 +31449,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.protocolTypeShrink)) {
+            query["ProtocolType"] = request.protocolTypeShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
