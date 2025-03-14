@@ -13264,6 +13264,59 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class NetworkAttributes : Tea.TeaModel {
+            public var peakBandwidth: Int32?
+
+            public var privateIpAddress: String?
+
+            public var publicIpAddress: String?
+
+            public var publicIpDdosStatus: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.peakBandwidth != nil {
+                    map["PeakBandwidth"] = self.peakBandwidth!
+                }
+                if self.privateIpAddress != nil {
+                    map["PrivateIpAddress"] = self.privateIpAddress!
+                }
+                if self.publicIpAddress != nil {
+                    map["PublicIpAddress"] = self.publicIpAddress!
+                }
+                if self.publicIpDdosStatus != nil {
+                    map["PublicIpDdosStatus"] = self.publicIpDdosStatus!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("PeakBandwidth") {
+                    self.peakBandwidth = dict["PeakBandwidth"] as! Int32
+                }
+                if dict.keys.contains("PrivateIpAddress") {
+                    self.privateIpAddress = dict["PrivateIpAddress"] as! String
+                }
+                if dict.keys.contains("PublicIpAddress") {
+                    self.publicIpAddress = dict["PublicIpAddress"] as! String
+                }
+                if dict.keys.contains("PublicIpDdosStatus") {
+                    self.publicIpDdosStatus = dict["PublicIpDdosStatus"] as! String
+                }
+            }
+        }
         public class ResourceSpec : Tea.TeaModel {
             public var bandwidth: Int32?
 
@@ -13398,6 +13451,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
         public var instanceName: String?
 
+        public var networkAttributes: [ListInstancesResponseBody.Instances.NetworkAttributes]?
+
         public var planId: String?
 
         public var publicIpAddress: String?
@@ -13475,6 +13530,13 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if self.instanceName != nil {
                 map["InstanceName"] = self.instanceName!
+            }
+            if self.networkAttributes != nil {
+                var tmp : [Any] = []
+                for k in self.networkAttributes! {
+                    tmp.append(k.toMap())
+                }
+                map["NetworkAttributes"] = tmp
             }
             if self.planId != nil {
                 map["PlanId"] = self.planId!
@@ -13559,6 +13621,17 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("InstanceName") {
                 self.instanceName = dict["InstanceName"] as! String
+            }
+            if dict.keys.contains("NetworkAttributes") {
+                var tmp : [ListInstancesResponseBody.Instances.NetworkAttributes] = []
+                for v in dict["NetworkAttributes"] as! [Any] {
+                    var model = ListInstancesResponseBody.Instances.NetworkAttributes()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.networkAttributes = tmp
             }
             if dict.keys.contains("PlanId") {
                 self.planId = dict["PlanId"] as! String
