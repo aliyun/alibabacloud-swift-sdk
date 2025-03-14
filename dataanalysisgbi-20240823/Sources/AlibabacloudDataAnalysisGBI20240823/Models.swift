@@ -3025,6 +3025,8 @@ public class RunDataAnalysisResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var attempts: [Any]?
+
         public var errorMessage: String?
 
         public var event: String?
@@ -3065,6 +3067,9 @@ public class RunDataAnalysisResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.attempts != nil {
+                map["attempts"] = self.attempts!
+            }
             if self.errorMessage != nil {
                 map["errorMessage"] = self.errorMessage!
             }
@@ -3105,6 +3110,9 @@ public class RunDataAnalysisResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("attempts") {
+                self.attempts = dict["attempts"] as! [Any]
+            }
             if dict.keys.contains("errorMessage") {
                 self.errorMessage = dict["errorMessage"] as! String
             }
