@@ -1286,6 +1286,8 @@ public class CreateAccountRequest : Tea.TeaModel {
 
     public var DBName: String?
 
+    public var nodeType: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -1334,6 +1336,9 @@ public class CreateAccountRequest : Tea.TeaModel {
         if self.DBName != nil {
             map["DBName"] = self.DBName!
         }
+        if self.nodeType != nil {
+            map["NodeType"] = self.nodeType!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -1376,6 +1381,9 @@ public class CreateAccountRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DBName") {
             self.DBName = dict["DBName"] as! String
+        }
+        if dict.keys.contains("NodeType") {
+            self.nodeType = dict["NodeType"] as! String
         }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
@@ -6727,6 +6735,8 @@ public class DeleteGlobalSecurityIPGroupResponse : Tea.TeaModel {
 public class DeleteMaskingRulesRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var interfaceVersion: String?
+
     public var ruleNameList: String?
 
     public override init() {
@@ -6746,6 +6756,9 @@ public class DeleteMaskingRulesRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.interfaceVersion != nil {
+            map["InterfaceVersion"] = self.interfaceVersion!
+        }
         if self.ruleNameList != nil {
             map["RuleNameList"] = self.ruleNameList!
         }
@@ -6755,6 +6768,9 @@ public class DeleteMaskingRulesRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DBClusterId") {
             self.DBClusterId = dict["DBClusterId"] as! String
+        }
+        if dict.keys.contains("InterfaceVersion") {
+            self.interfaceVersion = dict["InterfaceVersion"] as! String
         }
         if dict.keys.contains("RuleNameList") {
             self.ruleNameList = dict["RuleNameList"] as! String
@@ -7200,6 +7216,8 @@ public class DescribeAccountsRequest : Tea.TeaModel {
 
     public var DBClusterId: String?
 
+    public var nodeType: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -7232,6 +7250,9 @@ public class DescribeAccountsRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.nodeType != nil {
+            map["NodeType"] = self.nodeType!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -7259,6 +7280,9 @@ public class DescribeAccountsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DBClusterId") {
             self.DBClusterId = dict["DBClusterId"] as! String
+        }
+        if dict.keys.contains("NodeType") {
+            self.nodeType = dict["NodeType"] as! String
         }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
@@ -12774,6 +12798,8 @@ public class DescribeDBClusterEndpointsResponseBody : Tea.TeaModel {
         public class AddressItems : Tea.TeaModel {
             public var connectionString: String?
 
+            public var dashboardUsed: Bool?
+
             public var IPAddress: String?
 
             public var netType: String?
@@ -12805,6 +12831,9 @@ public class DescribeDBClusterEndpointsResponseBody : Tea.TeaModel {
                 if self.connectionString != nil {
                     map["ConnectionString"] = self.connectionString!
                 }
+                if self.dashboardUsed != nil {
+                    map["DashboardUsed"] = self.dashboardUsed!
+                }
                 if self.IPAddress != nil {
                     map["IPAddress"] = self.IPAddress!
                 }
@@ -12832,6 +12861,9 @@ public class DescribeDBClusterEndpointsResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("ConnectionString") {
                     self.connectionString = dict["ConnectionString"] as! String
+                }
+                if dict.keys.contains("DashboardUsed") {
+                    self.dashboardUsed = dict["DashboardUsed"] as! Bool
                 }
                 if dict.keys.contains("IPAddress") {
                     self.IPAddress = dict["IPAddress"] as! String
@@ -21941,6 +21973,8 @@ public class DescribeLogBackupPolicyResponse : Tea.TeaModel {
 public class DescribeMaskingRulesRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var interfaceVersion: String?
+
     public var ruleNameList: String?
 
     public override init() {
@@ -21960,6 +21994,9 @@ public class DescribeMaskingRulesRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.interfaceVersion != nil {
+            map["InterfaceVersion"] = self.interfaceVersion!
+        }
         if self.ruleNameList != nil {
             map["RuleNameList"] = self.ruleNameList!
         }
@@ -21969,6 +22006,9 @@ public class DescribeMaskingRulesRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DBClusterId") {
             self.DBClusterId = dict["DBClusterId"] as! String
+        }
+        if dict.keys.contains("InterfaceVersion") {
+            self.interfaceVersion = dict["InterfaceVersion"] as! String
         }
         if dict.keys.contains("RuleNameList") {
             self.ruleNameList = dict["RuleNameList"] as! String
@@ -29741,6 +29781,155 @@ public class ModifyDBClusterAndNodesParametersResponse : Tea.TeaModel {
     }
 }
 
+public class ModifyDBClusterArchRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var hotStandbyCluster: String?
+
+    public var regionId: String?
+
+    public var standbyAZ: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.hotStandbyCluster != nil {
+            map["HotStandbyCluster"] = self.hotStandbyCluster!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.standbyAZ != nil {
+            map["StandbyAZ"] = self.standbyAZ!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBClusterId") {
+            self.DBClusterId = dict["DBClusterId"] as! String
+        }
+        if dict.keys.contains("HotStandbyCluster") {
+            self.hotStandbyCluster = dict["HotStandbyCluster"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("StandbyAZ") {
+            self.standbyAZ = dict["StandbyAZ"] as! String
+        }
+    }
+}
+
+public class ModifyDBClusterArchResponseBody : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var orderId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBClusterId") {
+            self.DBClusterId = dict["DBClusterId"] as! String
+        }
+        if dict.keys.contains("OrderId") {
+            self.orderId = dict["OrderId"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ModifyDBClusterArchResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyDBClusterArchResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ModifyDBClusterArchResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ModifyDBClusterAuditLogCollectorRequest : Tea.TeaModel {
     public var collectorStatus: String?
 
@@ -34720,6 +34909,8 @@ public class ModifyMaskingRulesRequest : Tea.TeaModel {
 
     public var enable: String?
 
+    public var interfaceVersion: String?
+
     public var ruleConfig: String?
 
     public var ruleName: String?
@@ -34748,6 +34939,9 @@ public class ModifyMaskingRulesRequest : Tea.TeaModel {
         if self.enable != nil {
             map["Enable"] = self.enable!
         }
+        if self.interfaceVersion != nil {
+            map["InterfaceVersion"] = self.interfaceVersion!
+        }
         if self.ruleConfig != nil {
             map["RuleConfig"] = self.ruleConfig!
         }
@@ -34769,6 +34963,9 @@ public class ModifyMaskingRulesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Enable") {
             self.enable = dict["Enable"] as! String
+        }
+        if dict.keys.contains("InterfaceVersion") {
+            self.interfaceVersion = dict["InterfaceVersion"] as! String
         }
         if dict.keys.contains("RuleConfig") {
             self.ruleConfig = dict["RuleConfig"] as! String
