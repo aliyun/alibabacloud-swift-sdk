@@ -10963,6 +10963,8 @@ public class CreateDifyInstanceRequest : Tea.TeaModel {
 
     public var modelOption: String?
 
+    public var natGatewayOption: String?
+
     public var ossPath: String?
 
     public var ossResourceId: Int32?
@@ -11107,6 +11109,9 @@ public class CreateDifyInstanceRequest : Tea.TeaModel {
         }
         if self.modelOption != nil {
             map["ModelOption"] = self.modelOption!
+        }
+        if self.natGatewayOption != nil {
+            map["NatGatewayOption"] = self.natGatewayOption!
         }
         if self.ossPath != nil {
             map["OssPath"] = self.ossPath!
@@ -11270,6 +11275,9 @@ public class CreateDifyInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ModelOption") {
             self.modelOption = dict["ModelOption"] as! String
+        }
+        if dict.keys.contains("NatGatewayOption") {
+            self.natGatewayOption = dict["NatGatewayOption"] as! String
         }
         if dict.keys.contains("OssPath") {
             self.ossPath = dict["OssPath"] as! String
@@ -45905,9 +45913,9 @@ public class ListDataLakeCatalogRequest : Tea.TeaModel {
 
     public var searchKey: String?
 
-    public var sessionToken: String?
-
     public var tid: Int64?
+
+    public var workspaceId: Int64?
 
     public override init() {
         super.init()
@@ -45929,11 +45937,11 @@ public class ListDataLakeCatalogRequest : Tea.TeaModel {
         if self.searchKey != nil {
             map["SearchKey"] = self.searchKey!
         }
-        if self.sessionToken != nil {
-            map["SessionToken"] = self.sessionToken!
-        }
         if self.tid != nil {
             map["Tid"] = self.tid!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
         }
         return map
     }
@@ -45945,11 +45953,11 @@ public class ListDataLakeCatalogRequest : Tea.TeaModel {
         if dict.keys.contains("SearchKey") {
             self.searchKey = dict["SearchKey"] as! String
         }
-        if dict.keys.contains("SessionToken") {
-            self.sessionToken = dict["SessionToken"] as! String
-        }
         if dict.keys.contains("Tid") {
             self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("WorkspaceId") {
+            self.workspaceId = dict["WorkspaceId"] as! Int64
         }
     }
 }
