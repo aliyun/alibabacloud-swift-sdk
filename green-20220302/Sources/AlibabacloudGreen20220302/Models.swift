@@ -863,6 +863,8 @@ public class DescribeImageModerationResultResponseBody : Tea.TeaModel {
 
             public var label: String?
 
+            public var riskLevel: String?
+
             public override init() {
                 super.init()
             }
@@ -886,6 +888,9 @@ public class DescribeImageModerationResultResponseBody : Tea.TeaModel {
                 if self.label != nil {
                     map["Label"] = self.label!
                 }
+                if self.riskLevel != nil {
+                    map["RiskLevel"] = self.riskLevel!
+                }
                 return map
             }
 
@@ -898,6 +903,9 @@ public class DescribeImageModerationResultResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Label") {
                     self.label = dict["Label"] as! String
+                }
+                if dict.keys.contains("RiskLevel") {
+                    self.riskLevel = dict["RiskLevel"] as! String
                 }
             }
         }
@@ -4633,6 +4641,8 @@ public class ImageModerationResponseBody : Tea.TeaModel {
 
             public var label: String?
 
+            public var riskLevel: String?
+
             public override init() {
                 super.init()
             }
@@ -4656,6 +4666,9 @@ public class ImageModerationResponseBody : Tea.TeaModel {
                 if self.label != nil {
                     map["Label"] = self.label!
                 }
+                if self.riskLevel != nil {
+                    map["RiskLevel"] = self.riskLevel!
+                }
                 return map
             }
 
@@ -4668,6 +4681,9 @@ public class ImageModerationResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Label") {
                     self.label = dict["Label"] as! String
+                }
+                if dict.keys.contains("RiskLevel") {
+                    self.riskLevel = dict["RiskLevel"] as! String
                 }
             }
         }
