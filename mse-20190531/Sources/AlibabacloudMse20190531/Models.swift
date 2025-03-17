@@ -25701,6 +25701,96 @@ public class GetGatewayConfigRequest : Tea.TeaModel {
 
 public class GetGatewayConfigResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class EnableK8sSourceWorkloadFilter : Tea.TeaModel {
+            public var enable: Bool?
+
+            public var filterOpt: String?
+
+            public var labelKey: String?
+
+            public var labelValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enable != nil {
+                    map["Enable"] = self.enable!
+                }
+                if self.filterOpt != nil {
+                    map["FilterOpt"] = self.filterOpt!
+                }
+                if self.labelKey != nil {
+                    map["LabelKey"] = self.labelKey!
+                }
+                if self.labelValue != nil {
+                    map["LabelValue"] = self.labelValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Enable") {
+                    self.enable = dict["Enable"] as! Bool
+                }
+                if dict.keys.contains("FilterOpt") {
+                    self.filterOpt = dict["FilterOpt"] as! String
+                }
+                if dict.keys.contains("LabelKey") {
+                    self.labelKey = dict["LabelKey"] as! String
+                }
+                if dict.keys.contains("LabelValue") {
+                    self.labelValue = dict["LabelValue"] as! String
+                }
+            }
+        }
+        public class EnableXffTrustedCidrs : Tea.TeaModel {
+            public var enable: Bool?
+
+            public var ipListContent: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enable != nil {
+                    map["Enable"] = self.enable!
+                }
+                if self.ipListContent != nil {
+                    map["IpListContent"] = self.ipListContent!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Enable") {
+                    self.enable = dict["Enable"] as! Bool
+                }
+                if dict.keys.contains("IpListContent") {
+                    self.ipListContent = dict["IpListContent"] as! String
+                }
+            }
+        }
         public class SlsConfigDetails : Tea.TeaModel {
             public var gatewayId: Int64?
 
@@ -25915,11 +26005,15 @@ public class GetGatewayConfigResponseBody : Tea.TeaModel {
 
         public var enableHttp3: Bool?
 
+        public var enableK8sSourceWorkloadFilter: GetGatewayConfigResponseBody.Data.EnableK8sSourceWorkloadFilter?
+
         public var enableProxyProtocol: Bool?
 
         public var enableSlashMerge: Bool?
 
         public var enableWaf: Bool?
+
+        public var enableXffTrustedCidrs: GetGatewayConfigResponseBody.Data.EnableXffTrustedCidrs?
 
         public var gatewayUniqueId: String?
 
@@ -25961,6 +26055,8 @@ public class GetGatewayConfigResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.enableK8sSourceWorkloadFilter?.validate()
+            try self.enableXffTrustedCidrs?.validate()
             try self.slsConfigDetails?.validate()
             try self.xtraceDetails?.validate()
         }
@@ -25997,6 +26093,9 @@ public class GetGatewayConfigResponseBody : Tea.TeaModel {
             if self.enableHttp3 != nil {
                 map["EnableHttp3"] = self.enableHttp3!
             }
+            if self.enableK8sSourceWorkloadFilter != nil {
+                map["EnableK8sSourceWorkloadFilter"] = self.enableK8sSourceWorkloadFilter?.toMap()
+            }
             if self.enableProxyProtocol != nil {
                 map["EnableProxyProtocol"] = self.enableProxyProtocol!
             }
@@ -26005,6 +26104,9 @@ public class GetGatewayConfigResponseBody : Tea.TeaModel {
             }
             if self.enableWaf != nil {
                 map["EnableWaf"] = self.enableWaf!
+            }
+            if self.enableXffTrustedCidrs != nil {
+                map["EnableXffTrustedCidrs"] = self.enableXffTrustedCidrs?.toMap()
             }
             if self.gatewayUniqueId != nil {
                 map["GatewayUniqueId"] = self.gatewayUniqueId!
@@ -26085,6 +26187,11 @@ public class GetGatewayConfigResponseBody : Tea.TeaModel {
             if dict.keys.contains("EnableHttp3") {
                 self.enableHttp3 = dict["EnableHttp3"] as! Bool
             }
+            if dict.keys.contains("EnableK8sSourceWorkloadFilter") {
+                var model = GetGatewayConfigResponseBody.Data.EnableK8sSourceWorkloadFilter()
+                model.fromMap(dict["EnableK8sSourceWorkloadFilter"] as! [String: Any])
+                self.enableK8sSourceWorkloadFilter = model
+            }
             if dict.keys.contains("EnableProxyProtocol") {
                 self.enableProxyProtocol = dict["EnableProxyProtocol"] as! Bool
             }
@@ -26093,6 +26200,11 @@ public class GetGatewayConfigResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("EnableWaf") {
                 self.enableWaf = dict["EnableWaf"] as! Bool
+            }
+            if dict.keys.contains("EnableXffTrustedCidrs") {
+                var model = GetGatewayConfigResponseBody.Data.EnableXffTrustedCidrs()
+                model.fromMap(dict["EnableXffTrustedCidrs"] as! [String: Any])
+                self.enableXffTrustedCidrs = model
             }
             if dict.keys.contains("GatewayUniqueId") {
                 self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
@@ -39700,6 +39812,8 @@ public class ListClusterHealthCheckTaskResponseBody : Tea.TeaModel {
             public class RiskList : Tea.TeaModel {
                 public var description_: String?
 
+                public var descriptionEn: String?
+
                 public var id: Int32?
 
                 public var module: String?
@@ -39716,11 +39830,17 @@ public class ListClusterHealthCheckTaskResponseBody : Tea.TeaModel {
 
                 public var riskName: String?
 
+                public var riskNameEn: String?
+
                 public var riskType: String?
 
                 public var situation: String?
 
+                public var situationEn: String?
+
                 public var suggestion: String?
+
+                public var suggestionEn: String?
 
                 public var taskId: Int64?
 
@@ -39744,6 +39864,9 @@ public class ListClusterHealthCheckTaskResponseBody : Tea.TeaModel {
                     var map = super.toMap()
                     if self.description_ != nil {
                         map["Description"] = self.description_!
+                    }
+                    if self.descriptionEn != nil {
+                        map["DescriptionEn"] = self.descriptionEn!
                     }
                     if self.id != nil {
                         map["Id"] = self.id!
@@ -39769,14 +39892,23 @@ public class ListClusterHealthCheckTaskResponseBody : Tea.TeaModel {
                     if self.riskName != nil {
                         map["RiskName"] = self.riskName!
                     }
+                    if self.riskNameEn != nil {
+                        map["RiskNameEn"] = self.riskNameEn!
+                    }
                     if self.riskType != nil {
                         map["RiskType"] = self.riskType!
                     }
                     if self.situation != nil {
                         map["Situation"] = self.situation!
                     }
+                    if self.situationEn != nil {
+                        map["SituationEn"] = self.situationEn!
+                    }
                     if self.suggestion != nil {
                         map["Suggestion"] = self.suggestion!
+                    }
+                    if self.suggestionEn != nil {
+                        map["SuggestionEn"] = self.suggestionEn!
                     }
                     if self.taskId != nil {
                         map["TaskId"] = self.taskId!
@@ -39793,6 +39925,9 @@ public class ListClusterHealthCheckTaskResponseBody : Tea.TeaModel {
                 public override func fromMap(_ dict: [String: Any]) -> Void {
                     if dict.keys.contains("Description") {
                         self.description_ = dict["Description"] as! String
+                    }
+                    if dict.keys.contains("DescriptionEn") {
+                        self.descriptionEn = dict["DescriptionEn"] as! String
                     }
                     if dict.keys.contains("Id") {
                         self.id = dict["Id"] as! Int32
@@ -39818,14 +39953,23 @@ public class ListClusterHealthCheckTaskResponseBody : Tea.TeaModel {
                     if dict.keys.contains("RiskName") {
                         self.riskName = dict["RiskName"] as! String
                     }
+                    if dict.keys.contains("RiskNameEn") {
+                        self.riskNameEn = dict["RiskNameEn"] as! String
+                    }
                     if dict.keys.contains("RiskType") {
                         self.riskType = dict["RiskType"] as! String
                     }
                     if dict.keys.contains("Situation") {
                         self.situation = dict["Situation"] as! String
                     }
+                    if dict.keys.contains("SituationEn") {
+                        self.situationEn = dict["SituationEn"] as! String
+                    }
                     if dict.keys.contains("Suggestion") {
                         self.suggestion = dict["Suggestion"] as! String
+                    }
+                    if dict.keys.contains("SuggestionEn") {
+                        self.suggestionEn = dict["SuggestionEn"] as! String
                     }
                     if dict.keys.contains("TaskId") {
                         self.taskId = dict["TaskId"] as! Int64
@@ -68441,6 +68585,139 @@ public class UpdateGatewayCircuitBreakerRuleResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = UpdateGatewayCircuitBreakerRuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateGatewayConfigRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var configName: String?
+
+    public var configValue: String?
+
+    public var gatewayUniqueId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.configName != nil {
+            map["ConfigName"] = self.configName!
+        }
+        if self.configValue != nil {
+            map["ConfigValue"] = self.configValue!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("ConfigName") {
+            self.configName = dict["ConfigName"] as! String
+        }
+        if dict.keys.contains("ConfigValue") {
+            self.configValue = dict["ConfigValue"] as! String
+        }
+        if dict.keys.contains("GatewayUniqueId") {
+            self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+        }
+    }
+}
+
+public class UpdateGatewayConfigResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UpdateGatewayConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateGatewayConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateGatewayConfigResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
