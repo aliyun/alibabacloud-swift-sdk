@@ -8196,6 +8196,8 @@ public class CreateDesktopsRequest : Tea.TeaModel {
 
     public var endUserId: [String]?
 
+    public var extendInfo: String?
+
     public var groupId: String?
 
     public var hostname: String?
@@ -8298,6 +8300,9 @@ public class CreateDesktopsRequest : Tea.TeaModel {
         }
         if self.endUserId != nil {
             map["EndUserId"] = self.endUserId!
+        }
+        if self.extendInfo != nil {
+            map["ExtendInfo"] = self.extendInfo!
         }
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
@@ -8427,6 +8432,9 @@ public class CreateDesktopsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EndUserId") {
             self.endUserId = dict["EndUserId"] as! [String]
+        }
+        if dict.keys.contains("ExtendInfo") {
+            self.extendInfo = dict["ExtendInfo"] as! String
         }
         if dict.keys.contains("GroupId") {
             self.groupId = dict["GroupId"] as! String
@@ -8817,6 +8825,8 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
 
     public var endUserId: [String]?
 
+    public var extendInfo: String?
+
     public var groupId: String?
 
     public var hostname: String?
@@ -8918,6 +8928,9 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
         }
         if self.endUserId != nil {
             map["EndUserId"] = self.endUserId!
+        }
+        if self.extendInfo != nil {
+            map["ExtendInfo"] = self.extendInfo!
         }
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
@@ -9045,6 +9058,9 @@ public class CreateDesktopsShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EndUserId") {
             self.endUserId = dict["EndUserId"] as! [String]
+        }
+        if dict.keys.contains("ExtendInfo") {
+            self.extendInfo = dict["ExtendInfo"] as! String
         }
         if dict.keys.contains("GroupId") {
             self.groupId = dict["GroupId"] as! String
