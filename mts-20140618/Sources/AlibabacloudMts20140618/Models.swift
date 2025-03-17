@@ -1437,6 +1437,10 @@ public class AddSmarttagTemplateRequest : Tea.TeaModel {
 
     public var knowledgeConfig: String?
 
+    public var labelCustomCategoryIds: String?
+
+    public var labelCustomParamsConfig: String?
+
     public var labelType: String?
 
     public var labelVersion: String?
@@ -1492,6 +1496,12 @@ public class AddSmarttagTemplateRequest : Tea.TeaModel {
         if self.knowledgeConfig != nil {
             map["KnowledgeConfig"] = self.knowledgeConfig!
         }
+        if self.labelCustomCategoryIds != nil {
+            map["LabelCustomCategoryIds"] = self.labelCustomCategoryIds!
+        }
+        if self.labelCustomParamsConfig != nil {
+            map["LabelCustomParamsConfig"] = self.labelCustomParamsConfig!
+        }
         if self.labelType != nil {
             map["LabelType"] = self.labelType!
         }
@@ -1546,6 +1556,12 @@ public class AddSmarttagTemplateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("KnowledgeConfig") {
             self.knowledgeConfig = dict["KnowledgeConfig"] as! String
+        }
+        if dict.keys.contains("LabelCustomCategoryIds") {
+            self.labelCustomCategoryIds = dict["LabelCustomCategoryIds"] as! String
+        }
+        if dict.keys.contains("LabelCustomParamsConfig") {
+            self.labelCustomParamsConfig = dict["LabelCustomParamsConfig"] as! String
         }
         if dict.keys.contains("LabelType") {
             self.labelType = dict["LabelType"] as! String
@@ -33737,6 +33753,8 @@ public class RegisterCustomViewRequest : Tea.TeaModel {
 
     public var imageUrl: String?
 
+    public var labelPrompt: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -33771,6 +33789,9 @@ public class RegisterCustomViewRequest : Tea.TeaModel {
         if self.imageUrl != nil {
             map["ImageUrl"] = self.imageUrl!
         }
+        if self.labelPrompt != nil {
+            map["LabelPrompt"] = self.labelPrompt!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -33798,6 +33819,9 @@ public class RegisterCustomViewRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ImageUrl") {
             self.imageUrl = dict["ImageUrl"] as! String
+        }
+        if dict.keys.contains("LabelPrompt") {
+            self.labelPrompt = dict["LabelPrompt"] as! String
         }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
