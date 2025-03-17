@@ -579,6 +579,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
             }
         }
     }
+    public var backupSetId: String?
+
     public var clientToken: String?
 
     public var DBInstanceDescription: String?
@@ -596,6 +598,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
     public var scaleMax: String?
 
     public var scaleMin: String?
+
+    public var sourceDBInstanceId: String?
 
     public var vpcId: String?
 
@@ -617,6 +621,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.backupSetId != nil {
+            map["BackupSetId"] = self.backupSetId!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -648,6 +655,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         if self.scaleMin != nil {
             map["ScaleMin"] = self.scaleMin!
         }
+        if self.sourceDBInstanceId != nil {
+            map["SourceDBInstanceId"] = self.sourceDBInstanceId!
+        }
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
         }
@@ -661,6 +671,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BackupSetId") {
+            self.backupSetId = dict["BackupSetId"] as! String
+        }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
         }
@@ -696,6 +709,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         if dict.keys.contains("ScaleMin") {
             self.scaleMin = dict["ScaleMin"] as! String
         }
+        if dict.keys.contains("SourceDBInstanceId") {
+            self.sourceDBInstanceId = dict["SourceDBInstanceId"] as! String
+        }
         if dict.keys.contains("VpcId") {
             self.vpcId = dict["VpcId"] as! String
         }
@@ -709,6 +725,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 }
 
 public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
+    public var backupSetId: String?
+
     public var clientToken: String?
 
     public var DBInstanceDescription: String?
@@ -726,6 +744,8 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
     public var scaleMax: String?
 
     public var scaleMin: String?
+
+    public var sourceDBInstanceId: String?
 
     public var vpcId: String?
 
@@ -747,6 +767,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.backupSetId != nil {
+            map["BackupSetId"] = self.backupSetId!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -774,6 +797,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         if self.scaleMin != nil {
             map["ScaleMin"] = self.scaleMin!
         }
+        if self.sourceDBInstanceId != nil {
+            map["SourceDBInstanceId"] = self.sourceDBInstanceId!
+        }
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
         }
@@ -787,6 +813,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BackupSetId") {
+            self.backupSetId = dict["BackupSetId"] as! String
+        }
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
         }
@@ -813,6 +842,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ScaleMin") {
             self.scaleMin = dict["ScaleMin"] as! String
+        }
+        if dict.keys.contains("SourceDBInstanceId") {
+            self.sourceDBInstanceId = dict["SourceDBInstanceId"] as! String
         }
         if dict.keys.contains("VpcId") {
             self.vpcId = dict["VpcId"] as! String
@@ -1610,6 +1642,8 @@ public class DeleteEndpointRequest : Tea.TeaModel {
 
     public var DBInstanceId: String?
 
+    public var DBInstanceNetType: String?
+
     public var regionId: String?
 
     public override init() {
@@ -1632,6 +1666,9 @@ public class DeleteEndpointRequest : Tea.TeaModel {
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
+        if self.DBInstanceNetType != nil {
+            map["DBInstanceNetType"] = self.DBInstanceNetType!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -1644,6 +1681,9 @@ public class DeleteEndpointRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DBInstanceId") {
             self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("DBInstanceNetType") {
+            self.DBInstanceNetType = dict["DBInstanceNetType"] as! String
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
@@ -2261,6 +2301,43 @@ public class DescribeDBInstanceAttributeRequest : Tea.TeaModel {
 
 public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class MultiZones : Tea.TeaModel {
+            public var vSwitchIds: [String]?
+
+            public var zoneId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.vSwitchIds != nil {
+                    map["VSwitchIds"] = self.vSwitchIds!
+                }
+                if self.zoneId != nil {
+                    map["ZoneId"] = self.zoneId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("VSwitchIds") {
+                    self.vSwitchIds = dict["VSwitchIds"] as! [String]
+                }
+                if dict.keys.contains("ZoneId") {
+                    self.zoneId = dict["ZoneId"] as! String
+                }
+            }
+        }
         public class Nodes : Tea.TeaModel {
             public var nodeStatus: String?
 
@@ -2347,6 +2424,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
         public var deletionProtection: Bool?
 
+        public var deploySchema: String?
+
         public var description_: String?
 
         public var disabledPorts: String?
@@ -2368,6 +2447,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
         public var maintainEndTime: String?
 
         public var maintainStartTime: String?
+
+        public var multiZones: [DescribeDBInstanceAttributeResponseBody.Data.MultiZones]?
 
         public var nodes: [DescribeDBInstanceAttributeResponseBody.Data.Nodes]?
 
@@ -2427,6 +2508,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             if self.deletionProtection != nil {
                 map["DeletionProtection"] = self.deletionProtection!
             }
+            if self.deploySchema != nil {
+                map["DeploySchema"] = self.deploySchema!
+            }
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
@@ -2459,6 +2543,13 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if self.maintainStartTime != nil {
                 map["MaintainStartTime"] = self.maintainStartTime!
+            }
+            if self.multiZones != nil {
+                var tmp : [Any] = []
+                for k in self.multiZones! {
+                    tmp.append(k.toMap())
+                }
+                map["MultiZones"] = tmp
             }
             if self.nodes != nil {
                 var tmp : [Any] = []
@@ -2529,6 +2620,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             if dict.keys.contains("DeletionProtection") {
                 self.deletionProtection = dict["DeletionProtection"] as! Bool
             }
+            if dict.keys.contains("DeploySchema") {
+                self.deploySchema = dict["DeploySchema"] as! String
+            }
             if dict.keys.contains("Description") {
                 self.description_ = dict["Description"] as! String
             }
@@ -2561,6 +2655,17 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("MaintainStartTime") {
                 self.maintainStartTime = dict["MaintainStartTime"] as! String
+            }
+            if dict.keys.contains("MultiZones") {
+                var tmp : [DescribeDBInstanceAttributeResponseBody.Data.MultiZones] = []
+                for v in dict["MultiZones"] as! [Any] {
+                    var model = DescribeDBInstanceAttributeResponseBody.Data.MultiZones()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.multiZones = tmp
             }
             if dict.keys.contains("Nodes") {
                 var tmp : [DescribeDBInstanceAttributeResponseBody.Data.Nodes] = []
@@ -5974,6 +6079,8 @@ public class ModifyDBInstanceConnectionStringRequest : Tea.TeaModel {
 
     public var DBInstanceId: String?
 
+    public var DBInstanceNetType: String?
+
     public var disablePorts: String?
 
     public var regionId: String?
@@ -6001,6 +6108,9 @@ public class ModifyDBInstanceConnectionStringRequest : Tea.TeaModel {
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
+        if self.DBInstanceNetType != nil {
+            map["DBInstanceNetType"] = self.DBInstanceNetType!
+        }
         if self.disablePorts != nil {
             map["DisablePorts"] = self.disablePorts!
         }
@@ -6019,6 +6129,9 @@ public class ModifyDBInstanceConnectionStringRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DBInstanceId") {
             self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("DBInstanceNetType") {
+            self.DBInstanceNetType = dict["DBInstanceNetType"] as! String
         }
         if dict.keys.contains("DisablePorts") {
             self.disablePorts = dict["DisablePorts"] as! String

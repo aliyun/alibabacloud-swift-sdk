@@ -187,6 +187,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.multiZoneShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.multiZone, "MultiZone", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.backupSetId)) {
+            query["BackupSetId"] = request.backupSetId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
@@ -213,6 +216,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.scaleMin)) {
             query["ScaleMin"] = request.scaleMin ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceDBInstanceId)) {
+            query["SourceDBInstanceId"] = request.sourceDBInstanceId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.vpcId)) {
             query["VpcId"] = request.vpcId ?? "";
@@ -437,6 +443,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
             query["DBInstanceId"] = request.DBInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DBInstanceNetType)) {
+            query["DBInstanceNetType"] = request.DBInstanceNetType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
@@ -1144,7 +1153,19 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyDBInstanceClassWithOptions(_ request: ModifyDBInstanceClassRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDBInstanceClassResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
+            query["DBInstanceId"] = request.DBInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scaleMax)) {
+            query["ScaleMax"] = request.scaleMax!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scaleMin)) {
+            query["ScaleMin"] = request.scaleMin!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -1153,7 +1174,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "version": "2023-05-22",
             "protocol": "HTTPS",
             "pathname": "/",
-            "method": "GET",
+            "method": "POST",
             "authType": "AK",
             "style": "RPC",
             "reqBodyType": "formData",
@@ -1187,6 +1208,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
             query["DBInstanceId"] = request.DBInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DBInstanceNetType)) {
+            query["DBInstanceNetType"] = request.DBInstanceNetType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.disablePorts)) {
             query["DisablePorts"] = request.disablePorts ?? "";
