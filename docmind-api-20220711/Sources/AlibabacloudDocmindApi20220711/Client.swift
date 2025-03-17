@@ -1054,6 +1054,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.forceExportInnerImage)) {
             query["ForceExportInnerImage"] = request.forceExportInnerImage!;
         }
+        if (!TeaUtils.Client.isUnset(request.formulaEnhancement)) {
+            query["FormulaEnhancement"] = request.formulaEnhancement!;
+        }
+        if (!TeaUtils.Client.isUnset(request.option)) {
+            query["Option"] = request.option ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ossBucket)) {
             query["OssBucket"] = request.ossBucket ?? "";
         }

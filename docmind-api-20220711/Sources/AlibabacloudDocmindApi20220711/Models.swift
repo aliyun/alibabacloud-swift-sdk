@@ -3449,6 +3449,10 @@ public class SubmitConvertPdfToWordJobRequest : Tea.TeaModel {
 
     public var forceExportInnerImage: Bool?
 
+    public var formulaEnhancement: Bool?
+
+    public var option: String?
+
     public var ossBucket: String?
 
     public var ossEndpoint: String?
@@ -3476,6 +3480,12 @@ public class SubmitConvertPdfToWordJobRequest : Tea.TeaModel {
         if self.forceExportInnerImage != nil {
             map["ForceExportInnerImage"] = self.forceExportInnerImage!
         }
+        if self.formulaEnhancement != nil {
+            map["FormulaEnhancement"] = self.formulaEnhancement!
+        }
+        if self.option != nil {
+            map["Option"] = self.option!
+        }
         if self.ossBucket != nil {
             map["OssBucket"] = self.ossBucket!
         }
@@ -3495,6 +3505,12 @@ public class SubmitConvertPdfToWordJobRequest : Tea.TeaModel {
         if dict.keys.contains("ForceExportInnerImage") {
             self.forceExportInnerImage = dict["ForceExportInnerImage"] as! Bool
         }
+        if dict.keys.contains("FormulaEnhancement") {
+            self.formulaEnhancement = dict["FormulaEnhancement"] as! Bool
+        }
+        if dict.keys.contains("Option") {
+            self.option = dict["Option"] as! String
+        }
         if dict.keys.contains("OssBucket") {
             self.ossBucket = dict["OssBucket"] as! String
         }
@@ -3510,6 +3526,10 @@ public class SubmitConvertPdfToWordJobAdvanceRequest : Tea.TeaModel {
     public var fileUrlObject: InputStream?
 
     public var forceExportInnerImage: Bool?
+
+    public var formulaEnhancement: Bool?
+
+    public var option: String?
 
     public var ossBucket: String?
 
@@ -3538,6 +3558,12 @@ public class SubmitConvertPdfToWordJobAdvanceRequest : Tea.TeaModel {
         if self.forceExportInnerImage != nil {
             map["ForceExportInnerImage"] = self.forceExportInnerImage!
         }
+        if self.formulaEnhancement != nil {
+            map["FormulaEnhancement"] = self.formulaEnhancement!
+        }
+        if self.option != nil {
+            map["Option"] = self.option!
+        }
         if self.ossBucket != nil {
             map["OssBucket"] = self.ossBucket!
         }
@@ -3556,6 +3582,12 @@ public class SubmitConvertPdfToWordJobAdvanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ForceExportInnerImage") {
             self.forceExportInnerImage = dict["ForceExportInnerImage"] as! Bool
+        }
+        if dict.keys.contains("FormulaEnhancement") {
+            self.formulaEnhancement = dict["FormulaEnhancement"] as! Bool
+        }
+        if dict.keys.contains("Option") {
+            self.option = dict["Option"] as! String
         }
         if dict.keys.contains("OssBucket") {
             self.ossBucket = dict["OssBucket"] as! String
