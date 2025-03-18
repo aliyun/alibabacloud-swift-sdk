@@ -288,6 +288,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public var storageSize: Int64?
 
+    public var storageType: String?
+
     public var vSwitchId: String?
 
     public var vpcId: String?
@@ -356,6 +358,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if self.storageSize != nil {
             map["storageSize"] = self.storageSize!
         }
+        if self.storageType != nil {
+            map["storageType"] = self.storageType!
+        }
         if self.vSwitchId != nil {
             map["vSwitchId"] = self.vSwitchId!
         }
@@ -416,6 +421,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("storageSize") {
             self.storageSize = dict["storageSize"] as! Int64
+        }
+        if dict.keys.contains("storageType") {
+            self.storageType = dict["storageType"] as! String
         }
         if dict.keys.contains("vSwitchId") {
             self.vSwitchId = dict["vSwitchId"] as! String
