@@ -8471,6 +8471,8 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
 
     public var snapshotInterval: Double?
 
+    public var splitInterval: Int32?
+
     public var taskId: String?
 
     public var textProcessTasks: [RunVideoAnalysisRequest.TextProcessTasks]?
@@ -8528,6 +8530,9 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
         }
         if self.snapshotInterval != nil {
             map["snapshotInterval"] = self.snapshotInterval!
+        }
+        if self.splitInterval != nil {
+            map["splitInterval"] = self.splitInterval!
         }
         if self.taskId != nil {
             map["taskId"] = self.taskId!
@@ -8594,6 +8599,9 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
         if dict.keys.contains("snapshotInterval") {
             self.snapshotInterval = dict["snapshotInterval"] as! Double
         }
+        if dict.keys.contains("splitInterval") {
+            self.splitInterval = dict["splitInterval"] as! Int32
+        }
         if dict.keys.contains("taskId") {
             self.taskId = dict["taskId"] as! String
         }
@@ -8656,6 +8664,8 @@ public class RunVideoAnalysisShrinkRequest : Tea.TeaModel {
 
     public var snapshotInterval: Double?
 
+    public var splitInterval: Int32?
+
     public var taskId: String?
 
     public var textProcessTasksShrink: String?
@@ -8713,6 +8723,9 @@ public class RunVideoAnalysisShrinkRequest : Tea.TeaModel {
         if self.snapshotInterval != nil {
             map["snapshotInterval"] = self.snapshotInterval!
         }
+        if self.splitInterval != nil {
+            map["splitInterval"] = self.splitInterval!
+        }
         if self.taskId != nil {
             map["taskId"] = self.taskId!
         }
@@ -8767,6 +8780,9 @@ public class RunVideoAnalysisShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("snapshotInterval") {
             self.snapshotInterval = dict["snapshotInterval"] as! Double
+        }
+        if dict.keys.contains("splitInterval") {
+            self.splitInterval = dict["splitInterval"] as! Int32
         }
         if dict.keys.contains("taskId") {
             self.taskId = dict["taskId"] as! String
@@ -10726,6 +10742,8 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
 
     public var snapshotInterval: Double?
 
+    public var splitInterval: Int32?
+
     public var textProcessTasks: [SubmitVideoAnalysisTaskRequest.TextProcessTasks]?
 
     public var videoExtraInfo: String?
@@ -10778,6 +10796,9 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
         }
         if self.snapshotInterval != nil {
             map["snapshotInterval"] = self.snapshotInterval!
+        }
+        if self.splitInterval != nil {
+            map["splitInterval"] = self.splitInterval!
         }
         if self.textProcessTasks != nil {
             var tmp : [Any] = []
@@ -10838,6 +10859,9 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
         if dict.keys.contains("snapshotInterval") {
             self.snapshotInterval = dict["snapshotInterval"] as! Double
         }
+        if dict.keys.contains("splitInterval") {
+            self.splitInterval = dict["splitInterval"] as! Int32
+        }
         if dict.keys.contains("textProcessTasks") {
             var tmp : [SubmitVideoAnalysisTaskRequest.TextProcessTasks] = []
             for v in dict["textProcessTasks"] as! [Any] {
@@ -10895,6 +10919,8 @@ public class SubmitVideoAnalysisTaskShrinkRequest : Tea.TeaModel {
 
     public var snapshotInterval: Double?
 
+    public var splitInterval: Int32?
+
     public var textProcessTasksShrink: String?
 
     public var videoExtraInfo: String?
@@ -10947,6 +10973,9 @@ public class SubmitVideoAnalysisTaskShrinkRequest : Tea.TeaModel {
         if self.snapshotInterval != nil {
             map["snapshotInterval"] = self.snapshotInterval!
         }
+        if self.splitInterval != nil {
+            map["splitInterval"] = self.splitInterval!
+        }
         if self.textProcessTasksShrink != nil {
             map["textProcessTasks"] = self.textProcessTasksShrink!
         }
@@ -10995,6 +11024,9 @@ public class SubmitVideoAnalysisTaskShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("snapshotInterval") {
             self.snapshotInterval = dict["snapshotInterval"] as! Double
+        }
+        if dict.keys.contains("splitInterval") {
+            self.splitInterval = dict["splitInterval"] as! Int32
         }
         if dict.keys.contains("textProcessTasks") {
             self.textProcessTasksShrink = dict["textProcessTasks"] as! String
