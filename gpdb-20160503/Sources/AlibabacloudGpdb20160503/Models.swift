@@ -19710,6 +19710,8 @@ public class DescribeDocumentResponse : Tea.TeaModel {
 public class DescribeDownloadRecordsRequest : Tea.TeaModel {
     public var DBInstanceId: String?
 
+    public var downloadTaskType: String?
+
     public override init() {
         super.init()
     }
@@ -19727,12 +19729,18 @@ public class DescribeDownloadRecordsRequest : Tea.TeaModel {
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
+        if self.downloadTaskType != nil {
+            map["DownloadTaskType"] = self.downloadTaskType!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DBInstanceId") {
             self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("DownloadTaskType") {
+            self.downloadTaskType = dict["DownloadTaskType"] as! String
         }
     }
 }
