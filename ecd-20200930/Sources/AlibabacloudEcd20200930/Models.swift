@@ -20827,6 +20827,108 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class OsUpdate : Tea.TeaModel {
+            public class Packages : Tea.TeaModel {
+                public var description_: String?
+
+                public var kb: String?
+
+                public var title: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
+                    if self.kb != nil {
+                        map["Kb"] = self.kb!
+                    }
+                    if self.title != nil {
+                        map["Title"] = self.title!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Description") {
+                        self.description_ = dict["Description"] as! String
+                    }
+                    if dict.keys.contains("Kb") {
+                        self.kb = dict["Kb"] as! String
+                    }
+                    if dict.keys.contains("Title") {
+                        self.title = dict["Title"] as! String
+                    }
+                }
+            }
+            public var checkId: String?
+
+            public var packageCount: Int32?
+
+            public var packages: [DescribeDesktopsResponseBody.Desktops.OsUpdate.Packages]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.checkId != nil {
+                    map["CheckId"] = self.checkId!
+                }
+                if self.packageCount != nil {
+                    map["PackageCount"] = self.packageCount!
+                }
+                if self.packages != nil {
+                    var tmp : [Any] = []
+                    for k in self.packages! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Packages"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CheckId") {
+                    self.checkId = dict["CheckId"] as! String
+                }
+                if dict.keys.contains("PackageCount") {
+                    self.packageCount = dict["PackageCount"] as! Int32
+                }
+                if dict.keys.contains("Packages") {
+                    var tmp : [DescribeDesktopsResponseBody.Desktops.OsUpdate.Packages] = []
+                    for v in dict["Packages"] as! [Any] {
+                        var model = DescribeDesktopsResponseBody.Desktops.OsUpdate.Packages()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.packages = tmp
+                }
+            }
+        }
         public class ResourceGroups : Tea.TeaModel {
             public var id: String?
 
@@ -21028,6 +21130,8 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
 
         public var osType: String?
 
+        public var osUpdate: DescribeDesktopsResponseBody.Desktops.OsUpdate?
+
         public var platform: String?
 
         public var policyGroupId: String?
@@ -21081,6 +21185,7 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.fotaUpdate?.validate()
+            try self.osUpdate?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -21215,6 +21320,9 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
             }
             if self.osType != nil {
                 map["OsType"] = self.osType!
+            }
+            if self.osUpdate != nil {
+                map["OsUpdate"] = self.osUpdate?.toMap()
             }
             if self.platform != nil {
                 map["Platform"] = self.platform!
@@ -21435,6 +21543,11 @@ public class DescribeDesktopsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("OsType") {
                 self.osType = dict["OsType"] as! String
+            }
+            if dict.keys.contains("OsUpdate") {
+                var model = DescribeDesktopsResponseBody.Desktops.OsUpdate()
+                model.fromMap(dict["OsUpdate"] as! [String: Any])
+                self.osUpdate = model
             }
             if dict.keys.contains("Platform") {
                 self.platform = dict["Platform"] as! String
@@ -28709,6 +28822,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var endUserGroupCoordinate: String?
 
+        public var fileMigrate: String?
+
         public var fileTransfer: String?
 
         public var gpuAcceleration: String?
@@ -28857,6 +28972,8 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
 
         public var watermarkType: String?
 
+        public var wuyingKeeper: String?
+
         public var wyAssistant: String?
 
         public override init() {
@@ -28974,6 +29091,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if self.endUserGroupCoordinate != nil {
                 map["EndUserGroupCoordinate"] = self.endUserGroupCoordinate!
+            }
+            if self.fileMigrate != nil {
+                map["FileMigrate"] = self.fileMigrate!
             }
             if self.fileTransfer != nil {
                 map["FileTransfer"] = self.fileTransfer!
@@ -29205,6 +29325,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             if self.watermarkType != nil {
                 map["WatermarkType"] = self.watermarkType!
             }
+            if self.wuyingKeeper != nil {
+                map["WuyingKeeper"] = self.wuyingKeeper!
+            }
             if self.wyAssistant != nil {
                 map["WyAssistant"] = self.wyAssistant!
             }
@@ -29337,6 +29460,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("EndUserGroupCoordinate") {
                 self.endUserGroupCoordinate = dict["EndUserGroupCoordinate"] as! String
+            }
+            if dict.keys.contains("FileMigrate") {
+                self.fileMigrate = dict["FileMigrate"] as! String
             }
             if dict.keys.contains("FileTransfer") {
                 self.fileTransfer = dict["FileTransfer"] as! String
@@ -29575,6 +29701,9 @@ public class DescribePolicyGroupsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("WatermarkType") {
                 self.watermarkType = dict["WatermarkType"] as! String
+            }
+            if dict.keys.contains("WuyingKeeper") {
+                self.wuyingKeeper = dict["WuyingKeeper"] as! String
             }
             if dict.keys.contains("WyAssistant") {
                 self.wyAssistant = dict["WyAssistant"] as! String
@@ -48079,6 +48208,8 @@ public class MoveCdsFileResponse : Tea.TeaModel {
 public class RebootDesktopsRequest : Tea.TeaModel {
     public var desktopId: [String]?
 
+    public var osUpdate: Bool?
+
     public var regionId: String?
 
     public override init() {
@@ -48098,6 +48229,9 @@ public class RebootDesktopsRequest : Tea.TeaModel {
         if self.desktopId != nil {
             map["DesktopId"] = self.desktopId!
         }
+        if self.osUpdate != nil {
+            map["OsUpdate"] = self.osUpdate!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -48107,6 +48241,9 @@ public class RebootDesktopsRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DesktopId") {
             self.desktopId = dict["DesktopId"] as! [String]
+        }
+        if dict.keys.contains("OsUpdate") {
+            self.osUpdate = dict["OsUpdate"] as! Bool
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
@@ -51936,6 +52073,8 @@ public class StartDesktopsResponse : Tea.TeaModel {
 public class StopDesktopsRequest : Tea.TeaModel {
     public var desktopId: [String]?
 
+    public var osUpdate: Bool?
+
     public var regionId: String?
 
     public var stoppedMode: String?
@@ -51957,6 +52096,9 @@ public class StopDesktopsRequest : Tea.TeaModel {
         if self.desktopId != nil {
             map["DesktopId"] = self.desktopId!
         }
+        if self.osUpdate != nil {
+            map["OsUpdate"] = self.osUpdate!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -51969,6 +52111,9 @@ public class StopDesktopsRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DesktopId") {
             self.desktopId = dict["DesktopId"] as! [String]
+        }
+        if dict.keys.contains("OsUpdate") {
+            self.osUpdate = dict["OsUpdate"] as! Bool
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
