@@ -9421,6 +9421,8 @@ public class DescribeClusterAddonsVersionResponse : Tea.TeaModel {
 public class DescribeClusterAttachScriptsRequest : Tea.TeaModel {
     public var arch: String?
 
+    public var expired: Int64?
+
     public var formatDisk: Bool?
 
     public var keepInstanceName: Bool?
@@ -9448,6 +9450,9 @@ public class DescribeClusterAttachScriptsRequest : Tea.TeaModel {
         if self.arch != nil {
             map["arch"] = self.arch!
         }
+        if self.expired != nil {
+            map["expired"] = self.expired!
+        }
         if self.formatDisk != nil {
             map["format_disk"] = self.formatDisk!
         }
@@ -9469,6 +9474,9 @@ public class DescribeClusterAttachScriptsRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("arch") {
             self.arch = dict["arch"] as! String
+        }
+        if dict.keys.contains("expired") {
+            self.expired = dict["expired"] as! Int64
         }
         if dict.keys.contains("format_disk") {
             self.formatDisk = dict["format_disk"] as! Bool
@@ -25512,7 +25520,11 @@ public class ModifyClusterRequest : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
+    public var securityGroupId: String?
+
     public var systemEventsLogging: ModifyClusterRequest.SystemEventsLogging?
+
+    public var timezone: String?
 
     public var vswitchIds: [String]?
 
@@ -25577,8 +25589,14 @@ public class ModifyClusterRequest : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["resource_group_id"] = self.resourceGroupId!
         }
+        if self.securityGroupId != nil {
+            map["security_group_id"] = self.securityGroupId!
+        }
         if self.systemEventsLogging != nil {
             map["system_events_logging"] = self.systemEventsLogging?.toMap()
+        }
+        if self.timezone != nil {
+            map["timezone"] = self.timezone!
         }
         if self.vswitchIds != nil {
             map["vswitch_ids"] = self.vswitchIds!
@@ -25637,10 +25655,16 @@ public class ModifyClusterRequest : Tea.TeaModel {
         if dict.keys.contains("resource_group_id") {
             self.resourceGroupId = dict["resource_group_id"] as! String
         }
+        if dict.keys.contains("security_group_id") {
+            self.securityGroupId = dict["security_group_id"] as! String
+        }
         if dict.keys.contains("system_events_logging") {
             var model = ModifyClusterRequest.SystemEventsLogging()
             model.fromMap(dict["system_events_logging"] as! [String: Any])
             self.systemEventsLogging = model
+        }
+        if dict.keys.contains("timezone") {
+            self.timezone = dict["timezone"] as! String
         }
         if dict.keys.contains("vswitch_ids") {
             self.vswitchIds = dict["vswitch_ids"] as! [String]
