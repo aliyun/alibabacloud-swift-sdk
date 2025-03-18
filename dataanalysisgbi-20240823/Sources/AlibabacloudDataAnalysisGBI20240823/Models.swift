@@ -2942,7 +2942,11 @@ public class RunDataAnalysisResponseBody : Tea.TeaModel {
         }
         public class Visualization : Tea.TeaModel {
             public class Data : Tea.TeaModel {
+                public var option: String?
+
                 public var plotType: String?
+
+                public var stack: Bool?
 
                 public var xAxis: [String]?
 
@@ -2962,8 +2966,14 @@ public class RunDataAnalysisResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.option != nil {
+                        map["option"] = self.option!
+                    }
                     if self.plotType != nil {
                         map["plotType"] = self.plotType!
+                    }
+                    if self.stack != nil {
+                        map["stack"] = self.stack!
                     }
                     if self.xAxis != nil {
                         map["xAxis"] = self.xAxis!
@@ -2975,8 +2985,14 @@ public class RunDataAnalysisResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("option") {
+                        self.option = dict["option"] as! String
+                    }
                     if dict.keys.contains("plotType") {
                         self.plotType = dict["plotType"] as! String
+                    }
+                    if dict.keys.contains("stack") {
+                        self.stack = dict["stack"] as! Bool
                     }
                     if dict.keys.contains("xAxis") {
                         self.xAxis = dict["xAxis"] as! [String]
