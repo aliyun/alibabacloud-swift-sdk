@@ -10899,6 +10899,8 @@ public class GenerateAssetOperationTokenRequest : Tea.TeaModel {
 
     public var operationMode: String?
 
+    public var operationNote: String?
+
     public var regionId: String?
 
     public var ssoClient: String?
@@ -10947,6 +10949,9 @@ public class GenerateAssetOperationTokenRequest : Tea.TeaModel {
         if self.operationMode != nil {
             map["OperationMode"] = self.operationMode!
         }
+        if self.operationNote != nil {
+            map["OperationNote"] = self.operationNote!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -10986,6 +10991,9 @@ public class GenerateAssetOperationTokenRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OperationMode") {
             self.operationMode = dict["OperationMode"] as! String
+        }
+        if dict.keys.contains("OperationNote") {
+            self.operationNote = dict["OperationNote"] as! String
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
@@ -11903,6 +11911,8 @@ public class GetHostResponseBody : Tea.TeaModel {
 
         public var OSType: String?
 
+        public var prefKex: String?
+
         public var protocols: [GetHostResponseBody.Host.Protocols]?
 
         public var source: String?
@@ -11949,6 +11959,9 @@ public class GetHostResponseBody : Tea.TeaModel {
             if self.OSType != nil {
                 map["OSType"] = self.OSType!
             }
+            if self.prefKex != nil {
+                map["PrefKex"] = self.prefKex!
+            }
             if self.protocols != nil {
                 var tmp : [Any] = []
                 for k in self.protocols! {
@@ -11992,6 +12005,9 @@ public class GetHostResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("OSType") {
                 self.OSType = dict["OSType"] as! String
+            }
+            if dict.keys.contains("PrefKex") {
+                self.prefKex = dict["PrefKex"] as! String
             }
             if dict.keys.contains("Protocols") {
                 var tmp : [GetHostResponseBody.Host.Protocols] = []
@@ -25217,6 +25233,8 @@ public class ModifyHostRequest : Tea.TeaModel {
 
     public var OSType: String?
 
+    public var prefKex: String?
+
     public var regionId: String?
 
     public override init() {
@@ -25257,6 +25275,9 @@ public class ModifyHostRequest : Tea.TeaModel {
         if self.OSType != nil {
             map["OSType"] = self.OSType!
         }
+        if self.prefKex != nil {
+            map["PrefKex"] = self.prefKex!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -25287,6 +25308,9 @@ public class ModifyHostRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OSType") {
             self.OSType = dict["OSType"] as! String
+        }
+        if dict.keys.contains("PrefKex") {
+            self.prefKex = dict["PrefKex"] as! String
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
