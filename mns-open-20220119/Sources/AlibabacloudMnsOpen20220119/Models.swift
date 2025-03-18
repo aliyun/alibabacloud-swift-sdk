@@ -262,6 +262,318 @@ public class AuthorizeEndpointAclResponse : Tea.TeaModel {
     }
 }
 
+public class CreateEventRuleRequest : Tea.TeaModel {
+    public class Endpoints : Tea.TeaModel {
+        public var endpointType: String?
+
+        public var endpointValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.endpointType != nil {
+                map["EndpointType"] = self.endpointType!
+            }
+            if self.endpointValue != nil {
+                map["EndpointValue"] = self.endpointValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EndpointType") {
+                self.endpointType = dict["EndpointType"] as! String
+            }
+            if dict.keys.contains("EndpointValue") {
+                self.endpointValue = dict["EndpointValue"] as! String
+            }
+        }
+    }
+    public var endpoints: [CreateEventRuleRequest.Endpoints]?
+
+    public var eventTypes: [String]?
+
+    public var matchRules: [[EventMatchRule]]?
+
+    public var productName: String?
+
+    public var ruleName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endpoints != nil {
+            var tmp : [Any] = []
+            for k in self.endpoints! {
+                tmp.append(k.toMap())
+            }
+            map["Endpoints"] = tmp
+        }
+        if self.eventTypes != nil {
+            map["EventTypes"] = self.eventTypes!
+        }
+        if self.matchRules != nil {
+            var tmp : [Any] = []
+            for k in self.matchRules! {
+                var l1 : [Any] = []
+                for k1 in k {
+                    l1.append(k1.toMap())
+                }
+                tmp.append(l1)
+            }
+            map["MatchRules"] = tmp
+        }
+        if self.productName != nil {
+            map["ProductName"] = self.productName!
+        }
+        if self.ruleName != nil {
+            map["RuleName"] = self.ruleName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Endpoints") {
+            var tmp : [CreateEventRuleRequest.Endpoints] = []
+            for v in dict["Endpoints"] as! [Any] {
+                var model = CreateEventRuleRequest.Endpoints()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.endpoints = tmp
+        }
+        if dict.keys.contains("EventTypes") {
+            self.eventTypes = dict["EventTypes"] as! [String]
+        }
+        if dict.keys.contains("MatchRules") {
+            var tmp : [[EventMatchRule]] = []
+            for v in dict["MatchRules"] as! [Any] {
+                var l1 : [EventMatchRule] = []
+                for v1 in v as! [Any] {
+                    var model = EventMatchRule()
+                    if v1 != nil {
+                        model.fromMap(v1 as! [String: Any])
+                    }
+                    l1.append(model)
+                }
+                tmp.append(l1)
+            }
+            self.matchRules = tmp
+        }
+        if dict.keys.contains("ProductName") {
+            self.productName = dict["ProductName"] as! String
+        }
+        if dict.keys.contains("RuleName") {
+            self.ruleName = dict["RuleName"] as! String
+        }
+    }
+}
+
+public class CreateEventRuleShrinkRequest : Tea.TeaModel {
+    public var endpointsShrink: String?
+
+    public var eventTypesShrink: String?
+
+    public var matchRulesShrink: String?
+
+    public var productName: String?
+
+    public var ruleName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endpointsShrink != nil {
+            map["Endpoints"] = self.endpointsShrink!
+        }
+        if self.eventTypesShrink != nil {
+            map["EventTypes"] = self.eventTypesShrink!
+        }
+        if self.matchRulesShrink != nil {
+            map["MatchRules"] = self.matchRulesShrink!
+        }
+        if self.productName != nil {
+            map["ProductName"] = self.productName!
+        }
+        if self.ruleName != nil {
+            map["RuleName"] = self.ruleName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Endpoints") {
+            self.endpointsShrink = dict["Endpoints"] as! String
+        }
+        if dict.keys.contains("EventTypes") {
+            self.eventTypesShrink = dict["EventTypes"] as! String
+        }
+        if dict.keys.contains("MatchRules") {
+            self.matchRulesShrink = dict["MatchRules"] as! String
+        }
+        if dict.keys.contains("ProductName") {
+            self.productName = dict["ProductName"] as! String
+        }
+        if dict.keys.contains("RuleName") {
+            self.ruleName = dict["RuleName"] as! String
+        }
+    }
+}
+
+public class CreateEventRuleResponseBody : Tea.TeaModel {
+    public var code: Int64?
+
+    public var data: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var status: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! Int64
+        }
+        if dict.keys.contains("Data") {
+            self.data = dict["Data"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Status") {
+            self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class CreateEventRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateEventRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateEventRuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateQueueRequest : Tea.TeaModel {
     public class DlqPolicy : Tea.TeaModel {
         public var deadLetterTargetQueue: String?
@@ -1027,6 +1339,155 @@ public class CreateTopicResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = CreateTopicResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DeleteEventRuleRequest : Tea.TeaModel {
+    public var productName: String?
+
+    public var ruleName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.productName != nil {
+            map["ProductName"] = self.productName!
+        }
+        if self.ruleName != nil {
+            map["RuleName"] = self.ruleName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ProductName") {
+            self.productName = dict["ProductName"] as! String
+        }
+        if dict.keys.contains("RuleName") {
+            self.ruleName = dict["RuleName"] as! String
+        }
+    }
+}
+
+public class DeleteEventRuleResponseBody : Tea.TeaModel {
+    public var code: Int64?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var status: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! Int64
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Status") {
+            self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class DeleteEventRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteEventRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteEventRuleResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
