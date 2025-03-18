@@ -6323,6 +6323,8 @@ public class GetLindormInstanceResponseBody : Tea.TeaModel {
 
         public var memorySize: String?
 
+        public var specification: String?
+
         public var version: String?
 
         public override init() {
@@ -6357,6 +6359,9 @@ public class GetLindormInstanceResponseBody : Tea.TeaModel {
             if self.memorySize != nil {
                 map["MemorySize"] = self.memorySize!
             }
+            if self.specification != nil {
+                map["Specification"] = self.specification!
+            }
             if self.version != nil {
                 map["Version"] = self.version!
             }
@@ -6381,6 +6386,9 @@ public class GetLindormInstanceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("MemorySize") {
                 self.memorySize = dict["MemorySize"] as! String
+            }
+            if dict.keys.contains("Specification") {
+                self.specification = dict["Specification"] as! String
             }
             if dict.keys.contains("Version") {
                 self.version = dict["Version"] as! String
