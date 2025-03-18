@@ -26148,6 +26148,8 @@ public class DescribeDatasetListRequest : Tea.TeaModel {
     }
     public var datasetIds: String?
 
+    public var datasetName: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -26173,6 +26175,9 @@ public class DescribeDatasetListRequest : Tea.TeaModel {
         if self.datasetIds != nil {
             map["DatasetIds"] = self.datasetIds!
         }
+        if self.datasetName != nil {
+            map["DatasetName"] = self.datasetName!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -26195,6 +26200,9 @@ public class DescribeDatasetListRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DatasetIds") {
             self.datasetIds = dict["DatasetIds"] as! String
+        }
+        if dict.keys.contains("DatasetName") {
+            self.datasetName = dict["DatasetName"] as! String
         }
         if dict.keys.contains("PageNumber") {
             self.pageNumber = dict["PageNumber"] as! Int32

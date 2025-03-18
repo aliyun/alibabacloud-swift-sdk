@@ -4752,6 +4752,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.datasetIds)) {
             query["DatasetIds"] = request.datasetIds ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.datasetName)) {
+            query["DatasetName"] = request.datasetName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;
         }
