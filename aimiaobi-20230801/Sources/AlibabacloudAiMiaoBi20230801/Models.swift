@@ -36939,6 +36939,8 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
             }
             public var multimodalMediaSelection: RunSearchGenerationRequest.AgentContext.BizContext.MultimodalMediaSelection?
 
+            public var skipCurrentSupplement: Bool?
+
             public override init() {
                 super.init()
             }
@@ -36957,6 +36959,9 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
                 if self.multimodalMediaSelection != nil {
                     map["MultimodalMediaSelection"] = self.multimodalMediaSelection?.toMap()
                 }
+                if self.skipCurrentSupplement != nil {
+                    map["SkipCurrentSupplement"] = self.skipCurrentSupplement!
+                }
                 return map
             }
 
@@ -36965,6 +36970,9 @@ public class RunSearchGenerationRequest : Tea.TeaModel {
                     var model = RunSearchGenerationRequest.AgentContext.BizContext.MultimodalMediaSelection()
                     model.fromMap(dict["MultimodalMediaSelection"] as! [String: Any])
                     self.multimodalMediaSelection = model
+                }
+                if dict.keys.contains("SkipCurrentSupplement") {
+                    self.skipCurrentSupplement = dict["SkipCurrentSupplement"] as! Bool
                 }
             }
         }
@@ -41616,6 +41624,8 @@ public class RunSearchSimilarArticlesRequest : Tea.TeaModel {
             public class SearchSources : Tea.TeaModel {
                 public var code: String?
 
+                public var datasetName: String?
+
                 public var name: String?
 
                 public override init() {
@@ -41635,6 +41645,9 @@ public class RunSearchSimilarArticlesRequest : Tea.TeaModel {
                     if self.code != nil {
                         map["Code"] = self.code!
                     }
+                    if self.datasetName != nil {
+                        map["DatasetName"] = self.datasetName!
+                    }
                     if self.name != nil {
                         map["Name"] = self.name!
                     }
@@ -41644,6 +41657,9 @@ public class RunSearchSimilarArticlesRequest : Tea.TeaModel {
                 public override func fromMap(_ dict: [String: Any]) -> Void {
                     if dict.keys.contains("Code") {
                         self.code = dict["Code"] as! String
+                    }
+                    if dict.keys.contains("DatasetName") {
+                        self.datasetName = dict["DatasetName"] as! String
                     }
                     if dict.keys.contains("Name") {
                         self.name = dict["Name"] as! String
@@ -41912,6 +41928,8 @@ public class RunSearchSimilarArticlesResponseBody : Tea.TeaModel {
     public class Payload : Tea.TeaModel {
         public class Output : Tea.TeaModel {
             public class Articles : Tea.TeaModel {
+                public var docId: String?
+
                 public var docUuid: String?
 
                 public var pubTime: String?
@@ -41940,6 +41958,9 @@ public class RunSearchSimilarArticlesResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.docId != nil {
+                        map["DocId"] = self.docId!
+                    }
                     if self.docUuid != nil {
                         map["DocUuid"] = self.docUuid!
                     }
@@ -41965,6 +41986,9 @@ public class RunSearchSimilarArticlesResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("DocId") {
+                        self.docId = dict["DocId"] as! String
+                    }
                     if dict.keys.contains("DocUuid") {
                         self.docUuid = dict["DocUuid"] as! String
                     }
