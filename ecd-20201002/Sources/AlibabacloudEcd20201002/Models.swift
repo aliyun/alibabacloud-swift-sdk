@@ -5529,6 +5529,8 @@ public class RebootDesktopsRequest : Tea.TeaModel {
 
     public var loginToken: String?
 
+    public var osUpdate: Bool?
+
     public var regionId: String?
 
     public var sessionId: String?
@@ -5569,6 +5571,9 @@ public class RebootDesktopsRequest : Tea.TeaModel {
         if self.loginToken != nil {
             map["LoginToken"] = self.loginToken!
         }
+        if self.osUpdate != nil {
+            map["OsUpdate"] = self.osUpdate!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -5602,6 +5607,9 @@ public class RebootDesktopsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("LoginToken") {
             self.loginToken = dict["LoginToken"] as! String
+        }
+        if dict.keys.contains("OsUpdate") {
+            self.osUpdate = dict["OsUpdate"] as! Bool
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
@@ -7328,6 +7336,8 @@ public class StopDesktopsRequest : Tea.TeaModel {
 
     public var loginToken: String?
 
+    public var osUpdate: Bool?
+
     public var regionId: String?
 
     public var sessionId: String?
@@ -7366,6 +7376,9 @@ public class StopDesktopsRequest : Tea.TeaModel {
         if self.loginToken != nil {
             map["LoginToken"] = self.loginToken!
         }
+        if self.osUpdate != nil {
+            map["OsUpdate"] = self.osUpdate!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -7396,6 +7409,9 @@ public class StopDesktopsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("LoginToken") {
             self.loginToken = dict["LoginToken"] as! String
+        }
+        if dict.keys.contains("OsUpdate") {
+            self.osUpdate = dict["OsUpdate"] as! Bool
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
