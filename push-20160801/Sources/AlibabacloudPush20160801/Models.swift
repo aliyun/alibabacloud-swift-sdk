@@ -2441,6 +2441,8 @@ public class MassPushRequest : Tea.TeaModel {
     }
     public var appKey: Int64?
 
+    public var idempotentToken: String?
+
     public var pushTask: [MassPushRequest.PushTask]?
 
     public override init() {
@@ -2460,6 +2462,9 @@ public class MassPushRequest : Tea.TeaModel {
         if self.appKey != nil {
             map["AppKey"] = self.appKey!
         }
+        if self.idempotentToken != nil {
+            map["IdempotentToken"] = self.idempotentToken!
+        }
         if self.pushTask != nil {
             var tmp : [Any] = []
             for k in self.pushTask! {
@@ -2473,6 +2478,9 @@ public class MassPushRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AppKey") {
             self.appKey = dict["AppKey"] as! Int64
+        }
+        if dict.keys.contains("IdempotentToken") {
+            self.idempotentToken = dict["IdempotentToken"] as! String
         }
         if dict.keys.contains("PushTask") {
             var tmp : [MassPushRequest.PushTask] = []
@@ -2743,6 +2751,8 @@ public class PushRequest : Tea.TeaModel {
     public var harmonyTestMessage: Bool?
 
     public var harmonyUri: String?
+
+    public var idempotentToken: String?
 
     public var jobKey: String?
 
@@ -3021,6 +3031,9 @@ public class PushRequest : Tea.TeaModel {
         }
         if self.harmonyUri != nil {
             map["HarmonyUri"] = self.harmonyUri!
+        }
+        if self.idempotentToken != nil {
+            map["IdempotentToken"] = self.idempotentToken!
         }
         if self.jobKey != nil {
             map["JobKey"] = self.jobKey!
@@ -3319,6 +3332,9 @@ public class PushRequest : Tea.TeaModel {
         }
         if dict.keys.contains("HarmonyUri") {
             self.harmonyUri = dict["HarmonyUri"] as! String
+        }
+        if dict.keys.contains("IdempotentToken") {
+            self.idempotentToken = dict["IdempotentToken"] as! String
         }
         if dict.keys.contains("JobKey") {
             self.jobKey = dict["JobKey"] as! String
