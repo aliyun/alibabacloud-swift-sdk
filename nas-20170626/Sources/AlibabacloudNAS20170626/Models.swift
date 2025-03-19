@@ -4040,9 +4040,13 @@ public class CreateLDAPConfigResponse : Tea.TeaModel {
 public class CreateLifecyclePolicyRequest : Tea.TeaModel {
     public var fileSystemId: String?
 
+    public var fsetIds: [String]?
+
     public var lifecyclePolicyName: String?
 
     public var lifecycleRuleName: String?
+
+    public var lifecycleRuleType: String?
 
     public var path: String?
 
@@ -4067,11 +4071,17 @@ public class CreateLifecyclePolicyRequest : Tea.TeaModel {
         if self.fileSystemId != nil {
             map["FileSystemId"] = self.fileSystemId!
         }
+        if self.fsetIds != nil {
+            map["FsetIds"] = self.fsetIds!
+        }
         if self.lifecyclePolicyName != nil {
             map["LifecyclePolicyName"] = self.lifecyclePolicyName!
         }
         if self.lifecycleRuleName != nil {
             map["LifecycleRuleName"] = self.lifecycleRuleName!
+        }
+        if self.lifecycleRuleType != nil {
+            map["LifecycleRuleType"] = self.lifecycleRuleType!
         }
         if self.path != nil {
             map["Path"] = self.path!
@@ -4089,11 +4099,17 @@ public class CreateLifecyclePolicyRequest : Tea.TeaModel {
         if dict.keys.contains("FileSystemId") {
             self.fileSystemId = dict["FileSystemId"] as! String
         }
+        if dict.keys.contains("FsetIds") {
+            self.fsetIds = dict["FsetIds"] as! [String]
+        }
         if dict.keys.contains("LifecyclePolicyName") {
             self.lifecyclePolicyName = dict["LifecyclePolicyName"] as! String
         }
         if dict.keys.contains("LifecycleRuleName") {
             self.lifecycleRuleName = dict["LifecycleRuleName"] as! String
+        }
+        if dict.keys.contains("LifecycleRuleType") {
+            self.lifecycleRuleType = dict["LifecycleRuleType"] as! String
         }
         if dict.keys.contains("Path") {
             self.path = dict["Path"] as! String
@@ -12454,6 +12470,10 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
 
             public var resourceGroupId: String?
 
+            public var secondaryBandwidth: Int32?
+
+            public var secondaryCapacity: Int64?
+
             public var status: String?
 
             public var storageType: String?
@@ -12560,6 +12580,12 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
                 if self.resourceGroupId != nil {
                     map["ResourceGroupId"] = self.resourceGroupId!
                 }
+                if self.secondaryBandwidth != nil {
+                    map["SecondaryBandwidth"] = self.secondaryBandwidth!
+                }
+                if self.secondaryCapacity != nil {
+                    map["SecondaryCapacity"] = self.secondaryCapacity!
+                }
                 if self.status != nil {
                     map["Status"] = self.status!
                 }
@@ -12664,6 +12690,12 @@ public class DescribeFileSystemsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ResourceGroupId") {
                     self.resourceGroupId = dict["ResourceGroupId"] as! String
+                }
+                if dict.keys.contains("SecondaryBandwidth") {
+                    self.secondaryBandwidth = dict["SecondaryBandwidth"] as! Int32
+                }
+                if dict.keys.contains("SecondaryCapacity") {
+                    self.secondaryCapacity = dict["SecondaryCapacity"] as! Int64
                 }
                 if dict.keys.contains("Status") {
                     self.status = dict["Status"] as! String
@@ -13268,6 +13300,10 @@ public class DescribeFilesetsResponse : Tea.TeaModel {
 public class DescribeLifecyclePoliciesRequest : Tea.TeaModel {
     public var fileSystemId: String?
 
+    public var fileSystemType: String?
+
+    public var fsetId: String?
+
     public var lifecyclePolicyName: String?
 
     public var pageNumber: Int32?
@@ -13293,6 +13329,12 @@ public class DescribeLifecyclePoliciesRequest : Tea.TeaModel {
         if self.fileSystemId != nil {
             map["FileSystemId"] = self.fileSystemId!
         }
+        if self.fileSystemType != nil {
+            map["FileSystemType"] = self.fileSystemType!
+        }
+        if self.fsetId != nil {
+            map["FsetId"] = self.fsetId!
+        }
         if self.lifecyclePolicyName != nil {
             map["LifecyclePolicyName"] = self.lifecyclePolicyName!
         }
@@ -13311,6 +13353,12 @@ public class DescribeLifecyclePoliciesRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("FileSystemId") {
             self.fileSystemId = dict["FileSystemId"] as! String
+        }
+        if dict.keys.contains("FileSystemType") {
+            self.fileSystemType = dict["FileSystemType"] as! String
+        }
+        if dict.keys.contains("FsetId") {
+            self.fsetId = dict["FsetId"] as! String
         }
         if dict.keys.contains("LifecyclePolicyName") {
             self.lifecyclePolicyName = dict["LifecyclePolicyName"] as! String
@@ -13331,15 +13379,23 @@ public class DescribeLifecyclePoliciesResponseBody : Tea.TeaModel {
     public class LifecyclePolicies : Tea.TeaModel {
         public var createTime: String?
 
+        public var enableLifecycle: Bool?
+
         public var fileSystemId: String?
+
+        public var fsetIds: [String]?
 
         public var lifecyclePolicyName: String?
 
         public var lifecycleRuleName: String?
 
+        public var lifecycleRuleType: String?
+
         public var path: String?
 
         public var paths: [String]?
+
+        public var status: String?
 
         public var storageType: String?
 
@@ -13360,8 +13416,14 @@ public class DescribeLifecyclePoliciesResponseBody : Tea.TeaModel {
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
+            if self.enableLifecycle != nil {
+                map["EnableLifecycle"] = self.enableLifecycle!
+            }
             if self.fileSystemId != nil {
                 map["FileSystemId"] = self.fileSystemId!
+            }
+            if self.fsetIds != nil {
+                map["FsetIds"] = self.fsetIds!
             }
             if self.lifecyclePolicyName != nil {
                 map["LifecyclePolicyName"] = self.lifecyclePolicyName!
@@ -13369,11 +13431,17 @@ public class DescribeLifecyclePoliciesResponseBody : Tea.TeaModel {
             if self.lifecycleRuleName != nil {
                 map["LifecycleRuleName"] = self.lifecycleRuleName!
             }
+            if self.lifecycleRuleType != nil {
+                map["LifecycleRuleType"] = self.lifecycleRuleType!
+            }
             if self.path != nil {
                 map["Path"] = self.path!
             }
             if self.paths != nil {
                 map["Paths"] = self.paths!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
             }
             if self.storageType != nil {
                 map["StorageType"] = self.storageType!
@@ -13385,8 +13453,14 @@ public class DescribeLifecyclePoliciesResponseBody : Tea.TeaModel {
             if dict.keys.contains("CreateTime") {
                 self.createTime = dict["CreateTime"] as! String
             }
+            if dict.keys.contains("EnableLifecycle") {
+                self.enableLifecycle = dict["EnableLifecycle"] as! Bool
+            }
             if dict.keys.contains("FileSystemId") {
                 self.fileSystemId = dict["FileSystemId"] as! String
+            }
+            if dict.keys.contains("FsetIds") {
+                self.fsetIds = dict["FsetIds"] as! [String]
             }
             if dict.keys.contains("LifecyclePolicyName") {
                 self.lifecyclePolicyName = dict["LifecyclePolicyName"] as! String
@@ -13394,11 +13468,17 @@ public class DescribeLifecyclePoliciesResponseBody : Tea.TeaModel {
             if dict.keys.contains("LifecycleRuleName") {
                 self.lifecycleRuleName = dict["LifecycleRuleName"] as! String
             }
+            if dict.keys.contains("LifecycleRuleType") {
+                self.lifecycleRuleType = dict["LifecycleRuleType"] as! String
+            }
             if dict.keys.contains("Path") {
                 self.path = dict["Path"] as! String
             }
             if dict.keys.contains("Paths") {
                 self.paths = dict["Paths"] as! [String]
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
             }
             if dict.keys.contains("StorageType") {
                 self.storageType = dict["StorageType"] as! String
@@ -20827,7 +20907,11 @@ public class ModifyLDAPConfigResponse : Tea.TeaModel {
 }
 
 public class ModifyLifecyclePolicyRequest : Tea.TeaModel {
+    public var enableLifecycle: Bool?
+
     public var fileSystemId: String?
+
+    public var fsetIds: [String]?
 
     public var lifecyclePolicyName: String?
 
@@ -20851,8 +20935,14 @@ public class ModifyLifecyclePolicyRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableLifecycle != nil {
+            map["EnableLifecycle"] = self.enableLifecycle!
+        }
         if self.fileSystemId != nil {
             map["FileSystemId"] = self.fileSystemId!
+        }
+        if self.fsetIds != nil {
+            map["FsetIds"] = self.fsetIds!
         }
         if self.lifecyclePolicyName != nil {
             map["LifecyclePolicyName"] = self.lifecyclePolicyName!
@@ -20870,8 +20960,14 @@ public class ModifyLifecyclePolicyRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EnableLifecycle") {
+            self.enableLifecycle = dict["EnableLifecycle"] as! Bool
+        }
         if dict.keys.contains("FileSystemId") {
             self.fileSystemId = dict["FileSystemId"] as! String
+        }
+        if dict.keys.contains("FsetIds") {
+            self.fsetIds = dict["FsetIds"] as! [String]
         }
         if dict.keys.contains("LifecyclePolicyName") {
             self.lifecyclePolicyName = dict["LifecyclePolicyName"] as! String

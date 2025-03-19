@@ -1323,11 +1323,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.fileSystemId)) {
             query["FileSystemId"] = request.fileSystemId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.fsetIds)) {
+            query["FsetIds"] = request.fsetIds ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.lifecyclePolicyName)) {
             query["LifecyclePolicyName"] = request.lifecyclePolicyName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.lifecycleRuleName)) {
             query["LifecycleRuleName"] = request.lifecycleRuleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lifecycleRuleType)) {
+            query["LifecycleRuleType"] = request.lifecycleRuleType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.path)) {
             query["Path"] = request.path ?? "";
@@ -4529,8 +4535,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyLifecyclePolicyWithOptions(_ request: ModifyLifecyclePolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyLifecyclePolicyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enableLifecycle)) {
+            query["EnableLifecycle"] = request.enableLifecycle!;
+        }
         if (!TeaUtils.Client.isUnset(request.fileSystemId)) {
             query["FileSystemId"] = request.fileSystemId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fsetIds)) {
+            query["FsetIds"] = request.fsetIds ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.lifecyclePolicyName)) {
             query["LifecyclePolicyName"] = request.lifecyclePolicyName ?? "";
