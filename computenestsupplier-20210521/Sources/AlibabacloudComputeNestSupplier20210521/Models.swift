@@ -9793,6 +9793,8 @@ public class GetSupplierInformationResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var acrNamespace: String?
+
     public var deliverySettings: GetSupplierInformationResponseBody.DeliverySettings?
 
     public var enableReseller: Bool?
@@ -9826,6 +9828,9 @@ public class GetSupplierInformationResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.acrNamespace != nil {
+            map["AcrNamespace"] = self.acrNamespace!
+        }
         if self.deliverySettings != nil {
             map["DeliverySettings"] = self.deliverySettings?.toMap()
         }
@@ -9857,6 +9862,9 @@ public class GetSupplierInformationResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcrNamespace") {
+            self.acrNamespace = dict["AcrNamespace"] as! String
+        }
         if dict.keys.contains("DeliverySettings") {
             var model = GetSupplierInformationResponseBody.DeliverySettings()
             model.fromMap(dict["DeliverySettings"] as! [String: Any])
@@ -10400,6 +10408,8 @@ public class ListAcrImageRepositoriesResponseBody : Tea.TeaModel {
 
         public var modifiedTime: String?
 
+        public var namespace: String?
+
         public var repoId: String?
 
         public var repoName: String?
@@ -10426,6 +10436,9 @@ public class ListAcrImageRepositoriesResponseBody : Tea.TeaModel {
             if self.modifiedTime != nil {
                 map["ModifiedTime"] = self.modifiedTime!
             }
+            if self.namespace != nil {
+                map["Namespace"] = self.namespace!
+            }
             if self.repoId != nil {
                 map["RepoId"] = self.repoId!
             }
@@ -10444,6 +10457,9 @@ public class ListAcrImageRepositoriesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ModifiedTime") {
                 self.modifiedTime = dict["ModifiedTime"] as! String
+            }
+            if dict.keys.contains("Namespace") {
+                self.namespace = dict["Namespace"] as! String
             }
             if dict.keys.contains("RepoId") {
                 self.repoId = dict["RepoId"] as! String
