@@ -5741,6 +5741,59 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class AttackResult : Tea.TeaModel {
+            public var attackLevel: String?
+
+            public var confidence: Double?
+
+            public var description_: String?
+
+            public var label: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.attackLevel != nil {
+                    map["AttackLevel"] = self.attackLevel!
+                }
+                if self.confidence != nil {
+                    map["Confidence"] = self.confidence!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.label != nil {
+                    map["Label"] = self.label!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AttackLevel") {
+                    self.attackLevel = dict["AttackLevel"] as! String
+                }
+                if dict.keys.contains("Confidence") {
+                    self.confidence = dict["Confidence"] as! Double
+                }
+                if dict.keys.contains("Description") {
+                    self.description_ = dict["Description"] as! String
+                }
+                if dict.keys.contains("Label") {
+                    self.label = dict["Label"] as! String
+                }
+            }
+        }
         public class Result : Tea.TeaModel {
             public class CustomizedHit : Tea.TeaModel {
                 public var keyWords: String?
@@ -5851,7 +5904,64 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class SensitiveResult : Tea.TeaModel {
+            public var description_: String?
+
+            public var label: String?
+
+            public var sensitiveData: [String]?
+
+            public var sensitiveLevel: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.label != nil {
+                    map["Label"] = self.label!
+                }
+                if self.sensitiveData != nil {
+                    map["SensitiveData"] = self.sensitiveData!
+                }
+                if self.sensitiveLevel != nil {
+                    map["SensitiveLevel"] = self.sensitiveLevel!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Description") {
+                    self.description_ = dict["Description"] as! String
+                }
+                if dict.keys.contains("Label") {
+                    self.label = dict["Label"] as! String
+                }
+                if dict.keys.contains("SensitiveData") {
+                    self.sensitiveData = dict["SensitiveData"] as! [String]
+                }
+                if dict.keys.contains("SensitiveLevel") {
+                    self.sensitiveLevel = dict["SensitiveLevel"] as! String
+                }
+            }
+        }
         public var advice: [TextModerationPlusResponseBody.Data.Advice]?
+
+        public var attackLevel: String?
+
+        public var attackResult: [TextModerationPlusResponseBody.Data.AttackResult]?
 
         public var dataId: String?
 
@@ -5860,6 +5970,10 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
         public var riskLevel: String?
 
         public var score: Double?
+
+        public var sensitiveLevel: String?
+
+        public var sensitiveResult: [TextModerationPlusResponseBody.Data.SensitiveResult]?
 
         public override init() {
             super.init()
@@ -5882,6 +5996,16 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
                 }
                 map["Advice"] = tmp
             }
+            if self.attackLevel != nil {
+                map["AttackLevel"] = self.attackLevel!
+            }
+            if self.attackResult != nil {
+                var tmp : [Any] = []
+                for k in self.attackResult! {
+                    tmp.append(k.toMap())
+                }
+                map["AttackResult"] = tmp
+            }
             if self.dataId != nil {
                 map["DataId"] = self.dataId!
             }
@@ -5898,6 +6022,16 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
             if self.score != nil {
                 map["Score"] = self.score!
             }
+            if self.sensitiveLevel != nil {
+                map["SensitiveLevel"] = self.sensitiveLevel!
+            }
+            if self.sensitiveResult != nil {
+                var tmp : [Any] = []
+                for k in self.sensitiveResult! {
+                    tmp.append(k.toMap())
+                }
+                map["SensitiveResult"] = tmp
+            }
             return map
         }
 
@@ -5912,6 +6046,20 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.advice = tmp
+            }
+            if dict.keys.contains("AttackLevel") {
+                self.attackLevel = dict["AttackLevel"] as! String
+            }
+            if dict.keys.contains("AttackResult") {
+                var tmp : [TextModerationPlusResponseBody.Data.AttackResult] = []
+                for v in dict["AttackResult"] as! [Any] {
+                    var model = TextModerationPlusResponseBody.Data.AttackResult()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.attackResult = tmp
             }
             if dict.keys.contains("DataId") {
                 self.dataId = dict["DataId"] as! String
@@ -5932,6 +6080,20 @@ public class TextModerationPlusResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Score") {
                 self.score = dict["Score"] as! Double
+            }
+            if dict.keys.contains("SensitiveLevel") {
+                self.sensitiveLevel = dict["SensitiveLevel"] as! String
+            }
+            if dict.keys.contains("SensitiveResult") {
+                var tmp : [TextModerationPlusResponseBody.Data.SensitiveResult] = []
+                for v in dict["SensitiveResult"] as! [Any] {
+                    var model = TextModerationPlusResponseBody.Data.SensitiveResult()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.sensitiveResult = tmp
             }
         }
     }
