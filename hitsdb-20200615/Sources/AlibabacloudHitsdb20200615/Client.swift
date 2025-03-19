@@ -490,6 +490,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.streamSpec)) {
             query["StreamSpec"] = request.streamSpec ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.tag)) {
+            query["Tag"] = request.tag ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.tsdbNum)) {
             query["TsdbNum"] = request.tsdbNum!;
         }
