@@ -3785,15 +3785,21 @@ public class ExportCipStatsRequest : Tea.TeaModel {
 
     public var endDate: String?
 
+    public var exportType: String?
+
     public var label: String?
 
     public var regionId: String?
 
     public var resourceType: String?
 
+    public var serviceCode: String?
+
     public var startDate: String?
 
     public var subUid: String?
+
+    public var type: String?
 
     public override init() {
         super.init()
@@ -3815,6 +3821,9 @@ public class ExportCipStatsRequest : Tea.TeaModel {
         if self.endDate != nil {
             map["EndDate"] = self.endDate!
         }
+        if self.exportType != nil {
+            map["ExportType"] = self.exportType!
+        }
         if self.label != nil {
             map["Label"] = self.label!
         }
@@ -3824,11 +3833,17 @@ public class ExportCipStatsRequest : Tea.TeaModel {
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
         }
+        if self.serviceCode != nil {
+            map["ServiceCode"] = self.serviceCode!
+        }
         if self.startDate != nil {
             map["StartDate"] = self.startDate!
         }
         if self.subUid != nil {
             map["SubUid"] = self.subUid!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
         }
         return map
     }
@@ -3840,6 +3855,9 @@ public class ExportCipStatsRequest : Tea.TeaModel {
         if dict.keys.contains("EndDate") {
             self.endDate = dict["EndDate"] as! String
         }
+        if dict.keys.contains("ExportType") {
+            self.exportType = dict["ExportType"] as! String
+        }
         if dict.keys.contains("Label") {
             self.label = dict["Label"] as! String
         }
@@ -3849,11 +3867,17 @@ public class ExportCipStatsRequest : Tea.TeaModel {
         if dict.keys.contains("ResourceType") {
             self.resourceType = dict["ResourceType"] as! String
         }
+        if dict.keys.contains("ServiceCode") {
+            self.serviceCode = dict["ServiceCode"] as! String
+        }
         if dict.keys.contains("StartDate") {
             self.startDate = dict["StartDate"] as! String
         }
         if dict.keys.contains("SubUid") {
             self.subUid = dict["SubUid"] as! String
+        }
+        if dict.keys.contains("Type") {
+            self.type = dict["Type"] as! String
         }
     }
 }
@@ -5946,9 +5970,13 @@ public class GetCipStatsRequest : Tea.TeaModel {
 
     public var resourceType: String?
 
+    public var serviceCode: String?
+
     public var startDate: String?
 
     public var subUid: String?
+
+    public var type: String?
 
     public override init() {
         super.init()
@@ -5979,11 +6007,17 @@ public class GetCipStatsRequest : Tea.TeaModel {
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
         }
+        if self.serviceCode != nil {
+            map["ServiceCode"] = self.serviceCode!
+        }
         if self.startDate != nil {
             map["StartDate"] = self.startDate!
         }
         if self.subUid != nil {
             map["SubUid"] = self.subUid!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
         }
         return map
     }
@@ -6004,11 +6038,17 @@ public class GetCipStatsRequest : Tea.TeaModel {
         if dict.keys.contains("ResourceType") {
             self.resourceType = dict["ResourceType"] as! String
         }
+        if dict.keys.contains("ServiceCode") {
+            self.serviceCode = dict["ServiceCode"] as! String
+        }
         if dict.keys.contains("StartDate") {
             self.startDate = dict["StartDate"] as! String
         }
         if dict.keys.contains("SubUid") {
             self.subUid = dict["SubUid"] as! String
+        }
+        if dict.keys.contains("Type") {
+            self.type = dict["Type"] as! String
         }
     }
 }
@@ -6016,7 +6056,9 @@ public class GetCipStatsRequest : Tea.TeaModel {
 public class GetCipStatsResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class LabelStatChart : Tea.TeaModel {
-            public class TreeChart : Tea.TeaModel {
+            public class ImageTreeChar : Tea.TeaModel {
+                public var description_: String?
+
                 public var name: String?
 
                 public var value: String?
@@ -6035,6 +6077,9 @@ public class GetCipStatsResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
                     if self.name != nil {
                         map["Name"] = self.name!
                     }
@@ -6045,6 +6090,54 @@ public class GetCipStatsResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Description") {
+                        self.description_ = dict["Description"] as! String
+                    }
+                    if dict.keys.contains("Name") {
+                        self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("Value") {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public class TreeChart : Tea.TeaModel {
+                public var description_: String?
+
+                public var name: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Description") {
+                        self.description_ = dict["Description"] as! String
+                    }
                     if dict.keys.contains("Name") {
                         self.name = dict["Name"] as! String
                     }
@@ -6054,6 +6147,8 @@ public class GetCipStatsResponseBody : Tea.TeaModel {
                 }
             }
             public class VoiceTreeChart : Tea.TeaModel {
+                public var description_: String?
+
                 public var name: String?
 
                 public var value: String?
@@ -6072,6 +6167,9 @@ public class GetCipStatsResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.description_ != nil {
+                        map["Description"] = self.description_!
+                    }
                     if self.name != nil {
                         map["Name"] = self.name!
                     }
@@ -6082,6 +6180,9 @@ public class GetCipStatsResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Description") {
+                        self.description_ = dict["Description"] as! String
+                    }
                     if dict.keys.contains("Name") {
                         self.name = dict["Name"] as! String
                     }
@@ -6127,6 +6228,8 @@ public class GetCipStatsResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var imageTreeChar: [GetCipStatsResponseBody.Data.LabelStatChart.ImageTreeChar]?
+
             public var serviceCode: String?
 
             public var totalCount: Int64?
@@ -6153,6 +6256,13 @@ public class GetCipStatsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.imageTreeChar != nil {
+                    var tmp : [Any] = []
+                    for k in self.imageTreeChar! {
+                        tmp.append(k.toMap())
+                    }
+                    map["ImageTreeChar"] = tmp
+                }
                 if self.serviceCode != nil {
                     map["ServiceCode"] = self.serviceCode!
                 }
@@ -6187,6 +6297,17 @@ public class GetCipStatsResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ImageTreeChar") {
+                    var tmp : [GetCipStatsResponseBody.Data.LabelStatChart.ImageTreeChar] = []
+                    for v in dict["ImageTreeChar"] as! [Any] {
+                        var model = GetCipStatsResponseBody.Data.LabelStatChart.ImageTreeChar()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.imageTreeChar = tmp
+                }
                 if dict.keys.contains("ServiceCode") {
                     self.serviceCode = dict["ServiceCode"] as! String
                 }
@@ -6307,6 +6428,8 @@ public class GetCipStatsResponseBody : Tea.TeaModel {
         }
         public var labelStatChart: [GetCipStatsResponseBody.Data.LabelStatChart]?
 
+        public var totalStat: [String: Any]?
+
         public var uids: [String]?
 
         public var x: [String]?
@@ -6335,6 +6458,9 @@ public class GetCipStatsResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["LabelStatChart"] = tmp
+            }
+            if self.totalStat != nil {
+                map["TotalStat"] = self.totalStat!
             }
             if self.uids != nil {
                 map["Uids"] = self.uids!
@@ -6370,6 +6496,9 @@ public class GetCipStatsResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.labelStatChart = tmp
+            }
+            if dict.keys.contains("TotalStat") {
+                self.totalStat = dict["TotalStat"] as! [String: Any]
             }
             if dict.keys.contains("Uids") {
                 self.uids = dict["Uids"] as! [String]
@@ -10938,6 +11067,8 @@ public class GetUploadInfoResponse : Tea.TeaModel {
 }
 
 public class GetUserBuyStatusRequest : Tea.TeaModel {
+    public var commodityCode: String?
+
     public var regionId: String?
 
     public override init() {
@@ -10954,6 +11085,9 @@ public class GetUserBuyStatusRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.commodityCode != nil {
+            map["CommodityCode"] = self.commodityCode!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -10961,6 +11095,9 @@ public class GetUserBuyStatusRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CommodityCode") {
+            self.commodityCode = dict["CommodityCode"] as! String
+        }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
         }
@@ -12204,6 +12341,8 @@ public class ListKeywordLibsResponseBody : Tea.TeaModel {
 
         public var libName: String?
 
+        public var serviceCodes: String?
+
         public var uid: String?
 
         public override init() {
@@ -12232,6 +12371,9 @@ public class ListKeywordLibsResponseBody : Tea.TeaModel {
             if self.libName != nil {
                 map["LibName"] = self.libName!
             }
+            if self.serviceCodes != nil {
+                map["ServiceCodes"] = self.serviceCodes!
+            }
             if self.uid != nil {
                 map["Uid"] = self.uid!
             }
@@ -12250,6 +12392,9 @@ public class ListKeywordLibsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("LibName") {
                 self.libName = dict["LibName"] as! String
+            }
+            if dict.keys.contains("ServiceCodes") {
+                self.serviceCodes = dict["ServiceCodes"] as! String
             }
             if dict.keys.contains("Uid") {
                 self.uid = dict["Uid"] as! String
