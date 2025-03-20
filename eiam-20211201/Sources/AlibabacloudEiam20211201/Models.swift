@@ -2503,6 +2503,51 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
         }
     }
     public class UdPullConfig : Tea.TeaModel {
+        public class PeriodicSyncConfig : Tea.TeaModel {
+            public var periodicSyncCron: String?
+
+            public var periodicSyncTimes: [Int32]?
+
+            public var periodicSyncType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.periodicSyncCron != nil {
+                    map["PeriodicSyncCron"] = self.periodicSyncCron!
+                }
+                if self.periodicSyncTimes != nil {
+                    map["PeriodicSyncTimes"] = self.periodicSyncTimes!
+                }
+                if self.periodicSyncType != nil {
+                    map["PeriodicSyncType"] = self.periodicSyncType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("PeriodicSyncCron") {
+                    self.periodicSyncCron = dict["PeriodicSyncCron"] as! String
+                }
+                if dict.keys.contains("PeriodicSyncTimes") {
+                    self.periodicSyncTimes = dict["PeriodicSyncTimes"] as! [Int32]
+                }
+                if dict.keys.contains("PeriodicSyncType") {
+                    self.periodicSyncType = dict["PeriodicSyncType"] as! String
+                }
+            }
+        }
         public class UdSyncScopeConfig : Tea.TeaModel {
             public var sourceScopes: [String]?
 
@@ -2544,6 +2589,8 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
 
         public var incrementalCallbackStatus: String?
 
+        public var periodicSyncConfig: CreateIdentityProviderRequest.UdPullConfig.PeriodicSyncConfig?
+
         public var periodicSyncStatus: String?
 
         public var udSyncScopeConfig: CreateIdentityProviderRequest.UdPullConfig.UdSyncScopeConfig?
@@ -2558,6 +2605,7 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.periodicSyncConfig?.validate()
             try self.udSyncScopeConfig?.validate()
         }
 
@@ -2568,6 +2616,9 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
             }
             if self.incrementalCallbackStatus != nil {
                 map["IncrementalCallbackStatus"] = self.incrementalCallbackStatus!
+            }
+            if self.periodicSyncConfig != nil {
+                map["PeriodicSyncConfig"] = self.periodicSyncConfig?.toMap()
             }
             if self.periodicSyncStatus != nil {
                 map["PeriodicSyncStatus"] = self.periodicSyncStatus!
@@ -2584,6 +2635,11 @@ public class CreateIdentityProviderRequest : Tea.TeaModel {
             }
             if dict.keys.contains("IncrementalCallbackStatus") {
                 self.incrementalCallbackStatus = dict["IncrementalCallbackStatus"] as! String
+            }
+            if dict.keys.contains("PeriodicSyncConfig") {
+                var model = CreateIdentityProviderRequest.UdPullConfig.PeriodicSyncConfig()
+                model.fromMap(dict["PeriodicSyncConfig"] as! [String: Any])
+                self.periodicSyncConfig = model
             }
             if dict.keys.contains("PeriodicSyncStatus") {
                 self.periodicSyncStatus = dict["PeriodicSyncStatus"] as! String
@@ -11946,6 +12002,51 @@ public class GetIdentityProviderUdPullConfigurationResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class PeriodicSyncConfig : Tea.TeaModel {
+            public var periodicSyncCron: String?
+
+            public var periodicSyncTimes: Int32?
+
+            public var periodicSyncType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.periodicSyncCron != nil {
+                    map["PeriodicSyncCron"] = self.periodicSyncCron!
+                }
+                if self.periodicSyncTimes != nil {
+                    map["PeriodicSyncTimes"] = self.periodicSyncTimes!
+                }
+                if self.periodicSyncType != nil {
+                    map["PeriodicSyncType"] = self.periodicSyncType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("PeriodicSyncCron") {
+                    self.periodicSyncCron = dict["PeriodicSyncCron"] as! String
+                }
+                if dict.keys.contains("PeriodicSyncTimes") {
+                    self.periodicSyncTimes = dict["PeriodicSyncTimes"] as! Int32
+                }
+                if dict.keys.contains("PeriodicSyncType") {
+                    self.periodicSyncType = dict["PeriodicSyncType"] as! String
+                }
+            }
+        }
         public class PullProtectedRule : Tea.TeaModel {
             public var groupDeletedThreshold: Int32?
 
@@ -12038,6 +12139,8 @@ public class GetIdentityProviderUdPullConfigurationResponseBody : Tea.TeaModel {
 
         public var ldapUdPullConfig: GetIdentityProviderUdPullConfigurationResponseBody.UdPullConfiguration.LdapUdPullConfig?
 
+        public var periodicSyncConfig: GetIdentityProviderUdPullConfigurationResponseBody.UdPullConfiguration.PeriodicSyncConfig?
+
         public var periodicSyncStatus: String?
 
         public var pullProtectedRule: GetIdentityProviderUdPullConfigurationResponseBody.UdPullConfiguration.PullProtectedRule?
@@ -12055,6 +12158,7 @@ public class GetIdentityProviderUdPullConfigurationResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.ldapUdPullConfig?.validate()
+            try self.periodicSyncConfig?.validate()
             try self.pullProtectedRule?.validate()
             try self.udSyncScopeConfig?.validate()
         }
@@ -12075,6 +12179,9 @@ public class GetIdentityProviderUdPullConfigurationResponseBody : Tea.TeaModel {
             }
             if self.ldapUdPullConfig != nil {
                 map["LdapUdPullConfig"] = self.ldapUdPullConfig?.toMap()
+            }
+            if self.periodicSyncConfig != nil {
+                map["PeriodicSyncConfig"] = self.periodicSyncConfig?.toMap()
             }
             if self.periodicSyncStatus != nil {
                 map["PeriodicSyncStatus"] = self.periodicSyncStatus!
@@ -12105,6 +12212,11 @@ public class GetIdentityProviderUdPullConfigurationResponseBody : Tea.TeaModel {
                 var model = GetIdentityProviderUdPullConfigurationResponseBody.UdPullConfiguration.LdapUdPullConfig()
                 model.fromMap(dict["LdapUdPullConfig"] as! [String: Any])
                 self.ldapUdPullConfig = model
+            }
+            if dict.keys.contains("PeriodicSyncConfig") {
+                var model = GetIdentityProviderUdPullConfigurationResponseBody.UdPullConfiguration.PeriodicSyncConfig()
+                model.fromMap(dict["PeriodicSyncConfig"] as! [String: Any])
+                self.periodicSyncConfig = model
             }
             if dict.keys.contains("PeriodicSyncStatus") {
                 self.periodicSyncStatus = dict["PeriodicSyncStatus"] as! String
@@ -28229,6 +28341,51 @@ public class SetIdentityProviderUdPullConfigurationRequest : Tea.TeaModel {
             }
         }
     }
+    public class PeriodicSyncConfig : Tea.TeaModel {
+        public var periodicSyncCron: String?
+
+        public var periodicSyncTimes: [Int32]?
+
+        public var periodicSyncType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.periodicSyncCron != nil {
+                map["PeriodicSyncCron"] = self.periodicSyncCron!
+            }
+            if self.periodicSyncTimes != nil {
+                map["PeriodicSyncTimes"] = self.periodicSyncTimes!
+            }
+            if self.periodicSyncType != nil {
+                map["PeriodicSyncType"] = self.periodicSyncType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("PeriodicSyncCron") {
+                self.periodicSyncCron = dict["PeriodicSyncCron"] as! String
+            }
+            if dict.keys.contains("PeriodicSyncTimes") {
+                self.periodicSyncTimes = dict["PeriodicSyncTimes"] as! [Int32]
+            }
+            if dict.keys.contains("PeriodicSyncType") {
+                self.periodicSyncType = dict["PeriodicSyncType"] as! String
+            }
+        }
+    }
     public class PullProtectedRule : Tea.TeaModel {
         public var groupDeletedThreshold: Int32?
 
@@ -28321,6 +28478,8 @@ public class SetIdentityProviderUdPullConfigurationRequest : Tea.TeaModel {
 
     public var ldapUdPullConfig: SetIdentityProviderUdPullConfigurationRequest.LdapUdPullConfig?
 
+    public var periodicSyncConfig: SetIdentityProviderUdPullConfigurationRequest.PeriodicSyncConfig?
+
     public var periodicSyncStatus: String?
 
     public var pullProtectedRule: SetIdentityProviderUdPullConfigurationRequest.PullProtectedRule?
@@ -28338,6 +28497,7 @@ public class SetIdentityProviderUdPullConfigurationRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.ldapUdPullConfig?.validate()
+        try self.periodicSyncConfig?.validate()
         try self.pullProtectedRule?.validate()
         try self.udSyncScopeConfig?.validate()
     }
@@ -28358,6 +28518,9 @@ public class SetIdentityProviderUdPullConfigurationRequest : Tea.TeaModel {
         }
         if self.ldapUdPullConfig != nil {
             map["LdapUdPullConfig"] = self.ldapUdPullConfig?.toMap()
+        }
+        if self.periodicSyncConfig != nil {
+            map["PeriodicSyncConfig"] = self.periodicSyncConfig?.toMap()
         }
         if self.periodicSyncStatus != nil {
             map["PeriodicSyncStatus"] = self.periodicSyncStatus!
@@ -28388,6 +28551,11 @@ public class SetIdentityProviderUdPullConfigurationRequest : Tea.TeaModel {
             var model = SetIdentityProviderUdPullConfigurationRequest.LdapUdPullConfig()
             model.fromMap(dict["LdapUdPullConfig"] as! [String: Any])
             self.ldapUdPullConfig = model
+        }
+        if dict.keys.contains("PeriodicSyncConfig") {
+            var model = SetIdentityProviderUdPullConfigurationRequest.PeriodicSyncConfig()
+            model.fromMap(dict["PeriodicSyncConfig"] as! [String: Any])
+            self.periodicSyncConfig = model
         }
         if dict.keys.contains("PeriodicSyncStatus") {
             self.periodicSyncStatus = dict["PeriodicSyncStatus"] as! String

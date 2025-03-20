@@ -4921,6 +4921,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ldapUdPullConfig)) {
             query["LdapUdPullConfig"] = request.ldapUdPullConfig!;
         }
+        if (!TeaUtils.Client.isUnset(request.periodicSyncConfig)) {
+            query["PeriodicSyncConfig"] = request.periodicSyncConfig!;
+        }
         if (!TeaUtils.Client.isUnset(request.periodicSyncStatus)) {
             query["PeriodicSyncStatus"] = request.periodicSyncStatus ?? "";
         }
