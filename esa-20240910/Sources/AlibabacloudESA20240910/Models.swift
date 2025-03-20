@@ -10424,6 +10424,8 @@ public class CreateOriginRuleRequest : Tea.TeaModel {
 
     public var range: String?
 
+    public var rangeChunkSize: String?
+
     public var rule: String?
 
     public var ruleEnable: String?
@@ -10475,6 +10477,9 @@ public class CreateOriginRuleRequest : Tea.TeaModel {
         if self.range != nil {
             map["Range"] = self.range!
         }
+        if self.rangeChunkSize != nil {
+            map["RangeChunkSize"] = self.rangeChunkSize!
+        }
         if self.rule != nil {
             map["Rule"] = self.rule!
         }
@@ -10520,6 +10525,9 @@ public class CreateOriginRuleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Range") {
             self.range = dict["Range"] as! String
+        }
+        if dict.keys.contains("RangeChunkSize") {
+            self.rangeChunkSize = dict["RangeChunkSize"] as! String
         }
         if dict.keys.contains("Rule") {
             self.rule = dict["Rule"] as! String
@@ -31821,6 +31829,8 @@ public class GetOriginRuleResponseBody : Tea.TeaModel {
 
     public var range: String?
 
+    public var rangeChunkSize: String?
+
     public var requestId: String?
 
     public var rule: String?
@@ -31880,6 +31890,9 @@ public class GetOriginRuleResponseBody : Tea.TeaModel {
         if self.range != nil {
             map["Range"] = self.range!
         }
+        if self.rangeChunkSize != nil {
+            map["RangeChunkSize"] = self.rangeChunkSize!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -31934,6 +31947,9 @@ public class GetOriginRuleResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Range") {
             self.range = dict["Range"] as! String
+        }
+        if dict.keys.contains("RangeChunkSize") {
+            self.rangeChunkSize = dict["RangeChunkSize"] as! String
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
@@ -46638,6 +46654,8 @@ public class ListOriginRulesResponseBody : Tea.TeaModel {
 
         public var range: String?
 
+        public var rangeChunkSize: String?
+
         public var rule: String?
 
         public var ruleEnable: String?
@@ -46695,6 +46713,9 @@ public class ListOriginRulesResponseBody : Tea.TeaModel {
             if self.range != nil {
                 map["Range"] = self.range!
             }
+            if self.rangeChunkSize != nil {
+                map["RangeChunkSize"] = self.rangeChunkSize!
+            }
             if self.rule != nil {
                 map["Rule"] = self.rule!
             }
@@ -46746,6 +46767,9 @@ public class ListOriginRulesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Range") {
                 self.range = dict["Range"] as! String
+            }
+            if dict.keys.contains("RangeChunkSize") {
+                self.rangeChunkSize = dict["RangeChunkSize"] as! String
             }
             if dict.keys.contains("Rule") {
                 self.rule = dict["Rule"] as! String
@@ -61471,6 +61495,8 @@ public class UpdateOriginRuleRequest : Tea.TeaModel {
 
     public var range: String?
 
+    public var rangeChunkSize: String?
+
     public var rule: String?
 
     public var ruleEnable: String?
@@ -61523,6 +61549,9 @@ public class UpdateOriginRuleRequest : Tea.TeaModel {
         if self.range != nil {
             map["Range"] = self.range!
         }
+        if self.rangeChunkSize != nil {
+            map["RangeChunkSize"] = self.rangeChunkSize!
+        }
         if self.rule != nil {
             map["Rule"] = self.rule!
         }
@@ -61568,6 +61597,9 @@ public class UpdateOriginRuleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Range") {
             self.range = dict["Range"] as! String
+        }
+        if dict.keys.contains("RangeChunkSize") {
+            self.rangeChunkSize = dict["RangeChunkSize"] as! String
         }
         if dict.keys.contains("Rule") {
             self.rule = dict["Rule"] as! String
