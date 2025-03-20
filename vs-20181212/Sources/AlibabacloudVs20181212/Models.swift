@@ -28222,6 +28222,8 @@ public class RebootRenderingInstanceResponse : Tea.TeaModel {
 public class RecoverRenderingDataPackageRequest : Tea.TeaModel {
     public var dataPackageId: String?
 
+    public var loadMode: String?
+
     public var renderingInstanceId: String?
 
     public override init() {
@@ -28241,6 +28243,9 @@ public class RecoverRenderingDataPackageRequest : Tea.TeaModel {
         if self.dataPackageId != nil {
             map["DataPackageId"] = self.dataPackageId!
         }
+        if self.loadMode != nil {
+            map["LoadMode"] = self.loadMode!
+        }
         if self.renderingInstanceId != nil {
             map["RenderingInstanceId"] = self.renderingInstanceId!
         }
@@ -28250,6 +28255,9 @@ public class RecoverRenderingDataPackageRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DataPackageId") {
             self.dataPackageId = dict["DataPackageId"] as! String
+        }
+        if dict.keys.contains("LoadMode") {
+            self.loadMode = dict["LoadMode"] as! String
         }
         if dict.keys.contains("RenderingInstanceId") {
             self.renderingInstanceId = dict["RenderingInstanceId"] as! String

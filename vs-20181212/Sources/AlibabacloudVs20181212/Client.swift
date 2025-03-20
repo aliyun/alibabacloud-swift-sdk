@@ -6221,6 +6221,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dataPackageId)) {
             query["DataPackageId"] = request.dataPackageId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.loadMode)) {
+            query["LoadMode"] = request.loadMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.renderingInstanceId)) {
             query["RenderingInstanceId"] = request.renderingInstanceId ?? "";
         }
