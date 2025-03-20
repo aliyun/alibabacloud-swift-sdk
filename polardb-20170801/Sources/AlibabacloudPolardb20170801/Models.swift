@@ -11417,6 +11417,8 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
 
     public var architecture: String?
 
+    public var autoUpgradeMinorVersion: String?
+
     public var blktagTotal: Int64?
 
     public var blktagUsed: Int64?
@@ -11563,6 +11565,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if self.architecture != nil {
             map["Architecture"] = self.architecture!
+        }
+        if self.autoUpgradeMinorVersion != nil {
+            map["AutoUpgradeMinorVersion"] = self.autoUpgradeMinorVersion!
         }
         if self.blktagTotal != nil {
             map["BlktagTotal"] = self.blktagTotal!
@@ -11770,6 +11775,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Architecture") {
             self.architecture = dict["Architecture"] as! String
+        }
+        if dict.keys.contains("AutoUpgradeMinorVersion") {
+            self.autoUpgradeMinorVersion = dict["AutoUpgradeMinorVersion"] as! String
         }
         if dict.keys.contains("BlktagTotal") {
             self.blktagTotal = dict["BlktagTotal"] as! Int64
