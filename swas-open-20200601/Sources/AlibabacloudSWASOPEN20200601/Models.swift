@@ -12916,6 +12916,8 @@ public class ListInstancesRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var planType: String?
+
     public var publicIpAddresses: String?
 
     public var regionId: String?
@@ -12955,6 +12957,9 @@ public class ListInstancesRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.planType != nil {
+            map["PlanType"] = self.planType!
+        }
         if self.publicIpAddresses != nil {
             map["PublicIpAddresses"] = self.publicIpAddresses!
         }
@@ -12992,6 +12997,9 @@ public class ListInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("PlanType") {
+            self.planType = dict["PlanType"] as! String
         }
         if dict.keys.contains("PublicIpAddresses") {
             self.publicIpAddresses = dict["PublicIpAddresses"] as! String
@@ -13455,6 +13463,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
         public var planId: String?
 
+        public var planType: String?
+
         public var publicIpAddress: String?
 
         public var regionId: String?
@@ -13540,6 +13550,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if self.planId != nil {
                 map["PlanId"] = self.planId!
+            }
+            if self.planType != nil {
+                map["PlanType"] = self.planType!
             }
             if self.publicIpAddress != nil {
                 map["PublicIpAddress"] = self.publicIpAddress!
@@ -13635,6 +13648,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("PlanId") {
                 self.planId = dict["PlanId"] as! String
+            }
+            if dict.keys.contains("PlanType") {
+                self.planType = dict["PlanType"] as! String
             }
             if dict.keys.contains("PublicIpAddress") {
                 self.publicIpAddress = dict["PublicIpAddress"] as! String
@@ -14259,6 +14275,51 @@ public class ListPlansRequest : Tea.TeaModel {
 
 public class ListPlansResponseBody : Tea.TeaModel {
     public class Plans : Tea.TeaModel {
+        public class Tags : Tea.TeaModel {
+            public var cnTitle: String?
+
+            public var color: String?
+
+            public var enTitle: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cnTitle != nil {
+                    map["CnTitle"] = self.cnTitle!
+                }
+                if self.color != nil {
+                    map["Color"] = self.color!
+                }
+                if self.enTitle != nil {
+                    map["EnTitle"] = self.enTitle!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CnTitle") {
+                    self.cnTitle = dict["CnTitle"] as! String
+                }
+                if dict.keys.contains("Color") {
+                    self.color = dict["Color"] as! String
+                }
+                if dict.keys.contains("EnTitle") {
+                    self.enTitle = dict["EnTitle"] as! String
+                }
+            }
+        }
         public var bandwidth: Int32?
 
         public var core: Int32?
@@ -14280,6 +14341,8 @@ public class ListPlansResponseBody : Tea.TeaModel {
         public var planType: String?
 
         public var supportPlatform: String?
+
+        public var tags: [ListPlansResponseBody.Plans.Tags]?
 
         public override init() {
             super.init()
@@ -14328,6 +14391,13 @@ public class ListPlansResponseBody : Tea.TeaModel {
             if self.supportPlatform != nil {
                 map["SupportPlatform"] = self.supportPlatform!
             }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
             return map
         }
 
@@ -14364,6 +14434,17 @@ public class ListPlansResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SupportPlatform") {
                 self.supportPlatform = dict["SupportPlatform"] as! String
+            }
+            if dict.keys.contains("Tags") {
+                var tmp : [ListPlansResponseBody.Plans.Tags] = []
+                for v in dict["Tags"] as! [Any] {
+                    var model = ListPlansResponseBody.Plans.Tags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tags = tmp
             }
         }
     }
