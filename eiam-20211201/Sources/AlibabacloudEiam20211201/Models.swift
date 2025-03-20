@@ -968,6 +968,459 @@ public class CreateApplicationClientSecretResponse : Tea.TeaModel {
     }
 }
 
+public class CreateConditionalAccessPolicyRequest : Tea.TeaModel {
+    public class ConditionsConfig : Tea.TeaModel {
+        public class Applications : Tea.TeaModel {
+            public var excludeApplications: [String]?
+
+            public var includeApplications: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.excludeApplications != nil {
+                    map["ExcludeApplications"] = self.excludeApplications!
+                }
+                if self.includeApplications != nil {
+                    map["IncludeApplications"] = self.includeApplications!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ExcludeApplications") {
+                    self.excludeApplications = dict["ExcludeApplications"] as! [String]
+                }
+                if dict.keys.contains("IncludeApplications") {
+                    self.includeApplications = dict["IncludeApplications"] as! [String]
+                }
+            }
+        }
+        public class NetworkZones : Tea.TeaModel {
+            public var excludeNetworkZones: [String]?
+
+            public var includeNetworkZones: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.excludeNetworkZones != nil {
+                    map["ExcludeNetworkZones"] = self.excludeNetworkZones!
+                }
+                if self.includeNetworkZones != nil {
+                    map["IncludeNetworkZones"] = self.includeNetworkZones!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ExcludeNetworkZones") {
+                    self.excludeNetworkZones = dict["ExcludeNetworkZones"] as! [String]
+                }
+                if dict.keys.contains("IncludeNetworkZones") {
+                    self.includeNetworkZones = dict["IncludeNetworkZones"] as! [String]
+                }
+            }
+        }
+        public class Users : Tea.TeaModel {
+            public var excludeGroups: [String]?
+
+            public var excludeOrganizationalUnits: [String]?
+
+            public var excludeUsers: [String]?
+
+            public var includeGroups: [String]?
+
+            public var includeOrganizationalUnits: [String]?
+
+            public var includeUsers: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.excludeGroups != nil {
+                    map["ExcludeGroups"] = self.excludeGroups!
+                }
+                if self.excludeOrganizationalUnits != nil {
+                    map["ExcludeOrganizationalUnits"] = self.excludeOrganizationalUnits!
+                }
+                if self.excludeUsers != nil {
+                    map["ExcludeUsers"] = self.excludeUsers!
+                }
+                if self.includeGroups != nil {
+                    map["IncludeGroups"] = self.includeGroups!
+                }
+                if self.includeOrganizationalUnits != nil {
+                    map["IncludeOrganizationalUnits"] = self.includeOrganizationalUnits!
+                }
+                if self.includeUsers != nil {
+                    map["IncludeUsers"] = self.includeUsers!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ExcludeGroups") {
+                    self.excludeGroups = dict["ExcludeGroups"] as! [String]
+                }
+                if dict.keys.contains("ExcludeOrganizationalUnits") {
+                    self.excludeOrganizationalUnits = dict["ExcludeOrganizationalUnits"] as! [String]
+                }
+                if dict.keys.contains("ExcludeUsers") {
+                    self.excludeUsers = dict["ExcludeUsers"] as! [String]
+                }
+                if dict.keys.contains("IncludeGroups") {
+                    self.includeGroups = dict["IncludeGroups"] as! [String]
+                }
+                if dict.keys.contains("IncludeOrganizationalUnits") {
+                    self.includeOrganizationalUnits = dict["IncludeOrganizationalUnits"] as! [String]
+                }
+                if dict.keys.contains("IncludeUsers") {
+                    self.includeUsers = dict["IncludeUsers"] as! [String]
+                }
+            }
+        }
+        public var applications: CreateConditionalAccessPolicyRequest.ConditionsConfig.Applications?
+
+        public var networkZones: CreateConditionalAccessPolicyRequest.ConditionsConfig.NetworkZones?
+
+        public var users: CreateConditionalAccessPolicyRequest.ConditionsConfig.Users?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.applications?.validate()
+            try self.networkZones?.validate()
+            try self.users?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.applications != nil {
+                map["Applications"] = self.applications?.toMap()
+            }
+            if self.networkZones != nil {
+                map["NetworkZones"] = self.networkZones?.toMap()
+            }
+            if self.users != nil {
+                map["Users"] = self.users?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Applications") {
+                var model = CreateConditionalAccessPolicyRequest.ConditionsConfig.Applications()
+                model.fromMap(dict["Applications"] as! [String: Any])
+                self.applications = model
+            }
+            if dict.keys.contains("NetworkZones") {
+                var model = CreateConditionalAccessPolicyRequest.ConditionsConfig.NetworkZones()
+                model.fromMap(dict["NetworkZones"] as! [String: Any])
+                self.networkZones = model
+            }
+            if dict.keys.contains("Users") {
+                var model = CreateConditionalAccessPolicyRequest.ConditionsConfig.Users()
+                model.fromMap(dict["Users"] as! [String: Any])
+                self.users = model
+            }
+        }
+    }
+    public class DecisionConfig : Tea.TeaModel {
+        public var activeSessionReuseStatus: String?
+
+        public var effect: String?
+
+        public var mfaAuthenticationIntervalSeconds: Int64?
+
+        public var mfaAuthenticationMethods: [String]?
+
+        public var mfaType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.activeSessionReuseStatus != nil {
+                map["ActiveSessionReuseStatus"] = self.activeSessionReuseStatus!
+            }
+            if self.effect != nil {
+                map["Effect"] = self.effect!
+            }
+            if self.mfaAuthenticationIntervalSeconds != nil {
+                map["MfaAuthenticationIntervalSeconds"] = self.mfaAuthenticationIntervalSeconds!
+            }
+            if self.mfaAuthenticationMethods != nil {
+                map["MfaAuthenticationMethods"] = self.mfaAuthenticationMethods!
+            }
+            if self.mfaType != nil {
+                map["MfaType"] = self.mfaType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ActiveSessionReuseStatus") {
+                self.activeSessionReuseStatus = dict["ActiveSessionReuseStatus"] as! String
+            }
+            if dict.keys.contains("Effect") {
+                self.effect = dict["Effect"] as! String
+            }
+            if dict.keys.contains("MfaAuthenticationIntervalSeconds") {
+                self.mfaAuthenticationIntervalSeconds = dict["MfaAuthenticationIntervalSeconds"] as! Int64
+            }
+            if dict.keys.contains("MfaAuthenticationMethods") {
+                self.mfaAuthenticationMethods = dict["MfaAuthenticationMethods"] as! [String]
+            }
+            if dict.keys.contains("MfaType") {
+                self.mfaType = dict["MfaType"] as! String
+            }
+        }
+    }
+    public var clientToken: String?
+
+    public var conditionalAccessPolicyName: String?
+
+    public var conditionalAccessPolicyType: String?
+
+    public var conditionsConfig: CreateConditionalAccessPolicyRequest.ConditionsConfig?
+
+    public var decisionConfig: CreateConditionalAccessPolicyRequest.DecisionConfig?
+
+    public var decisionType: String?
+
+    public var description_: String?
+
+    public var evaluateAt: String?
+
+    public var instanceId: String?
+
+    public var priority: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.conditionsConfig?.validate()
+        try self.decisionConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.conditionalAccessPolicyName != nil {
+            map["ConditionalAccessPolicyName"] = self.conditionalAccessPolicyName!
+        }
+        if self.conditionalAccessPolicyType != nil {
+            map["ConditionalAccessPolicyType"] = self.conditionalAccessPolicyType!
+        }
+        if self.conditionsConfig != nil {
+            map["ConditionsConfig"] = self.conditionsConfig?.toMap()
+        }
+        if self.decisionConfig != nil {
+            map["DecisionConfig"] = self.decisionConfig?.toMap()
+        }
+        if self.decisionType != nil {
+            map["DecisionType"] = self.decisionType!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.evaluateAt != nil {
+            map["EvaluateAt"] = self.evaluateAt!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("ConditionalAccessPolicyName") {
+            self.conditionalAccessPolicyName = dict["ConditionalAccessPolicyName"] as! String
+        }
+        if dict.keys.contains("ConditionalAccessPolicyType") {
+            self.conditionalAccessPolicyType = dict["ConditionalAccessPolicyType"] as! String
+        }
+        if dict.keys.contains("ConditionsConfig") {
+            var model = CreateConditionalAccessPolicyRequest.ConditionsConfig()
+            model.fromMap(dict["ConditionsConfig"] as! [String: Any])
+            self.conditionsConfig = model
+        }
+        if dict.keys.contains("DecisionConfig") {
+            var model = CreateConditionalAccessPolicyRequest.DecisionConfig()
+            model.fromMap(dict["DecisionConfig"] as! [String: Any])
+            self.decisionConfig = model
+        }
+        if dict.keys.contains("DecisionType") {
+            self.decisionType = dict["DecisionType"] as! String
+        }
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("EvaluateAt") {
+            self.evaluateAt = dict["EvaluateAt"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("Priority") {
+            self.priority = dict["Priority"] as! Int32
+        }
+    }
+}
+
+public class CreateConditionalAccessPolicyResponseBody : Tea.TeaModel {
+    public var conditionalAccessPolicyId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.conditionalAccessPolicyId != nil {
+            map["ConditionalAccessPolicyId"] = self.conditionalAccessPolicyId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ConditionalAccessPolicyId") {
+            self.conditionalAccessPolicyId = dict["ConditionalAccessPolicyId"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateConditionalAccessPolicyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateConditionalAccessPolicyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateConditionalAccessPolicyResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateDomainRequest : Tea.TeaModel {
     public class Filing : Tea.TeaModel {
         public var icpNumber: String?
@@ -3565,6 +4018,123 @@ public class DeleteApplicationClientSecretResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteConditionalAccessPolicyRequest : Tea.TeaModel {
+    public var conditionalAccessPolicyId: String?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.conditionalAccessPolicyId != nil {
+            map["ConditionalAccessPolicyId"] = self.conditionalAccessPolicyId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ConditionalAccessPolicyId") {
+            self.conditionalAccessPolicyId = dict["ConditionalAccessPolicyId"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+    }
+}
+
+public class DeleteConditionalAccessPolicyResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DeleteConditionalAccessPolicyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteConditionalAccessPolicyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteConditionalAccessPolicyResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DeleteDomainRequest : Tea.TeaModel {
     public var domainId: String?
 
@@ -5211,6 +5781,123 @@ public class DisableApplicationSsoResponse : Tea.TeaModel {
     }
 }
 
+public class DisableConditionalAccessPolicyRequest : Tea.TeaModel {
+    public var conditionalAccessPolicyId: String?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.conditionalAccessPolicyId != nil {
+            map["ConditionalAccessPolicyId"] = self.conditionalAccessPolicyId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ConditionalAccessPolicyId") {
+            self.conditionalAccessPolicyId = dict["ConditionalAccessPolicyId"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+    }
+}
+
+public class DisableConditionalAccessPolicyResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DisableConditionalAccessPolicyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DisableConditionalAccessPolicyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DisableConditionalAccessPolicyResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DisableDomainProxyTokenRequest : Tea.TeaModel {
     public var domainId: String?
 
@@ -6266,6 +6953,123 @@ public class EnableApplicationSsoResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = EnableApplicationSsoResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class EnableConditionalAccessPolicyRequest : Tea.TeaModel {
+    public var conditionalAccessPolicyId: String?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.conditionalAccessPolicyId != nil {
+            map["ConditionalAccessPolicyId"] = self.conditionalAccessPolicyId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ConditionalAccessPolicyId") {
+            self.conditionalAccessPolicyId = dict["ConditionalAccessPolicyId"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+    }
+}
+
+public class EnableConditionalAccessPolicyResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class EnableConditionalAccessPolicyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: EnableConditionalAccessPolicyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = EnableConditionalAccessPolicyResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -8538,6 +9342,523 @@ public class GetApplicationSsoConfigResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = GetApplicationSsoConfigResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetConditionalAccessPolicyRequest : Tea.TeaModel {
+    public var conditionalAccessPolicyId: String?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.conditionalAccessPolicyId != nil {
+            map["ConditionalAccessPolicyId"] = self.conditionalAccessPolicyId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ConditionalAccessPolicyId") {
+            self.conditionalAccessPolicyId = dict["ConditionalAccessPolicyId"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+    }
+}
+
+public class GetConditionalAccessPolicyResponseBody : Tea.TeaModel {
+    public class ConditionalAccessPolicy : Tea.TeaModel {
+        public class ConditionsConfig : Tea.TeaModel {
+            public class Applications : Tea.TeaModel {
+                public var excludeApplications: [String]?
+
+                public var includeApplications: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.excludeApplications != nil {
+                        map["ExcludeApplications"] = self.excludeApplications!
+                    }
+                    if self.includeApplications != nil {
+                        map["IncludeApplications"] = self.includeApplications!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ExcludeApplications") {
+                        self.excludeApplications = dict["ExcludeApplications"] as! [String]
+                    }
+                    if dict.keys.contains("IncludeApplications") {
+                        self.includeApplications = dict["IncludeApplications"] as! [String]
+                    }
+                }
+            }
+            public class NetworkZones : Tea.TeaModel {
+                public var excludeNetworkZones: [String]?
+
+                public var includeNetworkZones: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.excludeNetworkZones != nil {
+                        map["ExcludeNetworkZones"] = self.excludeNetworkZones!
+                    }
+                    if self.includeNetworkZones != nil {
+                        map["IncludeNetworkZones"] = self.includeNetworkZones!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ExcludeNetworkZones") {
+                        self.excludeNetworkZones = dict["ExcludeNetworkZones"] as! [String]
+                    }
+                    if dict.keys.contains("IncludeNetworkZones") {
+                        self.includeNetworkZones = dict["IncludeNetworkZones"] as! [String]
+                    }
+                }
+            }
+            public class Users : Tea.TeaModel {
+                public var excludeGroups: [String]?
+
+                public var excludeOrganizationalUnits: [String]?
+
+                public var excludeUsers: [String]?
+
+                public var includeGroups: [String]?
+
+                public var includeOrganizationalUnits: [String]?
+
+                public var includeUsers: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.excludeGroups != nil {
+                        map["ExcludeGroups"] = self.excludeGroups!
+                    }
+                    if self.excludeOrganizationalUnits != nil {
+                        map["ExcludeOrganizationalUnits"] = self.excludeOrganizationalUnits!
+                    }
+                    if self.excludeUsers != nil {
+                        map["ExcludeUsers"] = self.excludeUsers!
+                    }
+                    if self.includeGroups != nil {
+                        map["IncludeGroups"] = self.includeGroups!
+                    }
+                    if self.includeOrganizationalUnits != nil {
+                        map["IncludeOrganizationalUnits"] = self.includeOrganizationalUnits!
+                    }
+                    if self.includeUsers != nil {
+                        map["IncludeUsers"] = self.includeUsers!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ExcludeGroups") {
+                        self.excludeGroups = dict["ExcludeGroups"] as! [String]
+                    }
+                    if dict.keys.contains("ExcludeOrganizationalUnits") {
+                        self.excludeOrganizationalUnits = dict["ExcludeOrganizationalUnits"] as! [String]
+                    }
+                    if dict.keys.contains("ExcludeUsers") {
+                        self.excludeUsers = dict["ExcludeUsers"] as! [String]
+                    }
+                    if dict.keys.contains("IncludeGroups") {
+                        self.includeGroups = dict["IncludeGroups"] as! [String]
+                    }
+                    if dict.keys.contains("IncludeOrganizationalUnits") {
+                        self.includeOrganizationalUnits = dict["IncludeOrganizationalUnits"] as! [String]
+                    }
+                    if dict.keys.contains("IncludeUsers") {
+                        self.includeUsers = dict["IncludeUsers"] as! [String]
+                    }
+                }
+            }
+            public var applications: GetConditionalAccessPolicyResponseBody.ConditionalAccessPolicy.ConditionsConfig.Applications?
+
+            public var networkZones: GetConditionalAccessPolicyResponseBody.ConditionalAccessPolicy.ConditionsConfig.NetworkZones?
+
+            public var users: GetConditionalAccessPolicyResponseBody.ConditionalAccessPolicy.ConditionsConfig.Users?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.applications?.validate()
+                try self.networkZones?.validate()
+                try self.users?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.applications != nil {
+                    map["Applications"] = self.applications?.toMap()
+                }
+                if self.networkZones != nil {
+                    map["NetworkZones"] = self.networkZones?.toMap()
+                }
+                if self.users != nil {
+                    map["Users"] = self.users?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Applications") {
+                    var model = GetConditionalAccessPolicyResponseBody.ConditionalAccessPolicy.ConditionsConfig.Applications()
+                    model.fromMap(dict["Applications"] as! [String: Any])
+                    self.applications = model
+                }
+                if dict.keys.contains("NetworkZones") {
+                    var model = GetConditionalAccessPolicyResponseBody.ConditionalAccessPolicy.ConditionsConfig.NetworkZones()
+                    model.fromMap(dict["NetworkZones"] as! [String: Any])
+                    self.networkZones = model
+                }
+                if dict.keys.contains("Users") {
+                    var model = GetConditionalAccessPolicyResponseBody.ConditionalAccessPolicy.ConditionsConfig.Users()
+                    model.fromMap(dict["Users"] as! [String: Any])
+                    self.users = model
+                }
+            }
+        }
+        public class DecisionConfig : Tea.TeaModel {
+            public var activeSessionReuseStatus: String?
+
+            public var effect: String?
+
+            public var mfaAuthenticationIntervalSeconds: Int64?
+
+            public var mfaAuthenticationMethods: [String]?
+
+            public var mfaType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.activeSessionReuseStatus != nil {
+                    map["ActiveSessionReuseStatus"] = self.activeSessionReuseStatus!
+                }
+                if self.effect != nil {
+                    map["Effect"] = self.effect!
+                }
+                if self.mfaAuthenticationIntervalSeconds != nil {
+                    map["MfaAuthenticationIntervalSeconds"] = self.mfaAuthenticationIntervalSeconds!
+                }
+                if self.mfaAuthenticationMethods != nil {
+                    map["MfaAuthenticationMethods"] = self.mfaAuthenticationMethods!
+                }
+                if self.mfaType != nil {
+                    map["MfaType"] = self.mfaType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ActiveSessionReuseStatus") {
+                    self.activeSessionReuseStatus = dict["ActiveSessionReuseStatus"] as! String
+                }
+                if dict.keys.contains("Effect") {
+                    self.effect = dict["Effect"] as! String
+                }
+                if dict.keys.contains("MfaAuthenticationIntervalSeconds") {
+                    self.mfaAuthenticationIntervalSeconds = dict["MfaAuthenticationIntervalSeconds"] as! Int64
+                }
+                if dict.keys.contains("MfaAuthenticationMethods") {
+                    self.mfaAuthenticationMethods = dict["MfaAuthenticationMethods"] as! [String]
+                }
+                if dict.keys.contains("MfaType") {
+                    self.mfaType = dict["MfaType"] as! String
+                }
+            }
+        }
+        public var conditionalAccessPolicyId: String?
+
+        public var conditionalAccessPolicyName: String?
+
+        public var conditionalAccessPolicyType: String?
+
+        public var conditionsConfig: GetConditionalAccessPolicyResponseBody.ConditionalAccessPolicy.ConditionsConfig?
+
+        public var createTime: Int64?
+
+        public var decisionConfig: GetConditionalAccessPolicyResponseBody.ConditionalAccessPolicy.DecisionConfig?
+
+        public var decisionType: String?
+
+        public var description_: String?
+
+        public var evaluateAt: String?
+
+        public var instanceId: String?
+
+        public var lastUpdatedTime: Int64?
+
+        public var priority: Int32?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.conditionsConfig?.validate()
+            try self.decisionConfig?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.conditionalAccessPolicyId != nil {
+                map["ConditionalAccessPolicyId"] = self.conditionalAccessPolicyId!
+            }
+            if self.conditionalAccessPolicyName != nil {
+                map["ConditionalAccessPolicyName"] = self.conditionalAccessPolicyName!
+            }
+            if self.conditionalAccessPolicyType != nil {
+                map["ConditionalAccessPolicyType"] = self.conditionalAccessPolicyType!
+            }
+            if self.conditionsConfig != nil {
+                map["ConditionsConfig"] = self.conditionsConfig?.toMap()
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.decisionConfig != nil {
+                map["DecisionConfig"] = self.decisionConfig?.toMap()
+            }
+            if self.decisionType != nil {
+                map["DecisionType"] = self.decisionType!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.evaluateAt != nil {
+                map["EvaluateAt"] = self.evaluateAt!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.lastUpdatedTime != nil {
+                map["LastUpdatedTime"] = self.lastUpdatedTime!
+            }
+            if self.priority != nil {
+                map["Priority"] = self.priority!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ConditionalAccessPolicyId") {
+                self.conditionalAccessPolicyId = dict["ConditionalAccessPolicyId"] as! String
+            }
+            if dict.keys.contains("ConditionalAccessPolicyName") {
+                self.conditionalAccessPolicyName = dict["ConditionalAccessPolicyName"] as! String
+            }
+            if dict.keys.contains("ConditionalAccessPolicyType") {
+                self.conditionalAccessPolicyType = dict["ConditionalAccessPolicyType"] as! String
+            }
+            if dict.keys.contains("ConditionsConfig") {
+                var model = GetConditionalAccessPolicyResponseBody.ConditionalAccessPolicy.ConditionsConfig()
+                model.fromMap(dict["ConditionsConfig"] as! [String: Any])
+                self.conditionsConfig = model
+            }
+            if dict.keys.contains("CreateTime") {
+                self.createTime = dict["CreateTime"] as! Int64
+            }
+            if dict.keys.contains("DecisionConfig") {
+                var model = GetConditionalAccessPolicyResponseBody.ConditionalAccessPolicy.DecisionConfig()
+                model.fromMap(dict["DecisionConfig"] as! [String: Any])
+                self.decisionConfig = model
+            }
+            if dict.keys.contains("DecisionType") {
+                self.decisionType = dict["DecisionType"] as! String
+            }
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("EvaluateAt") {
+                self.evaluateAt = dict["EvaluateAt"] as! String
+            }
+            if dict.keys.contains("InstanceId") {
+                self.instanceId = dict["InstanceId"] as! String
+            }
+            if dict.keys.contains("LastUpdatedTime") {
+                self.lastUpdatedTime = dict["LastUpdatedTime"] as! Int64
+            }
+            if dict.keys.contains("Priority") {
+                self.priority = dict["Priority"] as! Int32
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+        }
+    }
+    public var conditionalAccessPolicy: GetConditionalAccessPolicyResponseBody.ConditionalAccessPolicy?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.conditionalAccessPolicy?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.conditionalAccessPolicy != nil {
+            map["ConditionalAccessPolicy"] = self.conditionalAccessPolicy?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ConditionalAccessPolicy") {
+            var model = GetConditionalAccessPolicyResponseBody.ConditionalAccessPolicy()
+            model.fromMap(dict["ConditionalAccessPolicy"] as! [String: Any])
+            self.conditionalAccessPolicy = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class GetConditionalAccessPolicyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetConditionalAccessPolicyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetConditionalAccessPolicyResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -16270,6 +17591,1098 @@ public class ListApplicationsForUserResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ListApplicationsForUserResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListConditionalAccessPoliciesRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var maxResults: Int64?
+
+    public var nextToken: String?
+
+    public var previousToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.previousToken != nil {
+            map["PreviousToken"] = self.previousToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int64
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("PreviousToken") {
+            self.previousToken = dict["PreviousToken"] as! String
+        }
+    }
+}
+
+public class ListConditionalAccessPoliciesResponseBody : Tea.TeaModel {
+    public class ConditionalAccessPolicies : Tea.TeaModel {
+        public class ConditionsConfig : Tea.TeaModel {
+            public class Applications : Tea.TeaModel {
+                public var excludeApplications: [String]?
+
+                public var includeApplications: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.excludeApplications != nil {
+                        map["ExcludeApplications"] = self.excludeApplications!
+                    }
+                    if self.includeApplications != nil {
+                        map["IncludeApplications"] = self.includeApplications!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ExcludeApplications") {
+                        self.excludeApplications = dict["ExcludeApplications"] as! [String]
+                    }
+                    if dict.keys.contains("IncludeApplications") {
+                        self.includeApplications = dict["IncludeApplications"] as! [String]
+                    }
+                }
+            }
+            public class NetworkZones : Tea.TeaModel {
+                public var excludeNetworkZones: [String]?
+
+                public var includeNetworkZones: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.excludeNetworkZones != nil {
+                        map["ExcludeNetworkZones"] = self.excludeNetworkZones!
+                    }
+                    if self.includeNetworkZones != nil {
+                        map["IncludeNetworkZones"] = self.includeNetworkZones!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ExcludeNetworkZones") {
+                        self.excludeNetworkZones = dict["ExcludeNetworkZones"] as! [String]
+                    }
+                    if dict.keys.contains("IncludeNetworkZones") {
+                        self.includeNetworkZones = dict["IncludeNetworkZones"] as! [String]
+                    }
+                }
+            }
+            public class Users : Tea.TeaModel {
+                public var excludeGroups: [String]?
+
+                public var excludeOrganizationalUnits: [String]?
+
+                public var excludeUsers: [String]?
+
+                public var includeGroups: [String]?
+
+                public var includeOrganizationalUnits: [String]?
+
+                public var includeUsers: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.excludeGroups != nil {
+                        map["ExcludeGroups"] = self.excludeGroups!
+                    }
+                    if self.excludeOrganizationalUnits != nil {
+                        map["ExcludeOrganizationalUnits"] = self.excludeOrganizationalUnits!
+                    }
+                    if self.excludeUsers != nil {
+                        map["ExcludeUsers"] = self.excludeUsers!
+                    }
+                    if self.includeGroups != nil {
+                        map["IncludeGroups"] = self.includeGroups!
+                    }
+                    if self.includeOrganizationalUnits != nil {
+                        map["IncludeOrganizationalUnits"] = self.includeOrganizationalUnits!
+                    }
+                    if self.includeUsers != nil {
+                        map["IncludeUsers"] = self.includeUsers!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ExcludeGroups") {
+                        self.excludeGroups = dict["ExcludeGroups"] as! [String]
+                    }
+                    if dict.keys.contains("ExcludeOrganizationalUnits") {
+                        self.excludeOrganizationalUnits = dict["ExcludeOrganizationalUnits"] as! [String]
+                    }
+                    if dict.keys.contains("ExcludeUsers") {
+                        self.excludeUsers = dict["ExcludeUsers"] as! [String]
+                    }
+                    if dict.keys.contains("IncludeGroups") {
+                        self.includeGroups = dict["IncludeGroups"] as! [String]
+                    }
+                    if dict.keys.contains("IncludeOrganizationalUnits") {
+                        self.includeOrganizationalUnits = dict["IncludeOrganizationalUnits"] as! [String]
+                    }
+                    if dict.keys.contains("IncludeUsers") {
+                        self.includeUsers = dict["IncludeUsers"] as! [String]
+                    }
+                }
+            }
+            public var applications: ListConditionalAccessPoliciesResponseBody.ConditionalAccessPolicies.ConditionsConfig.Applications?
+
+            public var networkZones: ListConditionalAccessPoliciesResponseBody.ConditionalAccessPolicies.ConditionsConfig.NetworkZones?
+
+            public var users: ListConditionalAccessPoliciesResponseBody.ConditionalAccessPolicies.ConditionsConfig.Users?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.applications?.validate()
+                try self.networkZones?.validate()
+                try self.users?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.applications != nil {
+                    map["Applications"] = self.applications?.toMap()
+                }
+                if self.networkZones != nil {
+                    map["NetworkZones"] = self.networkZones?.toMap()
+                }
+                if self.users != nil {
+                    map["Users"] = self.users?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Applications") {
+                    var model = ListConditionalAccessPoliciesResponseBody.ConditionalAccessPolicies.ConditionsConfig.Applications()
+                    model.fromMap(dict["Applications"] as! [String: Any])
+                    self.applications = model
+                }
+                if dict.keys.contains("NetworkZones") {
+                    var model = ListConditionalAccessPoliciesResponseBody.ConditionalAccessPolicies.ConditionsConfig.NetworkZones()
+                    model.fromMap(dict["NetworkZones"] as! [String: Any])
+                    self.networkZones = model
+                }
+                if dict.keys.contains("Users") {
+                    var model = ListConditionalAccessPoliciesResponseBody.ConditionalAccessPolicies.ConditionsConfig.Users()
+                    model.fromMap(dict["Users"] as! [String: Any])
+                    self.users = model
+                }
+            }
+        }
+        public class DecisionConfig : Tea.TeaModel {
+            public var activeSessionReuseStatus: String?
+
+            public var effect: String?
+
+            public var mfaAuthenticationIntervalSeconds: Int64?
+
+            public var mfaAuthenticationMethods: [String]?
+
+            public var mfaType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.activeSessionReuseStatus != nil {
+                    map["ActiveSessionReuseStatus"] = self.activeSessionReuseStatus!
+                }
+                if self.effect != nil {
+                    map["Effect"] = self.effect!
+                }
+                if self.mfaAuthenticationIntervalSeconds != nil {
+                    map["MfaAuthenticationIntervalSeconds"] = self.mfaAuthenticationIntervalSeconds!
+                }
+                if self.mfaAuthenticationMethods != nil {
+                    map["MfaAuthenticationMethods"] = self.mfaAuthenticationMethods!
+                }
+                if self.mfaType != nil {
+                    map["MfaType"] = self.mfaType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ActiveSessionReuseStatus") {
+                    self.activeSessionReuseStatus = dict["ActiveSessionReuseStatus"] as! String
+                }
+                if dict.keys.contains("Effect") {
+                    self.effect = dict["Effect"] as! String
+                }
+                if dict.keys.contains("MfaAuthenticationIntervalSeconds") {
+                    self.mfaAuthenticationIntervalSeconds = dict["MfaAuthenticationIntervalSeconds"] as! Int64
+                }
+                if dict.keys.contains("MfaAuthenticationMethods") {
+                    self.mfaAuthenticationMethods = dict["MfaAuthenticationMethods"] as! [String]
+                }
+                if dict.keys.contains("MfaType") {
+                    self.mfaType = dict["MfaType"] as! String
+                }
+            }
+        }
+        public var conditionalAccessPolicyId: String?
+
+        public var conditionalAccessPolicyName: String?
+
+        public var conditionalAccessPolicyType: String?
+
+        public var conditionsConfig: ListConditionalAccessPoliciesResponseBody.ConditionalAccessPolicies.ConditionsConfig?
+
+        public var createTime: Int64?
+
+        public var decisionConfig: ListConditionalAccessPoliciesResponseBody.ConditionalAccessPolicies.DecisionConfig?
+
+        public var decisionType: String?
+
+        public var description_: String?
+
+        public var evaluateAt: String?
+
+        public var instanceId: String?
+
+        public var lastUpdatedTime: Int64?
+
+        public var priority: Int32?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.conditionsConfig?.validate()
+            try self.decisionConfig?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.conditionalAccessPolicyId != nil {
+                map["ConditionalAccessPolicyId"] = self.conditionalAccessPolicyId!
+            }
+            if self.conditionalAccessPolicyName != nil {
+                map["ConditionalAccessPolicyName"] = self.conditionalAccessPolicyName!
+            }
+            if self.conditionalAccessPolicyType != nil {
+                map["ConditionalAccessPolicyType"] = self.conditionalAccessPolicyType!
+            }
+            if self.conditionsConfig != nil {
+                map["ConditionsConfig"] = self.conditionsConfig?.toMap()
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.decisionConfig != nil {
+                map["DecisionConfig"] = self.decisionConfig?.toMap()
+            }
+            if self.decisionType != nil {
+                map["DecisionType"] = self.decisionType!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.evaluateAt != nil {
+                map["EvaluateAt"] = self.evaluateAt!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.lastUpdatedTime != nil {
+                map["LastUpdatedTime"] = self.lastUpdatedTime!
+            }
+            if self.priority != nil {
+                map["Priority"] = self.priority!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ConditionalAccessPolicyId") {
+                self.conditionalAccessPolicyId = dict["ConditionalAccessPolicyId"] as! String
+            }
+            if dict.keys.contains("ConditionalAccessPolicyName") {
+                self.conditionalAccessPolicyName = dict["ConditionalAccessPolicyName"] as! String
+            }
+            if dict.keys.contains("ConditionalAccessPolicyType") {
+                self.conditionalAccessPolicyType = dict["ConditionalAccessPolicyType"] as! String
+            }
+            if dict.keys.contains("ConditionsConfig") {
+                var model = ListConditionalAccessPoliciesResponseBody.ConditionalAccessPolicies.ConditionsConfig()
+                model.fromMap(dict["ConditionsConfig"] as! [String: Any])
+                self.conditionsConfig = model
+            }
+            if dict.keys.contains("CreateTime") {
+                self.createTime = dict["CreateTime"] as! Int64
+            }
+            if dict.keys.contains("DecisionConfig") {
+                var model = ListConditionalAccessPoliciesResponseBody.ConditionalAccessPolicies.DecisionConfig()
+                model.fromMap(dict["DecisionConfig"] as! [String: Any])
+                self.decisionConfig = model
+            }
+            if dict.keys.contains("DecisionType") {
+                self.decisionType = dict["DecisionType"] as! String
+            }
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("EvaluateAt") {
+                self.evaluateAt = dict["EvaluateAt"] as! String
+            }
+            if dict.keys.contains("InstanceId") {
+                self.instanceId = dict["InstanceId"] as! String
+            }
+            if dict.keys.contains("LastUpdatedTime") {
+                self.lastUpdatedTime = dict["LastUpdatedTime"] as! Int64
+            }
+            if dict.keys.contains("Priority") {
+                self.priority = dict["Priority"] as! Int32
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+        }
+    }
+    public var conditionalAccessPolicies: [ListConditionalAccessPoliciesResponseBody.ConditionalAccessPolicies]?
+
+    public var nextToken: String?
+
+    public var previousToken: String?
+
+    public var requestId: String?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.conditionalAccessPolicies != nil {
+            var tmp : [Any] = []
+            for k in self.conditionalAccessPolicies! {
+                tmp.append(k.toMap())
+            }
+            map["ConditionalAccessPolicies"] = tmp
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.previousToken != nil {
+            map["PreviousToken"] = self.previousToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ConditionalAccessPolicies") {
+            var tmp : [ListConditionalAccessPoliciesResponseBody.ConditionalAccessPolicies] = []
+            for v in dict["ConditionalAccessPolicies"] as! [Any] {
+                var model = ListConditionalAccessPoliciesResponseBody.ConditionalAccessPolicies()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.conditionalAccessPolicies = tmp
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("PreviousToken") {
+            self.previousToken = dict["PreviousToken"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! Int64
+        }
+    }
+}
+
+public class ListConditionalAccessPoliciesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListConditionalAccessPoliciesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListConditionalAccessPoliciesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListConditionalAccessPoliciesForNetworkZoneRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var networkZoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.networkZoneId != nil {
+            map["NetworkZoneId"] = self.networkZoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("NetworkZoneId") {
+            self.networkZoneId = dict["NetworkZoneId"] as! String
+        }
+    }
+}
+
+public class ListConditionalAccessPoliciesForNetworkZoneResponseBody : Tea.TeaModel {
+    public class ConditionalAccessPolicies : Tea.TeaModel {
+        public class ConditionsConfig : Tea.TeaModel {
+            public class Applications : Tea.TeaModel {
+                public var excludeApplications: [String]?
+
+                public var includeApplications: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.excludeApplications != nil {
+                        map["ExcludeApplications"] = self.excludeApplications!
+                    }
+                    if self.includeApplications != nil {
+                        map["IncludeApplications"] = self.includeApplications!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ExcludeApplications") {
+                        self.excludeApplications = dict["ExcludeApplications"] as! [String]
+                    }
+                    if dict.keys.contains("IncludeApplications") {
+                        self.includeApplications = dict["IncludeApplications"] as! [String]
+                    }
+                }
+            }
+            public class NetworkZones : Tea.TeaModel {
+                public var excludeNetworkZones: [String]?
+
+                public var includeNetworkZones: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.excludeNetworkZones != nil {
+                        map["ExcludeNetworkZones"] = self.excludeNetworkZones!
+                    }
+                    if self.includeNetworkZones != nil {
+                        map["IncludeNetworkZones"] = self.includeNetworkZones!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ExcludeNetworkZones") {
+                        self.excludeNetworkZones = dict["ExcludeNetworkZones"] as! [String]
+                    }
+                    if dict.keys.contains("IncludeNetworkZones") {
+                        self.includeNetworkZones = dict["IncludeNetworkZones"] as! [String]
+                    }
+                }
+            }
+            public class Users : Tea.TeaModel {
+                public var excludeGroups: [String]?
+
+                public var excludeOrganizationalUnits: [String]?
+
+                public var excludeUsers: [String]?
+
+                public var includeGroups: [String]?
+
+                public var includeOrganizationalUnits: [String]?
+
+                public var includeUsers: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.excludeGroups != nil {
+                        map["ExcludeGroups"] = self.excludeGroups!
+                    }
+                    if self.excludeOrganizationalUnits != nil {
+                        map["ExcludeOrganizationalUnits"] = self.excludeOrganizationalUnits!
+                    }
+                    if self.excludeUsers != nil {
+                        map["ExcludeUsers"] = self.excludeUsers!
+                    }
+                    if self.includeGroups != nil {
+                        map["IncludeGroups"] = self.includeGroups!
+                    }
+                    if self.includeOrganizationalUnits != nil {
+                        map["IncludeOrganizationalUnits"] = self.includeOrganizationalUnits!
+                    }
+                    if self.includeUsers != nil {
+                        map["IncludeUsers"] = self.includeUsers!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ExcludeGroups") {
+                        self.excludeGroups = dict["ExcludeGroups"] as! [String]
+                    }
+                    if dict.keys.contains("ExcludeOrganizationalUnits") {
+                        self.excludeOrganizationalUnits = dict["ExcludeOrganizationalUnits"] as! [String]
+                    }
+                    if dict.keys.contains("ExcludeUsers") {
+                        self.excludeUsers = dict["ExcludeUsers"] as! [String]
+                    }
+                    if dict.keys.contains("IncludeGroups") {
+                        self.includeGroups = dict["IncludeGroups"] as! [String]
+                    }
+                    if dict.keys.contains("IncludeOrganizationalUnits") {
+                        self.includeOrganizationalUnits = dict["IncludeOrganizationalUnits"] as! [String]
+                    }
+                    if dict.keys.contains("IncludeUsers") {
+                        self.includeUsers = dict["IncludeUsers"] as! [String]
+                    }
+                }
+            }
+            public var applications: ListConditionalAccessPoliciesForNetworkZoneResponseBody.ConditionalAccessPolicies.ConditionsConfig.Applications?
+
+            public var networkZones: ListConditionalAccessPoliciesForNetworkZoneResponseBody.ConditionalAccessPolicies.ConditionsConfig.NetworkZones?
+
+            public var users: ListConditionalAccessPoliciesForNetworkZoneResponseBody.ConditionalAccessPolicies.ConditionsConfig.Users?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.applications?.validate()
+                try self.networkZones?.validate()
+                try self.users?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.applications != nil {
+                    map["Applications"] = self.applications?.toMap()
+                }
+                if self.networkZones != nil {
+                    map["NetworkZones"] = self.networkZones?.toMap()
+                }
+                if self.users != nil {
+                    map["Users"] = self.users?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Applications") {
+                    var model = ListConditionalAccessPoliciesForNetworkZoneResponseBody.ConditionalAccessPolicies.ConditionsConfig.Applications()
+                    model.fromMap(dict["Applications"] as! [String: Any])
+                    self.applications = model
+                }
+                if dict.keys.contains("NetworkZones") {
+                    var model = ListConditionalAccessPoliciesForNetworkZoneResponseBody.ConditionalAccessPolicies.ConditionsConfig.NetworkZones()
+                    model.fromMap(dict["NetworkZones"] as! [String: Any])
+                    self.networkZones = model
+                }
+                if dict.keys.contains("Users") {
+                    var model = ListConditionalAccessPoliciesForNetworkZoneResponseBody.ConditionalAccessPolicies.ConditionsConfig.Users()
+                    model.fromMap(dict["Users"] as! [String: Any])
+                    self.users = model
+                }
+            }
+        }
+        public class DecisionConfig : Tea.TeaModel {
+            public var activeSessionReuseStatus: String?
+
+            public var effect: String?
+
+            public var mfaAuthenticationIntervalSeconds: Int64?
+
+            public var mfaAuthenticationMethods: [String]?
+
+            public var mfaType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.activeSessionReuseStatus != nil {
+                    map["ActiveSessionReuseStatus"] = self.activeSessionReuseStatus!
+                }
+                if self.effect != nil {
+                    map["Effect"] = self.effect!
+                }
+                if self.mfaAuthenticationIntervalSeconds != nil {
+                    map["MfaAuthenticationIntervalSeconds"] = self.mfaAuthenticationIntervalSeconds!
+                }
+                if self.mfaAuthenticationMethods != nil {
+                    map["MfaAuthenticationMethods"] = self.mfaAuthenticationMethods!
+                }
+                if self.mfaType != nil {
+                    map["MfaType"] = self.mfaType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ActiveSessionReuseStatus") {
+                    self.activeSessionReuseStatus = dict["ActiveSessionReuseStatus"] as! String
+                }
+                if dict.keys.contains("Effect") {
+                    self.effect = dict["Effect"] as! String
+                }
+                if dict.keys.contains("MfaAuthenticationIntervalSeconds") {
+                    self.mfaAuthenticationIntervalSeconds = dict["MfaAuthenticationIntervalSeconds"] as! Int64
+                }
+                if dict.keys.contains("MfaAuthenticationMethods") {
+                    self.mfaAuthenticationMethods = dict["MfaAuthenticationMethods"] as! [String]
+                }
+                if dict.keys.contains("MfaType") {
+                    self.mfaType = dict["MfaType"] as! String
+                }
+            }
+        }
+        public var conditionalAccessPolicyId: String?
+
+        public var conditionalAccessPolicyName: String?
+
+        public var conditionalAccessPolicyType: String?
+
+        public var conditionsConfig: ListConditionalAccessPoliciesForNetworkZoneResponseBody.ConditionalAccessPolicies.ConditionsConfig?
+
+        public var createTime: Int64?
+
+        public var decisionConfig: ListConditionalAccessPoliciesForNetworkZoneResponseBody.ConditionalAccessPolicies.DecisionConfig?
+
+        public var decisionType: String?
+
+        public var description_: String?
+
+        public var evaluateAt: String?
+
+        public var instanceId: String?
+
+        public var lastUpdatedTime: Int64?
+
+        public var priority: Int32?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.conditionsConfig?.validate()
+            try self.decisionConfig?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.conditionalAccessPolicyId != nil {
+                map["ConditionalAccessPolicyId"] = self.conditionalAccessPolicyId!
+            }
+            if self.conditionalAccessPolicyName != nil {
+                map["ConditionalAccessPolicyName"] = self.conditionalAccessPolicyName!
+            }
+            if self.conditionalAccessPolicyType != nil {
+                map["ConditionalAccessPolicyType"] = self.conditionalAccessPolicyType!
+            }
+            if self.conditionsConfig != nil {
+                map["ConditionsConfig"] = self.conditionsConfig?.toMap()
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.decisionConfig != nil {
+                map["DecisionConfig"] = self.decisionConfig?.toMap()
+            }
+            if self.decisionType != nil {
+                map["DecisionType"] = self.decisionType!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.evaluateAt != nil {
+                map["EvaluateAt"] = self.evaluateAt!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.lastUpdatedTime != nil {
+                map["LastUpdatedTime"] = self.lastUpdatedTime!
+            }
+            if self.priority != nil {
+                map["Priority"] = self.priority!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ConditionalAccessPolicyId") {
+                self.conditionalAccessPolicyId = dict["ConditionalAccessPolicyId"] as! String
+            }
+            if dict.keys.contains("ConditionalAccessPolicyName") {
+                self.conditionalAccessPolicyName = dict["ConditionalAccessPolicyName"] as! String
+            }
+            if dict.keys.contains("ConditionalAccessPolicyType") {
+                self.conditionalAccessPolicyType = dict["ConditionalAccessPolicyType"] as! String
+            }
+            if dict.keys.contains("ConditionsConfig") {
+                var model = ListConditionalAccessPoliciesForNetworkZoneResponseBody.ConditionalAccessPolicies.ConditionsConfig()
+                model.fromMap(dict["ConditionsConfig"] as! [String: Any])
+                self.conditionsConfig = model
+            }
+            if dict.keys.contains("CreateTime") {
+                self.createTime = dict["CreateTime"] as! Int64
+            }
+            if dict.keys.contains("DecisionConfig") {
+                var model = ListConditionalAccessPoliciesForNetworkZoneResponseBody.ConditionalAccessPolicies.DecisionConfig()
+                model.fromMap(dict["DecisionConfig"] as! [String: Any])
+                self.decisionConfig = model
+            }
+            if dict.keys.contains("DecisionType") {
+                self.decisionType = dict["DecisionType"] as! String
+            }
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("EvaluateAt") {
+                self.evaluateAt = dict["EvaluateAt"] as! String
+            }
+            if dict.keys.contains("InstanceId") {
+                self.instanceId = dict["InstanceId"] as! String
+            }
+            if dict.keys.contains("LastUpdatedTime") {
+                self.lastUpdatedTime = dict["LastUpdatedTime"] as! Int64
+            }
+            if dict.keys.contains("Priority") {
+                self.priority = dict["Priority"] as! Int32
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+        }
+    }
+    public var conditionalAccessPolicies: [ListConditionalAccessPoliciesForNetworkZoneResponseBody.ConditionalAccessPolicies]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.conditionalAccessPolicies != nil {
+            var tmp : [Any] = []
+            for k in self.conditionalAccessPolicies! {
+                tmp.append(k.toMap())
+            }
+            map["ConditionalAccessPolicies"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ConditionalAccessPolicies") {
+            var tmp : [ListConditionalAccessPoliciesForNetworkZoneResponseBody.ConditionalAccessPolicies] = []
+            for v in dict["ConditionalAccessPolicies"] as! [Any] {
+                var model = ListConditionalAccessPoliciesForNetworkZoneResponseBody.ConditionalAccessPolicies()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.conditionalAccessPolicies = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ListConditionalAccessPoliciesForNetworkZoneResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListConditionalAccessPoliciesForNetworkZoneResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListConditionalAccessPoliciesForNetworkZoneResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -27162,6 +29575,552 @@ public class UpdateApplicationDescriptionResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = UpdateApplicationDescriptionResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateConditionalAccessPolicyRequest : Tea.TeaModel {
+    public class ConditionsConfig : Tea.TeaModel {
+        public class Applications : Tea.TeaModel {
+            public var excludeApplications: [String]?
+
+            public var includeApplications: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.excludeApplications != nil {
+                    map["ExcludeApplications"] = self.excludeApplications!
+                }
+                if self.includeApplications != nil {
+                    map["IncludeApplications"] = self.includeApplications!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ExcludeApplications") {
+                    self.excludeApplications = dict["ExcludeApplications"] as! [String]
+                }
+                if dict.keys.contains("IncludeApplications") {
+                    self.includeApplications = dict["IncludeApplications"] as! [String]
+                }
+            }
+        }
+        public class NetworkZones : Tea.TeaModel {
+            public var excludeNetworkZones: [String]?
+
+            public var includeNetworkZones: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.excludeNetworkZones != nil {
+                    map["ExcludeNetworkZones"] = self.excludeNetworkZones!
+                }
+                if self.includeNetworkZones != nil {
+                    map["IncludeNetworkZones"] = self.includeNetworkZones!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ExcludeNetworkZones") {
+                    self.excludeNetworkZones = dict["ExcludeNetworkZones"] as! [String]
+                }
+                if dict.keys.contains("IncludeNetworkZones") {
+                    self.includeNetworkZones = dict["IncludeNetworkZones"] as! [String]
+                }
+            }
+        }
+        public class Users : Tea.TeaModel {
+            public var excludeGroups: [String]?
+
+            public var excludeOrganizationalUnits: [String]?
+
+            public var excludeUsers: [String]?
+
+            public var includeGroups: [String]?
+
+            public var includeOrganizationalUnits: [String]?
+
+            public var includeUsers: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.excludeGroups != nil {
+                    map["ExcludeGroups"] = self.excludeGroups!
+                }
+                if self.excludeOrganizationalUnits != nil {
+                    map["ExcludeOrganizationalUnits"] = self.excludeOrganizationalUnits!
+                }
+                if self.excludeUsers != nil {
+                    map["ExcludeUsers"] = self.excludeUsers!
+                }
+                if self.includeGroups != nil {
+                    map["IncludeGroups"] = self.includeGroups!
+                }
+                if self.includeOrganizationalUnits != nil {
+                    map["IncludeOrganizationalUnits"] = self.includeOrganizationalUnits!
+                }
+                if self.includeUsers != nil {
+                    map["IncludeUsers"] = self.includeUsers!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ExcludeGroups") {
+                    self.excludeGroups = dict["ExcludeGroups"] as! [String]
+                }
+                if dict.keys.contains("ExcludeOrganizationalUnits") {
+                    self.excludeOrganizationalUnits = dict["ExcludeOrganizationalUnits"] as! [String]
+                }
+                if dict.keys.contains("ExcludeUsers") {
+                    self.excludeUsers = dict["ExcludeUsers"] as! [String]
+                }
+                if dict.keys.contains("IncludeGroups") {
+                    self.includeGroups = dict["IncludeGroups"] as! [String]
+                }
+                if dict.keys.contains("IncludeOrganizationalUnits") {
+                    self.includeOrganizationalUnits = dict["IncludeOrganizationalUnits"] as! [String]
+                }
+                if dict.keys.contains("IncludeUsers") {
+                    self.includeUsers = dict["IncludeUsers"] as! [String]
+                }
+            }
+        }
+        public var applications: UpdateConditionalAccessPolicyRequest.ConditionsConfig.Applications?
+
+        public var networkZones: UpdateConditionalAccessPolicyRequest.ConditionsConfig.NetworkZones?
+
+        public var users: UpdateConditionalAccessPolicyRequest.ConditionsConfig.Users?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.applications?.validate()
+            try self.networkZones?.validate()
+            try self.users?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.applications != nil {
+                map["Applications"] = self.applications?.toMap()
+            }
+            if self.networkZones != nil {
+                map["NetworkZones"] = self.networkZones?.toMap()
+            }
+            if self.users != nil {
+                map["Users"] = self.users?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Applications") {
+                var model = UpdateConditionalAccessPolicyRequest.ConditionsConfig.Applications()
+                model.fromMap(dict["Applications"] as! [String: Any])
+                self.applications = model
+            }
+            if dict.keys.contains("NetworkZones") {
+                var model = UpdateConditionalAccessPolicyRequest.ConditionsConfig.NetworkZones()
+                model.fromMap(dict["NetworkZones"] as! [String: Any])
+                self.networkZones = model
+            }
+            if dict.keys.contains("Users") {
+                var model = UpdateConditionalAccessPolicyRequest.ConditionsConfig.Users()
+                model.fromMap(dict["Users"] as! [String: Any])
+                self.users = model
+            }
+        }
+    }
+    public class DecisionConfig : Tea.TeaModel {
+        public var activeSessionReuseStatus: String?
+
+        public var effect: String?
+
+        public var mfaAuthenticationIntervalSeconds: Int64?
+
+        public var mfaAuthenticationMethods: [String]?
+
+        public var mfaType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.activeSessionReuseStatus != nil {
+                map["ActiveSessionReuseStatus"] = self.activeSessionReuseStatus!
+            }
+            if self.effect != nil {
+                map["Effect"] = self.effect!
+            }
+            if self.mfaAuthenticationIntervalSeconds != nil {
+                map["MfaAuthenticationIntervalSeconds"] = self.mfaAuthenticationIntervalSeconds!
+            }
+            if self.mfaAuthenticationMethods != nil {
+                map["MfaAuthenticationMethods"] = self.mfaAuthenticationMethods!
+            }
+            if self.mfaType != nil {
+                map["MfaType"] = self.mfaType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ActiveSessionReuseStatus") {
+                self.activeSessionReuseStatus = dict["ActiveSessionReuseStatus"] as! String
+            }
+            if dict.keys.contains("Effect") {
+                self.effect = dict["Effect"] as! String
+            }
+            if dict.keys.contains("MfaAuthenticationIntervalSeconds") {
+                self.mfaAuthenticationIntervalSeconds = dict["MfaAuthenticationIntervalSeconds"] as! Int64
+            }
+            if dict.keys.contains("MfaAuthenticationMethods") {
+                self.mfaAuthenticationMethods = dict["MfaAuthenticationMethods"] as! [String]
+            }
+            if dict.keys.contains("MfaType") {
+                self.mfaType = dict["MfaType"] as! String
+            }
+        }
+    }
+    public var conditionalAccessPolicyId: String?
+
+    public var conditionalAccessPolicyName: String?
+
+    public var conditionsConfig: UpdateConditionalAccessPolicyRequest.ConditionsConfig?
+
+    public var decisionConfig: UpdateConditionalAccessPolicyRequest.DecisionConfig?
+
+    public var decisionType: String?
+
+    public var instanceId: String?
+
+    public var priority: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.conditionsConfig?.validate()
+        try self.decisionConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.conditionalAccessPolicyId != nil {
+            map["ConditionalAccessPolicyId"] = self.conditionalAccessPolicyId!
+        }
+        if self.conditionalAccessPolicyName != nil {
+            map["ConditionalAccessPolicyName"] = self.conditionalAccessPolicyName!
+        }
+        if self.conditionsConfig != nil {
+            map["ConditionsConfig"] = self.conditionsConfig?.toMap()
+        }
+        if self.decisionConfig != nil {
+            map["DecisionConfig"] = self.decisionConfig?.toMap()
+        }
+        if self.decisionType != nil {
+            map["DecisionType"] = self.decisionType!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ConditionalAccessPolicyId") {
+            self.conditionalAccessPolicyId = dict["ConditionalAccessPolicyId"] as! String
+        }
+        if dict.keys.contains("ConditionalAccessPolicyName") {
+            self.conditionalAccessPolicyName = dict["ConditionalAccessPolicyName"] as! String
+        }
+        if dict.keys.contains("ConditionsConfig") {
+            var model = UpdateConditionalAccessPolicyRequest.ConditionsConfig()
+            model.fromMap(dict["ConditionsConfig"] as! [String: Any])
+            self.conditionsConfig = model
+        }
+        if dict.keys.contains("DecisionConfig") {
+            var model = UpdateConditionalAccessPolicyRequest.DecisionConfig()
+            model.fromMap(dict["DecisionConfig"] as! [String: Any])
+            self.decisionConfig = model
+        }
+        if dict.keys.contains("DecisionType") {
+            self.decisionType = dict["DecisionType"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("Priority") {
+            self.priority = dict["Priority"] as! Int32
+        }
+    }
+}
+
+public class UpdateConditionalAccessPolicyResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UpdateConditionalAccessPolicyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateConditionalAccessPolicyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateConditionalAccessPolicyResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateConditionalAccessPolicyDescriptionRequest : Tea.TeaModel {
+    public var conditionalAccessPolicyId: String?
+
+    public var description_: String?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.conditionalAccessPolicyId != nil {
+            map["ConditionalAccessPolicyId"] = self.conditionalAccessPolicyId!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ConditionalAccessPolicyId") {
+            self.conditionalAccessPolicyId = dict["ConditionalAccessPolicyId"] as! String
+        }
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+    }
+}
+
+public class UpdateConditionalAccessPolicyDescriptionResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UpdateConditionalAccessPolicyDescriptionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateConditionalAccessPolicyDescriptionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateConditionalAccessPolicyDescriptionResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

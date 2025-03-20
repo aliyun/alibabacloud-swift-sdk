@@ -334,6 +334,70 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createConditionalAccessPolicyWithOptions(_ request: CreateConditionalAccessPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateConditionalAccessPolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.conditionalAccessPolicyName)) {
+            query["ConditionalAccessPolicyName"] = request.conditionalAccessPolicyName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.conditionalAccessPolicyType)) {
+            query["ConditionalAccessPolicyType"] = request.conditionalAccessPolicyType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.conditionsConfig)) {
+            query["ConditionsConfig"] = request.conditionsConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.decisionConfig)) {
+            query["DecisionConfig"] = request.decisionConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.decisionType)) {
+            query["DecisionType"] = request.decisionType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.evaluateAt)) {
+            query["EvaluateAt"] = request.evaluateAt ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.priority)) {
+            query["Priority"] = request.priority!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateConditionalAccessPolicy",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(CreateConditionalAccessPolicyResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(CreateConditionalAccessPolicyResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createConditionalAccessPolicy(_ request: CreateConditionalAccessPolicyRequest) async throws -> CreateConditionalAccessPolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createConditionalAccessPolicyWithOptions(request as! CreateConditionalAccessPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createDomainWithOptions(_ request: CreateDomainRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDomainResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -842,6 +906,46 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteApplicationClientSecret(_ request: DeleteApplicationClientSecretRequest) async throws -> DeleteApplicationClientSecretResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteApplicationClientSecretWithOptions(request as! DeleteApplicationClientSecretRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteConditionalAccessPolicyWithOptions(_ request: DeleteConditionalAccessPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteConditionalAccessPolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.conditionalAccessPolicyId)) {
+            query["ConditionalAccessPolicyId"] = request.conditionalAccessPolicyId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteConditionalAccessPolicy",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(DeleteConditionalAccessPolicyResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(DeleteConditionalAccessPolicyResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteConditionalAccessPolicy(_ request: DeleteConditionalAccessPolicyRequest) async throws -> DeleteConditionalAccessPolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteConditionalAccessPolicyWithOptions(request as! DeleteConditionalAccessPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1408,6 +1512,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func disableConditionalAccessPolicyWithOptions(_ request: DisableConditionalAccessPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DisableConditionalAccessPolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.conditionalAccessPolicyId)) {
+            query["ConditionalAccessPolicyId"] = request.conditionalAccessPolicyId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DisableConditionalAccessPolicy",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(DisableConditionalAccessPolicyResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(DisableConditionalAccessPolicyResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func disableConditionalAccessPolicy(_ request: DisableConditionalAccessPolicyRequest) async throws -> DisableConditionalAccessPolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await disableConditionalAccessPolicyWithOptions(request as! DisableConditionalAccessPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func disableDomainProxyTokenWithOptions(_ request: DisableDomainProxyTokenRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DisableDomainProxyTokenResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1771,6 +1915,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enableConditionalAccessPolicyWithOptions(_ request: EnableConditionalAccessPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnableConditionalAccessPolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.conditionalAccessPolicyId)) {
+            query["ConditionalAccessPolicyId"] = request.conditionalAccessPolicyId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "EnableConditionalAccessPolicy",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(EnableConditionalAccessPolicyResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(EnableConditionalAccessPolicyResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enableConditionalAccessPolicy(_ request: EnableConditionalAccessPolicyRequest) async throws -> EnableConditionalAccessPolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await enableConditionalAccessPolicyWithOptions(request as! EnableConditionalAccessPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func enableDomainProxyTokenWithOptions(_ request: EnableDomainProxyTokenRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnableDomainProxyTokenResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2128,6 +2312,46 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getApplicationSsoConfig(_ request: GetApplicationSsoConfigRequest) async throws -> GetApplicationSsoConfigResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getApplicationSsoConfigWithOptions(request as! GetApplicationSsoConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getConditionalAccessPolicyWithOptions(_ request: GetConditionalAccessPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetConditionalAccessPolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.conditionalAccessPolicyId)) {
+            query["ConditionalAccessPolicyId"] = request.conditionalAccessPolicyId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetConditionalAccessPolicy",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(GetConditionalAccessPolicyResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(GetConditionalAccessPolicyResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getConditionalAccessPolicy(_ request: GetConditionalAccessPolicyRequest) async throws -> GetConditionalAccessPolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getConditionalAccessPolicyWithOptions(request as! GetConditionalAccessPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2989,6 +3213,92 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listApplicationsForUser(_ request: ListApplicationsForUserRequest) async throws -> ListApplicationsForUserResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listApplicationsForUserWithOptions(request as! ListApplicationsForUserRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listConditionalAccessPoliciesWithOptions(_ request: ListConditionalAccessPoliciesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListConditionalAccessPoliciesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.previousToken)) {
+            query["PreviousToken"] = request.previousToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListConditionalAccessPolicies",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(ListConditionalAccessPoliciesResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(ListConditionalAccessPoliciesResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listConditionalAccessPolicies(_ request: ListConditionalAccessPoliciesRequest) async throws -> ListConditionalAccessPoliciesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listConditionalAccessPoliciesWithOptions(request as! ListConditionalAccessPoliciesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listConditionalAccessPoliciesForNetworkZoneWithOptions(_ request: ListConditionalAccessPoliciesForNetworkZoneRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListConditionalAccessPoliciesForNetworkZoneResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.networkZoneId)) {
+            query["NetworkZoneId"] = request.networkZoneId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListConditionalAccessPoliciesForNetworkZone",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(ListConditionalAccessPoliciesForNetworkZoneResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(ListConditionalAccessPoliciesForNetworkZoneResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listConditionalAccessPoliciesForNetworkZone(_ request: ListConditionalAccessPoliciesForNetworkZoneRequest) async throws -> ListConditionalAccessPoliciesForNetworkZoneResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listConditionalAccessPoliciesForNetworkZoneWithOptions(request as! ListConditionalAccessPoliciesForNetworkZoneRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5013,6 +5323,104 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateApplicationDescription(_ request: UpdateApplicationDescriptionRequest) async throws -> UpdateApplicationDescriptionResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateApplicationDescriptionWithOptions(request as! UpdateApplicationDescriptionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateConditionalAccessPolicyWithOptions(_ request: UpdateConditionalAccessPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateConditionalAccessPolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.conditionalAccessPolicyId)) {
+            query["ConditionalAccessPolicyId"] = request.conditionalAccessPolicyId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.conditionalAccessPolicyName)) {
+            query["ConditionalAccessPolicyName"] = request.conditionalAccessPolicyName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.conditionsConfig)) {
+            query["ConditionsConfig"] = request.conditionsConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.decisionConfig)) {
+            query["DecisionConfig"] = request.decisionConfig!;
+        }
+        if (!TeaUtils.Client.isUnset(request.decisionType)) {
+            query["DecisionType"] = request.decisionType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.priority)) {
+            query["Priority"] = request.priority!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateConditionalAccessPolicy",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(UpdateConditionalAccessPolicyResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(UpdateConditionalAccessPolicyResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateConditionalAccessPolicy(_ request: UpdateConditionalAccessPolicyRequest) async throws -> UpdateConditionalAccessPolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateConditionalAccessPolicyWithOptions(request as! UpdateConditionalAccessPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateConditionalAccessPolicyDescriptionWithOptions(_ request: UpdateConditionalAccessPolicyDescriptionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateConditionalAccessPolicyDescriptionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.conditionalAccessPolicyId)) {
+            query["ConditionalAccessPolicyId"] = request.conditionalAccessPolicyId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateConditionalAccessPolicyDescription",
+            "version": "2021-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(UpdateConditionalAccessPolicyDescriptionResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(UpdateConditionalAccessPolicyDescriptionResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateConditionalAccessPolicyDescription(_ request: UpdateConditionalAccessPolicyDescriptionRequest) async throws -> UpdateConditionalAccessPolicyDescriptionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateConditionalAccessPolicyDescriptionWithOptions(request as! UpdateConditionalAccessPolicyDescriptionRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
