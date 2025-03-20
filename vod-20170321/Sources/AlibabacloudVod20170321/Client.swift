@@ -3600,6 +3600,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeVodTieringStorageDataWithOptions(_ request: DescribeVodTieringStorageDataRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeVodTieringStorageDataResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
         }
@@ -3649,6 +3652,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeVodTieringStorageRetrievalDataWithOptions(_ request: DescribeVodTieringStorageRetrievalDataRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeVodTieringStorageRetrievalDataResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
         }

@@ -17361,6 +17361,8 @@ public class DescribeVodStorageDataResponse : Tea.TeaModel {
 }
 
 public class DescribeVodTieringStorageDataRequest : Tea.TeaModel {
+    public var appId: String?
+
     public var endTime: String?
 
     public var ownerId: Int64?
@@ -17385,6 +17387,9 @@ public class DescribeVodTieringStorageDataRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
@@ -17404,6 +17409,9 @@ public class DescribeVodTieringStorageDataRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppId") {
+            self.appId = dict["AppId"] as! String
+        }
         if dict.keys.contains("EndTime") {
             self.endTime = dict["EndTime"] as! String
         }
@@ -17583,6 +17591,8 @@ public class DescribeVodTieringStorageDataResponse : Tea.TeaModel {
 }
 
 public class DescribeVodTieringStorageRetrievalDataRequest : Tea.TeaModel {
+    public var appId: String?
+
     public var endTime: String?
 
     public var ownerId: Int64?
@@ -17607,6 +17617,9 @@ public class DescribeVodTieringStorageRetrievalDataRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
@@ -17626,6 +17639,9 @@ public class DescribeVodTieringStorageRetrievalDataRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppId") {
+            self.appId = dict["AppId"] as! String
+        }
         if dict.keys.contains("EndTime") {
             self.endTime = dict["EndTime"] as! String
         }
