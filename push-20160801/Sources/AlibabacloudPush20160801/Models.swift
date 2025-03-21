@@ -1847,6 +1847,20 @@ public class MassPushRequest : Tea.TeaModel {
 
         public var iOSInterruptionLevel: String?
 
+        public var iOSLiveActivityAttributes: String?
+
+        public var iOSLiveActivityAttributesType: String?
+
+        public var iOSLiveActivityContentState: String?
+
+        public var iOSLiveActivityDismissalDate: Int64?
+
+        public var iOSLiveActivityEvent: String?
+
+        public var iOSLiveActivityId: String?
+
+        public var iOSLiveActivityStaleDate: Int64?
+
         public var iOSMusic: String?
 
         public var iOSMutableContent: Bool?
@@ -2127,6 +2141,27 @@ public class MassPushRequest : Tea.TeaModel {
             if self.iOSInterruptionLevel != nil {
                 map["iOSInterruptionLevel"] = self.iOSInterruptionLevel!
             }
+            if self.iOSLiveActivityAttributes != nil {
+                map["iOSLiveActivityAttributes"] = self.iOSLiveActivityAttributes!
+            }
+            if self.iOSLiveActivityAttributesType != nil {
+                map["iOSLiveActivityAttributesType"] = self.iOSLiveActivityAttributesType!
+            }
+            if self.iOSLiveActivityContentState != nil {
+                map["iOSLiveActivityContentState"] = self.iOSLiveActivityContentState!
+            }
+            if self.iOSLiveActivityDismissalDate != nil {
+                map["iOSLiveActivityDismissalDate"] = self.iOSLiveActivityDismissalDate!
+            }
+            if self.iOSLiveActivityEvent != nil {
+                map["iOSLiveActivityEvent"] = self.iOSLiveActivityEvent!
+            }
+            if self.iOSLiveActivityId != nil {
+                map["iOSLiveActivityId"] = self.iOSLiveActivityId!
+            }
+            if self.iOSLiveActivityStaleDate != nil {
+                map["iOSLiveActivityStaleDate"] = self.iOSLiveActivityStaleDate!
+            }
             if self.iOSMusic != nil {
                 map["iOSMusic"] = self.iOSMusic!
             }
@@ -2406,6 +2441,27 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if dict.keys.contains("iOSInterruptionLevel") {
                 self.iOSInterruptionLevel = dict["iOSInterruptionLevel"] as! String
+            }
+            if dict.keys.contains("iOSLiveActivityAttributes") {
+                self.iOSLiveActivityAttributes = dict["iOSLiveActivityAttributes"] as! String
+            }
+            if dict.keys.contains("iOSLiveActivityAttributesType") {
+                self.iOSLiveActivityAttributesType = dict["iOSLiveActivityAttributesType"] as! String
+            }
+            if dict.keys.contains("iOSLiveActivityContentState") {
+                self.iOSLiveActivityContentState = dict["iOSLiveActivityContentState"] as! String
+            }
+            if dict.keys.contains("iOSLiveActivityDismissalDate") {
+                self.iOSLiveActivityDismissalDate = dict["iOSLiveActivityDismissalDate"] as! Int64
+            }
+            if dict.keys.contains("iOSLiveActivityEvent") {
+                self.iOSLiveActivityEvent = dict["iOSLiveActivityEvent"] as! String
+            }
+            if dict.keys.contains("iOSLiveActivityId") {
+                self.iOSLiveActivityId = dict["iOSLiveActivityId"] as! String
+            }
+            if dict.keys.contains("iOSLiveActivityStaleDate") {
+                self.iOSLiveActivityStaleDate = dict["iOSLiveActivityStaleDate"] as! Int64
             }
             if dict.keys.contains("iOSMusic") {
                 self.iOSMusic = dict["iOSMusic"] as! String
@@ -2794,6 +2850,20 @@ public class PushRequest : Tea.TeaModel {
 
     public var iOSInterruptionLevel: String?
 
+    public var iOSLiveActivityAttributes: String?
+
+    public var iOSLiveActivityAttributesType: String?
+
+    public var iOSLiveActivityContentState: String?
+
+    public var iOSLiveActivityDismissalDate: Int64?
+
+    public var iOSLiveActivityEvent: String?
+
+    public var iOSLiveActivityId: String?
+
+    public var iOSLiveActivityStaleDate: Int64?
+
     public var iOSMusic: String?
 
     public var iOSMutableContent: Bool?
@@ -3095,6 +3165,27 @@ public class PushRequest : Tea.TeaModel {
         if self.iOSInterruptionLevel != nil {
             map["iOSInterruptionLevel"] = self.iOSInterruptionLevel!
         }
+        if self.iOSLiveActivityAttributes != nil {
+            map["iOSLiveActivityAttributes"] = self.iOSLiveActivityAttributes!
+        }
+        if self.iOSLiveActivityAttributesType != nil {
+            map["iOSLiveActivityAttributesType"] = self.iOSLiveActivityAttributesType!
+        }
+        if self.iOSLiveActivityContentState != nil {
+            map["iOSLiveActivityContentState"] = self.iOSLiveActivityContentState!
+        }
+        if self.iOSLiveActivityDismissalDate != nil {
+            map["iOSLiveActivityDismissalDate"] = self.iOSLiveActivityDismissalDate!
+        }
+        if self.iOSLiveActivityEvent != nil {
+            map["iOSLiveActivityEvent"] = self.iOSLiveActivityEvent!
+        }
+        if self.iOSLiveActivityId != nil {
+            map["iOSLiveActivityId"] = self.iOSLiveActivityId!
+        }
+        if self.iOSLiveActivityStaleDate != nil {
+            map["iOSLiveActivityStaleDate"] = self.iOSLiveActivityStaleDate!
+        }
         if self.iOSMusic != nil {
             map["iOSMusic"] = self.iOSMusic!
         }
@@ -3395,6 +3486,27 @@ public class PushRequest : Tea.TeaModel {
         }
         if dict.keys.contains("iOSInterruptionLevel") {
             self.iOSInterruptionLevel = dict["iOSInterruptionLevel"] as! String
+        }
+        if dict.keys.contains("iOSLiveActivityAttributes") {
+            self.iOSLiveActivityAttributes = dict["iOSLiveActivityAttributes"] as! String
+        }
+        if dict.keys.contains("iOSLiveActivityAttributesType") {
+            self.iOSLiveActivityAttributesType = dict["iOSLiveActivityAttributesType"] as! String
+        }
+        if dict.keys.contains("iOSLiveActivityContentState") {
+            self.iOSLiveActivityContentState = dict["iOSLiveActivityContentState"] as! String
+        }
+        if dict.keys.contains("iOSLiveActivityDismissalDate") {
+            self.iOSLiveActivityDismissalDate = dict["iOSLiveActivityDismissalDate"] as! Int64
+        }
+        if dict.keys.contains("iOSLiveActivityEvent") {
+            self.iOSLiveActivityEvent = dict["iOSLiveActivityEvent"] as! String
+        }
+        if dict.keys.contains("iOSLiveActivityId") {
+            self.iOSLiveActivityId = dict["iOSLiveActivityId"] as! String
+        }
+        if dict.keys.contains("iOSLiveActivityStaleDate") {
+            self.iOSLiveActivityStaleDate = dict["iOSLiveActivityStaleDate"] as! Int64
         }
         if dict.keys.contains("iOSMusic") {
             self.iOSMusic = dict["iOSMusic"] as! String

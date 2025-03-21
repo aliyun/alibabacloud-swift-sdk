@@ -837,6 +837,27 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.iOSInterruptionLevel)) {
             query["iOSInterruptionLevel"] = request.iOSInterruptionLevel ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.iOSLiveActivityAttributes)) {
+            query["iOSLiveActivityAttributes"] = request.iOSLiveActivityAttributes ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iOSLiveActivityAttributesType)) {
+            query["iOSLiveActivityAttributesType"] = request.iOSLiveActivityAttributesType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iOSLiveActivityContentState)) {
+            query["iOSLiveActivityContentState"] = request.iOSLiveActivityContentState ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iOSLiveActivityDismissalDate)) {
+            query["iOSLiveActivityDismissalDate"] = request.iOSLiveActivityDismissalDate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.iOSLiveActivityEvent)) {
+            query["iOSLiveActivityEvent"] = request.iOSLiveActivityEvent ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iOSLiveActivityId)) {
+            query["iOSLiveActivityId"] = request.iOSLiveActivityId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iOSLiveActivityStaleDate)) {
+            query["iOSLiveActivityStaleDate"] = request.iOSLiveActivityStaleDate!;
+        }
         if (!TeaUtils.Client.isUnset(request.iOSMusic)) {
             query["iOSMusic"] = request.iOSMusic ?? "";
         }
