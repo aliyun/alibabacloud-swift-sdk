@@ -4345,6 +4345,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDailyPlayRegionStatisWithOptions(_ request: GetDailyPlayRegionStatisRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDailyPlayRegionStatisResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.date)) {
+            query["Date"] = request.date ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mediaRegion)) {
+            query["MediaRegion"] = request.mediaRegion ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetDailyPlayRegionStatis",
+            "version": "2017-03-21",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        if (TeaUtils.Client.isUnset(self._signatureVersion) || !TeaUtils.Client.equalString(self._signatureVersion, "v4")) {
+            var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(GetDailyPlayRegionStatisResponse(), tmp)
+        }
+        else {
+            var tmp: [String: Any] = try await execute(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+            return Tea.TeaConverter.fromMap(GetDailyPlayRegionStatisResponse(), tmp)
+        }
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDailyPlayRegionStatis(_ request: GetDailyPlayRegionStatisRequest) async throws -> GetDailyPlayRegionStatisResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getDailyPlayRegionStatisWithOptions(request as! GetDailyPlayRegionStatisRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getDefaultAITemplateWithOptions(_ request: GetDefaultAITemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDefaultAITemplateResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

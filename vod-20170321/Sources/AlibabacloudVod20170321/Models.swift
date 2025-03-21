@@ -22888,6 +22888,196 @@ public class GetCategoriesResponse : Tea.TeaModel {
     }
 }
 
+public class GetDailyPlayRegionStatisRequest : Tea.TeaModel {
+    public var date: String?
+
+    public var mediaRegion: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.date != nil {
+            map["Date"] = self.date!
+        }
+        if self.mediaRegion != nil {
+            map["MediaRegion"] = self.mediaRegion!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Date") {
+            self.date = dict["Date"] as! String
+        }
+        if dict.keys.contains("MediaRegion") {
+            self.mediaRegion = dict["MediaRegion"] as! String
+        }
+    }
+}
+
+public class GetDailyPlayRegionStatisResponseBody : Tea.TeaModel {
+    public class DailyPlayRegionStatisList : Tea.TeaModel {
+        public var date: String?
+
+        public var fileUrl: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.date != nil {
+                map["Date"] = self.date!
+            }
+            if self.fileUrl != nil {
+                map["FileUrl"] = self.fileUrl!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Date") {
+                self.date = dict["Date"] as! String
+            }
+            if dict.keys.contains("FileUrl") {
+                self.fileUrl = dict["FileUrl"] as! String
+            }
+        }
+    }
+    public var dailyPlayRegionStatisList: [GetDailyPlayRegionStatisResponseBody.DailyPlayRegionStatisList]?
+
+    public var emptyDates: [String]?
+
+    public var failDates: [String]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dailyPlayRegionStatisList != nil {
+            var tmp : [Any] = []
+            for k in self.dailyPlayRegionStatisList! {
+                tmp.append(k.toMap())
+            }
+            map["DailyPlayRegionStatisList"] = tmp
+        }
+        if self.emptyDates != nil {
+            map["EmptyDates"] = self.emptyDates!
+        }
+        if self.failDates != nil {
+            map["FailDates"] = self.failDates!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DailyPlayRegionStatisList") {
+            var tmp : [GetDailyPlayRegionStatisResponseBody.DailyPlayRegionStatisList] = []
+            for v in dict["DailyPlayRegionStatisList"] as! [Any] {
+                var model = GetDailyPlayRegionStatisResponseBody.DailyPlayRegionStatisList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.dailyPlayRegionStatisList = tmp
+        }
+        if dict.keys.contains("EmptyDates") {
+            self.emptyDates = dict["EmptyDates"] as! [String]
+        }
+        if dict.keys.contains("FailDates") {
+            self.failDates = dict["FailDates"] as! [String]
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class GetDailyPlayRegionStatisResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetDailyPlayRegionStatisResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = GetDailyPlayRegionStatisResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class GetDefaultAITemplateRequest : Tea.TeaModel {
     public var templateType: String?
 
