@@ -10379,6 +10379,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeCycleTaskListWithOptions(_ request: DescribeCycleTaskListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCycleTaskListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configId)) {
+            query["ConfigId"] = request.configId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.currentPage)) {
             query["CurrentPage"] = request.currentPage!;
         }
