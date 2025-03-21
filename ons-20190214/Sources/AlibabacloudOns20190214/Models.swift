@@ -722,6 +722,8 @@ public class OnsConsumerGetConnectionResponseBody : Tea.TeaModel {
         }
         public var connectionList: OnsConsumerGetConnectionResponseBody.Data.ConnectionList?
 
+        public var messageModel: String?
+
         public override init() {
             super.init()
         }
@@ -740,6 +742,9 @@ public class OnsConsumerGetConnectionResponseBody : Tea.TeaModel {
             if self.connectionList != nil {
                 map["ConnectionList"] = self.connectionList?.toMap()
             }
+            if self.messageModel != nil {
+                map["MessageModel"] = self.messageModel!
+            }
             return map
         }
 
@@ -748,6 +753,9 @@ public class OnsConsumerGetConnectionResponseBody : Tea.TeaModel {
                 var model = OnsConsumerGetConnectionResponseBody.Data.ConnectionList()
                 model.fromMap(dict["ConnectionList"] as! [String: Any])
                 self.connectionList = model
+            }
+            if dict.keys.contains("MessageModel") {
+                self.messageModel = dict["MessageModel"] as! String
             }
         }
     }
@@ -8162,6 +8170,8 @@ public class OnsTopicSubDetailResponseBody : Tea.TeaModel {
 
                 public var messageModel: String?
 
+                public var online: String?
+
                 public var subString: String?
 
                 public override init() {
@@ -8184,6 +8194,9 @@ public class OnsTopicSubDetailResponseBody : Tea.TeaModel {
                     if self.messageModel != nil {
                         map["MessageModel"] = self.messageModel!
                     }
+                    if self.online != nil {
+                        map["Online"] = self.online!
+                    }
                     if self.subString != nil {
                         map["SubString"] = self.subString!
                     }
@@ -8196,6 +8209,9 @@ public class OnsTopicSubDetailResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("MessageModel") {
                         self.messageModel = dict["MessageModel"] as! String
+                    }
+                    if dict.keys.contains("Online") {
+                        self.online = dict["Online"] as! String
                     }
                     if dict.keys.contains("SubString") {
                         self.subString = dict["SubString"] as! String
