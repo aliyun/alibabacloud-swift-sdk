@@ -3931,6 +3931,8 @@ public class GetIndexJobStatusResponseBody : Tea.TeaModel {
 
             public var docName: String?
 
+            public var gmtModified: Int64?
+
             public var message: String?
 
             public var status: String?
@@ -3958,6 +3960,9 @@ public class GetIndexJobStatusResponseBody : Tea.TeaModel {
                 if self.docName != nil {
                     map["DocName"] = self.docName!
                 }
+                if self.gmtModified != nil {
+                    map["GmtModified"] = self.gmtModified!
+                }
                 if self.message != nil {
                     map["Message"] = self.message!
                 }
@@ -3976,6 +3981,9 @@ public class GetIndexJobStatusResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("DocName") {
                     self.docName = dict["DocName"] as! String
+                }
+                if dict.keys.contains("GmtModified") {
+                    self.gmtModified = dict["GmtModified"] as! Int64
                 }
                 if dict.keys.contains("Message") {
                     self.message = dict["Message"] as! String
@@ -6079,6 +6087,8 @@ public class ListIndexDocumentsResponseBody : Tea.TeaModel {
 
             public var documentType: String?
 
+            public var gmtModified: Int64?
+
             public var id: String?
 
             public var message: String?
@@ -6111,6 +6121,9 @@ public class ListIndexDocumentsResponseBody : Tea.TeaModel {
                 if self.documentType != nil {
                     map["DocumentType"] = self.documentType!
                 }
+                if self.gmtModified != nil {
+                    map["GmtModified"] = self.gmtModified!
+                }
                 if self.id != nil {
                     map["Id"] = self.id!
                 }
@@ -6138,6 +6151,9 @@ public class ListIndexDocumentsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("DocumentType") {
                     self.documentType = dict["DocumentType"] as! String
+                }
+                if dict.keys.contains("GmtModified") {
+                    self.gmtModified = dict["GmtModified"] as! Int64
                 }
                 if dict.keys.contains("Id") {
                     self.id = dict["Id"] as! String
