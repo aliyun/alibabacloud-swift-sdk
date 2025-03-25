@@ -9216,9 +9216,6 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.collection)) {
             query["Collection"] = request.collection ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.content)) {
-            query["Content"] = request.content ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
             query["DBInstanceId"] = request.DBInstanceId ?? "";
         }
@@ -9273,8 +9270,13 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.useFullTextRetrieval)) {
             query["UseFullTextRetrieval"] = request.useFullTextRetrieval!;
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.content)) {
+            body["Content"] = request.content ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "QueryContent",
