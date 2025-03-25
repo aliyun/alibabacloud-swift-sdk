@@ -8657,6 +8657,43 @@ public class CloneSentinelRuleFromAhasResponse : Tea.TeaModel {
 }
 
 public class CreateApplicationRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var acceptLanguage: String?
 
     public var appName: String?
@@ -8672,6 +8709,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
     public var source: String?
 
     public var switchEnable: String?
+
+    public var tags: [CreateApplicationRequest.Tags]?
 
     public override init() {
         super.init()
@@ -8711,6 +8750,13 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if self.switchEnable != nil {
             map["SwitchEnable"] = self.switchEnable!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         return map
     }
 
@@ -8738,6 +8784,111 @@ public class CreateApplicationRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SwitchEnable") {
             self.switchEnable = dict["SwitchEnable"] as! String
+        }
+        if dict.keys.contains("Tags") {
+            var tmp : [CreateApplicationRequest.Tags] = []
+            for v in dict["Tags"] as! [Any] {
+                var model = CreateApplicationRequest.Tags()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tags = tmp
+        }
+    }
+}
+
+public class CreateApplicationShrinkRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var appName: String?
+
+    public var language: String?
+
+    public var namespace: String?
+
+    public var region: String?
+
+    public var sentinelEnable: String?
+
+    public var source: String?
+
+    public var switchEnable: String?
+
+    public var tagsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.language != nil {
+            map["Language"] = self.language!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        if self.region != nil {
+            map["Region"] = self.region!
+        }
+        if self.sentinelEnable != nil {
+            map["SentinelEnable"] = self.sentinelEnable!
+        }
+        if self.source != nil {
+            map["Source"] = self.source!
+        }
+        if self.switchEnable != nil {
+            map["SwitchEnable"] = self.switchEnable!
+        }
+        if self.tagsShrink != nil {
+            map["Tags"] = self.tagsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("AppName") {
+            self.appName = dict["AppName"] as! String
+        }
+        if dict.keys.contains("Language") {
+            self.language = dict["Language"] as! String
+        }
+        if dict.keys.contains("Namespace") {
+            self.namespace = dict["Namespace"] as! String
+        }
+        if dict.keys.contains("Region") {
+            self.region = dict["Region"] as! String
+        }
+        if dict.keys.contains("SentinelEnable") {
+            self.sentinelEnable = dict["SentinelEnable"] as! String
+        }
+        if dict.keys.contains("Source") {
+            self.source = dict["Source"] as! String
+        }
+        if dict.keys.contains("SwitchEnable") {
+            self.switchEnable = dict["SwitchEnable"] as! String
+        }
+        if dict.keys.contains("Tags") {
+            self.tagsShrink = dict["Tags"] as! String
         }
     }
 }
@@ -12323,11 +12474,50 @@ public class CreateNacosServiceResponse : Tea.TeaModel {
 }
 
 public class CreateNamespaceRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var acceptLanguage: String?
 
     public var describe: String?
 
     public var name: String?
+
+    public var tag: [CreateNamespaceRequest.Tag]?
 
     public override init() {
         super.init()
@@ -12352,6 +12542,13 @@ public class CreateNamespaceRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
@@ -12364,6 +12561,71 @@ public class CreateNamespaceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [CreateNamespaceRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateNamespaceRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
+    }
+}
+
+public class CreateNamespaceShrinkRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var describe: String?
+
+    public var name: String?
+
+    public var tagShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.describe != nil {
+            map["Describe"] = self.describe!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.tagShrink != nil {
+            map["Tag"] = self.tagShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("Describe") {
+            self.describe = dict["Describe"] as! String
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            self.tagShrink = dict["Tag"] as! String
         }
     }
 }
@@ -22963,6 +23225,43 @@ public class GetApplicationInstanceListResponse : Tea.TeaModel {
 }
 
 public class GetApplicationListRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var acceptLanguage: String?
 
     public var appId: String?
@@ -22984,6 +23283,8 @@ public class GetApplicationListRequest : Tea.TeaModel {
     public var source: String?
 
     public var switchEnable: Bool?
+
+    public var tags: [GetApplicationListRequest.Tags]?
 
     public override init() {
         super.init()
@@ -23032,6 +23333,13 @@ public class GetApplicationListRequest : Tea.TeaModel {
         if self.switchEnable != nil {
             map["SwitchEnable"] = self.switchEnable!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         return map
     }
 
@@ -23069,6 +23377,135 @@ public class GetApplicationListRequest : Tea.TeaModel {
         if dict.keys.contains("SwitchEnable") {
             self.switchEnable = dict["SwitchEnable"] as! Bool
         }
+        if dict.keys.contains("Tags") {
+            var tmp : [GetApplicationListRequest.Tags] = []
+            for v in dict["Tags"] as! [Any] {
+                var model = GetApplicationListRequest.Tags()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tags = tmp
+        }
+    }
+}
+
+public class GetApplicationListShrinkRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var appId: String?
+
+    public var appName: String?
+
+    public var language: String?
+
+    public var namespace: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var region: String?
+
+    public var sentinelEnable: Bool?
+
+    public var source: String?
+
+    public var switchEnable: Bool?
+
+    public var tagsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.language != nil {
+            map["Language"] = self.language!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.region != nil {
+            map["Region"] = self.region!
+        }
+        if self.sentinelEnable != nil {
+            map["SentinelEnable"] = self.sentinelEnable!
+        }
+        if self.source != nil {
+            map["Source"] = self.source!
+        }
+        if self.switchEnable != nil {
+            map["SwitchEnable"] = self.switchEnable!
+        }
+        if self.tagsShrink != nil {
+            map["Tags"] = self.tagsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("AppId") {
+            self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("AppName") {
+            self.appName = dict["AppName"] as! String
+        }
+        if dict.keys.contains("Language") {
+            self.language = dict["Language"] as! String
+        }
+        if dict.keys.contains("Namespace") {
+            self.namespace = dict["Namespace"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("Region") {
+            self.region = dict["Region"] as! String
+        }
+        if dict.keys.contains("SentinelEnable") {
+            self.sentinelEnable = dict["SentinelEnable"] as! Bool
+        }
+        if dict.keys.contains("Source") {
+            self.source = dict["Source"] as! String
+        }
+        if dict.keys.contains("SwitchEnable") {
+            self.switchEnable = dict["SwitchEnable"] as! Bool
+        }
+        if dict.keys.contains("Tags") {
+            self.tagsShrink = dict["Tags"] as! String
+        }
     }
 }
 
@@ -23092,6 +23529,8 @@ public class GetApplicationListResponseBody : Tea.TeaModel {
             public var source: String?
 
             public var status: Int64?
+
+            public var tags: [String: Any]?
 
             public var userId: String?
 
@@ -23136,6 +23575,9 @@ public class GetApplicationListResponseBody : Tea.TeaModel {
                 if self.status != nil {
                     map["Status"] = self.status!
                 }
+                if self.tags != nil {
+                    map["Tags"] = self.tags!
+                }
                 if self.userId != nil {
                     map["UserId"] = self.userId!
                 }
@@ -23169,6 +23611,9 @@ public class GetApplicationListResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Status") {
                     self.status = dict["Status"] as! Int64
+                }
+                if dict.keys.contains("Tags") {
+                    self.tags = dict["Tags"] as! [String: Any]
                 }
                 if dict.keys.contains("UserId") {
                     self.userId = dict["UserId"] as! String
@@ -52992,6 +53437,43 @@ public class ListNacosHistoryConfigsResponse : Tea.TeaModel {
 }
 
 public class ListNamespacesRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var acceptLanguage: String?
 
     public var name: String?
@@ -53001,6 +53483,8 @@ public class ListNamespacesRequest : Tea.TeaModel {
     public var pageSize: Int32?
 
     public var region: String?
+
+    public var tag: [ListNamespacesRequest.Tag]?
 
     public override init() {
         super.init()
@@ -53031,6 +53515,13 @@ public class ListNamespacesRequest : Tea.TeaModel {
         if self.region != nil {
             map["Region"] = self.region!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
@@ -53050,6 +53541,87 @@ public class ListNamespacesRequest : Tea.TeaModel {
         if dict.keys.contains("Region") {
             self.region = dict["Region"] as! String
         }
+        if dict.keys.contains("Tag") {
+            var tmp : [ListNamespacesRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = ListNamespacesRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
+    }
+}
+
+public class ListNamespacesShrinkRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var name: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var region: String?
+
+    public var tagShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.region != nil {
+            map["Region"] = self.region!
+        }
+        if self.tagShrink != nil {
+            map["Tag"] = self.tagShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("Region") {
+            self.region = dict["Region"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            self.tagShrink = dict["Tag"] as! String
+        }
     }
 }
 
@@ -53067,6 +53639,8 @@ public class ListNamespacesResponseBody : Tea.TeaModel {
             public var namespace: String?
 
             public var region: String?
+
+            public var tags: [String: Any]?
 
             public var updateTime: Int64?
 
@@ -53106,6 +53680,9 @@ public class ListNamespacesResponseBody : Tea.TeaModel {
                 if self.region != nil {
                     map["Region"] = self.region!
                 }
+                if self.tags != nil {
+                    map["Tags"] = self.tags!
+                }
                 if self.updateTime != nil {
                     map["UpdateTime"] = self.updateTime!
                 }
@@ -53136,6 +53713,9 @@ public class ListNamespacesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Region") {
                     self.region = dict["Region"] as! String
+                }
+                if dict.keys.contains("Tags") {
+                    self.tags = dict["Tags"] as! [String: Any]
                 }
                 if dict.keys.contains("UpdateTime") {
                     self.updateTime = dict["UpdateTime"] as! Int64
