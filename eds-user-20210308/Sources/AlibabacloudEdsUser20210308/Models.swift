@@ -2265,6 +2265,8 @@ public class DescribeUsersRequest : Tea.TeaModel {
 
     public var filter: String?
 
+    public var filterWithAssignedResource: [String: String]?
+
     public var filterWithAssignedResources: [String: Bool]?
 
     public var groupId: String?
@@ -2307,6 +2309,9 @@ public class DescribeUsersRequest : Tea.TeaModel {
         if self.filter != nil {
             map["Filter"] = self.filter!
         }
+        if self.filterWithAssignedResource != nil {
+            map["FilterWithAssignedResource"] = self.filterWithAssignedResource!
+        }
         if self.filterWithAssignedResources != nil {
             map["FilterWithAssignedResources"] = self.filterWithAssignedResources!
         }
@@ -2347,6 +2352,9 @@ public class DescribeUsersRequest : Tea.TeaModel {
         if dict.keys.contains("Filter") {
             self.filter = dict["Filter"] as! String
         }
+        if dict.keys.contains("FilterWithAssignedResource") {
+            self.filterWithAssignedResource = dict["FilterWithAssignedResource"] as! [String: String]
+        }
         if dict.keys.contains("FilterWithAssignedResources") {
             self.filterWithAssignedResources = dict["FilterWithAssignedResources"] as! [String: Bool]
         }
@@ -2382,6 +2390,8 @@ public class DescribeUsersShrinkRequest : Tea.TeaModel {
     public var excludeEndUserIds: [String]?
 
     public var filter: String?
+
+    public var filterWithAssignedResourceShrink: String?
 
     public var filterWithAssignedResourcesShrink: String?
 
@@ -2425,6 +2435,9 @@ public class DescribeUsersShrinkRequest : Tea.TeaModel {
         if self.filter != nil {
             map["Filter"] = self.filter!
         }
+        if self.filterWithAssignedResourceShrink != nil {
+            map["FilterWithAssignedResource"] = self.filterWithAssignedResourceShrink!
+        }
         if self.filterWithAssignedResourcesShrink != nil {
             map["FilterWithAssignedResources"] = self.filterWithAssignedResourcesShrink!
         }
@@ -2464,6 +2477,9 @@ public class DescribeUsersShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Filter") {
             self.filter = dict["Filter"] as! String
+        }
+        if dict.keys.contains("FilterWithAssignedResource") {
+            self.filterWithAssignedResourceShrink = dict["FilterWithAssignedResource"] as! String
         }
         if dict.keys.contains("FilterWithAssignedResources") {
             self.filterWithAssignedResourcesShrink = dict["FilterWithAssignedResources"] as! String
@@ -2597,6 +2613,43 @@ public class DescribeUsersResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class Properties : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("Value") {
+                    self.value = dict["Value"] as! String
+                }
+            }
+        }
         public var address: String?
 
         public var avatar: String?
@@ -2604,6 +2657,8 @@ public class DescribeUsersResponseBody : Tea.TeaModel {
         public var email: String?
 
         public var endUserId: String?
+
+        public var externalName: String?
 
         public var extras: DescribeUsersResponseBody.Users.Extras?
 
@@ -2624,6 +2679,8 @@ public class DescribeUsersResponseBody : Tea.TeaModel {
         public var ownerType: String?
 
         public var phone: String?
+
+        public var properties: [DescribeUsersResponseBody.Users.Properties]?
 
         public var realNickName: String?
 
@@ -2659,6 +2716,9 @@ public class DescribeUsersResponseBody : Tea.TeaModel {
             }
             if self.endUserId != nil {
                 map["EndUserId"] = self.endUserId!
+            }
+            if self.externalName != nil {
+                map["ExternalName"] = self.externalName!
             }
             if self.extras != nil {
                 map["Extras"] = self.extras?.toMap()
@@ -2698,6 +2758,13 @@ public class DescribeUsersResponseBody : Tea.TeaModel {
             if self.phone != nil {
                 map["Phone"] = self.phone!
             }
+            if self.properties != nil {
+                var tmp : [Any] = []
+                for k in self.properties! {
+                    tmp.append(k.toMap())
+                }
+                map["Properties"] = tmp
+            }
             if self.realNickName != nil {
                 map["RealNickName"] = self.realNickName!
             }
@@ -2725,6 +2792,9 @@ public class DescribeUsersResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("EndUserId") {
                 self.endUserId = dict["EndUserId"] as! String
+            }
+            if dict.keys.contains("ExternalName") {
+                self.externalName = dict["ExternalName"] as! String
             }
             if dict.keys.contains("Extras") {
                 var model = DescribeUsersResponseBody.Users.Extras()
@@ -2773,6 +2843,17 @@ public class DescribeUsersResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Phone") {
                 self.phone = dict["Phone"] as! String
+            }
+            if dict.keys.contains("Properties") {
+                var tmp : [DescribeUsersResponseBody.Users.Properties] = []
+                for v in dict["Properties"] as! [Any] {
+                    var model = DescribeUsersResponseBody.Users.Properties()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.properties = tmp
             }
             if dict.keys.contains("RealNickName") {
                 self.realNickName = dict["RealNickName"] as! String
@@ -3014,6 +3095,10 @@ public class FilterUsersRequest : Tea.TeaModel {
 
     public var includeDesktopGroupCount: Bool?
 
+    public var includeOrgInfo: Bool?
+
+    public var includeSupportIdps: Bool?
+
     public var isQueryAllSubOrgs: Bool?
 
     public var maxResults: Int64?
@@ -3058,6 +3143,12 @@ public class FilterUsersRequest : Tea.TeaModel {
         }
         if self.includeDesktopGroupCount != nil {
             map["IncludeDesktopGroupCount"] = self.includeDesktopGroupCount!
+        }
+        if self.includeOrgInfo != nil {
+            map["IncludeOrgInfo"] = self.includeOrgInfo!
+        }
+        if self.includeSupportIdps != nil {
+            map["IncludeSupportIdps"] = self.includeSupportIdps!
         }
         if self.isQueryAllSubOrgs != nil {
             map["IsQueryAllSubOrgs"] = self.isQueryAllSubOrgs!
@@ -3109,6 +3200,12 @@ public class FilterUsersRequest : Tea.TeaModel {
         }
         if dict.keys.contains("IncludeDesktopGroupCount") {
             self.includeDesktopGroupCount = dict["IncludeDesktopGroupCount"] as! Bool
+        }
+        if dict.keys.contains("IncludeOrgInfo") {
+            self.includeOrgInfo = dict["IncludeOrgInfo"] as! Bool
+        }
+        if dict.keys.contains("IncludeSupportIdps") {
+            self.includeSupportIdps = dict["IncludeSupportIdps"] as! Bool
         }
         if dict.keys.contains("IsQueryAllSubOrgs") {
             self.isQueryAllSubOrgs = dict["IsQueryAllSubOrgs"] as! Bool
@@ -3241,6 +3338,10 @@ public class FilterUsersShrinkRequest : Tea.TeaModel {
 
     public var includeDesktopGroupCount: Bool?
 
+    public var includeOrgInfo: Bool?
+
+    public var includeSupportIdps: Bool?
+
     public var isQueryAllSubOrgs: Bool?
 
     public var maxResults: Int64?
@@ -3284,6 +3385,12 @@ public class FilterUsersShrinkRequest : Tea.TeaModel {
         }
         if self.includeDesktopGroupCount != nil {
             map["IncludeDesktopGroupCount"] = self.includeDesktopGroupCount!
+        }
+        if self.includeOrgInfo != nil {
+            map["IncludeOrgInfo"] = self.includeOrgInfo!
+        }
+        if self.includeSupportIdps != nil {
+            map["IncludeSupportIdps"] = self.includeSupportIdps!
         }
         if self.isQueryAllSubOrgs != nil {
             map["IsQueryAllSubOrgs"] = self.isQueryAllSubOrgs!
@@ -3335,6 +3442,12 @@ public class FilterUsersShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("IncludeDesktopGroupCount") {
             self.includeDesktopGroupCount = dict["IncludeDesktopGroupCount"] as! Bool
+        }
+        if dict.keys.contains("IncludeOrgInfo") {
+            self.includeOrgInfo = dict["IncludeOrgInfo"] as! Bool
+        }
+        if dict.keys.contains("IncludeSupportIdps") {
+            self.includeSupportIdps = dict["IncludeSupportIdps"] as! Bool
         }
         if dict.keys.contains("IsQueryAllSubOrgs") {
             self.isQueryAllSubOrgs = dict["IsQueryAllSubOrgs"] as! Bool
@@ -3418,6 +3531,80 @@ public class FilterUsersResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("JobNumber") {
                     self.jobNumber = dict["JobNumber"] as! String
+                }
+            }
+        }
+        public class OrgList : Tea.TeaModel {
+            public var orgId: String?
+
+            public var orgName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.orgId != nil {
+                    map["OrgId"] = self.orgId!
+                }
+                if self.orgName != nil {
+                    map["OrgName"] = self.orgName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("OrgId") {
+                    self.orgId = dict["OrgId"] as! String
+                }
+                if dict.keys.contains("OrgName") {
+                    self.orgName = dict["OrgName"] as! String
+                }
+            }
+        }
+        public class SupportLoginIdps : Tea.TeaModel {
+            public var idpId: String?
+
+            public var idpName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.idpId != nil {
+                    map["IdpId"] = self.idpId!
+                }
+                if self.idpName != nil {
+                    map["IdpName"] = self.idpName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("IdpId") {
+                    self.idpId = dict["IdpId"] as! String
+                }
+                if dict.keys.contains("IdpName") {
+                    self.idpName = dict["IdpName"] as! String
                 }
             }
         }
@@ -3557,6 +3744,8 @@ public class FilterUsersResponseBody : Tea.TeaModel {
 
         public var isTenantManager: Bool?
 
+        public var orgList: [FilterUsersResponseBody.Users.OrgList]?
+
         public var ownerType: String?
 
         public var passwordExpireDays: Int32?
@@ -3570,6 +3759,8 @@ public class FilterUsersResponseBody : Tea.TeaModel {
         public var remark: String?
 
         public var status: Int64?
+
+        public var supportLoginIdps: [FilterUsersResponseBody.Users.SupportLoginIdps]?
 
         public var userSetPropertiesModels: [FilterUsersResponseBody.Users.UserSetPropertiesModels]?
 
@@ -3615,6 +3806,13 @@ public class FilterUsersResponseBody : Tea.TeaModel {
             if self.isTenantManager != nil {
                 map["IsTenantManager"] = self.isTenantManager!
             }
+            if self.orgList != nil {
+                var tmp : [Any] = []
+                for k in self.orgList! {
+                    tmp.append(k.toMap())
+                }
+                map["OrgList"] = tmp
+            }
             if self.ownerType != nil {
                 map["OwnerType"] = self.ownerType!
             }
@@ -3635,6 +3833,13 @@ public class FilterUsersResponseBody : Tea.TeaModel {
             }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.supportLoginIdps != nil {
+                var tmp : [Any] = []
+                for k in self.supportLoginIdps! {
+                    tmp.append(k.toMap())
+                }
+                map["SupportLoginIdps"] = tmp
             }
             if self.userSetPropertiesModels != nil {
                 var tmp : [Any] = []
@@ -3676,6 +3881,17 @@ public class FilterUsersResponseBody : Tea.TeaModel {
             if dict.keys.contains("IsTenantManager") {
                 self.isTenantManager = dict["IsTenantManager"] as! Bool
             }
+            if dict.keys.contains("OrgList") {
+                var tmp : [FilterUsersResponseBody.Users.OrgList] = []
+                for v in dict["OrgList"] as! [Any] {
+                    var model = FilterUsersResponseBody.Users.OrgList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.orgList = tmp
+            }
             if dict.keys.contains("OwnerType") {
                 self.ownerType = dict["OwnerType"] as! String
             }
@@ -3696,6 +3912,17 @@ public class FilterUsersResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! Int64
+            }
+            if dict.keys.contains("SupportLoginIdps") {
+                var tmp : [FilterUsersResponseBody.Users.SupportLoginIdps] = []
+                for v in dict["SupportLoginIdps"] as! [Any] {
+                    var model = FilterUsersResponseBody.Users.SupportLoginIdps()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.supportLoginIdps = tmp
             }
             if dict.keys.contains("UserSetPropertiesModels") {
                 var tmp : [FilterUsersResponseBody.Users.UserSetPropertiesModels] = []
