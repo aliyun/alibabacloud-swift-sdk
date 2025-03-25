@@ -1246,6 +1246,8 @@ public class AddUserToDesktopGroupRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var userOuPath: String?
+
     public override init() {
         super.init()
     }
@@ -1275,6 +1277,9 @@ public class AddUserToDesktopGroupRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.userOuPath != nil {
+            map["UserOuPath"] = self.userOuPath!
+        }
         return map
     }
 
@@ -1293,6 +1298,9 @@ public class AddUserToDesktopGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("UserOuPath") {
+            self.userOuPath = dict["UserOuPath"] as! String
         }
     }
 }
@@ -7040,6 +7048,8 @@ public class CreateDesktopGroupRequest : Tea.TeaModel {
 
     public var timerGroupId: String?
 
+    public var userOuPath: String?
+
     public var volumeEncryptionEnabled: Bool?
 
     public var volumeEncryptionKey: String?
@@ -7223,6 +7233,9 @@ public class CreateDesktopGroupRequest : Tea.TeaModel {
         if self.timerGroupId != nil {
             map["TimerGroupId"] = self.timerGroupId!
         }
+        if self.userOuPath != nil {
+            map["UserOuPath"] = self.userOuPath!
+        }
         if self.volumeEncryptionEnabled != nil {
             map["VolumeEncryptionEnabled"] = self.volumeEncryptionEnabled!
         }
@@ -7402,6 +7415,9 @@ public class CreateDesktopGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TimerGroupId") {
             self.timerGroupId = dict["TimerGroupId"] as! String
+        }
+        if dict.keys.contains("UserOuPath") {
+            self.userOuPath = dict["UserOuPath"] as! String
         }
         if dict.keys.contains("VolumeEncryptionEnabled") {
             self.volumeEncryptionEnabled = dict["VolumeEncryptionEnabled"] as! Bool
@@ -17931,6 +17947,8 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
 
         public var tags: [DescribeDesktopGroupsResponseBody.DesktopGroups.Tags]?
 
+        public var userOuPath: String?
+
         public var version: Int32?
 
         public var volumeEncryptionEnabled: Bool?
@@ -18093,6 +18111,9 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Tags"] = tmp
+            }
+            if self.userOuPath != nil {
+                map["UserOuPath"] = self.userOuPath!
             }
             if self.version != nil {
                 map["Version"] = self.version!
@@ -18257,6 +18278,9 @@ public class DescribeDesktopGroupsResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.tags = tmp
+            }
+            if dict.keys.contains("UserOuPath") {
+                self.userOuPath = dict["UserOuPath"] as! String
             }
             if dict.keys.contains("Version") {
                 self.version = dict["Version"] as! Int32
@@ -34169,6 +34193,8 @@ public class DescribeUsersInGroupResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var userOuPath: String?
+
     public var usersCount: Int32?
 
     public override init() {
@@ -34201,6 +34227,9 @@ public class DescribeUsersInGroupResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.userOuPath != nil {
+            map["UserOuPath"] = self.userOuPath!
+        }
         if self.usersCount != nil {
             map["UsersCount"] = self.usersCount!
         }
@@ -34227,6 +34256,9 @@ public class DescribeUsersInGroupResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("UserOuPath") {
+            self.userOuPath = dict["UserOuPath"] as! String
         }
         if dict.keys.contains("UsersCount") {
             self.usersCount = dict["UsersCount"] as! Int32
@@ -48853,6 +48885,8 @@ public class RemoveUserFromDesktopGroupRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var userOuPath: String?
+
     public override init() {
         super.init()
     }
@@ -48879,6 +48913,9 @@ public class RemoveUserFromDesktopGroupRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.userOuPath != nil {
+            map["UserOuPath"] = self.userOuPath!
+        }
         return map
     }
 
@@ -48894,6 +48931,9 @@ public class RemoveUserFromDesktopGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("UserOuPath") {
+            self.userOuPath = dict["UserOuPath"] as! String
         }
     }
 }
