@@ -14332,13 +14332,17 @@ public class ListPlansResponseBody : Tea.TeaModel {
 
         public var flow: Int32?
 
-        public var memory: Int32?
+        public var ispType: String?
 
-        public var originPrice: Double?
+        public var memory: Double?
+
+        public var originPrice: String?
 
         public var planId: String?
 
         public var planType: String?
+
+        public var publicIpNum: String?
 
         public var supportPlatform: String?
 
@@ -14376,6 +14380,9 @@ public class ListPlansResponseBody : Tea.TeaModel {
             if self.flow != nil {
                 map["Flow"] = self.flow!
             }
+            if self.ispType != nil {
+                map["IspType"] = self.ispType!
+            }
             if self.memory != nil {
                 map["Memory"] = self.memory!
             }
@@ -14387,6 +14394,9 @@ public class ListPlansResponseBody : Tea.TeaModel {
             }
             if self.planType != nil {
                 map["PlanType"] = self.planType!
+            }
+            if self.publicIpNum != nil {
+                map["PublicIpNum"] = self.publicIpNum!
             }
             if self.supportPlatform != nil {
                 map["SupportPlatform"] = self.supportPlatform!
@@ -14420,17 +14430,23 @@ public class ListPlansResponseBody : Tea.TeaModel {
             if dict.keys.contains("Flow") {
                 self.flow = dict["Flow"] as! Int32
             }
+            if dict.keys.contains("IspType") {
+                self.ispType = dict["IspType"] as! String
+            }
             if dict.keys.contains("Memory") {
-                self.memory = dict["Memory"] as! Int32
+                self.memory = dict["Memory"] as! Double
             }
             if dict.keys.contains("OriginPrice") {
-                self.originPrice = dict["OriginPrice"] as! Double
+                self.originPrice = dict["OriginPrice"] as! String
             }
             if dict.keys.contains("PlanId") {
                 self.planId = dict["PlanId"] as! String
             }
             if dict.keys.contains("PlanType") {
                 self.planType = dict["PlanType"] as! String
+            }
+            if dict.keys.contains("PublicIpNum") {
+                self.publicIpNum = dict["PublicIpNum"] as! String
             }
             if dict.keys.contains("SupportPlatform") {
                 self.supportPlatform = dict["SupportPlatform"] as! String
