@@ -2903,6 +2903,35 @@ public class RunDataAnalysisRequest : Tea.TeaModel {
 
 public class RunDataAnalysisResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class Chat : Tea.TeaModel {
+            public var text: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.text != nil {
+                    map["text"] = self.text!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("text") {
+                    self.text = dict["text"] as! String
+                }
+            }
+        }
         public class SqlData : Tea.TeaModel {
             public var column: [String]?
 
@@ -3043,6 +3072,8 @@ public class RunDataAnalysisResponseBody : Tea.TeaModel {
         }
         public var attempts: [Any]?
 
+        public var chat: RunDataAnalysisResponseBody.Data.Chat?
+
         public var errorMessage: String?
 
         public var event: String?
@@ -3077,6 +3108,7 @@ public class RunDataAnalysisResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.chat?.validate()
             try self.sqlData?.validate()
             try self.visualization?.validate()
         }
@@ -3085,6 +3117,9 @@ public class RunDataAnalysisResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.attempts != nil {
                 map["attempts"] = self.attempts!
+            }
+            if self.chat != nil {
+                map["chat"] = self.chat?.toMap()
             }
             if self.errorMessage != nil {
                 map["errorMessage"] = self.errorMessage!
@@ -3128,6 +3163,11 @@ public class RunDataAnalysisResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("attempts") {
                 self.attempts = dict["attempts"] as! [Any]
+            }
+            if dict.keys.contains("chat") {
+                var model = RunDataAnalysisResponseBody.Data.Chat()
+                model.fromMap(dict["chat"] as! [String: Any])
+                self.chat = model
             }
             if dict.keys.contains("errorMessage") {
                 self.errorMessage = dict["errorMessage"] as! String
@@ -3665,6 +3705,37 @@ public class RunSqlGenerationRequest : Tea.TeaModel {
 
 public class RunSqlGenerationResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class Chat : Tea.TeaModel {
+            public var text: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.text != nil {
+                    map["text"] = self.text!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("text") {
+                    self.text = dict["text"] as! String
+                }
+            }
+        }
+        public var chat: RunSqlGenerationResponseBody.Data.Chat?
+
         public var errorMessage: String?
 
         public var event: String?
@@ -3693,10 +3764,14 @@ public class RunSqlGenerationResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.chat?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.chat != nil {
+                map["chat"] = self.chat?.toMap()
+            }
             if self.errorMessage != nil {
                 map["errorMessage"] = self.errorMessage!
             }
@@ -3728,6 +3803,11 @@ public class RunSqlGenerationResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("chat") {
+                var model = RunSqlGenerationResponseBody.Data.Chat()
+                model.fromMap(dict["chat"] as! [String: Any])
+                self.chat = model
+            }
             if dict.keys.contains("errorMessage") {
                 self.errorMessage = dict["errorMessage"] as! String
             }
