@@ -1515,6 +1515,43 @@ public class AddSourcesToTrafficMirrorSessionResponse : Tea.TeaModel {
 }
 
 public class AllocateEipAddressRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var activityId: Int64?
 
     public var autoPay: Bool?
@@ -1558,6 +1595,8 @@ public class AllocateEipAddressRequest : Tea.TeaModel {
     public var resourceOwnerId: Int64?
 
     public var securityProtectionTypes: [String]?
+
+    public var tag: [AllocateEipAddressRequest.Tag]?
 
     public var zone: String?
 
@@ -1641,6 +1680,13 @@ public class AllocateEipAddressRequest : Tea.TeaModel {
         if self.securityProtectionTypes != nil {
             map["SecurityProtectionTypes"] = self.securityProtectionTypes!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.zone != nil {
             map["Zone"] = self.zone!
         }
@@ -1713,6 +1759,17 @@ public class AllocateEipAddressRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityProtectionTypes") {
             self.securityProtectionTypes = dict["SecurityProtectionTypes"] as! [String]
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [AllocateEipAddressRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = AllocateEipAddressRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
         if dict.keys.contains("Zone") {
             self.zone = dict["Zone"] as! String
@@ -1832,6 +1889,43 @@ public class AllocateEipAddressResponse : Tea.TeaModel {
 }
 
 public class AllocateEipAddressProRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var autoPay: Bool?
 
     public var bandwidth: String?
@@ -1869,6 +1963,8 @@ public class AllocateEipAddressProRequest : Tea.TeaModel {
     public var resourceOwnerId: Int64?
 
     public var securityProtectionTypes: [String]?
+
+    public var tag: [AllocateEipAddressProRequest.Tag]?
 
     public override init() {
         super.init()
@@ -1941,6 +2037,13 @@ public class AllocateEipAddressProRequest : Tea.TeaModel {
         if self.securityProtectionTypes != nil {
             map["SecurityProtectionTypes"] = self.securityProtectionTypes!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
@@ -2001,6 +2104,17 @@ public class AllocateEipAddressProRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityProtectionTypes") {
             self.securityProtectionTypes = dict["SecurityProtectionTypes"] as! [String]
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [AllocateEipAddressProRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = AllocateEipAddressProRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
     }
 }
@@ -7521,6 +7635,43 @@ public class CreateBgpPeerResponse : Tea.TeaModel {
 }
 
 public class CreateCommonBandwidthPackageRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var bandwidth: Int32?
 
     public var clientToken: String?
@@ -7548,6 +7699,8 @@ public class CreateCommonBandwidthPackageRequest : Tea.TeaModel {
     public var resourceOwnerId: Int64?
 
     public var securityProtectionTypes: [String]?
+
+    public var tag: [CreateCommonBandwidthPackageRequest.Tag]?
 
     public var zone: String?
 
@@ -7607,6 +7760,13 @@ public class CreateCommonBandwidthPackageRequest : Tea.TeaModel {
         if self.securityProtectionTypes != nil {
             map["SecurityProtectionTypes"] = self.securityProtectionTypes!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.zone != nil {
             map["Zone"] = self.zone!
         }
@@ -7655,6 +7815,17 @@ public class CreateCommonBandwidthPackageRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityProtectionTypes") {
             self.securityProtectionTypes = dict["SecurityProtectionTypes"] as! [String]
+        }
+        if dict.keys.contains("Tag") {
+            var tmp : [CreateCommonBandwidthPackageRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateCommonBandwidthPackageRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
         if dict.keys.contains("Zone") {
             self.zone = dict["Zone"] as! String
