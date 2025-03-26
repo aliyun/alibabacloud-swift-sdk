@@ -4797,6 +4797,8 @@ public class GetSmsTemplateResponseBody : Tea.TeaModel {
 
     public var variableAttribute: String?
 
+    public var vendorAuditStatus: [String: Any]?
+
     public override init() {
         super.init()
     }
@@ -4871,6 +4873,9 @@ public class GetSmsTemplateResponseBody : Tea.TeaModel {
         if self.variableAttribute != nil {
             map["VariableAttribute"] = self.variableAttribute!
         }
+        if self.vendorAuditStatus != nil {
+            map["VendorAuditStatus"] = self.vendorAuditStatus!
+        }
         return map
     }
 
@@ -4937,6 +4942,9 @@ public class GetSmsTemplateResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("VariableAttribute") {
             self.variableAttribute = dict["VariableAttribute"] as! String
+        }
+        if dict.keys.contains("VendorAuditStatus") {
+            self.vendorAuditStatus = dict["VendorAuditStatus"] as! [String: Any]
         }
     }
 }
