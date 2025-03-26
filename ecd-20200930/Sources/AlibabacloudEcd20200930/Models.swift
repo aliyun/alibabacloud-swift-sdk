@@ -3388,6 +3388,155 @@ public class CancelCopyImageResponse : Tea.TeaModel {
     }
 }
 
+public class CloneCenterPolicyRequest : Tea.TeaModel {
+    public var businessType: Int32?
+
+    public var name: String?
+
+    public var policyGroupId: String?
+
+    public var regionId: String?
+
+    public var resourceType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.businessType != nil {
+            map["BusinessType"] = self.businessType!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.policyGroupId != nil {
+            map["PolicyGroupId"] = self.policyGroupId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BusinessType") {
+            self.businessType = dict["BusinessType"] as! Int32
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("PolicyGroupId") {
+            self.policyGroupId = dict["PolicyGroupId"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceType") {
+            self.resourceType = dict["ResourceType"] as! String
+        }
+    }
+}
+
+public class CloneCenterPolicyResponseBody : Tea.TeaModel {
+    public var policyGroupId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.policyGroupId != nil {
+            map["PolicyGroupId"] = self.policyGroupId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PolicyGroupId") {
+            self.policyGroupId = dict["PolicyGroupId"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CloneCenterPolicyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CloneCenterPolicyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CloneCenterPolicyResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ClonePolicyGroupRequest : Tea.TeaModel {
     public var name: String?
 
@@ -6040,6 +6189,1411 @@ public class CreateCdsFileShareLinkResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = CreateCdsFileShareLinkResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class CreateCenterPolicyRequest : Tea.TeaModel {
+    public class AuthorizeAccessPolicyRule : Tea.TeaModel {
+        public var cidrIp: String?
+
+        public var description_: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cidrIp != nil {
+                map["CidrIp"] = self.cidrIp!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CidrIp") {
+                self.cidrIp = dict["CidrIp"] as! String
+            }
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
+            }
+        }
+    }
+    public class AuthorizeSecurityPolicyRule : Tea.TeaModel {
+        public var cidrIp: String?
+
+        public var description_: String?
+
+        public var ipProtocol: String?
+
+        public var policy: String?
+
+        public var portRange: String?
+
+        public var priority: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cidrIp != nil {
+                map["CidrIp"] = self.cidrIp!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.ipProtocol != nil {
+                map["IpProtocol"] = self.ipProtocol!
+            }
+            if self.policy != nil {
+                map["Policy"] = self.policy!
+            }
+            if self.portRange != nil {
+                map["PortRange"] = self.portRange!
+            }
+            if self.priority != nil {
+                map["Priority"] = self.priority!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CidrIp") {
+                self.cidrIp = dict["CidrIp"] as! String
+            }
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("IpProtocol") {
+                self.ipProtocol = dict["IpProtocol"] as! String
+            }
+            if dict.keys.contains("Policy") {
+                self.policy = dict["Policy"] as! String
+            }
+            if dict.keys.contains("PortRange") {
+                self.portRange = dict["PortRange"] as! String
+            }
+            if dict.keys.contains("Priority") {
+                self.priority = dict["Priority"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+        }
+    }
+    public class ClientType : Tea.TeaModel {
+        public var clientType: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clientType != nil {
+                map["ClientType"] = self.clientType!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ClientType") {
+                self.clientType = dict["ClientType"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+        }
+    }
+    public class DeviceRedirects : Tea.TeaModel {
+        public var deviceType: String?
+
+        public var redirectType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.deviceType != nil {
+                map["DeviceType"] = self.deviceType!
+            }
+            if self.redirectType != nil {
+                map["RedirectType"] = self.redirectType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DeviceType") {
+                self.deviceType = dict["DeviceType"] as! String
+            }
+            if dict.keys.contains("RedirectType") {
+                self.redirectType = dict["RedirectType"] as! String
+            }
+        }
+    }
+    public class DeviceRules : Tea.TeaModel {
+        public var deviceName: String?
+
+        public var devicePid: String?
+
+        public var deviceType: String?
+
+        public var deviceVid: String?
+
+        public var optCommand: String?
+
+        public var redirectType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.deviceName != nil {
+                map["DeviceName"] = self.deviceName!
+            }
+            if self.devicePid != nil {
+                map["DevicePid"] = self.devicePid!
+            }
+            if self.deviceType != nil {
+                map["DeviceType"] = self.deviceType!
+            }
+            if self.deviceVid != nil {
+                map["DeviceVid"] = self.deviceVid!
+            }
+            if self.optCommand != nil {
+                map["OptCommand"] = self.optCommand!
+            }
+            if self.redirectType != nil {
+                map["RedirectType"] = self.redirectType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DeviceName") {
+                self.deviceName = dict["DeviceName"] as! String
+            }
+            if dict.keys.contains("DevicePid") {
+                self.devicePid = dict["DevicePid"] as! String
+            }
+            if dict.keys.contains("DeviceType") {
+                self.deviceType = dict["DeviceType"] as! String
+            }
+            if dict.keys.contains("DeviceVid") {
+                self.deviceVid = dict["DeviceVid"] as! String
+            }
+            if dict.keys.contains("OptCommand") {
+                self.optCommand = dict["OptCommand"] as! String
+            }
+            if dict.keys.contains("RedirectType") {
+                self.redirectType = dict["RedirectType"] as! String
+            }
+        }
+    }
+    public class DomainResolveRule : Tea.TeaModel {
+        public var description_: String?
+
+        public var domain: String?
+
+        public var policy: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.domain != nil {
+                map["Domain"] = self.domain!
+            }
+            if self.policy != nil {
+                map["Policy"] = self.policy!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("Domain") {
+                self.domain = dict["Domain"] as! String
+            }
+            if dict.keys.contains("Policy") {
+                self.policy = dict["Policy"] as! String
+            }
+        }
+    }
+    public class NetRedirectRule : Tea.TeaModel {
+        public var domain: String?
+
+        public var policy: String?
+
+        public var ruleType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.domain != nil {
+                map["Domain"] = self.domain!
+            }
+            if self.policy != nil {
+                map["Policy"] = self.policy!
+            }
+            if self.ruleType != nil {
+                map["RuleType"] = self.ruleType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Domain") {
+                self.domain = dict["Domain"] as! String
+            }
+            if dict.keys.contains("Policy") {
+                self.policy = dict["Policy"] as! String
+            }
+            if dict.keys.contains("RuleType") {
+                self.ruleType = dict["RuleType"] as! String
+            }
+        }
+    }
+    public class UsbSupplyRedirectRule : Tea.TeaModel {
+        public var description_: String?
+
+        public var productId: String?
+
+        public var usbRedirectType: String?
+
+        public var usbRuleType: String?
+
+        public var vendorId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.productId != nil {
+                map["ProductId"] = self.productId!
+            }
+            if self.usbRedirectType != nil {
+                map["UsbRedirectType"] = self.usbRedirectType!
+            }
+            if self.usbRuleType != nil {
+                map["UsbRuleType"] = self.usbRuleType!
+            }
+            if self.vendorId != nil {
+                map["VendorId"] = self.vendorId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("ProductId") {
+                self.productId = dict["ProductId"] as! String
+            }
+            if dict.keys.contains("UsbRedirectType") {
+                self.usbRedirectType = dict["UsbRedirectType"] as! String
+            }
+            if dict.keys.contains("UsbRuleType") {
+                self.usbRuleType = dict["UsbRuleType"] as! String
+            }
+            if dict.keys.contains("VendorId") {
+                self.vendorId = dict["VendorId"] as! String
+            }
+        }
+    }
+    public var adminAccess: String?
+
+    public var appContentProtection: String?
+
+    public var authorizeAccessPolicyRule: [CreateCenterPolicyRequest.AuthorizeAccessPolicyRule]?
+
+    public var authorizeSecurityPolicyRule: [CreateCenterPolicyRequest.AuthorizeSecurityPolicyRule]?
+
+    public var businessType: Int32?
+
+    public var cameraRedirect: String?
+
+    public var clientType: [CreateCenterPolicyRequest.ClientType]?
+
+    public var clipboard: String?
+
+    public var colorEnhancement: String?
+
+    public var cpuDownGradeDuration: Int32?
+
+    public var cpuProcessors: [String]?
+
+    public var cpuProtectedMode: String?
+
+    public var cpuRateLimit: Int32?
+
+    public var cpuSampleDuration: Int32?
+
+    public var cpuSingleRateLimit: Int32?
+
+    public var deviceConnectHint: String?
+
+    public var deviceRedirects: [CreateCenterPolicyRequest.DeviceRedirects]?
+
+    public var deviceRules: [CreateCenterPolicyRequest.DeviceRules]?
+
+    public var disconnectKeepSession: String?
+
+    public var disconnectKeepSessionTime: Int32?
+
+    public var displayMode: String?
+
+    public var domainResolveRule: [CreateCenterPolicyRequest.DomainResolveRule]?
+
+    public var domainResolveRuleType: String?
+
+    public var enableSessionRateLimiting: String?
+
+    public var endUserApplyAdminCoordinate: String?
+
+    public var endUserGroupCoordinate: String?
+
+    public var fileMigrate: String?
+
+    public var gpuAcceleration: String?
+
+    public var html5FileTransfer: String?
+
+    public var internetCommunicationProtocol: String?
+
+    public var localDrive: String?
+
+    public var maxReconnectTime: Int32?
+
+    public var memoryDownGradeDuration: Int32?
+
+    public var memoryProcessors: [String]?
+
+    public var memoryProtectedMode: String?
+
+    public var memoryRateLimit: Int32?
+
+    public var memorySampleDuration: Int32?
+
+    public var memorySingleRateLimit: Int32?
+
+    public var mobileRestart: String?
+
+    public var mobileShutdown: String?
+
+    public var name: String?
+
+    public var netRedirect: String?
+
+    public var netRedirectRule: [CreateCenterPolicyRequest.NetRedirectRule]?
+
+    public var noOperationDisconnect: String?
+
+    public var noOperationDisconnectTime: Int32?
+
+    public var printerRedirect: String?
+
+    public var qualityEnhancement: String?
+
+    public var recordEventDuration: Int32?
+
+    public var recordEventFilePaths: [String]?
+
+    public var recordEventRegisters: [String]?
+
+    public var recordEvents: [String]?
+
+    public var recording: String?
+
+    public var recordingAudio: String?
+
+    public var recordingDuration: Int32?
+
+    public var recordingEndTime: String?
+
+    public var recordingExpires: Int32?
+
+    public var recordingFps: String?
+
+    public var recordingStartTime: String?
+
+    public var recordingUserNotify: String?
+
+    public var recordingUserNotifyMessage: String?
+
+    public var regionId: String?
+
+    public var remoteCoordinate: String?
+
+    public var resetDesktop: String?
+
+    public var resolutionHeight: Int32?
+
+    public var resolutionModel: String?
+
+    public var resolutionWidth: Int32?
+
+    public var resourceType: String?
+
+    public var scope: String?
+
+    public var scopeValue: [String]?
+
+    public var sessionMaxRateKbps: Int32?
+
+    public var smoothEnhancement: String?
+
+    public var statusMonitor: String?
+
+    public var streamingMode: String?
+
+    public var targetFps: Int32?
+
+    public var taskbar: String?
+
+    public var usbRedirect: String?
+
+    public var usbSupplyRedirectRule: [CreateCenterPolicyRequest.UsbSupplyRedirectRule]?
+
+    public var videoEncAvgKbps: Int32?
+
+    public var videoEncMaxQP: Int32?
+
+    public var videoEncMinQP: Int32?
+
+    public var videoEncPeakKbps: Int32?
+
+    public var videoEncPolicy: String?
+
+    public var videoRedirect: String?
+
+    public var visualQuality: String?
+
+    public var watermark: String?
+
+    public var watermarkAntiCam: String?
+
+    public var watermarkColor: Int32?
+
+    public var watermarkColumnAmount: Int32?
+
+    public var watermarkCustomText: String?
+
+    public var watermarkDegree: Double?
+
+    public var watermarkFontSize: Int32?
+
+    public var watermarkFontStyle: String?
+
+    public var watermarkPower: String?
+
+    public var watermarkRowAmount: Int32?
+
+    public var watermarkSecurity: String?
+
+    public var watermarkTransparencyValue: Int32?
+
+    public var watermarkType: String?
+
+    public var wuyingKeeper: String?
+
+    public var wyAssistant: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.adminAccess != nil {
+            map["AdminAccess"] = self.adminAccess!
+        }
+        if self.appContentProtection != nil {
+            map["AppContentProtection"] = self.appContentProtection!
+        }
+        if self.authorizeAccessPolicyRule != nil {
+            var tmp : [Any] = []
+            for k in self.authorizeAccessPolicyRule! {
+                tmp.append(k.toMap())
+            }
+            map["AuthorizeAccessPolicyRule"] = tmp
+        }
+        if self.authorizeSecurityPolicyRule != nil {
+            var tmp : [Any] = []
+            for k in self.authorizeSecurityPolicyRule! {
+                tmp.append(k.toMap())
+            }
+            map["AuthorizeSecurityPolicyRule"] = tmp
+        }
+        if self.businessType != nil {
+            map["BusinessType"] = self.businessType!
+        }
+        if self.cameraRedirect != nil {
+            map["CameraRedirect"] = self.cameraRedirect!
+        }
+        if self.clientType != nil {
+            var tmp : [Any] = []
+            for k in self.clientType! {
+                tmp.append(k.toMap())
+            }
+            map["ClientType"] = tmp
+        }
+        if self.clipboard != nil {
+            map["Clipboard"] = self.clipboard!
+        }
+        if self.colorEnhancement != nil {
+            map["ColorEnhancement"] = self.colorEnhancement!
+        }
+        if self.cpuDownGradeDuration != nil {
+            map["CpuDownGradeDuration"] = self.cpuDownGradeDuration!
+        }
+        if self.cpuProcessors != nil {
+            map["CpuProcessors"] = self.cpuProcessors!
+        }
+        if self.cpuProtectedMode != nil {
+            map["CpuProtectedMode"] = self.cpuProtectedMode!
+        }
+        if self.cpuRateLimit != nil {
+            map["CpuRateLimit"] = self.cpuRateLimit!
+        }
+        if self.cpuSampleDuration != nil {
+            map["CpuSampleDuration"] = self.cpuSampleDuration!
+        }
+        if self.cpuSingleRateLimit != nil {
+            map["CpuSingleRateLimit"] = self.cpuSingleRateLimit!
+        }
+        if self.deviceConnectHint != nil {
+            map["DeviceConnectHint"] = self.deviceConnectHint!
+        }
+        if self.deviceRedirects != nil {
+            var tmp : [Any] = []
+            for k in self.deviceRedirects! {
+                tmp.append(k.toMap())
+            }
+            map["DeviceRedirects"] = tmp
+        }
+        if self.deviceRules != nil {
+            var tmp : [Any] = []
+            for k in self.deviceRules! {
+                tmp.append(k.toMap())
+            }
+            map["DeviceRules"] = tmp
+        }
+        if self.disconnectKeepSession != nil {
+            map["DisconnectKeepSession"] = self.disconnectKeepSession!
+        }
+        if self.disconnectKeepSessionTime != nil {
+            map["DisconnectKeepSessionTime"] = self.disconnectKeepSessionTime!
+        }
+        if self.displayMode != nil {
+            map["DisplayMode"] = self.displayMode!
+        }
+        if self.domainResolveRule != nil {
+            var tmp : [Any] = []
+            for k in self.domainResolveRule! {
+                tmp.append(k.toMap())
+            }
+            map["DomainResolveRule"] = tmp
+        }
+        if self.domainResolveRuleType != nil {
+            map["DomainResolveRuleType"] = self.domainResolveRuleType!
+        }
+        if self.enableSessionRateLimiting != nil {
+            map["EnableSessionRateLimiting"] = self.enableSessionRateLimiting!
+        }
+        if self.endUserApplyAdminCoordinate != nil {
+            map["EndUserApplyAdminCoordinate"] = self.endUserApplyAdminCoordinate!
+        }
+        if self.endUserGroupCoordinate != nil {
+            map["EndUserGroupCoordinate"] = self.endUserGroupCoordinate!
+        }
+        if self.fileMigrate != nil {
+            map["FileMigrate"] = self.fileMigrate!
+        }
+        if self.gpuAcceleration != nil {
+            map["GpuAcceleration"] = self.gpuAcceleration!
+        }
+        if self.html5FileTransfer != nil {
+            map["Html5FileTransfer"] = self.html5FileTransfer!
+        }
+        if self.internetCommunicationProtocol != nil {
+            map["InternetCommunicationProtocol"] = self.internetCommunicationProtocol!
+        }
+        if self.localDrive != nil {
+            map["LocalDrive"] = self.localDrive!
+        }
+        if self.maxReconnectTime != nil {
+            map["MaxReconnectTime"] = self.maxReconnectTime!
+        }
+        if self.memoryDownGradeDuration != nil {
+            map["MemoryDownGradeDuration"] = self.memoryDownGradeDuration!
+        }
+        if self.memoryProcessors != nil {
+            map["MemoryProcessors"] = self.memoryProcessors!
+        }
+        if self.memoryProtectedMode != nil {
+            map["MemoryProtectedMode"] = self.memoryProtectedMode!
+        }
+        if self.memoryRateLimit != nil {
+            map["MemoryRateLimit"] = self.memoryRateLimit!
+        }
+        if self.memorySampleDuration != nil {
+            map["MemorySampleDuration"] = self.memorySampleDuration!
+        }
+        if self.memorySingleRateLimit != nil {
+            map["MemorySingleRateLimit"] = self.memorySingleRateLimit!
+        }
+        if self.mobileRestart != nil {
+            map["MobileRestart"] = self.mobileRestart!
+        }
+        if self.mobileShutdown != nil {
+            map["MobileShutdown"] = self.mobileShutdown!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.netRedirect != nil {
+            map["NetRedirect"] = self.netRedirect!
+        }
+        if self.netRedirectRule != nil {
+            var tmp : [Any] = []
+            for k in self.netRedirectRule! {
+                tmp.append(k.toMap())
+            }
+            map["NetRedirectRule"] = tmp
+        }
+        if self.noOperationDisconnect != nil {
+            map["NoOperationDisconnect"] = self.noOperationDisconnect!
+        }
+        if self.noOperationDisconnectTime != nil {
+            map["NoOperationDisconnectTime"] = self.noOperationDisconnectTime!
+        }
+        if self.printerRedirect != nil {
+            map["PrinterRedirect"] = self.printerRedirect!
+        }
+        if self.qualityEnhancement != nil {
+            map["QualityEnhancement"] = self.qualityEnhancement!
+        }
+        if self.recordEventDuration != nil {
+            map["RecordEventDuration"] = self.recordEventDuration!
+        }
+        if self.recordEventFilePaths != nil {
+            map["RecordEventFilePaths"] = self.recordEventFilePaths!
+        }
+        if self.recordEventRegisters != nil {
+            map["RecordEventRegisters"] = self.recordEventRegisters!
+        }
+        if self.recordEvents != nil {
+            map["RecordEvents"] = self.recordEvents!
+        }
+        if self.recording != nil {
+            map["Recording"] = self.recording!
+        }
+        if self.recordingAudio != nil {
+            map["RecordingAudio"] = self.recordingAudio!
+        }
+        if self.recordingDuration != nil {
+            map["RecordingDuration"] = self.recordingDuration!
+        }
+        if self.recordingEndTime != nil {
+            map["RecordingEndTime"] = self.recordingEndTime!
+        }
+        if self.recordingExpires != nil {
+            map["RecordingExpires"] = self.recordingExpires!
+        }
+        if self.recordingFps != nil {
+            map["RecordingFps"] = self.recordingFps!
+        }
+        if self.recordingStartTime != nil {
+            map["RecordingStartTime"] = self.recordingStartTime!
+        }
+        if self.recordingUserNotify != nil {
+            map["RecordingUserNotify"] = self.recordingUserNotify!
+        }
+        if self.recordingUserNotifyMessage != nil {
+            map["RecordingUserNotifyMessage"] = self.recordingUserNotifyMessage!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.remoteCoordinate != nil {
+            map["RemoteCoordinate"] = self.remoteCoordinate!
+        }
+        if self.resetDesktop != nil {
+            map["ResetDesktop"] = self.resetDesktop!
+        }
+        if self.resolutionHeight != nil {
+            map["ResolutionHeight"] = self.resolutionHeight!
+        }
+        if self.resolutionModel != nil {
+            map["ResolutionModel"] = self.resolutionModel!
+        }
+        if self.resolutionWidth != nil {
+            map["ResolutionWidth"] = self.resolutionWidth!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        if self.scope != nil {
+            map["Scope"] = self.scope!
+        }
+        if self.scopeValue != nil {
+            map["ScopeValue"] = self.scopeValue!
+        }
+        if self.sessionMaxRateKbps != nil {
+            map["SessionMaxRateKbps"] = self.sessionMaxRateKbps!
+        }
+        if self.smoothEnhancement != nil {
+            map["SmoothEnhancement"] = self.smoothEnhancement!
+        }
+        if self.statusMonitor != nil {
+            map["StatusMonitor"] = self.statusMonitor!
+        }
+        if self.streamingMode != nil {
+            map["StreamingMode"] = self.streamingMode!
+        }
+        if self.targetFps != nil {
+            map["TargetFps"] = self.targetFps!
+        }
+        if self.taskbar != nil {
+            map["Taskbar"] = self.taskbar!
+        }
+        if self.usbRedirect != nil {
+            map["UsbRedirect"] = self.usbRedirect!
+        }
+        if self.usbSupplyRedirectRule != nil {
+            var tmp : [Any] = []
+            for k in self.usbSupplyRedirectRule! {
+                tmp.append(k.toMap())
+            }
+            map["UsbSupplyRedirectRule"] = tmp
+        }
+        if self.videoEncAvgKbps != nil {
+            map["VideoEncAvgKbps"] = self.videoEncAvgKbps!
+        }
+        if self.videoEncMaxQP != nil {
+            map["VideoEncMaxQP"] = self.videoEncMaxQP!
+        }
+        if self.videoEncMinQP != nil {
+            map["VideoEncMinQP"] = self.videoEncMinQP!
+        }
+        if self.videoEncPeakKbps != nil {
+            map["VideoEncPeakKbps"] = self.videoEncPeakKbps!
+        }
+        if self.videoEncPolicy != nil {
+            map["VideoEncPolicy"] = self.videoEncPolicy!
+        }
+        if self.videoRedirect != nil {
+            map["VideoRedirect"] = self.videoRedirect!
+        }
+        if self.visualQuality != nil {
+            map["VisualQuality"] = self.visualQuality!
+        }
+        if self.watermark != nil {
+            map["Watermark"] = self.watermark!
+        }
+        if self.watermarkAntiCam != nil {
+            map["WatermarkAntiCam"] = self.watermarkAntiCam!
+        }
+        if self.watermarkColor != nil {
+            map["WatermarkColor"] = self.watermarkColor!
+        }
+        if self.watermarkColumnAmount != nil {
+            map["WatermarkColumnAmount"] = self.watermarkColumnAmount!
+        }
+        if self.watermarkCustomText != nil {
+            map["WatermarkCustomText"] = self.watermarkCustomText!
+        }
+        if self.watermarkDegree != nil {
+            map["WatermarkDegree"] = self.watermarkDegree!
+        }
+        if self.watermarkFontSize != nil {
+            map["WatermarkFontSize"] = self.watermarkFontSize!
+        }
+        if self.watermarkFontStyle != nil {
+            map["WatermarkFontStyle"] = self.watermarkFontStyle!
+        }
+        if self.watermarkPower != nil {
+            map["WatermarkPower"] = self.watermarkPower!
+        }
+        if self.watermarkRowAmount != nil {
+            map["WatermarkRowAmount"] = self.watermarkRowAmount!
+        }
+        if self.watermarkSecurity != nil {
+            map["WatermarkSecurity"] = self.watermarkSecurity!
+        }
+        if self.watermarkTransparencyValue != nil {
+            map["WatermarkTransparencyValue"] = self.watermarkTransparencyValue!
+        }
+        if self.watermarkType != nil {
+            map["WatermarkType"] = self.watermarkType!
+        }
+        if self.wuyingKeeper != nil {
+            map["WuyingKeeper"] = self.wuyingKeeper!
+        }
+        if self.wyAssistant != nil {
+            map["WyAssistant"] = self.wyAssistant!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AdminAccess") {
+            self.adminAccess = dict["AdminAccess"] as! String
+        }
+        if dict.keys.contains("AppContentProtection") {
+            self.appContentProtection = dict["AppContentProtection"] as! String
+        }
+        if dict.keys.contains("AuthorizeAccessPolicyRule") {
+            var tmp : [CreateCenterPolicyRequest.AuthorizeAccessPolicyRule] = []
+            for v in dict["AuthorizeAccessPolicyRule"] as! [Any] {
+                var model = CreateCenterPolicyRequest.AuthorizeAccessPolicyRule()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.authorizeAccessPolicyRule = tmp
+        }
+        if dict.keys.contains("AuthorizeSecurityPolicyRule") {
+            var tmp : [CreateCenterPolicyRequest.AuthorizeSecurityPolicyRule] = []
+            for v in dict["AuthorizeSecurityPolicyRule"] as! [Any] {
+                var model = CreateCenterPolicyRequest.AuthorizeSecurityPolicyRule()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.authorizeSecurityPolicyRule = tmp
+        }
+        if dict.keys.contains("BusinessType") {
+            self.businessType = dict["BusinessType"] as! Int32
+        }
+        if dict.keys.contains("CameraRedirect") {
+            self.cameraRedirect = dict["CameraRedirect"] as! String
+        }
+        if dict.keys.contains("ClientType") {
+            var tmp : [CreateCenterPolicyRequest.ClientType] = []
+            for v in dict["ClientType"] as! [Any] {
+                var model = CreateCenterPolicyRequest.ClientType()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.clientType = tmp
+        }
+        if dict.keys.contains("Clipboard") {
+            self.clipboard = dict["Clipboard"] as! String
+        }
+        if dict.keys.contains("ColorEnhancement") {
+            self.colorEnhancement = dict["ColorEnhancement"] as! String
+        }
+        if dict.keys.contains("CpuDownGradeDuration") {
+            self.cpuDownGradeDuration = dict["CpuDownGradeDuration"] as! Int32
+        }
+        if dict.keys.contains("CpuProcessors") {
+            self.cpuProcessors = dict["CpuProcessors"] as! [String]
+        }
+        if dict.keys.contains("CpuProtectedMode") {
+            self.cpuProtectedMode = dict["CpuProtectedMode"] as! String
+        }
+        if dict.keys.contains("CpuRateLimit") {
+            self.cpuRateLimit = dict["CpuRateLimit"] as! Int32
+        }
+        if dict.keys.contains("CpuSampleDuration") {
+            self.cpuSampleDuration = dict["CpuSampleDuration"] as! Int32
+        }
+        if dict.keys.contains("CpuSingleRateLimit") {
+            self.cpuSingleRateLimit = dict["CpuSingleRateLimit"] as! Int32
+        }
+        if dict.keys.contains("DeviceConnectHint") {
+            self.deviceConnectHint = dict["DeviceConnectHint"] as! String
+        }
+        if dict.keys.contains("DeviceRedirects") {
+            var tmp : [CreateCenterPolicyRequest.DeviceRedirects] = []
+            for v in dict["DeviceRedirects"] as! [Any] {
+                var model = CreateCenterPolicyRequest.DeviceRedirects()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.deviceRedirects = tmp
+        }
+        if dict.keys.contains("DeviceRules") {
+            var tmp : [CreateCenterPolicyRequest.DeviceRules] = []
+            for v in dict["DeviceRules"] as! [Any] {
+                var model = CreateCenterPolicyRequest.DeviceRules()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.deviceRules = tmp
+        }
+        if dict.keys.contains("DisconnectKeepSession") {
+            self.disconnectKeepSession = dict["DisconnectKeepSession"] as! String
+        }
+        if dict.keys.contains("DisconnectKeepSessionTime") {
+            self.disconnectKeepSessionTime = dict["DisconnectKeepSessionTime"] as! Int32
+        }
+        if dict.keys.contains("DisplayMode") {
+            self.displayMode = dict["DisplayMode"] as! String
+        }
+        if dict.keys.contains("DomainResolveRule") {
+            var tmp : [CreateCenterPolicyRequest.DomainResolveRule] = []
+            for v in dict["DomainResolveRule"] as! [Any] {
+                var model = CreateCenterPolicyRequest.DomainResolveRule()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.domainResolveRule = tmp
+        }
+        if dict.keys.contains("DomainResolveRuleType") {
+            self.domainResolveRuleType = dict["DomainResolveRuleType"] as! String
+        }
+        if dict.keys.contains("EnableSessionRateLimiting") {
+            self.enableSessionRateLimiting = dict["EnableSessionRateLimiting"] as! String
+        }
+        if dict.keys.contains("EndUserApplyAdminCoordinate") {
+            self.endUserApplyAdminCoordinate = dict["EndUserApplyAdminCoordinate"] as! String
+        }
+        if dict.keys.contains("EndUserGroupCoordinate") {
+            self.endUserGroupCoordinate = dict["EndUserGroupCoordinate"] as! String
+        }
+        if dict.keys.contains("FileMigrate") {
+            self.fileMigrate = dict["FileMigrate"] as! String
+        }
+        if dict.keys.contains("GpuAcceleration") {
+            self.gpuAcceleration = dict["GpuAcceleration"] as! String
+        }
+        if dict.keys.contains("Html5FileTransfer") {
+            self.html5FileTransfer = dict["Html5FileTransfer"] as! String
+        }
+        if dict.keys.contains("InternetCommunicationProtocol") {
+            self.internetCommunicationProtocol = dict["InternetCommunicationProtocol"] as! String
+        }
+        if dict.keys.contains("LocalDrive") {
+            self.localDrive = dict["LocalDrive"] as! String
+        }
+        if dict.keys.contains("MaxReconnectTime") {
+            self.maxReconnectTime = dict["MaxReconnectTime"] as! Int32
+        }
+        if dict.keys.contains("MemoryDownGradeDuration") {
+            self.memoryDownGradeDuration = dict["MemoryDownGradeDuration"] as! Int32
+        }
+        if dict.keys.contains("MemoryProcessors") {
+            self.memoryProcessors = dict["MemoryProcessors"] as! [String]
+        }
+        if dict.keys.contains("MemoryProtectedMode") {
+            self.memoryProtectedMode = dict["MemoryProtectedMode"] as! String
+        }
+        if dict.keys.contains("MemoryRateLimit") {
+            self.memoryRateLimit = dict["MemoryRateLimit"] as! Int32
+        }
+        if dict.keys.contains("MemorySampleDuration") {
+            self.memorySampleDuration = dict["MemorySampleDuration"] as! Int32
+        }
+        if dict.keys.contains("MemorySingleRateLimit") {
+            self.memorySingleRateLimit = dict["MemorySingleRateLimit"] as! Int32
+        }
+        if dict.keys.contains("MobileRestart") {
+            self.mobileRestart = dict["MobileRestart"] as! String
+        }
+        if dict.keys.contains("MobileShutdown") {
+            self.mobileShutdown = dict["MobileShutdown"] as! String
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("NetRedirect") {
+            self.netRedirect = dict["NetRedirect"] as! String
+        }
+        if dict.keys.contains("NetRedirectRule") {
+            var tmp : [CreateCenterPolicyRequest.NetRedirectRule] = []
+            for v in dict["NetRedirectRule"] as! [Any] {
+                var model = CreateCenterPolicyRequest.NetRedirectRule()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.netRedirectRule = tmp
+        }
+        if dict.keys.contains("NoOperationDisconnect") {
+            self.noOperationDisconnect = dict["NoOperationDisconnect"] as! String
+        }
+        if dict.keys.contains("NoOperationDisconnectTime") {
+            self.noOperationDisconnectTime = dict["NoOperationDisconnectTime"] as! Int32
+        }
+        if dict.keys.contains("PrinterRedirect") {
+            self.printerRedirect = dict["PrinterRedirect"] as! String
+        }
+        if dict.keys.contains("QualityEnhancement") {
+            self.qualityEnhancement = dict["QualityEnhancement"] as! String
+        }
+        if dict.keys.contains("RecordEventDuration") {
+            self.recordEventDuration = dict["RecordEventDuration"] as! Int32
+        }
+        if dict.keys.contains("RecordEventFilePaths") {
+            self.recordEventFilePaths = dict["RecordEventFilePaths"] as! [String]
+        }
+        if dict.keys.contains("RecordEventRegisters") {
+            self.recordEventRegisters = dict["RecordEventRegisters"] as! [String]
+        }
+        if dict.keys.contains("RecordEvents") {
+            self.recordEvents = dict["RecordEvents"] as! [String]
+        }
+        if dict.keys.contains("Recording") {
+            self.recording = dict["Recording"] as! String
+        }
+        if dict.keys.contains("RecordingAudio") {
+            self.recordingAudio = dict["RecordingAudio"] as! String
+        }
+        if dict.keys.contains("RecordingDuration") {
+            self.recordingDuration = dict["RecordingDuration"] as! Int32
+        }
+        if dict.keys.contains("RecordingEndTime") {
+            self.recordingEndTime = dict["RecordingEndTime"] as! String
+        }
+        if dict.keys.contains("RecordingExpires") {
+            self.recordingExpires = dict["RecordingExpires"] as! Int32
+        }
+        if dict.keys.contains("RecordingFps") {
+            self.recordingFps = dict["RecordingFps"] as! String
+        }
+        if dict.keys.contains("RecordingStartTime") {
+            self.recordingStartTime = dict["RecordingStartTime"] as! String
+        }
+        if dict.keys.contains("RecordingUserNotify") {
+            self.recordingUserNotify = dict["RecordingUserNotify"] as! String
+        }
+        if dict.keys.contains("RecordingUserNotifyMessage") {
+            self.recordingUserNotifyMessage = dict["RecordingUserNotifyMessage"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("RemoteCoordinate") {
+            self.remoteCoordinate = dict["RemoteCoordinate"] as! String
+        }
+        if dict.keys.contains("ResetDesktop") {
+            self.resetDesktop = dict["ResetDesktop"] as! String
+        }
+        if dict.keys.contains("ResolutionHeight") {
+            self.resolutionHeight = dict["ResolutionHeight"] as! Int32
+        }
+        if dict.keys.contains("ResolutionModel") {
+            self.resolutionModel = dict["ResolutionModel"] as! String
+        }
+        if dict.keys.contains("ResolutionWidth") {
+            self.resolutionWidth = dict["ResolutionWidth"] as! Int32
+        }
+        if dict.keys.contains("ResourceType") {
+            self.resourceType = dict["ResourceType"] as! String
+        }
+        if dict.keys.contains("Scope") {
+            self.scope = dict["Scope"] as! String
+        }
+        if dict.keys.contains("ScopeValue") {
+            self.scopeValue = dict["ScopeValue"] as! [String]
+        }
+        if dict.keys.contains("SessionMaxRateKbps") {
+            self.sessionMaxRateKbps = dict["SessionMaxRateKbps"] as! Int32
+        }
+        if dict.keys.contains("SmoothEnhancement") {
+            self.smoothEnhancement = dict["SmoothEnhancement"] as! String
+        }
+        if dict.keys.contains("StatusMonitor") {
+            self.statusMonitor = dict["StatusMonitor"] as! String
+        }
+        if dict.keys.contains("StreamingMode") {
+            self.streamingMode = dict["StreamingMode"] as! String
+        }
+        if dict.keys.contains("TargetFps") {
+            self.targetFps = dict["TargetFps"] as! Int32
+        }
+        if dict.keys.contains("Taskbar") {
+            self.taskbar = dict["Taskbar"] as! String
+        }
+        if dict.keys.contains("UsbRedirect") {
+            self.usbRedirect = dict["UsbRedirect"] as! String
+        }
+        if dict.keys.contains("UsbSupplyRedirectRule") {
+            var tmp : [CreateCenterPolicyRequest.UsbSupplyRedirectRule] = []
+            for v in dict["UsbSupplyRedirectRule"] as! [Any] {
+                var model = CreateCenterPolicyRequest.UsbSupplyRedirectRule()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.usbSupplyRedirectRule = tmp
+        }
+        if dict.keys.contains("VideoEncAvgKbps") {
+            self.videoEncAvgKbps = dict["VideoEncAvgKbps"] as! Int32
+        }
+        if dict.keys.contains("VideoEncMaxQP") {
+            self.videoEncMaxQP = dict["VideoEncMaxQP"] as! Int32
+        }
+        if dict.keys.contains("VideoEncMinQP") {
+            self.videoEncMinQP = dict["VideoEncMinQP"] as! Int32
+        }
+        if dict.keys.contains("VideoEncPeakKbps") {
+            self.videoEncPeakKbps = dict["VideoEncPeakKbps"] as! Int32
+        }
+        if dict.keys.contains("VideoEncPolicy") {
+            self.videoEncPolicy = dict["VideoEncPolicy"] as! String
+        }
+        if dict.keys.contains("VideoRedirect") {
+            self.videoRedirect = dict["VideoRedirect"] as! String
+        }
+        if dict.keys.contains("VisualQuality") {
+            self.visualQuality = dict["VisualQuality"] as! String
+        }
+        if dict.keys.contains("Watermark") {
+            self.watermark = dict["Watermark"] as! String
+        }
+        if dict.keys.contains("WatermarkAntiCam") {
+            self.watermarkAntiCam = dict["WatermarkAntiCam"] as! String
+        }
+        if dict.keys.contains("WatermarkColor") {
+            self.watermarkColor = dict["WatermarkColor"] as! Int32
+        }
+        if dict.keys.contains("WatermarkColumnAmount") {
+            self.watermarkColumnAmount = dict["WatermarkColumnAmount"] as! Int32
+        }
+        if dict.keys.contains("WatermarkCustomText") {
+            self.watermarkCustomText = dict["WatermarkCustomText"] as! String
+        }
+        if dict.keys.contains("WatermarkDegree") {
+            self.watermarkDegree = dict["WatermarkDegree"] as! Double
+        }
+        if dict.keys.contains("WatermarkFontSize") {
+            self.watermarkFontSize = dict["WatermarkFontSize"] as! Int32
+        }
+        if dict.keys.contains("WatermarkFontStyle") {
+            self.watermarkFontStyle = dict["WatermarkFontStyle"] as! String
+        }
+        if dict.keys.contains("WatermarkPower") {
+            self.watermarkPower = dict["WatermarkPower"] as! String
+        }
+        if dict.keys.contains("WatermarkRowAmount") {
+            self.watermarkRowAmount = dict["WatermarkRowAmount"] as! Int32
+        }
+        if dict.keys.contains("WatermarkSecurity") {
+            self.watermarkSecurity = dict["WatermarkSecurity"] as! String
+        }
+        if dict.keys.contains("WatermarkTransparencyValue") {
+            self.watermarkTransparencyValue = dict["WatermarkTransparencyValue"] as! Int32
+        }
+        if dict.keys.contains("WatermarkType") {
+            self.watermarkType = dict["WatermarkType"] as! String
+        }
+        if dict.keys.contains("WuyingKeeper") {
+            self.wuyingKeeper = dict["WuyingKeeper"] as! String
+        }
+        if dict.keys.contains("WyAssistant") {
+            self.wyAssistant = dict["WyAssistant"] as! String
+        }
+    }
+}
+
+public class CreateCenterPolicyResponseBody : Tea.TeaModel {
+    public var policyGroupId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.policyGroupId != nil {
+            map["PolicyGroupId"] = self.policyGroupId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PolicyGroupId") {
+            self.policyGroupId = dict["PolicyGroupId"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateCenterPolicyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateCenterPolicyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateCenterPolicyResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -11900,6 +13454,139 @@ public class DeleteCdsFileResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteCenterPolicyRequest : Tea.TeaModel {
+    public var businessType: Int32?
+
+    public var policyGroupIds: [String]?
+
+    public var regionId: String?
+
+    public var resourceType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.businessType != nil {
+            map["BusinessType"] = self.businessType!
+        }
+        if self.policyGroupIds != nil {
+            map["PolicyGroupIds"] = self.policyGroupIds!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BusinessType") {
+            self.businessType = dict["BusinessType"] as! Int32
+        }
+        if dict.keys.contains("PolicyGroupIds") {
+            self.policyGroupIds = dict["PolicyGroupIds"] as! [String]
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceType") {
+            self.resourceType = dict["ResourceType"] as! String
+        }
+    }
+}
+
+public class DeleteCenterPolicyResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DeleteCenterPolicyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteCenterPolicyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteCenterPolicyResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DeleteCloudDriveGroupsRequest : Tea.TeaModel {
     public var cdsId: String?
 
@@ -15373,6 +17060,1492 @@ public class DescribeCensResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DescribeCensResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeCenterPolicyListRequest : Tea.TeaModel {
+    public var businessType: Int32?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var policyGroupId: [String]?
+
+    public var resourceType: String?
+
+    public var scope: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.businessType != nil {
+            map["BusinessType"] = self.businessType!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.policyGroupId != nil {
+            map["PolicyGroupId"] = self.policyGroupId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        if self.scope != nil {
+            map["Scope"] = self.scope!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BusinessType") {
+            self.businessType = dict["BusinessType"] as! Int32
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("PolicyGroupId") {
+            self.policyGroupId = dict["PolicyGroupId"] as! [String]
+        }
+        if dict.keys.contains("ResourceType") {
+            self.resourceType = dict["ResourceType"] as! String
+        }
+        if dict.keys.contains("Scope") {
+            self.scope = dict["Scope"] as! String
+        }
+    }
+}
+
+public class DescribeCenterPolicyListResponseBody : Tea.TeaModel {
+    public class DescribePolicyGroups : Tea.TeaModel {
+        public class AuthorizeAccessPolicyRules : Tea.TeaModel {
+            public var cidrIp: String?
+
+            public var description_: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cidrIp != nil {
+                    map["CidrIp"] = self.cidrIp!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CidrIp") {
+                    self.cidrIp = dict["CidrIp"] as! String
+                }
+                if dict.keys.contains("Description") {
+                    self.description_ = dict["Description"] as! String
+                }
+            }
+        }
+        public class AuthorizeSecurityPolicyRules : Tea.TeaModel {
+            public var cidrIp: String?
+
+            public var description_: String?
+
+            public var ipProtocol: String?
+
+            public var policy: String?
+
+            public var portRange: String?
+
+            public var priority: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cidrIp != nil {
+                    map["CidrIp"] = self.cidrIp!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.ipProtocol != nil {
+                    map["IpProtocol"] = self.ipProtocol!
+                }
+                if self.policy != nil {
+                    map["Policy"] = self.policy!
+                }
+                if self.portRange != nil {
+                    map["PortRange"] = self.portRange!
+                }
+                if self.priority != nil {
+                    map["Priority"] = self.priority!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CidrIp") {
+                    self.cidrIp = dict["CidrIp"] as! String
+                }
+                if dict.keys.contains("Description") {
+                    self.description_ = dict["Description"] as! String
+                }
+                if dict.keys.contains("IpProtocol") {
+                    self.ipProtocol = dict["IpProtocol"] as! String
+                }
+                if dict.keys.contains("Policy") {
+                    self.policy = dict["Policy"] as! String
+                }
+                if dict.keys.contains("PortRange") {
+                    self.portRange = dict["PortRange"] as! String
+                }
+                if dict.keys.contains("Priority") {
+                    self.priority = dict["Priority"] as! String
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+            }
+        }
+        public class ClientTypes : Tea.TeaModel {
+            public var clientType: String?
+
+            public var status: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.clientType != nil {
+                    map["ClientType"] = self.clientType!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ClientType") {
+                    self.clientType = dict["ClientType"] as! String
+                }
+                if dict.keys.contains("Status") {
+                    self.status = dict["Status"] as! String
+                }
+            }
+        }
+        public class DeviceRedirects : Tea.TeaModel {
+            public var deviceType: String?
+
+            public var redirectType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.deviceType != nil {
+                    map["DeviceType"] = self.deviceType!
+                }
+                if self.redirectType != nil {
+                    map["RedirectType"] = self.redirectType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DeviceType") {
+                    self.deviceType = dict["DeviceType"] as! String
+                }
+                if dict.keys.contains("RedirectType") {
+                    self.redirectType = dict["RedirectType"] as! String
+                }
+            }
+        }
+        public class DeviceRules : Tea.TeaModel {
+            public var deviceName: String?
+
+            public var devicePid: String?
+
+            public var deviceType: String?
+
+            public var deviceVid: String?
+
+            public var optCommand: String?
+
+            public var redirectType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.deviceName != nil {
+                    map["DeviceName"] = self.deviceName!
+                }
+                if self.devicePid != nil {
+                    map["DevicePid"] = self.devicePid!
+                }
+                if self.deviceType != nil {
+                    map["DeviceType"] = self.deviceType!
+                }
+                if self.deviceVid != nil {
+                    map["DeviceVid"] = self.deviceVid!
+                }
+                if self.optCommand != nil {
+                    map["OptCommand"] = self.optCommand!
+                }
+                if self.redirectType != nil {
+                    map["RedirectType"] = self.redirectType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DeviceName") {
+                    self.deviceName = dict["DeviceName"] as! String
+                }
+                if dict.keys.contains("DevicePid") {
+                    self.devicePid = dict["DevicePid"] as! String
+                }
+                if dict.keys.contains("DeviceType") {
+                    self.deviceType = dict["DeviceType"] as! String
+                }
+                if dict.keys.contains("DeviceVid") {
+                    self.deviceVid = dict["DeviceVid"] as! String
+                }
+                if dict.keys.contains("OptCommand") {
+                    self.optCommand = dict["OptCommand"] as! String
+                }
+                if dict.keys.contains("RedirectType") {
+                    self.redirectType = dict["RedirectType"] as! String
+                }
+            }
+        }
+        public class DomainResolveRule : Tea.TeaModel {
+            public var description_: String?
+
+            public var domain: String?
+
+            public var policy: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.domain != nil {
+                    map["Domain"] = self.domain!
+                }
+                if self.policy != nil {
+                    map["Policy"] = self.policy!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Description") {
+                    self.description_ = dict["Description"] as! String
+                }
+                if dict.keys.contains("Domain") {
+                    self.domain = dict["Domain"] as! String
+                }
+                if dict.keys.contains("Policy") {
+                    self.policy = dict["Policy"] as! String
+                }
+            }
+        }
+        public class NetRedirectRule : Tea.TeaModel {
+            public var domain: String?
+
+            public var policy: String?
+
+            public var ruleType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.domain != nil {
+                    map["Domain"] = self.domain!
+                }
+                if self.policy != nil {
+                    map["Policy"] = self.policy!
+                }
+                if self.ruleType != nil {
+                    map["RuleType"] = self.ruleType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Domain") {
+                    self.domain = dict["Domain"] as! String
+                }
+                if dict.keys.contains("Policy") {
+                    self.policy = dict["Policy"] as! String
+                }
+                if dict.keys.contains("RuleType") {
+                    self.ruleType = dict["RuleType"] as! String
+                }
+            }
+        }
+        public class UsbSupplyRedirectRule : Tea.TeaModel {
+            public var description_: String?
+
+            public var productId: String?
+
+            public var usbRedirectType: Int64?
+
+            public var usbRuleType: Int64?
+
+            public var vendorId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.productId != nil {
+                    map["ProductId"] = self.productId!
+                }
+                if self.usbRedirectType != nil {
+                    map["UsbRedirectType"] = self.usbRedirectType!
+                }
+                if self.usbRuleType != nil {
+                    map["UsbRuleType"] = self.usbRuleType!
+                }
+                if self.vendorId != nil {
+                    map["VendorId"] = self.vendorId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Description") {
+                    self.description_ = dict["Description"] as! String
+                }
+                if dict.keys.contains("ProductId") {
+                    self.productId = dict["ProductId"] as! String
+                }
+                if dict.keys.contains("UsbRedirectType") {
+                    self.usbRedirectType = dict["UsbRedirectType"] as! Int64
+                }
+                if dict.keys.contains("UsbRuleType") {
+                    self.usbRuleType = dict["UsbRuleType"] as! Int64
+                }
+                if dict.keys.contains("VendorId") {
+                    self.vendorId = dict["VendorId"] as! String
+                }
+            }
+        }
+        public var adminAccess: String?
+
+        public var appContentProtection: String?
+
+        public var authorizeAccessPolicyRules: [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.AuthorizeAccessPolicyRules]?
+
+        public var authorizeSecurityPolicyRules: [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.AuthorizeSecurityPolicyRules]?
+
+        public var cameraRedirect: String?
+
+        public var clientTypes: [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.ClientTypes]?
+
+        public var clipboard: String?
+
+        public var colorEnhancement: String?
+
+        public var cpuDownGradeDuration: Int32?
+
+        public var cpuProcessors: [String]?
+
+        public var cpuProtectedMode: String?
+
+        public var cpuRateLimit: Int32?
+
+        public var cpuSampleDuration: Int32?
+
+        public var cpuSingleRateLimit: Int32?
+
+        public var desktopCount: Int32?
+
+        public var desktopGroupCount: Int32?
+
+        public var deviceRedirects: [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.DeviceRedirects]?
+
+        public var deviceRules: [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.DeviceRules]?
+
+        public var disconnectKeepSession: String?
+
+        public var disconnectKeepSessionTime: Int32?
+
+        public var displayMode: String?
+
+        public var domainRegisterValue: String?
+
+        public var domainResolveRule: [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.DomainResolveRule]?
+
+        public var domainResolveRuleType: String?
+
+        public var endUserApplyAdminCoordinate: String?
+
+        public var endUserGroupCoordinate: String?
+
+        public var gpuAcceleration: String?
+
+        public var html5Access: String?
+
+        public var html5FileTransfer: String?
+
+        public var internetCommunicationProtocol: String?
+
+        public var localDrive: String?
+
+        public var maxReconnectTime: Int32?
+
+        public var memoryDownGradeDuration: Int32?
+
+        public var memoryProcessors: [String]?
+
+        public var memoryProtectedMode: String?
+
+        public var memoryRateLimit: Int32?
+
+        public var memorySampleDuration: Int32?
+
+        public var memorySingleRateLimit: Int32?
+
+        public var mobileRestart: String?
+
+        public var mobileShutdown: String?
+
+        public var name: String?
+
+        public var netRedirect: String?
+
+        public var netRedirectRule: [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.NetRedirectRule]?
+
+        public var noOperationDisconnect: String?
+
+        public var noOperationDisconnectTime: Int32?
+
+        public var policyGroupId: String?
+
+        public var policyGroupType: String?
+
+        public var policyStatus: String?
+
+        public var printerRedirection: String?
+
+        public var qualityEnhancement: String?
+
+        public var recordContent: String?
+
+        public var recordContentExpires: Int64?
+
+        public var recordEventDuration: Int32?
+
+        public var recordEventFilePaths: [String]?
+
+        public var recordEventRegisters: [String]?
+
+        public var recording: String?
+
+        public var recordingAudio: String?
+
+        public var recordingDuration: Int32?
+
+        public var recordingEndTime: String?
+
+        public var recordingExpires: Int64?
+
+        public var recordingFps: Int64?
+
+        public var recordingStartTime: String?
+
+        public var recordingUserNotify: String?
+
+        public var recordingUserNotifyMessage: String?
+
+        public var remoteCoordinate: String?
+
+        public var resolutionHeight: Int32?
+
+        public var resolutionModel: String?
+
+        public var resolutionWidth: Int32?
+
+        public var resourceGroupCount: Int32?
+
+        public var scope: String?
+
+        public var scopeValue: [String]?
+
+        public var smoothEnhancement: String?
+
+        public var statusMonitor: String?
+
+        public var streamingMode: String?
+
+        public var targetFps: Int32?
+
+        public var taskbar: String?
+
+        public var usbRedirect: String?
+
+        public var usbSupplyRedirectRule: [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.UsbSupplyRedirectRule]?
+
+        public var videoEncAvgKbps: Int32?
+
+        public var videoEncMaxQP: Int32?
+
+        public var videoEncMinQP: Int32?
+
+        public var videoEncPeakKbps: Int32?
+
+        public var videoEncPolicy: String?
+
+        public var videoRedirect: String?
+
+        public var visualQuality: String?
+
+        public var watermark: String?
+
+        public var watermarkAntiCam: String?
+
+        public var watermarkColor: Int32?
+
+        public var watermarkCustomText: String?
+
+        public var watermarkDegree: Double?
+
+        public var watermarkFontSize: Int32?
+
+        public var watermarkFontStyle: String?
+
+        public var watermarkPower: String?
+
+        public var watermarkRowAmount: Int32?
+
+        public var watermarkSecurity: String?
+
+        public var watermarkTransparencyValue: Int32?
+
+        public var watermarkType: String?
+
+        public var wyAssistant: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.adminAccess != nil {
+                map["AdminAccess"] = self.adminAccess!
+            }
+            if self.appContentProtection != nil {
+                map["AppContentProtection"] = self.appContentProtection!
+            }
+            if self.authorizeAccessPolicyRules != nil {
+                var tmp : [Any] = []
+                for k in self.authorizeAccessPolicyRules! {
+                    tmp.append(k.toMap())
+                }
+                map["AuthorizeAccessPolicyRules"] = tmp
+            }
+            if self.authorizeSecurityPolicyRules != nil {
+                var tmp : [Any] = []
+                for k in self.authorizeSecurityPolicyRules! {
+                    tmp.append(k.toMap())
+                }
+                map["AuthorizeSecurityPolicyRules"] = tmp
+            }
+            if self.cameraRedirect != nil {
+                map["CameraRedirect"] = self.cameraRedirect!
+            }
+            if self.clientTypes != nil {
+                var tmp : [Any] = []
+                for k in self.clientTypes! {
+                    tmp.append(k.toMap())
+                }
+                map["ClientTypes"] = tmp
+            }
+            if self.clipboard != nil {
+                map["Clipboard"] = self.clipboard!
+            }
+            if self.colorEnhancement != nil {
+                map["ColorEnhancement"] = self.colorEnhancement!
+            }
+            if self.cpuDownGradeDuration != nil {
+                map["CpuDownGradeDuration"] = self.cpuDownGradeDuration!
+            }
+            if self.cpuProcessors != nil {
+                map["CpuProcessors"] = self.cpuProcessors!
+            }
+            if self.cpuProtectedMode != nil {
+                map["CpuProtectedMode"] = self.cpuProtectedMode!
+            }
+            if self.cpuRateLimit != nil {
+                map["CpuRateLimit"] = self.cpuRateLimit!
+            }
+            if self.cpuSampleDuration != nil {
+                map["CpuSampleDuration"] = self.cpuSampleDuration!
+            }
+            if self.cpuSingleRateLimit != nil {
+                map["CpuSingleRateLimit"] = self.cpuSingleRateLimit!
+            }
+            if self.desktopCount != nil {
+                map["DesktopCount"] = self.desktopCount!
+            }
+            if self.desktopGroupCount != nil {
+                map["DesktopGroupCount"] = self.desktopGroupCount!
+            }
+            if self.deviceRedirects != nil {
+                var tmp : [Any] = []
+                for k in self.deviceRedirects! {
+                    tmp.append(k.toMap())
+                }
+                map["DeviceRedirects"] = tmp
+            }
+            if self.deviceRules != nil {
+                var tmp : [Any] = []
+                for k in self.deviceRules! {
+                    tmp.append(k.toMap())
+                }
+                map["DeviceRules"] = tmp
+            }
+            if self.disconnectKeepSession != nil {
+                map["DisconnectKeepSession"] = self.disconnectKeepSession!
+            }
+            if self.disconnectKeepSessionTime != nil {
+                map["DisconnectKeepSessionTime"] = self.disconnectKeepSessionTime!
+            }
+            if self.displayMode != nil {
+                map["DisplayMode"] = self.displayMode!
+            }
+            if self.domainRegisterValue != nil {
+                map["DomainRegisterValue"] = self.domainRegisterValue!
+            }
+            if self.domainResolveRule != nil {
+                var tmp : [Any] = []
+                for k in self.domainResolveRule! {
+                    tmp.append(k.toMap())
+                }
+                map["DomainResolveRule"] = tmp
+            }
+            if self.domainResolveRuleType != nil {
+                map["DomainResolveRuleType"] = self.domainResolveRuleType!
+            }
+            if self.endUserApplyAdminCoordinate != nil {
+                map["EndUserApplyAdminCoordinate"] = self.endUserApplyAdminCoordinate!
+            }
+            if self.endUserGroupCoordinate != nil {
+                map["EndUserGroupCoordinate"] = self.endUserGroupCoordinate!
+            }
+            if self.gpuAcceleration != nil {
+                map["GpuAcceleration"] = self.gpuAcceleration!
+            }
+            if self.html5Access != nil {
+                map["Html5Access"] = self.html5Access!
+            }
+            if self.html5FileTransfer != nil {
+                map["Html5FileTransfer"] = self.html5FileTransfer!
+            }
+            if self.internetCommunicationProtocol != nil {
+                map["InternetCommunicationProtocol"] = self.internetCommunicationProtocol!
+            }
+            if self.localDrive != nil {
+                map["LocalDrive"] = self.localDrive!
+            }
+            if self.maxReconnectTime != nil {
+                map["MaxReconnectTime"] = self.maxReconnectTime!
+            }
+            if self.memoryDownGradeDuration != nil {
+                map["MemoryDownGradeDuration"] = self.memoryDownGradeDuration!
+            }
+            if self.memoryProcessors != nil {
+                map["MemoryProcessors"] = self.memoryProcessors!
+            }
+            if self.memoryProtectedMode != nil {
+                map["MemoryProtectedMode"] = self.memoryProtectedMode!
+            }
+            if self.memoryRateLimit != nil {
+                map["MemoryRateLimit"] = self.memoryRateLimit!
+            }
+            if self.memorySampleDuration != nil {
+                map["MemorySampleDuration"] = self.memorySampleDuration!
+            }
+            if self.memorySingleRateLimit != nil {
+                map["MemorySingleRateLimit"] = self.memorySingleRateLimit!
+            }
+            if self.mobileRestart != nil {
+                map["MobileRestart"] = self.mobileRestart!
+            }
+            if self.mobileShutdown != nil {
+                map["MobileShutdown"] = self.mobileShutdown!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.netRedirect != nil {
+                map["NetRedirect"] = self.netRedirect!
+            }
+            if self.netRedirectRule != nil {
+                var tmp : [Any] = []
+                for k in self.netRedirectRule! {
+                    tmp.append(k.toMap())
+                }
+                map["NetRedirectRule"] = tmp
+            }
+            if self.noOperationDisconnect != nil {
+                map["NoOperationDisconnect"] = self.noOperationDisconnect!
+            }
+            if self.noOperationDisconnectTime != nil {
+                map["NoOperationDisconnectTime"] = self.noOperationDisconnectTime!
+            }
+            if self.policyGroupId != nil {
+                map["PolicyGroupId"] = self.policyGroupId!
+            }
+            if self.policyGroupType != nil {
+                map["PolicyGroupType"] = self.policyGroupType!
+            }
+            if self.policyStatus != nil {
+                map["PolicyStatus"] = self.policyStatus!
+            }
+            if self.printerRedirection != nil {
+                map["PrinterRedirection"] = self.printerRedirection!
+            }
+            if self.qualityEnhancement != nil {
+                map["QualityEnhancement"] = self.qualityEnhancement!
+            }
+            if self.recordContent != nil {
+                map["RecordContent"] = self.recordContent!
+            }
+            if self.recordContentExpires != nil {
+                map["RecordContentExpires"] = self.recordContentExpires!
+            }
+            if self.recordEventDuration != nil {
+                map["RecordEventDuration"] = self.recordEventDuration!
+            }
+            if self.recordEventFilePaths != nil {
+                map["RecordEventFilePaths"] = self.recordEventFilePaths!
+            }
+            if self.recordEventRegisters != nil {
+                map["RecordEventRegisters"] = self.recordEventRegisters!
+            }
+            if self.recording != nil {
+                map["Recording"] = self.recording!
+            }
+            if self.recordingAudio != nil {
+                map["RecordingAudio"] = self.recordingAudio!
+            }
+            if self.recordingDuration != nil {
+                map["RecordingDuration"] = self.recordingDuration!
+            }
+            if self.recordingEndTime != nil {
+                map["RecordingEndTime"] = self.recordingEndTime!
+            }
+            if self.recordingExpires != nil {
+                map["RecordingExpires"] = self.recordingExpires!
+            }
+            if self.recordingFps != nil {
+                map["RecordingFps"] = self.recordingFps!
+            }
+            if self.recordingStartTime != nil {
+                map["RecordingStartTime"] = self.recordingStartTime!
+            }
+            if self.recordingUserNotify != nil {
+                map["RecordingUserNotify"] = self.recordingUserNotify!
+            }
+            if self.recordingUserNotifyMessage != nil {
+                map["RecordingUserNotifyMessage"] = self.recordingUserNotifyMessage!
+            }
+            if self.remoteCoordinate != nil {
+                map["RemoteCoordinate"] = self.remoteCoordinate!
+            }
+            if self.resolutionHeight != nil {
+                map["ResolutionHeight"] = self.resolutionHeight!
+            }
+            if self.resolutionModel != nil {
+                map["ResolutionModel"] = self.resolutionModel!
+            }
+            if self.resolutionWidth != nil {
+                map["ResolutionWidth"] = self.resolutionWidth!
+            }
+            if self.resourceGroupCount != nil {
+                map["ResourceGroupCount"] = self.resourceGroupCount!
+            }
+            if self.scope != nil {
+                map["Scope"] = self.scope!
+            }
+            if self.scopeValue != nil {
+                map["ScopeValue"] = self.scopeValue!
+            }
+            if self.smoothEnhancement != nil {
+                map["SmoothEnhancement"] = self.smoothEnhancement!
+            }
+            if self.statusMonitor != nil {
+                map["StatusMonitor"] = self.statusMonitor!
+            }
+            if self.streamingMode != nil {
+                map["StreamingMode"] = self.streamingMode!
+            }
+            if self.targetFps != nil {
+                map["TargetFps"] = self.targetFps!
+            }
+            if self.taskbar != nil {
+                map["Taskbar"] = self.taskbar!
+            }
+            if self.usbRedirect != nil {
+                map["UsbRedirect"] = self.usbRedirect!
+            }
+            if self.usbSupplyRedirectRule != nil {
+                var tmp : [Any] = []
+                for k in self.usbSupplyRedirectRule! {
+                    tmp.append(k.toMap())
+                }
+                map["UsbSupplyRedirectRule"] = tmp
+            }
+            if self.videoEncAvgKbps != nil {
+                map["VideoEncAvgKbps"] = self.videoEncAvgKbps!
+            }
+            if self.videoEncMaxQP != nil {
+                map["VideoEncMaxQP"] = self.videoEncMaxQP!
+            }
+            if self.videoEncMinQP != nil {
+                map["VideoEncMinQP"] = self.videoEncMinQP!
+            }
+            if self.videoEncPeakKbps != nil {
+                map["VideoEncPeakKbps"] = self.videoEncPeakKbps!
+            }
+            if self.videoEncPolicy != nil {
+                map["VideoEncPolicy"] = self.videoEncPolicy!
+            }
+            if self.videoRedirect != nil {
+                map["VideoRedirect"] = self.videoRedirect!
+            }
+            if self.visualQuality != nil {
+                map["VisualQuality"] = self.visualQuality!
+            }
+            if self.watermark != nil {
+                map["Watermark"] = self.watermark!
+            }
+            if self.watermarkAntiCam != nil {
+                map["WatermarkAntiCam"] = self.watermarkAntiCam!
+            }
+            if self.watermarkColor != nil {
+                map["WatermarkColor"] = self.watermarkColor!
+            }
+            if self.watermarkCustomText != nil {
+                map["WatermarkCustomText"] = self.watermarkCustomText!
+            }
+            if self.watermarkDegree != nil {
+                map["WatermarkDegree"] = self.watermarkDegree!
+            }
+            if self.watermarkFontSize != nil {
+                map["WatermarkFontSize"] = self.watermarkFontSize!
+            }
+            if self.watermarkFontStyle != nil {
+                map["WatermarkFontStyle"] = self.watermarkFontStyle!
+            }
+            if self.watermarkPower != nil {
+                map["WatermarkPower"] = self.watermarkPower!
+            }
+            if self.watermarkRowAmount != nil {
+                map["WatermarkRowAmount"] = self.watermarkRowAmount!
+            }
+            if self.watermarkSecurity != nil {
+                map["WatermarkSecurity"] = self.watermarkSecurity!
+            }
+            if self.watermarkTransparencyValue != nil {
+                map["WatermarkTransparencyValue"] = self.watermarkTransparencyValue!
+            }
+            if self.watermarkType != nil {
+                map["WatermarkType"] = self.watermarkType!
+            }
+            if self.wyAssistant != nil {
+                map["WyAssistant"] = self.wyAssistant!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AdminAccess") {
+                self.adminAccess = dict["AdminAccess"] as! String
+            }
+            if dict.keys.contains("AppContentProtection") {
+                self.appContentProtection = dict["AppContentProtection"] as! String
+            }
+            if dict.keys.contains("AuthorizeAccessPolicyRules") {
+                var tmp : [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.AuthorizeAccessPolicyRules] = []
+                for v in dict["AuthorizeAccessPolicyRules"] as! [Any] {
+                    var model = DescribeCenterPolicyListResponseBody.DescribePolicyGroups.AuthorizeAccessPolicyRules()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.authorizeAccessPolicyRules = tmp
+            }
+            if dict.keys.contains("AuthorizeSecurityPolicyRules") {
+                var tmp : [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.AuthorizeSecurityPolicyRules] = []
+                for v in dict["AuthorizeSecurityPolicyRules"] as! [Any] {
+                    var model = DescribeCenterPolicyListResponseBody.DescribePolicyGroups.AuthorizeSecurityPolicyRules()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.authorizeSecurityPolicyRules = tmp
+            }
+            if dict.keys.contains("CameraRedirect") {
+                self.cameraRedirect = dict["CameraRedirect"] as! String
+            }
+            if dict.keys.contains("ClientTypes") {
+                var tmp : [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.ClientTypes] = []
+                for v in dict["ClientTypes"] as! [Any] {
+                    var model = DescribeCenterPolicyListResponseBody.DescribePolicyGroups.ClientTypes()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.clientTypes = tmp
+            }
+            if dict.keys.contains("Clipboard") {
+                self.clipboard = dict["Clipboard"] as! String
+            }
+            if dict.keys.contains("ColorEnhancement") {
+                self.colorEnhancement = dict["ColorEnhancement"] as! String
+            }
+            if dict.keys.contains("CpuDownGradeDuration") {
+                self.cpuDownGradeDuration = dict["CpuDownGradeDuration"] as! Int32
+            }
+            if dict.keys.contains("CpuProcessors") {
+                self.cpuProcessors = dict["CpuProcessors"] as! [String]
+            }
+            if dict.keys.contains("CpuProtectedMode") {
+                self.cpuProtectedMode = dict["CpuProtectedMode"] as! String
+            }
+            if dict.keys.contains("CpuRateLimit") {
+                self.cpuRateLimit = dict["CpuRateLimit"] as! Int32
+            }
+            if dict.keys.contains("CpuSampleDuration") {
+                self.cpuSampleDuration = dict["CpuSampleDuration"] as! Int32
+            }
+            if dict.keys.contains("CpuSingleRateLimit") {
+                self.cpuSingleRateLimit = dict["CpuSingleRateLimit"] as! Int32
+            }
+            if dict.keys.contains("DesktopCount") {
+                self.desktopCount = dict["DesktopCount"] as! Int32
+            }
+            if dict.keys.contains("DesktopGroupCount") {
+                self.desktopGroupCount = dict["DesktopGroupCount"] as! Int32
+            }
+            if dict.keys.contains("DeviceRedirects") {
+                var tmp : [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.DeviceRedirects] = []
+                for v in dict["DeviceRedirects"] as! [Any] {
+                    var model = DescribeCenterPolicyListResponseBody.DescribePolicyGroups.DeviceRedirects()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.deviceRedirects = tmp
+            }
+            if dict.keys.contains("DeviceRules") {
+                var tmp : [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.DeviceRules] = []
+                for v in dict["DeviceRules"] as! [Any] {
+                    var model = DescribeCenterPolicyListResponseBody.DescribePolicyGroups.DeviceRules()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.deviceRules = tmp
+            }
+            if dict.keys.contains("DisconnectKeepSession") {
+                self.disconnectKeepSession = dict["DisconnectKeepSession"] as! String
+            }
+            if dict.keys.contains("DisconnectKeepSessionTime") {
+                self.disconnectKeepSessionTime = dict["DisconnectKeepSessionTime"] as! Int32
+            }
+            if dict.keys.contains("DisplayMode") {
+                self.displayMode = dict["DisplayMode"] as! String
+            }
+            if dict.keys.contains("DomainRegisterValue") {
+                self.domainRegisterValue = dict["DomainRegisterValue"] as! String
+            }
+            if dict.keys.contains("DomainResolveRule") {
+                var tmp : [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.DomainResolveRule] = []
+                for v in dict["DomainResolveRule"] as! [Any] {
+                    var model = DescribeCenterPolicyListResponseBody.DescribePolicyGroups.DomainResolveRule()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.domainResolveRule = tmp
+            }
+            if dict.keys.contains("DomainResolveRuleType") {
+                self.domainResolveRuleType = dict["DomainResolveRuleType"] as! String
+            }
+            if dict.keys.contains("EndUserApplyAdminCoordinate") {
+                self.endUserApplyAdminCoordinate = dict["EndUserApplyAdminCoordinate"] as! String
+            }
+            if dict.keys.contains("EndUserGroupCoordinate") {
+                self.endUserGroupCoordinate = dict["EndUserGroupCoordinate"] as! String
+            }
+            if dict.keys.contains("GpuAcceleration") {
+                self.gpuAcceleration = dict["GpuAcceleration"] as! String
+            }
+            if dict.keys.contains("Html5Access") {
+                self.html5Access = dict["Html5Access"] as! String
+            }
+            if dict.keys.contains("Html5FileTransfer") {
+                self.html5FileTransfer = dict["Html5FileTransfer"] as! String
+            }
+            if dict.keys.contains("InternetCommunicationProtocol") {
+                self.internetCommunicationProtocol = dict["InternetCommunicationProtocol"] as! String
+            }
+            if dict.keys.contains("LocalDrive") {
+                self.localDrive = dict["LocalDrive"] as! String
+            }
+            if dict.keys.contains("MaxReconnectTime") {
+                self.maxReconnectTime = dict["MaxReconnectTime"] as! Int32
+            }
+            if dict.keys.contains("MemoryDownGradeDuration") {
+                self.memoryDownGradeDuration = dict["MemoryDownGradeDuration"] as! Int32
+            }
+            if dict.keys.contains("MemoryProcessors") {
+                self.memoryProcessors = dict["MemoryProcessors"] as! [String]
+            }
+            if dict.keys.contains("MemoryProtectedMode") {
+                self.memoryProtectedMode = dict["MemoryProtectedMode"] as! String
+            }
+            if dict.keys.contains("MemoryRateLimit") {
+                self.memoryRateLimit = dict["MemoryRateLimit"] as! Int32
+            }
+            if dict.keys.contains("MemorySampleDuration") {
+                self.memorySampleDuration = dict["MemorySampleDuration"] as! Int32
+            }
+            if dict.keys.contains("MemorySingleRateLimit") {
+                self.memorySingleRateLimit = dict["MemorySingleRateLimit"] as! Int32
+            }
+            if dict.keys.contains("MobileRestart") {
+                self.mobileRestart = dict["MobileRestart"] as! String
+            }
+            if dict.keys.contains("MobileShutdown") {
+                self.mobileShutdown = dict["MobileShutdown"] as! String
+            }
+            if dict.keys.contains("Name") {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("NetRedirect") {
+                self.netRedirect = dict["NetRedirect"] as! String
+            }
+            if dict.keys.contains("NetRedirectRule") {
+                var tmp : [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.NetRedirectRule] = []
+                for v in dict["NetRedirectRule"] as! [Any] {
+                    var model = DescribeCenterPolicyListResponseBody.DescribePolicyGroups.NetRedirectRule()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.netRedirectRule = tmp
+            }
+            if dict.keys.contains("NoOperationDisconnect") {
+                self.noOperationDisconnect = dict["NoOperationDisconnect"] as! String
+            }
+            if dict.keys.contains("NoOperationDisconnectTime") {
+                self.noOperationDisconnectTime = dict["NoOperationDisconnectTime"] as! Int32
+            }
+            if dict.keys.contains("PolicyGroupId") {
+                self.policyGroupId = dict["PolicyGroupId"] as! String
+            }
+            if dict.keys.contains("PolicyGroupType") {
+                self.policyGroupType = dict["PolicyGroupType"] as! String
+            }
+            if dict.keys.contains("PolicyStatus") {
+                self.policyStatus = dict["PolicyStatus"] as! String
+            }
+            if dict.keys.contains("PrinterRedirection") {
+                self.printerRedirection = dict["PrinterRedirection"] as! String
+            }
+            if dict.keys.contains("QualityEnhancement") {
+                self.qualityEnhancement = dict["QualityEnhancement"] as! String
+            }
+            if dict.keys.contains("RecordContent") {
+                self.recordContent = dict["RecordContent"] as! String
+            }
+            if dict.keys.contains("RecordContentExpires") {
+                self.recordContentExpires = dict["RecordContentExpires"] as! Int64
+            }
+            if dict.keys.contains("RecordEventDuration") {
+                self.recordEventDuration = dict["RecordEventDuration"] as! Int32
+            }
+            if dict.keys.contains("RecordEventFilePaths") {
+                self.recordEventFilePaths = dict["RecordEventFilePaths"] as! [String]
+            }
+            if dict.keys.contains("RecordEventRegisters") {
+                self.recordEventRegisters = dict["RecordEventRegisters"] as! [String]
+            }
+            if dict.keys.contains("Recording") {
+                self.recording = dict["Recording"] as! String
+            }
+            if dict.keys.contains("RecordingAudio") {
+                self.recordingAudio = dict["RecordingAudio"] as! String
+            }
+            if dict.keys.contains("RecordingDuration") {
+                self.recordingDuration = dict["RecordingDuration"] as! Int32
+            }
+            if dict.keys.contains("RecordingEndTime") {
+                self.recordingEndTime = dict["RecordingEndTime"] as! String
+            }
+            if dict.keys.contains("RecordingExpires") {
+                self.recordingExpires = dict["RecordingExpires"] as! Int64
+            }
+            if dict.keys.contains("RecordingFps") {
+                self.recordingFps = dict["RecordingFps"] as! Int64
+            }
+            if dict.keys.contains("RecordingStartTime") {
+                self.recordingStartTime = dict["RecordingStartTime"] as! String
+            }
+            if dict.keys.contains("RecordingUserNotify") {
+                self.recordingUserNotify = dict["RecordingUserNotify"] as! String
+            }
+            if dict.keys.contains("RecordingUserNotifyMessage") {
+                self.recordingUserNotifyMessage = dict["RecordingUserNotifyMessage"] as! String
+            }
+            if dict.keys.contains("RemoteCoordinate") {
+                self.remoteCoordinate = dict["RemoteCoordinate"] as! String
+            }
+            if dict.keys.contains("ResolutionHeight") {
+                self.resolutionHeight = dict["ResolutionHeight"] as! Int32
+            }
+            if dict.keys.contains("ResolutionModel") {
+                self.resolutionModel = dict["ResolutionModel"] as! String
+            }
+            if dict.keys.contains("ResolutionWidth") {
+                self.resolutionWidth = dict["ResolutionWidth"] as! Int32
+            }
+            if dict.keys.contains("ResourceGroupCount") {
+                self.resourceGroupCount = dict["ResourceGroupCount"] as! Int32
+            }
+            if dict.keys.contains("Scope") {
+                self.scope = dict["Scope"] as! String
+            }
+            if dict.keys.contains("ScopeValue") {
+                self.scopeValue = dict["ScopeValue"] as! [String]
+            }
+            if dict.keys.contains("SmoothEnhancement") {
+                self.smoothEnhancement = dict["SmoothEnhancement"] as! String
+            }
+            if dict.keys.contains("StatusMonitor") {
+                self.statusMonitor = dict["StatusMonitor"] as! String
+            }
+            if dict.keys.contains("StreamingMode") {
+                self.streamingMode = dict["StreamingMode"] as! String
+            }
+            if dict.keys.contains("TargetFps") {
+                self.targetFps = dict["TargetFps"] as! Int32
+            }
+            if dict.keys.contains("Taskbar") {
+                self.taskbar = dict["Taskbar"] as! String
+            }
+            if dict.keys.contains("UsbRedirect") {
+                self.usbRedirect = dict["UsbRedirect"] as! String
+            }
+            if dict.keys.contains("UsbSupplyRedirectRule") {
+                var tmp : [DescribeCenterPolicyListResponseBody.DescribePolicyGroups.UsbSupplyRedirectRule] = []
+                for v in dict["UsbSupplyRedirectRule"] as! [Any] {
+                    var model = DescribeCenterPolicyListResponseBody.DescribePolicyGroups.UsbSupplyRedirectRule()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.usbSupplyRedirectRule = tmp
+            }
+            if dict.keys.contains("VideoEncAvgKbps") {
+                self.videoEncAvgKbps = dict["VideoEncAvgKbps"] as! Int32
+            }
+            if dict.keys.contains("VideoEncMaxQP") {
+                self.videoEncMaxQP = dict["VideoEncMaxQP"] as! Int32
+            }
+            if dict.keys.contains("VideoEncMinQP") {
+                self.videoEncMinQP = dict["VideoEncMinQP"] as! Int32
+            }
+            if dict.keys.contains("VideoEncPeakKbps") {
+                self.videoEncPeakKbps = dict["VideoEncPeakKbps"] as! Int32
+            }
+            if dict.keys.contains("VideoEncPolicy") {
+                self.videoEncPolicy = dict["VideoEncPolicy"] as! String
+            }
+            if dict.keys.contains("VideoRedirect") {
+                self.videoRedirect = dict["VideoRedirect"] as! String
+            }
+            if dict.keys.contains("VisualQuality") {
+                self.visualQuality = dict["VisualQuality"] as! String
+            }
+            if dict.keys.contains("Watermark") {
+                self.watermark = dict["Watermark"] as! String
+            }
+            if dict.keys.contains("WatermarkAntiCam") {
+                self.watermarkAntiCam = dict["WatermarkAntiCam"] as! String
+            }
+            if dict.keys.contains("WatermarkColor") {
+                self.watermarkColor = dict["WatermarkColor"] as! Int32
+            }
+            if dict.keys.contains("WatermarkCustomText") {
+                self.watermarkCustomText = dict["WatermarkCustomText"] as! String
+            }
+            if dict.keys.contains("WatermarkDegree") {
+                self.watermarkDegree = dict["WatermarkDegree"] as! Double
+            }
+            if dict.keys.contains("WatermarkFontSize") {
+                self.watermarkFontSize = dict["WatermarkFontSize"] as! Int32
+            }
+            if dict.keys.contains("WatermarkFontStyle") {
+                self.watermarkFontStyle = dict["WatermarkFontStyle"] as! String
+            }
+            if dict.keys.contains("WatermarkPower") {
+                self.watermarkPower = dict["WatermarkPower"] as! String
+            }
+            if dict.keys.contains("WatermarkRowAmount") {
+                self.watermarkRowAmount = dict["WatermarkRowAmount"] as! Int32
+            }
+            if dict.keys.contains("WatermarkSecurity") {
+                self.watermarkSecurity = dict["WatermarkSecurity"] as! String
+            }
+            if dict.keys.contains("WatermarkTransparencyValue") {
+                self.watermarkTransparencyValue = dict["WatermarkTransparencyValue"] as! Int32
+            }
+            if dict.keys.contains("WatermarkType") {
+                self.watermarkType = dict["WatermarkType"] as! String
+            }
+            if dict.keys.contains("WyAssistant") {
+                self.wyAssistant = dict["WyAssistant"] as! String
+            }
+        }
+    }
+    public var describePolicyGroups: [DescribeCenterPolicyListResponseBody.DescribePolicyGroups]?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.describePolicyGroups != nil {
+            var tmp : [Any] = []
+            for k in self.describePolicyGroups! {
+                tmp.append(k.toMap())
+            }
+            map["DescribePolicyGroups"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DescribePolicyGroups") {
+            var tmp : [DescribeCenterPolicyListResponseBody.DescribePolicyGroups] = []
+            for v in dict["DescribePolicyGroups"] as! [Any] {
+                var model = DescribeCenterPolicyListResponseBody.DescribePolicyGroups()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.describePolicyGroups = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! Int32
+        }
+    }
+}
+
+public class DescribeCenterPolicyListResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeCenterPolicyListResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeCenterPolicyListResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -31950,6 +35123,397 @@ public class DescribeRenewalPriceResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeResourceByCenterPolicyIdRequest : Tea.TeaModel {
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var policyGroupId: String?
+
+    public var productType: String?
+
+    public var resourceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.policyGroupId != nil {
+            map["PolicyGroupId"] = self.policyGroupId!
+        }
+        if self.productType != nil {
+            map["ProductType"] = self.productType!
+        }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("PolicyGroupId") {
+            self.policyGroupId = dict["PolicyGroupId"] as! String
+        }
+        if dict.keys.contains("ProductType") {
+            self.productType = dict["ProductType"] as! String
+        }
+        if dict.keys.contains("ResourceId") {
+            self.resourceId = dict["ResourceId"] as! String
+        }
+    }
+}
+
+public class DescribeResourceByCenterPolicyIdResponseBody : Tea.TeaModel {
+    public class ResourceModelList : Tea.TeaModel {
+        public class AppModelList : Tea.TeaModel {
+            public var appId: String?
+
+            public var appName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.appId != nil {
+                    map["AppId"] = self.appId!
+                }
+                if self.appName != nil {
+                    map["AppName"] = self.appName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AppId") {
+                    self.appId = dict["AppId"] as! String
+                }
+                if dict.keys.contains("AppName") {
+                    self.appName = dict["AppName"] as! String
+                }
+            }
+        }
+        public var appModelList: [DescribeResourceByCenterPolicyIdResponseBody.ResourceModelList.AppModelList]?
+
+        public var cpu: Int32?
+
+        public var desktopType: String?
+
+        public var gpuCount: Double?
+
+        public var gpuSpec: String?
+
+        public var memory: Int64?
+
+        public var osType: String?
+
+        public var payType: String?
+
+        public var productType: String?
+
+        public var protocolType: String?
+
+        public var resourceGroupId: String?
+
+        public var resourceGroupName: String?
+
+        public var resourceGroupRelCount: Int32?
+
+        public var resourceId: String?
+
+        public var resourceName: String?
+
+        public var resourceRegionId: String?
+
+        public var resourceType: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.appModelList != nil {
+                var tmp : [Any] = []
+                for k in self.appModelList! {
+                    tmp.append(k.toMap())
+                }
+                map["AppModelList"] = tmp
+            }
+            if self.cpu != nil {
+                map["Cpu"] = self.cpu!
+            }
+            if self.desktopType != nil {
+                map["DesktopType"] = self.desktopType!
+            }
+            if self.gpuCount != nil {
+                map["GpuCount"] = self.gpuCount!
+            }
+            if self.gpuSpec != nil {
+                map["GpuSpec"] = self.gpuSpec!
+            }
+            if self.memory != nil {
+                map["Memory"] = self.memory!
+            }
+            if self.osType != nil {
+                map["OsType"] = self.osType!
+            }
+            if self.payType != nil {
+                map["PayType"] = self.payType!
+            }
+            if self.productType != nil {
+                map["ProductType"] = self.productType!
+            }
+            if self.protocolType != nil {
+                map["ProtocolType"] = self.protocolType!
+            }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
+            if self.resourceGroupName != nil {
+                map["ResourceGroupName"] = self.resourceGroupName!
+            }
+            if self.resourceGroupRelCount != nil {
+                map["ResourceGroupRelCount"] = self.resourceGroupRelCount!
+            }
+            if self.resourceId != nil {
+                map["ResourceId"] = self.resourceId!
+            }
+            if self.resourceName != nil {
+                map["ResourceName"] = self.resourceName!
+            }
+            if self.resourceRegionId != nil {
+                map["ResourceRegionId"] = self.resourceRegionId!
+            }
+            if self.resourceType != nil {
+                map["ResourceType"] = self.resourceType!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AppModelList") {
+                var tmp : [DescribeResourceByCenterPolicyIdResponseBody.ResourceModelList.AppModelList] = []
+                for v in dict["AppModelList"] as! [Any] {
+                    var model = DescribeResourceByCenterPolicyIdResponseBody.ResourceModelList.AppModelList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.appModelList = tmp
+            }
+            if dict.keys.contains("Cpu") {
+                self.cpu = dict["Cpu"] as! Int32
+            }
+            if dict.keys.contains("DesktopType") {
+                self.desktopType = dict["DesktopType"] as! String
+            }
+            if dict.keys.contains("GpuCount") {
+                self.gpuCount = dict["GpuCount"] as! Double
+            }
+            if dict.keys.contains("GpuSpec") {
+                self.gpuSpec = dict["GpuSpec"] as! String
+            }
+            if dict.keys.contains("Memory") {
+                self.memory = dict["Memory"] as! Int64
+            }
+            if dict.keys.contains("OsType") {
+                self.osType = dict["OsType"] as! String
+            }
+            if dict.keys.contains("PayType") {
+                self.payType = dict["PayType"] as! String
+            }
+            if dict.keys.contains("ProductType") {
+                self.productType = dict["ProductType"] as! String
+            }
+            if dict.keys.contains("ProtocolType") {
+                self.protocolType = dict["ProtocolType"] as! String
+            }
+            if dict.keys.contains("ResourceGroupId") {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
+            }
+            if dict.keys.contains("ResourceGroupName") {
+                self.resourceGroupName = dict["ResourceGroupName"] as! String
+            }
+            if dict.keys.contains("ResourceGroupRelCount") {
+                self.resourceGroupRelCount = dict["ResourceGroupRelCount"] as! Int32
+            }
+            if dict.keys.contains("ResourceId") {
+                self.resourceId = dict["ResourceId"] as! String
+            }
+            if dict.keys.contains("ResourceName") {
+                self.resourceName = dict["ResourceName"] as! String
+            }
+            if dict.keys.contains("ResourceRegionId") {
+                self.resourceRegionId = dict["ResourceRegionId"] as! String
+            }
+            if dict.keys.contains("ResourceType") {
+                self.resourceType = dict["ResourceType"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+        }
+    }
+    public var count: String?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var resourceModelList: [DescribeResourceByCenterPolicyIdResponseBody.ResourceModelList]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.resourceModelList != nil {
+            var tmp : [Any] = []
+            for k in self.resourceModelList! {
+                tmp.append(k.toMap())
+            }
+            map["ResourceModelList"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Count") {
+            self.count = dict["Count"] as! String
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResourceModelList") {
+            var tmp : [DescribeResourceByCenterPolicyIdResponseBody.ResourceModelList] = []
+            for v in dict["ResourceModelList"] as! [Any] {
+                var model = DescribeResourceByCenterPolicyIdResponseBody.ResourceModelList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.resourceModelList = tmp
+        }
+    }
+}
+
+public class DescribeResourceByCenterPolicyIdResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeResourceByCenterPolicyIdResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeResourceByCenterPolicyIdResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeSessionStatisticRequest : Tea.TeaModel {
     public var endTime: String?
 
@@ -42036,6 +45600,1565 @@ public class ModifyCdsFileShareLinkResponse : Tea.TeaModel {
     }
 }
 
+public class ModifyCenterPolicyRequest : Tea.TeaModel {
+    public class AuthorizeAccessPolicyRule : Tea.TeaModel {
+        public var cidrIp: String?
+
+        public var description_: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cidrIp != nil {
+                map["CidrIp"] = self.cidrIp!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CidrIp") {
+                self.cidrIp = dict["CidrIp"] as! String
+            }
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
+            }
+        }
+    }
+    public class AuthorizeSecurityPolicyRule : Tea.TeaModel {
+        public var cidrIp: String?
+
+        public var description_: String?
+
+        public var ipProtocol: String?
+
+        public var policy: String?
+
+        public var portRange: String?
+
+        public var priority: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cidrIp != nil {
+                map["CidrIp"] = self.cidrIp!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.ipProtocol != nil {
+                map["IpProtocol"] = self.ipProtocol!
+            }
+            if self.policy != nil {
+                map["Policy"] = self.policy!
+            }
+            if self.portRange != nil {
+                map["PortRange"] = self.portRange!
+            }
+            if self.priority != nil {
+                map["Priority"] = self.priority!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CidrIp") {
+                self.cidrIp = dict["CidrIp"] as! String
+            }
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("IpProtocol") {
+                self.ipProtocol = dict["IpProtocol"] as! String
+            }
+            if dict.keys.contains("Policy") {
+                self.policy = dict["Policy"] as! String
+            }
+            if dict.keys.contains("PortRange") {
+                self.portRange = dict["PortRange"] as! String
+            }
+            if dict.keys.contains("Priority") {
+                self.priority = dict["Priority"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+        }
+    }
+    public class ClientType : Tea.TeaModel {
+        public var clientType: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clientType != nil {
+                map["ClientType"] = self.clientType!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ClientType") {
+                self.clientType = dict["ClientType"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+        }
+    }
+    public class DeviceRedirects : Tea.TeaModel {
+        public var deviceType: String?
+
+        public var redirectType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.deviceType != nil {
+                map["DeviceType"] = self.deviceType!
+            }
+            if self.redirectType != nil {
+                map["RedirectType"] = self.redirectType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DeviceType") {
+                self.deviceType = dict["DeviceType"] as! String
+            }
+            if dict.keys.contains("RedirectType") {
+                self.redirectType = dict["RedirectType"] as! String
+            }
+        }
+    }
+    public class DeviceRules : Tea.TeaModel {
+        public var deviceName: String?
+
+        public var devicePid: String?
+
+        public var deviceType: String?
+
+        public var deviceVid: String?
+
+        public var optCommand: String?
+
+        public var redirectType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.deviceName != nil {
+                map["DeviceName"] = self.deviceName!
+            }
+            if self.devicePid != nil {
+                map["DevicePid"] = self.devicePid!
+            }
+            if self.deviceType != nil {
+                map["DeviceType"] = self.deviceType!
+            }
+            if self.deviceVid != nil {
+                map["DeviceVid"] = self.deviceVid!
+            }
+            if self.optCommand != nil {
+                map["OptCommand"] = self.optCommand!
+            }
+            if self.redirectType != nil {
+                map["RedirectType"] = self.redirectType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DeviceName") {
+                self.deviceName = dict["DeviceName"] as! String
+            }
+            if dict.keys.contains("DevicePid") {
+                self.devicePid = dict["DevicePid"] as! String
+            }
+            if dict.keys.contains("DeviceType") {
+                self.deviceType = dict["DeviceType"] as! String
+            }
+            if dict.keys.contains("DeviceVid") {
+                self.deviceVid = dict["DeviceVid"] as! String
+            }
+            if dict.keys.contains("OptCommand") {
+                self.optCommand = dict["OptCommand"] as! String
+            }
+            if dict.keys.contains("RedirectType") {
+                self.redirectType = dict["RedirectType"] as! String
+            }
+        }
+    }
+    public class DomainResolveRule : Tea.TeaModel {
+        public var description_: String?
+
+        public var domain: String?
+
+        public var policy: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.domain != nil {
+                map["Domain"] = self.domain!
+            }
+            if self.policy != nil {
+                map["Policy"] = self.policy!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("Domain") {
+                self.domain = dict["Domain"] as! String
+            }
+            if dict.keys.contains("Policy") {
+                self.policy = dict["Policy"] as! String
+            }
+        }
+    }
+    public class NetRedirectRule : Tea.TeaModel {
+        public var domain: String?
+
+        public var policy: String?
+
+        public var ruleType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.domain != nil {
+                map["Domain"] = self.domain!
+            }
+            if self.policy != nil {
+                map["Policy"] = self.policy!
+            }
+            if self.ruleType != nil {
+                map["RuleType"] = self.ruleType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Domain") {
+                self.domain = dict["Domain"] as! String
+            }
+            if dict.keys.contains("Policy") {
+                self.policy = dict["Policy"] as! String
+            }
+            if dict.keys.contains("RuleType") {
+                self.ruleType = dict["RuleType"] as! String
+            }
+        }
+    }
+    public class RevokeAccessPolicyRule : Tea.TeaModel {
+        public var cidrIp: String?
+
+        public var description_: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cidrIp != nil {
+                map["CidrIp"] = self.cidrIp!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CidrIp") {
+                self.cidrIp = dict["CidrIp"] as! String
+            }
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
+            }
+        }
+    }
+    public class RevokeSecurityPolicyRule : Tea.TeaModel {
+        public var cidrIp: String?
+
+        public var description_: String?
+
+        public var ipProtocol: String?
+
+        public var policy: String?
+
+        public var portRange: String?
+
+        public var priority: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cidrIp != nil {
+                map["CidrIp"] = self.cidrIp!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.ipProtocol != nil {
+                map["IpProtocol"] = self.ipProtocol!
+            }
+            if self.policy != nil {
+                map["Policy"] = self.policy!
+            }
+            if self.portRange != nil {
+                map["PortRange"] = self.portRange!
+            }
+            if self.priority != nil {
+                map["Priority"] = self.priority!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CidrIp") {
+                self.cidrIp = dict["CidrIp"] as! String
+            }
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("IpProtocol") {
+                self.ipProtocol = dict["IpProtocol"] as! String
+            }
+            if dict.keys.contains("Policy") {
+                self.policy = dict["Policy"] as! String
+            }
+            if dict.keys.contains("PortRange") {
+                self.portRange = dict["PortRange"] as! String
+            }
+            if dict.keys.contains("Priority") {
+                self.priority = dict["Priority"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+        }
+    }
+    public class UsbSupplyRedirectRule : Tea.TeaModel {
+        public var description_: String?
+
+        public var productId: String?
+
+        public var usbRedirectType: String?
+
+        public var usbRuleType: String?
+
+        public var vendorId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.productId != nil {
+                map["ProductId"] = self.productId!
+            }
+            if self.usbRedirectType != nil {
+                map["UsbRedirectType"] = self.usbRedirectType!
+            }
+            if self.usbRuleType != nil {
+                map["UsbRuleType"] = self.usbRuleType!
+            }
+            if self.vendorId != nil {
+                map["VendorId"] = self.vendorId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("ProductId") {
+                self.productId = dict["ProductId"] as! String
+            }
+            if dict.keys.contains("UsbRedirectType") {
+                self.usbRedirectType = dict["UsbRedirectType"] as! String
+            }
+            if dict.keys.contains("UsbRuleType") {
+                self.usbRuleType = dict["UsbRuleType"] as! String
+            }
+            if dict.keys.contains("VendorId") {
+                self.vendorId = dict["VendorId"] as! String
+            }
+        }
+    }
+    public var adminAccess: String?
+
+    public var appContentProtection: String?
+
+    public var authorizeAccessPolicyRule: [ModifyCenterPolicyRequest.AuthorizeAccessPolicyRule]?
+
+    public var authorizeSecurityPolicyRule: [ModifyCenterPolicyRequest.AuthorizeSecurityPolicyRule]?
+
+    public var businessType: Int32?
+
+    public var cameraRedirect: String?
+
+    public var clientType: [ModifyCenterPolicyRequest.ClientType]?
+
+    public var clipboard: String?
+
+    public var colorEnhancement: String?
+
+    public var cpuDownGradeDuration: Int32?
+
+    public var cpuProcessors: [String]?
+
+    public var cpuProtectedMode: String?
+
+    public var cpuRateLimit: Int32?
+
+    public var cpuSampleDuration: Int32?
+
+    public var cpuSingleRateLimit: Int32?
+
+    public var deviceConnectHint: String?
+
+    public var deviceRedirects: [ModifyCenterPolicyRequest.DeviceRedirects]?
+
+    public var deviceRules: [ModifyCenterPolicyRequest.DeviceRules]?
+
+    public var disconnectKeepSession: String?
+
+    public var disconnectKeepSessionTime: Int32?
+
+    public var displayMode: String?
+
+    public var domainResolveRule: [ModifyCenterPolicyRequest.DomainResolveRule]?
+
+    public var domainResolveRuleType: String?
+
+    public var enableSessionRateLimiting: String?
+
+    public var endUserApplyAdminCoordinate: String?
+
+    public var endUserGroupCoordinate: String?
+
+    public var fileMigrate: String?
+
+    public var gpuAcceleration: String?
+
+    public var html5FileTransfer: String?
+
+    public var internetCommunicationProtocol: String?
+
+    public var localDrive: String?
+
+    public var maxReconnectTime: Int32?
+
+    public var memoryDownGradeDuration: Int32?
+
+    public var memoryProcessors: [String]?
+
+    public var memoryProtectedMode: String?
+
+    public var memoryRateLimit: Int32?
+
+    public var memorySampleDuration: Int32?
+
+    public var memorySingleRateLimit: Int32?
+
+    public var mobileRestart: String?
+
+    public var mobileShutdown: String?
+
+    public var name: String?
+
+    public var netRedirect: String?
+
+    public var netRedirectRule: [ModifyCenterPolicyRequest.NetRedirectRule]?
+
+    public var noOperationDisconnect: String?
+
+    public var noOperationDisconnectTime: Int32?
+
+    public var policyGroupId: String?
+
+    public var printerRedirect: String?
+
+    public var qualityEnhancement: String?
+
+    public var recordEventDuration: Int32?
+
+    public var recordEventFilePaths: [String]?
+
+    public var recordEventRegisters: [String]?
+
+    public var recordEvents: [String]?
+
+    public var recording: String?
+
+    public var recordingAudio: String?
+
+    public var recordingDuration: Int32?
+
+    public var recordingEndTime: String?
+
+    public var recordingExpires: Int32?
+
+    public var recordingFps: String?
+
+    public var recordingStartTime: String?
+
+    public var recordingUserNotify: String?
+
+    public var recordingUserNotifyMessage: String?
+
+    public var regionId: String?
+
+    public var remoteCoordinate: String?
+
+    public var resetDesktop: String?
+
+    public var resolutionHeight: Int32?
+
+    public var resolutionModel: String?
+
+    public var resolutionWidth: Int32?
+
+    public var resourceType: String?
+
+    public var revokeAccessPolicyRule: [ModifyCenterPolicyRequest.RevokeAccessPolicyRule]?
+
+    public var revokeSecurityPolicyRule: [ModifyCenterPolicyRequest.RevokeSecurityPolicyRule]?
+
+    public var scope: String?
+
+    public var scopeValue: [String]?
+
+    public var sessionMaxRateKbps: Int32?
+
+    public var smoothEnhancement: String?
+
+    public var statusMonitor: String?
+
+    public var streamingMode: String?
+
+    public var targetFps: Int32?
+
+    public var taskbar: String?
+
+    public var usbRedirect: String?
+
+    public var usbSupplyRedirectRule: [ModifyCenterPolicyRequest.UsbSupplyRedirectRule]?
+
+    public var videoEncAvgKbps: Int32?
+
+    public var videoEncMaxQP: Int32?
+
+    public var videoEncMinQP: Int32?
+
+    public var videoEncPeakKbps: Int32?
+
+    public var videoEncPolicy: String?
+
+    public var videoRedirect: String?
+
+    public var visualQuality: String?
+
+    public var watermark: String?
+
+    public var watermarkAntiCam: String?
+
+    public var watermarkColor: Int32?
+
+    public var watermarkColumnAmount: Int32?
+
+    public var watermarkCustomText: String?
+
+    public var watermarkDegree: Double?
+
+    public var watermarkFontSize: Int32?
+
+    public var watermarkFontStyle: String?
+
+    public var watermarkPower: String?
+
+    public var watermarkRowAmount: Int32?
+
+    public var watermarkSecurity: String?
+
+    public var watermarkTransparencyValue: Int32?
+
+    public var watermarkType: String?
+
+    public var wuyingKeeper: String?
+
+    public var wyAssistant: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.adminAccess != nil {
+            map["AdminAccess"] = self.adminAccess!
+        }
+        if self.appContentProtection != nil {
+            map["AppContentProtection"] = self.appContentProtection!
+        }
+        if self.authorizeAccessPolicyRule != nil {
+            var tmp : [Any] = []
+            for k in self.authorizeAccessPolicyRule! {
+                tmp.append(k.toMap())
+            }
+            map["AuthorizeAccessPolicyRule"] = tmp
+        }
+        if self.authorizeSecurityPolicyRule != nil {
+            var tmp : [Any] = []
+            for k in self.authorizeSecurityPolicyRule! {
+                tmp.append(k.toMap())
+            }
+            map["AuthorizeSecurityPolicyRule"] = tmp
+        }
+        if self.businessType != nil {
+            map["BusinessType"] = self.businessType!
+        }
+        if self.cameraRedirect != nil {
+            map["CameraRedirect"] = self.cameraRedirect!
+        }
+        if self.clientType != nil {
+            var tmp : [Any] = []
+            for k in self.clientType! {
+                tmp.append(k.toMap())
+            }
+            map["ClientType"] = tmp
+        }
+        if self.clipboard != nil {
+            map["Clipboard"] = self.clipboard!
+        }
+        if self.colorEnhancement != nil {
+            map["ColorEnhancement"] = self.colorEnhancement!
+        }
+        if self.cpuDownGradeDuration != nil {
+            map["CpuDownGradeDuration"] = self.cpuDownGradeDuration!
+        }
+        if self.cpuProcessors != nil {
+            map["CpuProcessors"] = self.cpuProcessors!
+        }
+        if self.cpuProtectedMode != nil {
+            map["CpuProtectedMode"] = self.cpuProtectedMode!
+        }
+        if self.cpuRateLimit != nil {
+            map["CpuRateLimit"] = self.cpuRateLimit!
+        }
+        if self.cpuSampleDuration != nil {
+            map["CpuSampleDuration"] = self.cpuSampleDuration!
+        }
+        if self.cpuSingleRateLimit != nil {
+            map["CpuSingleRateLimit"] = self.cpuSingleRateLimit!
+        }
+        if self.deviceConnectHint != nil {
+            map["DeviceConnectHint"] = self.deviceConnectHint!
+        }
+        if self.deviceRedirects != nil {
+            var tmp : [Any] = []
+            for k in self.deviceRedirects! {
+                tmp.append(k.toMap())
+            }
+            map["DeviceRedirects"] = tmp
+        }
+        if self.deviceRules != nil {
+            var tmp : [Any] = []
+            for k in self.deviceRules! {
+                tmp.append(k.toMap())
+            }
+            map["DeviceRules"] = tmp
+        }
+        if self.disconnectKeepSession != nil {
+            map["DisconnectKeepSession"] = self.disconnectKeepSession!
+        }
+        if self.disconnectKeepSessionTime != nil {
+            map["DisconnectKeepSessionTime"] = self.disconnectKeepSessionTime!
+        }
+        if self.displayMode != nil {
+            map["DisplayMode"] = self.displayMode!
+        }
+        if self.domainResolveRule != nil {
+            var tmp : [Any] = []
+            for k in self.domainResolveRule! {
+                tmp.append(k.toMap())
+            }
+            map["DomainResolveRule"] = tmp
+        }
+        if self.domainResolveRuleType != nil {
+            map["DomainResolveRuleType"] = self.domainResolveRuleType!
+        }
+        if self.enableSessionRateLimiting != nil {
+            map["EnableSessionRateLimiting"] = self.enableSessionRateLimiting!
+        }
+        if self.endUserApplyAdminCoordinate != nil {
+            map["EndUserApplyAdminCoordinate"] = self.endUserApplyAdminCoordinate!
+        }
+        if self.endUserGroupCoordinate != nil {
+            map["EndUserGroupCoordinate"] = self.endUserGroupCoordinate!
+        }
+        if self.fileMigrate != nil {
+            map["FileMigrate"] = self.fileMigrate!
+        }
+        if self.gpuAcceleration != nil {
+            map["GpuAcceleration"] = self.gpuAcceleration!
+        }
+        if self.html5FileTransfer != nil {
+            map["Html5FileTransfer"] = self.html5FileTransfer!
+        }
+        if self.internetCommunicationProtocol != nil {
+            map["InternetCommunicationProtocol"] = self.internetCommunicationProtocol!
+        }
+        if self.localDrive != nil {
+            map["LocalDrive"] = self.localDrive!
+        }
+        if self.maxReconnectTime != nil {
+            map["MaxReconnectTime"] = self.maxReconnectTime!
+        }
+        if self.memoryDownGradeDuration != nil {
+            map["MemoryDownGradeDuration"] = self.memoryDownGradeDuration!
+        }
+        if self.memoryProcessors != nil {
+            map["MemoryProcessors"] = self.memoryProcessors!
+        }
+        if self.memoryProtectedMode != nil {
+            map["MemoryProtectedMode"] = self.memoryProtectedMode!
+        }
+        if self.memoryRateLimit != nil {
+            map["MemoryRateLimit"] = self.memoryRateLimit!
+        }
+        if self.memorySampleDuration != nil {
+            map["MemorySampleDuration"] = self.memorySampleDuration!
+        }
+        if self.memorySingleRateLimit != nil {
+            map["MemorySingleRateLimit"] = self.memorySingleRateLimit!
+        }
+        if self.mobileRestart != nil {
+            map["MobileRestart"] = self.mobileRestart!
+        }
+        if self.mobileShutdown != nil {
+            map["MobileShutdown"] = self.mobileShutdown!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.netRedirect != nil {
+            map["NetRedirect"] = self.netRedirect!
+        }
+        if self.netRedirectRule != nil {
+            var tmp : [Any] = []
+            for k in self.netRedirectRule! {
+                tmp.append(k.toMap())
+            }
+            map["NetRedirectRule"] = tmp
+        }
+        if self.noOperationDisconnect != nil {
+            map["NoOperationDisconnect"] = self.noOperationDisconnect!
+        }
+        if self.noOperationDisconnectTime != nil {
+            map["NoOperationDisconnectTime"] = self.noOperationDisconnectTime!
+        }
+        if self.policyGroupId != nil {
+            map["PolicyGroupId"] = self.policyGroupId!
+        }
+        if self.printerRedirect != nil {
+            map["PrinterRedirect"] = self.printerRedirect!
+        }
+        if self.qualityEnhancement != nil {
+            map["QualityEnhancement"] = self.qualityEnhancement!
+        }
+        if self.recordEventDuration != nil {
+            map["RecordEventDuration"] = self.recordEventDuration!
+        }
+        if self.recordEventFilePaths != nil {
+            map["RecordEventFilePaths"] = self.recordEventFilePaths!
+        }
+        if self.recordEventRegisters != nil {
+            map["RecordEventRegisters"] = self.recordEventRegisters!
+        }
+        if self.recordEvents != nil {
+            map["RecordEvents"] = self.recordEvents!
+        }
+        if self.recording != nil {
+            map["Recording"] = self.recording!
+        }
+        if self.recordingAudio != nil {
+            map["RecordingAudio"] = self.recordingAudio!
+        }
+        if self.recordingDuration != nil {
+            map["RecordingDuration"] = self.recordingDuration!
+        }
+        if self.recordingEndTime != nil {
+            map["RecordingEndTime"] = self.recordingEndTime!
+        }
+        if self.recordingExpires != nil {
+            map["RecordingExpires"] = self.recordingExpires!
+        }
+        if self.recordingFps != nil {
+            map["RecordingFps"] = self.recordingFps!
+        }
+        if self.recordingStartTime != nil {
+            map["RecordingStartTime"] = self.recordingStartTime!
+        }
+        if self.recordingUserNotify != nil {
+            map["RecordingUserNotify"] = self.recordingUserNotify!
+        }
+        if self.recordingUserNotifyMessage != nil {
+            map["RecordingUserNotifyMessage"] = self.recordingUserNotifyMessage!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.remoteCoordinate != nil {
+            map["RemoteCoordinate"] = self.remoteCoordinate!
+        }
+        if self.resetDesktop != nil {
+            map["ResetDesktop"] = self.resetDesktop!
+        }
+        if self.resolutionHeight != nil {
+            map["ResolutionHeight"] = self.resolutionHeight!
+        }
+        if self.resolutionModel != nil {
+            map["ResolutionModel"] = self.resolutionModel!
+        }
+        if self.resolutionWidth != nil {
+            map["ResolutionWidth"] = self.resolutionWidth!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        if self.revokeAccessPolicyRule != nil {
+            var tmp : [Any] = []
+            for k in self.revokeAccessPolicyRule! {
+                tmp.append(k.toMap())
+            }
+            map["RevokeAccessPolicyRule"] = tmp
+        }
+        if self.revokeSecurityPolicyRule != nil {
+            var tmp : [Any] = []
+            for k in self.revokeSecurityPolicyRule! {
+                tmp.append(k.toMap())
+            }
+            map["RevokeSecurityPolicyRule"] = tmp
+        }
+        if self.scope != nil {
+            map["Scope"] = self.scope!
+        }
+        if self.scopeValue != nil {
+            map["ScopeValue"] = self.scopeValue!
+        }
+        if self.sessionMaxRateKbps != nil {
+            map["SessionMaxRateKbps"] = self.sessionMaxRateKbps!
+        }
+        if self.smoothEnhancement != nil {
+            map["SmoothEnhancement"] = self.smoothEnhancement!
+        }
+        if self.statusMonitor != nil {
+            map["StatusMonitor"] = self.statusMonitor!
+        }
+        if self.streamingMode != nil {
+            map["StreamingMode"] = self.streamingMode!
+        }
+        if self.targetFps != nil {
+            map["TargetFps"] = self.targetFps!
+        }
+        if self.taskbar != nil {
+            map["Taskbar"] = self.taskbar!
+        }
+        if self.usbRedirect != nil {
+            map["UsbRedirect"] = self.usbRedirect!
+        }
+        if self.usbSupplyRedirectRule != nil {
+            var tmp : [Any] = []
+            for k in self.usbSupplyRedirectRule! {
+                tmp.append(k.toMap())
+            }
+            map["UsbSupplyRedirectRule"] = tmp
+        }
+        if self.videoEncAvgKbps != nil {
+            map["VideoEncAvgKbps"] = self.videoEncAvgKbps!
+        }
+        if self.videoEncMaxQP != nil {
+            map["VideoEncMaxQP"] = self.videoEncMaxQP!
+        }
+        if self.videoEncMinQP != nil {
+            map["VideoEncMinQP"] = self.videoEncMinQP!
+        }
+        if self.videoEncPeakKbps != nil {
+            map["VideoEncPeakKbps"] = self.videoEncPeakKbps!
+        }
+        if self.videoEncPolicy != nil {
+            map["VideoEncPolicy"] = self.videoEncPolicy!
+        }
+        if self.videoRedirect != nil {
+            map["VideoRedirect"] = self.videoRedirect!
+        }
+        if self.visualQuality != nil {
+            map["VisualQuality"] = self.visualQuality!
+        }
+        if self.watermark != nil {
+            map["Watermark"] = self.watermark!
+        }
+        if self.watermarkAntiCam != nil {
+            map["WatermarkAntiCam"] = self.watermarkAntiCam!
+        }
+        if self.watermarkColor != nil {
+            map["WatermarkColor"] = self.watermarkColor!
+        }
+        if self.watermarkColumnAmount != nil {
+            map["WatermarkColumnAmount"] = self.watermarkColumnAmount!
+        }
+        if self.watermarkCustomText != nil {
+            map["WatermarkCustomText"] = self.watermarkCustomText!
+        }
+        if self.watermarkDegree != nil {
+            map["WatermarkDegree"] = self.watermarkDegree!
+        }
+        if self.watermarkFontSize != nil {
+            map["WatermarkFontSize"] = self.watermarkFontSize!
+        }
+        if self.watermarkFontStyle != nil {
+            map["WatermarkFontStyle"] = self.watermarkFontStyle!
+        }
+        if self.watermarkPower != nil {
+            map["WatermarkPower"] = self.watermarkPower!
+        }
+        if self.watermarkRowAmount != nil {
+            map["WatermarkRowAmount"] = self.watermarkRowAmount!
+        }
+        if self.watermarkSecurity != nil {
+            map["WatermarkSecurity"] = self.watermarkSecurity!
+        }
+        if self.watermarkTransparencyValue != nil {
+            map["WatermarkTransparencyValue"] = self.watermarkTransparencyValue!
+        }
+        if self.watermarkType != nil {
+            map["WatermarkType"] = self.watermarkType!
+        }
+        if self.wuyingKeeper != nil {
+            map["WuyingKeeper"] = self.wuyingKeeper!
+        }
+        if self.wyAssistant != nil {
+            map["WyAssistant"] = self.wyAssistant!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AdminAccess") {
+            self.adminAccess = dict["AdminAccess"] as! String
+        }
+        if dict.keys.contains("AppContentProtection") {
+            self.appContentProtection = dict["AppContentProtection"] as! String
+        }
+        if dict.keys.contains("AuthorizeAccessPolicyRule") {
+            var tmp : [ModifyCenterPolicyRequest.AuthorizeAccessPolicyRule] = []
+            for v in dict["AuthorizeAccessPolicyRule"] as! [Any] {
+                var model = ModifyCenterPolicyRequest.AuthorizeAccessPolicyRule()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.authorizeAccessPolicyRule = tmp
+        }
+        if dict.keys.contains("AuthorizeSecurityPolicyRule") {
+            var tmp : [ModifyCenterPolicyRequest.AuthorizeSecurityPolicyRule] = []
+            for v in dict["AuthorizeSecurityPolicyRule"] as! [Any] {
+                var model = ModifyCenterPolicyRequest.AuthorizeSecurityPolicyRule()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.authorizeSecurityPolicyRule = tmp
+        }
+        if dict.keys.contains("BusinessType") {
+            self.businessType = dict["BusinessType"] as! Int32
+        }
+        if dict.keys.contains("CameraRedirect") {
+            self.cameraRedirect = dict["CameraRedirect"] as! String
+        }
+        if dict.keys.contains("ClientType") {
+            var tmp : [ModifyCenterPolicyRequest.ClientType] = []
+            for v in dict["ClientType"] as! [Any] {
+                var model = ModifyCenterPolicyRequest.ClientType()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.clientType = tmp
+        }
+        if dict.keys.contains("Clipboard") {
+            self.clipboard = dict["Clipboard"] as! String
+        }
+        if dict.keys.contains("ColorEnhancement") {
+            self.colorEnhancement = dict["ColorEnhancement"] as! String
+        }
+        if dict.keys.contains("CpuDownGradeDuration") {
+            self.cpuDownGradeDuration = dict["CpuDownGradeDuration"] as! Int32
+        }
+        if dict.keys.contains("CpuProcessors") {
+            self.cpuProcessors = dict["CpuProcessors"] as! [String]
+        }
+        if dict.keys.contains("CpuProtectedMode") {
+            self.cpuProtectedMode = dict["CpuProtectedMode"] as! String
+        }
+        if dict.keys.contains("CpuRateLimit") {
+            self.cpuRateLimit = dict["CpuRateLimit"] as! Int32
+        }
+        if dict.keys.contains("CpuSampleDuration") {
+            self.cpuSampleDuration = dict["CpuSampleDuration"] as! Int32
+        }
+        if dict.keys.contains("CpuSingleRateLimit") {
+            self.cpuSingleRateLimit = dict["CpuSingleRateLimit"] as! Int32
+        }
+        if dict.keys.contains("DeviceConnectHint") {
+            self.deviceConnectHint = dict["DeviceConnectHint"] as! String
+        }
+        if dict.keys.contains("DeviceRedirects") {
+            var tmp : [ModifyCenterPolicyRequest.DeviceRedirects] = []
+            for v in dict["DeviceRedirects"] as! [Any] {
+                var model = ModifyCenterPolicyRequest.DeviceRedirects()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.deviceRedirects = tmp
+        }
+        if dict.keys.contains("DeviceRules") {
+            var tmp : [ModifyCenterPolicyRequest.DeviceRules] = []
+            for v in dict["DeviceRules"] as! [Any] {
+                var model = ModifyCenterPolicyRequest.DeviceRules()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.deviceRules = tmp
+        }
+        if dict.keys.contains("DisconnectKeepSession") {
+            self.disconnectKeepSession = dict["DisconnectKeepSession"] as! String
+        }
+        if dict.keys.contains("DisconnectKeepSessionTime") {
+            self.disconnectKeepSessionTime = dict["DisconnectKeepSessionTime"] as! Int32
+        }
+        if dict.keys.contains("DisplayMode") {
+            self.displayMode = dict["DisplayMode"] as! String
+        }
+        if dict.keys.contains("DomainResolveRule") {
+            var tmp : [ModifyCenterPolicyRequest.DomainResolveRule] = []
+            for v in dict["DomainResolveRule"] as! [Any] {
+                var model = ModifyCenterPolicyRequest.DomainResolveRule()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.domainResolveRule = tmp
+        }
+        if dict.keys.contains("DomainResolveRuleType") {
+            self.domainResolveRuleType = dict["DomainResolveRuleType"] as! String
+        }
+        if dict.keys.contains("EnableSessionRateLimiting") {
+            self.enableSessionRateLimiting = dict["EnableSessionRateLimiting"] as! String
+        }
+        if dict.keys.contains("EndUserApplyAdminCoordinate") {
+            self.endUserApplyAdminCoordinate = dict["EndUserApplyAdminCoordinate"] as! String
+        }
+        if dict.keys.contains("EndUserGroupCoordinate") {
+            self.endUserGroupCoordinate = dict["EndUserGroupCoordinate"] as! String
+        }
+        if dict.keys.contains("FileMigrate") {
+            self.fileMigrate = dict["FileMigrate"] as! String
+        }
+        if dict.keys.contains("GpuAcceleration") {
+            self.gpuAcceleration = dict["GpuAcceleration"] as! String
+        }
+        if dict.keys.contains("Html5FileTransfer") {
+            self.html5FileTransfer = dict["Html5FileTransfer"] as! String
+        }
+        if dict.keys.contains("InternetCommunicationProtocol") {
+            self.internetCommunicationProtocol = dict["InternetCommunicationProtocol"] as! String
+        }
+        if dict.keys.contains("LocalDrive") {
+            self.localDrive = dict["LocalDrive"] as! String
+        }
+        if dict.keys.contains("MaxReconnectTime") {
+            self.maxReconnectTime = dict["MaxReconnectTime"] as! Int32
+        }
+        if dict.keys.contains("MemoryDownGradeDuration") {
+            self.memoryDownGradeDuration = dict["MemoryDownGradeDuration"] as! Int32
+        }
+        if dict.keys.contains("MemoryProcessors") {
+            self.memoryProcessors = dict["MemoryProcessors"] as! [String]
+        }
+        if dict.keys.contains("MemoryProtectedMode") {
+            self.memoryProtectedMode = dict["MemoryProtectedMode"] as! String
+        }
+        if dict.keys.contains("MemoryRateLimit") {
+            self.memoryRateLimit = dict["MemoryRateLimit"] as! Int32
+        }
+        if dict.keys.contains("MemorySampleDuration") {
+            self.memorySampleDuration = dict["MemorySampleDuration"] as! Int32
+        }
+        if dict.keys.contains("MemorySingleRateLimit") {
+            self.memorySingleRateLimit = dict["MemorySingleRateLimit"] as! Int32
+        }
+        if dict.keys.contains("MobileRestart") {
+            self.mobileRestart = dict["MobileRestart"] as! String
+        }
+        if dict.keys.contains("MobileShutdown") {
+            self.mobileShutdown = dict["MobileShutdown"] as! String
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("NetRedirect") {
+            self.netRedirect = dict["NetRedirect"] as! String
+        }
+        if dict.keys.contains("NetRedirectRule") {
+            var tmp : [ModifyCenterPolicyRequest.NetRedirectRule] = []
+            for v in dict["NetRedirectRule"] as! [Any] {
+                var model = ModifyCenterPolicyRequest.NetRedirectRule()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.netRedirectRule = tmp
+        }
+        if dict.keys.contains("NoOperationDisconnect") {
+            self.noOperationDisconnect = dict["NoOperationDisconnect"] as! String
+        }
+        if dict.keys.contains("NoOperationDisconnectTime") {
+            self.noOperationDisconnectTime = dict["NoOperationDisconnectTime"] as! Int32
+        }
+        if dict.keys.contains("PolicyGroupId") {
+            self.policyGroupId = dict["PolicyGroupId"] as! String
+        }
+        if dict.keys.contains("PrinterRedirect") {
+            self.printerRedirect = dict["PrinterRedirect"] as! String
+        }
+        if dict.keys.contains("QualityEnhancement") {
+            self.qualityEnhancement = dict["QualityEnhancement"] as! String
+        }
+        if dict.keys.contains("RecordEventDuration") {
+            self.recordEventDuration = dict["RecordEventDuration"] as! Int32
+        }
+        if dict.keys.contains("RecordEventFilePaths") {
+            self.recordEventFilePaths = dict["RecordEventFilePaths"] as! [String]
+        }
+        if dict.keys.contains("RecordEventRegisters") {
+            self.recordEventRegisters = dict["RecordEventRegisters"] as! [String]
+        }
+        if dict.keys.contains("RecordEvents") {
+            self.recordEvents = dict["RecordEvents"] as! [String]
+        }
+        if dict.keys.contains("Recording") {
+            self.recording = dict["Recording"] as! String
+        }
+        if dict.keys.contains("RecordingAudio") {
+            self.recordingAudio = dict["RecordingAudio"] as! String
+        }
+        if dict.keys.contains("RecordingDuration") {
+            self.recordingDuration = dict["RecordingDuration"] as! Int32
+        }
+        if dict.keys.contains("RecordingEndTime") {
+            self.recordingEndTime = dict["RecordingEndTime"] as! String
+        }
+        if dict.keys.contains("RecordingExpires") {
+            self.recordingExpires = dict["RecordingExpires"] as! Int32
+        }
+        if dict.keys.contains("RecordingFps") {
+            self.recordingFps = dict["RecordingFps"] as! String
+        }
+        if dict.keys.contains("RecordingStartTime") {
+            self.recordingStartTime = dict["RecordingStartTime"] as! String
+        }
+        if dict.keys.contains("RecordingUserNotify") {
+            self.recordingUserNotify = dict["RecordingUserNotify"] as! String
+        }
+        if dict.keys.contains("RecordingUserNotifyMessage") {
+            self.recordingUserNotifyMessage = dict["RecordingUserNotifyMessage"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("RemoteCoordinate") {
+            self.remoteCoordinate = dict["RemoteCoordinate"] as! String
+        }
+        if dict.keys.contains("ResetDesktop") {
+            self.resetDesktop = dict["ResetDesktop"] as! String
+        }
+        if dict.keys.contains("ResolutionHeight") {
+            self.resolutionHeight = dict["ResolutionHeight"] as! Int32
+        }
+        if dict.keys.contains("ResolutionModel") {
+            self.resolutionModel = dict["ResolutionModel"] as! String
+        }
+        if dict.keys.contains("ResolutionWidth") {
+            self.resolutionWidth = dict["ResolutionWidth"] as! Int32
+        }
+        if dict.keys.contains("ResourceType") {
+            self.resourceType = dict["ResourceType"] as! String
+        }
+        if dict.keys.contains("RevokeAccessPolicyRule") {
+            var tmp : [ModifyCenterPolicyRequest.RevokeAccessPolicyRule] = []
+            for v in dict["RevokeAccessPolicyRule"] as! [Any] {
+                var model = ModifyCenterPolicyRequest.RevokeAccessPolicyRule()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.revokeAccessPolicyRule = tmp
+        }
+        if dict.keys.contains("RevokeSecurityPolicyRule") {
+            var tmp : [ModifyCenterPolicyRequest.RevokeSecurityPolicyRule] = []
+            for v in dict["RevokeSecurityPolicyRule"] as! [Any] {
+                var model = ModifyCenterPolicyRequest.RevokeSecurityPolicyRule()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.revokeSecurityPolicyRule = tmp
+        }
+        if dict.keys.contains("Scope") {
+            self.scope = dict["Scope"] as! String
+        }
+        if dict.keys.contains("ScopeValue") {
+            self.scopeValue = dict["ScopeValue"] as! [String]
+        }
+        if dict.keys.contains("SessionMaxRateKbps") {
+            self.sessionMaxRateKbps = dict["SessionMaxRateKbps"] as! Int32
+        }
+        if dict.keys.contains("SmoothEnhancement") {
+            self.smoothEnhancement = dict["SmoothEnhancement"] as! String
+        }
+        if dict.keys.contains("StatusMonitor") {
+            self.statusMonitor = dict["StatusMonitor"] as! String
+        }
+        if dict.keys.contains("StreamingMode") {
+            self.streamingMode = dict["StreamingMode"] as! String
+        }
+        if dict.keys.contains("TargetFps") {
+            self.targetFps = dict["TargetFps"] as! Int32
+        }
+        if dict.keys.contains("Taskbar") {
+            self.taskbar = dict["Taskbar"] as! String
+        }
+        if dict.keys.contains("UsbRedirect") {
+            self.usbRedirect = dict["UsbRedirect"] as! String
+        }
+        if dict.keys.contains("UsbSupplyRedirectRule") {
+            var tmp : [ModifyCenterPolicyRequest.UsbSupplyRedirectRule] = []
+            for v in dict["UsbSupplyRedirectRule"] as! [Any] {
+                var model = ModifyCenterPolicyRequest.UsbSupplyRedirectRule()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.usbSupplyRedirectRule = tmp
+        }
+        if dict.keys.contains("VideoEncAvgKbps") {
+            self.videoEncAvgKbps = dict["VideoEncAvgKbps"] as! Int32
+        }
+        if dict.keys.contains("VideoEncMaxQP") {
+            self.videoEncMaxQP = dict["VideoEncMaxQP"] as! Int32
+        }
+        if dict.keys.contains("VideoEncMinQP") {
+            self.videoEncMinQP = dict["VideoEncMinQP"] as! Int32
+        }
+        if dict.keys.contains("VideoEncPeakKbps") {
+            self.videoEncPeakKbps = dict["VideoEncPeakKbps"] as! Int32
+        }
+        if dict.keys.contains("VideoEncPolicy") {
+            self.videoEncPolicy = dict["VideoEncPolicy"] as! String
+        }
+        if dict.keys.contains("VideoRedirect") {
+            self.videoRedirect = dict["VideoRedirect"] as! String
+        }
+        if dict.keys.contains("VisualQuality") {
+            self.visualQuality = dict["VisualQuality"] as! String
+        }
+        if dict.keys.contains("Watermark") {
+            self.watermark = dict["Watermark"] as! String
+        }
+        if dict.keys.contains("WatermarkAntiCam") {
+            self.watermarkAntiCam = dict["WatermarkAntiCam"] as! String
+        }
+        if dict.keys.contains("WatermarkColor") {
+            self.watermarkColor = dict["WatermarkColor"] as! Int32
+        }
+        if dict.keys.contains("WatermarkColumnAmount") {
+            self.watermarkColumnAmount = dict["WatermarkColumnAmount"] as! Int32
+        }
+        if dict.keys.contains("WatermarkCustomText") {
+            self.watermarkCustomText = dict["WatermarkCustomText"] as! String
+        }
+        if dict.keys.contains("WatermarkDegree") {
+            self.watermarkDegree = dict["WatermarkDegree"] as! Double
+        }
+        if dict.keys.contains("WatermarkFontSize") {
+            self.watermarkFontSize = dict["WatermarkFontSize"] as! Int32
+        }
+        if dict.keys.contains("WatermarkFontStyle") {
+            self.watermarkFontStyle = dict["WatermarkFontStyle"] as! String
+        }
+        if dict.keys.contains("WatermarkPower") {
+            self.watermarkPower = dict["WatermarkPower"] as! String
+        }
+        if dict.keys.contains("WatermarkRowAmount") {
+            self.watermarkRowAmount = dict["WatermarkRowAmount"] as! Int32
+        }
+        if dict.keys.contains("WatermarkSecurity") {
+            self.watermarkSecurity = dict["WatermarkSecurity"] as! String
+        }
+        if dict.keys.contains("WatermarkTransparencyValue") {
+            self.watermarkTransparencyValue = dict["WatermarkTransparencyValue"] as! Int32
+        }
+        if dict.keys.contains("WatermarkType") {
+            self.watermarkType = dict["WatermarkType"] as! String
+        }
+        if dict.keys.contains("WuyingKeeper") {
+            self.wuyingKeeper = dict["WuyingKeeper"] as! String
+        }
+        if dict.keys.contains("WyAssistant") {
+            self.wyAssistant = dict["WyAssistant"] as! String
+        }
+    }
+}
+
+public class ModifyCenterPolicyResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ModifyCenterPolicyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyCenterPolicyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ModifyCenterPolicyResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ModifyCloudDriveGroupsRequest : Tea.TeaModel {
     public var cdsId: String?
 
@@ -47474,6 +52597,212 @@ public class ModifyPolicyGroupResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ModifyPolicyGroupResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ModifyResourceCenterPolicyRequest : Tea.TeaModel {
+    public var policyGroupIds: [String]?
+
+    public var policyGroupType: String?
+
+    public var productType: String?
+
+    public var resourceIds: [String]?
+
+    public var resourceRegionId: String?
+
+    public var resourceType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.policyGroupIds != nil {
+            map["PolicyGroupIds"] = self.policyGroupIds!
+        }
+        if self.policyGroupType != nil {
+            map["PolicyGroupType"] = self.policyGroupType!
+        }
+        if self.productType != nil {
+            map["ProductType"] = self.productType!
+        }
+        if self.resourceIds != nil {
+            map["ResourceIds"] = self.resourceIds!
+        }
+        if self.resourceRegionId != nil {
+            map["ResourceRegionId"] = self.resourceRegionId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PolicyGroupIds") {
+            self.policyGroupIds = dict["PolicyGroupIds"] as! [String]
+        }
+        if dict.keys.contains("PolicyGroupType") {
+            self.policyGroupType = dict["PolicyGroupType"] as! String
+        }
+        if dict.keys.contains("ProductType") {
+            self.productType = dict["ProductType"] as! String
+        }
+        if dict.keys.contains("ResourceIds") {
+            self.resourceIds = dict["ResourceIds"] as! [String]
+        }
+        if dict.keys.contains("ResourceRegionId") {
+            self.resourceRegionId = dict["ResourceRegionId"] as! String
+        }
+        if dict.keys.contains("ResourceType") {
+            self.resourceType = dict["ResourceType"] as! String
+        }
+    }
+}
+
+public class ModifyResourceCenterPolicyResponseBody : Tea.TeaModel {
+    public class ModifyResults : Tea.TeaModel {
+        public var checkResult: Bool?
+
+        public var resourceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.checkResult != nil {
+                map["CheckResult"] = self.checkResult!
+            }
+            if self.resourceId != nil {
+                map["ResourceId"] = self.resourceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CheckResult") {
+                self.checkResult = dict["CheckResult"] as! Bool
+            }
+            if dict.keys.contains("ResourceId") {
+                self.resourceId = dict["ResourceId"] as! String
+            }
+        }
+    }
+    public var modifyResults: [ModifyResourceCenterPolicyResponseBody.ModifyResults]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.modifyResults != nil {
+            var tmp : [Any] = []
+            for k in self.modifyResults! {
+                tmp.append(k.toMap())
+            }
+            map["ModifyResults"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ModifyResults") {
+            var tmp : [ModifyResourceCenterPolicyResponseBody.ModifyResults] = []
+            for v in dict["ModifyResults"] as! [Any] {
+                var model = ModifyResourceCenterPolicyResponseBody.ModifyResults()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.modifyResults = tmp
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ModifyResourceCenterPolicyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyResourceCenterPolicyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ModifyResourceCenterPolicyResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
