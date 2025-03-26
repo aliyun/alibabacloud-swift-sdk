@@ -105,6 +105,8 @@ public class AssignLeniPrivateIpAddressResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: AssignLeniPrivateIpAddressResponseBody.Content?
@@ -128,6 +130,9 @@ public class AssignLeniPrivateIpAddressResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -144,6 +149,9 @@ public class AssignLeniPrivateIpAddressResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -334,6 +342,8 @@ public class AssignPrivateIpAddressResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: AssignPrivateIpAddressResponseBody.Content?
@@ -357,6 +367,9 @@ public class AssignPrivateIpAddressResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -373,6 +386,9 @@ public class AssignPrivateIpAddressResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -515,6 +531,8 @@ public class AssociateVpdCidrBlockResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: AssociateVpdCidrBlockResponseBody.Content?
@@ -538,6 +556,9 @@ public class AssociateVpdCidrBlockResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -554,6 +575,9 @@ public class AssociateVpdCidrBlockResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -667,6 +691,8 @@ public class AttachElasticNetworkInterfaceRequest : Tea.TeaModel {
 }
 
 public class AttachElasticNetworkInterfaceResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: Any?
@@ -689,6 +715,9 @@ public class AttachElasticNetworkInterfaceResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -705,6 +734,9 @@ public class AttachElasticNetworkInterfaceResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -901,6 +933,8 @@ public class CreateElasticNetworkInterfaceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: CreateElasticNetworkInterfaceResponseBody.Content?
@@ -924,6 +958,9 @@ public class CreateElasticNetworkInterfaceResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -940,6 +977,9 @@ public class CreateElasticNetworkInterfaceResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -1098,6 +1138,8 @@ public class CreateErResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: CreateErResponseBody.Content?
@@ -1121,6 +1163,9 @@ public class CreateErResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -1137,6 +1182,9 @@ public class CreateErResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -1311,6 +1359,8 @@ public class CreateErAttachmentResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: CreateErAttachmentResponseBody.Content?
@@ -1334,6 +1384,9 @@ public class CreateErAttachmentResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -1350,6 +1403,9 @@ public class CreateErAttachmentResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -1564,6 +1620,8 @@ public class CreateErRouteMapResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: CreateErRouteMapResponseBody.Content?
@@ -1587,6 +1645,9 @@ public class CreateErRouteMapResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -1603,6 +1664,9 @@ public class CreateErRouteMapResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -1826,6 +1890,8 @@ public class CreateSubnetResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: CreateSubnetResponseBody.Content?
@@ -1849,6 +1915,9 @@ public class CreateSubnetResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -1865,6 +1934,9 @@ public class CreateSubnetResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -2168,6 +2240,8 @@ public class CreateVccResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: CreateVccResponseBody.Content?
@@ -2191,6 +2265,9 @@ public class CreateVccResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -2207,6 +2284,9 @@ public class CreateVccResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -2357,6 +2437,8 @@ public class CreateVccGrantRuleResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: CreateVccGrantRuleResponseBody.Content?
@@ -2380,6 +2462,9 @@ public class CreateVccGrantRuleResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -2396,6 +2481,9 @@ public class CreateVccGrantRuleResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -2538,6 +2626,8 @@ public class CreateVccRouteEntryResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: CreateVccRouteEntryResponseBody.Content?
@@ -2561,6 +2651,9 @@ public class CreateVccRouteEntryResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -2577,6 +2670,9 @@ public class CreateVccRouteEntryResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -2873,6 +2969,8 @@ public class CreateVpdResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: CreateVpdResponseBody.Content?
@@ -2896,6 +2994,9 @@ public class CreateVpdResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -2912,6 +3013,9 @@ public class CreateVpdResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -3062,6 +3166,8 @@ public class CreateVpdGrantRuleResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: CreateVpdGrantRuleResponseBody.Content?
@@ -3085,6 +3191,9 @@ public class CreateVpdGrantRuleResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -3101,6 +3210,9 @@ public class CreateVpdGrantRuleResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -3251,6 +3363,8 @@ public class DeleteElasticNetworkInterfaceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: DeleteElasticNetworkInterfaceResponseBody.Content?
@@ -3274,6 +3388,9 @@ public class DeleteElasticNetworkInterfaceResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -3290,6 +3407,9 @@ public class DeleteElasticNetworkInterfaceResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -3395,6 +3515,8 @@ public class DeleteErRequest : Tea.TeaModel {
 }
 
 public class DeleteErResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: Any?
@@ -3417,6 +3539,9 @@ public class DeleteErResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -3433,6 +3558,9 @@ public class DeleteErResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -3544,6 +3672,8 @@ public class DeleteErAttachmentRequest : Tea.TeaModel {
 }
 
 public class DeleteErAttachmentResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: Any?
@@ -3566,6 +3696,9 @@ public class DeleteErAttachmentResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -3582,6 +3715,9 @@ public class DeleteErAttachmentResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -3693,6 +3829,8 @@ public class DeleteErRouteMapRequest : Tea.TeaModel {
 }
 
 public class DeleteErRouteMapResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: Any?
@@ -3715,6 +3853,9 @@ public class DeleteErRouteMapResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -3731,6 +3872,9 @@ public class DeleteErRouteMapResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -3850,6 +3994,8 @@ public class DeleteSubnetRequest : Tea.TeaModel {
 }
 
 public class DeleteSubnetResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: Any?
@@ -3872,6 +4018,9 @@ public class DeleteSubnetResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -3888,6 +4037,9 @@ public class DeleteSubnetResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -4007,6 +4159,8 @@ public class DeleteVccGrantRuleRequest : Tea.TeaModel {
 }
 
 public class DeleteVccGrantRuleResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: Any?
@@ -4029,6 +4183,9 @@ public class DeleteVccGrantRuleResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -4045,6 +4202,9 @@ public class DeleteVccGrantRuleResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -4164,6 +4324,8 @@ public class DeleteVccRouteEntryRequest : Tea.TeaModel {
 }
 
 public class DeleteVccRouteEntryResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: Any?
@@ -4186,6 +4348,9 @@ public class DeleteVccRouteEntryResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -4202,6 +4367,9 @@ public class DeleteVccRouteEntryResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -4305,6 +4473,8 @@ public class DeleteVpdRequest : Tea.TeaModel {
 }
 
 public class DeleteVpdResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: Any?
@@ -4327,6 +4497,9 @@ public class DeleteVpdResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -4343,6 +4516,9 @@ public class DeleteVpdResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -4470,6 +4646,8 @@ public class DeleteVpdGrantRuleRequest : Tea.TeaModel {
 }
 
 public class DeleteVpdGrantRuleResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: Any?
@@ -4492,6 +4670,9 @@ public class DeleteVpdGrantRuleResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -4508,6 +4689,9 @@ public class DeleteVpdGrantRuleResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -4632,6 +4816,8 @@ public class DescribeSlrResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: DescribeSlrResponseBody.Content?
@@ -4655,6 +4841,9 @@ public class DescribeSlrResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -4671,6 +4860,9 @@ public class DescribeSlrResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -4784,6 +4976,8 @@ public class DetachElasticNetworkInterfaceRequest : Tea.TeaModel {
 }
 
 public class DetachElasticNetworkInterfaceResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var message: String?
@@ -4804,6 +4998,9 @@ public class DetachElasticNetworkInterfaceResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -4817,6 +5014,9 @@ public class DetachElasticNetworkInterfaceResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -4946,6 +5146,8 @@ public class GetDestinationCidrBlockResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: GetDestinationCidrBlockResponseBody.Content?
@@ -4969,6 +5171,9 @@ public class GetDestinationCidrBlockResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -4985,6 +5190,9 @@ public class GetDestinationCidrBlockResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -5481,6 +5689,8 @@ public class GetElasticNetworkInterfaceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: GetElasticNetworkInterfaceResponseBody.Content?
@@ -5504,6 +5714,9 @@ public class GetElasticNetworkInterfaceResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -5520,6 +5733,9 @@ public class GetElasticNetworkInterfaceResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -6257,6 +6473,8 @@ public class GetErResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: GetErResponseBody.Content?
@@ -6280,6 +6498,9 @@ public class GetErResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -6296,6 +6517,9 @@ public class GetErResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -6558,6 +6782,8 @@ public class GetErAttachmentResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: GetErAttachmentResponseBody.Content?
@@ -6581,6 +6807,9 @@ public class GetErAttachmentResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -6597,6 +6826,9 @@ public class GetErAttachmentResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -6819,6 +7051,8 @@ public class GetErRouteEntryResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: GetErRouteEntryResponseBody.Content?
@@ -6842,6 +7076,9 @@ public class GetErRouteEntryResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -6858,6 +7095,9 @@ public class GetErRouteEntryResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -7168,6 +7408,8 @@ public class GetErRouteMapResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: GetErRouteMapResponseBody.Content?
@@ -7191,6 +7433,9 @@ public class GetErRouteMapResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -7207,6 +7452,9 @@ public class GetErRouteMapResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -7462,6 +7710,8 @@ public class GetFabricTopologyResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: GetFabricTopologyResponseBody.Content?
@@ -7485,6 +7735,9 @@ public class GetFabricTopologyResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -7501,6 +7754,9 @@ public class GetFabricTopologyResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -7707,6 +7963,8 @@ public class GetLeniPrivateIpAddressResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: GetLeniPrivateIpAddressResponseBody.Content?
@@ -7730,6 +7988,9 @@ public class GetLeniPrivateIpAddressResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -7746,6 +8007,9 @@ public class GetLeniPrivateIpAddressResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -7878,6 +8142,8 @@ public class GetLniPrivateIpAddressResponseBody : Tea.TeaModel {
 
         public var status: String?
 
+        public var subnetId: String?
+
         public override init() {
             super.init()
         }
@@ -7919,6 +8185,9 @@ public class GetLniPrivateIpAddressResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.subnetId != nil {
+                map["SubnetId"] = self.subnetId!
+            }
             return map
         }
 
@@ -7950,8 +8219,13 @@ public class GetLniPrivateIpAddressResponseBody : Tea.TeaModel {
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! String
             }
+            if dict.keys.contains("SubnetId") {
+                self.subnetId = dict["SubnetId"] as! String
+            }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: GetLniPrivateIpAddressResponseBody.Content?
@@ -7975,6 +8249,9 @@ public class GetLniPrivateIpAddressResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -7991,6 +8268,9 @@ public class GetLniPrivateIpAddressResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -8454,6 +8734,8 @@ public class GetNetworkInterfaceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: GetNetworkInterfaceResponseBody.Content?
@@ -8477,6 +8759,9 @@ public class GetNetworkInterfaceResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -8493,6 +8778,9 @@ public class GetNetworkInterfaceResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -8699,6 +8987,8 @@ public class GetNodeInfoForPodResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: GetNodeInfoForPodResponseBody.Content?
@@ -8722,6 +9012,9 @@ public class GetNodeInfoForPodResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -8738,6 +9031,9 @@ public class GetNodeInfoForPodResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -9137,6 +9433,8 @@ public class GetSubnetResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: GetSubnetResponseBody.Content?
@@ -9160,6 +9458,9 @@ public class GetSubnetResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -9176,6 +9477,9 @@ public class GetSubnetResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -9856,6 +10160,8 @@ public class GetVccResponseBody : Tea.TeaModel {
 
         public var attachErStatus: Bool?
 
+        public var bandwidth: Int32?
+
         public var bandwidthStr: String?
 
         public var bgpAsn: String?
@@ -9951,6 +10257,9 @@ public class GetVccResponseBody : Tea.TeaModel {
             }
             if self.attachErStatus != nil {
                 map["AttachErStatus"] = self.attachErStatus!
+            }
+            if self.bandwidth != nil {
+                map["Bandwidth"] = self.bandwidth!
             }
             if self.bandwidthStr != nil {
                 map["BandwidthStr"] = self.bandwidthStr!
@@ -10091,6 +10400,9 @@ public class GetVccResponseBody : Tea.TeaModel {
             if dict.keys.contains("AttachErStatus") {
                 self.attachErStatus = dict["AttachErStatus"] as! Bool
             }
+            if dict.keys.contains("Bandwidth") {
+                self.bandwidth = dict["Bandwidth"] as! Int32
+            }
             if dict.keys.contains("BandwidthStr") {
                 self.bandwidthStr = dict["BandwidthStr"] as! String
             }
@@ -10229,6 +10541,8 @@ public class GetVccResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: GetVccResponseBody.Content?
@@ -10252,6 +10566,9 @@ public class GetVccResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -10268,6 +10585,9 @@ public class GetVccResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -10506,6 +10826,8 @@ public class GetVccGrantRuleResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: GetVccGrantRuleResponseBody.Content?
@@ -10529,6 +10851,9 @@ public class GetVccGrantRuleResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -10545,6 +10870,9 @@ public class GetVccGrantRuleResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -10775,6 +11103,8 @@ public class GetVccRouteEntryResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: GetVccRouteEntryResponseBody.Content?
@@ -10798,6 +11128,9 @@ public class GetVccRouteEntryResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -10814,6 +11147,9 @@ public class GetVccRouteEntryResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -11278,6 +11614,8 @@ public class GetVpdResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: GetVpdResponseBody.Content?
@@ -11301,6 +11639,9 @@ public class GetVpdResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -11317,6 +11658,9 @@ public class GetVpdResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -11555,6 +11899,8 @@ public class GetVpdGrantRuleResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: GetVpdGrantRuleResponseBody.Content?
@@ -11578,6 +11924,9 @@ public class GetVpdGrantRuleResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -11594,6 +11943,9 @@ public class GetVpdGrantRuleResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -11816,6 +12168,8 @@ public class GetVpdRouteEntryResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: GetVpdRouteEntryResponseBody.Content?
@@ -11839,6 +12193,9 @@ public class GetVpdRouteEntryResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -11855,6 +12212,9 @@ public class GetVpdRouteEntryResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -11989,6 +12349,8 @@ public class InitializeVccResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: InitializeVccResponseBody.Content?
@@ -12012,6 +12374,9 @@ public class InitializeVccResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -12028,6 +12393,9 @@ public class InitializeVccResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -12419,6 +12787,8 @@ public class ListElasticNetworkInterfacesResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: ListElasticNetworkInterfacesResponseBody.Content?
@@ -12442,6 +12812,9 @@ public class ListElasticNetworkInterfacesResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -12458,6 +12831,9 @@ public class ListElasticNetworkInterfacesResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -12849,6 +13225,8 @@ public class ListErAttachmentsResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: ListErAttachmentsResponseBody.Content?
@@ -12872,6 +13250,9 @@ public class ListErAttachmentsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -12888,6 +13269,9 @@ public class ListErAttachmentsResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -13247,6 +13631,8 @@ public class ListErRouteEntriesResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: ListErRouteEntriesResponseBody.Content?
@@ -13270,6 +13656,9 @@ public class ListErRouteEntriesResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -13286,6 +13675,9 @@ public class ListErRouteEntriesResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -13741,6 +14133,8 @@ public class ListErRouteMapsResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: ListErRouteMapsResponseBody.Content?
@@ -13764,6 +14158,9 @@ public class ListErRouteMapsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -13780,6 +14177,9 @@ public class ListErRouteMapsResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -14123,6 +14523,8 @@ public class ListErsResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: ListErsResponseBody.Content?
@@ -14146,6 +14548,9 @@ public class ListErsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -14162,6 +14567,9 @@ public class ListErsResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -14385,6 +14793,8 @@ public class ListInstancesByNcdResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: ListInstancesByNcdResponseBody.Content?
@@ -14408,6 +14818,9 @@ public class ListInstancesByNcdResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -14424,6 +14837,9 @@ public class ListInstancesByNcdResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -14711,6 +15127,8 @@ public class ListLeniPrivateIpAddressesResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: ListLeniPrivateIpAddressesResponseBody.Content?
@@ -14734,6 +15152,9 @@ public class ListLeniPrivateIpAddressesResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -14750,6 +15171,9 @@ public class ListLeniPrivateIpAddressesResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -15045,6 +15469,8 @@ public class ListLniPrivateIpAddressResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: ListLniPrivateIpAddressResponseBody.Content?
@@ -15068,6 +15494,9 @@ public class ListLniPrivateIpAddressResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -15084,6 +15513,9 @@ public class ListLniPrivateIpAddressResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -15644,6 +16076,8 @@ public class ListNetworkInterfacesResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: ListNetworkInterfacesResponseBody.Content?
@@ -15667,6 +16101,9 @@ public class ListNetworkInterfacesResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -15683,6 +16120,9 @@ public class ListNetworkInterfacesResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -15905,6 +16345,8 @@ public class ListNodeInfosForPodResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: [ListNodeInfosForPodResponseBody.Content]?
@@ -15927,6 +16369,9 @@ public class ListNodeInfosForPodResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -15947,6 +16392,9 @@ public class ListNodeInfosForPodResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -16498,6 +16946,8 @@ public class ListSubnetsResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: ListSubnetsResponseBody.Content?
@@ -16521,6 +16971,9 @@ public class ListSubnetsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -16537,6 +16990,9 @@ public class ListSubnetsResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -16792,6 +17248,8 @@ public class ListVccFlowInfosResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: ListVccFlowInfosResponseBody.Content?
@@ -16815,6 +17273,9 @@ public class ListVccFlowInfosResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -16831,6 +17292,9 @@ public class ListVccFlowInfosResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -17166,6 +17630,8 @@ public class ListVccGrantRulesResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: ListVccGrantRulesResponseBody.Content?
@@ -17189,6 +17655,9 @@ public class ListVccGrantRulesResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -17205,6 +17674,9 @@ public class ListVccGrantRulesResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -17572,6 +18044,8 @@ public class ListVccRouteEntriesResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: ListVccRouteEntriesResponseBody.Content?
@@ -17595,6 +18069,9 @@ public class ListVccRouteEntriesResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -17611,6 +18088,9 @@ public class ListVccRouteEntriesResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -18405,6 +18885,8 @@ public class ListVccsResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: ListVccsResponseBody.Content?
@@ -18428,6 +18910,9 @@ public class ListVccsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -18444,6 +18929,9 @@ public class ListVccsResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -18779,6 +19267,8 @@ public class ListVpdGrantRulesResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: ListVpdGrantRulesResponseBody.Content?
@@ -18802,6 +19292,9 @@ public class ListVpdGrantRulesResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -18818,6 +19311,9 @@ public class ListVpdGrantRulesResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -19177,6 +19673,8 @@ public class ListVpdRouteEntriesResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: ListVpdRouteEntriesResponseBody.Content?
@@ -19200,6 +19698,9 @@ public class ListVpdRouteEntriesResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -19216,6 +19717,9 @@ public class ListVpdRouteEntriesResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -19850,6 +20354,8 @@ public class ListVpdsResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: ListVpdsResponseBody.Content?
@@ -19873,6 +20379,9 @@ public class ListVpdsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -19889,6 +20398,9 @@ public class ListVpdsResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -20063,6 +20575,8 @@ public class QueryInstanceNcdResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: QueryInstanceNcdResponseBody.Content?
@@ -20086,6 +20600,9 @@ public class QueryInstanceNcdResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -20102,6 +20619,9 @@ public class QueryInstanceNcdResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -20207,6 +20727,8 @@ public class RefundVccRequest : Tea.TeaModel {
 }
 
 public class RefundVccResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: Any?
@@ -20229,6 +20751,9 @@ public class RefundVccResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -20245,6 +20770,9 @@ public class RefundVccResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -20348,6 +20876,8 @@ public class RetryVccRequest : Tea.TeaModel {
 }
 
 public class RetryVccResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: Any?
@@ -20370,6 +20900,9 @@ public class RetryVccResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -20386,6 +20919,9 @@ public class RetryVccResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -20558,6 +21094,8 @@ public class UnAssignPrivateIpAddressResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: UnAssignPrivateIpAddressResponseBody.Content?
@@ -20581,6 +21119,9 @@ public class UnAssignPrivateIpAddressResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -20597,6 +21138,9 @@ public class UnAssignPrivateIpAddressResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -20739,6 +21283,8 @@ public class UnAssociateVpdCidrBlockResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: UnAssociateVpdCidrBlockResponseBody.Content?
@@ -20762,6 +21308,9 @@ public class UnAssociateVpdCidrBlockResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -20778,6 +21327,9 @@ public class UnAssociateVpdCidrBlockResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -20936,6 +21488,8 @@ public class UnassignLeniPrivateIpAddressResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: UnassignLeniPrivateIpAddressResponseBody.Content?
@@ -20959,6 +21513,9 @@ public class UnassignLeniPrivateIpAddressResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -20975,6 +21532,9 @@ public class UnassignLeniPrivateIpAddressResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -21141,6 +21701,8 @@ public class UpdateElasticNetworkInterfaceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: UpdateElasticNetworkInterfaceResponseBody.Content?
@@ -21164,6 +21726,9 @@ public class UpdateElasticNetworkInterfaceResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -21180,6 +21745,9 @@ public class UpdateElasticNetworkInterfaceResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -21301,6 +21869,8 @@ public class UpdateErRequest : Tea.TeaModel {
 }
 
 public class UpdateErResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: [String: Any]?
@@ -21323,6 +21893,9 @@ public class UpdateErResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -21339,6 +21912,9 @@ public class UpdateErResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -21458,6 +22034,8 @@ public class UpdateErAttachmentRequest : Tea.TeaModel {
 }
 
 public class UpdateErAttachmentResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: [String: Any]?
@@ -21480,6 +22058,9 @@ public class UpdateErAttachmentResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -21496,6 +22077,9 @@ public class UpdateErAttachmentResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -21615,6 +22199,8 @@ public class UpdateErRouteMapRequest : Tea.TeaModel {
 }
 
 public class UpdateErRouteMapResponseBody : Tea.TeaModel {
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: [String: Any]?
@@ -21637,6 +22223,9 @@ public class UpdateErRouteMapResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -21653,6 +22242,9 @@ public class UpdateErRouteMapResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -21809,6 +22401,8 @@ public class UpdateLeniPrivateIpAddressResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: UpdateLeniPrivateIpAddressResponseBody.Content?
@@ -21832,6 +22426,9 @@ public class UpdateLeniPrivateIpAddressResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -21848,6 +22445,9 @@ public class UpdateLeniPrivateIpAddressResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -22006,6 +22606,8 @@ public class UpdateSubnetResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: UpdateSubnetResponseBody.Content?
@@ -22029,6 +22631,9 @@ public class UpdateSubnetResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -22045,6 +22650,9 @@ public class UpdateSubnetResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -22203,6 +22811,8 @@ public class UpdateVccResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: UpdateVccResponseBody.Content?
@@ -22226,6 +22836,9 @@ public class UpdateVccResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -22242,6 +22855,9 @@ public class UpdateVccResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
@@ -22384,6 +23000,8 @@ public class UpdateVpdResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var accessDeniedDetail: String?
+
     public var code: Int32?
 
     public var content: UpdateVpdResponseBody.Content?
@@ -22407,6 +23025,9 @@ public class UpdateVpdResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessDeniedDetail != nil {
+            map["AccessDeniedDetail"] = self.accessDeniedDetail!
+        }
         if self.code != nil {
             map["Code"] = self.code!
         }
@@ -22423,6 +23044,9 @@ public class UpdateVpdResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessDeniedDetail") {
+            self.accessDeniedDetail = dict["AccessDeniedDetail"] as! String
+        }
         if dict.keys.contains("Code") {
             self.code = dict["Code"] as! Int32
         }
