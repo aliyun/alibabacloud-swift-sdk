@@ -6109,6 +6109,43 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
             }
         }
     }
+    public class ResourcePoolOptions : Tea.TeaModel {
+        public var privatePoolIds: [String]?
+
+        public var strategy: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.privatePoolIds != nil {
+                map["PrivatePoolIds"] = self.privatePoolIds!
+            }
+            if self.strategy != nil {
+                map["Strategy"] = self.strategy!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("PrivatePoolIds") {
+                self.privatePoolIds = dict["PrivatePoolIds"] as! [String]
+            }
+            if dict.keys.contains("Strategy") {
+                self.strategy = dict["Strategy"] as! String
+            }
+        }
+    }
     public class SecurityOptions : Tea.TeaModel {
         public var confidentialComputingMode: String?
 
@@ -6259,6 +6296,8 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
 
     public var resourceOwnerAccount: String?
 
+    public var resourcePoolOptions: CreateScalingConfigurationRequest.ResourcePoolOptions?
+
     public var scalingConfigurationName: String?
 
     public var scalingGroupId: String?
@@ -6308,6 +6347,7 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
         try self.imageOptions?.validate()
         try self.privatePoolOptions?.validate()
         try self.systemDisk?.validate()
+        try self.resourcePoolOptions?.validate()
         try self.securityOptions?.validate()
     }
 
@@ -6458,6 +6498,9 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
         }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourcePoolOptions != nil {
+            map["ResourcePoolOptions"] = self.resourcePoolOptions?.toMap()
         }
         if self.scalingConfigurationName != nil {
             map["ScalingConfigurationName"] = self.scalingConfigurationName!
@@ -6692,6 +6735,11 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerAccount") {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourcePoolOptions") {
+            var model = CreateScalingConfigurationRequest.ResourcePoolOptions()
+            model.fromMap(dict["ResourcePoolOptions"] as! [String: Any])
+            self.resourcePoolOptions = model
         }
         if dict.keys.contains("ScalingConfigurationName") {
             self.scalingConfigurationName = dict["ScalingConfigurationName"] as! String
@@ -7401,6 +7449,43 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
             }
         }
     }
+    public class ResourcePoolOptions : Tea.TeaModel {
+        public var privatePoolIds: [String]?
+
+        public var strategy: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.privatePoolIds != nil {
+                map["PrivatePoolIds"] = self.privatePoolIds!
+            }
+            if self.strategy != nil {
+                map["Strategy"] = self.strategy!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("PrivatePoolIds") {
+                self.privatePoolIds = dict["PrivatePoolIds"] as! [String]
+            }
+            if dict.keys.contains("Strategy") {
+                self.strategy = dict["Strategy"] as! String
+            }
+        }
+    }
     public class SecurityOptions : Tea.TeaModel {
         public var confidentialComputingMode: String?
 
@@ -7551,6 +7636,8 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
 
     public var resourceOwnerAccount: String?
 
+    public var resourcePoolOptions: CreateScalingConfigurationShrinkRequest.ResourcePoolOptions?
+
     public var scalingConfigurationName: String?
 
     public var scalingGroupId: String?
@@ -7600,6 +7687,7 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
         try self.imageOptions?.validate()
         try self.privatePoolOptions?.validate()
         try self.systemDisk?.validate()
+        try self.resourcePoolOptions?.validate()
         try self.securityOptions?.validate()
     }
 
@@ -7750,6 +7838,9 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
         }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourcePoolOptions != nil {
+            map["ResourcePoolOptions"] = self.resourcePoolOptions?.toMap()
         }
         if self.scalingConfigurationName != nil {
             map["ScalingConfigurationName"] = self.scalingConfigurationName!
@@ -7984,6 +8075,11 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerAccount") {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourcePoolOptions") {
+            var model = CreateScalingConfigurationShrinkRequest.ResourcePoolOptions()
+            model.fromMap(dict["ResourcePoolOptions"] as! [String: Any])
+            self.resourcePoolOptions = model
         }
         if dict.keys.contains("ScalingConfigurationName") {
             self.scalingConfigurationName = dict["ScalingConfigurationName"] as! String
@@ -20763,6 +20859,43 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class ResourcePoolOptions : Tea.TeaModel {
+            public var privatePoolIds: [String]?
+
+            public var strategy: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.privatePoolIds != nil {
+                    map["PrivatePoolIds"] = self.privatePoolIds!
+                }
+                if self.strategy != nil {
+                    map["Strategy"] = self.strategy!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("PrivatePoolIds") {
+                    self.privatePoolIds = dict["PrivatePoolIds"] as! [String]
+                }
+                if dict.keys.contains("Strategy") {
+                    self.strategy = dict["Strategy"] as! String
+                }
+            }
+        }
         public class SchedulerOptions : Tea.TeaModel {
             public var managedPrivateSpaceId: String?
 
@@ -20977,6 +21110,8 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
 
         public var resourceGroupId: String?
 
+        public var resourcePoolOptions: DescribeScalingConfigurationsResponseBody.ScalingConfigurations.ResourcePoolOptions?
+
         public var scalingConfigurationId: String?
 
         public var scalingConfigurationName: String?
@@ -21049,6 +21184,7 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.resourcePoolOptions?.validate()
             try self.schedulerOptions?.validate()
             try self.securityOptions?.validate()
         }
@@ -21193,6 +21329,9 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
             }
             if self.resourceGroupId != nil {
                 map["ResourceGroupId"] = self.resourceGroupId!
+            }
+            if self.resourcePoolOptions != nil {
+                map["ResourcePoolOptions"] = self.resourcePoolOptions?.toMap()
             }
             if self.scalingConfigurationId != nil {
                 map["ScalingConfigurationId"] = self.scalingConfigurationId!
@@ -21453,6 +21592,11 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ResourceGroupId") {
                 self.resourceGroupId = dict["ResourceGroupId"] as! String
+            }
+            if dict.keys.contains("ResourcePoolOptions") {
+                var model = DescribeScalingConfigurationsResponseBody.ScalingConfigurations.ResourcePoolOptions()
+                model.fromMap(dict["ResourcePoolOptions"] as! [String: Any])
+                self.resourcePoolOptions = model
             }
             if dict.keys.contains("ScalingConfigurationId") {
                 self.scalingConfigurationId = dict["ScalingConfigurationId"] as! String
@@ -33308,6 +33452,43 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
             }
         }
     }
+    public class ResourcePoolOptions : Tea.TeaModel {
+        public var privatePoolIds: [String]?
+
+        public var strategy: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.privatePoolIds != nil {
+                map["PrivatePoolIds"] = self.privatePoolIds!
+            }
+            if self.strategy != nil {
+                map["Strategy"] = self.strategy!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("PrivatePoolIds") {
+                self.privatePoolIds = dict["PrivatePoolIds"] as! [String]
+            }
+            if dict.keys.contains("Strategy") {
+                self.strategy = dict["Strategy"] as! String
+            }
+        }
+    }
     public class SecurityOptions : Tea.TeaModel {
         public var confidentialComputingMode: String?
 
@@ -33456,6 +33637,8 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
 
     public var resourceOwnerAccount: String?
 
+    public var resourcePoolOptions: ModifyScalingConfigurationRequest.ResourcePoolOptions?
+
     public var scalingConfigurationId: String?
 
     public var scalingConfigurationName: String?
@@ -33503,6 +33686,7 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
         try self.imageOptions?.validate()
         try self.privatePoolOptions?.validate()
         try self.systemDisk?.validate()
+        try self.resourcePoolOptions?.validate()
         try self.securityOptions?.validate()
     }
 
@@ -33650,6 +33834,9 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
         }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourcePoolOptions != nil {
+            map["ResourcePoolOptions"] = self.resourcePoolOptions?.toMap()
         }
         if self.scalingConfigurationId != nil {
             map["ScalingConfigurationId"] = self.scalingConfigurationId!
@@ -33878,6 +34065,11 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerAccount") {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourcePoolOptions") {
+            var model = ModifyScalingConfigurationRequest.ResourcePoolOptions()
+            model.fromMap(dict["ResourcePoolOptions"] as! [String: Any])
+            self.resourcePoolOptions = model
         }
         if dict.keys.contains("ScalingConfigurationId") {
             self.scalingConfigurationId = dict["ScalingConfigurationId"] as! String
@@ -34584,6 +34776,43 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
             }
         }
     }
+    public class ResourcePoolOptions : Tea.TeaModel {
+        public var privatePoolIds: [String]?
+
+        public var strategy: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.privatePoolIds != nil {
+                map["PrivatePoolIds"] = self.privatePoolIds!
+            }
+            if self.strategy != nil {
+                map["Strategy"] = self.strategy!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("PrivatePoolIds") {
+                self.privatePoolIds = dict["PrivatePoolIds"] as! [String]
+            }
+            if dict.keys.contains("Strategy") {
+                self.strategy = dict["Strategy"] as! String
+            }
+        }
+    }
     public class SecurityOptions : Tea.TeaModel {
         public var confidentialComputingMode: String?
 
@@ -34732,6 +34961,8 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
 
     public var resourceOwnerAccount: String?
 
+    public var resourcePoolOptions: ModifyScalingConfigurationShrinkRequest.ResourcePoolOptions?
+
     public var scalingConfigurationId: String?
 
     public var scalingConfigurationName: String?
@@ -34779,6 +35010,7 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
         try self.imageOptions?.validate()
         try self.privatePoolOptions?.validate()
         try self.systemDisk?.validate()
+        try self.resourcePoolOptions?.validate()
         try self.securityOptions?.validate()
     }
 
@@ -34926,6 +35158,9 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
         }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourcePoolOptions != nil {
+            map["ResourcePoolOptions"] = self.resourcePoolOptions?.toMap()
         }
         if self.scalingConfigurationId != nil {
             map["ScalingConfigurationId"] = self.scalingConfigurationId!
@@ -35154,6 +35389,11 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerAccount") {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourcePoolOptions") {
+            var model = ModifyScalingConfigurationShrinkRequest.ResourcePoolOptions()
+            model.fromMap(dict["ResourcePoolOptions"] as! [String: Any])
+            self.resourcePoolOptions = model
         }
         if dict.keys.contains("ScalingConfigurationId") {
             self.scalingConfigurationId = dict["ScalingConfigurationId"] as! String
