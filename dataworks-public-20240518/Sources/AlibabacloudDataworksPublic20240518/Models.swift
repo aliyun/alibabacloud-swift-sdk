@@ -5422,6 +5422,8 @@ public class CreateDIJobRequest : Tea.TeaModel {
 
     public var jobSettings: CreateDIJobRequest.JobSettings?
 
+    public var jobType: String?
+
     public var migrationType: String?
 
     public var name: String?
@@ -5472,6 +5474,9 @@ public class CreateDIJobRequest : Tea.TeaModel {
         }
         if self.jobSettings != nil {
             map["JobSettings"] = self.jobSettings?.toMap()
+        }
+        if self.jobType != nil {
+            map["JobType"] = self.jobType!
         }
         if self.migrationType != nil {
             map["MigrationType"] = self.migrationType!
@@ -5538,6 +5543,9 @@ public class CreateDIJobRequest : Tea.TeaModel {
             model.fromMap(dict["JobSettings"] as! [String: Any])
             self.jobSettings = model
         }
+        if dict.keys.contains("JobType") {
+            self.jobType = dict["JobType"] as! String
+        }
         if dict.keys.contains("MigrationType") {
             self.migrationType = dict["MigrationType"] as! String
         }
@@ -5602,6 +5610,8 @@ public class CreateDIJobShrinkRequest : Tea.TeaModel {
 
     public var jobSettingsShrink: String?
 
+    public var jobType: String?
+
     public var migrationType: String?
 
     public var name: String?
@@ -5647,6 +5657,9 @@ public class CreateDIJobShrinkRequest : Tea.TeaModel {
         if self.jobSettingsShrink != nil {
             map["JobSettings"] = self.jobSettingsShrink!
         }
+        if self.jobType != nil {
+            map["JobType"] = self.jobType!
+        }
         if self.migrationType != nil {
             map["MigrationType"] = self.migrationType!
         }
@@ -5689,6 +5702,9 @@ public class CreateDIJobShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("JobSettings") {
             self.jobSettingsShrink = dict["JobSettings"] as! String
+        }
+        if dict.keys.contains("JobType") {
+            self.jobType = dict["JobType"] as! String
         }
         if dict.keys.contains("MigrationType") {
             self.migrationType = dict["MigrationType"] as! String
@@ -16940,6 +16956,8 @@ public class GetDIJobResponseBody : Tea.TeaModel {
 
         public var jobStatus: String?
 
+        public var jobType: String?
+
         public var migrationType: String?
 
         public var projectId: Int64?
@@ -16997,6 +17015,9 @@ public class GetDIJobResponseBody : Tea.TeaModel {
             }
             if self.jobStatus != nil {
                 map["JobStatus"] = self.jobStatus!
+            }
+            if self.jobType != nil {
+                map["JobType"] = self.jobType!
             }
             if self.migrationType != nil {
                 map["MigrationType"] = self.migrationType!
@@ -17068,6 +17089,9 @@ public class GetDIJobResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("JobStatus") {
                 self.jobStatus = dict["JobStatus"] as! String
+            }
+            if dict.keys.contains("JobType") {
+                self.jobType = dict["JobType"] as! String
             }
             if dict.keys.contains("MigrationType") {
                 self.migrationType = dict["MigrationType"] as! String
