@@ -8198,6 +8198,8 @@ public class CreateConfigGroupRequest : Tea.TeaModel {
 
         public var interval: Int32?
 
+        public var notificationTime: Int32?
+
         public var operationType: String?
 
         public var processWhitelist: [String]?
@@ -8234,6 +8236,9 @@ public class CreateConfigGroupRequest : Tea.TeaModel {
             if self.interval != nil {
                 map["Interval"] = self.interval!
             }
+            if self.notificationTime != nil {
+                map["NotificationTime"] = self.notificationTime!
+            }
             if self.operationType != nil {
                 map["OperationType"] = self.operationType!
             }
@@ -8264,6 +8269,9 @@ public class CreateConfigGroupRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Interval") {
                 self.interval = dict["Interval"] as! Int32
+            }
+            if dict.keys.contains("NotificationTime") {
+                self.notificationTime = dict["NotificationTime"] as! Int32
             }
             if dict.keys.contains("OperationType") {
                 self.operationType = dict["OperationType"] as! String
@@ -36183,6 +36191,8 @@ public class DescribeTimerGroupResponseBody : Tea.TeaModel {
 
             public var interval: Int32?
 
+            public var notificationTime: Int32?
+
             public var operationType: String?
 
             public var processWhitelist: [String]?
@@ -36219,6 +36229,9 @@ public class DescribeTimerGroupResponseBody : Tea.TeaModel {
                 if self.interval != nil {
                     map["Interval"] = self.interval!
                 }
+                if self.notificationTime != nil {
+                    map["NotificationTime"] = self.notificationTime!
+                }
                 if self.operationType != nil {
                     map["OperationType"] = self.operationType!
                 }
@@ -36249,6 +36262,9 @@ public class DescribeTimerGroupResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Interval") {
                     self.interval = dict["Interval"] as! Int32
+                }
+                if dict.keys.contains("NotificationTime") {
+                    self.notificationTime = dict["NotificationTime"] as! Int32
                 }
                 if dict.keys.contains("OperationType") {
                     self.operationType = dict["OperationType"] as! String
@@ -52819,6 +52835,8 @@ public class ModifyTimerGroupRequest : Tea.TeaModel {
 
         public var interval: Int32?
 
+        public var notificationTime: Int32?
+
         public var operationType: String?
 
         public var processWhitelist: [String]?
@@ -52855,6 +52873,9 @@ public class ModifyTimerGroupRequest : Tea.TeaModel {
             if self.interval != nil {
                 map["Interval"] = self.interval!
             }
+            if self.notificationTime != nil {
+                map["NotificationTime"] = self.notificationTime!
+            }
             if self.operationType != nil {
                 map["OperationType"] = self.operationType!
             }
@@ -52885,6 +52906,9 @@ public class ModifyTimerGroupRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Interval") {
                 self.interval = dict["Interval"] as! Int32
+            }
+            if dict.keys.contains("NotificationTime") {
+                self.notificationTime = dict["NotificationTime"] as! Int32
             }
             if dict.keys.contains("OperationType") {
                 self.operationType = dict["OperationType"] as! String
