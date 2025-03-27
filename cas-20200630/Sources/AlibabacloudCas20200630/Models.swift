@@ -441,6 +441,10 @@ public class CreateClientCertificateWithCsrRequest : Tea.TeaModel {
 }
 
 public class CreateClientCertificateWithCsrResponseBody : Tea.TeaModel {
+    public var certKmcRep1: String?
+
+    public var certSignBufKmc: String?
+
     public var certificateChain: String?
 
     public var identifier: String?
@@ -465,6 +469,12 @@ public class CreateClientCertificateWithCsrResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.certKmcRep1 != nil {
+            map["CertKmcRep1"] = self.certKmcRep1!
+        }
+        if self.certSignBufKmc != nil {
+            map["CertSignBufKmc"] = self.certSignBufKmc!
+        }
         if self.certificateChain != nil {
             map["CertificateChain"] = self.certificateChain!
         }
@@ -484,6 +494,12 @@ public class CreateClientCertificateWithCsrResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CertKmcRep1") {
+            self.certKmcRep1 = dict["CertKmcRep1"] as! String
+        }
+        if dict.keys.contains("CertSignBufKmc") {
+            self.certSignBufKmc = dict["CertSignBufKmc"] as! String
+        }
         if dict.keys.contains("CertificateChain") {
             self.certificateChain = dict["CertificateChain"] as! String
         }
