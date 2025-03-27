@@ -13909,17 +13909,29 @@ public class DescribeDefenseRulesRequest : Tea.TeaModel {
 
 public class DescribeDefenseRulesResponseBody : Tea.TeaModel {
     public class Rules : Tea.TeaModel {
+        public var actionExternal: String?
+
         public var config: String?
 
         public var defenseOrigin: String?
 
         public var defenseScene: String?
 
+        public var description_: String?
+
+        public var detailRuleIds: String?
+
+        public var externalInfo: String?
+
+        public var gmtCreate: Int64?
+
         public var gmtModified: Int64?
 
         public var ruleId: Int64?
 
         public var ruleName: String?
+
+        public var ruleType: String?
 
         public var status: Int32?
 
@@ -13939,6 +13951,9 @@ public class DescribeDefenseRulesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.actionExternal != nil {
+                map["ActionExternal"] = self.actionExternal!
+            }
             if self.config != nil {
                 map["Config"] = self.config!
             }
@@ -13948,6 +13963,18 @@ public class DescribeDefenseRulesResponseBody : Tea.TeaModel {
             if self.defenseScene != nil {
                 map["DefenseScene"] = self.defenseScene!
             }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.detailRuleIds != nil {
+                map["DetailRuleIds"] = self.detailRuleIds!
+            }
+            if self.externalInfo != nil {
+                map["ExternalInfo"] = self.externalInfo!
+            }
+            if self.gmtCreate != nil {
+                map["GmtCreate"] = self.gmtCreate!
+            }
             if self.gmtModified != nil {
                 map["GmtModified"] = self.gmtModified!
             }
@@ -13956,6 +13983,9 @@ public class DescribeDefenseRulesResponseBody : Tea.TeaModel {
             }
             if self.ruleName != nil {
                 map["RuleName"] = self.ruleName!
+            }
+            if self.ruleType != nil {
+                map["RuleType"] = self.ruleType!
             }
             if self.status != nil {
                 map["Status"] = self.status!
@@ -13967,6 +13997,9 @@ public class DescribeDefenseRulesResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ActionExternal") {
+                self.actionExternal = dict["ActionExternal"] as! String
+            }
             if dict.keys.contains("Config") {
                 self.config = dict["Config"] as! String
             }
@@ -13976,6 +14009,18 @@ public class DescribeDefenseRulesResponseBody : Tea.TeaModel {
             if dict.keys.contains("DefenseScene") {
                 self.defenseScene = dict["DefenseScene"] as! String
             }
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("DetailRuleIds") {
+                self.detailRuleIds = dict["DetailRuleIds"] as! String
+            }
+            if dict.keys.contains("ExternalInfo") {
+                self.externalInfo = dict["ExternalInfo"] as! String
+            }
+            if dict.keys.contains("GmtCreate") {
+                self.gmtCreate = dict["GmtCreate"] as! Int64
+            }
             if dict.keys.contains("GmtModified") {
                 self.gmtModified = dict["GmtModified"] as! Int64
             }
@@ -13984,6 +14029,9 @@ public class DescribeDefenseRulesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RuleName") {
                 self.ruleName = dict["RuleName"] as! String
+            }
+            if dict.keys.contains("RuleType") {
+                self.ruleType = dict["RuleType"] as! String
             }
             if dict.keys.contains("Status") {
                 self.status = dict["Status"] as! Int32
