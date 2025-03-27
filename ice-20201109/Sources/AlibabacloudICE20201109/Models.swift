@@ -2330,6 +2330,230 @@ public class LicenseInstanceAppDTO : Tea.TeaModel {
     }
 }
 
+public class LiveManifestConfig : Tea.TeaModel {
+    public var adMarkers: String?
+
+    public var dateTimeInterval: Int32?
+
+    public var manifestName: String?
+
+    public var maxVideoBitrate: Int32?
+
+    public var minBufferTime: Int32?
+
+    public var minVideoBitrate: Int32?
+
+    public var protocol_: String?
+
+    public var segmentNum: Int32?
+
+    public var streamOrder: String?
+
+    public var useAudioRenditionGroups: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.adMarkers != nil {
+            map["AdMarkers"] = self.adMarkers!
+        }
+        if self.dateTimeInterval != nil {
+            map["DateTimeInterval"] = self.dateTimeInterval!
+        }
+        if self.manifestName != nil {
+            map["ManifestName"] = self.manifestName!
+        }
+        if self.maxVideoBitrate != nil {
+            map["MaxVideoBitrate"] = self.maxVideoBitrate!
+        }
+        if self.minBufferTime != nil {
+            map["MinBufferTime"] = self.minBufferTime!
+        }
+        if self.minVideoBitrate != nil {
+            map["MinVideoBitrate"] = self.minVideoBitrate!
+        }
+        if self.protocol_ != nil {
+            map["Protocol"] = self.protocol_!
+        }
+        if self.segmentNum != nil {
+            map["SegmentNum"] = self.segmentNum!
+        }
+        if self.streamOrder != nil {
+            map["StreamOrder"] = self.streamOrder!
+        }
+        if self.useAudioRenditionGroups != nil {
+            map["UseAudioRenditionGroups"] = self.useAudioRenditionGroups!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AdMarkers") {
+            self.adMarkers = dict["AdMarkers"] as! String
+        }
+        if dict.keys.contains("DateTimeInterval") {
+            self.dateTimeInterval = dict["DateTimeInterval"] as! Int32
+        }
+        if dict.keys.contains("ManifestName") {
+            self.manifestName = dict["ManifestName"] as! String
+        }
+        if dict.keys.contains("MaxVideoBitrate") {
+            self.maxVideoBitrate = dict["MaxVideoBitrate"] as! Int32
+        }
+        if dict.keys.contains("MinBufferTime") {
+            self.minBufferTime = dict["MinBufferTime"] as! Int32
+        }
+        if dict.keys.contains("MinVideoBitrate") {
+            self.minVideoBitrate = dict["MinVideoBitrate"] as! Int32
+        }
+        if dict.keys.contains("Protocol") {
+            self.protocol_ = dict["Protocol"] as! String
+        }
+        if dict.keys.contains("SegmentNum") {
+            self.segmentNum = dict["SegmentNum"] as! Int32
+        }
+        if dict.keys.contains("StreamOrder") {
+            self.streamOrder = dict["StreamOrder"] as! String
+        }
+        if dict.keys.contains("UseAudioRenditionGroups") {
+            self.useAudioRenditionGroups = dict["UseAudioRenditionGroups"] as! Bool
+        }
+    }
+}
+
+public class LivePackagingConfig : Tea.TeaModel {
+    public class DrmConfig : Tea.TeaModel {
+        public var encryptionMethod: String?
+
+        public var IV: String?
+
+        public var systemIds: [String]?
+
+        public var url: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.encryptionMethod != nil {
+                map["EncryptionMethod"] = self.encryptionMethod!
+            }
+            if self.IV != nil {
+                map["IV"] = self.IV!
+            }
+            if self.systemIds != nil {
+                map["SystemIds"] = self.systemIds!
+            }
+            if self.url != nil {
+                map["Url"] = self.url!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EncryptionMethod") {
+                self.encryptionMethod = dict["EncryptionMethod"] as! String
+            }
+            if dict.keys.contains("IV") {
+                self.IV = dict["IV"] as! String
+            }
+            if dict.keys.contains("SystemIds") {
+                self.systemIds = dict["SystemIds"] as! [String]
+            }
+            if dict.keys.contains("Url") {
+                self.url = dict["Url"] as! String
+            }
+        }
+    }
+    public var drmConfig: LivePackagingConfig.DrmConfig?
+
+    public var liveManifestConfigs: [LiveManifestConfig]?
+
+    public var segmentDuration: Int32?
+
+    public var useAudioRenditionGroups: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.drmConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.drmConfig != nil {
+            map["DrmConfig"] = self.drmConfig?.toMap()
+        }
+        if self.liveManifestConfigs != nil {
+            var tmp : [Any] = []
+            for k in self.liveManifestConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["LiveManifestConfigs"] = tmp
+        }
+        if self.segmentDuration != nil {
+            map["SegmentDuration"] = self.segmentDuration!
+        }
+        if self.useAudioRenditionGroups != nil {
+            map["UseAudioRenditionGroups"] = self.useAudioRenditionGroups!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DrmConfig") {
+            var model = LivePackagingConfig.DrmConfig()
+            model.fromMap(dict["DrmConfig"] as! [String: Any])
+            self.drmConfig = model
+        }
+        if dict.keys.contains("LiveManifestConfigs") {
+            var tmp : [LiveManifestConfig] = []
+            for v in dict["LiveManifestConfigs"] as! [Any] {
+                var model = LiveManifestConfig()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.liveManifestConfigs = tmp
+        }
+        if dict.keys.contains("SegmentDuration") {
+            self.segmentDuration = dict["SegmentDuration"] as! Int32
+        }
+        if dict.keys.contains("UseAudioRenditionGroups") {
+            self.useAudioRenditionGroups = dict["UseAudioRenditionGroups"] as! Bool
+        }
+    }
+}
+
 public class MediaConvertAudio : Tea.TeaModel {
     public var bitrate: Int64?
 
@@ -77968,6 +78192,8 @@ public class SubmitBatchMediaProducingJobRequest : Tea.TeaModel {
 
     public var outputConfig: String?
 
+    public var templateConfig: String?
+
     public var userData: String?
 
     public override init() {
@@ -77996,6 +78222,9 @@ public class SubmitBatchMediaProducingJobRequest : Tea.TeaModel {
         if self.outputConfig != nil {
             map["OutputConfig"] = self.outputConfig!
         }
+        if self.templateConfig != nil {
+            map["TemplateConfig"] = self.templateConfig!
+        }
         if self.userData != nil {
             map["UserData"] = self.userData!
         }
@@ -78014,6 +78243,9 @@ public class SubmitBatchMediaProducingJobRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OutputConfig") {
             self.outputConfig = dict["OutputConfig"] as! String
+        }
+        if dict.keys.contains("TemplateConfig") {
+            self.templateConfig = dict["TemplateConfig"] as! String
         }
         if dict.keys.contains("UserData") {
             self.userData = dict["UserData"] as! String

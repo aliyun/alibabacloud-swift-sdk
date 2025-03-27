@@ -11632,6 +11632,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.outputConfig)) {
             query["OutputConfig"] = request.outputConfig ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.templateConfig)) {
+            query["TemplateConfig"] = request.templateConfig ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.userData)) {
             query["UserData"] = request.userData ?? "";
         }
