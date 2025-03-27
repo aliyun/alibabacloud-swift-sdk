@@ -8453,6 +8453,8 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
             }
         }
     }
+    public var excludeGenerateOptions: [String]?
+
     public var faceIdentitySimilarityMinScore: Double?
 
     public var frameSampleMethod: RunVideoAnalysisRequest.FrameSampleMethod?
@@ -8504,6 +8506,9 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.excludeGenerateOptions != nil {
+            map["excludeGenerateOptions"] = self.excludeGenerateOptions!
+        }
         if self.faceIdentitySimilarityMinScore != nil {
             map["faceIdentitySimilarityMinScore"] = self.faceIdentitySimilarityMinScore!
         }
@@ -8570,6 +8575,9 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("excludeGenerateOptions") {
+            self.excludeGenerateOptions = dict["excludeGenerateOptions"] as! [String]
+        }
         if dict.keys.contains("faceIdentitySimilarityMinScore") {
             self.faceIdentitySimilarityMinScore = dict["faceIdentitySimilarityMinScore"] as! Double
         }
@@ -8646,6 +8654,8 @@ public class RunVideoAnalysisRequest : Tea.TeaModel {
 }
 
 public class RunVideoAnalysisShrinkRequest : Tea.TeaModel {
+    public var excludeGenerateOptionsShrink: String?
+
     public var faceIdentitySimilarityMinScore: Double?
 
     public var frameSampleMethodShrink: String?
@@ -8696,6 +8706,9 @@ public class RunVideoAnalysisShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.excludeGenerateOptionsShrink != nil {
+            map["excludeGenerateOptions"] = self.excludeGenerateOptionsShrink!
+        }
         if self.faceIdentitySimilarityMinScore != nil {
             map["faceIdentitySimilarityMinScore"] = self.faceIdentitySimilarityMinScore!
         }
@@ -8754,6 +8767,9 @@ public class RunVideoAnalysisShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("excludeGenerateOptions") {
+            self.excludeGenerateOptionsShrink = dict["excludeGenerateOptions"] as! String
+        }
         if dict.keys.contains("faceIdentitySimilarityMinScore") {
             self.faceIdentitySimilarityMinScore = dict["faceIdentitySimilarityMinScore"] as! Double
         }
@@ -10726,6 +10742,10 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
             }
         }
     }
+    public var deduplicationId: String?
+
+    public var excludeGenerateOptions: [String]?
+
     public var faceIdentitySimilarityMinScore: Double?
 
     public var frameSampleMethod: SubmitVideoAnalysisTaskRequest.FrameSampleMethod?
@@ -10773,6 +10793,12 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.deduplicationId != nil {
+            map["deduplicationId"] = self.deduplicationId!
+        }
+        if self.excludeGenerateOptions != nil {
+            map["excludeGenerateOptions"] = self.excludeGenerateOptions!
+        }
         if self.faceIdentitySimilarityMinScore != nil {
             map["faceIdentitySimilarityMinScore"] = self.faceIdentitySimilarityMinScore!
         }
@@ -10833,6 +10859,12 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("deduplicationId") {
+            self.deduplicationId = dict["deduplicationId"] as! String
+        }
+        if dict.keys.contains("excludeGenerateOptions") {
+            self.excludeGenerateOptions = dict["excludeGenerateOptions"] as! [String]
+        }
         if dict.keys.contains("faceIdentitySimilarityMinScore") {
             self.faceIdentitySimilarityMinScore = dict["faceIdentitySimilarityMinScore"] as! Double
         }
@@ -10903,6 +10935,10 @@ public class SubmitVideoAnalysisTaskRequest : Tea.TeaModel {
 }
 
 public class SubmitVideoAnalysisTaskShrinkRequest : Tea.TeaModel {
+    public var deduplicationId: String?
+
+    public var excludeGenerateOptionsShrink: String?
+
     public var faceIdentitySimilarityMinScore: Double?
 
     public var frameSampleMethodShrink: String?
@@ -10949,6 +10985,12 @@ public class SubmitVideoAnalysisTaskShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.deduplicationId != nil {
+            map["deduplicationId"] = self.deduplicationId!
+        }
+        if self.excludeGenerateOptionsShrink != nil {
+            map["excludeGenerateOptions"] = self.excludeGenerateOptionsShrink!
+        }
         if self.faceIdentitySimilarityMinScore != nil {
             map["faceIdentitySimilarityMinScore"] = self.faceIdentitySimilarityMinScore!
         }
@@ -11001,6 +11043,12 @@ public class SubmitVideoAnalysisTaskShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("deduplicationId") {
+            self.deduplicationId = dict["deduplicationId"] as! String
+        }
+        if dict.keys.contains("excludeGenerateOptions") {
+            self.excludeGenerateOptionsShrink = dict["excludeGenerateOptions"] as! String
+        }
         if dict.keys.contains("faceIdentitySimilarityMinScore") {
             self.faceIdentitySimilarityMinScore = dict["faceIdentitySimilarityMinScore"] as! Double
         }

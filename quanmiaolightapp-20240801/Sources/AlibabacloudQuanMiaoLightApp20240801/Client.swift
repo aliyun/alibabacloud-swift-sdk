@@ -903,6 +903,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: RunVideoAnalysisShrinkRequest = RunVideoAnalysisShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.excludeGenerateOptions)) {
+            request.excludeGenerateOptionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.excludeGenerateOptions, "excludeGenerateOptions", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.frameSampleMethod)) {
             request.frameSampleMethodShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.frameSampleMethod, "frameSampleMethod", "json")
         }
@@ -916,6 +919,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.videoRolesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.videoRoles, "videoRoles", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.excludeGenerateOptionsShrink)) {
+            body["excludeGenerateOptions"] = request.excludeGenerateOptionsShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.faceIdentitySimilarityMinScore)) {
             body["faceIdentitySimilarityMinScore"] = request.faceIdentitySimilarityMinScore!;
         }
@@ -1075,6 +1081,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: SubmitVideoAnalysisTaskShrinkRequest = SubmitVideoAnalysisTaskShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.excludeGenerateOptions)) {
+            request.excludeGenerateOptionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.excludeGenerateOptions, "excludeGenerateOptions", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.frameSampleMethod)) {
             request.frameSampleMethodShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.frameSampleMethod, "frameSampleMethod", "json")
         }
@@ -1088,6 +1097,12 @@ open class Client : AlibabacloudOpenApi.Client {
             request.videoRolesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.videoRoles, "videoRoles", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deduplicationId)) {
+            body["deduplicationId"] = request.deduplicationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.excludeGenerateOptionsShrink)) {
+            body["excludeGenerateOptions"] = request.excludeGenerateOptionsShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.faceIdentitySimilarityMinScore)) {
             body["faceIdentitySimilarityMinScore"] = request.faceIdentitySimilarityMinScore!;
         }
